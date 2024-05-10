@@ -42,7 +42,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -64,15 +65,16 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getChangeSets(GetChangeSetsArgs.builder()
-     *             .stackId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .stackId("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosChangeSetId&#34;, example.applyValue(getChangeSetsResult -&gt; getChangeSetsResult.sets()[0].id()));
+     *         ctx.export("firstRosChangeSetId", example.applyValue(getChangeSetsResult -> getChangeSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -89,7 +91,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -111,15 +114,16 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getChangeSets(GetChangeSetsArgs.builder()
-     *             .stackId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .stackId("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosChangeSetId&#34;, example.applyValue(getChangeSetsResult -&gt; getChangeSetsResult.sets()[0].id()));
+     *         ctx.export("firstRosChangeSetId", example.applyValue(getChangeSetsResult -> getChangeSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -136,7 +140,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -158,15 +163,16 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getChangeSets(GetChangeSetsArgs.builder()
-     *             .stackId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .stackId("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosChangeSetId&#34;, example.applyValue(getChangeSetsResult -&gt; getChangeSetsResult.sets()[0].id()));
+     *         ctx.export("firstRosChangeSetId", example.applyValue(getChangeSetsResult -> getChangeSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -183,7 +189,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -205,15 +212,16 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getChangeSets(GetChangeSetsArgs.builder()
-     *             .stackId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .stackId("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosChangeSetId&#34;, example.applyValue(getChangeSetsResult -&gt; getChangeSetsResult.sets()[0].id()));
+     *         ctx.export("firstRosChangeSetId", example.applyValue(getChangeSetsResult -> getChangeSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -230,7 +238,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -253,10 +262,11 @@ public final class RosFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = RosFunctions.getRegions();
      * 
-     *         ctx.export(&#34;rosRegionRegionId1&#34;, all.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()));
+     *         ctx.export("rosRegionRegionId1", all.applyValue(getRegionsResult -> getRegionsResult.regions()[0].regionId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -273,7 +283,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -296,10 +307,11 @@ public final class RosFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = RosFunctions.getRegions();
      * 
-     *         ctx.export(&#34;rosRegionRegionId1&#34;, all.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()));
+     *         ctx.export("rosRegionRegionId1", all.applyValue(getRegionsResult -> getRegionsResult.regions()[0].regionId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -316,7 +328,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -339,10 +352,11 @@ public final class RosFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = RosFunctions.getRegions();
      * 
-     *         ctx.export(&#34;rosRegionRegionId1&#34;, all.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()));
+     *         ctx.export("rosRegionRegionId1", all.applyValue(getRegionsResult -> getRegionsResult.regions()[0].regionId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -359,7 +373,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -382,10 +397,11 @@ public final class RosFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = RosFunctions.getRegions();
      * 
-     *         ctx.export(&#34;rosRegionRegionId1&#34;, all.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()));
+     *         ctx.export("rosRegionRegionId1", all.applyValue(getRegionsResult -> getRegionsResult.regions()[0].regionId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -402,7 +418,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -425,10 +442,11 @@ public final class RosFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = RosFunctions.getRegions();
      * 
-     *         ctx.export(&#34;rosRegionRegionId1&#34;, all.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()));
+     *         ctx.export("rosRegionRegionId1", all.applyValue(getRegionsResult -> getRegionsResult.regions()[0].regionId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -445,7 +463,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -468,10 +487,11 @@ public final class RosFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = RosFunctions.getRegions();
      * 
-     *         ctx.export(&#34;rosRegionRegionId1&#34;, all.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()));
+     *         ctx.export("rosRegionRegionId1", all.applyValue(getRegionsResult -> getRegionsResult.regions()[0].regionId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -488,7 +508,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -510,14 +531,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getStackGroups(GetStackGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosStackGroupId&#34;, example.applyValue(getStackGroupsResult -&gt; getStackGroupsResult.groups()[0].id()));
+     *         ctx.export("firstRosStackGroupId", example.applyValue(getStackGroupsResult -> getStackGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -534,7 +556,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -556,14 +579,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getStackGroups(GetStackGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosStackGroupId&#34;, example.applyValue(getStackGroupsResult -&gt; getStackGroupsResult.groups()[0].id()));
+     *         ctx.export("firstRosStackGroupId", example.applyValue(getStackGroupsResult -> getStackGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -580,7 +604,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -602,14 +627,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getStackGroups(GetStackGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosStackGroupId&#34;, example.applyValue(getStackGroupsResult -&gt; getStackGroupsResult.groups()[0].id()));
+     *         ctx.export("firstRosStackGroupId", example.applyValue(getStackGroupsResult -> getStackGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -626,7 +652,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -648,14 +675,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getStackGroups(GetStackGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosStackGroupId&#34;, example.applyValue(getStackGroupsResult -&gt; getStackGroupsResult.groups()[0].id()));
+     *         ctx.export("firstRosStackGroupId", example.applyValue(getStackGroupsResult -> getStackGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -672,7 +700,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -694,14 +723,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getStackGroups(GetStackGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosStackGroupId&#34;, example.applyValue(getStackGroupsResult -&gt; getStackGroupsResult.groups()[0].id()));
+     *         ctx.export("firstRosStackGroupId", example.applyValue(getStackGroupsResult -> getStackGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -718,7 +748,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -740,14 +771,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getStackGroups(GetStackGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosStackGroupId&#34;, example.applyValue(getStackGroupsResult -&gt; getStackGroupsResult.groups()[0].id()));
+     *         ctx.export("firstRosStackGroupId", example.applyValue(getStackGroupsResult -> getStackGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -764,7 +796,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -786,38 +819,39 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
+     *             .stackGroupName("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId1&#34;, ids.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId1", ids.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *         final var status = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
-     *             .status(&#34;CURRENT&#34;)
+     *             .stackGroupName("example_value")
+     *             .status("CURRENT")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId2&#34;, status.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId2", status.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *         final var regionId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
-     *             .stackInstanceRegionId(&#34;example_value&#34;)
+     *             .stackGroupName("example_value")
+     *             .stackInstanceRegionId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId3&#34;, regionId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId3", regionId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *         final var accountId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
-     *             .stackInstanceAccountId(&#34;example_value&#34;)
+     *             .stackGroupName("example_value")
+     *             .stackInstanceAccountId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId4&#34;, accountId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId4", accountId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -834,7 +868,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -856,38 +891,39 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
+     *             .stackGroupName("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId1&#34;, ids.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId1", ids.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *         final var status = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
-     *             .status(&#34;CURRENT&#34;)
+     *             .stackGroupName("example_value")
+     *             .status("CURRENT")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId2&#34;, status.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId2", status.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *         final var regionId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
-     *             .stackInstanceRegionId(&#34;example_value&#34;)
+     *             .stackGroupName("example_value")
+     *             .stackInstanceRegionId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId3&#34;, regionId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId3", regionId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *         final var accountId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
-     *             .stackInstanceAccountId(&#34;example_value&#34;)
+     *             .stackGroupName("example_value")
+     *             .stackInstanceAccountId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId4&#34;, accountId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId4", accountId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -904,7 +940,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -926,38 +963,39 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
+     *             .stackGroupName("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId1&#34;, ids.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId1", ids.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *         final var status = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
-     *             .status(&#34;CURRENT&#34;)
+     *             .stackGroupName("example_value")
+     *             .status("CURRENT")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId2&#34;, status.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId2", status.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *         final var regionId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
-     *             .stackInstanceRegionId(&#34;example_value&#34;)
+     *             .stackGroupName("example_value")
+     *             .stackInstanceRegionId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId3&#34;, regionId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId3", regionId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *         final var accountId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
-     *             .stackInstanceAccountId(&#34;example_value&#34;)
+     *             .stackGroupName("example_value")
+     *             .stackInstanceAccountId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId4&#34;, accountId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId4", accountId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -974,7 +1012,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -996,38 +1035,39 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
+     *             .stackGroupName("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId1&#34;, ids.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId1", ids.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *         final var status = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
-     *             .status(&#34;CURRENT&#34;)
+     *             .stackGroupName("example_value")
+     *             .status("CURRENT")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId2&#34;, status.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId2", status.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *         final var regionId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
-     *             .stackInstanceRegionId(&#34;example_value&#34;)
+     *             .stackGroupName("example_value")
+     *             .stackInstanceRegionId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId3&#34;, regionId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId3", regionId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *         final var accountId = RosFunctions.getStackInstances(GetStackInstancesArgs.builder()
-     *             .stackGroupName(&#34;example_value&#34;)
-     *             .stackInstanceAccountId(&#34;example_value&#34;)
+     *             .stackGroupName("example_value")
+     *             .stackInstanceAccountId("example_value")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;rosStackInstanceId4&#34;, accountId.applyValue(getStackInstancesResult -&gt; getStackInstancesResult.instances()[0].id()));
+     *         ctx.export("rosStackInstanceId4", accountId.applyValue(getStackInstancesResult -> getStackInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1044,7 +1084,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1066,14 +1107,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getStacks(GetStacksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosStackId&#34;, example.applyValue(getStacksResult -&gt; getStacksResult.stacks()[0].id()));
+     *         ctx.export("firstRosStackId", example.applyValue(getStacksResult -> getStacksResult.stacks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1090,7 +1132,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1112,14 +1155,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getStacks(GetStacksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosStackId&#34;, example.applyValue(getStacksResult -&gt; getStacksResult.stacks()[0].id()));
+     *         ctx.export("firstRosStackId", example.applyValue(getStacksResult -> getStacksResult.stacks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1136,7 +1180,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1158,14 +1203,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getStacks(GetStacksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosStackId&#34;, example.applyValue(getStacksResult -&gt; getStacksResult.stacks()[0].id()));
+     *         ctx.export("firstRosStackId", example.applyValue(getStacksResult -> getStacksResult.stacks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1182,7 +1228,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1204,14 +1251,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getStacks(GetStacksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosStackId&#34;, example.applyValue(getStacksResult -&gt; getStacksResult.stacks()[0].id()));
+     *         ctx.export("firstRosStackId", example.applyValue(getStacksResult -> getStacksResult.stacks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1228,7 +1276,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1250,14 +1299,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getStacks(GetStacksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosStackId&#34;, example.applyValue(getStacksResult -&gt; getStacksResult.stacks()[0].id()));
+     *         ctx.export("firstRosStackId", example.applyValue(getStacksResult -> getStacksResult.stacks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1274,7 +1324,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1296,14 +1347,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getStacks(GetStacksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosStackId&#34;, example.applyValue(getStacksResult -&gt; getStacksResult.stacks()[0].id()));
+     *         ctx.export("firstRosStackId", example.applyValue(getStacksResult -> getStacksResult.stacks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1320,7 +1372,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1342,23 +1395,24 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId1&#34;, ids.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId1", ids.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .status(&#34;GENERATE_COMPLETE&#34;)
+     *             .status("GENERATE_COMPLETE")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId2&#34;, status.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId2", status.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .templateScratchType(&#34;ResourceImport&#34;)
+     *             .templateScratchType("ResourceImport")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId3&#34;, templateScratchType.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId3", templateScratchType.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1375,7 +1429,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1397,23 +1452,24 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId1&#34;, ids.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId1", ids.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .status(&#34;GENERATE_COMPLETE&#34;)
+     *             .status("GENERATE_COMPLETE")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId2&#34;, status.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId2", status.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .templateScratchType(&#34;ResourceImport&#34;)
+     *             .templateScratchType("ResourceImport")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId3&#34;, templateScratchType.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId3", templateScratchType.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1430,7 +1486,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1452,23 +1509,24 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId1&#34;, ids.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId1", ids.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .status(&#34;GENERATE_COMPLETE&#34;)
+     *             .status("GENERATE_COMPLETE")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId2&#34;, status.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId2", status.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .templateScratchType(&#34;ResourceImport&#34;)
+     *             .templateScratchType("ResourceImport")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId3&#34;, templateScratchType.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId3", templateScratchType.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1485,7 +1543,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1507,23 +1566,24 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId1&#34;, ids.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId1", ids.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .status(&#34;GENERATE_COMPLETE&#34;)
+     *             .status("GENERATE_COMPLETE")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId2&#34;, status.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId2", status.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .templateScratchType(&#34;ResourceImport&#34;)
+     *             .templateScratchType("ResourceImport")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId3&#34;, templateScratchType.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId3", templateScratchType.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1540,7 +1600,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1562,23 +1623,24 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId1&#34;, ids.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId1", ids.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .status(&#34;GENERATE_COMPLETE&#34;)
+     *             .status("GENERATE_COMPLETE")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId2&#34;, status.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId2", status.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .templateScratchType(&#34;ResourceImport&#34;)
+     *             .templateScratchType("ResourceImport")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId3&#34;, templateScratchType.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId3", templateScratchType.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1595,7 +1657,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1617,23 +1680,24 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId1&#34;, ids.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId1", ids.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *         final var status = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .status(&#34;GENERATE_COMPLETE&#34;)
+     *             .status("GENERATE_COMPLETE")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId2&#34;, status.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId2", status.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *         final var templateScratchType = RosFunctions.getTemplateScratches(GetTemplateScratchesArgs.builder()
-     *             .templateScratchType(&#34;ResourceImport&#34;)
+     *             .templateScratchType("ResourceImport")
      *             .build());
      * 
-     *         ctx.export(&#34;rosTemplateScratchId3&#34;, templateScratchType.applyValue(getTemplateScratchesResult -&gt; getTemplateScratchesResult.scratches()[0].id()));
+     *         ctx.export("rosTemplateScratchId3", templateScratchType.applyValue(getTemplateScratchesResult -> getTemplateScratchesResult.scratches()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1650,7 +1714,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1672,14 +1737,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosTemplateId&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstRosTemplateId", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1696,7 +1762,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1718,14 +1785,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosTemplateId&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstRosTemplateId", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1742,7 +1810,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1764,14 +1833,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosTemplateId&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstRosTemplateId", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1788,7 +1858,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1810,14 +1881,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosTemplateId&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstRosTemplateId", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1834,7 +1906,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1856,14 +1929,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosTemplateId&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstRosTemplateId", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1880,7 +1954,8 @@ public final class RosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1902,14 +1977,15 @@ public final class RosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRosTemplateId&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstRosTemplateId", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

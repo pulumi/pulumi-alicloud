@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,56 +67,57 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = EciFunctions.getZones();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .cidrBlock("10.1.0.0/16")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].zoneIds()[0])
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
- *             .isp(&#34;BGP&#34;)
+ *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+ *             .isp("BGP")
  *             .addressName(name)
- *             .netmode(&#34;public&#34;)
- *             .bandwidth(&#34;1&#34;)
- *             .securityProtectionTypes(&#34;AntiDDoS_Enhanced&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .netmode("public")
+ *             .bandwidth("1")
+ *             .securityProtectionTypes("AntiDDoS_Enhanced")
+ *             .paymentType("PayAsYouGo")
  *             .build());
  * 
  *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultVirtualNode = new VirtualNode(&#34;defaultVirtualNode&#34;, VirtualNodeArgs.builder()        
+ *         var defaultVirtualNode = new VirtualNode("defaultVirtualNode", VirtualNodeArgs.builder()        
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .virtualNodeName(name)
  *             .vswitchId(defaultSwitch.id())
  *             .enablePublicNetwork(false)
  *             .eipInstanceId(defaultEipAddress.id())
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
- *             .kubeConfig(&#34;kube_config&#34;)
- *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
+ *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()))
+ *             .kubeConfig("kube_config")
+ *             .tags(Map.of("Created", "TF"))
  *             .taints(VirtualNodeTaintArgs.builder()
- *                 .effect(&#34;NoSchedule&#34;)
- *                 .key(&#34;TF&#34;)
- *                 .value(&#34;example&#34;)
+ *                 .effect("NoSchedule")
+ *                 .key("TF")
+ *                 .value("example")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

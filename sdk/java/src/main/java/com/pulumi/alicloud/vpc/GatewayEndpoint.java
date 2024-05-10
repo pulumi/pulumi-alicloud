@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,39 +55,40 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var domain = config.get(&#34;domain&#34;).orElse(&#34;com.aliyun.cn-hangzhou.oss&#34;);
- *         var defaultVpc = new Network(&#34;defaultVpc&#34;, NetworkArgs.builder()        
- *             .description(&#34;tf-example&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var domain = config.get("domain").orElse("com.aliyun.cn-hangzhou.oss");
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()        
+ *             .description("tf-example")
  *             .build());
  * 
- *         var defaultRg = new ResourceGroup(&#34;defaultRg&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;tf-example-497&#34;)
+ *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()        
+ *             .displayName("tf-example-497")
  *             .resourceGroupName(name)
  *             .build());
  * 
- *         var default_ = new GatewayEndpoint(&#34;default&#34;, GatewayEndpointArgs.builder()        
- *             .gatewayEndpointDescrption(&#34;test-gateway-endpoint&#34;)
+ *         var default_ = new GatewayEndpoint("default", GatewayEndpointArgs.builder()        
+ *             .gatewayEndpointDescrption("test-gateway-endpoint")
  *             .gatewayEndpointName(name)
  *             .vpcId(defaultVpc.id())
  *             .resourceGroupId(defaultRg.id())
  *             .serviceName(domain)
- *             .policyDocument(&#34;&#34;&#34;
+ *             .policyDocument("""
  *       {
- *         &#34;Version&#34;: &#34;1&#34;,
- *         &#34;Statement&#34;: [{
- *           &#34;Effect&#34;: &#34;Allow&#34;,
- *           &#34;Resource&#34;: [&#34;*&#34;],
- *           &#34;Action&#34;: [&#34;*&#34;],
- *           &#34;Principal&#34;: [&#34;*&#34;]
+ *         "Version": "1",
+ *         "Statement": [{
+ *           "Effect": "Allow",
+ *           "Resource": ["*"],
+ *           "Action": ["*"],
+ *           "Principal": ["*"]
  *         }]
  *       }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

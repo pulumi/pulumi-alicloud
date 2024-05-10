@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,7 +56,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var anotherUid = config.get(&#34;anotherUid&#34;).orElse(&#34;xxxx&#34;);
+ *         final var anotherUid = config.get("anotherUid").orElse("xxxx");
  *         final var yourAccount = AlicloudFunctions.getAccount();
  * 
  *         final var childAccount = AlicloudFunctions.getAccount();
@@ -64,33 +65,34 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf_example&#34;)
- *             .description(&#34;an example for cen&#34;)
+ *         var example = new Instance("example", InstanceArgs.builder()        
+ *             .cenInstanceName("tf_example")
+ *             .description("an example for cen")
  *             .build());
  * 
- *         var childAccountNetwork = new Network(&#34;childAccountNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var childAccountNetwork = new Network("childAccountNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var childAccountInstanceGrant = new InstanceGrant(&#34;childAccountInstanceGrant&#34;, InstanceGrantArgs.builder()        
+ *         var childAccountInstanceGrant = new InstanceGrant("childAccountInstanceGrant", InstanceGrantArgs.builder()        
  *             .cenId(example.id())
  *             .childInstanceId(childAccountNetwork.id())
- *             .cenOwnerId(yourAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .cenOwnerId(yourAccount.applyValue(getAccountResult -> getAccountResult.id()))
  *             .build());
  * 
- *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *         var exampleInstanceAttachment = new InstanceAttachment("exampleInstanceAttachment", InstanceAttachmentArgs.builder()        
  *             .instanceId(example.id())
  *             .childInstanceId(childAccountInstanceGrant.childInstanceId())
- *             .childInstanceType(&#34;VPC&#34;)
+ *             .childInstanceType("VPC")
  *             .childInstanceRegionId(default_.regions()[0].id())
- *             .childInstanceOwnerId(childAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .childInstanceOwnerId(childAccount.applyValue(getAccountResult -> getAccountResult.id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

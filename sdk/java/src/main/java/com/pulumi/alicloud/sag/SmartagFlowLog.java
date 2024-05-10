@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,16 +49,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new SmartagFlowLog(&#34;example&#34;, SmartagFlowLogArgs.builder()        
- *             .netflowServerIp(&#34;192.168.0.2&#34;)
+ *         var example = new SmartagFlowLog("example", SmartagFlowLogArgs.builder()        
+ *             .netflowServerIp("192.168.0.2")
  *             .netflowServerPort(9995)
- *             .netflowVersion(&#34;V9&#34;)
- *             .outputType(&#34;netflow&#34;)
+ *             .netflowVersion("V9")
+ *             .outputType("netflow")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

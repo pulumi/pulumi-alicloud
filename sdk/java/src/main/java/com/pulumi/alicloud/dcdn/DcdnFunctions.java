@@ -40,7 +40,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -62,13 +63,14 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DcdnFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids(&#34;example.com&#34;)
+     *             .ids("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;domainId&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("domainId", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -83,7 +85,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -105,13 +108,14 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DcdnFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids(&#34;example.com&#34;)
+     *             .ids("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;domainId&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("domainId", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -126,7 +130,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -148,13 +153,14 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DcdnFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids(&#34;example.com&#34;)
+     *             .ids("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;domainId&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("domainId", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -169,7 +175,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -191,13 +198,14 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DcdnFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids(&#34;example.com&#34;)
+     *             .ids("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;domainId&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("domainId", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -212,7 +220,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -234,13 +243,14 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DcdnFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids(&#34;example.com&#34;)
+     *             .ids("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;domainId&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("domainId", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -255,7 +265,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -277,13 +288,14 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DcdnFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids(&#34;example.com&#34;)
+     *             .ids("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;domainId&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("domainId", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -300,7 +312,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -322,21 +335,22 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
-     *             .domainName(&#34;example_value&#34;)
+     *             .domainName("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;dcdnIpaDomainId1&#34;, ids.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId1", ids.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
      *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
-     *             .status(&#34;online&#34;)
+     *             .status("online")
      *             .build());
      * 
-     *         ctx.export(&#34;dcdnIpaDomainId2&#34;, status.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId2", status.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -353,7 +367,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -375,21 +390,22 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
-     *             .domainName(&#34;example_value&#34;)
+     *             .domainName("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;dcdnIpaDomainId1&#34;, ids.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId1", ids.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
      *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
-     *             .status(&#34;online&#34;)
+     *             .status("online")
      *             .build());
      * 
-     *         ctx.export(&#34;dcdnIpaDomainId2&#34;, status.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId2", status.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -406,7 +422,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -428,21 +445,22 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
-     *             .domainName(&#34;example_value&#34;)
+     *             .domainName("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;dcdnIpaDomainId1&#34;, ids.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId1", ids.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
      *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
-     *             .status(&#34;online&#34;)
+     *             .status("online")
      *             .build());
      * 
-     *         ctx.export(&#34;dcdnIpaDomainId2&#34;, status.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId2", status.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -459,7 +477,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -481,21 +500,22 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
-     *             .domainName(&#34;example_value&#34;)
+     *             .domainName("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;dcdnIpaDomainId1&#34;, ids.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId1", ids.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
      *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
-     *             .status(&#34;online&#34;)
+     *             .status("online")
      *             .build());
      * 
-     *         ctx.export(&#34;dcdnIpaDomainId2&#34;, status.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId2", status.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -512,7 +532,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -534,21 +555,22 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
-     *             .domainName(&#34;example_value&#34;)
+     *             .domainName("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;dcdnIpaDomainId1&#34;, ids.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId1", ids.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
      *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
-     *             .status(&#34;online&#34;)
+     *             .status("online")
      *             .build());
      * 
-     *         ctx.export(&#34;dcdnIpaDomainId2&#34;, status.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId2", status.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -565,7 +587,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -587,21 +610,22 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
-     *             .domainName(&#34;example_value&#34;)
+     *             .domainName("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;dcdnIpaDomainId1&#34;, ids.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId1", ids.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
      *         final var status = DcdnFunctions.getIpaDomains(GetIpaDomainsArgs.builder()
-     *             .status(&#34;online&#34;)
+     *             .status("online")
      *             .build());
      * 
-     *         ctx.export(&#34;dcdnIpaDomainId2&#34;, status.applyValue(getIpaDomainsResult -&gt; getIpaDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnIpaDomainId2", status.applyValue(getIpaDomainsResult -> getIpaDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -616,7 +640,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -638,12 +663,13 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var status = DcdnFunctions.getKvAccount(GetKvAccountArgs.builder()
-     *             .status(&#34;online&#34;)
+     *             .status("online")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -658,7 +684,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -680,12 +707,13 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var status = DcdnFunctions.getKvAccount(GetKvAccountArgs.builder()
-     *             .status(&#34;online&#34;)
+     *             .status("online")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -700,7 +728,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -722,12 +751,13 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var status = DcdnFunctions.getKvAccount(GetKvAccountArgs.builder()
-     *             .status(&#34;online&#34;)
+     *             .status("online")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -742,7 +772,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -764,12 +795,13 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var status = DcdnFunctions.getKvAccount(GetKvAccountArgs.builder()
-     *             .status(&#34;online&#34;)
+     *             .status("online")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -784,7 +816,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -806,12 +839,13 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var status = DcdnFunctions.getKvAccount(GetKvAccountArgs.builder()
-     *             .status(&#34;online&#34;)
+     *             .status("online")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -826,7 +860,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -848,12 +883,13 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var status = DcdnFunctions.getKvAccount(GetKvAccountArgs.builder()
-     *             .status(&#34;online&#34;)
+     *             .status("online")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -870,7 +906,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -892,12 +929,13 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = DcdnFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -914,7 +952,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -936,12 +975,13 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = DcdnFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -958,7 +998,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -980,12 +1021,13 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = DcdnFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1002,7 +1044,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1024,12 +1067,13 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = DcdnFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1046,7 +1090,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1068,12 +1113,13 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = DcdnFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1090,7 +1136,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1112,12 +1159,13 @@ public final class DcdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = DcdnFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1134,7 +1182,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1157,10 +1206,11 @@ public final class DcdnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getWafDomains();
      * 
-     *         ctx.export(&#34;dcdnWafDomainId1&#34;, ids.applyValue(getWafDomainsResult -&gt; getWafDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnWafDomainId1", ids.applyValue(getWafDomainsResult -> getWafDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1177,7 +1227,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1200,10 +1251,11 @@ public final class DcdnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getWafDomains();
      * 
-     *         ctx.export(&#34;dcdnWafDomainId1&#34;, ids.applyValue(getWafDomainsResult -&gt; getWafDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnWafDomainId1", ids.applyValue(getWafDomainsResult -> getWafDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1220,7 +1272,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1243,10 +1296,11 @@ public final class DcdnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getWafDomains();
      * 
-     *         ctx.export(&#34;dcdnWafDomainId1&#34;, ids.applyValue(getWafDomainsResult -&gt; getWafDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnWafDomainId1", ids.applyValue(getWafDomainsResult -> getWafDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1263,7 +1317,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1286,10 +1341,11 @@ public final class DcdnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getWafDomains();
      * 
-     *         ctx.export(&#34;dcdnWafDomainId1&#34;, ids.applyValue(getWafDomainsResult -&gt; getWafDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnWafDomainId1", ids.applyValue(getWafDomainsResult -> getWafDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1306,7 +1362,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1329,10 +1386,11 @@ public final class DcdnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getWafDomains();
      * 
-     *         ctx.export(&#34;dcdnWafDomainId1&#34;, ids.applyValue(getWafDomainsResult -&gt; getWafDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnWafDomainId1", ids.applyValue(getWafDomainsResult -> getWafDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1349,7 +1407,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1372,10 +1431,11 @@ public final class DcdnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getWafDomains();
      * 
-     *         ctx.export(&#34;dcdnWafDomainId1&#34;, ids.applyValue(getWafDomainsResult -&gt; getWafDomainsResult.domains()[0].id()));
+     *         ctx.export("dcdnWafDomainId1", ids.applyValue(getWafDomainsResult -> getWafDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1392,7 +1452,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1415,10 +1476,11 @@ public final class DcdnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getWafPolicies();
      * 
-     *         ctx.export(&#34;dcdnWafPolicyId1&#34;, ids.applyValue(getWafPoliciesResult -&gt; getWafPoliciesResult.policies()[0].id()));
+     *         ctx.export("dcdnWafPolicyId1", ids.applyValue(getWafPoliciesResult -> getWafPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1435,7 +1497,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1458,10 +1521,11 @@ public final class DcdnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getWafPolicies();
      * 
-     *         ctx.export(&#34;dcdnWafPolicyId1&#34;, ids.applyValue(getWafPoliciesResult -&gt; getWafPoliciesResult.policies()[0].id()));
+     *         ctx.export("dcdnWafPolicyId1", ids.applyValue(getWafPoliciesResult -> getWafPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1478,7 +1542,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1501,10 +1566,11 @@ public final class DcdnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getWafPolicies();
      * 
-     *         ctx.export(&#34;dcdnWafPolicyId1&#34;, ids.applyValue(getWafPoliciesResult -&gt; getWafPoliciesResult.policies()[0].id()));
+     *         ctx.export("dcdnWafPolicyId1", ids.applyValue(getWafPoliciesResult -> getWafPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1521,7 +1587,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1544,10 +1611,11 @@ public final class DcdnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getWafPolicies();
      * 
-     *         ctx.export(&#34;dcdnWafPolicyId1&#34;, ids.applyValue(getWafPoliciesResult -&gt; getWafPoliciesResult.policies()[0].id()));
+     *         ctx.export("dcdnWafPolicyId1", ids.applyValue(getWafPoliciesResult -> getWafPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1564,7 +1632,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1587,10 +1656,11 @@ public final class DcdnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getWafPolicies();
      * 
-     *         ctx.export(&#34;dcdnWafPolicyId1&#34;, ids.applyValue(getWafPoliciesResult -&gt; getWafPoliciesResult.policies()[0].id()));
+     *         ctx.export("dcdnWafPolicyId1", ids.applyValue(getWafPoliciesResult -> getWafPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1607,7 +1677,8 @@ public final class DcdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1630,10 +1701,11 @@ public final class DcdnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DcdnFunctions.getWafPolicies();
      * 
-     *         ctx.export(&#34;dcdnWafPolicyId1&#34;, ids.applyValue(getWafPoliciesResult -&gt; getWafPoliciesResult.policies()[0].id()));
+     *         ctx.export("dcdnWafPolicyId1", ids.applyValue(getWafPoliciesResult -> getWafPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1648,7 +1720,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1673,10 +1746,11 @@ public final class DcdnFunctions {
      *             .ids(defaultAlicloudDcdnWafRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDcdnWafRuleExampleId&#34;, default_.wafRules()[0].id());
+     *         ctx.export("alicloudDcdnWafRuleExampleId", default_.wafRules()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1691,7 +1765,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1716,10 +1791,11 @@ public final class DcdnFunctions {
      *             .ids(defaultAlicloudDcdnWafRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDcdnWafRuleExampleId&#34;, default_.wafRules()[0].id());
+     *         ctx.export("alicloudDcdnWafRuleExampleId", default_.wafRules()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1734,7 +1810,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1759,10 +1836,11 @@ public final class DcdnFunctions {
      *             .ids(defaultAlicloudDcdnWafRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDcdnWafRuleExampleId&#34;, default_.wafRules()[0].id());
+     *         ctx.export("alicloudDcdnWafRuleExampleId", default_.wafRules()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1777,7 +1855,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1802,10 +1881,11 @@ public final class DcdnFunctions {
      *             .ids(defaultAlicloudDcdnWafRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDcdnWafRuleExampleId&#34;, default_.wafRules()[0].id());
+     *         ctx.export("alicloudDcdnWafRuleExampleId", default_.wafRules()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1820,7 +1900,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1845,10 +1926,11 @@ public final class DcdnFunctions {
      *             .ids(defaultAlicloudDcdnWafRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDcdnWafRuleExampleId&#34;, default_.wafRules()[0].id());
+     *         ctx.export("alicloudDcdnWafRuleExampleId", default_.wafRules()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1863,7 +1945,8 @@ public final class DcdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1888,10 +1971,11 @@ public final class DcdnFunctions {
      *             .ids(defaultAlicloudDcdnWafRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDcdnWafRuleExampleId&#34;, default_.wafRules()[0].id());
+     *         ctx.export("alicloudDcdnWafRuleExampleId", default_.wafRules()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

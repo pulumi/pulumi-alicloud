@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,30 +55,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var vpc = new Network("vpc", NetworkArgs.builder()        
  *             .description(name)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .cidrBlock("172.16.0.0/12")
  *             .vpcName(name)
  *             .build());
  * 
- *         var env_ecs = new Environment(&#34;env-ecs&#34;, EnvironmentArgs.builder()        
- *             .environmentType(&#34;ECS&#34;)
- *             .environmentName(String.format(&#34;terraform-example-%s&#34;, default_.result()))
+ *         var env_ecs = new Environment("env-ecs", EnvironmentArgs.builder()        
+ *             .environmentType("ECS")
+ *             .environmentName(String.format("terraform-example-%s", default_.result()))
  *             .bindResourceId(vpc.id())
- *             .environmentSubType(&#34;ECS&#34;)
+ *             .environmentSubType("ECS")
  *             .build());
  * 
- *         var defaultEnvCustomJob = new EnvCustomJob(&#34;defaultEnvCustomJob&#34;, EnvCustomJobArgs.builder()        
- *             .status(&#34;run&#34;)
+ *         var defaultEnvCustomJob = new EnvCustomJob("defaultEnvCustomJob", EnvCustomJobArgs.builder()        
+ *             .status("run")
  *             .environmentId(env_ecs.id())
  *             .envCustomJobName(name)
- *             .configYaml(&#34;&#34;&#34;
+ *             .configYaml("""
  * scrape_configs:
  * - job_name: job-demo1
  *   honor_timestamps: false
@@ -88,13 +89,14 @@ import javax.annotation.Nullable;
  *   static_configs:
  *   - targets:
  *     - 127.0.0.1:9090
- *             &#34;&#34;&#34;)
- *             .aliyunLang(&#34;en&#34;)
+ *             """)
+ *             .aliyunLang("en")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -135,7 +135,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -157,18 +158,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpGroupId1&#34;, ids.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId1", ids.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
      *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-BgpGroup&#34;)
+     *             .nameRegex("^my-BgpGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpGroupId2&#34;, nameRegex.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId2", nameRegex.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -185,7 +187,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -207,18 +210,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpGroupId1&#34;, ids.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId1", ids.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
      *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-BgpGroup&#34;)
+     *             .nameRegex("^my-BgpGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpGroupId2&#34;, nameRegex.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId2", nameRegex.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -235,7 +239,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -257,18 +262,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpGroupId1&#34;, ids.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId1", ids.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
      *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-BgpGroup&#34;)
+     *             .nameRegex("^my-BgpGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpGroupId2&#34;, nameRegex.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId2", nameRegex.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -285,7 +291,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -307,18 +314,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpGroupId1&#34;, ids.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId1", ids.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
      *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-BgpGroup&#34;)
+     *             .nameRegex("^my-BgpGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpGroupId2&#34;, nameRegex.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId2", nameRegex.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -335,7 +343,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -357,18 +366,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpGroupId1&#34;, ids.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId1", ids.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
      *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-BgpGroup&#34;)
+     *             .nameRegex("^my-BgpGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpGroupId2&#34;, nameRegex.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId2", nameRegex.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -385,7 +395,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -407,18 +418,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpGroupId1&#34;, ids.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId1", ids.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
      *         final var nameRegex = VpcFunctions.getBgpGroups(GetBgpGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-BgpGroup&#34;)
+     *             .nameRegex("^my-BgpGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpGroupId2&#34;, nameRegex.applyValue(getBgpGroupsResult -&gt; getBgpGroupsResult.groups()[0].id()));
+     *         ctx.export("vpcBgpGroupId2", nameRegex.applyValue(getBgpGroupsResult -> getBgpGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -435,7 +447,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -457,23 +470,24 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId1&#34;, ids.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId1", ids.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .routerId(&#34;example_value&#34;)
+     *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId2&#34;, routerId.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId2", routerId.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId3&#34;, status.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId3", status.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -490,7 +504,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -512,23 +527,24 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId1&#34;, ids.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId1", ids.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .routerId(&#34;example_value&#34;)
+     *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId2&#34;, routerId.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId2", routerId.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId3&#34;, status.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId3", status.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -545,7 +561,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -567,23 +584,24 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId1&#34;, ids.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId1", ids.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .routerId(&#34;example_value&#34;)
+     *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId2&#34;, routerId.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId2", routerId.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId3&#34;, status.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId3", status.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -600,7 +618,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -622,23 +641,24 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId1&#34;, ids.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId1", ids.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .routerId(&#34;example_value&#34;)
+     *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId2&#34;, routerId.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId2", routerId.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId3&#34;, status.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId3", status.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -655,7 +675,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -677,23 +698,24 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId1&#34;, ids.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId1", ids.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .routerId(&#34;example_value&#34;)
+     *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId2&#34;, routerId.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId2", routerId.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId3&#34;, status.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId3", status.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -710,7 +732,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -732,23 +755,24 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId1&#34;, ids.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId1", ids.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *         final var routerId = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .routerId(&#34;example_value&#34;)
+     *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId2&#34;, routerId.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId2", routerId.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *         final var status = VpcFunctions.getBgpNetworks(GetBgpNetworksArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpNetworkId3&#34;, status.applyValue(getBgpNetworksResult -&gt; getBgpNetworksResult.networks()[0].id()));
+     *         ctx.export("vpcBgpNetworkId3", status.applyValue(getBgpNetworksResult -> getBgpNetworksResult.networks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -765,7 +789,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -788,29 +813,30 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId1&#34;, ids.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId1", ids.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .bgpGroupId(&#34;example_value&#34;)
+     *             .bgpGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId2&#34;, bgpGroupId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId2", bgpGroupId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .routerId(&#34;example_value&#34;)
+     *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId3&#34;, routerId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId3", routerId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId4&#34;, status.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId4", status.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -827,7 +853,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -850,29 +877,30 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId1&#34;, ids.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId1", ids.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .bgpGroupId(&#34;example_value&#34;)
+     *             .bgpGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId2&#34;, bgpGroupId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId2", bgpGroupId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .routerId(&#34;example_value&#34;)
+     *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId3&#34;, routerId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId3", routerId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId4&#34;, status.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId4", status.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -889,7 +917,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -912,29 +941,30 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId1&#34;, ids.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId1", ids.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .bgpGroupId(&#34;example_value&#34;)
+     *             .bgpGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId2&#34;, bgpGroupId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId2", bgpGroupId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .routerId(&#34;example_value&#34;)
+     *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId3&#34;, routerId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId3", routerId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId4&#34;, status.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId4", status.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -951,7 +981,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -974,29 +1005,30 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId1&#34;, ids.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId1", ids.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .bgpGroupId(&#34;example_value&#34;)
+     *             .bgpGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId2&#34;, bgpGroupId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId2", bgpGroupId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .routerId(&#34;example_value&#34;)
+     *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId3&#34;, routerId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId3", routerId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId4&#34;, status.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId4", status.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1013,7 +1045,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1036,29 +1069,30 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId1&#34;, ids.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId1", ids.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .bgpGroupId(&#34;example_value&#34;)
+     *             .bgpGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId2&#34;, bgpGroupId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId2", bgpGroupId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .routerId(&#34;example_value&#34;)
+     *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId3&#34;, routerId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId3", routerId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId4&#34;, status.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId4", status.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1075,7 +1109,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1098,29 +1133,30 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId1&#34;, ids.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId1", ids.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var bgpGroupId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .bgpGroupId(&#34;example_value&#34;)
+     *             .bgpGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId2&#34;, bgpGroupId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId2", bgpGroupId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var routerId = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .routerId(&#34;example_value&#34;)
+     *             .routerId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId3&#34;, routerId.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId3", routerId.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *         final var status = VpcFunctions.getBgpPeers(GetBgpPeersArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcBgpPeerId4&#34;, status.applyValue(getBgpPeersResult -&gt; getBgpPeersResult.peers()[0].id()));
+     *         ctx.export("vpcBgpPeerId4", status.applyValue(getBgpPeersResult -> getBgpPeersResult.peers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1135,7 +1171,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1158,20 +1195,21 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
-     *             .bandwidth(&#34;2&#34;)
-     *             .name(&#34;tf-testAccCommonBandwidthPackage&#34;)
-     *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()        
+     *             .bandwidth("2")
+     *             .name("tf-testAccCommonBandwidthPackage")
+     *             .description("tf-testAcc-CommonBandwidthPackage")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Public ip addresses Block
@@ -1194,7 +1232,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1217,20 +1256,21 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
-     *             .bandwidth(&#34;2&#34;)
-     *             .name(&#34;tf-testAccCommonBandwidthPackage&#34;)
-     *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()        
+     *             .bandwidth("2")
+     *             .name("tf-testAccCommonBandwidthPackage")
+     *             .description("tf-testAcc-CommonBandwidthPackage")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Public ip addresses Block
@@ -1253,7 +1293,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1276,20 +1317,21 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
-     *             .bandwidth(&#34;2&#34;)
-     *             .name(&#34;tf-testAccCommonBandwidthPackage&#34;)
-     *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()        
+     *             .bandwidth("2")
+     *             .name("tf-testAccCommonBandwidthPackage")
+     *             .description("tf-testAcc-CommonBandwidthPackage")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Public ip addresses Block
@@ -1312,7 +1354,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1335,20 +1378,21 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
-     *             .bandwidth(&#34;2&#34;)
-     *             .name(&#34;tf-testAccCommonBandwidthPackage&#34;)
-     *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()        
+     *             .bandwidth("2")
+     *             .name("tf-testAccCommonBandwidthPackage")
+     *             .description("tf-testAcc-CommonBandwidthPackage")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Public ip addresses Block
@@ -1371,7 +1415,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1394,20 +1439,21 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
-     *             .bandwidth(&#34;2&#34;)
-     *             .name(&#34;tf-testAccCommonBandwidthPackage&#34;)
-     *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()        
+     *             .bandwidth("2")
+     *             .name("tf-testAccCommonBandwidthPackage")
+     *             .description("tf-testAcc-CommonBandwidthPackage")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Public ip addresses Block
@@ -1430,7 +1476,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1453,20 +1500,21 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
-     *             .bandwidth(&#34;2&#34;)
-     *             .name(&#34;tf-testAccCommonBandwidthPackage&#34;)
-     *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()        
+     *             .bandwidth("2")
+     *             .name("tf-testAccCommonBandwidthPackage")
+     *             .description("tf-testAcc-CommonBandwidthPackage")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Public ip addresses Block
@@ -1491,7 +1539,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1513,35 +1562,36 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId1&#34;, ids.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId1", ids.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .nameRegex(&#34;^my-DhcpOptionsSet&#34;)
+     *             .nameRegex("^my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId2&#34;, nameRegex.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .dhcpOptionsSetName(&#34;my-DhcpOptionsSet&#34;)
+     *             .dhcpOptionsSetName("my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId3&#34;, dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .domainName(&#34;example.com&#34;)
+     *             .ids("example_value")
+     *             .domainName("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId4&#34;, domainName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId4", domainName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ids("example_value")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId5&#34;, status.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId5", status.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1558,7 +1608,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1580,35 +1631,36 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId1&#34;, ids.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId1", ids.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .nameRegex(&#34;^my-DhcpOptionsSet&#34;)
+     *             .nameRegex("^my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId2&#34;, nameRegex.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .dhcpOptionsSetName(&#34;my-DhcpOptionsSet&#34;)
+     *             .dhcpOptionsSetName("my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId3&#34;, dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .domainName(&#34;example.com&#34;)
+     *             .ids("example_value")
+     *             .domainName("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId4&#34;, domainName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId4", domainName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ids("example_value")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId5&#34;, status.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId5", status.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1625,7 +1677,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1647,35 +1700,36 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId1&#34;, ids.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId1", ids.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .nameRegex(&#34;^my-DhcpOptionsSet&#34;)
+     *             .nameRegex("^my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId2&#34;, nameRegex.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .dhcpOptionsSetName(&#34;my-DhcpOptionsSet&#34;)
+     *             .dhcpOptionsSetName("my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId3&#34;, dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .domainName(&#34;example.com&#34;)
+     *             .ids("example_value")
+     *             .domainName("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId4&#34;, domainName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId4", domainName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ids("example_value")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId5&#34;, status.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId5", status.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1692,7 +1746,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1714,35 +1769,36 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId1&#34;, ids.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId1", ids.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .nameRegex(&#34;^my-DhcpOptionsSet&#34;)
+     *             .nameRegex("^my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId2&#34;, nameRegex.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .dhcpOptionsSetName(&#34;my-DhcpOptionsSet&#34;)
+     *             .dhcpOptionsSetName("my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId3&#34;, dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .domainName(&#34;example.com&#34;)
+     *             .ids("example_value")
+     *             .domainName("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId4&#34;, domainName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId4", domainName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ids("example_value")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId5&#34;, status.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId5", status.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1759,7 +1815,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1781,35 +1838,36 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId1&#34;, ids.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId1", ids.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .nameRegex(&#34;^my-DhcpOptionsSet&#34;)
+     *             .nameRegex("^my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId2&#34;, nameRegex.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .dhcpOptionsSetName(&#34;my-DhcpOptionsSet&#34;)
+     *             .dhcpOptionsSetName("my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId3&#34;, dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .domainName(&#34;example.com&#34;)
+     *             .ids("example_value")
+     *             .domainName("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId4&#34;, domainName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId4", domainName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ids("example_value")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId5&#34;, status.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId5", status.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1826,7 +1884,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1848,35 +1907,36 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId1&#34;, ids.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId1", ids.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var nameRegex = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .nameRegex(&#34;^my-DhcpOptionsSet&#34;)
+     *             .nameRegex("^my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId2&#34;, nameRegex.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId2", nameRegex.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var dhcpOptionsSetName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .dhcpOptionsSetName(&#34;my-DhcpOptionsSet&#34;)
+     *             .dhcpOptionsSetName("my-DhcpOptionsSet")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId3&#34;, dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId3", dhcpOptionsSetName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var domainName = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .domainName(&#34;example.com&#34;)
+     *             .ids("example_value")
+     *             .domainName("example.com")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId4&#34;, domainName.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId4", domainName.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *         final var status = VpcFunctions.getDhcpOptionsSets(GetDhcpOptionsSetsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ids("example_value")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcDhcpOptionsSetId5&#34;, status.applyValue(getDhcpOptionsSetsResult -&gt; getDhcpOptionsSetsResult.sets()[0].id()));
+     *         ctx.export("vpcDhcpOptionsSetId5", status.applyValue(getDhcpOptionsSetsResult -> getDhcpOptionsSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1913,7 +1973,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1935,12 +1996,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VpcFunctions.getFlowLogService(GetFlowLogServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1959,7 +2021,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1981,12 +2044,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VpcFunctions.getFlowLogService(GetFlowLogServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2005,7 +2069,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2027,12 +2092,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VpcFunctions.getFlowLogService(GetFlowLogServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2051,7 +2117,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2073,12 +2140,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VpcFunctions.getFlowLogService(GetFlowLogServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2097,7 +2165,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2119,12 +2188,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VpcFunctions.getFlowLogService(GetFlowLogServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2143,7 +2213,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2165,12 +2236,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VpcFunctions.getFlowLogService(GetFlowLogServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2185,7 +2257,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2221,47 +2294,47 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;forward-entry-config-example-name&#34;);
+     *         final var name = config.get("name").orElse("forward-entry-config-example-name");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .cidrBlock("172.16.0.0/21")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
+     *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .internetChargeType(&#34;PayByLcu&#34;)
+     *             .internetChargeType("PayByLcu")
      *             .natGatewayName(name)
-     *             .natType(&#34;Enhanced&#34;)
+     *             .natType("Enhanced")
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEipAssociation = new EipAssociation(&#34;defaultEipAssociation&#34;, EipAssociationArgs.builder()        
+     *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()        
      *             .allocationId(defaultEipAddress.id())
      *             .instanceId(defaultNatGateway.id())
      *             .build());
      * 
-     *         var defaultForwardEntry = new ForwardEntry(&#34;defaultForwardEntry&#34;, ForwardEntryArgs.builder()        
+     *         var defaultForwardEntry = new ForwardEntry("defaultForwardEntry", ForwardEntryArgs.builder()        
      *             .forwardTableId(defaultNatGateway.forwardTableIds())
      *             .externalIp(defaultEipAddress.ipAddress())
-     *             .externalPort(&#34;80&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
-     *             .internalIp(&#34;172.16.0.3&#34;)
-     *             .internalPort(&#34;8080&#34;)
+     *             .externalPort("80")
+     *             .ipProtocol("tcp")
+     *             .internalIp("172.16.0.3")
+     *             .internalPort("8080")
      *             .build());
      * 
      *         final var defaultGetForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
@@ -2270,7 +2343,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2285,7 +2359,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2321,47 +2396,47 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;forward-entry-config-example-name&#34;);
+     *         final var name = config.get("name").orElse("forward-entry-config-example-name");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .cidrBlock("172.16.0.0/21")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
+     *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .internetChargeType(&#34;PayByLcu&#34;)
+     *             .internetChargeType("PayByLcu")
      *             .natGatewayName(name)
-     *             .natType(&#34;Enhanced&#34;)
+     *             .natType("Enhanced")
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEipAssociation = new EipAssociation(&#34;defaultEipAssociation&#34;, EipAssociationArgs.builder()        
+     *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()        
      *             .allocationId(defaultEipAddress.id())
      *             .instanceId(defaultNatGateway.id())
      *             .build());
      * 
-     *         var defaultForwardEntry = new ForwardEntry(&#34;defaultForwardEntry&#34;, ForwardEntryArgs.builder()        
+     *         var defaultForwardEntry = new ForwardEntry("defaultForwardEntry", ForwardEntryArgs.builder()        
      *             .forwardTableId(defaultNatGateway.forwardTableIds())
      *             .externalIp(defaultEipAddress.ipAddress())
-     *             .externalPort(&#34;80&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
-     *             .internalIp(&#34;172.16.0.3&#34;)
-     *             .internalPort(&#34;8080&#34;)
+     *             .externalPort("80")
+     *             .ipProtocol("tcp")
+     *             .internalIp("172.16.0.3")
+     *             .internalPort("8080")
      *             .build());
      * 
      *         final var defaultGetForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
@@ -2370,7 +2445,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2385,7 +2461,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2421,47 +2498,47 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;forward-entry-config-example-name&#34;);
+     *         final var name = config.get("name").orElse("forward-entry-config-example-name");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .cidrBlock("172.16.0.0/21")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
+     *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .internetChargeType(&#34;PayByLcu&#34;)
+     *             .internetChargeType("PayByLcu")
      *             .natGatewayName(name)
-     *             .natType(&#34;Enhanced&#34;)
+     *             .natType("Enhanced")
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEipAssociation = new EipAssociation(&#34;defaultEipAssociation&#34;, EipAssociationArgs.builder()        
+     *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()        
      *             .allocationId(defaultEipAddress.id())
      *             .instanceId(defaultNatGateway.id())
      *             .build());
      * 
-     *         var defaultForwardEntry = new ForwardEntry(&#34;defaultForwardEntry&#34;, ForwardEntryArgs.builder()        
+     *         var defaultForwardEntry = new ForwardEntry("defaultForwardEntry", ForwardEntryArgs.builder()        
      *             .forwardTableId(defaultNatGateway.forwardTableIds())
      *             .externalIp(defaultEipAddress.ipAddress())
-     *             .externalPort(&#34;80&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
-     *             .internalIp(&#34;172.16.0.3&#34;)
-     *             .internalPort(&#34;8080&#34;)
+     *             .externalPort("80")
+     *             .ipProtocol("tcp")
+     *             .internalIp("172.16.0.3")
+     *             .internalPort("8080")
      *             .build());
      * 
      *         final var defaultGetForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
@@ -2470,7 +2547,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2485,7 +2563,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2521,47 +2600,47 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;forward-entry-config-example-name&#34;);
+     *         final var name = config.get("name").orElse("forward-entry-config-example-name");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .cidrBlock("172.16.0.0/21")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
+     *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .internetChargeType(&#34;PayByLcu&#34;)
+     *             .internetChargeType("PayByLcu")
      *             .natGatewayName(name)
-     *             .natType(&#34;Enhanced&#34;)
+     *             .natType("Enhanced")
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEipAssociation = new EipAssociation(&#34;defaultEipAssociation&#34;, EipAssociationArgs.builder()        
+     *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()        
      *             .allocationId(defaultEipAddress.id())
      *             .instanceId(defaultNatGateway.id())
      *             .build());
      * 
-     *         var defaultForwardEntry = new ForwardEntry(&#34;defaultForwardEntry&#34;, ForwardEntryArgs.builder()        
+     *         var defaultForwardEntry = new ForwardEntry("defaultForwardEntry", ForwardEntryArgs.builder()        
      *             .forwardTableId(defaultNatGateway.forwardTableIds())
      *             .externalIp(defaultEipAddress.ipAddress())
-     *             .externalPort(&#34;80&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
-     *             .internalIp(&#34;172.16.0.3&#34;)
-     *             .internalPort(&#34;8080&#34;)
+     *             .externalPort("80")
+     *             .ipProtocol("tcp")
+     *             .internalIp("172.16.0.3")
+     *             .internalPort("8080")
      *             .build());
      * 
      *         final var defaultGetForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
@@ -2570,7 +2649,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2587,7 +2667,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2609,14 +2690,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getHavips(GetHavipsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstHavipId&#34;, example.applyValue(getHavipsResult -&gt; getHavipsResult.havips()[0].id()));
+     *         ctx.export("firstHavipId", example.applyValue(getHavipsResult -> getHavipsResult.havips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2633,7 +2715,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2655,14 +2738,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getHavips(GetHavipsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstHavipId&#34;, example.applyValue(getHavipsResult -&gt; getHavipsResult.havips()[0].id()));
+     *         ctx.export("firstHavipId", example.applyValue(getHavipsResult -> getHavipsResult.havips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2679,7 +2763,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2701,14 +2786,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getHavips(GetHavipsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstHavipId&#34;, example.applyValue(getHavipsResult -&gt; getHavipsResult.havips()[0].id()));
+     *         ctx.export("firstHavipId", example.applyValue(getHavipsResult -> getHavipsResult.havips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2725,7 +2811,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2747,14 +2834,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getHavips(GetHavipsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstHavipId&#34;, example.applyValue(getHavipsResult -&gt; getHavipsResult.havips()[0].id()));
+     *         ctx.export("firstHavipId", example.applyValue(getHavipsResult -> getHavipsResult.havips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2771,7 +2859,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2793,14 +2882,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getHavips(GetHavipsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstHavipId&#34;, example.applyValue(getHavipsResult -&gt; getHavipsResult.havips()[0].id()));
+     *         ctx.export("firstHavipId", example.applyValue(getHavipsResult -> getHavipsResult.havips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2817,7 +2907,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2839,14 +2930,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getHavips(GetHavipsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstHavipId&#34;, example.applyValue(getHavipsResult -&gt; getHavipsResult.havips()[0].id()));
+     *         ctx.export("firstHavipId", example.applyValue(getHavipsResult -> getHavipsResult.havips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2863,7 +2955,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2885,18 +2978,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
-     *             .nameRegex(&#34;^my-IpsecServer&#34;)
+     *             .nameRegex("^my-IpsecServer")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId2&#34;, nameRegex.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId2", nameRegex.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2913,7 +3007,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2935,18 +3030,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
-     *             .nameRegex(&#34;^my-IpsecServer&#34;)
+     *             .nameRegex("^my-IpsecServer")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId2&#34;, nameRegex.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId2", nameRegex.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2963,7 +3059,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2985,18 +3082,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
-     *             .nameRegex(&#34;^my-IpsecServer&#34;)
+     *             .nameRegex("^my-IpsecServer")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId2&#34;, nameRegex.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId2", nameRegex.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3013,7 +3111,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3035,18 +3134,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
-     *             .nameRegex(&#34;^my-IpsecServer&#34;)
+     *             .nameRegex("^my-IpsecServer")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId2&#34;, nameRegex.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId2", nameRegex.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3063,7 +3163,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3085,18 +3186,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
-     *             .nameRegex(&#34;^my-IpsecServer&#34;)
+     *             .nameRegex("^my-IpsecServer")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId2&#34;, nameRegex.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId2", nameRegex.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3113,7 +3215,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3135,18 +3238,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpsecServers(GetIpsecServersArgs.builder()
-     *             .nameRegex(&#34;^my-IpsecServer&#34;)
+     *             .nameRegex("^my-IpsecServer")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId2&#34;, nameRegex.applyValue(getIpsecServersResult -&gt; getIpsecServersResult.servers()[0].id()));
+     *         ctx.export("vpnIpsecServerId2", nameRegex.applyValue(getIpsecServersResult -> getIpsecServersResult.servers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3163,7 +3267,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3186,15 +3291,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv4Gateways();
      * 
-     *         ctx.export(&#34;vpcIpv4GatewayId1&#34;, ids.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId1", ids.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Ipv4Gateway&#34;)
+     *             .nameRegex("^my-Ipv4Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv4GatewayId2&#34;, nameRegex.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId2", nameRegex.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3211,7 +3317,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3234,15 +3341,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv4Gateways();
      * 
-     *         ctx.export(&#34;vpcIpv4GatewayId1&#34;, ids.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId1", ids.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Ipv4Gateway&#34;)
+     *             .nameRegex("^my-Ipv4Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv4GatewayId2&#34;, nameRegex.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId2", nameRegex.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3259,7 +3367,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3282,15 +3391,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv4Gateways();
      * 
-     *         ctx.export(&#34;vpcIpv4GatewayId1&#34;, ids.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId1", ids.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Ipv4Gateway&#34;)
+     *             .nameRegex("^my-Ipv4Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv4GatewayId2&#34;, nameRegex.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId2", nameRegex.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3307,7 +3417,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3330,15 +3441,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv4Gateways();
      * 
-     *         ctx.export(&#34;vpcIpv4GatewayId1&#34;, ids.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId1", ids.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Ipv4Gateway&#34;)
+     *             .nameRegex("^my-Ipv4Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv4GatewayId2&#34;, nameRegex.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId2", nameRegex.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3355,7 +3467,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3378,15 +3491,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv4Gateways();
      * 
-     *         ctx.export(&#34;vpcIpv4GatewayId1&#34;, ids.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId1", ids.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Ipv4Gateway&#34;)
+     *             .nameRegex("^my-Ipv4Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv4GatewayId2&#34;, nameRegex.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId2", nameRegex.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3403,7 +3517,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3426,15 +3541,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv4Gateways();
      * 
-     *         ctx.export(&#34;vpcIpv4GatewayId1&#34;, ids.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId1", ids.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv4Gateways(GetIpv4GatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Ipv4Gateway&#34;)
+     *             .nameRegex("^my-Ipv4Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv4GatewayId2&#34;, nameRegex.applyValue(getIpv4GatewaysResult -&gt; getIpv4GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv4GatewayId2", nameRegex.applyValue(getIpv4GatewaysResult -> getIpv4GatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3451,7 +3567,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3473,28 +3590,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var associatedInstanceId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .associatedInstanceId(&#34;example_value&#34;)
+     *             .associatedInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId1&#34;, associatedInstanceId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .vswitchId(&#34;example_value&#34;)
+     *             .vswitchId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId2&#34;, vswitchId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId2", vswitchId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .vpcId(&#34;example_value&#34;)
+     *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId3&#34;, vpcId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId3", vpcId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId4&#34;, status.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId4", status.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3511,7 +3629,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3533,28 +3652,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var associatedInstanceId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .associatedInstanceId(&#34;example_value&#34;)
+     *             .associatedInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId1&#34;, associatedInstanceId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .vswitchId(&#34;example_value&#34;)
+     *             .vswitchId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId2&#34;, vswitchId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId2", vswitchId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .vpcId(&#34;example_value&#34;)
+     *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId3&#34;, vpcId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId3", vpcId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId4&#34;, status.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId4", status.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3571,7 +3691,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3593,28 +3714,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var associatedInstanceId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .associatedInstanceId(&#34;example_value&#34;)
+     *             .associatedInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId1&#34;, associatedInstanceId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .vswitchId(&#34;example_value&#34;)
+     *             .vswitchId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId2&#34;, vswitchId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId2", vswitchId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .vpcId(&#34;example_value&#34;)
+     *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId3&#34;, vpcId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId3", vpcId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId4&#34;, status.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId4", status.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3631,7 +3753,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3653,28 +3776,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var associatedInstanceId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .associatedInstanceId(&#34;example_value&#34;)
+     *             .associatedInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId1&#34;, associatedInstanceId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .vswitchId(&#34;example_value&#34;)
+     *             .vswitchId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId2&#34;, vswitchId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId2", vswitchId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .vpcId(&#34;example_value&#34;)
+     *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId3&#34;, vpcId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId3", vpcId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId4&#34;, status.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId4", status.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3691,7 +3815,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3713,28 +3838,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var associatedInstanceId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .associatedInstanceId(&#34;example_value&#34;)
+     *             .associatedInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId1&#34;, associatedInstanceId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .vswitchId(&#34;example_value&#34;)
+     *             .vswitchId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId2&#34;, vswitchId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId2", vswitchId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .vpcId(&#34;example_value&#34;)
+     *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId3&#34;, vpcId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId3", vpcId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId4&#34;, status.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId4", status.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3751,7 +3877,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3773,28 +3900,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var associatedInstanceId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .associatedInstanceId(&#34;example_value&#34;)
+     *             .associatedInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId1&#34;, associatedInstanceId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId1", associatedInstanceId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var vswitchId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .vswitchId(&#34;example_value&#34;)
+     *             .vswitchId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId2&#34;, vswitchId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId2", vswitchId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var vpcId = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .vpcId(&#34;example_value&#34;)
+     *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId3&#34;, vpcId.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId3", vpcId.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *         final var status = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
-     *             .status(&#34;Available&#34;)
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6AddressId4&#34;, status.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id()));
+     *         ctx.export("vpcIpv6AddressId4", status.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3811,7 +3939,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3833,34 +3962,35 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .ipv6GatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId1&#34;, ids.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId1", ids.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Ipv6EgressRule&#34;)
+     *             .ipv6GatewayId("example_value")
+     *             .nameRegex("^my-Ipv6EgressRule")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId2&#34;, nameRegex.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId2", nameRegex.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *         final var status = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ipv6GatewayId("example_value")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId3&#34;, status.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId3", status.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *         final var ipv6EgressRuleName = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
-     *             .ipv6EgressRuleName(&#34;example_value&#34;)
+     *             .ipv6GatewayId("example_value")
+     *             .ipv6EgressRuleName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId4&#34;, ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId4", ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3877,7 +4007,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3899,34 +4030,35 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .ipv6GatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId1&#34;, ids.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId1", ids.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Ipv6EgressRule&#34;)
+     *             .ipv6GatewayId("example_value")
+     *             .nameRegex("^my-Ipv6EgressRule")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId2&#34;, nameRegex.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId2", nameRegex.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *         final var status = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ipv6GatewayId("example_value")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId3&#34;, status.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId3", status.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *         final var ipv6EgressRuleName = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
-     *             .ipv6EgressRuleName(&#34;example_value&#34;)
+     *             .ipv6GatewayId("example_value")
+     *             .ipv6EgressRuleName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId4&#34;, ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId4", ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3943,7 +4075,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3965,34 +4098,35 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .ipv6GatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId1&#34;, ids.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId1", ids.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Ipv6EgressRule&#34;)
+     *             .ipv6GatewayId("example_value")
+     *             .nameRegex("^my-Ipv6EgressRule")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId2&#34;, nameRegex.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId2", nameRegex.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *         final var status = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ipv6GatewayId("example_value")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId3&#34;, status.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId3", status.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *         final var ipv6EgressRuleName = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
-     *             .ipv6EgressRuleName(&#34;example_value&#34;)
+     *             .ipv6GatewayId("example_value")
+     *             .ipv6EgressRuleName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId4&#34;, ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId4", ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4009,7 +4143,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4031,34 +4166,35 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
+     *             .ipv6GatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId1&#34;, ids.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId1", ids.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Ipv6EgressRule&#34;)
+     *             .ipv6GatewayId("example_value")
+     *             .nameRegex("^my-Ipv6EgressRule")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId2&#34;, nameRegex.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId2", nameRegex.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *         final var status = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ipv6GatewayId("example_value")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId3&#34;, status.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId3", status.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *         final var ipv6EgressRuleName = VpcFunctions.getIpv6EgressRules(GetIpv6EgressRulesArgs.builder()
-     *             .ipv6GatewayId(&#34;example_value&#34;)
-     *             .ipv6EgressRuleName(&#34;example_value&#34;)
+     *             .ipv6GatewayId("example_value")
+     *             .ipv6EgressRuleName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6EgressRuleId4&#34;, ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -&gt; getIpv6EgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcIpv6EgressRuleId4", ipv6EgressRuleName.applyValue(getIpv6EgressRulesResult -> getIpv6EgressRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4075,7 +4211,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4097,30 +4234,31 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId1&#34;, ids.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId1", ids.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Ipv6Gateway&#34;)
+     *             .nameRegex("^my-Ipv6Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId2&#34;, nameRegex.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId2", nameRegex.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .vpcId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId3&#34;, vpcId.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId3", vpcId.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ids("example_id")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId4&#34;, status.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId4", status.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4137,7 +4275,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4159,30 +4298,31 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId1&#34;, ids.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId1", ids.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Ipv6Gateway&#34;)
+     *             .nameRegex("^my-Ipv6Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId2&#34;, nameRegex.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId2", nameRegex.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .vpcId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId3&#34;, vpcId.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId3", vpcId.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ids("example_id")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId4&#34;, status.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId4", status.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4199,7 +4339,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4221,30 +4362,31 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId1&#34;, ids.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId1", ids.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Ipv6Gateway&#34;)
+     *             .nameRegex("^my-Ipv6Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId2&#34;, nameRegex.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId2", nameRegex.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .vpcId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId3&#34;, vpcId.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId3", vpcId.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ids("example_id")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId4&#34;, status.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId4", status.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4261,7 +4403,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4283,30 +4426,31 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId1&#34;, ids.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId1", ids.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Ipv6Gateway&#34;)
+     *             .nameRegex("^my-Ipv6Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId2&#34;, nameRegex.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId2", nameRegex.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .vpcId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId3&#34;, vpcId.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId3", vpcId.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ids("example_id")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId4&#34;, status.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId4", status.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4323,7 +4467,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4345,30 +4490,31 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId1&#34;, ids.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId1", ids.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Ipv6Gateway&#34;)
+     *             .nameRegex("^my-Ipv6Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId2&#34;, nameRegex.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId2", nameRegex.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .vpcId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId3&#34;, vpcId.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId3", vpcId.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ids("example_id")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId4&#34;, status.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId4", status.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4385,7 +4531,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4407,30 +4554,31 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId1&#34;, ids.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId1", ids.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var nameRegex = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Ipv6Gateway&#34;)
+     *             .nameRegex("^my-Ipv6Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId2&#34;, nameRegex.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId2", nameRegex.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var vpcId = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .vpcId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .vpcId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId3&#34;, vpcId.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId3", vpcId.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *         final var status = VpcFunctions.getIpv6Gateways(GetIpv6GatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .ids("example_id")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6GatewayId4&#34;, status.applyValue(getIpv6GatewaysResult -&gt; getIpv6GatewaysResult.gateways()[0].id()));
+     *         ctx.export("vpcIpv6GatewayId4", status.applyValue(getIpv6GatewaysResult -> getIpv6GatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4447,7 +4595,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4469,28 +4618,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId1&#34;, ids.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ipv6InternetBandwidthId(&#34;example_value&#34;)
+     *             .ipv6InternetBandwidthId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId2&#34;, ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ipv6AddressId(&#34;example_value&#34;)
+     *             .ipv6AddressId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId3&#34;, ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .status(&#34;Normal&#34;)
+     *             .status("Normal")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId4&#34;, status.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId4", status.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4507,7 +4657,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4529,28 +4680,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId1&#34;, ids.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ipv6InternetBandwidthId(&#34;example_value&#34;)
+     *             .ipv6InternetBandwidthId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId2&#34;, ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ipv6AddressId(&#34;example_value&#34;)
+     *             .ipv6AddressId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId3&#34;, ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .status(&#34;Normal&#34;)
+     *             .status("Normal")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId4&#34;, status.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId4", status.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4567,7 +4719,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4589,28 +4742,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId1&#34;, ids.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ipv6InternetBandwidthId(&#34;example_value&#34;)
+     *             .ipv6InternetBandwidthId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId2&#34;, ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ipv6AddressId(&#34;example_value&#34;)
+     *             .ipv6AddressId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId3&#34;, ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .status(&#34;Normal&#34;)
+     *             .status("Normal")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId4&#34;, status.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId4", status.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4627,7 +4781,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4649,28 +4804,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId1&#34;, ids.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ipv6InternetBandwidthId(&#34;example_value&#34;)
+     *             .ipv6InternetBandwidthId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId2&#34;, ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ipv6AddressId(&#34;example_value&#34;)
+     *             .ipv6AddressId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId3&#34;, ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .status(&#34;Normal&#34;)
+     *             .status("Normal")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId4&#34;, status.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId4", status.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4687,7 +4843,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4709,28 +4866,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId1&#34;, ids.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ipv6InternetBandwidthId(&#34;example_value&#34;)
+     *             .ipv6InternetBandwidthId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId2&#34;, ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ipv6AddressId(&#34;example_value&#34;)
+     *             .ipv6AddressId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId3&#34;, ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .status(&#34;Normal&#34;)
+     *             .status("Normal")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId4&#34;, status.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId4", status.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4747,7 +4905,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4769,28 +4928,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId1&#34;, ids.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId1", ids.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var ipv6InternetBandwidthId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ipv6InternetBandwidthId(&#34;example_value&#34;)
+     *             .ipv6InternetBandwidthId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId2&#34;, ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId2", ipv6InternetBandwidthId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var ipv6AddressId = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .ipv6AddressId(&#34;example_value&#34;)
+     *             .ipv6AddressId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId3&#34;, ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId3", ipv6AddressId.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *         final var status = VpcFunctions.getIpv6InternetBandwidths(GetIpv6InternetBandwidthsArgs.builder()
-     *             .status(&#34;Normal&#34;)
+     *             .status("Normal")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcIpv6InternetBandwidthId4&#34;, status.applyValue(getIpv6InternetBandwidthsResult -&gt; getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
+     *         ctx.export("vpcIpv6InternetBandwidthId4", status.applyValue(getIpv6InternetBandwidthsResult -> getIpv6InternetBandwidthsResult.bandwidths()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4805,7 +4965,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4833,19 +4994,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;natGatewaysDatasource&#34;);
+     *         final var name = config.get("name").orElse("natGatewaysDatasource");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .specification(&#34;Small&#34;)
+     *             .specification("Small")
      *             .natGateName(name)
      *             .build());
      * 
@@ -4857,7 +5018,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4872,7 +5034,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4900,19 +5063,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;natGatewaysDatasource&#34;);
+     *         final var name = config.get("name").orElse("natGatewaysDatasource");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .specification(&#34;Small&#34;)
+     *             .specification("Small")
      *             .natGateName(name)
      *             .build());
      * 
@@ -4924,7 +5087,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4939,7 +5103,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4967,19 +5132,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;natGatewaysDatasource&#34;);
+     *         final var name = config.get("name").orElse("natGatewaysDatasource");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .specification(&#34;Small&#34;)
+     *             .specification("Small")
      *             .natGateName(name)
      *             .build());
      * 
@@ -4991,7 +5156,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5006,7 +5172,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5034,19 +5201,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;natGatewaysDatasource&#34;);
+     *         final var name = config.get("name").orElse("natGatewaysDatasource");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .specification(&#34;Small&#34;)
+     *             .specification("Small")
      *             .natGateName(name)
      *             .build());
      * 
@@ -5058,7 +5225,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5073,7 +5241,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5101,19 +5270,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;natGatewaysDatasource&#34;);
+     *         final var name = config.get("name").orElse("natGatewaysDatasource");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .specification(&#34;Small&#34;)
+     *             .specification("Small")
      *             .natGateName(name)
      *             .build());
      * 
@@ -5125,7 +5294,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5140,7 +5310,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5168,19 +5339,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;natGatewaysDatasource&#34;);
+     *         final var name = config.get("name").orElse("natGatewaysDatasource");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .specification(&#34;Small&#34;)
+     *             .specification("Small")
      *             .natGateName(name)
      *             .build());
      * 
@@ -5192,7 +5363,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5209,7 +5381,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5231,41 +5404,42 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId1&#34;, ids.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId1", ids.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var nameRegex = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-NatIpCidr&#34;)
+     *             .natGatewayId("example_value")
+     *             .nameRegex("^my-NatIpCidr")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId2&#34;, nameRegex.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId2", nameRegex.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var status = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value-1&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value-1")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId3&#34;, status.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId3", status.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var natIpCidr = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .natIpCidrs(&#34;example_value-1&#34;)
+     *             .natGatewayId("example_value")
+     *             .natIpCidrs("example_value-1")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId4&#34;, natIpCidr.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId4", natIpCidr.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var atIpCidrName = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .natIpCidrNames(&#34;example_value-1&#34;)
+     *             .natGatewayId("example_value")
+     *             .natIpCidrNames("example_value-1")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId5&#34;, atIpCidrName.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId5", atIpCidrName.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5282,7 +5456,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5304,41 +5479,42 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId1&#34;, ids.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId1", ids.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var nameRegex = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-NatIpCidr&#34;)
+     *             .natGatewayId("example_value")
+     *             .nameRegex("^my-NatIpCidr")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId2&#34;, nameRegex.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId2", nameRegex.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var status = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value-1&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value-1")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId3&#34;, status.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId3", status.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var natIpCidr = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .natIpCidrs(&#34;example_value-1&#34;)
+     *             .natGatewayId("example_value")
+     *             .natIpCidrs("example_value-1")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId4&#34;, natIpCidr.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId4", natIpCidr.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var atIpCidrName = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .natIpCidrNames(&#34;example_value-1&#34;)
+     *             .natGatewayId("example_value")
+     *             .natIpCidrNames("example_value-1")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId5&#34;, atIpCidrName.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId5", atIpCidrName.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5355,7 +5531,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5377,41 +5554,42 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId1&#34;, ids.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId1", ids.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var nameRegex = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-NatIpCidr&#34;)
+     *             .natGatewayId("example_value")
+     *             .nameRegex("^my-NatIpCidr")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId2&#34;, nameRegex.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId2", nameRegex.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var status = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value-1&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value-1")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId3&#34;, status.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId3", status.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var natIpCidr = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .natIpCidrs(&#34;example_value-1&#34;)
+     *             .natGatewayId("example_value")
+     *             .natIpCidrs("example_value-1")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId4&#34;, natIpCidr.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId4", natIpCidr.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var atIpCidrName = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .natIpCidrNames(&#34;example_value-1&#34;)
+     *             .natGatewayId("example_value")
+     *             .natIpCidrNames("example_value-1")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId5&#34;, atIpCidrName.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId5", atIpCidrName.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5428,7 +5606,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5450,41 +5629,42 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId1&#34;, ids.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId1", ids.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var nameRegex = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-NatIpCidr&#34;)
+     *             .natGatewayId("example_value")
+     *             .nameRegex("^my-NatIpCidr")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId2&#34;, nameRegex.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId2", nameRegex.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var status = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value-1&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value-1")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId3&#34;, status.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId3", status.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var natIpCidr = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .natIpCidrs(&#34;example_value-1&#34;)
+     *             .natGatewayId("example_value")
+     *             .natIpCidrs("example_value-1")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId4&#34;, natIpCidr.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId4", natIpCidr.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *         final var atIpCidrName = VpcFunctions.getNatIpCidrs(GetNatIpCidrsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .natIpCidrNames(&#34;example_value-1&#34;)
+     *             .natGatewayId("example_value")
+     *             .natIpCidrNames("example_value-1")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpCidrId5&#34;, atIpCidrName.applyValue(getNatIpCidrsResult -&gt; getNatIpCidrsResult.cidrs()[0].id()));
+     *         ctx.export("vpcNatIpCidrId5", atIpCidrName.applyValue(getNatIpCidrsResult -> getNatIpCidrsResult.cidrs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5501,7 +5681,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5523,50 +5704,51 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId1&#34;, ids.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId1", ids.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var nameRegex = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .natGatewayId("example_value")
+     *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId2&#34;, nameRegex.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId2", nameRegex.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var natIpCidr = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .natIpCidr(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .natGatewayId("example_value")
+     *             .natIpCidr("example_value")
+     *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId3&#34;, natIpCidr.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId3", natIpCidr.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var natIpName = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .natIpNames(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value")
+     *             .natIpNames("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId4&#34;, natIpName.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId4", natIpName.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var natIpIds = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .natIpIds(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value")
+     *             .natIpIds("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId5&#34;, natIpIds.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId5", natIpIds.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var status = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .status(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value")
+     *             .status("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId6&#34;, status.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId6", status.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5583,7 +5765,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5605,50 +5788,51 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId1&#34;, ids.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId1", ids.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var nameRegex = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .natGatewayId("example_value")
+     *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId2&#34;, nameRegex.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId2", nameRegex.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var natIpCidr = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .natIpCidr(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .natGatewayId("example_value")
+     *             .natIpCidr("example_value")
+     *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId3&#34;, natIpCidr.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId3", natIpCidr.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var natIpName = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .natIpNames(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value")
+     *             .natIpNames("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId4&#34;, natIpName.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId4", natIpName.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var natIpIds = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .natIpIds(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value")
+     *             .natIpIds("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId5&#34;, natIpIds.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId5", natIpIds.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var status = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .status(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value")
+     *             .status("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId6&#34;, status.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId6", status.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5665,7 +5849,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5687,50 +5872,51 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId1&#34;, ids.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId1", ids.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var nameRegex = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .natGatewayId("example_value")
+     *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId2&#34;, nameRegex.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId2", nameRegex.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var natIpCidr = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .natIpCidr(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .natGatewayId("example_value")
+     *             .natIpCidr("example_value")
+     *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId3&#34;, natIpCidr.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId3", natIpCidr.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var natIpName = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .natIpNames(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value")
+     *             .natIpNames("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId4&#34;, natIpName.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId4", natIpName.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var natIpIds = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .natIpIds(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value")
+     *             .natIpIds("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId5&#34;, natIpIds.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId5", natIpIds.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var status = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .status(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value")
+     *             .status("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId6&#34;, status.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId6", status.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5747,7 +5933,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5769,50 +5956,51 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId1&#34;, ids.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId1", ids.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var nameRegex = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .natGatewayId("example_value")
+     *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId2&#34;, nameRegex.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId2", nameRegex.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var natIpCidr = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .natIpCidr(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-NatIp&#34;)
+     *             .natGatewayId("example_value")
+     *             .natIpCidr("example_value")
+     *             .nameRegex("^my-NatIp")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId3&#34;, natIpCidr.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId3", natIpCidr.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var natIpName = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .natIpNames(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value")
+     *             .natIpNames("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId4&#34;, natIpName.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId4", natIpName.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var natIpIds = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .natIpIds(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value")
+     *             .natIpIds("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId5&#34;, natIpIds.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId5", natIpIds.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *         final var status = VpcFunctions.getNatIps(GetNatIpsArgs.builder()
-     *             .natGatewayId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .status(&#34;example_value&#34;)
+     *             .natGatewayId("example_value")
+     *             .ids("example_value")
+     *             .status("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcNatIpId6&#34;, status.applyValue(getNatIpsResult -&gt; getNatIpsResult.ips()[0].id()));
+     *         ctx.export("vpcNatIpId6", status.applyValue(getNatIpsResult -> getNatIpsResult.ips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5829,7 +6017,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5851,14 +6040,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getNetworkAcls(GetNetworkAclsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstNetworkAclId&#34;, example.applyValue(getNetworkAclsResult -&gt; getNetworkAclsResult.acls()[0].id()));
+     *         ctx.export("firstNetworkAclId", example.applyValue(getNetworkAclsResult -> getNetworkAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5875,7 +6065,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5897,14 +6088,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getNetworkAcls(GetNetworkAclsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstNetworkAclId&#34;, example.applyValue(getNetworkAclsResult -&gt; getNetworkAclsResult.acls()[0].id()));
+     *         ctx.export("firstNetworkAclId", example.applyValue(getNetworkAclsResult -> getNetworkAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5921,7 +6113,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5943,14 +6136,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getNetworkAcls(GetNetworkAclsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstNetworkAclId&#34;, example.applyValue(getNetworkAclsResult -&gt; getNetworkAclsResult.acls()[0].id()));
+     *         ctx.export("firstNetworkAclId", example.applyValue(getNetworkAclsResult -> getNetworkAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5967,7 +6161,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5989,14 +6184,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getNetworkAcls(GetNetworkAclsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstNetworkAclId&#34;, example.applyValue(getNetworkAclsResult -&gt; getNetworkAclsResult.acls()[0].id()));
+     *         ctx.export("firstNetworkAclId", example.applyValue(getNetworkAclsResult -> getNetworkAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6013,7 +6209,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6035,14 +6232,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getNetworkAcls(GetNetworkAclsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstNetworkAclId&#34;, example.applyValue(getNetworkAclsResult -&gt; getNetworkAclsResult.acls()[0].id()));
+     *         ctx.export("firstNetworkAclId", example.applyValue(getNetworkAclsResult -> getNetworkAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6059,7 +6257,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6081,14 +6280,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getNetworkAcls(GetNetworkAclsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstNetworkAclId&#34;, example.applyValue(getNetworkAclsResult -&gt; getNetworkAclsResult.acls()[0].id()));
+     *         ctx.export("firstNetworkAclId", example.applyValue(getNetworkAclsResult -> getNetworkAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6101,7 +6301,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6123,15 +6324,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .status(&#34;Available&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .status("Available")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
+     *         ctx.export("firstVpcId", vpcsDs.applyValue(getNetworksResult -> getNetworksResult.vpcs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6144,7 +6346,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6166,15 +6369,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .status(&#34;Available&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .status("Available")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
+     *         ctx.export("firstVpcId", vpcsDs.applyValue(getNetworksResult -> getNetworksResult.vpcs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6187,7 +6391,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6209,15 +6414,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .status(&#34;Available&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .status("Available")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
+     *         ctx.export("firstVpcId", vpcsDs.applyValue(getNetworksResult -> getNetworksResult.vpcs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6230,7 +6436,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6252,15 +6459,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .status(&#34;Available&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .status("Available")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
+     *         ctx.export("firstVpcId", vpcsDs.applyValue(getNetworksResult -> getNetworksResult.vpcs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6273,7 +6481,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6295,15 +6504,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .status(&#34;Available&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .status("Available")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
+     *         ctx.export("firstVpcId", vpcsDs.applyValue(getNetworksResult -> getNetworksResult.vpcs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6316,7 +6526,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6338,15 +6549,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .status(&#34;Available&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .cidrBlock("172.16.0.0/12")
+     *             .status("Available")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
+     *         ctx.export("firstVpcId", vpcsDs.applyValue(getNetworksResult -> getNetworksResult.vpcs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6361,7 +6573,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6383,14 +6596,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPbrRouteEntries(GetPbrRouteEntriesArgs.builder()
-     *             .vpnGatewayId(&#34;example_vpn_gateway_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .vpnGatewayId("example_vpn_gateway_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getPbrRouteEntriesResult -&gt; getPbrRouteEntriesResult.entries()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getPbrRouteEntriesResult -> getPbrRouteEntriesResult.entries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6405,7 +6619,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6427,14 +6642,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPbrRouteEntries(GetPbrRouteEntriesArgs.builder()
-     *             .vpnGatewayId(&#34;example_vpn_gateway_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .vpnGatewayId("example_vpn_gateway_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getPbrRouteEntriesResult -&gt; getPbrRouteEntriesResult.entries()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getPbrRouteEntriesResult -> getPbrRouteEntriesResult.entries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6449,7 +6665,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6471,14 +6688,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPbrRouteEntries(GetPbrRouteEntriesArgs.builder()
-     *             .vpnGatewayId(&#34;example_vpn_gateway_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .vpnGatewayId("example_vpn_gateway_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getPbrRouteEntriesResult -&gt; getPbrRouteEntriesResult.entries()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getPbrRouteEntriesResult -> getPbrRouteEntriesResult.entries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6493,7 +6711,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6515,14 +6734,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPbrRouteEntries(GetPbrRouteEntriesArgs.builder()
-     *             .vpnGatewayId(&#34;example_vpn_gateway_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .vpnGatewayId("example_vpn_gateway_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnIpsecServerId1&#34;, ids.applyValue(getPbrRouteEntriesResult -&gt; getPbrRouteEntriesResult.entries()[0].id()));
+     *         ctx.export("vpnIpsecServerId1", ids.applyValue(getPbrRouteEntriesResult -> getPbrRouteEntriesResult.entries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6539,7 +6759,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6562,15 +6783,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPeerConnections();
      * 
-     *         ctx.export(&#34;vpcPeerConnectionId1&#34;, ids.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId1", ids.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
      *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
-     *             .nameRegex(&#34;^my-PeerConnection&#34;)
+     *             .nameRegex("^my-PeerConnection")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPeerConnectionId2&#34;, nameRegex.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId2", nameRegex.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6587,7 +6809,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6610,15 +6833,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPeerConnections();
      * 
-     *         ctx.export(&#34;vpcPeerConnectionId1&#34;, ids.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId1", ids.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
      *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
-     *             .nameRegex(&#34;^my-PeerConnection&#34;)
+     *             .nameRegex("^my-PeerConnection")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPeerConnectionId2&#34;, nameRegex.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId2", nameRegex.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6635,7 +6859,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6658,15 +6883,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPeerConnections();
      * 
-     *         ctx.export(&#34;vpcPeerConnectionId1&#34;, ids.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId1", ids.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
      *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
-     *             .nameRegex(&#34;^my-PeerConnection&#34;)
+     *             .nameRegex("^my-PeerConnection")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPeerConnectionId2&#34;, nameRegex.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId2", nameRegex.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6683,7 +6909,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6706,15 +6933,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPeerConnections();
      * 
-     *         ctx.export(&#34;vpcPeerConnectionId1&#34;, ids.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId1", ids.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
      *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
-     *             .nameRegex(&#34;^my-PeerConnection&#34;)
+     *             .nameRegex("^my-PeerConnection")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPeerConnectionId2&#34;, nameRegex.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId2", nameRegex.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6731,7 +6959,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6754,15 +6983,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPeerConnections();
      * 
-     *         ctx.export(&#34;vpcPeerConnectionId1&#34;, ids.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId1", ids.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
      *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
-     *             .nameRegex(&#34;^my-PeerConnection&#34;)
+     *             .nameRegex("^my-PeerConnection")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPeerConnectionId2&#34;, nameRegex.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId2", nameRegex.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6779,7 +7009,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6802,15 +7033,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPeerConnections();
      * 
-     *         ctx.export(&#34;vpcPeerConnectionId1&#34;, ids.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId1", ids.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
      *         final var nameRegex = VpcFunctions.getPeerConnections(GetPeerConnectionsArgs.builder()
-     *             .nameRegex(&#34;^my-PeerConnection&#34;)
+     *             .nameRegex("^my-PeerConnection")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPeerConnectionId2&#34;, nameRegex.applyValue(getPeerConnectionsResult -&gt; getPeerConnectionsResult.connections()[0].id()));
+     *         ctx.export("vpcPeerConnectionId2", nameRegex.applyValue(getPeerConnectionsResult -> getPeerConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6827,7 +7059,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6850,15 +7083,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPrefixLists();
      * 
-     *         ctx.export(&#34;vpcPrefixListId1&#34;, ids.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId1", ids.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
      *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
-     *             .nameRegex(&#34;^my-PrefixList&#34;)
+     *             .nameRegex("^my-PrefixList")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPrefixListId2&#34;, nameRegex.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId2", nameRegex.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6875,7 +7109,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6898,15 +7133,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPrefixLists();
      * 
-     *         ctx.export(&#34;vpcPrefixListId1&#34;, ids.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId1", ids.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
      *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
-     *             .nameRegex(&#34;^my-PrefixList&#34;)
+     *             .nameRegex("^my-PrefixList")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPrefixListId2&#34;, nameRegex.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId2", nameRegex.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6923,7 +7159,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6946,15 +7183,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPrefixLists();
      * 
-     *         ctx.export(&#34;vpcPrefixListId1&#34;, ids.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId1", ids.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
      *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
-     *             .nameRegex(&#34;^my-PrefixList&#34;)
+     *             .nameRegex("^my-PrefixList")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPrefixListId2&#34;, nameRegex.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId2", nameRegex.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6971,7 +7209,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6994,15 +7233,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPrefixLists();
      * 
-     *         ctx.export(&#34;vpcPrefixListId1&#34;, ids.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId1", ids.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
      *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
-     *             .nameRegex(&#34;^my-PrefixList&#34;)
+     *             .nameRegex("^my-PrefixList")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPrefixListId2&#34;, nameRegex.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId2", nameRegex.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7019,7 +7259,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7042,15 +7283,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPrefixLists();
      * 
-     *         ctx.export(&#34;vpcPrefixListId1&#34;, ids.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId1", ids.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
      *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
-     *             .nameRegex(&#34;^my-PrefixList&#34;)
+     *             .nameRegex("^my-PrefixList")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPrefixListId2&#34;, nameRegex.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId2", nameRegex.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7067,7 +7309,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7090,15 +7333,16 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPrefixLists();
      * 
-     *         ctx.export(&#34;vpcPrefixListId1&#34;, ids.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId1", ids.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
      *         final var nameRegex = VpcFunctions.getPrefixLists(GetPrefixListsArgs.builder()
-     *             .nameRegex(&#34;^my-PrefixList&#34;)
+     *             .nameRegex("^my-PrefixList")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPrefixListId2&#34;, nameRegex.applyValue(getPrefixListsResult -&gt; getPrefixListsResult.lists()[0].id()));
+     *         ctx.export("vpcPrefixListId2", nameRegex.applyValue(getPrefixListsResult -> getPrefixListsResult.lists()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7117,7 +7361,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7139,20 +7384,21 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .publicIpAddressPoolId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .publicIpAddressPoolId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId1&#34;, ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId1", ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
      *         final var cidrBlock = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
-     *             .publicIpAddressPoolId(&#34;example_value&#34;)
-     *             .cidrBlock(&#34;example_value&#34;)
+     *             .publicIpAddressPoolId("example_value")
+     *             .cidrBlock("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId2&#34;, cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7171,7 +7417,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7193,20 +7440,21 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .publicIpAddressPoolId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .publicIpAddressPoolId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId1&#34;, ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId1", ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
      *         final var cidrBlock = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
-     *             .publicIpAddressPoolId(&#34;example_value&#34;)
-     *             .cidrBlock(&#34;example_value&#34;)
+     *             .publicIpAddressPoolId("example_value")
+     *             .cidrBlock("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId2&#34;, cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7225,7 +7473,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7247,20 +7496,21 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .publicIpAddressPoolId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .publicIpAddressPoolId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId1&#34;, ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId1", ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
      *         final var cidrBlock = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
-     *             .publicIpAddressPoolId(&#34;example_value&#34;)
-     *             .cidrBlock(&#34;example_value&#34;)
+     *             .publicIpAddressPoolId("example_value")
+     *             .cidrBlock("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId2&#34;, cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7279,7 +7529,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7301,20 +7552,21 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .publicIpAddressPoolId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .publicIpAddressPoolId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId1&#34;, ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId1", ids.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
      *         final var cidrBlock = VpcFunctions.getPublicIpAddressPoolCidrBlocks(GetPublicIpAddressPoolCidrBlocksArgs.builder()
-     *             .publicIpAddressPoolId(&#34;example_value&#34;)
-     *             .cidrBlock(&#34;example_value&#34;)
+     *             .publicIpAddressPoolId("example_value")
+     *             .cidrBlock("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolCidrBlockId2&#34;, cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -&gt; getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolCidrBlockId2", cidrBlock.applyValue(getPublicIpAddressPoolCidrBlocksResult -> getPublicIpAddressPoolCidrBlocksResult.blocks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7331,7 +7583,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7353,18 +7606,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolId1&#34;, ids.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId1", ids.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
      *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
-     *             .nameRegex(&#34;example_name&#34;)
+     *             .nameRegex("example_name")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolId2&#34;, nameRegex.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7381,7 +7635,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7403,18 +7658,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolId1&#34;, ids.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId1", ids.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
      *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
-     *             .nameRegex(&#34;example_name&#34;)
+     *             .nameRegex("example_name")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolId2&#34;, nameRegex.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7431,7 +7687,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7453,18 +7710,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolId1&#34;, ids.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId1", ids.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
      *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
-     *             .nameRegex(&#34;example_name&#34;)
+     *             .nameRegex("example_name")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolId2&#34;, nameRegex.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7481,7 +7739,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7503,18 +7762,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolId1&#34;, ids.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId1", ids.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
      *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
-     *             .nameRegex(&#34;example_name&#34;)
+     *             .nameRegex("example_name")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolId2&#34;, nameRegex.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7531,7 +7791,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7553,18 +7814,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolId1&#34;, ids.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId1", ids.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
      *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
-     *             .nameRegex(&#34;example_name&#34;)
+     *             .nameRegex("example_name")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolId2&#34;, nameRegex.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7581,7 +7843,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7603,18 +7866,19 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolId1&#34;, ids.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId1", ids.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
      *         final var nameRegex = VpcFunctions.getPublicIpAddressPools(GetPublicIpAddressPoolsArgs.builder()
-     *             .nameRegex(&#34;example_name&#34;)
+     *             .nameRegex("example_name")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcPublicIpAddressPoolId2&#34;, nameRegex.applyValue(getPublicIpAddressPoolsResult -&gt; getPublicIpAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("vpcPublicIpAddressPoolId2", nameRegex.applyValue(getPublicIpAddressPoolsResult -> getPublicIpAddressPoolsResult.pools()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7629,7 +7893,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7669,7 +7934,7 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
@@ -7679,59 +7944,59 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+     *             .nameRegex("^ubuntu_18.*64")
      *             .mostRecent(true)
-     *             .owners(&#34;system&#34;)
+     *             .owners("system")
      *             .build());
      * 
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccRouteEntryConfig&#34;);
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-testAccRouteEntryConfig");
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
      *             .name(name)
-     *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+     *             .cidrBlock("10.1.0.0/21")
      *             .build());
      * 
-     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+     *             .cidrBlock("10.1.1.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+     *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()        
      *             .name(name)
-     *             .description(&#34;foo&#34;)
+     *             .description("foo")
      *             .vpcId(fooNetwork.id())
      *             .build());
      * 
-     *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+     *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
      *             .securityGroups(tfTestFoo.id())
      *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
-     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .instanceChargeType("PostPaid")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .internetChargeType("PayByTraffic")
      *             .internetMaxBandwidthOut(5)
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
      *             .instanceName(name)
      *             .build());
      * 
-     *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
+     *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()        
      *             .routeTableId(fooNetwork.routeTableId())
-     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
-     *             .nexthopType(&#34;Instance&#34;)
+     *             .destinationCidrblock("172.11.1.1/32")
+     *             .nexthopType("Instance")
      *             .nexthopId(fooInstance.id())
      *             .build());
      * 
-     *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
-     *             .type(&#34;ingress&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
-     *             .nicType(&#34;intranet&#34;)
-     *             .policy(&#34;accept&#34;)
-     *             .portRange(&#34;22/22&#34;)
+     *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()        
+     *             .type("ingress")
+     *             .ipProtocol("tcp")
+     *             .nicType("intranet")
+     *             .policy("accept")
+     *             .portRange("22/22")
      *             .priority(1)
      *             .securityGroupId(tfTestFoo.id())
-     *             .cidrIp(&#34;0.0.0.0/0&#34;)
+     *             .cidrIp("0.0.0.0/0")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
@@ -7740,7 +8005,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7755,7 +8021,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7795,7 +8062,7 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
@@ -7805,59 +8072,59 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+     *             .nameRegex("^ubuntu_18.*64")
      *             .mostRecent(true)
-     *             .owners(&#34;system&#34;)
+     *             .owners("system")
      *             .build());
      * 
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccRouteEntryConfig&#34;);
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-testAccRouteEntryConfig");
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
      *             .name(name)
-     *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+     *             .cidrBlock("10.1.0.0/21")
      *             .build());
      * 
-     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+     *             .cidrBlock("10.1.1.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+     *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()        
      *             .name(name)
-     *             .description(&#34;foo&#34;)
+     *             .description("foo")
      *             .vpcId(fooNetwork.id())
      *             .build());
      * 
-     *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+     *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
      *             .securityGroups(tfTestFoo.id())
      *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
-     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .instanceChargeType("PostPaid")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .internetChargeType("PayByTraffic")
      *             .internetMaxBandwidthOut(5)
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
      *             .instanceName(name)
      *             .build());
      * 
-     *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
+     *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()        
      *             .routeTableId(fooNetwork.routeTableId())
-     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
-     *             .nexthopType(&#34;Instance&#34;)
+     *             .destinationCidrblock("172.11.1.1/32")
+     *             .nexthopType("Instance")
      *             .nexthopId(fooInstance.id())
      *             .build());
      * 
-     *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
-     *             .type(&#34;ingress&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
-     *             .nicType(&#34;intranet&#34;)
-     *             .policy(&#34;accept&#34;)
-     *             .portRange(&#34;22/22&#34;)
+     *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()        
+     *             .type("ingress")
+     *             .ipProtocol("tcp")
+     *             .nicType("intranet")
+     *             .policy("accept")
+     *             .portRange("22/22")
      *             .priority(1)
      *             .securityGroupId(tfTestFoo.id())
-     *             .cidrIp(&#34;0.0.0.0/0&#34;)
+     *             .cidrIp("0.0.0.0/0")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
@@ -7866,7 +8133,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7881,7 +8149,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7921,7 +8190,7 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
@@ -7931,59 +8200,59 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+     *             .nameRegex("^ubuntu_18.*64")
      *             .mostRecent(true)
-     *             .owners(&#34;system&#34;)
+     *             .owners("system")
      *             .build());
      * 
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccRouteEntryConfig&#34;);
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-testAccRouteEntryConfig");
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
      *             .name(name)
-     *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+     *             .cidrBlock("10.1.0.0/21")
      *             .build());
      * 
-     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+     *             .cidrBlock("10.1.1.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+     *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()        
      *             .name(name)
-     *             .description(&#34;foo&#34;)
+     *             .description("foo")
      *             .vpcId(fooNetwork.id())
      *             .build());
      * 
-     *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+     *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
      *             .securityGroups(tfTestFoo.id())
      *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
-     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .instanceChargeType("PostPaid")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .internetChargeType("PayByTraffic")
      *             .internetMaxBandwidthOut(5)
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
      *             .instanceName(name)
      *             .build());
      * 
-     *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
+     *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()        
      *             .routeTableId(fooNetwork.routeTableId())
-     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
-     *             .nexthopType(&#34;Instance&#34;)
+     *             .destinationCidrblock("172.11.1.1/32")
+     *             .nexthopType("Instance")
      *             .nexthopId(fooInstance.id())
      *             .build());
      * 
-     *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
-     *             .type(&#34;ingress&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
-     *             .nicType(&#34;intranet&#34;)
-     *             .policy(&#34;accept&#34;)
-     *             .portRange(&#34;22/22&#34;)
+     *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()        
+     *             .type("ingress")
+     *             .ipProtocol("tcp")
+     *             .nicType("intranet")
+     *             .policy("accept")
+     *             .portRange("22/22")
      *             .priority(1)
      *             .securityGroupId(tfTestFoo.id())
-     *             .cidrIp(&#34;0.0.0.0/0&#34;)
+     *             .cidrIp("0.0.0.0/0")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
@@ -7992,7 +8261,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8007,7 +8277,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8047,7 +8318,7 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
@@ -8057,59 +8328,59 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+     *             .nameRegex("^ubuntu_18.*64")
      *             .mostRecent(true)
-     *             .owners(&#34;system&#34;)
+     *             .owners("system")
      *             .build());
      * 
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccRouteEntryConfig&#34;);
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-testAccRouteEntryConfig");
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
      *             .name(name)
-     *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+     *             .cidrBlock("10.1.0.0/21")
      *             .build());
      * 
-     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+     *             .cidrBlock("10.1.1.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+     *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()        
      *             .name(name)
-     *             .description(&#34;foo&#34;)
+     *             .description("foo")
      *             .vpcId(fooNetwork.id())
      *             .build());
      * 
-     *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+     *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
      *             .securityGroups(tfTestFoo.id())
      *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
-     *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
-     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .instanceChargeType("PostPaid")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .internetChargeType("PayByTraffic")
      *             .internetMaxBandwidthOut(5)
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
      *             .instanceName(name)
      *             .build());
      * 
-     *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
+     *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()        
      *             .routeTableId(fooNetwork.routeTableId())
-     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
-     *             .nexthopType(&#34;Instance&#34;)
+     *             .destinationCidrblock("172.11.1.1/32")
+     *             .nexthopType("Instance")
      *             .nexthopId(fooInstance.id())
      *             .build());
      * 
-     *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
-     *             .type(&#34;ingress&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
-     *             .nicType(&#34;intranet&#34;)
-     *             .policy(&#34;accept&#34;)
-     *             .portRange(&#34;22/22&#34;)
+     *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()        
+     *             .type("ingress")
+     *             .ipProtocol("tcp")
+     *             .nicType("intranet")
+     *             .policy("accept")
+     *             .portRange("22/22")
      *             .priority(1)
      *             .securityGroupId(tfTestFoo.id())
-     *             .cidrIp(&#34;0.0.0.0/0&#34;)
+     *             .cidrIp("0.0.0.0/0")
      *             .build());
      * 
      *         final var foo = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
@@ -8118,7 +8389,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8133,7 +8405,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8159,13 +8432,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;route-tables-datasource-example-name&#34;);
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         final var name = config.get("name").orElse("route-tables-datasource-example-name");
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
+     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()        
      *             .vpcId(fooNetwork.id())
      *             .routeTableName(name)
      *             .description(name)
@@ -8175,10 +8448,11 @@ public final class VpcFunctions {
      *             .ids(fooRouteTable.id())
      *             .build());
      * 
-     *         ctx.export(&#34;routeTableIds&#34;, foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(foo -&gt; foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8193,7 +8467,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8219,13 +8494,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;route-tables-datasource-example-name&#34;);
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         final var name = config.get("name").orElse("route-tables-datasource-example-name");
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
+     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()        
      *             .vpcId(fooNetwork.id())
      *             .routeTableName(name)
      *             .description(name)
@@ -8235,10 +8510,11 @@ public final class VpcFunctions {
      *             .ids(fooRouteTable.id())
      *             .build());
      * 
-     *         ctx.export(&#34;routeTableIds&#34;, foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(foo -&gt; foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8253,7 +8529,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8279,13 +8556,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;route-tables-datasource-example-name&#34;);
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         final var name = config.get("name").orElse("route-tables-datasource-example-name");
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
+     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()        
      *             .vpcId(fooNetwork.id())
      *             .routeTableName(name)
      *             .description(name)
@@ -8295,10 +8572,11 @@ public final class VpcFunctions {
      *             .ids(fooRouteTable.id())
      *             .build());
      * 
-     *         ctx.export(&#34;routeTableIds&#34;, foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(foo -&gt; foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8313,7 +8591,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8339,13 +8618,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;route-tables-datasource-example-name&#34;);
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         final var name = config.get("name").orElse("route-tables-datasource-example-name");
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
+     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()        
      *             .vpcId(fooNetwork.id())
      *             .routeTableName(name)
      *             .description(name)
@@ -8355,10 +8634,11 @@ public final class VpcFunctions {
      *             .ids(fooRouteTable.id())
      *             .build());
      * 
-     *         ctx.export(&#34;routeTableIds&#34;, foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(foo -&gt; foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8373,7 +8653,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8399,13 +8680,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;route-tables-datasource-example-name&#34;);
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         final var name = config.get("name").orElse("route-tables-datasource-example-name");
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
+     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()        
      *             .vpcId(fooNetwork.id())
      *             .routeTableName(name)
      *             .description(name)
@@ -8415,10 +8696,11 @@ public final class VpcFunctions {
      *             .ids(fooRouteTable.id())
      *             .build());
      * 
-     *         ctx.export(&#34;routeTableIds&#34;, foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(foo -&gt; foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8433,7 +8715,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8459,13 +8742,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;route-tables-datasource-example-name&#34;);
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         final var name = config.get("name").orElse("route-tables-datasource-example-name");
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
+     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()        
      *             .vpcId(fooNetwork.id())
      *             .routeTableName(name)
      *             .description(name)
@@ -8475,10 +8758,11 @@ public final class VpcFunctions {
      *             .ids(fooRouteTable.id())
      *             .build());
      * 
-     *         ctx.export(&#34;routeTableIds&#34;, foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(foo -&gt; foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *         ctx.export("routeTableIds", foo.applyValue(getRouteTablesResult -> getRouteTablesResult).applyValue(foo -> foo.applyValue(getRouteTablesResult -> getRouteTablesResult.ids())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8494,7 +8778,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8516,14 +8801,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var routerInterfacesDs = VpcFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .nameRegex(&#34;^testenv&#34;)
-     *             .status(&#34;Active&#34;)
+     *             .nameRegex("^testenv")
+     *             .status("Active")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRouterInterfaceId&#34;, routerInterfacesDs.applyValue(getRouterInterfacesResult -&gt; getRouterInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.applyValue(getRouterInterfacesResult -> getRouterInterfacesResult.interfaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8539,7 +8825,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8561,14 +8848,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var routerInterfacesDs = VpcFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .nameRegex(&#34;^testenv&#34;)
-     *             .status(&#34;Active&#34;)
+     *             .nameRegex("^testenv")
+     *             .status("Active")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRouterInterfaceId&#34;, routerInterfacesDs.applyValue(getRouterInterfacesResult -&gt; getRouterInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.applyValue(getRouterInterfacesResult -> getRouterInterfacesResult.interfaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8584,7 +8872,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8606,14 +8895,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var routerInterfacesDs = VpcFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .nameRegex(&#34;^testenv&#34;)
-     *             .status(&#34;Active&#34;)
+     *             .nameRegex("^testenv")
+     *             .status("Active")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRouterInterfaceId&#34;, routerInterfacesDs.applyValue(getRouterInterfacesResult -&gt; getRouterInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.applyValue(getRouterInterfacesResult -> getRouterInterfacesResult.interfaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8629,7 +8919,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8651,14 +8942,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var routerInterfacesDs = VpcFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .nameRegex(&#34;^testenv&#34;)
-     *             .status(&#34;Active&#34;)
+     *             .nameRegex("^testenv")
+     *             .status("Active")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRouterInterfaceId&#34;, routerInterfacesDs.applyValue(getRouterInterfacesResult -&gt; getRouterInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.applyValue(getRouterInterfacesResult -> getRouterInterfacesResult.interfaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8674,7 +8966,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8696,14 +8989,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var routerInterfacesDs = VpcFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .nameRegex(&#34;^testenv&#34;)
-     *             .status(&#34;Active&#34;)
+     *             .nameRegex("^testenv")
+     *             .status("Active")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRouterInterfaceId&#34;, routerInterfacesDs.applyValue(getRouterInterfacesResult -&gt; getRouterInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.applyValue(getRouterInterfacesResult -> getRouterInterfacesResult.interfaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8719,7 +9013,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8741,14 +9036,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var routerInterfacesDs = VpcFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .nameRegex(&#34;^testenv&#34;)
-     *             .status(&#34;Active&#34;)
+     *             .nameRegex("^testenv")
+     *             .status("Active")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRouterInterfaceId&#34;, routerInterfacesDs.applyValue(getRouterInterfacesResult -&gt; getRouterInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstRouterInterfaceId", routerInterfacesDs.applyValue(getRouterInterfacesResult -> getRouterInterfacesResult.interfaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8763,7 +9059,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8799,39 +9096,39 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;snat-entry-example-name&#34;);
+     *         final var name = config.get("name").orElse("snat-entry-example-name");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
      *             .name(name)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .cidrBlock("172.16.0.0/21")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .specification(&#34;Small&#34;)
+     *             .specification("Small")
      *             .name(name)
      *             .build());
      * 
-     *         var fooEipAddress = new EipAddress(&#34;fooEipAddress&#34;, EipAddressArgs.builder()        
+     *         var fooEipAddress = new EipAddress("fooEipAddress", EipAddressArgs.builder()        
      *             .addressName(name)
      *             .build());
      * 
-     *         var fooEipAssociation = new EipAssociation(&#34;fooEipAssociation&#34;, EipAssociationArgs.builder()        
+     *         var fooEipAssociation = new EipAssociation("fooEipAssociation", EipAssociationArgs.builder()        
      *             .allocationId(fooEipAddress.id())
      *             .instanceId(fooNatGateway.id())
      *             .build());
      * 
-     *         var fooSnatEntry = new SnatEntry(&#34;fooSnatEntry&#34;, SnatEntryArgs.builder()        
+     *         var fooSnatEntry = new SnatEntry("fooSnatEntry", SnatEntryArgs.builder()        
      *             .snatTableId(fooNatGateway.snatTableIds())
      *             .sourceVswitchId(fooSwitch.id())
      *             .snatIp(fooEipAddress.ipAddress())
@@ -8843,7 +9140,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8858,7 +9156,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8894,39 +9193,39 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;snat-entry-example-name&#34;);
+     *         final var name = config.get("name").orElse("snat-entry-example-name");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
      *             .name(name)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .cidrBlock("172.16.0.0/21")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .specification(&#34;Small&#34;)
+     *             .specification("Small")
      *             .name(name)
      *             .build());
      * 
-     *         var fooEipAddress = new EipAddress(&#34;fooEipAddress&#34;, EipAddressArgs.builder()        
+     *         var fooEipAddress = new EipAddress("fooEipAddress", EipAddressArgs.builder()        
      *             .addressName(name)
      *             .build());
      * 
-     *         var fooEipAssociation = new EipAssociation(&#34;fooEipAssociation&#34;, EipAssociationArgs.builder()        
+     *         var fooEipAssociation = new EipAssociation("fooEipAssociation", EipAssociationArgs.builder()        
      *             .allocationId(fooEipAddress.id())
      *             .instanceId(fooNatGateway.id())
      *             .build());
      * 
-     *         var fooSnatEntry = new SnatEntry(&#34;fooSnatEntry&#34;, SnatEntryArgs.builder()        
+     *         var fooSnatEntry = new SnatEntry("fooSnatEntry", SnatEntryArgs.builder()        
      *             .snatTableId(fooNatGateway.snatTableIds())
      *             .sourceVswitchId(fooSwitch.id())
      *             .snatIp(fooEipAddress.ipAddress())
@@ -8938,7 +9237,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8953,7 +9253,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8989,39 +9290,39 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;snat-entry-example-name&#34;);
+     *         final var name = config.get("name").orElse("snat-entry-example-name");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
      *             .name(name)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .cidrBlock("172.16.0.0/21")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .specification(&#34;Small&#34;)
+     *             .specification("Small")
      *             .name(name)
      *             .build());
      * 
-     *         var fooEipAddress = new EipAddress(&#34;fooEipAddress&#34;, EipAddressArgs.builder()        
+     *         var fooEipAddress = new EipAddress("fooEipAddress", EipAddressArgs.builder()        
      *             .addressName(name)
      *             .build());
      * 
-     *         var fooEipAssociation = new EipAssociation(&#34;fooEipAssociation&#34;, EipAssociationArgs.builder()        
+     *         var fooEipAssociation = new EipAssociation("fooEipAssociation", EipAssociationArgs.builder()        
      *             .allocationId(fooEipAddress.id())
      *             .instanceId(fooNatGateway.id())
      *             .build());
      * 
-     *         var fooSnatEntry = new SnatEntry(&#34;fooSnatEntry&#34;, SnatEntryArgs.builder()        
+     *         var fooSnatEntry = new SnatEntry("fooSnatEntry", SnatEntryArgs.builder()        
      *             .snatTableId(fooNatGateway.snatTableIds())
      *             .sourceVswitchId(fooSwitch.id())
      *             .snatIp(fooEipAddress.ipAddress())
@@ -9033,7 +9334,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9048,7 +9350,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9084,39 +9387,39 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;snat-entry-example-name&#34;);
+     *         final var name = config.get("name").orElse("snat-entry-example-name");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
      *             .name(name)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+     *             .cidrBlock("172.16.0.0/21")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
      *             .vpcId(fooNetwork.id())
-     *             .specification(&#34;Small&#34;)
+     *             .specification("Small")
      *             .name(name)
      *             .build());
      * 
-     *         var fooEipAddress = new EipAddress(&#34;fooEipAddress&#34;, EipAddressArgs.builder()        
+     *         var fooEipAddress = new EipAddress("fooEipAddress", EipAddressArgs.builder()        
      *             .addressName(name)
      *             .build());
      * 
-     *         var fooEipAssociation = new EipAssociation(&#34;fooEipAssociation&#34;, EipAssociationArgs.builder()        
+     *         var fooEipAssociation = new EipAssociation("fooEipAssociation", EipAssociationArgs.builder()        
      *             .allocationId(fooEipAddress.id())
      *             .instanceId(fooNatGateway.id())
      *             .build());
      * 
-     *         var fooSnatEntry = new SnatEntry(&#34;fooSnatEntry&#34;, SnatEntryArgs.builder()        
+     *         var fooSnatEntry = new SnatEntry("fooSnatEntry", SnatEntryArgs.builder()        
      *             .snatTableId(fooNatGateway.snatTableIds())
      *             .sourceVswitchId(fooSwitch.id())
      *             .snatIp(fooEipAddress.ipAddress())
@@ -9128,7 +9431,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9141,7 +9445,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9163,15 +9468,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
-     *             .ids(&#34;fake-cert-id&#34;)
-     *             .sslVpnServerId(&#34;fake-server-id&#34;)
-     *             .outputFile(&#34;/tmp/clientcert&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("fake-cert-id")
+     *             .sslVpnServerId("fake-server-id")
+     *             .outputFile("/tmp/clientcert")
+     *             .nameRegex("^foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9184,7 +9490,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9206,15 +9513,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
-     *             .ids(&#34;fake-cert-id&#34;)
-     *             .sslVpnServerId(&#34;fake-server-id&#34;)
-     *             .outputFile(&#34;/tmp/clientcert&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("fake-cert-id")
+     *             .sslVpnServerId("fake-server-id")
+     *             .outputFile("/tmp/clientcert")
+     *             .nameRegex("^foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9227,7 +9535,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9249,15 +9558,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
-     *             .ids(&#34;fake-cert-id&#34;)
-     *             .sslVpnServerId(&#34;fake-server-id&#34;)
-     *             .outputFile(&#34;/tmp/clientcert&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("fake-cert-id")
+     *             .sslVpnServerId("fake-server-id")
+     *             .outputFile("/tmp/clientcert")
+     *             .nameRegex("^foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9270,7 +9580,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9292,15 +9603,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
-     *             .ids(&#34;fake-cert-id&#34;)
-     *             .sslVpnServerId(&#34;fake-server-id&#34;)
-     *             .outputFile(&#34;/tmp/clientcert&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("fake-cert-id")
+     *             .sslVpnServerId("fake-server-id")
+     *             .outputFile("/tmp/clientcert")
+     *             .nameRegex("^foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9313,7 +9625,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9335,15 +9648,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
-     *             .ids(&#34;fake-cert-id&#34;)
-     *             .sslVpnServerId(&#34;fake-server-id&#34;)
-     *             .outputFile(&#34;/tmp/clientcert&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("fake-cert-id")
+     *             .sslVpnServerId("fake-server-id")
+     *             .outputFile("/tmp/clientcert")
+     *             .nameRegex("^foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9356,7 +9670,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9378,15 +9693,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
-     *             .ids(&#34;fake-cert-id&#34;)
-     *             .sslVpnServerId(&#34;fake-server-id&#34;)
-     *             .outputFile(&#34;/tmp/clientcert&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("fake-cert-id")
+     *             .sslVpnServerId("fake-server-id")
+     *             .outputFile("/tmp/clientcert")
+     *             .nameRegex("^foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9399,7 +9715,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9421,15 +9738,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
-     *             .ids(&#34;fake-server-id&#34;)
-     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
-     *             .outputFile(&#34;/tmp/sslserver&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("fake-server-id")
+     *             .vpnGatewayId("fake-vpn-id")
+     *             .outputFile("/tmp/sslserver")
+     *             .nameRegex("^foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9442,7 +9760,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9464,15 +9783,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
-     *             .ids(&#34;fake-server-id&#34;)
-     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
-     *             .outputFile(&#34;/tmp/sslserver&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("fake-server-id")
+     *             .vpnGatewayId("fake-vpn-id")
+     *             .outputFile("/tmp/sslserver")
+     *             .nameRegex("^foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9485,7 +9805,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9507,15 +9828,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
-     *             .ids(&#34;fake-server-id&#34;)
-     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
-     *             .outputFile(&#34;/tmp/sslserver&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("fake-server-id")
+     *             .vpnGatewayId("fake-vpn-id")
+     *             .outputFile("/tmp/sslserver")
+     *             .nameRegex("^foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9528,7 +9850,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9550,15 +9873,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
-     *             .ids(&#34;fake-server-id&#34;)
-     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
-     *             .outputFile(&#34;/tmp/sslserver&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("fake-server-id")
+     *             .vpnGatewayId("fake-vpn-id")
+     *             .outputFile("/tmp/sslserver")
+     *             .nameRegex("^foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9571,7 +9895,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9593,15 +9918,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
-     *             .ids(&#34;fake-server-id&#34;)
-     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
-     *             .outputFile(&#34;/tmp/sslserver&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("fake-server-id")
+     *             .vpnGatewayId("fake-vpn-id")
+     *             .outputFile("/tmp/sslserver")
+     *             .nameRegex("^foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9614,7 +9940,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9636,15 +9963,16 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
-     *             .ids(&#34;fake-server-id&#34;)
-     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
-     *             .outputFile(&#34;/tmp/sslserver&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("fake-server-id")
+     *             .vpnGatewayId("fake-vpn-id")
+     *             .outputFile("/tmp/sslserver")
+     *             .nameRegex("^foo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9657,7 +9985,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9685,17 +10014,17 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
+     *         final var name = config.get("name").orElse("vswitchDatasourceName");
      *         final var default = AlicloudFunctions.getZones();
      * 
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/16")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
      *             .vswitchName(name)
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .vpcId(vpc.id())
      *             .availabilityZone(default_.zones()[0].id())
      *             .build());
@@ -9706,7 +10035,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9719,7 +10049,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9747,17 +10078,17 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
+     *         final var name = config.get("name").orElse("vswitchDatasourceName");
      *         final var default = AlicloudFunctions.getZones();
      * 
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/16")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
      *             .vswitchName(name)
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .vpcId(vpc.id())
      *             .availabilityZone(default_.zones()[0].id())
      *             .build());
@@ -9768,7 +10099,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9781,7 +10113,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9809,17 +10142,17 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
+     *         final var name = config.get("name").orElse("vswitchDatasourceName");
      *         final var default = AlicloudFunctions.getZones();
      * 
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/16")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
      *             .vswitchName(name)
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .vpcId(vpc.id())
      *             .availabilityZone(default_.zones()[0].id())
      *             .build());
@@ -9830,7 +10163,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9843,7 +10177,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9871,17 +10206,17 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
+     *         final var name = config.get("name").orElse("vswitchDatasourceName");
      *         final var default = AlicloudFunctions.getZones();
      * 
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/16")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
      *             .vswitchName(name)
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .vpcId(vpc.id())
      *             .availabilityZone(default_.zones()[0].id())
      *             .build());
@@ -9892,7 +10227,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9905,7 +10241,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9933,17 +10270,17 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
+     *         final var name = config.get("name").orElse("vswitchDatasourceName");
      *         final var default = AlicloudFunctions.getZones();
      * 
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/16")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
      *             .vswitchName(name)
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .vpcId(vpc.id())
      *             .availabilityZone(default_.zones()[0].id())
      *             .build());
@@ -9954,7 +10291,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9967,7 +10305,8 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9995,17 +10334,17 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
+     *         final var name = config.get("name").orElse("vswitchDatasourceName");
      *         final var default = AlicloudFunctions.getZones();
      * 
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/16")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
      *             .vswitchName(name)
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .vpcId(vpc.id())
      *             .availabilityZone(default_.zones()[0].id())
      *             .build());
@@ -10016,7 +10355,8 @@ public final class VpcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10033,7 +10373,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10055,21 +10396,22 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId1", ids.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Created&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
+     *             .status("Created")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId2", status.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10086,7 +10428,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10108,21 +10451,22 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId1", ids.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Created&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
+     *             .status("Created")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId2", status.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10139,7 +10483,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10161,21 +10506,22 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId1", ids.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Created&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
+     *             .status("Created")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId2", status.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10192,7 +10538,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10214,21 +10561,22 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId1", ids.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorFilterEgressRules(GetTrafficMirrorFilterEgressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Created&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
+     *             .status("Created")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterEgressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterEgressRulesResult -&gt; getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterEgressRuleId2", status.applyValue(getTrafficMirrorFilterEgressRulesResult -> getTrafficMirrorFilterEgressRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10245,7 +10593,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10267,21 +10616,22 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId1", ids.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Created&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
+     *             .status("Created")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId2", status.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10298,7 +10648,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10320,21 +10671,22 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId1", ids.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Created&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
+     *             .status("Created")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId2", status.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10351,7 +10703,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10373,21 +10726,22 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId1", ids.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Created&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
+     *             .status("Created")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId2", status.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10404,7 +10758,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10426,21 +10781,22 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId1&#34;, ids.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId1", ids.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorFilterIngressRules(GetTrafficMirrorFilterIngressRulesArgs.builder()
-     *             .trafficMirrorFilterId(&#34;example_traffic_mirror_filter_id&#34;)
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Created&#34;)
+     *             .trafficMirrorFilterId("example_traffic_mirror_filter_id")
+     *             .ids("example_id")
+     *             .status("Created")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterIngressRuleId2&#34;, status.applyValue(getTrafficMirrorFilterIngressRulesResult -&gt; getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterIngressRuleId2", status.applyValue(getTrafficMirrorFilterIngressRulesResult -> getTrafficMirrorFilterIngressRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10457,7 +10813,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10479,28 +10836,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId1&#34;, ids.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId1", ids.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .nameRegex(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .nameRegex("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId2&#34;, nameRegex.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .trafficMirrorFilterName(&#34;example_traffic_mirror_filter_name&#34;)
+     *             .trafficMirrorFilterName("example_traffic_mirror_filter_name")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId3&#34;, filterName.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .status(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .status("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId4&#34;, status.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId4", status.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10517,7 +10875,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10539,28 +10898,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId1&#34;, ids.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId1", ids.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .nameRegex(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .nameRegex("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId2&#34;, nameRegex.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .trafficMirrorFilterName(&#34;example_traffic_mirror_filter_name&#34;)
+     *             .trafficMirrorFilterName("example_traffic_mirror_filter_name")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId3&#34;, filterName.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .status(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .status("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId4&#34;, status.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId4", status.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10577,7 +10937,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10599,28 +10960,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId1&#34;, ids.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId1", ids.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .nameRegex(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .nameRegex("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId2&#34;, nameRegex.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .trafficMirrorFilterName(&#34;example_traffic_mirror_filter_name&#34;)
+     *             .trafficMirrorFilterName("example_traffic_mirror_filter_name")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId3&#34;, filterName.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .status(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .status("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId4&#34;, status.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId4", status.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10637,7 +10999,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10659,28 +11022,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId1&#34;, ids.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId1", ids.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .nameRegex(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .nameRegex("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId2&#34;, nameRegex.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .trafficMirrorFilterName(&#34;example_traffic_mirror_filter_name&#34;)
+     *             .trafficMirrorFilterName("example_traffic_mirror_filter_name")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId3&#34;, filterName.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .status(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .status("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId4&#34;, status.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId4", status.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10697,7 +11061,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10719,28 +11084,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId1&#34;, ids.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId1", ids.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .nameRegex(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .nameRegex("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId2&#34;, nameRegex.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .trafficMirrorFilterName(&#34;example_traffic_mirror_filter_name&#34;)
+     *             .trafficMirrorFilterName("example_traffic_mirror_filter_name")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId3&#34;, filterName.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .status(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .status("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId4&#34;, status.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId4", status.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10757,7 +11123,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10779,28 +11146,29 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId1&#34;, ids.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId1", ids.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var nameRegex = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .nameRegex(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .nameRegex("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId2&#34;, nameRegex.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId2", nameRegex.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var filterName = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .trafficMirrorFilterName(&#34;example_traffic_mirror_filter_name&#34;)
+     *             .trafficMirrorFilterName("example_traffic_mirror_filter_name")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId3&#34;, filterName.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId3", filterName.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorFilters(GetTrafficMirrorFiltersArgs.builder()
-     *             .status(&#34;^my-TrafficMirrorFilter&#34;)
+     *             .status("^my-TrafficMirrorFilter")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorFilterId4&#34;, status.applyValue(getTrafficMirrorFiltersResult -&gt; getTrafficMirrorFiltersResult.filters()[0].id()));
+     *         ctx.export("vpcTrafficMirrorFilterId4", status.applyValue(getTrafficMirrorFiltersResult -> getTrafficMirrorFiltersResult.filters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10819,7 +11187,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10841,12 +11210,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = VpcFunctions.getTrafficMirrorService(GetTrafficMirrorServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10865,7 +11235,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10887,12 +11258,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = VpcFunctions.getTrafficMirrorService(GetTrafficMirrorServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10911,7 +11283,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10933,12 +11306,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = VpcFunctions.getTrafficMirrorService(GetTrafficMirrorServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10957,7 +11331,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10979,12 +11354,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = VpcFunctions.getTrafficMirrorService(GetTrafficMirrorServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11003,7 +11379,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11025,12 +11402,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = VpcFunctions.getTrafficMirrorService(GetTrafficMirrorServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11049,7 +11427,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11071,12 +11450,13 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = VpcFunctions.getTrafficMirrorService(GetTrafficMirrorServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11093,7 +11473,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11115,60 +11496,61 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId1&#34;, ids.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId1", ids.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .nameRegex(&#34;^my-TrafficMirrorSession&#34;)
+     *             .nameRegex("^my-TrafficMirrorSession")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId2&#34;, nameRegex.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .enabled(&#34;false&#34;)
+     *             .ids("example_id")
+     *             .enabled("false")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId3&#34;, enabled.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .priority(&#34;1&#34;)
+     *             .ids("example_id")
+     *             .priority("1")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId4&#34;, priority.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId4", priority.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorFilterId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorFilterId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId5&#34;, filterId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorSessionName(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorSessionName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId6&#34;, sessionName.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorSourceId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorSourceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId7&#34;, sourceId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorTargetId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorTargetId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId8&#34;, targetId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Created&#34;)
+     *             .ids("example_id")
+     *             .status("Created")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId9&#34;, status.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId9", status.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11185,7 +11567,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11207,60 +11590,61 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId1&#34;, ids.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId1", ids.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .nameRegex(&#34;^my-TrafficMirrorSession&#34;)
+     *             .nameRegex("^my-TrafficMirrorSession")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId2&#34;, nameRegex.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .enabled(&#34;false&#34;)
+     *             .ids("example_id")
+     *             .enabled("false")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId3&#34;, enabled.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .priority(&#34;1&#34;)
+     *             .ids("example_id")
+     *             .priority("1")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId4&#34;, priority.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId4", priority.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorFilterId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorFilterId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId5&#34;, filterId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorSessionName(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorSessionName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId6&#34;, sessionName.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorSourceId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorSourceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId7&#34;, sourceId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorTargetId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorTargetId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId8&#34;, targetId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Created&#34;)
+     *             .ids("example_id")
+     *             .status("Created")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId9&#34;, status.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId9", status.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11277,7 +11661,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11299,60 +11684,61 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId1&#34;, ids.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId1", ids.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .nameRegex(&#34;^my-TrafficMirrorSession&#34;)
+     *             .nameRegex("^my-TrafficMirrorSession")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId2&#34;, nameRegex.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .enabled(&#34;false&#34;)
+     *             .ids("example_id")
+     *             .enabled("false")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId3&#34;, enabled.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .priority(&#34;1&#34;)
+     *             .ids("example_id")
+     *             .priority("1")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId4&#34;, priority.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId4", priority.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorFilterId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorFilterId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId5&#34;, filterId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorSessionName(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorSessionName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId6&#34;, sessionName.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorSourceId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorSourceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId7&#34;, sourceId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorTargetId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorTargetId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId8&#34;, targetId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Created&#34;)
+     *             .ids("example_id")
+     *             .status("Created")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId9&#34;, status.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId9", status.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11369,7 +11755,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11391,60 +11778,61 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId1&#34;, ids.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId1", ids.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .nameRegex(&#34;^my-TrafficMirrorSession&#34;)
+     *             .nameRegex("^my-TrafficMirrorSession")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId2&#34;, nameRegex.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .enabled(&#34;false&#34;)
+     *             .ids("example_id")
+     *             .enabled("false")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId3&#34;, enabled.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .priority(&#34;1&#34;)
+     *             .ids("example_id")
+     *             .priority("1")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId4&#34;, priority.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId4", priority.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorFilterId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorFilterId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId5&#34;, filterId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorSessionName(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorSessionName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId6&#34;, sessionName.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorSourceId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorSourceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId7&#34;, sourceId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorTargetId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorTargetId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId8&#34;, targetId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Created&#34;)
+     *             .ids("example_id")
+     *             .status("Created")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId9&#34;, status.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId9", status.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11461,7 +11849,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11483,60 +11872,61 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId1&#34;, ids.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId1", ids.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .nameRegex(&#34;^my-TrafficMirrorSession&#34;)
+     *             .nameRegex("^my-TrafficMirrorSession")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId2&#34;, nameRegex.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .enabled(&#34;false&#34;)
+     *             .ids("example_id")
+     *             .enabled("false")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId3&#34;, enabled.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .priority(&#34;1&#34;)
+     *             .ids("example_id")
+     *             .priority("1")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId4&#34;, priority.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId4", priority.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorFilterId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorFilterId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId5&#34;, filterId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorSessionName(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorSessionName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId6&#34;, sessionName.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorSourceId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorSourceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId7&#34;, sourceId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorTargetId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorTargetId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId8&#34;, targetId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Created&#34;)
+     *             .ids("example_id")
+     *             .status("Created")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId9&#34;, status.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId9", status.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11553,7 +11943,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11575,60 +11966,61 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId1&#34;, ids.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId1", ids.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var nameRegex = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .nameRegex(&#34;^my-TrafficMirrorSession&#34;)
+     *             .nameRegex("^my-TrafficMirrorSession")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId2&#34;, nameRegex.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId2", nameRegex.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var enabled = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .enabled(&#34;false&#34;)
+     *             .ids("example_id")
+     *             .enabled("false")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId3&#34;, enabled.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId3", enabled.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var priority = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .priority(&#34;1&#34;)
+     *             .ids("example_id")
+     *             .priority("1")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId4&#34;, priority.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId4", priority.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var filterId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorFilterId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorFilterId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId5&#34;, filterId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId5", filterId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var sessionName = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorSessionName(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorSessionName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId6&#34;, sessionName.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId6", sessionName.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var sourceId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorSourceId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorSourceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId7&#34;, sourceId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId7", sourceId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var targetId = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .trafficMirrorTargetId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .trafficMirrorTargetId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId8&#34;, targetId.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId8", targetId.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *         final var status = VpcFunctions.getTrafficMirrorSessions(GetTrafficMirrorSessionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Created&#34;)
+     *             .ids("example_id")
+     *             .status("Created")
      *             .build());
      * 
-     *         ctx.export(&#34;vpcTrafficMirrorSessionId9&#34;, status.applyValue(getTrafficMirrorSessionsResult -&gt; getTrafficMirrorSessionsResult.sessions()[0].id()));
+     *         ctx.export("vpcTrafficMirrorSessionId9", status.applyValue(getTrafficMirrorSessionsResult -> getTrafficMirrorSessionsResult.sessions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11645,7 +12037,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11667,14 +12060,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getVpcFlowLogs(GetVpcFlowLogsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstVpcFlowLogId&#34;, example.applyValue(getVpcFlowLogsResult -&gt; getVpcFlowLogsResult.logs()[0].id()));
+     *         ctx.export("firstVpcFlowLogId", example.applyValue(getVpcFlowLogsResult -> getVpcFlowLogsResult.logs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11691,7 +12085,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11713,14 +12108,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getVpcFlowLogs(GetVpcFlowLogsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstVpcFlowLogId&#34;, example.applyValue(getVpcFlowLogsResult -&gt; getVpcFlowLogsResult.logs()[0].id()));
+     *         ctx.export("firstVpcFlowLogId", example.applyValue(getVpcFlowLogsResult -> getVpcFlowLogsResult.logs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11737,7 +12133,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11759,14 +12156,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getVpcFlowLogs(GetVpcFlowLogsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstVpcFlowLogId&#34;, example.applyValue(getVpcFlowLogsResult -&gt; getVpcFlowLogsResult.logs()[0].id()));
+     *         ctx.export("firstVpcFlowLogId", example.applyValue(getVpcFlowLogsResult -> getVpcFlowLogsResult.logs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11783,7 +12181,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11805,14 +12204,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getVpcFlowLogs(GetVpcFlowLogsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstVpcFlowLogId&#34;, example.applyValue(getVpcFlowLogsResult -&gt; getVpcFlowLogsResult.logs()[0].id()));
+     *         ctx.export("firstVpcFlowLogId", example.applyValue(getVpcFlowLogsResult -> getVpcFlowLogsResult.logs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11829,7 +12229,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11851,14 +12252,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getVpcFlowLogs(GetVpcFlowLogsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstVpcFlowLogId&#34;, example.applyValue(getVpcFlowLogsResult -&gt; getVpcFlowLogsResult.logs()[0].id()));
+     *         ctx.export("firstVpcFlowLogId", example.applyValue(getVpcFlowLogsResult -> getVpcFlowLogsResult.logs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -11875,7 +12277,8 @@ public final class VpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -11897,14 +12300,15 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = VpcFunctions.getVpcFlowLogs(GetVpcFlowLogsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstVpcFlowLogId&#34;, example.applyValue(getVpcFlowLogsResult -&gt; getVpcFlowLogsResult.logs()[0].id()));
+     *         ctx.export("firstVpcFlowLogId", example.applyValue(getVpcFlowLogsResult -> getVpcFlowLogsResult.logs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

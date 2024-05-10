@@ -38,7 +38,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -73,64 +74,65 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         final var myName = String.format(&#34;%s-%s&#34;, name,defaultInteger.result());
+ *         final var myName = String.format("%s-%s", name,defaultInteger.result());
  * 
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(myName)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(myName)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(myName)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
+ *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()        
  *             .minSize(0)
  *             .maxSize(1)
  *             .scalingGroupName(myName)
  *             .removalPolicies(            
- *                 &#34;OldestInstance&#34;,
- *                 &#34;NewestInstance&#34;)
+ *                 "OldestInstance",
+ *                 "NewestInstance")
  *             .vswitchIds(defaultSwitch.id())
- *             .groupType(&#34;ECI&#34;)
+ *             .groupType("ECI")
  *             .build());
  * 
- *         var defaultEciScalingConfiguration = new EciScalingConfiguration(&#34;defaultEciScalingConfiguration&#34;, EciScalingConfigurationArgs.builder()        
+ *         var defaultEciScalingConfiguration = new EciScalingConfiguration("defaultEciScalingConfiguration", EciScalingConfigurationArgs.builder()        
  *             .scalingGroupId(defaultScalingGroup.id())
  *             .cpu(2)
  *             .memory(4)
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .forceDelete(true)
  *             .active(true)
- *             .containerGroupName(&#34;container-group-1649839595174&#34;)
+ *             .containerGroupName("container-group-1649839595174")
  *             .containers(EciScalingConfigurationContainerArgs.builder()
- *                 .name(&#34;container-1&#34;)
- *                 .image(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5&#34;)
+ *                 .name("container-1")
+ *                 .image("registry-vpc.cn-hangzhou.aliyuncs.com/eci_open/alpine:3.5")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

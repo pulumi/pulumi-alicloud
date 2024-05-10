@@ -37,7 +37,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -59,13 +60,14 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogEndUserProductExampleId&#34;, default_.endUserProducts()[0].id());
+     *         ctx.export("alicloudServiceCatalogEndUserProductExampleId", default_.endUserProducts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -80,7 +82,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -102,13 +105,14 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogEndUserProductExampleId&#34;, default_.endUserProducts()[0].id());
+     *         ctx.export("alicloudServiceCatalogEndUserProductExampleId", default_.endUserProducts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -123,7 +127,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -145,13 +150,14 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogEndUserProductExampleId&#34;, default_.endUserProducts()[0].id());
+     *         ctx.export("alicloudServiceCatalogEndUserProductExampleId", default_.endUserProducts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -166,7 +172,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -188,13 +195,14 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogEndUserProductExampleId&#34;, default_.endUserProducts()[0].id());
+     *         ctx.export("alicloudServiceCatalogEndUserProductExampleId", default_.endUserProducts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -209,7 +217,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -231,13 +240,14 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogEndUserProductExampleId&#34;, default_.endUserProducts()[0].id());
+     *         ctx.export("alicloudServiceCatalogEndUserProductExampleId", default_.endUserProducts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -252,7 +262,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -274,13 +285,14 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogEndUserProductExampleId&#34;, default_.endUserProducts()[0].id());
+     *         ctx.export("alicloudServiceCatalogEndUserProductExampleId", default_.endUserProducts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -297,7 +309,8 @@ public final class ServicecatalogFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -320,17 +333,18 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
      *         final var defaultGetLaunchOptions = ServicecatalogFunctions.getLaunchOptions(GetLaunchOptionsArgs.builder()
-     *             .productId(&#34;data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id&#34;)
+     *             .productId("data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogLaunchOptionExampleId&#34;, defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -&gt; getLaunchOptionsResult.launchOptions()[0].id()));
+     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -> getLaunchOptionsResult.launchOptions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -347,7 +361,8 @@ public final class ServicecatalogFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -370,17 +385,18 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
      *         final var defaultGetLaunchOptions = ServicecatalogFunctions.getLaunchOptions(GetLaunchOptionsArgs.builder()
-     *             .productId(&#34;data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id&#34;)
+     *             .productId("data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogLaunchOptionExampleId&#34;, defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -&gt; getLaunchOptionsResult.launchOptions()[0].id()));
+     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -> getLaunchOptionsResult.launchOptions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -397,7 +413,8 @@ public final class ServicecatalogFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -420,17 +437,18 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
      *         final var defaultGetLaunchOptions = ServicecatalogFunctions.getLaunchOptions(GetLaunchOptionsArgs.builder()
-     *             .productId(&#34;data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id&#34;)
+     *             .productId("data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogLaunchOptionExampleId&#34;, defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -&gt; getLaunchOptionsResult.launchOptions()[0].id()));
+     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -> getLaunchOptionsResult.launchOptions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -447,7 +465,8 @@ public final class ServicecatalogFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -470,17 +489,18 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
      *         final var defaultGetLaunchOptions = ServicecatalogFunctions.getLaunchOptions(GetLaunchOptionsArgs.builder()
-     *             .productId(&#34;data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id&#34;)
+     *             .productId("data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogLaunchOptionExampleId&#34;, defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -&gt; getLaunchOptionsResult.launchOptions()[0].id()));
+     *         ctx.export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -> getLaunchOptionsResult.launchOptions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -495,7 +515,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -521,10 +542,11 @@ public final class ServicecatalogFunctions {
      *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
+     *         ctx.export("alicloudServiceCatalogPortfolioExampleId", default_.portfolios()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -539,7 +561,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -565,10 +588,11 @@ public final class ServicecatalogFunctions {
      *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
+     *         ctx.export("alicloudServiceCatalogPortfolioExampleId", default_.portfolios()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -583,7 +607,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -609,10 +634,11 @@ public final class ServicecatalogFunctions {
      *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
+     *         ctx.export("alicloudServiceCatalogPortfolioExampleId", default_.portfolios()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -627,7 +653,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -653,10 +680,11 @@ public final class ServicecatalogFunctions {
      *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
+     *         ctx.export("alicloudServiceCatalogPortfolioExampleId", default_.portfolios()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -671,7 +699,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -697,10 +726,11 @@ public final class ServicecatalogFunctions {
      *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
+     *         ctx.export("alicloudServiceCatalogPortfolioExampleId", default_.portfolios()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -715,7 +745,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -741,10 +772,11 @@ public final class ServicecatalogFunctions {
      *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
+     *         ctx.export("alicloudServiceCatalogPortfolioExampleId", default_.portfolios()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -762,7 +794,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -784,13 +817,14 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProductAsEndUsers(GetProductAsEndUsersArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProductAsEndUserExampleId&#34;, default_.users()[0].id());
+     *         ctx.export("alicloudServiceCatalogProductAsEndUserExampleId", default_.users()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -808,7 +842,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -830,13 +865,14 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProductAsEndUsers(GetProductAsEndUsersArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProductAsEndUserExampleId&#34;, default_.users()[0].id());
+     *         ctx.export("alicloudServiceCatalogProductAsEndUserExampleId", default_.users()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -854,7 +890,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -876,13 +913,14 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProductAsEndUsers(GetProductAsEndUsersArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProductAsEndUserExampleId&#34;, default_.users()[0].id());
+     *         ctx.export("alicloudServiceCatalogProductAsEndUserExampleId", default_.users()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -900,7 +938,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -922,13 +961,14 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProductAsEndUsers(GetProductAsEndUsersArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProductAsEndUserExampleId&#34;, default_.users()[0].id());
+     *         ctx.export("alicloudServiceCatalogProductAsEndUserExampleId", default_.users()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -946,7 +986,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -968,13 +1009,14 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProductAsEndUsers(GetProductAsEndUsersArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProductAsEndUserExampleId&#34;, default_.users()[0].id());
+     *         ctx.export("alicloudServiceCatalogProductAsEndUserExampleId", default_.users()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -992,7 +1034,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1014,13 +1057,14 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProductAsEndUsers(GetProductAsEndUsersArgs.builder()
-     *             .nameRegex(&#34;ram模板创建&#34;)
+     *             .nameRegex("ram模板创建")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProductAsEndUserExampleId&#34;, default_.users()[0].id());
+     *         ctx.export("alicloudServiceCatalogProductAsEndUserExampleId", default_.users()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1035,7 +1079,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1057,14 +1102,15 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProductVersions(GetProductVersionsArgs.builder()
-     *             .nameRegex(&#34;1.0.0&#34;)
-     *             .productId(&#34;prod-bp125x4k29wb7q&#34;)
+     *             .nameRegex("1.0.0")
+     *             .productId("prod-bp125x4k29wb7q")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProductVersionExampleId&#34;, default_.productVersions()[0].id());
+     *         ctx.export("alicloudServiceCatalogProductVersionExampleId", default_.productVersions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1079,7 +1125,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1101,14 +1148,15 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProductVersions(GetProductVersionsArgs.builder()
-     *             .nameRegex(&#34;1.0.0&#34;)
-     *             .productId(&#34;prod-bp125x4k29wb7q&#34;)
+     *             .nameRegex("1.0.0")
+     *             .productId("prod-bp125x4k29wb7q")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProductVersionExampleId&#34;, default_.productVersions()[0].id());
+     *         ctx.export("alicloudServiceCatalogProductVersionExampleId", default_.productVersions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1123,7 +1171,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1145,14 +1194,15 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProductVersions(GetProductVersionsArgs.builder()
-     *             .nameRegex(&#34;1.0.0&#34;)
-     *             .productId(&#34;prod-bp125x4k29wb7q&#34;)
+     *             .nameRegex("1.0.0")
+     *             .productId("prod-bp125x4k29wb7q")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProductVersionExampleId&#34;, default_.productVersions()[0].id());
+     *         ctx.export("alicloudServiceCatalogProductVersionExampleId", default_.productVersions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1167,7 +1217,8 @@ public final class ServicecatalogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1189,14 +1240,15 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProductVersions(GetProductVersionsArgs.builder()
-     *             .nameRegex(&#34;1.0.0&#34;)
-     *             .productId(&#34;prod-bp125x4k29wb7q&#34;)
+     *             .nameRegex("1.0.0")
+     *             .productId("prod-bp125x4k29wb7q")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProductVersionExampleId&#34;, default_.productVersions()[0].id());
+     *         ctx.export("alicloudServiceCatalogProductVersionExampleId", default_.productVersions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1213,7 +1265,8 @@ public final class ServicecatalogFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1235,14 +1288,15 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProvisionedProducts(GetProvisionedProductsArgs.builder()
-     *             .ids(&#34;IdExample&#34;)
-     *             .nameRegex(&#34;NameRegexExample&#34;)
+     *             .ids("IdExample")
+     *             .nameRegex("NameRegexExample")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProvisionedProductExampleId&#34;, default_.provisionedProducts()[0].id());
+     *         ctx.export("alicloudServiceCatalogProvisionedProductExampleId", default_.provisionedProducts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1259,7 +1313,8 @@ public final class ServicecatalogFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1281,14 +1336,15 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProvisionedProducts(GetProvisionedProductsArgs.builder()
-     *             .ids(&#34;IdExample&#34;)
-     *             .nameRegex(&#34;NameRegexExample&#34;)
+     *             .ids("IdExample")
+     *             .nameRegex("NameRegexExample")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProvisionedProductExampleId&#34;, default_.provisionedProducts()[0].id());
+     *         ctx.export("alicloudServiceCatalogProvisionedProductExampleId", default_.provisionedProducts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1305,7 +1361,8 @@ public final class ServicecatalogFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1327,14 +1384,15 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProvisionedProducts(GetProvisionedProductsArgs.builder()
-     *             .ids(&#34;IdExample&#34;)
-     *             .nameRegex(&#34;NameRegexExample&#34;)
+     *             .ids("IdExample")
+     *             .nameRegex("NameRegexExample")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProvisionedProductExampleId&#34;, default_.provisionedProducts()[0].id());
+     *         ctx.export("alicloudServiceCatalogProvisionedProductExampleId", default_.provisionedProducts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1351,7 +1409,8 @@ public final class ServicecatalogFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1373,14 +1432,15 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProvisionedProducts(GetProvisionedProductsArgs.builder()
-     *             .ids(&#34;IdExample&#34;)
-     *             .nameRegex(&#34;NameRegexExample&#34;)
+     *             .ids("IdExample")
+     *             .nameRegex("NameRegexExample")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProvisionedProductExampleId&#34;, default_.provisionedProducts()[0].id());
+     *         ctx.export("alicloudServiceCatalogProvisionedProductExampleId", default_.provisionedProducts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1397,7 +1457,8 @@ public final class ServicecatalogFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1419,14 +1480,15 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProvisionedProducts(GetProvisionedProductsArgs.builder()
-     *             .ids(&#34;IdExample&#34;)
-     *             .nameRegex(&#34;NameRegexExample&#34;)
+     *             .ids("IdExample")
+     *             .nameRegex("NameRegexExample")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProvisionedProductExampleId&#34;, default_.provisionedProducts()[0].id());
+     *         ctx.export("alicloudServiceCatalogProvisionedProductExampleId", default_.provisionedProducts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1443,7 +1505,8 @@ public final class ServicecatalogFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1465,14 +1528,15 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getProvisionedProducts(GetProvisionedProductsArgs.builder()
-     *             .ids(&#34;IdExample&#34;)
-     *             .nameRegex(&#34;NameRegexExample&#34;)
+     *             .ids("IdExample")
+     *             .nameRegex("NameRegexExample")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogProvisionedProductExampleId&#34;, default_.provisionedProducts()[0].id());
+     *         ctx.export("alicloudServiceCatalogProvisionedProductExampleId", default_.provisionedProducts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

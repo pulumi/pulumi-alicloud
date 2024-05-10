@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,49 +49,50 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Resource(&#34;example&#34;, ResourceArgs.builder()        
- *             .type(&#34;userdefine&#34;)
- *             .name(&#34;user.tf.resource&#34;)
- *             .description(&#34;user tf resource desc&#34;)
- *             .extInfo(&#34;{}&#34;)
- *             .schema(&#34;&#34;&#34;
+ *         var example = new Resource("example", ResourceArgs.builder()        
+ *             .type("userdefine")
+ *             .name("user.tf.resource")
+ *             .description("user tf resource desc")
+ *             .extInfo("{}")
+ *             .schema("""
  *     {
- *       &#34;schema&#34;: [
+ *       "schema": [
  *         {
- *           &#34;column&#34;: &#34;col1&#34;,
- *           &#34;desc&#34;: &#34;col1   desc&#34;,
- *           &#34;ext_info&#34;: {
+ *           "column": "col1",
+ *           "desc": "col1   desc",
+ *           "ext_info": {
  *           },
- *           &#34;required&#34;: true,
- *           &#34;type&#34;: &#34;string&#34;
+ *           "required": true,
+ *           "type": "string"
  *         },
  *         {
- *           &#34;column&#34;: &#34;col2&#34;,
- *           &#34;desc&#34;: &#34;col2   desc&#34;,
- *           &#34;ext_info&#34;: &#34;optional&#34;,
- *           &#34;required&#34;: true,
- *           &#34;type&#34;: &#34;string&#34;
+ *           "column": "col2",
+ *           "desc": "col2   desc",
+ *           "ext_info": "optional",
+ *           "required": true,
+ *           "type": "string"
  *         }
  *       ]
  *     }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var exampleResourceRecord = new ResourceRecord(&#34;exampleResourceRecord&#34;, ResourceRecordArgs.builder()        
+ *         var exampleResourceRecord = new ResourceRecord("exampleResourceRecord", ResourceRecordArgs.builder()        
  *             .resourceName(example.id())
- *             .recordId(&#34;user_tf_resource_1&#34;)
- *             .tag(&#34;resource tag&#34;)
- *             .value(&#34;&#34;&#34;
+ *             .recordId("user_tf_resource_1")
+ *             .tag("resource tag")
+ *             .value("""
  *     {
- *       &#34;col1&#34;: &#34;this is col1 value&#34;,
- *       &#34;col2&#34;: &#34;col2   value&#34;
+ *       "col1": "this is col1 value",
+ *       "col2": "col2   value"
  *     }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

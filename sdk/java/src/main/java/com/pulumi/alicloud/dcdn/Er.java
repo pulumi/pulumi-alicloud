@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,25 +53,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new Er(&#34;default&#34;, ErArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new Er("default", ErArgs.builder()        
  *             .erName(name)
  *             .description(name)
  *             .envConf(ErEnvConfArgs.builder()
  *                 .staging(ErEnvConfStagingArgs.builder()
- *                     .specName(&#34;5ms&#34;)
- *                     .allowedHosts(&#34;example.com&#34;)
+ *                     .specName("5ms")
+ *                     .allowedHosts("example.com")
  *                     .build())
  *                 .production(ErEnvConfProductionArgs.builder()
- *                     .specName(&#34;5ms&#34;)
- *                     .allowedHosts(&#34;example.com&#34;)
+ *                     .specName("5ms")
+ *                     .allowedHosts("example.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

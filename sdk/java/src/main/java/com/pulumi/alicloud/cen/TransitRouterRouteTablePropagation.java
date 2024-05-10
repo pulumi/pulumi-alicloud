@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,43 +63,43 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = CenFunctions.getTransitRouterAvailableResources();
  * 
  *         final var masterZone = default_.resources()[0].masterZones()[0];
  * 
  *         final var slaveZone = default_.resources()[0].slaveZones()[1];
  * 
- *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var exampleMaster = new Switch(&#34;exampleMaster&#34;, SwitchArgs.builder()        
+ *         var exampleMaster = new Switch("exampleMaster", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;192.168.1.0/24&#34;)
+ *             .cidrBlock("192.168.1.0/24")
  *             .vpcId(example.id())
  *             .zoneId(masterZone)
  *             .build());
  * 
- *         var exampleSlave = new Switch(&#34;exampleSlave&#34;, SwitchArgs.builder()        
+ *         var exampleSlave = new Switch("exampleSlave", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;192.168.2.0/24&#34;)
+ *             .cidrBlock("192.168.2.0/24")
  *             .vpcId(example.id())
  *             .zoneId(slaveZone)
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
  *             .cenInstanceName(name)
- *             .protectionLevel(&#34;REDUCED&#34;)
+ *             .protectionLevel("REDUCED")
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
  *             .transitRouterName(name)
  *             .cenId(exampleInstance.id())
  *             .build());
  * 
- *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment(&#34;exampleTransitRouterVpcAttachment&#34;, TransitRouterVpcAttachmentArgs.builder()        
+ *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()        
  *             .cenId(exampleInstance.id())
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .vpcId(example.id())
@@ -115,18 +116,19 @@ import javax.annotation.Nullable;
  *             .transitRouterAttachmentDescription(name)
  *             .build());
  * 
- *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable(&#34;exampleTransitRouterRouteTable&#34;, TransitRouterRouteTableArgs.builder()        
+ *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable("exampleTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()        
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .build());
  * 
- *         var exampleTransitRouterRouteTablePropagation = new TransitRouterRouteTablePropagation(&#34;exampleTransitRouterRouteTablePropagation&#34;, TransitRouterRouteTablePropagationArgs.builder()        
+ *         var exampleTransitRouterRouteTablePropagation = new TransitRouterRouteTablePropagation("exampleTransitRouterRouteTablePropagation", TransitRouterRouteTablePropagationArgs.builder()        
  *             .transitRouterRouteTableId(exampleTransitRouterRouteTable.transitRouterRouteTableId())
  *             .transitRouterAttachmentId(exampleTransitRouterVpcAttachment.transitRouterAttachmentId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

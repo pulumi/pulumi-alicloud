@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,50 +57,51 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
  *             .alarmContactGroupName(name)
  *             .contacts(            
- *                 &#34;user&#34;,
- *                 &#34;user1&#34;,
- *                 &#34;user2&#34;)
+ *                 "user",
+ *                 "user1",
+ *                 "user2")
  *             .build());
  * 
- *         var defaultMonitorGroup = new MonitorGroup(&#34;defaultMonitorGroup&#34;, MonitorGroupArgs.builder()        
+ *         var defaultMonitorGroup = new MonitorGroup("defaultMonitorGroup", MonitorGroupArgs.builder()        
  *             .monitorGroupName(name)
  *             .contactGroups(default_.id())
  *             .build());
  * 
- *         var defaultServiceGroupMonitoringAgentProcess = new ServiceGroupMonitoringAgentProcess(&#34;defaultServiceGroupMonitoringAgentProcess&#34;, ServiceGroupMonitoringAgentProcessArgs.builder()        
+ *         var defaultServiceGroupMonitoringAgentProcess = new ServiceGroupMonitoringAgentProcess("defaultServiceGroupMonitoringAgentProcess", ServiceGroupMonitoringAgentProcessArgs.builder()        
  *             .groupId(defaultMonitorGroup.id())
  *             .processName(name)
- *             .matchExpressFilterRelation(&#34;or&#34;)
+ *             .matchExpressFilterRelation("or")
  *             .matchExpresses(ServiceGroupMonitoringAgentProcessMatchExpressArgs.builder()
  *                 .name(name)
- *                 .value(&#34;*&#34;)
- *                 .function(&#34;all&#34;)
+ *                 .value("*")
+ *                 .function("all")
  *                 .build())
  *             .alertConfigs(ServiceGroupMonitoringAgentProcessAlertConfigArgs.builder()
- *                 .escalationsLevel(&#34;critical&#34;)
- *                 .comparisonOperator(&#34;GreaterThanOrEqualToThreshold&#34;)
- *                 .statistics(&#34;Average&#34;)
- *                 .threshold(&#34;20&#34;)
- *                 .times(&#34;100&#34;)
- *                 .effectiveInterval(&#34;00:00-22:59&#34;)
- *                 .silenceTime(&#34;85800&#34;)
- *                 .webhook(&#34;https://www.aliyun.com&#34;)
+ *                 .escalationsLevel("critical")
+ *                 .comparisonOperator("GreaterThanOrEqualToThreshold")
+ *                 .statistics("Average")
+ *                 .threshold("20")
+ *                 .times("100")
+ *                 .effectiveInterval("00:00-22:59")
+ *                 .silenceTime("85800")
+ *                 .webhook("https://www.aliyun.com")
  *                 .targetLists(ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs.builder()
- *                     .targetListId(&#34;1&#34;)
- *                     .jsonParams(&#34;{}&#34;)
- *                     .level(&#34;WARN&#34;)
- *                     .arn(&#34;acs:mns:cn-hangzhou:120886317861****:/queues/test123/message&#34;)
+ *                     .targetListId("1")
+ *                     .jsonParams("{}")
+ *                     .level("WARN")
+ *                     .arn("acs:mns:cn-hangzhou:120886317861****:/queues/test123/message")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

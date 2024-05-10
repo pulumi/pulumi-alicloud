@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,33 +59,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .status(&#34;OK&#34;)
+ *             .status("OK")
  *             .build());
  * 
  *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .availableResourceCreation("Instance")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .instanceTypeFamily(&#34;ecs.c6&#34;)
+ *             .instanceTypeFamily("ecs.c6")
  *             .build());
  * 
- *         var defaultElasticityAssurance = new ElasticityAssurance(&#34;defaultElasticityAssurance&#34;, ElasticityAssuranceArgs.builder()        
+ *         var defaultElasticityAssurance = new ElasticityAssurance("defaultElasticityAssurance", ElasticityAssuranceArgs.builder()        
  *             .instanceAmount(1)
- *             .description(&#34;before&#34;)
- *             .zoneIds(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .privatePoolOptionsName(&#34;test_before&#34;)
+ *             .description("before")
+ *             .zoneIds(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .privatePoolOptionsName("test_before")
  *             .period(1)
- *             .privatePoolOptionsMatchCriteria(&#34;Open&#34;)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .periodUnit(&#34;Month&#34;)
- *             .assuranceTimes(&#34;Unlimited&#34;)
+ *             .privatePoolOptionsMatchCriteria("Open")
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .periodUnit("Month")
+ *             .assuranceTimes("Unlimited")
  *             .resourceGroupId(default_.ids()[0])
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

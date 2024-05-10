@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,50 +56,51 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;kvstorebackuppolicyvpc&#34;);
+ *         final var name = config.get("name").orElse("kvstorebackuppolicyvpc");
  *         final var default = KvstoreFunctions.getZones();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .dbInstanceName(name)
  *             .vswitchId(defaultSwitch.id())
  *             .zoneId(default_.zones()[0].id())
- *             .instanceClass(&#34;redis.master.large.default&#34;)
- *             .instanceType(&#34;Redis&#34;)
- *             .engineVersion(&#34;5.0&#34;)
- *             .securityIps(&#34;10.23.12.24&#34;)
+ *             .instanceClass("redis.master.large.default")
+ *             .instanceType("Redis")
+ *             .engineVersion("5.0")
+ *             .securityIps("10.23.12.24")
  *             .config(Map.ofEntries(
- *                 Map.entry(&#34;appendonly&#34;, &#34;yes&#34;),
- *                 Map.entry(&#34;lazyfree-lazy-eviction&#34;, &#34;yes&#34;)
+ *                 Map.entry("appendonly", "yes"),
+ *                 Map.entry("lazyfree-lazy-eviction", "yes")
  *             ))
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
- *         var defaultBackupPolicy = new BackupPolicy(&#34;defaultBackupPolicy&#34;, BackupPolicyArgs.builder()        
+ *         var defaultBackupPolicy = new BackupPolicy("defaultBackupPolicy", BackupPolicyArgs.builder()        
  *             .instanceId(defaultInstance.id())
  *             .backupPeriods(            
- *                 &#34;Tuesday&#34;,
- *                 &#34;Wednesday&#34;)
- *             .backupTime(&#34;10:00Z-11:00Z&#34;)
+ *                 "Tuesday",
+ *                 "Wednesday")
+ *             .backupTime("10:00Z-11:00Z")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

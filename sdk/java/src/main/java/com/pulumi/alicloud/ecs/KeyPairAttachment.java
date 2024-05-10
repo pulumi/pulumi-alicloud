@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,8 +68,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory(&#34;cloud_ssd&#34;)
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableDiskCategory("cloud_ssd")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var type = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
@@ -78,58 +79,59 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var images = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .nameRegex("^ubuntu_18.*64")
  *             .mostRecent(true)
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;keyPairAttachmentName&#34;);
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *         final var name = config.get("name").orElse("keyPairAttachmentName");
+ *         var vpc = new Network("vpc", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+ *             .cidrBlock("10.1.0.0/21")
  *             .build());
  * 
- *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+ *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
  *             .vpcId(vpc.id())
- *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+ *             .cidrBlock("10.1.1.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
  *             .name(name)
- *             .description(&#34;New security group&#34;)
+ *             .description("New security group")
  *             .vpcId(vpc.id())
  *             .build());
  * 
- *         for (var i = 0; i &lt; 2; i++) {
- *             new Instance(&#34;instance-&#34; + i, InstanceArgs.builder()            
- *                 .instanceName(String.format(&#34;%s-%s&#34;, name,range.value() + 1))
- *                 .imageId(images.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *                 .instanceType(type.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *         for (var i = 0; i < 2; i++) {
+ *             new Instance("instance-" + i, InstanceArgs.builder()            
+ *                 .instanceName(String.format("%s-%s", name,range.value() + 1))
+ *                 .imageId(images.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *                 .instanceType(type.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *                 .securityGroups(group.id())
  *                 .vswitchId(vswitch.id())
- *                 .internetChargeType(&#34;PayByTraffic&#34;)
+ *                 .internetChargeType("PayByTraffic")
  *                 .internetMaxBandwidthOut(5)
- *                 .password(&#34;Test12345&#34;)
- *                 .instanceChargeType(&#34;PostPaid&#34;)
- *                 .systemDiskCategory(&#34;cloud_ssd&#34;)
+ *                 .password("Test12345")
+ *                 .instanceChargeType("PostPaid")
+ *                 .systemDiskCategory("cloud_ssd")
  *                 .build());
  * 
  *         
  * }
- *         var pair = new KeyPair(&#34;pair&#34;, KeyPairArgs.builder()        
+ *         var pair = new KeyPair("pair", KeyPairArgs.builder()        
  *             .keyName(name)
  *             .build());
  * 
- *         var attachment = new KeyPairAttachment(&#34;attachment&#34;, KeyPairAttachmentArgs.builder()        
+ *         var attachment = new KeyPairAttachment("attachment", KeyPairAttachmentArgs.builder()        
  *             .keyName(pair.id())
- *             .instanceIds(instance.stream().map(element -&gt; element.id()).collect(toList()))
+ *             .instanceIds(instance.stream().map(element -> element.id()).collect(toList()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

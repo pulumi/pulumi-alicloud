@@ -41,7 +41,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -63,13 +64,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
-     *             .outputFile(&#34;output_ApiGatawayApis&#34;)
+     *             .outputFile("output_ApiGatawayApis")
      *             .build());
      * 
-     *         ctx.export(&#34;firstApiId&#34;, dataApigatway.apis()[0].id());
+     *         ctx.export("firstApiId", dataApigatway.apis()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -82,7 +84,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -104,13 +107,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
-     *             .outputFile(&#34;output_ApiGatawayApis&#34;)
+     *             .outputFile("output_ApiGatawayApis")
      *             .build());
      * 
-     *         ctx.export(&#34;firstApiId&#34;, dataApigatway.apis()[0].id());
+     *         ctx.export("firstApiId", dataApigatway.apis()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -123,7 +127,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -145,13 +150,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
-     *             .outputFile(&#34;output_ApiGatawayApis&#34;)
+     *             .outputFile("output_ApiGatawayApis")
      *             .build());
      * 
-     *         ctx.export(&#34;firstApiId&#34;, dataApigatway.apis()[0].id());
+     *         ctx.export("firstApiId", dataApigatway.apis()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -164,7 +170,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -186,13 +193,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
-     *             .outputFile(&#34;output_ApiGatawayApis&#34;)
+     *             .outputFile("output_ApiGatawayApis")
      *             .build());
      * 
-     *         ctx.export(&#34;firstApiId&#34;, dataApigatway.apis()[0].id());
+     *         ctx.export("firstApiId", dataApigatway.apis()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -205,7 +213,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -227,13 +236,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
-     *             .outputFile(&#34;output_ApiGatawayApis&#34;)
+     *             .outputFile("output_ApiGatawayApis")
      *             .build());
      * 
-     *         ctx.export(&#34;firstApiId&#34;, dataApigatway.apis()[0].id());
+     *         ctx.export("firstApiId", dataApigatway.apis()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -246,7 +256,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -268,13 +279,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatwayApis = ApigatewayFunctions.getApis(GetApisArgs.builder()
-     *             .outputFile(&#34;output_ApiGatawayApis&#34;)
+     *             .outputFile("output_ApiGatawayApis")
      *             .build());
      * 
-     *         ctx.export(&#34;firstApiId&#34;, dataApigatway.apis()[0].id());
+     *         ctx.export("firstApiId", dataApigatway.apis()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -287,7 +299,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -309,13 +322,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatway = ApigatewayFunctions.getApps(GetAppsArgs.builder()
-     *             .outputFile(&#34;outapps&#34;)
+     *             .outputFile("outapps")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAppId&#34;, dataApigatway.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *         ctx.export("firstAppId", dataApigatway.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -328,7 +342,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -350,13 +365,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatway = ApigatewayFunctions.getApps(GetAppsArgs.builder()
-     *             .outputFile(&#34;outapps&#34;)
+     *             .outputFile("outapps")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAppId&#34;, dataApigatway.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *         ctx.export("firstAppId", dataApigatway.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -369,7 +385,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -391,13 +408,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatway = ApigatewayFunctions.getApps(GetAppsArgs.builder()
-     *             .outputFile(&#34;outapps&#34;)
+     *             .outputFile("outapps")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAppId&#34;, dataApigatway.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *         ctx.export("firstAppId", dataApigatway.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -410,7 +428,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -432,13 +451,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatway = ApigatewayFunctions.getApps(GetAppsArgs.builder()
-     *             .outputFile(&#34;outapps&#34;)
+     *             .outputFile("outapps")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAppId&#34;, dataApigatway.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *         ctx.export("firstAppId", dataApigatway.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -451,7 +471,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -473,13 +494,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatway = ApigatewayFunctions.getApps(GetAppsArgs.builder()
-     *             .outputFile(&#34;outapps&#34;)
+     *             .outputFile("outapps")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAppId&#34;, dataApigatway.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *         ctx.export("firstAppId", dataApigatway.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -492,7 +514,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -514,13 +537,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatway = ApigatewayFunctions.getApps(GetAppsArgs.builder()
-     *             .outputFile(&#34;outapps&#34;)
+     *             .outputFile("outapps")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAppId&#34;, dataApigatway.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *         ctx.export("firstAppId", dataApigatway.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -537,7 +561,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -560,10 +585,11 @@ public final class ApigatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getBackends();
      * 
-     *         ctx.export(&#34;apiGatewayBackendId1&#34;, ids.applyValue(getBackendsResult -&gt; getBackendsResult.backends()[0].id()));
+     *         ctx.export("apiGatewayBackendId1", ids.applyValue(getBackendsResult -> getBackendsResult.backends()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -580,7 +606,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -603,10 +630,11 @@ public final class ApigatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getBackends();
      * 
-     *         ctx.export(&#34;apiGatewayBackendId1&#34;, ids.applyValue(getBackendsResult -&gt; getBackendsResult.backends()[0].id()));
+     *         ctx.export("apiGatewayBackendId1", ids.applyValue(getBackendsResult -> getBackendsResult.backends()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -623,7 +651,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -646,10 +675,11 @@ public final class ApigatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getBackends();
      * 
-     *         ctx.export(&#34;apiGatewayBackendId1&#34;, ids.applyValue(getBackendsResult -&gt; getBackendsResult.backends()[0].id()));
+     *         ctx.export("apiGatewayBackendId1", ids.applyValue(getBackendsResult -> getBackendsResult.backends()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -666,7 +696,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -689,10 +720,11 @@ public final class ApigatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getBackends();
      * 
-     *         ctx.export(&#34;apiGatewayBackendId1&#34;, ids.applyValue(getBackendsResult -&gt; getBackendsResult.backends()[0].id()));
+     *         ctx.export("apiGatewayBackendId1", ids.applyValue(getBackendsResult -> getBackendsResult.backends()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -709,7 +741,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -732,10 +765,11 @@ public final class ApigatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getBackends();
      * 
-     *         ctx.export(&#34;apiGatewayBackendId1&#34;, ids.applyValue(getBackendsResult -&gt; getBackendsResult.backends()[0].id()));
+     *         ctx.export("apiGatewayBackendId1", ids.applyValue(getBackendsResult -> getBackendsResult.backends()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -752,7 +786,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -775,10 +810,11 @@ public final class ApigatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getBackends();
      * 
-     *         ctx.export(&#34;apiGatewayBackendId1&#34;, ids.applyValue(getBackendsResult -&gt; getBackendsResult.backends()[0].id()));
+     *         ctx.export("apiGatewayBackendId1", ids.applyValue(getBackendsResult -> getBackendsResult.backends()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -791,7 +827,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -813,13 +850,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatway = ApigatewayFunctions.getGroups(GetGroupsArgs.builder()
-     *             .outputFile(&#34;outgroups&#34;)
+     *             .outputFile("outgroups")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupId&#34;, dataApigatway.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *         ctx.export("firstGroupId", dataApigatway.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -832,7 +870,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -854,13 +893,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatway = ApigatewayFunctions.getGroups(GetGroupsArgs.builder()
-     *             .outputFile(&#34;outgroups&#34;)
+     *             .outputFile("outgroups")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupId&#34;, dataApigatway.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *         ctx.export("firstGroupId", dataApigatway.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -873,7 +913,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -895,13 +936,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatway = ApigatewayFunctions.getGroups(GetGroupsArgs.builder()
-     *             .outputFile(&#34;outgroups&#34;)
+     *             .outputFile("outgroups")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupId&#34;, dataApigatway.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *         ctx.export("firstGroupId", dataApigatway.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -914,7 +956,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -936,13 +979,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatway = ApigatewayFunctions.getGroups(GetGroupsArgs.builder()
-     *             .outputFile(&#34;outgroups&#34;)
+     *             .outputFile("outgroups")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupId&#34;, dataApigatway.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *         ctx.export("firstGroupId", dataApigatway.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -955,7 +999,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -977,13 +1022,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatway = ApigatewayFunctions.getGroups(GetGroupsArgs.builder()
-     *             .outputFile(&#34;outgroups&#34;)
+     *             .outputFile("outgroups")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupId&#34;, dataApigatway.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *         ctx.export("firstGroupId", dataApigatway.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -996,7 +1042,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1018,13 +1065,14 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dataApigatway = ApigatewayFunctions.getGroups(GetGroupsArgs.builder()
-     *             .outputFile(&#34;outgroups&#34;)
+     *             .outputFile("outgroups")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupId&#34;, dataApigatway.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].id()));
+     *         ctx.export("firstGroupId", dataApigatway.applyValue(getGroupsResult -> getGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1041,7 +1089,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1063,18 +1112,19 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayLogConfigId1&#34;, ids.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId1", ids.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
      *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
-     *             .logType(&#34;PROVIDER&#34;)
+     *             .logType("PROVIDER")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayLogConfigId2&#34;, logType.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId2", logType.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1091,7 +1141,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1113,18 +1164,19 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayLogConfigId1&#34;, ids.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId1", ids.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
      *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
-     *             .logType(&#34;PROVIDER&#34;)
+     *             .logType("PROVIDER")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayLogConfigId2&#34;, logType.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId2", logType.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1141,7 +1193,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1163,18 +1216,19 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayLogConfigId1&#34;, ids.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId1", ids.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
      *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
-     *             .logType(&#34;PROVIDER&#34;)
+     *             .logType("PROVIDER")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayLogConfigId2&#34;, logType.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId2", logType.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1191,7 +1245,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1213,18 +1268,19 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayLogConfigId1&#34;, ids.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId1", ids.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
      *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
-     *             .logType(&#34;PROVIDER&#34;)
+     *             .logType("PROVIDER")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayLogConfigId2&#34;, logType.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId2", logType.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1241,7 +1297,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1263,18 +1320,19 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayLogConfigId1&#34;, ids.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId1", ids.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
      *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
-     *             .logType(&#34;PROVIDER&#34;)
+     *             .logType("PROVIDER")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayLogConfigId2&#34;, logType.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId2", logType.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1291,7 +1349,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1313,18 +1372,19 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayLogConfigId1&#34;, ids.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId1", ids.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
      *         final var logType = ApigatewayFunctions.getLogConfigs(GetLogConfigsArgs.builder()
-     *             .logType(&#34;PROVIDER&#34;)
+     *             .logType("PROVIDER")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayLogConfigId2&#34;, logType.applyValue(getLogConfigsResult -&gt; getLogConfigsResult.configs()[0].id()));
+     *         ctx.export("apiGatewayLogConfigId2", logType.applyValue(getLogConfigsResult -> getLogConfigsResult.configs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1341,7 +1401,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1363,19 +1424,20 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getModels(GetModelsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .groupId(&#34;example_group_id&#34;)
+     *             .ids("example_id")
+     *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayModelId1&#34;, ids.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId1", ids.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
      *         final var groupId = ApigatewayFunctions.getModels(GetModelsArgs.builder()
-     *             .groupId(&#34;example_group_id&#34;)
+     *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayModelId2&#34;, groupId.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId2", groupId.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1392,7 +1454,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1414,19 +1477,20 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getModels(GetModelsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .groupId(&#34;example_group_id&#34;)
+     *             .ids("example_id")
+     *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayModelId1&#34;, ids.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId1", ids.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
      *         final var groupId = ApigatewayFunctions.getModels(GetModelsArgs.builder()
-     *             .groupId(&#34;example_group_id&#34;)
+     *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayModelId2&#34;, groupId.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId2", groupId.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1443,7 +1507,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1465,19 +1530,20 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getModels(GetModelsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .groupId(&#34;example_group_id&#34;)
+     *             .ids("example_id")
+     *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayModelId1&#34;, ids.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId1", ids.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
      *         final var groupId = ApigatewayFunctions.getModels(GetModelsArgs.builder()
-     *             .groupId(&#34;example_group_id&#34;)
+     *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayModelId2&#34;, groupId.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId2", groupId.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1494,7 +1560,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1516,19 +1583,20 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getModels(GetModelsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .groupId(&#34;example_group_id&#34;)
+     *             .ids("example_id")
+     *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayModelId1&#34;, ids.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId1", ids.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
      *         final var groupId = ApigatewayFunctions.getModels(GetModelsArgs.builder()
-     *             .groupId(&#34;example_group_id&#34;)
+     *             .groupId("example_group_id")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayModelId2&#34;, groupId.applyValue(getModelsResult -&gt; getModelsResult.models()[0].id()));
+     *         ctx.export("apiGatewayModelId2", groupId.applyValue(getModelsResult -> getModelsResult.models()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1545,7 +1613,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1568,15 +1637,16 @@ public final class ApigatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getPlugins();
      * 
-     *         ctx.export(&#34;apiGatewayPluginId1&#34;, ids.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId1", ids.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
      *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
-     *             .nameRegex(&#34;^my-Plugin&#34;)
+     *             .nameRegex("^my-Plugin")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayPluginId2&#34;, nameRegex.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId2", nameRegex.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1593,7 +1663,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1616,15 +1687,16 @@ public final class ApigatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getPlugins();
      * 
-     *         ctx.export(&#34;apiGatewayPluginId1&#34;, ids.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId1", ids.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
      *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
-     *             .nameRegex(&#34;^my-Plugin&#34;)
+     *             .nameRegex("^my-Plugin")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayPluginId2&#34;, nameRegex.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId2", nameRegex.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1641,7 +1713,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1664,15 +1737,16 @@ public final class ApigatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getPlugins();
      * 
-     *         ctx.export(&#34;apiGatewayPluginId1&#34;, ids.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId1", ids.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
      *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
-     *             .nameRegex(&#34;^my-Plugin&#34;)
+     *             .nameRegex("^my-Plugin")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayPluginId2&#34;, nameRegex.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId2", nameRegex.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1689,7 +1763,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1712,15 +1787,16 @@ public final class ApigatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getPlugins();
      * 
-     *         ctx.export(&#34;apiGatewayPluginId1&#34;, ids.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId1", ids.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
      *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
-     *             .nameRegex(&#34;^my-Plugin&#34;)
+     *             .nameRegex("^my-Plugin")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayPluginId2&#34;, nameRegex.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId2", nameRegex.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1737,7 +1813,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1760,15 +1837,16 @@ public final class ApigatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getPlugins();
      * 
-     *         ctx.export(&#34;apiGatewayPluginId1&#34;, ids.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId1", ids.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
      *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
-     *             .nameRegex(&#34;^my-Plugin&#34;)
+     *             .nameRegex("^my-Plugin")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayPluginId2&#34;, nameRegex.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId2", nameRegex.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1785,7 +1863,8 @@ public final class ApigatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1808,15 +1887,16 @@ public final class ApigatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ApigatewayFunctions.getPlugins();
      * 
-     *         ctx.export(&#34;apiGatewayPluginId1&#34;, ids.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId1", ids.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
      *         final var nameRegex = ApigatewayFunctions.getPlugins(GetPluginsArgs.builder()
-     *             .nameRegex(&#34;^my-Plugin&#34;)
+     *             .nameRegex("^my-Plugin")
      *             .build());
      * 
-     *         ctx.export(&#34;apiGatewayPluginId2&#34;, nameRegex.applyValue(getPluginsResult -&gt; getPluginsResult.plugins()[0].id()));
+     *         ctx.export("apiGatewayPluginId2", nameRegex.applyValue(getPluginsResult -> getPluginsResult.plugins()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1833,7 +1913,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1855,12 +1936,13 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ApigatewayFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1877,7 +1959,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1899,12 +1982,13 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ApigatewayFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1921,7 +2005,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1943,12 +2028,13 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ApigatewayFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1965,7 +2051,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1987,12 +2074,13 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ApigatewayFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2009,7 +2097,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2031,12 +2120,13 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ApigatewayFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2053,7 +2143,8 @@ public final class ApigatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2075,12 +2166,13 @@ public final class ApigatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ApigatewayFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

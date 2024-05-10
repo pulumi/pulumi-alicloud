@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,31 +50,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new RAM Role.
- *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
- *             .name(&#34;terraform-example&#34;)
- *             .document(&#34;&#34;&#34;
+ *         var role = new Role("role", RoleArgs.builder()        
+ *             .name("terraform-example")
+ *             .document("""
  *   {
- *     &#34;Statement&#34;: [
+ *     "Statement": [
  *       {
- *         &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *         &#34;Effect&#34;: &#34;Allow&#34;,
- *         &#34;Principal&#34;: {
- *           &#34;Service&#34;: [
- *             &#34;apigateway.aliyuncs.com&#34;, 
- *             &#34;ecs.aliyuncs.com&#34;
+ *         "Action": "sts:AssumeRole",
+ *         "Effect": "Allow",
+ *         "Principal": {
+ *           "Service": [
+ *             "apigateway.aliyuncs.com", 
+ *             "ecs.aliyuncs.com"
  *           ]
  *         }
  *       }
  *     ],
- *     &#34;Version&#34;: &#34;1&#34;
+ *     "Version": "1"
  *   }
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a role test.&#34;)
+ *             """)
+ *             .description("this is a role test.")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -204,7 +206,7 @@ public class Role extends com.pulumi.resources.CustomResource {
         return this.roleId;
     }
     /**
-     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
+     * (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}{@literal @}${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000{@literal @}ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
      * 
      * @deprecated
      * Field &#39;services&#39; has been deprecated from version 1.49.0, and use field &#39;document&#39; to replace.
@@ -215,7 +217,7 @@ public class Role extends com.pulumi.resources.CustomResource {
     private Output<List<String>> services;
 
     /**
-     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
+     * @return (It has been deprecated since version 1.49.0, and use field &#39;document&#39; to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}{@literal @}${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000{@literal @}ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone&#39;s Alicloud account id.
      * 
      */
     public Output<List<String>> services() {

@@ -24,7 +24,8 @@ public final class ComputeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -46,18 +47,19 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getNestServiceInstancesResult -&gt; getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId1", ids.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
      *         final var nameRegex = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getNestServiceInstancesResult -&gt; getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId2", nameRegex.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -74,7 +76,8 @@ public final class ComputeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -96,18 +99,19 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getNestServiceInstancesResult -&gt; getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId1", ids.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
      *         final var nameRegex = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getNestServiceInstancesResult -&gt; getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId2", nameRegex.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -124,7 +128,8 @@ public final class ComputeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -146,18 +151,19 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getNestServiceInstancesResult -&gt; getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId1", ids.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
      *         final var nameRegex = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getNestServiceInstancesResult -&gt; getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId2", nameRegex.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -174,7 +180,8 @@ public final class ComputeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -196,18 +203,19 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getNestServiceInstancesResult -&gt; getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId1", ids.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
      *         final var nameRegex = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getNestServiceInstancesResult -&gt; getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId2", nameRegex.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -224,7 +232,8 @@ public final class ComputeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -246,18 +255,19 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getNestServiceInstancesResult -&gt; getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId1", ids.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
      *         final var nameRegex = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getNestServiceInstancesResult -&gt; getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId2", nameRegex.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -274,7 +284,8 @@ public final class ComputeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -296,18 +307,19 @@ public final class ComputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId1&#34;, ids.applyValue(getNestServiceInstancesResult -&gt; getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId1", ids.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
      *         final var nameRegex = ComputeFunctions.getNestServiceInstances(GetNestServiceInstancesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId2&#34;, nameRegex.applyValue(getNestServiceInstancesResult -&gt; getNestServiceInstancesResult.serviceInstances()[0].id()));
+     *         ctx.export("armsPrometheisId2", nameRegex.applyValue(getNestServiceInstancesResult -> getNestServiceInstancesResult.serviceInstances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

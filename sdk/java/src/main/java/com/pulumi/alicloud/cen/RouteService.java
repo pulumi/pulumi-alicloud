@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,34 +62,35 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;tf_example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var example = new Network("example", NetworkArgs.builder()        
+ *             .vpcName("tf_example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf_example&#34;)
- *             .description(&#34;an example for cen&#34;)
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *             .cenInstanceName("tf_example")
+ *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *         var exampleInstanceAttachment = new InstanceAttachment("exampleInstanceAttachment", InstanceAttachmentArgs.builder()        
  *             .instanceId(exampleInstance.id())
  *             .childInstanceId(example.id())
- *             .childInstanceType(&#34;VPC&#34;)
+ *             .childInstanceType("VPC")
  *             .childInstanceRegionId(default_.regions()[0].id())
  *             .build());
  * 
- *         var exampleRouteService = new RouteService(&#34;exampleRouteService&#34;, RouteServiceArgs.builder()        
+ *         var exampleRouteService = new RouteService("exampleRouteService", RouteServiceArgs.builder()        
  *             .accessRegionId(default_.regions()[0].id())
  *             .hostRegionId(default_.regions()[0].id())
  *             .hostVpcId(example.id())
  *             .cenId(exampleInstanceAttachment.instanceId())
- *             .host(&#34;100.118.28.52/32&#34;)
+ *             .host("100.118.28.52/32")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

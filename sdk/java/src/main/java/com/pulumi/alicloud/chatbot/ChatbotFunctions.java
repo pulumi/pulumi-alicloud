@@ -22,7 +22,8 @@ public final class ChatbotFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -44,13 +45,14 @@ public final class ChatbotFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = ChatbotFunctions.getAgents(GetAgentsArgs.builder()
-     *             .nameRegex(&#34;^my-Agent&#34;)
+     *             .nameRegex("^my-Agent")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudChatbotAgentsId1&#34;, nameRegex.applyValue(getAgentsResult -&gt; getAgentsResult.agents()[0].id()));
+     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.applyValue(getAgentsResult -> getAgentsResult.agents()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -65,7 +67,8 @@ public final class ChatbotFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -87,13 +90,14 @@ public final class ChatbotFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = ChatbotFunctions.getAgents(GetAgentsArgs.builder()
-     *             .nameRegex(&#34;^my-Agent&#34;)
+     *             .nameRegex("^my-Agent")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudChatbotAgentsId1&#34;, nameRegex.applyValue(getAgentsResult -&gt; getAgentsResult.agents()[0].id()));
+     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.applyValue(getAgentsResult -> getAgentsResult.agents()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -108,7 +112,8 @@ public final class ChatbotFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -130,13 +135,14 @@ public final class ChatbotFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = ChatbotFunctions.getAgents(GetAgentsArgs.builder()
-     *             .nameRegex(&#34;^my-Agent&#34;)
+     *             .nameRegex("^my-Agent")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudChatbotAgentsId1&#34;, nameRegex.applyValue(getAgentsResult -&gt; getAgentsResult.agents()[0].id()));
+     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.applyValue(getAgentsResult -> getAgentsResult.agents()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -151,7 +157,8 @@ public final class ChatbotFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -173,13 +180,14 @@ public final class ChatbotFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = ChatbotFunctions.getAgents(GetAgentsArgs.builder()
-     *             .nameRegex(&#34;^my-Agent&#34;)
+     *             .nameRegex("^my-Agent")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudChatbotAgentsId1&#34;, nameRegex.applyValue(getAgentsResult -&gt; getAgentsResult.agents()[0].id()));
+     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.applyValue(getAgentsResult -> getAgentsResult.agents()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -194,7 +202,8 @@ public final class ChatbotFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -216,13 +225,14 @@ public final class ChatbotFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = ChatbotFunctions.getAgents(GetAgentsArgs.builder()
-     *             .nameRegex(&#34;^my-Agent&#34;)
+     *             .nameRegex("^my-Agent")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudChatbotAgentsId1&#34;, nameRegex.applyValue(getAgentsResult -&gt; getAgentsResult.agents()[0].id()));
+     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.applyValue(getAgentsResult -> getAgentsResult.agents()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -237,7 +247,8 @@ public final class ChatbotFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -259,13 +270,14 @@ public final class ChatbotFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = ChatbotFunctions.getAgents(GetAgentsArgs.builder()
-     *             .nameRegex(&#34;^my-Agent&#34;)
+     *             .nameRegex("^my-Agent")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudChatbotAgentsId1&#34;, nameRegex.applyValue(getAgentsResult -&gt; getAgentsResult.agents()[0].id()));
+     *         ctx.export("alicloudChatbotAgentsId1", nameRegex.applyValue(getAgentsResult -> getAgentsResult.agents()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

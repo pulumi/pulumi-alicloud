@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,39 +61,40 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var region = &#34;cn-hangzhou&#34;;
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var region = "cn-hangzhou";
  * 
- *         final var zoneId = &#34;cn-hangzhou-h&#34;;
+ *         final var zoneId = "cn-hangzhou-h";
  * 
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *             .nameRegex("^default-NODELETING$")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .diskCategory(&#34;cloud_efficiency&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .diskCategory("cloud_efficiency")
+ *             .paymentType("PayAsYouGo")
  *             .zoneId(zoneId)
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .instanceName(name)
- *             .tableEngineSpecification(&#34;lindorm.g.4xlarge&#34;)
- *             .tableEngineNodeCount(&#34;2&#34;)
- *             .instanceStorage(&#34;1920&#34;)
+ *             .tableEngineSpecification("lindorm.g.4xlarge")
+ *             .tableEngineNodeCount("2")
+ *             .instanceStorage("1920")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

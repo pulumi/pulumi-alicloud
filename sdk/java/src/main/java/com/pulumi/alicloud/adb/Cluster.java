@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ### Create a ADB MySQL cluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,38 +62,39 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;adbClusterconfig&#34;);
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;ADB&#34;);
+ *         final var name = config.get("name").orElse("adbClusterconfig");
+ *         final var creation = config.get("creation").orElse("ADB");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(creation)
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
- *             .dbClusterVersion(&#34;3.0&#34;)
- *             .dbClusterCategory(&#34;Cluster&#34;)
- *             .dbNodeClass(&#34;C8&#34;)
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *             .dbClusterVersion("3.0")
+ *             .dbClusterCategory("Cluster")
+ *             .dbNodeClass("C8")
  *             .dbNodeCount(2)
  *             .dbNodeStorage(200)
- *             .payType(&#34;PostPaid&#34;)
+ *             .payType("PostPaid")
  *             .description(name)
  *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

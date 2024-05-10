@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,32 +58,33 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc-example&#34;);
- *         var defaultRg = new ResourceGroup(&#34;defaultRg&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;tf-testacc-chenyi&#34;)
+ *         final var name = config.get("name").orElse("tf-testacc-example");
+ *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()        
+ *             .displayName("tf-testacc-chenyi")
  *             .resourceGroupName(name)
  *             .build());
  * 
- *         var changeRg = new ResourceGroup(&#34;changeRg&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;tf-testacc-chenyi-change&#34;)
- *             .resourceGroupName(String.format(&#34;%s1&#34;, name))
+ *         var changeRg = new ResourceGroup("changeRg", ResourceGroupArgs.builder()        
+ *             .displayName("tf-testacc-chenyi-change")
+ *             .resourceGroupName(String.format("%s1", name))
  *             .build());
  * 
- *         var default_ = new PrefixList(&#34;default&#34;, PrefixListArgs.builder()        
+ *         var default_ = new PrefixList("default", PrefixListArgs.builder()        
  *             .maxEntries(50)
  *             .resourceGroupId(defaultRg.id())
- *             .prefixListDescription(&#34;test&#34;)
- *             .ipVersion(&#34;IPV4&#34;)
+ *             .prefixListDescription("test")
+ *             .ipVersion("IPV4")
  *             .prefixListName(name)
  *             .entrys(PrefixListEntryArgs.builder()
- *                 .cidr(&#34;192.168.0.0/16&#34;)
- *                 .description(&#34;test&#34;)
+ *                 .cidr("192.168.0.0/16")
+ *                 .description("test")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * * using server_certificate/private content as string example
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,9 +51,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // create a server certificate
- *         var foo = new ServerCertificate(&#34;foo&#34;, ServerCertificateArgs.builder()        
- *             .name(&#34;slbservercertificate&#34;)
- *             .serverCertificate(&#34;&#34;&#34;
+ *         var foo = new ServerCertificate("foo", ServerCertificateArgs.builder()        
+ *             .name("slbservercertificate")
+ *             .serverCertificate("""
  * -----BEGIN CERTIFICATE-----
  * MIICWDCCAcGgAwIBAgIJAP7vOtjPtQIjMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
  * BAYTAkNOMRMwEQYDVQQIDApjbi1iZWlqaW5nMSEwHwYDVQQKDBhJbnRlcm5ldCBX
@@ -67,8 +68,8 @@ import javax.annotation.Nullable;
  * 5JRKrg7lYR/KlTuKHmozfyL9UER0/dpTSoqsCyt8yc1BbtAKUJWh09BujBE1H22f
  * lKvCAjhPmnNdfd/l9GrmAWNDWEDPLdUTkGSkKAScMpdS+mLmOBuYWgdnOtq3eQGf
  * t07tlBL+dtzrrohHpfLeuNyYb40g8VQdp3RRRQ==
- * -----END CERTIFICATE-----            &#34;&#34;&#34;)
- *             .privateKey(&#34;&#34;&#34;
+ * -----END CERTIFICATE-----            """)
+ *             .privateKey("""
  * -----BEGIN RSA PRIVATE KEY-----
  * MIICXAIBAAKBgQDEdoyaJ0kdtjtbLRx5X9qwI7FblhJPRcScvhQSE8P5y/b/T8J9
  * BVuFIBoU8nrPY9ABz4JFklZ6SznxLbFBqtXoJTmzV6ixyjjH+AGEw6hCiA8Pqy2C
@@ -83,12 +84,13 @@ import javax.annotation.Nullable;
  * jY5x3SkFkHl3Hq9q2CKpQxUbCd7FXqg1wum/xj5GmqfSpNjHE3+jUkwbdrJMTrWP
  * rmRy3tQMWf0mixAo0QJBAN4IcZChanq8cZyNqqoNbxGm4hkxUmE0W4hxHmLC2CYZ
  * V4JpNm8dpi4CiMWLasF6TYlVMgX+aPxYRUWc/qqf1/Q=
- * -----END RSA PRIVATE KEY-----            &#34;&#34;&#34;)
+ * -----END RSA PRIVATE KEY-----            """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * * using server_certificate/private file example

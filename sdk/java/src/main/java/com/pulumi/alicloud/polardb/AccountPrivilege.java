@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,54 +58,55 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
- *             .dbType(&#34;MySQL&#34;)
- *             .dbVersion(&#34;8.0&#34;)
- *             .payType(&#34;PostPaid&#34;)
+ *             .dbType("MySQL")
+ *             .dbVersion("8.0")
+ *             .payType("PostPaid")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.classes()[0].zoneId())
- *             .vswitchName(&#34;terraform-example&#34;)
+ *             .vswitchName("terraform-example")
  *             .build());
  * 
- *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
- *             .dbType(&#34;MySQL&#34;)
- *             .dbVersion(&#34;8.0&#34;)
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *             .dbType("MySQL")
+ *             .dbVersion("8.0")
  *             .dbNodeClass(default_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
- *             .payType(&#34;PostPaid&#34;)
+ *             .payType("PostPaid")
  *             .vswitchId(defaultSwitch.id())
- *             .description(&#34;terraform-example&#34;)
+ *             .description("terraform-example")
  *             .build());
  * 
- *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+ *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
  *             .dbClusterId(defaultCluster.id())
- *             .accountName(&#34;terraform_example&#34;)
- *             .accountPassword(&#34;Example1234&#34;)
- *             .accountDescription(&#34;terraform-example&#34;)
+ *             .accountName("terraform_example")
+ *             .accountPassword("Example1234")
+ *             .accountDescription("terraform-example")
  *             .build());
  * 
- *         var defaultDatabase = new Database(&#34;defaultDatabase&#34;, DatabaseArgs.builder()        
+ *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()        
  *             .dbClusterId(defaultCluster.id())
- *             .dbName(&#34;terraform-example&#34;)
+ *             .dbName("terraform-example")
  *             .build());
  * 
- *         var defaultAccountPrivilege = new AccountPrivilege(&#34;defaultAccountPrivilege&#34;, AccountPrivilegeArgs.builder()        
+ *         var defaultAccountPrivilege = new AccountPrivilege("defaultAccountPrivilege", AccountPrivilegeArgs.builder()        
  *             .dbClusterId(defaultCluster.id())
  *             .accountName(defaultAccount.accountName())
- *             .accountPrivilege(&#34;ReadOnly&#34;)
+ *             .accountPrivilege("ReadOnly")
  *             .dbNames(defaultDatabase.dbName())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -73,7 +73,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -95,13 +96,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var task = ResourcemanagerFunctions.getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs.builder()
-     *             .accountId(&#34;your_account_id&#34;)
+     *             .accountId("your_account_id")
      *             .build());
      * 
-     *         ctx.export(&#34;abandonAbleChecksIds&#34;, task.applyValue(getAccountDeletionCheckTaskResult -&gt; getAccountDeletionCheckTaskResult.abandonAbleChecks()).stream().map(element -&gt; element.checkId()).collect(toList()));
+     *         ctx.export("abandonAbleChecksIds", task.applyValue(getAccountDeletionCheckTaskResult -> getAccountDeletionCheckTaskResult.abandonAbleChecks()).stream().map(element -> element.checkId()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -122,7 +124,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -144,13 +147,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var task = ResourcemanagerFunctions.getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs.builder()
-     *             .accountId(&#34;your_account_id&#34;)
+     *             .accountId("your_account_id")
      *             .build());
      * 
-     *         ctx.export(&#34;abandonAbleChecksIds&#34;, task.applyValue(getAccountDeletionCheckTaskResult -&gt; getAccountDeletionCheckTaskResult.abandonAbleChecks()).stream().map(element -&gt; element.checkId()).collect(toList()));
+     *         ctx.export("abandonAbleChecksIds", task.applyValue(getAccountDeletionCheckTaskResult -> getAccountDeletionCheckTaskResult.abandonAbleChecks()).stream().map(element -> element.checkId()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -171,7 +175,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -193,13 +198,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var task = ResourcemanagerFunctions.getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs.builder()
-     *             .accountId(&#34;your_account_id&#34;)
+     *             .accountId("your_account_id")
      *             .build());
      * 
-     *         ctx.export(&#34;abandonAbleChecksIds&#34;, task.applyValue(getAccountDeletionCheckTaskResult -&gt; getAccountDeletionCheckTaskResult.abandonAbleChecks()).stream().map(element -&gt; element.checkId()).collect(toList()));
+     *         ctx.export("abandonAbleChecksIds", task.applyValue(getAccountDeletionCheckTaskResult -> getAccountDeletionCheckTaskResult.abandonAbleChecks()).stream().map(element -> element.checkId()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -220,7 +226,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -242,13 +249,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var task = ResourcemanagerFunctions.getAccountDeletionCheckTask(GetAccountDeletionCheckTaskArgs.builder()
-     *             .accountId(&#34;your_account_id&#34;)
+     *             .accountId("your_account_id")
      *             .build());
      * 
-     *         ctx.export(&#34;abandonAbleChecksIds&#34;, task.applyValue(getAccountDeletionCheckTaskResult -&gt; getAccountDeletionCheckTaskResult.abandonAbleChecks()).stream().map(element -&gt; element.checkId()).collect(toList()));
+     *         ctx.export("abandonAbleChecksIds", task.applyValue(getAccountDeletionCheckTaskResult -> getAccountDeletionCheckTaskResult.abandonAbleChecks()).stream().map(element -> element.checkId()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -263,7 +271,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -286,10 +295,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         ctx.export(&#34;firstAccountId&#34;, default_.accounts()[0].id());
+     *         ctx.export("firstAccountId", default_.accounts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -304,7 +314,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -327,10 +338,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         ctx.export(&#34;firstAccountId&#34;, default_.accounts()[0].id());
+     *         ctx.export("firstAccountId", default_.accounts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -345,7 +357,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -368,10 +381,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         ctx.export(&#34;firstAccountId&#34;, default_.accounts()[0].id());
+     *         ctx.export("firstAccountId", default_.accounts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -386,7 +400,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -409,10 +424,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         ctx.export(&#34;firstAccountId&#34;, default_.accounts()[0].id());
+     *         ctx.export("firstAccountId", default_.accounts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -427,7 +443,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -450,10 +467,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         ctx.export(&#34;firstAccountId&#34;, default_.accounts()[0].id());
+     *         ctx.export("firstAccountId", default_.accounts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -468,7 +486,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -491,10 +510,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         ctx.export(&#34;firstAccountId&#34;, default_.accounts()[0].id());
+     *         ctx.export("firstAccountId", default_.accounts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -511,7 +531,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -533,14 +554,15 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerControlPolicyId&#34;, example.applyValue(getControlPoliciesResult -&gt; getControlPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstResourceManagerControlPolicyId", example.applyValue(getControlPoliciesResult -> getControlPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -557,7 +579,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -579,14 +602,15 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerControlPolicyId&#34;, example.applyValue(getControlPoliciesResult -&gt; getControlPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstResourceManagerControlPolicyId", example.applyValue(getControlPoliciesResult -> getControlPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -603,7 +627,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -625,14 +650,15 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerControlPolicyId&#34;, example.applyValue(getControlPoliciesResult -&gt; getControlPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstResourceManagerControlPolicyId", example.applyValue(getControlPoliciesResult -> getControlPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -649,7 +675,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -671,14 +698,15 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerControlPolicyId&#34;, example.applyValue(getControlPoliciesResult -&gt; getControlPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstResourceManagerControlPolicyId", example.applyValue(getControlPoliciesResult -> getControlPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -695,7 +723,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -717,14 +746,15 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerControlPolicyId&#34;, example.applyValue(getControlPoliciesResult -&gt; getControlPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstResourceManagerControlPolicyId", example.applyValue(getControlPoliciesResult -> getControlPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -741,7 +771,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -763,14 +794,15 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerControlPolicyId&#34;, example.applyValue(getControlPoliciesResult -&gt; getControlPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstResourceManagerControlPolicyId", example.applyValue(getControlPoliciesResult -> getControlPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -787,7 +819,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -809,13 +842,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getControlPolicyAttachments(GetControlPolicyAttachmentsArgs.builder()
-     *             .targetId(&#34;example_value&#34;)
+     *             .targetId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerControlPolicyAttachmentId&#34;, example.applyValue(getControlPolicyAttachmentsResult -&gt; getControlPolicyAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstResourceManagerControlPolicyAttachmentId", example.applyValue(getControlPolicyAttachmentsResult -> getControlPolicyAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -832,7 +866,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -854,13 +889,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getControlPolicyAttachments(GetControlPolicyAttachmentsArgs.builder()
-     *             .targetId(&#34;example_value&#34;)
+     *             .targetId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerControlPolicyAttachmentId&#34;, example.applyValue(getControlPolicyAttachmentsResult -&gt; getControlPolicyAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstResourceManagerControlPolicyAttachmentId", example.applyValue(getControlPolicyAttachmentsResult -> getControlPolicyAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -877,7 +913,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -899,13 +936,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getControlPolicyAttachments(GetControlPolicyAttachmentsArgs.builder()
-     *             .targetId(&#34;example_value&#34;)
+     *             .targetId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerControlPolicyAttachmentId&#34;, example.applyValue(getControlPolicyAttachmentsResult -&gt; getControlPolicyAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstResourceManagerControlPolicyAttachmentId", example.applyValue(getControlPolicyAttachmentsResult -> getControlPolicyAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -922,7 +960,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -944,13 +983,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getControlPolicyAttachments(GetControlPolicyAttachmentsArgs.builder()
-     *             .targetId(&#34;example_value&#34;)
+     *             .targetId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerControlPolicyAttachmentId&#34;, example.applyValue(getControlPolicyAttachmentsResult -&gt; getControlPolicyAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstResourceManagerControlPolicyAttachmentId", example.applyValue(getControlPolicyAttachmentsResult -> getControlPolicyAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -967,7 +1007,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -989,13 +1030,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ResourcemanagerFunctions.getDelegatedAdministrators(GetDelegatedAdministratorsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;resourceManagerDelegatedAdministratorId1&#34;, ids.applyValue(getDelegatedAdministratorsResult -&gt; getDelegatedAdministratorsResult.administrators()[0].id()));
+     *         ctx.export("resourceManagerDelegatedAdministratorId1", ids.applyValue(getDelegatedAdministratorsResult -> getDelegatedAdministratorsResult.administrators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1012,7 +1054,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1034,13 +1077,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ResourcemanagerFunctions.getDelegatedAdministrators(GetDelegatedAdministratorsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;resourceManagerDelegatedAdministratorId1&#34;, ids.applyValue(getDelegatedAdministratorsResult -&gt; getDelegatedAdministratorsResult.administrators()[0].id()));
+     *         ctx.export("resourceManagerDelegatedAdministratorId1", ids.applyValue(getDelegatedAdministratorsResult -> getDelegatedAdministratorsResult.administrators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1057,7 +1101,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1079,13 +1124,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ResourcemanagerFunctions.getDelegatedAdministrators(GetDelegatedAdministratorsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;resourceManagerDelegatedAdministratorId1&#34;, ids.applyValue(getDelegatedAdministratorsResult -&gt; getDelegatedAdministratorsResult.administrators()[0].id()));
+     *         ctx.export("resourceManagerDelegatedAdministratorId1", ids.applyValue(getDelegatedAdministratorsResult -> getDelegatedAdministratorsResult.administrators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1102,7 +1148,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1124,13 +1171,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ResourcemanagerFunctions.getDelegatedAdministrators(GetDelegatedAdministratorsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;resourceManagerDelegatedAdministratorId1&#34;, ids.applyValue(getDelegatedAdministratorsResult -&gt; getDelegatedAdministratorsResult.administrators()[0].id()));
+     *         ctx.export("resourceManagerDelegatedAdministratorId1", ids.applyValue(getDelegatedAdministratorsResult -> getDelegatedAdministratorsResult.administrators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1147,7 +1195,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1169,13 +1218,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ResourcemanagerFunctions.getDelegatedAdministrators(GetDelegatedAdministratorsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;resourceManagerDelegatedAdministratorId1&#34;, ids.applyValue(getDelegatedAdministratorsResult -&gt; getDelegatedAdministratorsResult.administrators()[0].id()));
+     *         ctx.export("resourceManagerDelegatedAdministratorId1", ids.applyValue(getDelegatedAdministratorsResult -> getDelegatedAdministratorsResult.administrators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1192,7 +1242,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1214,13 +1265,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ResourcemanagerFunctions.getDelegatedAdministrators(GetDelegatedAdministratorsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;resourceManagerDelegatedAdministratorId1&#34;, ids.applyValue(getDelegatedAdministratorsResult -&gt; getDelegatedAdministratorsResult.administrators()[0].id()));
+     *         ctx.export("resourceManagerDelegatedAdministratorId1", ids.applyValue(getDelegatedAdministratorsResult -> getDelegatedAdministratorsResult.administrators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1237,7 +1289,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1259,13 +1312,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFolderId&#34;, example.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id()));
+     *         ctx.export("firstFolderId", example.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1282,7 +1336,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1304,13 +1359,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFolderId&#34;, example.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id()));
+     *         ctx.export("firstFolderId", example.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1327,7 +1383,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1349,13 +1406,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFolderId&#34;, example.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id()));
+     *         ctx.export("firstFolderId", example.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1372,7 +1430,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1394,13 +1453,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFolderId&#34;, example.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id()));
+     *         ctx.export("firstFolderId", example.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1417,7 +1477,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1439,13 +1500,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFolderId&#34;, example.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id()));
+     *         ctx.export("firstFolderId", example.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1462,7 +1524,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1484,13 +1547,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFolderId&#34;, example.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id()));
+     *         ctx.export("firstFolderId", example.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1505,7 +1569,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1528,10 +1593,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getHandshakes();
      * 
-     *         ctx.export(&#34;firstHandshakeId&#34;, example.applyValue(getHandshakesResult -&gt; getHandshakesResult.handshakes()[0].id()));
+     *         ctx.export("firstHandshakeId", example.applyValue(getHandshakesResult -> getHandshakesResult.handshakes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1546,7 +1612,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1569,10 +1636,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getHandshakes();
      * 
-     *         ctx.export(&#34;firstHandshakeId&#34;, example.applyValue(getHandshakesResult -&gt; getHandshakesResult.handshakes()[0].id()));
+     *         ctx.export("firstHandshakeId", example.applyValue(getHandshakesResult -> getHandshakesResult.handshakes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1587,7 +1655,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1610,10 +1679,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getHandshakes();
      * 
-     *         ctx.export(&#34;firstHandshakeId&#34;, example.applyValue(getHandshakesResult -&gt; getHandshakesResult.handshakes()[0].id()));
+     *         ctx.export("firstHandshakeId", example.applyValue(getHandshakesResult -> getHandshakesResult.handshakes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1628,7 +1698,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1651,10 +1722,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getHandshakes();
      * 
-     *         ctx.export(&#34;firstHandshakeId&#34;, example.applyValue(getHandshakesResult -&gt; getHandshakesResult.handshakes()[0].id()));
+     *         ctx.export("firstHandshakeId", example.applyValue(getHandshakesResult -> getHandshakesResult.handshakes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1669,7 +1741,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1692,10 +1765,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getHandshakes();
      * 
-     *         ctx.export(&#34;firstHandshakeId&#34;, example.applyValue(getHandshakesResult -&gt; getHandshakesResult.handshakes()[0].id()));
+     *         ctx.export("firstHandshakeId", example.applyValue(getHandshakesResult -> getHandshakesResult.handshakes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1710,7 +1784,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1733,10 +1808,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getHandshakes();
      * 
-     *         ctx.export(&#34;firstHandshakeId&#34;, example.applyValue(getHandshakesResult -&gt; getHandshakesResult.handshakes()[0].id()));
+     *         ctx.export("firstHandshakeId", example.applyValue(getHandshakesResult -> getHandshakesResult.handshakes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1751,7 +1827,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1773,15 +1850,16 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
-     *             .descriptionRegex(&#34;tftest_policy&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex("tftest")
+     *             .descriptionRegex("tftest_policy")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyId&#34;, example.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstPolicyId", example.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1796,7 +1874,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1818,15 +1897,16 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
-     *             .descriptionRegex(&#34;tftest_policy&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex("tftest")
+     *             .descriptionRegex("tftest_policy")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyId&#34;, example.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstPolicyId", example.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1841,7 +1921,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1863,15 +1944,16 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
-     *             .descriptionRegex(&#34;tftest_policy&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex("tftest")
+     *             .descriptionRegex("tftest_policy")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyId&#34;, example.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstPolicyId", example.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1886,7 +1968,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1908,15 +1991,16 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
-     *             .descriptionRegex(&#34;tftest_policy&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex("tftest")
+     *             .descriptionRegex("tftest_policy")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyId&#34;, example.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstPolicyId", example.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1931,7 +2015,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1953,15 +2038,16 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
-     *             .descriptionRegex(&#34;tftest_policy&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex("tftest")
+     *             .descriptionRegex("tftest_policy")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyId&#34;, example.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstPolicyId", example.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1976,7 +2062,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1998,15 +2085,16 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
-     *             .descriptionRegex(&#34;tftest_policy&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .nameRegex("tftest")
+     *             .descriptionRegex("tftest_policy")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyId&#34;, example.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstPolicyId", example.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2021,7 +2109,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2044,10 +2133,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicyAttachments();
      * 
-     *         ctx.export(&#34;firstAttachmentId&#34;, example.applyValue(getPolicyAttachmentsResult -&gt; getPolicyAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstAttachmentId", example.applyValue(getPolicyAttachmentsResult -> getPolicyAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2062,7 +2152,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2085,10 +2176,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicyAttachments();
      * 
-     *         ctx.export(&#34;firstAttachmentId&#34;, example.applyValue(getPolicyAttachmentsResult -&gt; getPolicyAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstAttachmentId", example.applyValue(getPolicyAttachmentsResult -> getPolicyAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2103,7 +2195,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2126,10 +2219,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicyAttachments();
      * 
-     *         ctx.export(&#34;firstAttachmentId&#34;, example.applyValue(getPolicyAttachmentsResult -&gt; getPolicyAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstAttachmentId", example.applyValue(getPolicyAttachmentsResult -> getPolicyAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2144,7 +2238,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2167,10 +2262,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicyAttachments();
      * 
-     *         ctx.export(&#34;firstAttachmentId&#34;, example.applyValue(getPolicyAttachmentsResult -&gt; getPolicyAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstAttachmentId", example.applyValue(getPolicyAttachmentsResult -> getPolicyAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2185,7 +2281,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2208,10 +2305,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicyAttachments();
      * 
-     *         ctx.export(&#34;firstAttachmentId&#34;, example.applyValue(getPolicyAttachmentsResult -&gt; getPolicyAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstAttachmentId", example.applyValue(getPolicyAttachmentsResult -> getPolicyAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2226,7 +2324,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2249,10 +2348,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicyAttachments();
      * 
-     *         ctx.export(&#34;firstAttachmentId&#34;, example.applyValue(getPolicyAttachmentsResult -&gt; getPolicyAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstAttachmentId", example.applyValue(getPolicyAttachmentsResult -> getPolicyAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2267,7 +2367,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2289,14 +2390,15 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getPolicyVersions(GetPolicyVersionsArgs.builder()
-     *             .policyName(&#34;tftest&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .policyName("tftest")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyVersionId&#34;, default_.versions()[0].id());
+     *         ctx.export("firstPolicyVersionId", default_.versions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2311,7 +2413,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2333,14 +2436,15 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getPolicyVersions(GetPolicyVersionsArgs.builder()
-     *             .policyName(&#34;tftest&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .policyName("tftest")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyVersionId&#34;, default_.versions()[0].id());
+     *         ctx.export("firstPolicyVersionId", default_.versions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2355,7 +2459,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2377,14 +2482,15 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getPolicyVersions(GetPolicyVersionsArgs.builder()
-     *             .policyName(&#34;tftest&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .policyName("tftest")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyVersionId&#34;, default_.versions()[0].id());
+     *         ctx.export("firstPolicyVersionId", default_.versions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2399,7 +2505,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2421,14 +2528,15 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getPolicyVersions(GetPolicyVersionsArgs.builder()
-     *             .policyName(&#34;tftest&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .policyName("tftest")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyVersionId&#34;, default_.versions()[0].id());
+     *         ctx.export("firstPolicyVersionId", default_.versions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2443,7 +2551,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2466,10 +2575,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getResourceDirectories();
      * 
-     *         ctx.export(&#34;resourceDirectoryId&#34;, default_.directories()[0].id());
+     *         ctx.export("resourceDirectoryId", default_.directories()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2484,7 +2594,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2507,10 +2618,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getResourceDirectories();
      * 
-     *         ctx.export(&#34;resourceDirectoryId&#34;, default_.directories()[0].id());
+     *         ctx.export("resourceDirectoryId", default_.directories()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2525,7 +2637,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2548,10 +2661,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getResourceDirectories();
      * 
-     *         ctx.export(&#34;resourceDirectoryId&#34;, default_.directories()[0].id());
+     *         ctx.export("resourceDirectoryId", default_.directories()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2566,7 +2680,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2589,10 +2704,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getResourceDirectories();
      * 
-     *         ctx.export(&#34;resourceDirectoryId&#34;, default_.directories()[0].id());
+     *         ctx.export("resourceDirectoryId", default_.directories()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2607,7 +2723,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2630,10 +2747,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getResourceDirectories();
      * 
-     *         ctx.export(&#34;resourceDirectoryId&#34;, default_.directories()[0].id());
+     *         ctx.export("resourceDirectoryId", default_.directories()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2648,7 +2766,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2671,10 +2790,11 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getResourceDirectories();
      * 
-     *         ctx.export(&#34;resourceDirectoryId&#34;, default_.directories()[0].id());
+     *         ctx.export("resourceDirectoryId", default_.directories()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2691,7 +2811,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2713,13 +2834,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
+     *         ctx.export("firstResourceGroupId", example.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2736,7 +2858,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2758,13 +2881,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
+     *         ctx.export("firstResourceGroupId", example.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2781,7 +2905,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2803,13 +2928,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
+     *         ctx.export("firstResourceGroupId", example.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2826,7 +2952,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2848,13 +2975,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
+     *         ctx.export("firstResourceGroupId", example.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2871,7 +2999,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2893,13 +3022,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
+     *         ctx.export("firstResourceGroupId", example.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2916,7 +3046,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2938,13 +3069,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceGroupId&#34;, example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()));
+     *         ctx.export("firstResourceGroupId", example.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2961,7 +3093,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2983,15 +3116,16 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceShares(GetResourceSharesArgs.builder()
-     *             .resourceShareOwner(&#34;Self&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .resourceShareOwner("Self")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerResourceShareId&#34;, example.applyValue(getResourceSharesResult -&gt; getResourceSharesResult.shares()[0].id()));
+     *         ctx.export("firstResourceManagerResourceShareId", example.applyValue(getResourceSharesResult -> getResourceSharesResult.shares()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3008,7 +3142,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3030,15 +3165,16 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceShares(GetResourceSharesArgs.builder()
-     *             .resourceShareOwner(&#34;Self&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .resourceShareOwner("Self")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerResourceShareId&#34;, example.applyValue(getResourceSharesResult -&gt; getResourceSharesResult.shares()[0].id()));
+     *         ctx.export("firstResourceManagerResourceShareId", example.applyValue(getResourceSharesResult -> getResourceSharesResult.shares()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3055,7 +3191,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3077,15 +3214,16 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceShares(GetResourceSharesArgs.builder()
-     *             .resourceShareOwner(&#34;Self&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .resourceShareOwner("Self")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerResourceShareId&#34;, example.applyValue(getResourceSharesResult -&gt; getResourceSharesResult.shares()[0].id()));
+     *         ctx.export("firstResourceManagerResourceShareId", example.applyValue(getResourceSharesResult -> getResourceSharesResult.shares()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3102,7 +3240,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3124,15 +3263,16 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getResourceShares(GetResourceSharesArgs.builder()
-     *             .resourceShareOwner(&#34;Self&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .resourceShareOwner("Self")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerResourceShareId&#34;, example.applyValue(getResourceSharesResult -&gt; getResourceSharesResult.shares()[0].id()));
+     *         ctx.export("firstResourceManagerResourceShareId", example.applyValue(getResourceSharesResult -> getResourceSharesResult.shares()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3147,7 +3287,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3169,13 +3310,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getRoles(GetRolesArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRoleId&#34;, example.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", example.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3190,7 +3332,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3212,13 +3355,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getRoles(GetRolesArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRoleId&#34;, example.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", example.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3233,7 +3377,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3255,13 +3400,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getRoles(GetRolesArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRoleId&#34;, example.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", example.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3276,7 +3422,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3298,13 +3445,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getRoles(GetRolesArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRoleId&#34;, example.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", example.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3319,7 +3467,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3341,13 +3490,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getRoles(GetRolesArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRoleId&#34;, example.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", example.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3362,7 +3512,8 @@ public final class ResourcemanagerFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3384,13 +3535,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getRoles(GetRolesArgs.builder()
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRoleId&#34;, example.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", example.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3461,7 +3613,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3488,14 +3641,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()        
      *             .resourceShareName(name)
      *             .build());
      * 
-     *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
+     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()        
      *             .resourceShareId(defaultResourceShare.id())
      *             .targetId(default_.ids()[0])
      *             .build());
@@ -3504,15 +3657,16 @@ public final class ResourcemanagerFunctions {
      *             .ids(defaultSharedTarget.targetId())
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(ids -&gt; ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(getSharedTargetsResult -> getSharedTargetsResult).applyValue(ids -> ids.applyValue(getSharedTargetsResult -> getSharedTargetsResult.targets()[0].id())));
      *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
      *             .resourceShareId(defaultSharedTarget.resourceShareId())
      *             .build());
      * 
-     *         ctx.export(&#34;secondResourceManagerSharedTargetId&#34;, resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(resourceShareId -&gt; resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(getSharedTargetsResult -> getSharedTargetsResult).applyValue(resourceShareId -> resourceShareId.applyValue(getSharedTargetsResult -> getSharedTargetsResult.targets()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3529,7 +3683,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3556,14 +3711,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()        
      *             .resourceShareName(name)
      *             .build());
      * 
-     *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
+     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()        
      *             .resourceShareId(defaultResourceShare.id())
      *             .targetId(default_.ids()[0])
      *             .build());
@@ -3572,15 +3727,16 @@ public final class ResourcemanagerFunctions {
      *             .ids(defaultSharedTarget.targetId())
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(ids -&gt; ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(getSharedTargetsResult -> getSharedTargetsResult).applyValue(ids -> ids.applyValue(getSharedTargetsResult -> getSharedTargetsResult.targets()[0].id())));
      *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
      *             .resourceShareId(defaultSharedTarget.resourceShareId())
      *             .build());
      * 
-     *         ctx.export(&#34;secondResourceManagerSharedTargetId&#34;, resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(resourceShareId -&gt; resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(getSharedTargetsResult -> getSharedTargetsResult).applyValue(resourceShareId -> resourceShareId.applyValue(getSharedTargetsResult -> getSharedTargetsResult.targets()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3597,7 +3753,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3624,14 +3781,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()        
      *             .resourceShareName(name)
      *             .build());
      * 
-     *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
+     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()        
      *             .resourceShareId(defaultResourceShare.id())
      *             .targetId(default_.ids()[0])
      *             .build());
@@ -3640,15 +3797,16 @@ public final class ResourcemanagerFunctions {
      *             .ids(defaultSharedTarget.targetId())
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(ids -&gt; ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(getSharedTargetsResult -> getSharedTargetsResult).applyValue(ids -> ids.applyValue(getSharedTargetsResult -> getSharedTargetsResult.targets()[0].id())));
      *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
      *             .resourceShareId(defaultSharedTarget.resourceShareId())
      *             .build());
      * 
-     *         ctx.export(&#34;secondResourceManagerSharedTargetId&#34;, resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(resourceShareId -&gt; resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(getSharedTargetsResult -> getSharedTargetsResult).applyValue(resourceShareId -> resourceShareId.applyValue(getSharedTargetsResult -> getSharedTargetsResult.targets()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3665,7 +3823,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3692,14 +3851,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()        
      *             .resourceShareName(name)
      *             .build());
      * 
-     *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
+     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()        
      *             .resourceShareId(defaultResourceShare.id())
      *             .targetId(default_.ids()[0])
      *             .build());
@@ -3708,15 +3867,16 @@ public final class ResourcemanagerFunctions {
      *             .ids(defaultSharedTarget.targetId())
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(ids -&gt; ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(getSharedTargetsResult -> getSharedTargetsResult).applyValue(ids -> ids.applyValue(getSharedTargetsResult -> getSharedTargetsResult.targets()[0].id())));
      *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
      *             .resourceShareId(defaultSharedTarget.resourceShareId())
      *             .build());
      * 
-     *         ctx.export(&#34;secondResourceManagerSharedTargetId&#34;, resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(resourceShareId -&gt; resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(getSharedTargetsResult -> getSharedTargetsResult).applyValue(resourceShareId -> resourceShareId.applyValue(getSharedTargetsResult -> getSharedTargetsResult.targets()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3733,7 +3893,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3760,14 +3921,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()        
      *             .resourceShareName(name)
      *             .build());
      * 
-     *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
+     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()        
      *             .resourceShareId(defaultResourceShare.id())
      *             .targetId(default_.ids()[0])
      *             .build());
@@ -3776,15 +3937,16 @@ public final class ResourcemanagerFunctions {
      *             .ids(defaultSharedTarget.targetId())
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(ids -&gt; ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(getSharedTargetsResult -> getSharedTargetsResult).applyValue(ids -> ids.applyValue(getSharedTargetsResult -> getSharedTargetsResult.targets()[0].id())));
      *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
      *             .resourceShareId(defaultSharedTarget.resourceShareId())
      *             .build());
      * 
-     *         ctx.export(&#34;secondResourceManagerSharedTargetId&#34;, resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(resourceShareId -&gt; resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(getSharedTargetsResult -> getSharedTargetsResult).applyValue(resourceShareId -> resourceShareId.applyValue(getSharedTargetsResult -> getSharedTargetsResult.targets()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3801,7 +3963,8 @@ public final class ResourcemanagerFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3828,14 +3991,14 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()        
      *             .resourceShareName(name)
      *             .build());
      * 
-     *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
+     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()        
      *             .resourceShareId(defaultResourceShare.id())
      *             .targetId(default_.ids()[0])
      *             .build());
@@ -3844,15 +4007,16 @@ public final class ResourcemanagerFunctions {
      *             .ids(defaultSharedTarget.targetId())
      *             .build());
      * 
-     *         ctx.export(&#34;firstResourceManagerSharedTargetId&#34;, ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(ids -&gt; ids.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         ctx.export("firstResourceManagerSharedTargetId", ids.applyValue(getSharedTargetsResult -> getSharedTargetsResult).applyValue(ids -> ids.applyValue(getSharedTargetsResult -> getSharedTargetsResult.targets()[0].id())));
      *         final var resourceShareId = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
      *             .resourceShareId(defaultSharedTarget.resourceShareId())
      *             .build());
      * 
-     *         ctx.export(&#34;secondResourceManagerSharedTargetId&#34;, resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult).applyValue(resourceShareId -&gt; resourceShareId.applyValue(getSharedTargetsResult -&gt; getSharedTargetsResult.targets()[0].id())));
+     *         ctx.export("secondResourceManagerSharedTargetId", resourceShareId.applyValue(getSharedTargetsResult -> getSharedTargetsResult).applyValue(resourceShareId -> resourceShareId.applyValue(getSharedTargetsResult -> getSharedTargetsResult.targets()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

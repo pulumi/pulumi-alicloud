@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,59 +54,60 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;alibaba-example.com&#34;);
- *         var example = new Domain(&#34;example&#34;, DomainArgs.builder()        
+ *         final var domainName = config.get("domainName").orElse("alibaba-example.com");
+ *         var example = new Domain("example", DomainArgs.builder()        
  *             .domainName(domainName)
- *             .scope(&#34;overseas&#34;)
- *             .status(&#34;online&#34;)
+ *             .scope("overseas")
+ *             .status("online")
  *             .sources(DomainSourceArgs.builder()
- *                 .content(&#34;1.1.1.1&#34;)
- *                 .type(&#34;ipaddr&#34;)
+ *                 .content("1.1.1.1")
+ *                 .type("ipaddr")
  *                 .priority(20)
  *                 .port(80)
  *                 .weight(10)
  *                 .build())
  *             .build());
  * 
- *         var ipAllowListSet = new DomainConfig(&#34;ipAllowListSet&#34;, DomainConfigArgs.builder()        
+ *         var ipAllowListSet = new DomainConfig("ipAllowListSet", DomainConfigArgs.builder()        
  *             .domainName(example.domainName())
- *             .functionName(&#34;ip_allow_list_set&#34;)
+ *             .functionName("ip_allow_list_set")
  *             .functionArgs(DomainConfigFunctionArgArgs.builder()
- *                 .argName(&#34;ip_list&#34;)
- *                 .argValue(&#34;192.168.0.1&#34;)
+ *                 .argName("ip_list")
+ *                 .argValue("192.168.0.1")
  *                 .build())
  *             .build());
  * 
- *         var refererWhiteListSet = new DomainConfig(&#34;refererWhiteListSet&#34;, DomainConfigArgs.builder()        
+ *         var refererWhiteListSet = new DomainConfig("refererWhiteListSet", DomainConfigArgs.builder()        
  *             .domainName(example.domainName())
- *             .functionName(&#34;referer_white_list_set&#34;)
+ *             .functionName("referer_white_list_set")
  *             .functionArgs(DomainConfigFunctionArgArgs.builder()
- *                 .argName(&#34;refer_domain_allow_list&#34;)
- *                 .argValue(&#34;110.110.110.110&#34;)
+ *                 .argName("refer_domain_allow_list")
+ *                 .argValue("110.110.110.110")
  *                 .build())
  *             .build());
  * 
- *         var filetypeBasedTtlSet = new DomainConfig(&#34;filetypeBasedTtlSet&#34;, DomainConfigArgs.builder()        
+ *         var filetypeBasedTtlSet = new DomainConfig("filetypeBasedTtlSet", DomainConfigArgs.builder()        
  *             .domainName(example.domainName())
- *             .functionName(&#34;filetype_based_ttl_set&#34;)
+ *             .functionName("filetype_based_ttl_set")
  *             .functionArgs(            
  *                 DomainConfigFunctionArgArgs.builder()
- *                     .argName(&#34;ttl&#34;)
- *                     .argValue(&#34;300&#34;)
+ *                     .argName("ttl")
+ *                     .argValue("300")
  *                     .build(),
  *                 DomainConfigFunctionArgArgs.builder()
- *                     .argName(&#34;file_type&#34;)
- *                     .argValue(&#34;jpg&#34;)
+ *                     .argName("file_type")
+ *                     .argValue("jpg")
  *                     .build(),
  *                 DomainConfigFunctionArgArgs.builder()
- *                     .argName(&#34;weight&#34;)
- *                     .argValue(&#34;1&#34;)
+ *                     .argName("weight")
+ *                     .argValue("1")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

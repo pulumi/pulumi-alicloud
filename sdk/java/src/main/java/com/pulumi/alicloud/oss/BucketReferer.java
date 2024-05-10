@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,33 +56,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var createBucket = new Bucket(&#34;createBucket&#34;, BucketArgs.builder()        
- *             .storageClass(&#34;Standard&#34;)
- *             .bucket(String.format(&#34;%s-%s&#34;, name,default_.result()))
+ *         var createBucket = new Bucket("createBucket", BucketArgs.builder()        
+ *             .storageClass("Standard")
+ *             .bucket(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var defaultBucketReferer = new BucketReferer(&#34;defaultBucketReferer&#34;, BucketRefererArgs.builder()        
- *             .allowEmptyReferer(&#34;true&#34;)
- *             .refererBlacklists(&#34;*.forbidden.com&#34;)
+ *         var defaultBucketReferer = new BucketReferer("defaultBucketReferer", BucketRefererArgs.builder()        
+ *             .allowEmptyReferer("true")
+ *             .refererBlacklists("*.forbidden.com")
  *             .bucket(createBucket.bucket())
- *             .truncatePath(&#34;false&#34;)
- *             .allowTruncateQueryString(&#34;true&#34;)
+ *             .truncatePath("false")
+ *             .allowTruncateQueryString("true")
  *             .refererLists(            
- *                 &#34;*.aliyun.com&#34;,
- *                 &#34;*.example.com&#34;)
+ *                 "*.aliyun.com",
+ *                 "*.example.com")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(createBucket)
  *                 .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,28 +55,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-chengdu&#34;);
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new Connection(&#34;default&#34;, ConnectionArgs.builder()        
+ *         final var region = config.get("region").orElse("cn-chengdu");
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Connection("default", ConnectionArgs.builder()        
  *             .connectionName(name)
  *             .networkParameters(ConnectionNetworkParametersArgs.builder()
- *                 .networkType(&#34;PublicNetwork&#34;)
+ *                 .networkType("PublicNetwork")
  *                 .build())
  *             .build());
  * 
- *         var defaultApiDestination = new ApiDestination(&#34;defaultApiDestination&#34;, ApiDestinationArgs.builder()        
+ *         var defaultApiDestination = new ApiDestination("defaultApiDestination", ApiDestinationArgs.builder()        
  *             .connectionName(default_.connectionName())
  *             .apiDestinationName(name)
- *             .description(&#34;test-api-destination-connection&#34;)
+ *             .description("test-api-destination-connection")
  *             .httpApiParameters(ApiDestinationHttpApiParametersArgs.builder()
- *                 .endpoint(&#34;http://127.0.0.1:8001&#34;)
- *                 .method(&#34;POST&#34;)
+ *                 .endpoint("http://127.0.0.1:8001")
+ *                 .method("POST")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

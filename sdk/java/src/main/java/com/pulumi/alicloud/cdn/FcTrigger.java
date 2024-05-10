@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,18 +56,19 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var example = new FcTrigger(&#34;example&#34;, FcTriggerArgs.builder()        
- *             .eventMetaName(&#34;LogFileCreated&#34;)
- *             .eventMetaVersion(&#34;1.0.0&#34;)
- *             .notes(&#34;example_value&#34;)
- *             .roleArn(String.format(&#34;acs:ram::%s:role/aliyuncdneventnotificationrole&#34;, default_.id()))
- *             .sourceArn(String.format(&#34;acs:cdn:*:%s:domain/example.com&#34;, default_.id()))
- *             .triggerArn(String.format(&#34;acs:fc:%s:%s:services/FCTestService/functions/printEvent/triggers/testtrigger&#34;, defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),default_.id()))
+ *         var example = new FcTrigger("example", FcTriggerArgs.builder()        
+ *             .eventMetaName("LogFileCreated")
+ *             .eventMetaVersion("1.0.0")
+ *             .notes("example_value")
+ *             .roleArn(String.format("acs:ram::%s:role/aliyuncdneventnotificationrole", default_.id()))
+ *             .sourceArn(String.format("acs:cdn:*:%s:domain/example.com", default_.id()))
+ *             .triggerArn(String.format("acs:fc:%s:%s:services/FCTestService/functions/printEvent/triggers/testtrigger", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),default_.id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

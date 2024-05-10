@@ -33,7 +33,8 @@ public final class GpdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -55,22 +56,23 @@ public final class GpdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .ids(            
-     *                 &#34;my-Account-1&#34;,
-     *                 &#34;my-Account-2&#34;)
+     *                 "my-Account-1",
+     *                 "my-Account-2")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbAccountId1&#34;, ids.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId1", ids.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *         final var nameRegex = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Account&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("^my-Account")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbAccountId2&#34;, nameRegex.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId2", nameRegex.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -87,7 +89,8 @@ public final class GpdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -109,22 +112,23 @@ public final class GpdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .ids(            
-     *                 &#34;my-Account-1&#34;,
-     *                 &#34;my-Account-2&#34;)
+     *                 "my-Account-1",
+     *                 "my-Account-2")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbAccountId1&#34;, ids.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId1", ids.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *         final var nameRegex = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Account&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("^my-Account")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbAccountId2&#34;, nameRegex.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId2", nameRegex.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -141,7 +145,8 @@ public final class GpdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -163,22 +168,23 @@ public final class GpdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .ids(            
-     *                 &#34;my-Account-1&#34;,
-     *                 &#34;my-Account-2&#34;)
+     *                 "my-Account-1",
+     *                 "my-Account-2")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbAccountId1&#34;, ids.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId1", ids.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *         final var nameRegex = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Account&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("^my-Account")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbAccountId2&#34;, nameRegex.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId2", nameRegex.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -195,7 +201,8 @@ public final class GpdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -217,22 +224,23 @@ public final class GpdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .ids(            
-     *                 &#34;my-Account-1&#34;,
-     *                 &#34;my-Account-2&#34;)
+     *                 "my-Account-1",
+     *                 "my-Account-2")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbAccountId1&#34;, ids.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId1", ids.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *         final var nameRegex = GpdbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Account&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("^my-Account")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbAccountId2&#34;, nameRegex.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("gpdbAccountId2", nameRegex.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -249,7 +257,8 @@ public final class GpdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -271,20 +280,21 @@ public final class GpdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbDbInstancePlanId1&#34;, ids.applyValue(getDbInstancePlansResult -&gt; getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId1", ids.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
      *         final var nameRegex = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-DBInstancePlan&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("^my-DBInstancePlan")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbDbInstancePlanId2&#34;, nameRegex.applyValue(getDbInstancePlansResult -&gt; getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -301,7 +311,8 @@ public final class GpdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -323,20 +334,21 @@ public final class GpdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbDbInstancePlanId1&#34;, ids.applyValue(getDbInstancePlansResult -&gt; getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId1", ids.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
      *         final var nameRegex = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-DBInstancePlan&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("^my-DBInstancePlan")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbDbInstancePlanId2&#34;, nameRegex.applyValue(getDbInstancePlansResult -&gt; getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -353,7 +365,8 @@ public final class GpdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -375,20 +388,21 @@ public final class GpdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbDbInstancePlanId1&#34;, ids.applyValue(getDbInstancePlansResult -&gt; getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId1", ids.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
      *         final var nameRegex = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-DBInstancePlan&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("^my-DBInstancePlan")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbDbInstancePlanId2&#34;, nameRegex.applyValue(getDbInstancePlansResult -&gt; getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -405,7 +419,8 @@ public final class GpdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -427,20 +442,21 @@ public final class GpdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbDbInstancePlanId1&#34;, ids.applyValue(getDbInstancePlansResult -&gt; getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId1", ids.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
      *         final var nameRegex = GpdbFunctions.getDbInstancePlans(GetDbInstancePlansArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-DBInstancePlan&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("^my-DBInstancePlan")
      *             .build());
      * 
-     *         ctx.export(&#34;gpdbDbInstancePlanId2&#34;, nameRegex.applyValue(getDbInstancePlansResult -&gt; getDbInstancePlansResult.plans()[0].id()));
+     *         ctx.export("gpdbDbInstancePlanId2", nameRegex.applyValue(getDbInstancePlansResult -> getDbInstancePlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -457,7 +473,8 @@ public final class GpdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -480,10 +497,11 @@ public final class GpdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = GpdbFunctions.getInstances();
      * 
-     *         ctx.export(&#34;gpdbDbInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("gpdbDbInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -500,7 +518,8 @@ public final class GpdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -523,10 +542,11 @@ public final class GpdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = GpdbFunctions.getInstances();
      * 
-     *         ctx.export(&#34;gpdbDbInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("gpdbDbInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -543,7 +563,8 @@ public final class GpdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -566,10 +587,11 @@ public final class GpdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = GpdbFunctions.getInstances();
      * 
-     *         ctx.export(&#34;gpdbDbInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("gpdbDbInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -586,7 +608,8 @@ public final class GpdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -609,10 +632,11 @@ public final class GpdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = GpdbFunctions.getInstances();
      * 
-     *         ctx.export(&#34;gpdbDbInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("gpdbDbInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -629,7 +653,8 @@ public final class GpdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -652,10 +677,11 @@ public final class GpdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = GpdbFunctions.getInstances();
      * 
-     *         ctx.export(&#34;gpdbDbInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("gpdbDbInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -672,7 +698,8 @@ public final class GpdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -695,10 +722,11 @@ public final class GpdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = GpdbFunctions.getInstances();
      * 
-     *         ctx.export(&#34;gpdbDbInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("gpdbDbInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -713,7 +741,8 @@ public final class GpdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -740,13 +769,14 @@ public final class GpdbFunctions {
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
      *         // Create an Gpdb instance with the first matched zone
-     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *             .availabilityZone(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -761,7 +791,8 @@ public final class GpdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -788,13 +819,14 @@ public final class GpdbFunctions {
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
      *         // Create an Gpdb instance with the first matched zone
-     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *             .availabilityZone(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -809,7 +841,8 @@ public final class GpdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -836,13 +869,14 @@ public final class GpdbFunctions {
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
      *         // Create an Gpdb instance with the first matched zone
-     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *             .availabilityZone(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -857,7 +891,8 @@ public final class GpdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -884,13 +919,14 @@ public final class GpdbFunctions {
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
      *         // Create an Gpdb instance with the first matched zone
-     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *             .availabilityZone(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -905,7 +941,8 @@ public final class GpdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -932,13 +969,14 @@ public final class GpdbFunctions {
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
      *         // Create an Gpdb instance with the first matched zone
-     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *             .availabilityZone(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -953,7 +991,8 @@ public final class GpdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -980,13 +1019,14 @@ public final class GpdbFunctions {
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
      *         // Create an Gpdb instance with the first matched zone
-     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *             .availabilityZone(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

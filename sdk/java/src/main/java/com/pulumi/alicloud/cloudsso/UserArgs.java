@@ -122,14 +122,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+     * The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs ({@literal @}), periods (.), underscores (_), and hyphens (-).
      * 
      */
     @Import(name="userName", required=true)
     private Output<String> userName;
 
     /**
-     * @return The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+     * @return The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs ({@literal @}), periods (.), underscores (_), and hyphens (-).
      * 
      */
     public Output<String> userName() {
@@ -315,7 +315,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userName The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+         * @param userName The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs ({@literal @}), periods (.), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param userName The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+         * @param userName The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs ({@literal @}), periods (.), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 

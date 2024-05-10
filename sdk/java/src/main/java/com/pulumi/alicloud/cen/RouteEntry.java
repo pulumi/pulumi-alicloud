@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -71,67 +72,67 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .availableResourceCreation("Instance")
  *             .build());
  * 
  *         final var exampleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
  * 
  *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
- *             .owners(&#34;system&#34;)
+ *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
+ *             .owners("system")
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *             .vswitchName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .name(&#34;terraform-example&#34;)
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
+ *             .name("terraform-example")
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .availabilityZone(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .instanceName(&#34;terraform-example&#34;)
- *             .imageId(exampleGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .instanceName("terraform-example")
+ *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .securityGroups(exampleSecurityGroup.id())
  *             .vswitchId(exampleSwitch.id())
  *             .internetMaxBandwidthOut(5)
  *             .build());
  * 
- *         var exampleInstance2 = new Instance(&#34;exampleInstance2&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf_example&#34;)
- *             .description(&#34;an example for cen&#34;)
+ *         var exampleInstance2 = new Instance("exampleInstance2", InstanceArgs.builder()        
+ *             .cenInstanceName("tf_example")
+ *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *         var exampleInstanceAttachment = new InstanceAttachment("exampleInstanceAttachment", InstanceAttachmentArgs.builder()        
  *             .instanceId(exampleInstance2.id())
  *             .childInstanceId(exampleNetwork.id())
- *             .childInstanceType(&#34;VPC&#34;)
+ *             .childInstanceType("VPC")
  *             .childInstanceRegionId(default_.regions()[0].id())
  *             .build());
  * 
- *         var exampleRouteEntry = new RouteEntry(&#34;exampleRouteEntry&#34;, RouteEntryArgs.builder()        
+ *         var exampleRouteEntry = new RouteEntry("exampleRouteEntry", RouteEntryArgs.builder()        
  *             .routeTableId(exampleNetwork.routeTableId())
- *             .destinationCidrblock(&#34;11.0.0.0/16&#34;)
- *             .nexthopType(&#34;Instance&#34;)
+ *             .destinationCidrblock("11.0.0.0/16")
+ *             .nexthopType("Instance")
  *             .nexthopId(exampleInstance.id())
  *             .build());
  * 
- *         var exampleRouteEntry2 = new RouteEntry(&#34;exampleRouteEntry2&#34;, RouteEntryArgs.builder()        
+ *         var exampleRouteEntry2 = new RouteEntry("exampleRouteEntry2", RouteEntryArgs.builder()        
  *             .instanceId(exampleInstanceAttachment.instanceId())
  *             .routeTableId(exampleNetwork.routeTableId())
  *             .cidrBlock(exampleRouteEntry.destinationCidrblock())
@@ -139,7 +140,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

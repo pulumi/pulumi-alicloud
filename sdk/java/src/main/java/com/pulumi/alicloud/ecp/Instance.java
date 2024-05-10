@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,8 +65,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -78,45 +79,46 @@ import javax.annotation.Nullable;
  * 
  *         final var zoneId = default_.zones()[countSize - 1].zoneId();
  * 
- *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length();
+ *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
  * 
- *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+ *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *             .nameRegex("^default-NODELETING$")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
  *             .name(name)
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .build());
  * 
- *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
- *             .keyPairName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
- *             .publicKeyBody(&#34;ssh-rsa AAAAB3Nza12345678qwertyuudsfsg&#34;)
+ *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+ *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .instanceName(name)
  *             .description(name)
  *             .keyPairName(defaultKeyPair.keyPairName())
  *             .securityGroupId(group.id())
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
- *             .imageId(&#34;android_9_0_0_release_2851157_20211201.vhd&#34;)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[1].instanceType()))
- *             .vncPassword(&#34;Ecp123&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .force(&#34;true&#34;)
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[1].instanceType()))
+ *             .vncPassword("Ecp123")
+ *             .paymentType("PayAsYouGo")
+ *             .force("true")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

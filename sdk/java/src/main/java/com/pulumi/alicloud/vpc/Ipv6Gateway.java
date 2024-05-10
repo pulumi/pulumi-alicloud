@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,24 +55,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc-example&#34;);
- *         var defaultVpc = new Network(&#34;defaultVpc&#34;, NetworkArgs.builder()        
- *             .description(&#34;tf-testacc&#34;)
+ *         final var name = config.get("name").orElse("tf-testacc-example");
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()        
+ *             .description("tf-testacc")
  *             .enableIpv6(true)
  *             .build());
  * 
- *         var defaultRg = new ResourceGroup(&#34;defaultRg&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;tf-testacc-ipv6gateway503&#34;)
- *             .resourceGroupName(String.format(&#34;%s1&#34;, name))
+ *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()        
+ *             .displayName("tf-testacc-ipv6gateway503")
+ *             .resourceGroupName(String.format("%s1", name))
  *             .build());
  * 
- *         var changeRg = new ResourceGroup(&#34;changeRg&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;tf-testacc-ipv6gateway311&#34;)
- *             .resourceGroupName(String.format(&#34;%s2&#34;, name))
+ *         var changeRg = new ResourceGroup("changeRg", ResourceGroupArgs.builder()        
+ *             .displayName("tf-testacc-ipv6gateway311")
+ *             .resourceGroupName(String.format("%s2", name))
  *             .build());
  * 
- *         var default_ = new Ipv6Gateway(&#34;default&#34;, Ipv6GatewayArgs.builder()        
- *             .description(&#34;test&#34;)
+ *         var default_ = new Ipv6Gateway("default", Ipv6GatewayArgs.builder()        
+ *             .description("test")
  *             .ipv6GatewayName(name)
  *             .vpcId(defaultVpc.id())
  *             .resourceGroupId(defaultRg.id())
@@ -79,7 +80,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,67 +61,68 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING$&#34;)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .nameRegex("^default-NODELETING$")
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .description(name)
- *             .licenseCode(&#34;bhah_ent_50_asset&#34;)
- *             .planCode(&#34;cloudbastion&#34;)
- *             .storage(&#34;5&#34;)
- *             .bandwidth(&#34;5&#34;)
- *             .period(&#34;1&#34;)
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .licenseCode("bhah_ent_50_asset")
+ *             .planCode("cloudbastion")
+ *             .storage("5")
+ *             .bandwidth("5")
+ *             .period("1")
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
  *             .securityGroupIds(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var localUser = new User(&#34;localUser&#34;, UserArgs.builder()        
+ *         var localUser = new User("localUser", UserArgs.builder()        
  *             .instanceId(defaultInstance.id())
- *             .mobileCountryCode(&#34;CN&#34;)
- *             .mobile(&#34;13312345678&#34;)
- *             .password(&#34;YourPassword-123&#34;)
- *             .source(&#34;Local&#34;)
- *             .userName(String.format(&#34;%s_local_user&#34;, name))
+ *             .mobileCountryCode("CN")
+ *             .mobile("13312345678")
+ *             .password("YourPassword-123")
+ *             .source("Local")
+ *             .userName(String.format("%s_local_user", name))
  *             .build());
  * 
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .name(String.format(&#34;%s_bastionhost_user&#34;, name))
- *             .displayName(String.format(&#34;%s_bastionhost_user&#34;, name))
- *             .mobile(&#34;86-18688888888&#34;)
- *             .email(&#34;hello.uuu@aaa.com&#34;)
- *             .comments(&#34;yoyoyo&#34;)
+ *         var user = new User("user", UserArgs.builder()        
+ *             .name(String.format("%s_bastionhost_user", name))
+ *             .displayName(String.format("%s_bastionhost_user", name))
+ *             .mobile("86-18688888888")
+ *             .email("hello.uuu{@literal @}aaa.com")
+ *             .comments("yoyoyo")
  *             .force(true)
  *             .build());
  * 
  *         final var defaultGetAccount = AlicloudFunctions.getAccount();
  * 
- *         var ramUser = new User(&#34;ramUser&#34;, UserArgs.builder()        
+ *         var ramUser = new User("ramUser", UserArgs.builder()        
  *             .instanceId(defaultInstance.id())
- *             .source(&#34;Ram&#34;)
- *             .sourceUserId(defaultGetAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .source("Ram")
+ *             .sourceUserId(defaultGetAccount.applyValue(getAccountResult -> getAccountResult.id()))
  *             .userName(user.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

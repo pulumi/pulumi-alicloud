@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,17 +50,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AntiBruteForceRule(&#34;default&#34;, AntiBruteForceRuleArgs.builder()        
- *             .antiBruteForceRuleName(&#34;apispec_example&#34;)
+ *         var default_ = new AntiBruteForceRule("default", AntiBruteForceRuleArgs.builder()        
+ *             .antiBruteForceRuleName("apispec_example")
  *             .forbiddenTime(360)
- *             .uuidLists(&#34;032b618f-b220-4a0d-bd37-fbdc6ef58b6a&#34;)
+ *             .uuidLists("032b618f-b220-4a0d-bd37-fbdc6ef58b6a")
  *             .failCount(80)
  *             .span(10)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

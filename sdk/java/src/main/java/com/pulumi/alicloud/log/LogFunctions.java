@@ -35,7 +35,8 @@ public final class LogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -57,13 +58,14 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
-     *             .type(&#34;user&#34;)
-     *             .lang(&#34;cn&#34;)
+     *             .type("user")
+     *             .lang("cn")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -82,7 +84,8 @@ public final class LogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -104,13 +107,14 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
-     *             .type(&#34;user&#34;)
-     *             .lang(&#34;cn&#34;)
+     *             .type("user")
+     *             .lang("cn")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -129,7 +133,8 @@ public final class LogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -151,13 +156,14 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
-     *             .type(&#34;user&#34;)
-     *             .lang(&#34;cn&#34;)
+     *             .type("user")
+     *             .lang("cn")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -176,7 +182,8 @@ public final class LogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -198,13 +205,14 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
-     *             .type(&#34;user&#34;)
-     *             .lang(&#34;cn&#34;)
+     *             .type("user")
+     *             .lang("cn")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -275,7 +283,8 @@ public final class LogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -297,12 +306,13 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = LogFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -319,7 +329,8 @@ public final class LogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -341,12 +352,13 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = LogFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -363,7 +375,8 @@ public final class LogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -385,12 +398,13 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = LogFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -407,7 +421,8 @@ public final class LogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -429,12 +444,13 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = LogFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -451,7 +467,8 @@ public final class LogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -473,12 +490,13 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = LogFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -495,7 +513,8 @@ public final class LogFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -517,12 +536,13 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = LogFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -539,7 +559,8 @@ public final class LogFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -561,14 +582,15 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = LogFunctions.getStores(GetStoresArgs.builder()
-     *             .project(&#34;the_project_name&#34;)
-     *             .ids(&#34;the_store_name&#34;)
+     *             .project("the_project_name")
+     *             .ids("the_store_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLogStoreId&#34;, example.applyValue(getStoresResult -&gt; getStoresResult.stores()[0].id()));
+     *         ctx.export("firstLogStoreId", example.applyValue(getStoresResult -> getStoresResult.stores()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -585,7 +607,8 @@ public final class LogFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -607,14 +630,15 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = LogFunctions.getStores(GetStoresArgs.builder()
-     *             .project(&#34;the_project_name&#34;)
-     *             .ids(&#34;the_store_name&#34;)
+     *             .project("the_project_name")
+     *             .ids("the_store_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLogStoreId&#34;, example.applyValue(getStoresResult -&gt; getStoresResult.stores()[0].id()));
+     *         ctx.export("firstLogStoreId", example.applyValue(getStoresResult -> getStoresResult.stores()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -631,7 +655,8 @@ public final class LogFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -653,14 +678,15 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = LogFunctions.getStores(GetStoresArgs.builder()
-     *             .project(&#34;the_project_name&#34;)
-     *             .ids(&#34;the_store_name&#34;)
+     *             .project("the_project_name")
+     *             .ids("the_store_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLogStoreId&#34;, example.applyValue(getStoresResult -&gt; getStoresResult.stores()[0].id()));
+     *         ctx.export("firstLogStoreId", example.applyValue(getStoresResult -> getStoresResult.stores()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -677,7 +703,8 @@ public final class LogFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -699,14 +726,15 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = LogFunctions.getStores(GetStoresArgs.builder()
-     *             .project(&#34;the_project_name&#34;)
-     *             .ids(&#34;the_store_name&#34;)
+     *             .project("the_project_name")
+     *             .ids("the_store_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLogStoreId&#34;, example.applyValue(getStoresResult -&gt; getStoresResult.stores()[0].id()));
+     *         ctx.export("firstLogStoreId", example.applyValue(getStoresResult -> getStoresResult.stores()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,14 +53,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ChatbotFunctions.getAgents();
  * 
- *         var defaultPublishTask = new PublishTask(&#34;defaultPublishTask&#34;, PublishTaskArgs.builder()        
- *             .bizType(&#34;faq&#34;)
+ *         var defaultPublishTask = new PublishTask("defaultPublishTask", PublishTaskArgs.builder()        
+ *             .bizType("faq")
  *             .agentKey(default_.agents()[0].agentKey())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

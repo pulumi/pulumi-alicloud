@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,65 +62,66 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *         final var name = config.get("name").orElse("tf_example");
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
  *             .cenInstanceName(name)
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
  *             .bandwidth(5)
  *             .cenBandwidthPackageName(name)
- *             .geographicRegionAId(&#34;China&#34;)
- *             .geographicRegionBId(&#34;China&#34;)
+ *             .geographicRegionAId("China")
+ *             .geographicRegionBId("China")
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
  *             .instanceId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+ *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()        
  *             .cenId(defaultBandwidthPackageAttachment.instanceId())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var peer = new TransitRouter(&#34;peer&#34;, TransitRouterArgs.builder()        
+ *         var peer = new TransitRouter("peer", TransitRouterArgs.builder()        
  *             .cenId(defaultBandwidthPackageAttachment.instanceId())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment(&#34;defaultTransitRouterPeerAttachment&#34;, TransitRouterPeerAttachmentArgs.builder()        
+ *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", TransitRouterPeerAttachmentArgs.builder()        
  *             .cenId(defaultBandwidthPackageAttachment.instanceId())
  *             .transitRouterId(defaultTransitRouter.transitRouterId())
  *             .peerTransitRouterId(peer.transitRouterId())
- *             .peerTransitRouterRegionId(&#34;cn-qingdao&#34;)
+ *             .peerTransitRouterRegionId("cn-qingdao")
  *             .cenBandwidthPackageId(defaultBandwidthPackageAttachment.bandwidthPackageId())
  *             .bandwidth(5)
  *             .transitRouterAttachmentDescription(name)
  *             .transitRouterAttachmentName(name)
  *             .build());
  * 
- *         var defaultTransitRouterMulticastDomain = new TransitRouterMulticastDomain(&#34;defaultTransitRouterMulticastDomain&#34;, TransitRouterMulticastDomainArgs.builder()        
+ *         var defaultTransitRouterMulticastDomain = new TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()        
  *             .transitRouterId(defaultTransitRouterPeerAttachment.transitRouterId())
  *             .transitRouterMulticastDomainName(name)
  *             .transitRouterMulticastDomainDescription(name)
  *             .build());
  * 
- *         var peerTransitRouterMulticastDomain = new TransitRouterMulticastDomain(&#34;peerTransitRouterMulticastDomain&#34;, TransitRouterMulticastDomainArgs.builder()        
+ *         var peerTransitRouterMulticastDomain = new TransitRouterMulticastDomain("peerTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()        
  *             .transitRouterId(defaultTransitRouterPeerAttachment.peerTransitRouterId())
  *             .transitRouterMulticastDomainName(name)
  *             .transitRouterMulticastDomainDescription(name)
  *             .build());
  * 
- *         var defaultTransitRouterMulticastDomainPeerMember = new TransitRouterMulticastDomainPeerMember(&#34;defaultTransitRouterMulticastDomainPeerMember&#34;, TransitRouterMulticastDomainPeerMemberArgs.builder()        
+ *         var defaultTransitRouterMulticastDomainPeerMember = new TransitRouterMulticastDomainPeerMember("defaultTransitRouterMulticastDomainPeerMember", TransitRouterMulticastDomainPeerMemberArgs.builder()        
  *             .transitRouterMulticastDomainId(defaultTransitRouterMulticastDomain.id())
  *             .peerTransitRouterMulticastDomainId(peerTransitRouterMulticastDomain.id())
- *             .groupIpAddress(&#34;224.0.0.1&#34;)
+ *             .groupIpAddress("224.0.0.1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

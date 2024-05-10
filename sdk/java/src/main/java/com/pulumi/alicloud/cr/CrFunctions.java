@@ -50,7 +50,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -72,22 +73,23 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getChains(GetChainsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;crChainId1&#34;, ids.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId1", ids.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
      *         final var nameRegex = CrFunctions.getChains(GetChainsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Chain&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-Chain")
      *             .build());
      * 
-     *         ctx.export(&#34;crChainId2&#34;, nameRegex.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId2", nameRegex.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -106,7 +108,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -128,22 +131,23 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getChains(GetChainsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;crChainId1&#34;, ids.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId1", ids.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
      *         final var nameRegex = CrFunctions.getChains(GetChainsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Chain&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-Chain")
      *             .build());
      * 
-     *         ctx.export(&#34;crChainId2&#34;, nameRegex.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId2", nameRegex.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -162,7 +166,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -184,22 +189,23 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getChains(GetChainsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;crChainId1&#34;, ids.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId1", ids.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
      *         final var nameRegex = CrFunctions.getChains(GetChainsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Chain&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-Chain")
      *             .build());
      * 
-     *         ctx.export(&#34;crChainId2&#34;, nameRegex.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId2", nameRegex.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -218,7 +224,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -240,22 +247,23 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getChains(GetChainsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;crChainId1&#34;, ids.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId1", ids.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
      *         final var nameRegex = CrFunctions.getChains(GetChainsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Chain&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-Chain")
      *             .build());
      * 
-     *         ctx.export(&#34;crChainId2&#34;, nameRegex.applyValue(getChainsResult -&gt; getChainsResult.chains()[0].id()));
+     *         ctx.export("crChainId2", nameRegex.applyValue(getChainsResult -> getChainsResult.chains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -308,7 +316,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -330,16 +339,17 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getChartRepositories(GetChartRepositoriesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;crChartRepositoryId1&#34;, default_.ids()[0]);
+     *         ctx.export("crChartRepositoryId1", default_.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -356,7 +366,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -378,16 +389,17 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getChartRepositories(GetChartRepositoriesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;crChartRepositoryId1&#34;, default_.ids()[0]);
+     *         ctx.export("crChartRepositoryId1", default_.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -404,7 +416,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -426,16 +439,17 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getChartRepositories(GetChartRepositoriesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;crChartRepositoryId1&#34;, default_.ids()[0]);
+     *         ctx.export("crChartRepositoryId1", default_.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -452,7 +466,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -474,16 +489,17 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getChartRepositories(GetChartRepositoriesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;crChartRepositoryId1&#34;, default_.ids()[0]);
+     *         ctx.export("crChartRepositoryId1", default_.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -500,7 +516,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -522,17 +539,18 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getEndpointAclPolicies(GetEndpointAclPoliciesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .endpointType(&#34;example_value&#34;)
+     *             .instanceId("example_value")
+     *             .endpointType("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;crEndpointAclPolicyId1&#34;, ids.applyValue(getEndpointAclPoliciesResult -&gt; getEndpointAclPoliciesResult.policies()[0].id()));
+     *         ctx.export("crEndpointAclPolicyId1", ids.applyValue(getEndpointAclPoliciesResult -> getEndpointAclPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -549,7 +567,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -571,17 +590,18 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getEndpointAclPolicies(GetEndpointAclPoliciesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .endpointType(&#34;example_value&#34;)
+     *             .instanceId("example_value")
+     *             .endpointType("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;crEndpointAclPolicyId1&#34;, ids.applyValue(getEndpointAclPoliciesResult -&gt; getEndpointAclPoliciesResult.policies()[0].id()));
+     *         ctx.export("crEndpointAclPolicyId1", ids.applyValue(getEndpointAclPoliciesResult -> getEndpointAclPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -598,7 +618,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -620,17 +641,18 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getEndpointAclPolicies(GetEndpointAclPoliciesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .endpointType(&#34;example_value&#34;)
+     *             .instanceId("example_value")
+     *             .endpointType("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;crEndpointAclPolicyId1&#34;, ids.applyValue(getEndpointAclPoliciesResult -&gt; getEndpointAclPoliciesResult.policies()[0].id()));
+     *         ctx.export("crEndpointAclPolicyId1", ids.applyValue(getEndpointAclPoliciesResult -> getEndpointAclPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -647,7 +669,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -669,17 +692,18 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getEndpointAclPolicies(GetEndpointAclPoliciesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .endpointType(&#34;example_value&#34;)
+     *             .instanceId("example_value")
+     *             .endpointType("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;crEndpointAclPolicyId1&#34;, ids.applyValue(getEndpointAclPoliciesResult -&gt; getEndpointAclPoliciesResult.policies()[0].id()));
+     *         ctx.export("crEndpointAclPolicyId1", ids.applyValue(getEndpointAclPoliciesResult -> getEndpointAclPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -698,7 +722,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -720,15 +745,16 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CrFunctions.getEndpointAclService(GetEndpointAclServiceArgs.builder()
-     *             .endpointType(&#34;internet&#34;)
+     *             .endpointType("internet")
      *             .enable(true)
-     *             .instanceId(&#34;example_id&#34;)
-     *             .moduleName(&#34;Registry&#34;)
+     *             .instanceId("example_id")
+     *             .moduleName("Registry")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -747,7 +773,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -769,15 +796,16 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CrFunctions.getEndpointAclService(GetEndpointAclServiceArgs.builder()
-     *             .endpointType(&#34;internet&#34;)
+     *             .endpointType("internet")
      *             .enable(true)
-     *             .instanceId(&#34;example_id&#34;)
-     *             .moduleName(&#34;Registry&#34;)
+     *             .instanceId("example_id")
+     *             .moduleName("Registry")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -796,7 +824,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -818,15 +847,16 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CrFunctions.getEndpointAclService(GetEndpointAclServiceArgs.builder()
-     *             .endpointType(&#34;internet&#34;)
+     *             .endpointType("internet")
      *             .enable(true)
-     *             .instanceId(&#34;example_id&#34;)
-     *             .moduleName(&#34;Registry&#34;)
+     *             .instanceId("example_id")
+     *             .moduleName("Registry")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -845,7 +875,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -867,15 +898,16 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CrFunctions.getEndpointAclService(GetEndpointAclServiceArgs.builder()
-     *             .endpointType(&#34;internet&#34;)
+     *             .endpointType("internet")
      *             .enable(true)
-     *             .instanceId(&#34;example_id&#34;)
-     *             .moduleName(&#34;Registry&#34;)
+     *             .instanceId("example_id")
+     *             .moduleName("Registry")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -890,7 +922,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -913,14 +946,15 @@ public final class CrFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;my-namespace&#34;)
-     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .nameRegex("my-namespace")
+     *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -935,7 +969,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -958,14 +993,15 @@ public final class CrFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;my-namespace&#34;)
-     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .nameRegex("my-namespace")
+     *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -980,7 +1016,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1003,14 +1040,15 @@ public final class CrFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;my-namespace&#34;)
-     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .nameRegex("my-namespace")
+     *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1025,7 +1063,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1048,14 +1087,15 @@ public final class CrFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;my-namespace&#34;)
-     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .nameRegex("my-namespace")
+     *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1070,7 +1110,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1093,14 +1134,15 @@ public final class CrFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;my-namespace&#34;)
-     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .nameRegex("my-namespace")
+     *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1115,7 +1157,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1138,14 +1181,15 @@ public final class CrFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myNamespaces = CrFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;my-namespace&#34;)
-     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .nameRegex("my-namespace")
+     *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1160,7 +1204,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1183,14 +1228,15 @@ public final class CrFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
-     *             .nameRegex(&#34;my-repos&#34;)
-     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .nameRegex("my-repos")
+     *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getReposResult -&gt; getReposResult.repos()));
+     *         ctx.export("output", myRepos.applyValue(getReposResult -> getReposResult.repos()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1205,7 +1251,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1228,14 +1275,15 @@ public final class CrFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
-     *             .nameRegex(&#34;my-repos&#34;)
-     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .nameRegex("my-repos")
+     *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getReposResult -&gt; getReposResult.repos()));
+     *         ctx.export("output", myRepos.applyValue(getReposResult -> getReposResult.repos()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1250,7 +1298,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1273,14 +1322,15 @@ public final class CrFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
-     *             .nameRegex(&#34;my-repos&#34;)
-     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .nameRegex("my-repos")
+     *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getReposResult -&gt; getReposResult.repos()));
+     *         ctx.export("output", myRepos.applyValue(getReposResult -> getReposResult.repos()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1295,7 +1345,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1318,14 +1369,15 @@ public final class CrFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
-     *             .nameRegex(&#34;my-repos&#34;)
-     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .nameRegex("my-repos")
+     *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getReposResult -&gt; getReposResult.repos()));
+     *         ctx.export("output", myRepos.applyValue(getReposResult -> getReposResult.repos()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1340,7 +1392,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1363,14 +1416,15 @@ public final class CrFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
-     *             .nameRegex(&#34;my-repos&#34;)
-     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .nameRegex("my-repos")
+     *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getReposResult -&gt; getReposResult.repos()));
+     *         ctx.export("output", myRepos.applyValue(getReposResult -> getReposResult.repos()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1385,7 +1439,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1408,14 +1463,15 @@ public final class CrFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myRepos = CrFunctions.getRepos(GetReposArgs.builder()
-     *             .nameRegex(&#34;my-repos&#34;)
-     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .nameRegex("my-repos")
+     *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getReposResult -&gt; getReposResult.repos()));
+     *         ctx.export("output", myRepos.applyValue(getReposResult -> getReposResult.repos()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1432,7 +1488,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1454,13 +1511,14 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CrFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
-     *             .password(&#34;1111aaaa&#34;)
+     *             .enable("On")
+     *             .password("1111aaaa")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1477,7 +1535,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1499,13 +1558,14 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CrFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
-     *             .password(&#34;1111aaaa&#34;)
+     *             .enable("On")
+     *             .password("1111aaaa")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1522,7 +1582,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1544,13 +1605,14 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CrFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
-     *             .password(&#34;1111aaaa&#34;)
+     *             .enable("On")
+     *             .password("1111aaaa")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1567,7 +1629,8 @@ public final class CrFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1589,13 +1652,14 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CrFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
-     *             .password(&#34;1111aaaa&#34;)
+     *             .enable("On")
+     *             .password("1111aaaa")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1612,7 +1676,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1634,15 +1699,16 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .instanceId(&#34;your_cr_instance_id&#34;)
-     *             .moduleName(&#34;Registry&#34;)
+     *             .ids("example_id")
+     *             .instanceId("your_cr_instance_id")
+     *             .moduleName("Registry")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCrVpcEndpointLinkedVpcsId1&#34;, ids.applyValue(getVpcEndpointLinkedVpcsResult -&gt; getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
+     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.applyValue(getVpcEndpointLinkedVpcsResult -> getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1659,7 +1725,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1681,15 +1748,16 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .instanceId(&#34;your_cr_instance_id&#34;)
-     *             .moduleName(&#34;Registry&#34;)
+     *             .ids("example_id")
+     *             .instanceId("your_cr_instance_id")
+     *             .moduleName("Registry")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCrVpcEndpointLinkedVpcsId1&#34;, ids.applyValue(getVpcEndpointLinkedVpcsResult -&gt; getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
+     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.applyValue(getVpcEndpointLinkedVpcsResult -> getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1706,7 +1774,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1728,15 +1797,16 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .instanceId(&#34;your_cr_instance_id&#34;)
-     *             .moduleName(&#34;Registry&#34;)
+     *             .ids("example_id")
+     *             .instanceId("your_cr_instance_id")
+     *             .moduleName("Registry")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCrVpcEndpointLinkedVpcsId1&#34;, ids.applyValue(getVpcEndpointLinkedVpcsResult -&gt; getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
+     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.applyValue(getVpcEndpointLinkedVpcsResult -> getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1753,7 +1823,8 @@ public final class CrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1775,15 +1846,16 @@ public final class CrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CrFunctions.getVpcEndpointLinkedVpcs(GetVpcEndpointLinkedVpcsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .instanceId(&#34;your_cr_instance_id&#34;)
-     *             .moduleName(&#34;Registry&#34;)
+     *             .ids("example_id")
+     *             .instanceId("your_cr_instance_id")
+     *             .moduleName("Registry")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCrVpcEndpointLinkedVpcsId1&#34;, ids.applyValue(getVpcEndpointLinkedVpcsResult -&gt; getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
+     *         ctx.export("alicloudCrVpcEndpointLinkedVpcsId1", ids.applyValue(getVpcEndpointLinkedVpcsResult -> getVpcEndpointLinkedVpcsResult.vpcEndpointLinkedVpcs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -24,7 +24,8 @@ public final class DbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -47,15 +48,16 @@ public final class DbsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DbsFunctions.getBackupPlans();
      * 
-     *         ctx.export(&#34;dbsBackupPlanId1&#34;, ids.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId1", ids.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *         final var nameRegex = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-BackupPlan&#34;)
+     *             .nameRegex("^my-BackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;dbsBackupPlanId2&#34;, nameRegex.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId2", nameRegex.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -72,7 +74,8 @@ public final class DbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -95,15 +98,16 @@ public final class DbsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DbsFunctions.getBackupPlans();
      * 
-     *         ctx.export(&#34;dbsBackupPlanId1&#34;, ids.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId1", ids.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *         final var nameRegex = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-BackupPlan&#34;)
+     *             .nameRegex("^my-BackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;dbsBackupPlanId2&#34;, nameRegex.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId2", nameRegex.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -120,7 +124,8 @@ public final class DbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -143,15 +148,16 @@ public final class DbsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DbsFunctions.getBackupPlans();
      * 
-     *         ctx.export(&#34;dbsBackupPlanId1&#34;, ids.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId1", ids.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *         final var nameRegex = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-BackupPlan&#34;)
+     *             .nameRegex("^my-BackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;dbsBackupPlanId2&#34;, nameRegex.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId2", nameRegex.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -168,7 +174,8 @@ public final class DbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -191,15 +198,16 @@ public final class DbsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DbsFunctions.getBackupPlans();
      * 
-     *         ctx.export(&#34;dbsBackupPlanId1&#34;, ids.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId1", ids.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *         final var nameRegex = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-BackupPlan&#34;)
+     *             .nameRegex("^my-BackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;dbsBackupPlanId2&#34;, nameRegex.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId2", nameRegex.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -216,7 +224,8 @@ public final class DbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -239,15 +248,16 @@ public final class DbsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DbsFunctions.getBackupPlans();
      * 
-     *         ctx.export(&#34;dbsBackupPlanId1&#34;, ids.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId1", ids.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *         final var nameRegex = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-BackupPlan&#34;)
+     *             .nameRegex("^my-BackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;dbsBackupPlanId2&#34;, nameRegex.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId2", nameRegex.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -264,7 +274,8 @@ public final class DbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -287,15 +298,16 @@ public final class DbsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DbsFunctions.getBackupPlans();
      * 
-     *         ctx.export(&#34;dbsBackupPlanId1&#34;, ids.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId1", ids.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *         final var nameRegex = DbsFunctions.getBackupPlans(GetBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-BackupPlan&#34;)
+     *             .nameRegex("^my-BackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;dbsBackupPlanId2&#34;, nameRegex.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("dbsBackupPlanId2", nameRegex.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

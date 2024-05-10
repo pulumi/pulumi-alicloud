@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,34 +56,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var domain = config.get(&#34;domain&#34;).orElse(&#34;tf-example.alibaba.com&#34;);
- *         var default_ = new DdosCooInstance(&#34;default&#34;, DdosCooInstanceArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var domain = config.get("domain").orElse("tf-example.alibaba.com");
+ *         var default_ = new DdosCooInstance("default", DdosCooInstanceArgs.builder()        
  *             .name(name)
- *             .bandwidth(&#34;30&#34;)
- *             .baseBandwidth(&#34;30&#34;)
- *             .serviceBandwidth(&#34;100&#34;)
- *             .portCount(&#34;50&#34;)
- *             .domainCount(&#34;50&#34;)
- *             .period(&#34;1&#34;)
- *             .productType(&#34;ddoscoo&#34;)
+ *             .bandwidth("30")
+ *             .baseBandwidth("30")
+ *             .serviceBandwidth("100")
+ *             .portCount("50")
+ *             .domainCount("50")
+ *             .period("1")
+ *             .productType("ddoscoo")
  *             .build());
  * 
- *         var defaultDomainResource = new DomainResource(&#34;defaultDomainResource&#34;, DomainResourceArgs.builder()        
+ *         var defaultDomainResource = new DomainResource("defaultDomainResource", DomainResourceArgs.builder()        
  *             .domain(domain)
  *             .rsType(0)
  *             .instanceIds(default_.id())
- *             .realServers(&#34;177.167.32.11&#34;)
- *             .httpsExt(&#34;{\&#34;Http2\&#34;:1,\&#34;Http2https\&#34;:0,\&#34;Https2http\&#34;:0}&#34;)
+ *             .realServers("177.167.32.11")
+ *             .httpsExt("{\"Http2\":1,\"Http2https\":0,\"Https2http\":0}")
  *             .proxyTypes(DomainResourceProxyTypeArgs.builder()
  *                 .proxyPorts(443)
- *                 .proxyType(&#34;https&#34;)
+ *                 .proxyType("https")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

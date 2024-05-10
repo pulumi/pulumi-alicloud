@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,32 +48,33 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var name = config.get("name").orElse("tfexample");
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var example = new Role(&#34;example&#34;, RoleArgs.builder()        
+ *         var example = new Role("example", RoleArgs.builder()        
  *             .roleName(name)
- *             .assumeRolePolicyDocument(&#34;&#34;&#34;
+ *             .assumeRolePolicyDocument("""
  *      {
- *           &#34;Statement&#34;: [
+ *           "Statement": [
  *                {
- *                     &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *                     &#34;Effect&#34;: &#34;Allow&#34;,
- *                     &#34;Principal&#34;: {
- *                         &#34;RAM&#34;:[
- *                                 &#34;acs:ram::%s:root&#34;
+ *                     "Action": "sts:AssumeRole",
+ *                     "Effect": "Allow",
+ *                     "Principal": {
+ *                         "RAM":[
+ *                                 "acs:ram::%s:root"
  *                         ]
  *                     }
  *                 }
  *           ],
- *           &#34;Version&#34;: &#34;1&#34;
+ *           "Version": "1"
  *      }
- * &#34;, default_.id()))
+ * ", default_.id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

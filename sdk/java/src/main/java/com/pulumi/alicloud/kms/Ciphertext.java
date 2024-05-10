@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,20 +44,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
- *             .description(&#34;example key&#34;)
- *             .status(&#34;Enabled&#34;)
+ *         var key = new Key("key", KeyArgs.builder()        
+ *             .description("example key")
+ *             .status("Enabled")
  *             .pendingWindowInDays(7)
  *             .build());
  * 
- *         var encrypted = new Ciphertext(&#34;encrypted&#34;, CiphertextArgs.builder()        
+ *         var encrypted = new Ciphertext("encrypted", CiphertextArgs.builder()        
  *             .keyId(key.id())
- *             .plaintext(&#34;example&#34;)
+ *             .plaintext("example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

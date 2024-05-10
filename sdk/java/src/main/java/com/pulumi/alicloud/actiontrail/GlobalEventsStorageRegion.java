@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,13 +45,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new GlobalEventsStorageRegion(&#34;foo&#34;, GlobalEventsStorageRegionArgs.builder()        
- *             .storageRegion(&#34;cn-hangzhou&#34;)
+ *         var foo = new GlobalEventsStorageRegion("foo", GlobalEventsStorageRegionArgs.builder()        
+ *             .storageRegion("cn-hangzhou")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

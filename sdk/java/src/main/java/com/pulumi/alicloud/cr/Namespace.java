@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,16 +49,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var example = new Namespace("example", NamespaceArgs.builder()        
  *             .name(name)
  *             .autoCreate(false)
- *             .defaultVisibility(&#34;PUBLIC&#34;)
+ *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

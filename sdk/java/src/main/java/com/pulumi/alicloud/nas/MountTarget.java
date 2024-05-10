@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,41 +58,41 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
- *             .fileSystemType(&#34;extreme&#34;)
+ *             .fileSystemType("extreme")
  *             .build());
  * 
  *         final var countSize = default_.zones().length();
  * 
  *         final var zoneId = default_.zones()[countSize - 1].zoneId();
  * 
- *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var example = new Network("example", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
  *             .vswitchName(example.vpcName())
  *             .cidrBlock(example.cidrBlock())
  *             .vpcId(example.id())
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
- *             .protocolType(&#34;NFS&#34;)
- *             .storageType(&#34;advance&#34;)
- *             .fileSystemType(&#34;extreme&#34;)
- *             .capacity(&#34;100&#34;)
+ *         var exampleFileSystem = new FileSystem("exampleFileSystem", FileSystemArgs.builder()        
+ *             .protocolType("NFS")
+ *             .storageType("advance")
+ *             .fileSystemType("extreme")
+ *             .capacity("100")
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var exampleAccessGroup = new AccessGroup(&#34;exampleAccessGroup&#34;, AccessGroupArgs.builder()        
- *             .accessGroupName(&#34;access_group_xxx&#34;)
- *             .accessGroupType(&#34;Vpc&#34;)
- *             .description(&#34;test_access_group&#34;)
- *             .fileSystemType(&#34;extreme&#34;)
+ *         var exampleAccessGroup = new AccessGroup("exampleAccessGroup", AccessGroupArgs.builder()        
+ *             .accessGroupName("access_group_xxx")
+ *             .accessGroupType("Vpc")
+ *             .description("test_access_group")
+ *             .fileSystemType("extreme")
  *             .build());
  * 
- *         var exampleMountTarget = new MountTarget(&#34;exampleMountTarget&#34;, MountTargetArgs.builder()        
+ *         var exampleMountTarget = new MountTarget("exampleMountTarget", MountTargetArgs.builder()        
  *             .fileSystemId(exampleFileSystem.id())
  *             .accessGroupName(exampleAccessGroup.accessGroupName())
  *             .vswitchId(exampleSwitch.id())
@@ -101,7 +102,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

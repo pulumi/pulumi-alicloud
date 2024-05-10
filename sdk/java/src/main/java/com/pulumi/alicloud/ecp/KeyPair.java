@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,14 +47,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new KeyPair(&#34;example&#34;, KeyPairArgs.builder()        
- *             .keyPairName(&#34;my-KeyPair&#34;)
- *             .publicKeyBody(&#34;ssh-rsa AAAAxxxxxxxxxxtyuudsfsg&#34;)
+ *         var example = new KeyPair("example", KeyPairArgs.builder()        
+ *             .keyPairName("my-KeyPair")
+ *             .publicKeyBody("ssh-rsa AAAAxxxxxxxxxxtyuudsfsg")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

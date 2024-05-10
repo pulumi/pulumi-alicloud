@@ -46,7 +46,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,14 +68,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var acl = new Acl(&#34;acl&#34;, AclArgs.builder()        
- *             .name(&#34;terraformslbaclconfig&#34;)
- *             .ipVersion(&#34;ipv4&#34;)
+ *         var acl = new Acl("acl", AclArgs.builder()        
+ *             .name("terraformslbaclconfig")
+ *             .ipVersion("ipv4")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Entry Block

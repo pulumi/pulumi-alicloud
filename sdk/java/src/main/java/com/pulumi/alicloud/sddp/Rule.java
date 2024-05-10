@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,31 +50,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-name&#34;);
- *         var default_ = new Rule(&#34;default&#34;, RuleArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example-name");
+ *         var default_ = new Rule("default", RuleArgs.builder()        
  *             .ruleName(name)
- *             .category(&#34;2&#34;)
- *             .content(&#34;&#34;&#34;
+ *             .category("2")
+ *             .content("""
  *   [
  *     {
- *       &#34;rule&#34;: [
+ *       "rule": [
  *         {
- *           &#34;operator&#34;: &#34;contains&#34;,
- *           &#34;target&#34;: &#34;content&#34;,
- *           &#34;value&#34;: &#34;tf-testACCContent&#34;
+ *           "operator": "contains",
+ *           "target": "content",
+ *           "value": "tf-testACCContent"
  *         }
  *       ],
- *       &#34;ruleRelation&#34;: &#34;AND&#34;
+ *       "ruleRelation": "AND"
  *     }
  *   ]
- *             &#34;&#34;&#34;)
- *             .riskLevelId(&#34;4&#34;)
- *             .productCode(&#34;OSS&#34;)
+ *             """)
+ *             .riskLevelId("4")
+ *             .productCode("OSS")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,23 +52,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .name(&#34;terraform_example&#34;)
- *             .displayName(&#34;terraform_example&#34;)
- *             .mobile(&#34;86-18688888888&#34;)
- *             .email(&#34;hello.uuu@aaa.com&#34;)
- *             .comments(&#34;terraform_example&#34;)
+ *         var user = new User("user", UserArgs.builder()        
+ *             .name("terraform_example")
+ *             .displayName("terraform_example")
+ *             .mobile("86-18688888888")
+ *             .email("hello.uuu{@literal @}aaa.com")
+ *             .comments("terraform_example")
  *             .force(true)
  *             .build());
  * 
- *         var profile = new LoginProfile(&#34;profile&#34;, LoginProfileArgs.builder()        
+ *         var profile = new LoginProfile("profile", LoginProfileArgs.builder()        
  *             .userName(user.name())
- *             .password(&#34;Example_1234&#34;)
+ *             .password("Example_1234")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

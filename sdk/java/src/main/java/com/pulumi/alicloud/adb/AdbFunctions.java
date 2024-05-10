@@ -37,7 +37,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -59,14 +60,15 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex(&#34;am-\\w+&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .descriptionRegex("am-\\w+")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAdbClusterId&#34;, adbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbClusterId", adbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -84,7 +86,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -106,14 +109,15 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex(&#34;am-\\w+&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .descriptionRegex("am-\\w+")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAdbClusterId&#34;, adbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbClusterId", adbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -131,7 +135,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -153,14 +158,15 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex(&#34;am-\\w+&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .descriptionRegex("am-\\w+")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAdbClusterId&#34;, adbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbClusterId", adbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -178,7 +184,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -200,14 +207,15 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex(&#34;am-\\w+&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .descriptionRegex("am-\\w+")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAdbClusterId&#34;, adbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbClusterId", adbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -225,7 +233,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -247,14 +256,15 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex(&#34;am-\\w+&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .descriptionRegex("am-\\w+")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAdbClusterId&#34;, adbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbClusterId", adbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -272,7 +282,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -294,14 +305,15 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var adbClustersDs = AdbFunctions.getClusters(GetClustersArgs.builder()
-     *             .descriptionRegex(&#34;am-\\w+&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .descriptionRegex("am-\\w+")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAdbClusterId&#34;, adbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbClusterId", adbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -318,7 +330,8 @@ public final class AdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -340,13 +353,14 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;adbDbClusterLakeVersionId1&#34;, ids.applyValue(getDBClusterLakeVersionsResult -&gt; getDBClusterLakeVersionsResult.versions()[0].id()));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -363,7 +377,8 @@ public final class AdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -385,13 +400,14 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;adbDbClusterLakeVersionId1&#34;, ids.applyValue(getDBClusterLakeVersionsResult -&gt; getDBClusterLakeVersionsResult.versions()[0].id()));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -408,7 +424,8 @@ public final class AdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -430,13 +447,14 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;adbDbClusterLakeVersionId1&#34;, ids.applyValue(getDBClusterLakeVersionsResult -&gt; getDBClusterLakeVersionsResult.versions()[0].id()));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -453,7 +471,8 @@ public final class AdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -475,13 +494,14 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;adbDbClusterLakeVersionId1&#34;, ids.applyValue(getDBClusterLakeVersionsResult -&gt; getDBClusterLakeVersionsResult.versions()[0].id()));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -498,7 +518,8 @@ public final class AdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -520,13 +541,14 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;adbDbClusterLakeVersionId1&#34;, ids.applyValue(getDBClusterLakeVersionsResult -&gt; getDBClusterLakeVersionsResult.versions()[0].id()));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -543,7 +565,8 @@ public final class AdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -565,13 +588,14 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AdbFunctions.getDBClusterLakeVersions(GetDBClusterLakeVersionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;adbDbClusterLakeVersionId1&#34;, ids.applyValue(getDBClusterLakeVersionsResult -&gt; getDBClusterLakeVersionsResult.versions()[0].id()));
+     *         ctx.export("adbDbClusterLakeVersionId1", ids.applyValue(getDBClusterLakeVersionsResult -> getDBClusterLakeVersionsResult.versions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -588,7 +612,8 @@ public final class AdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -610,13 +635,14 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AdbFunctions.getDBClusters(GetDBClustersArgs.builder()
-     *             .descriptionRegex(&#34;example&#34;)
+     *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAdbDbClusterId&#34;, example.applyValue(getDBClustersResult -&gt; getDBClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbDbClusterId", example.applyValue(getDBClustersResult -> getDBClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -633,7 +659,8 @@ public final class AdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -655,13 +682,14 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AdbFunctions.getDBClusters(GetDBClustersArgs.builder()
-     *             .descriptionRegex(&#34;example&#34;)
+     *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAdbDbClusterId&#34;, example.applyValue(getDBClustersResult -&gt; getDBClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbDbClusterId", example.applyValue(getDBClustersResult -> getDBClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -678,7 +706,8 @@ public final class AdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -700,13 +729,14 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AdbFunctions.getDBClusters(GetDBClustersArgs.builder()
-     *             .descriptionRegex(&#34;example&#34;)
+     *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAdbDbClusterId&#34;, example.applyValue(getDBClustersResult -&gt; getDBClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbDbClusterId", example.applyValue(getDBClustersResult -> getDBClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -723,7 +753,8 @@ public final class AdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -745,13 +776,14 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AdbFunctions.getDBClusters(GetDBClustersArgs.builder()
-     *             .descriptionRegex(&#34;example&#34;)
+     *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAdbDbClusterId&#34;, example.applyValue(getDBClustersResult -&gt; getDBClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbDbClusterId", example.applyValue(getDBClustersResult -> getDBClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -768,7 +800,8 @@ public final class AdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -790,13 +823,14 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AdbFunctions.getDBClusters(GetDBClustersArgs.builder()
-     *             .descriptionRegex(&#34;example&#34;)
+     *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAdbDbClusterId&#34;, example.applyValue(getDBClustersResult -&gt; getDBClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbDbClusterId", example.applyValue(getDBClustersResult -> getDBClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -813,7 +847,8 @@ public final class AdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -835,13 +870,14 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AdbFunctions.getDBClusters(GetDBClustersArgs.builder()
-     *             .descriptionRegex(&#34;example&#34;)
+     *             .descriptionRegex("example")
      *             .build());
      * 
-     *         ctx.export(&#34;firstAdbDbClusterId&#34;, example.applyValue(getDBClustersResult -&gt; getDBClustersResult.clusters()[0].id()));
+     *         ctx.export("firstAdbDbClusterId", example.applyValue(getDBClustersResult -> getDBClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -856,7 +892,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -878,14 +915,15 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AdbFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .dbClusterId(&#34;am-bp1a16357gty69185&#34;)
-     *             .groupName(&#34;TESTOPENAPI&#34;)
+     *             .dbClusterId("am-bp1a16357gty69185")
+     *             .groupName("TESTOPENAPI")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAdbResourceGroupExampleId&#34;, default_.groups()[0].id());
+     *         ctx.export("alicloudAdbResourceGroupExampleId", default_.groups()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -900,7 +938,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -922,14 +961,15 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AdbFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .dbClusterId(&#34;am-bp1a16357gty69185&#34;)
-     *             .groupName(&#34;TESTOPENAPI&#34;)
+     *             .dbClusterId("am-bp1a16357gty69185")
+     *             .groupName("TESTOPENAPI")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAdbResourceGroupExampleId&#34;, default_.groups()[0].id());
+     *         ctx.export("alicloudAdbResourceGroupExampleId", default_.groups()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -944,7 +984,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -966,14 +1007,15 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AdbFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .dbClusterId(&#34;am-bp1a16357gty69185&#34;)
-     *             .groupName(&#34;TESTOPENAPI&#34;)
+     *             .dbClusterId("am-bp1a16357gty69185")
+     *             .groupName("TESTOPENAPI")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAdbResourceGroupExampleId&#34;, default_.groups()[0].id());
+     *         ctx.export("alicloudAdbResourceGroupExampleId", default_.groups()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -988,7 +1030,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1010,14 +1053,15 @@ public final class AdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AdbFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
-     *             .dbClusterId(&#34;am-bp1a16357gty69185&#34;)
-     *             .groupName(&#34;TESTOPENAPI&#34;)
+     *             .dbClusterId("am-bp1a16357gty69185")
+     *             .groupName("TESTOPENAPI")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAdbResourceGroupExampleId&#34;, default_.groups()[0].id());
+     *         ctx.export("alicloudAdbResourceGroupExampleId", default_.groups()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1032,7 +1076,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1058,7 +1103,8 @@ public final class AdbFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1073,7 +1119,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1099,7 +1146,8 @@ public final class AdbFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1114,7 +1162,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1140,7 +1189,8 @@ public final class AdbFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1155,7 +1205,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1181,7 +1232,8 @@ public final class AdbFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1196,7 +1248,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1222,7 +1275,8 @@ public final class AdbFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1237,7 +1291,8 @@ public final class AdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1263,7 +1318,8 @@ public final class AdbFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

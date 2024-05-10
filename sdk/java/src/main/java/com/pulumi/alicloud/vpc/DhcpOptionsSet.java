@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,18 +55,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var domain = config.get(&#34;domain&#34;).orElse(&#34;terraform-example.com&#34;);
- *         var example = new DhcpOptionsSet(&#34;example&#34;, DhcpOptionsSetArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var domain = config.get("domain").orElse("terraform-example.com");
+ *         var example = new DhcpOptionsSet("example", DhcpOptionsSetArgs.builder()        
  *             .dhcpOptionsSetName(name)
  *             .dhcpOptionsSetDescription(name)
  *             .domainName(domain)
- *             .domainNameServers(&#34;100.100.2.136&#34;)
+ *             .domainNameServers("100.100.2.136")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

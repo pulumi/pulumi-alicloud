@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,30 +58,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         final var defaultGetInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
- *             .status(&#34;Running&#34;)
+ *             .status("Running")
  *             .build());
  * 
- *         var defaultStudioApplication = new StudioApplication(&#34;defaultStudioApplication&#34;, StudioApplicationArgs.builder()        
+ *         var defaultStudioApplication = new StudioApplication("defaultStudioApplication", StudioApplicationArgs.builder()        
  *             .applicationName(name)
- *             .templateId(&#34;YAUUQIYRSV1CMFGX&#34;)
+ *             .templateId("YAUUQIYRSV1CMFGX")
  *             .resourceGroupId(default_.groups()[0].id())
- *             .areaId(&#34;cn-hangzhou&#34;)
+ *             .areaId("cn-hangzhou")
  *             .instances(StudioApplicationInstanceArgs.builder()
- *                 .id(&#34;data.alicloud_instances.default.instances.0.id&#34;)
- *                 .nodeName(&#34;data.alicloud_instances.default.instances.0.name&#34;)
- *                 .nodeType(&#34;ecs&#34;)
+ *                 .id("data.alicloud_instances.default.instances.0.id")
+ *                 .nodeName("data.alicloud_instances.default.instances.0.name")
+ *                 .nodeType("ecs")
  *                 .build())
- *             .configuration(Map.of(&#34;enableMonitor&#34;, &#34;1&#34;))
- *             .variables(Map.of(&#34;test&#34;, &#34;1&#34;))
+ *             .configuration(Map.of("enableMonitor", "1"))
+ *             .variables(Map.of("test", "1"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

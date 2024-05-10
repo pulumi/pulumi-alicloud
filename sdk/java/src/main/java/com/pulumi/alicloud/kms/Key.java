@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,15 +50,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
- *             .description(&#34;Hello KMS&#34;)
- *             .pendingWindowInDays(&#34;7&#34;)
- *             .status(&#34;Enabled&#34;)
+ *         var key = new Key("key", KeyArgs.builder()        
+ *             .description("Hello KMS")
+ *             .pendingWindowInDays("7")
+ *             .status("Enabled")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

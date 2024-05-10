@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,14 +50,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultServiceCertificate = new ServiceCertificate(&#34;defaultServiceCertificate&#34;, ServiceCertificateArgs.builder()        
- *             .certificateName(String.format(&#34;tf-example-%s&#34;, default_.result()))
- *             .cert(&#34;&#34;&#34;
+ *         var defaultServiceCertificate = new ServiceCertificate("defaultServiceCertificate", ServiceCertificateArgs.builder()        
+ *             .certificateName(String.format("tf-example-%s", default_.result()))
+ *             .cert("""
  * -----BEGIN CERTIFICATE-----
  * MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
  * TjEVMBMGA1UEAwwMKi50ZnRlc3QudG9wMRAwDgYDVQQIDAdCZWlKaW5nMRAwDgYD
@@ -78,8 +79,8 @@ import javax.annotation.Nullable;
  * TTc40xwvQROekWUyxeJL7xaHuylUHE0bxsiIfx5bZsBizRjprIwGlj85CSPuTZyP
  * DPfaiZAN/61h5HNAnxLltOZfqabKYYw7l9LBDg==
  * -----END CERTIFICATE-----
- *             &#34;&#34;&#34;)
- *             .key(&#34;&#34;&#34;
+ *             """)
+ *             .key("""
  * -----BEGIN PRIVATE KEY-----
  * MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDOST00lQfs8tJA
  * rhFGsZBjl1Wx+2SGcqH0eEjrKueWjBYgM9LU9kc5T/mBDvE9Q8Z0pBXlLvHzBE6c
@@ -108,12 +109,13 @@ import javax.annotation.Nullable;
  * CIFqfEL5NriQelqrFsvgHsmD+MpvDoSWm5C8IrTubtlNyWUzXSVT4OIwzPobzPqG
  * LILJ+e7bLw8RrM0HfgFnl8c=
  * -----END PRIVATE KEY-----
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

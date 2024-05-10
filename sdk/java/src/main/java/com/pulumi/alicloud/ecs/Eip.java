@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,14 +55,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new EIP.
- *         var example = new Eip(&#34;example&#34;, EipArgs.builder()        
- *             .bandwidth(&#34;10&#34;)
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *         var example = new Eip("example", EipArgs.builder()        
+ *             .bandwidth("10")
+ *             .internetChargeType("PayByBandwidth")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Module Support

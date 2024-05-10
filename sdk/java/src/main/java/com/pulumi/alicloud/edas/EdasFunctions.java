@@ -34,7 +34,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -56,14 +57,15 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var applications = EdasFunctions.getApplications(GetApplicationsArgs.builder()
-     *             .ids(&#34;xxx&#34;)
-     *             .outputFile(&#34;application.txt&#34;)
+     *             .ids("xxx")
+     *             .outputFile("application.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstApplicationName&#34;, applications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].appName()));
+     *         ctx.export("firstApplicationName", applications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].appName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -78,7 +80,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -100,14 +103,15 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var applications = EdasFunctions.getApplications(GetApplicationsArgs.builder()
-     *             .ids(&#34;xxx&#34;)
-     *             .outputFile(&#34;application.txt&#34;)
+     *             .ids("xxx")
+     *             .outputFile("application.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstApplicationName&#34;, applications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].appName()));
+     *         ctx.export("firstApplicationName", applications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].appName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -122,7 +126,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -144,14 +149,15 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var applications = EdasFunctions.getApplications(GetApplicationsArgs.builder()
-     *             .ids(&#34;xxx&#34;)
-     *             .outputFile(&#34;application.txt&#34;)
+     *             .ids("xxx")
+     *             .outputFile("application.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstApplicationName&#34;, applications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].appName()));
+     *         ctx.export("firstApplicationName", applications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].appName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -166,7 +172,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -188,14 +195,15 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var applications = EdasFunctions.getApplications(GetApplicationsArgs.builder()
-     *             .ids(&#34;xxx&#34;)
-     *             .outputFile(&#34;application.txt&#34;)
+     *             .ids("xxx")
+     *             .outputFile("application.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstApplicationName&#34;, applications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].appName()));
+     *         ctx.export("firstApplicationName", applications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].appName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -210,7 +218,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -232,14 +241,15 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var applications = EdasFunctions.getApplications(GetApplicationsArgs.builder()
-     *             .ids(&#34;xxx&#34;)
-     *             .outputFile(&#34;application.txt&#34;)
+     *             .ids("xxx")
+     *             .outputFile("application.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstApplicationName&#34;, applications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].appName()));
+     *         ctx.export("firstApplicationName", applications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].appName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -254,7 +264,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -276,14 +287,15 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var applications = EdasFunctions.getApplications(GetApplicationsArgs.builder()
-     *             .ids(&#34;xxx&#34;)
-     *             .outputFile(&#34;application.txt&#34;)
+     *             .ids("xxx")
+     *             .outputFile("application.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstApplicationName&#34;, applications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].appName()));
+     *         ctx.export("firstApplicationName", applications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].appName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -298,7 +310,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -320,15 +333,16 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clusters = EdasFunctions.getClusters(GetClustersArgs.builder()
-     *             .logicalRegionId(&#34;cn-shenzhen:xxx&#34;)
-     *             .ids(&#34;addfs-dfsasd&#34;)
-     *             .outputFile(&#34;clusters.txt&#34;)
+     *             .logicalRegionId("cn-shenzhen:xxx")
+     *             .ids("addfs-dfsasd")
+     *             .outputFile("clusters.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstClusterName&#34;, clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
+     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -343,7 +357,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -365,15 +380,16 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clusters = EdasFunctions.getClusters(GetClustersArgs.builder()
-     *             .logicalRegionId(&#34;cn-shenzhen:xxx&#34;)
-     *             .ids(&#34;addfs-dfsasd&#34;)
-     *             .outputFile(&#34;clusters.txt&#34;)
+     *             .logicalRegionId("cn-shenzhen:xxx")
+     *             .ids("addfs-dfsasd")
+     *             .outputFile("clusters.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstClusterName&#34;, clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
+     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -388,7 +404,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -410,15 +427,16 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clusters = EdasFunctions.getClusters(GetClustersArgs.builder()
-     *             .logicalRegionId(&#34;cn-shenzhen:xxx&#34;)
-     *             .ids(&#34;addfs-dfsasd&#34;)
-     *             .outputFile(&#34;clusters.txt&#34;)
+     *             .logicalRegionId("cn-shenzhen:xxx")
+     *             .ids("addfs-dfsasd")
+     *             .outputFile("clusters.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstClusterName&#34;, clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
+     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -433,7 +451,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -455,15 +474,16 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clusters = EdasFunctions.getClusters(GetClustersArgs.builder()
-     *             .logicalRegionId(&#34;cn-shenzhen:xxx&#34;)
-     *             .ids(&#34;addfs-dfsasd&#34;)
-     *             .outputFile(&#34;clusters.txt&#34;)
+     *             .logicalRegionId("cn-shenzhen:xxx")
+     *             .ids("addfs-dfsasd")
+     *             .outputFile("clusters.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstClusterName&#34;, clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
+     *         ctx.export("firstClusterName", clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -478,7 +498,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -500,15 +521,16 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
-     *             .appId(&#34;xxx&#34;)
-     *             .ids(&#34;xxx&#34;)
-     *             .outputFile(&#34;groups.txt&#34;)
+     *             .appId("xxx")
+     *             .ids("xxx")
+     *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groups.applyValue(getDeployGroupsResult -&gt; getDeployGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groups.applyValue(getDeployGroupsResult -> getDeployGroupsResult.groups()[0].groupName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -523,7 +545,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -545,15 +568,16 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
-     *             .appId(&#34;xxx&#34;)
-     *             .ids(&#34;xxx&#34;)
-     *             .outputFile(&#34;groups.txt&#34;)
+     *             .appId("xxx")
+     *             .ids("xxx")
+     *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groups.applyValue(getDeployGroupsResult -&gt; getDeployGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groups.applyValue(getDeployGroupsResult -> getDeployGroupsResult.groups()[0].groupName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -568,7 +592,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -590,15 +615,16 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
-     *             .appId(&#34;xxx&#34;)
-     *             .ids(&#34;xxx&#34;)
-     *             .outputFile(&#34;groups.txt&#34;)
+     *             .appId("xxx")
+     *             .ids("xxx")
+     *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groups.applyValue(getDeployGroupsResult -&gt; getDeployGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groups.applyValue(getDeployGroupsResult -> getDeployGroupsResult.groups()[0].groupName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -613,7 +639,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -635,15 +662,16 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groups = EdasFunctions.getDeployGroups(GetDeployGroupsArgs.builder()
-     *             .appId(&#34;xxx&#34;)
-     *             .ids(&#34;xxx&#34;)
-     *             .outputFile(&#34;groups.txt&#34;)
+     *             .appId("xxx")
+     *             .ids("xxx")
+     *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groups.applyValue(getDeployGroupsResult -&gt; getDeployGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groups.applyValue(getDeployGroupsResult -> getDeployGroupsResult.groups()[0].groupName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -660,7 +688,8 @@ public final class EdasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -682,18 +711,19 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;edasNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("edasNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *         final var nameRegex = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;edasNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("edasNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -710,7 +740,8 @@ public final class EdasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -732,18 +763,19 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;edasNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("edasNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *         final var nameRegex = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;edasNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("edasNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -760,7 +792,8 @@ public final class EdasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -782,18 +815,19 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;edasNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("edasNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *         final var nameRegex = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;edasNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("edasNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -810,7 +844,8 @@ public final class EdasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -832,18 +867,19 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;edasNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("edasNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *         final var nameRegex = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;edasNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("edasNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -860,7 +896,8 @@ public final class EdasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -882,18 +919,19 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;edasNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("edasNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *         final var nameRegex = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;edasNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("edasNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -910,7 +948,8 @@ public final class EdasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -932,18 +971,19 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;edasNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("edasNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *         final var nameRegex = EdasFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;edasNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("edasNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -962,7 +1002,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -984,12 +1025,13 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = EdasFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1008,7 +1050,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1030,12 +1073,13 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = EdasFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1054,7 +1098,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1076,12 +1121,13 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = EdasFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1100,7 +1146,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1122,12 +1169,13 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = EdasFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1146,7 +1194,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1168,12 +1217,13 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = EdasFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1192,7 +1242,8 @@ public final class EdasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1214,12 +1265,13 @@ public final class EdasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = EdasFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

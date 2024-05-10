@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,18 +50,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AppTemplate(&#34;example&#34;, AppTemplateArgs.builder()        
- *             .appTemplateName(&#34;example_value&#34;)
+ *         var example = new AppTemplate("example", AppTemplateArgs.builder()        
+ *             .appTemplateName("example_value")
  *             .componentLists(            
- *                 &#34;component.live&#34;,
- *                 &#34;component.liveRecord&#34;)
- *             .integrationMode(&#34;paasSDK&#34;)
- *             .scene(&#34;business&#34;)
+ *                 "component.live",
+ *                 "component.liveRecord")
+ *             .integrationMode("paasSDK")
+ *             .scene("business")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

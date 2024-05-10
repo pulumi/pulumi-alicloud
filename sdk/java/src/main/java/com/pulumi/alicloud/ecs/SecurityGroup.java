@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,20 +55,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityGroup(&#34;default&#34;, SecurityGroupArgs.builder()        
- *             .name(&#34;terraform-example&#34;)
- *             .description(&#34;New security group&#34;)
+ *         var default_ = new SecurityGroup("default", SecurityGroupArgs.builder()        
+ *             .name("terraform-example")
+ *             .description("New security group")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Basic Usage for VPC
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -90,19 +93,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+ *         var vpc = new Network("vpc", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("10.1.0.0/21")
  *             .build());
  * 
- *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
- *             .name(&#34;terraform-example&#34;)
+ *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+ *             .name("terraform-example")
  *             .vpcId(vpc.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Module Support

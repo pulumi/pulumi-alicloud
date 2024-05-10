@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,53 +59,54 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         final var endpointGroupRegion = config.get(&#34;endpointGroupRegion&#34;).orElse(&#34;cn-beijing&#34;);
+ *         final var region = config.get("region").orElse("cn-hangzhou");
+ *         final var endpointGroupRegion = config.get("endpointGroupRegion").orElse("cn-beijing");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *             .vswitchName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
- *             .loadBalancerName(&#34;terraform-example&#34;)
+ *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+ *             .loadBalancerName("terraform-example")
  *             .vswitchId(defaultSwitch.id())
- *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
- *             .addressType(&#34;intranet&#34;)
+ *             .loadBalancerSpec("slb.s2.small")
+ *             .addressType("intranet")
  *             .build());
  * 
- *         var defaultBasicAccelerator = new BasicAccelerator(&#34;defaultBasicAccelerator&#34;, BasicAcceleratorArgs.builder()        
+ *         var defaultBasicAccelerator = new BasicAccelerator("defaultBasicAccelerator", BasicAcceleratorArgs.builder()        
  *             .duration(1)
- *             .basicAcceleratorName(&#34;terraform-example&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .bandwidthBillingType(&#34;CDT&#34;)
- *             .autoUseCoupon(&#34;true&#34;)
+ *             .basicAcceleratorName("terraform-example")
+ *             .description("terraform-example")
+ *             .bandwidthBillingType("CDT")
+ *             .autoUseCoupon("true")
  *             .autoPay(true)
  *             .build());
  * 
- *         var defaultBasicEndpointGroup = new BasicEndpointGroup(&#34;defaultBasicEndpointGroup&#34;, BasicEndpointGroupArgs.builder()        
+ *         var defaultBasicEndpointGroup = new BasicEndpointGroup("defaultBasicEndpointGroup", BasicEndpointGroupArgs.builder()        
  *             .acceleratorId(defaultBasicAccelerator.id())
  *             .endpointGroupRegion(endpointGroupRegion)
- *             .endpointType(&#34;SLB&#34;)
+ *             .endpointType("SLB")
  *             .endpointAddress(defaultApplicationLoadBalancer.id())
- *             .endpointSubAddress(&#34;192.168.0.1&#34;)
- *             .basicEndpointGroupName(&#34;terraform-example&#34;)
- *             .description(&#34;terraform-example&#34;)
+ *             .endpointSubAddress("192.168.0.1")
+ *             .basicEndpointGroupName("terraform-example")
+ *             .description("terraform-example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

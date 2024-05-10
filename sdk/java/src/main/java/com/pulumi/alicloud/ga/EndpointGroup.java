@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,59 +63,59 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         var default_ = new Accelerator(&#34;default&#34;, AcceleratorArgs.builder()        
+ *         final var region = config.get("region").orElse("cn-hangzhou");
+ *         var default_ = new Accelerator("default", AcceleratorArgs.builder()        
  *             .duration(1)
  *             .autoUseCoupon(true)
- *             .spec(&#34;1&#34;)
+ *             .spec("1")
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
  *             .bandwidth(100)
- *             .type(&#34;Basic&#34;)
- *             .bandwidthType(&#34;Basic&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .billingType(&#34;PayBy95&#34;)
+ *             .type("Basic")
+ *             .bandwidthType("Basic")
+ *             .paymentType("PayAsYouGo")
+ *             .billingType("PayBy95")
  *             .ratio(30)
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
  *             .acceleratorId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+ *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
  *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
  *             .portRanges(ListenerPortRangeArgs.builder()
  *                 .fromPort(60)
  *                 .toPort(70)
  *                 .build())
- *             .clientAffinity(&#34;SOURCE_IP&#34;)
- *             .protocol(&#34;UDP&#34;)
- *             .name(&#34;terraform-example&#34;)
+ *             .clientAffinity("SOURCE_IP")
+ *             .protocol("UDP")
+ *             .name("terraform-example")
  *             .build());
  * 
- *         for (var i = 0; i &lt; 2; i++) {
- *             new EipAddress(&#34;defaultEipAddress-&#34; + i, EipAddressArgs.builder()            
- *                 .bandwidth(&#34;10&#34;)
- *                 .internetChargeType(&#34;PayByBandwidth&#34;)
- *                 .addressName(&#34;terraform-example&#34;)
+ *         for (var i = 0; i < 2; i++) {
+ *             new EipAddress("defaultEipAddress-" + i, EipAddressArgs.builder()            
+ *                 .bandwidth("10")
+ *                 .internetChargeType("PayByBandwidth")
+ *                 .addressName("terraform-example")
  *                 .build());
  * 
  *         
  * }
- *         var defaultEndpointGroup = new EndpointGroup(&#34;defaultEndpointGroup&#34;, EndpointGroupArgs.builder()        
+ *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()        
  *             .acceleratorId(default_.id())
  *             .endpointConfigurations(            
  *                 EndpointGroupEndpointConfigurationArgs.builder()
  *                     .endpoint(defaultEipAddress[0].ipAddress())
- *                     .type(&#34;PublicIp&#34;)
- *                     .weight(&#34;20&#34;)
+ *                     .type("PublicIp")
+ *                     .weight("20")
  *                     .build(),
  *                 EndpointGroupEndpointConfigurationArgs.builder()
  *                     .endpoint(defaultEipAddress[1].ipAddress())
- *                     .type(&#34;PublicIp&#34;)
- *                     .weight(&#34;20&#34;)
+ *                     .type("PublicIp")
+ *                     .weight("20")
  *                     .build())
  *             .endpointGroupRegion(region)
  *             .listenerId(defaultListener.id())
@@ -122,7 +123,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

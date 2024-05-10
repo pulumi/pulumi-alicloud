@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,21 +52,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var name = config.get("name").orElse("tfexample");
  *         final var default = ResourcemanagerFunctions.getAccounts();
  * 
- *         var example = new ResourceShare(&#34;example&#34;, ResourceShareArgs.builder()        
+ *         var example = new ResourceShare("example", ResourceShareArgs.builder()        
  *             .resourceShareName(name)
  *             .build());
  * 
- *         var exampleSharedTarget = new SharedTarget(&#34;exampleSharedTarget&#34;, SharedTargetArgs.builder()        
+ *         var exampleSharedTarget = new SharedTarget("exampleSharedTarget", SharedTargetArgs.builder()        
  *             .resourceShareId(example.id())
  *             .targetId(default_.ids()[0])
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

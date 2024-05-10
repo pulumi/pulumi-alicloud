@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,16 +49,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new AccessGroup(&#34;foo&#34;, AccessGroupArgs.builder()        
- *             .accessGroupName(&#34;terraform-example&#34;)
- *             .accessGroupType(&#34;Vpc&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .fileSystemType(&#34;extreme&#34;)
+ *         var foo = new AccessGroup("foo", AccessGroupArgs.builder()        
+ *             .accessGroupName("terraform-example")
+ *             .accessGroupType("Vpc")
+ *             .description("terraform-example")
+ *             .fileSystemType("extreme")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,24 +52,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var example = new Namespace("example", NamespaceArgs.builder()        
  *             .name(name)
  *             .autoCreate(false)
- *             .defaultVisibility(&#34;PUBLIC&#34;)
+ *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
- *         var exampleRepo = new Repo(&#34;exampleRepo&#34;, RepoArgs.builder()        
+ *         var exampleRepo = new Repo("exampleRepo", RepoArgs.builder()        
  *             .namespace(example.name())
  *             .name(name)
- *             .summary(&#34;this is summary of my new repo&#34;)
- *             .repoType(&#34;PUBLIC&#34;)
- *             .detail(&#34;this is a public repo&#34;)
+ *             .summary("this is summary of my new repo")
+ *             .repoType("PUBLIC")
+ *             .detail("this is a public repo")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

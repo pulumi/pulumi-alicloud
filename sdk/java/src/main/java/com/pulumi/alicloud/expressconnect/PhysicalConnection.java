@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,31 +48,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var domestic = new PhysicalConnection(&#34;domestic&#34;, PhysicalConnectionArgs.builder()        
- *             .accessPointId(&#34;ap-cn-hangzhou-yh-B&#34;)
- *             .lineOperator(&#34;CT&#34;)
- *             .peerLocation(&#34;example_value&#34;)
- *             .physicalConnectionName(&#34;example_value&#34;)
- *             .type(&#34;VPC&#34;)
- *             .description(&#34;my domestic connection&#34;)
- *             .portType(&#34;1000Base-LX&#34;)
+ *         var domestic = new PhysicalConnection("domestic", PhysicalConnectionArgs.builder()        
+ *             .accessPointId("ap-cn-hangzhou-yh-B")
+ *             .lineOperator("CT")
+ *             .peerLocation("example_value")
+ *             .physicalConnectionName("example_value")
+ *             .type("VPC")
+ *             .description("my domestic connection")
+ *             .portType("1000Base-LX")
  *             .bandwidth(100)
  *             .build());
  * 
- *         var international = new PhysicalConnection(&#34;international&#34;, PhysicalConnectionArgs.builder()        
- *             .accessPointId(&#34;ap-sg-singpore-A&#34;)
- *             .lineOperator(&#34;Other&#34;)
- *             .peerLocation(&#34;example_value&#34;)
- *             .physicalConnectionName(&#34;example_value&#34;)
- *             .type(&#34;VPC&#34;)
- *             .description(&#34;my domestic connection&#34;)
- *             .portType(&#34;1000Base-LX&#34;)
+ *         var international = new PhysicalConnection("international", PhysicalConnectionArgs.builder()        
+ *             .accessPointId("ap-sg-singpore-A")
+ *             .lineOperator("Other")
+ *             .peerLocation("example_value")
+ *             .physicalConnectionName("example_value")
+ *             .type("VPC")
+ *             .description("my domestic connection")
+ *             .portType("1000Base-LX")
  *             .bandwidth(100)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

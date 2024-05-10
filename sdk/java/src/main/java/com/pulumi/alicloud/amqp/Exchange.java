@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,25 +53,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
- *             .instanceType(&#34;professional&#34;)
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *             .instanceType("professional")
  *             .maxTps(1000)
  *             .queueCapacity(50)
  *             .supportEip(true)
  *             .maxEipTps(128)
- *             .paymentType(&#34;Subscription&#34;)
+ *             .paymentType("Subscription")
  *             .period(1)
  *             .build());
  * 
- *         var defaultVirtualHost = new VirtualHost(&#34;defaultVirtualHost&#34;, VirtualHostArgs.builder()        
+ *         var defaultVirtualHost = new VirtualHost("defaultVirtualHost", VirtualHostArgs.builder()        
  *             .instanceId(default_.id())
- *             .virtualHostName(&#34;tf-example&#34;)
+ *             .virtualHostName("tf-example")
  *             .build());
  * 
- *         var defaultExchange = new Exchange(&#34;defaultExchange&#34;, ExchangeArgs.builder()        
+ *         var defaultExchange = new Exchange("defaultExchange", ExchangeArgs.builder()        
  *             .autoDeleteState(false)
- *             .exchangeName(&#34;tf-example&#34;)
- *             .exchangeType(&#34;DIRECT&#34;)
+ *             .exchangeName("tf-example")
+ *             .exchangeType("DIRECT")
  *             .instanceId(default_.id())
  *             .internal(false)
  *             .virtualHostName(defaultVirtualHost.virtualHostName())
@@ -78,7 +79,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -125,14 +127,14 @@ public class Exchange extends com.pulumi.resources.CustomResource {
         return this.autoDeleteState;
     }
     /**
-     * The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+     * The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
      * 
      */
     @Export(name="exchangeName", refs={String.class}, tree="[0]")
     private Output<String> exchangeName;
 
     /**
-     * @return The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+     * @return The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
      * 
      */
     public Output<String> exchangeName() {

@@ -33,7 +33,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -56,20 +57,21 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
-     *             .code(&#34;access_failed_cnt&#34;)
+     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()        
+     *             .code("access_failed_cnt")
      *             .value(10)
      *             .build());
      * 
      *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
      *             .ids(defaultConfig.id())
-     *             .outputFile(&#34;./t.json&#34;)
+     *             .outputFile("./t.json")
      *             .build());
      * 
-     *         ctx.export(&#34;sddpConfigId&#34;, default_.applyValue(default_ -&gt; default_.ids()));
+     *         ctx.export("sddpConfigId", default_.applyValue(default_ -> default_.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -86,7 +88,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -109,20 +112,21 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
-     *             .code(&#34;access_failed_cnt&#34;)
+     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()        
+     *             .code("access_failed_cnt")
      *             .value(10)
      *             .build());
      * 
      *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
      *             .ids(defaultConfig.id())
-     *             .outputFile(&#34;./t.json&#34;)
+     *             .outputFile("./t.json")
      *             .build());
      * 
-     *         ctx.export(&#34;sddpConfigId&#34;, default_.applyValue(default_ -&gt; default_.ids()));
+     *         ctx.export("sddpConfigId", default_.applyValue(default_ -> default_.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -139,7 +143,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -162,20 +167,21 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
-     *             .code(&#34;access_failed_cnt&#34;)
+     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()        
+     *             .code("access_failed_cnt")
      *             .value(10)
      *             .build());
      * 
      *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
      *             .ids(defaultConfig.id())
-     *             .outputFile(&#34;./t.json&#34;)
+     *             .outputFile("./t.json")
      *             .build());
      * 
-     *         ctx.export(&#34;sddpConfigId&#34;, default_.applyValue(default_ -&gt; default_.ids()));
+     *         ctx.export("sddpConfigId", default_.applyValue(default_ -> default_.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -192,7 +198,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -215,20 +222,21 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
-     *             .code(&#34;access_failed_cnt&#34;)
+     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()        
+     *             .code("access_failed_cnt")
      *             .value(10)
      *             .build());
      * 
      *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
      *             .ids(defaultConfig.id())
-     *             .outputFile(&#34;./t.json&#34;)
+     *             .outputFile("./t.json")
      *             .build());
      * 
-     *         ctx.export(&#34;sddpConfigId&#34;, default_.applyValue(default_ -&gt; default_.ids()));
+     *         ctx.export("sddpConfigId", default_.applyValue(default_ -> default_.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -245,7 +253,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -268,20 +277,21 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
-     *             .code(&#34;access_failed_cnt&#34;)
+     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()        
+     *             .code("access_failed_cnt")
      *             .value(10)
      *             .build());
      * 
      *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
      *             .ids(defaultConfig.id())
-     *             .outputFile(&#34;./t.json&#34;)
+     *             .outputFile("./t.json")
      *             .build());
      * 
-     *         ctx.export(&#34;sddpConfigId&#34;, default_.applyValue(default_ -&gt; default_.ids()));
+     *         ctx.export("sddpConfigId", default_.applyValue(default_ -> default_.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -298,7 +308,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -321,20 +332,21 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
-     *             .code(&#34;access_failed_cnt&#34;)
+     *         var defaultConfig = new Config("defaultConfig", ConfigArgs.builder()        
+     *             .code("access_failed_cnt")
      *             .value(10)
      *             .build());
      * 
      *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
      *             .ids(defaultConfig.id())
-     *             .outputFile(&#34;./t.json&#34;)
+     *             .outputFile("./t.json")
      *             .build());
      * 
-     *         ctx.export(&#34;sddpConfigId&#34;, default_.applyValue(default_ -&gt; default_.ids()));
+     *         ctx.export("sddpConfigId", default_.applyValue(default_ -> default_.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -351,7 +363,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -374,10 +387,11 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SddpFunctions.getDataLimits();
      * 
-     *         ctx.export(&#34;sddpDataLimitId1&#34;, ids.applyValue(getDataLimitsResult -&gt; getDataLimitsResult.limits()[0].id()));
+     *         ctx.export("sddpDataLimitId1", ids.applyValue(getDataLimitsResult -> getDataLimitsResult.limits()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -394,7 +408,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -417,10 +432,11 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SddpFunctions.getDataLimits();
      * 
-     *         ctx.export(&#34;sddpDataLimitId1&#34;, ids.applyValue(getDataLimitsResult -&gt; getDataLimitsResult.limits()[0].id()));
+     *         ctx.export("sddpDataLimitId1", ids.applyValue(getDataLimitsResult -> getDataLimitsResult.limits()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -437,7 +453,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -460,10 +477,11 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SddpFunctions.getDataLimits();
      * 
-     *         ctx.export(&#34;sddpDataLimitId1&#34;, ids.applyValue(getDataLimitsResult -&gt; getDataLimitsResult.limits()[0].id()));
+     *         ctx.export("sddpDataLimitId1", ids.applyValue(getDataLimitsResult -> getDataLimitsResult.limits()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -480,7 +498,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -503,10 +522,11 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SddpFunctions.getDataLimits();
      * 
-     *         ctx.export(&#34;sddpDataLimitId1&#34;, ids.applyValue(getDataLimitsResult -&gt; getDataLimitsResult.limits()[0].id()));
+     *         ctx.export("sddpDataLimitId1", ids.applyValue(getDataLimitsResult -> getDataLimitsResult.limits()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -523,7 +543,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -546,10 +567,11 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SddpFunctions.getDataLimits();
      * 
-     *         ctx.export(&#34;sddpDataLimitId1&#34;, ids.applyValue(getDataLimitsResult -&gt; getDataLimitsResult.limits()[0].id()));
+     *         ctx.export("sddpDataLimitId1", ids.applyValue(getDataLimitsResult -> getDataLimitsResult.limits()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -566,7 +588,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -589,10 +612,11 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SddpFunctions.getDataLimits();
      * 
-     *         ctx.export(&#34;sddpDataLimitId1&#34;, ids.applyValue(getDataLimitsResult -&gt; getDataLimitsResult.limits()[0].id()));
+     *         ctx.export("sddpDataLimitId1", ids.applyValue(getDataLimitsResult -> getDataLimitsResult.limits()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -609,7 +633,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -632,10 +657,11 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = SddpFunctions.getInstances();
      * 
-     *         ctx.export(&#34;sddpInstanceId&#34;, default_.instances()[0]);
+     *         ctx.export("sddpInstanceId", default_.instances()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -652,7 +678,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -675,10 +702,11 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = SddpFunctions.getInstances();
      * 
-     *         ctx.export(&#34;sddpInstanceId&#34;, default_.instances()[0]);
+     *         ctx.export("sddpInstanceId", default_.instances()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -695,7 +723,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -718,10 +747,11 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = SddpFunctions.getInstances();
      * 
-     *         ctx.export(&#34;sddpInstanceId&#34;, default_.instances()[0]);
+     *         ctx.export("sddpInstanceId", default_.instances()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -738,7 +768,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -761,10 +792,11 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = SddpFunctions.getInstances();
      * 
-     *         ctx.export(&#34;sddpInstanceId&#34;, default_.instances()[0]);
+     *         ctx.export("sddpInstanceId", default_.instances()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -781,7 +813,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -804,10 +837,11 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = SddpFunctions.getInstances();
      * 
-     *         ctx.export(&#34;sddpInstanceId&#34;, default_.instances()[0]);
+     *         ctx.export("sddpInstanceId", default_.instances()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -824,7 +858,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -847,10 +882,11 @@ public final class SddpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = SddpFunctions.getInstances();
      * 
-     *         ctx.export(&#34;sddpInstanceId&#34;, default_.instances()[0]);
+     *         ctx.export("sddpInstanceId", default_.instances()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -867,7 +903,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -890,22 +927,23 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
-     *             .category(&#34;0&#34;)
-     *             .content(&#34;content&#34;)
-     *             .ruleName(&#34;rule_name&#34;)
-     *             .riskLevelId(&#34;4&#34;)
-     *             .productCode(&#34;ODPS&#34;)
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *             .category("0")
+     *             .content("content")
+     *             .ruleName("rule_name")
+     *             .riskLevelId("4")
+     *             .productCode("ODPS")
      *             .build());
      * 
      *         final var default = SddpFunctions.getRules(GetRulesArgs.builder()
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;sddpRuleId&#34;, default_.applyValue(default_ -&gt; default_.id()));
+     *         ctx.export("sddpRuleId", default_.applyValue(default_ -> default_.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -922,7 +960,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -945,22 +984,23 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
-     *             .category(&#34;0&#34;)
-     *             .content(&#34;content&#34;)
-     *             .ruleName(&#34;rule_name&#34;)
-     *             .riskLevelId(&#34;4&#34;)
-     *             .productCode(&#34;ODPS&#34;)
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *             .category("0")
+     *             .content("content")
+     *             .ruleName("rule_name")
+     *             .riskLevelId("4")
+     *             .productCode("ODPS")
      *             .build());
      * 
      *         final var default = SddpFunctions.getRules(GetRulesArgs.builder()
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;sddpRuleId&#34;, default_.applyValue(default_ -&gt; default_.id()));
+     *         ctx.export("sddpRuleId", default_.applyValue(default_ -> default_.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -977,7 +1017,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1000,22 +1041,23 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
-     *             .category(&#34;0&#34;)
-     *             .content(&#34;content&#34;)
-     *             .ruleName(&#34;rule_name&#34;)
-     *             .riskLevelId(&#34;4&#34;)
-     *             .productCode(&#34;ODPS&#34;)
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *             .category("0")
+     *             .content("content")
+     *             .ruleName("rule_name")
+     *             .riskLevelId("4")
+     *             .productCode("ODPS")
      *             .build());
      * 
      *         final var default = SddpFunctions.getRules(GetRulesArgs.builder()
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;sddpRuleId&#34;, default_.applyValue(default_ -&gt; default_.id()));
+     *         ctx.export("sddpRuleId", default_.applyValue(default_ -> default_.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1032,7 +1074,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1055,22 +1098,23 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
-     *             .category(&#34;0&#34;)
-     *             .content(&#34;content&#34;)
-     *             .ruleName(&#34;rule_name&#34;)
-     *             .riskLevelId(&#34;4&#34;)
-     *             .productCode(&#34;ODPS&#34;)
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *             .category("0")
+     *             .content("content")
+     *             .ruleName("rule_name")
+     *             .riskLevelId("4")
+     *             .productCode("ODPS")
      *             .build());
      * 
      *         final var default = SddpFunctions.getRules(GetRulesArgs.builder()
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;sddpRuleId&#34;, default_.applyValue(default_ -&gt; default_.id()));
+     *         ctx.export("sddpRuleId", default_.applyValue(default_ -> default_.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1087,7 +1131,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1110,22 +1155,23 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
-     *             .category(&#34;0&#34;)
-     *             .content(&#34;content&#34;)
-     *             .ruleName(&#34;rule_name&#34;)
-     *             .riskLevelId(&#34;4&#34;)
-     *             .productCode(&#34;ODPS&#34;)
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *             .category("0")
+     *             .content("content")
+     *             .ruleName("rule_name")
+     *             .riskLevelId("4")
+     *             .productCode("ODPS")
      *             .build());
      * 
      *         final var default = SddpFunctions.getRules(GetRulesArgs.builder()
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;sddpRuleId&#34;, default_.applyValue(default_ -&gt; default_.id()));
+     *         ctx.export("sddpRuleId", default_.applyValue(default_ -> default_.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1142,7 +1188,8 @@ public final class SddpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1165,22 +1212,23 @@ public final class SddpFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
-     *             .category(&#34;0&#34;)
-     *             .content(&#34;content&#34;)
-     *             .ruleName(&#34;rule_name&#34;)
-     *             .riskLevelId(&#34;4&#34;)
-     *             .productCode(&#34;ODPS&#34;)
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *             .category("0")
+     *             .content("content")
+     *             .ruleName("rule_name")
+     *             .riskLevelId("4")
+     *             .productCode("ODPS")
      *             .build());
      * 
      *         final var default = SddpFunctions.getRules(GetRulesArgs.builder()
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;sddpRuleId&#34;, default_.applyValue(default_ -&gt; default_.id()));
+     *         ctx.export("sddpRuleId", default_.applyValue(default_ -> default_.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

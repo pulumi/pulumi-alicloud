@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,30 +54,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var example = new IpaDomain(&#34;example&#34;, IpaDomainArgs.builder()        
- *             .domainName(String.format(&#34;example-%s.com&#34;, defaultInteger.result()))
+ *         var example = new IpaDomain("example", IpaDomainArgs.builder()        
+ *             .domainName(String.format("example-%s.com", defaultInteger.result()))
  *             .resourceGroupId(default_.groups()[0].id())
- *             .scope(&#34;overseas&#34;)
- *             .status(&#34;online&#34;)
+ *             .scope("overseas")
+ *             .status("online")
  *             .sources(IpaDomainSourceArgs.builder()
- *                 .content(&#34;www.alicloud-provider.cn&#34;)
+ *                 .content("www.alicloud-provider.cn")
  *                 .port(8898)
- *                 .priority(&#34;20&#34;)
- *                 .type(&#34;domain&#34;)
+ *                 .priority("20")
+ *                 .type("domain")
  *                 .weight(10)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

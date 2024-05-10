@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,31 +52,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new DdosCooInstance(&#34;default&#34;, DdosCooInstanceArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new DdosCooInstance("default", DdosCooInstanceArgs.builder()        
  *             .name(name)
- *             .bandwidth(&#34;30&#34;)
- *             .baseBandwidth(&#34;30&#34;)
- *             .serviceBandwidth(&#34;100&#34;)
- *             .portCount(&#34;50&#34;)
- *             .domainCount(&#34;50&#34;)
- *             .period(&#34;1&#34;)
- *             .productType(&#34;ddoscoo&#34;)
+ *             .bandwidth("30")
+ *             .baseBandwidth("30")
+ *             .serviceBandwidth("100")
+ *             .portCount("50")
+ *             .domainCount("50")
+ *             .period("1")
+ *             .productType("ddoscoo")
  *             .build());
  * 
- *         var defaultPort = new Port(&#34;defaultPort&#34;, PortArgs.builder()        
+ *         var defaultPort = new Port("defaultPort", PortArgs.builder()        
  *             .instanceId(default_.id())
- *             .frontendPort(&#34;7001&#34;)
- *             .backendPort(&#34;7002&#34;)
- *             .frontendProtocol(&#34;tcp&#34;)
+ *             .frontendPort("7001")
+ *             .backendPort("7002")
+ *             .frontendProtocol("tcp")
  *             .realServers(            
- *                 &#34;1.1.1.1&#34;,
- *                 &#34;2.2.2.2&#34;)
+ *                 "1.1.1.1",
+ *                 "2.2.2.2")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

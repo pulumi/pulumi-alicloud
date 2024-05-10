@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,30 +58,31 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         final var instanceSeries = config.get(&#34;instanceSeries&#34;).orElse(&#34;drds.sn1.4c8g&#34;);
+ *         final var instanceSeries = config.get("instanceSeries").orElse("drds.sn1.4c8g");
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .nameRegex("default-NODELETING")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .description(&#34;drds instance&#34;)
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.vswitches()[0].zoneId()))
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.vswitches()[0].id()))
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .description("drds instance")
+ *             .instanceChargeType("PostPaid")
+ *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].id()))
  *             .instanceSeries(instanceSeries)
- *             .specification(&#34;drds.sn1.4c8g.8C16G&#34;)
+ *             .specification("drds.sn1.4c8g.8C16G")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

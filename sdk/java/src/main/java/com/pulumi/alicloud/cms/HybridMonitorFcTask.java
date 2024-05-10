@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,18 +51,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+ *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
  *             .description(name)
  *             .namespace(name)
- *             .specification(&#34;cms.s1.large&#34;)
+ *             .specification("cms.s1.large")
  *             .build());
  * 
- *         var defaultHybridMonitorFcTask = new HybridMonitorFcTask(&#34;defaultHybridMonitorFcTask&#34;, HybridMonitorFcTaskArgs.builder()        
+ *         var defaultHybridMonitorFcTask = new HybridMonitorFcTask("defaultHybridMonitorFcTask", HybridMonitorFcTaskArgs.builder()        
  *             .namespace(defaultNamespace.id())
- *             .yarmConfig(&#34;&#34;&#34;
+ *             .yarmConfig("""
  * products:
  * - namespace: acs_ecs_dashboard
  *   metric_info:
@@ -79,13 +80,14 @@ import javax.annotation.Nullable;
  *   - metric_list:
  *     - MySQL_QPS
  *     - MySQL_TPS
- *             &#34;&#34;&#34;)
+ *             """)
  *             .targetUserId(default_.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

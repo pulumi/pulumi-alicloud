@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,21 +52,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AddressBook(&#34;example&#34;, AddressBookArgs.builder()        
- *             .description(&#34;example_value&#34;)
- *             .groupName(&#34;example_value&#34;)
- *             .groupType(&#34;tag&#34;)
- *             .tagRelation(&#34;and&#34;)
+ *         var example = new AddressBook("example", AddressBookArgs.builder()        
+ *             .description("example_value")
+ *             .groupName("example_value")
+ *             .groupType("tag")
+ *             .tagRelation("and")
  *             .autoAddTagEcs(0)
  *             .ecsTags(AddressBookEcsTagArgs.builder()
- *                 .tagKey(&#34;created&#34;)
- *                 .tagValue(&#34;tfTestAcc0&#34;)
+ *                 .tagKey("created")
+ *                 .tagValue("tfTestAcc0")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

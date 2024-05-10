@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,13 +50,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AlarmContactGroup(&#34;example&#34;, AlarmContactGroupArgs.builder()        
- *             .alarmContactGroupName(&#34;tf-example&#34;)
+ *         var example = new AlarmContactGroup("example", AlarmContactGroupArgs.builder()        
+ *             .alarmContactGroupName("tf-example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

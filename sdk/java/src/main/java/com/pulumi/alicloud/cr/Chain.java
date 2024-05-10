@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,33 +58,33 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new RegistryEnterpriseInstance(&#34;default&#34;, RegistryEnterpriseInstanceArgs.builder()        
- *             .paymentType(&#34;Subscription&#34;)
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new RegistryEnterpriseInstance("default", RegistryEnterpriseInstanceArgs.builder()        
+ *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
- *             .renewalStatus(&#34;ManualRenewal&#34;)
- *             .instanceType(&#34;Advanced&#34;)
+ *             .renewalStatus("ManualRenewal")
+ *             .instanceType("Advanced")
  *             .instanceName(name)
  *             .build());
  * 
- *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace(&#34;defaultRegistryEnterpriseNamespace&#34;, RegistryEnterpriseNamespaceArgs.builder()        
+ *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()        
  *             .instanceId(default_.id())
  *             .name(name)
  *             .autoCreate(false)
- *             .defaultVisibility(&#34;PUBLIC&#34;)
+ *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
- *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo(&#34;defaultRegistryEnterpriseRepo&#34;, RegistryEnterpriseRepoArgs.builder()        
+ *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()        
  *             .instanceId(default_.id())
  *             .namespace(defaultRegistryEnterpriseNamespace.name())
  *             .name(name)
- *             .summary(&#34;this is summary of my new repo&#34;)
- *             .repoType(&#34;PUBLIC&#34;)
- *             .detail(&#34;this is a public repo&#34;)
+ *             .summary("this is summary of my new repo")
+ *             .repoType("PUBLIC")
+ *             .detail("this is a public repo")
  *             .build());
  * 
- *         var defaultChain = new Chain(&#34;defaultChain&#34;, ChainArgs.builder()        
+ *         var defaultChain = new Chain("defaultChain", ChainArgs.builder()        
  *             .chainConfigs(ChainChainConfigArgs.builder()
  *                 .nodes(                
  *                     ChainChainConfigNodeArgs.builder()
@@ -91,24 +92,24 @@ import javax.annotation.Nullable;
  *                             .denyPolicies()
  *                             .build())
  *                         .enable(true)
- *                         .nodeName(&#34;DOCKER_IMAGE_BUILD&#34;)
+ *                         .nodeName("DOCKER_IMAGE_BUILD")
  *                         .build(),
  *                     ChainChainConfigNodeArgs.builder()
  *                         .nodeConfigs(ChainChainConfigNodeNodeConfigArgs.builder()
  *                             .denyPolicies()
  *                             .build())
  *                         .enable(true)
- *                         .nodeName(&#34;DOCKER_IMAGE_PUSH&#34;)
+ *                         .nodeName("DOCKER_IMAGE_PUSH")
  *                         .build(),
  *                     ChainChainConfigNodeArgs.builder()
  *                         .enable(true)
- *                         .nodeName(&#34;VULNERABILITY_SCANNING&#34;)
+ *                         .nodeName("VULNERABILITY_SCANNING")
  *                         .nodeConfigs(ChainChainConfigNodeNodeConfigArgs.builder()
  *                             .denyPolicies(ChainChainConfigNodeNodeConfigDenyPolicyArgs.builder()
- *                                 .issueLevel(&#34;MEDIUM&#34;)
+ *                                 .issueLevel("MEDIUM")
  *                                 .issueCount(1)
- *                                 .action(&#34;BLOCK_DELETE_TAG&#34;)
- *                                 .logic(&#34;AND&#34;)
+ *                                 .action("BLOCK_DELETE_TAG")
+ *                                 .logic("AND")
  *                                 .build())
  *                             .build())
  *                         .build(),
@@ -117,76 +118,76 @@ import javax.annotation.Nullable;
  *                             .denyPolicies()
  *                             .build())
  *                         .enable(true)
- *                         .nodeName(&#34;ACTIVATE_REPLICATION&#34;)
+ *                         .nodeName("ACTIVATE_REPLICATION")
  *                         .build(),
  *                     ChainChainConfigNodeArgs.builder()
  *                         .nodeConfigs(ChainChainConfigNodeNodeConfigArgs.builder()
  *                             .denyPolicies()
  *                             .build())
  *                         .enable(true)
- *                         .nodeName(&#34;TRIGGER&#34;)
+ *                         .nodeName("TRIGGER")
  *                         .build(),
  *                     ChainChainConfigNodeArgs.builder()
  *                         .nodeConfigs(ChainChainConfigNodeNodeConfigArgs.builder()
  *                             .denyPolicies()
  *                             .build())
  *                         .enable(false)
- *                         .nodeName(&#34;SNAPSHOT&#34;)
+ *                         .nodeName("SNAPSHOT")
  *                         .build(),
  *                     ChainChainConfigNodeArgs.builder()
  *                         .nodeConfigs(ChainChainConfigNodeNodeConfigArgs.builder()
  *                             .denyPolicies()
  *                             .build())
  *                         .enable(false)
- *                         .nodeName(&#34;TRIGGER_SNAPSHOT&#34;)
+ *                         .nodeName("TRIGGER_SNAPSHOT")
  *                         .build())
  *                 .routers(                
  *                     ChainChainConfigRouterArgs.builder()
  *                         .froms(ChainChainConfigRouterFromArgs.builder()
- *                             .nodeName(&#34;DOCKER_IMAGE_BUILD&#34;)
+ *                             .nodeName("DOCKER_IMAGE_BUILD")
  *                             .build())
  *                         .tos(ChainChainConfigRouterToArgs.builder()
- *                             .nodeName(&#34;DOCKER_IMAGE_PUSH&#34;)
+ *                             .nodeName("DOCKER_IMAGE_PUSH")
  *                             .build())
  *                         .build(),
  *                     ChainChainConfigRouterArgs.builder()
  *                         .froms(ChainChainConfigRouterFromArgs.builder()
- *                             .nodeName(&#34;DOCKER_IMAGE_PUSH&#34;)
+ *                             .nodeName("DOCKER_IMAGE_PUSH")
  *                             .build())
  *                         .tos(ChainChainConfigRouterToArgs.builder()
- *                             .nodeName(&#34;VULNERABILITY_SCANNING&#34;)
+ *                             .nodeName("VULNERABILITY_SCANNING")
  *                             .build())
  *                         .build(),
  *                     ChainChainConfigRouterArgs.builder()
  *                         .froms(ChainChainConfigRouterFromArgs.builder()
- *                             .nodeName(&#34;VULNERABILITY_SCANNING&#34;)
+ *                             .nodeName("VULNERABILITY_SCANNING")
  *                             .build())
  *                         .tos(ChainChainConfigRouterToArgs.builder()
- *                             .nodeName(&#34;ACTIVATE_REPLICATION&#34;)
+ *                             .nodeName("ACTIVATE_REPLICATION")
  *                             .build())
  *                         .build(),
  *                     ChainChainConfigRouterArgs.builder()
  *                         .froms(ChainChainConfigRouterFromArgs.builder()
- *                             .nodeName(&#34;ACTIVATE_REPLICATION&#34;)
+ *                             .nodeName("ACTIVATE_REPLICATION")
  *                             .build())
  *                         .tos(ChainChainConfigRouterToArgs.builder()
- *                             .nodeName(&#34;TRIGGER&#34;)
+ *                             .nodeName("TRIGGER")
  *                             .build())
  *                         .build(),
  *                     ChainChainConfigRouterArgs.builder()
  *                         .froms(ChainChainConfigRouterFromArgs.builder()
- *                             .nodeName(&#34;VULNERABILITY_SCANNING&#34;)
+ *                             .nodeName("VULNERABILITY_SCANNING")
  *                             .build())
  *                         .tos(ChainChainConfigRouterToArgs.builder()
- *                             .nodeName(&#34;SNAPSHOT&#34;)
+ *                             .nodeName("SNAPSHOT")
  *                             .build())
  *                         .build(),
  *                     ChainChainConfigRouterArgs.builder()
  *                         .froms(ChainChainConfigRouterFromArgs.builder()
- *                             .nodeName(&#34;SNAPSHOT&#34;)
+ *                             .nodeName("SNAPSHOT")
  *                             .build())
  *                         .tos(ChainChainConfigRouterToArgs.builder()
- *                             .nodeName(&#34;TRIGGER_SNAPSHOT&#34;)
+ *                             .nodeName("TRIGGER_SNAPSHOT")
  *                             .build())
  *                         .build())
  *                 .build())
@@ -199,7 +200,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

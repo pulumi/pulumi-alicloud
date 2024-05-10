@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,21 +50,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
- *             .name(&#34;example_value&#34;)
- *             .description(&#34;example_value&#34;)
+ *         var default_ = new Group("default", GroupArgs.builder()        
+ *             .name("example_value")
+ *             .description("example_value")
  *             .build());
  * 
- *         var defaultModel = new Model(&#34;defaultModel&#34;, ModelArgs.builder()        
+ *         var defaultModel = new Model("defaultModel", ModelArgs.builder()        
  *             .groupId(default_.id())
- *             .modelName(&#34;example_value&#34;)
- *             .schema(&#34;{\&#34;type\&#34;:\&#34;object\&#34;,\&#34;properties\&#34;:{\&#34;id\&#34;:{\&#34;format\&#34;:\&#34;int64\&#34;,\&#34;maximum\&#34;:100,\&#34;exclusiveMaximum\&#34;:true,\&#34;type\&#34;:\&#34;integer\&#34;},\&#34;name\&#34;:{\&#34;maxLength\&#34;:10,\&#34;type\&#34;:\&#34;string\&#34;}}}&#34;)
- *             .description(&#34;example_value&#34;)
+ *             .modelName("example_value")
+ *             .schema("{\"type\":\"object\",\"properties\":{\"id\":{\"format\":\"int64\",\"maximum\":100,\"exclusiveMaximum\":true,\"type\":\"integer\"},\"name\":{\"maxLength\":10,\"type\":\"string\"}}}")
+ *             .description("example_value")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

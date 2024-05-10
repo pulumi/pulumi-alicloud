@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -69,99 +70,100 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .status(&#34;OK&#34;)
+ *             .status("OK")
  *             .build());
  * 
  *         final var defaultGetZones = RdsFunctions.getZones(GetZonesArgs.builder()
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;8.0&#34;)
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .category(&#34;HighAvailability&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceChargeType("PostPaid")
+ *             .category("HighAvailability")
+ *             .dbInstanceStorageType("cloud_essd")
  *             .build());
  * 
  *         final var defaultGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;8.0&#34;)
- *             .category(&#34;HighAvailability&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
- *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .category("HighAvailability")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .instanceChargeType("PostPaid")
  *             .build());
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING&#34;)
+ *             .nameRegex("^default-NODELETING")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         final var vswitchId = defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]);
+ *         final var vswitchId = defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]);
  * 
- *         final var zoneId = defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]);
+ *         final var zoneId = defaultGetZones.applyValue(getZonesResult -> getZonesResult.ids()[0]);
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;8.0&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
- *             .instanceType(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .instanceType(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
  *             .vswitchId(vswitchId)
  *             .instanceName(name)
  *             .build());
  * 
- *         var defaultDatabase = new Database(&#34;defaultDatabase&#34;, DatabaseArgs.builder()        
+ *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()        
  *             .instanceId(defaultInstance.id())
- *             .name(&#34;tfdatabase&#34;)
+ *             .name("tfdatabase")
  *             .build());
  * 
- *         var defaultRdsAccount = new RdsAccount(&#34;defaultRdsAccount&#34;, RdsAccountArgs.builder()        
+ *         var defaultRdsAccount = new RdsAccount("defaultRdsAccount", RdsAccountArgs.builder()        
  *             .dbInstanceId(defaultInstance.id())
- *             .accountName(&#34;tfnormal000&#34;)
- *             .accountPassword(&#34;Test12345&#34;)
+ *             .accountName("tfnormal000")
+ *             .accountPassword("Test12345")
  *             .build());
  * 
- *         var defaultAccountPrivilege = new AccountPrivilege(&#34;defaultAccountPrivilege&#34;, AccountPrivilegeArgs.builder()        
+ *         var defaultAccountPrivilege = new AccountPrivilege("defaultAccountPrivilege", AccountPrivilegeArgs.builder()        
  *             .instanceId(defaultInstance.id())
  *             .accountName(defaultRdsAccount.accountName())
- *             .privilege(&#34;ReadWrite&#34;)
+ *             .privilege("ReadWrite")
  *             .dbNames(defaultDatabase.name())
  *             .build());
  * 
- *         var defaultBackupPlan = new BackupPlan(&#34;defaultBackupPlan&#34;, BackupPlanArgs.builder()        
+ *         var defaultBackupPlan = new BackupPlan("defaultBackupPlan", BackupPlanArgs.builder()        
  *             .backupPlanName(name)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .instanceClass(&#34;xlarge&#34;)
- *             .backupMethod(&#34;logical&#34;)
- *             .databaseType(&#34;MySQL&#34;)
- *             .databaseRegion(&#34;cn-hangzhou&#34;)
- *             .storageRegion(&#34;cn-hangzhou&#34;)
- *             .instanceType(&#34;RDS&#34;)
- *             .sourceEndpointInstanceType(&#34;RDS&#34;)
+ *             .paymentType("PayAsYouGo")
+ *             .instanceClass("xlarge")
+ *             .backupMethod("logical")
+ *             .databaseType("MySQL")
+ *             .databaseRegion("cn-hangzhou")
+ *             .storageRegion("cn-hangzhou")
+ *             .instanceType("RDS")
+ *             .sourceEndpointInstanceType("RDS")
  *             .resourceGroupId(default_.ids()[0])
- *             .sourceEndpointRegion(&#34;cn-hangzhou&#34;)
+ *             .sourceEndpointRegion("cn-hangzhou")
  *             .sourceEndpointInstanceId(defaultInstance.id())
  *             .sourceEndpointUserName(defaultAccountPrivilege.accountName())
  *             .sourceEndpointPassword(defaultRdsAccount.accountPassword())
- *             .backupObjects(defaultDatabase.name().applyValue(name -&gt; String.format(&#34;[{{\&#34;DBName\&#34;:\&#34;%s\&#34;}}]&#34;, name)))
- *             .backupPeriod(&#34;Monday&#34;)
- *             .backupStartTime(&#34;14:22&#34;)
- *             .backupStorageType(&#34;system&#34;)
+ *             .backupObjects(defaultDatabase.name().applyValue(name -> String.format("[{{\"DBName\":\"%s\"}}]", name)))
+ *             .backupPeriod("Monday")
+ *             .backupStartTime("14:22")
+ *             .backupStorageType("system")
  *             .backupRetentionPeriod(740)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

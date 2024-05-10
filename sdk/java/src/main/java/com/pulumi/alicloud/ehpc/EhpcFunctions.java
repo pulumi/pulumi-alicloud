@@ -27,7 +27,8 @@ public final class EhpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -49,18 +50,19 @@ public final class EhpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EhpcFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcClusterId1&#34;, ids.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId1", ids.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(&#34;^my-Cluster&#34;)
+     *             .nameRegex("^my-Cluster")
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcClusterId2&#34;, nameRegex.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId2", nameRegex.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -77,7 +79,8 @@ public final class EhpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -99,18 +102,19 @@ public final class EhpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EhpcFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcClusterId1&#34;, ids.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId1", ids.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(&#34;^my-Cluster&#34;)
+     *             .nameRegex("^my-Cluster")
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcClusterId2&#34;, nameRegex.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId2", nameRegex.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -127,7 +131,8 @@ public final class EhpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -149,18 +154,19 @@ public final class EhpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EhpcFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcClusterId1&#34;, ids.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId1", ids.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(&#34;^my-Cluster&#34;)
+     *             .nameRegex("^my-Cluster")
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcClusterId2&#34;, nameRegex.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId2", nameRegex.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -177,7 +183,8 @@ public final class EhpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -199,18 +206,19 @@ public final class EhpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EhpcFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcClusterId1&#34;, ids.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId1", ids.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(&#34;^my-Cluster&#34;)
+     *             .nameRegex("^my-Cluster")
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcClusterId2&#34;, nameRegex.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId2", nameRegex.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -227,7 +235,8 @@ public final class EhpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -249,18 +258,19 @@ public final class EhpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EhpcFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcClusterId1&#34;, ids.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId1", ids.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(&#34;^my-Cluster&#34;)
+     *             .nameRegex("^my-Cluster")
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcClusterId2&#34;, nameRegex.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId2", nameRegex.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -277,7 +287,8 @@ public final class EhpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -299,18 +310,19 @@ public final class EhpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EhpcFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcClusterId1&#34;, ids.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId1", ids.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *         final var nameRegex = EhpcFunctions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(&#34;^my-Cluster&#34;)
+     *             .nameRegex("^my-Cluster")
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcClusterId2&#34;, nameRegex.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("ehpcClusterId2", nameRegex.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -327,7 +339,8 @@ public final class EhpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -350,19 +363,20 @@ public final class EhpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new JobTemplate(&#34;default&#34;, JobTemplateArgs.builder()        
-     *             .jobTemplateName(&#34;example_value&#34;)
-     *             .commandLine(&#34;./LammpsTest/lammps.pbs&#34;)
+     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()        
+     *             .jobTemplateName("example_value")
+     *             .commandLine("./LammpsTest/lammps.pbs")
      *             .build());
      * 
      *         final var ids = EhpcFunctions.getJobTemplates(GetJobTemplatesArgs.builder()
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcJobTemplateId1&#34;, ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult).applyValue(ids -&gt; ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult.id())));
+     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult).applyValue(ids -> ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult.id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -379,7 +393,8 @@ public final class EhpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -402,19 +417,20 @@ public final class EhpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new JobTemplate(&#34;default&#34;, JobTemplateArgs.builder()        
-     *             .jobTemplateName(&#34;example_value&#34;)
-     *             .commandLine(&#34;./LammpsTest/lammps.pbs&#34;)
+     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()        
+     *             .jobTemplateName("example_value")
+     *             .commandLine("./LammpsTest/lammps.pbs")
      *             .build());
      * 
      *         final var ids = EhpcFunctions.getJobTemplates(GetJobTemplatesArgs.builder()
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcJobTemplateId1&#34;, ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult).applyValue(ids -&gt; ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult.id())));
+     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult).applyValue(ids -> ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult.id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -431,7 +447,8 @@ public final class EhpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -454,19 +471,20 @@ public final class EhpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new JobTemplate(&#34;default&#34;, JobTemplateArgs.builder()        
-     *             .jobTemplateName(&#34;example_value&#34;)
-     *             .commandLine(&#34;./LammpsTest/lammps.pbs&#34;)
+     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()        
+     *             .jobTemplateName("example_value")
+     *             .commandLine("./LammpsTest/lammps.pbs")
      *             .build());
      * 
      *         final var ids = EhpcFunctions.getJobTemplates(GetJobTemplatesArgs.builder()
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcJobTemplateId1&#34;, ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult).applyValue(ids -&gt; ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult.id())));
+     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult).applyValue(ids -> ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult.id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -483,7 +501,8 @@ public final class EhpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -506,19 +525,20 @@ public final class EhpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new JobTemplate(&#34;default&#34;, JobTemplateArgs.builder()        
-     *             .jobTemplateName(&#34;example_value&#34;)
-     *             .commandLine(&#34;./LammpsTest/lammps.pbs&#34;)
+     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()        
+     *             .jobTemplateName("example_value")
+     *             .commandLine("./LammpsTest/lammps.pbs")
      *             .build());
      * 
      *         final var ids = EhpcFunctions.getJobTemplates(GetJobTemplatesArgs.builder()
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcJobTemplateId1&#34;, ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult).applyValue(ids -&gt; ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult.id())));
+     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult).applyValue(ids -> ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult.id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -535,7 +555,8 @@ public final class EhpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -558,19 +579,20 @@ public final class EhpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new JobTemplate(&#34;default&#34;, JobTemplateArgs.builder()        
-     *             .jobTemplateName(&#34;example_value&#34;)
-     *             .commandLine(&#34;./LammpsTest/lammps.pbs&#34;)
+     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()        
+     *             .jobTemplateName("example_value")
+     *             .commandLine("./LammpsTest/lammps.pbs")
      *             .build());
      * 
      *         final var ids = EhpcFunctions.getJobTemplates(GetJobTemplatesArgs.builder()
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcJobTemplateId1&#34;, ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult).applyValue(ids -&gt; ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult.id())));
+     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult).applyValue(ids -> ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult.id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -587,7 +609,8 @@ public final class EhpcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -610,19 +633,20 @@ public final class EhpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new JobTemplate(&#34;default&#34;, JobTemplateArgs.builder()        
-     *             .jobTemplateName(&#34;example_value&#34;)
-     *             .commandLine(&#34;./LammpsTest/lammps.pbs&#34;)
+     *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()        
+     *             .jobTemplateName("example_value")
+     *             .commandLine("./LammpsTest/lammps.pbs")
      *             .build());
      * 
      *         final var ids = EhpcFunctions.getJobTemplates(GetJobTemplatesArgs.builder()
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ehpcJobTemplateId1&#34;, ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult).applyValue(ids -&gt; ids.applyValue(getJobTemplatesResult -&gt; getJobTemplatesResult.id())));
+     *         ctx.export("ehpcJobTemplateId1", ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult).applyValue(ids -> ids.applyValue(getJobTemplatesResult -> getJobTemplatesResult.id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

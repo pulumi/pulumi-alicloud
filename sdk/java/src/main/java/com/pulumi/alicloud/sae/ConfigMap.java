@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,28 +56,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
- *             .namespaceId(String.format(&#34;%s:example%s&#34;, default_.regions()[0].id(),defaultInteger.result()))
+ *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+ *             .namespaceId(String.format("%s:example%s", default_.regions()[0].id(),defaultInteger.result()))
  *             .namespaceName(name)
  *             .namespaceDescription(name)
  *             .enableMicroRegistration(false)
  *             .build());
  * 
- *         var defaultConfigMap = new ConfigMap(&#34;defaultConfigMap&#34;, ConfigMapArgs.builder()        
+ *         var defaultConfigMap = new ConfigMap("defaultConfigMap", ConfigMapArgs.builder()        
  *             .data(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
- *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
+ *                     jsonProperty("env.home", "/root"),
+ *                     jsonProperty("env.shell", "/bin/sh")
  *                 )))
  *             .name(name)
  *             .namespaceId(defaultNamespace.namespaceId())
@@ -84,7 +85,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

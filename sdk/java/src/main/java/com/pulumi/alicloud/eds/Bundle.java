@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,33 +54,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = EdsFunctions.getImages(GetImagesArgs.builder()
- *             .imageType(&#34;SYSTEM&#34;)
- *             .osType(&#34;Windows&#34;)
- *             .desktopInstanceType(&#34;eds.hf.4c8g&#34;)
+ *             .imageType("SYSTEM")
+ *             .osType("Windows")
+ *             .desktopInstanceType("eds.hf.4c8g")
  *             .build());
  * 
  *         final var defaultGetDesktopTypes = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
- *             .instanceTypeFamily(&#34;eds.hf&#34;)
+ *             .instanceTypeFamily("eds.hf")
  *             .cpuCount(4)
  *             .memorySize(8192)
  *             .build());
  * 
- *         var defaultBundle = new Bundle(&#34;defaultBundle&#34;, BundleArgs.builder()        
+ *         var defaultBundle = new Bundle("defaultBundle", BundleArgs.builder()        
  *             .description(name)
- *             .desktopType(defaultGetDesktopTypes.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.ids()[0]))
+ *             .desktopType(defaultGetDesktopTypes.applyValue(getDesktopTypesResult -> getDesktopTypesResult.ids()[0]))
  *             .bundleName(name)
  *             .imageId(default_.ids()[0])
  *             .userDiskSizeGibs(70)
  *             .rootDiskSizeGib(80)
- *             .rootDiskPerformanceLevel(&#34;PL1&#34;)
- *             .userDiskPerformanceLevel(&#34;PL1&#34;)
+ *             .rootDiskPerformanceLevel("PL1")
+ *             .userDiskPerformanceLevel("PL1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -73,74 +74,74 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var example = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         final var exampleGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .availableResourceCreation("Instance")
  *             .build());
  * 
  *         final var exampleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(exampleGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .availabilityZone(exampleGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
  * 
  *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
- *             .owners(&#34;system&#34;)
+ *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
+ *             .owners("system")
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(exampleGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(exampleGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .description(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .availabilityZone(exampleGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *             .availabilityZone(exampleGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .instanceName(name)
- *             .imageId(exampleGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .securityGroups(exampleSecurityGroup.id())
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
- *         var exampleServerGroup = new ServerGroup(&#34;exampleServerGroup&#34;, ServerGroupArgs.builder()        
- *             .protocol(&#34;HTTP&#34;)
+ *         var exampleServerGroup = new ServerGroup("exampleServerGroup", ServerGroupArgs.builder()        
+ *             .protocol("HTTP")
  *             .vpcId(exampleNetwork.id())
  *             .serverGroupName(name)
- *             .resourceGroupId(example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(example.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()))
  *             .stickySessionConfig(ServerGroupStickySessionConfigArgs.builder()
  *                 .stickySessionEnabled(true)
- *                 .cookie(&#34;tf-example&#34;)
- *                 .stickySessionType(&#34;Server&#34;)
+ *                 .cookie("tf-example")
+ *                 .stickySessionType("Server")
  *                 .build())
  *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
- *                 .healthCheckConnectPort(&#34;46325&#34;)
+ *                 .healthCheckConnectPort("46325")
  *                 .healthCheckEnabled(true)
- *                 .healthCheckHost(&#34;tf-example.com&#34;)
+ *                 .healthCheckHost("tf-example.com")
  *                 .healthCheckCodes(                
- *                     &#34;http_2xx&#34;,
- *                     &#34;http_3xx&#34;,
- *                     &#34;http_4xx&#34;)
- *                 .healthCheckHttpVersion(&#34;HTTP1.1&#34;)
- *                 .healthCheckInterval(&#34;2&#34;)
- *                 .healthCheckMethod(&#34;HEAD&#34;)
- *                 .healthCheckPath(&#34;/tf-example&#34;)
- *                 .healthCheckProtocol(&#34;HTTP&#34;)
+ *                     "http_2xx",
+ *                     "http_3xx",
+ *                     "http_4xx")
+ *                 .healthCheckHttpVersion("HTTP1.1")
+ *                 .healthCheckInterval("2")
+ *                 .healthCheckMethod("HEAD")
+ *                 .healthCheckPath("/tf-example")
+ *                 .healthCheckProtocol("HTTP")
  *                 .healthCheckTimeout(5)
  *                 .healthyThreshold(3)
  *                 .unhealthyThreshold(3)
@@ -150,15 +151,16 @@ import javax.annotation.Nullable;
  *                 .port(80)
  *                 .serverId(exampleInstance.id())
  *                 .serverIp(exampleInstance.privateIp())
- *                 .serverType(&#34;Ecs&#34;)
+ *                 .serverType("Ecs")
  *                 .weight(10)
  *                 .build())
- *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
+ *             .tags(Map.of("Created", "TF"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

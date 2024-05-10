@@ -40,7 +40,8 @@ import javax.annotation.Nullable;
  * ### Create a hbase instance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,38 +68,39 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = HbaseFunctions.getZones();
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *             .nameRegex("^default-NODELETING$")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .name(name)
  *             .zoneId(default_.zones()[0].id())
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .engine(&#34;hbaseue&#34;)
- *             .engineVersion(&#34;2.0&#34;)
- *             .masterInstanceType(&#34;hbase.sn2.2xlarge&#34;)
- *             .coreInstanceType(&#34;hbase.sn2.2xlarge&#34;)
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .engine("hbaseue")
+ *             .engineVersion("2.0")
+ *             .masterInstanceType("hbase.sn2.2xlarge")
+ *             .coreInstanceType("hbase.sn2.2xlarge")
  *             .coreInstanceQuantity(2)
- *             .coreDiskType(&#34;cloud_efficiency&#34;)
+ *             .coreDiskType("cloud_efficiency")
  *             .coreDiskSize(400)
- *             .payType(&#34;PostPaid&#34;)
+ *             .payType("PostPaid")
  *             .coldStorageSize(0)
- *             .deletionProtection(&#34;false&#34;)
+ *             .deletionProtection("false")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * this is a example for class netType instance. you can find more detail with the examples/hbase dir.

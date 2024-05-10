@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,43 +50,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Role(&#34;default&#34;, RoleArgs.builder()        
- *             .name(&#34;tf-example-fnfflow&#34;)
- *             .document(&#34;&#34;&#34;
+ *         var default_ = new Role("default", RoleArgs.builder()        
+ *             .name("tf-example-fnfflow")
+ *             .document("""
  *   {
- *     &#34;Statement&#34;: [
+ *     "Statement": [
  *       {
- *         &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *         &#34;Effect&#34;: &#34;Allow&#34;,
- *         &#34;Principal&#34;: {
- *           &#34;Service&#34;: [
- *             &#34;fnf.aliyuncs.com&#34;
+ *         "Action": "sts:AssumeRole",
+ *         "Effect": "Allow",
+ *         "Principal": {
+ *           "Service": [
+ *             "fnf.aliyuncs.com"
  *           ]
  *         }
  *       }
  *     ],
- *     &#34;Version&#34;: &#34;1&#34;
+ *     "Version": "1"
  *   }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var example = new Flow(&#34;example&#34;, FlowArgs.builder()        
- *             .definition(&#34;&#34;&#34;
+ *         var example = new Flow("example", FlowArgs.builder()        
+ *             .definition("""
  *   version: v1beta1
  *   type: flow
  *   steps:
  *     - type: pass
  *       name: helloworld
- *             &#34;&#34;&#34;)
+ *             """)
  *             .roleArn(default_.arn())
- *             .description(&#34;Test for terraform fnf_flow.&#34;)
- *             .name(&#34;tf-example-flow&#34;)
- *             .type(&#34;FDL&#34;)
+ *             .description("Test for terraform fnf_flow.")
+ *             .name("tf-example-flow")
+ *             .type("FDL")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

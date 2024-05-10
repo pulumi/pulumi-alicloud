@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,21 +45,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var zone = new Zone(&#34;zone&#34;, ZoneArgs.builder()        
- *             .name(&#34;foo.test.com&#34;)
+ *         var zone = new Zone("zone", ZoneArgs.builder()        
+ *             .name("foo.test.com")
  *             .build());
  * 
- *         var foo = new ZoneRecord(&#34;foo&#34;, ZoneRecordArgs.builder()        
+ *         var foo = new ZoneRecord("foo", ZoneRecordArgs.builder()        
  *             .zoneId(zone.id())
- *             .rr(&#34;www&#34;)
- *             .type(&#34;CNAME&#34;)
- *             .value(&#34;bbb.test.com&#34;)
+ *             .rr("www")
+ *             .type("CNAME")
+ *             .value("bbb.test.com")
  *             .ttl(60)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

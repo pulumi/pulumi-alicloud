@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -70,51 +71,51 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
- *             .projectName(String.format(&#34;example-value-%s&#34;, default_.result()))
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+ *             .projectName(String.format("example-value-%s", default_.result()))
  *             .build());
  * 
- *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
+ *         var defaultStore = new Store("defaultStore", StoreArgs.builder()        
  *             .projectName(defaultProject.name())
- *             .logstoreName(&#34;example-value&#34;)
+ *             .logstoreName("example-value")
  *             .build());
  * 
- *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
- *             .name(String.format(&#34;fcservicerole-%s&#34;, default_.result()))
- *             .document(&#34;&#34;&#34;
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+ *             .name(String.format("fcservicerole-%s", default_.result()))
+ *             .document("""
  *   {
- *       &#34;Statement&#34;: [
+ *       "Statement": [
  *         {
- *           &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *           &#34;Effect&#34;: &#34;Allow&#34;,
- *           &#34;Principal&#34;: {
- *             &#34;Service&#34;: [
- *               &#34;fc.aliyuncs.com&#34;
+ *           "Action": "sts:AssumeRole",
+ *           "Effect": "Allow",
+ *           "Principal": {
+ *             "Service": [
+ *               "fc.aliyuncs.com"
  *             ]
  *           }
  *         }
  *       ],
- *       &#34;Version&#34;: &#34;1&#34;
+ *       "Version": "1"
  *   }
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a example&#34;)
+ *             """)
+ *             .description("this is a example")
  *             .force(true)
  *             .build());
  * 
- *         var defaultRolePolicyAttachment = new RolePolicyAttachment(&#34;defaultRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
  *             .roleName(defaultRole.name())
- *             .policyName(&#34;AliyunLogFullAccess&#34;)
- *             .policyType(&#34;System&#34;)
+ *             .policyName("AliyunLogFullAccess")
+ *             .policyType("System")
  *             .build());
  * 
- *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
- *             .name(String.format(&#34;example-value-%s&#34;, default_.result()))
- *             .description(&#34;example-value&#34;)
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *             .name(String.format("example-value-%s", default_.result()))
+ *             .description("example-value")
  *             .role(defaultRole.arn())
  *             .logConfig(ServiceLogConfigArgs.builder()
  *                 .project(defaultProject.name())
@@ -124,37 +125,38 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;terraform-example-%s&#34;, default_.result()))
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *             .bucket(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
- *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
- *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
  *             .bucket(defaultBucket.id())
- *             .key(&#34;index.py&#34;)
- *             .content(&#34;&#34;&#34;
+ *             .key("index.py")
+ *             .content("""
  * import logging 
  * def handler(event, context): 
  * logger = logging.getLogger() 
- * logger.info(&#39;hello world&#39;) 
- * return &#39;hello world&#39;            &#34;&#34;&#34;)
+ * logger.info('hello world') 
+ * return 'hello world'            """)
  *             .build());
  * 
- *         var foo = new Function(&#34;foo&#34;, FunctionArgs.builder()        
+ *         var foo = new Function("foo", FunctionArgs.builder()        
  *             .service(defaultService.name())
- *             .name(&#34;terraform-example&#34;)
- *             .description(&#34;example&#34;)
+ *             .name("terraform-example")
+ *             .description("example")
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
- *             .memorySize(&#34;512&#34;)
- *             .runtime(&#34;python3.10&#34;)
- *             .handler(&#34;hello.handler&#34;)
- *             .environmentVariables(Map.of(&#34;prefix&#34;, &#34;terraform&#34;))
+ *             .memorySize("512")
+ *             .runtime("python3.10")
+ *             .handler("hello.handler")
+ *             .environmentVariables(Map.of("prefix", "terraform"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Module Support

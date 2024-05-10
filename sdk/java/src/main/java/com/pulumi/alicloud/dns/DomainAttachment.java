@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,16 +46,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dns = new DomainAttachment(&#34;dns&#34;, DomainAttachmentArgs.builder()        
- *             .instanceId(&#34;dns-cn-mp91lyq9xxxx&#34;)
+ *         var dns = new DomainAttachment("dns", DomainAttachmentArgs.builder()        
+ *             .instanceId("dns-cn-mp91lyq9xxxx")
  *             .domainNames(            
- *                 &#34;test111.abc&#34;,
- *                 &#34;test222.abc&#34;)
+ *                 "test111.abc",
+ *                 "test222.abc")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

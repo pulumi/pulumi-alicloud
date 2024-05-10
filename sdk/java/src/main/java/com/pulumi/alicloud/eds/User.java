@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,16 +49,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
- *             .endUserId(&#34;terraform_example123&#34;)
- *             .email(&#34;tf.example@abc.com&#34;)
- *             .phone(&#34;18888888888&#34;)
- *             .password(&#34;Example_123&#34;)
+ *         var default_ = new User("default", UserArgs.builder()        
+ *             .endUserId("terraform_example123")
+ *             .email("tf.example{@literal @}abc.com")
+ *             .phone("18888888888")
+ *             .password("Example_123")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

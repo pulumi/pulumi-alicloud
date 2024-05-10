@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,30 +55,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Vault(&#34;default&#34;, VaultArgs.builder()        
- *             .vaultName(&#34;terraform-example2&#34;)
+ *         var default_ = new Vault("default", VaultArgs.builder()        
+ *             .vaultName("terraform-example2")
  *             .build());
  * 
- *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
- *             .protocolType(&#34;NFS&#34;)
- *             .storageType(&#34;Performance&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .encryptType(&#34;1&#34;)
+ *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()        
+ *             .protocolType("NFS")
+ *             .storageType("Performance")
+ *             .description("terraform-example")
+ *             .encryptType("1")
  *             .build());
  * 
- *         var defaultNasBackupPlan = new NasBackupPlan(&#34;defaultNasBackupPlan&#34;, NasBackupPlanArgs.builder()        
- *             .nasBackupPlanName(&#34;terraform-example&#34;)
+ *         var defaultNasBackupPlan = new NasBackupPlan("defaultNasBackupPlan", NasBackupPlanArgs.builder()        
+ *             .nasBackupPlanName("terraform-example")
  *             .fileSystemId(defaultFileSystem.id())
- *             .schedule(&#34;I|1602673264|PT2H&#34;)
- *             .backupType(&#34;COMPLETE&#34;)
+ *             .schedule("I|1602673264|PT2H")
+ *             .backupType("COMPLETE")
  *             .vaultId(default_.id())
- *             .retention(&#34;2&#34;)
- *             .paths(&#34;/&#34;)
+ *             .retention("2")
+ *             .paths("/")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

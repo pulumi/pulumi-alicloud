@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,14 +51,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new MetaTag(&#34;example&#34;, MetaTagArgs.builder()        
- *             .key(&#34;Name1&#34;)
- *             .values(&#34;Desc2&#34;)
+ *         var example = new MetaTag("example", MetaTagArgs.builder()        
+ *             .key("Name1")
+ *             .values("Desc2")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

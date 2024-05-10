@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,20 +54,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var sagId = config.get(&#34;sagId&#34;).orElse(&#34;sag-9bifkfaz4fg***&#34;);
- *         var default_ = new ClientUser(&#34;default&#34;, ClientUserArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var sagId = config.get("sagId").orElse("sag-9bifkfaz4fg***");
+ *         var default_ = new ClientUser("default", ClientUserArgs.builder()        
  *             .sagId(sagId)
- *             .bandwidth(&#34;20&#34;)
- *             .userMail(&#34;tf-example@abc.com&#34;)
+ *             .bandwidth("20")
+ *             .userMail("tf-example{@literal @}abc.com")
  *             .userName(name)
- *             .password(&#34;example1234&#34;)
- *             .clientIp(&#34;192.1.10.0&#34;)
+ *             .password("example1234")
+ *             .clientIp("192.1.10.0")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

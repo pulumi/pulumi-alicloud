@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,22 +53,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .nameRegex(&#34;default&#34;)
+ *             .nameRegex("default")
  *             .build());
  * 
- *         var example = new EcsImageComponent(&#34;example&#34;, EcsImageComponentArgs.builder()        
- *             .componentType(&#34;Build&#34;)
- *             .content(&#34;RUN yum update -y&#34;)
- *             .description(&#34;example_value&#34;)
- *             .imageComponentName(&#34;example_value&#34;)
+ *         var example = new EcsImageComponent("example", EcsImageComponentArgs.builder()        
+ *             .componentType("Build")
+ *             .content("RUN yum update -y")
+ *             .description("example_value")
+ *             .imageComponentName("example_value")
  *             .resourceGroupId(default_.groups()[0].id())
- *             .systemType(&#34;Linux&#34;)
- *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
+ *             .systemType("Linux")
+ *             .tags(Map.of("Created", "TF"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

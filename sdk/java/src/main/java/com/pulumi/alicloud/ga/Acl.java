@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,20 +55,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Acl(&#34;default&#34;, AclArgs.builder()        
- *             .aclName(&#34;terraform-example&#34;)
- *             .addressIpVersion(&#34;IPv4&#34;)
+ *         var default_ = new Acl("default", AclArgs.builder()        
+ *             .aclName("terraform-example")
+ *             .addressIpVersion("IPv4")
  *             .build());
  * 
- *         var defaultAclEntryAttachment = new AclEntryAttachment(&#34;defaultAclEntryAttachment&#34;, AclEntryAttachmentArgs.builder()        
+ *         var defaultAclEntryAttachment = new AclEntryAttachment("defaultAclEntryAttachment", AclEntryAttachmentArgs.builder()        
  *             .aclId(default_.id())
- *             .entry(&#34;192.168.1.1/32&#34;)
- *             .entryDescription(&#34;terraform-example&#34;)
+ *             .entry("192.168.1.1/32")
+ *             .entryDescription("terraform-example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

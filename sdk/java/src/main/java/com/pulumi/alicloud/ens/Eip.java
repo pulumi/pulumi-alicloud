@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,20 +50,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new Eip(&#34;default&#34;, EipArgs.builder()        
- *             .description(&#34;EipDescription_autotest&#34;)
- *             .bandwidth(&#34;5&#34;)
- *             .isp(&#34;cmcc&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .ensRegionId(&#34;cn-chenzhou-telecom_unicom_cmcc&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Eip("default", EipArgs.builder()        
+ *             .description("EipDescription_autotest")
+ *             .bandwidth("5")
+ *             .isp("cmcc")
+ *             .paymentType("PayAsYouGo")
+ *             .ensRegionId("cn-chenzhou-telecom_unicom_cmcc")
  *             .eipName(name)
- *             .internetChargeType(&#34;95BandwidthByMonth&#34;)
+ *             .internetChargeType("95BandwidthByMonth")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

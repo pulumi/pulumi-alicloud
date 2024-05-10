@@ -33,7 +33,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -56,10 +57,11 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EcpFunctions.getInstanceTypes();
      * 
-     *         ctx.export(&#34;firstEcpInstanceTypesInstanceType&#34;, default_.instanceTypes()[0].instanceType());
+     *         ctx.export("firstEcpInstanceTypesInstanceType", default_.instanceTypes()[0].instanceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -76,7 +78,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -99,10 +102,11 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EcpFunctions.getInstanceTypes();
      * 
-     *         ctx.export(&#34;firstEcpInstanceTypesInstanceType&#34;, default_.instanceTypes()[0].instanceType());
+     *         ctx.export("firstEcpInstanceTypesInstanceType", default_.instanceTypes()[0].instanceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -119,7 +123,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -142,10 +147,11 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EcpFunctions.getInstanceTypes();
      * 
-     *         ctx.export(&#34;firstEcpInstanceTypesInstanceType&#34;, default_.instanceTypes()[0].instanceType());
+     *         ctx.export("firstEcpInstanceTypesInstanceType", default_.instanceTypes()[0].instanceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -162,7 +168,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -185,10 +192,11 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EcpFunctions.getInstanceTypes();
      * 
-     *         ctx.export(&#34;firstEcpInstanceTypesInstanceType&#34;, default_.instanceTypes()[0].instanceType());
+     *         ctx.export("firstEcpInstanceTypesInstanceType", default_.instanceTypes()[0].instanceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -205,7 +213,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -228,10 +237,11 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EcpFunctions.getInstanceTypes();
      * 
-     *         ctx.export(&#34;firstEcpInstanceTypesInstanceType&#34;, default_.instanceTypes()[0].instanceType());
+     *         ctx.export("firstEcpInstanceTypesInstanceType", default_.instanceTypes()[0].instanceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -248,7 +258,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -271,10 +282,11 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EcpFunctions.getInstanceTypes();
      * 
-     *         ctx.export(&#34;firstEcpInstanceTypesInstanceType&#34;, default_.instanceTypes()[0].instanceType());
+     *         ctx.export("firstEcpInstanceTypesInstanceType", default_.instanceTypes()[0].instanceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -291,7 +303,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -330,43 +343,44 @@ public final class EcpFunctions {
      * 
      *         final var zoneId = default_.zones()[countSize - 1].zoneId();
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
      * 
-     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
      *             .name(name)
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
      *             .keyPairName(name)
-     *             .publicKeyBody(&#34;ssh-rsa AAAAB3Nza12345678qwertyuudsfsg&#34;)
+     *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
      *             .build());
      * 
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .instanceName(name)
      *             .description(name)
-     *             .force(&#34;true&#34;)
+     *             .force("true")
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
-     *             .imageId(&#34;android_9_0_0_release_2851157_20211201.vhd&#34;)
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
-     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
+     *             .paymentType("PayAsYouGo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -383,7 +397,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -422,43 +437,44 @@ public final class EcpFunctions {
      * 
      *         final var zoneId = default_.zones()[countSize - 1].zoneId();
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
      * 
-     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
      *             .name(name)
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
      *             .keyPairName(name)
-     *             .publicKeyBody(&#34;ssh-rsa AAAAB3Nza12345678qwertyuudsfsg&#34;)
+     *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
      *             .build());
      * 
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .instanceName(name)
      *             .description(name)
-     *             .force(&#34;true&#34;)
+     *             .force("true")
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
-     *             .imageId(&#34;android_9_0_0_release_2851157_20211201.vhd&#34;)
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
-     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
+     *             .paymentType("PayAsYouGo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -475,7 +491,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -514,43 +531,44 @@ public final class EcpFunctions {
      * 
      *         final var zoneId = default_.zones()[countSize - 1].zoneId();
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
      * 
-     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
      *             .name(name)
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
      *             .keyPairName(name)
-     *             .publicKeyBody(&#34;ssh-rsa AAAAB3Nza12345678qwertyuudsfsg&#34;)
+     *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
      *             .build());
      * 
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .instanceName(name)
      *             .description(name)
-     *             .force(&#34;true&#34;)
+     *             .force("true")
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
-     *             .imageId(&#34;android_9_0_0_release_2851157_20211201.vhd&#34;)
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
-     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
+     *             .paymentType("PayAsYouGo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -567,7 +585,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -606,43 +625,44 @@ public final class EcpFunctions {
      * 
      *         final var zoneId = default_.zones()[countSize - 1].zoneId();
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
      * 
-     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
      *             .name(name)
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
      *             .keyPairName(name)
-     *             .publicKeyBody(&#34;ssh-rsa AAAAB3Nza12345678qwertyuudsfsg&#34;)
+     *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
      *             .build());
      * 
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .instanceName(name)
      *             .description(name)
-     *             .force(&#34;true&#34;)
+     *             .force("true")
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
-     *             .imageId(&#34;android_9_0_0_release_2851157_20211201.vhd&#34;)
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
-     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
+     *             .paymentType("PayAsYouGo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -659,7 +679,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -698,43 +719,44 @@ public final class EcpFunctions {
      * 
      *         final var zoneId = default_.zones()[countSize - 1].zoneId();
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
      * 
-     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
      *             .name(name)
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
      *             .keyPairName(name)
-     *             .publicKeyBody(&#34;ssh-rsa AAAAB3Nza12345678qwertyuudsfsg&#34;)
+     *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
      *             .build());
      * 
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .instanceName(name)
      *             .description(name)
-     *             .force(&#34;true&#34;)
+     *             .force("true")
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
-     *             .imageId(&#34;android_9_0_0_release_2851157_20211201.vhd&#34;)
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
-     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
+     *             .paymentType("PayAsYouGo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -751,7 +773,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -790,43 +813,44 @@ public final class EcpFunctions {
      * 
      *         final var zoneId = default_.zones()[countSize - 1].zoneId();
      * 
-     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length();
+     *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
      * 
-     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+     *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
      * 
      *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
      *             .name(name)
-     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
      *             .keyPairName(name)
-     *             .publicKeyBody(&#34;ssh-rsa AAAAB3Nza12345678qwertyuudsfsg&#34;)
+     *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
      *             .build());
      * 
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .instanceName(name)
      *             .description(name)
-     *             .force(&#34;true&#34;)
+     *             .force("true")
      *             .keyPairName(defaultKeyPair.keyPairName())
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
-     *             .imageId(&#34;android_9_0_0_release_2851157_20211201.vhd&#34;)
-     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
-     *             .paymentType(&#34;PayAsYouGo&#34;)
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+     *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType())
+     *             .paymentType("PayAsYouGo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -843,7 +867,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -866,15 +891,16 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcpFunctions.getKeyPairs();
      * 
-     *         ctx.export(&#34;ecpKeyPairId1&#34;, ids.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId1", ids.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
-     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export(&#34;ecpKeyPairId2&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId2", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -891,7 +917,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -914,15 +941,16 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcpFunctions.getKeyPairs();
      * 
-     *         ctx.export(&#34;ecpKeyPairId1&#34;, ids.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId1", ids.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
-     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export(&#34;ecpKeyPairId2&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId2", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -939,7 +967,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -962,15 +991,16 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcpFunctions.getKeyPairs();
      * 
-     *         ctx.export(&#34;ecpKeyPairId1&#34;, ids.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId1", ids.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
-     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export(&#34;ecpKeyPairId2&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId2", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -987,7 +1017,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1010,15 +1041,16 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcpFunctions.getKeyPairs();
      * 
-     *         ctx.export(&#34;ecpKeyPairId1&#34;, ids.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId1", ids.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
-     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export(&#34;ecpKeyPairId2&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId2", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1035,7 +1067,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1058,15 +1091,16 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcpFunctions.getKeyPairs();
      * 
-     *         ctx.export(&#34;ecpKeyPairId1&#34;, ids.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId1", ids.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
-     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export(&#34;ecpKeyPairId2&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId2", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1083,7 +1117,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1106,15 +1141,16 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcpFunctions.getKeyPairs();
      * 
-     *         ctx.export(&#34;ecpKeyPairId1&#34;, ids.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId1", ids.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *         final var nameRegex = EcpFunctions.getKeyPairs(GetKeyPairsArgs.builder()
-     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export(&#34;ecpKeyPairId2&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ecpKeyPairId2", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1131,7 +1167,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1154,10 +1191,11 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EcpFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1174,7 +1212,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1197,10 +1236,11 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EcpFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1217,7 +1257,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1240,10 +1281,11 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EcpFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1260,7 +1302,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1283,10 +1326,11 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EcpFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1303,7 +1347,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1326,10 +1371,11 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EcpFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1346,7 +1392,8 @@ public final class EcpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1369,10 +1416,11 @@ public final class EcpFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EcpFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

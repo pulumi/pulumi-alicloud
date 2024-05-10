@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,18 +51,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
- *             .status(&#34;REGISTERED&#34;)
- *             .nameRegex(&#34;default&#34;)
+ *             .status("REGISTERED")
+ *             .nameRegex("default")
  *             .build());
  * 
- *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
+ *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()        
  *             .bandwidth(10)
  *             .officeSiteId(default_.ids()[0])
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

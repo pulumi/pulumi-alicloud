@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,35 +48,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a RAM Group Policy attachment.
- *         var group = new Group(&#34;group&#34;, GroupArgs.builder()        
- *             .name(&#34;groupName&#34;)
- *             .comments(&#34;this is a group comments.&#34;)
+ *         var group = new Group("group", GroupArgs.builder()        
+ *             .name("groupName")
+ *             .comments("this is a group comments.")
  *             .build());
  * 
- *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
- *             .name(&#34;policyName&#34;)
- *             .document(&#34;&#34;&#34;
+ *         var policy = new Policy("policy", PolicyArgs.builder()        
+ *             .name("policyName")
+ *             .document("""
  *     {
- *       &#34;Statement&#34;: [
+ *       "Statement": [
  *         {
- *           &#34;Action&#34;: [
- *             &#34;oss:ListObjects&#34;,
- *             &#34;oss:GetObject&#34;
+ *           "Action": [
+ *             "oss:ListObjects",
+ *             "oss:GetObject"
  *           ],
- *           &#34;Effect&#34;: &#34;Allow&#34;,
- *           &#34;Resource&#34;: [
- *             &#34;acs:oss:*:*:mybucket&#34;,
- *             &#34;acs:oss:*:*:mybucket/*&#34;
+ *           "Effect": "Allow",
+ *           "Resource": [
+ *             "acs:oss:*:*:mybucket",
+ *             "acs:oss:*:*:mybucket/*"
  *           ]
  *         }
  *       ],
- *         &#34;Version&#34;: &#34;1&#34;
+ *         "Version": "1"
  *     }
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a policy test&#34;)
+ *             """)
+ *             .description("this is a policy test")
  *             .build());
  * 
- *         var attach = new GroupPolicyAttachment(&#34;attach&#34;, GroupPolicyAttachmentArgs.builder()        
+ *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()        
  *             .policyName(policy.name())
  *             .policyType(policy.type())
  *             .groupName(group.name())
@@ -83,7 +84,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

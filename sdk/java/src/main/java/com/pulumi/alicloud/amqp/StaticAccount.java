@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,20 +52,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var accessKey = config.get(&#34;accessKey&#34;).orElse(&#34;access_key&#34;);
- *         final var secretKey = config.get(&#34;secretKey&#34;).orElse(&#34;secret_key&#34;);
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
- *             .instanceType(&#34;enterprise&#34;)
+ *         final var accessKey = config.get("accessKey").orElse("access_key");
+ *         final var secretKey = config.get("secretKey").orElse("secret_key");
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *             .instanceType("enterprise")
  *             .maxTps(3000)
  *             .queueCapacity(200)
  *             .storageSize(700)
  *             .supportEip(false)
  *             .maxEipTps(128)
- *             .paymentType(&#34;Subscription&#34;)
+ *             .paymentType("Subscription")
  *             .period(1)
  *             .build());
  * 
- *         var defaultStaticAccount = new StaticAccount(&#34;defaultStaticAccount&#34;, StaticAccountArgs.builder()        
+ *         var defaultStaticAccount = new StaticAccount("defaultStaticAccount", StaticAccountArgs.builder()        
  *             .instanceId(default_.id())
  *             .accessKey(accessKey)
  *             .secretKey(secretKey)
@@ -72,7 +73,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

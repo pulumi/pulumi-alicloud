@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,64 +61,65 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var images = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
  *         final var instances = EcsFunctions.getInstances();
  * 
- *         var template = new LaunchTemplate(&#34;template&#34;, LaunchTemplateArgs.builder()        
- *             .name(&#34;tf-test-template&#34;)
- *             .description(&#34;test1&#34;)
- *             .imageId(images.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .hostName(&#34;tf-test-host&#34;)
- *             .instanceChargeType(&#34;PrePaid&#34;)
- *             .instanceName(&#34;tf-instance-name&#34;)
- *             .instanceType(instances.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].instanceType()))
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *         var template = new LaunchTemplate("template", LaunchTemplateArgs.builder()        
+ *             .name("tf-test-template")
+ *             .description("test1")
+ *             .imageId(images.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .hostName("tf-test-host")
+ *             .instanceChargeType("PrePaid")
+ *             .instanceName("tf-instance-name")
+ *             .instanceType(instances.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceType()))
+ *             .internetChargeType("PayByBandwidth")
  *             .internetMaxBandwidthIn(5)
  *             .internetMaxBandwidthOut(0)
- *             .ioOptimized(&#34;none&#34;)
- *             .keyPairName(&#34;test-key-pair&#34;)
- *             .ramRoleName(&#34;xxxxx&#34;)
- *             .networkType(&#34;vpc&#34;)
- *             .securityEnhancementStrategy(&#34;Active&#34;)
+ *             .ioOptimized("none")
+ *             .keyPairName("test-key-pair")
+ *             .ramRoleName("xxxxx")
+ *             .networkType("vpc")
+ *             .securityEnhancementStrategy("Active")
  *             .spotPriceLimit(5)
- *             .spotStrategy(&#34;SpotWithPriceLimit&#34;)
- *             .securityGroupId(&#34;sg-zxcvj0lasdf102350asdf9a&#34;)
- *             .systemDiskCategory(&#34;cloud_ssd&#34;)
- *             .systemDiskDescription(&#34;test disk&#34;)
- *             .systemDiskName(&#34;hello&#34;)
+ *             .spotStrategy("SpotWithPriceLimit")
+ *             .securityGroupId("sg-zxcvj0lasdf102350asdf9a")
+ *             .systemDiskCategory("cloud_ssd")
+ *             .systemDiskDescription("test disk")
+ *             .systemDiskName("hello")
  *             .systemDiskSize(40)
- *             .resourceGroupId(&#34;rg-zkdfjahg9zxncv0&#34;)
- *             .userdata(&#34;xxxxxxxxxxxxxx&#34;)
- *             .vswitchId(&#34;sw-ljkngaksdjfj0nnasdf&#34;)
- *             .vpcId(&#34;vpc-asdfnbg0as8dfk1nb2&#34;)
- *             .zoneId(&#34;beijing-a&#34;)
+ *             .resourceGroupId("rg-zkdfjahg9zxncv0")
+ *             .userdata("xxxxxxxxxxxxxx")
+ *             .vswitchId("sw-ljkngaksdjfj0nnasdf")
+ *             .vpcId("vpc-asdfnbg0as8dfk1nb2")
+ *             .zoneId("beijing-a")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;tag1&#34;, &#34;hello&#34;),
- *                 Map.entry(&#34;tag2&#34;, &#34;world&#34;)
+ *                 Map.entry("tag1", "hello"),
+ *                 Map.entry("tag2", "world")
  *             ))
  *             .networkInterfaces(LaunchTemplateNetworkInterfacesArgs.builder()
- *                 .name(&#34;eth0&#34;)
- *                 .description(&#34;hello1&#34;)
- *                 .primaryIp(&#34;10.0.0.2&#34;)
- *                 .securityGroupId(&#34;xxxx&#34;)
- *                 .vswitchId(&#34;xxxxxxx&#34;)
+ *                 .name("eth0")
+ *                 .description("hello1")
+ *                 .primaryIp("10.0.0.2")
+ *                 .securityGroupId("xxxx")
+ *                 .vswitchId("xxxxxxx")
  *                 .build())
  *             .dataDisks(            
  *                 LaunchTemplateDataDiskArgs.builder()
- *                     .name(&#34;disk1&#34;)
- *                     .description(&#34;test1&#34;)
+ *                     .name("disk1")
+ *                     .description("test1")
  *                     .build(),
  *                 LaunchTemplateDataDiskArgs.builder()
- *                     .name(&#34;disk2&#34;)
- *                     .description(&#34;test2&#34;)
+ *                     .name("disk2")
+ *                     .description("test2")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,46 +58,47 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc-example&#34;);
+ *         final var name = config.get("name").orElse("tf-testacc-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultVpc = new Network(&#34;defaultVpc&#34;, NetworkArgs.builder()        
- *             .description(&#34;tf-test-acc-vpc&#34;)
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()        
+ *             .description("tf-test-acc-vpc")
  *             .vpcName(name)
- *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var defaultVswitch = new Switch(&#34;defaultVswitch&#34;, SwitchArgs.builder()        
+ *         var defaultVswitch = new Switch("defaultVswitch", SwitchArgs.builder()        
  *             .vpcId(defaultVpc.id())
- *             .cidrBlock(&#34;192.168.0.0/21&#34;)
- *             .vswitchName(String.format(&#34;%s1&#34;, name))
+ *             .cidrBlock("192.168.0.0/21")
+ *             .vswitchName(String.format("%s1", name))
  *             .zoneId(default_.zones()[0].id())
- *             .description(&#34;tf-testacc-vswitch&#34;)
+ *             .description("tf-testacc-vswitch")
  *             .build());
  * 
- *         var defaultRg = new ResourceGroup(&#34;defaultRg&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;tf-testacc-rg819&#34;)
- *             .resourceGroupName(String.format(&#34;%s2&#34;, name))
+ *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()        
+ *             .displayName("tf-testacc-rg819")
+ *             .resourceGroupName(String.format("%s2", name))
  *             .build());
  * 
- *         var changeRg = new ResourceGroup(&#34;changeRg&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;tf-testacc-changerg670&#34;)
- *             .resourceGroupName(String.format(&#34;%s3&#34;, name))
+ *         var changeRg = new ResourceGroup("changeRg", ResourceGroupArgs.builder()        
+ *             .displayName("tf-testacc-changerg670")
+ *             .resourceGroupName(String.format("%s3", name))
  *             .build());
  * 
- *         var defaultHaVipv2 = new HaVipv2(&#34;defaultHaVipv2&#34;, HaVipv2Args.builder()        
- *             .description(&#34;test&#34;)
+ *         var defaultHaVipv2 = new HaVipv2("defaultHaVipv2", HaVipv2Args.builder()        
+ *             .description("test")
  *             .vswitchId(defaultVswitch.id())
  *             .haVipName(name)
- *             .ipAddress(&#34;192.168.1.101&#34;)
+ *             .ipAddress("192.168.1.101")
  *             .resourceGroupId(defaultRg.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

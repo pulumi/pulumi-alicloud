@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,20 +52,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
- *             .paymentType(&#34;Subscription&#34;)
- *             .sddpVersion(&#34;version_company&#34;)
- *             .sdCbool(&#34;yes&#34;)
- *             .period(&#34;1&#34;)
- *             .sdc(&#34;3&#34;)
- *             .udCbool(&#34;yes&#34;)
- *             .udc(&#34;2000&#34;)
- *             .dataphin(&#34;yes&#34;)
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *             .paymentType("Subscription")
+ *             .sddpVersion("version_company")
+ *             .sdCbool("yes")
+ *             .period("1")
+ *             .sdc("3")
+ *             .udCbool("yes")
+ *             .udc("2000")
+ *             .dataphin("yes")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,37 +56,38 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AlicloudFunctions.getAccount();
  * 
- *         var default_ = new FirewallVpcFirewall(&#34;default&#34;, FirewallVpcFirewallArgs.builder()        
- *             .vpcFirewallName(&#34;tf-example&#34;)
- *             .memberUid(current.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *         var default_ = new FirewallVpcFirewall("default", FirewallVpcFirewallArgs.builder()        
+ *             .vpcFirewallName("tf-example")
+ *             .memberUid(current.applyValue(getAccountResult -> getAccountResult.id()))
  *             .localVpc(FirewallVpcFirewallLocalVpcArgs.builder()
- *                 .vpcId(&#34;vpc-bp1d065m6hzn1xbw8ibfd&#34;)
- *                 .regionNo(&#34;cn-hangzhou&#34;)
+ *                 .vpcId("vpc-bp1d065m6hzn1xbw8ibfd")
+ *                 .regionNo("cn-hangzhou")
  *                 .localVpcCidrTableLists(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs.builder()
- *                     .localRouteTableId(&#34;vtb-bp1lj0ddg846856chpzrv&#34;)
+ *                     .localRouteTableId("vtb-bp1lj0ddg846856chpzrv")
  *                     .localRouteEntryLists(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs.builder()
- *                         .localNextHopInstanceId(&#34;ri-bp1uobww3aputjlwwkyrh&#34;)
- *                         .localDestinationCidr(&#34;10.1.0.0/16&#34;)
+ *                         .localNextHopInstanceId("ri-bp1uobww3aputjlwwkyrh")
+ *                         .localDestinationCidr("10.1.0.0/16")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .peerVpc(FirewallVpcFirewallPeerVpcArgs.builder()
- *                 .vpcId(&#34;vpc-bp1gcmm64o3caox84v0nz&#34;)
- *                 .regionNo(&#34;cn-hangzhou&#34;)
+ *                 .vpcId("vpc-bp1gcmm64o3caox84v0nz")
+ *                 .regionNo("cn-hangzhou")
  *                 .peerVpcCidrTableLists(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs.builder()
- *                     .peerRouteTableId(&#34;vtb-bp1f516f2hh4sok1ig9b5&#34;)
+ *                     .peerRouteTableId("vtb-bp1f516f2hh4sok1ig9b5")
  *                     .peerRouteEntryLists(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs.builder()
- *                         .peerDestinationCidr(&#34;10.0.0.0/16&#34;)
- *                         .peerNextHopInstanceId(&#34;ri-bp1thhtgf6ydr2or52l3n&#34;)
+ *                         .peerDestinationCidr("10.0.0.0/16")
+ *                         .peerNextHopInstanceId("ri-bp1thhtgf6ydr2or52l3n")
  *                         .build())
  *                     .build())
  *                 .build())
- *             .status(&#34;open&#34;)
+ *             .status("open")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

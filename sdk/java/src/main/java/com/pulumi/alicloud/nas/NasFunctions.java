@@ -55,7 +55,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -77,15 +78,16 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = NasFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .accessGroupType(&#34;Classic&#34;)
-     *             .description(&#34;tf-testAccAccessGroupsdatasource&#34;)
+     *             .nameRegex("^foo")
+     *             .accessGroupType("Classic")
+     *             .description("tf-testAccAccessGroupsdatasource")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudNasAccessGroupsId&#34;, example.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("alicloudNasAccessGroupsId", example.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -100,7 +102,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -122,15 +125,16 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = NasFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .accessGroupType(&#34;Classic&#34;)
-     *             .description(&#34;tf-testAccAccessGroupsdatasource&#34;)
+     *             .nameRegex("^foo")
+     *             .accessGroupType("Classic")
+     *             .description("tf-testAccAccessGroupsdatasource")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudNasAccessGroupsId&#34;, example.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("alicloudNasAccessGroupsId", example.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -145,7 +149,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -167,15 +172,16 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = NasFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .accessGroupType(&#34;Classic&#34;)
-     *             .description(&#34;tf-testAccAccessGroupsdatasource&#34;)
+     *             .nameRegex("^foo")
+     *             .accessGroupType("Classic")
+     *             .description("tf-testAccAccessGroupsdatasource")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudNasAccessGroupsId&#34;, example.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("alicloudNasAccessGroupsId", example.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -190,7 +196,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -212,15 +219,16 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = NasFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .accessGroupType(&#34;Classic&#34;)
-     *             .description(&#34;tf-testAccAccessGroupsdatasource&#34;)
+     *             .nameRegex("^foo")
+     *             .accessGroupType("Classic")
+     *             .description("tf-testAccAccessGroupsdatasource")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudNasAccessGroupsId&#34;, example.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("alicloudNasAccessGroupsId", example.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -235,7 +243,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -257,15 +266,16 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = NasFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .accessGroupType(&#34;Classic&#34;)
-     *             .description(&#34;tf-testAccAccessGroupsdatasource&#34;)
+     *             .nameRegex("^foo")
+     *             .accessGroupType("Classic")
+     *             .description("tf-testAccAccessGroupsdatasource")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudNasAccessGroupsId&#34;, example.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("alicloudNasAccessGroupsId", example.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -280,7 +290,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -302,15 +313,16 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = NasFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .accessGroupType(&#34;Classic&#34;)
-     *             .description(&#34;tf-testAccAccessGroupsdatasource&#34;)
+     *             .nameRegex("^foo")
+     *             .accessGroupType("Classic")
+     *             .description("tf-testAccAccessGroupsdatasource")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudNasAccessGroupsId&#34;, example.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("alicloudNasAccessGroupsId", example.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -361,7 +373,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -383,13 +396,14 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;nasAutoSnapshotPoliciesId1&#34;, ids.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -404,7 +418,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -426,13 +441,14 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;nasAutoSnapshotPoliciesId1&#34;, ids.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -447,7 +463,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -469,13 +486,14 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;nasAutoSnapshotPoliciesId1&#34;, ids.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -490,7 +508,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -512,13 +531,14 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;nasAutoSnapshotPoliciesId1&#34;, ids.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -533,7 +553,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -555,13 +576,14 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;nasAutoSnapshotPoliciesId1&#34;, ids.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -576,7 +598,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -598,13 +621,14 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;nasAutoSnapshotPoliciesId1&#34;, ids.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("nasAutoSnapshotPoliciesId1", ids.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -621,7 +645,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -643,22 +668,23 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;nasDataFlowId1&#34;, ids.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId1", ids.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
      *         final var status = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .fileSystemId("example_value")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;nasDataFlowId2&#34;, status.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId2", status.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -675,7 +701,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -697,22 +724,23 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;nasDataFlowId1&#34;, ids.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId1", ids.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
      *         final var status = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .fileSystemId("example_value")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;nasDataFlowId2&#34;, status.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId2", status.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -729,7 +757,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -751,22 +780,23 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;nasDataFlowId1&#34;, ids.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId1", ids.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
      *         final var status = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .fileSystemId("example_value")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;nasDataFlowId2&#34;, status.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId2", status.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -783,7 +813,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -805,22 +836,23 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;nasDataFlowId1&#34;, ids.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId1", ids.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
      *         final var status = NasFunctions.getDataFlows(GetDataFlowsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .fileSystemId("example_value")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;nasDataFlowId2&#34;, status.applyValue(getDataFlowsResult -&gt; getDataFlowsResult.flows()[0].id()));
+     *         ctx.export("nasDataFlowId2", status.applyValue(getDataFlowsResult -> getDataFlowsResult.flows()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -835,7 +867,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -857,14 +890,15 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .protocolType(&#34;NFS&#34;)
+     *             .protocolType("NFS")
      *             .descriptionRegex(foo.description())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("alicloudNasFileSystemsId", fs.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -879,7 +913,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -901,14 +936,15 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .protocolType(&#34;NFS&#34;)
+     *             .protocolType("NFS")
      *             .descriptionRegex(foo.description())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("alicloudNasFileSystemsId", fs.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -923,7 +959,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -945,14 +982,15 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .protocolType(&#34;NFS&#34;)
+     *             .protocolType("NFS")
      *             .descriptionRegex(foo.description())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("alicloudNasFileSystemsId", fs.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -967,7 +1005,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -989,14 +1028,15 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .protocolType(&#34;NFS&#34;)
+     *             .protocolType("NFS")
      *             .descriptionRegex(foo.description())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("alicloudNasFileSystemsId", fs.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1011,7 +1051,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1033,14 +1074,15 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .protocolType(&#34;NFS&#34;)
+     *             .protocolType("NFS")
      *             .descriptionRegex(foo.description())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("alicloudNasFileSystemsId", fs.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1055,7 +1097,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1077,14 +1120,15 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .protocolType(&#34;NFS&#34;)
+     *             .protocolType("NFS")
      *             .descriptionRegex(foo.description())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("alicloudNasFileSystemsId", fs.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1101,7 +1145,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1123,16 +1168,17 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getFilesets(GetFilesetsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;nasFilesetId1&#34;, ids.applyValue(getFilesetsResult -&gt; getFilesetsResult.filesets()[0].id()));
+     *         ctx.export("nasFilesetId1", ids.applyValue(getFilesetsResult -> getFilesetsResult.filesets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1149,7 +1195,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1171,16 +1218,17 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getFilesets(GetFilesetsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;nasFilesetId1&#34;, ids.applyValue(getFilesetsResult -&gt; getFilesetsResult.filesets()[0].id()));
+     *         ctx.export("nasFilesetId1", ids.applyValue(getFilesetsResult -> getFilesetsResult.filesets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1197,7 +1245,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1219,16 +1268,17 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getFilesets(GetFilesetsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;nasFilesetId1&#34;, ids.applyValue(getFilesetsResult -&gt; getFilesetsResult.filesets()[0].id()));
+     *         ctx.export("nasFilesetId1", ids.applyValue(getFilesetsResult -> getFilesetsResult.filesets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1245,7 +1295,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1267,16 +1318,17 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getFilesets(GetFilesetsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;nasFilesetId1&#34;, ids.applyValue(getFilesetsResult -&gt; getFilesetsResult.filesets()[0].id()));
+     *         ctx.export("nasFilesetId1", ids.applyValue(getFilesetsResult -> getFilesetsResult.filesets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1293,7 +1345,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1315,22 +1368,23 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;my-LifecyclePolicy-1&#34;,
-     *                 &#34;my-LifecyclePolicy-2&#34;)
+     *                 "my-LifecyclePolicy-1",
+     *                 "my-LifecyclePolicy-2")
      *             .build());
      * 
-     *         ctx.export(&#34;nasLifecyclePolicyId1&#34;, ids.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId1", ids.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
      *         final var nameRegex = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-LifecyclePolicy&#34;)
+     *             .fileSystemId("example_value")
+     *             .nameRegex("^my-LifecyclePolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;nasLifecyclePolicyId2&#34;, nameRegex.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId2", nameRegex.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1347,7 +1401,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1369,22 +1424,23 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;my-LifecyclePolicy-1&#34;,
-     *                 &#34;my-LifecyclePolicy-2&#34;)
+     *                 "my-LifecyclePolicy-1",
+     *                 "my-LifecyclePolicy-2")
      *             .build());
      * 
-     *         ctx.export(&#34;nasLifecyclePolicyId1&#34;, ids.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId1", ids.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
      *         final var nameRegex = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-LifecyclePolicy&#34;)
+     *             .fileSystemId("example_value")
+     *             .nameRegex("^my-LifecyclePolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;nasLifecyclePolicyId2&#34;, nameRegex.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId2", nameRegex.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1401,7 +1457,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1423,22 +1480,23 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;my-LifecyclePolicy-1&#34;,
-     *                 &#34;my-LifecyclePolicy-2&#34;)
+     *                 "my-LifecyclePolicy-1",
+     *                 "my-LifecyclePolicy-2")
      *             .build());
      * 
-     *         ctx.export(&#34;nasLifecyclePolicyId1&#34;, ids.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId1", ids.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
      *         final var nameRegex = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-LifecyclePolicy&#34;)
+     *             .fileSystemId("example_value")
+     *             .nameRegex("^my-LifecyclePolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;nasLifecyclePolicyId2&#34;, nameRegex.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId2", nameRegex.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1455,7 +1513,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1477,22 +1536,23 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;my-LifecyclePolicy-1&#34;,
-     *                 &#34;my-LifecyclePolicy-2&#34;)
+     *                 "my-LifecyclePolicy-1",
+     *                 "my-LifecyclePolicy-2")
      *             .build());
      * 
-     *         ctx.export(&#34;nasLifecyclePolicyId1&#34;, ids.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId1", ids.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
      *         final var nameRegex = NasFunctions.getLifecyclePolicies(GetLifecyclePoliciesArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-LifecyclePolicy&#34;)
+     *             .fileSystemId("example_value")
+     *             .nameRegex("^my-LifecyclePolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;nasLifecyclePolicyId2&#34;, nameRegex.applyValue(getLifecyclePoliciesResult -&gt; getLifecyclePoliciesResult.policies()[0].id()));
+     *         ctx.export("nasLifecyclePolicyId2", nameRegex.applyValue(getLifecyclePoliciesResult -> getLifecyclePoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1507,7 +1567,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1529,14 +1590,15 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = NasFunctions.getMountTargets(GetMountTargetsArgs.builder()
-     *             .fileSystemId(&#34;1a2sc4d&#34;)
-     *             .accessGroupName(&#34;tf-testAccNasConfig&#34;)
+     *             .fileSystemId("1a2sc4d")
+     *             .accessGroupName("tf-testAccNasConfig")
      *             .build());
      * 
-     *         ctx.export(&#34;theFirstMountTargetDomain&#34;, example.applyValue(getMountTargetsResult -&gt; getMountTargetsResult.targets()[0].id()));
+     *         ctx.export("theFirstMountTargetDomain", example.applyValue(getMountTargetsResult -> getMountTargetsResult.targets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1551,7 +1613,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1573,14 +1636,15 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = NasFunctions.getMountTargets(GetMountTargetsArgs.builder()
-     *             .fileSystemId(&#34;1a2sc4d&#34;)
-     *             .accessGroupName(&#34;tf-testAccNasConfig&#34;)
+     *             .fileSystemId("1a2sc4d")
+     *             .accessGroupName("tf-testAccNasConfig")
      *             .build());
      * 
-     *         ctx.export(&#34;theFirstMountTargetDomain&#34;, example.applyValue(getMountTargetsResult -&gt; getMountTargetsResult.targets()[0].id()));
+     *         ctx.export("theFirstMountTargetDomain", example.applyValue(getMountTargetsResult -> getMountTargetsResult.targets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1595,7 +1659,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1617,14 +1682,15 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = NasFunctions.getMountTargets(GetMountTargetsArgs.builder()
-     *             .fileSystemId(&#34;1a2sc4d&#34;)
-     *             .accessGroupName(&#34;tf-testAccNasConfig&#34;)
+     *             .fileSystemId("1a2sc4d")
+     *             .accessGroupName("tf-testAccNasConfig")
      *             .build());
      * 
-     *         ctx.export(&#34;theFirstMountTargetDomain&#34;, example.applyValue(getMountTargetsResult -&gt; getMountTargetsResult.targets()[0].id()));
+     *         ctx.export("theFirstMountTargetDomain", example.applyValue(getMountTargetsResult -> getMountTargetsResult.targets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1639,7 +1705,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1661,14 +1728,15 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = NasFunctions.getMountTargets(GetMountTargetsArgs.builder()
-     *             .fileSystemId(&#34;1a2sc4d&#34;)
-     *             .accessGroupName(&#34;tf-testAccNasConfig&#34;)
+     *             .fileSystemId("1a2sc4d")
+     *             .accessGroupName("tf-testAccNasConfig")
      *             .build());
      * 
-     *         ctx.export(&#34;theFirstMountTargetDomain&#34;, example.applyValue(getMountTargetsResult -&gt; getMountTargetsResult.targets()[0].id()));
+     *         ctx.export("theFirstMountTargetDomain", example.applyValue(getMountTargetsResult -> getMountTargetsResult.targets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1683,7 +1751,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1705,15 +1774,16 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = NasFunctions.getProtocols(GetProtocolsArgs.builder()
-     *             .type(&#34;Performance&#34;)
-     *             .zoneId(&#34;cn-beijing-e&#34;)
-     *             .outputFile(&#34;protocols.txt&#34;)
+     *             .type("Performance")
+     *             .zoneId("cn-beijing-e")
+     *             .outputFile("protocols.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;nasProtocolsProtocol&#34;, default_.protocols()[0]);
+     *         ctx.export("nasProtocolsProtocol", default_.protocols()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1728,7 +1798,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1750,15 +1821,16 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = NasFunctions.getProtocols(GetProtocolsArgs.builder()
-     *             .type(&#34;Performance&#34;)
-     *             .zoneId(&#34;cn-beijing-e&#34;)
-     *             .outputFile(&#34;protocols.txt&#34;)
+     *             .type("Performance")
+     *             .zoneId("cn-beijing-e")
+     *             .outputFile("protocols.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;nasProtocolsProtocol&#34;, default_.protocols()[0]);
+     *         ctx.export("nasProtocolsProtocol", default_.protocols()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1773,7 +1845,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1795,15 +1868,16 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = NasFunctions.getProtocols(GetProtocolsArgs.builder()
-     *             .type(&#34;Performance&#34;)
-     *             .zoneId(&#34;cn-beijing-e&#34;)
-     *             .outputFile(&#34;protocols.txt&#34;)
+     *             .type("Performance")
+     *             .zoneId("cn-beijing-e")
+     *             .outputFile("protocols.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;nasProtocolsProtocol&#34;, default_.protocols()[0]);
+     *         ctx.export("nasProtocolsProtocol", default_.protocols()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1818,7 +1892,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1840,15 +1915,16 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = NasFunctions.getProtocols(GetProtocolsArgs.builder()
-     *             .type(&#34;Performance&#34;)
-     *             .zoneId(&#34;cn-beijing-e&#34;)
-     *             .outputFile(&#34;protocols.txt&#34;)
+     *             .type("Performance")
+     *             .zoneId("cn-beijing-e")
+     *             .outputFile("protocols.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;nasProtocolsProtocol&#34;, default_.protocols()[0]);
+     *         ctx.export("nasProtocolsProtocol", default_.protocols()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1865,7 +1941,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1887,12 +1964,13 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = NasFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1909,7 +1987,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1931,12 +2010,13 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = NasFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1953,7 +2033,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1975,12 +2056,13 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = NasFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1997,7 +2079,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2019,12 +2102,13 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = NasFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2041,7 +2125,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2063,12 +2148,13 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = NasFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2085,7 +2171,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2107,12 +2194,13 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = NasFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2129,7 +2217,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2152,15 +2241,16 @@ public final class NasFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getSnapshots();
      * 
-     *         ctx.export(&#34;nasSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;nasSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2177,7 +2267,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2200,15 +2291,16 @@ public final class NasFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getSnapshots();
      * 
-     *         ctx.export(&#34;nasSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;nasSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2225,7 +2317,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2248,15 +2341,16 @@ public final class NasFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getSnapshots();
      * 
-     *         ctx.export(&#34;nasSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;nasSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2273,7 +2367,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2296,15 +2391,16 @@ public final class NasFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getSnapshots();
      * 
-     *         ctx.export(&#34;nasSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;nasSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2321,7 +2417,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2344,15 +2441,16 @@ public final class NasFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getSnapshots();
      * 
-     *         ctx.export(&#34;nasSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;nasSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2369,7 +2467,8 @@ public final class NasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2392,15 +2491,16 @@ public final class NasFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NasFunctions.getSnapshots();
      * 
-     *         ctx.export(&#34;nasSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = NasFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;nasSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("nasSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2415,7 +2515,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2438,10 +2539,11 @@ public final class NasFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = NasFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2456,7 +2558,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2479,10 +2582,11 @@ public final class NasFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = NasFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2497,7 +2601,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2520,10 +2625,11 @@ public final class NasFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = NasFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2538,7 +2644,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2561,10 +2668,11 @@ public final class NasFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = NasFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2579,7 +2687,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2602,10 +2711,11 @@ public final class NasFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = NasFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2620,7 +2730,8 @@ public final class NasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2643,10 +2754,11 @@ public final class NasFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = NasFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudNasZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudNasZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

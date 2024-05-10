@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,22 +51,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;5.6&#34;)
- *             .instanceType(&#34;rds.mysql.t1.small&#34;)
- *             .instanceStorage(&#34;30&#34;)
- *             .instanceChargeType(&#34;Postpaid&#34;)
- *             .dbInstanceStorageType(&#34;local_ssd&#34;)
+ *         var example = new Instance("example", InstanceArgs.builder()        
+ *             .engine("MySQL")
+ *             .engineVersion("5.6")
+ *             .instanceType("rds.mysql.t1.small")
+ *             .instanceStorage("30")
+ *             .instanceChargeType("Postpaid")
+ *             .dbInstanceStorageType("local_ssd")
  *             .build());
  * 
- *         var exampleRdsBackup = new RdsBackup(&#34;exampleRdsBackup&#34;, RdsBackupArgs.builder()        
+ *         var exampleRdsBackup = new RdsBackup("exampleRdsBackup", RdsBackupArgs.builder()        
  *             .dbInstanceId(example.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

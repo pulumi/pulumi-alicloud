@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,29 +52,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Accelerator(&#34;example&#34;, AcceleratorArgs.builder()        
+ *         var example = new Accelerator("example", AcceleratorArgs.builder()        
  *             .duration(1)
  *             .autoUseCoupon(true)
- *             .spec(&#34;1&#34;)
+ *             .spec("1")
  *             .build());
  * 
- *         var exampleBandwidthPackage = new BandwidthPackage(&#34;exampleBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *         var exampleBandwidthPackage = new BandwidthPackage("exampleBandwidthPackage", BandwidthPackageArgs.builder()        
  *             .bandwidth(20)
- *             .type(&#34;Basic&#34;)
- *             .bandwidthType(&#34;Basic&#34;)
+ *             .type("Basic")
+ *             .bandwidthType("Basic")
  *             .duration(1)
  *             .autoPay(true)
  *             .ratio(30)
  *             .build());
  * 
- *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;exampleBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment("exampleBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
  *             .acceleratorId(example.id())
  *             .bandwidthPackageId(exampleBandwidthPackage.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

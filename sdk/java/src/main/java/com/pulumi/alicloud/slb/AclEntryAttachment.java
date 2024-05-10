@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,20 +48,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var attachment = new Acl(&#34;attachment&#34;, AclArgs.builder()        
- *             .name(&#34;forSlbAclEntryAttachment&#34;)
- *             .ipVersion(&#34;ipv4&#34;)
+ *         var attachment = new Acl("attachment", AclArgs.builder()        
+ *             .name("forSlbAclEntryAttachment")
+ *             .ipVersion("ipv4")
  *             .build());
  * 
- *         var attachmentAclEntryAttachment = new AclEntryAttachment(&#34;attachmentAclEntryAttachment&#34;, AclEntryAttachmentArgs.builder()        
+ *         var attachmentAclEntryAttachment = new AclEntryAttachment("attachmentAclEntryAttachment", AclEntryAttachmentArgs.builder()        
  *             .aclId(attachment.id())
- *             .entry(&#34;168.10.10.0/24&#34;)
- *             .comment(&#34;second&#34;)
+ *             .entry("168.10.10.0/24")
+ *             .comment("second")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

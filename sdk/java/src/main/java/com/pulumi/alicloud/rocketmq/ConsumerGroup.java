@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,31 +63,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var createVpc = new Network(&#34;createVpc&#34;, NetworkArgs.builder()        
- *             .description(&#34;example&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var createVpc = new Network("createVpc", NetworkArgs.builder()        
+ *             .description("example")
+ *             .cidrBlock("172.16.0.0/12")
  *             .vpcName(name)
  *             .build());
  * 
- *         var createVswitch = new Switch(&#34;createVswitch&#34;, SwitchArgs.builder()        
- *             .description(&#34;example&#34;)
+ *         var createVswitch = new Switch("createVswitch", SwitchArgs.builder()        
+ *             .description("example")
  *             .vpcId(createVpc.id())
  *             .zoneId(default_.zones()[0].id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .vswitchName(name)
  *             .build());
  * 
- *         var createInstance = new RocketMQInstance(&#34;createInstance&#34;, RocketMQInstanceArgs.builder()        
- *             .autoRenewPeriod(&#34;1&#34;)
+ *         var createInstance = new RocketMQInstance("createInstance", RocketMQInstanceArgs.builder()        
+ *             .autoRenewPeriod("1")
  *             .productInfo(RocketMQInstanceProductInfoArgs.builder()
- *                 .msgProcessSpec(&#34;rmq.p2.4xlarge&#34;)
+ *                 .msgProcessSpec("rmq.p2.4xlarge")
  *                 .sendReceiveRatio(0.3)
- *                 .messageRetentionTime(&#34;70&#34;)
+ *                 .messageRetentionTime("70")
  *                 .build())
  *             .networkInfo(RocketMQInstanceNetworkInfoArgs.builder()
  *                 .vpcInfo(RocketMQInstanceNetworkInfoVpcInfoArgs.builder()
@@ -94,35 +95,36 @@ import javax.annotation.Nullable;
  *                     .vswitchId(createVswitch.id())
  *                     .build())
  *                 .internetInfo(RocketMQInstanceNetworkInfoInternetInfoArgs.builder()
- *                     .internetSpec(&#34;enable&#34;)
- *                     .flowOutType(&#34;payByBandwidth&#34;)
- *                     .flowOutBandwidth(&#34;30&#34;)
+ *                     .internetSpec("enable")
+ *                     .flowOutType("payByBandwidth")
+ *                     .flowOutBandwidth("30")
  *                     .build())
  *                 .build())
- *             .period(&#34;1&#34;)
- *             .subSeriesCode(&#34;cluster_ha&#34;)
- *             .remark(&#34;example&#34;)
+ *             .period("1")
+ *             .subSeriesCode("cluster_ha")
+ *             .remark("example")
  *             .instanceName(name)
- *             .serviceCode(&#34;rmq&#34;)
- *             .seriesCode(&#34;professional&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .periodUnit(&#34;Month&#34;)
+ *             .serviceCode("rmq")
+ *             .seriesCode("professional")
+ *             .paymentType("PayAsYouGo")
+ *             .periodUnit("Month")
  *             .build());
  * 
- *         var defaultConsumerGroup = new ConsumerGroup(&#34;defaultConsumerGroup&#34;, ConsumerGroupArgs.builder()        
+ *         var defaultConsumerGroup = new ConsumerGroup("defaultConsumerGroup", ConsumerGroupArgs.builder()        
  *             .consumerGroupId(name)
  *             .instanceId(createInstance.id())
  *             .consumeRetryPolicy(ConsumerGroupConsumeRetryPolicyArgs.builder()
- *                 .retryPolicy(&#34;DefaultRetryPolicy&#34;)
- *                 .maxRetryTimes(&#34;10&#34;)
+ *                 .retryPolicy("DefaultRetryPolicy")
+ *                 .maxRetryTimes("10")
  *                 .build())
- *             .deliveryOrderType(&#34;Concurrently&#34;)
- *             .remark(&#34;example&#34;)
+ *             .deliveryOrderType("Concurrently")
+ *             .remark("example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

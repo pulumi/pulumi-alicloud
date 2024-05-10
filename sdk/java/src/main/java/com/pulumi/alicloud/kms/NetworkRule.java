@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,19 +50,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new NetworkRule(&#34;default&#34;, NetworkRuleArgs.builder()        
- *             .description(&#34;example-description&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new NetworkRule("default", NetworkRuleArgs.builder()        
+ *             .description("example-description")
  *             .sourcePrivateIps(            
- *                 &#34;10.10.10.10/24&#34;,
- *                 &#34;192.168.17.13&#34;,
- *                 &#34;100.177.24.254&#34;)
+ *                 "10.10.10.10/24",
+ *                 "192.168.17.13",
+ *                 "100.177.24.254")
  *             .networkRuleName(name)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

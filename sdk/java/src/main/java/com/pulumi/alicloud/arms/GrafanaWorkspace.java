@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,24 +53,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultGrafanaWorkspace = new GrafanaWorkspace(&#34;defaultGrafanaWorkspace&#34;, GrafanaWorkspaceArgs.builder()        
- *             .grafanaVersion(&#34;9.0.x&#34;)
+ *         var defaultGrafanaWorkspace = new GrafanaWorkspace("defaultGrafanaWorkspace", GrafanaWorkspaceArgs.builder()        
+ *             .grafanaVersion("9.0.x")
  *             .description(name)
  *             .resourceGroupId(default_.ids()[0])
- *             .grafanaWorkspaceEdition(&#34;standard&#34;)
+ *             .grafanaWorkspaceEdition("standard")
  *             .grafanaWorkspaceName(name)
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;tf&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "tf"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

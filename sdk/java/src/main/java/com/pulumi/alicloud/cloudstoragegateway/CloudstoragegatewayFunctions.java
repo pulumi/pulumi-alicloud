@@ -48,7 +48,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -71,15 +72,16 @@ public final class CloudstoragegatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
      * 
-     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId1&#34;, ids.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
      *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
-     *             .nameRegex(&#34;^my-ExpressSync&#34;)
+     *             .nameRegex("^my-ExpressSync")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId2&#34;, nameRegex.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -96,7 +98,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -119,15 +122,16 @@ public final class CloudstoragegatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
      * 
-     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId1&#34;, ids.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
      *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
-     *             .nameRegex(&#34;^my-ExpressSync&#34;)
+     *             .nameRegex("^my-ExpressSync")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId2&#34;, nameRegex.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -144,7 +148,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -167,15 +172,16 @@ public final class CloudstoragegatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
      * 
-     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId1&#34;, ids.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
      *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
-     *             .nameRegex(&#34;^my-ExpressSync&#34;)
+     *             .nameRegex("^my-ExpressSync")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId2&#34;, nameRegex.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -192,7 +198,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -215,15 +222,16 @@ public final class CloudstoragegatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
      * 
-     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId1&#34;, ids.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
      *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
-     *             .nameRegex(&#34;^my-ExpressSync&#34;)
+     *             .nameRegex("^my-ExpressSync")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId2&#34;, nameRegex.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -240,7 +248,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -263,15 +272,16 @@ public final class CloudstoragegatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
      * 
-     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId1&#34;, ids.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
      *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
-     *             .nameRegex(&#34;^my-ExpressSync&#34;)
+     *             .nameRegex("^my-ExpressSync")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId2&#34;, nameRegex.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -288,7 +298,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -311,15 +322,16 @@ public final class CloudstoragegatewayFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getExpressSyncs();
      * 
-     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId1&#34;, ids.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId1", ids.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
      *         final var nameRegex = CloudstoragegatewayFunctions.getExpressSyncs(GetExpressSyncsArgs.builder()
-     *             .nameRegex(&#34;^my-ExpressSync&#34;)
+     *             .nameRegex("^my-ExpressSync")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayExpressSyncId2&#34;, nameRegex.applyValue(getExpressSyncsResult -&gt; getExpressSyncsResult.syncs()[0].id()));
+     *         ctx.export("cloudStorageGatewayExpressSyncId2", nameRegex.applyValue(getExpressSyncsResult -> getExpressSyncsResult.syncs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -336,7 +348,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -358,22 +371,23 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId1&#34;, ids.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-GatewayBlockVolume&#34;)
+     *             .gatewayId("example_value")
+     *             .nameRegex("^my-GatewayBlockVolume")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId2&#34;, nameRegex.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -390,7 +404,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -412,22 +427,23 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId1&#34;, ids.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-GatewayBlockVolume&#34;)
+     *             .gatewayId("example_value")
+     *             .nameRegex("^my-GatewayBlockVolume")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId2&#34;, nameRegex.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -444,7 +460,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -466,22 +483,23 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId1&#34;, ids.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-GatewayBlockVolume&#34;)
+     *             .gatewayId("example_value")
+     *             .nameRegex("^my-GatewayBlockVolume")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId2&#34;, nameRegex.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -498,7 +516,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -520,22 +539,23 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId1&#34;, ids.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId1", ids.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayBlockVolumes(GetGatewayBlockVolumesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-GatewayBlockVolume&#34;)
+     *             .gatewayId("example_value")
+     *             .nameRegex("^my-GatewayBlockVolume")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayBlockVolumeId2&#34;, nameRegex.applyValue(getGatewayBlockVolumesResult -&gt; getGatewayBlockVolumesResult.volumes()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayBlockVolumeId2", nameRegex.applyValue(getGatewayBlockVolumesResult -> getGatewayBlockVolumesResult.volumes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -552,7 +572,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -574,25 +595,26 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId1&#34;, ids.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId1", ids.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
      *         final var status = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .status(&#34;0&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .status("0")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId2&#34;, status.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId2", status.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -609,7 +631,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -631,25 +654,26 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId1&#34;, ids.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId1", ids.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
      *         final var status = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .status(&#34;0&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .status("0")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId2&#34;, status.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId2", status.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -666,7 +690,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -688,25 +713,26 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId1&#34;, ids.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId1", ids.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
      *         final var status = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .status(&#34;0&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .status("0")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId2&#34;, status.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId2", status.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -723,7 +749,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -745,25 +772,26 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId1&#34;, ids.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId1", ids.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
      *         final var status = CloudstoragegatewayFunctions.getGatewayCacheDisks(GetGatewayCacheDisksArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .status(&#34;0&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .status("0")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayCacheDiskId2&#34;, status.applyValue(getGatewayCacheDisksResult -&gt; getGatewayCacheDisksResult.disks()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayCacheDiskId2", status.applyValue(getGatewayCacheDisksResult -> getGatewayCacheDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -780,7 +808,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -802,22 +831,23 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId1&#34;, ids.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId1", ids.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-GatewayFileShare&#34;)
+     *             .gatewayId("example_value")
+     *             .nameRegex("^my-GatewayFileShare")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId2&#34;, nameRegex.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId2", nameRegex.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -834,7 +864,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -856,22 +887,23 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId1&#34;, ids.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId1", ids.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-GatewayFileShare&#34;)
+     *             .gatewayId("example_value")
+     *             .nameRegex("^my-GatewayFileShare")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId2&#34;, nameRegex.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId2", nameRegex.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -888,7 +920,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -910,22 +943,23 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId1&#34;, ids.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId1", ids.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-GatewayFileShare&#34;)
+     *             .gatewayId("example_value")
+     *             .nameRegex("^my-GatewayFileShare")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId2&#34;, nameRegex.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId2", nameRegex.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -942,7 +976,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -964,22 +999,23 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
+     *             .gatewayId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId1&#34;, ids.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId1", ids.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
      *         final var nameRegex = CloudstoragegatewayFunctions.getGatewayFileShares(GetGatewayFileSharesArgs.builder()
-     *             .gatewayId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-GatewayFileShare&#34;)
+     *             .gatewayId("example_value")
+     *             .nameRegex("^my-GatewayFileShare")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayFileShareId2&#34;, nameRegex.applyValue(getGatewayFileSharesResult -&gt; getGatewayFileSharesResult.shares()[0].id()));
+     *         ctx.export("cloudStorageGatewayGatewayFileShareId2", nameRegex.applyValue(getGatewayFileSharesResult -> getGatewayFileSharesResult.shares()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -996,7 +1032,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1027,33 +1064,33 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
-     *             .storageBundleName(&#34;example_value&#34;)
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *             .storageBundleName("example_value")
      *             .build());
      * 
-     *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
-     *             .description(&#34;tf-acctestDesalone&#34;)
-     *             .gatewayClass(&#34;Standard&#34;)
-     *             .type(&#34;File&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+     *             .description("tf-acctestDesalone")
+     *             .gatewayClass("Standard")
+     *             .type("File")
+     *             .paymentType("PayAsYouGo")
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .releaseAfterExpiration(false)
      *             .publicNetworkBandwidth(40)
      *             .storageBundleId(example.id())
-     *             .location(&#34;Cloud&#34;)
-     *             .gatewayName(&#34;example_value&#34;)
+     *             .location("Cloud")
+     *             .gatewayName("example_value")
      *             .build());
      * 
-     *         var defaultGatewaySmbUser = new GatewaySmbUser(&#34;defaultGatewaySmbUser&#34;, GatewaySmbUserArgs.builder()        
-     *             .username(&#34;your_username&#34;)
-     *             .password(&#34;password&#34;)
+     *         var defaultGatewaySmbUser = new GatewaySmbUser("defaultGatewaySmbUser", GatewaySmbUserArgs.builder()        
+     *             .username("your_username")
+     *             .password("password")
      *             .gatewayId(defaultGateway.id())
      *             .build());
      * 
@@ -1062,10 +1099,11 @@ public final class CloudstoragegatewayFunctions {
      *             .ids(defaultGatewaySmbUser.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewaySmbUserId1&#34;, ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult).applyValue(ids -&gt; ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult.users()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult).applyValue(ids -> ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult.users()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1082,7 +1120,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1113,33 +1152,33 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
-     *             .storageBundleName(&#34;example_value&#34;)
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *             .storageBundleName("example_value")
      *             .build());
      * 
-     *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
-     *             .description(&#34;tf-acctestDesalone&#34;)
-     *             .gatewayClass(&#34;Standard&#34;)
-     *             .type(&#34;File&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+     *             .description("tf-acctestDesalone")
+     *             .gatewayClass("Standard")
+     *             .type("File")
+     *             .paymentType("PayAsYouGo")
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .releaseAfterExpiration(false)
      *             .publicNetworkBandwidth(40)
      *             .storageBundleId(example.id())
-     *             .location(&#34;Cloud&#34;)
-     *             .gatewayName(&#34;example_value&#34;)
+     *             .location("Cloud")
+     *             .gatewayName("example_value")
      *             .build());
      * 
-     *         var defaultGatewaySmbUser = new GatewaySmbUser(&#34;defaultGatewaySmbUser&#34;, GatewaySmbUserArgs.builder()        
-     *             .username(&#34;your_username&#34;)
-     *             .password(&#34;password&#34;)
+     *         var defaultGatewaySmbUser = new GatewaySmbUser("defaultGatewaySmbUser", GatewaySmbUserArgs.builder()        
+     *             .username("your_username")
+     *             .password("password")
      *             .gatewayId(defaultGateway.id())
      *             .build());
      * 
@@ -1148,10 +1187,11 @@ public final class CloudstoragegatewayFunctions {
      *             .ids(defaultGatewaySmbUser.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewaySmbUserId1&#34;, ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult).applyValue(ids -&gt; ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult.users()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult).applyValue(ids -> ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult.users()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1168,7 +1208,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1199,33 +1240,33 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
-     *             .storageBundleName(&#34;example_value&#34;)
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *             .storageBundleName("example_value")
      *             .build());
      * 
-     *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
-     *             .description(&#34;tf-acctestDesalone&#34;)
-     *             .gatewayClass(&#34;Standard&#34;)
-     *             .type(&#34;File&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+     *             .description("tf-acctestDesalone")
+     *             .gatewayClass("Standard")
+     *             .type("File")
+     *             .paymentType("PayAsYouGo")
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .releaseAfterExpiration(false)
      *             .publicNetworkBandwidth(40)
      *             .storageBundleId(example.id())
-     *             .location(&#34;Cloud&#34;)
-     *             .gatewayName(&#34;example_value&#34;)
+     *             .location("Cloud")
+     *             .gatewayName("example_value")
      *             .build());
      * 
-     *         var defaultGatewaySmbUser = new GatewaySmbUser(&#34;defaultGatewaySmbUser&#34;, GatewaySmbUserArgs.builder()        
-     *             .username(&#34;your_username&#34;)
-     *             .password(&#34;password&#34;)
+     *         var defaultGatewaySmbUser = new GatewaySmbUser("defaultGatewaySmbUser", GatewaySmbUserArgs.builder()        
+     *             .username("your_username")
+     *             .password("password")
      *             .gatewayId(defaultGateway.id())
      *             .build());
      * 
@@ -1234,10 +1275,11 @@ public final class CloudstoragegatewayFunctions {
      *             .ids(defaultGatewaySmbUser.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewaySmbUserId1&#34;, ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult).applyValue(ids -&gt; ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult.users()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult).applyValue(ids -> ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult.users()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1254,7 +1296,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1285,33 +1328,33 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
-     *             .storageBundleName(&#34;example_value&#34;)
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *             .storageBundleName("example_value")
      *             .build());
      * 
-     *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
-     *             .description(&#34;tf-acctestDesalone&#34;)
-     *             .gatewayClass(&#34;Standard&#34;)
-     *             .type(&#34;File&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+     *             .description("tf-acctestDesalone")
+     *             .gatewayClass("Standard")
+     *             .type("File")
+     *             .paymentType("PayAsYouGo")
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .releaseAfterExpiration(false)
      *             .publicNetworkBandwidth(40)
      *             .storageBundleId(example.id())
-     *             .location(&#34;Cloud&#34;)
-     *             .gatewayName(&#34;example_value&#34;)
+     *             .location("Cloud")
+     *             .gatewayName("example_value")
      *             .build());
      * 
-     *         var defaultGatewaySmbUser = new GatewaySmbUser(&#34;defaultGatewaySmbUser&#34;, GatewaySmbUserArgs.builder()        
-     *             .username(&#34;your_username&#34;)
-     *             .password(&#34;password&#34;)
+     *         var defaultGatewaySmbUser = new GatewaySmbUser("defaultGatewaySmbUser", GatewaySmbUserArgs.builder()        
+     *             .username("your_username")
+     *             .password("password")
      *             .gatewayId(defaultGateway.id())
      *             .build());
      * 
@@ -1320,10 +1363,11 @@ public final class CloudstoragegatewayFunctions {
      *             .ids(defaultGatewaySmbUser.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewaySmbUserId1&#34;, ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult).applyValue(ids -&gt; ids.applyValue(getGatewaySmbUsersResult -&gt; getGatewaySmbUsersResult.users()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewaySmbUserId1", ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult).applyValue(ids -> ids.applyValue(getGatewaySmbUsersResult -> getGatewaySmbUsersResult.users()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1340,7 +1384,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1363,19 +1408,20 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
-     *             .storageBundleName(&#34;example_value&#34;)
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *             .storageBundleName("example_value")
      *             .build());
      * 
      *         final var nameRegex = CloudstoragegatewayFunctions.getGateways(GetGatewaysArgs.builder()
      *             .storageBundleId(example.id())
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayId&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult).applyValue(nameRegex -> nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1392,7 +1438,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1415,19 +1462,20 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
-     *             .storageBundleName(&#34;example_value&#34;)
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *             .storageBundleName("example_value")
      *             .build());
      * 
      *         final var nameRegex = CloudstoragegatewayFunctions.getGateways(GetGatewaysArgs.builder()
      *             .storageBundleId(example.id())
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayId&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult).applyValue(nameRegex -> nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1444,7 +1492,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1467,19 +1516,20 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
-     *             .storageBundleName(&#34;example_value&#34;)
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *             .storageBundleName("example_value")
      *             .build());
      * 
      *         final var nameRegex = CloudstoragegatewayFunctions.getGateways(GetGatewaysArgs.builder()
      *             .storageBundleId(example.id())
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayId&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult).applyValue(nameRegex -> nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1496,7 +1546,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1519,19 +1570,20 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
-     *             .storageBundleName(&#34;example_value&#34;)
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *             .storageBundleName("example_value")
      *             .build());
      * 
      *         final var nameRegex = CloudstoragegatewayFunctions.getGateways(GetGatewaysArgs.builder()
      *             .storageBundleId(example.id())
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;cloudStorageGatewayGatewayId&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id())));
+     *         ctx.export("cloudStorageGatewayGatewayId", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult).applyValue(nameRegex -> nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1548,7 +1600,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1570,12 +1623,13 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CloudstoragegatewayFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1592,7 +1646,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1614,12 +1669,13 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CloudstoragegatewayFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1636,7 +1692,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1658,12 +1715,13 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CloudstoragegatewayFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1680,7 +1738,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1702,12 +1761,13 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CloudstoragegatewayFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1724,7 +1784,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1746,12 +1807,13 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CloudstoragegatewayFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1768,7 +1830,8 @@ public final class CloudstoragegatewayFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1790,12 +1853,13 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CloudstoragegatewayFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1812,7 +1876,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1834,13 +1899,14 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
-     *             .gatewayClass(&#34;Advanced&#34;)
+     *             .gatewayClass("Advanced")
      *             .build());
      * 
-     *         ctx.export(&#34;zoneId&#34;, default_.stocks()[0].zoneId());
+     *         ctx.export("zoneId", default_.stocks()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1857,7 +1923,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1879,13 +1946,14 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
-     *             .gatewayClass(&#34;Advanced&#34;)
+     *             .gatewayClass("Advanced")
      *             .build());
      * 
-     *         ctx.export(&#34;zoneId&#34;, default_.stocks()[0].zoneId());
+     *         ctx.export("zoneId", default_.stocks()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1902,7 +1970,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1924,13 +1993,14 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
-     *             .gatewayClass(&#34;Advanced&#34;)
+     *             .gatewayClass("Advanced")
      *             .build());
      * 
-     *         ctx.export(&#34;zoneId&#34;, default_.stocks()[0].zoneId());
+     *         ctx.export("zoneId", default_.stocks()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1947,7 +2017,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1969,13 +2040,14 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
-     *             .gatewayClass(&#34;Advanced&#34;)
+     *             .gatewayClass("Advanced")
      *             .build());
      * 
-     *         ctx.export(&#34;zoneId&#34;, default_.stocks()[0].zoneId());
+     *         ctx.export("zoneId", default_.stocks()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1992,7 +2064,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2014,13 +2087,14 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
-     *             .gatewayClass(&#34;Advanced&#34;)
+     *             .gatewayClass("Advanced")
      *             .build());
      * 
-     *         ctx.export(&#34;zoneId&#34;, default_.stocks()[0].zoneId());
+     *         ctx.export("zoneId", default_.stocks()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2037,7 +2111,8 @@ public final class CloudstoragegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2059,13 +2134,14 @@ public final class CloudstoragegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudstoragegatewayFunctions.getStocks(GetStocksArgs.builder()
-     *             .gatewayClass(&#34;Advanced&#34;)
+     *             .gatewayClass("Advanced")
      *             .build());
      * 
-     *         ctx.export(&#34;zoneId&#34;, default_.stocks()[0].zoneId());
+     *         ctx.export("zoneId", default_.stocks()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

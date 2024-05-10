@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,15 +47,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var authorizedUserId = config.get(&#34;authorizedUserId&#34;).orElse(123456789);
- *         var example = new UserVpcAuthorization(&#34;example&#34;, UserVpcAuthorizationArgs.builder()        
+ *         final var authorizedUserId = config.get("authorizedUserId").orElse(123456789);
+ *         var example = new UserVpcAuthorization("example", UserVpcAuthorizationArgs.builder()        
  *             .authorizedUserId(authorizedUserId)
- *             .authChannel(&#34;RESOURCE_DIRECTORY&#34;)
+ *             .authChannel("RESOURCE_DIRECTORY")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

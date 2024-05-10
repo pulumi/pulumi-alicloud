@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * 
  * Output the secret to a file.
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,28 +53,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new RAM access key for user.
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .name(&#34;terraform-example&#34;)
- *             .displayName(&#34;user_display_name&#34;)
- *             .mobile(&#34;86-18688888888&#34;)
- *             .email(&#34;hello.uuu@aaa.com&#34;)
- *             .comments(&#34;yoyoyo&#34;)
+ *         var user = new User("user", UserArgs.builder()        
+ *             .name("terraform-example")
+ *             .displayName("user_display_name")
+ *             .mobile("86-18688888888")
+ *             .email("hello.uuu{@literal @}aaa.com")
+ *             .comments("yoyoyo")
  *             .force(true)
  *             .build());
  * 
- *         var ak = new AccessKey(&#34;ak&#34;, AccessKeyArgs.builder()        
+ *         var ak = new AccessKey("ak", AccessKeyArgs.builder()        
  *             .userName(user.name())
- *             .secretFile(&#34;/xxx/xxx/xxx.txt&#34;)
+ *             .secretFile("/xxx/xxx/xxx.txt")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Using `pgp_key` to encrypt the secret.
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -97,18 +100,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new RAM access key for user.
- *         var user = new User(&#34;user&#34;, UserArgs.builder()        
- *             .name(&#34;terraform-example&#34;)
- *             .displayName(&#34;user_display_name&#34;)
- *             .mobile(&#34;86-18688888888&#34;)
- *             .email(&#34;hello.uuu@aaa.com&#34;)
- *             .comments(&#34;yoyoyo&#34;)
+ *         var user = new User("user", UserArgs.builder()        
+ *             .name("terraform-example")
+ *             .displayName("user_display_name")
+ *             .mobile("86-18688888888")
+ *             .email("hello.uuu{@literal @}aaa.com")
+ *             .comments("yoyoyo")
  *             .force(true)
  *             .build());
  * 
- *         var encrypt = new AccessKey(&#34;encrypt&#34;, AccessKeyArgs.builder()        
+ *         var encrypt = new AccessKey("encrypt", AccessKeyArgs.builder()        
  *             .userName(user.name())
- *             .pgpKey(&#34;&#34;&#34;
+ *             .pgpKey("""
  * mQENBFXbjPUBCADjNjCUQwfxKL+RR2GA6pv/1K+zJZ8UWIF9S0lk7cVIEfJiprzzwiMwBS5cD0da
  * rGin1FHvIWOZxujA7oW0O2TUuatqI3aAYDTfRYurh6iKLC+VS+F7H+/mhfFvKmgr0Y5kDCF1j0T/
  * 063QZ84IRGucR/X43IY7kAtmxGXH0dYOCzOe5UBX1fTn3mXGe2ImCDWBH7gOViynXmb6XNvXkP0f
@@ -135,13 +138,14 @@ import javax.annotation.Nullable;
  * 9uK3lQozbw2gH9zC0RqnePl+rsWIUU/ga16fH6pWc1uJiEBt8UZGypQ/E56/343epmYAe0a87sHx
  * 8iDV+dNtDVKfPRENiLOOc19MmS+phmUyrbHqI91c0pmysYcJZCD3a502X1gpjFbPZcRtiTmGnUKd
  * OIu60YPNE4+h7u2CfYyFPu3AlUaGNMBlvy6PEpU=
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         ctx.export(&#34;secret&#34;, encrypt.encryptedSecret());
+ *         ctx.export("secret", encrypt.encryptedSecret());
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

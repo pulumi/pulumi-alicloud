@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,27 +55,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getZones();
  * 
  *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultVpd = new Vpd(&#34;defaultVpd&#34;, VpdArgs.builder()        
- *             .cidr(&#34;10.0.0.0/8&#34;)
+ *         var defaultVpd = new Vpd("defaultVpd", VpdArgs.builder()        
+ *             .cidr("10.0.0.0/8")
  *             .vpdName(name)
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()))
  *             .build());
  * 
- *         var defaultSubnet = new Subnet(&#34;defaultSubnet&#34;, SubnetArgs.builder()        
+ *         var defaultSubnet = new Subnet("defaultSubnet", SubnetArgs.builder()        
  *             .subnetName(name)
  *             .zoneId(default_.zones()[0].id())
- *             .cidr(&#34;10.0.0.0/16&#34;)
+ *             .cidr("10.0.0.0/16")
  *             .vpdId(defaultVpd.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

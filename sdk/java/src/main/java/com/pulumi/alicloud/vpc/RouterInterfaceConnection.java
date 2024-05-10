@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,46 +59,46 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;alicloudRouterInterfaceConnectionBasic&#34;);
- *         var foo = new Network(&#34;foo&#34;, NetworkArgs.builder()        
+ *         final var region = config.get("region").orElse("cn-hangzhou");
+ *         final var name = config.get("name").orElse("alicloudRouterInterfaceConnectionBasic");
+ *         var foo = new Network("foo", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var bar = new Network(&#34;bar&#34;, NetworkArgs.builder()        
+ *         var bar = new Network("bar", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var initiate = new RouterInterface(&#34;initiate&#34;, RouterInterfaceArgs.builder()        
+ *         var initiate = new RouterInterface("initiate", RouterInterfaceArgs.builder()        
  *             .oppositeRegion(region)
- *             .routerType(&#34;VRouter&#34;)
+ *             .routerType("VRouter")
  *             .routerId(foo.routerId())
- *             .role(&#34;InitiatingSide&#34;)
- *             .specification(&#34;Large.2&#34;)
+ *             .role("InitiatingSide")
+ *             .specification("Large.2")
  *             .name(name)
  *             .description(name)
- *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .instanceChargeType("PostPaid")
  *             .build());
  * 
- *         var opposite = new RouterInterface(&#34;opposite&#34;, RouterInterfaceArgs.builder()        
+ *         var opposite = new RouterInterface("opposite", RouterInterfaceArgs.builder()        
  *             .oppositeRegion(region)
- *             .routerType(&#34;VRouter&#34;)
+ *             .routerType("VRouter")
  *             .routerId(bar.routerId())
- *             .role(&#34;AcceptingSide&#34;)
- *             .specification(&#34;Large.1&#34;)
- *             .name(String.format(&#34;%s-opposite&#34;, name))
- *             .description(String.format(&#34;%s-opposite&#34;, name))
+ *             .role("AcceptingSide")
+ *             .specification("Large.1")
+ *             .name(String.format("%s-opposite", name))
+ *             .description(String.format("%s-opposite", name))
  *             .build());
  * 
- *         var barRouterInterfaceConnection = new RouterInterfaceConnection(&#34;barRouterInterfaceConnection&#34;, RouterInterfaceConnectionArgs.builder()        
+ *         var barRouterInterfaceConnection = new RouterInterfaceConnection("barRouterInterfaceConnection", RouterInterfaceConnectionArgs.builder()        
  *             .interfaceId(opposite.id())
  *             .oppositeInterfaceId(initiate.id())
  *             .build());
  * 
  *         // A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
- *         var fooRouterInterfaceConnection = new RouterInterfaceConnection(&#34;fooRouterInterfaceConnection&#34;, RouterInterfaceConnectionArgs.builder()        
+ *         var fooRouterInterfaceConnection = new RouterInterfaceConnection("fooRouterInterfaceConnection", RouterInterfaceConnectionArgs.builder()        
  *             .interfaceId(initiate.id())
  *             .oppositeInterfaceId(opposite.id())
  *             .build(), CustomResourceOptions.builder()
@@ -106,7 +107,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

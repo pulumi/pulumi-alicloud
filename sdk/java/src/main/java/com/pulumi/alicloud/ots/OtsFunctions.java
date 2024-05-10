@@ -38,7 +38,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -60,15 +61,16 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attachmentsDs = OtsFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .nameRegex(&#34;testvpc&#34;)
-     *             .outputFile(&#34;attachments.txt&#34;)
+     *             .instanceName("sample-instance")
+     *             .nameRegex("testvpc")
+     *             .outputFile("attachments.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstOtsAttachmentId&#34;, attachmentsDs.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -81,7 +83,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -103,15 +106,16 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attachmentsDs = OtsFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .nameRegex(&#34;testvpc&#34;)
-     *             .outputFile(&#34;attachments.txt&#34;)
+     *             .instanceName("sample-instance")
+     *             .nameRegex("testvpc")
+     *             .outputFile("attachments.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstOtsAttachmentId&#34;, attachmentsDs.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -124,7 +128,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -146,15 +151,16 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attachmentsDs = OtsFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .nameRegex(&#34;testvpc&#34;)
-     *             .outputFile(&#34;attachments.txt&#34;)
+     *             .instanceName("sample-instance")
+     *             .nameRegex("testvpc")
+     *             .outputFile("attachments.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstOtsAttachmentId&#34;, attachmentsDs.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -167,7 +173,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -189,15 +196,16 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attachmentsDs = OtsFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .nameRegex(&#34;testvpc&#34;)
-     *             .outputFile(&#34;attachments.txt&#34;)
+     *             .instanceName("sample-instance")
+     *             .nameRegex("testvpc")
+     *             .outputFile("attachments.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstOtsAttachmentId&#34;, attachmentsDs.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -212,7 +220,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -234,13 +243,14 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -255,7 +265,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -277,13 +288,14 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -298,7 +310,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -320,13 +333,14 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -341,7 +355,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -363,13 +378,14 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -384,7 +400,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -406,13 +423,14 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -427,7 +445,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -449,13 +468,14 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -568,7 +588,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -590,12 +611,13 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = OtsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -612,7 +634,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -634,12 +657,13 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = OtsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -656,7 +680,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -678,12 +703,13 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = OtsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -700,7 +726,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -722,12 +749,13 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = OtsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -744,7 +772,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -766,12 +795,13 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = OtsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -788,7 +818,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -810,12 +841,13 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = OtsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -876,7 +908,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -898,16 +931,17 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var tunnelsDs = OtsFunctions.getTunnels(GetTunnelsArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .tableName(&#34;sample-table&#34;)
-     *             .nameRegex(&#34;sample-tunnel&#34;)
-     *             .outputFile(&#34;tunnels.txt&#34;)
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-tunnel")
+     *             .outputFile("tunnels.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTunnelId&#34;, tunnelsDs.applyValue(getTunnelsResult -&gt; getTunnelsResult.tunnels()[0].id()));
+     *         ctx.export("firstTunnelId", tunnelsDs.applyValue(getTunnelsResult -> getTunnelsResult.tunnels()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -924,7 +958,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -946,16 +981,17 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var tunnelsDs = OtsFunctions.getTunnels(GetTunnelsArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .tableName(&#34;sample-table&#34;)
-     *             .nameRegex(&#34;sample-tunnel&#34;)
-     *             .outputFile(&#34;tunnels.txt&#34;)
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-tunnel")
+     *             .outputFile("tunnels.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTunnelId&#34;, tunnelsDs.applyValue(getTunnelsResult -&gt; getTunnelsResult.tunnels()[0].id()));
+     *         ctx.export("firstTunnelId", tunnelsDs.applyValue(getTunnelsResult -> getTunnelsResult.tunnels()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -972,7 +1008,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -994,16 +1031,17 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var tunnelsDs = OtsFunctions.getTunnels(GetTunnelsArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .tableName(&#34;sample-table&#34;)
-     *             .nameRegex(&#34;sample-tunnel&#34;)
-     *             .outputFile(&#34;tunnels.txt&#34;)
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-tunnel")
+     *             .outputFile("tunnels.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTunnelId&#34;, tunnelsDs.applyValue(getTunnelsResult -&gt; getTunnelsResult.tunnels()[0].id()));
+     *         ctx.export("firstTunnelId", tunnelsDs.applyValue(getTunnelsResult -> getTunnelsResult.tunnels()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1020,7 +1058,8 @@ public final class OtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1042,16 +1081,17 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var tunnelsDs = OtsFunctions.getTunnels(GetTunnelsArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .tableName(&#34;sample-table&#34;)
-     *             .nameRegex(&#34;sample-tunnel&#34;)
-     *             .outputFile(&#34;tunnels.txt&#34;)
+     *             .instanceName("sample-instance")
+     *             .tableName("sample-table")
+     *             .nameRegex("sample-tunnel")
+     *             .outputFile("tunnels.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTunnelId&#34;, tunnelsDs.applyValue(getTunnelsResult -&gt; getTunnelsResult.tunnels()[0].id()));
+     *         ctx.export("firstTunnelId", tunnelsDs.applyValue(getTunnelsResult -> getTunnelsResult.tunnels()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

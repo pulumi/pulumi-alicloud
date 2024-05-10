@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,23 +50,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new ClientUserDefineRule(&#34;default&#34;, ClientUserDefineRuleArgs.builder()        
- *             .actionType(&#34;0&#34;)
- *             .platform(&#34;windows&#34;)
- *             .registryContent(&#34;123&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new ClientUserDefineRule("default", ClientUserDefineRuleArgs.builder()        
+ *             .actionType("0")
+ *             .platform("windows")
+ *             .registryContent("123")
  *             .clientUserDefineRuleName(name)
- *             .parentProcPath(&#34;/root/bash&#34;)
- *             .type(&#34;5&#34;)
- *             .cmdline(&#34;bash&#34;)
- *             .procPath(&#34;/root/bash&#34;)
- *             .parentCmdline(&#34;bash&#34;)
- *             .registryKey(&#34;123&#34;)
+ *             .parentProcPath("/root/bash")
+ *             .type("5")
+ *             .cmdline("bash")
+ *             .procPath("/root/bash")
+ *             .parentCmdline("bash")
+ *             .registryKey("123")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

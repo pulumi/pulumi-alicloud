@@ -24,7 +24,8 @@ public final class QuickbiFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -46,13 +47,14 @@ public final class QuickbiFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = QuickbiFunctions.getUsers(GetUsersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;quickBiUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("quickBiUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -69,7 +71,8 @@ public final class QuickbiFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -91,13 +94,14 @@ public final class QuickbiFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = QuickbiFunctions.getUsers(GetUsersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;quickBiUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("quickBiUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -114,7 +118,8 @@ public final class QuickbiFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -136,13 +141,14 @@ public final class QuickbiFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = QuickbiFunctions.getUsers(GetUsersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;quickBiUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("quickBiUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -159,7 +165,8 @@ public final class QuickbiFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -181,13 +188,14 @@ public final class QuickbiFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = QuickbiFunctions.getUsers(GetUsersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;quickBiUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("quickBiUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -204,7 +212,8 @@ public final class QuickbiFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -226,13 +235,14 @@ public final class QuickbiFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = QuickbiFunctions.getUsers(GetUsersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;quickBiUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("quickBiUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -249,7 +259,8 @@ public final class QuickbiFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -271,13 +282,14 @@ public final class QuickbiFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = QuickbiFunctions.getUsers(GetUsersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;quickBiUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("quickBiUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

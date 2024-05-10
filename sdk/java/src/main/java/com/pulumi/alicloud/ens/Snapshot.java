@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,24 +51,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var disk = new Disk(&#34;disk&#34;, DiskArgs.builder()        
- *             .category(&#34;cloud_efficiency&#34;)
- *             .size(&#34;20&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .ensRegionId(&#34;ch-zurich-1&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var disk = new Disk("disk", DiskArgs.builder()        
+ *             .category("cloud_efficiency")
+ *             .size("20")
+ *             .paymentType("PayAsYouGo")
+ *             .ensRegionId("ch-zurich-1")
  *             .build());
  * 
- *         var default_ = new Snapshot(&#34;default&#34;, SnapshotArgs.builder()        
+ *         var default_ = new Snapshot("default", SnapshotArgs.builder()        
  *             .description(name)
- *             .ensRegionId(&#34;ch-zurich-1&#34;)
+ *             .ensRegionId("ch-zurich-1")
  *             .snapshotName(name)
  *             .diskId(disk.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

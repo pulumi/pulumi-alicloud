@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,15 +48,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ShortUrl(&#34;example&#34;, ShortUrlArgs.builder()        
+ *         var example = new ShortUrl("example", ShortUrlArgs.builder()        
  *             .effectiveDays(30)
- *             .shortUrlName(&#34;example_value&#34;)
- *             .sourceUrl(&#34;example_value&#34;)
+ *             .shortUrlName("example_value")
+ *             .sourceUrl("example_value")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,25 +49,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexamplename&#34;);
- *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
+ *         final var name = config.get("name").orElse("tfexamplename");
+ *         var default_ = new User("default", UserArgs.builder()        
  *             .name(name)
  *             .displayName(name)
- *             .mobile(&#34;86-18688888888&#34;)
- *             .email(&#34;hello.uuu@aaa.com&#34;)
- *             .comments(&#34;example&#34;)
+ *             .mobile("86-18688888888")
+ *             .email("hello.uuu{@literal @}aaa.com")
+ *             .comments("example")
  *             .build());
  * 
- *         var defaultEnterpriseUser = new EnterpriseUser(&#34;defaultEnterpriseUser&#34;, EnterpriseUserArgs.builder()        
+ *         var defaultEnterpriseUser = new EnterpriseUser("defaultEnterpriseUser", EnterpriseUserArgs.builder()        
  *             .uid(default_.id())
  *             .userName(name)
- *             .roleNames(&#34;DBA&#34;)
- *             .mobile(&#34;86-18688888888&#34;)
+ *             .roleNames("DBA")
+ *             .mobile("86-18688888888")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

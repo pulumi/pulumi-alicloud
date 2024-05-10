@@ -45,7 +45,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -67,16 +68,17 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SaeFunctions.getApplicationScalingRules(GetApplicationScalingRulesArgs.builder()
-     *             .appId(&#34;example_value&#34;)
+     *             .appId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationScalingRuleId1&#34;, ids.applyValue(getApplicationScalingRulesResult -&gt; getApplicationScalingRulesResult.rules()[0].id()));
+     *         ctx.export("saeApplicationScalingRuleId1", ids.applyValue(getApplicationScalingRulesResult -> getApplicationScalingRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -93,7 +95,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -115,16 +118,17 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SaeFunctions.getApplicationScalingRules(GetApplicationScalingRulesArgs.builder()
-     *             .appId(&#34;example_value&#34;)
+     *             .appId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationScalingRuleId1&#34;, ids.applyValue(getApplicationScalingRulesResult -&gt; getApplicationScalingRulesResult.rules()[0].id()));
+     *         ctx.export("saeApplicationScalingRuleId1", ids.applyValue(getApplicationScalingRulesResult -> getApplicationScalingRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -141,7 +145,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -163,16 +168,17 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SaeFunctions.getApplicationScalingRules(GetApplicationScalingRulesArgs.builder()
-     *             .appId(&#34;example_value&#34;)
+     *             .appId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationScalingRuleId1&#34;, ids.applyValue(getApplicationScalingRulesResult -&gt; getApplicationScalingRulesResult.rules()[0].id()));
+     *         ctx.export("saeApplicationScalingRuleId1", ids.applyValue(getApplicationScalingRulesResult -> getApplicationScalingRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -189,7 +195,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -211,16 +218,17 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SaeFunctions.getApplicationScalingRules(GetApplicationScalingRulesArgs.builder()
-     *             .appId(&#34;example_value&#34;)
+     *             .appId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationScalingRuleId1&#34;, ids.applyValue(getApplicationScalingRulesResult -&gt; getApplicationScalingRulesResult.rules()[0].id()));
+     *         ctx.export("saeApplicationScalingRuleId1", ids.applyValue(getApplicationScalingRulesResult -> getApplicationScalingRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -237,7 +245,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -269,50 +278,51 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+     *         final var name = config.get("name").orElse("tf-testacc");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;tf_testacc&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *             .vpcName("tf_testacc")
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+     *         var vsw = new Switch("vsw", SwitchArgs.builder()        
      *             .vpcId(vpc.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
      *             .namespaceDescription(name)
-     *             .namespaceId(&#34;cn-hangzhou:tfacctest&#34;)
+     *             .namespaceId("cn-hangzhou:tfacctest")
      *             .namespaceName(name)
      *             .build());
      * 
-     *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
-     *             .appDescription(&#34;tf-testaccDescription&#34;)
-     *             .appName(&#34;tf-testaccAppName131&#34;)
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+     *             .appDescription("tf-testaccDescription")
+     *             .appName("tf-testaccAppName131")
      *             .namespaceId(defaultNamespace.id())
-     *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
-     *             .packageType(&#34;Image&#34;)
+     *             .imageUrl("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5")
+     *             .packageType("Image")
      *             .vswitchId(vsw.id())
-     *             .timezone(&#34;Asia/Beijing&#34;)
-     *             .replicas(&#34;5&#34;)
-     *             .cpu(&#34;500&#34;)
-     *             .memory(&#34;2048&#34;)
+     *             .timezone("Asia/Beijing")
+     *             .replicas("5")
+     *             .cpu("500")
+     *             .memory("2048")
      *             .build());
      * 
      *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationId&#34;, defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultGetApplications -&gt; defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult).applyValue(defaultGetApplications -> defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -329,7 +339,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -361,50 +372,51 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+     *         final var name = config.get("name").orElse("tf-testacc");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;tf_testacc&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *             .vpcName("tf_testacc")
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+     *         var vsw = new Switch("vsw", SwitchArgs.builder()        
      *             .vpcId(vpc.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
      *             .namespaceDescription(name)
-     *             .namespaceId(&#34;cn-hangzhou:tfacctest&#34;)
+     *             .namespaceId("cn-hangzhou:tfacctest")
      *             .namespaceName(name)
      *             .build());
      * 
-     *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
-     *             .appDescription(&#34;tf-testaccDescription&#34;)
-     *             .appName(&#34;tf-testaccAppName131&#34;)
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+     *             .appDescription("tf-testaccDescription")
+     *             .appName("tf-testaccAppName131")
      *             .namespaceId(defaultNamespace.id())
-     *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
-     *             .packageType(&#34;Image&#34;)
+     *             .imageUrl("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5")
+     *             .packageType("Image")
      *             .vswitchId(vsw.id())
-     *             .timezone(&#34;Asia/Beijing&#34;)
-     *             .replicas(&#34;5&#34;)
-     *             .cpu(&#34;500&#34;)
-     *             .memory(&#34;2048&#34;)
+     *             .timezone("Asia/Beijing")
+     *             .replicas("5")
+     *             .cpu("500")
+     *             .memory("2048")
      *             .build());
      * 
      *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationId&#34;, defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultGetApplications -&gt; defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult).applyValue(defaultGetApplications -> defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -421,7 +433,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -453,50 +466,51 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+     *         final var name = config.get("name").orElse("tf-testacc");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;tf_testacc&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *             .vpcName("tf_testacc")
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+     *         var vsw = new Switch("vsw", SwitchArgs.builder()        
      *             .vpcId(vpc.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
      *             .namespaceDescription(name)
-     *             .namespaceId(&#34;cn-hangzhou:tfacctest&#34;)
+     *             .namespaceId("cn-hangzhou:tfacctest")
      *             .namespaceName(name)
      *             .build());
      * 
-     *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
-     *             .appDescription(&#34;tf-testaccDescription&#34;)
-     *             .appName(&#34;tf-testaccAppName131&#34;)
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+     *             .appDescription("tf-testaccDescription")
+     *             .appName("tf-testaccAppName131")
      *             .namespaceId(defaultNamespace.id())
-     *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
-     *             .packageType(&#34;Image&#34;)
+     *             .imageUrl("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5")
+     *             .packageType("Image")
      *             .vswitchId(vsw.id())
-     *             .timezone(&#34;Asia/Beijing&#34;)
-     *             .replicas(&#34;5&#34;)
-     *             .cpu(&#34;500&#34;)
-     *             .memory(&#34;2048&#34;)
+     *             .timezone("Asia/Beijing")
+     *             .replicas("5")
+     *             .cpu("500")
+     *             .memory("2048")
      *             .build());
      * 
      *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationId&#34;, defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultGetApplications -&gt; defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult).applyValue(defaultGetApplications -> defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -513,7 +527,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -545,50 +560,51 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+     *         final var name = config.get("name").orElse("tf-testacc");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;tf_testacc&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *             .vpcName("tf_testacc")
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+     *         var vsw = new Switch("vsw", SwitchArgs.builder()        
      *             .vpcId(vpc.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
      *             .namespaceDescription(name)
-     *             .namespaceId(&#34;cn-hangzhou:tfacctest&#34;)
+     *             .namespaceId("cn-hangzhou:tfacctest")
      *             .namespaceName(name)
      *             .build());
      * 
-     *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
-     *             .appDescription(&#34;tf-testaccDescription&#34;)
-     *             .appName(&#34;tf-testaccAppName131&#34;)
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+     *             .appDescription("tf-testaccDescription")
+     *             .appName("tf-testaccAppName131")
      *             .namespaceId(defaultNamespace.id())
-     *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
-     *             .packageType(&#34;Image&#34;)
+     *             .imageUrl("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5")
+     *             .packageType("Image")
      *             .vswitchId(vsw.id())
-     *             .timezone(&#34;Asia/Beijing&#34;)
-     *             .replicas(&#34;5&#34;)
-     *             .cpu(&#34;500&#34;)
-     *             .memory(&#34;2048&#34;)
+     *             .timezone("Asia/Beijing")
+     *             .replicas("5")
+     *             .cpu("500")
+     *             .memory("2048")
      *             .build());
      * 
      *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationId&#34;, defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultGetApplications -&gt; defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult).applyValue(defaultGetApplications -> defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -605,7 +621,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -637,50 +654,51 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+     *         final var name = config.get("name").orElse("tf-testacc");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;tf_testacc&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *             .vpcName("tf_testacc")
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+     *         var vsw = new Switch("vsw", SwitchArgs.builder()        
      *             .vpcId(vpc.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
      *             .namespaceDescription(name)
-     *             .namespaceId(&#34;cn-hangzhou:tfacctest&#34;)
+     *             .namespaceId("cn-hangzhou:tfacctest")
      *             .namespaceName(name)
      *             .build());
      * 
-     *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
-     *             .appDescription(&#34;tf-testaccDescription&#34;)
-     *             .appName(&#34;tf-testaccAppName131&#34;)
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+     *             .appDescription("tf-testaccDescription")
+     *             .appName("tf-testaccAppName131")
      *             .namespaceId(defaultNamespace.id())
-     *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
-     *             .packageType(&#34;Image&#34;)
+     *             .imageUrl("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5")
+     *             .packageType("Image")
      *             .vswitchId(vsw.id())
-     *             .timezone(&#34;Asia/Beijing&#34;)
-     *             .replicas(&#34;5&#34;)
-     *             .cpu(&#34;500&#34;)
-     *             .memory(&#34;2048&#34;)
+     *             .timezone("Asia/Beijing")
+     *             .replicas("5")
+     *             .cpu("500")
+     *             .memory("2048")
      *             .build());
      * 
      *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationId&#34;, defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultGetApplications -&gt; defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult).applyValue(defaultGetApplications -> defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -697,7 +715,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -729,50 +748,51 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
+     *         final var name = config.get("name").orElse("tf-testacc");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;tf_testacc&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *             .vpcName("tf_testacc")
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
+     *         var vsw = new Switch("vsw", SwitchArgs.builder()        
      *             .vpcId(vpc.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
      *             .namespaceDescription(name)
-     *             .namespaceId(&#34;cn-hangzhou:tfacctest&#34;)
+     *             .namespaceId("cn-hangzhou:tfacctest")
      *             .namespaceName(name)
      *             .build());
      * 
-     *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
-     *             .appDescription(&#34;tf-testaccDescription&#34;)
-     *             .appName(&#34;tf-testaccAppName131&#34;)
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+     *             .appDescription("tf-testaccDescription")
+     *             .appName("tf-testaccAppName131")
      *             .namespaceId(defaultNamespace.id())
-     *             .imageUrl(&#34;registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5&#34;)
-     *             .packageType(&#34;Image&#34;)
+     *             .imageUrl("registry-vpc.cn-hangzhou.aliyuncs.com/lxepoo/apache-php5")
+     *             .packageType("Image")
      *             .vswitchId(vsw.id())
-     *             .timezone(&#34;Asia/Beijing&#34;)
-     *             .replicas(&#34;5&#34;)
-     *             .cpu(&#34;500&#34;)
-     *             .memory(&#34;2048&#34;)
+     *             .timezone("Asia/Beijing")
+     *             .replicas("5")
+     *             .cpu("500")
+     *             .memory("2048")
      *             .build());
      * 
      *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationId&#34;, defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultGetApplications -&gt; defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *         ctx.export("saeApplicationId", defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult).applyValue(defaultGetApplications -> defaultGetApplications.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -789,7 +809,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -816,18 +837,18 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var configMapName = config.get(&#34;configMapName&#34;).orElse(&#34;examplename&#34;);
-     *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
-     *             .namespaceId(&#34;cn-hangzhou:yourname&#34;)
-     *             .namespaceName(&#34;example_value&#34;)
-     *             .namespaceDescription(&#34;your_description&#34;)
+     *         final var configMapName = config.get("configMapName").orElse("examplename");
+     *         var example = new Namespace("example", NamespaceArgs.builder()        
+     *             .namespaceId("cn-hangzhou:yourname")
+     *             .namespaceName("example_value")
+     *             .namespaceDescription("your_description")
      *             .build());
      * 
-     *         var exampleConfigMap = new ConfigMap(&#34;exampleConfigMap&#34;, ConfigMapArgs.builder()        
+     *         var exampleConfigMap = new ConfigMap("exampleConfigMap", ConfigMapArgs.builder()        
      *             .data(serializeJson(
      *                 jsonObject(
-     *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
-     *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
+     *                     jsonProperty("env.home", "/root"),
+     *                     jsonProperty("env.shell", "/bin/sh")
      *                 )))
      *             .name(configMapName)
      *             .namespaceId(example.namespaceId())
@@ -835,13 +856,14 @@ public final class SaeFunctions {
      * 
      *         final var nameRegex = SaeFunctions.getConfigMaps(GetConfigMapsArgs.builder()
      *             .namespaceId(example.namespaceId())
-     *             .nameRegex(&#34;^example&#34;)
+     *             .nameRegex("^example")
      *             .build());
      * 
-     *         ctx.export(&#34;saeConfigMapId&#34;, nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult.maps()[0].id())));
+     *         ctx.export("saeConfigMapId", nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult).applyValue(nameRegex -> nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult.maps()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -858,7 +880,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -885,18 +908,18 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var configMapName = config.get(&#34;configMapName&#34;).orElse(&#34;examplename&#34;);
-     *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
-     *             .namespaceId(&#34;cn-hangzhou:yourname&#34;)
-     *             .namespaceName(&#34;example_value&#34;)
-     *             .namespaceDescription(&#34;your_description&#34;)
+     *         final var configMapName = config.get("configMapName").orElse("examplename");
+     *         var example = new Namespace("example", NamespaceArgs.builder()        
+     *             .namespaceId("cn-hangzhou:yourname")
+     *             .namespaceName("example_value")
+     *             .namespaceDescription("your_description")
      *             .build());
      * 
-     *         var exampleConfigMap = new ConfigMap(&#34;exampleConfigMap&#34;, ConfigMapArgs.builder()        
+     *         var exampleConfigMap = new ConfigMap("exampleConfigMap", ConfigMapArgs.builder()        
      *             .data(serializeJson(
      *                 jsonObject(
-     *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
-     *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
+     *                     jsonProperty("env.home", "/root"),
+     *                     jsonProperty("env.shell", "/bin/sh")
      *                 )))
      *             .name(configMapName)
      *             .namespaceId(example.namespaceId())
@@ -904,13 +927,14 @@ public final class SaeFunctions {
      * 
      *         final var nameRegex = SaeFunctions.getConfigMaps(GetConfigMapsArgs.builder()
      *             .namespaceId(example.namespaceId())
-     *             .nameRegex(&#34;^example&#34;)
+     *             .nameRegex("^example")
      *             .build());
      * 
-     *         ctx.export(&#34;saeConfigMapId&#34;, nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult.maps()[0].id())));
+     *         ctx.export("saeConfigMapId", nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult).applyValue(nameRegex -> nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult.maps()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -927,7 +951,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -954,18 +979,18 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var configMapName = config.get(&#34;configMapName&#34;).orElse(&#34;examplename&#34;);
-     *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
-     *             .namespaceId(&#34;cn-hangzhou:yourname&#34;)
-     *             .namespaceName(&#34;example_value&#34;)
-     *             .namespaceDescription(&#34;your_description&#34;)
+     *         final var configMapName = config.get("configMapName").orElse("examplename");
+     *         var example = new Namespace("example", NamespaceArgs.builder()        
+     *             .namespaceId("cn-hangzhou:yourname")
+     *             .namespaceName("example_value")
+     *             .namespaceDescription("your_description")
      *             .build());
      * 
-     *         var exampleConfigMap = new ConfigMap(&#34;exampleConfigMap&#34;, ConfigMapArgs.builder()        
+     *         var exampleConfigMap = new ConfigMap("exampleConfigMap", ConfigMapArgs.builder()        
      *             .data(serializeJson(
      *                 jsonObject(
-     *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
-     *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
+     *                     jsonProperty("env.home", "/root"),
+     *                     jsonProperty("env.shell", "/bin/sh")
      *                 )))
      *             .name(configMapName)
      *             .namespaceId(example.namespaceId())
@@ -973,13 +998,14 @@ public final class SaeFunctions {
      * 
      *         final var nameRegex = SaeFunctions.getConfigMaps(GetConfigMapsArgs.builder()
      *             .namespaceId(example.namespaceId())
-     *             .nameRegex(&#34;^example&#34;)
+     *             .nameRegex("^example")
      *             .build());
      * 
-     *         ctx.export(&#34;saeConfigMapId&#34;, nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult.maps()[0].id())));
+     *         ctx.export("saeConfigMapId", nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult).applyValue(nameRegex -> nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult.maps()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -996,7 +1022,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1023,18 +1050,18 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var configMapName = config.get(&#34;configMapName&#34;).orElse(&#34;examplename&#34;);
-     *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
-     *             .namespaceId(&#34;cn-hangzhou:yourname&#34;)
-     *             .namespaceName(&#34;example_value&#34;)
-     *             .namespaceDescription(&#34;your_description&#34;)
+     *         final var configMapName = config.get("configMapName").orElse("examplename");
+     *         var example = new Namespace("example", NamespaceArgs.builder()        
+     *             .namespaceId("cn-hangzhou:yourname")
+     *             .namespaceName("example_value")
+     *             .namespaceDescription("your_description")
      *             .build());
      * 
-     *         var exampleConfigMap = new ConfigMap(&#34;exampleConfigMap&#34;, ConfigMapArgs.builder()        
+     *         var exampleConfigMap = new ConfigMap("exampleConfigMap", ConfigMapArgs.builder()        
      *             .data(serializeJson(
      *                 jsonObject(
-     *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
-     *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
+     *                     jsonProperty("env.home", "/root"),
+     *                     jsonProperty("env.shell", "/bin/sh")
      *                 )))
      *             .name(configMapName)
      *             .namespaceId(example.namespaceId())
@@ -1042,13 +1069,14 @@ public final class SaeFunctions {
      * 
      *         final var nameRegex = SaeFunctions.getConfigMaps(GetConfigMapsArgs.builder()
      *             .namespaceId(example.namespaceId())
-     *             .nameRegex(&#34;^example&#34;)
+     *             .nameRegex("^example")
      *             .build());
      * 
-     *         ctx.export(&#34;saeConfigMapId&#34;, nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getConfigMapsResult -&gt; getConfigMapsResult.maps()[0].id())));
+     *         ctx.export("saeConfigMapId", nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult).applyValue(nameRegex -> nameRegex.applyValue(getConfigMapsResult -> getConfigMapsResult.maps()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1065,7 +1093,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1087,14 +1116,15 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = SaeFunctions.getGreyTagRoutes(GetGreyTagRoutesArgs.builder()
-     *             .appId(&#34;example_id&#34;)
-     *             .nameRegex(&#34;^my-GreyTagRoute&#34;)
+     *             .appId("example_id")
+     *             .nameRegex("^my-GreyTagRoute")
      *             .build());
      * 
-     *         ctx.export(&#34;saeGreyTagRoutesId&#34;, nameRegex.applyValue(getGreyTagRoutesResult -&gt; getGreyTagRoutesResult.routes()[0].id()));
+     *         ctx.export("saeGreyTagRoutesId", nameRegex.applyValue(getGreyTagRoutesResult -> getGreyTagRoutesResult.routes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1111,7 +1141,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1133,14 +1164,15 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = SaeFunctions.getGreyTagRoutes(GetGreyTagRoutesArgs.builder()
-     *             .appId(&#34;example_id&#34;)
-     *             .nameRegex(&#34;^my-GreyTagRoute&#34;)
+     *             .appId("example_id")
+     *             .nameRegex("^my-GreyTagRoute")
      *             .build());
      * 
-     *         ctx.export(&#34;saeGreyTagRoutesId&#34;, nameRegex.applyValue(getGreyTagRoutesResult -&gt; getGreyTagRoutesResult.routes()[0].id()));
+     *         ctx.export("saeGreyTagRoutesId", nameRegex.applyValue(getGreyTagRoutesResult -> getGreyTagRoutesResult.routes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1157,7 +1189,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1179,14 +1212,15 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = SaeFunctions.getGreyTagRoutes(GetGreyTagRoutesArgs.builder()
-     *             .appId(&#34;example_id&#34;)
-     *             .nameRegex(&#34;^my-GreyTagRoute&#34;)
+     *             .appId("example_id")
+     *             .nameRegex("^my-GreyTagRoute")
      *             .build());
      * 
-     *         ctx.export(&#34;saeGreyTagRoutesId&#34;, nameRegex.applyValue(getGreyTagRoutesResult -&gt; getGreyTagRoutesResult.routes()[0].id()));
+     *         ctx.export("saeGreyTagRoutesId", nameRegex.applyValue(getGreyTagRoutesResult -> getGreyTagRoutesResult.routes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1203,7 +1237,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1225,14 +1260,15 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = SaeFunctions.getGreyTagRoutes(GetGreyTagRoutesArgs.builder()
-     *             .appId(&#34;example_id&#34;)
-     *             .nameRegex(&#34;^my-GreyTagRoute&#34;)
+     *             .appId("example_id")
+     *             .nameRegex("^my-GreyTagRoute")
      *             .build());
      * 
-     *         ctx.export(&#34;saeGreyTagRoutesId&#34;, nameRegex.applyValue(getGreyTagRoutesResult -&gt; getGreyTagRoutesResult.routes()[0].id()));
+     *         ctx.export("saeGreyTagRoutesId", nameRegex.applyValue(getGreyTagRoutesResult -> getGreyTagRoutesResult.routes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1285,7 +1321,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1308,10 +1345,11 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SaeFunctions.getInstanceSpecifications();
      * 
-     *         ctx.export(&#34;saeInstanceSpecificationId1&#34;, ids.applyValue(getInstanceSpecificationsResult -&gt; getInstanceSpecificationsResult.specifications()[0].id()));
+     *         ctx.export("saeInstanceSpecificationId1", ids.applyValue(getInstanceSpecificationsResult -> getInstanceSpecificationsResult.specifications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1328,7 +1366,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1351,10 +1390,11 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SaeFunctions.getInstanceSpecifications();
      * 
-     *         ctx.export(&#34;saeInstanceSpecificationId1&#34;, ids.applyValue(getInstanceSpecificationsResult -&gt; getInstanceSpecificationsResult.specifications()[0].id()));
+     *         ctx.export("saeInstanceSpecificationId1", ids.applyValue(getInstanceSpecificationsResult -> getInstanceSpecificationsResult.specifications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1371,7 +1411,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1394,10 +1435,11 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SaeFunctions.getInstanceSpecifications();
      * 
-     *         ctx.export(&#34;saeInstanceSpecificationId1&#34;, ids.applyValue(getInstanceSpecificationsResult -&gt; getInstanceSpecificationsResult.specifications()[0].id()));
+     *         ctx.export("saeInstanceSpecificationId1", ids.applyValue(getInstanceSpecificationsResult -> getInstanceSpecificationsResult.specifications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1414,7 +1456,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1437,10 +1480,11 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SaeFunctions.getInstanceSpecifications();
      * 
-     *         ctx.export(&#34;saeInstanceSpecificationId1&#34;, ids.applyValue(getInstanceSpecificationsResult -&gt; getInstanceSpecificationsResult.specifications()[0].id()));
+     *         ctx.export("saeInstanceSpecificationId1", ids.applyValue(getInstanceSpecificationsResult -> getInstanceSpecificationsResult.specifications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1457,7 +1501,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1480,10 +1525,11 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SaeFunctions.getInstanceSpecifications();
      * 
-     *         ctx.export(&#34;saeInstanceSpecificationId1&#34;, ids.applyValue(getInstanceSpecificationsResult -&gt; getInstanceSpecificationsResult.specifications()[0].id()));
+     *         ctx.export("saeInstanceSpecificationId1", ids.applyValue(getInstanceSpecificationsResult -> getInstanceSpecificationsResult.specifications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1500,7 +1546,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1523,10 +1570,11 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SaeFunctions.getInstanceSpecifications();
      * 
-     *         ctx.export(&#34;saeInstanceSpecificationId1&#34;, ids.applyValue(getInstanceSpecificationsResult -&gt; getInstanceSpecificationsResult.specifications()[0].id()));
+     *         ctx.export("saeInstanceSpecificationId1", ids.applyValue(getInstanceSpecificationsResult -> getInstanceSpecificationsResult.specifications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1543,7 +1591,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1565,13 +1614,14 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = SaeFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;saeNamespaceId&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("saeNamespaceId", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1588,7 +1638,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1610,13 +1661,14 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = SaeFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;saeNamespaceId&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("saeNamespaceId", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1633,7 +1685,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1655,13 +1708,14 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = SaeFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;saeNamespaceId&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("saeNamespaceId", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1678,7 +1732,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1700,13 +1755,14 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = SaeFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;saeNamespaceId&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("saeNamespaceId", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1723,7 +1779,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1745,13 +1802,14 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = SaeFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;saeNamespaceId&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("saeNamespaceId", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1768,7 +1826,8 @@ public final class SaeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1790,13 +1849,14 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = SaeFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;saeNamespaceId&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("saeNamespaceId", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1815,7 +1875,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1837,12 +1898,13 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = SaeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1861,7 +1923,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1883,12 +1946,13 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = SaeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1907,7 +1971,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1929,12 +1994,13 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = SaeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1953,7 +2019,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1975,12 +2042,13 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = SaeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1999,7 +2067,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2021,12 +2090,13 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = SaeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2045,7 +2115,8 @@ public final class SaeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2067,12 +2138,13 @@ public final class SaeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = SaeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

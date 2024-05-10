@@ -29,7 +29,8 @@ public final class VideosurveillanceFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -51,12 +52,13 @@ public final class VideosurveillanceFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = VideosurveillanceFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -75,7 +77,8 @@ public final class VideosurveillanceFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -97,12 +100,13 @@ public final class VideosurveillanceFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = VideosurveillanceFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -121,7 +125,8 @@ public final class VideosurveillanceFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -143,12 +148,13 @@ public final class VideosurveillanceFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = VideosurveillanceFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -167,7 +173,8 @@ public final class VideosurveillanceFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -189,12 +196,13 @@ public final class VideosurveillanceFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = VideosurveillanceFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -213,7 +221,8 @@ public final class VideosurveillanceFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -235,12 +244,13 @@ public final class VideosurveillanceFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = VideosurveillanceFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -259,7 +269,8 @@ public final class VideosurveillanceFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -281,12 +292,13 @@ public final class VideosurveillanceFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = VideosurveillanceFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -303,7 +315,8 @@ public final class VideosurveillanceFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -326,22 +339,23 @@ public final class VideosurveillanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSystemGroup = new SystemGroup(&#34;defaultSystemGroup&#34;, SystemGroupArgs.builder()        
-     *             .groupName(&#34;groupname&#34;)
-     *             .inProtocol(&#34;rtmp&#34;)
-     *             .outProtocol(&#34;flv&#34;)
-     *             .playDomain(&#34;your_plan_domain&#34;)
-     *             .pushDomain(&#34;your_push_domain&#34;)
+     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()        
+     *             .groupName("groupname")
+     *             .inProtocol("rtmp")
+     *             .outProtocol("flv")
+     *             .playDomain("your_plan_domain")
+     *             .pushDomain("your_push_domain")
      *             .build());
      * 
      *         final var default = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;vsGroup&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("vsGroup", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -358,7 +372,8 @@ public final class VideosurveillanceFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -381,22 +396,23 @@ public final class VideosurveillanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSystemGroup = new SystemGroup(&#34;defaultSystemGroup&#34;, SystemGroupArgs.builder()        
-     *             .groupName(&#34;groupname&#34;)
-     *             .inProtocol(&#34;rtmp&#34;)
-     *             .outProtocol(&#34;flv&#34;)
-     *             .playDomain(&#34;your_plan_domain&#34;)
-     *             .pushDomain(&#34;your_push_domain&#34;)
+     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()        
+     *             .groupName("groupname")
+     *             .inProtocol("rtmp")
+     *             .outProtocol("flv")
+     *             .playDomain("your_plan_domain")
+     *             .pushDomain("your_push_domain")
      *             .build());
      * 
      *         final var default = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;vsGroup&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("vsGroup", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -413,7 +429,8 @@ public final class VideosurveillanceFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -436,22 +453,23 @@ public final class VideosurveillanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSystemGroup = new SystemGroup(&#34;defaultSystemGroup&#34;, SystemGroupArgs.builder()        
-     *             .groupName(&#34;groupname&#34;)
-     *             .inProtocol(&#34;rtmp&#34;)
-     *             .outProtocol(&#34;flv&#34;)
-     *             .playDomain(&#34;your_plan_domain&#34;)
-     *             .pushDomain(&#34;your_push_domain&#34;)
+     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()        
+     *             .groupName("groupname")
+     *             .inProtocol("rtmp")
+     *             .outProtocol("flv")
+     *             .playDomain("your_plan_domain")
+     *             .pushDomain("your_push_domain")
      *             .build());
      * 
      *         final var default = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;vsGroup&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("vsGroup", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -468,7 +486,8 @@ public final class VideosurveillanceFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -491,22 +510,23 @@ public final class VideosurveillanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSystemGroup = new SystemGroup(&#34;defaultSystemGroup&#34;, SystemGroupArgs.builder()        
-     *             .groupName(&#34;groupname&#34;)
-     *             .inProtocol(&#34;rtmp&#34;)
-     *             .outProtocol(&#34;flv&#34;)
-     *             .playDomain(&#34;your_plan_domain&#34;)
-     *             .pushDomain(&#34;your_push_domain&#34;)
+     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()        
+     *             .groupName("groupname")
+     *             .inProtocol("rtmp")
+     *             .outProtocol("flv")
+     *             .playDomain("your_plan_domain")
+     *             .pushDomain("your_push_domain")
      *             .build());
      * 
      *         final var default = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;vsGroup&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("vsGroup", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -523,7 +543,8 @@ public final class VideosurveillanceFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -546,22 +567,23 @@ public final class VideosurveillanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSystemGroup = new SystemGroup(&#34;defaultSystemGroup&#34;, SystemGroupArgs.builder()        
-     *             .groupName(&#34;groupname&#34;)
-     *             .inProtocol(&#34;rtmp&#34;)
-     *             .outProtocol(&#34;flv&#34;)
-     *             .playDomain(&#34;your_plan_domain&#34;)
-     *             .pushDomain(&#34;your_push_domain&#34;)
+     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()        
+     *             .groupName("groupname")
+     *             .inProtocol("rtmp")
+     *             .outProtocol("flv")
+     *             .playDomain("your_plan_domain")
+     *             .pushDomain("your_push_domain")
      *             .build());
      * 
      *         final var default = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;vsGroup&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("vsGroup", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -578,7 +600,8 @@ public final class VideosurveillanceFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -601,22 +624,23 @@ public final class VideosurveillanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSystemGroup = new SystemGroup(&#34;defaultSystemGroup&#34;, SystemGroupArgs.builder()        
-     *             .groupName(&#34;groupname&#34;)
-     *             .inProtocol(&#34;rtmp&#34;)
-     *             .outProtocol(&#34;flv&#34;)
-     *             .playDomain(&#34;your_plan_domain&#34;)
-     *             .pushDomain(&#34;your_push_domain&#34;)
+     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()        
+     *             .groupName("groupname")
+     *             .inProtocol("rtmp")
+     *             .outProtocol("flv")
+     *             .playDomain("your_plan_domain")
+     *             .pushDomain("your_push_domain")
      *             .build());
      * 
      *         final var default = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;vsGroup&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("vsGroup", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

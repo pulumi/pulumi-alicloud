@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,49 +60,50 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
  *             .vpcId(exampleNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock("172.16.0.0/21")
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .vswitchName("terraform-example")
  *             .build());
  * 
- *         var exampleNatGateway = new NatGateway(&#34;exampleNatGateway&#34;, NatGatewayArgs.builder()        
+ *         var exampleNatGateway = new NatGateway("exampleNatGateway", NatGatewayArgs.builder()        
  *             .vpcId(exampleNetwork.id())
- *             .internetChargeType(&#34;PayByLcu&#34;)
- *             .natGatewayName(&#34;terraform-example&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .natType(&#34;Enhanced&#34;)
+ *             .internetChargeType("PayByLcu")
+ *             .natGatewayName("terraform-example")
+ *             .description("terraform-example")
+ *             .natType("Enhanced")
  *             .vswitchId(exampleSwitch.id())
- *             .networkType(&#34;intranet&#34;)
+ *             .networkType("intranet")
  *             .build());
  * 
- *         var exampleNatIpCidr = new NatIpCidr(&#34;exampleNatIpCidr&#34;, NatIpCidrArgs.builder()        
- *             .natIpCidr(&#34;192.168.0.0/16&#34;)
+ *         var exampleNatIpCidr = new NatIpCidr("exampleNatIpCidr", NatIpCidrArgs.builder()        
+ *             .natIpCidr("192.168.0.0/16")
  *             .natGatewayId(exampleNatGateway.id())
- *             .natIpCidrDescription(&#34;terraform-example&#34;)
- *             .natIpCidrName(&#34;terraform-example&#34;)
+ *             .natIpCidrDescription("terraform-example")
+ *             .natIpCidrName("terraform-example")
  *             .build());
  * 
- *         var exampleNatIp = new NatIp(&#34;exampleNatIp&#34;, NatIpArgs.builder()        
- *             .natIp(&#34;192.168.0.37&#34;)
+ *         var exampleNatIp = new NatIp("exampleNatIp", NatIpArgs.builder()        
+ *             .natIp("192.168.0.37")
  *             .natGatewayId(exampleNatGateway.id())
- *             .natIpDescription(&#34;example_value&#34;)
- *             .natIpName(&#34;example_value&#34;)
+ *             .natIpDescription("example_value")
+ *             .natIpName("example_value")
  *             .natIpCidr(exampleNatIpCidr.natIpCidr())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

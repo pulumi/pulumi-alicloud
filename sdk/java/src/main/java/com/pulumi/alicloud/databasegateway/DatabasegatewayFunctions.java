@@ -24,7 +24,8 @@ public final class DatabasegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -46,18 +47,19 @@ public final class DatabasegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseGatewayGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var nameRegex = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseGatewayGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -74,7 +76,8 @@ public final class DatabasegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -96,18 +99,19 @@ public final class DatabasegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseGatewayGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var nameRegex = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseGatewayGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -124,7 +128,8 @@ public final class DatabasegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -146,18 +151,19 @@ public final class DatabasegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseGatewayGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var nameRegex = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseGatewayGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -174,7 +180,8 @@ public final class DatabasegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -196,18 +203,19 @@ public final class DatabasegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseGatewayGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var nameRegex = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseGatewayGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -224,7 +232,8 @@ public final class DatabasegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -246,18 +255,19 @@ public final class DatabasegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseGatewayGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var nameRegex = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseGatewayGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -274,7 +284,8 @@ public final class DatabasegatewayFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -296,18 +307,19 @@ public final class DatabasegatewayFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseGatewayGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var nameRegex = DatabasegatewayFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;databaseGatewayGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("databaseGatewayGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,29 +50,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleMachineGroup = new MachineGroup(&#34;exampleMachineGroup&#34;, MachineGroupArgs.builder()        
+ *         var exampleMachineGroup = new MachineGroup("exampleMachineGroup", MachineGroupArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;terraform-example&#34;)
- *             .identifyType(&#34;ip&#34;)
- *             .topic(&#34;terraform&#34;)
+ *             .name("terraform-example")
+ *             .identifyType("ip")
+ *             .topic("terraform")
  *             .identifyLists(            
- *                 &#34;10.0.0.1&#34;,
- *                 &#34;10.0.0.2&#34;)
+ *                 "10.0.0.1",
+ *                 "10.0.0.2")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Module Support

@@ -83,7 +83,8 @@ public final class HbaseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -105,13 +106,14 @@ public final class HbaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;tf_testAccHBase&#34;)
-     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
+     *             .nameRegex("tf_testAccHBase")
+     *             .availabilityZone("cn-shenzhen-b")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -127,7 +129,8 @@ public final class HbaseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -149,13 +152,14 @@ public final class HbaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;tf_testAccHBase&#34;)
-     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
+     *             .nameRegex("tf_testAccHBase")
+     *             .availabilityZone("cn-shenzhen-b")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -171,7 +175,8 @@ public final class HbaseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -193,13 +198,14 @@ public final class HbaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;tf_testAccHBase&#34;)
-     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
+     *             .nameRegex("tf_testAccHBase")
+     *             .availabilityZone("cn-shenzhen-b")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -215,7 +221,8 @@ public final class HbaseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -237,13 +244,14 @@ public final class HbaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;tf_testAccHBase&#34;)
-     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
+     *             .nameRegex("tf_testAccHBase")
+     *             .availabilityZone("cn-shenzhen-b")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -259,7 +267,8 @@ public final class HbaseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -281,13 +290,14 @@ public final class HbaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;tf_testAccHBase&#34;)
-     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
+     *             .nameRegex("tf_testAccHBase")
+     *             .availabilityZone("cn-shenzhen-b")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -303,7 +313,8 @@ public final class HbaseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -325,13 +336,14 @@ public final class HbaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;tf_testAccHBase&#34;)
-     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
+     *             .nameRegex("tf_testAccHBase")
+     *             .availabilityZone("cn-shenzhen-b")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -346,7 +358,8 @@ public final class HbaseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -371,13 +384,14 @@ public final class HbaseFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = HbaseFunctions.getZones();
      * 
-     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -392,7 +406,8 @@ public final class HbaseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -417,13 +432,14 @@ public final class HbaseFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = HbaseFunctions.getZones();
      * 
-     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -438,7 +454,8 @@ public final class HbaseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -463,13 +480,14 @@ public final class HbaseFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = HbaseFunctions.getZones();
      * 
-     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -484,7 +502,8 @@ public final class HbaseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -509,13 +528,14 @@ public final class HbaseFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = HbaseFunctions.getZones();
      * 
-     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -530,7 +550,8 @@ public final class HbaseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -555,13 +576,14 @@ public final class HbaseFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = HbaseFunctions.getZones();
      * 
-     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -576,7 +598,8 @@ public final class HbaseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -601,13 +624,14 @@ public final class HbaseFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = HbaseFunctions.getZones();
      * 
-     *         var hbase = new Instance(&#34;hbase&#34;, InstanceArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

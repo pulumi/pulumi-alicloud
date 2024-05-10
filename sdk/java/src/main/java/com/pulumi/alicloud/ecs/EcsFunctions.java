@@ -123,7 +123,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -146,10 +147,11 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getActivations();
      * 
-     *         ctx.export(&#34;ecsActivationId1&#34;, ids.applyValue(getActivationsResult -&gt; getActivationsResult.activations()[0].id()));
+     *         ctx.export("ecsActivationId1", ids.applyValue(getActivationsResult -> getActivationsResult.activations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -166,7 +168,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -189,10 +192,11 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getActivations();
      * 
-     *         ctx.export(&#34;ecsActivationId1&#34;, ids.applyValue(getActivationsResult -&gt; getActivationsResult.activations()[0].id()));
+     *         ctx.export("ecsActivationId1", ids.applyValue(getActivationsResult -> getActivationsResult.activations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -209,7 +213,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -232,10 +237,11 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getActivations();
      * 
-     *         ctx.export(&#34;ecsActivationId1&#34;, ids.applyValue(getActivationsResult -&gt; getActivationsResult.activations()[0].id()));
+     *         ctx.export("ecsActivationId1", ids.applyValue(getActivationsResult -> getActivationsResult.activations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -252,7 +258,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -275,10 +282,11 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getActivations();
      * 
-     *         ctx.export(&#34;ecsActivationId1&#34;, ids.applyValue(getActivationsResult -&gt; getActivationsResult.activations()[0].id()));
+     *         ctx.export("ecsActivationId1", ids.applyValue(getActivationsResult -> getActivationsResult.activations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -295,7 +303,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -318,10 +327,11 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getActivations();
      * 
-     *         ctx.export(&#34;ecsActivationId1&#34;, ids.applyValue(getActivationsResult -&gt; getActivationsResult.activations()[0].id()));
+     *         ctx.export("ecsActivationId1", ids.applyValue(getActivationsResult -> getActivationsResult.activations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -338,7 +348,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -361,10 +372,11 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getActivations();
      * 
-     *         ctx.export(&#34;ecsActivationId1&#34;, ids.applyValue(getActivationsResult -&gt; getActivationsResult.activations()[0].id()));
+     *         ctx.export("ecsActivationId1", ids.applyValue(getActivationsResult -> getActivationsResult.activations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -381,7 +393,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -403,14 +416,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
-     *             .ids(&#34;sp-bp14e66xxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("sp-bp14e66xxxxxxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsAutoSnapshotPolicyId&#34;, example.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -427,7 +441,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -449,14 +464,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
-     *             .ids(&#34;sp-bp14e66xxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("sp-bp14e66xxxxxxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsAutoSnapshotPolicyId&#34;, example.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -473,7 +489,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -495,14 +512,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
-     *             .ids(&#34;sp-bp14e66xxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("sp-bp14e66xxxxxxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsAutoSnapshotPolicyId&#34;, example.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -519,7 +537,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -541,14 +560,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
-     *             .ids(&#34;sp-bp14e66xxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("sp-bp14e66xxxxxxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsAutoSnapshotPolicyId&#34;, example.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -565,7 +585,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -587,14 +608,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
-     *             .ids(&#34;sp-bp14e66xxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("sp-bp14e66xxxxxxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsAutoSnapshotPolicyId&#34;, example.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -611,7 +633,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -633,14 +656,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getAutoSnapshotPolicies(GetAutoSnapshotPoliciesArgs.builder()
-     *             .ids(&#34;sp-bp14e66xxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("sp-bp14e66xxxxxxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsAutoSnapshotPolicyId&#34;, example.applyValue(getAutoSnapshotPoliciesResult -&gt; getAutoSnapshotPoliciesResult.policies()[0].id()));
+     *         ctx.export("firstEcsAutoSnapshotPolicyId", example.applyValue(getAutoSnapshotPoliciesResult -> getAutoSnapshotPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -655,7 +679,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -679,14 +704,15 @@ public final class EcsFunctions {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
      *             .ids(defaultAlicloudEcsCapacityReservation.id())
      *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
-     *             .instanceType(&#34;ecs.c6.large&#34;)
-     *             .platform(&#34;linux&#34;)
+     *             .instanceType("ecs.c6.large")
+     *             .platform("linux")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEcsCapacityReservationExampleId&#34;, default_.reservations()[0].id());
+     *         ctx.export("alicloudEcsCapacityReservationExampleId", default_.reservations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -701,7 +727,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -725,14 +752,15 @@ public final class EcsFunctions {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
      *             .ids(defaultAlicloudEcsCapacityReservation.id())
      *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
-     *             .instanceType(&#34;ecs.c6.large&#34;)
-     *             .platform(&#34;linux&#34;)
+     *             .instanceType("ecs.c6.large")
+     *             .platform("linux")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEcsCapacityReservationExampleId&#34;, default_.reservations()[0].id());
+     *         ctx.export("alicloudEcsCapacityReservationExampleId", default_.reservations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -747,7 +775,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -771,14 +800,15 @@ public final class EcsFunctions {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
      *             .ids(defaultAlicloudEcsCapacityReservation.id())
      *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
-     *             .instanceType(&#34;ecs.c6.large&#34;)
-     *             .platform(&#34;linux&#34;)
+     *             .instanceType("ecs.c6.large")
+     *             .platform("linux")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEcsCapacityReservationExampleId&#34;, default_.reservations()[0].id());
+     *         ctx.export("alicloudEcsCapacityReservationExampleId", default_.reservations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -793,7 +823,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -817,14 +848,15 @@ public final class EcsFunctions {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
      *             .ids(defaultAlicloudEcsCapacityReservation.id())
      *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
-     *             .instanceType(&#34;ecs.c6.large&#34;)
-     *             .platform(&#34;linux&#34;)
+     *             .instanceType("ecs.c6.large")
+     *             .platform("linux")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEcsCapacityReservationExampleId&#34;, default_.reservations()[0].id());
+     *         ctx.export("alicloudEcsCapacityReservationExampleId", default_.reservations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -839,7 +871,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -863,14 +896,15 @@ public final class EcsFunctions {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
      *             .ids(defaultAlicloudEcsCapacityReservation.id())
      *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
-     *             .instanceType(&#34;ecs.c6.large&#34;)
-     *             .platform(&#34;linux&#34;)
+     *             .instanceType("ecs.c6.large")
+     *             .platform("linux")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEcsCapacityReservationExampleId&#34;, default_.reservations()[0].id());
+     *         ctx.export("alicloudEcsCapacityReservationExampleId", default_.reservations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -885,7 +919,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -909,14 +944,15 @@ public final class EcsFunctions {
      *         final var default = EcsFunctions.getCapacityReservations(GetCapacityReservationsArgs.builder()
      *             .ids(defaultAlicloudEcsCapacityReservation.id())
      *             .nameRegex(defaultAlicloudEcsCapacityReservation.name())
-     *             .instanceType(&#34;ecs.c6.large&#34;)
-     *             .platform(&#34;linux&#34;)
+     *             .instanceType("ecs.c6.large")
+     *             .platform("linux")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEcsCapacityReservationExampleId&#34;, default_.reservations()[0].id());
+     *         ctx.export("alicloudEcsCapacityReservationExampleId", default_.reservations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -933,7 +969,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -955,14 +992,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getCommands(GetCommandsArgs.builder()
-     *             .ids(&#34;E2RY53-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("E2RY53-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsCommandId&#34;, example.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *         ctx.export("firstEcsCommandId", example.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -979,7 +1017,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1001,14 +1040,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getCommands(GetCommandsArgs.builder()
-     *             .ids(&#34;E2RY53-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("E2RY53-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsCommandId&#34;, example.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *         ctx.export("firstEcsCommandId", example.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1025,7 +1065,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1047,14 +1088,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getCommands(GetCommandsArgs.builder()
-     *             .ids(&#34;E2RY53-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("E2RY53-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsCommandId&#34;, example.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *         ctx.export("firstEcsCommandId", example.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1071,7 +1113,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1093,14 +1136,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getCommands(GetCommandsArgs.builder()
-     *             .ids(&#34;E2RY53-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("E2RY53-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsCommandId&#34;, example.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *         ctx.export("firstEcsCommandId", example.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1117,7 +1161,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1139,14 +1184,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getCommands(GetCommandsArgs.builder()
-     *             .ids(&#34;E2RY53-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("E2RY53-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsCommandId&#34;, example.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *         ctx.export("firstEcsCommandId", example.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1163,7 +1209,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1185,14 +1232,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getCommands(GetCommandsArgs.builder()
-     *             .ids(&#34;E2RY53-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("E2RY53-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsCommandId&#34;, example.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *         ctx.export("firstEcsCommandId", example.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1207,7 +1255,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1230,15 +1279,16 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .nameRegex(&#34;tf-testAcc&#34;)
-     *             .dedicatedHostType(&#34;ddh.g5&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .nameRegex("tf-testAcc")
+     *             .dedicatedHostType("ddh.g5")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDedicatedHostsId&#34;, dedicatedHostsDs.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1253,7 +1303,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1276,15 +1327,16 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .nameRegex(&#34;tf-testAcc&#34;)
-     *             .dedicatedHostType(&#34;ddh.g5&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .nameRegex("tf-testAcc")
+     *             .dedicatedHostType("ddh.g5")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDedicatedHostsId&#34;, dedicatedHostsDs.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1299,7 +1351,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1322,15 +1375,16 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .nameRegex(&#34;tf-testAcc&#34;)
-     *             .dedicatedHostType(&#34;ddh.g5&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .nameRegex("tf-testAcc")
+     *             .dedicatedHostType("ddh.g5")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDedicatedHostsId&#34;, dedicatedHostsDs.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1345,7 +1399,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1368,15 +1423,16 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .nameRegex(&#34;tf-testAcc&#34;)
-     *             .dedicatedHostType(&#34;ddh.g5&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .nameRegex("tf-testAcc")
+     *             .dedicatedHostType("ddh.g5")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDedicatedHostsId&#34;, dedicatedHostsDs.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1391,7 +1447,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1414,15 +1471,16 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .nameRegex(&#34;tf-testAcc&#34;)
-     *             .dedicatedHostType(&#34;ddh.g5&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .nameRegex("tf-testAcc")
+     *             .dedicatedHostType("ddh.g5")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDedicatedHostsId&#34;, dedicatedHostsDs.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1437,7 +1495,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1460,15 +1519,16 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dedicatedHostsDs = EcsFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .nameRegex(&#34;tf-testAcc&#34;)
-     *             .dedicatedHostType(&#34;ddh.g5&#34;)
-     *             .status(&#34;Available&#34;)
+     *             .nameRegex("tf-testAcc")
+     *             .dedicatedHostType("ddh.g5")
+     *             .status("Available")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDedicatedHostsId&#34;, dedicatedHostsDs.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("firstDedicatedHostsId", dedicatedHostsDs.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1483,7 +1543,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1505,13 +1566,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var disksDs = EcsFunctions.getDisks(GetDisksArgs.builder()
-     *             .nameRegex(&#34;sample_disk&#34;)
+     *             .nameRegex("sample_disk")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDiskId&#34;, disksDs.applyValue(getDisksResult -&gt; getDisksResult.disks()[0].id()));
+     *         ctx.export("firstDiskId", disksDs.applyValue(getDisksResult -> getDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1526,7 +1588,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1548,13 +1611,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var disksDs = EcsFunctions.getDisks(GetDisksArgs.builder()
-     *             .nameRegex(&#34;sample_disk&#34;)
+     *             .nameRegex("sample_disk")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDiskId&#34;, disksDs.applyValue(getDisksResult -&gt; getDisksResult.disks()[0].id()));
+     *         ctx.export("firstDiskId", disksDs.applyValue(getDisksResult -> getDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1569,7 +1633,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1591,13 +1656,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var disksDs = EcsFunctions.getDisks(GetDisksArgs.builder()
-     *             .nameRegex(&#34;sample_disk&#34;)
+     *             .nameRegex("sample_disk")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDiskId&#34;, disksDs.applyValue(getDisksResult -&gt; getDisksResult.disks()[0].id()));
+     *         ctx.export("firstDiskId", disksDs.applyValue(getDisksResult -> getDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1612,7 +1678,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1634,13 +1701,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var disksDs = EcsFunctions.getDisks(GetDisksArgs.builder()
-     *             .nameRegex(&#34;sample_disk&#34;)
+     *             .nameRegex("sample_disk")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDiskId&#34;, disksDs.applyValue(getDisksResult -&gt; getDisksResult.disks()[0].id()));
+     *         ctx.export("firstDiskId", disksDs.applyValue(getDisksResult -> getDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1655,7 +1723,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1677,13 +1746,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var disksDs = EcsFunctions.getDisks(GetDisksArgs.builder()
-     *             .nameRegex(&#34;sample_disk&#34;)
+     *             .nameRegex("sample_disk")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDiskId&#34;, disksDs.applyValue(getDisksResult -&gt; getDisksResult.disks()[0].id()));
+     *         ctx.export("firstDiskId", disksDs.applyValue(getDisksResult -> getDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1698,7 +1768,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1720,13 +1791,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var disksDs = EcsFunctions.getDisks(GetDisksArgs.builder()
-     *             .nameRegex(&#34;sample_disk&#34;)
+     *             .nameRegex("sample_disk")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDiskId&#34;, disksDs.applyValue(getDisksResult -&gt; getDisksResult.disks()[0].id()));
+     *         ctx.export("firstDiskId", disksDs.applyValue(getDisksResult -> getDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1743,7 +1815,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1765,33 +1838,34 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId1&#34;, ids.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId1", ids.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .nameRegex(&#34;^my-DedicatedHostCluster&#34;)
+     *             .nameRegex("^my-DedicatedHostCluster")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId2&#34;, nameRegex.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .zoneId(&#34;example_value&#34;)
+     *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId3&#34;, zoneId.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .dedicatedHostClusterName(&#34;example_value&#34;)
+     *             .dedicatedHostClusterName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId4&#34;, clusterName.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .dedicatedHostClusterIds(&#34;example_id&#34;)
+     *             .dedicatedHostClusterIds("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId5&#34;, clusterIds.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1808,7 +1882,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1830,33 +1905,34 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId1&#34;, ids.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId1", ids.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .nameRegex(&#34;^my-DedicatedHostCluster&#34;)
+     *             .nameRegex("^my-DedicatedHostCluster")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId2&#34;, nameRegex.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .zoneId(&#34;example_value&#34;)
+     *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId3&#34;, zoneId.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .dedicatedHostClusterName(&#34;example_value&#34;)
+     *             .dedicatedHostClusterName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId4&#34;, clusterName.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .dedicatedHostClusterIds(&#34;example_id&#34;)
+     *             .dedicatedHostClusterIds("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId5&#34;, clusterIds.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1873,7 +1949,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1895,33 +1972,34 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId1&#34;, ids.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId1", ids.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .nameRegex(&#34;^my-DedicatedHostCluster&#34;)
+     *             .nameRegex("^my-DedicatedHostCluster")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId2&#34;, nameRegex.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .zoneId(&#34;example_value&#34;)
+     *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId3&#34;, zoneId.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .dedicatedHostClusterName(&#34;example_value&#34;)
+     *             .dedicatedHostClusterName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId4&#34;, clusterName.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .dedicatedHostClusterIds(&#34;example_id&#34;)
+     *             .dedicatedHostClusterIds("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId5&#34;, clusterIds.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1938,7 +2016,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1960,33 +2039,34 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId1&#34;, ids.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId1", ids.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .nameRegex(&#34;^my-DedicatedHostCluster&#34;)
+     *             .nameRegex("^my-DedicatedHostCluster")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId2&#34;, nameRegex.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .zoneId(&#34;example_value&#34;)
+     *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId3&#34;, zoneId.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .dedicatedHostClusterName(&#34;example_value&#34;)
+     *             .dedicatedHostClusterName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId4&#34;, clusterName.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .dedicatedHostClusterIds(&#34;example_id&#34;)
+     *             .dedicatedHostClusterIds("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId5&#34;, clusterIds.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2003,7 +2083,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2025,33 +2106,34 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId1&#34;, ids.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId1", ids.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .nameRegex(&#34;^my-DedicatedHostCluster&#34;)
+     *             .nameRegex("^my-DedicatedHostCluster")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId2&#34;, nameRegex.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .zoneId(&#34;example_value&#34;)
+     *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId3&#34;, zoneId.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .dedicatedHostClusterName(&#34;example_value&#34;)
+     *             .dedicatedHostClusterName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId4&#34;, clusterName.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .dedicatedHostClusterIds(&#34;example_id&#34;)
+     *             .dedicatedHostClusterIds("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId5&#34;, clusterIds.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2068,7 +2150,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2090,33 +2173,34 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId1&#34;, ids.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId1", ids.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .nameRegex(&#34;^my-DedicatedHostCluster&#34;)
+     *             .nameRegex("^my-DedicatedHostCluster")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId2&#34;, nameRegex.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId2", nameRegex.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var zoneId = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .zoneId(&#34;example_value&#34;)
+     *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId3&#34;, zoneId.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId3", zoneId.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var clusterName = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .dedicatedHostClusterName(&#34;example_value&#34;)
+     *             .dedicatedHostClusterName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId4&#34;, clusterName.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId4", clusterName.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *         final var clusterIds = EcsFunctions.getEcsDedicatedHostClusters(GetEcsDedicatedHostClustersArgs.builder()
-     *             .dedicatedHostClusterIds(&#34;example_id&#34;)
+     *             .dedicatedHostClusterIds("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDedicatedHostClusterId5&#34;, clusterIds.applyValue(getEcsDedicatedHostClustersResult -&gt; getEcsDedicatedHostClustersResult.clusters()[0].id()));
+     *         ctx.export("ecsDedicatedHostClusterId5", clusterIds.applyValue(getEcsDedicatedHostClustersResult -> getEcsDedicatedHostClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2133,7 +2217,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2155,18 +2240,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDeploymentSetId1&#34;, ids.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId1", ids.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
-     *             .nameRegex(&#34;^my-DeploymentSet&#34;)
+     *             .nameRegex("^my-DeploymentSet")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDeploymentSetId2&#34;, nameRegex.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId2", nameRegex.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2183,7 +2269,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2205,18 +2292,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDeploymentSetId1&#34;, ids.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId1", ids.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
-     *             .nameRegex(&#34;^my-DeploymentSet&#34;)
+     *             .nameRegex("^my-DeploymentSet")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDeploymentSetId2&#34;, nameRegex.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId2", nameRegex.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2233,7 +2321,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2255,18 +2344,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDeploymentSetId1&#34;, ids.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId1", ids.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
-     *             .nameRegex(&#34;^my-DeploymentSet&#34;)
+     *             .nameRegex("^my-DeploymentSet")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDeploymentSetId2&#34;, nameRegex.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId2", nameRegex.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2283,7 +2373,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2305,18 +2396,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDeploymentSetId1&#34;, ids.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId1", ids.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
-     *             .nameRegex(&#34;^my-DeploymentSet&#34;)
+     *             .nameRegex("^my-DeploymentSet")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDeploymentSetId2&#34;, nameRegex.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId2", nameRegex.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2333,7 +2425,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2355,18 +2448,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDeploymentSetId1&#34;, ids.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId1", ids.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
-     *             .nameRegex(&#34;^my-DeploymentSet&#34;)
+     *             .nameRegex("^my-DeploymentSet")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDeploymentSetId2&#34;, nameRegex.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId2", nameRegex.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2383,7 +2477,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2405,18 +2500,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDeploymentSetId1&#34;, ids.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId1", ids.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsDeploymentSets(GetEcsDeploymentSetsArgs.builder()
-     *             .nameRegex(&#34;^my-DeploymentSet&#34;)
+     *             .nameRegex("^my-DeploymentSet")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsDeploymentSetId2&#34;, nameRegex.applyValue(getEcsDeploymentSetsResult -&gt; getEcsDeploymentSetsResult.sets()[0].id()));
+     *         ctx.export("ecsDeploymentSetId2", nameRegex.applyValue(getEcsDeploymentSetsResult -> getEcsDeploymentSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2433,7 +2529,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2455,14 +2552,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
-     *             .ids(&#34;d-artgdsvdvxxxx&#34;)
-     *             .nameRegex(&#34;tf-test&#34;)
+     *             .ids("d-artgdsvdvxxxx")
+     *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsDiskId&#34;, example.applyValue(getEcsDisksResult -&gt; getEcsDisksResult.disks()[0].id()));
+     *         ctx.export("firstEcsDiskId", example.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2479,7 +2577,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2501,14 +2600,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
-     *             .ids(&#34;d-artgdsvdvxxxx&#34;)
-     *             .nameRegex(&#34;tf-test&#34;)
+     *             .ids("d-artgdsvdvxxxx")
+     *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsDiskId&#34;, example.applyValue(getEcsDisksResult -&gt; getEcsDisksResult.disks()[0].id()));
+     *         ctx.export("firstEcsDiskId", example.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2525,7 +2625,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2547,14 +2648,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
-     *             .ids(&#34;d-artgdsvdvxxxx&#34;)
-     *             .nameRegex(&#34;tf-test&#34;)
+     *             .ids("d-artgdsvdvxxxx")
+     *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsDiskId&#34;, example.applyValue(getEcsDisksResult -&gt; getEcsDisksResult.disks()[0].id()));
+     *         ctx.export("firstEcsDiskId", example.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2571,7 +2673,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2593,14 +2696,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
-     *             .ids(&#34;d-artgdsvdvxxxx&#34;)
-     *             .nameRegex(&#34;tf-test&#34;)
+     *             .ids("d-artgdsvdvxxxx")
+     *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsDiskId&#34;, example.applyValue(getEcsDisksResult -&gt; getEcsDisksResult.disks()[0].id()));
+     *         ctx.export("firstEcsDiskId", example.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2617,7 +2721,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2639,14 +2744,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
-     *             .ids(&#34;d-artgdsvdvxxxx&#34;)
-     *             .nameRegex(&#34;tf-test&#34;)
+     *             .ids("d-artgdsvdvxxxx")
+     *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsDiskId&#34;, example.applyValue(getEcsDisksResult -&gt; getEcsDisksResult.disks()[0].id()));
+     *         ctx.export("firstEcsDiskId", example.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2663,7 +2769,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2685,14 +2792,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsDisks(GetEcsDisksArgs.builder()
-     *             .ids(&#34;d-artgdsvdvxxxx&#34;)
-     *             .nameRegex(&#34;tf-test&#34;)
+     *             .ids("d-artgdsvdvxxxx")
+     *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsDiskId&#34;, example.applyValue(getEcsDisksResult -&gt; getEcsDisksResult.disks()[0].id()));
+     *         ctx.export("firstEcsDiskId", example.applyValue(getEcsDisksResult -> getEcsDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2709,7 +2817,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2731,18 +2840,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImageComponentId1&#34;, ids.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId1", ids.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
-     *             .nameRegex(&#34;^my-ImageComponent&#34;)
+     *             .nameRegex("^my-ImageComponent")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImageComponentId2&#34;, nameRegex.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId2", nameRegex.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2759,7 +2869,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2781,18 +2892,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImageComponentId1&#34;, ids.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId1", ids.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
-     *             .nameRegex(&#34;^my-ImageComponent&#34;)
+     *             .nameRegex("^my-ImageComponent")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImageComponentId2&#34;, nameRegex.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId2", nameRegex.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2809,7 +2921,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2831,18 +2944,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImageComponentId1&#34;, ids.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId1", ids.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
-     *             .nameRegex(&#34;^my-ImageComponent&#34;)
+     *             .nameRegex("^my-ImageComponent")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImageComponentId2&#34;, nameRegex.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId2", nameRegex.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2859,7 +2973,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2881,18 +2996,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImageComponentId1&#34;, ids.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId1", ids.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
-     *             .nameRegex(&#34;^my-ImageComponent&#34;)
+     *             .nameRegex("^my-ImageComponent")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImageComponentId2&#34;, nameRegex.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId2", nameRegex.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2909,7 +3025,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2931,18 +3048,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImageComponentId1&#34;, ids.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId1", ids.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
-     *             .nameRegex(&#34;^my-ImageComponent&#34;)
+     *             .nameRegex("^my-ImageComponent")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImageComponentId2&#34;, nameRegex.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId2", nameRegex.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2959,7 +3077,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2981,18 +3100,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImageComponentId1&#34;, ids.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId1", ids.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsImageComponents(GetEcsImageComponentsArgs.builder()
-     *             .nameRegex(&#34;^my-ImageComponent&#34;)
+     *             .nameRegex("^my-ImageComponent")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImageComponentId2&#34;, nameRegex.applyValue(getEcsImageComponentsResult -&gt; getEcsImageComponentsResult.components()[0].id()));
+     *         ctx.export("ecsImageComponentId2", nameRegex.applyValue(getEcsImageComponentsResult -> getEcsImageComponentsResult.components()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3009,7 +3129,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3031,18 +3152,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImagePipelineId1&#34;, ids.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId1", ids.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
-     *             .nameRegex(&#34;^my-ImagePipeline&#34;)
+     *             .nameRegex("^my-ImagePipeline")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImagePipelineId2&#34;, nameRegex.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId2", nameRegex.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3059,7 +3181,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3081,18 +3204,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImagePipelineId1&#34;, ids.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId1", ids.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
-     *             .nameRegex(&#34;^my-ImagePipeline&#34;)
+     *             .nameRegex("^my-ImagePipeline")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImagePipelineId2&#34;, nameRegex.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId2", nameRegex.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3109,7 +3233,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3131,18 +3256,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImagePipelineId1&#34;, ids.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId1", ids.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
-     *             .nameRegex(&#34;^my-ImagePipeline&#34;)
+     *             .nameRegex("^my-ImagePipeline")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImagePipelineId2&#34;, nameRegex.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId2", nameRegex.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3159,7 +3285,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3181,18 +3308,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImagePipelineId1&#34;, ids.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId1", ids.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
-     *             .nameRegex(&#34;^my-ImagePipeline&#34;)
+     *             .nameRegex("^my-ImagePipeline")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImagePipelineId2&#34;, nameRegex.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId2", nameRegex.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3209,7 +3337,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3231,18 +3360,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImagePipelineId1&#34;, ids.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId1", ids.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
-     *             .nameRegex(&#34;^my-ImagePipeline&#34;)
+     *             .nameRegex("^my-ImagePipeline")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImagePipelineId2&#34;, nameRegex.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId2", nameRegex.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3259,7 +3389,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3281,18 +3412,19 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImagePipelineId1&#34;, ids.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId1", ids.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsImagePipeline(GetEcsImagePipelineArgs.builder()
-     *             .nameRegex(&#34;^my-ImagePipeline&#34;)
+     *             .nameRegex("^my-ImagePipeline")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsImagePipelineId2&#34;, nameRegex.applyValue(getEcsImagePipelineResult -&gt; getEcsImagePipelineResult.pipelines()[0].id()));
+     *         ctx.export("ecsImagePipelineId2", nameRegex.applyValue(getEcsImagePipelineResult -> getEcsImagePipelineResult.pipelines()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3309,7 +3441,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3331,13 +3464,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsInvocations(GetEcsInvocationsArgs.builder()
-     *             .ids(&#34;example-id&#34;)
+     *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsInvocationId1&#34;, ids.applyValue(getEcsInvocationsResult -&gt; getEcsInvocationsResult.invocations()[0].id()));
+     *         ctx.export("ecsInvocationId1", ids.applyValue(getEcsInvocationsResult -> getEcsInvocationsResult.invocations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3354,7 +3488,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3376,13 +3511,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsInvocations(GetEcsInvocationsArgs.builder()
-     *             .ids(&#34;example-id&#34;)
+     *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsInvocationId1&#34;, ids.applyValue(getEcsInvocationsResult -&gt; getEcsInvocationsResult.invocations()[0].id()));
+     *         ctx.export("ecsInvocationId1", ids.applyValue(getEcsInvocationsResult -> getEcsInvocationsResult.invocations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3399,7 +3535,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3421,13 +3558,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsInvocations(GetEcsInvocationsArgs.builder()
-     *             .ids(&#34;example-id&#34;)
+     *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsInvocationId1&#34;, ids.applyValue(getEcsInvocationsResult -&gt; getEcsInvocationsResult.invocations()[0].id()));
+     *         ctx.export("ecsInvocationId1", ids.applyValue(getEcsInvocationsResult -> getEcsInvocationsResult.invocations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3444,7 +3582,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3466,13 +3605,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsInvocations(GetEcsInvocationsArgs.builder()
-     *             .ids(&#34;example-id&#34;)
+     *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsInvocationId1&#34;, ids.applyValue(getEcsInvocationsResult -&gt; getEcsInvocationsResult.invocations()[0].id()));
+     *         ctx.export("ecsInvocationId1", ids.applyValue(getEcsInvocationsResult -> getEcsInvocationsResult.invocations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3489,7 +3629,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3511,13 +3652,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsInvocations(GetEcsInvocationsArgs.builder()
-     *             .ids(&#34;example-id&#34;)
+     *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsInvocationId1&#34;, ids.applyValue(getEcsInvocationsResult -&gt; getEcsInvocationsResult.invocations()[0].id()));
+     *         ctx.export("ecsInvocationId1", ids.applyValue(getEcsInvocationsResult -> getEcsInvocationsResult.invocations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3534,7 +3676,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3556,13 +3699,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsInvocations(GetEcsInvocationsArgs.builder()
-     *             .ids(&#34;example-id&#34;)
+     *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsInvocationId1&#34;, ids.applyValue(getEcsInvocationsResult -&gt; getEcsInvocationsResult.invocations()[0].id()));
+     *         ctx.export("ecsInvocationId1", ids.applyValue(getEcsInvocationsResult -> getEcsInvocationsResult.invocations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3579,7 +3723,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3601,14 +3746,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
-     *             .ids(&#34;key_pair_name&#34;)
-     *             .nameRegex(&#34;key_pair_name&#34;)
+     *             .ids("key_pair_name")
+     *             .nameRegex("key_pair_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsKeyPairId&#34;, example.applyValue(getEcsKeyPairsResult -&gt; getEcsKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("firstEcsKeyPairId", example.applyValue(getEcsKeyPairsResult -> getEcsKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3625,7 +3771,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3647,14 +3794,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
-     *             .ids(&#34;key_pair_name&#34;)
-     *             .nameRegex(&#34;key_pair_name&#34;)
+     *             .ids("key_pair_name")
+     *             .nameRegex("key_pair_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsKeyPairId&#34;, example.applyValue(getEcsKeyPairsResult -&gt; getEcsKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("firstEcsKeyPairId", example.applyValue(getEcsKeyPairsResult -> getEcsKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3671,7 +3819,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3693,14 +3842,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
-     *             .ids(&#34;key_pair_name&#34;)
-     *             .nameRegex(&#34;key_pair_name&#34;)
+     *             .ids("key_pair_name")
+     *             .nameRegex("key_pair_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsKeyPairId&#34;, example.applyValue(getEcsKeyPairsResult -&gt; getEcsKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("firstEcsKeyPairId", example.applyValue(getEcsKeyPairsResult -> getEcsKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3717,7 +3867,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3739,14 +3890,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
-     *             .ids(&#34;key_pair_name&#34;)
-     *             .nameRegex(&#34;key_pair_name&#34;)
+     *             .ids("key_pair_name")
+     *             .nameRegex("key_pair_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsKeyPairId&#34;, example.applyValue(getEcsKeyPairsResult -&gt; getEcsKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("firstEcsKeyPairId", example.applyValue(getEcsKeyPairsResult -> getEcsKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3763,7 +3915,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3785,14 +3938,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
-     *             .ids(&#34;key_pair_name&#34;)
-     *             .nameRegex(&#34;key_pair_name&#34;)
+     *             .ids("key_pair_name")
+     *             .nameRegex("key_pair_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsKeyPairId&#34;, example.applyValue(getEcsKeyPairsResult -&gt; getEcsKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("firstEcsKeyPairId", example.applyValue(getEcsKeyPairsResult -> getEcsKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3809,7 +3963,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3831,14 +3986,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsKeyPairs(GetEcsKeyPairsArgs.builder()
-     *             .ids(&#34;key_pair_name&#34;)
-     *             .nameRegex(&#34;key_pair_name&#34;)
+     *             .ids("key_pair_name")
+     *             .nameRegex("key_pair_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsKeyPairId&#34;, example.applyValue(getEcsKeyPairsResult -&gt; getEcsKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("firstEcsKeyPairId", example.applyValue(getEcsKeyPairsResult -> getEcsKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3855,7 +4011,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3877,14 +4034,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
-     *             .ids(&#34;lt-bp1a469uxxxxxx&#34;)
-     *             .nameRegex(&#34;your_launch_name&#34;)
+     *             .ids("lt-bp1a469uxxxxxx")
+     *             .nameRegex("your_launch_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsLaunchTemplateId&#34;, example.applyValue(getEcsLaunchTemplatesResult -&gt; getEcsLaunchTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3901,7 +4059,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3923,14 +4082,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
-     *             .ids(&#34;lt-bp1a469uxxxxxx&#34;)
-     *             .nameRegex(&#34;your_launch_name&#34;)
+     *             .ids("lt-bp1a469uxxxxxx")
+     *             .nameRegex("your_launch_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsLaunchTemplateId&#34;, example.applyValue(getEcsLaunchTemplatesResult -&gt; getEcsLaunchTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3947,7 +4107,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3969,14 +4130,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
-     *             .ids(&#34;lt-bp1a469uxxxxxx&#34;)
-     *             .nameRegex(&#34;your_launch_name&#34;)
+     *             .ids("lt-bp1a469uxxxxxx")
+     *             .nameRegex("your_launch_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsLaunchTemplateId&#34;, example.applyValue(getEcsLaunchTemplatesResult -&gt; getEcsLaunchTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3993,7 +4155,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4015,14 +4178,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
-     *             .ids(&#34;lt-bp1a469uxxxxxx&#34;)
-     *             .nameRegex(&#34;your_launch_name&#34;)
+     *             .ids("lt-bp1a469uxxxxxx")
+     *             .nameRegex("your_launch_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsLaunchTemplateId&#34;, example.applyValue(getEcsLaunchTemplatesResult -&gt; getEcsLaunchTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4039,7 +4203,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4061,14 +4226,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
-     *             .ids(&#34;lt-bp1a469uxxxxxx&#34;)
-     *             .nameRegex(&#34;your_launch_name&#34;)
+     *             .ids("lt-bp1a469uxxxxxx")
+     *             .nameRegex("your_launch_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsLaunchTemplateId&#34;, example.applyValue(getEcsLaunchTemplatesResult -&gt; getEcsLaunchTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4085,7 +4251,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4107,14 +4274,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
-     *             .ids(&#34;lt-bp1a469uxxxxxx&#34;)
-     *             .nameRegex(&#34;your_launch_name&#34;)
+     *             .ids("lt-bp1a469uxxxxxx")
+     *             .nameRegex("your_launch_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsLaunchTemplateId&#34;, example.applyValue(getEcsLaunchTemplatesResult -&gt; getEcsLaunchTemplatesResult.templates()[0].id()));
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4131,7 +4299,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4153,14 +4322,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsNetworkInterfacePermissions(GetEcsNetworkInterfacePermissionsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .networkInterfaceId(&#34;example_value&#34;)
+     *             .ids("example_value")
+     *             .networkInterfaceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsNetworkInterfacePermissionId1&#34;, ids.applyValue(getEcsNetworkInterfacePermissionsResult -&gt; getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
+     *         ctx.export("ecsNetworkInterfacePermissionId1", ids.applyValue(getEcsNetworkInterfacePermissionsResult -> getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4177,7 +4347,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4199,14 +4370,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsNetworkInterfacePermissions(GetEcsNetworkInterfacePermissionsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .networkInterfaceId(&#34;example_value&#34;)
+     *             .ids("example_value")
+     *             .networkInterfaceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsNetworkInterfacePermissionId1&#34;, ids.applyValue(getEcsNetworkInterfacePermissionsResult -&gt; getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
+     *         ctx.export("ecsNetworkInterfacePermissionId1", ids.applyValue(getEcsNetworkInterfacePermissionsResult -> getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4223,7 +4395,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4245,14 +4418,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsNetworkInterfacePermissions(GetEcsNetworkInterfacePermissionsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .networkInterfaceId(&#34;example_value&#34;)
+     *             .ids("example_value")
+     *             .networkInterfaceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsNetworkInterfacePermissionId1&#34;, ids.applyValue(getEcsNetworkInterfacePermissionsResult -&gt; getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
+     *         ctx.export("ecsNetworkInterfacePermissionId1", ids.applyValue(getEcsNetworkInterfacePermissionsResult -> getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4269,7 +4443,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4291,14 +4466,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsNetworkInterfacePermissions(GetEcsNetworkInterfacePermissionsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .networkInterfaceId(&#34;example_value&#34;)
+     *             .ids("example_value")
+     *             .networkInterfaceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsNetworkInterfacePermissionId1&#34;, ids.applyValue(getEcsNetworkInterfacePermissionsResult -&gt; getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
+     *         ctx.export("ecsNetworkInterfacePermissionId1", ids.applyValue(getEcsNetworkInterfacePermissionsResult -> getEcsNetworkInterfacePermissionsResult.permissions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4315,7 +4491,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4337,14 +4514,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
-     *             .ids(&#34;eni-abcd1234&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("eni-abcd1234")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsNetworkInterfaceId&#34;, example.applyValue(getEcsNetworkInterfacesResult -&gt; getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4361,7 +4539,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4383,14 +4562,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
-     *             .ids(&#34;eni-abcd1234&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("eni-abcd1234")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsNetworkInterfaceId&#34;, example.applyValue(getEcsNetworkInterfacesResult -&gt; getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4407,7 +4587,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4429,14 +4610,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
-     *             .ids(&#34;eni-abcd1234&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("eni-abcd1234")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsNetworkInterfaceId&#34;, example.applyValue(getEcsNetworkInterfacesResult -&gt; getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4453,7 +4635,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4475,14 +4658,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
-     *             .ids(&#34;eni-abcd1234&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("eni-abcd1234")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsNetworkInterfaceId&#34;, example.applyValue(getEcsNetworkInterfacesResult -&gt; getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4499,7 +4683,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4521,14 +4706,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
-     *             .ids(&#34;eni-abcd1234&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("eni-abcd1234")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsNetworkInterfaceId&#34;, example.applyValue(getEcsNetworkInterfacesResult -&gt; getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4545,7 +4731,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4567,14 +4754,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsNetworkInterfaces(GetEcsNetworkInterfacesArgs.builder()
-     *             .ids(&#34;eni-abcd1234&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("eni-abcd1234")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsNetworkInterfaceId&#34;, example.applyValue(getEcsNetworkInterfacesResult -&gt; getEcsNetworkInterfacesResult.interfaces()[0].id()));
+     *         ctx.export("firstEcsNetworkInterfaceId", example.applyValue(getEcsNetworkInterfacesResult -> getEcsNetworkInterfacesResult.interfaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4591,7 +4779,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4613,14 +4802,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsPrefixLists(GetEcsPrefixListsArgs.builder()
-     *             .ids(&#34;E2RY53-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("E2RY53-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;outputId&#34;, example.applyValue(getEcsPrefixListsResult -&gt; getEcsPrefixListsResult.lists()[0].id()));
+     *         ctx.export("outputId", example.applyValue(getEcsPrefixListsResult -> getEcsPrefixListsResult.lists()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4637,7 +4827,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4659,14 +4850,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsPrefixLists(GetEcsPrefixListsArgs.builder()
-     *             .ids(&#34;E2RY53-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("E2RY53-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;outputId&#34;, example.applyValue(getEcsPrefixListsResult -&gt; getEcsPrefixListsResult.lists()[0].id()));
+     *         ctx.export("outputId", example.applyValue(getEcsPrefixListsResult -> getEcsPrefixListsResult.lists()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4683,7 +4875,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4705,14 +4898,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsPrefixLists(GetEcsPrefixListsArgs.builder()
-     *             .ids(&#34;E2RY53-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("E2RY53-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;outputId&#34;, example.applyValue(getEcsPrefixListsResult -&gt; getEcsPrefixListsResult.lists()[0].id()));
+     *         ctx.export("outputId", example.applyValue(getEcsPrefixListsResult -> getEcsPrefixListsResult.lists()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4729,7 +4923,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4751,14 +4946,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsPrefixLists(GetEcsPrefixListsArgs.builder()
-     *             .ids(&#34;E2RY53-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("E2RY53-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;outputId&#34;, example.applyValue(getEcsPrefixListsResult -&gt; getEcsPrefixListsResult.lists()[0].id()));
+     *         ctx.export("outputId", example.applyValue(getEcsPrefixListsResult -> getEcsPrefixListsResult.lists()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4775,7 +4971,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4797,14 +4994,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsPrefixLists(GetEcsPrefixListsArgs.builder()
-     *             .ids(&#34;E2RY53-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("E2RY53-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;outputId&#34;, example.applyValue(getEcsPrefixListsResult -&gt; getEcsPrefixListsResult.lists()[0].id()));
+     *         ctx.export("outputId", example.applyValue(getEcsPrefixListsResult -> getEcsPrefixListsResult.lists()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4821,7 +5019,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4843,14 +5042,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsPrefixLists(GetEcsPrefixListsArgs.builder()
-     *             .ids(&#34;E2RY53-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("E2RY53-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;outputId&#34;, example.applyValue(getEcsPrefixListsResult -&gt; getEcsPrefixListsResult.lists()[0].id()));
+     *         ctx.export("outputId", example.applyValue(getEcsPrefixListsResult -> getEcsPrefixListsResult.lists()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4867,7 +5067,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4889,28 +5090,29 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .ids(&#34;example-id&#34;)
+     *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId1&#34;, ids.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId1", ids.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-SnapshotGroup&#34;)
+     *             .nameRegex("^my-SnapshotGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId2&#34;, nameRegex.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId2", nameRegex.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .status(&#34;accomplished&#34;)
+     *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId3&#34;, status.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId3", status.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .instanceId(&#34;example-instance_id&#34;)
+     *             .instanceId("example-instance_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId4&#34;, instanceId.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId4", instanceId.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4927,7 +5129,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4949,28 +5152,29 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .ids(&#34;example-id&#34;)
+     *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId1&#34;, ids.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId1", ids.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-SnapshotGroup&#34;)
+     *             .nameRegex("^my-SnapshotGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId2&#34;, nameRegex.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId2", nameRegex.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .status(&#34;accomplished&#34;)
+     *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId3&#34;, status.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId3", status.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .instanceId(&#34;example-instance_id&#34;)
+     *             .instanceId("example-instance_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId4&#34;, instanceId.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId4", instanceId.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4987,7 +5191,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5009,28 +5214,29 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .ids(&#34;example-id&#34;)
+     *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId1&#34;, ids.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId1", ids.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-SnapshotGroup&#34;)
+     *             .nameRegex("^my-SnapshotGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId2&#34;, nameRegex.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId2", nameRegex.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .status(&#34;accomplished&#34;)
+     *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId3&#34;, status.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId3", status.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .instanceId(&#34;example-instance_id&#34;)
+     *             .instanceId("example-instance_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId4&#34;, instanceId.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId4", instanceId.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5047,7 +5253,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5069,28 +5276,29 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .ids(&#34;example-id&#34;)
+     *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId1&#34;, ids.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId1", ids.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-SnapshotGroup&#34;)
+     *             .nameRegex("^my-SnapshotGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId2&#34;, nameRegex.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId2", nameRegex.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .status(&#34;accomplished&#34;)
+     *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId3&#34;, status.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId3", status.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .instanceId(&#34;example-instance_id&#34;)
+     *             .instanceId("example-instance_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId4&#34;, instanceId.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId4", instanceId.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5107,7 +5315,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5129,28 +5338,29 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .ids(&#34;example-id&#34;)
+     *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId1&#34;, ids.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId1", ids.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-SnapshotGroup&#34;)
+     *             .nameRegex("^my-SnapshotGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId2&#34;, nameRegex.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId2", nameRegex.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .status(&#34;accomplished&#34;)
+     *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId3&#34;, status.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId3", status.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .instanceId(&#34;example-instance_id&#34;)
+     *             .instanceId("example-instance_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId4&#34;, instanceId.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId4", instanceId.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5167,7 +5377,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5189,28 +5400,29 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .ids(&#34;example-id&#34;)
+     *             .ids("example-id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId1&#34;, ids.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId1", ids.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-SnapshotGroup&#34;)
+     *             .nameRegex("^my-SnapshotGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId2&#34;, nameRegex.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId2", nameRegex.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var status = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .status(&#34;accomplished&#34;)
+     *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId3&#34;, status.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId3", status.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *         final var instanceId = EcsFunctions.getEcsSnapshotGroups(GetEcsSnapshotGroupsArgs.builder()
-     *             .instanceId(&#34;example-instance_id&#34;)
+     *             .instanceId("example-instance_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsSnapshotGroupId4&#34;, instanceId.applyValue(getEcsSnapshotGroupsResult -&gt; getEcsSnapshotGroupsResult.groups()[0].id()));
+     *         ctx.export("ecsSnapshotGroupId4", instanceId.applyValue(getEcsSnapshotGroupsResult -> getEcsSnapshotGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5227,7 +5439,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5249,14 +5462,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
-     *             .ids(&#34;s-bp1fvuxxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-test&#34;)
+     *             .ids("s-bp1fvuxxxxxxxx")
+     *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsSnapshotId&#34;, example.applyValue(getEcsSnapshotsResult -&gt; getEcsSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("firstEcsSnapshotId", example.applyValue(getEcsSnapshotsResult -> getEcsSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5273,7 +5487,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5295,14 +5510,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
-     *             .ids(&#34;s-bp1fvuxxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-test&#34;)
+     *             .ids("s-bp1fvuxxxxxxxx")
+     *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsSnapshotId&#34;, example.applyValue(getEcsSnapshotsResult -&gt; getEcsSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("firstEcsSnapshotId", example.applyValue(getEcsSnapshotsResult -> getEcsSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5319,7 +5535,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5341,14 +5558,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
-     *             .ids(&#34;s-bp1fvuxxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-test&#34;)
+     *             .ids("s-bp1fvuxxxxxxxx")
+     *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsSnapshotId&#34;, example.applyValue(getEcsSnapshotsResult -&gt; getEcsSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("firstEcsSnapshotId", example.applyValue(getEcsSnapshotsResult -> getEcsSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5365,7 +5583,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5387,14 +5606,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
-     *             .ids(&#34;s-bp1fvuxxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-test&#34;)
+     *             .ids("s-bp1fvuxxxxxxxx")
+     *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsSnapshotId&#34;, example.applyValue(getEcsSnapshotsResult -&gt; getEcsSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("firstEcsSnapshotId", example.applyValue(getEcsSnapshotsResult -> getEcsSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5411,7 +5631,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5433,14 +5654,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
-     *             .ids(&#34;s-bp1fvuxxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-test&#34;)
+     *             .ids("s-bp1fvuxxxxxxxx")
+     *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsSnapshotId&#34;, example.applyValue(getEcsSnapshotsResult -&gt; getEcsSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("firstEcsSnapshotId", example.applyValue(getEcsSnapshotsResult -> getEcsSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5457,7 +5679,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5479,14 +5702,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEcsSnapshots(GetEcsSnapshotsArgs.builder()
-     *             .ids(&#34;s-bp1fvuxxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-test&#34;)
+     *             .ids("s-bp1fvuxxxxxxxx")
+     *             .nameRegex("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsSnapshotId&#34;, example.applyValue(getEcsSnapshotsResult -&gt; getEcsSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("firstEcsSnapshotId", example.applyValue(getEcsSnapshotsResult -> getEcsSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5503,7 +5727,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5526,15 +5751,16 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
      * 
-     *         ctx.export(&#34;ecsStorageCapacityUnitId1&#34;, ids.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId1", ids.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
-     *             .nameRegex(&#34;^my-StorageCapacityUnit&#34;)
+     *             .nameRegex("^my-StorageCapacityUnit")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsStorageCapacityUnitId2&#34;, nameRegex.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5551,7 +5777,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5574,15 +5801,16 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
      * 
-     *         ctx.export(&#34;ecsStorageCapacityUnitId1&#34;, ids.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId1", ids.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
-     *             .nameRegex(&#34;^my-StorageCapacityUnit&#34;)
+     *             .nameRegex("^my-StorageCapacityUnit")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsStorageCapacityUnitId2&#34;, nameRegex.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5599,7 +5827,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5622,15 +5851,16 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
      * 
-     *         ctx.export(&#34;ecsStorageCapacityUnitId1&#34;, ids.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId1", ids.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
-     *             .nameRegex(&#34;^my-StorageCapacityUnit&#34;)
+     *             .nameRegex("^my-StorageCapacityUnit")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsStorageCapacityUnitId2&#34;, nameRegex.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5647,7 +5877,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5670,15 +5901,16 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
      * 
-     *         ctx.export(&#34;ecsStorageCapacityUnitId1&#34;, ids.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId1", ids.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
-     *             .nameRegex(&#34;^my-StorageCapacityUnit&#34;)
+     *             .nameRegex("^my-StorageCapacityUnit")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsStorageCapacityUnitId2&#34;, nameRegex.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5695,7 +5927,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5718,15 +5951,16 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
      * 
-     *         ctx.export(&#34;ecsStorageCapacityUnitId1&#34;, ids.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId1", ids.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
-     *             .nameRegex(&#34;^my-StorageCapacityUnit&#34;)
+     *             .nameRegex("^my-StorageCapacityUnit")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsStorageCapacityUnitId2&#34;, nameRegex.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5743,7 +5977,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5766,15 +6001,16 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EcsFunctions.getEcsStorageCapacityUnits();
      * 
-     *         ctx.export(&#34;ecsStorageCapacityUnitId1&#34;, ids.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId1", ids.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
      *         final var nameRegex = EcsFunctions.getEcsStorageCapacityUnits(GetEcsStorageCapacityUnitsArgs.builder()
-     *             .nameRegex(&#34;^my-StorageCapacityUnit&#34;)
+     *             .nameRegex("^my-StorageCapacityUnit")
      *             .build());
      * 
-     *         ctx.export(&#34;ecsStorageCapacityUnitId2&#34;, nameRegex.applyValue(getEcsStorageCapacityUnitsResult -&gt; getEcsStorageCapacityUnitsResult.units()[0].id()));
+     *         ctx.export("ecsStorageCapacityUnitId2", nameRegex.applyValue(getEcsStorageCapacityUnitsResult -> getEcsStorageCapacityUnitsResult.units()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5791,7 +6027,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5813,14 +6050,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEipAddresses(GetEipAddressesArgs.builder()
-     *             .ids(&#34;eip-bp1jvx5ki6c********&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("eip-bp1jvx5ki6c********")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEipAddressId&#34;, example.applyValue(getEipAddressesResult -&gt; getEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipAddressId", example.applyValue(getEipAddressesResult -> getEipAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5837,7 +6075,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5859,14 +6098,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEipAddresses(GetEipAddressesArgs.builder()
-     *             .ids(&#34;eip-bp1jvx5ki6c********&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("eip-bp1jvx5ki6c********")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEipAddressId&#34;, example.applyValue(getEipAddressesResult -&gt; getEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipAddressId", example.applyValue(getEipAddressesResult -> getEipAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5883,7 +6123,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5905,14 +6146,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEipAddresses(GetEipAddressesArgs.builder()
-     *             .ids(&#34;eip-bp1jvx5ki6c********&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("eip-bp1jvx5ki6c********")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEipAddressId&#34;, example.applyValue(getEipAddressesResult -&gt; getEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipAddressId", example.applyValue(getEipAddressesResult -> getEipAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5929,7 +6171,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5951,14 +6194,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEipAddresses(GetEipAddressesArgs.builder()
-     *             .ids(&#34;eip-bp1jvx5ki6c********&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("eip-bp1jvx5ki6c********")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEipAddressId&#34;, example.applyValue(getEipAddressesResult -&gt; getEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipAddressId", example.applyValue(getEipAddressesResult -> getEipAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5975,7 +6219,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5997,14 +6242,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEipAddresses(GetEipAddressesArgs.builder()
-     *             .ids(&#34;eip-bp1jvx5ki6c********&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("eip-bp1jvx5ki6c********")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEipAddressId&#34;, example.applyValue(getEipAddressesResult -&gt; getEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipAddressId", example.applyValue(getEipAddressesResult -> getEipAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6021,7 +6267,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6043,14 +6290,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getEipAddresses(GetEipAddressesArgs.builder()
-     *             .ids(&#34;eip-bp1jvx5ki6c********&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("eip-bp1jvx5ki6c********")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEipAddressId&#34;, example.applyValue(getEipAddressesResult -&gt; getEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipAddressId", example.applyValue(getEipAddressesResult -> getEipAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6065,7 +6313,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6088,10 +6337,11 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var eipsDs = EcsFunctions.getEips();
      * 
-     *         ctx.export(&#34;firstEipId&#34;, eipsDs.applyValue(getEipsResult -&gt; getEipsResult.eips()[0].id()));
+     *         ctx.export("firstEipId", eipsDs.applyValue(getEipsResult -> getEipsResult.eips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -6110,7 +6360,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6133,10 +6384,11 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var eipsDs = EcsFunctions.getEips();
      * 
-     *         ctx.export(&#34;firstEipId&#34;, eipsDs.applyValue(getEipsResult -&gt; getEipsResult.eips()[0].id()));
+     *         ctx.export("firstEipId", eipsDs.applyValue(getEipsResult -> getEipsResult.eips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -6155,7 +6407,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6178,10 +6431,11 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var eipsDs = EcsFunctions.getEips();
      * 
-     *         ctx.export(&#34;firstEipId&#34;, eipsDs.applyValue(getEipsResult -&gt; getEipsResult.eips()[0].id()));
+     *         ctx.export("firstEipId", eipsDs.applyValue(getEipsResult -> getEipsResult.eips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -6200,7 +6454,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6223,10 +6478,11 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var eipsDs = EcsFunctions.getEips();
      * 
-     *         ctx.export(&#34;firstEipId&#34;, eipsDs.applyValue(getEipsResult -&gt; getEipsResult.eips()[0].id()));
+     *         ctx.export("firstEipId", eipsDs.applyValue(getEipsResult -> getEipsResult.eips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -6245,7 +6501,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6268,10 +6525,11 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var eipsDs = EcsFunctions.getEips();
      * 
-     *         ctx.export(&#34;firstEipId&#34;, eipsDs.applyValue(getEipsResult -&gt; getEipsResult.eips()[0].id()));
+     *         ctx.export("firstEipId", eipsDs.applyValue(getEipsResult -> getEipsResult.eips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -6290,7 +6548,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6313,10 +6572,11 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var eipsDs = EcsFunctions.getEips();
      * 
-     *         ctx.export(&#34;firstEipId&#34;, eipsDs.applyValue(getEipsResult -&gt; getEipsResult.eips()[0].id()));
+     *         ctx.export("firstEipId", eipsDs.applyValue(getEipsResult -> getEipsResult.eips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -6335,7 +6595,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6360,10 +6621,11 @@ public final class EcsFunctions {
      *             .ids(defaultAlicloudEcsElasticityAssurance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
+     *         ctx.export("alicloudEcsElasticityAssuranceExampleId", default_.assurances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6378,7 +6640,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6403,10 +6666,11 @@ public final class EcsFunctions {
      *             .ids(defaultAlicloudEcsElasticityAssurance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
+     *         ctx.export("alicloudEcsElasticityAssuranceExampleId", default_.assurances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6421,7 +6685,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6446,10 +6711,11 @@ public final class EcsFunctions {
      *             .ids(defaultAlicloudEcsElasticityAssurance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
+     *         ctx.export("alicloudEcsElasticityAssuranceExampleId", default_.assurances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6464,7 +6730,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6489,10 +6756,11 @@ public final class EcsFunctions {
      *             .ids(defaultAlicloudEcsElasticityAssurance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
+     *         ctx.export("alicloudEcsElasticityAssuranceExampleId", default_.assurances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6507,7 +6775,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6532,10 +6801,11 @@ public final class EcsFunctions {
      *             .ids(defaultAlicloudEcsElasticityAssurance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
+     *         ctx.export("alicloudEcsElasticityAssuranceExampleId", default_.assurances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6550,7 +6820,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6575,10 +6846,11 @@ public final class EcsFunctions {
      *             .ids(defaultAlicloudEcsElasticityAssurance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEcsElasticityAssuranceExampleId&#34;, default_.assurances()[0].id());
+     *         ctx.export("alicloudEcsElasticityAssuranceExampleId", default_.assurances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6595,7 +6867,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6617,14 +6890,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getHpcClusters(GetHpcClustersArgs.builder()
-     *             .ids(&#34;hpc-bp1i09xxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("hpc-bp1i09xxxxxxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsHpcClusterId&#34;, example.applyValue(getHpcClustersResult -&gt; getHpcClustersResult.clusters()[0].id()));
+     *         ctx.export("firstEcsHpcClusterId", example.applyValue(getHpcClustersResult -> getHpcClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6641,7 +6915,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6663,14 +6938,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getHpcClusters(GetHpcClustersArgs.builder()
-     *             .ids(&#34;hpc-bp1i09xxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("hpc-bp1i09xxxxxxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsHpcClusterId&#34;, example.applyValue(getHpcClustersResult -&gt; getHpcClustersResult.clusters()[0].id()));
+     *         ctx.export("firstEcsHpcClusterId", example.applyValue(getHpcClustersResult -> getHpcClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6687,7 +6963,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6709,14 +6986,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getHpcClusters(GetHpcClustersArgs.builder()
-     *             .ids(&#34;hpc-bp1i09xxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("hpc-bp1i09xxxxxxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsHpcClusterId&#34;, example.applyValue(getHpcClustersResult -&gt; getHpcClustersResult.clusters()[0].id()));
+     *         ctx.export("firstEcsHpcClusterId", example.applyValue(getHpcClustersResult -> getHpcClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6733,7 +7011,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6755,14 +7034,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getHpcClusters(GetHpcClustersArgs.builder()
-     *             .ids(&#34;hpc-bp1i09xxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("hpc-bp1i09xxxxxxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsHpcClusterId&#34;, example.applyValue(getHpcClustersResult -&gt; getHpcClustersResult.clusters()[0].id()));
+     *         ctx.export("firstEcsHpcClusterId", example.applyValue(getHpcClustersResult -> getHpcClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6779,7 +7059,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6801,14 +7082,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getHpcClusters(GetHpcClustersArgs.builder()
-     *             .ids(&#34;hpc-bp1i09xxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("hpc-bp1i09xxxxxxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsHpcClusterId&#34;, example.applyValue(getHpcClustersResult -&gt; getHpcClustersResult.clusters()[0].id()));
+     *         ctx.export("firstEcsHpcClusterId", example.applyValue(getHpcClustersResult -> getHpcClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6825,7 +7107,8 @@ public final class EcsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6847,14 +7130,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EcsFunctions.getHpcClusters(GetHpcClustersArgs.builder()
-     *             .ids(&#34;hpc-bp1i09xxxxxxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("hpc-bp1i09xxxxxxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEcsHpcClusterId&#34;, example.applyValue(getHpcClustersResult -&gt; getHpcClustersResult.clusters()[0].id()));
+     *         ctx.export("firstEcsHpcClusterId", example.applyValue(getHpcClustersResult -> getHpcClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6868,7 +7152,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6890,14 +7175,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .owners(&#34;system&#34;)
-     *             .nameRegex(&#34;^centos_6&#34;)
+     *             .owners("system")
+     *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
+     *         ctx.export("firstImageId", imagesDs.applyValue(getImagesResult -> getImagesResult.images()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6911,7 +7197,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6933,14 +7220,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .owners(&#34;system&#34;)
-     *             .nameRegex(&#34;^centos_6&#34;)
+     *             .owners("system")
+     *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
+     *         ctx.export("firstImageId", imagesDs.applyValue(getImagesResult -> getImagesResult.images()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6954,7 +7242,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6976,14 +7265,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .owners(&#34;system&#34;)
-     *             .nameRegex(&#34;^centos_6&#34;)
+     *             .owners("system")
+     *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
+     *         ctx.export("firstImageId", imagesDs.applyValue(getImagesResult -> getImagesResult.images()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6997,7 +7287,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7019,14 +7310,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .owners(&#34;system&#34;)
-     *             .nameRegex(&#34;^centos_6&#34;)
+     *             .owners("system")
+     *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
+     *         ctx.export("firstImageId", imagesDs.applyValue(getImagesResult -> getImagesResult.images()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7040,7 +7332,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7062,14 +7355,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .owners(&#34;system&#34;)
-     *             .nameRegex(&#34;^centos_6&#34;)
+     *             .owners("system")
+     *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
+     *         ctx.export("firstImageId", imagesDs.applyValue(getImagesResult -> getImagesResult.images()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7083,7 +7377,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7105,14 +7400,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var imagesDs = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .owners(&#34;system&#34;)
-     *             .nameRegex(&#34;^centos_6&#34;)
+     *             .owners("system")
+     *             .nameRegex("^centos_6")
      *             .build());
      * 
-     *         ctx.export(&#34;firstImageId&#34;, imagesDs.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()));
+     *         ctx.export("firstImageId", imagesDs.applyValue(getImagesResult -> getImagesResult.images()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7127,7 +7423,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7149,14 +7446,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = EcsFunctions.getInstanceKeywords(GetInstanceKeywordsArgs.builder()
-     *             .key(&#34;account&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .key("account")
+     *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;accountKeywords&#34;, resources.applyValue(getInstanceKeywordsResult -&gt; getInstanceKeywordsResult.keywords()[0]));
+     *         ctx.export("accountKeywords", resources.applyValue(getInstanceKeywordsResult -> getInstanceKeywordsResult.keywords()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7171,7 +7469,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7193,14 +7492,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = EcsFunctions.getInstanceKeywords(GetInstanceKeywordsArgs.builder()
-     *             .key(&#34;account&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .key("account")
+     *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;accountKeywords&#34;, resources.applyValue(getInstanceKeywordsResult -&gt; getInstanceKeywordsResult.keywords()[0]));
+     *         ctx.export("accountKeywords", resources.applyValue(getInstanceKeywordsResult -> getInstanceKeywordsResult.keywords()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7215,7 +7515,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7237,14 +7538,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = EcsFunctions.getInstanceKeywords(GetInstanceKeywordsArgs.builder()
-     *             .key(&#34;account&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .key("account")
+     *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;accountKeywords&#34;, resources.applyValue(getInstanceKeywordsResult -&gt; getInstanceKeywordsResult.keywords()[0]));
+     *         ctx.export("accountKeywords", resources.applyValue(getInstanceKeywordsResult -> getInstanceKeywordsResult.keywords()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7259,7 +7561,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7281,14 +7584,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = EcsFunctions.getInstanceKeywords(GetInstanceKeywordsArgs.builder()
-     *             .key(&#34;account&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .key("account")
+     *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;accountKeywords&#34;, resources.applyValue(getInstanceKeywordsResult -&gt; getInstanceKeywordsResult.keywords()[0]));
+     *         ctx.export("accountKeywords", resources.applyValue(getInstanceKeywordsResult -> getInstanceKeywordsResult.keywords()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7303,7 +7607,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7325,14 +7630,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs.builder()
-     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .instanceChargeType("PrePaid")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceTypeFamilyId&#34;, default_.families()[0].id());
-     *         ctx.export(&#34;instanceIds&#34;, default_.ids());
+     *         ctx.export("firstInstanceTypeFamilyId", default_.families()[0].id());
+     *         ctx.export("instanceIds", default_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7347,7 +7653,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7369,14 +7676,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs.builder()
-     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .instanceChargeType("PrePaid")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceTypeFamilyId&#34;, default_.families()[0].id());
-     *         ctx.export(&#34;instanceIds&#34;, default_.ids());
+     *         ctx.export("firstInstanceTypeFamilyId", default_.families()[0].id());
+     *         ctx.export("instanceIds", default_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7391,7 +7699,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7413,14 +7722,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs.builder()
-     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .instanceChargeType("PrePaid")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceTypeFamilyId&#34;, default_.families()[0].id());
-     *         ctx.export(&#34;instanceIds&#34;, default_.ids());
+     *         ctx.export("firstInstanceTypeFamilyId", default_.families()[0].id());
+     *         ctx.export("instanceIds", default_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7435,7 +7745,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7457,14 +7768,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs.builder()
-     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .instanceChargeType("PrePaid")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceTypeFamilyId&#34;, default_.families()[0].id());
-     *         ctx.export(&#34;instanceIds&#34;, default_.ids());
+     *         ctx.export("firstInstanceTypeFamilyId", default_.families()[0].id());
+     *         ctx.export("instanceIds", default_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7479,7 +7791,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7501,14 +7814,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs.builder()
-     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .instanceChargeType("PrePaid")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceTypeFamilyId&#34;, default_.families()[0].id());
-     *         ctx.export(&#34;instanceIds&#34;, default_.ids());
+     *         ctx.export("firstInstanceTypeFamilyId", default_.families()[0].id());
+     *         ctx.export("instanceIds", default_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7523,7 +7837,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7545,14 +7860,15 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstanceTypeFamilies(GetInstanceTypeFamiliesArgs.builder()
-     *             .instanceChargeType(&#34;PrePaid&#34;)
+     *             .instanceChargeType("PrePaid")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceTypeFamilyId&#34;, default_.families()[0].id());
-     *         ctx.export(&#34;instanceIds&#34;, default_.ids());
+     *         ctx.export("firstInstanceTypeFamilyId", default_.families()[0].id());
+     *         ctx.export("instanceIds", default_.ids());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7571,7 +7887,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7607,57 +7924,57 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+     *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         // Declare the data source
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
-     *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
+     *             .instanceTypeFamily("ecs.sn1ne")
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+     *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
      *             .mostRecent(true)
-     *             .owners(&#34;system&#34;)
+     *             .owners("system")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+     *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vswitchName(name)
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;192.168.192.0/24&#34;)
+     *             .cidrBlock("192.168.192.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .name(name)
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
      *             .networkInterfaceName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .build());
      * 
-     *         for (var i = 0; i &lt; 14; i++) {
-     *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
-     *                 .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
-     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *         for (var i = 0; i < 14; i++) {
+     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+     *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
      *                 .instanceName(name)
-     *                 .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
-     *                 .internetChargeType(&#34;PayByTraffic&#34;)
-     *                 .internetMaxBandwidthOut(&#34;10&#34;)
+     *                 .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+     *                 .internetChargeType("PayByTraffic")
+     *                 .internetMaxBandwidthOut("10")
      *                 .availabilityZone(default_.zones()[0].id())
-     *                 .instanceChargeType(&#34;PostPaid&#34;)
-     *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *                 .instanceChargeType("PostPaid")
+     *                 .systemDiskCategory("cloud_efficiency")
      *                 .vswitchId(defaultSwitch.id())
      *                 .build());
      * 
@@ -7665,7 +7982,8 @@ public final class EcsFunctions {
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7684,7 +8002,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7720,57 +8039,57 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+     *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         // Declare the data source
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
-     *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
+     *             .instanceTypeFamily("ecs.sn1ne")
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+     *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
      *             .mostRecent(true)
-     *             .owners(&#34;system&#34;)
+     *             .owners("system")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+     *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vswitchName(name)
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;192.168.192.0/24&#34;)
+     *             .cidrBlock("192.168.192.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .name(name)
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
      *             .networkInterfaceName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .build());
      * 
-     *         for (var i = 0; i &lt; 14; i++) {
-     *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
-     *                 .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
-     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *         for (var i = 0; i < 14; i++) {
+     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+     *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
      *                 .instanceName(name)
-     *                 .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
-     *                 .internetChargeType(&#34;PayByTraffic&#34;)
-     *                 .internetMaxBandwidthOut(&#34;10&#34;)
+     *                 .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+     *                 .internetChargeType("PayByTraffic")
+     *                 .internetMaxBandwidthOut("10")
      *                 .availabilityZone(default_.zones()[0].id())
-     *                 .instanceChargeType(&#34;PostPaid&#34;)
-     *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *                 .instanceChargeType("PostPaid")
+     *                 .systemDiskCategory("cloud_efficiency")
      *                 .vswitchId(defaultSwitch.id())
      *                 .build());
      * 
@@ -7778,7 +8097,8 @@ public final class EcsFunctions {
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7797,7 +8117,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7833,57 +8154,57 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+     *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         // Declare the data source
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
-     *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
+     *             .instanceTypeFamily("ecs.sn1ne")
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+     *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
      *             .mostRecent(true)
-     *             .owners(&#34;system&#34;)
+     *             .owners("system")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+     *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vswitchName(name)
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;192.168.192.0/24&#34;)
+     *             .cidrBlock("192.168.192.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .name(name)
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
      *             .networkInterfaceName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .build());
      * 
-     *         for (var i = 0; i &lt; 14; i++) {
-     *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
-     *                 .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
-     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *         for (var i = 0; i < 14; i++) {
+     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+     *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
      *                 .instanceName(name)
-     *                 .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
-     *                 .internetChargeType(&#34;PayByTraffic&#34;)
-     *                 .internetMaxBandwidthOut(&#34;10&#34;)
+     *                 .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+     *                 .internetChargeType("PayByTraffic")
+     *                 .internetMaxBandwidthOut("10")
      *                 .availabilityZone(default_.zones()[0].id())
-     *                 .instanceChargeType(&#34;PostPaid&#34;)
-     *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *                 .instanceChargeType("PostPaid")
+     *                 .systemDiskCategory("cloud_efficiency")
      *                 .vswitchId(defaultSwitch.id())
      *                 .build());
      * 
@@ -7891,7 +8212,8 @@ public final class EcsFunctions {
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7910,7 +8232,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7946,57 +8269,57 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+     *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         // Declare the data source
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
-     *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
+     *             .instanceTypeFamily("ecs.sn1ne")
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+     *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
      *             .mostRecent(true)
-     *             .owners(&#34;system&#34;)
+     *             .owners("system")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+     *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vswitchName(name)
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;192.168.192.0/24&#34;)
+     *             .cidrBlock("192.168.192.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .name(name)
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
      *             .networkInterfaceName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .build());
      * 
-     *         for (var i = 0; i &lt; 14; i++) {
-     *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
-     *                 .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
-     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *         for (var i = 0; i < 14; i++) {
+     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+     *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
      *                 .instanceName(name)
-     *                 .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
-     *                 .internetChargeType(&#34;PayByTraffic&#34;)
-     *                 .internetMaxBandwidthOut(&#34;10&#34;)
+     *                 .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+     *                 .internetChargeType("PayByTraffic")
+     *                 .internetMaxBandwidthOut("10")
      *                 .availabilityZone(default_.zones()[0].id())
-     *                 .instanceChargeType(&#34;PostPaid&#34;)
-     *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *                 .instanceChargeType("PostPaid")
+     *                 .systemDiskCategory("cloud_efficiency")
      *                 .vswitchId(defaultSwitch.id())
      *                 .build());
      * 
@@ -8004,7 +8327,8 @@ public final class EcsFunctions {
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8023,7 +8347,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8059,57 +8384,57 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+     *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         // Declare the data source
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
-     *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
+     *             .instanceTypeFamily("ecs.sn1ne")
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+     *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
      *             .mostRecent(true)
-     *             .owners(&#34;system&#34;)
+     *             .owners("system")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+     *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vswitchName(name)
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;192.168.192.0/24&#34;)
+     *             .cidrBlock("192.168.192.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .name(name)
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
      *             .networkInterfaceName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .build());
      * 
-     *         for (var i = 0; i &lt; 14; i++) {
-     *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
-     *                 .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
-     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *         for (var i = 0; i < 14; i++) {
+     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+     *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
      *                 .instanceName(name)
-     *                 .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
-     *                 .internetChargeType(&#34;PayByTraffic&#34;)
-     *                 .internetMaxBandwidthOut(&#34;10&#34;)
+     *                 .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+     *                 .internetChargeType("PayByTraffic")
+     *                 .internetMaxBandwidthOut("10")
      *                 .availabilityZone(default_.zones()[0].id())
-     *                 .instanceChargeType(&#34;PostPaid&#34;)
-     *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *                 .instanceChargeType("PostPaid")
+     *                 .systemDiskCategory("cloud_efficiency")
      *                 .vswitchId(defaultSwitch.id())
      *                 .build());
      * 
@@ -8117,7 +8442,8 @@ public final class EcsFunctions {
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8136,7 +8462,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8172,57 +8499,57 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+     *         final var name = config.get("name").orElse("terraform-example");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
      *         // Declare the data source
      *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
-     *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
+     *             .instanceTypeFamily("ecs.sn1ne")
      *             .build());
      * 
      *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+     *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
      *             .mostRecent(true)
-     *             .owners(&#34;system&#34;)
+     *             .owners("system")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+     *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vswitchName(name)
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;192.168.192.0/24&#34;)
+     *             .cidrBlock("192.168.192.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .name(name)
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
      *             .networkInterfaceName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .build());
      * 
-     *         for (var i = 0; i &lt; 14; i++) {
-     *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
-     *                 .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
-     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *         for (var i = 0; i < 14; i++) {
+     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+     *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
      *                 .instanceName(name)
-     *                 .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
-     *                 .internetChargeType(&#34;PayByTraffic&#34;)
-     *                 .internetMaxBandwidthOut(&#34;10&#34;)
+     *                 .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+     *                 .internetChargeType("PayByTraffic")
+     *                 .internetMaxBandwidthOut("10")
      *                 .availabilityZone(default_.zones()[0].id())
-     *                 .instanceChargeType(&#34;PostPaid&#34;)
-     *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *                 .instanceChargeType("PostPaid")
+     *                 .systemDiskCategory("cloud_efficiency")
      *                 .vswitchId(defaultSwitch.id())
      *                 .build());
      * 
@@ -8230,7 +8557,8 @@ public final class EcsFunctions {
      * }
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8243,7 +8571,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8265,15 +8594,16 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;web_server&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("web_server")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
-     *         ctx.export(&#34;instanceIds&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.ids()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("instanceIds", instancesDs.applyValue(getInstancesResult -> getInstancesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8286,7 +8616,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8308,15 +8639,16 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;web_server&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("web_server")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
-     *         ctx.export(&#34;instanceIds&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.ids()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("instanceIds", instancesDs.applyValue(getInstancesResult -> getInstancesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8329,7 +8661,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8351,15 +8684,16 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;web_server&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("web_server")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
-     *         ctx.export(&#34;instanceIds&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.ids()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("instanceIds", instancesDs.applyValue(getInstancesResult -> getInstancesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8372,7 +8706,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8394,15 +8729,16 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;web_server&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("web_server")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
-     *         ctx.export(&#34;instanceIds&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.ids()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("instanceIds", instancesDs.applyValue(getInstancesResult -> getInstancesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8415,7 +8751,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8437,15 +8774,16 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;web_server&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("web_server")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
-     *         ctx.export(&#34;instanceIds&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.ids()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("instanceIds", instancesDs.applyValue(getInstancesResult -> getInstancesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8458,7 +8796,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8480,15 +8819,16 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;web_server&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("web_server")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
-     *         ctx.export(&#34;instanceIds&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.ids()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
+     *         ctx.export("instanceIds", instancesDs.applyValue(getInstancesResult -> getInstancesResult.ids()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8503,7 +8843,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8527,8 +8868,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
-     *             .keyName(&#34;keyPairDatasource&#34;)
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *             .keyName("keyPairDatasource")
      *             .build());
      * 
      *         final var default = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
@@ -8537,7 +8878,8 @@ public final class EcsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8552,7 +8894,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8576,8 +8919,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
-     *             .keyName(&#34;keyPairDatasource&#34;)
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *             .keyName("keyPairDatasource")
      *             .build());
      * 
      *         final var default = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
@@ -8586,7 +8929,8 @@ public final class EcsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8601,7 +8945,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8625,8 +8970,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
-     *             .keyName(&#34;keyPairDatasource&#34;)
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *             .keyName("keyPairDatasource")
      *             .build());
      * 
      *         final var default = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
@@ -8635,7 +8980,8 @@ public final class EcsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8650,7 +8996,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8674,8 +9021,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
-     *             .keyName(&#34;keyPairDatasource&#34;)
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *             .keyName("keyPairDatasource")
      *             .build());
      * 
      *         final var default = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
@@ -8684,7 +9031,8 @@ public final class EcsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8699,7 +9047,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8723,8 +9072,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
-     *             .keyName(&#34;keyPairDatasource&#34;)
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *             .keyName("keyPairDatasource")
      *             .build());
      * 
      *         final var default = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
@@ -8733,7 +9082,8 @@ public final class EcsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8748,7 +9098,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8772,8 +9123,8 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
-     *             .keyName(&#34;keyPairDatasource&#34;)
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *             .keyName("keyPairDatasource")
      *             .build());
      * 
      *         final var default = EcsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
@@ -8782,7 +9133,8 @@ public final class EcsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8799,7 +9151,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8835,49 +9188,49 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *         final var name = config.get("name").orElse("networkInterfacesName");
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .cidrBlock("192.168.0.0/24")
      *             .build());
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
      *             .vswitchName(name)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .cidrBlock("192.168.0.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
      *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
-     *             .name(String.format(&#34;%s%d&#34;, name))
+     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()        
+     *             .name(String.format("%s%d", name))
      *             .vswitchId(vswitch.id())
      *             .securityGroups(group.id())
-     *             .description(&#34;Basic test&#34;)
-     *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .description("Basic test")
+     *             .privateIp("192.168.0.2")
+     *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .build());
      * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()        
      *             .availabilityZone(default_.zones()[0].id())
      *             .securityGroups(group.id())
-     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
+     *             .instanceType("ecs.e3.xlarge")
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .imageId("centos_7_04_64_20G_alibase_201701015.vhd")
      *             .instanceName(name)
      *             .vswitchId(vswitch.id())
      *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
-     *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
+     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()        
      *             .instanceId(instance.id())
      *             .networkInterfaceId(interface_.id())
      *             .build());
@@ -8885,19 +9238,20 @@ public final class EcsFunctions {
      *         final var defaultGetNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
      *             .ids(attachment.networkInterfaceId())
      *             .nameRegex(name)
-     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .vpcId(vpc.id())
      *             .vswitchId(vswitch.id())
-     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .privateIp("192.168.0.2")
      *             .securityGroupId(group.id())
-     *             .type(&#34;Secondary&#34;)
+     *             .type("Secondary")
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;eni0Name&#34;, defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -&gt; defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -> defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult.interfaces()[0].name())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Argument Reference
@@ -8931,7 +9285,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8967,49 +9322,49 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *         final var name = config.get("name").orElse("networkInterfacesName");
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .cidrBlock("192.168.0.0/24")
      *             .build());
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
      *             .vswitchName(name)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .cidrBlock("192.168.0.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
      *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
-     *             .name(String.format(&#34;%s%d&#34;, name))
+     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()        
+     *             .name(String.format("%s%d", name))
      *             .vswitchId(vswitch.id())
      *             .securityGroups(group.id())
-     *             .description(&#34;Basic test&#34;)
-     *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .description("Basic test")
+     *             .privateIp("192.168.0.2")
+     *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .build());
      * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()        
      *             .availabilityZone(default_.zones()[0].id())
      *             .securityGroups(group.id())
-     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
+     *             .instanceType("ecs.e3.xlarge")
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .imageId("centos_7_04_64_20G_alibase_201701015.vhd")
      *             .instanceName(name)
      *             .vswitchId(vswitch.id())
      *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
-     *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
+     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()        
      *             .instanceId(instance.id())
      *             .networkInterfaceId(interface_.id())
      *             .build());
@@ -9017,19 +9372,20 @@ public final class EcsFunctions {
      *         final var defaultGetNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
      *             .ids(attachment.networkInterfaceId())
      *             .nameRegex(name)
-     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .vpcId(vpc.id())
      *             .vswitchId(vswitch.id())
-     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .privateIp("192.168.0.2")
      *             .securityGroupId(group.id())
-     *             .type(&#34;Secondary&#34;)
+     *             .type("Secondary")
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;eni0Name&#34;, defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -&gt; defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -> defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult.interfaces()[0].name())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Argument Reference
@@ -9063,7 +9419,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9099,49 +9456,49 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *         final var name = config.get("name").orElse("networkInterfacesName");
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .cidrBlock("192.168.0.0/24")
      *             .build());
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
      *             .vswitchName(name)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .cidrBlock("192.168.0.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
      *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
-     *             .name(String.format(&#34;%s%d&#34;, name))
+     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()        
+     *             .name(String.format("%s%d", name))
      *             .vswitchId(vswitch.id())
      *             .securityGroups(group.id())
-     *             .description(&#34;Basic test&#34;)
-     *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .description("Basic test")
+     *             .privateIp("192.168.0.2")
+     *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .build());
      * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()        
      *             .availabilityZone(default_.zones()[0].id())
      *             .securityGroups(group.id())
-     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
+     *             .instanceType("ecs.e3.xlarge")
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .imageId("centos_7_04_64_20G_alibase_201701015.vhd")
      *             .instanceName(name)
      *             .vswitchId(vswitch.id())
      *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
-     *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
+     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()        
      *             .instanceId(instance.id())
      *             .networkInterfaceId(interface_.id())
      *             .build());
@@ -9149,19 +9506,20 @@ public final class EcsFunctions {
      *         final var defaultGetNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
      *             .ids(attachment.networkInterfaceId())
      *             .nameRegex(name)
-     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .vpcId(vpc.id())
      *             .vswitchId(vswitch.id())
-     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .privateIp("192.168.0.2")
      *             .securityGroupId(group.id())
-     *             .type(&#34;Secondary&#34;)
+     *             .type("Secondary")
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;eni0Name&#34;, defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -&gt; defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -> defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult.interfaces()[0].name())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Argument Reference
@@ -9195,7 +9553,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9231,49 +9590,49 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *         final var name = config.get("name").orElse("networkInterfacesName");
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .cidrBlock("192.168.0.0/24")
      *             .build());
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
      *             .vswitchName(name)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .cidrBlock("192.168.0.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
      *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
-     *             .name(String.format(&#34;%s%d&#34;, name))
+     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()        
+     *             .name(String.format("%s%d", name))
      *             .vswitchId(vswitch.id())
      *             .securityGroups(group.id())
-     *             .description(&#34;Basic test&#34;)
-     *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .description("Basic test")
+     *             .privateIp("192.168.0.2")
+     *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .build());
      * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()        
      *             .availabilityZone(default_.zones()[0].id())
      *             .securityGroups(group.id())
-     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
+     *             .instanceType("ecs.e3.xlarge")
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .imageId("centos_7_04_64_20G_alibase_201701015.vhd")
      *             .instanceName(name)
      *             .vswitchId(vswitch.id())
      *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
-     *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
+     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()        
      *             .instanceId(instance.id())
      *             .networkInterfaceId(interface_.id())
      *             .build());
@@ -9281,19 +9640,20 @@ public final class EcsFunctions {
      *         final var defaultGetNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
      *             .ids(attachment.networkInterfaceId())
      *             .nameRegex(name)
-     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .vpcId(vpc.id())
      *             .vswitchId(vswitch.id())
-     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .privateIp("192.168.0.2")
      *             .securityGroupId(group.id())
-     *             .type(&#34;Secondary&#34;)
+     *             .type("Secondary")
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;eni0Name&#34;, defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -&gt; defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -> defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult.interfaces()[0].name())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Argument Reference
@@ -9327,7 +9687,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9363,49 +9724,49 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *         final var name = config.get("name").orElse("networkInterfacesName");
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .cidrBlock("192.168.0.0/24")
      *             .build());
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
      *             .vswitchName(name)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .cidrBlock("192.168.0.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
      *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
-     *             .name(String.format(&#34;%s%d&#34;, name))
+     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()        
+     *             .name(String.format("%s%d", name))
      *             .vswitchId(vswitch.id())
      *             .securityGroups(group.id())
-     *             .description(&#34;Basic test&#34;)
-     *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .description("Basic test")
+     *             .privateIp("192.168.0.2")
+     *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .build());
      * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()        
      *             .availabilityZone(default_.zones()[0].id())
      *             .securityGroups(group.id())
-     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
+     *             .instanceType("ecs.e3.xlarge")
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .imageId("centos_7_04_64_20G_alibase_201701015.vhd")
      *             .instanceName(name)
      *             .vswitchId(vswitch.id())
      *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
-     *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
+     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()        
      *             .instanceId(instance.id())
      *             .networkInterfaceId(interface_.id())
      *             .build());
@@ -9413,19 +9774,20 @@ public final class EcsFunctions {
      *         final var defaultGetNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
      *             .ids(attachment.networkInterfaceId())
      *             .nameRegex(name)
-     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .vpcId(vpc.id())
      *             .vswitchId(vswitch.id())
-     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .privateIp("192.168.0.2")
      *             .securityGroupId(group.id())
-     *             .type(&#34;Secondary&#34;)
+     *             .type("Secondary")
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;eni0Name&#34;, defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -&gt; defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -> defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult.interfaces()[0].name())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Argument Reference
@@ -9459,7 +9821,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9495,49 +9858,49 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfacesName&#34;);
-     *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+     *         final var name = config.get("name").orElse("networkInterfacesName");
+     *         var vpc = new Network("vpc", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .cidrBlock("192.168.0.0/24")
      *             .build());
      * 
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
      *             .vswitchName(name)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *             .cidrBlock("192.168.0.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
      *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var interface_ = new NetworkInterface(&#34;interface&#34;, NetworkInterfaceArgs.builder()        
-     *             .name(String.format(&#34;%s%d&#34;, name))
+     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()        
+     *             .name(String.format("%s%d", name))
      *             .vswitchId(vswitch.id())
      *             .securityGroups(group.id())
-     *             .description(&#34;Basic test&#34;)
-     *             .privateIp(&#34;192.168.0.2&#34;)
-     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .description("Basic test")
+     *             .privateIp("192.168.0.2")
+     *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .build());
      * 
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()        
      *             .availabilityZone(default_.zones()[0].id())
      *             .securityGroups(group.id())
-     *             .instanceType(&#34;ecs.e3.xlarge&#34;)
-     *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .imageId(&#34;centos_7_04_64_20G_alibase_201701015.vhd&#34;)
+     *             .instanceType("ecs.e3.xlarge")
+     *             .systemDiskCategory("cloud_efficiency")
+     *             .imageId("centos_7_04_64_20G_alibase_201701015.vhd")
      *             .instanceName(name)
      *             .vswitchId(vswitch.id())
      *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
-     *         var attachment = new NetworkInterfaceAttachment(&#34;attachment&#34;, NetworkInterfaceAttachmentArgs.builder()        
+     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()        
      *             .instanceId(instance.id())
      *             .networkInterfaceId(interface_.id())
      *             .build());
@@ -9545,19 +9908,20 @@ public final class EcsFunctions {
      *         final var defaultGetNetworkInterfaces = EcsFunctions.getNetworkInterfaces(GetNetworkInterfacesArgs.builder()
      *             .ids(attachment.networkInterfaceId())
      *             .nameRegex(name)
-     *             .tags(Map.of(&#34;TF-VER&#34;, &#34;0.11.3&#34;))
+     *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .vpcId(vpc.id())
      *             .vswitchId(vswitch.id())
-     *             .privateIp(&#34;192.168.0.2&#34;)
+     *             .privateIp("192.168.0.2")
      *             .securityGroupId(group.id())
-     *             .type(&#34;Secondary&#34;)
+     *             .type("Secondary")
      *             .instanceId(instance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;eni0Name&#34;, defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -&gt; defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -&gt; getNetworkInterfacesResult.interfaces()[0].name())));
+     *         ctx.export("eni0Name", defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult).applyValue(defaultGetNetworkInterfaces -> defaultGetNetworkInterfaces.applyValue(getNetworkInterfacesResult -> getNetworkInterfacesResult.interfaces()[0].name())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Argument Reference
@@ -9591,7 +9955,8 @@ public final class EcsFunctions {
      * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9616,29 +9981,30 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var securityGroupId = config.get(&#34;securityGroupId&#34;);
+     *         final var securityGroupId = config.get("securityGroupId");
      *         // Or get it from the alicloud_security_groups data source.
      *         // Please note that the data source arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
-     *             .nameRegex(&#34;api&#34;)
+     *             .nameRegex("api")
      *             .build());
      * 
      *         // Filter the security group rule by group
      *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
-     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id()))
-     *             .nicType(&#34;internet&#34;)
-     *             .direction(&#34;ingress&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
+     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id()))
+     *             .nicType("internet")
+     *             .direction("ingress")
+     *             .ipProtocol("tcp")
      *             .build());
      * 
      *         // Pass port_range to the backend service
-     *         var backend = new Instance(&#34;backend&#34;, InstanceArgs.builder()        
-     *             .userData(String.format(&#34;config_service.sh --portrange=%s&#34;, ingressRulesDs.applyValue(getSecurityGroupRulesResult -&gt; getSecurityGroupRulesResult.rules()[0].portRange())))
+     *         var backend = new Instance("backend", InstanceArgs.builder()        
+     *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.applyValue(getSecurityGroupRulesResult -> getSecurityGroupRulesResult.rules()[0].portRange())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9655,7 +10021,8 @@ public final class EcsFunctions {
      * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9680,29 +10047,30 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var securityGroupId = config.get(&#34;securityGroupId&#34;);
+     *         final var securityGroupId = config.get("securityGroupId");
      *         // Or get it from the alicloud_security_groups data source.
      *         // Please note that the data source arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
-     *             .nameRegex(&#34;api&#34;)
+     *             .nameRegex("api")
      *             .build());
      * 
      *         // Filter the security group rule by group
      *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
-     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id()))
-     *             .nicType(&#34;internet&#34;)
-     *             .direction(&#34;ingress&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
+     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id()))
+     *             .nicType("internet")
+     *             .direction("ingress")
+     *             .ipProtocol("tcp")
      *             .build());
      * 
      *         // Pass port_range to the backend service
-     *         var backend = new Instance(&#34;backend&#34;, InstanceArgs.builder()        
-     *             .userData(String.format(&#34;config_service.sh --portrange=%s&#34;, ingressRulesDs.applyValue(getSecurityGroupRulesResult -&gt; getSecurityGroupRulesResult.rules()[0].portRange())))
+     *         var backend = new Instance("backend", InstanceArgs.builder()        
+     *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.applyValue(getSecurityGroupRulesResult -> getSecurityGroupRulesResult.rules()[0].portRange())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9719,7 +10087,8 @@ public final class EcsFunctions {
      * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9744,29 +10113,30 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var securityGroupId = config.get(&#34;securityGroupId&#34;);
+     *         final var securityGroupId = config.get("securityGroupId");
      *         // Or get it from the alicloud_security_groups data source.
      *         // Please note that the data source arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
-     *             .nameRegex(&#34;api&#34;)
+     *             .nameRegex("api")
      *             .build());
      * 
      *         // Filter the security group rule by group
      *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
-     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id()))
-     *             .nicType(&#34;internet&#34;)
-     *             .direction(&#34;ingress&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
+     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id()))
+     *             .nicType("internet")
+     *             .direction("ingress")
+     *             .ipProtocol("tcp")
      *             .build());
      * 
      *         // Pass port_range to the backend service
-     *         var backend = new Instance(&#34;backend&#34;, InstanceArgs.builder()        
-     *             .userData(String.format(&#34;config_service.sh --portrange=%s&#34;, ingressRulesDs.applyValue(getSecurityGroupRulesResult -&gt; getSecurityGroupRulesResult.rules()[0].portRange())))
+     *         var backend = new Instance("backend", InstanceArgs.builder()        
+     *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.applyValue(getSecurityGroupRulesResult -> getSecurityGroupRulesResult.rules()[0].portRange())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9783,7 +10153,8 @@ public final class EcsFunctions {
      * The following example shows how to obtain details about a security group rule and how to pass its data to an instance at launch time.
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9808,29 +10179,30 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var securityGroupId = config.get(&#34;securityGroupId&#34;);
+     *         final var securityGroupId = config.get("securityGroupId");
      *         // Or get it from the alicloud_security_groups data source.
      *         // Please note that the data source arguments must be enough to filter results to one security group.
      *         final var groupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
-     *             .nameRegex(&#34;api&#34;)
+     *             .nameRegex("api")
      *             .build());
      * 
      *         // Filter the security group rule by group
      *         final var ingressRulesDs = EcsFunctions.getSecurityGroupRules(GetSecurityGroupRulesArgs.builder()
-     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id()))
-     *             .nicType(&#34;internet&#34;)
-     *             .direction(&#34;ingress&#34;)
-     *             .ipProtocol(&#34;tcp&#34;)
+     *             .groupId(groupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id()))
+     *             .nicType("internet")
+     *             .direction("ingress")
+     *             .ipProtocol("tcp")
      *             .build());
      * 
      *         // Pass port_range to the backend service
-     *         var backend = new Instance(&#34;backend&#34;, InstanceArgs.builder()        
-     *             .userData(String.format(&#34;config_service.sh --portrange=%s&#34;, ingressRulesDs.applyValue(getSecurityGroupRulesResult -&gt; getSecurityGroupRulesResult.rules()[0].portRange())))
+     *         var backend = new Instance("backend", InstanceArgs.builder()        
+     *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.applyValue(getSecurityGroupRulesResult -> getSecurityGroupRulesResult.rules()[0].portRange())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9843,7 +10215,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9867,21 +10240,22 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         // Filter security groups and print the results into a file
      *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
-     *             .nameRegex(&#34;^web-&#34;)
-     *             .outputFile(&#34;web_access.json&#34;)
+     *             .nameRegex("^web-")
+     *             .outputFile("web_access.json")
      *             .build());
      * 
      *         // In conjunction with a VPC
-     *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
+     *         var primaryVpcDs = new Network("primaryVpcDs");
      * 
      *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupId&#34;, primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult).applyValue(primarySecGroupsDs -&gt; primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult).applyValue(primarySecGroupsDs -> primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9894,7 +10268,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9918,21 +10293,22 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         // Filter security groups and print the results into a file
      *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
-     *             .nameRegex(&#34;^web-&#34;)
-     *             .outputFile(&#34;web_access.json&#34;)
+     *             .nameRegex("^web-")
+     *             .outputFile("web_access.json")
      *             .build());
      * 
      *         // In conjunction with a VPC
-     *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
+     *         var primaryVpcDs = new Network("primaryVpcDs");
      * 
      *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupId&#34;, primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult).applyValue(primarySecGroupsDs -&gt; primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult).applyValue(primarySecGroupsDs -> primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9945,7 +10321,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9969,21 +10346,22 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         // Filter security groups and print the results into a file
      *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
-     *             .nameRegex(&#34;^web-&#34;)
-     *             .outputFile(&#34;web_access.json&#34;)
+     *             .nameRegex("^web-")
+     *             .outputFile("web_access.json")
      *             .build());
      * 
      *         // In conjunction with a VPC
-     *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
+     *         var primaryVpcDs = new Network("primaryVpcDs");
      * 
      *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupId&#34;, primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult).applyValue(primarySecGroupsDs -&gt; primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult).applyValue(primarySecGroupsDs -> primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9996,7 +10374,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10020,21 +10399,22 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         // Filter security groups and print the results into a file
      *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
-     *             .nameRegex(&#34;^web-&#34;)
-     *             .outputFile(&#34;web_access.json&#34;)
+     *             .nameRegex("^web-")
+     *             .outputFile("web_access.json")
      *             .build());
      * 
      *         // In conjunction with a VPC
-     *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
+     *         var primaryVpcDs = new Network("primaryVpcDs");
      * 
      *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupId&#34;, primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult).applyValue(primarySecGroupsDs -&gt; primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult).applyValue(primarySecGroupsDs -> primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10047,7 +10427,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10071,21 +10452,22 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         // Filter security groups and print the results into a file
      *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
-     *             .nameRegex(&#34;^web-&#34;)
-     *             .outputFile(&#34;web_access.json&#34;)
+     *             .nameRegex("^web-")
+     *             .outputFile("web_access.json")
      *             .build());
      * 
      *         // In conjunction with a VPC
-     *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
+     *         var primaryVpcDs = new Network("primaryVpcDs");
      * 
      *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupId&#34;, primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult).applyValue(primarySecGroupsDs -&gt; primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult).applyValue(primarySecGroupsDs -> primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10098,7 +10480,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10122,21 +10505,22 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         // Filter security groups and print the results into a file
      *         final var secGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
-     *             .nameRegex(&#34;^web-&#34;)
-     *             .outputFile(&#34;web_access.json&#34;)
+     *             .nameRegex("^web-")
+     *             .outputFile("web_access.json")
      *             .build());
      * 
      *         // In conjunction with a VPC
-     *         var primaryVpcDs = new Network(&#34;primaryVpcDs&#34;);
+     *         var primaryVpcDs = new Network("primaryVpcDs");
      * 
      *         final var primarySecGroupsDs = EcsFunctions.getSecurityGroups(GetSecurityGroupsArgs.builder()
      *             .vpcId(primaryVpcDs.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupId&#34;, primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult).applyValue(primarySecGroupsDs -&gt; primarySecGroupsDs.applyValue(getSecurityGroupsResult -&gt; getSecurityGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGroupId", primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult).applyValue(primarySecGroupsDs -> primarySecGroupsDs.applyValue(getSecurityGroupsResult -> getSecurityGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -10155,7 +10539,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10177,13 +10562,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshots = EcsFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .ids(&#34;s-123456890abcdef&#34;)
-     *             .nameRegex(&#34;tf-testAcc-snapshot&#34;)
+     *             .ids("s-123456890abcdef")
+     *             .nameRegex("tf-testAcc-snapshot")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Argument Reference
@@ -10231,7 +10617,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10253,13 +10640,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshots = EcsFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .ids(&#34;s-123456890abcdef&#34;)
-     *             .nameRegex(&#34;tf-testAcc-snapshot&#34;)
+     *             .ids("s-123456890abcdef")
+     *             .nameRegex("tf-testAcc-snapshot")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Argument Reference
@@ -10307,7 +10695,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10329,13 +10718,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshots = EcsFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .ids(&#34;s-123456890abcdef&#34;)
-     *             .nameRegex(&#34;tf-testAcc-snapshot&#34;)
+     *             .ids("s-123456890abcdef")
+     *             .nameRegex("tf-testAcc-snapshot")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Argument Reference
@@ -10383,7 +10773,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10405,13 +10796,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshots = EcsFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .ids(&#34;s-123456890abcdef&#34;)
-     *             .nameRegex(&#34;tf-testAcc-snapshot&#34;)
+     *             .ids("s-123456890abcdef")
+     *             .nameRegex("tf-testAcc-snapshot")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Argument Reference
@@ -10459,7 +10851,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10481,13 +10874,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshots = EcsFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .ids(&#34;s-123456890abcdef&#34;)
-     *             .nameRegex(&#34;tf-testAcc-snapshot&#34;)
+     *             .ids("s-123456890abcdef")
+     *             .nameRegex("tf-testAcc-snapshot")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Argument Reference
@@ -10535,7 +10929,8 @@ public final class EcsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -10557,13 +10952,14 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var snapshots = EcsFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .ids(&#34;s-123456890abcdef&#34;)
-     *             .nameRegex(&#34;tf-testAcc-snapshot&#34;)
+     *             .ids("s-123456890abcdef")
+     *             .nameRegex("tf-testAcc-snapshot")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Argument Reference

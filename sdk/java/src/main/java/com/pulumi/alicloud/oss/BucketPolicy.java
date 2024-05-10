@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,29 +54,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var createBucket = new Bucket(&#34;createBucket&#34;, BucketArgs.builder()        
- *             .storageClass(&#34;Standard&#34;)
- *             .bucket(String.format(&#34;%s-%s&#34;, name,default_.result()))
+ *         var createBucket = new Bucket("createBucket", BucketArgs.builder()        
+ *             .storageClass("Standard")
+ *             .bucket(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var defaultBucketPolicy = new BucketPolicy(&#34;defaultBucketPolicy&#34;, BucketPolicyArgs.builder()        
+ *         var defaultBucketPolicy = new BucketPolicy("defaultBucketPolicy", BucketPolicyArgs.builder()        
  *             .policy(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;Version&#34;, &#34;1&#34;),
- *                     jsonProperty(&#34;Statement&#34;, jsonArray(jsonObject(
- *                         jsonProperty(&#34;Action&#34;, jsonArray(
- *                             &#34;oss:PutObject&#34;, 
- *                             &#34;oss:GetObject&#34;
+ *                     jsonProperty("Version", "1"),
+ *                     jsonProperty("Statement", jsonArray(jsonObject(
+ *                         jsonProperty("Action", jsonArray(
+ *                             "oss:PutObject", 
+ *                             "oss:GetObject"
  *                         )),
- *                         jsonProperty(&#34;Effect&#34;, &#34;Deny&#34;),
- *                         jsonProperty(&#34;Principal&#34;, jsonArray(&#34;1234567890&#34;)),
- *                         jsonProperty(&#34;Resource&#34;, jsonArray(&#34;acs:oss:*:1234567890:*{@literal /}*&#34;))
+ *                         jsonProperty("Effect", "Deny"),
+ *                         jsonProperty("Principal", jsonArray("1234567890")),
+ *                         jsonProperty("Resource", jsonArray("acs:oss:*:1234567890:*{@literal /}*"))
  *                     )))
  *                 )))
  *             .bucket(createBucket.bucket())
@@ -85,7 +86,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

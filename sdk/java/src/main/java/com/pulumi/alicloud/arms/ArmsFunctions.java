@@ -48,7 +48,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -70,13 +71,14 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = ArmsFunctions.getAlertContactGroups(GetAlertContactGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-AlertContactGroup&#34;)
+     *             .nameRegex("^my-AlertContactGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;armsAlertContactGroupId&#34;, nameRegex.applyValue(getAlertContactGroupsResult -&gt; getAlertContactGroupsResult.groups()[0].id()));
+     *         ctx.export("armsAlertContactGroupId", nameRegex.applyValue(getAlertContactGroupsResult -> getAlertContactGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -93,7 +95,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -115,13 +118,14 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = ArmsFunctions.getAlertContactGroups(GetAlertContactGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-AlertContactGroup&#34;)
+     *             .nameRegex("^my-AlertContactGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;armsAlertContactGroupId&#34;, nameRegex.applyValue(getAlertContactGroupsResult -&gt; getAlertContactGroupsResult.groups()[0].id()));
+     *         ctx.export("armsAlertContactGroupId", nameRegex.applyValue(getAlertContactGroupsResult -> getAlertContactGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -138,7 +142,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -160,13 +165,14 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = ArmsFunctions.getAlertContactGroups(GetAlertContactGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-AlertContactGroup&#34;)
+     *             .nameRegex("^my-AlertContactGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;armsAlertContactGroupId&#34;, nameRegex.applyValue(getAlertContactGroupsResult -&gt; getAlertContactGroupsResult.groups()[0].id()));
+     *         ctx.export("armsAlertContactGroupId", nameRegex.applyValue(getAlertContactGroupsResult -> getAlertContactGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -183,7 +189,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -205,13 +212,14 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = ArmsFunctions.getAlertContactGroups(GetAlertContactGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-AlertContactGroup&#34;)
+     *             .nameRegex("^my-AlertContactGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;armsAlertContactGroupId&#34;, nameRegex.applyValue(getAlertContactGroupsResult -&gt; getAlertContactGroupsResult.groups()[0].id()));
+     *         ctx.export("armsAlertContactGroupId", nameRegex.applyValue(getAlertContactGroupsResult -> getAlertContactGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -228,7 +236,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -250,13 +259,14 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = ArmsFunctions.getAlertContactGroups(GetAlertContactGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-AlertContactGroup&#34;)
+     *             .nameRegex("^my-AlertContactGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;armsAlertContactGroupId&#34;, nameRegex.applyValue(getAlertContactGroupsResult -&gt; getAlertContactGroupsResult.groups()[0].id()));
+     *         ctx.export("armsAlertContactGroupId", nameRegex.applyValue(getAlertContactGroupsResult -> getAlertContactGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -273,7 +283,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -295,13 +306,14 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = ArmsFunctions.getAlertContactGroups(GetAlertContactGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-AlertContactGroup&#34;)
+     *             .nameRegex("^my-AlertContactGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;armsAlertContactGroupId&#34;, nameRegex.applyValue(getAlertContactGroupsResult -&gt; getAlertContactGroupsResult.groups()[0].id()));
+     *         ctx.export("armsAlertContactGroupId", nameRegex.applyValue(getAlertContactGroupsResult -> getAlertContactGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -318,7 +330,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -341,15 +354,16 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getAlertContacts();
      * 
-     *         ctx.export(&#34;armsAlertContactId1&#34;, ids.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId1", ids.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
      *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
-     *             .nameRegex(&#34;^my-AlertContact&#34;)
+     *             .nameRegex("^my-AlertContact")
      *             .build());
      * 
-     *         ctx.export(&#34;armsAlertContactId2&#34;, nameRegex.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId2", nameRegex.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -366,7 +380,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -389,15 +404,16 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getAlertContacts();
      * 
-     *         ctx.export(&#34;armsAlertContactId1&#34;, ids.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId1", ids.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
      *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
-     *             .nameRegex(&#34;^my-AlertContact&#34;)
+     *             .nameRegex("^my-AlertContact")
      *             .build());
      * 
-     *         ctx.export(&#34;armsAlertContactId2&#34;, nameRegex.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId2", nameRegex.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -414,7 +430,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -437,15 +454,16 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getAlertContacts();
      * 
-     *         ctx.export(&#34;armsAlertContactId1&#34;, ids.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId1", ids.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
      *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
-     *             .nameRegex(&#34;^my-AlertContact&#34;)
+     *             .nameRegex("^my-AlertContact")
      *             .build());
      * 
-     *         ctx.export(&#34;armsAlertContactId2&#34;, nameRegex.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId2", nameRegex.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -462,7 +480,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -485,15 +504,16 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getAlertContacts();
      * 
-     *         ctx.export(&#34;armsAlertContactId1&#34;, ids.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId1", ids.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
      *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
-     *             .nameRegex(&#34;^my-AlertContact&#34;)
+     *             .nameRegex("^my-AlertContact")
      *             .build());
      * 
-     *         ctx.export(&#34;armsAlertContactId2&#34;, nameRegex.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId2", nameRegex.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -510,7 +530,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -533,15 +554,16 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getAlertContacts();
      * 
-     *         ctx.export(&#34;armsAlertContactId1&#34;, ids.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId1", ids.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
      *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
-     *             .nameRegex(&#34;^my-AlertContact&#34;)
+     *             .nameRegex("^my-AlertContact")
      *             .build());
      * 
-     *         ctx.export(&#34;armsAlertContactId2&#34;, nameRegex.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId2", nameRegex.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -558,7 +580,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -581,15 +604,16 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getAlertContacts();
      * 
-     *         ctx.export(&#34;armsAlertContactId1&#34;, ids.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId1", ids.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
      *         final var nameRegex = ArmsFunctions.getAlertContacts(GetAlertContactsArgs.builder()
-     *             .nameRegex(&#34;^my-AlertContact&#34;)
+     *             .nameRegex("^my-AlertContact")
      *             .build());
      * 
-     *         ctx.export(&#34;armsAlertContactId2&#34;, nameRegex.applyValue(getAlertContactsResult -&gt; getAlertContactsResult.contacts()[0].id()));
+     *         ctx.export("armsAlertContactId2", nameRegex.applyValue(getAlertContactsResult -> getAlertContactsResult.contacts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -606,7 +630,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -629,15 +654,16 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getDispatchRules();
      * 
-     *         ctx.export(&#34;armsDispatchRuleId1&#34;, ids.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
      *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
-     *             .nameRegex(&#34;^my-DispatchRule&#34;)
+     *             .nameRegex("^my-DispatchRule")
      *             .build());
      * 
-     *         ctx.export(&#34;armsDispatchRuleId2&#34;, nameRegex.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId2", nameRegex.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -654,7 +680,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -677,15 +704,16 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getDispatchRules();
      * 
-     *         ctx.export(&#34;armsDispatchRuleId1&#34;, ids.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
      *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
-     *             .nameRegex(&#34;^my-DispatchRule&#34;)
+     *             .nameRegex("^my-DispatchRule")
      *             .build());
      * 
-     *         ctx.export(&#34;armsDispatchRuleId2&#34;, nameRegex.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId2", nameRegex.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -702,7 +730,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -725,15 +754,16 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getDispatchRules();
      * 
-     *         ctx.export(&#34;armsDispatchRuleId1&#34;, ids.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
      *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
-     *             .nameRegex(&#34;^my-DispatchRule&#34;)
+     *             .nameRegex("^my-DispatchRule")
      *             .build());
      * 
-     *         ctx.export(&#34;armsDispatchRuleId2&#34;, nameRegex.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId2", nameRegex.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -750,7 +780,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -773,15 +804,16 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getDispatchRules();
      * 
-     *         ctx.export(&#34;armsDispatchRuleId1&#34;, ids.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
      *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
-     *             .nameRegex(&#34;^my-DispatchRule&#34;)
+     *             .nameRegex("^my-DispatchRule")
      *             .build());
      * 
-     *         ctx.export(&#34;armsDispatchRuleId2&#34;, nameRegex.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId2", nameRegex.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -798,7 +830,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -821,15 +854,16 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getDispatchRules();
      * 
-     *         ctx.export(&#34;armsDispatchRuleId1&#34;, ids.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
      *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
-     *             .nameRegex(&#34;^my-DispatchRule&#34;)
+     *             .nameRegex("^my-DispatchRule")
      *             .build());
      * 
-     *         ctx.export(&#34;armsDispatchRuleId2&#34;, nameRegex.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId2", nameRegex.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -846,7 +880,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -869,15 +904,16 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getDispatchRules();
      * 
-     *         ctx.export(&#34;armsDispatchRuleId1&#34;, ids.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
      *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
-     *             .nameRegex(&#34;^my-DispatchRule&#34;)
+     *             .nameRegex("^my-DispatchRule")
      *             .build());
      * 
-     *         ctx.export(&#34;armsDispatchRuleId2&#34;, nameRegex.applyValue(getDispatchRulesResult -&gt; getDispatchRulesResult.rules()[0].id()));
+     *         ctx.export("armsDispatchRuleId2", nameRegex.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -894,7 +930,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -916,15 +953,16 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getIntegrationExporters(GetIntegrationExportersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .clusterId(&#34;your_cluster_id&#34;)
-     *             .integrationType(&#34;kafka&#34;)
+     *             .ids("example_id")
+     *             .clusterId("your_cluster_id")
+     *             .integrationType("kafka")
      *             .build());
      * 
-     *         ctx.export(&#34;armsIntegrationExportersId1&#34;, ids.applyValue(getIntegrationExportersResult -&gt; getIntegrationExportersResult.integrationExporters()[0].id()));
+     *         ctx.export("armsIntegrationExportersId1", ids.applyValue(getIntegrationExportersResult -> getIntegrationExportersResult.integrationExporters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -941,7 +979,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -963,15 +1002,16 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getIntegrationExporters(GetIntegrationExportersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .clusterId(&#34;your_cluster_id&#34;)
-     *             .integrationType(&#34;kafka&#34;)
+     *             .ids("example_id")
+     *             .clusterId("your_cluster_id")
+     *             .integrationType("kafka")
      *             .build());
      * 
-     *         ctx.export(&#34;armsIntegrationExportersId1&#34;, ids.applyValue(getIntegrationExportersResult -&gt; getIntegrationExportersResult.integrationExporters()[0].id()));
+     *         ctx.export("armsIntegrationExportersId1", ids.applyValue(getIntegrationExportersResult -> getIntegrationExportersResult.integrationExporters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -988,7 +1028,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1010,15 +1051,16 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getIntegrationExporters(GetIntegrationExportersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .clusterId(&#34;your_cluster_id&#34;)
-     *             .integrationType(&#34;kafka&#34;)
+     *             .ids("example_id")
+     *             .clusterId("your_cluster_id")
+     *             .integrationType("kafka")
      *             .build());
      * 
-     *         ctx.export(&#34;armsIntegrationExportersId1&#34;, ids.applyValue(getIntegrationExportersResult -&gt; getIntegrationExportersResult.integrationExporters()[0].id()));
+     *         ctx.export("armsIntegrationExportersId1", ids.applyValue(getIntegrationExportersResult -> getIntegrationExportersResult.integrationExporters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1035,7 +1077,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1057,15 +1100,16 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getIntegrationExporters(GetIntegrationExportersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .clusterId(&#34;your_cluster_id&#34;)
-     *             .integrationType(&#34;kafka&#34;)
+     *             .ids("example_id")
+     *             .clusterId("your_cluster_id")
+     *             .integrationType("kafka")
      *             .build());
      * 
-     *         ctx.export(&#34;armsIntegrationExportersId1&#34;, ids.applyValue(getIntegrationExportersResult -&gt; getIntegrationExportersResult.integrationExporters()[0].id()));
+     *         ctx.export("armsIntegrationExportersId1", ids.applyValue(getIntegrationExportersResult -> getIntegrationExportersResult.integrationExporters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1084,7 +1128,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1115,9 +1160,9 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
@@ -1126,21 +1171,21 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
-     *             .clusterType(&#34;ecs&#34;)
-     *             .grafanaInstanceId(&#34;free&#34;)
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *             .clusterType("ecs")
+     *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Prometheus")
      *             ))
      *             .build());
      * 
@@ -1148,10 +1193,11 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(getPrometheisResult -> getPrometheisResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheisResult -> getPrometheisResult.prometheis()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1170,7 +1216,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1201,9 +1248,9 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
@@ -1212,21 +1259,21 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
-     *             .clusterType(&#34;ecs&#34;)
-     *             .grafanaInstanceId(&#34;free&#34;)
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *             .clusterType("ecs")
+     *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Prometheus")
      *             ))
      *             .build());
      * 
@@ -1234,10 +1281,11 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(getPrometheisResult -> getPrometheisResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheisResult -> getPrometheisResult.prometheis()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1256,7 +1304,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1287,9 +1336,9 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
@@ -1298,21 +1347,21 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
-     *             .clusterType(&#34;ecs&#34;)
-     *             .grafanaInstanceId(&#34;free&#34;)
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *             .clusterType("ecs")
+     *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Prometheus")
      *             ))
      *             .build());
      * 
@@ -1320,10 +1369,11 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(getPrometheisResult -> getPrometheisResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheisResult -> getPrometheisResult.prometheis()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1342,7 +1392,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1373,9 +1424,9 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
@@ -1384,21 +1435,21 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
-     *             .clusterType(&#34;ecs&#34;)
-     *             .grafanaInstanceId(&#34;free&#34;)
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *             .clusterType("ecs")
+     *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Prometheus")
      *             ))
      *             .build());
      * 
@@ -1406,10 +1457,11 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(getPrometheisResult -> getPrometheisResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheisResult -> getPrometheisResult.prometheis()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1428,7 +1480,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1459,9 +1512,9 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
@@ -1470,21 +1523,21 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
-     *             .clusterType(&#34;ecs&#34;)
-     *             .grafanaInstanceId(&#34;free&#34;)
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *             .clusterType("ecs")
+     *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Prometheus")
      *             ))
      *             .build());
      * 
@@ -1492,10 +1545,11 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(getPrometheisResult -> getPrometheisResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheisResult -> getPrometheisResult.prometheis()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1514,7 +1568,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1545,9 +1600,9 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
@@ -1556,21 +1611,21 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
-     *             .clusterType(&#34;ecs&#34;)
-     *             .grafanaInstanceId(&#34;free&#34;)
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *             .clusterType("ecs")
+     *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Prometheus")
      *             ))
      *             .build());
      * 
@@ -1578,10 +1633,11 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheisId&#34;, nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheisResult -&gt; getPrometheisResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheisId", nameRegex.applyValue(getPrometheisResult -> getPrometheisResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheisResult -> getPrometheisResult.prometheis()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1598,7 +1654,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1629,9 +1686,9 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
@@ -1640,21 +1697,21 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
-     *             .clusterType(&#34;ecs&#34;)
-     *             .grafanaInstanceId(&#34;free&#34;)
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *             .clusterType("ecs")
+     *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Prometheus")
      *             ))
      *             .build());
      * 
@@ -1662,10 +1719,11 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusId&#34;, nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(getPrometheusResult -> getPrometheusResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheusResult -> getPrometheusResult.prometheis()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1682,7 +1740,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1713,9 +1772,9 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
@@ -1724,21 +1783,21 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
-     *             .clusterType(&#34;ecs&#34;)
-     *             .grafanaInstanceId(&#34;free&#34;)
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *             .clusterType("ecs")
+     *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Prometheus")
      *             ))
      *             .build());
      * 
@@ -1746,10 +1805,11 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusId&#34;, nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(getPrometheusResult -> getPrometheusResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheusResult -> getPrometheusResult.prometheis()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1766,7 +1826,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1797,9 +1858,9 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
@@ -1808,21 +1869,21 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
-     *             .clusterType(&#34;ecs&#34;)
-     *             .grafanaInstanceId(&#34;free&#34;)
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *             .clusterType("ecs")
+     *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Prometheus")
      *             ))
      *             .build());
      * 
@@ -1830,10 +1891,11 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusId&#34;, nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(getPrometheusResult -> getPrometheusResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheusResult -> getPrometheusResult.prometheis()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1850,7 +1912,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1881,9 +1944,9 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
@@ -1892,21 +1955,21 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
-     *             .clusterType(&#34;ecs&#34;)
-     *             .grafanaInstanceId(&#34;free&#34;)
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *             .clusterType("ecs")
+     *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Prometheus")
      *             ))
      *             .build());
      * 
@@ -1914,10 +1977,11 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusId&#34;, nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(getPrometheusResult -> getPrometheusResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheusResult -> getPrometheusResult.prometheis()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1934,7 +1998,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1965,9 +2030,9 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
@@ -1976,21 +2041,21 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
-     *             .clusterType(&#34;ecs&#34;)
-     *             .grafanaInstanceId(&#34;free&#34;)
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *             .clusterType("ecs")
+     *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Prometheus")
      *             ))
      *             .build());
      * 
@@ -1998,10 +2063,11 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusId&#34;, nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(getPrometheusResult -> getPrometheusResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheusResult -> getPrometheusResult.prometheis()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2018,7 +2084,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2049,9 +2116,9 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
-     *             .nameRegex(&#34;default-NODELETING&#34;)
+     *             .nameRegex("default-NODELETING")
      *             .build());
      * 
      *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
@@ -2060,21 +2127,21 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
-     *             .clusterType(&#34;ecs&#34;)
-     *             .grafanaInstanceId(&#34;free&#34;)
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *             .clusterType("ecs")
+     *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
-     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
-     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format("%s-%s", name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "Prometheus")
      *             ))
      *             .build());
      * 
@@ -2082,10 +2149,11 @@ public final class ArmsFunctions {
      *             .nameRegex(defaultPrometheus.clusterName())
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusId&#34;, nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getPrometheusResult -&gt; getPrometheusResult.prometheis()[0].id())));
+     *         ctx.export("armsPrometheusId", nameRegex.applyValue(getPrometheusResult -> getPrometheusResult).applyValue(nameRegex -> nameRegex.applyValue(getPrometheusResult -> getPrometheusResult.prometheis()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2102,7 +2170,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2124,22 +2193,23 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
+     *             .clusterId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusAlertRuleId1&#34;, ids.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId1", ids.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
      *         final var nameRegex = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-PrometheusAlertRule&#34;)
+     *             .clusterId("example_value")
+     *             .nameRegex("^my-PrometheusAlertRule")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusAlertRuleId2&#34;, nameRegex.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2156,7 +2226,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2178,22 +2249,23 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
+     *             .clusterId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusAlertRuleId1&#34;, ids.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId1", ids.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
      *         final var nameRegex = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-PrometheusAlertRule&#34;)
+     *             .clusterId("example_value")
+     *             .nameRegex("^my-PrometheusAlertRule")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusAlertRuleId2&#34;, nameRegex.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2210,7 +2282,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2232,22 +2305,23 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
+     *             .clusterId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusAlertRuleId1&#34;, ids.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId1", ids.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
      *         final var nameRegex = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-PrometheusAlertRule&#34;)
+     *             .clusterId("example_value")
+     *             .nameRegex("^my-PrometheusAlertRule")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusAlertRuleId2&#34;, nameRegex.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2264,7 +2338,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2286,22 +2361,23 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
+     *             .clusterId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusAlertRuleId1&#34;, ids.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId1", ids.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
      *         final var nameRegex = ArmsFunctions.getPrometheusAlertRules(GetPrometheusAlertRulesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-PrometheusAlertRule&#34;)
+     *             .clusterId("example_value")
+     *             .nameRegex("^my-PrometheusAlertRule")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusAlertRuleId2&#34;, nameRegex.applyValue(getPrometheusAlertRulesResult -&gt; getPrometheusAlertRulesResult.rules()[0].id()));
+     *         ctx.export("armsPrometheusAlertRuleId2", nameRegex.applyValue(getPrometheusAlertRulesResult -> getPrometheusAlertRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2318,7 +2394,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2340,20 +2417,21 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
-     *             .clusterId(&#34;your_cluster_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .clusterId("your_cluster_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusMonitoringsId1&#34;, ids.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId1", ids.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
      *         final var nameRegex = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
-     *             .clusterId(&#34;your_cluster_id&#34;)
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .clusterId("your_cluster_id")
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusMonitoringsId2&#34;, nameRegex.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2370,7 +2448,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2392,20 +2471,21 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
-     *             .clusterId(&#34;your_cluster_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .clusterId("your_cluster_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusMonitoringsId1&#34;, ids.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId1", ids.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
      *         final var nameRegex = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
-     *             .clusterId(&#34;your_cluster_id&#34;)
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .clusterId("your_cluster_id")
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusMonitoringsId2&#34;, nameRegex.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2422,7 +2502,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2444,20 +2525,21 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
-     *             .clusterId(&#34;your_cluster_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .clusterId("your_cluster_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusMonitoringsId1&#34;, ids.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId1", ids.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
      *         final var nameRegex = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
-     *             .clusterId(&#34;your_cluster_id&#34;)
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .clusterId("your_cluster_id")
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusMonitoringsId2&#34;, nameRegex.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2474,7 +2556,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2496,20 +2579,21 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
-     *             .clusterId(&#34;your_cluster_id&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .clusterId("your_cluster_id")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusMonitoringsId1&#34;, ids.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId1", ids.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
      *         final var nameRegex = ArmsFunctions.getPrometheusMonitorings(GetPrometheusMonitoringsArgs.builder()
-     *             .clusterId(&#34;your_cluster_id&#34;)
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .clusterId("your_cluster_id")
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;armsPrometheusMonitoringsId2&#34;, nameRegex.applyValue(getPrometheusMonitoringsResult -&gt; getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
+     *         ctx.export("armsPrometheusMonitoringsId2", nameRegex.applyValue(getPrometheusMonitoringsResult -> getPrometheusMonitoringsResult.prometheusMonitorings()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2526,7 +2610,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2548,20 +2633,21 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .ids("example_id")
+     *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsRemoteWritesId1&#34;, ids.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId1", ids.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
      *         final var nameRegex = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
-     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .nameRegex("tf-example")
+     *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsRemoteWritesId2&#34;, nameRegex.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId2", nameRegex.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2578,7 +2664,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2600,20 +2687,21 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .ids("example_id")
+     *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsRemoteWritesId1&#34;, ids.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId1", ids.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
      *         final var nameRegex = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
-     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .nameRegex("tf-example")
+     *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsRemoteWritesId2&#34;, nameRegex.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId2", nameRegex.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2630,7 +2718,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2652,20 +2741,21 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .ids("example_id")
+     *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsRemoteWritesId1&#34;, ids.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId1", ids.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
      *         final var nameRegex = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
-     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .nameRegex("tf-example")
+     *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsRemoteWritesId2&#34;, nameRegex.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId2", nameRegex.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2682,7 +2772,8 @@ public final class ArmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2704,20 +2795,21 @@ public final class ArmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .ids("example_id")
+     *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsRemoteWritesId1&#34;, ids.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId1", ids.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
      *         final var nameRegex = ArmsFunctions.getRemoteWrites(GetRemoteWritesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
-     *             .clusterId(&#34;your_cluster_id&#34;)
+     *             .nameRegex("tf-example")
+     *             .clusterId("your_cluster_id")
      *             .build());
      * 
-     *         ctx.export(&#34;armsRemoteWritesId2&#34;, nameRegex.applyValue(getRemoteWritesResult -&gt; getRemoteWritesResult.remoteWrites()[0].id()));
+     *         ctx.export("armsRemoteWritesId2", nameRegex.applyValue(getRemoteWritesResult -> getRemoteWritesResult.remoteWrites()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

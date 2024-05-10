@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,19 +52,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new BasicAccelerator(&#34;default&#34;, BasicAcceleratorArgs.builder()        
+ *         var default_ = new BasicAccelerator("default", BasicAcceleratorArgs.builder()        
  *             .duration(1)
- *             .pricingCycle(&#34;Month&#34;)
- *             .basicAcceleratorName(&#34;tf-example-value&#34;)
- *             .description(&#34;tf-example-value&#34;)
- *             .bandwidthBillingType(&#34;BandwidthPackage&#34;)
+ *             .pricingCycle("Month")
+ *             .basicAcceleratorName("tf-example-value")
+ *             .description("tf-example-value")
+ *             .bandwidthBillingType("BandwidthPackage")
  *             .autoPay(true)
- *             .autoUseCoupon(&#34;true&#34;)
+ *             .autoUseCoupon("true")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

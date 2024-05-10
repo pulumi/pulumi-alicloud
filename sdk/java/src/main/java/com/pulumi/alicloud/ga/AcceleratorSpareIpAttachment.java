@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,39 +55,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Accelerator(&#34;default&#34;, AcceleratorArgs.builder()        
+ *         var default_ = new Accelerator("default", AcceleratorArgs.builder()        
  *             .duration(1)
- *             .spec(&#34;1&#34;)
- *             .acceleratorName(&#34;terraform-example&#34;)
+ *             .spec("1")
+ *             .acceleratorName("terraform-example")
  *             .autoUseCoupon(true)
- *             .description(&#34;terraform-example&#34;)
+ *             .description("terraform-example")
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
  *             .bandwidth(100)
- *             .type(&#34;Basic&#34;)
- *             .bandwidthType(&#34;Basic&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .billingType(&#34;PayBy95&#34;)
+ *             .type("Basic")
+ *             .bandwidthType("Basic")
+ *             .paymentType("PayAsYouGo")
+ *             .billingType("PayBy95")
  *             .ratio(30)
- *             .bandwidthPackageName(&#34;terraform-example&#34;)
+ *             .bandwidthPackageName("terraform-example")
  *             .autoPay(true)
  *             .autoUseCoupon(true)
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
  *             .acceleratorId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var defaultAcceleratorSpareIpAttachment = new AcceleratorSpareIpAttachment(&#34;defaultAcceleratorSpareIpAttachment&#34;, AcceleratorSpareIpAttachmentArgs.builder()        
+ *         var defaultAcceleratorSpareIpAttachment = new AcceleratorSpareIpAttachment("defaultAcceleratorSpareIpAttachment", AcceleratorSpareIpAttachmentArgs.builder()        
  *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
- *             .spareIp(&#34;127.0.0.1&#34;)
+ *             .spareIp("127.0.0.1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

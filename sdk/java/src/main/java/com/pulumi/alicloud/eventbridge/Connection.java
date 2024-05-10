@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -65,68 +66,68 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-chengdu&#34;);
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var region = config.get("region").orElse("cn-chengdu");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(defaultSwitch.vpcId())
  *             .build());
  * 
- *         var defaultConnection = new Connection(&#34;defaultConnection&#34;, ConnectionArgs.builder()        
+ *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()        
  *             .connectionName(name)
- *             .description(&#34;test-connection-basic-pre&#34;)
+ *             .description("test-connection-basic-pre")
  *             .networkParameters(ConnectionNetworkParametersArgs.builder()
- *                 .networkType(&#34;PublicNetwork&#34;)
+ *                 .networkType("PublicNetwork")
  *                 .vpcId(defaultNetwork.id())
  *                 .vswitcheId(defaultSwitch.id())
  *                 .securityGroupId(defaultSecurityGroup.id())
  *                 .build())
  *             .authParameters(ConnectionAuthParametersArgs.builder()
- *                 .authorizationType(&#34;BASIC_AUTH&#34;)
+ *                 .authorizationType("BASIC_AUTH")
  *                 .apiKeyAuthParameters(ConnectionAuthParametersApiKeyAuthParametersArgs.builder()
- *                     .apiKeyName(&#34;Token&#34;)
- *                     .apiKeyValue(&#34;Token-value&#34;)
+ *                     .apiKeyName("Token")
+ *                     .apiKeyValue("Token-value")
  *                     .build())
  *                 .basicAuthParameters(ConnectionAuthParametersBasicAuthParametersArgs.builder()
- *                     .username(&#34;admin&#34;)
- *                     .password(&#34;admin&#34;)
+ *                     .username("admin")
+ *                     .password("admin")
  *                     .build())
  *                 .oauthParameters(ConnectionAuthParametersOauthParametersArgs.builder()
- *                     .authorizationEndpoint(&#34;http://127.0.0.1:8080&#34;)
- *                     .httpMethod(&#34;POST&#34;)
+ *                     .authorizationEndpoint("http://127.0.0.1:8080")
+ *                     .httpMethod("POST")
  *                     .clientParameters(ConnectionAuthParametersOauthParametersClientParametersArgs.builder()
- *                         .clientId(&#34;ClientId&#34;)
- *                         .clientSecret(&#34;ClientSecret&#34;)
+ *                         .clientId("ClientId")
+ *                         .clientSecret("ClientSecret")
  *                         .build())
  *                     .oauthHttpParameters(ConnectionAuthParametersOauthParametersOauthHttpParametersArgs.builder()
  *                         .headerParameters(ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs.builder()
- *                             .key(&#34;name&#34;)
- *                             .value(&#34;name&#34;)
- *                             .isValueSecret(&#34;true&#34;)
+ *                             .key("name")
+ *                             .value("name")
+ *                             .isValueSecret("true")
  *                             .build())
  *                         .bodyParameters(ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs.builder()
- *                             .key(&#34;name&#34;)
- *                             .value(&#34;name&#34;)
- *                             .isValueSecret(&#34;true&#34;)
+ *                             .key("name")
+ *                             .value("name")
+ *                             .isValueSecret("true")
  *                             .build())
  *                         .queryStringParameters(ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs.builder()
- *                             .key(&#34;name&#34;)
- *                             .value(&#34;name&#34;)
- *                             .isValueSecret(&#34;true&#34;)
+ *                             .key("name")
+ *                             .value("name")
+ *                             .isValueSecret("true")
  *                             .build())
  *                         .build())
  *                     .build())
@@ -135,7 +136,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

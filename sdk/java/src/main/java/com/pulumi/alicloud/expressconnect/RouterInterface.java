@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,30 +55,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         final var name = config.get("name").orElse("tf_example");
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultRouterInterface = new RouterInterface(&#34;defaultRouterInterface&#34;, RouterInterfaceArgs.builder()        
+ *         var defaultRouterInterface = new RouterInterface("defaultRouterInterface", RouterInterfaceArgs.builder()        
  *             .description(name)
  *             .oppositeRegionId(default_.regions()[0].id())
  *             .routerId(defaultNetwork.routerId())
- *             .role(&#34;InitiatingSide&#34;)
- *             .routerType(&#34;VRouter&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .role("InitiatingSide")
+ *             .routerType("VRouter")
+ *             .paymentType("PayAsYouGo")
  *             .routerInterfaceName(name)
- *             .spec(&#34;Mini.2&#34;)
+ *             .spec("Mini.2")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

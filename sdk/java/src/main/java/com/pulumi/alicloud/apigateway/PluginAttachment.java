@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,70 +52,71 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform_example&#34;);
- *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform_example");
+ *         var example = new Group("example", GroupArgs.builder()        
  *             .name(name)
  *             .description(name)
  *             .build());
  * 
- *         var exampleApi = new Api(&#34;exampleApi&#34;, ApiArgs.builder()        
+ *         var exampleApi = new Api("exampleApi", ApiArgs.builder()        
  *             .groupId(example.id())
  *             .name(name)
  *             .description(name)
- *             .authType(&#34;APP&#34;)
+ *             .authType("APP")
  *             .forceNonceCheck(false)
  *             .requestConfig(ApiRequestConfigArgs.builder()
- *                 .protocol(&#34;HTTP&#34;)
- *                 .method(&#34;GET&#34;)
- *                 .path(&#34;/example/path&#34;)
- *                 .mode(&#34;MAPPING&#34;)
+ *                 .protocol("HTTP")
+ *                 .method("GET")
+ *                 .path("/example/path")
+ *                 .mode("MAPPING")
  *                 .build())
- *             .serviceType(&#34;HTTP&#34;)
+ *             .serviceType("HTTP")
  *             .httpServiceConfig(ApiHttpServiceConfigArgs.builder()
- *                 .address(&#34;http://apigateway-backend.alicloudapi.com:8080&#34;)
- *                 .method(&#34;GET&#34;)
- *                 .path(&#34;/web/cloudapi&#34;)
+ *                 .address("http://apigateway-backend.alicloudapi.com:8080")
+ *                 .method("GET")
+ *                 .path("/web/cloudapi")
  *                 .timeout(12)
- *                 .aoneName(&#34;cloudapi-openapi&#34;)
+ *                 .aoneName("cloudapi-openapi")
  *                 .build())
  *             .requestParameters(ApiRequestParameterArgs.builder()
- *                 .name(&#34;example&#34;)
- *                 .type(&#34;STRING&#34;)
- *                 .required(&#34;OPTIONAL&#34;)
- *                 .in(&#34;QUERY&#34;)
- *                 .inService(&#34;QUERY&#34;)
- *                 .nameService(&#34;exampleservice&#34;)
+ *                 .name("example")
+ *                 .type("STRING")
+ *                 .required("OPTIONAL")
+ *                 .in("QUERY")
+ *                 .inService("QUERY")
+ *                 .nameService("exampleservice")
  *                 .build())
  *             .stageNames(            
- *                 &#34;RELEASE&#34;,
- *                 &#34;TEST&#34;)
+ *                 "RELEASE",
+ *                 "TEST")
  *             .build());
  * 
- *         var examplePlugin = new Plugin(&#34;examplePlugin&#34;, PluginArgs.builder()        
- *             .description(&#34;tf_example&#34;)
- *             .pluginName(&#34;tf_example&#34;)
+ *         var examplePlugin = new Plugin("examplePlugin", PluginArgs.builder()        
+ *             .description("tf_example")
+ *             .pluginName("tf_example")
  *             .pluginData(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;allowOrigins&#34;, &#34;api.foo.com&#34;),
- *                     jsonProperty(&#34;allowMethods&#34;, &#34;GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH&#34;),
- *                     jsonProperty(&#34;allowHeaders&#34;, &#34;Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid&#34;),
- *                     jsonProperty(&#34;exposeHeaders&#34;, &#34;Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message&#34;),
- *                     jsonProperty(&#34;maxAge&#34;, 172800),
- *                     jsonProperty(&#34;allowCredentials&#34;, true)
+ *                     jsonProperty("allowOrigins", "api.foo.com"),
+ *                     jsonProperty("allowMethods", "GET,POST,PUT,DELETE,HEAD,OPTIONS,PATCH"),
+ *                     jsonProperty("allowHeaders", "Authorization,Accept,Accept-Ranges,Cache-Control,Range,Date,Content-Type,Content-Length,Content-MD5,User-Agent,X-Ca-Signature,X-Ca-Signature-Headers,X-Ca-Signature-Method,X-Ca-Key,X-Ca-Timestamp,X-Ca-Nonce,X-Ca-Stage,X-Ca-Request-Mode,x-ca-deviceid"),
+ *                     jsonProperty("exposeHeaders", "Content-MD5,Server,Date,Latency,X-Ca-Request-Id,X-Ca-Error-Code,X-Ca-Error-Message"),
+ *                     jsonProperty("maxAge", 172800),
+ *                     jsonProperty("allowCredentials", true)
  *                 )))
- *             .pluginType(&#34;cors&#34;)
+ *             .pluginType("cors")
  *             .build());
  * 
- *         var examplePluginAttachment = new PluginAttachment(&#34;examplePluginAttachment&#34;, PluginAttachmentArgs.builder()        
+ *         var examplePluginAttachment = new PluginAttachment("examplePluginAttachment", PluginAttachmentArgs.builder()        
  *             .apiId(exampleApi.apiId())
  *             .groupId(example.id())
  *             .pluginId(examplePlugin.id())
- *             .stageName(&#34;RELEASE&#34;)
+ *             .stageName("RELEASE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

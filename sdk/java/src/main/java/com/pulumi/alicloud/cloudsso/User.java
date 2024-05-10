@@ -147,14 +147,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.userId;
     }
     /**
-     * The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+     * The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs ({@literal @}), periods (.), underscores (_), and hyphens (-).
      * 
      */
     @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**
-     * @return The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs (@), periods (.), underscores (_), and hyphens (-).
+     * @return The name of user. The name must be `1` to `64` characters in length and can contain letters, digits, at signs ({@literal @}), periods (.), underscores (_), and hyphens (-).
      * 
      */
     public Output<String> userName() {

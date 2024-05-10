@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,17 +46,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new CustomerGateway(&#34;default&#34;, CustomerGatewayArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new CustomerGateway("default", CustomerGatewayArgs.builder()        
  *             .description(name)
- *             .ipAddress(&#34;4.3.2.10&#34;)
- *             .asn(&#34;1219002&#34;)
+ *             .ipAddress("4.3.2.10")
+ *             .asn("1219002")
  *             .customerGatewayName(name)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

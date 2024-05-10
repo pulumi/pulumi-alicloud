@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,18 +49,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new EipSegmentAddress(&#34;default&#34;, EipSegmentAddressArgs.builder()        
- *             .eipMask(&#34;28&#34;)
- *             .bandwidth(&#34;5&#34;)
- *             .isp(&#34;BGP&#34;)
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
- *             .netmode(&#34;public&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new EipSegmentAddress("default", EipSegmentAddressArgs.builder()        
+ *             .eipMask("28")
+ *             .bandwidth("5")
+ *             .isp("BGP")
+ *             .internetChargeType("PayByBandwidth")
+ *             .netmode("public")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

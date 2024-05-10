@@ -40,9 +40,9 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The Binding Key.
-     * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+     * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
      *   The binding key must be 1 to 255 characters in length.
-     * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+     * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
      *   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
      *   The binding key must be 1 to 255 characters in length.
      * 
@@ -52,9 +52,9 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The Binding Key.
-     * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+     * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
      *   The binding key must be 1 to 255 characters in length.
-     * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+     * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
      *   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
      *   The binding key must be 1 to 255 characters in length.
      * 
@@ -199,9 +199,9 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bindingKey The Binding Key.
-         * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+         * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
          *   The binding key must be 1 to 255 characters in length.
-         * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+         * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
          *   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
          *   The binding key must be 1 to 255 characters in length.
          * 
@@ -215,9 +215,9 @@ public final class BindingState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bindingKey The Binding Key.
-         * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+         * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
          *   The binding key must be 1 to 255 characters in length.
-         * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+         * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
          *   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
          *   The binding key must be 1 to 255 characters in length.
          * 

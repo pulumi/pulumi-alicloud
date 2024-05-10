@@ -24,7 +24,8 @@ public final class CloudmonitorFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -52,15 +53,15 @@ public final class CloudmonitorFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getAccount();
      * 
-     *         var source = new Namespace(&#34;source&#34;, NamespaceArgs.builder()        
-     *             .namespace(&#34;your-source-namespace&#34;)
+     *         var source = new Namespace("source", NamespaceArgs.builder()        
+     *             .namespace("your-source-namespace")
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
-     *             .namespace(&#34;your-namespace&#34;)
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *             .namespace("your-namespace")
      *             .build());
      * 
-     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite(&#34;defaultServiceHybridDoubleWrite&#34;, ServiceHybridDoubleWriteArgs.builder()        
+     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()        
      *             .sourceNamespace(source.id())
      *             .sourceUserId(default_.id())
      *             .namespace(defaultNamespace.id())
@@ -71,10 +72,11 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudMonitorServiceHybridDoubleWritesId1&#34;, ids.applyValue(getServiceHybridDoubleWritesResult -&gt; getServiceHybridDoubleWritesResult).applyValue(ids -&gt; ids.applyValue(getServiceHybridDoubleWritesResult -&gt; getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult).applyValue(ids -> ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -91,7 +93,8 @@ public final class CloudmonitorFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -119,15 +122,15 @@ public final class CloudmonitorFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getAccount();
      * 
-     *         var source = new Namespace(&#34;source&#34;, NamespaceArgs.builder()        
-     *             .namespace(&#34;your-source-namespace&#34;)
+     *         var source = new Namespace("source", NamespaceArgs.builder()        
+     *             .namespace("your-source-namespace")
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
-     *             .namespace(&#34;your-namespace&#34;)
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *             .namespace("your-namespace")
      *             .build());
      * 
-     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite(&#34;defaultServiceHybridDoubleWrite&#34;, ServiceHybridDoubleWriteArgs.builder()        
+     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()        
      *             .sourceNamespace(source.id())
      *             .sourceUserId(default_.id())
      *             .namespace(defaultNamespace.id())
@@ -138,10 +141,11 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudMonitorServiceHybridDoubleWritesId1&#34;, ids.applyValue(getServiceHybridDoubleWritesResult -&gt; getServiceHybridDoubleWritesResult).applyValue(ids -&gt; ids.applyValue(getServiceHybridDoubleWritesResult -&gt; getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult).applyValue(ids -> ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -158,7 +162,8 @@ public final class CloudmonitorFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -186,15 +191,15 @@ public final class CloudmonitorFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getAccount();
      * 
-     *         var source = new Namespace(&#34;source&#34;, NamespaceArgs.builder()        
-     *             .namespace(&#34;your-source-namespace&#34;)
+     *         var source = new Namespace("source", NamespaceArgs.builder()        
+     *             .namespace("your-source-namespace")
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
-     *             .namespace(&#34;your-namespace&#34;)
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *             .namespace("your-namespace")
      *             .build());
      * 
-     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite(&#34;defaultServiceHybridDoubleWrite&#34;, ServiceHybridDoubleWriteArgs.builder()        
+     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()        
      *             .sourceNamespace(source.id())
      *             .sourceUserId(default_.id())
      *             .namespace(defaultNamespace.id())
@@ -205,10 +210,11 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudMonitorServiceHybridDoubleWritesId1&#34;, ids.applyValue(getServiceHybridDoubleWritesResult -&gt; getServiceHybridDoubleWritesResult).applyValue(ids -&gt; ids.applyValue(getServiceHybridDoubleWritesResult -&gt; getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult).applyValue(ids -> ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -225,7 +231,8 @@ public final class CloudmonitorFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -253,15 +260,15 @@ public final class CloudmonitorFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getAccount();
      * 
-     *         var source = new Namespace(&#34;source&#34;, NamespaceArgs.builder()        
-     *             .namespace(&#34;your-source-namespace&#34;)
+     *         var source = new Namespace("source", NamespaceArgs.builder()        
+     *             .namespace("your-source-namespace")
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
-     *             .namespace(&#34;your-namespace&#34;)
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *             .namespace("your-namespace")
      *             .build());
      * 
-     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite(&#34;defaultServiceHybridDoubleWrite&#34;, ServiceHybridDoubleWriteArgs.builder()        
+     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()        
      *             .sourceNamespace(source.id())
      *             .sourceUserId(default_.id())
      *             .namespace(defaultNamespace.id())
@@ -272,10 +279,11 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudMonitorServiceHybridDoubleWritesId1&#34;, ids.applyValue(getServiceHybridDoubleWritesResult -&gt; getServiceHybridDoubleWritesResult).applyValue(ids -&gt; ids.applyValue(getServiceHybridDoubleWritesResult -&gt; getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult).applyValue(ids -> ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -292,7 +300,8 @@ public final class CloudmonitorFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -320,15 +329,15 @@ public final class CloudmonitorFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getAccount();
      * 
-     *         var source = new Namespace(&#34;source&#34;, NamespaceArgs.builder()        
-     *             .namespace(&#34;your-source-namespace&#34;)
+     *         var source = new Namespace("source", NamespaceArgs.builder()        
+     *             .namespace("your-source-namespace")
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
-     *             .namespace(&#34;your-namespace&#34;)
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *             .namespace("your-namespace")
      *             .build());
      * 
-     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite(&#34;defaultServiceHybridDoubleWrite&#34;, ServiceHybridDoubleWriteArgs.builder()        
+     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()        
      *             .sourceNamespace(source.id())
      *             .sourceUserId(default_.id())
      *             .namespace(defaultNamespace.id())
@@ -339,10 +348,11 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudMonitorServiceHybridDoubleWritesId1&#34;, ids.applyValue(getServiceHybridDoubleWritesResult -&gt; getServiceHybridDoubleWritesResult).applyValue(ids -&gt; ids.applyValue(getServiceHybridDoubleWritesResult -&gt; getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult).applyValue(ids -> ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -359,7 +369,8 @@ public final class CloudmonitorFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -387,15 +398,15 @@ public final class CloudmonitorFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getAccount();
      * 
-     *         var source = new Namespace(&#34;source&#34;, NamespaceArgs.builder()        
-     *             .namespace(&#34;your-source-namespace&#34;)
+     *         var source = new Namespace("source", NamespaceArgs.builder()        
+     *             .namespace("your-source-namespace")
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
-     *             .namespace(&#34;your-namespace&#34;)
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *             .namespace("your-namespace")
      *             .build());
      * 
-     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite(&#34;defaultServiceHybridDoubleWrite&#34;, ServiceHybridDoubleWriteArgs.builder()        
+     *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()        
      *             .sourceNamespace(source.id())
      *             .sourceUserId(default_.id())
      *             .namespace(defaultNamespace.id())
@@ -406,10 +417,11 @@ public final class CloudmonitorFunctions {
      *             .ids(defaultServiceHybridDoubleWrite.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudMonitorServiceHybridDoubleWritesId1&#34;, ids.applyValue(getServiceHybridDoubleWritesResult -&gt; getServiceHybridDoubleWritesResult).applyValue(ids -&gt; ids.applyValue(getServiceHybridDoubleWritesResult -&gt; getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
+     *         ctx.export("cloudMonitorServiceHybridDoubleWritesId1", ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult).applyValue(ids -> ids.applyValue(getServiceHybridDoubleWritesResult -> getServiceHybridDoubleWritesResult.hybridDoubleWrites()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

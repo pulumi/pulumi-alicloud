@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,22 +52,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TrafficMirrorFilter(&#34;example&#34;, TrafficMirrorFilterArgs.builder()        
- *             .trafficMirrorFilterName(&#34;example_value&#34;)
+ *         var example = new TrafficMirrorFilter("example", TrafficMirrorFilterArgs.builder()        
+ *             .trafficMirrorFilterName("example_value")
  *             .build());
  * 
- *         var default_ = new TrafficMirrorFilterEgressRule(&#34;default&#34;, TrafficMirrorFilterEgressRuleArgs.builder()        
- *             .action(&#34;drop&#34;)
- *             .priority(&#34;2&#34;)
- *             .sourceCidrBlock(&#34;10.0.0.0/11&#34;)
- *             .destinationCidrBlock(&#34;10.0.0.0/12&#34;)
+ *         var default_ = new TrafficMirrorFilterEgressRule("default", TrafficMirrorFilterEgressRuleArgs.builder()        
+ *             .action("drop")
+ *             .priority("2")
+ *             .sourceCidrBlock("10.0.0.0/11")
+ *             .destinationCidrBlock("10.0.0.0/12")
  *             .trafficMirrorFilterId(example.id())
- *             .protocol(&#34;ALL&#34;)
+ *             .protocol("ALL")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

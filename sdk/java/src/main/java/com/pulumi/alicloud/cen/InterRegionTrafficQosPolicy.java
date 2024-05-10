@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,48 +58,49 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf-example&#34;)
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *             .cenInstanceName("tf-example")
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
  *             .bandwidth(5)
- *             .geographicRegionAId(&#34;China&#34;)
- *             .geographicRegionBId(&#34;China&#34;)
+ *             .geographicRegionAId("China")
+ *             .geographicRegionBId("China")
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
  *             .instanceId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var hz = new TransitRouter(&#34;hz&#34;, TransitRouterArgs.builder()        
+ *         var hz = new TransitRouter("hz", TransitRouterArgs.builder()        
  *             .cenId(defaultBandwidthPackageAttachment.instanceId())
  *             .build());
  * 
- *         var bj = new TransitRouter(&#34;bj&#34;, TransitRouterArgs.builder()        
+ *         var bj = new TransitRouter("bj", TransitRouterArgs.builder()        
  *             .cenId(hz.cenId())
  *             .build());
  * 
- *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment(&#34;defaultTransitRouterPeerAttachment&#34;, TransitRouterPeerAttachmentArgs.builder()        
+ *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", TransitRouterPeerAttachmentArgs.builder()        
  *             .cenId(default_.id())
  *             .transitRouterId(hz.transitRouterId())
- *             .peerTransitRouterRegionId(&#34;cn-beijing&#34;)
+ *             .peerTransitRouterRegionId("cn-beijing")
  *             .peerTransitRouterId(bj.transitRouterId())
  *             .cenBandwidthPackageId(defaultBandwidthPackageAttachment.bandwidthPackageId())
  *             .bandwidth(5)
  *             .build());
  * 
- *         var defaultInterRegionTrafficQosPolicy = new InterRegionTrafficQosPolicy(&#34;defaultInterRegionTrafficQosPolicy&#34;, InterRegionTrafficQosPolicyArgs.builder()        
+ *         var defaultInterRegionTrafficQosPolicy = new InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy", InterRegionTrafficQosPolicyArgs.builder()        
  *             .transitRouterId(hz.transitRouterId())
  *             .transitRouterAttachmentId(defaultTransitRouterPeerAttachment.transitRouterAttachmentId())
- *             .interRegionTrafficQosPolicyName(&#34;tf-example-name&#34;)
- *             .interRegionTrafficQosPolicyDescription(&#34;tf-example-description&#34;)
+ *             .interRegionTrafficQosPolicyName("tf-example-name")
+ *             .interRegionTrafficQosPolicyDescription("tf-example-description")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

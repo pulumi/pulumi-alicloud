@@ -35,7 +35,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -57,14 +58,15 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bucketObjectsDs = OssFunctions.getBucketObjects(GetBucketObjectsArgs.builder()
-     *             .bucketName(&#34;sample_bucket&#34;)
-     *             .keyRegex(&#34;sample/sample_object.txt&#34;)
+     *             .bucketName("sample_bucket")
+     *             .keyRegex("sample/sample_object.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstObjectKey&#34;, bucketObjectsDs.applyValue(getBucketObjectsResult -&gt; getBucketObjectsResult.objects()[0].key()));
+     *         ctx.export("firstObjectKey", bucketObjectsDs.applyValue(getBucketObjectsResult -> getBucketObjectsResult.objects()[0].key()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -77,7 +79,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -99,14 +102,15 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bucketObjectsDs = OssFunctions.getBucketObjects(GetBucketObjectsArgs.builder()
-     *             .bucketName(&#34;sample_bucket&#34;)
-     *             .keyRegex(&#34;sample/sample_object.txt&#34;)
+     *             .bucketName("sample_bucket")
+     *             .keyRegex("sample/sample_object.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstObjectKey&#34;, bucketObjectsDs.applyValue(getBucketObjectsResult -&gt; getBucketObjectsResult.objects()[0].key()));
+     *         ctx.export("firstObjectKey", bucketObjectsDs.applyValue(getBucketObjectsResult -> getBucketObjectsResult.objects()[0].key()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -119,7 +123,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -141,14 +146,15 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bucketObjectsDs = OssFunctions.getBucketObjects(GetBucketObjectsArgs.builder()
-     *             .bucketName(&#34;sample_bucket&#34;)
-     *             .keyRegex(&#34;sample/sample_object.txt&#34;)
+     *             .bucketName("sample_bucket")
+     *             .keyRegex("sample/sample_object.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstObjectKey&#34;, bucketObjectsDs.applyValue(getBucketObjectsResult -&gt; getBucketObjectsResult.objects()[0].key()));
+     *         ctx.export("firstObjectKey", bucketObjectsDs.applyValue(getBucketObjectsResult -> getBucketObjectsResult.objects()[0].key()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -161,7 +167,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -183,14 +190,15 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bucketObjectsDs = OssFunctions.getBucketObjects(GetBucketObjectsArgs.builder()
-     *             .bucketName(&#34;sample_bucket&#34;)
-     *             .keyRegex(&#34;sample/sample_object.txt&#34;)
+     *             .bucketName("sample_bucket")
+     *             .keyRegex("sample/sample_object.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstObjectKey&#34;, bucketObjectsDs.applyValue(getBucketObjectsResult -&gt; getBucketObjectsResult.objects()[0].key()));
+     *         ctx.export("firstObjectKey", bucketObjectsDs.applyValue(getBucketObjectsResult -> getBucketObjectsResult.objects()[0].key()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -203,7 +211,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -225,13 +234,14 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
-     *             .nameRegex(&#34;sample_oss_bucket&#34;)
+     *             .nameRegex("sample_oss_bucket")
      *             .build());
      * 
-     *         ctx.export(&#34;firstOssBucketName&#34;, ossBucketsDs.applyValue(getBucketsResult -&gt; getBucketsResult.buckets()[0].name()));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -244,7 +254,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -266,13 +277,14 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
-     *             .nameRegex(&#34;sample_oss_bucket&#34;)
+     *             .nameRegex("sample_oss_bucket")
      *             .build());
      * 
-     *         ctx.export(&#34;firstOssBucketName&#34;, ossBucketsDs.applyValue(getBucketsResult -&gt; getBucketsResult.buckets()[0].name()));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -285,7 +297,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -307,13 +320,14 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
-     *             .nameRegex(&#34;sample_oss_bucket&#34;)
+     *             .nameRegex("sample_oss_bucket")
      *             .build());
      * 
-     *         ctx.export(&#34;firstOssBucketName&#34;, ossBucketsDs.applyValue(getBucketsResult -&gt; getBucketsResult.buckets()[0].name()));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -326,7 +340,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -348,13 +363,14 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
-     *             .nameRegex(&#34;sample_oss_bucket&#34;)
+     *             .nameRegex("sample_oss_bucket")
      *             .build());
      * 
-     *         ctx.export(&#34;firstOssBucketName&#34;, ossBucketsDs.applyValue(getBucketsResult -&gt; getBucketsResult.buckets()[0].name()));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -367,7 +383,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -389,13 +406,14 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
-     *             .nameRegex(&#34;sample_oss_bucket&#34;)
+     *             .nameRegex("sample_oss_bucket")
      *             .build());
      * 
-     *         ctx.export(&#34;firstOssBucketName&#34;, ossBucketsDs.applyValue(getBucketsResult -&gt; getBucketsResult.buckets()[0].name()));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -408,7 +426,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -430,13 +449,14 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ossBucketsDs = OssFunctions.getBuckets(GetBucketsArgs.builder()
-     *             .nameRegex(&#34;sample_oss_bucket&#34;)
+     *             .nameRegex("sample_oss_bucket")
      *             .build());
      * 
-     *         ctx.export(&#34;firstOssBucketName&#34;, ossBucketsDs.applyValue(getBucketsResult -&gt; getBucketsResult.buckets()[0].name()));
+     *         ctx.export("firstOssBucketName", ossBucketsDs.applyValue(getBucketsResult -> getBucketsResult.buckets()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -449,7 +469,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -471,15 +492,16 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attachmentsDs = OtsFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .nameRegex(&#34;testvpc&#34;)
-     *             .outputFile(&#34;attachments.txt&#34;)
+     *             .instanceName("sample-instance")
+     *             .nameRegex("testvpc")
+     *             .outputFile("attachments.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstOtsAttachmentId&#34;, attachmentsDs.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -496,7 +518,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -518,15 +541,16 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attachmentsDs = OtsFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .nameRegex(&#34;testvpc&#34;)
-     *             .outputFile(&#34;attachments.txt&#34;)
+     *             .instanceName("sample-instance")
+     *             .nameRegex("testvpc")
+     *             .outputFile("attachments.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstOtsAttachmentId&#34;, attachmentsDs.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -543,7 +567,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -565,15 +590,16 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attachmentsDs = OtsFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .nameRegex(&#34;testvpc&#34;)
-     *             .outputFile(&#34;attachments.txt&#34;)
+     *             .instanceName("sample-instance")
+     *             .nameRegex("testvpc")
+     *             .outputFile("attachments.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstOtsAttachmentId&#34;, attachmentsDs.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -590,7 +616,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -612,15 +639,16 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attachmentsDs = OtsFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
-     *             .instanceName(&#34;sample-instance&#34;)
-     *             .nameRegex(&#34;testvpc&#34;)
-     *             .outputFile(&#34;attachments.txt&#34;)
+     *             .instanceName("sample-instance")
+     *             .nameRegex("testvpc")
+     *             .outputFile("attachments.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstOtsAttachmentId&#34;, attachmentsDs.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("firstOtsAttachmentId", attachmentsDs.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -639,7 +667,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -661,13 +690,14 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -686,7 +716,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -708,13 +739,14 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -733,7 +765,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -755,13 +788,14 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -780,7 +814,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -802,13 +837,14 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -827,7 +863,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -849,13 +886,14 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -874,7 +912,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -896,13 +935,14 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -923,7 +963,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -945,12 +986,13 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = OssFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -967,7 +1009,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -989,12 +1032,13 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = OssFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1011,7 +1055,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1033,12 +1078,13 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = OssFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1055,7 +1101,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1077,12 +1124,13 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = OssFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1099,7 +1147,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1121,12 +1170,13 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = OssFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1143,7 +1193,8 @@ public final class OssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1165,12 +1216,13 @@ public final class OssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = OssFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

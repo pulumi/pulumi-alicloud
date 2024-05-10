@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,16 +50,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var snapshot = new Snapshot(&#34;snapshot&#34;, SnapshotArgs.builder()        
+ *         var snapshot = new Snapshot("snapshot", SnapshotArgs.builder()        
  *             .diskId(instance_attachment.diskId())
- *             .name(&#34;test-snapshot&#34;)
- *             .description(&#34;this snapshot is created for testing&#34;)
- *             .tags(Map.of(&#34;version&#34;, &#34;1.2&#34;))
+ *             .name("test-snapshot")
+ *             .description("this snapshot is created for testing")
+ *             .tags(Map.of("version", "1.2"))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

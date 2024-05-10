@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,24 +54,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;AliyunTerraform&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("AliyunTerraform");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
- *             .displayName(String.format(&#34;%s-%s&#34;, name,default_.result()))
+ *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
+ *             .displayName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var defaultInstanceMember = new InstanceMember(&#34;defaultInstanceMember&#34;, InstanceMemberArgs.builder()        
- *             .memberDesc(String.format(&#34;%s-%s&#34;, name,default_.result()))
+ *         var defaultInstanceMember = new InstanceMember("defaultInstanceMember", InstanceMemberArgs.builder()        
+ *             .memberDesc(String.format("%s-%s", name,default_.result()))
  *             .memberUid(defaultAccount.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

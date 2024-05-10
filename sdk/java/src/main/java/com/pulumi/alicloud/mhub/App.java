@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,21 +53,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
- *         var default_ = new Product(&#34;default&#34;, ProductArgs.builder()        
+ *         final var name = config.get("name").orElse("example_value");
+ *         var default_ = new Product("default", ProductArgs.builder()        
  *             .productName(name)
  *             .build());
  * 
- *         var defaultApp = new App(&#34;defaultApp&#34;, AppArgs.builder()        
+ *         var defaultApp = new App("defaultApp", AppArgs.builder()        
  *             .appName(name)
  *             .productId(default_.id())
- *             .packageName(&#34;com.example.android&#34;)
- *             .type(&#34;Android&#34;)
+ *             .packageName("com.example.android")
+ *             .type("Android")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

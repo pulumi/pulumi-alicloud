@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,19 +52,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = ThreatdetectionFunctions.getAssets(GetAssetsArgs.builder()
- *             .machineTypes(&#34;ecs&#34;)
+ *             .machineTypes("ecs")
  *             .build());
  * 
- *         var defaultBackupPolicy = new BackupPolicy(&#34;defaultBackupPolicy&#34;, BackupPolicyArgs.builder()        
- *             .backupPolicyName(&#34;tf-example-name&#34;)
- *             .policy(&#34;{\&#34;Exclude\&#34;:[\&#34;/bin/\&#34;,\&#34;/usr/bin/\&#34;,\&#34;/sbin/\&#34;,\&#34;/boot/\&#34;,\&#34;/proc/\&#34;,\&#34;/sys/\&#34;,\&#34;/srv/\&#34;,\&#34;/lib/\&#34;,\&#34;/selinux/\&#34;,\&#34;/usr/sbin/\&#34;,\&#34;/run/\&#34;,\&#34;/lib32/\&#34;,\&#34;/lib64/\&#34;,\&#34;/lost+found/\&#34;,\&#34;/var/lib/kubelet/\&#34;,\&#34;/var/lib/ntp/proc\&#34;,\&#34;/var/lib/container\&#34;],\&#34;ExcludeSystemPath\&#34;:true,\&#34;Include\&#34;:[],\&#34;IsDefault\&#34;:1,\&#34;Retention\&#34;:7,\&#34;Schedule\&#34;:\&#34;I|1668703620|PT24H\&#34;,\&#34;Source\&#34;:[],\&#34;SpeedLimiter\&#34;:\&#34;\&#34;,\&#34;UseVss\&#34;:true}&#34;)
- *             .policyVersion(&#34;2.0.0&#34;)
+ *         var defaultBackupPolicy = new BackupPolicy("defaultBackupPolicy", BackupPolicyArgs.builder()        
+ *             .backupPolicyName("tf-example-name")
+ *             .policy("{\"Exclude\":[\"/bin/\",\"/usr/bin/\",\"/sbin/\",\"/boot/\",\"/proc/\",\"/sys/\",\"/srv/\",\"/lib/\",\"/selinux/\",\"/usr/sbin/\",\"/run/\",\"/lib32/\",\"/lib64/\",\"/lost+found/\",\"/var/lib/kubelet/\",\"/var/lib/ntp/proc\",\"/var/lib/container\"],\"ExcludeSystemPath\":true,\"Include\":[],\"IsDefault\":1,\"Retention\":7,\"Schedule\":\"I|1668703620|PT24H\",\"Source\":[],\"SpeedLimiter\":\"\",\"UseVss\":true}")
+ *             .policyVersion("2.0.0")
  *             .uuidLists(default_.ids()[0])
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

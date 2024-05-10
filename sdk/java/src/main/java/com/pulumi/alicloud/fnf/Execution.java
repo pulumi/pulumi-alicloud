@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,51 +53,52 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-fnfflow&#34;);
- *         var default_ = new Role(&#34;default&#34;, RoleArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example-fnfflow");
+ *         var default_ = new Role("default", RoleArgs.builder()        
  *             .name(name)
- *             .document(&#34;&#34;&#34;
+ *             .document("""
  *   {
- *     &#34;Statement&#34;: [
+ *     "Statement": [
  *       {
- *         &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *         &#34;Effect&#34;: &#34;Allow&#34;,
- *         &#34;Principal&#34;: {
- *           &#34;Service&#34;: [
- *             &#34;fnf.aliyuncs.com&#34;
+ *         "Action": "sts:AssumeRole",
+ *         "Effect": "Allow",
+ *         "Principal": {
+ *           "Service": [
+ *             "fnf.aliyuncs.com"
  *           ]
  *         }
  *       }
  *     ],
- *     &#34;Version&#34;: &#34;1&#34;
+ *     "Version": "1"
  *   }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var defaultFlow = new Flow(&#34;defaultFlow&#34;, FlowArgs.builder()        
- *             .definition(&#34;&#34;&#34;
+ *         var defaultFlow = new Flow("defaultFlow", FlowArgs.builder()        
+ *             .definition("""
  *   version: v1beta1
  *   type: flow
  *   steps:
  *     - type: wait
  *       name: custom_wait
  *       duration: $.wait
- *             &#34;&#34;&#34;)
+ *             """)
  *             .roleArn(default_.arn())
- *             .description(&#34;Test for terraform fnf_flow.&#34;)
+ *             .description("Test for terraform fnf_flow.")
  *             .name(name)
- *             .type(&#34;FDL&#34;)
+ *             .type("FDL")
  *             .build());
  * 
- *         var defaultExecution = new Execution(&#34;defaultExecution&#34;, ExecutionArgs.builder()        
+ *         var defaultExecution = new Execution("defaultExecution", ExecutionArgs.builder()        
  *             .executionName(name)
  *             .flowName(defaultFlow.name())
- *             .input(&#34;{\&#34;wait\&#34;: 600}&#34;)
+ *             .input("{\"wait\": 600}")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,31 +54,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf_example&#34;)
- *             .description(&#34;an example for cen&#34;)
+ *         var example = new Instance("example", InstanceArgs.builder()        
+ *             .cenInstanceName("tf_example")
+ *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .transitRouterName(&#34;tf_example&#34;)
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
+ *             .transitRouterName("tf_example")
  *             .cenId(example.id())
  *             .build());
  * 
- *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable(&#34;exampleTransitRouterRouteTable&#34;, TransitRouterRouteTableArgs.builder()        
+ *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable("exampleTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()        
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .build());
  * 
- *         var exampleTransitRouteTableAggregation = new TransitRouteTableAggregation(&#34;exampleTransitRouteTableAggregation&#34;, TransitRouteTableAggregationArgs.builder()        
+ *         var exampleTransitRouteTableAggregation = new TransitRouteTableAggregation("exampleTransitRouteTableAggregation", TransitRouteTableAggregationArgs.builder()        
  *             .transitRouteTableId(exampleTransitRouterRouteTable.transitRouterRouteTableId())
- *             .transitRouteTableAggregationCidr(&#34;10.0.0.0/8&#34;)
- *             .transitRouteTableAggregationScope(&#34;VPC&#34;)
- *             .transitRouteTableAggregationName(&#34;tf_example&#34;)
- *             .transitRouteTableAggregationDescription(&#34;tf_example&#34;)
+ *             .transitRouteTableAggregationCidr("10.0.0.0/8")
+ *             .transitRouteTableAggregationScope("VPC")
+ *             .transitRouteTableAggregationName("tf_example")
+ *             .transitRouteTableAggregationDescription("tf_example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

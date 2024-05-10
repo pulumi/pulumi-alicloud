@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,24 +52,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityGroup(&#34;default&#34;, SecurityGroupArgs.builder()        
- *             .name(&#34;default&#34;)
+ *         var default_ = new SecurityGroup("default", SecurityGroupArgs.builder()        
+ *             .name("default")
  *             .build());
  * 
- *         var allowAllTcp = new SecurityGroupRule(&#34;allowAllTcp&#34;, SecurityGroupRuleArgs.builder()        
- *             .type(&#34;ingress&#34;)
- *             .ipProtocol(&#34;tcp&#34;)
- *             .nicType(&#34;internet&#34;)
- *             .policy(&#34;accept&#34;)
- *             .portRange(&#34;1/65535&#34;)
+ *         var allowAllTcp = new SecurityGroupRule("allowAllTcp", SecurityGroupRuleArgs.builder()        
+ *             .type("ingress")
+ *             .ipProtocol("tcp")
+ *             .nicType("internet")
+ *             .policy("accept")
+ *             .portRange("1/65535")
  *             .priority(1)
  *             .securityGroupId(default_.id())
- *             .cidrIp(&#34;0.0.0.0/0&#34;)
+ *             .cidrIp("0.0.0.0/0")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Module Support

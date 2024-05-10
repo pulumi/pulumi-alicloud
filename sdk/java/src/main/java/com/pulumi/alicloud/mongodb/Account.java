@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,50 +58,51 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = MongodbFunctions.getZones();
  * 
  *         final var index = default_.zones().length() - 1;
  * 
  *         final var zoneId = default_.zones()[index].id();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .engineVersion(&#34;4.2&#34;)
- *             .dbInstanceClass(&#34;dds.mongo.mid&#34;)
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .engineVersion("4.2")
+ *             .dbInstanceClass("dds.mongo.mid")
  *             .dbInstanceStorage(10)
  *             .vswitchId(defaultSwitch.id())
  *             .securityIpLists(            
- *                 &#34;10.168.1.12&#34;,
- *                 &#34;100.69.7.112&#34;)
+ *                 "10.168.1.12",
+ *                 "100.69.7.112")
  *             .name(name)
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
- *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
- *             .accountName(&#34;root&#34;)
- *             .accountPassword(&#34;Example_123&#34;)
+ *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
+ *             .accountName("root")
+ *             .accountPassword("Example_123")
  *             .instanceId(defaultInstance.id())
  *             .accountDescription(name)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

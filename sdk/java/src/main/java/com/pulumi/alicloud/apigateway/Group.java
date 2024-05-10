@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,14 +42,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
- *             .name(&#34;tf_example&#34;)
- *             .description(&#34;tf_example&#34;)
+ *         var default_ = new Group("default", GroupArgs.builder()        
+ *             .name("tf_example")
+ *             .description("tf_example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,37 +56,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var foo = new Network(&#34;foo&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var foo = new Network("foo", NetworkArgs.builder()        
+ *             .cidrBlock("172.16.0.0/12")
  *             .name(name)
  *             .build());
  * 
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+ *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
  *             .vpcId(foo.id())
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(default_.zones()[0].id())
  *             .name(name)
  *             .build());
  * 
- *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
+ *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()        
  *             .vpcId(foo.id())
  *             .routeTableName(name)
- *             .description(&#34;route_table_attachment&#34;)
+ *             .description("route_table_attachment")
  *             .build());
  * 
- *         var fooRouteTableAttachment = new RouteTableAttachment(&#34;fooRouteTableAttachment&#34;, RouteTableAttachmentArgs.builder()        
+ *         var fooRouteTableAttachment = new RouteTableAttachment("fooRouteTableAttachment", RouteTableAttachmentArgs.builder()        
  *             .vswitchId(fooSwitch.id())
  *             .routeTableId(fooRouteTable.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

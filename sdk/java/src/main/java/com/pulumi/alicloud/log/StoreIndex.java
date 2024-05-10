@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,47 +56,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;example-store&#34;)
+ *             .name("example-store")
  *             .shardCount(3)
  *             .autoSplit(true)
  *             .maxSplitShardCount(60)
  *             .appendMeta(true)
  *             .build());
  * 
- *         var exampleStoreIndex = new StoreIndex(&#34;exampleStoreIndex&#34;, StoreIndexArgs.builder()        
+ *         var exampleStoreIndex = new StoreIndex("exampleStoreIndex", StoreIndexArgs.builder()        
  *             .project(example.name())
  *             .logstore(exampleStore.name())
  *             .fullText(StoreIndexFullTextArgs.builder()
  *                 .caseSensitive(true)
- *                 .token(&#34;&#34;&#34;
+ *                 .token("""
  *  #$^*
- * 	                &#34;&#34;&#34;)
+ * 	                """)
  *                 .build())
  *             .fieldSearches(StoreIndexFieldSearchArgs.builder()
- *                 .name(&#34;terraform-example&#34;)
+ *                 .name("terraform-example")
  *                 .enableAnalytics(true)
- *                 .type(&#34;text&#34;)
- *                 .token(&#34;&#34;&#34;
+ *                 .type("text")
+ *                 .token("""
  *  #$^*
- * 	                &#34;&#34;&#34;)
+ * 	                """)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Module Support

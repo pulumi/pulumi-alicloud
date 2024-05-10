@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,60 +61,61 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+ *             .cidrBlock("172.16.0.0/12")
  *             .enableAdminAccess(true)
- *             .desktopAccessType(&#34;Internet&#34;)
- *             .officeSiteName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
+ *             .desktopAccessType("Internet")
+ *             .officeSiteName(String.format("%s-%s", name,defaultInteger.result()))
  *             .build());
  * 
- *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
+ *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
  *             .policyGroupName(name)
- *             .clipboard(&#34;read&#34;)
- *             .localDrive(&#34;read&#34;)
- *             .usbRedirect(&#34;off&#34;)
- *             .watermark(&#34;off&#34;)
+ *             .clipboard("read")
+ *             .localDrive("read")
+ *             .usbRedirect("off")
+ *             .watermark("off")
  *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
  *                 .description(name)
- *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+ *                 .cidrIp("1.2.3.45/24")
  *                 .build())
  *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
- *                 .type(&#34;inflow&#34;)
- *                 .policy(&#34;accept&#34;)
+ *                 .type("inflow")
+ *                 .policy("accept")
  *                 .description(name)
- *                 .portRange(&#34;80/80&#34;)
- *                 .ipProtocol(&#34;TCP&#34;)
- *                 .priority(&#34;1&#34;)
- *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+ *                 .portRange("80/80")
+ *                 .ipProtocol("TCP")
+ *                 .priority("1")
+ *                 .cidrIp("1.2.3.4/24")
  *                 .build())
  *             .build());
  * 
  *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
- *             .bundleType(&#34;SYSTEM&#34;)
+ *             .bundleType("SYSTEM")
  *             .build());
  * 
- *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+ *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
  *             .officeSiteId(defaultSimpleOfficeSite.id())
  *             .policyGroupId(defaultEcdPolicyGroup.id())
  *             .bundleId(default_.bundles()[0].id())
  *             .desktopName(name)
  *             .build());
  * 
- *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
- *             .commandContent(&#34;ipconfig&#34;)
- *             .commandType(&#34;RunPowerShellScript&#34;)
+ *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+ *             .commandContent("ipconfig")
+ *             .commandType("RunPowerShellScript")
  *             .desktopId(defaultDesktop.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

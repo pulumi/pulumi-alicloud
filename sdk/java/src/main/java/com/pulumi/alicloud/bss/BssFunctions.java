@@ -25,7 +25,8 @@ public final class BssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -47,16 +48,17 @@ public final class BssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = BssFunctions.getOpenApiPricingModules(GetOpenApiPricingModulesArgs.builder()
-     *             .nameRegex(&#34;国内月均日峰值带宽&#34;)
-     *             .productCode(&#34;cdn&#34;)
-     *             .productType(&#34;CDN&#34;)
-     *             .subscriptionType(&#34;PayAsYouGo&#34;)
+     *             .nameRegex("国内月均日峰值带宽")
+     *             .productCode("cdn")
+     *             .productType("CDN")
+     *             .subscriptionType("PayAsYouGo")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudBssOpenapiPricingModuleExampleId&#34;, default_.modules()[0].code());
+     *         ctx.export("alicloudBssOpenapiPricingModuleExampleId", default_.modules()[0].code());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -71,7 +73,8 @@ public final class BssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -93,16 +96,17 @@ public final class BssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = BssFunctions.getOpenApiPricingModules(GetOpenApiPricingModulesArgs.builder()
-     *             .nameRegex(&#34;国内月均日峰值带宽&#34;)
-     *             .productCode(&#34;cdn&#34;)
-     *             .productType(&#34;CDN&#34;)
-     *             .subscriptionType(&#34;PayAsYouGo&#34;)
+     *             .nameRegex("国内月均日峰值带宽")
+     *             .productCode("cdn")
+     *             .productType("CDN")
+     *             .subscriptionType("PayAsYouGo")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudBssOpenapiPricingModuleExampleId&#34;, default_.modules()[0].code());
+     *         ctx.export("alicloudBssOpenapiPricingModuleExampleId", default_.modules()[0].code());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -117,7 +121,8 @@ public final class BssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -139,16 +144,17 @@ public final class BssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = BssFunctions.getOpenApiPricingModules(GetOpenApiPricingModulesArgs.builder()
-     *             .nameRegex(&#34;国内月均日峰值带宽&#34;)
-     *             .productCode(&#34;cdn&#34;)
-     *             .productType(&#34;CDN&#34;)
-     *             .subscriptionType(&#34;PayAsYouGo&#34;)
+     *             .nameRegex("国内月均日峰值带宽")
+     *             .productCode("cdn")
+     *             .productType("CDN")
+     *             .subscriptionType("PayAsYouGo")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudBssOpenapiPricingModuleExampleId&#34;, default_.modules()[0].code());
+     *         ctx.export("alicloudBssOpenapiPricingModuleExampleId", default_.modules()[0].code());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -163,7 +169,8 @@ public final class BssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -185,16 +192,17 @@ public final class BssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = BssFunctions.getOpenApiPricingModules(GetOpenApiPricingModulesArgs.builder()
-     *             .nameRegex(&#34;国内月均日峰值带宽&#34;)
-     *             .productCode(&#34;cdn&#34;)
-     *             .productType(&#34;CDN&#34;)
-     *             .subscriptionType(&#34;PayAsYouGo&#34;)
+     *             .nameRegex("国内月均日峰值带宽")
+     *             .productCode("cdn")
+     *             .productType("CDN")
+     *             .subscriptionType("PayAsYouGo")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudBssOpenapiPricingModuleExampleId&#34;, default_.modules()[0].code());
+     *         ctx.export("alicloudBssOpenapiPricingModuleExampleId", default_.modules()[0].code());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

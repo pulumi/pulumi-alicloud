@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,23 +49,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
+ *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
  *             .aclName(name)
  *             .resourceGroupId(default_.groups()[0].id())
  *             .build());
  * 
- *         var defaultAclEntryAttachment = new AclEntryAttachment(&#34;defaultAclEntryAttachment&#34;, AclEntryAttachmentArgs.builder()        
+ *         var defaultAclEntryAttachment = new AclEntryAttachment("defaultAclEntryAttachment", AclEntryAttachmentArgs.builder()        
  *             .aclId(defaultAcl.id())
- *             .entry(&#34;168.10.10.0/24&#34;)
+ *             .entry("168.10.10.0/24")
  *             .description(name)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

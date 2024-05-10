@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,18 +52,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var default_ = new RdsParameterGroup(&#34;default&#34;, RdsParameterGroupArgs.builder()        
- *             .engine(&#34;mysql&#34;)
- *             .engineVersion(&#34;5.7&#34;)
+ *         final var name = config.get("name").orElse("tf_example");
+ *         var default_ = new RdsParameterGroup("default", RdsParameterGroupArgs.builder()        
+ *             .engine("mysql")
+ *             .engineVersion("5.7")
  *             .paramDetails(            
  *                 RdsParameterGroupParamDetailArgs.builder()
- *                     .paramName(&#34;back_log&#34;)
- *                     .paramValue(&#34;4000&#34;)
+ *                     .paramName("back_log")
+ *                     .paramValue("4000")
  *                     .build(),
  *                 RdsParameterGroupParamDetailArgs.builder()
- *                     .paramName(&#34;wait_timeout&#34;)
- *                     .paramValue(&#34;86460&#34;)
+ *                     .paramName("wait_timeout")
+ *                     .paramValue("86460")
  *                     .build())
  *             .parameterGroupDesc(name)
  *             .parameterGroupName(name)
@@ -70,7 +71,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

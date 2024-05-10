@@ -45,7 +45,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -67,22 +68,23 @@ public final class OosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
-     *             .applicationName(&#34;example_value&#34;)
+     *             .applicationName("example_value")
      *             .ids(            
-     *                 &#34;my-ApplicationGroup-1&#34;,
-     *                 &#34;my-ApplicationGroup-2&#34;)
+     *                 "my-ApplicationGroup-1",
+     *                 "my-ApplicationGroup-2")
      *             .build());
      * 
-     *         ctx.export(&#34;oosApplicationGroupId1&#34;, ids.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId1", ids.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
      *         final var nameRegex = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
-     *             .applicationName(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-ApplicationGroup&#34;)
+     *             .applicationName("example_value")
+     *             .nameRegex("^my-ApplicationGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;oosApplicationGroupId2&#34;, nameRegex.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId2", nameRegex.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -99,7 +101,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -121,22 +124,23 @@ public final class OosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
-     *             .applicationName(&#34;example_value&#34;)
+     *             .applicationName("example_value")
      *             .ids(            
-     *                 &#34;my-ApplicationGroup-1&#34;,
-     *                 &#34;my-ApplicationGroup-2&#34;)
+     *                 "my-ApplicationGroup-1",
+     *                 "my-ApplicationGroup-2")
      *             .build());
      * 
-     *         ctx.export(&#34;oosApplicationGroupId1&#34;, ids.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId1", ids.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
      *         final var nameRegex = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
-     *             .applicationName(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-ApplicationGroup&#34;)
+     *             .applicationName("example_value")
+     *             .nameRegex("^my-ApplicationGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;oosApplicationGroupId2&#34;, nameRegex.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId2", nameRegex.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -153,7 +157,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -175,22 +180,23 @@ public final class OosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
-     *             .applicationName(&#34;example_value&#34;)
+     *             .applicationName("example_value")
      *             .ids(            
-     *                 &#34;my-ApplicationGroup-1&#34;,
-     *                 &#34;my-ApplicationGroup-2&#34;)
+     *                 "my-ApplicationGroup-1",
+     *                 "my-ApplicationGroup-2")
      *             .build());
      * 
-     *         ctx.export(&#34;oosApplicationGroupId1&#34;, ids.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId1", ids.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
      *         final var nameRegex = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
-     *             .applicationName(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-ApplicationGroup&#34;)
+     *             .applicationName("example_value")
+     *             .nameRegex("^my-ApplicationGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;oosApplicationGroupId2&#34;, nameRegex.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId2", nameRegex.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -207,7 +213,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -229,22 +236,23 @@ public final class OosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
-     *             .applicationName(&#34;example_value&#34;)
+     *             .applicationName("example_value")
      *             .ids(            
-     *                 &#34;my-ApplicationGroup-1&#34;,
-     *                 &#34;my-ApplicationGroup-2&#34;)
+     *                 "my-ApplicationGroup-1",
+     *                 "my-ApplicationGroup-2")
      *             .build());
      * 
-     *         ctx.export(&#34;oosApplicationGroupId1&#34;, ids.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId1", ids.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
      *         final var nameRegex = OosFunctions.getApplicationGroups(GetApplicationGroupsArgs.builder()
-     *             .applicationName(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-ApplicationGroup&#34;)
+     *             .applicationName("example_value")
+     *             .nameRegex("^my-ApplicationGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;oosApplicationGroupId2&#34;, nameRegex.applyValue(getApplicationGroupsResult -&gt; getApplicationGroupsResult.groups()[0].id()));
+     *         ctx.export("oosApplicationGroupId2", nameRegex.applyValue(getApplicationGroupsResult -> getApplicationGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -261,7 +269,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -284,15 +293,16 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getApplications();
      * 
-     *         ctx.export(&#34;oosApplicationId1&#34;, ids.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId1", ids.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
      *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
-     *             .nameRegex(&#34;^my-Application&#34;)
+     *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export(&#34;oosApplicationId2&#34;, nameRegex.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId2", nameRegex.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -309,7 +319,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -332,15 +343,16 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getApplications();
      * 
-     *         ctx.export(&#34;oosApplicationId1&#34;, ids.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId1", ids.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
      *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
-     *             .nameRegex(&#34;^my-Application&#34;)
+     *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export(&#34;oosApplicationId2&#34;, nameRegex.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId2", nameRegex.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -357,7 +369,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -380,15 +393,16 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getApplications();
      * 
-     *         ctx.export(&#34;oosApplicationId1&#34;, ids.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId1", ids.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
      *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
-     *             .nameRegex(&#34;^my-Application&#34;)
+     *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export(&#34;oosApplicationId2&#34;, nameRegex.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId2", nameRegex.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -405,7 +419,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -428,15 +443,16 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getApplications();
      * 
-     *         ctx.export(&#34;oosApplicationId1&#34;, ids.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId1", ids.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
      *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
-     *             .nameRegex(&#34;^my-Application&#34;)
+     *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export(&#34;oosApplicationId2&#34;, nameRegex.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId2", nameRegex.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -453,7 +469,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -476,15 +493,16 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getApplications();
      * 
-     *         ctx.export(&#34;oosApplicationId1&#34;, ids.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId1", ids.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
      *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
-     *             .nameRegex(&#34;^my-Application&#34;)
+     *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export(&#34;oosApplicationId2&#34;, nameRegex.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId2", nameRegex.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -501,7 +519,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -524,15 +543,16 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getApplications();
      * 
-     *         ctx.export(&#34;oosApplicationId1&#34;, ids.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId1", ids.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
      *         final var nameRegex = OosFunctions.getApplications(GetApplicationsArgs.builder()
-     *             .nameRegex(&#34;^my-Application&#34;)
+     *             .nameRegex("^my-Application")
      *             .build());
      * 
-     *         ctx.export(&#34;oosApplicationId2&#34;, nameRegex.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id()));
+     *         ctx.export("oosApplicationId2", nameRegex.applyValue(getApplicationsResult -> getApplicationsResult.applications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -547,7 +567,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -570,15 +591,16 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
-     *             .ids(&#34;execution_id&#34;)
-     *             .templateName(&#34;name&#34;)
-     *             .status(&#34;Success&#34;)
+     *             .ids("execution_id")
+     *             .templateName("name")
+     *             .status("Success")
      *             .build());
      * 
-     *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
+     *         ctx.export("firstExecutionId", example.applyValue(getExecutionsResult -> getExecutionsResult.executions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -593,7 +615,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -616,15 +639,16 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
-     *             .ids(&#34;execution_id&#34;)
-     *             .templateName(&#34;name&#34;)
-     *             .status(&#34;Success&#34;)
+     *             .ids("execution_id")
+     *             .templateName("name")
+     *             .status("Success")
      *             .build());
      * 
-     *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
+     *         ctx.export("firstExecutionId", example.applyValue(getExecutionsResult -> getExecutionsResult.executions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -639,7 +663,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -662,15 +687,16 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
-     *             .ids(&#34;execution_id&#34;)
-     *             .templateName(&#34;name&#34;)
-     *             .status(&#34;Success&#34;)
+     *             .ids("execution_id")
+     *             .templateName("name")
+     *             .status("Success")
      *             .build());
      * 
-     *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
+     *         ctx.export("firstExecutionId", example.applyValue(getExecutionsResult -> getExecutionsResult.executions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -685,7 +711,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -708,15 +735,16 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
-     *             .ids(&#34;execution_id&#34;)
-     *             .templateName(&#34;name&#34;)
-     *             .status(&#34;Success&#34;)
+     *             .ids("execution_id")
+     *             .templateName("name")
+     *             .status("Success")
      *             .build());
      * 
-     *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
+     *         ctx.export("firstExecutionId", example.applyValue(getExecutionsResult -> getExecutionsResult.executions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -731,7 +759,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -754,15 +783,16 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
-     *             .ids(&#34;execution_id&#34;)
-     *             .templateName(&#34;name&#34;)
-     *             .status(&#34;Success&#34;)
+     *             .ids("execution_id")
+     *             .templateName("name")
+     *             .status("Success")
      *             .build());
      * 
-     *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
+     *         ctx.export("firstExecutionId", example.applyValue(getExecutionsResult -> getExecutionsResult.executions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -777,7 +807,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -800,15 +831,16 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = OosFunctions.getExecutions(GetExecutionsArgs.builder()
-     *             .ids(&#34;execution_id&#34;)
-     *             .templateName(&#34;name&#34;)
-     *             .status(&#34;Success&#34;)
+     *             .ids("execution_id")
+     *             .templateName("name")
+     *             .status("Success")
      *             .build());
      * 
-     *         ctx.export(&#34;firstExecutionId&#34;, example.applyValue(getExecutionsResult -&gt; getExecutionsResult.executions()[0].id()));
+     *         ctx.export("firstExecutionId", example.applyValue(getExecutionsResult -> getExecutionsResult.executions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -825,7 +857,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -847,33 +880,34 @@ public final class OosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
+     *             .ids("my-Parameter")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId1&#34;, ids.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId1", ids.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .nameRegex(&#34;^my-Parameter&#34;)
+     *             .nameRegex("^my-Parameter")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId2&#34;, nameRegex.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId2", nameRegex.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
-     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .ids("my-Parameter")
+     *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId3&#34;, resourceGroupId.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId3", resourceGroupId.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
+     *             .ids("my-Parameter")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;OosParameter&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "OosParameter")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId4&#34;, tags.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId4", tags.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -890,7 +924,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -912,33 +947,34 @@ public final class OosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
+     *             .ids("my-Parameter")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId1&#34;, ids.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId1", ids.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .nameRegex(&#34;^my-Parameter&#34;)
+     *             .nameRegex("^my-Parameter")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId2&#34;, nameRegex.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId2", nameRegex.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
-     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .ids("my-Parameter")
+     *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId3&#34;, resourceGroupId.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId3", resourceGroupId.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
+     *             .ids("my-Parameter")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;OosParameter&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "OosParameter")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId4&#34;, tags.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId4", tags.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -955,7 +991,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -977,33 +1014,34 @@ public final class OosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
+     *             .ids("my-Parameter")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId1&#34;, ids.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId1", ids.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .nameRegex(&#34;^my-Parameter&#34;)
+     *             .nameRegex("^my-Parameter")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId2&#34;, nameRegex.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId2", nameRegex.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
-     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .ids("my-Parameter")
+     *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId3&#34;, resourceGroupId.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId3", resourceGroupId.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
+     *             .ids("my-Parameter")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;OosParameter&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "OosParameter")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId4&#34;, tags.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId4", tags.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1020,7 +1058,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1042,33 +1081,34 @@ public final class OosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
+     *             .ids("my-Parameter")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId1&#34;, ids.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId1", ids.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .nameRegex(&#34;^my-Parameter&#34;)
+     *             .nameRegex("^my-Parameter")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId2&#34;, nameRegex.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId2", nameRegex.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
-     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .ids("my-Parameter")
+     *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId3&#34;, resourceGroupId.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId3", resourceGroupId.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
+     *             .ids("my-Parameter")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;OosParameter&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "OosParameter")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId4&#34;, tags.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId4", tags.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1085,7 +1125,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1107,33 +1148,34 @@ public final class OosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
+     *             .ids("my-Parameter")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId1&#34;, ids.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId1", ids.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .nameRegex(&#34;^my-Parameter&#34;)
+     *             .nameRegex("^my-Parameter")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId2&#34;, nameRegex.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId2", nameRegex.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
-     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .ids("my-Parameter")
+     *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId3&#34;, resourceGroupId.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId3", resourceGroupId.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
+     *             .ids("my-Parameter")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;OosParameter&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "OosParameter")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId4&#34;, tags.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId4", tags.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1150,7 +1192,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1172,33 +1215,34 @@ public final class OosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
+     *             .ids("my-Parameter")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId1&#34;, ids.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId1", ids.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var nameRegex = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .nameRegex(&#34;^my-Parameter&#34;)
+     *             .nameRegex("^my-Parameter")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId2&#34;, nameRegex.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId2", nameRegex.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var resourceGroupId = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
-     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .ids("my-Parameter")
+     *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId3&#34;, resourceGroupId.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId3", resourceGroupId.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *         final var tags = OosFunctions.getParameters(GetParametersArgs.builder()
-     *             .ids(&#34;my-Parameter&#34;)
+     *             .ids("my-Parameter")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;OosParameter&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "OosParameter")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;oosParameterId4&#34;, tags.applyValue(getParametersResult -&gt; getParametersResult.parameters()[0].id()));
+     *         ctx.export("oosParameterId4", tags.applyValue(getParametersResult -> getParametersResult.parameters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1323,7 +1367,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1346,10 +1391,11 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getStateConfigurations();
      * 
-     *         ctx.export(&#34;oosStateConfigurationId1&#34;, ids.applyValue(getStateConfigurationsResult -&gt; getStateConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("oosStateConfigurationId1", ids.applyValue(getStateConfigurationsResult -> getStateConfigurationsResult.configurations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1366,7 +1412,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1389,10 +1436,11 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getStateConfigurations();
      * 
-     *         ctx.export(&#34;oosStateConfigurationId1&#34;, ids.applyValue(getStateConfigurationsResult -&gt; getStateConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("oosStateConfigurationId1", ids.applyValue(getStateConfigurationsResult -> getStateConfigurationsResult.configurations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1409,7 +1457,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1432,10 +1481,11 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getStateConfigurations();
      * 
-     *         ctx.export(&#34;oosStateConfigurationId1&#34;, ids.applyValue(getStateConfigurationsResult -&gt; getStateConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("oosStateConfigurationId1", ids.applyValue(getStateConfigurationsResult -> getStateConfigurationsResult.configurations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1452,7 +1502,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1475,10 +1526,11 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getStateConfigurations();
      * 
-     *         ctx.export(&#34;oosStateConfigurationId1&#34;, ids.applyValue(getStateConfigurationsResult -&gt; getStateConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("oosStateConfigurationId1", ids.applyValue(getStateConfigurationsResult -> getStateConfigurationsResult.configurations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1495,7 +1547,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1518,10 +1571,11 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getStateConfigurations();
      * 
-     *         ctx.export(&#34;oosStateConfigurationId1&#34;, ids.applyValue(getStateConfigurationsResult -&gt; getStateConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("oosStateConfigurationId1", ids.applyValue(getStateConfigurationsResult -> getStateConfigurationsResult.configurations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1538,7 +1592,8 @@ public final class OosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1561,10 +1616,11 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OosFunctions.getStateConfigurations();
      * 
-     *         ctx.export(&#34;oosStateConfigurationId1&#34;, ids.applyValue(getStateConfigurationsResult -&gt; getStateConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("oosStateConfigurationId1", ids.applyValue(getStateConfigurationsResult -> getStateConfigurationsResult.configurations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1579,7 +1635,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1602,19 +1659,20 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .nameRegex(&#34;test&#34;)
+     *             .nameRegex("test")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "template Test")
      *             ))
-     *             .shareType(&#34;Private&#34;)
+     *             .shareType("Private")
      *             .hasTrigger(false)
      *             .build());
      * 
-     *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
+     *         ctx.export("firstTemplateName", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].templateName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1629,7 +1687,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1652,19 +1711,20 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .nameRegex(&#34;test&#34;)
+     *             .nameRegex("test")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "template Test")
      *             ))
-     *             .shareType(&#34;Private&#34;)
+     *             .shareType("Private")
      *             .hasTrigger(false)
      *             .build());
      * 
-     *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
+     *         ctx.export("firstTemplateName", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].templateName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1679,7 +1739,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1702,19 +1763,20 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .nameRegex(&#34;test&#34;)
+     *             .nameRegex("test")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "template Test")
      *             ))
-     *             .shareType(&#34;Private&#34;)
+     *             .shareType("Private")
      *             .hasTrigger(false)
      *             .build());
      * 
-     *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
+     *         ctx.export("firstTemplateName", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].templateName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1729,7 +1791,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1752,19 +1815,20 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .nameRegex(&#34;test&#34;)
+     *             .nameRegex("test")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "template Test")
      *             ))
-     *             .shareType(&#34;Private&#34;)
+     *             .shareType("Private")
      *             .hasTrigger(false)
      *             .build());
      * 
-     *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
+     *         ctx.export("firstTemplateName", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].templateName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1779,7 +1843,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1802,19 +1867,20 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .nameRegex(&#34;test&#34;)
+     *             .nameRegex("test")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "template Test")
      *             ))
-     *             .shareType(&#34;Private&#34;)
+     *             .shareType("Private")
      *             .hasTrigger(false)
      *             .build());
      * 
-     *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
+     *         ctx.export("firstTemplateName", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].templateName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1829,7 +1895,8 @@ public final class OosFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1852,19 +1919,20 @@ public final class OosFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = OosFunctions.getTemplates(GetTemplatesArgs.builder()
-     *             .nameRegex(&#34;test&#34;)
+     *             .nameRegex("test")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;template Test&#34;)
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "template Test")
      *             ))
-     *             .shareType(&#34;Private&#34;)
+     *             .shareType("Private")
      *             .hasTrigger(false)
      *             .build());
      * 
-     *         ctx.export(&#34;firstTemplateName&#34;, example.applyValue(getTemplatesResult -&gt; getTemplatesResult.templates()[0].templateName()));
+     *         ctx.export("firstTemplateName", example.applyValue(getTemplatesResult -> getTemplatesResult.templates()[0].templateName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

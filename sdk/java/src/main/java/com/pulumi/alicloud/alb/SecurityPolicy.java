@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,17 +52,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityPolicy(&#34;default&#34;, SecurityPolicyArgs.builder()        
- *             .securityPolicyName(&#34;tf_example&#34;)
- *             .tlsVersions(&#34;TLSv1.0&#34;)
+ *         var default_ = new SecurityPolicy("default", SecurityPolicyArgs.builder()        
+ *             .securityPolicyName("tf_example")
+ *             .tlsVersions("TLSv1.0")
  *             .ciphers(            
- *                 &#34;ECDHE-ECDSA-AES128-SHA&#34;,
- *                 &#34;AES256-SHA&#34;)
+ *                 "ECDHE-ECDSA-AES128-SHA",
+ *                 "AES256-SHA")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

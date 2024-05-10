@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,20 +56,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Domain(&#34;example&#34;, DomainArgs.builder()        
- *             .domainName(&#34;my-Domain&#34;)
+ *         var example = new Domain("example", DomainArgs.builder()        
+ *             .domainName("my-Domain")
  *             .sources(DomainSourceArgs.builder()
- *                 .content(&#34;xxx.aliyuncs.com&#34;)
- *                 .enabled(&#34;online&#34;)
+ *                 .content("xxx.aliyuncs.com")
+ *                 .enabled("online")
  *                 .port(80)
- *                 .priority(&#34;20&#34;)
- *                 .type(&#34;oss&#34;)
+ *                 .priority("20")
+ *                 .type("oss")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

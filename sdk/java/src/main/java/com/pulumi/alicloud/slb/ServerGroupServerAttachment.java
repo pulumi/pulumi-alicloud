@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -65,72 +66,72 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var slbServerGroupServerAttachment = config.get(&#34;slbServerGroupServerAttachment&#34;).orElse(&#34;terraform-example&#34;);
- *         final var slbServerGroupServerAttachmentCount = config.get(&#34;slbServerGroupServerAttachmentCount&#34;).orElse(5);
+ *         final var slbServerGroupServerAttachment = config.get("slbServerGroupServerAttachment").orElse("terraform-example");
+ *         final var slbServerGroupServerAttachmentCount = config.get("slbServerGroupServerAttachmentCount").orElse(5);
  *         final var serverAttachment = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var serverAttachmentGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(serverAttachment.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .availabilityZone(serverAttachment.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
  * 
  *         final var serverAttachmentGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+ *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
  *             .mostRecent(true)
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
- *         var serverAttachmentNetwork = new Network(&#34;serverAttachmentNetwork&#34;, NetworkArgs.builder()        
+ *         var serverAttachmentNetwork = new Network("serverAttachmentNetwork", NetworkArgs.builder()        
  *             .vpcName(slbServerGroupServerAttachment)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var serverAttachmentSwitch = new Switch(&#34;serverAttachmentSwitch&#34;, SwitchArgs.builder()        
+ *         var serverAttachmentSwitch = new Switch("serverAttachmentSwitch", SwitchArgs.builder()        
  *             .vswitchName(slbServerGroupServerAttachment)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(serverAttachmentNetwork.id())
- *             .zoneId(serverAttachment.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(serverAttachment.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var serverAttachmentSecurityGroup = new SecurityGroup(&#34;serverAttachmentSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var serverAttachmentSecurityGroup = new SecurityGroup("serverAttachmentSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(slbServerGroupServerAttachment)
  *             .vpcId(serverAttachmentNetwork.id())
  *             .build());
  * 
- *         for (var i = 0; i &lt; slbServerGroupServerAttachmentCount; i++) {
- *             new Instance(&#34;serverAttachmentInstance-&#34; + i, InstanceArgs.builder()            
- *                 .imageId(serverAttachmentGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *                 .instanceType(serverAttachmentGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *         for (var i = 0; i < slbServerGroupServerAttachmentCount; i++) {
+ *             new Instance("serverAttachmentInstance-" + i, InstanceArgs.builder()            
+ *                 .imageId(serverAttachmentGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *                 .instanceType(serverAttachmentGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *                 .instanceName(slbServerGroupServerAttachment)
- *                 .securityGroups(serverAttachmentSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
- *                 .internetChargeType(&#34;PayByTraffic&#34;)
- *                 .internetMaxBandwidthOut(&#34;10&#34;)
- *                 .availabilityZone(serverAttachment.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *                 .instanceChargeType(&#34;PostPaid&#34;)
- *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *                 .securityGroups(serverAttachmentSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+ *                 .internetChargeType("PayByTraffic")
+ *                 .internetMaxBandwidthOut("10")
+ *                 .availabilityZone(serverAttachment.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *                 .instanceChargeType("PostPaid")
+ *                 .systemDiskCategory("cloud_efficiency")
  *                 .vswitchId(serverAttachmentSwitch.id())
  *                 .build());
  * 
  *         
  * }
- *         var serverAttachmentApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;serverAttachmentApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *         var serverAttachmentApplicationLoadBalancer = new ApplicationLoadBalancer("serverAttachmentApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
  *             .loadBalancerName(slbServerGroupServerAttachment)
  *             .vswitchId(serverAttachmentSwitch.id())
- *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
- *             .addressType(&#34;intranet&#34;)
+ *             .loadBalancerSpec("slb.s2.small")
+ *             .addressType("intranet")
  *             .build());
  * 
- *         var serverAttachmentServerGroup = new ServerGroup(&#34;serverAttachmentServerGroup&#34;, ServerGroupArgs.builder()        
+ *         var serverAttachmentServerGroup = new ServerGroup("serverAttachmentServerGroup", ServerGroupArgs.builder()        
  *             .loadBalancerId(serverAttachmentApplicationLoadBalancer.id())
  *             .name(slbServerGroupServerAttachment)
  *             .build());
  * 
- *         for (var i = 0; i &lt; slbServerGroupServerAttachmentCount; i++) {
- *             new ServerGroupServerAttachment(&#34;serverAttachmentServerGroupServerAttachment-&#34; + i, ServerGroupServerAttachmentArgs.builder()            
+ *         for (var i = 0; i < slbServerGroupServerAttachmentCount; i++) {
+ *             new ServerGroupServerAttachment("serverAttachmentServerGroupServerAttachment-" + i, ServerGroupServerAttachmentArgs.builder()            
  *                 .serverGroupId(serverAttachmentServerGroup.id())
  *                 .serverId(serverAttachmentInstance[range.value()].id())
  *                 .port(8080)
@@ -141,7 +142,8 @@ import javax.annotation.Nullable;
  * }
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

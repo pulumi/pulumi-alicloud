@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,40 +58,41 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = NasFunctions.getZones(GetZonesArgs.builder()
- *             .fileSystemType(&#34;cpfs&#34;)
+ *             .fileSystemType("cpfs")
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *             .vswitchName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].zoneId()))
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[1].zoneId()))
  *             .build());
  * 
- *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
- *             .protocolType(&#34;cpfs&#34;)
- *             .storageType(&#34;advance_200&#34;)
- *             .fileSystemType(&#34;cpfs&#34;)
+ *         var exampleFileSystem = new FileSystem("exampleFileSystem", FileSystemArgs.builder()        
+ *             .protocolType("cpfs")
+ *             .storageType("advance_200")
+ *             .fileSystemType("cpfs")
  *             .capacity(3600)
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].zoneId()))
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[1].zoneId()))
  *             .vpcId(exampleNetwork.id())
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
- *         var exampleFileset = new Fileset(&#34;exampleFileset&#34;, FilesetArgs.builder()        
+ *         var exampleFileset = new Fileset("exampleFileset", FilesetArgs.builder()        
  *             .fileSystemId(exampleFileSystem.id())
- *             .description(&#34;terraform-example&#34;)
- *             .fileSystemPath(&#34;/example_path/&#34;)
+ *             .description("terraform-example")
+ *             .fileSystemPath("/example_path/")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,33 +53,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance(&#34;defaultRegistryEnterpriseInstance&#34;, RegistryEnterpriseInstanceArgs.builder()        
- *             .paymentType(&#34;Subscription&#34;)
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()        
+ *             .paymentType("Subscription")
  *             .period(1)
- *             .renewalStatus(&#34;ManualRenewal&#34;)
- *             .instanceType(&#34;Advanced&#34;)
+ *             .renewalStatus("ManualRenewal")
+ *             .instanceType("Advanced")
  *             .instanceName(name)
  *             .build());
  * 
  *         final var default = CrFunctions.getEndpointAclService(GetEndpointAclServiceArgs.builder()
- *             .endpointType(&#34;internet&#34;)
+ *             .endpointType("internet")
  *             .enable(true)
  *             .instanceId(defaultRegistryEnterpriseInstance.id())
- *             .moduleName(&#34;Registry&#34;)
+ *             .moduleName("Registry")
  *             .build());
  * 
- *         var defaultEndpointAclPolicy = new EndpointAclPolicy(&#34;defaultEndpointAclPolicy&#34;, EndpointAclPolicyArgs.builder()        
- *             .instanceId(default_.applyValue(default_ -&gt; default_.instanceId()))
- *             .entry(&#34;192.168.1.0/24&#34;)
+ *         var defaultEndpointAclPolicy = new EndpointAclPolicy("defaultEndpointAclPolicy", EndpointAclPolicyArgs.builder()        
+ *             .instanceId(default_.applyValue(default_ -> default_.instanceId()))
+ *             .entry("192.168.1.0/24")
  *             .description(name)
- *             .moduleName(&#34;Registry&#34;)
- *             .endpointType(&#34;internet&#34;)
+ *             .moduleName("Registry")
+ *             .endpointType("internet")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

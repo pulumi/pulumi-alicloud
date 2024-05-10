@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,18 +57,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
- *             .name(&#34;my-cen&#34;)
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *             .name("my-cen")
  *             .build());
  * 
- *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
- *             .name(&#34;sls-for-flowlog&#34;)
- *             .description(&#34;create by terraform&#34;)
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+ *             .name("sls-for-flowlog")
+ *             .description("create by terraform")
  *             .build());
  * 
- *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
+ *         var defaultStore = new Store("defaultStore", StoreArgs.builder()        
  *             .project(defaultProject.name())
- *             .name(&#34;sls-for-flowlog&#34;)
+ *             .name("sls-for-flowlog")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -75,8 +76,8 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var defaultFlowLog = new FlowLog(&#34;defaultFlowLog&#34;, FlowLogArgs.builder()        
- *             .flowLogName(&#34;my-flowlog&#34;)
+ *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()        
+ *             .flowLogName("my-flowlog")
  *             .cenId(default_.id())
  *             .projectName(defaultProject.name())
  *             .logStoreName(defaultStore.name())
@@ -84,7 +85,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

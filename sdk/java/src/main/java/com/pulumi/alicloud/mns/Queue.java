@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,8 +43,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var queue = new Queue(&#34;queue&#34;, QueueArgs.builder()        
- *             .name(&#34;tf-example-mnsqueue&#34;)
+ *         var queue = new Queue("queue", QueueArgs.builder()        
+ *             .name("tf-example-mnsqueue")
  *             .delaySeconds(0)
  *             .maximumMessageSize(65536)
  *             .messageRetentionPeriod(345600)
@@ -53,7 +54,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

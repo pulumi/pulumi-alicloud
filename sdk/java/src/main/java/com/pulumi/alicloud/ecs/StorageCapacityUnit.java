@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,15 +49,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new StorageCapacityUnit(&#34;default&#34;, StorageCapacityUnitArgs.builder()        
+ *         var default_ = new StorageCapacityUnit("default", StorageCapacityUnitArgs.builder()        
  *             .capacity(20)
- *             .description(&#34;tftestdescription&#34;)
- *             .storageCapacityUnitName(&#34;tftestname&#34;)
+ *             .description("tftestdescription")
+ *             .storageCapacityUnitName("tftestname")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

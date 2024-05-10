@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,27 +52,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
- *             .name(String.format(&#34;example-value-%s&#34;, default_.result()))
- *             .description(&#34;example-value&#34;)
- *             .publish(&#34;true&#34;)
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *             .name(String.format("example-value-%s", default_.result()))
+ *             .description("example-value")
+ *             .publish("true")
  *             .build());
  * 
- *         var example = new Alias(&#34;example&#34;, AliasArgs.builder()        
- *             .aliasName(&#34;example-value&#34;)
- *             .description(&#34;example-value&#34;)
+ *         var example = new Alias("example", AliasArgs.builder()        
+ *             .aliasName("example-value")
+ *             .description("example-value")
  *             .serviceName(defaultService.name())
- *             .serviceVersion(&#34;1&#34;)
+ *             .serviceVersion("1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

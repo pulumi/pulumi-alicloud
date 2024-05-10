@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,23 +52,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .instanceTypeFamily(&#34;ecs.g6&#34;)
+ *             .instanceTypeFamily("ecs.g6")
  *             .build());
  * 
- *         var defaultReservedInstance = new ReservedInstance(&#34;defaultReservedInstance&#34;, ReservedInstanceArgs.builder()        
+ *         var defaultReservedInstance = new ReservedInstance("defaultReservedInstance", ReservedInstanceArgs.builder()        
  *             .instanceType(default_.instanceTypes()[0].id())
- *             .instanceAmount(&#34;1&#34;)
- *             .periodUnit(&#34;Month&#34;)
- *             .offeringType(&#34;All Upfront&#34;)
- *             .reservedInstanceName(&#34;terraform-example&#34;)
- *             .description(&#34;ReservedInstance&#34;)
+ *             .instanceAmount("1")
+ *             .periodUnit("Month")
+ *             .offeringType("All Upfront")
+ *             .reservedInstanceName("terraform-example")
+ *             .description("ReservedInstance")
  *             .zoneId(default_.instanceTypes()[0].availabilityZones()[0])
- *             .scope(&#34;Zone&#34;)
+ *             .scope("Zone")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

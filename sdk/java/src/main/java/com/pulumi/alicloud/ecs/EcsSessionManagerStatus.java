@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,14 +47,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EcsSessionManagerStatus(&#34;default&#34;, EcsSessionManagerStatusArgs.builder()        
- *             .sessionManagerStatusName(&#34;sessionManagerStatus&#34;)
- *             .status(&#34;Disabled&#34;)
+ *         var default_ = new EcsSessionManagerStatus("default", EcsSessionManagerStatusArgs.builder()        
+ *             .sessionManagerStatusName("sessionManagerStatus")
+ *             .status("Disabled")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

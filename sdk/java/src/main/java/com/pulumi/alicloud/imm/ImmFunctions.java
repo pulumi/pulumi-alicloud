@@ -24,7 +24,8 @@ public final class ImmFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -46,13 +47,14 @@ public final class ImmFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ImmFunctions.getProjects(GetProjectsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;immProjectId1&#34;, ids.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id()));
+     *         ctx.export("immProjectId1", ids.applyValue(getProjectsResult -> getProjectsResult.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -69,7 +71,8 @@ public final class ImmFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -91,13 +94,14 @@ public final class ImmFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ImmFunctions.getProjects(GetProjectsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;immProjectId1&#34;, ids.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id()));
+     *         ctx.export("immProjectId1", ids.applyValue(getProjectsResult -> getProjectsResult.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -114,7 +118,8 @@ public final class ImmFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -136,13 +141,14 @@ public final class ImmFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ImmFunctions.getProjects(GetProjectsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;immProjectId1&#34;, ids.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id()));
+     *         ctx.export("immProjectId1", ids.applyValue(getProjectsResult -> getProjectsResult.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -159,7 +165,8 @@ public final class ImmFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -181,13 +188,14 @@ public final class ImmFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ImmFunctions.getProjects(GetProjectsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;immProjectId1&#34;, ids.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id()));
+     *         ctx.export("immProjectId1", ids.applyValue(getProjectsResult -> getProjectsResult.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -204,7 +212,8 @@ public final class ImmFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -226,13 +235,14 @@ public final class ImmFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ImmFunctions.getProjects(GetProjectsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;immProjectId1&#34;, ids.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id()));
+     *         ctx.export("immProjectId1", ids.applyValue(getProjectsResult -> getProjectsResult.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -249,7 +259,8 @@ public final class ImmFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -271,13 +282,14 @@ public final class ImmFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ImmFunctions.getProjects(GetProjectsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;immProjectId1&#34;, ids.applyValue(getProjectsResult -&gt; getProjectsResult.projects()[0].id()));
+     *         ctx.export("immProjectId1", ids.applyValue(getProjectsResult -> getProjectsResult.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

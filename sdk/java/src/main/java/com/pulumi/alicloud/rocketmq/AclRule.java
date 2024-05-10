@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,27 +54,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var default_ = new Acl(&#34;default&#34;, AclArgs.builder()        
+ *         final var name = config.get("name").orElse("tf_example");
+ *         var default_ = new Acl("default", AclArgs.builder()        
  *             .name(name)
  *             .build());
  * 
- *         var defaultAclRule = new AclRule(&#34;defaultAclRule&#34;, AclRuleArgs.builder()        
+ *         var defaultAclRule = new AclRule("defaultAclRule", AclRuleArgs.builder()        
  *             .aclId(default_.id())
  *             .description(name)
- *             .policy(&#34;accept&#34;)
- *             .ipProtocol(&#34;ALL&#34;)
- *             .direction(&#34;in&#34;)
- *             .sourceCidr(&#34;10.10.1.0/24&#34;)
- *             .sourcePortRange(&#34;-1/-1&#34;)
- *             .destCidr(&#34;192.168.1.0/24&#34;)
- *             .destPortRange(&#34;-1/-1&#34;)
- *             .priority(&#34;1&#34;)
+ *             .policy("accept")
+ *             .ipProtocol("ALL")
+ *             .direction("in")
+ *             .sourceCidr("10.10.1.0/24")
+ *             .sourcePortRange("-1/-1")
+ *             .destCidr("192.168.1.0/24")
+ *             .destPortRange("-1/-1")
+ *             .priority("1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

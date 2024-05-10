@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,25 +58,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
  *             .cenInstanceName(name)
- *             .protectionLevel(&#34;REDUCED&#34;)
+ *             .protectionLevel("REDUCED")
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+ *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()        
  *             .cenId(default_.id())
  *             .build());
  * 
  *         final var nameRegex = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
- *             .nameRegex(&#34;^preserved-NODELETING&#34;)
+ *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
- *         var defaultVirtualBorderRouter = new VirtualBorderRouter(&#34;defaultVirtualBorderRouter&#34;, VirtualBorderRouterArgs.builder()        
- *             .localGatewayIp(&#34;10.0.0.1&#34;)
- *             .peerGatewayIp(&#34;10.0.0.2&#34;)
- *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
- *             .physicalConnectionId(nameRegex.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
+ *         var defaultVirtualBorderRouter = new VirtualBorderRouter("defaultVirtualBorderRouter", VirtualBorderRouterArgs.builder()        
+ *             .localGatewayIp("10.0.0.1")
+ *             .peerGatewayIp("10.0.0.2")
+ *             .peeringSubnetMask("255.255.255.252")
+ *             .physicalConnectionId(nameRegex.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()))
  *             .virtualBorderRouterName(name)
  *             .vlanId(2420)
  *             .minRxInterval(1000)
@@ -83,17 +84,18 @@ import javax.annotation.Nullable;
  *             .detectMultiplier(10)
  *             .build());
  * 
- *         var defaultTransitRouterVbrAttachment = new TransitRouterVbrAttachment(&#34;defaultTransitRouterVbrAttachment&#34;, TransitRouterVbrAttachmentArgs.builder()        
+ *         var defaultTransitRouterVbrAttachment = new TransitRouterVbrAttachment("defaultTransitRouterVbrAttachment", TransitRouterVbrAttachmentArgs.builder()        
  *             .transitRouterId(defaultTransitRouter.transitRouterId())
- *             .transitRouterAttachmentName(&#34;example&#34;)
- *             .transitRouterAttachmentDescription(&#34;example&#34;)
+ *             .transitRouterAttachmentName("example")
+ *             .transitRouterAttachmentDescription("example")
  *             .vbrId(defaultVirtualBorderRouter.id())
  *             .cenId(default_.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

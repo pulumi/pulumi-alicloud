@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,20 +51,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // These resource primary keys should be replaced with your actual values.
- *         var default_ = new FirewallVpcFirewallCen(&#34;default&#34;, FirewallVpcFirewallCenArgs.builder()        
- *             .cenId(&#34;cen-xxx&#34;)
+ *         var default_ = new FirewallVpcFirewallCen("default", FirewallVpcFirewallCenArgs.builder()        
+ *             .cenId("cen-xxx")
  *             .localVpc(FirewallVpcFirewallCenLocalVpcArgs.builder()
- *                 .networkInstanceId(&#34;vpc-xxx&#34;)
+ *                 .networkInstanceId("vpc-xxx")
  *                 .build())
- *             .status(&#34;open&#34;)
- *             .memberUid(&#34;14151*****827022&#34;)
- *             .vpcRegion(&#34;cn-hangzhou&#34;)
- *             .vpcFirewallName(&#34;tf-vpc-firewall-name&#34;)
+ *             .status("open")
+ *             .memberUid("14151*****827022")
+ *             .vpcRegion("cn-hangzhou")
+ *             .vpcFirewallName("tf-vpc-firewall-name")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

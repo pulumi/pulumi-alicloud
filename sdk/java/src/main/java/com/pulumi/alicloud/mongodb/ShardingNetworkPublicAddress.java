@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,57 +62,58 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = MongodbFunctions.getZones();
  * 
  *         final var index = default_.zones().length() - 1;
  * 
  *         final var zoneId = default_.zones()[index].id();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var defaultShardingInstance = new ShardingInstance(&#34;defaultShardingInstance&#34;, ShardingInstanceArgs.builder()        
+ *         var defaultShardingInstance = new ShardingInstance("defaultShardingInstance", ShardingInstanceArgs.builder()        
  *             .zoneId(zoneId)
  *             .vswitchId(defaultSwitch.id())
- *             .engineVersion(&#34;4.2&#34;)
+ *             .engineVersion("4.2")
  *             .name(name)
  *             .shardLists(            
  *                 ShardingInstanceShardListArgs.builder()
- *                     .nodeClass(&#34;dds.shard.mid&#34;)
- *                     .nodeStorage(&#34;10&#34;)
+ *                     .nodeClass("dds.shard.mid")
+ *                     .nodeStorage("10")
  *                     .build(),
  *                 ShardingInstanceShardListArgs.builder()
- *                     .nodeClass(&#34;dds.shard.standard&#34;)
- *                     .nodeStorage(&#34;20&#34;)
- *                     .readonlyReplicas(&#34;1&#34;)
+ *                     .nodeClass("dds.shard.standard")
+ *                     .nodeStorage("20")
+ *                     .readonlyReplicas("1")
  *                     .build())
  *             .mongoLists(            
  *                 ShardingInstanceMongoListArgs.builder()
- *                     .nodeClass(&#34;dds.mongos.mid&#34;)
+ *                     .nodeClass("dds.mongos.mid")
  *                     .build(),
  *                 ShardingInstanceMongoListArgs.builder()
- *                     .nodeClass(&#34;dds.mongos.mid&#34;)
+ *                     .nodeClass("dds.mongos.mid")
  *                     .build())
  *             .build());
  * 
- *         var example = new ShardingNetworkPublicAddress(&#34;example&#34;, ShardingNetworkPublicAddressArgs.builder()        
+ *         var example = new ShardingNetworkPublicAddress("example", ShardingNetworkPublicAddressArgs.builder()        
  *             .dbInstanceId(defaultShardingInstance.id())
- *             .nodeId(defaultShardingInstance.mongoLists().applyValue(mongoLists -&gt; mongoLists[0].nodeId()))
+ *             .nodeId(defaultShardingInstance.mongoLists().applyValue(mongoLists -> mongoLists[0].nodeId()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -49,14 +49,14 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
     }
 
     /**
-     * The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
      * 
      */
     @Import(name="transitRouterMulticastDomainDescription")
     private @Nullable Output<String> transitRouterMulticastDomainDescription;
 
     /**
-     * @return The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * @return The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> transitRouterMulticastDomainDescription() {
@@ -64,14 +64,14 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
     }
 
     /**
-     * The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
      * 
      */
     @Import(name="transitRouterMulticastDomainName")
     private @Nullable Output<String> transitRouterMulticastDomainName;
 
     /**
-     * @return The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * @return The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> transitRouterMulticastDomainName() {
@@ -148,7 +148,7 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterMulticastDomainDescription The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+         * @param transitRouterMulticastDomainDescription The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterMulticastDomainDescription The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+         * @param transitRouterMulticastDomainDescription The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterMulticastDomainName The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+         * @param transitRouterMulticastDomainName The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class TransitRouterMulticastDomainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param transitRouterMulticastDomainName The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+         * @param transitRouterMulticastDomainName The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 

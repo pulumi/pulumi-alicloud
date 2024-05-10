@@ -680,14 +680,14 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+     * Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK{@literal @}edge charge](https://help.aliyun.com/document_detail/178718.html).
      * 
      */
     @Import(name="workerInstanceChargeType")
     private @Nullable Output<String> workerInstanceChargeType;
 
     /**
-     * @return Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+     * @return Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK{@literal @}edge charge](https://help.aliyun.com/document_detail/178718.html).
      * 
      */
     public Optional<Output<String>> workerInstanceChargeType() {
@@ -1771,7 +1771,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param workerInstanceChargeType Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+         * @param workerInstanceChargeType Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK{@literal @}edge charge](https://help.aliyun.com/document_detail/178718.html).
          * 
          * @return builder
          * 
@@ -1782,7 +1782,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param workerInstanceChargeType Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+         * @param workerInstanceChargeType Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK{@literal @}edge charge](https://help.aliyun.com/document_detail/178718.html).
          * 
          * @return builder
          * 

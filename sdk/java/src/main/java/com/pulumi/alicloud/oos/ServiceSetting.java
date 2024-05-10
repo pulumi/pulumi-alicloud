@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,19 +54,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testaccoossetting&#34;);
- *         var default_ = new Bucket(&#34;default&#34;, BucketArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-testaccoossetting");
+ *         var default_ = new Bucket("default", BucketArgs.builder()        
  *             .bucket(name)
- *             .acl(&#34;public-read-write&#34;)
+ *             .acl("public-read-write")
  *             .build());
  * 
- *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
  *             .name(name)
  *             .build());
  * 
- *         var defaultServiceSetting = new ServiceSetting(&#34;defaultServiceSetting&#34;, ServiceSettingArgs.builder()        
+ *         var defaultServiceSetting = new ServiceSetting("defaultServiceSetting", ServiceSettingArgs.builder()        
  *             .deliveryOssEnabled(true)
- *             .deliveryOssKeyPrefix(&#34;path1/&#34;)
+ *             .deliveryOssKeyPrefix("path1/")
  *             .deliveryOssBucketName(default_.bucket())
  *             .deliverySlsEnabled(true)
  *             .deliverySlsProjectName(defaultProject.name())
@@ -73,7 +74,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

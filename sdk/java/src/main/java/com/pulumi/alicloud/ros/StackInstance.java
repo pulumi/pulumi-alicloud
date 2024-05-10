@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,43 +59,44 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var this = AlicloudFunctions.getAccount();
  * 
  *         final var default = RosFunctions.getRegions();
  * 
- *         var defaultStackGroup = new StackGroup(&#34;defaultStackGroup&#34;, StackGroupArgs.builder()        
+ *         var defaultStackGroup = new StackGroup("defaultStackGroup", StackGroupArgs.builder()        
  *             .stackGroupName(name)
- *             .templateBody(&#34;{\&#34;ROSTemplateFormatVersion\&#34;:\&#34;2015-09-01\&#34;, \&#34;Parameters\&#34;: {\&#34;VpcName\&#34;: {\&#34;Type\&#34;: \&#34;String\&#34;},\&#34;InstanceType\&#34;: {\&#34;Type\&#34;: \&#34;String\&#34;}}}&#34;)
- *             .description(&#34;test for stack groups&#34;)
+ *             .templateBody("{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}")
+ *             .description("test for stack groups")
  *             .parameters(            
  *                 StackGroupParameterArgs.builder()
- *                     .parameterKey(&#34;VpcName&#34;)
- *                     .parameterValue(&#34;VpcName&#34;)
+ *                     .parameterKey("VpcName")
+ *                     .parameterValue("VpcName")
  *                     .build(),
  *                 StackGroupParameterArgs.builder()
- *                     .parameterKey(&#34;InstanceType&#34;)
- *                     .parameterValue(&#34;InstanceType&#34;)
+ *                     .parameterKey("InstanceType")
+ *                     .parameterValue("InstanceType")
  *                     .build())
  *             .build());
  * 
- *         var example = new StackInstance(&#34;example&#34;, StackInstanceArgs.builder()        
+ *         var example = new StackInstance("example", StackInstanceArgs.builder()        
  *             .stackGroupName(defaultStackGroup.stackGroupName())
  *             .stackInstanceAccountId(this_.id())
  *             .stackInstanceRegionId(default_.regions()[0].regionId())
- *             .operationPreferences(&#34;{\&#34;FailureToleranceCount\&#34;: 1, \&#34;MaxConcurrentCount\&#34;: 2}&#34;)
- *             .timeoutInMinutes(&#34;60&#34;)
- *             .operationDescription(&#34;tf-example&#34;)
- *             .retainStacks(&#34;true&#34;)
+ *             .operationPreferences("{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}")
+ *             .timeoutInMinutes("60")
+ *             .operationDescription("tf-example")
+ *             .retainStacks("true")
  *             .parameterOverrides(StackInstanceParameterOverrideArgs.builder()
- *                 .parameterValue(&#34;VpcName&#34;)
- *                 .parameterKey(&#34;VpcName&#34;)
+ *                 .parameterValue("VpcName")
+ *                 .parameterKey("VpcName")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

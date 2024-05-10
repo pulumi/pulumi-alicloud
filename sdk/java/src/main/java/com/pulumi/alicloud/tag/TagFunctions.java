@@ -24,7 +24,8 @@ public final class TagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -46,13 +47,14 @@ public final class TagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = TagFunctions.getMetaTags(GetMetaTagsArgs.builder()
-     *             .keyName(&#34;example_value&#34;)
+     *             .keyName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;tagMetaTagDefault1&#34;, default_.tags().valueName());
+     *         ctx.export("tagMetaTagDefault1", default_.tags().valueName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -69,7 +71,8 @@ public final class TagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -91,13 +94,14 @@ public final class TagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = TagFunctions.getMetaTags(GetMetaTagsArgs.builder()
-     *             .keyName(&#34;example_value&#34;)
+     *             .keyName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;tagMetaTagDefault1&#34;, default_.tags().valueName());
+     *         ctx.export("tagMetaTagDefault1", default_.tags().valueName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -114,7 +118,8 @@ public final class TagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -136,13 +141,14 @@ public final class TagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = TagFunctions.getMetaTags(GetMetaTagsArgs.builder()
-     *             .keyName(&#34;example_value&#34;)
+     *             .keyName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;tagMetaTagDefault1&#34;, default_.tags().valueName());
+     *         ctx.export("tagMetaTagDefault1", default_.tags().valueName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -159,7 +165,8 @@ public final class TagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -181,13 +188,14 @@ public final class TagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = TagFunctions.getMetaTags(GetMetaTagsArgs.builder()
-     *             .keyName(&#34;example_value&#34;)
+     *             .keyName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;tagMetaTagDefault1&#34;, default_.tags().valueName());
+     *         ctx.export("tagMetaTagDefault1", default_.tags().valueName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -204,7 +212,8 @@ public final class TagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -226,13 +235,14 @@ public final class TagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = TagFunctions.getMetaTags(GetMetaTagsArgs.builder()
-     *             .keyName(&#34;example_value&#34;)
+     *             .keyName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;tagMetaTagDefault1&#34;, default_.tags().valueName());
+     *         ctx.export("tagMetaTagDefault1", default_.tags().valueName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -249,7 +259,8 @@ public final class TagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -271,13 +282,14 @@ public final class TagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = TagFunctions.getMetaTags(GetMetaTagsArgs.builder()
-     *             .keyName(&#34;example_value&#34;)
+     *             .keyName("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;tagMetaTagDefault1&#34;, default_.tags().valueName());
+     *         ctx.export("tagMetaTagDefault1", default_.tags().valueName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

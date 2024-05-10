@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,37 +55,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
  *         // Create a new Domain config.
- *         var domain = new DomainNew(&#34;domain&#34;, DomainNewArgs.builder()        
- *             .domainName(String.format(&#34;mycdndomain-%s.alicloud-provider.cn&#34;, default_.result()))
- *             .cdnType(&#34;web&#34;)
- *             .scope(&#34;overseas&#34;)
+ *         var domain = new DomainNew("domain", DomainNewArgs.builder()        
+ *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
+ *             .cdnType("web")
+ *             .scope("overseas")
  *             .sources(DomainNewSourceArgs.builder()
- *                 .content(&#34;1.1.1.1&#34;)
- *                 .type(&#34;ipaddr&#34;)
- *                 .priority(&#34;20&#34;)
+ *                 .content("1.1.1.1")
+ *                 .type("ipaddr")
+ *                 .priority("20")
  *                 .port(80)
- *                 .weight(&#34;15&#34;)
+ *                 .weight("15")
  *                 .build())
  *             .build());
  * 
- *         var config = new DomainConfig(&#34;config&#34;, DomainConfigArgs.builder()        
+ *         var config = new DomainConfig("config", DomainConfigArgs.builder()        
  *             .domainName(domain.domainName())
- *             .functionName(&#34;ip_allow_list_set&#34;)
+ *             .functionName("ip_allow_list_set")
  *             .functionArgs(DomainConfigFunctionArgArgs.builder()
- *                 .argName(&#34;ip_list&#34;)
- *                 .argValue(&#34;110.110.110.110&#34;)
+ *                 .argName("ip_list")
+ *                 .argValue("110.110.110.110")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

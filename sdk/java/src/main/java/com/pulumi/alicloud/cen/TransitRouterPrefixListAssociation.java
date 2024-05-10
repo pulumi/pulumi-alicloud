@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,38 +60,39 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var example = new PrefixList(&#34;example&#34;, PrefixListArgs.builder()        
+ *         var example = new PrefixList("example", PrefixListArgs.builder()        
  *             .entrys(PrefixListEntryArgs.builder()
- *                 .cidr(&#34;192.168.0.0/16&#34;)
+ *                 .cidr("192.168.0.0/16")
  *                 .build())
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf_example&#34;)
- *             .description(&#34;an example for cen&#34;)
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *             .cenInstanceName("tf_example")
+ *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .transitRouterName(&#34;tf_example&#34;)
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
+ *             .transitRouterName("tf_example")
  *             .cenId(exampleInstance.id())
  *             .build());
  * 
- *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable(&#34;exampleTransitRouterRouteTable&#34;, TransitRouterRouteTableArgs.builder()        
+ *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable("exampleTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()        
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .build());
  * 
- *         var exampleTransitRouterPrefixListAssociation = new TransitRouterPrefixListAssociation(&#34;exampleTransitRouterPrefixListAssociation&#34;, TransitRouterPrefixListAssociationArgs.builder()        
+ *         var exampleTransitRouterPrefixListAssociation = new TransitRouterPrefixListAssociation("exampleTransitRouterPrefixListAssociation", TransitRouterPrefixListAssociationArgs.builder()        
  *             .prefixListId(example.id())
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .transitRouterTableId(exampleTransitRouterRouteTable.transitRouterRouteTableId())
- *             .nextHop(&#34;BlackHole&#34;)
- *             .nextHopType(&#34;BlackHole&#34;)
+ *             .nextHop("BlackHole")
+ *             .nextHopType("BlackHole")
  *             .ownerUid(default_.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

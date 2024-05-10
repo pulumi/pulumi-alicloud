@@ -41,7 +41,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -63,10 +64,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AlicloudFunctions.getAccount();
      * 
-     *         ctx.export(&#34;currentAccountId&#34;, current.applyValue(getAccountResult -&gt; getAccountResult.id()));
+     *         ctx.export("currentAccountId", current.applyValue(getAccountResult -> getAccountResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -79,7 +81,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -101,10 +104,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AlicloudFunctions.getAccount();
      * 
-     *         ctx.export(&#34;currentAccountId&#34;, current.applyValue(getAccountResult -&gt; getAccountResult.id()));
+     *         ctx.export("currentAccountId", current.applyValue(getAccountResult -> getAccountResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -117,7 +121,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -139,10 +144,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AlicloudFunctions.getAccount();
      * 
-     *         ctx.export(&#34;currentAccountId&#34;, current.applyValue(getAccountResult -&gt; getAccountResult.id()));
+     *         ctx.export("currentAccountId", current.applyValue(getAccountResult -> getAccountResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -155,7 +161,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -177,10 +184,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AlicloudFunctions.getAccount();
      * 
-     *         ctx.export(&#34;currentAccountId&#34;, current.applyValue(getAccountResult -&gt; getAccountResult.id()));
+     *         ctx.export("currentAccountId", current.applyValue(getAccountResult -> getAccountResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -193,7 +201,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -215,10 +224,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AlicloudFunctions.getAccount();
      * 
-     *         ctx.export(&#34;currentAccountId&#34;, current.applyValue(getAccountResult -&gt; getAccountResult.id()));
+     *         ctx.export("currentAccountId", current.applyValue(getAccountResult -> getAccountResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -231,7 +241,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -253,10 +264,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AlicloudFunctions.getAccount();
      * 
-     *         ctx.export(&#34;currentAccountId&#34;, current.applyValue(getAccountResult -&gt; getAccountResult.id()));
+     *         ctx.export("currentAccountId", current.applyValue(getAccountResult -> getAccountResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -271,7 +283,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -293,10 +306,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AlicloudFunctions.getCallerIdentity();
      * 
-     *         ctx.export(&#34;currentUserArn&#34;, current.applyValue(getCallerIdentityResult -&gt; getCallerIdentityResult.id()));
+     *         ctx.export("currentUserArn", current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -311,7 +325,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -333,10 +348,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AlicloudFunctions.getCallerIdentity();
      * 
-     *         ctx.export(&#34;currentUserArn&#34;, current.applyValue(getCallerIdentityResult -&gt; getCallerIdentityResult.id()));
+     *         ctx.export("currentUserArn", current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -351,7 +367,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -373,10 +390,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AlicloudFunctions.getCallerIdentity();
      * 
-     *         ctx.export(&#34;currentUserArn&#34;, current.applyValue(getCallerIdentityResult -&gt; getCallerIdentityResult.id()));
+     *         ctx.export("currentUserArn", current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -391,7 +409,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -413,10 +432,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AlicloudFunctions.getCallerIdentity();
      * 
-     *         ctx.export(&#34;currentUserArn&#34;, current.applyValue(getCallerIdentityResult -&gt; getCallerIdentityResult.id()));
+     *         ctx.export("currentUserArn", current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -431,7 +451,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -453,10 +474,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AlicloudFunctions.getCallerIdentity();
      * 
-     *         ctx.export(&#34;currentUserArn&#34;, current.applyValue(getCallerIdentityResult -&gt; getCallerIdentityResult.id()));
+     *         ctx.export("currentUserArn", current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -471,7 +493,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -493,10 +516,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var current = AlicloudFunctions.getCallerIdentity();
      * 
-     *         ctx.export(&#34;currentUserArn&#34;, current.applyValue(getCallerIdentityResult -&gt; getCallerIdentityResult.id()));
+     *         ctx.export("currentUserArn", current.applyValue(getCallerIdentityResult -> getCallerIdentityResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -511,7 +535,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -533,13 +558,14 @@ public final class AlicloudFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getFileCrc64Checksum(GetFileCrc64ChecksumArgs.builder()
-     *             .filename(&#34;exampleFileName&#34;)
+     *             .filename("exampleFileName")
      *             .build());
      * 
-     *         ctx.export(&#34;fileCrc64Checksum&#34;, defualt.checksum());
+     *         ctx.export("fileCrc64Checksum", defualt.checksum());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -554,7 +580,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -576,13 +603,14 @@ public final class AlicloudFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getFileCrc64Checksum(GetFileCrc64ChecksumArgs.builder()
-     *             .filename(&#34;exampleFileName&#34;)
+     *             .filename("exampleFileName")
      *             .build());
      * 
-     *         ctx.export(&#34;fileCrc64Checksum&#34;, defualt.checksum());
+     *         ctx.export("fileCrc64Checksum", defualt.checksum());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -597,7 +625,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -619,13 +648,14 @@ public final class AlicloudFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getFileCrc64Checksum(GetFileCrc64ChecksumArgs.builder()
-     *             .filename(&#34;exampleFileName&#34;)
+     *             .filename("exampleFileName")
      *             .build());
      * 
-     *         ctx.export(&#34;fileCrc64Checksum&#34;, defualt.checksum());
+     *         ctx.export("fileCrc64Checksum", defualt.checksum());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -640,7 +670,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -662,13 +693,14 @@ public final class AlicloudFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getFileCrc64Checksum(GetFileCrc64ChecksumArgs.builder()
-     *             .filename(&#34;exampleFileName&#34;)
+     *             .filename("exampleFileName")
      *             .build());
      * 
-     *         ctx.export(&#34;fileCrc64Checksum&#34;, defualt.checksum());
+     *         ctx.export("fileCrc64Checksum", defualt.checksum());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -683,7 +715,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -706,11 +739,11 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultMscSubContract = new MscSubContract(&#34;defaultMscSubContract&#34;, MscSubContractArgs.builder()        
-     *             .contactName(&#34;example_value&#34;)
-     *             .position(&#34;CEO&#34;)
-     *             .email(&#34;123@163.com&#34;)
-     *             .mobile(&#34;153xxxxx906&#34;)
+     *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()        
+     *             .contactName("example_value")
+     *             .position("CEO")
+     *             .email("123{@literal @}163.com")
+     *             .mobile("153xxxxx906")
      *             .build());
      * 
      *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
@@ -720,7 +753,8 @@ public final class AlicloudFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -735,7 +769,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -758,11 +793,11 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultMscSubContract = new MscSubContract(&#34;defaultMscSubContract&#34;, MscSubContractArgs.builder()        
-     *             .contactName(&#34;example_value&#34;)
-     *             .position(&#34;CEO&#34;)
-     *             .email(&#34;123@163.com&#34;)
-     *             .mobile(&#34;153xxxxx906&#34;)
+     *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()        
+     *             .contactName("example_value")
+     *             .position("CEO")
+     *             .email("123{@literal @}163.com")
+     *             .mobile("153xxxxx906")
      *             .build());
      * 
      *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
@@ -772,7 +807,8 @@ public final class AlicloudFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -787,7 +823,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -810,11 +847,11 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultMscSubContract = new MscSubContract(&#34;defaultMscSubContract&#34;, MscSubContractArgs.builder()        
-     *             .contactName(&#34;example_value&#34;)
-     *             .position(&#34;CEO&#34;)
-     *             .email(&#34;123@163.com&#34;)
-     *             .mobile(&#34;153xxxxx906&#34;)
+     *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()        
+     *             .contactName("example_value")
+     *             .position("CEO")
+     *             .email("123{@literal @}163.com")
+     *             .mobile("153xxxxx906")
      *             .build());
      * 
      *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
@@ -824,7 +861,8 @@ public final class AlicloudFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -839,7 +877,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -862,11 +901,11 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultMscSubContract = new MscSubContract(&#34;defaultMscSubContract&#34;, MscSubContractArgs.builder()        
-     *             .contactName(&#34;example_value&#34;)
-     *             .position(&#34;CEO&#34;)
-     *             .email(&#34;123@163.com&#34;)
-     *             .mobile(&#34;153xxxxx906&#34;)
+     *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()        
+     *             .contactName("example_value")
+     *             .position("CEO")
+     *             .email("123{@literal @}163.com")
+     *             .mobile("153xxxxx906")
      *             .build());
      * 
      *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
@@ -876,7 +915,8 @@ public final class AlicloudFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -893,7 +933,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -916,15 +957,16 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlicloudFunctions.getMscSubContacts();
      * 
-     *         ctx.export(&#34;mscSubContactId1&#34;, ids.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId1", ids.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
      *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
-     *             .nameRegex(&#34;^my-Contact&#34;)
+     *             .nameRegex("^my-Contact")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubContactId2&#34;, nameRegex.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId2", nameRegex.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -941,7 +983,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -964,15 +1007,16 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlicloudFunctions.getMscSubContacts();
      * 
-     *         ctx.export(&#34;mscSubContactId1&#34;, ids.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId1", ids.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
      *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
-     *             .nameRegex(&#34;^my-Contact&#34;)
+     *             .nameRegex("^my-Contact")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubContactId2&#34;, nameRegex.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId2", nameRegex.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -989,7 +1033,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1012,15 +1057,16 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlicloudFunctions.getMscSubContacts();
      * 
-     *         ctx.export(&#34;mscSubContactId1&#34;, ids.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId1", ids.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
      *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
-     *             .nameRegex(&#34;^my-Contact&#34;)
+     *             .nameRegex("^my-Contact")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubContactId2&#34;, nameRegex.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId2", nameRegex.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1037,7 +1083,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1060,15 +1107,16 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlicloudFunctions.getMscSubContacts();
      * 
-     *         ctx.export(&#34;mscSubContactId1&#34;, ids.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId1", ids.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
      *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
-     *             .nameRegex(&#34;^my-Contact&#34;)
+     *             .nameRegex("^my-Contact")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubContactId2&#34;, nameRegex.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId2", nameRegex.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1085,7 +1133,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1108,15 +1157,16 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlicloudFunctions.getMscSubContacts();
      * 
-     *         ctx.export(&#34;mscSubContactId1&#34;, ids.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId1", ids.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
      *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
-     *             .nameRegex(&#34;^my-Contact&#34;)
+     *             .nameRegex("^my-Contact")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubContactId2&#34;, nameRegex.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId2", nameRegex.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1133,7 +1183,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1156,15 +1207,16 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlicloudFunctions.getMscSubContacts();
      * 
-     *         ctx.export(&#34;mscSubContactId1&#34;, ids.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId1", ids.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
      *         final var nameRegex = AlicloudFunctions.getMscSubContacts(GetMscSubContactsArgs.builder()
-     *             .nameRegex(&#34;^my-Contact&#34;)
+     *             .nameRegex("^my-Contact")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubContactId2&#34;, nameRegex.applyValue(getMscSubContactsResult -&gt; getMscSubContactsResult.contacts()[0].id()));
+     *         ctx.export("mscSubContactId2", nameRegex.applyValue(getMscSubContactsResult -> getMscSubContactsResult.contacts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1181,7 +1233,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1204,10 +1257,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getMscSubSubscriptions();
      * 
-     *         ctx.export(&#34;mscSubSubscriptionId1&#34;, default_.subscriptions()[0].id());
+     *         ctx.export("mscSubSubscriptionId1", default_.subscriptions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1224,7 +1278,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1247,10 +1302,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getMscSubSubscriptions();
      * 
-     *         ctx.export(&#34;mscSubSubscriptionId1&#34;, default_.subscriptions()[0].id());
+     *         ctx.export("mscSubSubscriptionId1", default_.subscriptions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1267,7 +1323,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1290,10 +1347,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getMscSubSubscriptions();
      * 
-     *         ctx.export(&#34;mscSubSubscriptionId1&#34;, default_.subscriptions()[0].id());
+     *         ctx.export("mscSubSubscriptionId1", default_.subscriptions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1310,7 +1368,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1333,10 +1392,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getMscSubSubscriptions();
      * 
-     *         ctx.export(&#34;mscSubSubscriptionId1&#34;, default_.subscriptions()[0].id());
+     *         ctx.export("mscSubSubscriptionId1", default_.subscriptions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1353,7 +1413,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1376,10 +1437,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getMscSubSubscriptions();
      * 
-     *         ctx.export(&#34;mscSubSubscriptionId1&#34;, default_.subscriptions()[0].id());
+     *         ctx.export("mscSubSubscriptionId1", default_.subscriptions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1396,7 +1458,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1419,10 +1482,11 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = AlicloudFunctions.getMscSubSubscriptions();
      * 
-     *         ctx.export(&#34;mscSubSubscriptionId1&#34;, default_.subscriptions()[0].id());
+     *         ctx.export("mscSubSubscriptionId1", default_.subscriptions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1439,7 +1503,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1461,18 +1526,19 @@ public final class AlicloudFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubWebhookId1&#34;, ids.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId1", ids.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
      *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
-     *             .nameRegex(&#34;^my-Webhook&#34;)
+     *             .nameRegex("^my-Webhook")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubWebhookId2&#34;, nameRegex.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId2", nameRegex.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1489,7 +1555,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1511,18 +1578,19 @@ public final class AlicloudFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubWebhookId1&#34;, ids.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId1", ids.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
      *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
-     *             .nameRegex(&#34;^my-Webhook&#34;)
+     *             .nameRegex("^my-Webhook")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubWebhookId2&#34;, nameRegex.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId2", nameRegex.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1539,7 +1607,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1561,18 +1630,19 @@ public final class AlicloudFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubWebhookId1&#34;, ids.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId1", ids.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
      *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
-     *             .nameRegex(&#34;^my-Webhook&#34;)
+     *             .nameRegex("^my-Webhook")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubWebhookId2&#34;, nameRegex.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId2", nameRegex.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1589,7 +1659,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1611,18 +1682,19 @@ public final class AlicloudFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubWebhookId1&#34;, ids.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId1", ids.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
      *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
-     *             .nameRegex(&#34;^my-Webhook&#34;)
+     *             .nameRegex("^my-Webhook")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubWebhookId2&#34;, nameRegex.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId2", nameRegex.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1639,7 +1711,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1661,18 +1734,19 @@ public final class AlicloudFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubWebhookId1&#34;, ids.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId1", ids.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
      *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
-     *             .nameRegex(&#34;^my-Webhook&#34;)
+     *             .nameRegex("^my-Webhook")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubWebhookId2&#34;, nameRegex.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId2", nameRegex.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1689,7 +1763,8 @@ public final class AlicloudFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1711,18 +1786,19 @@ public final class AlicloudFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubWebhookId1&#34;, ids.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId1", ids.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
      *         final var nameRegex = AlicloudFunctions.getMscSubWebhooks(GetMscSubWebhooksArgs.builder()
-     *             .nameRegex(&#34;^my-Webhook&#34;)
+     *             .nameRegex("^my-Webhook")
      *             .build());
      * 
-     *         ctx.export(&#34;mscSubWebhookId2&#34;, nameRegex.applyValue(getMscSubWebhooksResult -&gt; getMscSubWebhooksResult.webhooks()[0].id()));
+     *         ctx.export("mscSubWebhookId2", nameRegex.applyValue(getMscSubWebhooksResult -> getMscSubWebhooksResult.webhooks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1735,7 +1811,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1760,10 +1837,11 @@ public final class AlicloudFunctions {
      *             .current(true)
      *             .build());
      * 
-     *         ctx.export(&#34;currentRegionId&#34;, currentRegionDs.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()));
+     *         ctx.export("currentRegionId", currentRegionDs.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1776,7 +1854,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1801,10 +1880,11 @@ public final class AlicloudFunctions {
      *             .current(true)
      *             .build());
      * 
-     *         ctx.export(&#34;currentRegionId&#34;, currentRegionDs.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()));
+     *         ctx.export("currentRegionId", currentRegionDs.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1817,7 +1897,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1842,10 +1923,11 @@ public final class AlicloudFunctions {
      *             .current(true)
      *             .build());
      * 
-     *         ctx.export(&#34;currentRegionId&#34;, currentRegionDs.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()));
+     *         ctx.export("currentRegionId", currentRegionDs.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1858,7 +1940,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1883,10 +1966,11 @@ public final class AlicloudFunctions {
      *             .current(true)
      *             .build());
      * 
-     *         ctx.export(&#34;currentRegionId&#34;, currentRegionDs.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()));
+     *         ctx.export("currentRegionId", currentRegionDs.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1899,7 +1983,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1924,10 +2009,11 @@ public final class AlicloudFunctions {
      *             .current(true)
      *             .build());
      * 
-     *         ctx.export(&#34;currentRegionId&#34;, currentRegionDs.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()));
+     *         ctx.export("currentRegionId", currentRegionDs.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1940,7 +2026,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1965,10 +2052,11 @@ public final class AlicloudFunctions {
      *             .current(true)
      *             .build());
      * 
-     *         ctx.export(&#34;currentRegionId&#34;, currentRegionDs.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()));
+     *         ctx.export("currentRegionId", currentRegionDs.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1983,7 +2071,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2006,13 +2095,14 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableInstanceType(&#34;ecs.n4.large&#34;)
-     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
+     *             .availableInstanceType("ecs.n4.large")
+     *             .availableDiskCategory("cloud_ssd")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2027,7 +2117,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2050,13 +2141,14 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableInstanceType(&#34;ecs.n4.large&#34;)
-     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
+     *             .availableInstanceType("ecs.n4.large")
+     *             .availableDiskCategory("cloud_ssd")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2071,7 +2163,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2094,13 +2187,14 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableInstanceType(&#34;ecs.n4.large&#34;)
-     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
+     *             .availableInstanceType("ecs.n4.large")
+     *             .availableDiskCategory("cloud_ssd")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2115,7 +2209,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2138,13 +2233,14 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableInstanceType(&#34;ecs.n4.large&#34;)
-     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
+     *             .availableInstanceType("ecs.n4.large")
+     *             .availableDiskCategory("cloud_ssd")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2159,7 +2255,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2182,13 +2279,14 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableInstanceType(&#34;ecs.n4.large&#34;)
-     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
+     *             .availableInstanceType("ecs.n4.large")
+     *             .availableDiskCategory("cloud_ssd")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2203,7 +2301,8 @@ public final class AlicloudFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2226,13 +2325,14 @@ public final class AlicloudFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableInstanceType(&#34;ecs.n4.large&#34;)
-     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
+     *             .availableInstanceType("ecs.n4.large")
+     *             .availableDiskCategory("cloud_ssd")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

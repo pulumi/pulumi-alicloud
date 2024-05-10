@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,42 +55,42 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
- *             .instanceType(&#34;enterprise&#34;)
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *             .instanceType("enterprise")
  *             .maxTps(3000)
  *             .queueCapacity(200)
  *             .storageSize(700)
  *             .supportEip(false)
  *             .maxEipTps(128)
- *             .paymentType(&#34;Subscription&#34;)
+ *             .paymentType("Subscription")
  *             .period(1)
  *             .build());
  * 
- *         var defaultVirtualHost = new VirtualHost(&#34;defaultVirtualHost&#34;, VirtualHostArgs.builder()        
+ *         var defaultVirtualHost = new VirtualHost("defaultVirtualHost", VirtualHostArgs.builder()        
  *             .instanceId(default_.id())
- *             .virtualHostName(&#34;tf-example&#34;)
+ *             .virtualHostName("tf-example")
  *             .build());
  * 
- *         var defaultExchange = new Exchange(&#34;defaultExchange&#34;, ExchangeArgs.builder()        
+ *         var defaultExchange = new Exchange("defaultExchange", ExchangeArgs.builder()        
  *             .autoDeleteState(false)
- *             .exchangeName(&#34;tf-example&#34;)
- *             .exchangeType(&#34;HEADERS&#34;)
+ *             .exchangeName("tf-example")
+ *             .exchangeType("HEADERS")
  *             .instanceId(default_.id())
  *             .internal(false)
  *             .virtualHostName(defaultVirtualHost.virtualHostName())
  *             .build());
  * 
- *         var defaultQueue = new Queue(&#34;defaultQueue&#34;, QueueArgs.builder()        
+ *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()        
  *             .instanceId(default_.id())
- *             .queueName(&#34;tf-example&#34;)
+ *             .queueName("tf-example")
  *             .virtualHostName(defaultVirtualHost.virtualHostName())
  *             .build());
  * 
- *         var defaultBinding = new Binding(&#34;defaultBinding&#34;, BindingArgs.builder()        
- *             .argument(&#34;x-match:all&#34;)
+ *         var defaultBinding = new Binding("defaultBinding", BindingArgs.builder()        
+ *             .argument("x-match:all")
  *             .bindingKey(defaultQueue.queueName())
- *             .bindingType(&#34;QUEUE&#34;)
- *             .destinationName(&#34;tf-example&#34;)
+ *             .bindingType("QUEUE")
+ *             .destinationName("tf-example")
  *             .instanceId(default_.id())
  *             .sourceExchange(defaultExchange.exchangeName())
  *             .virtualHostName(defaultVirtualHost.virtualHostName())
@@ -97,7 +98,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -135,9 +137,9 @@ public class Binding extends com.pulumi.resources.CustomResource {
     }
     /**
      * The Binding Key.
-     * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+     * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
      *   The binding key must be 1 to 255 characters in length.
-     * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+     * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
      *   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
      *   The binding key must be 1 to 255 characters in length.
      * 
@@ -147,9 +149,9 @@ public class Binding extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The Binding Key.
-     * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+     * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
      *   The binding key must be 1 to 255 characters in length.
-     * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+     * * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
      *   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
      *   The binding key must be 1 to 255 characters in length.
      * 

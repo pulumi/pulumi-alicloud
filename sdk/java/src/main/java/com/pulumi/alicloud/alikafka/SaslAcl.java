@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,70 +65,71 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .name(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .name(String.format("%s-%s", name,defaultInteger.result()))
  *             .partitionNum(50)
- *             .diskType(&#34;1&#34;)
- *             .diskSize(&#34;500&#34;)
- *             .deployType(&#34;5&#34;)
- *             .ioMax(&#34;20&#34;)
- *             .specType(&#34;professional&#34;)
- *             .serviceVersion(&#34;2.2.0&#34;)
- *             .config(&#34;{\&#34;enable.acl\&#34;:\&#34;true\&#34;}&#34;)
+ *             .diskType("1")
+ *             .diskSize("500")
+ *             .deployType("5")
+ *             .ioMax("20")
+ *             .specType("professional")
+ *             .serviceVersion("2.2.0")
+ *             .config("{\"enable.acl\":\"true\"}")
  *             .vswitchId(defaultSwitch.id())
  *             .securityGroup(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
+ *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
  *             .instanceId(defaultInstance.id())
- *             .topic(&#34;example-topic&#34;)
- *             .remark(&#34;topic-remark&#34;)
+ *             .topic("example-topic")
+ *             .remark("topic-remark")
  *             .build());
  * 
- *         var defaultSaslUser = new SaslUser(&#34;defaultSaslUser&#34;, SaslUserArgs.builder()        
+ *         var defaultSaslUser = new SaslUser("defaultSaslUser", SaslUserArgs.builder()        
  *             .instanceId(defaultInstance.id())
  *             .username(name)
- *             .password(&#34;tf_example123&#34;)
+ *             .password("tf_example123")
  *             .build());
  * 
- *         var defaultSaslAcl = new SaslAcl(&#34;defaultSaslAcl&#34;, SaslAclArgs.builder()        
+ *         var defaultSaslAcl = new SaslAcl("defaultSaslAcl", SaslAclArgs.builder()        
  *             .instanceId(defaultInstance.id())
  *             .username(defaultSaslUser.username())
- *             .aclResourceType(&#34;Topic&#34;)
+ *             .aclResourceType("Topic")
  *             .aclResourceName(defaultTopic.topic())
- *             .aclResourcePatternType(&#34;LITERAL&#34;)
- *             .aclOperationType(&#34;Write&#34;)
+ *             .aclResourcePatternType("LITERAL")
+ *             .aclOperationType("Write")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

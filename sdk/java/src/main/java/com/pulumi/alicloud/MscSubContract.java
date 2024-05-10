@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,17 +46,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
- *         var default_ = new MscSubContract(&#34;default&#34;, MscSubContractArgs.builder()        
+ *         final var name = config.get("name").orElse("tfexample");
+ *         var default_ = new MscSubContract("default", MscSubContractArgs.builder()        
  *             .contactName(name)
- *             .position(&#34;CEO&#34;)
- *             .email(&#34;123@163.com&#34;)
- *             .mobile(&#34;15388888888&#34;)
+ *             .position("CEO")
+ *             .email("123{@literal @}163.com")
+ *             .mobile("15388888888")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

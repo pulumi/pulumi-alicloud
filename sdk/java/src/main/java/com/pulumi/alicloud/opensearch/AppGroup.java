@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,21 +53,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;name&#34;);
- *         var default_ = new AppGroup(&#34;default&#34;, AppGroupArgs.builder()        
+ *         final var name = config.get("name").orElse("name");
+ *         var default_ = new AppGroup("default", AppGroupArgs.builder()        
  *             .appGroupName(name)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .type(&#34;standard&#34;)
+ *             .paymentType("PayAsYouGo")
+ *             .type("standard")
  *             .quota(AppGroupQuotaArgs.builder()
  *                 .docSize(1)
  *                 .computeResource(20)
- *                 .spec(&#34;opensearch.share.common&#34;)
+ *                 .spec("opensearch.share.common")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

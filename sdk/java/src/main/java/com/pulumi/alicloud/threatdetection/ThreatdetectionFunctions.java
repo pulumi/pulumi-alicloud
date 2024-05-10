@@ -58,7 +58,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -82,11 +83,11 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var defaultAntiBruteForceRule = new AntiBruteForceRule(&#34;defaultAntiBruteForceRule&#34;, AntiBruteForceRuleArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()        
      *             .antiBruteForceRuleName(name)
      *             .forbiddenTime(360)
-     *             .uuidLists(&#34;7567806c-4ec5-4597-9543-7c9543381a13&#34;)
+     *             .uuidLists("7567806c-4ec5-4597-9543-7c9543381a13")
      *             .failCount(80)
      *             .span(10)
      *             .build());
@@ -96,10 +97,11 @@ public final class ThreatdetectionFunctions {
      *             .nameRegex(defaultAntiBruteForceRule.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionAntiBruteForceRuleExampleId&#34;, default_.applyValue(default_ -&gt; default_.rules()[0].id()));
+     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(default_ -> default_.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -114,7 +116,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -138,11 +141,11 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var defaultAntiBruteForceRule = new AntiBruteForceRule(&#34;defaultAntiBruteForceRule&#34;, AntiBruteForceRuleArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()        
      *             .antiBruteForceRuleName(name)
      *             .forbiddenTime(360)
-     *             .uuidLists(&#34;7567806c-4ec5-4597-9543-7c9543381a13&#34;)
+     *             .uuidLists("7567806c-4ec5-4597-9543-7c9543381a13")
      *             .failCount(80)
      *             .span(10)
      *             .build());
@@ -152,10 +155,11 @@ public final class ThreatdetectionFunctions {
      *             .nameRegex(defaultAntiBruteForceRule.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionAntiBruteForceRuleExampleId&#34;, default_.applyValue(default_ -&gt; default_.rules()[0].id()));
+     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(default_ -> default_.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -170,7 +174,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -194,11 +199,11 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var defaultAntiBruteForceRule = new AntiBruteForceRule(&#34;defaultAntiBruteForceRule&#34;, AntiBruteForceRuleArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()        
      *             .antiBruteForceRuleName(name)
      *             .forbiddenTime(360)
-     *             .uuidLists(&#34;7567806c-4ec5-4597-9543-7c9543381a13&#34;)
+     *             .uuidLists("7567806c-4ec5-4597-9543-7c9543381a13")
      *             .failCount(80)
      *             .span(10)
      *             .build());
@@ -208,10 +213,11 @@ public final class ThreatdetectionFunctions {
      *             .nameRegex(defaultAntiBruteForceRule.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionAntiBruteForceRuleExampleId&#34;, default_.applyValue(default_ -&gt; default_.rules()[0].id()));
+     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(default_ -> default_.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -226,7 +232,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -250,11 +257,11 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var defaultAntiBruteForceRule = new AntiBruteForceRule(&#34;defaultAntiBruteForceRule&#34;, AntiBruteForceRuleArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()        
      *             .antiBruteForceRuleName(name)
      *             .forbiddenTime(360)
-     *             .uuidLists(&#34;7567806c-4ec5-4597-9543-7c9543381a13&#34;)
+     *             .uuidLists("7567806c-4ec5-4597-9543-7c9543381a13")
      *             .failCount(80)
      *             .span(10)
      *             .build());
@@ -264,10 +271,11 @@ public final class ThreatdetectionFunctions {
      *             .nameRegex(defaultAntiBruteForceRule.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionAntiBruteForceRuleExampleId&#34;, default_.applyValue(default_ -&gt; default_.rules()[0].id()));
+     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(default_ -> default_.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -282,7 +290,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -306,11 +315,11 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var defaultAntiBruteForceRule = new AntiBruteForceRule(&#34;defaultAntiBruteForceRule&#34;, AntiBruteForceRuleArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()        
      *             .antiBruteForceRuleName(name)
      *             .forbiddenTime(360)
-     *             .uuidLists(&#34;7567806c-4ec5-4597-9543-7c9543381a13&#34;)
+     *             .uuidLists("7567806c-4ec5-4597-9543-7c9543381a13")
      *             .failCount(80)
      *             .span(10)
      *             .build());
@@ -320,10 +329,11 @@ public final class ThreatdetectionFunctions {
      *             .nameRegex(defaultAntiBruteForceRule.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionAntiBruteForceRuleExampleId&#34;, default_.applyValue(default_ -&gt; default_.rules()[0].id()));
+     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(default_ -> default_.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -338,7 +348,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -362,11 +373,11 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var defaultAntiBruteForceRule = new AntiBruteForceRule(&#34;defaultAntiBruteForceRule&#34;, AntiBruteForceRuleArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var defaultAntiBruteForceRule = new AntiBruteForceRule("defaultAntiBruteForceRule", AntiBruteForceRuleArgs.builder()        
      *             .antiBruteForceRuleName(name)
      *             .forbiddenTime(360)
-     *             .uuidLists(&#34;7567806c-4ec5-4597-9543-7c9543381a13&#34;)
+     *             .uuidLists("7567806c-4ec5-4597-9543-7c9543381a13")
      *             .failCount(80)
      *             .span(10)
      *             .build());
@@ -376,10 +387,11 @@ public final class ThreatdetectionFunctions {
      *             .nameRegex(defaultAntiBruteForceRule.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionAntiBruteForceRuleExampleId&#34;, default_.applyValue(default_ -&gt; default_.rules()[0].id()));
+     *         ctx.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default_.applyValue(default_ -> default_.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -394,7 +406,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -417,10 +430,11 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getAssets();
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionAssetExampleId&#34;, default_.assets()[0].id());
+     *         ctx.export("alicloudThreatDetectionAssetExampleId", default_.assets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -435,7 +449,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -458,10 +473,11 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getAssets();
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionAssetExampleId&#34;, default_.assets()[0].id());
+     *         ctx.export("alicloudThreatDetectionAssetExampleId", default_.assets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -476,7 +492,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -499,10 +516,11 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getAssets();
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionAssetExampleId&#34;, default_.assets()[0].id());
+     *         ctx.export("alicloudThreatDetectionAssetExampleId", default_.assets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -517,7 +535,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -540,10 +559,11 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getAssets();
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionAssetExampleId&#34;, default_.assets()[0].id());
+     *         ctx.export("alicloudThreatDetectionAssetExampleId", default_.assets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -558,7 +578,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -581,10 +602,11 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getAssets();
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionAssetExampleId&#34;, default_.assets()[0].id());
+     *         ctx.export("alicloudThreatDetectionAssetExampleId", default_.assets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -599,7 +621,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -622,10 +645,11 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getAssets();
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionAssetExampleId&#34;, default_.assets()[0].id());
+     *         ctx.export("alicloudThreatDetectionAssetExampleId", default_.assets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -642,7 +666,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -664,18 +689,19 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;threatDetectionBackupPoliciesId1&#34;, ids.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId1", ids.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *         final var nameRegex = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;threatDetectionBackupPoliciesId2&#34;, nameRegex.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -692,7 +718,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -714,18 +741,19 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;threatDetectionBackupPoliciesId1&#34;, ids.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId1", ids.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *         final var nameRegex = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;threatDetectionBackupPoliciesId2&#34;, nameRegex.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -742,7 +770,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -764,18 +793,19 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;threatDetectionBackupPoliciesId1&#34;, ids.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId1", ids.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *         final var nameRegex = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;threatDetectionBackupPoliciesId2&#34;, nameRegex.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -792,7 +822,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -814,18 +845,19 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;threatDetectionBackupPoliciesId1&#34;, ids.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId1", ids.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *         final var nameRegex = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;threatDetectionBackupPoliciesId2&#34;, nameRegex.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -842,7 +874,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -864,18 +897,19 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;threatDetectionBackupPoliciesId1&#34;, ids.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId1", ids.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *         final var nameRegex = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;threatDetectionBackupPoliciesId2&#34;, nameRegex.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -892,7 +926,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -914,18 +949,19 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;threatDetectionBackupPoliciesId1&#34;, ids.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId1", ids.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *         final var nameRegex = ThreatdetectionFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;threatDetectionBackupPoliciesId2&#34;, nameRegex.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("threatDetectionBackupPoliciesId2", nameRegex.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -940,7 +976,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -963,26 +1000,27 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultBaselineStrategy = new BaselineStrategy(&#34;defaultBaselineStrategy&#34;, BaselineStrategyArgs.builder()        
-     *             .customType(&#34;custom&#34;)
-     *             .endTime(&#34;08:00:00&#34;)
-     *             .baselineStrategyName(&#34;apispec&#34;)
+     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()        
+     *             .customType("custom")
+     *             .endTime("08:00:00")
+     *             .baselineStrategyName("apispec")
      *             .cycleDays(3)
-     *             .targetType(&#34;groupId&#34;)
-     *             .startTime(&#34;05:00:00&#34;)
-     *             .riskSubTypeName(&#34;hc_exploit_redis&#34;)
+     *             .targetType("groupId")
+     *             .startTime("05:00:00")
+     *             .riskSubTypeName("hc_exploit_redis")
      *             .build());
      * 
      *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
      *             .ids(defaultBaselineStrategy.id())
      *             .nameRegex(defaultBaselineStrategy.name())
-     *             .customType(&#34;custom&#34;)
+     *             .customType("custom")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionBaselineStrategyExampleId&#34;, defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
+     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -997,7 +1035,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1020,26 +1059,27 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultBaselineStrategy = new BaselineStrategy(&#34;defaultBaselineStrategy&#34;, BaselineStrategyArgs.builder()        
-     *             .customType(&#34;custom&#34;)
-     *             .endTime(&#34;08:00:00&#34;)
-     *             .baselineStrategyName(&#34;apispec&#34;)
+     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()        
+     *             .customType("custom")
+     *             .endTime("08:00:00")
+     *             .baselineStrategyName("apispec")
      *             .cycleDays(3)
-     *             .targetType(&#34;groupId&#34;)
-     *             .startTime(&#34;05:00:00&#34;)
-     *             .riskSubTypeName(&#34;hc_exploit_redis&#34;)
+     *             .targetType("groupId")
+     *             .startTime("05:00:00")
+     *             .riskSubTypeName("hc_exploit_redis")
      *             .build());
      * 
      *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
      *             .ids(defaultBaselineStrategy.id())
      *             .nameRegex(defaultBaselineStrategy.name())
-     *             .customType(&#34;custom&#34;)
+     *             .customType("custom")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionBaselineStrategyExampleId&#34;, defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
+     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1054,7 +1094,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1077,26 +1118,27 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultBaselineStrategy = new BaselineStrategy(&#34;defaultBaselineStrategy&#34;, BaselineStrategyArgs.builder()        
-     *             .customType(&#34;custom&#34;)
-     *             .endTime(&#34;08:00:00&#34;)
-     *             .baselineStrategyName(&#34;apispec&#34;)
+     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()        
+     *             .customType("custom")
+     *             .endTime("08:00:00")
+     *             .baselineStrategyName("apispec")
      *             .cycleDays(3)
-     *             .targetType(&#34;groupId&#34;)
-     *             .startTime(&#34;05:00:00&#34;)
-     *             .riskSubTypeName(&#34;hc_exploit_redis&#34;)
+     *             .targetType("groupId")
+     *             .startTime("05:00:00")
+     *             .riskSubTypeName("hc_exploit_redis")
      *             .build());
      * 
      *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
      *             .ids(defaultBaselineStrategy.id())
      *             .nameRegex(defaultBaselineStrategy.name())
-     *             .customType(&#34;custom&#34;)
+     *             .customType("custom")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionBaselineStrategyExampleId&#34;, defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
+     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1111,7 +1153,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1134,26 +1177,27 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultBaselineStrategy = new BaselineStrategy(&#34;defaultBaselineStrategy&#34;, BaselineStrategyArgs.builder()        
-     *             .customType(&#34;custom&#34;)
-     *             .endTime(&#34;08:00:00&#34;)
-     *             .baselineStrategyName(&#34;apispec&#34;)
+     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()        
+     *             .customType("custom")
+     *             .endTime("08:00:00")
+     *             .baselineStrategyName("apispec")
      *             .cycleDays(3)
-     *             .targetType(&#34;groupId&#34;)
-     *             .startTime(&#34;05:00:00&#34;)
-     *             .riskSubTypeName(&#34;hc_exploit_redis&#34;)
+     *             .targetType("groupId")
+     *             .startTime("05:00:00")
+     *             .riskSubTypeName("hc_exploit_redis")
      *             .build());
      * 
      *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
      *             .ids(defaultBaselineStrategy.id())
      *             .nameRegex(defaultBaselineStrategy.name())
-     *             .customType(&#34;custom&#34;)
+     *             .customType("custom")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionBaselineStrategyExampleId&#34;, defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
+     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1168,7 +1212,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1191,26 +1236,27 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultBaselineStrategy = new BaselineStrategy(&#34;defaultBaselineStrategy&#34;, BaselineStrategyArgs.builder()        
-     *             .customType(&#34;custom&#34;)
-     *             .endTime(&#34;08:00:00&#34;)
-     *             .baselineStrategyName(&#34;apispec&#34;)
+     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()        
+     *             .customType("custom")
+     *             .endTime("08:00:00")
+     *             .baselineStrategyName("apispec")
      *             .cycleDays(3)
-     *             .targetType(&#34;groupId&#34;)
-     *             .startTime(&#34;05:00:00&#34;)
-     *             .riskSubTypeName(&#34;hc_exploit_redis&#34;)
+     *             .targetType("groupId")
+     *             .startTime("05:00:00")
+     *             .riskSubTypeName("hc_exploit_redis")
      *             .build());
      * 
      *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
      *             .ids(defaultBaselineStrategy.id())
      *             .nameRegex(defaultBaselineStrategy.name())
-     *             .customType(&#34;custom&#34;)
+     *             .customType("custom")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionBaselineStrategyExampleId&#34;, defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
+     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1225,7 +1271,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1248,26 +1295,27 @@ public final class ThreatdetectionFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultBaselineStrategy = new BaselineStrategy(&#34;defaultBaselineStrategy&#34;, BaselineStrategyArgs.builder()        
-     *             .customType(&#34;custom&#34;)
-     *             .endTime(&#34;08:00:00&#34;)
-     *             .baselineStrategyName(&#34;apispec&#34;)
+     *         var defaultBaselineStrategy = new BaselineStrategy("defaultBaselineStrategy", BaselineStrategyArgs.builder()        
+     *             .customType("custom")
+     *             .endTime("08:00:00")
+     *             .baselineStrategyName("apispec")
      *             .cycleDays(3)
-     *             .targetType(&#34;groupId&#34;)
-     *             .startTime(&#34;05:00:00&#34;)
-     *             .riskSubTypeName(&#34;hc_exploit_redis&#34;)
+     *             .targetType("groupId")
+     *             .startTime("05:00:00")
+     *             .riskSubTypeName("hc_exploit_redis")
      *             .build());
      * 
      *         final var default = ThreatdetectionFunctions.getBaselineStrategies(GetBaselineStrategiesArgs.builder()
      *             .ids(defaultBaselineStrategy.id())
      *             .nameRegex(defaultBaselineStrategy.name())
-     *             .customType(&#34;custom&#34;)
+     *             .customType("custom")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionBaselineStrategyExampleId&#34;, defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
+     *         ctx.export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.strategys()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1284,7 +1332,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1306,15 +1355,16 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneyPots(GetHoneyPotsArgs.builder()
-     *             .ids(&#34;xxxx&#34;)
-     *             .honeypotName(&#34;tf-example&#34;)
-     *             .nodeId(&#34;a44e1ab3-6945-444c-889d-5bacee7056e8&#34;)
+     *             .ids("xxxx")
+     *             .honeypotName("tf-example")
+     *             .nodeId("a44e1ab3-6945-444c-889d-5bacee7056e8")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneyPotExampleId&#34;, default_.pots()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneyPotExampleId", default_.pots()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1331,7 +1381,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1353,15 +1404,16 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneyPots(GetHoneyPotsArgs.builder()
-     *             .ids(&#34;xxxx&#34;)
-     *             .honeypotName(&#34;tf-example&#34;)
-     *             .nodeId(&#34;a44e1ab3-6945-444c-889d-5bacee7056e8&#34;)
+     *             .ids("xxxx")
+     *             .honeypotName("tf-example")
+     *             .nodeId("a44e1ab3-6945-444c-889d-5bacee7056e8")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneyPotExampleId&#34;, default_.pots()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneyPotExampleId", default_.pots()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1378,7 +1430,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1400,15 +1453,16 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneyPots(GetHoneyPotsArgs.builder()
-     *             .ids(&#34;xxxx&#34;)
-     *             .honeypotName(&#34;tf-example&#34;)
-     *             .nodeId(&#34;a44e1ab3-6945-444c-889d-5bacee7056e8&#34;)
+     *             .ids("xxxx")
+     *             .honeypotName("tf-example")
+     *             .nodeId("a44e1ab3-6945-444c-889d-5bacee7056e8")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneyPotExampleId&#34;, default_.pots()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneyPotExampleId", default_.pots()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1425,7 +1479,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1447,15 +1502,16 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneyPots(GetHoneyPotsArgs.builder()
-     *             .ids(&#34;xxxx&#34;)
-     *             .honeypotName(&#34;tf-example&#34;)
-     *             .nodeId(&#34;a44e1ab3-6945-444c-889d-5bacee7056e8&#34;)
+     *             .ids("xxxx")
+     *             .honeypotName("tf-example")
+     *             .nodeId("a44e1ab3-6945-444c-889d-5bacee7056e8")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneyPotExampleId&#34;, default_.pots()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneyPotExampleId", default_.pots()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1472,7 +1528,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1494,15 +1551,16 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneyPots(GetHoneyPotsArgs.builder()
-     *             .ids(&#34;xxxx&#34;)
-     *             .honeypotName(&#34;tf-example&#34;)
-     *             .nodeId(&#34;a44e1ab3-6945-444c-889d-5bacee7056e8&#34;)
+     *             .ids("xxxx")
+     *             .honeypotName("tf-example")
+     *             .nodeId("a44e1ab3-6945-444c-889d-5bacee7056e8")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneyPotExampleId&#34;, default_.pots()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneyPotExampleId", default_.pots()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1519,7 +1577,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1541,15 +1600,16 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneyPots(GetHoneyPotsArgs.builder()
-     *             .ids(&#34;xxxx&#34;)
-     *             .honeypotName(&#34;tf-example&#34;)
-     *             .nodeId(&#34;a44e1ab3-6945-444c-889d-5bacee7056e8&#34;)
+     *             .ids("xxxx")
+     *             .honeypotName("tf-example")
+     *             .nodeId("a44e1ab3-6945-444c-889d-5bacee7056e8")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneyPotExampleId&#34;, default_.pots()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneyPotExampleId", default_.pots()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1564,7 +1624,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1586,14 +1647,15 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotImages(GetHoneypotImagesArgs.builder()
-     *             .ids(&#34;sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df&#34;)
-     *             .nameRegex(&#34;^meta&#34;)
+     *             .ids("sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df")
+     *             .nameRegex("^meta")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotImageExampleId&#34;, default_.images()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotImageExampleId", default_.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1608,7 +1670,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1630,14 +1693,15 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotImages(GetHoneypotImagesArgs.builder()
-     *             .ids(&#34;sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df&#34;)
-     *             .nameRegex(&#34;^meta&#34;)
+     *             .ids("sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df")
+     *             .nameRegex("^meta")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotImageExampleId&#34;, default_.images()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotImageExampleId", default_.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1652,7 +1716,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1674,14 +1739,15 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotImages(GetHoneypotImagesArgs.builder()
-     *             .ids(&#34;sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df&#34;)
-     *             .nameRegex(&#34;^meta&#34;)
+     *             .ids("sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df")
+     *             .nameRegex("^meta")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotImageExampleId&#34;, default_.images()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotImageExampleId", default_.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1696,7 +1762,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1718,14 +1785,15 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotImages(GetHoneypotImagesArgs.builder()
-     *             .ids(&#34;sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df&#34;)
-     *             .nameRegex(&#34;^meta&#34;)
+     *             .ids("sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df")
+     *             .nameRegex("^meta")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotImageExampleId&#34;, default_.images()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotImageExampleId", default_.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1740,7 +1808,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1762,14 +1831,15 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotImages(GetHoneypotImagesArgs.builder()
-     *             .ids(&#34;sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df&#34;)
-     *             .nameRegex(&#34;^meta&#34;)
+     *             .ids("sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df")
+     *             .nameRegex("^meta")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotImageExampleId&#34;, default_.images()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotImageExampleId", default_.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1784,7 +1854,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1806,14 +1877,15 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotImages(GetHoneypotImagesArgs.builder()
-     *             .ids(&#34;sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df&#34;)
-     *             .nameRegex(&#34;^meta&#34;)
+     *             .ids("sha256:02882320c9a55303410127c5dc4ae2dc470150f9d7f2483102d994f5e5f4d9df")
+     *             .nameRegex("^meta")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotImageExampleId&#34;, default_.images()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotImageExampleId", default_.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1828,7 +1900,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1853,10 +1926,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionHoneypotNode.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotNodeExampleId&#34;, default_.nodes()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotNodeExampleId", default_.nodes()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1871,7 +1945,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1896,10 +1971,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionHoneypotNode.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotNodeExampleId&#34;, default_.nodes()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotNodeExampleId", default_.nodes()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1914,7 +1990,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1939,10 +2016,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionHoneypotNode.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotNodeExampleId&#34;, default_.nodes()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotNodeExampleId", default_.nodes()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1957,7 +2035,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1982,10 +2061,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionHoneypotNode.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotNodeExampleId&#34;, default_.nodes()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotNodeExampleId", default_.nodes()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2000,7 +2080,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2025,10 +2106,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionHoneypotNode.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotNodeExampleId&#34;, default_.nodes()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotNodeExampleId", default_.nodes()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2043,7 +2125,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2068,10 +2151,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionHoneypotNode.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotNodeExampleId&#34;, default_.nodes()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotNodeExampleId", default_.nodes()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2086,7 +2170,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2109,15 +2194,16 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotPresets(GetHoneypotPresetsArgs.builder()
      *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.id())
-     *             .honeypotImageName(&#34;shiro&#34;)
-     *             .nodeId(&#34;example_value&#34;)
-     *             .presetName(&#34;apiapec_test&#34;)
+     *             .honeypotImageName("shiro")
+     *             .nodeId("example_value")
+     *             .presetName("apiapec_test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotPresetExampleId&#34;, default_.presets()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotPresetExampleId", default_.presets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2132,7 +2218,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2155,15 +2242,16 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotPresets(GetHoneypotPresetsArgs.builder()
      *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.id())
-     *             .honeypotImageName(&#34;shiro&#34;)
-     *             .nodeId(&#34;example_value&#34;)
-     *             .presetName(&#34;apiapec_test&#34;)
+     *             .honeypotImageName("shiro")
+     *             .nodeId("example_value")
+     *             .presetName("apiapec_test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotPresetExampleId&#34;, default_.presets()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotPresetExampleId", default_.presets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2178,7 +2266,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2201,15 +2290,16 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotPresets(GetHoneypotPresetsArgs.builder()
      *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.id())
-     *             .honeypotImageName(&#34;shiro&#34;)
-     *             .nodeId(&#34;example_value&#34;)
-     *             .presetName(&#34;apiapec_test&#34;)
+     *             .honeypotImageName("shiro")
+     *             .nodeId("example_value")
+     *             .presetName("apiapec_test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotPresetExampleId&#34;, default_.presets()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotPresetExampleId", default_.presets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2224,7 +2314,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2247,15 +2338,16 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotPresets(GetHoneypotPresetsArgs.builder()
      *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.id())
-     *             .honeypotImageName(&#34;shiro&#34;)
-     *             .nodeId(&#34;example_value&#34;)
-     *             .presetName(&#34;apiapec_test&#34;)
+     *             .honeypotImageName("shiro")
+     *             .nodeId("example_value")
+     *             .presetName("apiapec_test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotPresetExampleId&#34;, default_.presets()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotPresetExampleId", default_.presets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2270,7 +2362,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2293,15 +2386,16 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotPresets(GetHoneypotPresetsArgs.builder()
      *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.id())
-     *             .honeypotImageName(&#34;shiro&#34;)
-     *             .nodeId(&#34;example_value&#34;)
-     *             .presetName(&#34;apiapec_test&#34;)
+     *             .honeypotImageName("shiro")
+     *             .nodeId("example_value")
+     *             .presetName("apiapec_test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotPresetExampleId&#34;, default_.presets()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotPresetExampleId", default_.presets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2316,7 +2410,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2339,15 +2434,16 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneypotPresets(GetHoneypotPresetsArgs.builder()
      *             .ids(defaultAlicloudThreatDetectionHoneypotPreset.id())
-     *             .honeypotImageName(&#34;shiro&#34;)
-     *             .nodeId(&#34;example_value&#34;)
-     *             .presetName(&#34;apiapec_test&#34;)
+     *             .honeypotImageName("shiro")
+     *             .nodeId("example_value")
+     *             .presetName("apiapec_test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotPresetExampleId&#34;, default_.presets()[0].id());
+     *         ctx.export("alicloudThreatDetectionHoneypotPresetExampleId", default_.presets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2362,7 +2458,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2387,18 +2484,18 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccThreatDetectionHoneypotProbe&#34;);
-     *         var defaultHoneypotProbe = new HoneypotProbe(&#34;defaultHoneypotProbe&#34;, HoneypotProbeArgs.builder()        
-     *             .uuid(&#34;e52c7872-29d1-4aa1-9908-0299abd53606&#34;)
-     *             .probeType(&#34;host_probe&#34;)
-     *             .controlNodeId(&#34;e1397077-4941-4b14-b533-ca2bdebd00a3&#34;)
+     *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
+     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()        
+     *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
+     *             .probeType("host_probe")
+     *             .controlNodeId("e1397077-4941-4b14-b533-ca2bdebd00a3")
      *             .ping(true)
      *             .honeypotBindLists(HoneypotProbeHoneypotBindListArgs.builder()
      *                 .bindPortLists(HoneypotProbeHoneypotBindListBindPortListArgs.builder()
      *                     .startPort(80)
      *                     .endPort(80)
      *                     .build())
-     *                 .honeypotId(&#34;4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05&#34;)
+     *                 .honeypotId("4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05")
      *                 .build())
      *             .displayName(name)
      *             .arp(true)
@@ -2407,14 +2504,15 @@ public final class ThreatdetectionFunctions {
      *         final var default = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
      *             .ids(defaultHoneypotProbe.id())
      *             .displayName(name)
-     *             .probeType(&#34;host_probe&#34;)
+     *             .probeType("host_probe")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, default_.applyValue(default_ -&gt; default_.probes()[0].id()));
+     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(default_ -> default_.probes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2429,7 +2527,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2454,18 +2553,18 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccThreatDetectionHoneypotProbe&#34;);
-     *         var defaultHoneypotProbe = new HoneypotProbe(&#34;defaultHoneypotProbe&#34;, HoneypotProbeArgs.builder()        
-     *             .uuid(&#34;e52c7872-29d1-4aa1-9908-0299abd53606&#34;)
-     *             .probeType(&#34;host_probe&#34;)
-     *             .controlNodeId(&#34;e1397077-4941-4b14-b533-ca2bdebd00a3&#34;)
+     *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
+     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()        
+     *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
+     *             .probeType("host_probe")
+     *             .controlNodeId("e1397077-4941-4b14-b533-ca2bdebd00a3")
      *             .ping(true)
      *             .honeypotBindLists(HoneypotProbeHoneypotBindListArgs.builder()
      *                 .bindPortLists(HoneypotProbeHoneypotBindListBindPortListArgs.builder()
      *                     .startPort(80)
      *                     .endPort(80)
      *                     .build())
-     *                 .honeypotId(&#34;4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05&#34;)
+     *                 .honeypotId("4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05")
      *                 .build())
      *             .displayName(name)
      *             .arp(true)
@@ -2474,14 +2573,15 @@ public final class ThreatdetectionFunctions {
      *         final var default = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
      *             .ids(defaultHoneypotProbe.id())
      *             .displayName(name)
-     *             .probeType(&#34;host_probe&#34;)
+     *             .probeType("host_probe")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, default_.applyValue(default_ -&gt; default_.probes()[0].id()));
+     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(default_ -> default_.probes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2496,7 +2596,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2521,18 +2622,18 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccThreatDetectionHoneypotProbe&#34;);
-     *         var defaultHoneypotProbe = new HoneypotProbe(&#34;defaultHoneypotProbe&#34;, HoneypotProbeArgs.builder()        
-     *             .uuid(&#34;e52c7872-29d1-4aa1-9908-0299abd53606&#34;)
-     *             .probeType(&#34;host_probe&#34;)
-     *             .controlNodeId(&#34;e1397077-4941-4b14-b533-ca2bdebd00a3&#34;)
+     *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
+     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()        
+     *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
+     *             .probeType("host_probe")
+     *             .controlNodeId("e1397077-4941-4b14-b533-ca2bdebd00a3")
      *             .ping(true)
      *             .honeypotBindLists(HoneypotProbeHoneypotBindListArgs.builder()
      *                 .bindPortLists(HoneypotProbeHoneypotBindListBindPortListArgs.builder()
      *                     .startPort(80)
      *                     .endPort(80)
      *                     .build())
-     *                 .honeypotId(&#34;4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05&#34;)
+     *                 .honeypotId("4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05")
      *                 .build())
      *             .displayName(name)
      *             .arp(true)
@@ -2541,14 +2642,15 @@ public final class ThreatdetectionFunctions {
      *         final var default = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
      *             .ids(defaultHoneypotProbe.id())
      *             .displayName(name)
-     *             .probeType(&#34;host_probe&#34;)
+     *             .probeType("host_probe")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, default_.applyValue(default_ -&gt; default_.probes()[0].id()));
+     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(default_ -> default_.probes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2563,7 +2665,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2588,18 +2691,18 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccThreatDetectionHoneypotProbe&#34;);
-     *         var defaultHoneypotProbe = new HoneypotProbe(&#34;defaultHoneypotProbe&#34;, HoneypotProbeArgs.builder()        
-     *             .uuid(&#34;e52c7872-29d1-4aa1-9908-0299abd53606&#34;)
-     *             .probeType(&#34;host_probe&#34;)
-     *             .controlNodeId(&#34;e1397077-4941-4b14-b533-ca2bdebd00a3&#34;)
+     *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
+     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()        
+     *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
+     *             .probeType("host_probe")
+     *             .controlNodeId("e1397077-4941-4b14-b533-ca2bdebd00a3")
      *             .ping(true)
      *             .honeypotBindLists(HoneypotProbeHoneypotBindListArgs.builder()
      *                 .bindPortLists(HoneypotProbeHoneypotBindListBindPortListArgs.builder()
      *                     .startPort(80)
      *                     .endPort(80)
      *                     .build())
-     *                 .honeypotId(&#34;4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05&#34;)
+     *                 .honeypotId("4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05")
      *                 .build())
      *             .displayName(name)
      *             .arp(true)
@@ -2608,14 +2711,15 @@ public final class ThreatdetectionFunctions {
      *         final var default = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
      *             .ids(defaultHoneypotProbe.id())
      *             .displayName(name)
-     *             .probeType(&#34;host_probe&#34;)
+     *             .probeType("host_probe")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, default_.applyValue(default_ -&gt; default_.probes()[0].id()));
+     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(default_ -> default_.probes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2630,7 +2734,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2655,18 +2760,18 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccThreatDetectionHoneypotProbe&#34;);
-     *         var defaultHoneypotProbe = new HoneypotProbe(&#34;defaultHoneypotProbe&#34;, HoneypotProbeArgs.builder()        
-     *             .uuid(&#34;e52c7872-29d1-4aa1-9908-0299abd53606&#34;)
-     *             .probeType(&#34;host_probe&#34;)
-     *             .controlNodeId(&#34;e1397077-4941-4b14-b533-ca2bdebd00a3&#34;)
+     *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
+     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()        
+     *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
+     *             .probeType("host_probe")
+     *             .controlNodeId("e1397077-4941-4b14-b533-ca2bdebd00a3")
      *             .ping(true)
      *             .honeypotBindLists(HoneypotProbeHoneypotBindListArgs.builder()
      *                 .bindPortLists(HoneypotProbeHoneypotBindListBindPortListArgs.builder()
      *                     .startPort(80)
      *                     .endPort(80)
      *                     .build())
-     *                 .honeypotId(&#34;4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05&#34;)
+     *                 .honeypotId("4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05")
      *                 .build())
      *             .displayName(name)
      *             .arp(true)
@@ -2675,14 +2780,15 @@ public final class ThreatdetectionFunctions {
      *         final var default = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
      *             .ids(defaultHoneypotProbe.id())
      *             .displayName(name)
-     *             .probeType(&#34;host_probe&#34;)
+     *             .probeType("host_probe")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, default_.applyValue(default_ -&gt; default_.probes()[0].id()));
+     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(default_ -> default_.probes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2697,7 +2803,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2722,18 +2829,18 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccThreatDetectionHoneypotProbe&#34;);
-     *         var defaultHoneypotProbe = new HoneypotProbe(&#34;defaultHoneypotProbe&#34;, HoneypotProbeArgs.builder()        
-     *             .uuid(&#34;e52c7872-29d1-4aa1-9908-0299abd53606&#34;)
-     *             .probeType(&#34;host_probe&#34;)
-     *             .controlNodeId(&#34;e1397077-4941-4b14-b533-ca2bdebd00a3&#34;)
+     *         final var name = config.get("name").orElse("tf-testAccThreatDetectionHoneypotProbe");
+     *         var defaultHoneypotProbe = new HoneypotProbe("defaultHoneypotProbe", HoneypotProbeArgs.builder()        
+     *             .uuid("e52c7872-29d1-4aa1-9908-0299abd53606")
+     *             .probeType("host_probe")
+     *             .controlNodeId("e1397077-4941-4b14-b533-ca2bdebd00a3")
      *             .ping(true)
      *             .honeypotBindLists(HoneypotProbeHoneypotBindListArgs.builder()
      *                 .bindPortLists(HoneypotProbeHoneypotBindListBindPortListArgs.builder()
      *                     .startPort(80)
      *                     .endPort(80)
      *                     .build())
-     *                 .honeypotId(&#34;4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05&#34;)
+     *                 .honeypotId("4925bf9784de992ecd017ad051528a03b3927ef814eeff76c2ebb3ab9a84bf05")
      *                 .build())
      *             .displayName(name)
      *             .arp(true)
@@ -2742,14 +2849,15 @@ public final class ThreatdetectionFunctions {
      *         final var default = ThreatdetectionFunctions.getHoneypotProbes(GetHoneypotProbesArgs.builder()
      *             .ids(defaultHoneypotProbe.id())
      *             .displayName(name)
-     *             .probeType(&#34;host_probe&#34;)
+     *             .probeType("host_probe")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionHoneypotProbeExampleId&#34;, default_.applyValue(default_ -&gt; default_.probes()[0].id()));
+     *         ctx.export("alicloudThreatDetectionHoneypotProbeExampleId", default_.applyValue(default_ -> default_.probes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2764,7 +2872,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2789,10 +2898,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionInstance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudThreatDetectionInstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2807,7 +2917,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2832,10 +2943,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionInstance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudThreatDetectionInstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2850,7 +2962,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2875,10 +2988,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionInstance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudThreatDetectionInstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2893,7 +3007,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2918,10 +3033,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionInstance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudThreatDetectionInstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2936,7 +3052,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2961,10 +3078,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionInstance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudThreatDetectionInstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2979,7 +3097,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3004,10 +3123,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionInstance.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionInstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudThreatDetectionInstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3026,7 +3146,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3048,12 +3169,13 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ThreatdetectionFunctions.getLogShipper(GetLogShipperArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3072,7 +3194,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3094,12 +3217,13 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ThreatdetectionFunctions.getLogShipper(GetLogShipperArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3118,7 +3242,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3140,12 +3265,13 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ThreatdetectionFunctions.getLogShipper(GetLogShipperArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3164,7 +3290,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3186,12 +3313,13 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ThreatdetectionFunctions.getLogShipper(GetLogShipperArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3210,7 +3338,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3232,12 +3361,13 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ThreatdetectionFunctions.getLogShipper(GetLogShipperArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3256,7 +3386,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3278,12 +3409,13 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ThreatdetectionFunctions.getLogShipper(GetLogShipperArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3300,7 +3432,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3322,13 +3455,14 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getVulWhitelists(GetVulWhitelistsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionVulWhitelistExampleId&#34;, default_.whitelists()[0].id());
+     *         ctx.export("alicloudThreatDetectionVulWhitelistExampleId", default_.whitelists()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3345,7 +3479,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3367,13 +3502,14 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getVulWhitelists(GetVulWhitelistsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionVulWhitelistExampleId&#34;, default_.whitelists()[0].id());
+     *         ctx.export("alicloudThreatDetectionVulWhitelistExampleId", default_.whitelists()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3390,7 +3526,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3412,13 +3549,14 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getVulWhitelists(GetVulWhitelistsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionVulWhitelistExampleId&#34;, default_.whitelists()[0].id());
+     *         ctx.export("alicloudThreatDetectionVulWhitelistExampleId", default_.whitelists()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3435,7 +3573,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3457,13 +3596,14 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getVulWhitelists(GetVulWhitelistsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionVulWhitelistExampleId&#34;, default_.whitelists()[0].id());
+     *         ctx.export("alicloudThreatDetectionVulWhitelistExampleId", default_.whitelists()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3480,7 +3620,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3502,13 +3643,14 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getVulWhitelists(GetVulWhitelistsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionVulWhitelistExampleId&#34;, default_.whitelists()[0].id());
+     *         ctx.export("alicloudThreatDetectionVulWhitelistExampleId", default_.whitelists()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3525,7 +3667,8 @@ public final class ThreatdetectionFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3547,13 +3690,14 @@ public final class ThreatdetectionFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getVulWhitelists(GetVulWhitelistsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionVulWhitelistExampleId&#34;, default_.whitelists()[0].id());
+     *         ctx.export("alicloudThreatDetectionVulWhitelistExampleId", default_.whitelists()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3568,7 +3712,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3593,10 +3738,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionWebLockConfig.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionWebLockConfigExampleId&#34;, default_.configs()[0].id());
+     *         ctx.export("alicloudThreatDetectionWebLockConfigExampleId", default_.configs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3611,7 +3757,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3636,10 +3783,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionWebLockConfig.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionWebLockConfigExampleId&#34;, default_.configs()[0].id());
+     *         ctx.export("alicloudThreatDetectionWebLockConfigExampleId", default_.configs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3654,7 +3802,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3679,10 +3828,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionWebLockConfig.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionWebLockConfigExampleId&#34;, default_.configs()[0].id());
+     *         ctx.export("alicloudThreatDetectionWebLockConfigExampleId", default_.configs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3697,7 +3847,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3722,10 +3873,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionWebLockConfig.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionWebLockConfigExampleId&#34;, default_.configs()[0].id());
+     *         ctx.export("alicloudThreatDetectionWebLockConfigExampleId", default_.configs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3740,7 +3892,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3765,10 +3918,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionWebLockConfig.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionWebLockConfigExampleId&#34;, default_.configs()[0].id());
+     *         ctx.export("alicloudThreatDetectionWebLockConfigExampleId", default_.configs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3783,7 +3937,8 @@ public final class ThreatdetectionFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3808,10 +3963,11 @@ public final class ThreatdetectionFunctions {
      *             .ids(defaultAlicloudThreatDetectionWebLockConfig.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudThreatDetectionWebLockConfigExampleId&#34;, default_.configs()[0].id());
+     *         ctx.export("alicloudThreatDetectionWebLockConfigExampleId", default_.configs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

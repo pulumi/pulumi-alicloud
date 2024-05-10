@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,29 +54,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var createBucket = new Bucket(&#34;createBucket&#34;, BucketArgs.builder()        
- *             .storageClass(&#34;Standard&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var createBucket = new Bucket("createBucket", BucketArgs.builder()        
+ *             .storageClass("Standard")
  *             .bucket(name)
  *             .build());
  * 
- *         var default_ = new BucketCors(&#34;default&#34;, BucketCorsArgs.builder()        
+ *         var default_ = new BucketCors("default", BucketCorsArgs.builder()        
  *             .bucket(createBucket.bucket())
  *             .responseVary(true)
  *             .corsRules(BucketCorsCorsRuleArgs.builder()
- *                 .allowedMethods(&#34;GET&#34;)
- *                 .allowedOrigins(&#34;*&#34;)
+ *                 .allowedMethods("GET")
+ *                 .allowedOrigins("*")
  *                 .allowedHeaders(                
- *                     &#34;x-oss-test&#34;,
- *                     &#34;x-oss-abc&#34;)
- *                 .exposeHeaders(&#34;x-oss-request-id&#34;)
- *                 .maxAgeSeconds(&#34;1000&#34;)
+ *                     "x-oss-test",
+ *                     "x-oss-abc")
+ *                 .exposeHeaders("x-oss-request-id")
+ *                 .maxAgeSeconds("1000")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

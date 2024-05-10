@@ -33,7 +33,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -55,25 +56,26 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .nameRegex(&#34;^my-Domain&#34;)
+     *             .nameRegex("^my-Domain")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId2&#34;, nameRegex.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId2", nameRegex.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .status(&#34;1&#34;)
-     *             .keyWord(&#34;^my-Domain&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .status("1")
+     *             .keyWord("^my-Domain")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId3&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId3", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -90,7 +92,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -112,25 +115,26 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .nameRegex(&#34;^my-Domain&#34;)
+     *             .nameRegex("^my-Domain")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId2&#34;, nameRegex.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId2", nameRegex.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .status(&#34;1&#34;)
-     *             .keyWord(&#34;^my-Domain&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .status("1")
+     *             .keyWord("^my-Domain")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId3&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId3", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -147,7 +151,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -169,25 +174,26 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .nameRegex(&#34;^my-Domain&#34;)
+     *             .nameRegex("^my-Domain")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId2&#34;, nameRegex.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId2", nameRegex.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .status(&#34;1&#34;)
-     *             .keyWord(&#34;^my-Domain&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .status("1")
+     *             .keyWord("^my-Domain")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId3&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId3", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -204,7 +210,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -226,25 +233,26 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .nameRegex(&#34;^my-Domain&#34;)
+     *             .nameRegex("^my-Domain")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId2&#34;, nameRegex.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId2", nameRegex.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .status(&#34;1&#34;)
-     *             .keyWord(&#34;^my-Domain&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .status("1")
+     *             .keyWord("^my-Domain")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId3&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId3", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -261,7 +269,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -283,25 +292,26 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .nameRegex(&#34;^my-Domain&#34;)
+     *             .nameRegex("^my-Domain")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId2&#34;, nameRegex.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId2", nameRegex.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .status(&#34;1&#34;)
-     *             .keyWord(&#34;^my-Domain&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .status("1")
+     *             .keyWord("^my-Domain")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId3&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId3", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -318,7 +328,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -340,25 +351,26 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var nameRegex = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .nameRegex(&#34;^my-Domain&#34;)
+     *             .nameRegex("^my-Domain")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId2&#34;, nameRegex.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId2", nameRegex.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var example = DirectmailFunctions.getDomains(GetDomainsArgs.builder()
-     *             .status(&#34;1&#34;)
-     *             .keyWord(&#34;^my-Domain&#34;)
-     *             .ids(&#34;example_id&#34;)
+     *             .status("1")
+     *             .keyWord("^my-Domain")
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailDomainId3&#34;, example.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("directMailDomainId3", example.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -375,7 +387,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -397,13 +410,14 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getMailAddresses(GetMailAddressesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailMailAddressId1&#34;, ids.applyValue(getMailAddressesResult -&gt; getMailAddressesResult.addresses()[0].id()));
+     *         ctx.export("directMailMailAddressId1", ids.applyValue(getMailAddressesResult -> getMailAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -420,7 +434,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -442,13 +457,14 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getMailAddresses(GetMailAddressesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailMailAddressId1&#34;, ids.applyValue(getMailAddressesResult -&gt; getMailAddressesResult.addresses()[0].id()));
+     *         ctx.export("directMailMailAddressId1", ids.applyValue(getMailAddressesResult -> getMailAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -465,7 +481,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -487,13 +504,14 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getMailAddresses(GetMailAddressesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailMailAddressId1&#34;, ids.applyValue(getMailAddressesResult -&gt; getMailAddressesResult.addresses()[0].id()));
+     *         ctx.export("directMailMailAddressId1", ids.applyValue(getMailAddressesResult -> getMailAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -510,7 +528,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -532,13 +551,14 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getMailAddresses(GetMailAddressesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailMailAddressId1&#34;, ids.applyValue(getMailAddressesResult -&gt; getMailAddressesResult.addresses()[0].id()));
+     *         ctx.export("directMailMailAddressId1", ids.applyValue(getMailAddressesResult -> getMailAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -555,7 +575,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -577,13 +598,14 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getMailAddresses(GetMailAddressesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailMailAddressId1&#34;, ids.applyValue(getMailAddressesResult -&gt; getMailAddressesResult.addresses()[0].id()));
+     *         ctx.export("directMailMailAddressId1", ids.applyValue(getMailAddressesResult -> getMailAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -600,7 +622,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -622,13 +645,14 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getMailAddresses(GetMailAddressesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailMailAddressId1&#34;, ids.applyValue(getMailAddressesResult -&gt; getMailAddressesResult.addresses()[0].id()));
+     *         ctx.export("directMailMailAddressId1", ids.applyValue(getMailAddressesResult -> getMailAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -645,7 +669,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -667,14 +692,15 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DirectmailFunctions.getReceivers(GetReceiversArgs.builder()
-     *             .ids(&#34;ca73b1e4fb0df7c935a5097a****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("ca73b1e4fb0df7c935a5097a****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDirectMailReceiversId&#34;, example.applyValue(getReceiversResult -&gt; getReceiversResult.receiverses()[0].id()));
+     *         ctx.export("firstDirectMailReceiversId", example.applyValue(getReceiversResult -> getReceiversResult.receiverses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -691,7 +717,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -713,14 +740,15 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DirectmailFunctions.getReceivers(GetReceiversArgs.builder()
-     *             .ids(&#34;ca73b1e4fb0df7c935a5097a****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("ca73b1e4fb0df7c935a5097a****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDirectMailReceiversId&#34;, example.applyValue(getReceiversResult -&gt; getReceiversResult.receiverses()[0].id()));
+     *         ctx.export("firstDirectMailReceiversId", example.applyValue(getReceiversResult -> getReceiversResult.receiverses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -737,7 +765,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -759,14 +788,15 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DirectmailFunctions.getReceivers(GetReceiversArgs.builder()
-     *             .ids(&#34;ca73b1e4fb0df7c935a5097a****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("ca73b1e4fb0df7c935a5097a****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDirectMailReceiversId&#34;, example.applyValue(getReceiversResult -&gt; getReceiversResult.receiverses()[0].id()));
+     *         ctx.export("firstDirectMailReceiversId", example.applyValue(getReceiversResult -> getReceiversResult.receiverses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -783,7 +813,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -805,14 +836,15 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DirectmailFunctions.getReceivers(GetReceiversArgs.builder()
-     *             .ids(&#34;ca73b1e4fb0df7c935a5097a****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("ca73b1e4fb0df7c935a5097a****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDirectMailReceiversId&#34;, example.applyValue(getReceiversResult -&gt; getReceiversResult.receiverses()[0].id()));
+     *         ctx.export("firstDirectMailReceiversId", example.applyValue(getReceiversResult -> getReceiversResult.receiverses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -829,7 +861,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -851,14 +884,15 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DirectmailFunctions.getReceivers(GetReceiversArgs.builder()
-     *             .ids(&#34;ca73b1e4fb0df7c935a5097a****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("ca73b1e4fb0df7c935a5097a****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDirectMailReceiversId&#34;, example.applyValue(getReceiversResult -&gt; getReceiversResult.receiverses()[0].id()));
+     *         ctx.export("firstDirectMailReceiversId", example.applyValue(getReceiversResult -> getReceiversResult.receiverses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -875,7 +909,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -897,14 +932,15 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DirectmailFunctions.getReceivers(GetReceiversArgs.builder()
-     *             .ids(&#34;ca73b1e4fb0df7c935a5097a****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("ca73b1e4fb0df7c935a5097a****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDirectMailReceiversId&#34;, example.applyValue(getReceiversResult -&gt; getReceiversResult.receiverses()[0].id()));
+     *         ctx.export("firstDirectMailReceiversId", example.applyValue(getReceiversResult -> getReceiversResult.receiverses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -921,7 +957,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -943,18 +980,19 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getTags(GetTagsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailTagId1&#34;, ids.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId1", ids.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
      *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
-     *             .nameRegex(&#34;^my-Tag&#34;)
+     *             .nameRegex("^my-Tag")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailTagId2&#34;, nameRegex.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId2", nameRegex.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -971,7 +1009,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -993,18 +1032,19 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getTags(GetTagsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailTagId1&#34;, ids.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId1", ids.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
      *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
-     *             .nameRegex(&#34;^my-Tag&#34;)
+     *             .nameRegex("^my-Tag")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailTagId2&#34;, nameRegex.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId2", nameRegex.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1021,7 +1061,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1043,18 +1084,19 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getTags(GetTagsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailTagId1&#34;, ids.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId1", ids.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
      *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
-     *             .nameRegex(&#34;^my-Tag&#34;)
+     *             .nameRegex("^my-Tag")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailTagId2&#34;, nameRegex.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId2", nameRegex.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1071,7 +1113,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1093,18 +1136,19 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getTags(GetTagsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailTagId1&#34;, ids.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId1", ids.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
      *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
-     *             .nameRegex(&#34;^my-Tag&#34;)
+     *             .nameRegex("^my-Tag")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailTagId2&#34;, nameRegex.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId2", nameRegex.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1121,7 +1165,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1143,18 +1188,19 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getTags(GetTagsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailTagId1&#34;, ids.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId1", ids.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
      *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
-     *             .nameRegex(&#34;^my-Tag&#34;)
+     *             .nameRegex("^my-Tag")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailTagId2&#34;, nameRegex.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId2", nameRegex.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1171,7 +1217,8 @@ public final class DirectmailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1193,18 +1240,19 @@ public final class DirectmailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DirectmailFunctions.getTags(GetTagsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailTagId1&#34;, ids.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId1", ids.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
      *         final var nameRegex = DirectmailFunctions.getTags(GetTagsArgs.builder()
-     *             .nameRegex(&#34;^my-Tag&#34;)
+     *             .nameRegex("^my-Tag")
      *             .build());
      * 
-     *         ctx.export(&#34;directMailTagId2&#34;, nameRegex.applyValue(getTagsResult -&gt; getTagsResult.tags()[0].id()));
+     *         ctx.export("directMailTagId2", nameRegex.applyValue(getTagsResult -> getTagsResult.tags()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,35 +56,36 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = WafFunctions.getInstances();
  * 
- *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
- *             .domainName(&#34;you domain&#34;)
+ *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+ *             .domainName("you domain")
  *             .instanceId(default_.ids()[0])
- *             .isAccessProduct(&#34;On&#34;)
- *             .sourceIps(&#34;1.1.1.1&#34;)
- *             .clusterType(&#34;PhysicalCluster&#34;)
+ *             .isAccessProduct("On")
+ *             .sourceIps("1.1.1.1")
+ *             .clusterType("PhysicalCluster")
  *             .http2Ports(443)
  *             .httpPorts(80)
  *             .httpsPorts(443)
- *             .httpToUserIp(&#34;Off&#34;)
- *             .httpsRedirect(&#34;Off&#34;)
- *             .loadBalancing(&#34;IpHash&#34;)
+ *             .httpToUserIp("Off")
+ *             .httpsRedirect("Off")
+ *             .loadBalancing("IpHash")
  *             .logHeaders(DomainLogHeaderArgs.builder()
- *                 .key(&#34;foo&#34;)
- *                 .value(&#34;http&#34;)
+ *                 .key("foo")
+ *                 .value("http")
  *                 .build())
  *             .build());
  * 
- *         var defaultProtectionModule = new ProtectionModule(&#34;defaultProtectionModule&#34;, ProtectionModuleArgs.builder()        
+ *         var defaultProtectionModule = new ProtectionModule("defaultProtectionModule", ProtectionModuleArgs.builder()        
  *             .instanceId(default_.ids()[0])
  *             .domain(defaultDomain.domainName())
- *             .defenseType(&#34;ac_cc&#34;)
+ *             .defenseType("ac_cc")
  *             .mode(0)
  *             .status(0)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

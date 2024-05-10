@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -70,75 +71,76 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;Instance&#34;)
- *             .availableDiskCategory(&#34;cloud_essd&#34;)
+ *             .availableResourceCreation("Instance")
+ *             .availableDiskCategory("cloud_essd")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
- *             .systemDiskCategory(&#34;cloud_essd&#34;)
+ *             .systemDiskCategory("cloud_essd")
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *             .vswitchName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .name(&#34;terraform-example&#34;)
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *             .name("terraform-example")
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .availabilityZone(default_.zones()[0].id())
- *             .instanceName(&#34;terraform-example&#34;)
+ *             .instanceName("terraform-example")
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .internetMaxBandwidthOut(10)
  *             .build());
  * 
- *         var defaultEcsDisk = new EcsDisk(&#34;defaultEcsDisk&#34;, EcsDiskArgs.builder()        
+ *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()        
  *             .zoneId(default_.zones()[0].id())
- *             .diskName(&#34;terraform-example&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .category(&#34;cloud_essd&#34;)
- *             .size(&#34;30&#34;)
+ *             .diskName("terraform-example")
+ *             .description("terraform-example")
+ *             .category("cloud_essd")
+ *             .size("30")
  *             .build());
  * 
- *         var defaultDiskAttachment = new DiskAttachment(&#34;defaultDiskAttachment&#34;, DiskAttachmentArgs.builder()        
+ *         var defaultDiskAttachment = new DiskAttachment("defaultDiskAttachment", DiskAttachmentArgs.builder()        
  *             .diskId(defaultEcsDisk.id())
  *             .instanceId(defaultInstance.id())
  *             .build());
  * 
- *         var defaultEcsSnapshotGroup = new EcsSnapshotGroup(&#34;defaultEcsSnapshotGroup&#34;, EcsSnapshotGroupArgs.builder()        
- *             .description(&#34;terraform-example&#34;)
+ *         var defaultEcsSnapshotGroup = new EcsSnapshotGroup("defaultEcsSnapshotGroup", EcsSnapshotGroupArgs.builder()        
+ *             .description("terraform-example")
  *             .diskIds(defaultEcsDisk.id())
- *             .snapshotGroupName(&#34;terraform-example&#34;)
+ *             .snapshotGroupName("terraform-example")
  *             .instanceId(defaultInstance.id())
  *             .instantAccess(true)
  *             .instantAccessRetentionDays(1)
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;Acceptance&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "Acceptance")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

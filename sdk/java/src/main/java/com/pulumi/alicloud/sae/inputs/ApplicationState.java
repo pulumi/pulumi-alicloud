@@ -1128,14 +1128,14 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;$@&#34; start.
+     * WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}&#34; start.
      * 
      */
     @Import(name="warStartOptions")
     private @Nullable Output<String> warStartOptions;
 
     /**
-     * @return WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;$@&#34; start.
+     * @return WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}&#34; start.
      * 
      */
     public Optional<Output<String>> warStartOptions() {
@@ -2797,7 +2797,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warStartOptions WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;$@&#34; start.
+         * @param warStartOptions WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}&#34; start.
          * 
          * @return builder
          * 
@@ -2808,7 +2808,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warStartOptions WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;$@&#34; start.
+         * @param warStartOptions WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;${@literal @}&#34; start.
          * 
          * @return builder
          * 

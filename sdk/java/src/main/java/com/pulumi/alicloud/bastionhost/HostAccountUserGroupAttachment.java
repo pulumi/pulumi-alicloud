@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,60 +62,60 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING$&#34;)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .nameRegex("^default-NODELETING$")
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .description(name)
- *             .licenseCode(&#34;bhah_ent_50_asset&#34;)
- *             .planCode(&#34;cloudbastion&#34;)
- *             .storage(&#34;5&#34;)
- *             .bandwidth(&#34;5&#34;)
- *             .period(&#34;1&#34;)
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .licenseCode("bhah_ent_50_asset")
+ *             .planCode("cloudbastion")
+ *             .storage("5")
+ *             .bandwidth("5")
+ *             .period("1")
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
  *             .securityGroupIds(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var defaultHost = new Host(&#34;defaultHost&#34;, HostArgs.builder()        
+ *         var defaultHost = new Host("defaultHost", HostArgs.builder()        
  *             .instanceId(defaultInstance.id())
  *             .hostName(name)
- *             .activeAddressType(&#34;Private&#34;)
- *             .hostPrivateAddress(&#34;172.16.0.10&#34;)
- *             .osType(&#34;Linux&#34;)
- *             .source(&#34;Local&#34;)
+ *             .activeAddressType("Private")
+ *             .hostPrivateAddress("172.16.0.10")
+ *             .osType("Linux")
+ *             .source("Local")
  *             .build());
  * 
- *         var defaultHostAccount = new HostAccount(&#34;defaultHostAccount&#34;, HostAccountArgs.builder()        
+ *         var defaultHostAccount = new HostAccount("defaultHostAccount", HostAccountArgs.builder()        
  *             .hostAccountName(name)
  *             .hostId(defaultHost.hostId())
  *             .instanceId(defaultHost.instanceId())
- *             .protocolName(&#34;SSH&#34;)
- *             .password(&#34;YourPassword12345&#34;)
+ *             .protocolName("SSH")
+ *             .password("YourPassword12345")
  *             .build());
  * 
- *         var defaultUserGroup = new UserGroup(&#34;defaultUserGroup&#34;, UserGroupArgs.builder()        
+ *         var defaultUserGroup = new UserGroup("defaultUserGroup", UserGroupArgs.builder()        
  *             .instanceId(defaultHost.instanceId())
  *             .userGroupName(name)
  *             .build());
  * 
- *         var defaultHostAccountUserGroupAttachment = new HostAccountUserGroupAttachment(&#34;defaultHostAccountUserGroupAttachment&#34;, HostAccountUserGroupAttachmentArgs.builder()        
+ *         var defaultHostAccountUserGroupAttachment = new HostAccountUserGroupAttachment("defaultHostAccountUserGroupAttachment", HostAccountUserGroupAttachmentArgs.builder()        
  *             .instanceId(defaultHost.instanceId())
  *             .userGroupId(defaultUserGroup.userGroupId())
  *             .hostId(defaultHost.hostId())
@@ -123,7 +124,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

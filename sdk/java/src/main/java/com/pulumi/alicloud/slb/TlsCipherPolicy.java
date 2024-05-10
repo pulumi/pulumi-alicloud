@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,17 +48,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TlsCipherPolicy(&#34;example&#34;, TlsCipherPolicyArgs.builder()        
- *             .tlsCipherPolicyName(&#34;Test-example_value&#34;)
- *             .tlsVersions(&#34;TLSv1.2&#34;)
+ *         var example = new TlsCipherPolicy("example", TlsCipherPolicyArgs.builder()        
+ *             .tlsCipherPolicyName("Test-example_value")
+ *             .tlsVersions("TLSv1.2")
  *             .ciphers(            
- *                 &#34;AES256-SHA256&#34;,
- *                 &#34;AES128-GCM-SHA256&#34;)
+ *                 "AES256-SHA256",
+ *                 "AES128-GCM-SHA256")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

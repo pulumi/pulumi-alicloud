@@ -42,7 +42,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -64,12 +65,13 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -86,7 +88,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -108,12 +111,13 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -130,7 +134,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -152,12 +157,13 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -174,7 +180,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -196,12 +203,13 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -218,7 +226,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -240,12 +249,13 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -262,7 +272,8 @@ public final class PrivatelinkFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -284,12 +295,13 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = PrivatelinkFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -306,7 +318,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -328,14 +341,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointConnections(GetVpcEndpointConnectionsArgs.builder()
-     *             .serviceId(&#34;example_value&#34;)
-     *             .status(&#34;Connected&#34;)
+     *             .serviceId("example_value")
+     *             .status("Connected")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointConnectionId&#34;, example.applyValue(getVpcEndpointConnectionsResult -&gt; getVpcEndpointConnectionsResult.connections()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.applyValue(getVpcEndpointConnectionsResult -> getVpcEndpointConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -352,7 +366,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -374,14 +389,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointConnections(GetVpcEndpointConnectionsArgs.builder()
-     *             .serviceId(&#34;example_value&#34;)
-     *             .status(&#34;Connected&#34;)
+     *             .serviceId("example_value")
+     *             .status("Connected")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointConnectionId&#34;, example.applyValue(getVpcEndpointConnectionsResult -&gt; getVpcEndpointConnectionsResult.connections()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.applyValue(getVpcEndpointConnectionsResult -> getVpcEndpointConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -398,7 +414,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -420,14 +437,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointConnections(GetVpcEndpointConnectionsArgs.builder()
-     *             .serviceId(&#34;example_value&#34;)
-     *             .status(&#34;Connected&#34;)
+     *             .serviceId("example_value")
+     *             .status("Connected")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointConnectionId&#34;, example.applyValue(getVpcEndpointConnectionsResult -&gt; getVpcEndpointConnectionsResult.connections()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.applyValue(getVpcEndpointConnectionsResult -> getVpcEndpointConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -444,7 +462,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -466,14 +485,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointConnections(GetVpcEndpointConnectionsArgs.builder()
-     *             .serviceId(&#34;example_value&#34;)
-     *             .status(&#34;Connected&#34;)
+     *             .serviceId("example_value")
+     *             .status("Connected")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointConnectionId&#34;, example.applyValue(getVpcEndpointConnectionsResult -&gt; getVpcEndpointConnectionsResult.connections()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointConnectionId", example.applyValue(getVpcEndpointConnectionsResult -> getVpcEndpointConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -490,7 +510,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -512,13 +533,14 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointServiceResources(GetVpcEndpointServiceResourcesArgs.builder()
-     *             .serviceId(&#34;epsrv-gw8ii1xxxx&#34;)
+     *             .serviceId("epsrv-gw8ii1xxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceResourceId&#34;, example.applyValue(getVpcEndpointServiceResourcesResult -&gt; getVpcEndpointServiceResourcesResult.resources()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.applyValue(getVpcEndpointServiceResourcesResult -> getVpcEndpointServiceResourcesResult.resources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -535,7 +557,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -557,13 +580,14 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointServiceResources(GetVpcEndpointServiceResourcesArgs.builder()
-     *             .serviceId(&#34;epsrv-gw8ii1xxxx&#34;)
+     *             .serviceId("epsrv-gw8ii1xxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceResourceId&#34;, example.applyValue(getVpcEndpointServiceResourcesResult -&gt; getVpcEndpointServiceResourcesResult.resources()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.applyValue(getVpcEndpointServiceResourcesResult -> getVpcEndpointServiceResourcesResult.resources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -580,7 +604,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -602,13 +627,14 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointServiceResources(GetVpcEndpointServiceResourcesArgs.builder()
-     *             .serviceId(&#34;epsrv-gw8ii1xxxx&#34;)
+     *             .serviceId("epsrv-gw8ii1xxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceResourceId&#34;, example.applyValue(getVpcEndpointServiceResourcesResult -&gt; getVpcEndpointServiceResourcesResult.resources()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.applyValue(getVpcEndpointServiceResourcesResult -> getVpcEndpointServiceResourcesResult.resources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -625,7 +651,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -647,13 +674,14 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointServiceResources(GetVpcEndpointServiceResourcesArgs.builder()
-     *             .serviceId(&#34;epsrv-gw8ii1xxxx&#34;)
+     *             .serviceId("epsrv-gw8ii1xxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceResourceId&#34;, example.applyValue(getVpcEndpointServiceResourcesResult -&gt; getVpcEndpointServiceResourcesResult.resources()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceResourceId", example.applyValue(getVpcEndpointServiceResourcesResult -> getVpcEndpointServiceResourcesResult.resources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -670,7 +698,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -692,13 +721,14 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs.builder()
-     *             .serviceId(&#34;epsrv-gw81c6vxxxxxx&#34;)
+     *             .serviceId("epsrv-gw81c6vxxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceUserId&#34;, example.applyValue(getVpcEndpointServiceUsersResult -&gt; getVpcEndpointServiceUsersResult.users()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.applyValue(getVpcEndpointServiceUsersResult -> getVpcEndpointServiceUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -715,7 +745,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -737,13 +768,14 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs.builder()
-     *             .serviceId(&#34;epsrv-gw81c6vxxxxxx&#34;)
+     *             .serviceId("epsrv-gw81c6vxxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceUserId&#34;, example.applyValue(getVpcEndpointServiceUsersResult -&gt; getVpcEndpointServiceUsersResult.users()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.applyValue(getVpcEndpointServiceUsersResult -> getVpcEndpointServiceUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -760,7 +792,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -782,13 +815,14 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs.builder()
-     *             .serviceId(&#34;epsrv-gw81c6vxxxxxx&#34;)
+     *             .serviceId("epsrv-gw81c6vxxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceUserId&#34;, example.applyValue(getVpcEndpointServiceUsersResult -&gt; getVpcEndpointServiceUsersResult.users()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.applyValue(getVpcEndpointServiceUsersResult -> getVpcEndpointServiceUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -805,7 +839,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -827,13 +862,14 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointServiceUsers(GetVpcEndpointServiceUsersArgs.builder()
-     *             .serviceId(&#34;epsrv-gw81c6vxxxxxx&#34;)
+     *             .serviceId("epsrv-gw81c6vxxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceUserId&#34;, example.applyValue(getVpcEndpointServiceUsersResult -&gt; getVpcEndpointServiceUsersResult.users()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceUserId", example.applyValue(getVpcEndpointServiceUsersResult -> getVpcEndpointServiceUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -850,7 +886,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -872,14 +909,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceId&#34;, example.applyValue(getVpcEndpointServicesResult -&gt; getVpcEndpointServicesResult.services()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -896,7 +934,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -918,14 +957,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceId&#34;, example.applyValue(getVpcEndpointServicesResult -&gt; getVpcEndpointServicesResult.services()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -942,7 +982,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -964,14 +1005,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceId&#34;, example.applyValue(getVpcEndpointServicesResult -&gt; getVpcEndpointServicesResult.services()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -988,7 +1030,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1010,14 +1053,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceId&#34;, example.applyValue(getVpcEndpointServicesResult -&gt; getVpcEndpointServicesResult.services()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1034,7 +1078,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1056,14 +1101,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceId&#34;, example.applyValue(getVpcEndpointServicesResult -&gt; getVpcEndpointServicesResult.services()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1080,7 +1126,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1102,14 +1149,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointServiceId&#34;, example.applyValue(getVpcEndpointServicesResult -&gt; getVpcEndpointServicesResult.services()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1126,7 +1174,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1148,13 +1197,14 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointZones(GetVpcEndpointZonesArgs.builder()
-     *             .endpointId(&#34;ep-gw8boxxxxx&#34;)
+     *             .endpointId("ep-gw8boxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointZoneId&#34;, example.applyValue(getVpcEndpointZonesResult -&gt; getVpcEndpointZonesResult.zones()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.applyValue(getVpcEndpointZonesResult -> getVpcEndpointZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1171,7 +1221,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1193,13 +1244,14 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointZones(GetVpcEndpointZonesArgs.builder()
-     *             .endpointId(&#34;ep-gw8boxxxxx&#34;)
+     *             .endpointId("ep-gw8boxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointZoneId&#34;, example.applyValue(getVpcEndpointZonesResult -&gt; getVpcEndpointZonesResult.zones()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.applyValue(getVpcEndpointZonesResult -> getVpcEndpointZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1216,7 +1268,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1238,13 +1291,14 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointZones(GetVpcEndpointZonesArgs.builder()
-     *             .endpointId(&#34;ep-gw8boxxxxx&#34;)
+     *             .endpointId("ep-gw8boxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointZoneId&#34;, example.applyValue(getVpcEndpointZonesResult -&gt; getVpcEndpointZonesResult.zones()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.applyValue(getVpcEndpointZonesResult -> getVpcEndpointZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1261,7 +1315,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1283,13 +1338,14 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpointZones(GetVpcEndpointZonesArgs.builder()
-     *             .endpointId(&#34;ep-gw8boxxxxx&#34;)
+     *             .endpointId("ep-gw8boxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointZoneId&#34;, example.applyValue(getVpcEndpointZonesResult -&gt; getVpcEndpointZonesResult.zones()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointZoneId", example.applyValue(getVpcEndpointZonesResult -> getVpcEndpointZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1306,7 +1362,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1328,14 +1385,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpoints(GetVpcEndpointsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointId&#34;, example.applyValue(getVpcEndpointsResult -&gt; getVpcEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointId", example.applyValue(getVpcEndpointsResult -> getVpcEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1352,7 +1410,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1374,14 +1433,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpoints(GetVpcEndpointsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointId&#34;, example.applyValue(getVpcEndpointsResult -&gt; getVpcEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointId", example.applyValue(getVpcEndpointsResult -> getVpcEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1398,7 +1458,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1420,14 +1481,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpoints(GetVpcEndpointsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointId&#34;, example.applyValue(getVpcEndpointsResult -&gt; getVpcEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointId", example.applyValue(getVpcEndpointsResult -> getVpcEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1444,7 +1506,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1466,14 +1529,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpoints(GetVpcEndpointsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointId&#34;, example.applyValue(getVpcEndpointsResult -&gt; getVpcEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointId", example.applyValue(getVpcEndpointsResult -> getVpcEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1490,7 +1554,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1512,14 +1577,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpoints(GetVpcEndpointsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointId&#34;, example.applyValue(getVpcEndpointsResult -&gt; getVpcEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointId", example.applyValue(getVpcEndpointsResult -> getVpcEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1536,7 +1602,8 @@ public final class PrivatelinkFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1558,14 +1625,15 @@ public final class PrivatelinkFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = PrivatelinkFunctions.getVpcEndpoints(GetVpcEndpointsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPrivatelinkVpcEndpointId&#34;, example.applyValue(getVpcEndpointsResult -&gt; getVpcEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("firstPrivatelinkVpcEndpointId", example.applyValue(getVpcEndpointsResult -> getVpcEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

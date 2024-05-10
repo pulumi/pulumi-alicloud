@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,18 +51,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new CustomLine(&#34;default&#34;, CustomLineArgs.builder()        
- *             .customLineName(&#34;tf-example&#34;)
- *             .domainName(&#34;alicloud-provider.com&#34;)
+ *         var default_ = new CustomLine("default", CustomLineArgs.builder()        
+ *             .customLineName("tf-example")
+ *             .domainName("alicloud-provider.com")
  *             .ipSegmentLists(CustomLineIpSegmentListArgs.builder()
- *                 .startIp(&#34;192.0.2.123&#34;)
- *                 .endIp(&#34;192.0.2.125&#34;)
+ *                 .startIp("192.0.2.123")
+ *                 .endIp("192.0.2.125")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

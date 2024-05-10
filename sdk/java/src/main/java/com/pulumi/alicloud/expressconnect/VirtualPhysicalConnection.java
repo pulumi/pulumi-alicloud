@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,31 +56,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var example = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
- *             .nameRegex(&#34;^preserved-NODELETING&#34;)
+ *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
- *         var vlanId = new Integer(&#34;vlanId&#34;, IntegerArgs.builder()        
+ *         var vlanId = new Integer("vlanId", IntegerArgs.builder()        
  *             .max(2999)
  *             .min(1)
  *             .build());
  * 
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var exampleVirtualPhysicalConnection = new VirtualPhysicalConnection(&#34;exampleVirtualPhysicalConnection&#34;, VirtualPhysicalConnectionArgs.builder()        
+ *         var exampleVirtualPhysicalConnection = new VirtualPhysicalConnection("exampleVirtualPhysicalConnection", VirtualPhysicalConnectionArgs.builder()        
  *             .virtualPhysicalConnectionName(name)
  *             .description(name)
- *             .orderMode(&#34;PayByPhysicalConnectionOwner&#34;)
- *             .parentPhysicalConnectionId(example.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.ids()[0]))
- *             .spec(&#34;50M&#34;)
+ *             .orderMode("PayByPhysicalConnectionOwner")
+ *             .parentPhysicalConnectionId(example.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.ids()[0]))
+ *             .spec("50M")
  *             .vlanId(vlanId.id())
  *             .vpconnAliUid(default_.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

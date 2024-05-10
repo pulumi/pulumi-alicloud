@@ -24,7 +24,8 @@ public final class OpensearchFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -49,15 +50,15 @@ public final class OpensearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testacc&#34;);
-     *         var defaultAppGroup = new AppGroup(&#34;defaultAppGroup&#34;, AppGroupArgs.builder()        
+     *         final var name = config.get("name").orElse("tf_testacc");
+     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()        
      *             .appGroupName(name)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .type(&#34;standard&#34;)
+     *             .paymentType("PayAsYouGo")
+     *             .type("standard")
      *             .quota(AppGroupQuotaArgs.builder()
      *                 .docSize(1)
      *                 .computeResource(20)
-     *                 .spec(&#34;opensearch.share.common&#34;)
+     *                 .spec("opensearch.share.common")
      *                 .build())
      *             .build());
      * 
@@ -65,10 +66,11 @@ public final class OpensearchFunctions {
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;appGroups&#34;, default_.applyValue(default_ -&gt; default_.groups()));
+     *         ctx.export("appGroups", default_.applyValue(default_ -> default_.groups()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -85,7 +87,8 @@ public final class OpensearchFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -110,15 +113,15 @@ public final class OpensearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testacc&#34;);
-     *         var defaultAppGroup = new AppGroup(&#34;defaultAppGroup&#34;, AppGroupArgs.builder()        
+     *         final var name = config.get("name").orElse("tf_testacc");
+     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()        
      *             .appGroupName(name)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .type(&#34;standard&#34;)
+     *             .paymentType("PayAsYouGo")
+     *             .type("standard")
      *             .quota(AppGroupQuotaArgs.builder()
      *                 .docSize(1)
      *                 .computeResource(20)
-     *                 .spec(&#34;opensearch.share.common&#34;)
+     *                 .spec("opensearch.share.common")
      *                 .build())
      *             .build());
      * 
@@ -126,10 +129,11 @@ public final class OpensearchFunctions {
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;appGroups&#34;, default_.applyValue(default_ -&gt; default_.groups()));
+     *         ctx.export("appGroups", default_.applyValue(default_ -> default_.groups()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -146,7 +150,8 @@ public final class OpensearchFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -171,15 +176,15 @@ public final class OpensearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testacc&#34;);
-     *         var defaultAppGroup = new AppGroup(&#34;defaultAppGroup&#34;, AppGroupArgs.builder()        
+     *         final var name = config.get("name").orElse("tf_testacc");
+     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()        
      *             .appGroupName(name)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .type(&#34;standard&#34;)
+     *             .paymentType("PayAsYouGo")
+     *             .type("standard")
      *             .quota(AppGroupQuotaArgs.builder()
      *                 .docSize(1)
      *                 .computeResource(20)
-     *                 .spec(&#34;opensearch.share.common&#34;)
+     *                 .spec("opensearch.share.common")
      *                 .build())
      *             .build());
      * 
@@ -187,10 +192,11 @@ public final class OpensearchFunctions {
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;appGroups&#34;, default_.applyValue(default_ -&gt; default_.groups()));
+     *         ctx.export("appGroups", default_.applyValue(default_ -> default_.groups()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -207,7 +213,8 @@ public final class OpensearchFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -232,15 +239,15 @@ public final class OpensearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testacc&#34;);
-     *         var defaultAppGroup = new AppGroup(&#34;defaultAppGroup&#34;, AppGroupArgs.builder()        
+     *         final var name = config.get("name").orElse("tf_testacc");
+     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()        
      *             .appGroupName(name)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .type(&#34;standard&#34;)
+     *             .paymentType("PayAsYouGo")
+     *             .type("standard")
      *             .quota(AppGroupQuotaArgs.builder()
      *                 .docSize(1)
      *                 .computeResource(20)
-     *                 .spec(&#34;opensearch.share.common&#34;)
+     *                 .spec("opensearch.share.common")
      *                 .build())
      *             .build());
      * 
@@ -248,10 +255,11 @@ public final class OpensearchFunctions {
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;appGroups&#34;, default_.applyValue(default_ -&gt; default_.groups()));
+     *         ctx.export("appGroups", default_.applyValue(default_ -> default_.groups()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -268,7 +276,8 @@ public final class OpensearchFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -293,15 +302,15 @@ public final class OpensearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testacc&#34;);
-     *         var defaultAppGroup = new AppGroup(&#34;defaultAppGroup&#34;, AppGroupArgs.builder()        
+     *         final var name = config.get("name").orElse("tf_testacc");
+     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()        
      *             .appGroupName(name)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .type(&#34;standard&#34;)
+     *             .paymentType("PayAsYouGo")
+     *             .type("standard")
      *             .quota(AppGroupQuotaArgs.builder()
      *                 .docSize(1)
      *                 .computeResource(20)
-     *                 .spec(&#34;opensearch.share.common&#34;)
+     *                 .spec("opensearch.share.common")
      *                 .build())
      *             .build());
      * 
@@ -309,10 +318,11 @@ public final class OpensearchFunctions {
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;appGroups&#34;, default_.applyValue(default_ -&gt; default_.groups()));
+     *         ctx.export("appGroups", default_.applyValue(default_ -> default_.groups()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -329,7 +339,8 @@ public final class OpensearchFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -354,15 +365,15 @@ public final class OpensearchFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testacc&#34;);
-     *         var defaultAppGroup = new AppGroup(&#34;defaultAppGroup&#34;, AppGroupArgs.builder()        
+     *         final var name = config.get("name").orElse("tf_testacc");
+     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()        
      *             .appGroupName(name)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .type(&#34;standard&#34;)
+     *             .paymentType("PayAsYouGo")
+     *             .type("standard")
      *             .quota(AppGroupQuotaArgs.builder()
      *                 .docSize(1)
      *                 .computeResource(20)
-     *                 .spec(&#34;opensearch.share.common&#34;)
+     *                 .spec("opensearch.share.common")
      *                 .build())
      *             .build());
      * 
@@ -370,10 +381,11 @@ public final class OpensearchFunctions {
      *             .ids(defaultAppGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;appGroups&#34;, default_.applyValue(default_ -&gt; default_.groups()));
+     *         ctx.export("appGroups", default_.applyValue(default_ -> default_.groups()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,29 +58,30 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         final var acceptingRegion = config.get(&#34;acceptingRegion&#34;).orElse(&#34;cn-beijing&#34;);
- *         var localVpc = new Network(&#34;localVpc&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         final var acceptingRegion = config.get("acceptingRegion").orElse("cn-beijing");
+ *         var localVpc = new Network("localVpc", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var acceptingVpc = new Network(&#34;acceptingVpc&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var acceptingVpc = new Network("acceptingVpc", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultPeerConnection = new PeerConnection(&#34;defaultPeerConnection&#34;, PeerConnectionArgs.builder()        
- *             .peerConnectionName(&#34;terraform-example&#34;)
+ *         var defaultPeerConnection = new PeerConnection("defaultPeerConnection", PeerConnectionArgs.builder()        
+ *             .peerConnectionName("terraform-example")
  *             .vpcId(localVpc.id())
  *             .acceptingAliUid(default_.id())
  *             .acceptingRegionId(acceptingRegion)
  *             .acceptingVpcId(acceptingVpc.id())
- *             .description(&#34;terraform-example&#34;)
+ *             .description("terraform-example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,50 +47,51 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Template(&#34;default&#34;, TemplateArgs.builder()        
- *             .content(&#34;&#34;&#34;
+ *         var default_ = new Template("default", TemplateArgs.builder()        
+ *             .content("""
  *   {
- *     &#34;FormatVersion&#34;: &#34;OOS-2019-06-01&#34;,
- *     &#34;Description&#34;: &#34;Update Describe instances of given status&#34;,
- *     &#34;Parameters&#34;:{
- *       &#34;Status&#34;:{
- *         &#34;Type&#34;: &#34;String&#34;,
- *         &#34;Description&#34;: &#34;(Required) The status of the Ecs instance.&#34;
+ *     "FormatVersion": "OOS-2019-06-01",
+ *     "Description": "Update Describe instances of given status",
+ *     "Parameters":{
+ *       "Status":{
+ *         "Type": "String",
+ *         "Description": "(Required) The status of the Ecs instance."
  *       }
  *     },
- *     &#34;Tasks&#34;: [
+ *     "Tasks": [
  *       {
- *         &#34;Properties&#34; :{
- *           &#34;Parameters&#34;:{
- *             &#34;Status&#34;: &#34;{{ Status }}&#34;
+ *         "Properties" :{
+ *           "Parameters":{
+ *             "Status": "{{ Status }}"
  *           },
- *           &#34;API&#34;: &#34;DescribeInstances&#34;,
- *           &#34;Service&#34;: &#34;Ecs&#34;
+ *           "API": "DescribeInstances",
+ *           "Service": "Ecs"
  *         },
- *         &#34;Name&#34;: &#34;foo&#34;,
- *         &#34;Action&#34;: &#34;ACS::ExecuteApi&#34;
+ *         "Name": "foo",
+ *         "Action": "ACS::ExecuteApi"
  *       }]
  *   }
- *             &#34;&#34;&#34;)
- *             .templateName(&#34;test-name&#34;)
- *             .versionName(&#34;test&#34;)
+ *             """)
+ *             .templateName("test-name")
+ *             .versionName("test")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;acceptance Test&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "acceptance Test")
  *             ))
  *             .build());
  * 
- *         var example = new Execution(&#34;example&#34;, ExecutionArgs.builder()        
+ *         var example = new Execution("example", ExecutionArgs.builder()        
  *             .templateName(default_.templateName())
- *             .description(&#34;From TF Test&#34;)
- *             .parameters(&#34;&#34;&#34;
- * 				{&#34;Status&#34;:&#34;Running&#34;}
- *             &#34;&#34;&#34;)
+ *             .description("From TF Test")
+ *             .parameters("""
+ * 				{"Status":"Running"}
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

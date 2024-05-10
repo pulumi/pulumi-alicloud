@@ -33,7 +33,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -55,15 +56,16 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidLoops(GetIndustrialPidLoopsArgs.builder()
-     *             .pidProjectId(&#34;856c6b8f-ca63-40a4-xxxx-xxxx&#34;)
-     *             .ids(&#34;742a3d4e-d8b0-47c8-xxxx-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testACC&#34;)
+     *             .pidProjectId("856c6b8f-ca63-40a4-xxxx-xxxx")
+     *             .ids("742a3d4e-d8b0-47c8-xxxx-xxxx")
+     *             .nameRegex("tf-testACC")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidLoopId&#34;, example.applyValue(getIndustrialPidLoopsResult -&gt; getIndustrialPidLoopsResult.loops()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidLoopId", example.applyValue(getIndustrialPidLoopsResult -> getIndustrialPidLoopsResult.loops()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -80,7 +82,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -102,15 +105,16 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidLoops(GetIndustrialPidLoopsArgs.builder()
-     *             .pidProjectId(&#34;856c6b8f-ca63-40a4-xxxx-xxxx&#34;)
-     *             .ids(&#34;742a3d4e-d8b0-47c8-xxxx-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testACC&#34;)
+     *             .pidProjectId("856c6b8f-ca63-40a4-xxxx-xxxx")
+     *             .ids("742a3d4e-d8b0-47c8-xxxx-xxxx")
+     *             .nameRegex("tf-testACC")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidLoopId&#34;, example.applyValue(getIndustrialPidLoopsResult -&gt; getIndustrialPidLoopsResult.loops()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidLoopId", example.applyValue(getIndustrialPidLoopsResult -> getIndustrialPidLoopsResult.loops()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -127,7 +131,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -149,15 +154,16 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidLoops(GetIndustrialPidLoopsArgs.builder()
-     *             .pidProjectId(&#34;856c6b8f-ca63-40a4-xxxx-xxxx&#34;)
-     *             .ids(&#34;742a3d4e-d8b0-47c8-xxxx-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testACC&#34;)
+     *             .pidProjectId("856c6b8f-ca63-40a4-xxxx-xxxx")
+     *             .ids("742a3d4e-d8b0-47c8-xxxx-xxxx")
+     *             .nameRegex("tf-testACC")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidLoopId&#34;, example.applyValue(getIndustrialPidLoopsResult -&gt; getIndustrialPidLoopsResult.loops()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidLoopId", example.applyValue(getIndustrialPidLoopsResult -> getIndustrialPidLoopsResult.loops()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -174,7 +180,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -196,15 +203,16 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidLoops(GetIndustrialPidLoopsArgs.builder()
-     *             .pidProjectId(&#34;856c6b8f-ca63-40a4-xxxx-xxxx&#34;)
-     *             .ids(&#34;742a3d4e-d8b0-47c8-xxxx-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testACC&#34;)
+     *             .pidProjectId("856c6b8f-ca63-40a4-xxxx-xxxx")
+     *             .ids("742a3d4e-d8b0-47c8-xxxx-xxxx")
+     *             .nameRegex("tf-testACC")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidLoopId&#34;, example.applyValue(getIndustrialPidLoopsResult -&gt; getIndustrialPidLoopsResult.loops()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidLoopId", example.applyValue(getIndustrialPidLoopsResult -> getIndustrialPidLoopsResult.loops()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -221,7 +229,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -243,14 +252,15 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidOrganizations(GetIndustrialPidOrganizationsArgs.builder()
-     *             .ids(&#34;3e74e684-cbb5-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("3e74e684-cbb5-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidOrganizationId&#34;, example.applyValue(getIndustrialPidOrganizationsResult -&gt; getIndustrialPidOrganizationsResult.organizations()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.applyValue(getIndustrialPidOrganizationsResult -> getIndustrialPidOrganizationsResult.organizations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -267,7 +277,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -289,14 +300,15 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidOrganizations(GetIndustrialPidOrganizationsArgs.builder()
-     *             .ids(&#34;3e74e684-cbb5-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("3e74e684-cbb5-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidOrganizationId&#34;, example.applyValue(getIndustrialPidOrganizationsResult -&gt; getIndustrialPidOrganizationsResult.organizations()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.applyValue(getIndustrialPidOrganizationsResult -> getIndustrialPidOrganizationsResult.organizations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -313,7 +325,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -335,14 +348,15 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidOrganizations(GetIndustrialPidOrganizationsArgs.builder()
-     *             .ids(&#34;3e74e684-cbb5-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("3e74e684-cbb5-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidOrganizationId&#34;, example.applyValue(getIndustrialPidOrganizationsResult -&gt; getIndustrialPidOrganizationsResult.organizations()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.applyValue(getIndustrialPidOrganizationsResult -> getIndustrialPidOrganizationsResult.organizations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -359,7 +373,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -381,14 +396,15 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidOrganizations(GetIndustrialPidOrganizationsArgs.builder()
-     *             .ids(&#34;3e74e684-cbb5-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("3e74e684-cbb5-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidOrganizationId&#34;, example.applyValue(getIndustrialPidOrganizationsResult -&gt; getIndustrialPidOrganizationsResult.organizations()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.applyValue(getIndustrialPidOrganizationsResult -> getIndustrialPidOrganizationsResult.organizations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -405,7 +421,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -427,14 +444,15 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidOrganizations(GetIndustrialPidOrganizationsArgs.builder()
-     *             .ids(&#34;3e74e684-cbb5-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("3e74e684-cbb5-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidOrganizationId&#34;, example.applyValue(getIndustrialPidOrganizationsResult -&gt; getIndustrialPidOrganizationsResult.organizations()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.applyValue(getIndustrialPidOrganizationsResult -> getIndustrialPidOrganizationsResult.organizations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -451,7 +469,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -473,14 +492,15 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidOrganizations(GetIndustrialPidOrganizationsArgs.builder()
-     *             .ids(&#34;3e74e684-cbb5-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("3e74e684-cbb5-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidOrganizationId&#34;, example.applyValue(getIndustrialPidOrganizationsResult -&gt; getIndustrialPidOrganizationsResult.organizations()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidOrganizationId", example.applyValue(getIndustrialPidOrganizationsResult -> getIndustrialPidOrganizationsResult.organizations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -497,7 +517,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -519,14 +540,15 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidProjects(GetIndustrialPidProjectsArgs.builder()
-     *             .ids(&#34;3e74e684-cbb5-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("3e74e684-cbb5-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidProjectId&#34;, example.applyValue(getIndustrialPidProjectsResult -&gt; getIndustrialPidProjectsResult.projects()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidProjectId", example.applyValue(getIndustrialPidProjectsResult -> getIndustrialPidProjectsResult.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -543,7 +565,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -565,14 +588,15 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidProjects(GetIndustrialPidProjectsArgs.builder()
-     *             .ids(&#34;3e74e684-cbb5-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("3e74e684-cbb5-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidProjectId&#34;, example.applyValue(getIndustrialPidProjectsResult -&gt; getIndustrialPidProjectsResult.projects()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidProjectId", example.applyValue(getIndustrialPidProjectsResult -> getIndustrialPidProjectsResult.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -589,7 +613,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -611,14 +636,15 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidProjects(GetIndustrialPidProjectsArgs.builder()
-     *             .ids(&#34;3e74e684-cbb5-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("3e74e684-cbb5-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidProjectId&#34;, example.applyValue(getIndustrialPidProjectsResult -&gt; getIndustrialPidProjectsResult.projects()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidProjectId", example.applyValue(getIndustrialPidProjectsResult -> getIndustrialPidProjectsResult.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -635,7 +661,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -657,14 +684,15 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidProjects(GetIndustrialPidProjectsArgs.builder()
-     *             .ids(&#34;3e74e684-cbb5-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("3e74e684-cbb5-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidProjectId&#34;, example.applyValue(getIndustrialPidProjectsResult -&gt; getIndustrialPidProjectsResult.projects()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidProjectId", example.applyValue(getIndustrialPidProjectsResult -> getIndustrialPidProjectsResult.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -681,7 +709,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -703,14 +732,15 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidProjects(GetIndustrialPidProjectsArgs.builder()
-     *             .ids(&#34;3e74e684-cbb5-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("3e74e684-cbb5-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidProjectId&#34;, example.applyValue(getIndustrialPidProjectsResult -&gt; getIndustrialPidProjectsResult.projects()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidProjectId", example.applyValue(getIndustrialPidProjectsResult -> getIndustrialPidProjectsResult.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -727,7 +757,8 @@ public final class BrainFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -749,14 +780,15 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = BrainFunctions.getIndustrialPidProjects(GetIndustrialPidProjectsArgs.builder()
-     *             .ids(&#34;3e74e684-cbb5-xxxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("3e74e684-cbb5-xxxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstBrainIndustrialPidProjectId&#34;, example.applyValue(getIndustrialPidProjectsResult -&gt; getIndustrialPidProjectsResult.projects()[0].id()));
+     *         ctx.export("firstBrainIndustrialPidProjectId", example.applyValue(getIndustrialPidProjectsResult -> getIndustrialPidProjectsResult.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -773,7 +805,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -795,12 +828,13 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = BrainFunctions.getIndustrialSerice(GetIndustrialSericeArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -817,7 +851,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -839,12 +874,13 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = BrainFunctions.getIndustrialSerice(GetIndustrialSericeArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -861,7 +897,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -883,12 +920,13 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = BrainFunctions.getIndustrialSerice(GetIndustrialSericeArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -905,7 +943,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -927,12 +966,13 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = BrainFunctions.getIndustrialSerice(GetIndustrialSericeArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -949,7 +989,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -971,12 +1012,13 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = BrainFunctions.getIndustrialSerice(GetIndustrialSericeArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -993,7 +1035,8 @@ public final class BrainFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1015,12 +1058,13 @@ public final class BrainFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = BrainFunctions.getIndustrialSerice(GetIndustrialSericeArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

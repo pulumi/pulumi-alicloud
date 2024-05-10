@@ -43,7 +43,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -66,14 +67,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsAliases = KmsFunctions.getAliases(GetAliasesArgs.builder()
-     *             .ids(&#34;d89e8a53-b708-41aa-8c67-6873axxx&#34;)
-     *             .nameRegex(&#34;alias/tf-testKmsAlias_123&#34;)
+     *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
+     *             .nameRegex("alias/tf-testKmsAlias_123")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKeyId&#34;, kmsKeysDs.keys()[0].id());
+     *         ctx.export("firstKeyId", kmsKeysDs.keys()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -88,7 +90,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -111,14 +114,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsAliases = KmsFunctions.getAliases(GetAliasesArgs.builder()
-     *             .ids(&#34;d89e8a53-b708-41aa-8c67-6873axxx&#34;)
-     *             .nameRegex(&#34;alias/tf-testKmsAlias_123&#34;)
+     *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
+     *             .nameRegex("alias/tf-testKmsAlias_123")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKeyId&#34;, kmsKeysDs.keys()[0].id());
+     *         ctx.export("firstKeyId", kmsKeysDs.keys()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -133,7 +137,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -156,14 +161,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsAliases = KmsFunctions.getAliases(GetAliasesArgs.builder()
-     *             .ids(&#34;d89e8a53-b708-41aa-8c67-6873axxx&#34;)
-     *             .nameRegex(&#34;alias/tf-testKmsAlias_123&#34;)
+     *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
+     *             .nameRegex("alias/tf-testKmsAlias_123")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKeyId&#34;, kmsKeysDs.keys()[0].id());
+     *         ctx.export("firstKeyId", kmsKeysDs.keys()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -178,7 +184,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -201,14 +208,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsAliases = KmsFunctions.getAliases(GetAliasesArgs.builder()
-     *             .ids(&#34;d89e8a53-b708-41aa-8c67-6873axxx&#34;)
-     *             .nameRegex(&#34;alias/tf-testKmsAlias_123&#34;)
+     *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
+     *             .nameRegex("alias/tf-testKmsAlias_123")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKeyId&#34;, kmsKeysDs.keys()[0].id());
+     *         ctx.export("firstKeyId", kmsKeysDs.keys()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -223,7 +231,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -246,14 +255,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsAliases = KmsFunctions.getAliases(GetAliasesArgs.builder()
-     *             .ids(&#34;d89e8a53-b708-41aa-8c67-6873axxx&#34;)
-     *             .nameRegex(&#34;alias/tf-testKmsAlias_123&#34;)
+     *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
+     *             .nameRegex("alias/tf-testKmsAlias_123")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKeyId&#34;, kmsKeysDs.keys()[0].id());
+     *         ctx.export("firstKeyId", kmsKeysDs.keys()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -268,7 +278,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -291,14 +302,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsAliases = KmsFunctions.getAliases(GetAliasesArgs.builder()
-     *             .ids(&#34;d89e8a53-b708-41aa-8c67-6873axxx&#34;)
-     *             .nameRegex(&#34;alias/tf-testKmsAlias_123&#34;)
+     *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
+     *             .nameRegex("alias/tf-testKmsAlias_123")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKeyId&#34;, kmsKeysDs.keys()[0].id());
+     *         ctx.export("firstKeyId", kmsKeysDs.keys()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -311,7 +323,8 @@ public final class KmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -334,19 +347,20 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
-     *             .description(&#34;example key&#34;)
+     *         var key = new Key("key", KeyArgs.builder()        
+     *             .description("example key")
      *             .isEnabled(true)
      *             .build());
      * 
      *         final var encrypted = KmsFunctions.getCiphertext(GetCiphertextArgs.builder()
      *             .keyId(key.id())
-     *             .plaintext(&#34;example&#34;)
+     *             .plaintext("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -359,7 +373,8 @@ public final class KmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -382,19 +397,20 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
-     *             .description(&#34;example key&#34;)
+     *         var key = new Key("key", KeyArgs.builder()        
+     *             .description("example key")
      *             .isEnabled(true)
      *             .build());
      * 
      *         final var encrypted = KmsFunctions.getCiphertext(GetCiphertextArgs.builder()
      *             .keyId(key.id())
-     *             .plaintext(&#34;example&#34;)
+     *             .plaintext("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -407,7 +423,8 @@ public final class KmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -430,19 +447,20 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
-     *             .description(&#34;example key&#34;)
+     *         var key = new Key("key", KeyArgs.builder()        
+     *             .description("example key")
      *             .isEnabled(true)
      *             .build());
      * 
      *         final var encrypted = KmsFunctions.getCiphertext(GetCiphertextArgs.builder()
      *             .keyId(key.id())
-     *             .plaintext(&#34;example&#34;)
+     *             .plaintext("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -455,7 +473,8 @@ public final class KmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -478,19 +497,20 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
-     *             .description(&#34;example key&#34;)
+     *         var key = new Key("key", KeyArgs.builder()        
+     *             .description("example key")
      *             .isEnabled(true)
      *             .build());
      * 
      *         final var encrypted = KmsFunctions.getCiphertext(GetCiphertextArgs.builder()
      *             .keyId(key.id())
-     *             .plaintext(&#34;example&#34;)
+     *             .plaintext("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -505,7 +525,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -528,14 +549,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var alicloudKmsKeyVersionsDs = KmsFunctions.getKeyVersions(GetKeyVersionsArgs.builder()
-     *             .keyId(&#34;08438c-b4d5-4d05-928c-07b7xxxx&#34;)
-     *             .ids(&#34;d89e8a53-b708-41aa-8c67-6873axxx&#34;)
+     *             .keyId("08438c-b4d5-4d05-928c-07b7xxxx")
+     *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .build());
      * 
-     *         ctx.export(&#34;allVersions&#34;, alicloudKmsKeyVersionsDs.applyValue(getKeyVersionsResult -&gt; getKeyVersionsResult.versions()));
+     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.applyValue(getKeyVersionsResult -> getKeyVersionsResult.versions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -550,7 +572,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -573,14 +596,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var alicloudKmsKeyVersionsDs = KmsFunctions.getKeyVersions(GetKeyVersionsArgs.builder()
-     *             .keyId(&#34;08438c-b4d5-4d05-928c-07b7xxxx&#34;)
-     *             .ids(&#34;d89e8a53-b708-41aa-8c67-6873axxx&#34;)
+     *             .keyId("08438c-b4d5-4d05-928c-07b7xxxx")
+     *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .build());
      * 
-     *         ctx.export(&#34;allVersions&#34;, alicloudKmsKeyVersionsDs.applyValue(getKeyVersionsResult -&gt; getKeyVersionsResult.versions()));
+     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.applyValue(getKeyVersionsResult -> getKeyVersionsResult.versions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -595,7 +619,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -618,14 +643,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var alicloudKmsKeyVersionsDs = KmsFunctions.getKeyVersions(GetKeyVersionsArgs.builder()
-     *             .keyId(&#34;08438c-b4d5-4d05-928c-07b7xxxx&#34;)
-     *             .ids(&#34;d89e8a53-b708-41aa-8c67-6873axxx&#34;)
+     *             .keyId("08438c-b4d5-4d05-928c-07b7xxxx")
+     *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .build());
      * 
-     *         ctx.export(&#34;allVersions&#34;, alicloudKmsKeyVersionsDs.applyValue(getKeyVersionsResult -&gt; getKeyVersionsResult.versions()));
+     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.applyValue(getKeyVersionsResult -> getKeyVersionsResult.versions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -640,7 +666,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -663,14 +690,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var alicloudKmsKeyVersionsDs = KmsFunctions.getKeyVersions(GetKeyVersionsArgs.builder()
-     *             .keyId(&#34;08438c-b4d5-4d05-928c-07b7xxxx&#34;)
-     *             .ids(&#34;d89e8a53-b708-41aa-8c67-6873axxx&#34;)
+     *             .keyId("08438c-b4d5-4d05-928c-07b7xxxx")
+     *             .ids("d89e8a53-b708-41aa-8c67-6873axxx")
      *             .build());
      * 
-     *         ctx.export(&#34;allVersions&#34;, alicloudKmsKeyVersionsDs.applyValue(getKeyVersionsResult -&gt; getKeyVersionsResult.versions()));
+     *         ctx.export("allVersions", alicloudKmsKeyVersionsDs.applyValue(getKeyVersionsResult -> getKeyVersionsResult.versions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -683,7 +711,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -706,14 +735,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsKeysDs = KmsFunctions.getKeys(GetKeysArgs.builder()
-     *             .descriptionRegex(&#34;Hello KMS&#34;)
-     *             .outputFile(&#34;kms_keys.json&#34;)
+     *             .descriptionRegex("Hello KMS")
+     *             .outputFile("kms_keys.json")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKeyId&#34;, kmsKeysDs.applyValue(getKeysResult -&gt; getKeysResult.keys()[0].id()));
+     *         ctx.export("firstKeyId", kmsKeysDs.applyValue(getKeysResult -> getKeysResult.keys()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -726,7 +756,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -749,14 +780,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsKeysDs = KmsFunctions.getKeys(GetKeysArgs.builder()
-     *             .descriptionRegex(&#34;Hello KMS&#34;)
-     *             .outputFile(&#34;kms_keys.json&#34;)
+     *             .descriptionRegex("Hello KMS")
+     *             .outputFile("kms_keys.json")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKeyId&#34;, kmsKeysDs.applyValue(getKeysResult -&gt; getKeysResult.keys()[0].id()));
+     *         ctx.export("firstKeyId", kmsKeysDs.applyValue(getKeysResult -> getKeysResult.keys()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -769,7 +801,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -792,14 +825,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsKeysDs = KmsFunctions.getKeys(GetKeysArgs.builder()
-     *             .descriptionRegex(&#34;Hello KMS&#34;)
-     *             .outputFile(&#34;kms_keys.json&#34;)
+     *             .descriptionRegex("Hello KMS")
+     *             .outputFile("kms_keys.json")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKeyId&#34;, kmsKeysDs.applyValue(getKeysResult -&gt; getKeysResult.keys()[0].id()));
+     *         ctx.export("firstKeyId", kmsKeysDs.applyValue(getKeysResult -> getKeysResult.keys()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -812,7 +846,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -835,14 +870,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsKeysDs = KmsFunctions.getKeys(GetKeysArgs.builder()
-     *             .descriptionRegex(&#34;Hello KMS&#34;)
-     *             .outputFile(&#34;kms_keys.json&#34;)
+     *             .descriptionRegex("Hello KMS")
+     *             .outputFile("kms_keys.json")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKeyId&#34;, kmsKeysDs.applyValue(getKeysResult -&gt; getKeysResult.keys()[0].id()));
+     *         ctx.export("firstKeyId", kmsKeysDs.applyValue(getKeysResult -> getKeysResult.keys()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -855,7 +891,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -878,14 +915,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsKeysDs = KmsFunctions.getKeys(GetKeysArgs.builder()
-     *             .descriptionRegex(&#34;Hello KMS&#34;)
-     *             .outputFile(&#34;kms_keys.json&#34;)
+     *             .descriptionRegex("Hello KMS")
+     *             .outputFile("kms_keys.json")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKeyId&#34;, kmsKeysDs.applyValue(getKeysResult -&gt; getKeysResult.keys()[0].id()));
+     *         ctx.export("firstKeyId", kmsKeysDs.applyValue(getKeysResult -> getKeysResult.keys()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -898,7 +936,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -921,14 +960,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsKeysDs = KmsFunctions.getKeys(GetKeysArgs.builder()
-     *             .descriptionRegex(&#34;Hello KMS&#34;)
-     *             .outputFile(&#34;kms_keys.json&#34;)
+     *             .descriptionRegex("Hello KMS")
+     *             .outputFile("kms_keys.json")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKeyId&#34;, kmsKeysDs.applyValue(getKeysResult -&gt; getKeysResult.keys()[0].id()));
+     *         ctx.export("firstKeyId", kmsKeysDs.applyValue(getKeysResult -> getKeysResult.keys()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -939,7 +979,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -964,15 +1005,15 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
-     *             .description(&#34;example key&#34;)
+     *         var key = new Key("key", KeyArgs.builder()        
+     *             .description("example key")
      *             .isEnabled(true)
      *             .build());
      * 
-     *         // Encrypt plaintext &#39;example&#39;
-     *         var encrypted = new Ciphertext(&#34;encrypted&#34;, CiphertextArgs.builder()        
+     *         // Encrypt plaintext 'example'
+     *         var encrypted = new Ciphertext("encrypted", CiphertextArgs.builder()        
      *             .keyId(key.id())
-     *             .plaintext(&#34;example&#34;)
+     *             .plaintext("example")
      *             .build());
      * 
      *         // Decrypt encrypted ciphertext
@@ -980,10 +1021,11 @@ public final class KmsFunctions {
      *             .ciphertextBlob(encrypted.ciphertextBlob())
      *             .build());
      * 
-     *         ctx.export(&#34;decrypted&#34;, plaintext.applyValue(getPlaintextResult -&gt; getPlaintextResult).applyValue(plaintext -&gt; plaintext.applyValue(getPlaintextResult -&gt; getPlaintextResult.plaintext())));
+     *         ctx.export("decrypted", plaintext.applyValue(getPlaintextResult -> getPlaintextResult).applyValue(plaintext -> plaintext.applyValue(getPlaintextResult -> getPlaintextResult.plaintext())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -994,7 +1036,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1019,15 +1062,15 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
-     *             .description(&#34;example key&#34;)
+     *         var key = new Key("key", KeyArgs.builder()        
+     *             .description("example key")
      *             .isEnabled(true)
      *             .build());
      * 
-     *         // Encrypt plaintext &#39;example&#39;
-     *         var encrypted = new Ciphertext(&#34;encrypted&#34;, CiphertextArgs.builder()        
+     *         // Encrypt plaintext 'example'
+     *         var encrypted = new Ciphertext("encrypted", CiphertextArgs.builder()        
      *             .keyId(key.id())
-     *             .plaintext(&#34;example&#34;)
+     *             .plaintext("example")
      *             .build());
      * 
      *         // Decrypt encrypted ciphertext
@@ -1035,10 +1078,11 @@ public final class KmsFunctions {
      *             .ciphertextBlob(encrypted.ciphertextBlob())
      *             .build());
      * 
-     *         ctx.export(&#34;decrypted&#34;, plaintext.applyValue(getPlaintextResult -&gt; getPlaintextResult).applyValue(plaintext -&gt; plaintext.applyValue(getPlaintextResult -&gt; getPlaintextResult.plaintext())));
+     *         ctx.export("decrypted", plaintext.applyValue(getPlaintextResult -> getPlaintextResult).applyValue(plaintext -> plaintext.applyValue(getPlaintextResult -> getPlaintextResult.plaintext())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1049,7 +1093,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1074,15 +1119,15 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
-     *             .description(&#34;example key&#34;)
+     *         var key = new Key("key", KeyArgs.builder()        
+     *             .description("example key")
      *             .isEnabled(true)
      *             .build());
      * 
-     *         // Encrypt plaintext &#39;example&#39;
-     *         var encrypted = new Ciphertext(&#34;encrypted&#34;, CiphertextArgs.builder()        
+     *         // Encrypt plaintext 'example'
+     *         var encrypted = new Ciphertext("encrypted", CiphertextArgs.builder()        
      *             .keyId(key.id())
-     *             .plaintext(&#34;example&#34;)
+     *             .plaintext("example")
      *             .build());
      * 
      *         // Decrypt encrypted ciphertext
@@ -1090,10 +1135,11 @@ public final class KmsFunctions {
      *             .ciphertextBlob(encrypted.ciphertextBlob())
      *             .build());
      * 
-     *         ctx.export(&#34;decrypted&#34;, plaintext.applyValue(getPlaintextResult -&gt; getPlaintextResult).applyValue(plaintext -&gt; plaintext.applyValue(getPlaintextResult -&gt; getPlaintextResult.plaintext())));
+     *         ctx.export("decrypted", plaintext.applyValue(getPlaintextResult -> getPlaintextResult).applyValue(plaintext -> plaintext.applyValue(getPlaintextResult -> getPlaintextResult.plaintext())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1104,7 +1150,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1129,15 +1176,15 @@ public final class KmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
-     *             .description(&#34;example key&#34;)
+     *         var key = new Key("key", KeyArgs.builder()        
+     *             .description("example key")
      *             .isEnabled(true)
      *             .build());
      * 
-     *         // Encrypt plaintext &#39;example&#39;
-     *         var encrypted = new Ciphertext(&#34;encrypted&#34;, CiphertextArgs.builder()        
+     *         // Encrypt plaintext 'example'
+     *         var encrypted = new Ciphertext("encrypted", CiphertextArgs.builder()        
      *             .keyId(key.id())
-     *             .plaintext(&#34;example&#34;)
+     *             .plaintext("example")
      *             .build());
      * 
      *         // Decrypt encrypted ciphertext
@@ -1145,10 +1192,11 @@ public final class KmsFunctions {
      *             .ciphertextBlob(encrypted.ciphertextBlob())
      *             .build());
      * 
-     *         ctx.export(&#34;decrypted&#34;, plaintext.applyValue(getPlaintextResult -&gt; getPlaintextResult).applyValue(plaintext -&gt; plaintext.applyValue(getPlaintextResult -&gt; getPlaintextResult.plaintext())));
+     *         ctx.export("decrypted", plaintext.applyValue(getPlaintextResult -> getPlaintextResult).applyValue(plaintext -> plaintext.applyValue(getPlaintextResult -> getPlaintextResult.plaintext())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1163,7 +1211,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1186,14 +1235,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsSecretVersionsDs = KmsFunctions.getSecretVersions(GetSecretVersionsArgs.builder()
-     *             .secretName(&#34;secret_name&#34;)
+     *             .secretName("secret_name")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;firstSecretData&#34;, kmsSecretVersionsDs.applyValue(getSecretVersionsResult -&gt; getSecretVersionsResult.versions()[0].secretData()));
+     *         ctx.export("firstSecretData", kmsSecretVersionsDs.applyValue(getSecretVersionsResult -> getSecretVersionsResult.versions()[0].secretData()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1208,7 +1258,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1231,14 +1282,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsSecretVersionsDs = KmsFunctions.getSecretVersions(GetSecretVersionsArgs.builder()
-     *             .secretName(&#34;secret_name&#34;)
+     *             .secretName("secret_name")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;firstSecretData&#34;, kmsSecretVersionsDs.applyValue(getSecretVersionsResult -&gt; getSecretVersionsResult.versions()[0].secretData()));
+     *         ctx.export("firstSecretData", kmsSecretVersionsDs.applyValue(getSecretVersionsResult -> getSecretVersionsResult.versions()[0].secretData()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1253,7 +1305,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1276,14 +1329,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsSecretVersionsDs = KmsFunctions.getSecretVersions(GetSecretVersionsArgs.builder()
-     *             .secretName(&#34;secret_name&#34;)
+     *             .secretName("secret_name")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;firstSecretData&#34;, kmsSecretVersionsDs.applyValue(getSecretVersionsResult -&gt; getSecretVersionsResult.versions()[0].secretData()));
+     *         ctx.export("firstSecretData", kmsSecretVersionsDs.applyValue(getSecretVersionsResult -> getSecretVersionsResult.versions()[0].secretData()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1298,7 +1352,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1321,14 +1376,15 @@ public final class KmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var kmsSecretVersionsDs = KmsFunctions.getSecretVersions(GetSecretVersionsArgs.builder()
-     *             .secretName(&#34;secret_name&#34;)
+     *             .secretName("secret_name")
      *             .enableDetails(true)
      *             .build());
      * 
-     *         ctx.export(&#34;firstSecretData&#34;, kmsSecretVersionsDs.applyValue(getSecretVersionsResult -&gt; getSecretVersionsResult.versions()[0].secretData()));
+     *         ctx.export("firstSecretData", kmsSecretVersionsDs.applyValue(getSecretVersionsResult -> getSecretVersionsResult.versions()[0].secretData()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1343,7 +1399,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1367,17 +1424,18 @@ public final class KmsFunctions {
      *         // Declare the data source
      *         final var kmsSecretsDs = KmsFunctions.getSecrets(GetSecretsArgs.builder()
      *             .fetchTags(true)
-     *             .nameRegex(&#34;name_regex&#34;)
+     *             .nameRegex("name_regex")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;k-aa&#34;, &#34;v-aa&#34;),
-     *                 Map.entry(&#34;k-bb&#34;, &#34;v-bb&#34;)
+     *                 Map.entry("k-aa", "v-aa"),
+     *                 Map.entry("k-bb", "v-bb")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstSecretId&#34;, kmsSecretsDs.applyValue(getSecretsResult -&gt; getSecretsResult.secrets()[0].id()));
+     *         ctx.export("firstSecretId", kmsSecretsDs.applyValue(getSecretsResult -> getSecretsResult.secrets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1392,7 +1450,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1416,17 +1475,18 @@ public final class KmsFunctions {
      *         // Declare the data source
      *         final var kmsSecretsDs = KmsFunctions.getSecrets(GetSecretsArgs.builder()
      *             .fetchTags(true)
-     *             .nameRegex(&#34;name_regex&#34;)
+     *             .nameRegex("name_regex")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;k-aa&#34;, &#34;v-aa&#34;),
-     *                 Map.entry(&#34;k-bb&#34;, &#34;v-bb&#34;)
+     *                 Map.entry("k-aa", "v-aa"),
+     *                 Map.entry("k-bb", "v-bb")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstSecretId&#34;, kmsSecretsDs.applyValue(getSecretsResult -&gt; getSecretsResult.secrets()[0].id()));
+     *         ctx.export("firstSecretId", kmsSecretsDs.applyValue(getSecretsResult -> getSecretsResult.secrets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1441,7 +1501,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1465,17 +1526,18 @@ public final class KmsFunctions {
      *         // Declare the data source
      *         final var kmsSecretsDs = KmsFunctions.getSecrets(GetSecretsArgs.builder()
      *             .fetchTags(true)
-     *             .nameRegex(&#34;name_regex&#34;)
+     *             .nameRegex("name_regex")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;k-aa&#34;, &#34;v-aa&#34;),
-     *                 Map.entry(&#34;k-bb&#34;, &#34;v-bb&#34;)
+     *                 Map.entry("k-aa", "v-aa"),
+     *                 Map.entry("k-bb", "v-bb")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstSecretId&#34;, kmsSecretsDs.applyValue(getSecretsResult -&gt; getSecretsResult.secrets()[0].id()));
+     *         ctx.export("firstSecretId", kmsSecretsDs.applyValue(getSecretsResult -> getSecretsResult.secrets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1490,7 +1552,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1514,17 +1577,18 @@ public final class KmsFunctions {
      *         // Declare the data source
      *         final var kmsSecretsDs = KmsFunctions.getSecrets(GetSecretsArgs.builder()
      *             .fetchTags(true)
-     *             .nameRegex(&#34;name_regex&#34;)
+     *             .nameRegex("name_regex")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;k-aa&#34;, &#34;v-aa&#34;),
-     *                 Map.entry(&#34;k-bb&#34;, &#34;v-bb&#34;)
+     *                 Map.entry("k-aa", "v-aa"),
+     *                 Map.entry("k-bb", "v-bb")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstSecretId&#34;, kmsSecretsDs.applyValue(getSecretsResult -&gt; getSecretsResult.secrets()[0].id()));
+     *         ctx.export("firstSecretId", kmsSecretsDs.applyValue(getSecretsResult -> getSecretsResult.secrets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1539,7 +1603,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1563,17 +1628,18 @@ public final class KmsFunctions {
      *         // Declare the data source
      *         final var kmsSecretsDs = KmsFunctions.getSecrets(GetSecretsArgs.builder()
      *             .fetchTags(true)
-     *             .nameRegex(&#34;name_regex&#34;)
+     *             .nameRegex("name_regex")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;k-aa&#34;, &#34;v-aa&#34;),
-     *                 Map.entry(&#34;k-bb&#34;, &#34;v-bb&#34;)
+     *                 Map.entry("k-aa", "v-aa"),
+     *                 Map.entry("k-bb", "v-bb")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstSecretId&#34;, kmsSecretsDs.applyValue(getSecretsResult -&gt; getSecretsResult.secrets()[0].id()));
+     *         ctx.export("firstSecretId", kmsSecretsDs.applyValue(getSecretsResult -> getSecretsResult.secrets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1588,7 +1654,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1612,17 +1679,18 @@ public final class KmsFunctions {
      *         // Declare the data source
      *         final var kmsSecretsDs = KmsFunctions.getSecrets(GetSecretsArgs.builder()
      *             .fetchTags(true)
-     *             .nameRegex(&#34;name_regex&#34;)
+     *             .nameRegex("name_regex")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;k-aa&#34;, &#34;v-aa&#34;),
-     *                 Map.entry(&#34;k-bb&#34;, &#34;v-bb&#34;)
+     *                 Map.entry("k-aa", "v-aa"),
+     *                 Map.entry("k-bb", "v-bb")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstSecretId&#34;, kmsSecretsDs.applyValue(getSecretsResult -&gt; getSecretsResult.secrets()[0].id()));
+     *         ctx.export("firstSecretId", kmsSecretsDs.applyValue(getSecretsResult -> getSecretsResult.secrets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1639,7 +1707,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1661,12 +1730,13 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = KmsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1683,7 +1753,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1705,12 +1776,13 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = KmsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1727,7 +1799,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1749,12 +1822,13 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = KmsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1771,7 +1845,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1793,12 +1868,13 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = KmsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1815,7 +1891,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1837,12 +1914,13 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = KmsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1859,7 +1937,8 @@ public final class KmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1881,12 +1960,13 @@ public final class KmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = KmsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

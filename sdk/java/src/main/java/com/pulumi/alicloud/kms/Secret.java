@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,17 +51,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Secret(&#34;default&#34;, SecretArgs.builder()        
- *             .secretName(&#34;secret-foo&#34;)
- *             .description(&#34;from terraform&#34;)
- *             .secretData(&#34;Secret data.&#34;)
- *             .versionId(&#34;000000000001&#34;)
+ *         var default_ = new Secret("default", SecretArgs.builder()        
+ *             .secretName("secret-foo")
+ *             .description("from terraform")
+ *             .secretData("Secret data.")
+ *             .versionId("000000000001")
  *             .forceDeleteWithoutRecovery(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

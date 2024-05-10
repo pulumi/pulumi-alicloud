@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,19 +60,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;example-store&#34;)
+ *             .name("example-store")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -79,9 +80,9 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var example2 = new Store(&#34;example2&#34;, StoreArgs.builder()        
+ *         var example2 = new Store("example2", StoreArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;example-store2&#34;)
+ *             .name("example-store2")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -89,9 +90,9 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var example3 = new Store(&#34;example3&#34;, StoreArgs.builder()        
+ *         var example3 = new Store("example3", StoreArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;example-store3&#34;)
+ *             .name("example-store3")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -99,29 +100,29 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var exampleEtl = new Etl(&#34;exampleEtl&#34;, EtlArgs.builder()        
- *             .etlName(&#34;terraform-example&#34;)
+ *         var exampleEtl = new Etl("exampleEtl", EtlArgs.builder()        
+ *             .etlName("terraform-example")
  *             .project(example.name())
- *             .displayName(&#34;terraform-example&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .accessKeyId(&#34;access_key_id&#34;)
- *             .accessKeySecret(&#34;access_key_secret&#34;)
- *             .script(&#34;e_set(&#39;new&#39;,&#39;key&#39;)&#34;)
+ *             .displayName("terraform-example")
+ *             .description("terraform-example")
+ *             .accessKeyId("access_key_id")
+ *             .accessKeySecret("access_key_secret")
+ *             .script("e_set('new','key')")
  *             .logstore(exampleStore.name())
  *             .etlSinks(            
  *                 EtlEtlSinkArgs.builder()
- *                     .name(&#34;target_name&#34;)
- *                     .accessKeyId(&#34;example2_access_key_id&#34;)
- *                     .accessKeySecret(&#34;example2_access_key_secret&#34;)
- *                     .endpoint(&#34;cn-hangzhou.log.aliyuncs.com&#34;)
+ *                     .name("target_name")
+ *                     .accessKeyId("example2_access_key_id")
+ *                     .accessKeySecret("example2_access_key_secret")
+ *                     .endpoint("cn-hangzhou.log.aliyuncs.com")
  *                     .project(example.name())
  *                     .logstore(example2.name())
  *                     .build(),
  *                 EtlEtlSinkArgs.builder()
- *                     .name(&#34;target_name2&#34;)
- *                     .accessKeyId(&#34;example3_access_key_id&#34;)
- *                     .accessKeySecret(&#34;example3_access_key_secret&#34;)
- *                     .endpoint(&#34;cn-hangzhou.log.aliyuncs.com&#34;)
+ *                     .name("target_name2")
+ *                     .accessKeyId("example3_access_key_id")
+ *                     .accessKeySecret("example3_access_key_secret")
+ *                     .endpoint("cn-hangzhou.log.aliyuncs.com")
  *                     .project(example.name())
  *                     .logstore(example3.name())
  *                     .build())
@@ -129,7 +130,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -75,56 +76,56 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
- *             .projectName(String.format(&#34;example-value-%s&#34;, defaultInteger.result()))
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+ *             .projectName(String.format("example-value-%s", defaultInteger.result()))
  *             .build());
  * 
- *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
+ *         var defaultStore = new Store("defaultStore", StoreArgs.builder()        
  *             .projectName(defaultProject.name())
- *             .logstoreName(&#34;example-value&#34;)
+ *             .logstoreName("example-value")
  *             .build());
  * 
- *         var sourceStore = new Store(&#34;sourceStore&#34;, StoreArgs.builder()        
+ *         var sourceStore = new Store("sourceStore", StoreArgs.builder()        
  *             .projectName(defaultProject.name())
- *             .logstoreName(&#34;example-source-store&#34;)
+ *             .logstoreName("example-source-store")
  *             .build());
  * 
- *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
- *             .name(String.format(&#34;fcservicerole-%s&#34;, defaultInteger.result()))
- *             .document(&#34;&#34;&#34;
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+ *             .name(String.format("fcservicerole-%s", defaultInteger.result()))
+ *             .document("""
  *   {
- *       &#34;Statement&#34;: [
+ *       "Statement": [
  *         {
- *           &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *           &#34;Effect&#34;: &#34;Allow&#34;,
- *           &#34;Principal&#34;: {
- *             &#34;Service&#34;: [
- *               &#34;fc.aliyuncs.com&#34;
+ *           "Action": "sts:AssumeRole",
+ *           "Effect": "Allow",
+ *           "Principal": {
+ *             "Service": [
+ *               "fc.aliyuncs.com"
  *             ]
  *           }
  *         }
  *       ],
- *       &#34;Version&#34;: &#34;1&#34;
+ *       "Version": "1"
  *   }
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a example&#34;)
+ *             """)
+ *             .description("this is a example")
  *             .force(true)
  *             .build());
  * 
- *         var defaultRolePolicyAttachment = new RolePolicyAttachment(&#34;defaultRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
  *             .roleName(defaultRole.name())
- *             .policyName(&#34;AliyunLogFullAccess&#34;)
- *             .policyType(&#34;System&#34;)
+ *             .policyName("AliyunLogFullAccess")
+ *             .policyType("System")
  *             .build());
  * 
- *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
- *             .name(String.format(&#34;example-value-%s&#34;, defaultInteger.result()))
- *             .description(&#34;example-value&#34;)
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *             .name(String.format("example-value-%s", defaultInteger.result()))
+ *             .description("example-value")
  *             .role(defaultRole.arn())
  *             .logConfig(ServiceLogConfigArgs.builder()
  *                 .project(defaultProject.name())
@@ -134,79 +135,81 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
- *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
- *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
  *             .bucket(defaultBucket.id())
- *             .key(&#34;index.py&#34;)
- *             .content(&#34;&#34;&#34;
+ *             .key("index.py")
+ *             .content("""
  * import logging 
  * def handler(event, context): 
  * logger = logging.getLogger() 
- * logger.info(&#39;hello world&#39;) 
- * return &#39;hello world&#39;            &#34;&#34;&#34;)
+ * logger.info('hello world') 
+ * return 'hello world'            """)
  *             .build());
  * 
- *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
+ *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()        
  *             .service(defaultService.name())
- *             .name(&#34;terraform-example&#34;)
- *             .description(&#34;example&#34;)
+ *             .name("terraform-example")
+ *             .description("example")
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
- *             .memorySize(&#34;512&#34;)
- *             .runtime(&#34;python3.10&#34;)
- *             .handler(&#34;hello.handler&#34;)
+ *             .memorySize("512")
+ *             .runtime("python3.10")
+ *             .handler("hello.handler")
  *             .build());
  * 
- *         var defaultTrigger = new Trigger(&#34;defaultTrigger&#34;, TriggerArgs.builder()        
+ *         var defaultTrigger = new Trigger("defaultTrigger", TriggerArgs.builder()        
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
- *             .name(&#34;terraform-example&#34;)
+ *             .name("terraform-example")
  *             .role(defaultRole.arn())
- *             .sourceArn(defaultProject.name().applyValue(name -&gt; String.format(&#34;acs:log:%s:%s:project/%s&#34;, defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),default_.id(),name)))
- *             .type(&#34;log&#34;)
- *             .config(Output.tuple(sourceStore.name(), defaultProject.name(), defaultStore.name()).applyValue(values -&gt; {
+ *             .sourceArn(defaultProject.name().applyValue(name -> String.format("acs:log:%s:%s:project/%s", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),default_.id(),name)))
+ *             .type("log")
+ *             .config(Output.tuple(sourceStore.name(), defaultProject.name(), defaultStore.name()).applyValue(values -> {
  *                 var sourceStoreName = values.t1;
  *                 var defaultProjectName = values.t2;
  *                 var defaultStoreName = values.t3;
- *                 return &#34;&#34;&#34;
+ *                 return """
  *     {
- *         &#34;sourceConfig&#34;: {
- *             &#34;logstore&#34;: &#34;%s&#34;,
- *             &#34;startTime&#34;: null
+ *         "sourceConfig": {
+ *             "logstore": "%s",
+ *             "startTime": null
  *         },
- *         &#34;jobConfig&#34;: {
- *             &#34;maxRetryTime&#34;: 3,
- *             &#34;triggerInterval&#34;: 60
+ *         "jobConfig": {
+ *             "maxRetryTime": 3,
+ *             "triggerInterval": 60
  *         },
- *         &#34;functionParameter&#34;: {
- *             &#34;a&#34;: &#34;b&#34;,
- *             &#34;c&#34;: &#34;d&#34;
+ *         "functionParameter": {
+ *             "a": "b",
+ *             "c": "d"
  *         },
- *         &#34;logConfig&#34;: {
- *              &#34;project&#34;: &#34;%s&#34;,
- *             &#34;logstore&#34;: &#34;%s&#34;
+ *         "logConfig": {
+ *              "project": "%s",
+ *             "logstore": "%s"
  *         },
- *         &#34;targetConfig&#34;: null,
- *         &#34;enable&#34;: true
+ *         "targetConfig": null,
+ *         "enable": true
  *     }
  *   
- * &#34;, sourceStoreName,defaultProjectName,defaultStoreName);
+ * ", sourceStoreName,defaultProjectName,defaultStoreName);
  *             }))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * MNS topic trigger:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -251,101 +254,103 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
- *             .name(String.format(&#34;example-value-%s&#34;, defaultInteger.result()))
+ *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
+ *             .name(String.format("example-value-%s", defaultInteger.result()))
  *             .build());
  * 
- *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
- *             .name(String.format(&#34;fcservicerole-%s&#34;, defaultInteger.result()))
- *             .document(&#34;&#34;&#34;
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+ *             .name(String.format("fcservicerole-%s", defaultInteger.result()))
+ *             .document("""
  *   {
- *       &#34;Statement&#34;: [
+ *       "Statement": [
  *         {
- *           &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *           &#34;Effect&#34;: &#34;Allow&#34;,
- *           &#34;Principal&#34;: {
- *             &#34;Service&#34;: [
- *               &#34;mns.aliyuncs.com&#34;
+ *           "Action": "sts:AssumeRole",
+ *           "Effect": "Allow",
+ *           "Principal": {
+ *             "Service": [
+ *               "mns.aliyuncs.com"
  *             ]
  *           }
  *         }
  *       ],
- *       &#34;Version&#34;: &#34;1&#34;
+ *       "Version": "1"
  *   }
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a example&#34;)
+ *             """)
+ *             .description("this is a example")
  *             .force(true)
  *             .build());
  * 
- *         var defaultRolePolicyAttachment = new RolePolicyAttachment(&#34;defaultRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
  *             .roleName(defaultRole.name())
- *             .policyName(&#34;AliyunMNSNotificationRolePolicy&#34;)
- *             .policyType(&#34;System&#34;)
+ *             .policyName("AliyunMNSNotificationRolePolicy")
+ *             .policyType("System")
  *             .build());
  * 
- *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
- *             .name(String.format(&#34;example-value-%s&#34;, defaultInteger.result()))
- *             .description(&#34;example-value&#34;)
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *             .name(String.format("example-value-%s", defaultInteger.result()))
+ *             .description("example-value")
  *             .internetAccess(false)
  *             .build());
  * 
- *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
- *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
- *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
  *             .bucket(defaultBucket.id())
- *             .key(&#34;index.py&#34;)
- *             .content(&#34;&#34;&#34;
+ *             .key("index.py")
+ *             .content("""
  * import logging 
  * def handler(event, context): 
  * logger = logging.getLogger() 
- * logger.info(&#39;hello world&#39;) 
- * return &#39;hello world&#39;            &#34;&#34;&#34;)
+ * logger.info('hello world') 
+ * return 'hello world'            """)
  *             .build());
  * 
- *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
+ *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()        
  *             .service(defaultService.name())
- *             .name(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
- *             .description(&#34;example&#34;)
+ *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .description("example")
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
- *             .memorySize(&#34;512&#34;)
- *             .runtime(&#34;python3.10&#34;)
- *             .handler(&#34;hello.handler&#34;)
+ *             .memorySize("512")
+ *             .runtime("python3.10")
+ *             .handler("hello.handler")
  *             .build());
  * 
- *         var defaultTrigger = new Trigger(&#34;defaultTrigger&#34;, TriggerArgs.builder()        
+ *         var defaultTrigger = new Trigger("defaultTrigger", TriggerArgs.builder()        
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
- *             .name(&#34;terraform-example&#34;)
+ *             .name("terraform-example")
  *             .role(defaultRole.arn())
- *             .sourceArn(defaultTopic.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/topics/%s&#34;, defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),default_.id(),name)))
- *             .type(&#34;mns_topic&#34;)
- *             .configMns(&#34;&#34;&#34;
+ *             .sourceArn(defaultTopic.name().applyValue(name -> String.format("acs:mns:%s:%s:/topics/%s", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),default_.id(),name)))
+ *             .type("mns_topic")
+ *             .configMns("""
  *   {
- *     &#34;filterTag&#34;:&#34;exampleTag&#34;,
- *     &#34;notifyContentFormat&#34;:&#34;STREAM&#34;,
- *     &#34;notifyStrategy&#34;:&#34;BACKOFF_RETRY&#34;
+ *     "filterTag":"exampleTag",
+ *     "notifyContentFormat":"STREAM",
+ *     "notifyStrategy":"BACKOFF_RETRY"
  *   }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * CDN events trigger:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -388,139 +393,141 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultDomainNew = new DomainNew(&#34;defaultDomainNew&#34;, DomainNewArgs.builder()        
- *             .domainName(String.format(&#34;example%s.tf.com&#34;, defaultInteger.result()))
- *             .cdnType(&#34;web&#34;)
- *             .scope(&#34;overseas&#34;)
+ *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()        
+ *             .domainName(String.format("example%s.tf.com", defaultInteger.result()))
+ *             .cdnType("web")
+ *             .scope("overseas")
  *             .sources(DomainNewSourceArgs.builder()
- *                 .content(&#34;1.1.1.1&#34;)
- *                 .type(&#34;ipaddr&#34;)
+ *                 .content("1.1.1.1")
+ *                 .type("ipaddr")
  *                 .priority(20)
  *                 .port(80)
  *                 .weight(10)
  *                 .build())
  *             .build());
  * 
- *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
- *             .name(String.format(&#34;example-value-%s&#34;, defaultInteger.result()))
- *             .description(&#34;example-value&#34;)
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *             .name(String.format("example-value-%s", defaultInteger.result()))
+ *             .description("example-value")
  *             .internetAccess(false)
  *             .build());
  * 
- *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
- *             .name(String.format(&#34;fcservicerole-%s&#34;, defaultInteger.result()))
- *             .document(&#34;&#34;&#34;
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+ *             .name(String.format("fcservicerole-%s", defaultInteger.result()))
+ *             .document("""
  *     {
- *       &#34;Statement&#34;: [
+ *       "Statement": [
  *         {
- *           &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *           &#34;Effect&#34;: &#34;Allow&#34;,
- *           &#34;Principal&#34;: {
- *             &#34;Service&#34;: [
- *               &#34;cdn.aliyuncs.com&#34;
+ *           "Action": "sts:AssumeRole",
+ *           "Effect": "Allow",
+ *           "Principal": {
+ *             "Service": [
+ *               "cdn.aliyuncs.com"
  *             ]
  *           }
  *         }
  *       ],
- *       &#34;Version&#34;: &#34;1&#34;
+ *       "Version": "1"
  *   }
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a example&#34;)
+ *             """)
+ *             .description("this is a example")
  *             .force(true)
  *             .build());
  * 
- *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
- *             .policyName(String.format(&#34;fcservicepolicy-%s&#34;, defaultInteger.result()))
- *             .policyDocument(Output.tuple(defaultService.name(), defaultService.name()).applyValue(values -&gt; {
+ *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+ *             .policyName(String.format("fcservicepolicy-%s", defaultInteger.result()))
+ *             .policyDocument(Output.tuple(defaultService.name(), defaultService.name()).applyValue(values -> {
  *                 var defaultServiceName = values.t1;
  *                 var defaultServiceName1 = values.t2;
- *                 return &#34;&#34;&#34;
+ *                 return """
  *     {
- *         &#34;Version&#34;: &#34;1&#34;,
- *         &#34;Statement&#34;: [
+ *         "Version": "1",
+ *         "Statement": [
  *         {
- *             &#34;Action&#34;: [
- *             &#34;fc:InvokeFunction&#34;
+ *             "Action": [
+ *             "fc:InvokeFunction"
  *             ],
- *         &#34;Resource&#34;: [
- *             &#34;acs:fc:*:*:services/%s/functions/*&#34;,
- *             &#34;acs:fc:*:*:services/%s.*{@literal /}functions/*&#34;
+ *         "Resource": [
+ *             "acs:fc:*:*:services/%s/functions/*",
+ *             "acs:fc:*:*:services/%s.*{@literal /}functions/*"
  *         ],
- *         &#34;Effect&#34;: &#34;Allow&#34;
+ *         "Effect": "Allow"
  *         }
  *         ]
  *     }
- * &#34;, defaultServiceName,defaultServiceName1);
+ * ", defaultServiceName,defaultServiceName1);
  *             }))
- *             .description(&#34;this is a example&#34;)
+ *             .description("this is a example")
  *             .force(true)
  *             .build());
  * 
- *         var defaultRolePolicyAttachment = new RolePolicyAttachment(&#34;defaultRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
  *             .roleName(defaultRole.name())
  *             .policyName(defaultPolicy.name())
- *             .policyType(&#34;Custom&#34;)
+ *             .policyType("Custom")
  *             .build());
  * 
- *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
- *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
- *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
  *             .bucket(defaultBucket.id())
- *             .key(&#34;index.py&#34;)
- *             .content(&#34;&#34;&#34;
+ *             .key("index.py")
+ *             .content("""
  * import logging 
  * def handler(event, context): 
  * logger = logging.getLogger() 
- * logger.info(&#39;hello world&#39;) 
- * return &#39;hello world&#39;            &#34;&#34;&#34;)
+ * logger.info('hello world') 
+ * return 'hello world'            """)
  *             .build());
  * 
- *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
+ *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()        
  *             .service(defaultService.name())
- *             .name(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
- *             .description(&#34;example&#34;)
+ *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .description("example")
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
- *             .memorySize(&#34;512&#34;)
- *             .runtime(&#34;python3.10&#34;)
- *             .handler(&#34;hello.handler&#34;)
+ *             .memorySize("512")
+ *             .runtime("python3.10")
+ *             .handler("hello.handler")
  *             .build());
  * 
- *         var defaultTrigger = new Trigger(&#34;defaultTrigger&#34;, TriggerArgs.builder()        
+ *         var defaultTrigger = new Trigger("defaultTrigger", TriggerArgs.builder()        
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
- *             .name(&#34;terraform-example&#34;)
+ *             .name("terraform-example")
  *             .role(defaultRole.arn())
- *             .sourceArn(String.format(&#34;acs:cdn:*:%s&#34;, default_.id()))
- *             .type(&#34;cdn_events&#34;)
- *             .config(defaultDomainNew.domainName().applyValue(domainName -&gt; &#34;&#34;&#34;
- *       {&#34;eventName&#34;:&#34;LogFileCreated&#34;,
- *      &#34;eventVersion&#34;:&#34;1.0.0&#34;,
- *      &#34;notes&#34;:&#34;cdn events trigger&#34;,
- *      &#34;filter&#34;:{
- *         &#34;domain&#34;: [&#34;%s&#34;]
+ *             .sourceArn(String.format("acs:cdn:*:%s", default_.id()))
+ *             .type("cdn_events")
+ *             .config(defaultDomainNew.domainName().applyValue(domainName -> """
+ *       {"eventName":"LogFileCreated",
+ *      "eventVersion":"1.0.0",
+ *      "notes":"cdn events trigger",
+ *      "filter":{
+ *         "domain": ["%s"]
  *         }
  *     }
- * &#34;, domainName)))
+ * ", domainName)))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * EventBridge trigger:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -573,202 +580,203 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var serviceLinkedRole = new ServiceLinkedRole(&#34;serviceLinkedRole&#34;, ServiceLinkedRoleArgs.builder()        
- *             .productName(&#34;AliyunServiceRoleForEventBridgeSendToFC&#34;)
+ *         var serviceLinkedRole = new ServiceLinkedRole("serviceLinkedRole", ServiceLinkedRoleArgs.builder()        
+ *             .productName("AliyunServiceRoleForEventBridgeSendToFC")
  *             .build());
  * 
- *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
- *             .name(String.format(&#34;example-value-%s&#34;, defaultInteger.result()))
- *             .description(&#34;example-value&#34;)
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *             .name(String.format("example-value-%s", defaultInteger.result()))
+ *             .description("example-value")
  *             .internetAccess(false)
  *             .build());
  * 
- *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
- *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
- *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
  *             .bucket(defaultBucket.id())
- *             .key(&#34;index.py&#34;)
- *             .content(&#34;&#34;&#34;
+ *             .key("index.py")
+ *             .content("""
  * import logging 
  * def handler(event, context): 
  * logger = logging.getLogger() 
- * logger.info(&#39;hello world&#39;) 
- * return &#39;hello world&#39;            &#34;&#34;&#34;)
+ * logger.info('hello world') 
+ * return 'hello world'            """)
  *             .build());
  * 
- *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
+ *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()        
  *             .service(defaultService.name())
- *             .name(&#34;terraform-example&#34;)
- *             .description(&#34;example&#34;)
+ *             .name("terraform-example")
+ *             .description("example")
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
- *             .memorySize(&#34;512&#34;)
- *             .runtime(&#34;python3.10&#34;)
- *             .handler(&#34;hello.handler&#34;)
+ *             .memorySize("512")
+ *             .runtime("python3.10")
+ *             .handler("hello.handler")
  *             .build());
  * 
- *         var ossTrigger = new Trigger(&#34;ossTrigger&#34;, TriggerArgs.builder()        
+ *         var ossTrigger = new Trigger("ossTrigger", TriggerArgs.builder()        
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
- *             .name(&#34;terraform-example-oss&#34;)
- *             .type(&#34;eventbridge&#34;)
- *             .config(&#34;&#34;&#34;
+ *             .name("terraform-example-oss")
+ *             .type("eventbridge")
+ *             .config("""
  *     {
- *         &#34;triggerEnable&#34;: false,
- *         &#34;asyncInvocationType&#34;: false,
- *         &#34;eventRuleFilterPattern&#34;: {
- *           &#34;source&#34;:[
- *             &#34;acs.oss&#34;
+ *         "triggerEnable": false,
+ *         "asyncInvocationType": false,
+ *         "eventRuleFilterPattern": {
+ *           "source":[
+ *             "acs.oss"
  *             ],
- *             &#34;type&#34;:[
- *               &#34;oss:BucketCreated:PutBucket&#34;
+ *             "type":[
+ *               "oss:BucketCreated:PutBucket"
  *             ]
  *         },
- *         &#34;eventSourceConfig&#34;: {
- *             &#34;eventSourceType&#34;: &#34;Default&#34;
+ *         "eventSourceConfig": {
+ *             "eventSourceType": "Default"
  *         }
  *     }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var mnsTrigger = new Trigger(&#34;mnsTrigger&#34;, TriggerArgs.builder()        
+ *         var mnsTrigger = new Trigger("mnsTrigger", TriggerArgs.builder()        
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
- *             .name(&#34;terraform-example-mns&#34;)
- *             .type(&#34;eventbridge&#34;)
- *             .config(&#34;&#34;&#34;
+ *             .name("terraform-example-mns")
+ *             .type("eventbridge")
+ *             .config("""
  *     {
- *         &#34;triggerEnable&#34;: false,
- *         &#34;asyncInvocationType&#34;: false,
- *         &#34;eventRuleFilterPattern&#34;: &#34;{}&#34;,
- *         &#34;eventSourceConfig&#34;: {
- *             &#34;eventSourceType&#34;: &#34;MNS&#34;,
- *             &#34;eventSourceParameters&#34;: {
- *                 &#34;sourceMNSParameters&#34;: {
- *                     &#34;RegionId&#34;: &#34;cn-hangzhou&#34;,
- *                     &#34;QueueName&#34;: &#34;mns-queue&#34;,
- *                     &#34;IsBase64Decode&#34;: true
+ *         "triggerEnable": false,
+ *         "asyncInvocationType": false,
+ *         "eventRuleFilterPattern": "{}",
+ *         "eventSourceConfig": {
+ *             "eventSourceType": "MNS",
+ *             "eventSourceParameters": {
+ *                 "sourceMNSParameters": {
+ *                     "RegionId": "cn-hangzhou",
+ *                     "QueueName": "mns-queue",
+ *                     "IsBase64Decode": true
  *                 }
  *             }
  *         }
  *     }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .instanceName(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
- *             .remark(&#34;terraform-example&#34;)
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .instanceName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .remark("terraform-example")
  *             .build());
  * 
- *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
- *             .groupName(&#34;GID-example&#34;)
+ *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()        
+ *             .groupName("GID-example")
  *             .instanceId(defaultInstance.id())
- *             .remark(&#34;terraform-example&#34;)
+ *             .remark("terraform-example")
  *             .build());
  * 
- *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
- *             .topicName(&#34;mytopic&#34;)
+ *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
+ *             .topicName("mytopic")
  *             .instanceId(defaultInstance.id())
  *             .messageType(0)
- *             .remark(&#34;terraform-example&#34;)
+ *             .remark("terraform-example")
  *             .build());
  * 
- *         var rocketmqTrigger = new Trigger(&#34;rocketmqTrigger&#34;, TriggerArgs.builder()        
+ *         var rocketmqTrigger = new Trigger("rocketmqTrigger", TriggerArgs.builder()        
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
- *             .name(&#34;terraform-example-rocketmq&#34;)
- *             .type(&#34;eventbridge&#34;)
- *             .config(Output.tuple(defaultInstance.id(), defaultGroup.groupName(), defaultTopic.topicName()).applyValue(values -&gt; {
+ *             .name("terraform-example-rocketmq")
+ *             .type("eventbridge")
+ *             .config(Output.tuple(defaultInstance.id(), defaultGroup.groupName(), defaultTopic.topicName()).applyValue(values -> {
  *                 var id = values.t1;
  *                 var groupName = values.t2;
  *                 var topicName = values.t3;
- *                 return &#34;&#34;&#34;
+ *                 return """
  *     {
- *         &#34;triggerEnable&#34;: false,
- *         &#34;asyncInvocationType&#34;: false,
- *         &#34;eventRuleFilterPattern&#34;: &#34;{}&#34;,
- *         &#34;eventSourceConfig&#34;: {
- *             &#34;eventSourceType&#34;: &#34;RocketMQ&#34;,
- *             &#34;eventSourceParameters&#34;: {
- *                 &#34;sourceRocketMQParameters&#34;: {
- *                     &#34;RegionId&#34;: &#34;%s&#34;,
- *                     &#34;InstanceId&#34;: &#34;%s&#34;,
- *                     &#34;GroupID&#34;: &#34;%s&#34;,
- *                     &#34;Topic&#34;: &#34;%s&#34;,
- *                     &#34;Timestamp&#34;: 1686296162,
- *                     &#34;Tag&#34;: &#34;example-tag&#34;,
- *                     &#34;Offset&#34;: &#34;CONSUME_FROM_LAST_OFFSET&#34;
+ *         "triggerEnable": false,
+ *         "asyncInvocationType": false,
+ *         "eventRuleFilterPattern": "{}",
+ *         "eventSourceConfig": {
+ *             "eventSourceType": "RocketMQ",
+ *             "eventSourceParameters": {
+ *                 "sourceRocketMQParameters": {
+ *                     "RegionId": "%s",
+ *                     "InstanceId": "%s",
+ *                     "GroupID": "%s",
+ *                     "Topic": "%s",
+ *                     "Timestamp": 1686296162,
+ *                     "Tag": "example-tag",
+ *                     "Offset": "CONSUME_FROM_LAST_OFFSET"
  *                 }
  *             }
  *         }
  *     }
- * &#34;, defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),id,groupName,topicName);
+ * ", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),id,groupName,topicName);
  *             }))
  *             .build());
  * 
- *         var defaultInstance2 = new Instance(&#34;defaultInstance2&#34;, InstanceArgs.builder()        
- *             .instanceName(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
- *             .instanceType(&#34;professional&#34;)
+ *         var defaultInstance2 = new Instance("defaultInstance2", InstanceArgs.builder()        
+ *             .instanceName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .instanceType("professional")
  *             .maxTps(1000)
  *             .queueCapacity(50)
  *             .supportEip(true)
  *             .maxEipTps(128)
- *             .paymentType(&#34;Subscription&#34;)
+ *             .paymentType("Subscription")
  *             .period(1)
  *             .build());
  * 
- *         var defaultVirtualHost = new VirtualHost(&#34;defaultVirtualHost&#34;, VirtualHostArgs.builder()        
+ *         var defaultVirtualHost = new VirtualHost("defaultVirtualHost", VirtualHostArgs.builder()        
  *             .instanceId(defaultInstance2.id())
- *             .virtualHostName(&#34;example-VirtualHost&#34;)
+ *             .virtualHostName("example-VirtualHost")
  *             .build());
  * 
- *         var defaultQueue = new Queue(&#34;defaultQueue&#34;, QueueArgs.builder()        
+ *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()        
  *             .instanceId(defaultVirtualHost.instanceId())
- *             .queueName(&#34;example-queue&#34;)
+ *             .queueName("example-queue")
  *             .virtualHostName(defaultVirtualHost.virtualHostName())
  *             .build());
  * 
- *         var rabbitmqTrigger = new Trigger(&#34;rabbitmqTrigger&#34;, TriggerArgs.builder()        
+ *         var rabbitmqTrigger = new Trigger("rabbitmqTrigger", TriggerArgs.builder()        
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
- *             .name(&#34;terraform-example-rabbitmq&#34;)
- *             .type(&#34;eventbridge&#34;)
- *             .config(Output.tuple(defaultInstance2.id(), defaultVirtualHost.virtualHostName(), defaultQueue.queueName()).applyValue(values -&gt; {
+ *             .name("terraform-example-rabbitmq")
+ *             .type("eventbridge")
+ *             .config(Output.tuple(defaultInstance2.id(), defaultVirtualHost.virtualHostName(), defaultQueue.queueName()).applyValue(values -> {
  *                 var id = values.t1;
  *                 var virtualHostName = values.t2;
  *                 var queueName = values.t3;
- *                 return &#34;&#34;&#34;
+ *                 return """
  *     {
- *         &#34;triggerEnable&#34;: false,
- *         &#34;asyncInvocationType&#34;: false,
- *         &#34;eventRuleFilterPattern&#34;: &#34;{}&#34;,
- *         &#34;eventSourceConfig&#34;: {
- *             &#34;eventSourceType&#34;: &#34;RabbitMQ&#34;,
- *             &#34;eventSourceParameters&#34;: {
- *                 &#34;sourceRabbitMQParameters&#34;: {
- *                     &#34;RegionId&#34;: &#34;%s&#34;,
- *                     &#34;InstanceId&#34;: &#34;%s&#34;,
- *                     &#34;VirtualHostName&#34;: &#34;%s&#34;,
- *                     &#34;QueueName&#34;: &#34;%s&#34;
+ *         "triggerEnable": false,
+ *         "asyncInvocationType": false,
+ *         "eventRuleFilterPattern": "{}",
+ *         "eventSourceConfig": {
+ *             "eventSourceType": "RabbitMQ",
+ *             "eventSourceParameters": {
+ *                 "sourceRabbitMQParameters": {
+ *                     "RegionId": "%s",
+ *                     "InstanceId": "%s",
+ *                     "VirtualHostName": "%s",
+ *                     "QueueName": "%s"
  *                 }
  *             }
  *         }
  *     }
- * &#34;, defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),id,virtualHostName,queueName);
+ * ", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),id,virtualHostName,queueName);
  *             }))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Module Support

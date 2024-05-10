@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,34 +60,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .instanceTypeFamily(&#34;ecs.g5&#34;)
+ *             .instanceTypeFamily("ecs.g5")
  *             .build());
  * 
  *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .availableResourceCreation("Instance")
  *             .availableInstanceType(default_.ids()[0])
  *             .build());
  * 
  *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .status(&#34;OK&#34;)
+ *             .status("OK")
  *             .build());
  * 
- *         var defaultCapacityReservation = new CapacityReservation(&#34;defaultCapacityReservation&#34;, CapacityReservationArgs.builder()        
- *             .description(&#34;terraform-example&#34;)
- *             .platform(&#34;linux&#34;)
- *             .capacityReservationName(&#34;terraform-example&#34;)
- *             .endTimeType(&#34;Unlimited&#34;)
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *         var defaultCapacityReservation = new CapacityReservation("defaultCapacityReservation", CapacityReservationArgs.builder()        
+ *             .description("terraform-example")
+ *             .platform("linux")
+ *             .capacityReservationName("terraform-example")
+ *             .endTimeType("Unlimited")
+ *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
  *             .instanceAmount(1)
  *             .instanceType(default_.ids()[0])
- *             .matchCriteria(&#34;Open&#34;)
- *             .tags(Map.of(&#34;Created&#34;, &#34;terraform-example&#34;))
- *             .zoneIds(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .matchCriteria("Open")
+ *             .tags(Map.of("Created", "terraform-example"))
+ *             .zoneIds(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

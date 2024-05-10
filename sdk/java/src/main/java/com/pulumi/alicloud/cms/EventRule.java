@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,29 +61,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new MonitorGroup(&#34;default&#34;, MonitorGroupArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new MonitorGroup("default", MonitorGroupArgs.builder()        
  *             .monitorGroupName(name)
  *             .build());
  * 
- *         var example = new EventRule(&#34;example&#34;, EventRuleArgs.builder()        
+ *         var example = new EventRule("example", EventRuleArgs.builder()        
  *             .ruleName(name)
  *             .groupId(default_.id())
  *             .silenceTime(100)
  *             .description(name)
- *             .status(&#34;ENABLED&#34;)
+ *             .status("ENABLED")
  *             .eventPattern(EventRuleEventPatternArgs.builder()
- *                 .product(&#34;ecs&#34;)
- *                 .sqlFilter(&#34;example_value&#34;)
- *                 .nameLists(&#34;example_value&#34;)
- *                 .levelLists(&#34;CRITICAL&#34;)
- *                 .eventTypeLists(&#34;StatusNotification&#34;)
+ *                 .product("ecs")
+ *                 .sqlFilter("example_value")
+ *                 .nameLists("example_value")
+ *                 .levelLists("CRITICAL")
+ *                 .eventTypeLists("StatusNotification")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,37 +57,37 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *             .vswitchName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
- *             .connectionType(&#34;slb&#34;)
- *             .netType(&#34;privatenet&#34;)
+ *         var default_ = new Cluster("default", ClusterArgs.builder()        
+ *             .connectionType("slb")
+ *             .netType("privatenet")
  *             .vswitchId(exampleSwitch.id())
- *             .clusterSpecification(&#34;MSE_SC_1_2_60_c&#34;)
- *             .clusterVersion(&#34;NACOS_2_0_0&#34;)
- *             .instanceCount(&#34;1&#34;)
- *             .pubNetworkFlow(&#34;1&#34;)
+ *             .clusterSpecification("MSE_SC_1_2_60_c")
+ *             .clusterVersion("NACOS_2_0_0")
+ *             .instanceCount("1")
+ *             .pubNetworkFlow("1")
  *             .clusterAliasName(name)
- *             .mseVersion(&#34;mse_dev&#34;)
- *             .clusterType(&#34;Nacos-Ans&#34;)
+ *             .mseVersion("mse_dev")
+ *             .clusterType("Nacos-Ans")
  *             .build());
  * 
- *         var exampleEngineNamespace = new EngineNamespace(&#34;exampleEngineNamespace&#34;, EngineNamespaceArgs.builder()        
+ *         var exampleEngineNamespace = new EngineNamespace("exampleEngineNamespace", EngineNamespaceArgs.builder()        
  *             .clusterId(default_.id())
  *             .namespaceShowName(name)
  *             .namespaceId(name)
@@ -94,7 +95,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

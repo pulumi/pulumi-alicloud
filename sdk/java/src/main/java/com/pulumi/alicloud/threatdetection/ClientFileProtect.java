@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,21 +51,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new ClientFileProtect(&#34;default&#34;, ClientFileProtectArgs.builder()        
- *             .status(&#34;0&#34;)
- *             .filePaths(&#34;/usr/local&#34;)
- *             .fileOps(&#34;CREATE&#34;)
- *             .ruleAction(&#34;pass&#34;)
- *             .procPaths(&#34;/usr/local&#34;)
- *             .alertLevel(&#34;0&#34;)
- *             .switchId(&#34;FILE_PROTECT_RULE_SWITCH_TYPE_1693474122929&#34;)
- *             .ruleName(&#34;rule_example&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new ClientFileProtect("default", ClientFileProtectArgs.builder()        
+ *             .status("0")
+ *             .filePaths("/usr/local")
+ *             .fileOps("CREATE")
+ *             .ruleAction("pass")
+ *             .procPaths("/usr/local")
+ *             .alertLevel("0")
+ *             .switchId("FILE_PROTECT_RULE_SWITCH_TYPE_1693474122929")
+ *             .ruleName("rule_example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

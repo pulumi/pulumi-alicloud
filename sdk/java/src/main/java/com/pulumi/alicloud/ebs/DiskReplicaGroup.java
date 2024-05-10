@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
@@ -62,11 +63,11 @@ import javax.annotation.Nullable;
  *             .regionId(default_.regions()[0].id())
  *             .build());
  * 
- *         var defaultDiskReplicaGroup = new DiskReplicaGroup(&#34;defaultDiskReplicaGroup&#34;, DiskReplicaGroupArgs.builder()        
+ *         var defaultDiskReplicaGroup = new DiskReplicaGroup("defaultDiskReplicaGroup", DiskReplicaGroupArgs.builder()        
  *             .sourceRegionId(default_.regions()[0].id())
- *             .sourceZoneId(defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].zones()[0].zoneId()))
+ *             .sourceZoneId(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].zones()[0].zoneId()))
  *             .destinationRegionId(default_.regions()[0].id())
- *             .destinationZoneId(defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].zones()[1].zoneId()))
+ *             .destinationZoneId(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].zones()[1].zoneId()))
  *             .groupName(name)
  *             .description(name)
  *             .rpo(900)
@@ -74,7 +75,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

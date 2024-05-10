@@ -31,7 +31,8 @@ public final class MseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -54,14 +55,15 @@ public final class MseFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids(&#34;mse-cn-0d9xxxx&#34;)
-     *             .status(&#34;INIT_SUCCESS&#34;)
+     *             .ids("mse-cn-0d9xxxx")
+     *             .status("INIT_SUCCESS")
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, example.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("clusterId", example.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -76,7 +78,8 @@ public final class MseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -99,14 +102,15 @@ public final class MseFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids(&#34;mse-cn-0d9xxxx&#34;)
-     *             .status(&#34;INIT_SUCCESS&#34;)
+     *             .ids("mse-cn-0d9xxxx")
+     *             .status("INIT_SUCCESS")
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, example.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("clusterId", example.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -121,7 +125,8 @@ public final class MseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -144,14 +149,15 @@ public final class MseFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids(&#34;mse-cn-0d9xxxx&#34;)
-     *             .status(&#34;INIT_SUCCESS&#34;)
+     *             .ids("mse-cn-0d9xxxx")
+     *             .status("INIT_SUCCESS")
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, example.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("clusterId", example.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -166,7 +172,8 @@ public final class MseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -189,14 +196,15 @@ public final class MseFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids(&#34;mse-cn-0d9xxxx&#34;)
-     *             .status(&#34;INIT_SUCCESS&#34;)
+     *             .ids("mse-cn-0d9xxxx")
+     *             .status("INIT_SUCCESS")
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, example.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("clusterId", example.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -211,7 +219,8 @@ public final class MseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -234,14 +243,15 @@ public final class MseFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids(&#34;mse-cn-0d9xxxx&#34;)
-     *             .status(&#34;INIT_SUCCESS&#34;)
+     *             .ids("mse-cn-0d9xxxx")
+     *             .status("INIT_SUCCESS")
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, example.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("clusterId", example.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -256,7 +266,8 @@ public final class MseFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -279,14 +290,15 @@ public final class MseFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids(&#34;mse-cn-0d9xxxx&#34;)
-     *             .status(&#34;INIT_SUCCESS&#34;)
+     *             .ids("mse-cn-0d9xxxx")
+     *             .status("INIT_SUCCESS")
      *             .build());
      * 
-     *         ctx.export(&#34;clusterId&#34;, example.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()));
+     *         ctx.export("clusterId", example.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -303,7 +315,8 @@ public final class MseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -325,14 +338,15 @@ public final class MseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .clusterId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;mseEngineNamespaceId1&#34;, ids.applyValue(getEngineNamespacesResult -&gt; getEngineNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("mseEngineNamespaceId1", ids.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -349,7 +363,8 @@ public final class MseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -371,14 +386,15 @@ public final class MseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .clusterId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;mseEngineNamespaceId1&#34;, ids.applyValue(getEngineNamespacesResult -&gt; getEngineNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("mseEngineNamespaceId1", ids.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -395,7 +411,8 @@ public final class MseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -417,14 +434,15 @@ public final class MseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .clusterId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;mseEngineNamespaceId1&#34;, ids.applyValue(getEngineNamespacesResult -&gt; getEngineNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("mseEngineNamespaceId1", ids.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -441,7 +459,8 @@ public final class MseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -463,14 +482,15 @@ public final class MseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .clusterId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;mseEngineNamespaceId1&#34;, ids.applyValue(getEngineNamespacesResult -&gt; getEngineNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("mseEngineNamespaceId1", ids.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -487,7 +507,8 @@ public final class MseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -509,23 +530,24 @@ public final class MseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .status(&#34;2&#34;)
+     *             .status("2")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId3&#34;, status.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId3", status.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -542,7 +564,8 @@ public final class MseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -564,23 +587,24 @@ public final class MseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .status(&#34;2&#34;)
+     *             .status("2")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId3&#34;, status.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId3", status.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -597,7 +621,8 @@ public final class MseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -619,23 +644,24 @@ public final class MseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .status(&#34;2&#34;)
+     *             .status("2")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId3&#34;, status.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId3", status.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -652,7 +678,8 @@ public final class MseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -674,23 +701,24 @@ public final class MseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .status(&#34;2&#34;)
+     *             .status("2")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId3&#34;, status.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId3", status.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -707,7 +735,8 @@ public final class MseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -729,23 +758,24 @@ public final class MseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .status(&#34;2&#34;)
+     *             .status("2")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId3&#34;, status.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId3", status.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -762,7 +792,8 @@ public final class MseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -784,23 +815,24 @@ public final class MseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId1&#34;, ids.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId1", ids.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var nameRegex = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .nameRegex(&#34;^my-Gateway&#34;)
+     *             .nameRegex("^my-Gateway")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId2&#34;, nameRegex.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId2", nameRegex.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *         final var status = MseFunctions.getGateways(GetGatewaysArgs.builder()
-     *             .status(&#34;2&#34;)
+     *             .status("2")
      *             .build());
      * 
-     *         ctx.export(&#34;mseGatewayId3&#34;, status.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
+     *         ctx.export("mseGatewayId3", status.applyValue(getGatewaysResult -> getGatewaysResult.gateways()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -817,7 +849,8 @@ public final class MseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -839,24 +872,25 @@ public final class MseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MseFunctions.getZnodes(GetZnodesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
-     *             .path(&#34;/&#34;)
+     *             .clusterId("example_value")
+     *             .path("/")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;mseZnodeId1&#34;, ids.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId1", ids.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
      *         final var nameRegex = MseFunctions.getZnodes(GetZnodesArgs.builder()
-     *             .path(&#34;/&#34;)
-     *             .clusterId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Znode&#34;)
+     *             .path("/")
+     *             .clusterId("example_value")
+     *             .nameRegex("^my-Znode")
      *             .build());
      * 
-     *         ctx.export(&#34;mseZnodeId2&#34;, nameRegex.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId2", nameRegex.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -873,7 +907,8 @@ public final class MseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -895,24 +930,25 @@ public final class MseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MseFunctions.getZnodes(GetZnodesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
-     *             .path(&#34;/&#34;)
+     *             .clusterId("example_value")
+     *             .path("/")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;mseZnodeId1&#34;, ids.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId1", ids.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
      *         final var nameRegex = MseFunctions.getZnodes(GetZnodesArgs.builder()
-     *             .path(&#34;/&#34;)
-     *             .clusterId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Znode&#34;)
+     *             .path("/")
+     *             .clusterId("example_value")
+     *             .nameRegex("^my-Znode")
      *             .build());
      * 
-     *         ctx.export(&#34;mseZnodeId2&#34;, nameRegex.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId2", nameRegex.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -929,7 +965,8 @@ public final class MseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -951,24 +988,25 @@ public final class MseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MseFunctions.getZnodes(GetZnodesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
-     *             .path(&#34;/&#34;)
+     *             .clusterId("example_value")
+     *             .path("/")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;mseZnodeId1&#34;, ids.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId1", ids.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
      *         final var nameRegex = MseFunctions.getZnodes(GetZnodesArgs.builder()
-     *             .path(&#34;/&#34;)
-     *             .clusterId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Znode&#34;)
+     *             .path("/")
+     *             .clusterId("example_value")
+     *             .nameRegex("^my-Znode")
      *             .build());
      * 
-     *         ctx.export(&#34;mseZnodeId2&#34;, nameRegex.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId2", nameRegex.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -985,7 +1023,8 @@ public final class MseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1007,24 +1046,25 @@ public final class MseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MseFunctions.getZnodes(GetZnodesArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
-     *             .path(&#34;/&#34;)
+     *             .clusterId("example_value")
+     *             .path("/")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;mseZnodeId1&#34;, ids.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId1", ids.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
      *         final var nameRegex = MseFunctions.getZnodes(GetZnodesArgs.builder()
-     *             .path(&#34;/&#34;)
-     *             .clusterId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Znode&#34;)
+     *             .path("/")
+     *             .clusterId("example_value")
+     *             .nameRegex("^my-Znode")
      *             .build());
      * 
-     *         ctx.export(&#34;mseZnodeId2&#34;, nameRegex.applyValue(getZnodesResult -&gt; getZnodesResult.znodes()[0].id()));
+     *         ctx.export("mseZnodeId2", nameRegex.applyValue(getZnodesResult -> getZnodesResult.znodes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

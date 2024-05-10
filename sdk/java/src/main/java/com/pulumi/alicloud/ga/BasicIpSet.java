@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,27 +51,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         var default_ = new BasicAccelerator(&#34;default&#34;, BasicAcceleratorArgs.builder()        
+ *         final var region = config.get("region").orElse("cn-hangzhou");
+ *         var default_ = new BasicAccelerator("default", BasicAcceleratorArgs.builder()        
  *             .duration(1)
- *             .pricingCycle(&#34;Month&#34;)
- *             .bandwidthBillingType(&#34;CDT&#34;)
+ *             .pricingCycle("Month")
+ *             .bandwidthBillingType("CDT")
  *             .autoPay(true)
- *             .autoUseCoupon(&#34;true&#34;)
+ *             .autoUseCoupon("true")
  *             .autoRenew(false)
  *             .autoRenewDuration(1)
  *             .build());
  * 
- *         var defaultBasicIpSet = new BasicIpSet(&#34;defaultBasicIpSet&#34;, BasicIpSetArgs.builder()        
+ *         var defaultBasicIpSet = new BasicIpSet("defaultBasicIpSet", BasicIpSetArgs.builder()        
  *             .acceleratorId(default_.id())
  *             .accelerateRegionId(region)
- *             .ispType(&#34;BGP&#34;)
- *             .bandwidth(&#34;5&#34;)
+ *             .ispType("BGP")
+ *             .bandwidth("5")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

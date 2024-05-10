@@ -24,7 +24,8 @@ public final class CloudconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -49,19 +50,20 @@ public final class CloudconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
      *             .ids(defaultAlicloudCloudConnectNetworks.id())
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .name(&#34;tf-testAccCloudConnectNetworkName&#34;)
-     *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .name("tf-testAccCloudConnectNetworkName")
+     *             .description("tf-testAccCloudConnectNetworkDescription")
+     *             .cidrBlock("192.168.0.0/24")
      *             .isDefault(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -78,7 +80,8 @@ public final class CloudconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -103,19 +106,20 @@ public final class CloudconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
      *             .ids(defaultAlicloudCloudConnectNetworks.id())
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .name(&#34;tf-testAccCloudConnectNetworkName&#34;)
-     *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .name("tf-testAccCloudConnectNetworkName")
+     *             .description("tf-testAccCloudConnectNetworkDescription")
+     *             .cidrBlock("192.168.0.0/24")
      *             .isDefault(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -132,7 +136,8 @@ public final class CloudconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -157,19 +162,20 @@ public final class CloudconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
      *             .ids(defaultAlicloudCloudConnectNetworks.id())
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .name(&#34;tf-testAccCloudConnectNetworkName&#34;)
-     *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .name("tf-testAccCloudConnectNetworkName")
+     *             .description("tf-testAccCloudConnectNetworkDescription")
+     *             .cidrBlock("192.168.0.0/24")
      *             .isDefault(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -186,7 +192,8 @@ public final class CloudconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -211,19 +218,20 @@ public final class CloudconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
      *             .ids(defaultAlicloudCloudConnectNetworks.id())
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .name(&#34;tf-testAccCloudConnectNetworkName&#34;)
-     *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .name("tf-testAccCloudConnectNetworkName")
+     *             .description("tf-testAccCloudConnectNetworkDescription")
+     *             .cidrBlock("192.168.0.0/24")
      *             .isDefault(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -240,7 +248,8 @@ public final class CloudconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -265,19 +274,20 @@ public final class CloudconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
      *             .ids(defaultAlicloudCloudConnectNetworks.id())
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .name(&#34;tf-testAccCloudConnectNetworkName&#34;)
-     *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .name("tf-testAccCloudConnectNetworkName")
+     *             .description("tf-testAccCloudConnectNetworkDescription")
+     *             .cidrBlock("192.168.0.0/24")
      *             .isDefault(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -294,7 +304,8 @@ public final class CloudconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -319,19 +330,20 @@ public final class CloudconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CloudconnectFunctions.getNetworks(GetNetworksArgs.builder()
      *             .ids(defaultAlicloudCloudConnectNetworks.id())
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .name(&#34;tf-testAccCloudConnectNetworkName&#34;)
-     *             .description(&#34;tf-testAccCloudConnectNetworkDescription&#34;)
-     *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .name("tf-testAccCloudConnectNetworkName")
+     *             .description("tf-testAccCloudConnectNetworkDescription")
+     *             .cidrBlock("192.168.0.0/24")
      *             .isDefault(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

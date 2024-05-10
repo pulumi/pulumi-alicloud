@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,69 +68,70 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var listener = new ApplicationLoadBalancer(&#34;listener&#34;, ApplicationLoadBalancerArgs.builder()        
- *             .loadBalancerName(String.format(&#34;%s-%s&#34;, name,default_.result()))
- *             .internetChargeType(&#34;PayByTraffic&#34;)
- *             .addressType(&#34;internet&#34;)
- *             .instanceChargeType(&#34;PayByCLCU&#34;)
+ *         var listener = new ApplicationLoadBalancer("listener", ApplicationLoadBalancerArgs.builder()        
+ *             .loadBalancerName(String.format("%s-%s", name,default_.result()))
+ *             .internetChargeType("PayByTraffic")
+ *             .addressType("internet")
+ *             .instanceChargeType("PayByCLCU")
  *             .build());
  * 
- *         var listenerAcl = new Acl(&#34;listenerAcl&#34;, AclArgs.builder()        
- *             .name(String.format(&#34;%s-%s&#34;, name,default_.result()))
- *             .ipVersion(&#34;ipv4&#34;)
+ *         var listenerAcl = new Acl("listenerAcl", AclArgs.builder()        
+ *             .name(String.format("%s-%s", name,default_.result()))
+ *             .ipVersion("ipv4")
  *             .build());
  * 
- *         var listenerListener = new Listener(&#34;listenerListener&#34;, ListenerArgs.builder()        
+ *         var listenerListener = new Listener("listenerListener", ListenerArgs.builder()        
  *             .loadBalancerId(listener.id())
  *             .backendPort(80)
  *             .frontendPort(80)
- *             .protocol(&#34;http&#34;)
+ *             .protocol("http")
  *             .bandwidth(10)
- *             .stickySession(&#34;on&#34;)
- *             .stickySessionType(&#34;insert&#34;)
+ *             .stickySession("on")
+ *             .stickySessionType("insert")
  *             .cookieTimeout(86400)
- *             .cookie(&#34;tfslblistenercookie&#34;)
- *             .healthCheck(&#34;on&#34;)
- *             .healthCheckDomain(&#34;ali.com&#34;)
- *             .healthCheckUri(&#34;/cons&#34;)
+ *             .cookie("tfslblistenercookie")
+ *             .healthCheck("on")
+ *             .healthCheckDomain("ali.com")
+ *             .healthCheckUri("/cons")
  *             .healthCheckConnectPort(20)
  *             .healthyThreshold(8)
  *             .unhealthyThreshold(8)
  *             .healthCheckTimeout(8)
  *             .healthCheckInterval(5)
- *             .healthCheckHttpCode(&#34;http_2xx,http_3xx&#34;)
+ *             .healthCheckHttpCode("http_2xx,http_3xx")
  *             .xForwardedFor(ListenerXForwardedForArgs.builder()
  *                 .retriveSlbIp(true)
  *                 .retriveSlbId(true)
  *                 .build())
- *             .aclStatus(&#34;on&#34;)
- *             .aclType(&#34;white&#34;)
+ *             .aclStatus("on")
+ *             .aclType("white")
  *             .aclId(listenerAcl.id())
  *             .requestTimeout(80)
  *             .idleTimeout(30)
  *             .build());
  * 
- *         var first = new AclEntryAttachment(&#34;first&#34;, AclEntryAttachmentArgs.builder()        
+ *         var first = new AclEntryAttachment("first", AclEntryAttachmentArgs.builder()        
  *             .aclId(listenerAcl.id())
- *             .entry(&#34;10.10.10.0/24&#34;)
- *             .comment(&#34;first&#34;)
+ *             .entry("10.10.10.0/24")
+ *             .comment("first")
  *             .build());
  * 
- *         var second = new AclEntryAttachment(&#34;second&#34;, AclEntryAttachmentArgs.builder()        
+ *         var second = new AclEntryAttachment("second", AclEntryAttachmentArgs.builder()        
  *             .aclId(listenerAcl.id())
- *             .entry(&#34;168.10.10.0/24&#34;)
- *             .comment(&#34;second&#34;)
+ *             .entry("168.10.10.0/24")
+ *             .comment("second")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -46,7 +46,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -75,55 +76,56 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;ask-example&#34;);
+ *         final var name = config.get("name").orElse("ask-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+ *             .cidrBlock("10.1.0.0/21")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+ *             .cidrBlock("10.1.1.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var serverless = new ServerlessKubernetes(&#34;serverless&#34;, ServerlessKubernetesArgs.builder()        
+ *         var serverless = new ServerlessKubernetes("serverless", ServerlessKubernetesArgs.builder()        
  *             .namePrefix(name)
- *             .clusterSpec(&#34;ack.pro.small&#34;)
+ *             .clusterSpec("ack.pro.small")
  *             .vpcId(defaultNetwork.id())
  *             .vswitchIds(defaultSwitch.id())
  *             .newNatGateway(true)
  *             .endpointPublicAccessEnabled(true)
  *             .deletionProtection(false)
- *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
- *             .timeZone(&#34;Asia/Shanghai&#34;)
- *             .serviceCidr(&#34;172.21.0.0/20&#34;)
- *             .serviceDiscoveryTypes(&#34;PrivateZone&#34;)
- *             .loggingType(&#34;SLS&#34;)
+ *             .loadBalancerSpec("slb.s2.small")
+ *             .timeZone("Asia/Shanghai")
+ *             .serviceCidr("172.21.0.0/20")
+ *             .serviceDiscoveryTypes("PrivateZone")
+ *             .loggingType("SLS")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;k-aa&#34;, &#34;v-aa&#34;),
- *                 Map.entry(&#34;k-bb&#34;, &#34;v-aa&#34;)
+ *                 Map.entry("k-aa", "v-aa"),
+ *                 Map.entry("k-bb", "v-aa")
  *             ))
  *             .addons(            
  *                 ServerlessKubernetesAddonArgs.builder()
- *                     .name(&#34;alb-ingress-controller&#34;)
+ *                     .name("alb-ingress-controller")
  *                     .build(),
  *                 ServerlessKubernetesAddonArgs.builder()
- *                     .name(&#34;metrics-server&#34;)
+ *                     .name("metrics-server")
  *                     .build(),
  *                 ServerlessKubernetesAddonArgs.builder()
- *                     .name(&#34;knative&#34;)
+ *                     .name("knative")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

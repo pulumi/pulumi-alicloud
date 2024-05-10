@@ -36,7 +36,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -59,10 +60,11 @@ public final class CddcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CddcFunctions.getDedicatedHostAccounts();
      * 
-     *         ctx.export(&#34;cddcDedicatedHostAccountId1&#34;, ids.applyValue(getDedicatedHostAccountsResult -&gt; getDedicatedHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("cddcDedicatedHostAccountId1", ids.applyValue(getDedicatedHostAccountsResult -> getDedicatedHostAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -79,7 +81,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -102,10 +105,11 @@ public final class CddcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CddcFunctions.getDedicatedHostAccounts();
      * 
-     *         ctx.export(&#34;cddcDedicatedHostAccountId1&#34;, ids.applyValue(getDedicatedHostAccountsResult -&gt; getDedicatedHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("cddcDedicatedHostAccountId1", ids.applyValue(getDedicatedHostAccountsResult -> getDedicatedHostAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -122,7 +126,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -145,10 +150,11 @@ public final class CddcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CddcFunctions.getDedicatedHostAccounts();
      * 
-     *         ctx.export(&#34;cddcDedicatedHostAccountId1&#34;, ids.applyValue(getDedicatedHostAccountsResult -&gt; getDedicatedHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("cddcDedicatedHostAccountId1", ids.applyValue(getDedicatedHostAccountsResult -> getDedicatedHostAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -165,7 +171,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -188,10 +195,11 @@ public final class CddcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CddcFunctions.getDedicatedHostAccounts();
      * 
-     *         ctx.export(&#34;cddcDedicatedHostAccountId1&#34;, ids.applyValue(getDedicatedHostAccountsResult -&gt; getDedicatedHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("cddcDedicatedHostAccountId1", ids.applyValue(getDedicatedHostAccountsResult -> getDedicatedHostAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -208,7 +216,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -231,10 +240,11 @@ public final class CddcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CddcFunctions.getDedicatedHostAccounts();
      * 
-     *         ctx.export(&#34;cddcDedicatedHostAccountId1&#34;, ids.applyValue(getDedicatedHostAccountsResult -&gt; getDedicatedHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("cddcDedicatedHostAccountId1", ids.applyValue(getDedicatedHostAccountsResult -> getDedicatedHostAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -251,7 +261,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -274,10 +285,11 @@ public final class CddcFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CddcFunctions.getDedicatedHostAccounts();
      * 
-     *         ctx.export(&#34;cddcDedicatedHostAccountId1&#34;, ids.applyValue(getDedicatedHostAccountsResult -&gt; getDedicatedHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("cddcDedicatedHostAccountId1", ids.applyValue(getDedicatedHostAccountsResult -> getDedicatedHostAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -294,7 +306,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -316,13 +329,14 @@ public final class CddcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CddcFunctions.getDedicatedHostGroups(GetDedicatedHostGroupsArgs.builder()
-     *             .engine(&#34;MongoDB&#34;)
+     *             .engine("MongoDB")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostGroupId&#34;, default_.id());
+     *         ctx.export("cddcDedicatedHostGroupId", default_.id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -339,7 +353,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -361,13 +376,14 @@ public final class CddcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CddcFunctions.getDedicatedHostGroups(GetDedicatedHostGroupsArgs.builder()
-     *             .engine(&#34;MongoDB&#34;)
+     *             .engine("MongoDB")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostGroupId&#34;, default_.id());
+     *         ctx.export("cddcDedicatedHostGroupId", default_.id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -384,7 +400,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -406,13 +423,14 @@ public final class CddcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CddcFunctions.getDedicatedHostGroups(GetDedicatedHostGroupsArgs.builder()
-     *             .engine(&#34;MongoDB&#34;)
+     *             .engine("MongoDB")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostGroupId&#34;, default_.id());
+     *         ctx.export("cddcDedicatedHostGroupId", default_.id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -429,7 +447,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -451,13 +470,14 @@ public final class CddcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CddcFunctions.getDedicatedHostGroups(GetDedicatedHostGroupsArgs.builder()
-     *             .engine(&#34;MongoDB&#34;)
+     *             .engine("MongoDB")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostGroupId&#34;, default_.id());
+     *         ctx.export("cddcDedicatedHostGroupId", default_.id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -474,7 +494,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -496,13 +517,14 @@ public final class CddcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CddcFunctions.getDedicatedHostGroups(GetDedicatedHostGroupsArgs.builder()
-     *             .engine(&#34;MongoDB&#34;)
+     *             .engine("MongoDB")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostGroupId&#34;, default_.id());
+     *         ctx.export("cddcDedicatedHostGroupId", default_.id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -519,7 +541,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -541,13 +564,14 @@ public final class CddcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CddcFunctions.getDedicatedHostGroups(GetDedicatedHostGroupsArgs.builder()
-     *             .engine(&#34;MongoDB&#34;)
+     *             .engine("MongoDB")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostGroupId&#34;, default_.id());
+     *         ctx.export("cddcDedicatedHostGroupId", default_.id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -564,7 +588,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -586,52 +611,53 @@ public final class CddcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId1&#34;, ids.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId1", ids.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var status = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .status(&#34;1&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .status("1")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId2&#34;, status.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId2", status.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var zoneId = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .zoneId(&#34;example_value&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId3&#34;, zoneId.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId3", zoneId.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var allocationStatus = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .allocationStatus(&#34;Allocatable&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .allocationStatus("Allocatable")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId4&#34;, allocationStatus.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId4", allocationStatus.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var hostType = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .hostType(&#34;dhg_cloud_ssd&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .hostType("dhg_cloud_ssd")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId5&#34;, hostType.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId5", hostType.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -648,7 +674,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -670,52 +697,53 @@ public final class CddcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId1&#34;, ids.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId1", ids.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var status = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .status(&#34;1&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .status("1")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId2&#34;, status.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId2", status.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var zoneId = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .zoneId(&#34;example_value&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId3&#34;, zoneId.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId3", zoneId.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var allocationStatus = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .allocationStatus(&#34;Allocatable&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .allocationStatus("Allocatable")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId4&#34;, allocationStatus.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId4", allocationStatus.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var hostType = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .hostType(&#34;dhg_cloud_ssd&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .hostType("dhg_cloud_ssd")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId5&#34;, hostType.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId5", hostType.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -732,7 +760,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -754,52 +783,53 @@ public final class CddcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId1&#34;, ids.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId1", ids.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var status = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .status(&#34;1&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .status("1")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId2&#34;, status.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId2", status.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var zoneId = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .zoneId(&#34;example_value&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId3&#34;, zoneId.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId3", zoneId.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var allocationStatus = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .allocationStatus(&#34;Allocatable&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .allocationStatus("Allocatable")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId4&#34;, allocationStatus.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId4", allocationStatus.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var hostType = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .hostType(&#34;dhg_cloud_ssd&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .hostType("dhg_cloud_ssd")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId5&#34;, hostType.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId5", hostType.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -816,7 +846,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -838,52 +869,53 @@ public final class CddcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId1&#34;, ids.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId1", ids.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var status = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .status(&#34;1&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .status("1")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId2&#34;, status.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId2", status.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var zoneId = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .zoneId(&#34;example_value&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .zoneId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId3&#34;, zoneId.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId3", zoneId.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var allocationStatus = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .allocationStatus(&#34;Allocatable&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .allocationStatus("Allocatable")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId4&#34;, allocationStatus.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId4", allocationStatus.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *         final var hostType = CddcFunctions.getDedicatedHosts(GetDedicatedHostsArgs.builder()
-     *             .dedicatedHostGroupId(&#34;example_value&#34;)
+     *             .dedicatedHostGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .hostType(&#34;dhg_cloud_ssd&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .hostType("dhg_cloud_ssd")
      *             .build());
      * 
-     *         ctx.export(&#34;cddcDedicatedHostId5&#34;, hostType.applyValue(getDedicatedHostsResult -&gt; getDedicatedHostsResult.hosts()[0].id()));
+     *         ctx.export("cddcDedicatedHostId5", hostType.applyValue(getDedicatedHostsResult -> getDedicatedHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -936,7 +968,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -959,10 +992,11 @@ public final class CddcFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CddcFunctions.getZones();
      * 
-     *         ctx.export(&#34;cddcZonesId1&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *         ctx.export("cddcZonesId1", example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -979,7 +1013,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1002,10 +1037,11 @@ public final class CddcFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CddcFunctions.getZones();
      * 
-     *         ctx.export(&#34;cddcZonesId1&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *         ctx.export("cddcZonesId1", example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1022,7 +1058,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1045,10 +1082,11 @@ public final class CddcFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CddcFunctions.getZones();
      * 
-     *         ctx.export(&#34;cddcZonesId1&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *         ctx.export("cddcZonesId1", example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1065,7 +1103,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1088,10 +1127,11 @@ public final class CddcFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CddcFunctions.getZones();
      * 
-     *         ctx.export(&#34;cddcZonesId1&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *         ctx.export("cddcZonesId1", example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1108,7 +1148,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1131,10 +1172,11 @@ public final class CddcFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CddcFunctions.getZones();
      * 
-     *         ctx.export(&#34;cddcZonesId1&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *         ctx.export("cddcZonesId1", example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1151,7 +1193,8 @@ public final class CddcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1174,10 +1217,11 @@ public final class CddcFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CddcFunctions.getZones();
      * 
-     *         ctx.export(&#34;cddcZonesId1&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *         ctx.export("cddcZonesId1", example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

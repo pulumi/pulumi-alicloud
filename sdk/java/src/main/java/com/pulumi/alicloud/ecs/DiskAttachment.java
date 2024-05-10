@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,35 +54,36 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new ECS disk-attachment and use it attach one disk to a new instance.
- *         var ecsSg = new SecurityGroup(&#34;ecsSg&#34;, SecurityGroupArgs.builder()        
- *             .name(&#34;terraform-test-group&#34;)
- *             .description(&#34;New security group&#34;)
+ *         var ecsSg = new SecurityGroup("ecsSg", SecurityGroupArgs.builder()        
+ *             .name("terraform-test-group")
+ *             .description("New security group")
  *             .build());
  * 
- *         var ecsDisk = new Disk(&#34;ecsDisk&#34;, DiskArgs.builder()        
- *             .availabilityZone(&#34;cn-beijing-a&#34;)
- *             .size(&#34;50&#34;)
- *             .tags(Map.of(&#34;Name&#34;, &#34;TerraformTest-disk&#34;))
+ *         var ecsDisk = new Disk("ecsDisk", DiskArgs.builder()        
+ *             .availabilityZone("cn-beijing-a")
+ *             .size("50")
+ *             .tags(Map.of("Name", "TerraformTest-disk"))
  *             .build());
  * 
- *         var ecsInstance = new Instance(&#34;ecsInstance&#34;, InstanceArgs.builder()        
- *             .imageId(&#34;ubuntu_18_04_64_20G_alibase_20190624.vhd&#34;)
- *             .instanceType(&#34;ecs.n4.small&#34;)
- *             .availabilityZone(&#34;cn-beijing-a&#34;)
+ *         var ecsInstance = new Instance("ecsInstance", InstanceArgs.builder()        
+ *             .imageId("ubuntu_18_04_64_20G_alibase_20190624.vhd")
+ *             .instanceType("ecs.n4.small")
+ *             .availabilityZone("cn-beijing-a")
  *             .securityGroups(ecsSg.id())
- *             .instanceName(&#34;Hello&#34;)
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
- *             .tags(Map.of(&#34;Name&#34;, &#34;TerraformTest-instance&#34;))
+ *             .instanceName("Hello")
+ *             .internetChargeType("PayByBandwidth")
+ *             .tags(Map.of("Name", "TerraformTest-instance"))
  *             .build());
  * 
- *         var ecsDiskAtt = new DiskAttachment(&#34;ecsDiskAtt&#34;, DiskAttachmentArgs.builder()        
+ *         var ecsDiskAtt = new DiskAttachment("ecsDiskAtt", DiskAttachmentArgs.builder()        
  *             .diskId(ecsDisk.id())
  *             .instanceId(ecsInstance.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

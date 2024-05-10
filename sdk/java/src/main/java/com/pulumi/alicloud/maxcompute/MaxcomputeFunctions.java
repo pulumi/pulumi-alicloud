@@ -25,7 +25,8 @@ public final class MaxcomputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -49,12 +50,12 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testaccmp&#34;);
-     *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
-     *             .defaultQuota(&#34;默认后付费Quota&#34;)
+     *         final var name = config.get("name").orElse("tf_testaccmp");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+     *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
-     *             .productType(&#34;PAYASYOUGO&#34;)
+     *             .productType("PAYASYOUGO")
      *             .build());
      * 
      *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
@@ -62,10 +63,11 @@ public final class MaxcomputeFunctions {
      *             .nameRegex(defaultProject.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, default_.applyValue(default_ -&gt; default_.projects()[0].id()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -80,7 +82,8 @@ public final class MaxcomputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -104,12 +107,12 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testaccmp&#34;);
-     *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
-     *             .defaultQuota(&#34;默认后付费Quota&#34;)
+     *         final var name = config.get("name").orElse("tf_testaccmp");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+     *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
-     *             .productType(&#34;PAYASYOUGO&#34;)
+     *             .productType("PAYASYOUGO")
      *             .build());
      * 
      *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
@@ -117,10 +120,11 @@ public final class MaxcomputeFunctions {
      *             .nameRegex(defaultProject.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, default_.applyValue(default_ -&gt; default_.projects()[0].id()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -135,7 +139,8 @@ public final class MaxcomputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -159,12 +164,12 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testaccmp&#34;);
-     *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
-     *             .defaultQuota(&#34;默认后付费Quota&#34;)
+     *         final var name = config.get("name").orElse("tf_testaccmp");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+     *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
-     *             .productType(&#34;PAYASYOUGO&#34;)
+     *             .productType("PAYASYOUGO")
      *             .build());
      * 
      *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
@@ -172,10 +177,11 @@ public final class MaxcomputeFunctions {
      *             .nameRegex(defaultProject.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, default_.applyValue(default_ -&gt; default_.projects()[0].id()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -190,7 +196,8 @@ public final class MaxcomputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -214,12 +221,12 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testaccmp&#34;);
-     *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
-     *             .defaultQuota(&#34;默认后付费Quota&#34;)
+     *         final var name = config.get("name").orElse("tf_testaccmp");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+     *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
-     *             .productType(&#34;PAYASYOUGO&#34;)
+     *             .productType("PAYASYOUGO")
      *             .build());
      * 
      *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
@@ -227,10 +234,11 @@ public final class MaxcomputeFunctions {
      *             .nameRegex(defaultProject.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, default_.applyValue(default_ -&gt; default_.projects()[0].id()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -245,7 +253,8 @@ public final class MaxcomputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -269,12 +278,12 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testaccmp&#34;);
-     *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
-     *             .defaultQuota(&#34;默认后付费Quota&#34;)
+     *         final var name = config.get("name").orElse("tf_testaccmp");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+     *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
-     *             .productType(&#34;PAYASYOUGO&#34;)
+     *             .productType("PAYASYOUGO")
      *             .build());
      * 
      *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
@@ -282,10 +291,11 @@ public final class MaxcomputeFunctions {
      *             .nameRegex(defaultProject.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, default_.applyValue(default_ -&gt; default_.projects()[0].id()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -300,7 +310,8 @@ public final class MaxcomputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -324,12 +335,12 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_testaccmp&#34;);
-     *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
-     *             .defaultQuota(&#34;默认后付费Quota&#34;)
+     *         final var name = config.get("name").orElse("tf_testaccmp");
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+     *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
-     *             .productType(&#34;PAYASYOUGO&#34;)
+     *             .productType("PAYASYOUGO")
      *             .build());
      * 
      *         final var default = MaxcomputeFunctions.getProjects(GetProjectsArgs.builder()
@@ -337,10 +348,11 @@ public final class MaxcomputeFunctions {
      *             .nameRegex(defaultProject.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudMaxcomputeProjectExampleId&#34;, default_.applyValue(default_ -&gt; default_.projects()[0].id()));
+     *         ctx.export("alicloudMaxcomputeProjectExampleId", default_.applyValue(default_ -> default_.projects()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -359,7 +371,8 @@ public final class MaxcomputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -381,12 +394,13 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = MaxcomputeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -405,7 +419,8 @@ public final class MaxcomputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -427,12 +442,13 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = MaxcomputeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -451,7 +467,8 @@ public final class MaxcomputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -473,12 +490,13 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = MaxcomputeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -497,7 +515,8 @@ public final class MaxcomputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -519,12 +538,13 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = MaxcomputeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -543,7 +563,8 @@ public final class MaxcomputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -565,12 +586,13 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = MaxcomputeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -589,7 +611,8 @@ public final class MaxcomputeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -611,12 +634,13 @@ public final class MaxcomputeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = MaxcomputeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

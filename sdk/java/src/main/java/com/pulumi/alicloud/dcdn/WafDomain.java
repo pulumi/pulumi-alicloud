@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,32 +54,33 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;tf-example.com&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var domainName = config.get("domainName").orElse("tf-example.com");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new Domain(&#34;example&#34;, DomainArgs.builder()        
- *             .domainName(String.format(&#34;%s-%s&#34;, domainName,default_.result()))
- *             .scope(&#34;overseas&#34;)
+ *         var example = new Domain("example", DomainArgs.builder()        
+ *             .domainName(String.format("%s-%s", domainName,default_.result()))
+ *             .scope("overseas")
  *             .sources(DomainSourceArgs.builder()
- *                 .content(&#34;1.1.1.1&#34;)
- *                 .port(&#34;80&#34;)
- *                 .priority(&#34;20&#34;)
- *                 .type(&#34;ipaddr&#34;)
- *                 .weight(&#34;10&#34;)
+ *                 .content("1.1.1.1")
+ *                 .port("80")
+ *                 .priority("20")
+ *                 .type("ipaddr")
+ *                 .weight("10")
  *                 .build())
  *             .build());
  * 
- *         var exampleWafDomain = new WafDomain(&#34;exampleWafDomain&#34;, WafDomainArgs.builder()        
+ *         var exampleWafDomain = new WafDomain("exampleWafDomain", WafDomainArgs.builder()        
  *             .domainName(example.domainName())
- *             .clientIpTag(&#34;X-Forwarded-For&#34;)
+ *             .clientIpTag("X-Forwarded-For")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

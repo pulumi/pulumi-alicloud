@@ -69,7 +69,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -91,18 +92,19 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getAccessStrategies(GetAccessStrategiesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .strategyMode(&#34;example_value&#34;)
+     *             .instanceId("example_value")
+     *             .strategyMode("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsAccessStrategyId1&#34;, ids.applyValue(getAccessStrategiesResult -&gt; getAccessStrategiesResult.strategies()[0].id()));
+     *         ctx.export("alidnsAccessStrategyId1", ids.applyValue(getAccessStrategiesResult -> getAccessStrategiesResult.strategies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -119,7 +121,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -141,18 +144,19 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getAccessStrategies(GetAccessStrategiesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .strategyMode(&#34;example_value&#34;)
+     *             .instanceId("example_value")
+     *             .strategyMode("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsAccessStrategyId1&#34;, ids.applyValue(getAccessStrategiesResult -&gt; getAccessStrategiesResult.strategies()[0].id()));
+     *         ctx.export("alidnsAccessStrategyId1", ids.applyValue(getAccessStrategiesResult -> getAccessStrategiesResult.strategies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -169,7 +173,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -191,18 +196,19 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getAccessStrategies(GetAccessStrategiesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .strategyMode(&#34;example_value&#34;)
+     *             .instanceId("example_value")
+     *             .strategyMode("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsAccessStrategyId1&#34;, ids.applyValue(getAccessStrategiesResult -&gt; getAccessStrategiesResult.strategies()[0].id()));
+     *         ctx.export("alidnsAccessStrategyId1", ids.applyValue(getAccessStrategiesResult -> getAccessStrategiesResult.strategies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -219,7 +225,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -241,18 +248,19 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getAccessStrategies(GetAccessStrategiesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .strategyMode(&#34;example_value&#34;)
+     *             .instanceId("example_value")
+     *             .strategyMode("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsAccessStrategyId1&#34;, ids.applyValue(getAccessStrategiesResult -&gt; getAccessStrategiesResult.strategies()[0].id()));
+     *         ctx.export("alidnsAccessStrategyId1", ids.applyValue(getAccessStrategiesResult -> getAccessStrategiesResult.strategies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -269,7 +277,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -291,22 +300,23 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsAddressPoolId1&#34;, ids.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId1", ids.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
      *         final var nameRegex = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-AddressPool&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-AddressPool")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsAddressPoolId2&#34;, nameRegex.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId2", nameRegex.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -323,7 +333,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -345,22 +356,23 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsAddressPoolId1&#34;, ids.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId1", ids.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
      *         final var nameRegex = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-AddressPool&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-AddressPool")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsAddressPoolId2&#34;, nameRegex.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId2", nameRegex.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -377,7 +389,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -399,22 +412,23 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsAddressPoolId1&#34;, ids.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId1", ids.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
      *         final var nameRegex = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-AddressPool&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-AddressPool")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsAddressPoolId2&#34;, nameRegex.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId2", nameRegex.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -431,7 +445,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -453,22 +468,23 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsAddressPoolId1&#34;, ids.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId1", ids.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
      *         final var nameRegex = DnsFunctions.getAddressPools(GetAddressPoolsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-AddressPool&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-AddressPool")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsAddressPoolId2&#34;, nameRegex.applyValue(getAddressPoolsResult -&gt; getAddressPoolsResult.pools()[0].id()));
+     *         ctx.export("alidnsAddressPoolId2", nameRegex.applyValue(getAddressPoolsResult -> getAddressPoolsResult.pools()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -483,7 +499,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -505,13 +522,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs.builder()
-     *             .ids(&#34;c5ef2bc43064445787adf182af2****&#34;)
+     *             .ids("c5ef2bc43064445787adf182af2****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainGroupId&#34;, example.applyValue(getAlidnsDomainGroupsResult -&gt; getAlidnsDomainGroupsResult.groups()[0].id()));
+     *         ctx.export("firstDomainGroupId", example.applyValue(getAlidnsDomainGroupsResult -> getAlidnsDomainGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -526,7 +544,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -548,13 +567,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs.builder()
-     *             .ids(&#34;c5ef2bc43064445787adf182af2****&#34;)
+     *             .ids("c5ef2bc43064445787adf182af2****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainGroupId&#34;, example.applyValue(getAlidnsDomainGroupsResult -&gt; getAlidnsDomainGroupsResult.groups()[0].id()));
+     *         ctx.export("firstDomainGroupId", example.applyValue(getAlidnsDomainGroupsResult -> getAlidnsDomainGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -569,7 +589,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -591,13 +612,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs.builder()
-     *             .ids(&#34;c5ef2bc43064445787adf182af2****&#34;)
+     *             .ids("c5ef2bc43064445787adf182af2****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainGroupId&#34;, example.applyValue(getAlidnsDomainGroupsResult -&gt; getAlidnsDomainGroupsResult.groups()[0].id()));
+     *         ctx.export("firstDomainGroupId", example.applyValue(getAlidnsDomainGroupsResult -> getAlidnsDomainGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -612,7 +634,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -634,13 +657,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs.builder()
-     *             .ids(&#34;c5ef2bc43064445787adf182af2****&#34;)
+     *             .ids("c5ef2bc43064445787adf182af2****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainGroupId&#34;, example.applyValue(getAlidnsDomainGroupsResult -&gt; getAlidnsDomainGroupsResult.groups()[0].id()));
+     *         ctx.export("firstDomainGroupId", example.applyValue(getAlidnsDomainGroupsResult -> getAlidnsDomainGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -655,7 +679,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -677,13 +702,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs.builder()
-     *             .ids(&#34;c5ef2bc43064445787adf182af2****&#34;)
+     *             .ids("c5ef2bc43064445787adf182af2****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainGroupId&#34;, example.applyValue(getAlidnsDomainGroupsResult -&gt; getAlidnsDomainGroupsResult.groups()[0].id()));
+     *         ctx.export("firstDomainGroupId", example.applyValue(getAlidnsDomainGroupsResult -> getAlidnsDomainGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -698,7 +724,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -720,13 +747,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getAlidnsDomainGroups(GetAlidnsDomainGroupsArgs.builder()
-     *             .ids(&#34;c5ef2bc43064445787adf182af2****&#34;)
+     *             .ids("c5ef2bc43064445787adf182af2****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainGroupId&#34;, example.applyValue(getAlidnsDomainGroupsResult -&gt; getAlidnsDomainGroupsResult.groups()[0].id()));
+     *         ctx.export("firstDomainGroupId", example.applyValue(getAlidnsDomainGroupsResult -> getAlidnsDomainGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -741,7 +769,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -763,14 +792,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domainsDs = DnsFunctions.getAlidnsDomains(GetAlidnsDomainsArgs.builder()
-     *             .domainNameRegex(&#34;^hegu&#34;)
-     *             .outputFile(&#34;domains.txt&#34;)
+     *             .domainNameRegex("^hegu")
+     *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getAlidnsDomainsResult -&gt; getAlidnsDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.applyValue(getAlidnsDomainsResult -> getAlidnsDomainsResult.domains()[0].domainId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -785,7 +815,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -807,14 +838,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domainsDs = DnsFunctions.getAlidnsDomains(GetAlidnsDomainsArgs.builder()
-     *             .domainNameRegex(&#34;^hegu&#34;)
-     *             .outputFile(&#34;domains.txt&#34;)
+     *             .domainNameRegex("^hegu")
+     *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getAlidnsDomainsResult -&gt; getAlidnsDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.applyValue(getAlidnsDomainsResult -> getAlidnsDomainsResult.domains()[0].domainId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -829,7 +861,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -851,14 +884,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domainsDs = DnsFunctions.getAlidnsDomains(GetAlidnsDomainsArgs.builder()
-     *             .domainNameRegex(&#34;^hegu&#34;)
-     *             .outputFile(&#34;domains.txt&#34;)
+     *             .domainNameRegex("^hegu")
+     *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getAlidnsDomainsResult -&gt; getAlidnsDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.applyValue(getAlidnsDomainsResult -> getAlidnsDomainsResult.domains()[0].domainId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -873,7 +907,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -895,14 +930,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domainsDs = DnsFunctions.getAlidnsDomains(GetAlidnsDomainsArgs.builder()
-     *             .domainNameRegex(&#34;^hegu&#34;)
-     *             .outputFile(&#34;domains.txt&#34;)
+     *             .domainNameRegex("^hegu")
+     *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getAlidnsDomainsResult -&gt; getAlidnsDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.applyValue(getAlidnsDomainsResult -> getAlidnsDomainsResult.domains()[0].domainId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -917,7 +953,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -939,14 +976,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domainsDs = DnsFunctions.getAlidnsDomains(GetAlidnsDomainsArgs.builder()
-     *             .domainNameRegex(&#34;^hegu&#34;)
-     *             .outputFile(&#34;domains.txt&#34;)
+     *             .domainNameRegex("^hegu")
+     *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getAlidnsDomainsResult -&gt; getAlidnsDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.applyValue(getAlidnsDomainsResult -> getAlidnsDomainsResult.domains()[0].domainId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -961,7 +999,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -983,14 +1022,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domainsDs = DnsFunctions.getAlidnsDomains(GetAlidnsDomainsArgs.builder()
-     *             .domainNameRegex(&#34;^hegu&#34;)
-     *             .outputFile(&#34;domains.txt&#34;)
+     *             .domainNameRegex("^hegu")
+     *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getAlidnsDomainsResult -&gt; getAlidnsDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.applyValue(getAlidnsDomainsResult -> getAlidnsDomainsResult.domains()[0].domainId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1005,7 +1045,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1027,13 +1068,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getAlidnsInstances(GetAlidnsInstancesArgs.builder()
-     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getAlidnsInstancesResult -&gt; getAlidnsInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.applyValue(getAlidnsInstancesResult -> getAlidnsInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1048,7 +1090,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1070,13 +1113,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getAlidnsInstances(GetAlidnsInstancesArgs.builder()
-     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getAlidnsInstancesResult -&gt; getAlidnsInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.applyValue(getAlidnsInstancesResult -> getAlidnsInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1091,7 +1135,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1113,13 +1158,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getAlidnsInstances(GetAlidnsInstancesArgs.builder()
-     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getAlidnsInstancesResult -&gt; getAlidnsInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.applyValue(getAlidnsInstancesResult -> getAlidnsInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1134,7 +1180,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1156,13 +1203,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getAlidnsInstances(GetAlidnsInstancesArgs.builder()
-     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getAlidnsInstancesResult -&gt; getAlidnsInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.applyValue(getAlidnsInstancesResult -> getAlidnsInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1177,7 +1225,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1199,13 +1248,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getAlidnsInstances(GetAlidnsInstancesArgs.builder()
-     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getAlidnsInstancesResult -&gt; getAlidnsInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.applyValue(getAlidnsInstancesResult -> getAlidnsInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1220,7 +1270,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1242,13 +1293,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getAlidnsInstances(GetAlidnsInstancesArgs.builder()
-     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getAlidnsInstancesResult -&gt; getAlidnsInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.applyValue(getAlidnsInstancesResult -> getAlidnsInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1309,7 +1361,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1332,13 +1385,14 @@ public final class DnsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getCustomLines(GetCustomLinesArgs.builder()
      *             .enableDetails(true)
-     *             .domainName(&#34;your_domain_name&#34;)
+     *             .domainName("your_domain_name")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsCustomLineId1&#34;, ids.applyValue(getCustomLinesResult -&gt; getCustomLinesResult.lines()[0].id()));
+     *         ctx.export("alidnsCustomLineId1", ids.applyValue(getCustomLinesResult -> getCustomLinesResult.lines()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1355,7 +1409,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1378,13 +1433,14 @@ public final class DnsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getCustomLines(GetCustomLinesArgs.builder()
      *             .enableDetails(true)
-     *             .domainName(&#34;your_domain_name&#34;)
+     *             .domainName("your_domain_name")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsCustomLineId1&#34;, ids.applyValue(getCustomLinesResult -&gt; getCustomLinesResult.lines()[0].id()));
+     *         ctx.export("alidnsCustomLineId1", ids.applyValue(getCustomLinesResult -> getCustomLinesResult.lines()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1401,7 +1457,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1424,13 +1481,14 @@ public final class DnsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getCustomLines(GetCustomLinesArgs.builder()
      *             .enableDetails(true)
-     *             .domainName(&#34;your_domain_name&#34;)
+     *             .domainName("your_domain_name")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsCustomLineId1&#34;, ids.applyValue(getCustomLinesResult -&gt; getCustomLinesResult.lines()[0].id()));
+     *         ctx.export("alidnsCustomLineId1", ids.applyValue(getCustomLinesResult -> getCustomLinesResult.lines()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1447,7 +1505,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1470,13 +1529,14 @@ public final class DnsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getCustomLines(GetCustomLinesArgs.builder()
      *             .enableDetails(true)
-     *             .domainName(&#34;your_domain_name&#34;)
+     *             .domainName("your_domain_name")
      *             .build());
      * 
-     *         ctx.export(&#34;alidnsCustomLineId1&#34;, ids.applyValue(getCustomLinesResult -&gt; getCustomLinesResult.lines()[0].id()));
+     *         ctx.export("alidnsCustomLineId1", ids.applyValue(getCustomLinesResult -> getCustomLinesResult.lines()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1561,7 +1621,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1583,15 +1644,16 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DnsFunctions.getDomainTxtGuid(GetDomainTxtGuidArgs.builder()
-     *             .domainName(&#34;test111.abc&#34;)
-     *             .type(&#34;ADD_SUB_DOMAIN&#34;)
+     *             .domainName("test111.abc")
+     *             .type("ADD_SUB_DOMAIN")
      *             .build());
      * 
-     *         ctx.export(&#34;rr&#34;, this_.rr());
-     *         ctx.export(&#34;value&#34;, this_.value());
+     *         ctx.export("rr", this_.rr());
+     *         ctx.export("value", this_.value());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1606,7 +1668,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1628,15 +1691,16 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DnsFunctions.getDomainTxtGuid(GetDomainTxtGuidArgs.builder()
-     *             .domainName(&#34;test111.abc&#34;)
-     *             .type(&#34;ADD_SUB_DOMAIN&#34;)
+     *             .domainName("test111.abc")
+     *             .type("ADD_SUB_DOMAIN")
      *             .build());
      * 
-     *         ctx.export(&#34;rr&#34;, this_.rr());
-     *         ctx.export(&#34;value&#34;, this_.value());
+     *         ctx.export("rr", this_.rr());
+     *         ctx.export("value", this_.value());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1651,7 +1715,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1673,15 +1738,16 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DnsFunctions.getDomainTxtGuid(GetDomainTxtGuidArgs.builder()
-     *             .domainName(&#34;test111.abc&#34;)
-     *             .type(&#34;ADD_SUB_DOMAIN&#34;)
+     *             .domainName("test111.abc")
+     *             .type("ADD_SUB_DOMAIN")
      *             .build());
      * 
-     *         ctx.export(&#34;rr&#34;, this_.rr());
-     *         ctx.export(&#34;value&#34;, this_.value());
+     *         ctx.export("rr", this_.rr());
+     *         ctx.export("value", this_.value());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1696,7 +1762,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1718,15 +1785,16 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = DnsFunctions.getDomainTxtGuid(GetDomainTxtGuidArgs.builder()
-     *             .domainName(&#34;test111.abc&#34;)
-     *             .type(&#34;ADD_SUB_DOMAIN&#34;)
+     *             .domainName("test111.abc")
+     *             .type("ADD_SUB_DOMAIN")
      *             .build());
      * 
-     *         ctx.export(&#34;rr&#34;, this_.rr());
-     *         ctx.export(&#34;value&#34;, this_.value());
+     *         ctx.export("rr", this_.rr());
+     *         ctx.export("value", this_.value());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1741,7 +1809,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1763,14 +1832,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domainsDs = DnsFunctions.getDomains(GetDomainsArgs.builder()
-     *             .domainNameRegex(&#34;^hegu&#34;)
-     *             .outputFile(&#34;domains.txt&#34;)
+     *             .domainNameRegex("^hegu")
+     *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domainId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1785,7 +1855,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1807,14 +1878,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domainsDs = DnsFunctions.getDomains(GetDomainsArgs.builder()
-     *             .domainNameRegex(&#34;^hegu&#34;)
-     *             .outputFile(&#34;domains.txt&#34;)
+     *             .domainNameRegex("^hegu")
+     *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domainId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1829,7 +1901,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1851,14 +1924,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domainsDs = DnsFunctions.getDomains(GetDomainsArgs.builder()
-     *             .domainNameRegex(&#34;^hegu&#34;)
-     *             .outputFile(&#34;domains.txt&#34;)
+     *             .domainNameRegex("^hegu")
+     *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domainId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1873,7 +1947,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1895,14 +1970,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domainsDs = DnsFunctions.getDomains(GetDomainsArgs.builder()
-     *             .domainNameRegex(&#34;^hegu&#34;)
-     *             .outputFile(&#34;domains.txt&#34;)
+     *             .domainNameRegex("^hegu")
+     *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domainId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1917,7 +1993,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1939,14 +2016,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domainsDs = DnsFunctions.getDomains(GetDomainsArgs.builder()
-     *             .domainNameRegex(&#34;^hegu&#34;)
-     *             .outputFile(&#34;domains.txt&#34;)
+     *             .domainNameRegex("^hegu")
+     *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domainId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1961,7 +2039,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1983,14 +2062,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domainsDs = DnsFunctions.getDomains(GetDomainsArgs.builder()
-     *             .domainNameRegex(&#34;^hegu&#34;)
-     *             .outputFile(&#34;domains.txt&#34;)
+     *             .domainNameRegex("^hegu")
+     *             .outputFile("domains.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDomainId&#34;, domainsDs.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domainId()));
+     *         ctx.export("firstDomainId", domainsDs.applyValue(getDomainsResult -> getDomainsResult.domains()[0].domainId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2003,7 +2083,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2025,14 +2106,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = DnsFunctions.getGroups(GetGroupsArgs.builder()
-     *             .nameRegex(&#34;^y[A-Za-z]+&#34;)
-     *             .outputFile(&#34;groups.txt&#34;)
+     *             .nameRegex("^y[A-Za-z]+")
+     *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].groupName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2045,7 +2127,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2067,14 +2150,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = DnsFunctions.getGroups(GetGroupsArgs.builder()
-     *             .nameRegex(&#34;^y[A-Za-z]+&#34;)
-     *             .outputFile(&#34;groups.txt&#34;)
+     *             .nameRegex("^y[A-Za-z]+")
+     *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].groupName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2087,7 +2171,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2109,14 +2194,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = DnsFunctions.getGroups(GetGroupsArgs.builder()
-     *             .nameRegex(&#34;^y[A-Za-z]+&#34;)
-     *             .outputFile(&#34;groups.txt&#34;)
+     *             .nameRegex("^y[A-Za-z]+")
+     *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].groupName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2129,7 +2215,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2151,14 +2238,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = DnsFunctions.getGroups(GetGroupsArgs.builder()
-     *             .nameRegex(&#34;^y[A-Za-z]+&#34;)
-     *             .outputFile(&#34;groups.txt&#34;)
+     *             .nameRegex("^y[A-Za-z]+")
+     *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].groupName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2171,7 +2259,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2193,14 +2282,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = DnsFunctions.getGroups(GetGroupsArgs.builder()
-     *             .nameRegex(&#34;^y[A-Za-z]+&#34;)
-     *             .outputFile(&#34;groups.txt&#34;)
+     *             .nameRegex("^y[A-Za-z]+")
+     *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].groupName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2213,7 +2303,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2235,14 +2326,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = DnsFunctions.getGroups(GetGroupsArgs.builder()
-     *             .nameRegex(&#34;^y[A-Za-z]+&#34;)
-     *             .outputFile(&#34;groups.txt&#34;)
+     *             .nameRegex("^y[A-Za-z]+")
+     *             .outputFile("groups.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].groupName()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].groupName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2259,7 +2351,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2282,10 +2375,11 @@ public final class DnsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getGtmInstances();
      * 
-     *         ctx.export(&#34;alidnsGtmInstanceId1&#34;, ids.applyValue(getGtmInstancesResult -&gt; getGtmInstancesResult.instances()[0].id()));
+     *         ctx.export("alidnsGtmInstanceId1", ids.applyValue(getGtmInstancesResult -> getGtmInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2302,7 +2396,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2325,10 +2420,11 @@ public final class DnsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getGtmInstances();
      * 
-     *         ctx.export(&#34;alidnsGtmInstanceId1&#34;, ids.applyValue(getGtmInstancesResult -&gt; getGtmInstancesResult.instances()[0].id()));
+     *         ctx.export("alidnsGtmInstanceId1", ids.applyValue(getGtmInstancesResult -> getGtmInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2345,7 +2441,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2368,10 +2465,11 @@ public final class DnsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getGtmInstances();
      * 
-     *         ctx.export(&#34;alidnsGtmInstanceId1&#34;, ids.applyValue(getGtmInstancesResult -&gt; getGtmInstancesResult.instances()[0].id()));
+     *         ctx.export("alidnsGtmInstanceId1", ids.applyValue(getGtmInstancesResult -> getGtmInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2388,7 +2486,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2411,10 +2510,11 @@ public final class DnsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getGtmInstances();
      * 
-     *         ctx.export(&#34;alidnsGtmInstanceId1&#34;, ids.applyValue(getGtmInstancesResult -&gt; getGtmInstancesResult.instances()[0].id()));
+     *         ctx.export("alidnsGtmInstanceId1", ids.applyValue(getGtmInstancesResult -> getGtmInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2431,7 +2531,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2454,10 +2555,11 @@ public final class DnsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getGtmInstances();
      * 
-     *         ctx.export(&#34;alidnsGtmInstanceId1&#34;, ids.applyValue(getGtmInstancesResult -&gt; getGtmInstancesResult.instances()[0].id()));
+     *         ctx.export("alidnsGtmInstanceId1", ids.applyValue(getGtmInstancesResult -> getGtmInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2474,7 +2576,8 @@ public final class DnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2497,10 +2600,11 @@ public final class DnsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DnsFunctions.getGtmInstances();
      * 
-     *         ctx.export(&#34;alidnsGtmInstanceId1&#34;, ids.applyValue(getGtmInstancesResult -&gt; getGtmInstancesResult.instances()[0].id()));
+     *         ctx.export("alidnsGtmInstanceId1", ids.applyValue(getGtmInstancesResult -> getGtmInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2517,7 +2621,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2539,13 +2644,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2562,7 +2668,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2584,13 +2691,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2607,7 +2715,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2629,13 +2738,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2652,7 +2762,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2674,13 +2785,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2697,7 +2809,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2719,13 +2832,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2742,7 +2856,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2764,13 +2879,14 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;dns-cn-oew1npk****&#34;)
+     *             .ids("dns-cn-oew1npk****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2785,7 +2901,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2807,17 +2924,18 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
-     *             .domainName(&#34;xiaozhu.top&#34;)
+     *             .domainName("xiaozhu.top")
      *             .isLocked(false)
-     *             .type(&#34;A&#34;)
-     *             .hostRecordRegex(&#34;^@&#34;)
-     *             .outputFile(&#34;records.txt&#34;)
+     *             .type("A")
+     *             .hostRecordRegex("^{@literal @}")
+     *             .outputFile("records.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getRecordsResult -&gt; getRecordsResult.records()[0].recordId()));
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getRecordsResult -> getRecordsResult.records()[0].recordId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2832,7 +2950,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2854,17 +2973,18 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
-     *             .domainName(&#34;xiaozhu.top&#34;)
+     *             .domainName("xiaozhu.top")
      *             .isLocked(false)
-     *             .type(&#34;A&#34;)
-     *             .hostRecordRegex(&#34;^@&#34;)
-     *             .outputFile(&#34;records.txt&#34;)
+     *             .type("A")
+     *             .hostRecordRegex("^{@literal @}")
+     *             .outputFile("records.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getRecordsResult -&gt; getRecordsResult.records()[0].recordId()));
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getRecordsResult -> getRecordsResult.records()[0].recordId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2879,7 +2999,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2901,17 +3022,18 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
-     *             .domainName(&#34;xiaozhu.top&#34;)
+     *             .domainName("xiaozhu.top")
      *             .isLocked(false)
-     *             .type(&#34;A&#34;)
-     *             .hostRecordRegex(&#34;^@&#34;)
-     *             .outputFile(&#34;records.txt&#34;)
+     *             .type("A")
+     *             .hostRecordRegex("^{@literal @}")
+     *             .outputFile("records.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getRecordsResult -&gt; getRecordsResult.records()[0].recordId()));
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getRecordsResult -> getRecordsResult.records()[0].recordId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2926,7 +3048,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2948,17 +3071,18 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
-     *             .domainName(&#34;xiaozhu.top&#34;)
+     *             .domainName("xiaozhu.top")
      *             .isLocked(false)
-     *             .type(&#34;A&#34;)
-     *             .hostRecordRegex(&#34;^@&#34;)
-     *             .outputFile(&#34;records.txt&#34;)
+     *             .type("A")
+     *             .hostRecordRegex("^{@literal @}")
+     *             .outputFile("records.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getRecordsResult -&gt; getRecordsResult.records()[0].recordId()));
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getRecordsResult -> getRecordsResult.records()[0].recordId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2973,7 +3097,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2995,14 +3120,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resolutionLinesDs = DnsFunctions.getResolutionLines(GetResolutionLinesArgs.builder()
-     *             .lineCodes(&#34;cn_unicom_shanxi&#34;)
-     *             .outputFile(&#34;support_lines.txt&#34;)
+     *             .lineCodes("cn_unicom_shanxi")
+     *             .outputFile("support_lines.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLineCode&#34;, resolutionLinesDs.applyValue(getResolutionLinesResult -&gt; getResolutionLinesResult.lines()[0].lineCode()));
+     *         ctx.export("firstLineCode", resolutionLinesDs.applyValue(getResolutionLinesResult -> getResolutionLinesResult.lines()[0].lineCode()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3017,7 +3143,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3039,14 +3166,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resolutionLinesDs = DnsFunctions.getResolutionLines(GetResolutionLinesArgs.builder()
-     *             .lineCodes(&#34;cn_unicom_shanxi&#34;)
-     *             .outputFile(&#34;support_lines.txt&#34;)
+     *             .lineCodes("cn_unicom_shanxi")
+     *             .outputFile("support_lines.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLineCode&#34;, resolutionLinesDs.applyValue(getResolutionLinesResult -&gt; getResolutionLinesResult.lines()[0].lineCode()));
+     *         ctx.export("firstLineCode", resolutionLinesDs.applyValue(getResolutionLinesResult -> getResolutionLinesResult.lines()[0].lineCode()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3061,7 +3189,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3083,14 +3212,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resolutionLinesDs = DnsFunctions.getResolutionLines(GetResolutionLinesArgs.builder()
-     *             .lineCodes(&#34;cn_unicom_shanxi&#34;)
-     *             .outputFile(&#34;support_lines.txt&#34;)
+     *             .lineCodes("cn_unicom_shanxi")
+     *             .outputFile("support_lines.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLineCode&#34;, resolutionLinesDs.applyValue(getResolutionLinesResult -&gt; getResolutionLinesResult.lines()[0].lineCode()));
+     *         ctx.export("firstLineCode", resolutionLinesDs.applyValue(getResolutionLinesResult -> getResolutionLinesResult.lines()[0].lineCode()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3105,7 +3235,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3127,14 +3258,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resolutionLinesDs = DnsFunctions.getResolutionLines(GetResolutionLinesArgs.builder()
-     *             .lineCodes(&#34;cn_unicom_shanxi&#34;)
-     *             .outputFile(&#34;support_lines.txt&#34;)
+     *             .lineCodes("cn_unicom_shanxi")
+     *             .outputFile("support_lines.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLineCode&#34;, resolutionLinesDs.applyValue(getResolutionLinesResult -&gt; getResolutionLinesResult.lines()[0].lineCode()));
+     *         ctx.export("firstLineCode", resolutionLinesDs.applyValue(getResolutionLinesResult -> getResolutionLinesResult.lines()[0].lineCode()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3149,7 +3281,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3171,14 +3304,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resolutionLinesDs = DnsFunctions.getResolutionLines(GetResolutionLinesArgs.builder()
-     *             .lineCodes(&#34;cn_unicom_shanxi&#34;)
-     *             .outputFile(&#34;support_lines.txt&#34;)
+     *             .lineCodes("cn_unicom_shanxi")
+     *             .outputFile("support_lines.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLineCode&#34;, resolutionLinesDs.applyValue(getResolutionLinesResult -&gt; getResolutionLinesResult.lines()[0].lineCode()));
+     *         ctx.export("firstLineCode", resolutionLinesDs.applyValue(getResolutionLinesResult -> getResolutionLinesResult.lines()[0].lineCode()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3193,7 +3327,8 @@ public final class DnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3215,14 +3350,15 @@ public final class DnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resolutionLinesDs = DnsFunctions.getResolutionLines(GetResolutionLinesArgs.builder()
-     *             .lineCodes(&#34;cn_unicom_shanxi&#34;)
-     *             .outputFile(&#34;support_lines.txt&#34;)
+     *             .lineCodes("cn_unicom_shanxi")
+     *             .outputFile("support_lines.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLineCode&#34;, resolutionLinesDs.applyValue(getResolutionLinesResult -&gt; getResolutionLinesResult.lines()[0].lineCode()));
+     *         ctx.export("firstLineCode", resolutionLinesDs.applyValue(getResolutionLinesResult -> getResolutionLinesResult.lines()[0].lineCode()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

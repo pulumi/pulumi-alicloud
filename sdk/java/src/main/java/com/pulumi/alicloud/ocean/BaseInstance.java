@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,29 +56,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones();
  * 
  *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultBaseInstance = new BaseInstance(&#34;defaultBaseInstance&#34;, BaseInstanceArgs.builder()        
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *         var defaultBaseInstance = new BaseInstance("defaultBaseInstance", BaseInstanceArgs.builder()        
+ *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
  *             .zones(            
  *                 default_.ids()[default_.ids().length() - 2],
  *                 default_.ids()[default_.ids().length() - 3],
  *                 default_.ids()[default_.ids().length() - 4])
- *             .autoRenew(&#34;false&#34;)
- *             .diskSize(&#34;100&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .instanceClass(&#34;8C32GB&#34;)
- *             .backupRetainMode(&#34;delete_all&#34;)
- *             .series(&#34;normal&#34;)
+ *             .autoRenew("false")
+ *             .diskSize("100")
+ *             .paymentType("PayAsYouGo")
+ *             .instanceClass("8C32GB")
+ *             .backupRetainMode("delete_all")
+ *             .series("normal")
  *             .instanceName(name)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

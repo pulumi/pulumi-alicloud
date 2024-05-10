@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,29 +52,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Project With Policy Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -96,40 +99,41 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var examplePolicy = new Project(&#34;examplePolicy&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
- *             .policy(&#34;&#34;&#34;
+ *         var examplePolicy = new Project("examplePolicy", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
+ *             .policy("""
  * {
- *   &#34;Statement&#34;: [
+ *   "Statement": [
  *     {
- *       &#34;Action&#34;: [
- *         &#34;log:PostLogStoreLogs&#34;
+ *       "Action": [
+ *         "log:PostLogStoreLogs"
  *       ],
- *       &#34;Condition&#34;: {
- *         &#34;StringNotLike&#34;: {
- *           &#34;acs:SourceVpc&#34;: [
- *             &#34;vpc-*&#34;
+ *       "Condition": {
+ *         "StringNotLike": {
+ *           "acs:SourceVpc": [
+ *             "vpc-*"
  *           ]
  *         }
  *       },
- *       &#34;Effect&#34;: &#34;Deny&#34;,
- *       &#34;Resource&#34;: &#34;acs:log:*:*:project/tf-log/*&#34;
+ *       "Effect": "Deny",
+ *       "Resource": "acs:log:*:*:project/tf-log/*"
  *     }
  *   ],
- *   &#34;Version&#34;: &#34;1&#34;
+ *   "Version": "1"
  * }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Module Support

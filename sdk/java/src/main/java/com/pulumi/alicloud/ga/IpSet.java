@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,36 +57,37 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         var default_ = new Accelerator(&#34;default&#34;, AcceleratorArgs.builder()        
+ *         final var region = config.get("region").orElse("cn-hangzhou");
+ *         var default_ = new Accelerator("default", AcceleratorArgs.builder()        
  *             .duration(1)
  *             .autoUseCoupon(true)
- *             .spec(&#34;1&#34;)
+ *             .spec("1")
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
  *             .bandwidth(100)
- *             .type(&#34;Basic&#34;)
- *             .bandwidthType(&#34;Basic&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .billingType(&#34;PayBy95&#34;)
+ *             .type("Basic")
+ *             .bandwidthType("Basic")
+ *             .paymentType("PayAsYouGo")
+ *             .billingType("PayBy95")
  *             .ratio(30)
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
  *             .acceleratorId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var example = new IpSet(&#34;example&#34;, IpSetArgs.builder()        
+ *         var example = new IpSet("example", IpSetArgs.builder()        
  *             .accelerateRegionId(region)
- *             .bandwidth(&#34;5&#34;)
+ *             .bandwidth("5")
  *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

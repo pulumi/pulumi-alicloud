@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,41 +59,41 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
+ *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .natGatewayName(name)
- *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .paymentType("PayAsYouGo")
  *             .vswitchId(defaultSwitch.id())
- *             .natType(&#34;Enhanced&#34;)
+ *             .natType("Enhanced")
  *             .build());
  * 
- *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+ *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
  *             .addressName(name)
  *             .build());
  * 
- *         var defaultEipAssociation = new EipAssociation(&#34;defaultEipAssociation&#34;, EipAssociationArgs.builder()        
+ *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()        
  *             .allocationId(defaultEipAddress.id())
  *             .instanceId(defaultNatGateway.id())
  *             .build());
  * 
- *         var defaultSnatEntry = new SnatEntry(&#34;defaultSnatEntry&#34;, SnatEntryArgs.builder()        
+ *         var defaultSnatEntry = new SnatEntry("defaultSnatEntry", SnatEntryArgs.builder()        
  *             .snatTableId(defaultNatGateway.snatTableIds())
  *             .sourceVswitchId(defaultSwitch.id())
  *             .snatIp(defaultEipAddress.ipAddress())
@@ -100,7 +101,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

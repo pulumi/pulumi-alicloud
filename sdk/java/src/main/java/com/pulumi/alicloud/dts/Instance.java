@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,27 +57,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .status(&#34;OK&#34;)
+ *             .status("OK")
  *             .build());
  * 
  *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .type(&#34;sync&#34;)
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .type("sync")
  *             .resourceGroupId(default_.ids()[0])
- *             .paymentType(&#34;Subscription&#34;)
- *             .instanceClass(&#34;large&#34;)
- *             .sourceEndpointEngineName(&#34;MySQL&#34;)
- *             .sourceRegion(defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
- *             .destinationEndpointEngineName(&#34;MySQL&#34;)
- *             .destinationRegion(defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .paymentType("Subscription")
+ *             .instanceClass("large")
+ *             .sourceEndpointEngineName("MySQL")
+ *             .sourceRegion(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()))
+ *             .destinationEndpointEngineName("MySQL")
+ *             .destinationRegion(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

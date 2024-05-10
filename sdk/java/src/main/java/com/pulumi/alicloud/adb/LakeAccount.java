@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,73 +62,74 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var vPCID = new Network(&#34;VPCID&#34;, NetworkArgs.builder()        
+ *         var vPCID = new Network("VPCID", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var vSWITCHID = new Switch(&#34;VSWITCHID&#34;, SwitchArgs.builder()        
+ *         var vSWITCHID = new Switch("VSWITCHID", SwitchArgs.builder()        
  *             .vpcId(VPCID.id())
- *             .zoneId(&#34;cn-hangzhou-k&#34;)
+ *             .zoneId("cn-hangzhou-k")
  *             .vswitchName(name)
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .build());
  * 
- *         var createInstance = new DBClusterLakeVersion(&#34;createInstance&#34;, DBClusterLakeVersionArgs.builder()        
- *             .storageResource(&#34;0ACU&#34;)
- *             .zoneId(&#34;cn-hangzhou-k&#34;)
+ *         var createInstance = new DBClusterLakeVersion("createInstance", DBClusterLakeVersionArgs.builder()        
+ *             .storageResource("0ACU")
+ *             .zoneId("cn-hangzhou-k")
  *             .vpcId(VPCID.id())
  *             .vswitchId(VSWITCHID.id())
  *             .dbClusterDescription(name)
- *             .computeResource(&#34;16ACU&#34;)
- *             .dbClusterVersion(&#34;5.0&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .securityIps(&#34;127.0.0.1&#34;)
+ *             .computeResource("16ACU")
+ *             .dbClusterVersion("5.0")
+ *             .paymentType("PayAsYouGo")
+ *             .securityIps("127.0.0.1")
  *             .build());
  * 
- *         var defaultLakeAccount = new LakeAccount(&#34;defaultLakeAccount&#34;, LakeAccountArgs.builder()        
+ *         var defaultLakeAccount = new LakeAccount("defaultLakeAccount", LakeAccountArgs.builder()        
  *             .dbClusterId(createInstance.id())
- *             .accountType(&#34;Super&#34;)
- *             .accountName(&#34;tfnormal&#34;)
- *             .accountPassword(&#34;normal@2023&#34;)
+ *             .accountType("Super")
+ *             .accountName("tfnormal")
+ *             .accountPassword("normal{@literal @}2023")
  *             .accountPrivileges(            
  *                 LakeAccountAccountPrivilegeArgs.builder()
- *                     .privilegeType(&#34;Database&#34;)
+ *                     .privilegeType("Database")
  *                     .privilegeObject(LakeAccountAccountPrivilegePrivilegeObjectArgs.builder()
- *                         .database(&#34;MYSQL&#34;)
+ *                         .database("MYSQL")
  *                         .build())
  *                     .privileges(                    
- *                         &#34;select&#34;,
- *                         &#34;update&#34;)
+ *                         "select",
+ *                         "update")
  *                     .build(),
  *                 LakeAccountAccountPrivilegeArgs.builder()
- *                     .privilegeType(&#34;Table&#34;)
+ *                     .privilegeType("Table")
  *                     .privilegeObject(LakeAccountAccountPrivilegePrivilegeObjectArgs.builder()
- *                         .database(&#34;INFORMATION_SCHEMA&#34;)
- *                         .table(&#34;ENGINES&#34;)
+ *                         .database("INFORMATION_SCHEMA")
+ *                         .table("ENGINES")
  *                         .build())
- *                     .privileges(&#34;update&#34;)
+ *                     .privileges("update")
  *                     .build(),
  *                 LakeAccountAccountPrivilegeArgs.builder()
- *                     .privilegeType(&#34;Column&#34;)
+ *                     .privilegeType("Column")
  *                     .privilegeObject(LakeAccountAccountPrivilegePrivilegeObjectArgs.builder()
- *                         .table(&#34;COLUMNS&#34;)
- *                         .column(&#34;PRIVILEGES&#34;)
- *                         .database(&#34;INFORMATION_SCHEMA&#34;)
+ *                         .table("COLUMNS")
+ *                         .column("PRIVILEGES")
+ *                         .database("INFORMATION_SCHEMA")
  *                         .build())
- *                     .privileges(&#34;update&#34;)
+ *                     .privileges("update")
  *                     .build())
  *             .accountDescription(name)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,8 +63,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
@@ -73,82 +74,83 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .nameRegex("^ubuntu_18.*64")
  *             .mostRecent(true)
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;ecsInstanceVPCExample&#34;);
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         final var name = config.get("name").orElse("ecsInstanceVPCExample");
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultSecurityGroupRule = new SecurityGroupRule(&#34;defaultSecurityGroupRule&#34;, SecurityGroupRuleArgs.builder()        
- *             .type(&#34;ingress&#34;)
- *             .ipProtocol(&#34;tcp&#34;)
- *             .nicType(&#34;intranet&#34;)
- *             .policy(&#34;accept&#34;)
- *             .portRange(&#34;22/22&#34;)
+ *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()        
+ *             .type("ingress")
+ *             .ipProtocol("tcp")
+ *             .nicType("intranet")
+ *             .policy("accept")
+ *             .portRange("22/22")
  *             .priority(1)
  *             .securityGroupId(defaultSecurityGroup.id())
- *             .cidrIp(&#34;172.16.0.0/24&#34;)
+ *             .cidrIp("172.16.0.0/24")
  *             .build());
  * 
- *         var foo = new Instance(&#34;foo&#34;, InstanceArgs.builder()        
+ *         var foo = new Instance("foo", InstanceArgs.builder()        
  *             .vswitchId(defaultSwitch.id())
- *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .internetChargeType("PayByTraffic")
  *             .internetMaxBandwidthOut(5)
  *             .securityGroups(defaultSecurityGroup.id())
  *             .instanceName(name)
  *             .build());
  * 
- *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
- *             .name(&#34;terraform-example&#34;)
- *             .document(&#34;&#34;&#34;
+ *         var role = new Role("role", RoleArgs.builder()        
+ *             .name("terraform-example")
+ *             .document("""
  *   {
- *     &#34;Statement&#34;: [
+ *     "Statement": [
  *       {
- *         &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *         &#34;Effect&#34;: &#34;Allow&#34;,
- *         &#34;Principal&#34;: {
- *           &#34;Service&#34;: [
- *             &#34;ecs.aliyuncs.com&#34;
+ *         "Action": "sts:AssumeRole",
+ *         "Effect": "Allow",
+ *         "Principal": {
+ *           "Service": [
+ *             "ecs.aliyuncs.com"
  *           ]
  *         }
  *       }
  *     ],
- *     &#34;Version&#34;: &#34;1&#34;
+ *     "Version": "1"
  *   }
  * 
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a test&#34;)
+ *             """)
+ *             .description("this is a test")
  *             .force(true)
  *             .build());
  * 
- *         var attach = new RoleAttachment(&#34;attach&#34;, RoleAttachmentArgs.builder()        
+ *         var attach = new RoleAttachment("attach", RoleAttachmentArgs.builder()        
  *             .roleName(role.name())
- *             .instanceIds(foo.stream().map(element -&gt; element.id()).collect(toList()))
+ *             .instanceIds(foo.stream().map(element -> element.id()).collect(toList()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

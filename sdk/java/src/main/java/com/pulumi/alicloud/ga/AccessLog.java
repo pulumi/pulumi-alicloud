@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,70 +68,70 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var region = config.get("region").orElse("cn-hangzhou");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
- *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
+ *         var defaultStore = new Store("defaultStore", StoreArgs.builder()        
  *             .project(defaultProject.name())
- *             .name(&#34;terraform-example&#34;)
+ *             .name("terraform-example")
  *             .build());
  * 
- *         var defaultAccelerator = new Accelerator(&#34;defaultAccelerator&#34;, AcceleratorArgs.builder()        
+ *         var defaultAccelerator = new Accelerator("defaultAccelerator", AcceleratorArgs.builder()        
  *             .duration(1)
  *             .autoUseCoupon(true)
- *             .spec(&#34;2&#34;)
+ *             .spec("2")
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
  *             .bandwidth(100)
- *             .type(&#34;Basic&#34;)
- *             .bandwidthType(&#34;Basic&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .billingType(&#34;PayBy95&#34;)
+ *             .type("Basic")
+ *             .bandwidthType("Basic")
+ *             .paymentType("PayAsYouGo")
+ *             .billingType("PayBy95")
  *             .ratio(30)
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
  *             .acceleratorId(defaultAccelerator.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+ *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
  *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
- *             .clientAffinity(&#34;SOURCE_IP&#34;)
- *             .protocol(&#34;HTTP&#34;)
- *             .name(&#34;terraform-example&#34;)
+ *             .clientAffinity("SOURCE_IP")
+ *             .protocol("HTTP")
+ *             .name("terraform-example")
  *             .portRanges(ListenerPortRangeArgs.builder()
  *                 .fromPort(70)
  *                 .toPort(70)
  *                 .build())
  *             .build());
  * 
- *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
- *             .bandwidth(&#34;10&#34;)
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
- *             .addressName(&#34;terraform-example&#34;)
+ *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+ *             .bandwidth("10")
+ *             .internetChargeType("PayByBandwidth")
+ *             .addressName("terraform-example")
  *             .build());
  * 
- *         var defaultEndpointGroup = new EndpointGroup(&#34;defaultEndpointGroup&#34;, EndpointGroupArgs.builder()        
+ *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()        
  *             .acceleratorId(defaultListener.acceleratorId())
  *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
  *                 .endpoint(defaultEipAddress.ipAddress())
- *                 .type(&#34;PublicIp&#34;)
+ *                 .type("PublicIp")
  *                 .weight(20)
  *                 .build())
  *             .endpointGroupRegion(region)
  *             .listenerId(defaultListener.id())
  *             .build());
  * 
- *         var defaultAccessLog = new AccessLog(&#34;defaultAccessLog&#34;, AccessLogArgs.builder()        
+ *         var defaultAccessLog = new AccessLog("defaultAccessLog", AccessLogArgs.builder()        
  *             .acceleratorId(defaultAccelerator.id())
  *             .listenerId(defaultListener.id())
  *             .endpointGroupId(defaultEndpointGroup.id())
@@ -141,7 +142,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

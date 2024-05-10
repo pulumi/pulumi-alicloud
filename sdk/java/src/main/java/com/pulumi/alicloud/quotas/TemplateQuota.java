@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,23 +54,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new TemplateQuota(&#34;default&#34;, TemplateQuotaArgs.builder()        
- *             .quotaActionCode(&#34;q_desktop-count&#34;)
- *             .productCode(&#34;gws&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new TemplateQuota("default", TemplateQuotaArgs.builder()        
+ *             .quotaActionCode("q_desktop-count")
+ *             .productCode("gws")
  *             .noticeType(3)
  *             .dimensions(TemplateQuotaDimensionArgs.builder()
- *                 .key(&#34;regionId&#34;)
- *                 .value(&#34;cn-hangzhou&#34;)
+ *                 .key("regionId")
+ *                 .value("cn-hangzhou")
  *                 .build())
  *             .desireValue(1001)
- *             .envLanguage(&#34;zh&#34;)
- *             .quotaCategory(&#34;CommonQuota&#34;)
+ *             .envLanguage("zh")
+ *             .quotaCategory("CommonQuota")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -99,14 +99,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.instanceName);
     }
     /**
-     * The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
+     * The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ !{@literal @} # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
+     * @return The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ !{@literal @} # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
      * 
      */
     public Output<Optional<String>> password() {

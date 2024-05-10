@@ -51,7 +51,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -82,60 +83,62 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-basic-edge&#34;);
+ *         final var name = config.get("name").orElse("tf-example-basic-edge");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .cpuCoreCount(4)
  *             .memorySize(8)
- *             .kubernetesNodeRole(&#34;Master&#34;)
+ *             .kubernetesNodeRole("Master")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultEdgeKubernetes = new EdgeKubernetes(&#34;defaultEdgeKubernetes&#34;, EdgeKubernetesArgs.builder()        
+ *         var defaultEdgeKubernetes = new EdgeKubernetes("defaultEdgeKubernetes", EdgeKubernetesArgs.builder()        
  *             .name(name)
  *             .workerVswitchIds(defaultSwitch.id())
- *             .workerInstanceTypes(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .workerNumber(&#34;1&#34;)
- *             .password(&#34;Test12345&#34;)
- *             .podCidr(&#34;10.99.0.0/16&#34;)
- *             .serviceCidr(&#34;172.16.0.0/16&#34;)
- *             .workerInstanceChargeType(&#34;PostPaid&#34;)
- *             .newNatGateway(&#34;true&#34;)
- *             .nodeCidrMask(&#34;24&#34;)
- *             .installCloudMonitor(&#34;true&#34;)
- *             .slbInternetEnabled(&#34;true&#34;)
- *             .isEnterpriseSecurityGroup(&#34;true&#34;)
+ *             .workerInstanceTypes(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .workerNumber("1")
+ *             .password("Test12345")
+ *             .podCidr("10.99.0.0/16")
+ *             .serviceCidr("172.16.0.0/16")
+ *             .workerInstanceChargeType("PostPaid")
+ *             .newNatGateway("true")
+ *             .nodeCidrMask("24")
+ *             .installCloudMonitor("true")
+ *             .slbInternetEnabled("true")
+ *             .isEnterpriseSecurityGroup("true")
  *             .workerDataDisks(EdgeKubernetesWorkerDataDiskArgs.builder()
- *                 .category(&#34;cloud_ssd&#34;)
- *                 .size(&#34;200&#34;)
- *                 .encrypted(&#34;false&#34;)
+ *                 .category("cloud_ssd")
+ *                 .size("200")
+ *                 .encrypted("false")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * You could create a professional kubernetes edge cluster now.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -166,56 +169,57 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .cpuCoreCount(4)
  *             .memorySize(8)
- *             .kubernetesNodeRole(&#34;Master&#34;)
+ *             .kubernetesNodeRole("Master")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultEdgeKubernetes = new EdgeKubernetes(&#34;defaultEdgeKubernetes&#34;, EdgeKubernetesArgs.builder()        
+ *         var defaultEdgeKubernetes = new EdgeKubernetes("defaultEdgeKubernetes", EdgeKubernetesArgs.builder()        
  *             .name(name)
  *             .workerVswitchIds(defaultSwitch.id())
- *             .workerInstanceTypes(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .clusterSpec(&#34;ack.pro.small&#34;)
- *             .workerNumber(&#34;1&#34;)
- *             .password(&#34;Test12345&#34;)
- *             .podCidr(&#34;10.99.0.0/16&#34;)
- *             .serviceCidr(&#34;172.16.0.0/16&#34;)
- *             .workerInstanceChargeType(&#34;PostPaid&#34;)
- *             .newNatGateway(&#34;true&#34;)
- *             .nodeCidrMask(&#34;24&#34;)
- *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
- *             .installCloudMonitor(&#34;true&#34;)
- *             .slbInternetEnabled(&#34;true&#34;)
- *             .isEnterpriseSecurityGroup(&#34;true&#34;)
+ *             .workerInstanceTypes(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .clusterSpec("ack.pro.small")
+ *             .workerNumber("1")
+ *             .password("Test12345")
+ *             .podCidr("10.99.0.0/16")
+ *             .serviceCidr("172.16.0.0/16")
+ *             .workerInstanceChargeType("PostPaid")
+ *             .newNatGateway("true")
+ *             .nodeCidrMask("24")
+ *             .loadBalancerSpec("slb.s2.small")
+ *             .installCloudMonitor("true")
+ *             .slbInternetEnabled("true")
+ *             .isEnterpriseSecurityGroup("true")
  *             .workerDataDisks(EdgeKubernetesWorkerDataDiskArgs.builder()
- *                 .category(&#34;cloud_ssd&#34;)
- *                 .size(&#34;200&#34;)
- *                 .encrypted(&#34;false&#34;)
+ *                 .category("cloud_ssd")
+ *                 .size("200")
+ *                 .encrypted("false")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -832,14 +836,14 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.workerDiskSnapshotPolicyId);
     }
     /**
-     * Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+     * Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK{@literal @}edge charge](https://help.aliyun.com/document_detail/178718.html).
      * 
      */
     @Export(name="workerInstanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workerInstanceChargeType;
 
     /**
-     * @return Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
+     * @return Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK{@literal @}edge charge](https://help.aliyun.com/document_detail/178718.html).
      * 
      */
     public Output<Optional<String>> workerInstanceChargeType() {

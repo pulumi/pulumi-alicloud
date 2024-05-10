@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,21 +55,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var example = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
- *             .nameRegex(&#34;^preserved-NODELETING&#34;)
+ *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
- *         var vlanId = new Integer(&#34;vlanId&#34;, IntegerArgs.builder()        
+ *         var vlanId = new Integer("vlanId", IntegerArgs.builder()        
  *             .max(2999)
  *             .min(1)
  *             .build());
  * 
- *         var exampleVirtualBorderRouter = new VirtualBorderRouter(&#34;exampleVirtualBorderRouter&#34;, VirtualBorderRouterArgs.builder()        
- *             .localGatewayIp(&#34;10.0.0.1&#34;)
- *             .peerGatewayIp(&#34;10.0.0.2&#34;)
- *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
- *             .physicalConnectionId(example.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
+ *         var exampleVirtualBorderRouter = new VirtualBorderRouter("exampleVirtualBorderRouter", VirtualBorderRouterArgs.builder()        
+ *             .localGatewayIp("10.0.0.1")
+ *             .peerGatewayIp("10.0.0.2")
+ *             .peeringSubnetMask("255.255.255.252")
+ *             .physicalConnectionId(example.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()))
  *             .virtualBorderRouterName(name)
  *             .vlanId(vlanId.id())
  *             .minRxInterval(1000)
@@ -78,7 +79,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

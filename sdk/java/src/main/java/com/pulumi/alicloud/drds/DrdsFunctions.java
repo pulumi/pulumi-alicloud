@@ -23,7 +23,8 @@ public final class DrdsFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -45,14 +46,15 @@ public final class DrdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;drds-\\d+&#34;)
-     *             .ids(&#34;drdsabc123456&#34;)
+     *             .nameRegex("drds-\\d+")
+     *             .ids("drdsabc123456")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", drdsInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -68,7 +70,8 @@ public final class DrdsFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -90,14 +93,15 @@ public final class DrdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;drds-\\d+&#34;)
-     *             .ids(&#34;drdsabc123456&#34;)
+     *             .nameRegex("drds-\\d+")
+     *             .ids("drdsabc123456")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", drdsInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -113,7 +117,8 @@ public final class DrdsFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -135,14 +140,15 @@ public final class DrdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;drds-\\d+&#34;)
-     *             .ids(&#34;drdsabc123456&#34;)
+     *             .nameRegex("drds-\\d+")
+     *             .ids("drdsabc123456")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", drdsInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -158,7 +164,8 @@ public final class DrdsFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -180,14 +187,15 @@ public final class DrdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;drds-\\d+&#34;)
-     *             .ids(&#34;drdsabc123456&#34;)
+     *             .nameRegex("drds-\\d+")
+     *             .ids("drdsabc123456")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", drdsInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -203,7 +211,8 @@ public final class DrdsFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -225,14 +234,15 @@ public final class DrdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;drds-\\d+&#34;)
-     *             .ids(&#34;drdsabc123456&#34;)
+     *             .nameRegex("drds-\\d+")
+     *             .ids("drdsabc123456")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", drdsInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -248,7 +258,8 @@ public final class DrdsFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -270,14 +281,15 @@ public final class DrdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var drdsInstancesDs = DrdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;drds-\\d+&#34;)
-     *             .ids(&#34;drdsabc123456&#34;)
+     *             .nameRegex("drds-\\d+")
+     *             .ids("drdsabc123456")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDbInstanceId&#34;, drdsInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", drdsInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

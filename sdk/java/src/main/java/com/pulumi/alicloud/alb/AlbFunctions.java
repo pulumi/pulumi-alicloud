@@ -51,7 +51,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -74,15 +75,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getAcls();
      * 
-     *         ctx.export(&#34;albAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
-     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export(&#34;albAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -99,7 +101,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -122,15 +125,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getAcls();
      * 
-     *         ctx.export(&#34;albAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
-     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export(&#34;albAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -147,7 +151,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -170,15 +175,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getAcls();
      * 
-     *         ctx.export(&#34;albAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
-     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export(&#34;albAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -195,7 +201,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -218,15 +225,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getAcls();
      * 
-     *         ctx.export(&#34;albAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
-     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export(&#34;albAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -243,7 +251,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -266,15 +275,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getAcls();
      * 
-     *         ctx.export(&#34;albAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
-     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export(&#34;albAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -291,7 +301,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -314,15 +325,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getAcls();
      * 
-     *         ctx.export(&#34;albAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *         final var nameRegex = AlbFunctions.getAcls(GetAclsArgs.builder()
-     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export(&#34;albAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("albAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -337,7 +349,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -361,14 +374,15 @@ public final class AlbFunctions {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
      *             .ids(defaultAlicloudAlbAscript.id())
      *             .nameRegex(defaultAlicloudAlbAscript.name())
-     *             .ascriptName(&#34;test&#34;)
+     *             .ascriptName("test")
      *             .listenerId(listenerId)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
+     *         ctx.export("alicloudAlbAscriptExampleId", default_.ascripts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -383,7 +397,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -407,14 +422,15 @@ public final class AlbFunctions {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
      *             .ids(defaultAlicloudAlbAscript.id())
      *             .nameRegex(defaultAlicloudAlbAscript.name())
-     *             .ascriptName(&#34;test&#34;)
+     *             .ascriptName("test")
      *             .listenerId(listenerId)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
+     *         ctx.export("alicloudAlbAscriptExampleId", default_.ascripts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -429,7 +445,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -453,14 +470,15 @@ public final class AlbFunctions {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
      *             .ids(defaultAlicloudAlbAscript.id())
      *             .nameRegex(defaultAlicloudAlbAscript.name())
-     *             .ascriptName(&#34;test&#34;)
+     *             .ascriptName("test")
      *             .listenerId(listenerId)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
+     *         ctx.export("alicloudAlbAscriptExampleId", default_.ascripts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -475,7 +493,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -499,14 +518,15 @@ public final class AlbFunctions {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
      *             .ids(defaultAlicloudAlbAscript.id())
      *             .nameRegex(defaultAlicloudAlbAscript.name())
-     *             .ascriptName(&#34;test&#34;)
+     *             .ascriptName("test")
      *             .listenerId(listenerId)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
+     *         ctx.export("alicloudAlbAscriptExampleId", default_.ascripts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -521,7 +541,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -545,14 +566,15 @@ public final class AlbFunctions {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
      *             .ids(defaultAlicloudAlbAscript.id())
      *             .nameRegex(defaultAlicloudAlbAscript.name())
-     *             .ascriptName(&#34;test&#34;)
+     *             .ascriptName("test")
      *             .listenerId(listenerId)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
+     *         ctx.export("alicloudAlbAscriptExampleId", default_.ascripts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -567,7 +589,8 @@ public final class AlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -591,14 +614,15 @@ public final class AlbFunctions {
      *         final var default = AlbFunctions.getAscripts(GetAscriptsArgs.builder()
      *             .ids(defaultAlicloudAlbAscript.id())
      *             .nameRegex(defaultAlicloudAlbAscript.name())
-     *             .ascriptName(&#34;test&#34;)
+     *             .ascriptName("test")
      *             .listenerId(listenerId)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAlbAscriptExampleId&#34;, default_.ascripts()[0].id());
+     *         ctx.export("alicloudAlbAscriptExampleId", default_.ascripts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -615,7 +639,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -637,18 +662,19 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;albHealthCheckTemplateId1&#34;, ids.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId1", ids.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
      *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
-     *             .nameRegex(&#34;^my-HealthCheckTemplate&#34;)
+     *             .nameRegex("^my-HealthCheckTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;albHealthCheckTemplateId2&#34;, nameRegex.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId2", nameRegex.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -665,7 +691,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -687,18 +714,19 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;albHealthCheckTemplateId1&#34;, ids.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId1", ids.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
      *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
-     *             .nameRegex(&#34;^my-HealthCheckTemplate&#34;)
+     *             .nameRegex("^my-HealthCheckTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;albHealthCheckTemplateId2&#34;, nameRegex.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId2", nameRegex.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -715,7 +743,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -737,18 +766,19 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;albHealthCheckTemplateId1&#34;, ids.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId1", ids.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
      *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
-     *             .nameRegex(&#34;^my-HealthCheckTemplate&#34;)
+     *             .nameRegex("^my-HealthCheckTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;albHealthCheckTemplateId2&#34;, nameRegex.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId2", nameRegex.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -765,7 +795,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -787,18 +818,19 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;albHealthCheckTemplateId1&#34;, ids.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId1", ids.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
      *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
-     *             .nameRegex(&#34;^my-HealthCheckTemplate&#34;)
+     *             .nameRegex("^my-HealthCheckTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;albHealthCheckTemplateId2&#34;, nameRegex.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId2", nameRegex.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -815,7 +847,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -837,18 +870,19 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;albHealthCheckTemplateId1&#34;, ids.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId1", ids.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
      *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
-     *             .nameRegex(&#34;^my-HealthCheckTemplate&#34;)
+     *             .nameRegex("^my-HealthCheckTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;albHealthCheckTemplateId2&#34;, nameRegex.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId2", nameRegex.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -865,7 +899,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -887,18 +922,19 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;albHealthCheckTemplateId1&#34;, ids.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId1", ids.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
      *         final var nameRegex = AlbFunctions.getHealthCheckTemplates(GetHealthCheckTemplatesArgs.builder()
-     *             .nameRegex(&#34;^my-HealthCheckTemplate&#34;)
+     *             .nameRegex("^my-HealthCheckTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;albHealthCheckTemplateId2&#34;, nameRegex.applyValue(getHealthCheckTemplatesResult -&gt; getHealthCheckTemplatesResult.templates()[0].id()));
+     *         ctx.export("albHealthCheckTemplateId2", nameRegex.applyValue(getHealthCheckTemplatesResult -> getHealthCheckTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -915,7 +951,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -937,13 +974,14 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getListeners(GetListenersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;albListenerId1&#34;, ids.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *         ctx.export("albListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -960,7 +998,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -982,13 +1021,14 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getListeners(GetListenersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;albListenerId1&#34;, ids.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *         ctx.export("albListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1005,7 +1045,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1027,13 +1068,14 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getListeners(GetListenersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;albListenerId1&#34;, ids.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *         ctx.export("albListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1050,7 +1092,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1072,13 +1115,14 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getListeners(GetListenersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;albListenerId1&#34;, ids.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *         ctx.export("albListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1095,7 +1139,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1117,13 +1162,14 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getListeners(GetListenersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;albListenerId1&#34;, ids.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *         ctx.export("albListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1140,7 +1186,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1162,13 +1209,14 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getListeners(GetListenersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;albListenerId1&#34;, ids.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *         ctx.export("albListenerId1", ids.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1185,7 +1233,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1208,15 +1257,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getLoadBalancers();
      * 
-     *         ctx.export(&#34;albLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export(&#34;albLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1233,7 +1283,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1256,15 +1307,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getLoadBalancers();
      * 
-     *         ctx.export(&#34;albLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export(&#34;albLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1281,7 +1333,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1304,15 +1357,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getLoadBalancers();
      * 
-     *         ctx.export(&#34;albLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export(&#34;albLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1329,7 +1383,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1352,15 +1407,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getLoadBalancers();
      * 
-     *         ctx.export(&#34;albLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export(&#34;albLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1377,7 +1433,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1400,15 +1457,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getLoadBalancers();
      * 
-     *         ctx.export(&#34;albLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export(&#34;albLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1425,7 +1483,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1448,15 +1507,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getLoadBalancers();
      * 
-     *         ctx.export(&#34;albLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *         final var nameRegex = AlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export(&#34;albLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("albLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1527,7 +1587,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1550,15 +1611,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getSecurityPolicies();
      * 
-     *         ctx.export(&#34;albSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;albSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1575,7 +1637,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1598,15 +1661,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getSecurityPolicies();
      * 
-     *         ctx.export(&#34;albSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;albSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1623,7 +1687,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1646,15 +1711,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getSecurityPolicies();
      * 
-     *         ctx.export(&#34;albSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;albSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1671,7 +1737,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1694,15 +1761,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getSecurityPolicies();
      * 
-     *         ctx.export(&#34;albSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;albSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1719,7 +1787,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1742,15 +1811,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getSecurityPolicies();
      * 
-     *         ctx.export(&#34;albSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;albSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1767,7 +1837,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1790,15 +1861,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getSecurityPolicies();
      * 
-     *         ctx.export(&#34;albSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *         final var nameRegex = AlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;albSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1815,7 +1887,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1838,15 +1911,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getServerGroups();
      * 
-     *         ctx.export(&#34;albServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("albServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;albServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("albServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1863,7 +1937,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1886,15 +1961,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getServerGroups();
      * 
-     *         ctx.export(&#34;albServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("albServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;albServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("albServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1911,7 +1987,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1934,15 +2011,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getServerGroups();
      * 
-     *         ctx.export(&#34;albServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("albServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;albServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("albServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1959,7 +2037,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1982,15 +2061,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getServerGroups();
      * 
-     *         ctx.export(&#34;albServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("albServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;albServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("albServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2007,7 +2087,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2030,15 +2111,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getServerGroups();
      * 
-     *         ctx.export(&#34;albServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("albServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;albServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("albServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2055,7 +2137,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2078,15 +2161,16 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AlbFunctions.getServerGroups();
      * 
-     *         ctx.export(&#34;albServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("albServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *         final var nameRegex = AlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;albServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("albServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2103,7 +2187,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2125,13 +2210,14 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var defaults = AlbFunctions.getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs.builder()
-     *             .ids(&#34;tls_cipher_policy_1_0&#34;)
+     *             .ids("tls_cipher_policy_1_0")
      *             .build());
      * 
-     *         ctx.export(&#34;albSystemSecurityPolicyId1&#34;, defaults.applyValue(getSystemSecurityPoliciesResult -&gt; getSystemSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSystemSecurityPolicyId1", defaults.applyValue(getSystemSecurityPoliciesResult -> getSystemSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2148,7 +2234,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2170,13 +2257,14 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var defaults = AlbFunctions.getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs.builder()
-     *             .ids(&#34;tls_cipher_policy_1_0&#34;)
+     *             .ids("tls_cipher_policy_1_0")
      *             .build());
      * 
-     *         ctx.export(&#34;albSystemSecurityPolicyId1&#34;, defaults.applyValue(getSystemSecurityPoliciesResult -&gt; getSystemSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSystemSecurityPolicyId1", defaults.applyValue(getSystemSecurityPoliciesResult -> getSystemSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2193,7 +2281,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2215,13 +2304,14 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var defaults = AlbFunctions.getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs.builder()
-     *             .ids(&#34;tls_cipher_policy_1_0&#34;)
+     *             .ids("tls_cipher_policy_1_0")
      *             .build());
      * 
-     *         ctx.export(&#34;albSystemSecurityPolicyId1&#34;, defaults.applyValue(getSystemSecurityPoliciesResult -&gt; getSystemSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSystemSecurityPolicyId1", defaults.applyValue(getSystemSecurityPoliciesResult -> getSystemSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2238,7 +2328,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2260,13 +2351,14 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var defaults = AlbFunctions.getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs.builder()
-     *             .ids(&#34;tls_cipher_policy_1_0&#34;)
+     *             .ids("tls_cipher_policy_1_0")
      *             .build());
      * 
-     *         ctx.export(&#34;albSystemSecurityPolicyId1&#34;, defaults.applyValue(getSystemSecurityPoliciesResult -&gt; getSystemSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSystemSecurityPolicyId1", defaults.applyValue(getSystemSecurityPoliciesResult -> getSystemSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2283,7 +2375,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2305,13 +2398,14 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var defaults = AlbFunctions.getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs.builder()
-     *             .ids(&#34;tls_cipher_policy_1_0&#34;)
+     *             .ids("tls_cipher_policy_1_0")
      *             .build());
      * 
-     *         ctx.export(&#34;albSystemSecurityPolicyId1&#34;, defaults.applyValue(getSystemSecurityPoliciesResult -&gt; getSystemSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSystemSecurityPolicyId1", defaults.applyValue(getSystemSecurityPoliciesResult -> getSystemSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2328,7 +2422,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2350,13 +2445,14 @@ public final class AlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var defaults = AlbFunctions.getSystemSecurityPolicies(GetSystemSecurityPoliciesArgs.builder()
-     *             .ids(&#34;tls_cipher_policy_1_0&#34;)
+     *             .ids("tls_cipher_policy_1_0")
      *             .build());
      * 
-     *         ctx.export(&#34;albSystemSecurityPolicyId1&#34;, defaults.applyValue(getSystemSecurityPoliciesResult -&gt; getSystemSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("albSystemSecurityPolicyId1", defaults.applyValue(getSystemSecurityPoliciesResult -> getSystemSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2373,7 +2469,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2396,10 +2493,11 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AlbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstAlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstAlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2416,7 +2514,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2439,10 +2538,11 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AlbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstAlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstAlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2459,7 +2559,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2482,10 +2583,11 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AlbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstAlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstAlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2502,7 +2604,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2525,10 +2628,11 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AlbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstAlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstAlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2545,7 +2649,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2568,10 +2673,11 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AlbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstAlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstAlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2588,7 +2694,8 @@ public final class AlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2611,10 +2718,11 @@ public final class AlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AlbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstAlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstAlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

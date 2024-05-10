@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,58 +63,59 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;auto_provisioning_group&#34;);
+ *         final var name = config.get("name").orElse("auto_provisioning_group");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .nameRegex("^ubuntu_18.*64")
  *             .mostRecent(true)
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
- *         var template = new EcsLaunchTemplate(&#34;template&#34;, EcsLaunchTemplateArgs.builder()        
+ *         var template = new EcsLaunchTemplate("template", EcsLaunchTemplateArgs.builder()        
  *             .name(name)
- *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(&#34;ecs.n1.tiny&#34;)
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType("ecs.n1.tiny")
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var defaultAutoProvisioningGroup = new AutoProvisioningGroup(&#34;defaultAutoProvisioningGroup&#34;, AutoProvisioningGroupArgs.builder()        
+ *         var defaultAutoProvisioningGroup = new AutoProvisioningGroup("defaultAutoProvisioningGroup", AutoProvisioningGroupArgs.builder()        
  *             .launchTemplateId(template.id())
- *             .totalTargetCapacity(&#34;4&#34;)
- *             .payAsYouGoTargetCapacity(&#34;1&#34;)
- *             .spotTargetCapacity(&#34;2&#34;)
+ *             .totalTargetCapacity("4")
+ *             .payAsYouGoTargetCapacity("1")
+ *             .spotTargetCapacity("2")
  *             .launchTemplateConfigs(AutoProvisioningGroupLaunchTemplateConfigArgs.builder()
- *                 .instanceType(&#34;ecs.n1.small&#34;)
+ *                 .instanceType("ecs.n1.small")
  *                 .vswitchId(defaultSwitch.id())
- *                 .weightedCapacity(&#34;2&#34;)
- *                 .maxPrice(&#34;2&#34;)
+ *                 .weightedCapacity("2")
+ *                 .maxPrice("2")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

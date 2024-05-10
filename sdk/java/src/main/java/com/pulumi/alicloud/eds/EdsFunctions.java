@@ -69,7 +69,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -91,13 +92,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getAdConnectorDirectories(GetAdConnectorDirectoriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdAdConnectorDirectoryId1&#34;, ids.applyValue(getAdConnectorDirectoriesResult -&gt; getAdConnectorDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdAdConnectorDirectoryId1", ids.applyValue(getAdConnectorDirectoriesResult -> getAdConnectorDirectoriesResult.directories()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -114,7 +116,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -136,13 +139,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getAdConnectorDirectories(GetAdConnectorDirectoriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdAdConnectorDirectoryId1&#34;, ids.applyValue(getAdConnectorDirectoriesResult -&gt; getAdConnectorDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdAdConnectorDirectoryId1", ids.applyValue(getAdConnectorDirectoriesResult -> getAdConnectorDirectoriesResult.directories()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -159,7 +163,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -181,13 +186,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getAdConnectorDirectories(GetAdConnectorDirectoriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdAdConnectorDirectoryId1&#34;, ids.applyValue(getAdConnectorDirectoriesResult -&gt; getAdConnectorDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdAdConnectorDirectoryId1", ids.applyValue(getAdConnectorDirectoriesResult -> getAdConnectorDirectoriesResult.directories()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -204,7 +210,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -226,13 +233,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getAdConnectorDirectories(GetAdConnectorDirectoriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdAdConnectorDirectoryId1&#34;, ids.applyValue(getAdConnectorDirectoriesResult -&gt; getAdConnectorDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdAdConnectorDirectoryId1", ids.applyValue(getAdConnectorDirectoriesResult -> getAdConnectorDirectoriesResult.directories()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -249,7 +257,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -271,13 +280,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getAdConnectorDirectories(GetAdConnectorDirectoriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdAdConnectorDirectoryId1&#34;, ids.applyValue(getAdConnectorDirectoriesResult -&gt; getAdConnectorDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdAdConnectorDirectoryId1", ids.applyValue(getAdConnectorDirectoriesResult -> getAdConnectorDirectoriesResult.directories()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -294,7 +304,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -316,13 +327,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getAdConnectorDirectories(GetAdConnectorDirectoriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdAdConnectorDirectoryId1&#34;, ids.applyValue(getAdConnectorDirectoriesResult -&gt; getAdConnectorDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdAdConnectorDirectoryId1", ids.applyValue(getAdConnectorDirectoriesResult -> getAdConnectorDirectoriesResult.directories()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -339,7 +351,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -362,15 +375,16 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
      * 
-     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId1&#34;, ids.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
      *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
-     *             .nameRegex(&#34;^my-AdConnectorOfficeSite&#34;)
+     *             .nameRegex("^my-AdConnectorOfficeSite")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId2&#34;, nameRegex.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -387,7 +401,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -410,15 +425,16 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
      * 
-     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId1&#34;, ids.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
      *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
-     *             .nameRegex(&#34;^my-AdConnectorOfficeSite&#34;)
+     *             .nameRegex("^my-AdConnectorOfficeSite")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId2&#34;, nameRegex.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -435,7 +451,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -458,15 +475,16 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
      * 
-     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId1&#34;, ids.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
      *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
-     *             .nameRegex(&#34;^my-AdConnectorOfficeSite&#34;)
+     *             .nameRegex("^my-AdConnectorOfficeSite")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId2&#34;, nameRegex.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -483,7 +501,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -506,15 +525,16 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
      * 
-     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId1&#34;, ids.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
      *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
-     *             .nameRegex(&#34;^my-AdConnectorOfficeSite&#34;)
+     *             .nameRegex("^my-AdConnectorOfficeSite")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId2&#34;, nameRegex.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -531,7 +551,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -554,15 +575,16 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
      * 
-     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId1&#34;, ids.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
      *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
-     *             .nameRegex(&#34;^my-AdConnectorOfficeSite&#34;)
+     *             .nameRegex("^my-AdConnectorOfficeSite")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId2&#34;, nameRegex.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -579,7 +601,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -602,15 +625,16 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getAdConnectorOfficeSites();
      * 
-     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId1&#34;, ids.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId1", ids.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
      *         final var nameRegex = EdsFunctions.getAdConnectorOfficeSites(GetAdConnectorOfficeSitesArgs.builder()
-     *             .nameRegex(&#34;^my-AdConnectorOfficeSite&#34;)
+     *             .nameRegex("^my-AdConnectorOfficeSite")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdAdConnectorOfficeSiteId2&#34;, nameRegex.applyValue(getAdConnectorOfficeSitesResult -&gt; getAdConnectorOfficeSitesResult.sites()[0].id()));
+     *         ctx.export("ecdAdConnectorOfficeSiteId2", nameRegex.applyValue(getAdConnectorOfficeSitesResult -> getAdConnectorOfficeSitesResult.sites()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -627,7 +651,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -649,12 +674,13 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -671,7 +697,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -693,12 +720,13 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -715,7 +743,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -737,12 +766,13 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -759,7 +789,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -781,12 +812,13 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -803,7 +835,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -825,12 +858,13 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -847,7 +881,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -869,12 +904,13 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -891,7 +927,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -923,55 +960,56 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
-     *             .nameRegex(&#34;windows&#34;)
+     *             .bundleType("SYSTEM")
+     *             .nameRegex("windows")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(name)
      *             .build());
      * 
-     *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
-     *             .commandContent(&#34;ipconfig&#34;)
-     *             .commandType(&#34;RunPowerShellScript&#34;)
+     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+     *             .commandContent("ipconfig")
+     *             .commandType("RunPowerShellScript")
      *             .desktopId(defaultDesktop.id())
      *             .build());
      * 
      *         final var ids = EdsFunctions.getCommands();
      * 
-     *         ctx.export(&#34;ecdCommandId1&#34;, ids.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *         ctx.export("ecdCommandId1", ids.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -988,7 +1026,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1020,55 +1059,56 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
-     *             .nameRegex(&#34;windows&#34;)
+     *             .bundleType("SYSTEM")
+     *             .nameRegex("windows")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(name)
      *             .build());
      * 
-     *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
-     *             .commandContent(&#34;ipconfig&#34;)
-     *             .commandType(&#34;RunPowerShellScript&#34;)
+     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+     *             .commandContent("ipconfig")
+     *             .commandType("RunPowerShellScript")
      *             .desktopId(defaultDesktop.id())
      *             .build());
      * 
      *         final var ids = EdsFunctions.getCommands();
      * 
-     *         ctx.export(&#34;ecdCommandId1&#34;, ids.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *         ctx.export("ecdCommandId1", ids.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1085,7 +1125,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1117,55 +1158,56 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
-     *             .nameRegex(&#34;windows&#34;)
+     *             .bundleType("SYSTEM")
+     *             .nameRegex("windows")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(name)
      *             .build());
      * 
-     *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
-     *             .commandContent(&#34;ipconfig&#34;)
-     *             .commandType(&#34;RunPowerShellScript&#34;)
+     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+     *             .commandContent("ipconfig")
+     *             .commandType("RunPowerShellScript")
      *             .desktopId(defaultDesktop.id())
      *             .build());
      * 
      *         final var ids = EdsFunctions.getCommands();
      * 
-     *         ctx.export(&#34;ecdCommandId1&#34;, ids.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *         ctx.export("ecdCommandId1", ids.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1182,7 +1224,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1214,55 +1257,56 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
-     *             .nameRegex(&#34;windows&#34;)
+     *             .bundleType("SYSTEM")
+     *             .nameRegex("windows")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(name)
      *             .build());
      * 
-     *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
-     *             .commandContent(&#34;ipconfig&#34;)
-     *             .commandType(&#34;RunPowerShellScript&#34;)
+     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+     *             .commandContent("ipconfig")
+     *             .commandType("RunPowerShellScript")
      *             .desktopId(defaultDesktop.id())
      *             .build());
      * 
      *         final var ids = EdsFunctions.getCommands();
      * 
-     *         ctx.export(&#34;ecdCommandId1&#34;, ids.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *         ctx.export("ecdCommandId1", ids.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1279,7 +1323,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1311,55 +1356,56 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
-     *             .nameRegex(&#34;windows&#34;)
+     *             .bundleType("SYSTEM")
+     *             .nameRegex("windows")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(name)
      *             .build());
      * 
-     *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
-     *             .commandContent(&#34;ipconfig&#34;)
-     *             .commandType(&#34;RunPowerShellScript&#34;)
+     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+     *             .commandContent("ipconfig")
+     *             .commandType("RunPowerShellScript")
      *             .desktopId(defaultDesktop.id())
      *             .build());
      * 
      *         final var ids = EdsFunctions.getCommands();
      * 
-     *         ctx.export(&#34;ecdCommandId1&#34;, ids.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *         ctx.export("ecdCommandId1", ids.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1376,7 +1422,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1408,55 +1455,56 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
-     *             .nameRegex(&#34;windows&#34;)
+     *             .bundleType("SYSTEM")
+     *             .nameRegex("windows")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
      *             .desktopName(name)
      *             .build());
      * 
-     *         var defaultCommand = new Command(&#34;defaultCommand&#34;, CommandArgs.builder()        
-     *             .commandContent(&#34;ipconfig&#34;)
-     *             .commandType(&#34;RunPowerShellScript&#34;)
+     *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+     *             .commandContent("ipconfig")
+     *             .commandType("RunPowerShellScript")
      *             .desktopId(defaultDesktop.id())
      *             .build());
      * 
      *         final var ids = EdsFunctions.getCommands();
      * 
-     *         ctx.export(&#34;ecdCommandId1&#34;, ids.applyValue(getCommandsResult -&gt; getCommandsResult.commands()[0].id()));
+     *         ctx.export("ecdCommandId1", ids.applyValue(getCommandsResult -> getCommandsResult.commands()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1473,7 +1521,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1495,13 +1544,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getCustomProperties(GetCustomPropertiesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdCustomPropertyId1&#34;, ids.applyValue(getCustomPropertiesResult -&gt; getCustomPropertiesResult.properties()[0].id()));
+     *         ctx.export("ecdCustomPropertyId1", ids.applyValue(getCustomPropertiesResult -> getCustomPropertiesResult.properties()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1518,7 +1568,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1540,13 +1591,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getCustomProperties(GetCustomPropertiesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdCustomPropertyId1&#34;, ids.applyValue(getCustomPropertiesResult -&gt; getCustomPropertiesResult.properties()[0].id()));
+     *         ctx.export("ecdCustomPropertyId1", ids.applyValue(getCustomPropertiesResult -> getCustomPropertiesResult.properties()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1563,7 +1615,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1585,13 +1638,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getCustomProperties(GetCustomPropertiesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdCustomPropertyId1&#34;, ids.applyValue(getCustomPropertiesResult -&gt; getCustomPropertiesResult.properties()[0].id()));
+     *         ctx.export("ecdCustomPropertyId1", ids.applyValue(getCustomPropertiesResult -> getCustomPropertiesResult.properties()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1608,7 +1662,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1630,13 +1685,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getCustomProperties(GetCustomPropertiesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdCustomPropertyId1&#34;, ids.applyValue(getCustomPropertiesResult -&gt; getCustomPropertiesResult.properties()[0].id()));
+     *         ctx.export("ecdCustomPropertyId1", ids.applyValue(getCustomPropertiesResult -> getCustomPropertiesResult.properties()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1653,7 +1709,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1675,13 +1732,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getCustomProperties(GetCustomPropertiesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdCustomPropertyId1&#34;, ids.applyValue(getCustomPropertiesResult -&gt; getCustomPropertiesResult.properties()[0].id()));
+     *         ctx.export("ecdCustomPropertyId1", ids.applyValue(getCustomPropertiesResult -> getCustomPropertiesResult.properties()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1698,7 +1756,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1720,13 +1779,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getCustomProperties(GetCustomPropertiesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdCustomPropertyId1&#34;, ids.applyValue(getCustomPropertiesResult -&gt; getCustomPropertiesResult.properties()[0].id()));
+     *         ctx.export("ecdCustomPropertyId1", ids.applyValue(getCustomPropertiesResult -> getCustomPropertiesResult.properties()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1743,7 +1803,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1765,13 +1826,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
-     *             .instanceTypeFamily(&#34;eds.hf&#34;)
+     *             .instanceTypeFamily("eds.hf")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopTypeId1&#34;, ids.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.types()[0].id()));
+     *         ctx.export("ecdDesktopTypeId1", ids.applyValue(getDesktopTypesResult -> getDesktopTypesResult.types()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1788,7 +1850,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1810,13 +1873,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
-     *             .instanceTypeFamily(&#34;eds.hf&#34;)
+     *             .instanceTypeFamily("eds.hf")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopTypeId1&#34;, ids.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.types()[0].id()));
+     *         ctx.export("ecdDesktopTypeId1", ids.applyValue(getDesktopTypesResult -> getDesktopTypesResult.types()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1833,7 +1897,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1855,13 +1920,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
-     *             .instanceTypeFamily(&#34;eds.hf&#34;)
+     *             .instanceTypeFamily("eds.hf")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopTypeId1&#34;, ids.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.types()[0].id()));
+     *         ctx.export("ecdDesktopTypeId1", ids.applyValue(getDesktopTypesResult -> getDesktopTypesResult.types()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1878,7 +1944,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1900,13 +1967,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
-     *             .instanceTypeFamily(&#34;eds.hf&#34;)
+     *             .instanceTypeFamily("eds.hf")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopTypeId1&#34;, ids.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.types()[0].id()));
+     *         ctx.export("ecdDesktopTypeId1", ids.applyValue(getDesktopTypesResult -> getDesktopTypesResult.types()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1923,7 +1991,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1945,13 +2014,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
-     *             .instanceTypeFamily(&#34;eds.hf&#34;)
+     *             .instanceTypeFamily("eds.hf")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopTypeId1&#34;, ids.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.types()[0].id()));
+     *         ctx.export("ecdDesktopTypeId1", ids.applyValue(getDesktopTypesResult -> getDesktopTypesResult.types()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1968,7 +2038,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1990,13 +2061,14 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
-     *             .instanceTypeFamily(&#34;eds.hf&#34;)
+     *             .instanceTypeFamily("eds.hf")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopTypeId1&#34;, ids.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.types()[0].id()));
+     *         ctx.export("ecdDesktopTypeId1", ids.applyValue(getDesktopTypesResult -> getDesktopTypesResult.types()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2013,7 +2085,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2045,47 +2118,47 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
-     *             .endUserId(&#34;your_end_user_id&#34;)
-     *             .email(&#34;your_email&#34;)
-     *             .phone(&#34;your_phone&#34;)
-     *             .password(&#34;your_password&#34;)
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *             .endUserId("your_end_user_id")
+     *             .email("your_email")
+     *             .phone("your_phone")
+     *             .password("your_password")
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
-     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .desktopName("your_desktop_name")
      *             .endUserIds(defaultUser.id())
      *             .build());
      * 
@@ -2093,15 +2166,16 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopId1&#34;, ids.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(ids -&gt; ids.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId1", ids.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(ids -> ids.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
      *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
      *             .nameRegex(defaultDesktop.desktopName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopId2&#34;, nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(nameRegex -> nameRegex.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2118,7 +2192,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2150,47 +2225,47 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
-     *             .endUserId(&#34;your_end_user_id&#34;)
-     *             .email(&#34;your_email&#34;)
-     *             .phone(&#34;your_phone&#34;)
-     *             .password(&#34;your_password&#34;)
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *             .endUserId("your_end_user_id")
+     *             .email("your_email")
+     *             .phone("your_phone")
+     *             .password("your_password")
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
-     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .desktopName("your_desktop_name")
      *             .endUserIds(defaultUser.id())
      *             .build());
      * 
@@ -2198,15 +2273,16 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopId1&#34;, ids.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(ids -&gt; ids.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId1", ids.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(ids -> ids.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
      *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
      *             .nameRegex(defaultDesktop.desktopName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopId2&#34;, nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(nameRegex -> nameRegex.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2223,7 +2299,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2255,47 +2332,47 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
-     *             .endUserId(&#34;your_end_user_id&#34;)
-     *             .email(&#34;your_email&#34;)
-     *             .phone(&#34;your_phone&#34;)
-     *             .password(&#34;your_password&#34;)
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *             .endUserId("your_end_user_id")
+     *             .email("your_email")
+     *             .phone("your_phone")
+     *             .password("your_password")
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
-     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .desktopName("your_desktop_name")
      *             .endUserIds(defaultUser.id())
      *             .build());
      * 
@@ -2303,15 +2380,16 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopId1&#34;, ids.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(ids -&gt; ids.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId1", ids.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(ids -> ids.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
      *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
      *             .nameRegex(defaultDesktop.desktopName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopId2&#34;, nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(nameRegex -> nameRegex.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2328,7 +2406,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2360,47 +2439,47 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
-     *             .endUserId(&#34;your_end_user_id&#34;)
-     *             .email(&#34;your_email&#34;)
-     *             .phone(&#34;your_phone&#34;)
-     *             .password(&#34;your_password&#34;)
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *             .endUserId("your_end_user_id")
+     *             .email("your_email")
+     *             .phone("your_phone")
+     *             .password("your_password")
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
-     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .desktopName("your_desktop_name")
      *             .endUserIds(defaultUser.id())
      *             .build());
      * 
@@ -2408,15 +2487,16 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopId1&#34;, ids.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(ids -&gt; ids.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId1", ids.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(ids -> ids.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
      *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
      *             .nameRegex(defaultDesktop.desktopName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopId2&#34;, nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(nameRegex -> nameRegex.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2433,7 +2513,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2465,47 +2546,47 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
-     *             .endUserId(&#34;your_end_user_id&#34;)
-     *             .email(&#34;your_email&#34;)
-     *             .phone(&#34;your_phone&#34;)
-     *             .password(&#34;your_password&#34;)
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *             .endUserId("your_end_user_id")
+     *             .email("your_email")
+     *             .phone("your_phone")
+     *             .password("your_password")
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
-     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .desktopName("your_desktop_name")
      *             .endUserIds(defaultUser.id())
      *             .build());
      * 
@@ -2513,15 +2594,16 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopId1&#34;, ids.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(ids -&gt; ids.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId1", ids.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(ids -> ids.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
      *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
      *             .nameRegex(defaultDesktop.desktopName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopId2&#34;, nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(nameRegex -> nameRegex.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2538,7 +2620,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2570,47 +2653,47 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
-     *             .endUserId(&#34;your_end_user_id&#34;)
-     *             .email(&#34;your_email&#34;)
-     *             .phone(&#34;your_phone&#34;)
-     *             .password(&#34;your_password&#34;)
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *             .endUserId("your_end_user_id")
+     *             .email("your_email")
+     *             .phone("your_phone")
+     *             .password("your_password")
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[0].id())
-     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .desktopName("your_desktop_name")
      *             .endUserIds(defaultUser.id())
      *             .build());
      * 
@@ -2618,15 +2701,16 @@ public final class EdsFunctions {
      *             .ids(defaultDesktop.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopId1&#34;, ids.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(ids -&gt; ids.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId1", ids.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(ids -> ids.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
      *         final var nameRegex = EdsFunctions.getDesktops(GetDesktopsArgs.builder()
      *             .nameRegex(defaultDesktop.desktopName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdDesktopId2&#34;, nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getDesktopsResult -&gt; getDesktopsResult.desktops()[0].id())));
+     *         ctx.export("ecdDesktopId2", nameRegex.applyValue(getDesktopsResult -> getDesktopsResult).applyValue(nameRegex -> nameRegex.applyValue(getDesktopsResult -> getDesktopsResult.desktops()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2643,7 +2727,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2675,61 +2760,62 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_simple_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[1].id())
-     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .desktopName("your_desktop_name")
      *             .build());
      * 
-     *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
-     *             .imageName(&#34;your_image_name&#34;)
+     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
+     *             .imageName("your_image_name")
      *             .desktopId(defaultDesktop.id())
-     *             .description(&#34;example_value&#34;)
+     *             .description("example_value")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdImageId1&#34;, ids.applyValue(getImagesResult -&gt; getImagesResult).applyValue(ids -&gt; ids.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId1", ids.applyValue(getImagesResult -> getImagesResult).applyValue(ids -> ids.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
      *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(defaultImage.imageName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdImageId2&#34;, nameRegex.applyValue(getImagesResult -&gt; getImagesResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(getImagesResult -> getImagesResult).applyValue(nameRegex -> nameRegex.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2746,7 +2832,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2778,61 +2865,62 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_simple_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[1].id())
-     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .desktopName("your_desktop_name")
      *             .build());
      * 
-     *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
-     *             .imageName(&#34;your_image_name&#34;)
+     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
+     *             .imageName("your_image_name")
      *             .desktopId(defaultDesktop.id())
-     *             .description(&#34;example_value&#34;)
+     *             .description("example_value")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdImageId1&#34;, ids.applyValue(getImagesResult -&gt; getImagesResult).applyValue(ids -&gt; ids.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId1", ids.applyValue(getImagesResult -> getImagesResult).applyValue(ids -> ids.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
      *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(defaultImage.imageName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdImageId2&#34;, nameRegex.applyValue(getImagesResult -&gt; getImagesResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(getImagesResult -> getImagesResult).applyValue(nameRegex -> nameRegex.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2849,7 +2937,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2881,61 +2970,62 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_simple_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[1].id())
-     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .desktopName("your_desktop_name")
      *             .build());
      * 
-     *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
-     *             .imageName(&#34;your_image_name&#34;)
+     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
+     *             .imageName("your_image_name")
      *             .desktopId(defaultDesktop.id())
-     *             .description(&#34;example_value&#34;)
+     *             .description("example_value")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdImageId1&#34;, ids.applyValue(getImagesResult -&gt; getImagesResult).applyValue(ids -&gt; ids.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId1", ids.applyValue(getImagesResult -> getImagesResult).applyValue(ids -> ids.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
      *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(defaultImage.imageName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdImageId2&#34;, nameRegex.applyValue(getImagesResult -&gt; getImagesResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(getImagesResult -> getImagesResult).applyValue(nameRegex -> nameRegex.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2952,7 +3042,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2984,61 +3075,62 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_simple_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[1].id())
-     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .desktopName("your_desktop_name")
      *             .build());
      * 
-     *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
-     *             .imageName(&#34;your_image_name&#34;)
+     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
+     *             .imageName("your_image_name")
      *             .desktopId(defaultDesktop.id())
-     *             .description(&#34;example_value&#34;)
+     *             .description("example_value")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdImageId1&#34;, ids.applyValue(getImagesResult -&gt; getImagesResult).applyValue(ids -&gt; ids.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId1", ids.applyValue(getImagesResult -> getImagesResult).applyValue(ids -> ids.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
      *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(defaultImage.imageName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdImageId2&#34;, nameRegex.applyValue(getImagesResult -&gt; getImagesResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(getImagesResult -> getImagesResult).applyValue(nameRegex -> nameRegex.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3055,7 +3147,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3087,61 +3180,62 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_simple_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[1].id())
-     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .desktopName("your_desktop_name")
      *             .build());
      * 
-     *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
-     *             .imageName(&#34;your_image_name&#34;)
+     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
+     *             .imageName("your_image_name")
      *             .desktopId(defaultDesktop.id())
-     *             .description(&#34;example_value&#34;)
+     *             .description("example_value")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdImageId1&#34;, ids.applyValue(getImagesResult -&gt; getImagesResult).applyValue(ids -&gt; ids.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId1", ids.applyValue(getImagesResult -> getImagesResult).applyValue(ids -> ids.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
      *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(defaultImage.imageName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdImageId2&#34;, nameRegex.applyValue(getImagesResult -&gt; getImagesResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(getImagesResult -> getImagesResult).applyValue(nameRegex -> nameRegex.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3158,7 +3252,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3190,61 +3285,62 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_simple_office_site_name&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_simple_office_site_name")
      *             .build());
      * 
      *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
-     *             .bundleType(&#34;SYSTEM&#34;)
+     *             .bundleType("SYSTEM")
      *             .build());
      * 
-     *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;your_policy_group_name&#34;)
-     *             .clipboard(&#34;readwrite&#34;)
-     *             .localDrive(&#34;read&#34;)
+     *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("your_policy_group_name")
+     *             .clipboard("readwrite")
+     *             .localDrive("read")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;example_value&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .description("example_value")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;example_value&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;0.0.0.0/0&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("example_value")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("0.0.0.0/0")
      *                 .build())
      *             .build());
      * 
-     *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
+     *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .policyGroupId(defaultEcdPolicyGroup.id())
      *             .bundleId(default_.bundles()[1].id())
-     *             .desktopName(&#34;your_desktop_name&#34;)
+     *             .desktopName("your_desktop_name")
      *             .build());
      * 
-     *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
-     *             .imageName(&#34;your_image_name&#34;)
+     *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
+     *             .imageName("your_image_name")
      *             .desktopId(defaultDesktop.id())
-     *             .description(&#34;example_value&#34;)
+     *             .description("example_value")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .ids(defaultImage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdImageId1&#34;, ids.applyValue(getImagesResult -&gt; getImagesResult).applyValue(ids -&gt; ids.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId1", ids.applyValue(getImagesResult -> getImagesResult).applyValue(ids -> ids.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
      *         final var nameRegex = EdsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(defaultImage.imageName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdImageId2&#34;, nameRegex.applyValue(getImagesResult -&gt; getImagesResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id())));
+     *         ctx.export("ecdImageId2", nameRegex.applyValue(getImagesResult -> getImagesResult).applyValue(nameRegex -> nameRegex.applyValue(getImagesResult -> getImagesResult.images()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3261,7 +3357,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3286,30 +3383,31 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .enableInternetAccess(false)
      *             .build());
      * 
-     *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
-     *             .description(&#34;your_description&#34;)
+     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()        
+     *             .description("your_description")
      *             .officeSiteId(default_.id())
-     *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
+     *             .nasFileSystemName("your_nas_file_system_name")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getNasFileSystems();
      * 
-     *         ctx.export(&#34;ecdNasFileSystemId1&#34;, ids.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id()));
+     *         ctx.export("ecdNasFileSystemId1", ids.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id()));
      *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
      *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNasFileSystemId2&#34;, nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id())));
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult).applyValue(nameRegex -> nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3326,7 +3424,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3351,30 +3450,31 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .enableInternetAccess(false)
      *             .build());
      * 
-     *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
-     *             .description(&#34;your_description&#34;)
+     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()        
+     *             .description("your_description")
      *             .officeSiteId(default_.id())
-     *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
+     *             .nasFileSystemName("your_nas_file_system_name")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getNasFileSystems();
      * 
-     *         ctx.export(&#34;ecdNasFileSystemId1&#34;, ids.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id()));
+     *         ctx.export("ecdNasFileSystemId1", ids.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id()));
      *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
      *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNasFileSystemId2&#34;, nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id())));
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult).applyValue(nameRegex -> nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3391,7 +3491,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3416,30 +3517,31 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .enableInternetAccess(false)
      *             .build());
      * 
-     *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
-     *             .description(&#34;your_description&#34;)
+     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()        
+     *             .description("your_description")
      *             .officeSiteId(default_.id())
-     *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
+     *             .nasFileSystemName("your_nas_file_system_name")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getNasFileSystems();
      * 
-     *         ctx.export(&#34;ecdNasFileSystemId1&#34;, ids.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id()));
+     *         ctx.export("ecdNasFileSystemId1", ids.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id()));
      *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
      *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNasFileSystemId2&#34;, nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id())));
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult).applyValue(nameRegex -> nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3456,7 +3558,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3481,30 +3584,31 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .enableInternetAccess(false)
      *             .build());
      * 
-     *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
-     *             .description(&#34;your_description&#34;)
+     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()        
+     *             .description("your_description")
      *             .officeSiteId(default_.id())
-     *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
+     *             .nasFileSystemName("your_nas_file_system_name")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getNasFileSystems();
      * 
-     *         ctx.export(&#34;ecdNasFileSystemId1&#34;, ids.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id()));
+     *         ctx.export("ecdNasFileSystemId1", ids.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id()));
      *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
      *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNasFileSystemId2&#34;, nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id())));
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult).applyValue(nameRegex -> nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3521,7 +3625,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3546,30 +3651,31 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .enableInternetAccess(false)
      *             .build());
      * 
-     *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
-     *             .description(&#34;your_description&#34;)
+     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()        
+     *             .description("your_description")
      *             .officeSiteId(default_.id())
-     *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
+     *             .nasFileSystemName("your_nas_file_system_name")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getNasFileSystems();
      * 
-     *         ctx.export(&#34;ecdNasFileSystemId1&#34;, ids.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id()));
+     *         ctx.export("ecdNasFileSystemId1", ids.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id()));
      *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
      *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNasFileSystemId2&#34;, nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id())));
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult).applyValue(nameRegex -> nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3586,7 +3692,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3611,30 +3718,31 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new SimpleOfficeSite(&#34;default&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;your_office_site_name&#34;)
+     *         var default_ = new SimpleOfficeSite("default", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("your_office_site_name")
      *             .enableInternetAccess(false)
      *             .build());
      * 
-     *         var defaultNasFileSystem = new NasFileSystem(&#34;defaultNasFileSystem&#34;, NasFileSystemArgs.builder()        
-     *             .description(&#34;your_description&#34;)
+     *         var defaultNasFileSystem = new NasFileSystem("defaultNasFileSystem", NasFileSystemArgs.builder()        
+     *             .description("your_description")
      *             .officeSiteId(default_.id())
-     *             .nasFileSystemName(&#34;your_nas_file_system_name&#34;)
+     *             .nasFileSystemName("your_nas_file_system_name")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getNasFileSystems();
      * 
-     *         ctx.export(&#34;ecdNasFileSystemId1&#34;, ids.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id()));
+     *         ctx.export("ecdNasFileSystemId1", ids.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id()));
      *         final var nameRegex = EdsFunctions.getNasFileSystems(GetNasFileSystemsArgs.builder()
      *             .nameRegex(defaultNasFileSystem.nasFileSystemName())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNasFileSystemId2&#34;, nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult).applyValue(nameRegex -&gt; nameRegex.applyValue(getNasFileSystemsResult -&gt; getNasFileSystemsResult.systems()[0].id())));
+     *         ctx.export("ecdNasFileSystemId2", nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult).applyValue(nameRegex -> nameRegex.applyValue(getNasFileSystemsResult -> getNasFileSystemsResult.systems()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3651,7 +3759,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3676,14 +3785,14 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;example_value&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("example_value")
      *             .build());
      * 
-     *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
-     *             .bandwidth(&#34;10&#34;)
+     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()        
+     *             .bandwidth("10")
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
@@ -3691,10 +3800,11 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, default_.applyValue(default_ -&gt; default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(default_ -> default_.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3711,7 +3821,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3736,14 +3847,14 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;example_value&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("example_value")
      *             .build());
      * 
-     *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
-     *             .bandwidth(&#34;10&#34;)
+     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()        
+     *             .bandwidth("10")
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
@@ -3751,10 +3862,11 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, default_.applyValue(default_ -&gt; default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(default_ -> default_.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3771,7 +3883,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3796,14 +3909,14 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;example_value&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("example_value")
      *             .build());
      * 
-     *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
-     *             .bandwidth(&#34;10&#34;)
+     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()        
+     *             .bandwidth("10")
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
@@ -3811,10 +3924,11 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, default_.applyValue(default_ -&gt; default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(default_ -> default_.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3831,7 +3945,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3856,14 +3971,14 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;example_value&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("example_value")
      *             .build());
      * 
-     *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
-     *             .bandwidth(&#34;10&#34;)
+     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()        
+     *             .bandwidth("10")
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
@@ -3871,10 +3986,11 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, default_.applyValue(default_ -&gt; default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(default_ -> default_.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3891,7 +4007,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3916,14 +4033,14 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;example_value&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("example_value")
      *             .build());
      * 
-     *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
-     *             .bandwidth(&#34;10&#34;)
+     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()        
+     *             .bandwidth("10")
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
@@ -3931,10 +4048,11 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, default_.applyValue(default_ -&gt; default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(default_ -> default_.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3951,7 +4069,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3976,14 +4095,14 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSimpleOfficeSite = new SimpleOfficeSite(&#34;defaultSimpleOfficeSite&#34;, SimpleOfficeSiteArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .desktopAccessType(&#34;Internet&#34;)
-     *             .officeSiteName(&#34;example_value&#34;)
+     *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
+     *             .desktopAccessType("Internet")
+     *             .officeSiteName("example_value")
      *             .build());
      * 
-     *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
-     *             .bandwidth(&#34;10&#34;)
+     *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()        
+     *             .bandwidth("10")
      *             .officeSiteId(defaultSimpleOfficeSite.id())
      *             .build());
      * 
@@ -3991,10 +4110,11 @@ public final class EdsFunctions {
      *             .ids(defaultNetworkPackage.id())
      *             .build());
      * 
-     *         ctx.export(&#34;ecdNetworkPackageId1&#34;, default_.applyValue(default_ -&gt; default_.packages()[0].id()));
+     *         ctx.export("ecdNetworkPackageId1", default_.applyValue(default_ -> default_.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4011,7 +4131,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4036,35 +4157,36 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;my-policy-group&#34;)
-     *             .clipboard(&#34;read&#34;)
-     *             .localDrive(&#34;read&#34;)
-     *             .usbRedirect(&#34;off&#34;)
-     *             .watermark(&#34;off&#34;)
+     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("my-policy-group")
+     *             .clipboard("read")
+     *             .localDrive("read")
+     *             .usbRedirect("off")
+     *             .watermark("off")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;my-description1&#34;)
-     *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+     *                 .description("my-description1")
+     *                 .cidrIp("1.2.3.45/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;my-description&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("my-description")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .build());
      * 
      *         final var nameRegex = EdsFunctions.getPolicyGroups(GetPolicyGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-policy&#34;)
+     *             .nameRegex("^my-policy")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdPolicyGroupId&#34;, nameRegex.applyValue(getPolicyGroupsResult -&gt; getPolicyGroupsResult.groups()[0].id()));
+     *         ctx.export("ecdPolicyGroupId", nameRegex.applyValue(getPolicyGroupsResult -> getPolicyGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4081,7 +4203,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4106,35 +4229,36 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;my-policy-group&#34;)
-     *             .clipboard(&#34;read&#34;)
-     *             .localDrive(&#34;read&#34;)
-     *             .usbRedirect(&#34;off&#34;)
-     *             .watermark(&#34;off&#34;)
+     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("my-policy-group")
+     *             .clipboard("read")
+     *             .localDrive("read")
+     *             .usbRedirect("off")
+     *             .watermark("off")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;my-description1&#34;)
-     *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+     *                 .description("my-description1")
+     *                 .cidrIp("1.2.3.45/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;my-description&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("my-description")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .build());
      * 
      *         final var nameRegex = EdsFunctions.getPolicyGroups(GetPolicyGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-policy&#34;)
+     *             .nameRegex("^my-policy")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdPolicyGroupId&#34;, nameRegex.applyValue(getPolicyGroupsResult -&gt; getPolicyGroupsResult.groups()[0].id()));
+     *         ctx.export("ecdPolicyGroupId", nameRegex.applyValue(getPolicyGroupsResult -> getPolicyGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4151,7 +4275,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4176,35 +4301,36 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;my-policy-group&#34;)
-     *             .clipboard(&#34;read&#34;)
-     *             .localDrive(&#34;read&#34;)
-     *             .usbRedirect(&#34;off&#34;)
-     *             .watermark(&#34;off&#34;)
+     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("my-policy-group")
+     *             .clipboard("read")
+     *             .localDrive("read")
+     *             .usbRedirect("off")
+     *             .watermark("off")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;my-description1&#34;)
-     *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+     *                 .description("my-description1")
+     *                 .cidrIp("1.2.3.45/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;my-description&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("my-description")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .build());
      * 
      *         final var nameRegex = EdsFunctions.getPolicyGroups(GetPolicyGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-policy&#34;)
+     *             .nameRegex("^my-policy")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdPolicyGroupId&#34;, nameRegex.applyValue(getPolicyGroupsResult -&gt; getPolicyGroupsResult.groups()[0].id()));
+     *         ctx.export("ecdPolicyGroupId", nameRegex.applyValue(getPolicyGroupsResult -> getPolicyGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4221,7 +4347,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4246,35 +4373,36 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;my-policy-group&#34;)
-     *             .clipboard(&#34;read&#34;)
-     *             .localDrive(&#34;read&#34;)
-     *             .usbRedirect(&#34;off&#34;)
-     *             .watermark(&#34;off&#34;)
+     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("my-policy-group")
+     *             .clipboard("read")
+     *             .localDrive("read")
+     *             .usbRedirect("off")
+     *             .watermark("off")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;my-description1&#34;)
-     *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+     *                 .description("my-description1")
+     *                 .cidrIp("1.2.3.45/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;my-description&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("my-description")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .build());
      * 
      *         final var nameRegex = EdsFunctions.getPolicyGroups(GetPolicyGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-policy&#34;)
+     *             .nameRegex("^my-policy")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdPolicyGroupId&#34;, nameRegex.applyValue(getPolicyGroupsResult -&gt; getPolicyGroupsResult.groups()[0].id()));
+     *         ctx.export("ecdPolicyGroupId", nameRegex.applyValue(getPolicyGroupsResult -> getPolicyGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4291,7 +4419,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4316,35 +4445,36 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;my-policy-group&#34;)
-     *             .clipboard(&#34;read&#34;)
-     *             .localDrive(&#34;read&#34;)
-     *             .usbRedirect(&#34;off&#34;)
-     *             .watermark(&#34;off&#34;)
+     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("my-policy-group")
+     *             .clipboard("read")
+     *             .localDrive("read")
+     *             .usbRedirect("off")
+     *             .watermark("off")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;my-description1&#34;)
-     *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+     *                 .description("my-description1")
+     *                 .cidrIp("1.2.3.45/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;my-description&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("my-description")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .build());
      * 
      *         final var nameRegex = EdsFunctions.getPolicyGroups(GetPolicyGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-policy&#34;)
+     *             .nameRegex("^my-policy")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdPolicyGroupId&#34;, nameRegex.applyValue(getPolicyGroupsResult -&gt; getPolicyGroupsResult.groups()[0].id()));
+     *         ctx.export("ecdPolicyGroupId", nameRegex.applyValue(getPolicyGroupsResult -> getPolicyGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4361,7 +4491,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4386,35 +4517,36 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
-     *             .policyGroupName(&#34;my-policy-group&#34;)
-     *             .clipboard(&#34;read&#34;)
-     *             .localDrive(&#34;read&#34;)
-     *             .usbRedirect(&#34;off&#34;)
-     *             .watermark(&#34;off&#34;)
+     *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()        
+     *             .policyGroupName("my-policy-group")
+     *             .clipboard("read")
+     *             .localDrive("read")
+     *             .usbRedirect("off")
+     *             .watermark("off")
      *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
-     *                 .description(&#34;my-description1&#34;)
-     *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+     *                 .description("my-description1")
+     *                 .cidrIp("1.2.3.45/24")
      *                 .build())
      *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
-     *                 .type(&#34;inflow&#34;)
-     *                 .policy(&#34;accept&#34;)
-     *                 .description(&#34;my-description&#34;)
-     *                 .portRange(&#34;80/80&#34;)
-     *                 .ipProtocol(&#34;TCP&#34;)
-     *                 .priority(&#34;1&#34;)
-     *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+     *                 .type("inflow")
+     *                 .policy("accept")
+     *                 .description("my-description")
+     *                 .portRange("80/80")
+     *                 .ipProtocol("TCP")
+     *                 .priority("1")
+     *                 .cidrIp("1.2.3.4/24")
      *                 .build())
      *             .build());
      * 
      *         final var nameRegex = EdsFunctions.getPolicyGroups(GetPolicyGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-policy&#34;)
+     *             .nameRegex("^my-policy")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdPolicyGroupId&#34;, nameRegex.applyValue(getPolicyGroupsResult -&gt; getPolicyGroupsResult.groups()[0].id()));
+     *         ctx.export("ecdPolicyGroupId", nameRegex.applyValue(getPolicyGroupsResult -> getPolicyGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4431,7 +4563,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4453,18 +4586,19 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdRamDirectoryId1&#34;, ids.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId1", ids.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
      *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
-     *             .nameRegex(&#34;^my-RamDirectory&#34;)
+     *             .nameRegex("^my-RamDirectory")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdRamDirectoryId2&#34;, nameRegex.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId2", nameRegex.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4481,7 +4615,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4503,18 +4638,19 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdRamDirectoryId1&#34;, ids.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId1", ids.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
      *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
-     *             .nameRegex(&#34;^my-RamDirectory&#34;)
+     *             .nameRegex("^my-RamDirectory")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdRamDirectoryId2&#34;, nameRegex.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId2", nameRegex.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4531,7 +4667,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4553,18 +4690,19 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdRamDirectoryId1&#34;, ids.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId1", ids.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
      *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
-     *             .nameRegex(&#34;^my-RamDirectory&#34;)
+     *             .nameRegex("^my-RamDirectory")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdRamDirectoryId2&#34;, nameRegex.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId2", nameRegex.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4581,7 +4719,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4603,18 +4742,19 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdRamDirectoryId1&#34;, ids.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId1", ids.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
      *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
-     *             .nameRegex(&#34;^my-RamDirectory&#34;)
+     *             .nameRegex("^my-RamDirectory")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdRamDirectoryId2&#34;, nameRegex.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId2", nameRegex.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4631,7 +4771,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4653,18 +4794,19 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdRamDirectoryId1&#34;, ids.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId1", ids.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
      *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
-     *             .nameRegex(&#34;^my-RamDirectory&#34;)
+     *             .nameRegex("^my-RamDirectory")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdRamDirectoryId2&#34;, nameRegex.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId2", nameRegex.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4681,7 +4823,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4703,18 +4846,19 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdRamDirectoryId1&#34;, ids.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId1", ids.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
      *         final var nameRegex = EdsFunctions.getRamDirectories(GetRamDirectoriesArgs.builder()
-     *             .nameRegex(&#34;^my-RamDirectory&#34;)
+     *             .nameRegex("^my-RamDirectory")
      *             .build());
      * 
-     *         ctx.export(&#34;ecdRamDirectoryId2&#34;, nameRegex.applyValue(getRamDirectoriesResult -&gt; getRamDirectoriesResult.directories()[0].id()));
+     *         ctx.export("ecdRamDirectoryId2", nameRegex.applyValue(getRamDirectoriesResult -> getRamDirectoriesResult.directories()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4731,7 +4875,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4753,14 +4898,15 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;REGISTERED&#34;)
+     *             .ids("example_id")
+     *             .status("REGISTERED")
      *             .build());
      * 
-     *         ctx.export(&#34;desktopAccessType&#34;, default_.sites()[0].desktopAccessType());
+     *         ctx.export("desktopAccessType", default_.sites()[0].desktopAccessType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4777,7 +4923,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4799,14 +4946,15 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;REGISTERED&#34;)
+     *             .ids("example_id")
+     *             .status("REGISTERED")
      *             .build());
      * 
-     *         ctx.export(&#34;desktopAccessType&#34;, default_.sites()[0].desktopAccessType());
+     *         ctx.export("desktopAccessType", default_.sites()[0].desktopAccessType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4823,7 +4971,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4845,14 +4994,15 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;REGISTERED&#34;)
+     *             .ids("example_id")
+     *             .status("REGISTERED")
      *             .build());
      * 
-     *         ctx.export(&#34;desktopAccessType&#34;, default_.sites()[0].desktopAccessType());
+     *         ctx.export("desktopAccessType", default_.sites()[0].desktopAccessType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4869,7 +5019,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4891,14 +5042,15 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;REGISTERED&#34;)
+     *             .ids("example_id")
+     *             .status("REGISTERED")
      *             .build());
      * 
-     *         ctx.export(&#34;desktopAccessType&#34;, default_.sites()[0].desktopAccessType());
+     *         ctx.export("desktopAccessType", default_.sites()[0].desktopAccessType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4915,7 +5067,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4937,14 +5090,15 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;REGISTERED&#34;)
+     *             .ids("example_id")
+     *             .status("REGISTERED")
      *             .build());
      * 
-     *         ctx.export(&#34;desktopAccessType&#34;, default_.sites()[0].desktopAccessType());
+     *         ctx.export("desktopAccessType", default_.sites()[0].desktopAccessType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4961,7 +5115,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4983,14 +5138,15 @@ public final class EdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;REGISTERED&#34;)
+     *             .ids("example_id")
+     *             .status("REGISTERED")
      *             .build());
      * 
-     *         ctx.export(&#34;desktopAccessType&#34;, default_.sites()[0].desktopAccessType());
+     *         ctx.export("desktopAccessType", default_.sites()[0].desktopAccessType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5007,7 +5163,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5030,10 +5187,11 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getSnapshots();
      * 
-     *         ctx.export(&#34;ecdSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("ecdSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5050,7 +5208,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5073,10 +5232,11 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getSnapshots();
      * 
-     *         ctx.export(&#34;ecdSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("ecdSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5093,7 +5253,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5116,10 +5277,11 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getSnapshots();
      * 
-     *         ctx.export(&#34;ecdSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("ecdSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5136,7 +5298,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5159,10 +5322,11 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getSnapshots();
      * 
-     *         ctx.export(&#34;ecdSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("ecdSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5179,7 +5343,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5202,10 +5367,11 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getSnapshots();
      * 
-     *         ctx.export(&#34;ecdSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("ecdSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5222,7 +5388,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5245,10 +5412,11 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EdsFunctions.getSnapshots();
      * 
-     *         ctx.export(&#34;ecdSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("ecdSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5265,7 +5433,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5288,19 +5457,20 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
-     *             .endUserId(&#34;example_value&#34;)
-     *             .email(&#34;your_email&#34;)
-     *             .phone(&#34;your_phone&#34;)
-     *             .password(&#34;your_password&#34;)
+     *         var default_ = new User("default", UserArgs.builder()        
+     *             .endUserId("example_value")
+     *             .email("your_email")
+     *             .phone("your_phone")
+     *             .password("your_password")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getUsers();
      * 
-     *         ctx.export(&#34;ecdUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("ecdUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5317,7 +5487,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5340,19 +5511,20 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
-     *             .endUserId(&#34;example_value&#34;)
-     *             .email(&#34;your_email&#34;)
-     *             .phone(&#34;your_phone&#34;)
-     *             .password(&#34;your_password&#34;)
+     *         var default_ = new User("default", UserArgs.builder()        
+     *             .endUserId("example_value")
+     *             .email("your_email")
+     *             .phone("your_phone")
+     *             .password("your_password")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getUsers();
      * 
-     *         ctx.export(&#34;ecdUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("ecdUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5369,7 +5541,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5392,19 +5565,20 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
-     *             .endUserId(&#34;example_value&#34;)
-     *             .email(&#34;your_email&#34;)
-     *             .phone(&#34;your_phone&#34;)
-     *             .password(&#34;your_password&#34;)
+     *         var default_ = new User("default", UserArgs.builder()        
+     *             .endUserId("example_value")
+     *             .email("your_email")
+     *             .phone("your_phone")
+     *             .password("your_password")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getUsers();
      * 
-     *         ctx.export(&#34;ecdUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("ecdUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5421,7 +5595,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5444,19 +5619,20 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
-     *             .endUserId(&#34;example_value&#34;)
-     *             .email(&#34;your_email&#34;)
-     *             .phone(&#34;your_phone&#34;)
-     *             .password(&#34;your_password&#34;)
+     *         var default_ = new User("default", UserArgs.builder()        
+     *             .endUserId("example_value")
+     *             .email("your_email")
+     *             .phone("your_phone")
+     *             .password("your_password")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getUsers();
      * 
-     *         ctx.export(&#34;ecdUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("ecdUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5473,7 +5649,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5496,19 +5673,20 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
-     *             .endUserId(&#34;example_value&#34;)
-     *             .email(&#34;your_email&#34;)
-     *             .phone(&#34;your_phone&#34;)
-     *             .password(&#34;your_password&#34;)
+     *         var default_ = new User("default", UserArgs.builder()        
+     *             .endUserId("example_value")
+     *             .email("your_email")
+     *             .phone("your_phone")
+     *             .password("your_password")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getUsers();
      * 
-     *         ctx.export(&#34;ecdUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("ecdUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5525,7 +5703,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5548,19 +5727,20 @@ public final class EdsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
-     *             .endUserId(&#34;example_value&#34;)
-     *             .email(&#34;your_email&#34;)
-     *             .phone(&#34;your_phone&#34;)
-     *             .password(&#34;your_password&#34;)
+     *         var default_ = new User("default", UserArgs.builder()        
+     *             .endUserId("example_value")
+     *             .email("your_email")
+     *             .phone("your_phone")
+     *             .password("your_password")
      *             .build());
      * 
      *         final var ids = EdsFunctions.getUsers();
      * 
-     *         ctx.export(&#34;ecdUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("ecdUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5577,7 +5757,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5600,10 +5781,11 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudEcdZones&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudEcdZones", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5620,7 +5802,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5643,10 +5826,11 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudEcdZones&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudEcdZones", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5663,7 +5847,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5686,10 +5871,11 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudEcdZones&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudEcdZones", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5706,7 +5892,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5729,10 +5916,11 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudEcdZones&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudEcdZones", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5749,7 +5937,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5772,10 +5961,11 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudEcdZones&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudEcdZones", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5792,7 +5982,8 @@ public final class EdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5815,10 +6006,11 @@ public final class EdsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EdsFunctions.getZones();
      * 
-     *         ctx.export(&#34;alicloudEcdZones&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("alicloudEcdZones", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

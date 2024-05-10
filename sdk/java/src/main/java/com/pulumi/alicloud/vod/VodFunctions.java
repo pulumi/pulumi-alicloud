@@ -24,7 +24,8 @@ public final class VodFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -48,32 +49,33 @@ public final class VodFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
-     *             .domainName(&#34;your_domain_name&#34;)
-     *             .scope(&#34;domestic&#34;)
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+     *             .domainName("your_domain_name")
+     *             .scope("domestic")
      *             .sources(DomainSourceArgs.builder()
-     *                 .sourceType(&#34;domain&#34;)
-     *                 .sourceContent(&#34;your_source_content&#34;)
-     *                 .sourcePort(&#34;80&#34;)
+     *                 .sourceType("domain")
+     *                 .sourceContent("your_source_content")
+     *                 .sourcePort("80")
      *                 .build())
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
-     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
      *             ))
      *             .build());
      * 
      *         final var default = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
-     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;vodDomain&#34;, default_.applyValue(default_ -&gt; default_.domains()[0]));
+     *         ctx.export("vodDomain", default_.applyValue(default_ -> default_.domains()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -90,7 +92,8 @@ public final class VodFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -114,32 +117,33 @@ public final class VodFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
-     *             .domainName(&#34;your_domain_name&#34;)
-     *             .scope(&#34;domestic&#34;)
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+     *             .domainName("your_domain_name")
+     *             .scope("domestic")
      *             .sources(DomainSourceArgs.builder()
-     *                 .sourceType(&#34;domain&#34;)
-     *                 .sourceContent(&#34;your_source_content&#34;)
-     *                 .sourcePort(&#34;80&#34;)
+     *                 .sourceType("domain")
+     *                 .sourceContent("your_source_content")
+     *                 .sourcePort("80")
      *                 .build())
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
-     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
      *             ))
      *             .build());
      * 
      *         final var default = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
-     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;vodDomain&#34;, default_.applyValue(default_ -&gt; default_.domains()[0]));
+     *         ctx.export("vodDomain", default_.applyValue(default_ -> default_.domains()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -156,7 +160,8 @@ public final class VodFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -180,32 +185,33 @@ public final class VodFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
-     *             .domainName(&#34;your_domain_name&#34;)
-     *             .scope(&#34;domestic&#34;)
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+     *             .domainName("your_domain_name")
+     *             .scope("domestic")
      *             .sources(DomainSourceArgs.builder()
-     *                 .sourceType(&#34;domain&#34;)
-     *                 .sourceContent(&#34;your_source_content&#34;)
-     *                 .sourcePort(&#34;80&#34;)
+     *                 .sourceType("domain")
+     *                 .sourceContent("your_source_content")
+     *                 .sourcePort("80")
      *                 .build())
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
-     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
      *             ))
      *             .build());
      * 
      *         final var default = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
-     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;vodDomain&#34;, default_.applyValue(default_ -&gt; default_.domains()[0]));
+     *         ctx.export("vodDomain", default_.applyValue(default_ -> default_.domains()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -222,7 +228,8 @@ public final class VodFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -246,32 +253,33 @@ public final class VodFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
-     *             .domainName(&#34;your_domain_name&#34;)
-     *             .scope(&#34;domestic&#34;)
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+     *             .domainName("your_domain_name")
+     *             .scope("domestic")
      *             .sources(DomainSourceArgs.builder()
-     *                 .sourceType(&#34;domain&#34;)
-     *                 .sourceContent(&#34;your_source_content&#34;)
-     *                 .sourcePort(&#34;80&#34;)
+     *                 .sourceType("domain")
+     *                 .sourceContent("your_source_content")
+     *                 .sourcePort("80")
      *                 .build())
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
-     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
      *             ))
      *             .build());
      * 
      *         final var default = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
-     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;vodDomain&#34;, default_.applyValue(default_ -&gt; default_.domains()[0]));
+     *         ctx.export("vodDomain", default_.applyValue(default_ -> default_.domains()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -288,7 +296,8 @@ public final class VodFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -312,32 +321,33 @@ public final class VodFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
-     *             .domainName(&#34;your_domain_name&#34;)
-     *             .scope(&#34;domestic&#34;)
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+     *             .domainName("your_domain_name")
+     *             .scope("domestic")
      *             .sources(DomainSourceArgs.builder()
-     *                 .sourceType(&#34;domain&#34;)
-     *                 .sourceContent(&#34;your_source_content&#34;)
-     *                 .sourcePort(&#34;80&#34;)
+     *                 .sourceType("domain")
+     *                 .sourceContent("your_source_content")
+     *                 .sourcePort("80")
      *                 .build())
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
-     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
      *             ))
      *             .build());
      * 
      *         final var default = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
-     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;vodDomain&#34;, default_.applyValue(default_ -&gt; default_.domains()[0]));
+     *         ctx.export("vodDomain", default_.applyValue(default_ -> default_.domains()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -354,7 +364,8 @@ public final class VodFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -378,32 +389,33 @@ public final class VodFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
-     *             .domainName(&#34;your_domain_name&#34;)
-     *             .scope(&#34;domestic&#34;)
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+     *             .domainName("your_domain_name")
+     *             .scope("domestic")
      *             .sources(DomainSourceArgs.builder()
-     *                 .sourceType(&#34;domain&#34;)
-     *                 .sourceContent(&#34;your_source_content&#34;)
-     *                 .sourcePort(&#34;80&#34;)
+     *                 .sourceType("domain")
+     *                 .sourceContent("your_source_content")
+     *                 .sourcePort("80")
      *                 .build())
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
-     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
      *             ))
      *             .build());
      * 
      *         final var default = VodFunctions.getDomains(GetDomainsArgs.builder()
      *             .ids(defaultDomain.id())
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;key1&#34;, &#34;value1&#34;),
-     *                 Map.entry(&#34;key2&#34;, &#34;value2&#34;)
+     *                 Map.entry("key1", "value1"),
+     *                 Map.entry("key2", "value2")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;vodDomain&#34;, default_.applyValue(default_ -&gt; default_.domains()[0]));
+     *         ctx.export("vodDomain", default_.applyValue(default_ -> default_.domains()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,19 +55,20 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultSynchronizationInstance = new SynchronizationInstance(&#34;defaultSynchronizationInstance&#34;, SynchronizationInstanceArgs.builder()        
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .sourceEndpointEngineName(&#34;MySQL&#34;)
+ *         var defaultSynchronizationInstance = new SynchronizationInstance("defaultSynchronizationInstance", SynchronizationInstanceArgs.builder()        
+ *             .paymentType("PayAsYouGo")
+ *             .sourceEndpointEngineName("MySQL")
  *             .sourceEndpointRegion(default_.regions()[0].id())
- *             .destinationEndpointEngineName(&#34;MySQL&#34;)
+ *             .destinationEndpointEngineName("MySQL")
  *             .destinationEndpointRegion(default_.regions()[0].id())
- *             .instanceClass(&#34;small&#34;)
- *             .syncArchitecture(&#34;oneway&#34;)
+ *             .instanceClass("small")
+ *             .syncArchitecture("oneway")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,34 +53,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var network = new Network("network", NetworkArgs.builder()        
  *             .networkName(name)
  *             .description(name)
- *             .cidrBlock(&#34;192.168.2.0/24&#34;)
- *             .ensRegionId(&#34;cn-chenzhou-telecom_unicom_cmcc&#34;)
+ *             .cidrBlock("192.168.2.0/24")
+ *             .ensRegionId("cn-chenzhou-telecom_unicom_cmcc")
  *             .build());
  * 
- *         var switch_ = new Vswitch(&#34;switch&#34;, VswitchArgs.builder()        
+ *         var switch_ = new Vswitch("switch", VswitchArgs.builder()        
  *             .description(name)
- *             .cidrBlock(&#34;192.168.2.0/24&#34;)
+ *             .cidrBlock("192.168.2.0/24")
  *             .vswitchName(name)
- *             .ensRegionId(&#34;cn-chenzhou-telecom_unicom_cmcc&#34;)
+ *             .ensRegionId("cn-chenzhou-telecom_unicom_cmcc")
  *             .networkId(network.id())
  *             .build());
  * 
- *         var default_ = new LoadBalancer(&#34;default&#34;, LoadBalancerArgs.builder()        
+ *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()        
  *             .loadBalancerName(name)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .ensRegionId(&#34;cn-chenzhou-telecom_unicom_cmcc&#34;)
- *             .loadBalancerSpec(&#34;elb.s1.small&#34;)
+ *             .paymentType("PayAsYouGo")
+ *             .ensRegionId("cn-chenzhou-telecom_unicom_cmcc")
+ *             .loadBalancerSpec("elb.s1.small")
  *             .vswitchId(switch_.id())
  *             .networkId(network.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

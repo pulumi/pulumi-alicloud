@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,17 +48,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EcsDeploymentSet(&#34;default&#34;, EcsDeploymentSetArgs.builder()        
- *             .strategy(&#34;Availability&#34;)
- *             .domain(&#34;Default&#34;)
- *             .granularity(&#34;Host&#34;)
- *             .deploymentSetName(&#34;example_value&#34;)
- *             .description(&#34;example_value&#34;)
+ *         var default_ = new EcsDeploymentSet("default", EcsDeploymentSetArgs.builder()        
+ *             .strategy("Availability")
+ *             .domain("Default")
+ *             .granularity("Host")
+ *             .deploymentSetName("example_value")
+ *             .description("example_value")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

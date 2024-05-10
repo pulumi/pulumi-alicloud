@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,21 +56,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new DdosCooInstance(&#34;default&#34;, DdosCooInstanceArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new DdosCooInstance("default", DdosCooInstanceArgs.builder()        
  *             .name(name)
- *             .baseBandwidth(&#34;30&#34;)
- *             .bandwidth(&#34;30&#34;)
- *             .serviceBandwidth(&#34;100&#34;)
- *             .portCount(&#34;50&#34;)
- *             .domainCount(&#34;50&#34;)
- *             .productType(&#34;ddoscoo&#34;)
- *             .period(&#34;1&#34;)
+ *             .baseBandwidth("30")
+ *             .bandwidth("30")
+ *             .serviceBandwidth("100")
+ *             .portCount("50")
+ *             .domainCount("50")
+ *             .productType("ddoscoo")
+ *             .period("1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

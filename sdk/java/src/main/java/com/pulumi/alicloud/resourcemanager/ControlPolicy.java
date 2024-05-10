@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,33 +49,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var example = new ControlPolicy(&#34;example&#34;, ControlPolicyArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var example = new ControlPolicy("example", ControlPolicyArgs.builder()        
  *             .controlPolicyName(name)
  *             .description(name)
- *             .effectScope(&#34;RAM&#34;)
- *             .policyDocument(&#34;&#34;&#34;
+ *             .effectScope("RAM")
+ *             .policyDocument("""
  *   {
- *     &#34;Version&#34;: &#34;1&#34;,
- *     &#34;Statement&#34;: [
+ *     "Version": "1",
+ *     "Statement": [
  *       {
- *         &#34;Effect&#34;: &#34;Deny&#34;,
- *         &#34;Action&#34;: [
- *           &#34;ram:UpdateRole&#34;,
- *           &#34;ram:DeleteRole&#34;,
- *           &#34;ram:AttachPolicyToRole&#34;,
- *           &#34;ram:DetachPolicyFromRole&#34;
+ *         "Effect": "Deny",
+ *         "Action": [
+ *           "ram:UpdateRole",
+ *           "ram:DeleteRole",
+ *           "ram:AttachPolicyToRole",
+ *           "ram:DetachPolicyFromRole"
  *         ],
- *         &#34;Resource&#34;: &#34;acs:ram:*:*:role/ResourceDirectoryAccountAccessRole&#34;
+ *         "Resource": "acs:ram:*:*:role/ResourceDirectoryAccountAccessRole"
  *       }
  *     ]
  *   }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

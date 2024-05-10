@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,39 +60,40 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;NatGatewayConfigSpec&#34;);
+ *         final var name = config.get("name").orElse("NatGatewayConfigSpec");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var defaultNetworkAcl = new NetworkAcl(&#34;defaultNetworkAcl&#34;, NetworkAclArgs.builder()        
+ *         var defaultNetworkAcl = new NetworkAcl("defaultNetworkAcl", NetworkAclArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .networkAclName(name)
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultNetworkAclAttachment = new NetworkAclAttachment(&#34;defaultNetworkAclAttachment&#34;, NetworkAclAttachmentArgs.builder()        
+ *         var defaultNetworkAclAttachment = new NetworkAclAttachment("defaultNetworkAclAttachment", NetworkAclAttachmentArgs.builder()        
  *             .networkAclId(defaultNetworkAcl.id())
  *             .resources(NetworkAclAttachmentResourceArgs.builder()
  *                 .resourceId(defaultSwitch.id())
- *                 .resourceType(&#34;VSwitch&#34;)
+ *                 .resourceType("VSwitch")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

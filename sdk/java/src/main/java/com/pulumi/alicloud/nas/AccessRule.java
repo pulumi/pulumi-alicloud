@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,23 +51,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new AccessGroup(&#34;foo&#34;, AccessGroupArgs.builder()        
- *             .accessGroupName(&#34;tf-NasConfigName&#34;)
- *             .accessGroupType(&#34;Vpc&#34;)
- *             .description(&#34;tf-testAccNasConfig&#34;)
+ *         var foo = new AccessGroup("foo", AccessGroupArgs.builder()        
+ *             .accessGroupName("tf-NasConfigName")
+ *             .accessGroupType("Vpc")
+ *             .description("tf-testAccNasConfig")
  *             .build());
  * 
- *         var fooAccessRule = new AccessRule(&#34;fooAccessRule&#34;, AccessRuleArgs.builder()        
+ *         var fooAccessRule = new AccessRule("fooAccessRule", AccessRuleArgs.builder()        
  *             .accessGroupName(foo.accessGroupName())
- *             .sourceCidrIp(&#34;168.1.1.0/16&#34;)
- *             .rwAccessType(&#34;RDWR&#34;)
- *             .userAccessType(&#34;no_squash&#34;)
+ *             .sourceCidrIp("168.1.1.0/16")
+ *             .rwAccessType("RDWR")
+ *             .userAccessType("no_squash")
  *             .priority(2)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

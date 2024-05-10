@@ -27,7 +27,8 @@ public final class Wafv3Functions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -53,19 +54,20 @@ public final class Wafv3Functions {
      * 
      *         final var ids = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;wafv3DomainsId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var defaultGetDomains = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
-     *             .domain(&#34;zctest12.wafqax.top&#34;)
+     *             .domain("zctest12.wafqax.top")
      *             .build());
      * 
-     *         ctx.export(&#34;wafv3DomainsId2&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId2", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -82,7 +84,8 @@ public final class Wafv3Functions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -108,19 +111,20 @@ public final class Wafv3Functions {
      * 
      *         final var ids = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;wafv3DomainsId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var defaultGetDomains = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
-     *             .domain(&#34;zctest12.wafqax.top&#34;)
+     *             .domain("zctest12.wafqax.top")
      *             .build());
      * 
-     *         ctx.export(&#34;wafv3DomainsId2&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId2", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -137,7 +141,8 @@ public final class Wafv3Functions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -163,19 +168,20 @@ public final class Wafv3Functions {
      * 
      *         final var ids = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;wafv3DomainsId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var defaultGetDomains = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
-     *             .domain(&#34;zctest12.wafqax.top&#34;)
+     *             .domain("zctest12.wafqax.top")
      *             .build());
      * 
-     *         ctx.export(&#34;wafv3DomainsId2&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId2", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -192,7 +198,8 @@ public final class Wafv3Functions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -218,19 +225,20 @@ public final class Wafv3Functions {
      * 
      *         final var ids = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;wafv3DomainsId1&#34;, ids.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId1", ids.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *         final var defaultGetDomains = Wafv3Functions.getDomains(GetDomainsArgs.builder()
      *             .instanceId(default_.ids()[0])
-     *             .domain(&#34;zctest12.wafqax.top&#34;)
+     *             .domain("zctest12.wafqax.top")
      *             .build());
      * 
-     *         ctx.export(&#34;wafv3DomainsId2&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("wafv3DomainsId2", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -245,7 +253,8 @@ public final class Wafv3Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -268,10 +277,11 @@ public final class Wafv3Functions {
      *     public static void stack(Context ctx) {
      *         final var default = Wafv3Functions.getInstances();
      * 
-     *         ctx.export(&#34;alicloudWafv3InstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudWafv3InstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -286,7 +296,8 @@ public final class Wafv3Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -309,10 +320,11 @@ public final class Wafv3Functions {
      *     public static void stack(Context ctx) {
      *         final var default = Wafv3Functions.getInstances();
      * 
-     *         ctx.export(&#34;alicloudWafv3InstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudWafv3InstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -327,7 +339,8 @@ public final class Wafv3Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -350,10 +363,11 @@ public final class Wafv3Functions {
      *     public static void stack(Context ctx) {
      *         final var default = Wafv3Functions.getInstances();
      * 
-     *         ctx.export(&#34;alicloudWafv3InstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudWafv3InstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -368,7 +382,8 @@ public final class Wafv3Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -391,10 +406,11 @@ public final class Wafv3Functions {
      *     public static void stack(Context ctx) {
      *         final var default = Wafv3Functions.getInstances();
      * 
-     *         ctx.export(&#34;alicloudWafv3InstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudWafv3InstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -409,7 +425,8 @@ public final class Wafv3Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -432,10 +449,11 @@ public final class Wafv3Functions {
      *     public static void stack(Context ctx) {
      *         final var default = Wafv3Functions.getInstances();
      * 
-     *         ctx.export(&#34;alicloudWafv3InstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudWafv3InstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -450,7 +468,8 @@ public final class Wafv3Functions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -473,10 +492,11 @@ public final class Wafv3Functions {
      *     public static void stack(Context ctx) {
      *         final var default = Wafv3Functions.getInstances();
      * 
-     *         ctx.export(&#34;alicloudWafv3InstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudWafv3InstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

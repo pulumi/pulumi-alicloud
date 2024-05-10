@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,63 +65,64 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .nameRegex(&#34;default&#34;)
+ *             .nameRegex("default")
  *             .build());
  * 
  *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+ *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
  *             .mostRecent(true)
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.ids()[0]))
  *             .build());
  * 
  *         final var defaultGetAccount = AlicloudFunctions.getAccount();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *             .vswitchName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultEcsImagePipeline = new EcsImagePipeline(&#34;defaultEcsImagePipeline&#34;, EcsImagePipelineArgs.builder()        
- *             .addAccounts(defaultGetAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
- *             .baseImage(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
- *             .baseImageType(&#34;IMAGE&#34;)
- *             .buildContent(&#34;RUN yum update -y&#34;)
+ *         var defaultEcsImagePipeline = new EcsImagePipeline("defaultEcsImagePipeline", EcsImagePipelineArgs.builder()        
+ *             .addAccounts(defaultGetAccount.applyValue(getAccountResult -> getAccountResult.id()))
+ *             .baseImage(defaultGetImages.applyValue(getImagesResult -> getImagesResult.ids()[0]))
+ *             .baseImageType("IMAGE")
+ *             .buildContent("RUN yum update -y")
  *             .deleteInstanceOnFailure(false)
- *             .imageName(&#34;terraform-example&#34;)
- *             .name(&#34;terraform-example&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
+ *             .imageName("terraform-example")
+ *             .name("terraform-example")
+ *             .description("terraform-example")
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.ids()[0]))
  *             .resourceGroupId(default_.groups()[0].id())
  *             .internetMaxBandwidthOut(20)
  *             .systemDiskSize(40)
  *             .toRegionIds(            
- *                 &#34;cn-qingdao&#34;,
- *                 &#34;cn-zhangjiakou&#34;)
+ *                 "cn-qingdao",
+ *                 "cn-zhangjiakou")
  *             .vswitchId(defaultSwitch.id())
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;Acceptance-test&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "Acceptance-test")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

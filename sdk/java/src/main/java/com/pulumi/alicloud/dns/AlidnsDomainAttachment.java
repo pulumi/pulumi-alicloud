@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,35 +50,36 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new DomainGroup(&#34;default&#34;, DomainGroupArgs.builder()        
- *             .domainGroupName(&#34;tf-example&#34;)
+ *         var default_ = new DomainGroup("default", DomainGroupArgs.builder()        
+ *             .domainGroupName("tf-example")
  *             .build());
  * 
- *         var defaultAlidnsDomain = new AlidnsDomain(&#34;defaultAlidnsDomain&#34;, AlidnsDomainArgs.builder()        
- *             .domainName(&#34;starmove.com&#34;)
+ *         var defaultAlidnsDomain = new AlidnsDomain("defaultAlidnsDomain", AlidnsDomainArgs.builder()        
+ *             .domainName("starmove.com")
  *             .groupId(default_.id())
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
- *         var defaultAlidnsInstance = new AlidnsInstance(&#34;defaultAlidnsInstance&#34;, AlidnsInstanceArgs.builder()        
- *             .dnsSecurity(&#34;basic&#34;)
+ *         var defaultAlidnsInstance = new AlidnsInstance("defaultAlidnsInstance", AlidnsInstanceArgs.builder()        
+ *             .dnsSecurity("basic")
  *             .domainNumbers(3)
- *             .versionCode(&#34;version_personal&#34;)
+ *             .versionCode("version_personal")
  *             .period(1)
- *             .renewalStatus(&#34;ManualRenewal&#34;)
+ *             .renewalStatus("ManualRenewal")
  *             .build());
  * 
- *         var defaultAlidnsDomainAttachment = new AlidnsDomainAttachment(&#34;defaultAlidnsDomainAttachment&#34;, AlidnsDomainAttachmentArgs.builder()        
+ *         var defaultAlidnsDomainAttachment = new AlidnsDomainAttachment("defaultAlidnsDomainAttachment", AlidnsDomainAttachmentArgs.builder()        
  *             .instanceId(defaultAlidnsInstance.id())
  *             .domainNames(defaultAlidnsDomain.domainName())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

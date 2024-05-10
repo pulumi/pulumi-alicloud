@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,40 +57,41 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
+ *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
  *             .resourceGroupId(default_.ids()[0])
  *             .serverGroupName(name)
- *             .serverGroupType(&#34;Ip&#34;)
+ *             .serverGroupType("Ip")
  *             .vpcId(defaultNetwork.id())
- *             .scheduler(&#34;Wrr&#34;)
- *             .protocol(&#34;TCP&#34;)
+ *             .scheduler("Wrr")
+ *             .protocol("TCP")
  *             .healthCheck(ServerGroupHealthCheckArgs.builder()
  *                 .healthCheckEnabled(false)
  *                 .build())
- *             .addressIpVersion(&#34;Ipv4&#34;)
+ *             .addressIpVersion("Ipv4")
  *             .build());
  * 
- *         var defaultServerGroupServerAttachment = new ServerGroupServerAttachment(&#34;defaultServerGroupServerAttachment&#34;, ServerGroupServerAttachmentArgs.builder()        
- *             .serverType(&#34;Ip&#34;)
- *             .serverId(&#34;10.0.0.0&#34;)
+ *         var defaultServerGroupServerAttachment = new ServerGroupServerAttachment("defaultServerGroupServerAttachment", ServerGroupServerAttachmentArgs.builder()        
+ *             .serverType("Ip")
+ *             .serverId("10.0.0.0")
  *             .description(name)
  *             .port(80)
  *             .serverGroupId(defaultServerGroup.id())
  *             .weight(100)
- *             .serverIp(&#34;10.0.0.0&#34;)
+ *             .serverIp("10.0.0.0")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -104,14 +106,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:nlb/serverGroupServerAttachment:ServerGroupServerAttachment")
 public class ServerGroupServerAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * @return The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
      * 
      */
     public Output<Optional<String>> description() {

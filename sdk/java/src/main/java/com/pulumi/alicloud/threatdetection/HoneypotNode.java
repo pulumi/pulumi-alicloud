@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,16 +52,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var default_ = new HoneypotNode(&#34;default&#34;, HoneypotNodeArgs.builder()        
+ *         final var name = config.get("name").orElse("tf_example");
+ *         var default_ = new HoneypotNode("default", HoneypotNodeArgs.builder()        
  *             .nodeName(name)
  *             .availableProbeNum(20)
- *             .securityGroupProbeIpLists(&#34;0.0.0.0/0&#34;)
+ *             .securityGroupProbeIpLists("0.0.0.0/0")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

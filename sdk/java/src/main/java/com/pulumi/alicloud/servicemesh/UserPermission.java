@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -65,41 +66,41 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("tfexample");
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
  *         final var default = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
- *             .edition(&#34;Default&#34;)
+ *             .edition("Default")
  *             .build());
  * 
  *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *             .nameRegex("^default-NODELETING$")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
+ *         var defaultUser = new User("defaultUser", UserArgs.builder()        
  *             .name(name)
  *             .build());
  * 
- *         var default1 = new ServiceMesh(&#34;default1&#34;, ServiceMeshArgs.builder()        
- *             .serviceMeshName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
- *             .edition(&#34;Default&#34;)
- *             .clusterSpec(&#34;standard&#34;)
+ *         var default1 = new ServiceMesh("default1", ServiceMeshArgs.builder()        
+ *             .serviceMeshName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .edition("Default")
+ *             .clusterSpec("standard")
  *             .version(default_.versions()[0].version())
  *             .network(ServiceMeshNetworkArgs.builder()
- *                 .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *                 .vswitcheLists(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *                 .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *                 .vswitcheLists(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
  *                 .build())
  *             .loadBalancer(ServiceMeshLoadBalancerArgs.builder()
  *                 .pilotPublicEip(false)
@@ -107,19 +108,20 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultUserPermission = new UserPermission(&#34;defaultUserPermission&#34;, UserPermissionArgs.builder()        
+ *         var defaultUserPermission = new UserPermission("defaultUserPermission", UserPermissionArgs.builder()        
  *             .subAccountUserId(defaultUser.id())
  *             .permissions(UserPermissionPermissionArgs.builder()
- *                 .roleName(&#34;istio-ops&#34;)
+ *                 .roleName("istio-ops")
  *                 .serviceMeshId(default1.id())
- *                 .roleType(&#34;custom&#34;)
+ *                 .roleType("custom")
  *                 .isCustom(true)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

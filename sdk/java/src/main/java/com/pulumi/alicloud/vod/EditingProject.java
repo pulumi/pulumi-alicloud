@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,35 +51,36 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var name = config.get("name").orElse("tfexample");
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var example = new EditingProject(&#34;example&#34;, EditingProjectArgs.builder()        
+ *         var example = new EditingProject("example", EditingProjectArgs.builder()        
  *             .editingProjectName(name)
  *             .title(name)
- *             .timeline(&#34;&#34;&#34;
+ *             .timeline("""
  *   {
- *     &#34;VideoTracks&#34;:[
+ *     "VideoTracks":[
  *       {
- *         &#34;VideoTrackClips&#34;:[
+ *         "VideoTrackClips":[
  *           {
- *           &#34;MediaId&#34;:&#34;0c60e6f02dae71edbfaa472190a90102&#34;,
- *           &#34;In&#34;:2811
+ *           "MediaId":"0c60e6f02dae71edbfaa472190a90102",
+ *           "In":2811
  *           }
  *         ]
  *       }
  *     ]
  *   }
- *             &#34;&#34;&#34;)
- *             .coverUrl(&#34;https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png&#34;)
+ *             """)
+ *             .coverUrl("https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png")
  *             .division(default_.regions()[0].id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

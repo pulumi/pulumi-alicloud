@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,31 +56,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .status(&#34;OK&#34;)
+ *             .status("OK")
  *             .build());
  * 
- *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
- *             .description(&#34;If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.&#34;)
- *             .sourceOwner(&#34;ALIYUN&#34;)
- *             .sourceIdentifier(&#34;contains-tag&#34;)
+ *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+ *             .description("If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.")
+ *             .sourceOwner("ALIYUN")
+ *             .sourceIdentifier("contains-tag")
  *             .riskLevel(1)
- *             .tagValueScope(&#34;example-value&#34;)
- *             .tagKeyScope(&#34;example-key&#34;)
- *             .excludeResourceIdsScope(&#34;example-resource_id&#34;)
- *             .regionIdsScope(&#34;cn-hangzhou&#34;)
- *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
+ *             .tagValueScope("example-value")
+ *             .tagKeyScope("example-key")
+ *             .excludeResourceIdsScope("example-resource_id")
+ *             .regionIdsScope("cn-hangzhou")
+ *             .configRuleTriggerTypes("ConfigurationItemChangeNotification")
  *             .resourceGroupIdsScope(default_.ids()[0])
- *             .resourceTypesScopes(&#34;ACS::RDS::DBInstance&#34;)
- *             .ruleName(&#34;contains-tag&#34;)
+ *             .resourceTypesScopes("ACS::RDS::DBInstance")
+ *             .ruleName("contains-tag")
  *             .inputParameters(Map.ofEntries(
- *                 Map.entry(&#34;key&#34;, &#34;example&#34;),
- *                 Map.entry(&#34;value&#34;, &#34;example&#34;)
+ *                 Map.entry("key", "example"),
+ *                 Map.entry("value", "example")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

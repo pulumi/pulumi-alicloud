@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,21 +51,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = ThreatdetectionFunctions.getAssets(GetAssetsArgs.builder()
- *             .machineTypes(&#34;ecs&#34;)
+ *             .machineTypes("ecs")
  *             .build());
  * 
- *         var defaultWebLockConfig = new WebLockConfig(&#34;defaultWebLockConfig&#34;, WebLockConfigArgs.builder()        
- *             .inclusiveFileType(&#34;php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg&#34;)
+ *         var defaultWebLockConfig = new WebLockConfig("defaultWebLockConfig", WebLockConfigArgs.builder()        
+ *             .inclusiveFileType("php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg")
  *             .uuid(default_.ids()[0])
- *             .mode(&#34;whitelist&#34;)
- *             .localBackupDir(&#34;/usr/local/aegis/bak&#34;)
- *             .dir(&#34;/tmp/&#34;)
- *             .defenceMode(&#34;audit&#34;)
+ *             .mode("whitelist")
+ *             .localBackupDir("/usr/local/aegis/bak")
+ *             .dir("/tmp/")
+ *             .defenceMode("audit")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

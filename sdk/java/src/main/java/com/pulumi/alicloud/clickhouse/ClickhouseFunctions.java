@@ -33,7 +33,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -59,24 +60,24 @@ public final class ClickhouseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;testaccountname&#34;);
-     *         final var pwd = config.get(&#34;pwd&#34;).orElse(&#34;Tf-testpwd&#34;);
-     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
-     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
-     *             .category(&#34;Basic&#34;)
-     *             .dbClusterClass(&#34;S8&#34;)
-     *             .dbClusterNetworkType(&#34;vpc&#34;)
+     *         final var name = config.get("name").orElse("testaccountname");
+     *         final var pwd = config.get("pwd").orElse("Tf-testpwd");
+     *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
+     *             .dbClusterVersion("20.3.10.75")
+     *             .category("Basic")
+     *             .dbClusterClass("S8")
+     *             .dbClusterNetworkType("vpc")
      *             .dbClusterDescription(name)
-     *             .dbNodeGroupCount(&#34;1&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .dbNodeStorage(&#34;500&#34;)
-     *             .storageType(&#34;cloud_essd&#34;)
-     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *             .dbNodeGroupCount("1")
+     *             .paymentType("PayAsYouGo")
+     *             .dbNodeStorage("500")
+     *             .storageType("cloud_essd")
+     *             .vswitchId("your_vswitch_id")
      *             .build());
      * 
-     *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+     *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
      *             .dbClusterId(defaultDbCluster.id())
-     *             .accountDescription(&#34;your_description&#34;)
+     *             .accountDescription("your_description")
      *             .accountName(name)
      *             .accountPassword(pwd)
      *             .build());
@@ -86,10 +87,11 @@ public final class ClickhouseFunctions {
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;accountId&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("accountId", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -106,7 +108,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -132,24 +135,24 @@ public final class ClickhouseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;testaccountname&#34;);
-     *         final var pwd = config.get(&#34;pwd&#34;).orElse(&#34;Tf-testpwd&#34;);
-     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
-     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
-     *             .category(&#34;Basic&#34;)
-     *             .dbClusterClass(&#34;S8&#34;)
-     *             .dbClusterNetworkType(&#34;vpc&#34;)
+     *         final var name = config.get("name").orElse("testaccountname");
+     *         final var pwd = config.get("pwd").orElse("Tf-testpwd");
+     *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
+     *             .dbClusterVersion("20.3.10.75")
+     *             .category("Basic")
+     *             .dbClusterClass("S8")
+     *             .dbClusterNetworkType("vpc")
      *             .dbClusterDescription(name)
-     *             .dbNodeGroupCount(&#34;1&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .dbNodeStorage(&#34;500&#34;)
-     *             .storageType(&#34;cloud_essd&#34;)
-     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *             .dbNodeGroupCount("1")
+     *             .paymentType("PayAsYouGo")
+     *             .dbNodeStorage("500")
+     *             .storageType("cloud_essd")
+     *             .vswitchId("your_vswitch_id")
      *             .build());
      * 
-     *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+     *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
      *             .dbClusterId(defaultDbCluster.id())
-     *             .accountDescription(&#34;your_description&#34;)
+     *             .accountDescription("your_description")
      *             .accountName(name)
      *             .accountPassword(pwd)
      *             .build());
@@ -159,10 +162,11 @@ public final class ClickhouseFunctions {
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;accountId&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("accountId", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -179,7 +183,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -205,24 +210,24 @@ public final class ClickhouseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;testaccountname&#34;);
-     *         final var pwd = config.get(&#34;pwd&#34;).orElse(&#34;Tf-testpwd&#34;);
-     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
-     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
-     *             .category(&#34;Basic&#34;)
-     *             .dbClusterClass(&#34;S8&#34;)
-     *             .dbClusterNetworkType(&#34;vpc&#34;)
+     *         final var name = config.get("name").orElse("testaccountname");
+     *         final var pwd = config.get("pwd").orElse("Tf-testpwd");
+     *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
+     *             .dbClusterVersion("20.3.10.75")
+     *             .category("Basic")
+     *             .dbClusterClass("S8")
+     *             .dbClusterNetworkType("vpc")
      *             .dbClusterDescription(name)
-     *             .dbNodeGroupCount(&#34;1&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .dbNodeStorage(&#34;500&#34;)
-     *             .storageType(&#34;cloud_essd&#34;)
-     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *             .dbNodeGroupCount("1")
+     *             .paymentType("PayAsYouGo")
+     *             .dbNodeStorage("500")
+     *             .storageType("cloud_essd")
+     *             .vswitchId("your_vswitch_id")
      *             .build());
      * 
-     *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+     *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
      *             .dbClusterId(defaultDbCluster.id())
-     *             .accountDescription(&#34;your_description&#34;)
+     *             .accountDescription("your_description")
      *             .accountName(name)
      *             .accountPassword(pwd)
      *             .build());
@@ -232,10 +237,11 @@ public final class ClickhouseFunctions {
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;accountId&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("accountId", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -252,7 +258,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -278,24 +285,24 @@ public final class ClickhouseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;testaccountname&#34;);
-     *         final var pwd = config.get(&#34;pwd&#34;).orElse(&#34;Tf-testpwd&#34;);
-     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
-     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
-     *             .category(&#34;Basic&#34;)
-     *             .dbClusterClass(&#34;S8&#34;)
-     *             .dbClusterNetworkType(&#34;vpc&#34;)
+     *         final var name = config.get("name").orElse("testaccountname");
+     *         final var pwd = config.get("pwd").orElse("Tf-testpwd");
+     *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
+     *             .dbClusterVersion("20.3.10.75")
+     *             .category("Basic")
+     *             .dbClusterClass("S8")
+     *             .dbClusterNetworkType("vpc")
      *             .dbClusterDescription(name)
-     *             .dbNodeGroupCount(&#34;1&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .dbNodeStorage(&#34;500&#34;)
-     *             .storageType(&#34;cloud_essd&#34;)
-     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *             .dbNodeGroupCount("1")
+     *             .paymentType("PayAsYouGo")
+     *             .dbNodeStorage("500")
+     *             .storageType("cloud_essd")
+     *             .vswitchId("your_vswitch_id")
      *             .build());
      * 
-     *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+     *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
      *             .dbClusterId(defaultDbCluster.id())
-     *             .accountDescription(&#34;your_description&#34;)
+     *             .accountDescription("your_description")
      *             .accountName(name)
      *             .accountPassword(pwd)
      *             .build());
@@ -305,10 +312,11 @@ public final class ClickhouseFunctions {
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;accountId&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("accountId", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -325,7 +333,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -347,13 +356,14 @@ public final class ClickhouseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ClickhouseFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .dbClusterId(&#34;example_value&#34;)
+     *             .dbClusterId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;clickHouseBackupPolicyId1&#34;, example.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("clickHouseBackupPolicyId1", example.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -370,7 +380,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -392,13 +403,14 @@ public final class ClickhouseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ClickhouseFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .dbClusterId(&#34;example_value&#34;)
+     *             .dbClusterId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;clickHouseBackupPolicyId1&#34;, example.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("clickHouseBackupPolicyId1", example.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -415,7 +427,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -437,13 +450,14 @@ public final class ClickhouseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ClickhouseFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .dbClusterId(&#34;example_value&#34;)
+     *             .dbClusterId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;clickHouseBackupPolicyId1&#34;, example.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("clickHouseBackupPolicyId1", example.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -460,7 +474,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -482,13 +497,14 @@ public final class ClickhouseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ClickhouseFunctions.getBackupPolicies(GetBackupPoliciesArgs.builder()
-     *             .dbClusterId(&#34;example_value&#34;)
+     *             .dbClusterId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;clickHouseBackupPolicyId1&#34;, example.applyValue(getBackupPoliciesResult -&gt; getBackupPoliciesResult.policies()[0].id()));
+     *         ctx.export("clickHouseBackupPolicyId1", example.applyValue(getBackupPoliciesResult -> getBackupPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -505,7 +521,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -528,26 +545,27 @@ public final class ClickhouseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
-     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
-     *             .category(&#34;Basic&#34;)
-     *             .dbClusterClass(&#34;S8&#34;)
-     *             .dbClusterNetworkType(&#34;vpc&#34;)
-     *             .dbNodeGroupCount(&#34;1&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .dbNodeStorage(&#34;500&#34;)
-     *             .storageType(&#34;cloud_essd&#34;)
-     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
+     *             .dbClusterVersion("20.3.10.75")
+     *             .category("Basic")
+     *             .dbClusterClass("S8")
+     *             .dbClusterNetworkType("vpc")
+     *             .dbNodeGroupCount("1")
+     *             .paymentType("PayAsYouGo")
+     *             .dbNodeStorage("500")
+     *             .storageType("cloud_essd")
+     *             .vswitchId("your_vswitch_id")
      *             .build());
      * 
      *         final var default = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;dbCluster&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("dbCluster", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -564,7 +582,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -587,26 +606,27 @@ public final class ClickhouseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
-     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
-     *             .category(&#34;Basic&#34;)
-     *             .dbClusterClass(&#34;S8&#34;)
-     *             .dbClusterNetworkType(&#34;vpc&#34;)
-     *             .dbNodeGroupCount(&#34;1&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .dbNodeStorage(&#34;500&#34;)
-     *             .storageType(&#34;cloud_essd&#34;)
-     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
+     *             .dbClusterVersion("20.3.10.75")
+     *             .category("Basic")
+     *             .dbClusterClass("S8")
+     *             .dbClusterNetworkType("vpc")
+     *             .dbNodeGroupCount("1")
+     *             .paymentType("PayAsYouGo")
+     *             .dbNodeStorage("500")
+     *             .storageType("cloud_essd")
+     *             .vswitchId("your_vswitch_id")
      *             .build());
      * 
      *         final var default = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;dbCluster&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("dbCluster", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -623,7 +643,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -646,26 +667,27 @@ public final class ClickhouseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
-     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
-     *             .category(&#34;Basic&#34;)
-     *             .dbClusterClass(&#34;S8&#34;)
-     *             .dbClusterNetworkType(&#34;vpc&#34;)
-     *             .dbNodeGroupCount(&#34;1&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .dbNodeStorage(&#34;500&#34;)
-     *             .storageType(&#34;cloud_essd&#34;)
-     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
+     *             .dbClusterVersion("20.3.10.75")
+     *             .category("Basic")
+     *             .dbClusterClass("S8")
+     *             .dbClusterNetworkType("vpc")
+     *             .dbNodeGroupCount("1")
+     *             .paymentType("PayAsYouGo")
+     *             .dbNodeStorage("500")
+     *             .storageType("cloud_essd")
+     *             .vswitchId("your_vswitch_id")
      *             .build());
      * 
      *         final var default = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;dbCluster&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("dbCluster", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -682,7 +704,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -705,26 +728,27 @@ public final class ClickhouseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
-     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
-     *             .category(&#34;Basic&#34;)
-     *             .dbClusterClass(&#34;S8&#34;)
-     *             .dbClusterNetworkType(&#34;vpc&#34;)
-     *             .dbNodeGroupCount(&#34;1&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .dbNodeStorage(&#34;500&#34;)
-     *             .storageType(&#34;cloud_essd&#34;)
-     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
+     *             .dbClusterVersion("20.3.10.75")
+     *             .category("Basic")
+     *             .dbClusterClass("S8")
+     *             .dbClusterNetworkType("vpc")
+     *             .dbNodeGroupCount("1")
+     *             .paymentType("PayAsYouGo")
+     *             .dbNodeStorage("500")
+     *             .storageType("cloud_essd")
+     *             .vswitchId("your_vswitch_id")
      *             .build());
      * 
      *         final var default = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;dbCluster&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("dbCluster", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -741,7 +765,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -764,26 +789,27 @@ public final class ClickhouseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
-     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
-     *             .category(&#34;Basic&#34;)
-     *             .dbClusterClass(&#34;S8&#34;)
-     *             .dbClusterNetworkType(&#34;vpc&#34;)
-     *             .dbNodeGroupCount(&#34;1&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .dbNodeStorage(&#34;500&#34;)
-     *             .storageType(&#34;cloud_essd&#34;)
-     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
+     *             .dbClusterVersion("20.3.10.75")
+     *             .category("Basic")
+     *             .dbClusterClass("S8")
+     *             .dbClusterNetworkType("vpc")
+     *             .dbNodeGroupCount("1")
+     *             .paymentType("PayAsYouGo")
+     *             .dbNodeStorage("500")
+     *             .storageType("cloud_essd")
+     *             .vswitchId("your_vswitch_id")
      *             .build());
      * 
      *         final var default = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;dbCluster&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("dbCluster", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -800,7 +826,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -823,26 +850,27 @@ public final class ClickhouseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
-     *             .dbClusterVersion(&#34;20.3.10.75&#34;)
-     *             .category(&#34;Basic&#34;)
-     *             .dbClusterClass(&#34;S8&#34;)
-     *             .dbClusterNetworkType(&#34;vpc&#34;)
-     *             .dbNodeGroupCount(&#34;1&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .dbNodeStorage(&#34;500&#34;)
-     *             .storageType(&#34;cloud_essd&#34;)
-     *             .vswitchId(&#34;your_vswitch_id&#34;)
+     *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
+     *             .dbClusterVersion("20.3.10.75")
+     *             .category("Basic")
+     *             .dbClusterClass("S8")
+     *             .dbClusterNetworkType("vpc")
+     *             .dbNodeGroupCount("1")
+     *             .paymentType("PayAsYouGo")
+     *             .dbNodeStorage("500")
+     *             .storageType("cloud_essd")
+     *             .vswitchId("your_vswitch_id")
      *             .build());
      * 
      *         final var default = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;dbCluster&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
+     *         ctx.export("dbCluster", default_.applyValue(default_ -> default_.ids()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -859,7 +887,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -885,12 +914,13 @@ public final class ClickhouseFunctions {
      *             .build());
      * 
      *         final var default2 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
-     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .regionId("cn-hangzhou")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -907,7 +937,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -933,12 +964,13 @@ public final class ClickhouseFunctions {
      *             .build());
      * 
      *         final var default2 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
-     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .regionId("cn-hangzhou")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -955,7 +987,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -981,12 +1014,13 @@ public final class ClickhouseFunctions {
      *             .build());
      * 
      *         final var default2 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
-     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .regionId("cn-hangzhou")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1003,7 +1037,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1029,12 +1064,13 @@ public final class ClickhouseFunctions {
      *             .build());
      * 
      *         final var default2 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
-     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .regionId("cn-hangzhou")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1051,7 +1087,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1077,12 +1114,13 @@ public final class ClickhouseFunctions {
      *             .build());
      * 
      *         final var default2 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
-     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .regionId("cn-hangzhou")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1099,7 +1137,8 @@ public final class ClickhouseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1125,12 +1164,13 @@ public final class ClickhouseFunctions {
      *             .build());
      * 
      *         final var default2 = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
-     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .regionId("cn-hangzhou")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

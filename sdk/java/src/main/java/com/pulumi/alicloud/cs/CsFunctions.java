@@ -63,7 +63,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -85,13 +86,14 @@ public final class CsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CsFunctions.getAckService(GetAckServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
-     *             .type(&#34;propayasgo&#34;)
+     *             .enable("On")
+     *             .type("propayasgo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -108,7 +110,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -130,13 +133,14 @@ public final class CsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CsFunctions.getAckService(GetAckServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
-     *             .type(&#34;propayasgo&#34;)
+     *             .enable("On")
+     *             .type("propayasgo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -153,7 +157,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -175,13 +180,14 @@ public final class CsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CsFunctions.getAckService(GetAckServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
-     *             .type(&#34;propayasgo&#34;)
+     *             .enable("On")
+     *             .type("propayasgo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -198,7 +204,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -220,13 +227,14 @@ public final class CsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CsFunctions.getAckService(GetAckServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
-     *             .type(&#34;propayasgo&#34;)
+     *             .enable("On")
+     *             .type("propayasgo")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -285,7 +293,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -308,14 +317,15 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getEdgeKubernetesClustersResult -&gt; getEdgeKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getEdgeKubernetesClustersResult -> getEdgeKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -330,7 +340,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -353,14 +364,15 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getEdgeKubernetesClustersResult -&gt; getEdgeKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getEdgeKubernetesClustersResult -> getEdgeKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -375,7 +387,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -398,14 +411,15 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getEdgeKubernetesClustersResult -&gt; getEdgeKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getEdgeKubernetesClustersResult -> getEdgeKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -420,7 +434,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -443,14 +458,15 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getEdgeKubernetesClustersResult -&gt; getEdgeKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getEdgeKubernetesClustersResult -> getEdgeKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -465,7 +481,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -488,14 +505,15 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getEdgeKubernetesClustersResult -&gt; getEdgeKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getEdgeKubernetesClustersResult -> getEdgeKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -510,7 +528,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -533,14 +552,15 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getEdgeKubernetesClustersResult -&gt; getEdgeKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getEdgeKubernetesClustersResult -> getEdgeKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -633,7 +653,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -656,15 +677,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/k8s")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getKubernetesClustersResult -> getKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -681,7 +703,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -704,15 +727,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/k8s")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getKubernetesClustersResult -> getKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -729,7 +753,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -752,15 +777,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/k8s")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getKubernetesClustersResult -> getKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -777,7 +803,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -800,15 +827,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/k8s")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getKubernetesClustersResult -> getKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -825,7 +853,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -848,15 +877,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/k8s")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getKubernetesClustersResult -> getKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -873,7 +903,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -896,15 +927,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/k8s")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getKubernetesClustersResult -> getKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -919,7 +951,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -950,10 +983,11 @@ public final class CsFunctions {
      *             .uid(default_.users()[0].id())
      *             .build());
      * 
-     *         ctx.export(&#34;permissions&#34;, defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
+     *         ctx.export("permissions", defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -> getKubernetesPermissionResult.permissions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -968,7 +1002,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -999,10 +1034,11 @@ public final class CsFunctions {
      *             .uid(default_.users()[0].id())
      *             .build());
      * 
-     *         ctx.export(&#34;permissions&#34;, defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
+     *         ctx.export("permissions", defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -> getKubernetesPermissionResult.permissions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1017,7 +1053,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1048,10 +1085,11 @@ public final class CsFunctions {
      *             .uid(default_.users()[0].id())
      *             .build());
      * 
-     *         ctx.export(&#34;permissions&#34;, defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
+     *         ctx.export("permissions", defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -> getKubernetesPermissionResult.permissions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1066,7 +1104,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1097,10 +1136,11 @@ public final class CsFunctions {
      *             .uid(default_.users()[0].id())
      *             .build());
      * 
-     *         ctx.export(&#34;permissions&#34;, defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
+     *         ctx.export("permissions", defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -> getKubernetesPermissionResult.permissions()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1115,7 +1155,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1138,19 +1179,21 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;ManagedKubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
-     *             .profile(&#34;Default&#34;)
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Default")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1173,19 +1216,21 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;Kubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
-     *             .profile(&#34;Default&#34;)
+     *             .clusterType("Kubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Default")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1208,19 +1253,21 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;ManagedKubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
-     *             .profile(&#34;Serverless&#34;)
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Serverless")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1243,15 +1290,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;ManagedKubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.20.11-aliyunedge.1&#34;)
-     *             .profile(&#34;Edge&#34;)
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.20.11-aliyunedge.1")
+     *             .profile("Edge")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1266,7 +1314,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1289,19 +1338,21 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;ManagedKubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
-     *             .profile(&#34;Default&#34;)
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Default")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1324,19 +1375,21 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;Kubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
-     *             .profile(&#34;Default&#34;)
+     *             .clusterType("Kubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Default")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1359,19 +1412,21 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;ManagedKubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
-     *             .profile(&#34;Serverless&#34;)
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Serverless")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1394,15 +1449,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;ManagedKubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.20.11-aliyunedge.1&#34;)
-     *             .profile(&#34;Edge&#34;)
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.20.11-aliyunedge.1")
+     *             .profile("Edge")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1417,7 +1473,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1440,19 +1497,21 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;ManagedKubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
-     *             .profile(&#34;Default&#34;)
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Default")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1475,19 +1534,21 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;Kubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
-     *             .profile(&#34;Default&#34;)
+     *             .clusterType("Kubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Default")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1510,19 +1571,21 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;ManagedKubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
-     *             .profile(&#34;Serverless&#34;)
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Serverless")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1545,15 +1608,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;ManagedKubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.20.11-aliyunedge.1&#34;)
-     *             .profile(&#34;Edge&#34;)
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.20.11-aliyunedge.1")
+     *             .profile("Edge")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1568,7 +1632,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1591,19 +1656,21 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;ManagedKubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
-     *             .profile(&#34;Default&#34;)
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Default")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1626,19 +1693,21 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;Kubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
-     *             .profile(&#34;Default&#34;)
+     *             .clusterType("Kubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Default")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1661,19 +1730,21 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;ManagedKubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
-     *             .profile(&#34;Serverless&#34;)
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.22.3-aliyun.1")
+     *             .profile("Serverless")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1696,15 +1767,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
-     *             .clusterType(&#34;ManagedKubernetes&#34;)
-     *             .kubernetesVersion(&#34;1.20.11-aliyunedge.1&#34;)
-     *             .profile(&#34;Edge&#34;)
+     *             .clusterType("ManagedKubernetes")
+     *             .kubernetesVersion("1.20.11-aliyunedge.1")
+     *             .profile("Edge")
      *             .build());
      * 
-     *         ctx.export(&#34;metadata&#34;, default_.metadatas());
+     *         ctx.export("metadata", default_.metadatas());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1721,7 +1793,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1744,15 +1817,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/managed")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getManagedKubernetesClustersResult -> getManagedKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1769,7 +1843,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1792,15 +1867,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/managed")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getManagedKubernetesClustersResult -> getManagedKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1817,7 +1893,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1840,15 +1917,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/managed")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getManagedKubernetesClustersResult -> getManagedKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1865,7 +1943,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1888,15 +1967,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/managed")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getManagedKubernetesClustersResult -> getManagedKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1913,7 +1993,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1936,15 +2017,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/managed")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getManagedKubernetesClustersResult -> getManagedKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1961,7 +2043,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1984,15 +2067,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/managed")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getManagedKubernetesClustersResult -> getManagedKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2007,7 +2091,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2030,14 +2115,15 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
-     *             .nameRegex(&#34;my-instances&#34;)
-     *             .outputFile(&#34;my-instances-json&#34;)
+     *             .nameRegex("my-instances")
+     *             .outputFile("my-instances-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myInstances.applyValue(getRegistryEnterpriseInstancesResult -&gt; getRegistryEnterpriseInstancesResult.instances()));
+     *         ctx.export("output", myInstances.applyValue(getRegistryEnterpriseInstancesResult -> getRegistryEnterpriseInstancesResult.instances()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2052,7 +2138,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2075,14 +2162,15 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
-     *             .nameRegex(&#34;my-instances&#34;)
-     *             .outputFile(&#34;my-instances-json&#34;)
+     *             .nameRegex("my-instances")
+     *             .outputFile("my-instances-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myInstances.applyValue(getRegistryEnterpriseInstancesResult -&gt; getRegistryEnterpriseInstancesResult.instances()));
+     *         ctx.export("output", myInstances.applyValue(getRegistryEnterpriseInstancesResult -> getRegistryEnterpriseInstancesResult.instances()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2097,7 +2185,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2120,14 +2209,15 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
-     *             .nameRegex(&#34;my-instances&#34;)
-     *             .outputFile(&#34;my-instances-json&#34;)
+     *             .nameRegex("my-instances")
+     *             .outputFile("my-instances-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myInstances.applyValue(getRegistryEnterpriseInstancesResult -&gt; getRegistryEnterpriseInstancesResult.instances()));
+     *         ctx.export("output", myInstances.applyValue(getRegistryEnterpriseInstancesResult -> getRegistryEnterpriseInstancesResult.instances()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2142,7 +2232,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2165,14 +2256,15 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
-     *             .nameRegex(&#34;my-instances&#34;)
-     *             .outputFile(&#34;my-instances-json&#34;)
+     *             .nameRegex("my-instances")
+     *             .outputFile("my-instances-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myInstances.applyValue(getRegistryEnterpriseInstancesResult -&gt; getRegistryEnterpriseInstancesResult.instances()));
+     *         ctx.export("output", myInstances.applyValue(getRegistryEnterpriseInstancesResult -> getRegistryEnterpriseInstancesResult.instances()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2187,7 +2279,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2210,14 +2303,15 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
-     *             .nameRegex(&#34;my-instances&#34;)
-     *             .outputFile(&#34;my-instances-json&#34;)
+     *             .nameRegex("my-instances")
+     *             .outputFile("my-instances-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myInstances.applyValue(getRegistryEnterpriseInstancesResult -&gt; getRegistryEnterpriseInstancesResult.instances()));
+     *         ctx.export("output", myInstances.applyValue(getRegistryEnterpriseInstancesResult -> getRegistryEnterpriseInstancesResult.instances()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2232,7 +2326,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2255,14 +2350,15 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
-     *             .nameRegex(&#34;my-instances&#34;)
-     *             .outputFile(&#34;my-instances-json&#34;)
+     *             .nameRegex("my-instances")
+     *             .outputFile("my-instances-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myInstances.applyValue(getRegistryEnterpriseInstancesResult -&gt; getRegistryEnterpriseInstancesResult.instances()));
+     *         ctx.export("output", myInstances.applyValue(getRegistryEnterpriseInstancesResult -> getRegistryEnterpriseInstancesResult.instances()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2277,7 +2373,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2300,15 +2397,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myNamespaces = CsFunctions.getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs.builder()
-     *             .instanceId(&#34;cri-xxx&#34;)
-     *             .nameRegex(&#34;my-namespace&#34;)
-     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .instanceId("cri-xxx")
+     *             .nameRegex("my-namespace")
+     *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -&gt; getRegistryEnterpriseNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -> getRegistryEnterpriseNamespacesResult.namespaces()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2323,7 +2421,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2346,15 +2445,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myNamespaces = CsFunctions.getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs.builder()
-     *             .instanceId(&#34;cri-xxx&#34;)
-     *             .nameRegex(&#34;my-namespace&#34;)
-     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .instanceId("cri-xxx")
+     *             .nameRegex("my-namespace")
+     *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -&gt; getRegistryEnterpriseNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -> getRegistryEnterpriseNamespacesResult.namespaces()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2369,7 +2469,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2392,15 +2493,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myNamespaces = CsFunctions.getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs.builder()
-     *             .instanceId(&#34;cri-xxx&#34;)
-     *             .nameRegex(&#34;my-namespace&#34;)
-     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .instanceId("cri-xxx")
+     *             .nameRegex("my-namespace")
+     *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -&gt; getRegistryEnterpriseNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -> getRegistryEnterpriseNamespacesResult.namespaces()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2415,7 +2517,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2438,15 +2541,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myNamespaces = CsFunctions.getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs.builder()
-     *             .instanceId(&#34;cri-xxx&#34;)
-     *             .nameRegex(&#34;my-namespace&#34;)
-     *             .outputFile(&#34;my-namespace-json&#34;)
+     *             .instanceId("cri-xxx")
+     *             .nameRegex("my-namespace")
+     *             .outputFile("my-namespace-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -&gt; getRegistryEnterpriseNamespacesResult.namespaces()));
+     *         ctx.export("output", myNamespaces.applyValue(getRegistryEnterpriseNamespacesResult -> getRegistryEnterpriseNamespacesResult.namespaces()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2461,7 +2565,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2484,15 +2589,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
-     *             .instanceId(&#34;cri-xx&#34;)
-     *             .nameRegex(&#34;my-repos&#34;)
-     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .instanceId("cri-xx")
+     *             .nameRegex("my-repos")
+     *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getRegistryEnterpriseReposResult -&gt; getRegistryEnterpriseReposResult.repos()));
+     *         ctx.export("output", myRepos.applyValue(getRegistryEnterpriseReposResult -> getRegistryEnterpriseReposResult.repos()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2507,7 +2613,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2530,15 +2637,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
-     *             .instanceId(&#34;cri-xx&#34;)
-     *             .nameRegex(&#34;my-repos&#34;)
-     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .instanceId("cri-xx")
+     *             .nameRegex("my-repos")
+     *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getRegistryEnterpriseReposResult -&gt; getRegistryEnterpriseReposResult.repos()));
+     *         ctx.export("output", myRepos.applyValue(getRegistryEnterpriseReposResult -> getRegistryEnterpriseReposResult.repos()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2553,7 +2661,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2576,15 +2685,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
-     *             .instanceId(&#34;cri-xx&#34;)
-     *             .nameRegex(&#34;my-repos&#34;)
-     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .instanceId("cri-xx")
+     *             .nameRegex("my-repos")
+     *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getRegistryEnterpriseReposResult -&gt; getRegistryEnterpriseReposResult.repos()));
+     *         ctx.export("output", myRepos.applyValue(getRegistryEnterpriseReposResult -> getRegistryEnterpriseReposResult.repos()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2599,7 +2709,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2622,15 +2733,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
-     *             .instanceId(&#34;cri-xx&#34;)
-     *             .nameRegex(&#34;my-repos&#34;)
-     *             .outputFile(&#34;my-repo-json&#34;)
+     *             .instanceId("cri-xx")
+     *             .nameRegex("my-repos")
+     *             .outputFile("my-repo-json")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, myRepos.applyValue(getRegistryEnterpriseReposResult -&gt; getRegistryEnterpriseReposResult.repos()));
+     *         ctx.export("output", myRepos.applyValue(getRegistryEnterpriseReposResult -> getRegistryEnterpriseReposResult.repos()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2645,7 +2757,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2668,17 +2781,18 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var mySyncRules = CsFunctions.getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs.builder()
-     *             .instanceId(&#34;cri-xxx&#34;)
-     *             .namespaceName(&#34;test-namespace&#34;)
-     *             .repoName(&#34;test-repo&#34;)
-     *             .targetInstanceId(&#34;cri-yyy&#34;)
-     *             .nameRegex(&#34;test-rule&#34;)
+     *             .instanceId("cri-xxx")
+     *             .namespaceName("test-namespace")
+     *             .repoName("test-repo")
+     *             .targetInstanceId("cri-yyy")
+     *             .nameRegex("test-rule")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -&gt; getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("output", mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -> getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2693,7 +2807,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2716,17 +2831,18 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var mySyncRules = CsFunctions.getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs.builder()
-     *             .instanceId(&#34;cri-xxx&#34;)
-     *             .namespaceName(&#34;test-namespace&#34;)
-     *             .repoName(&#34;test-repo&#34;)
-     *             .targetInstanceId(&#34;cri-yyy&#34;)
-     *             .nameRegex(&#34;test-rule&#34;)
+     *             .instanceId("cri-xxx")
+     *             .namespaceName("test-namespace")
+     *             .repoName("test-repo")
+     *             .targetInstanceId("cri-yyy")
+     *             .nameRegex("test-rule")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -&gt; getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("output", mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -> getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2741,7 +2857,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2764,17 +2881,18 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var mySyncRules = CsFunctions.getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs.builder()
-     *             .instanceId(&#34;cri-xxx&#34;)
-     *             .namespaceName(&#34;test-namespace&#34;)
-     *             .repoName(&#34;test-repo&#34;)
-     *             .targetInstanceId(&#34;cri-yyy&#34;)
-     *             .nameRegex(&#34;test-rule&#34;)
+     *             .instanceId("cri-xxx")
+     *             .namespaceName("test-namespace")
+     *             .repoName("test-repo")
+     *             .targetInstanceId("cri-yyy")
+     *             .nameRegex("test-rule")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -&gt; getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("output", mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -> getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2789,7 +2907,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2812,17 +2931,18 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var mySyncRules = CsFunctions.getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs.builder()
-     *             .instanceId(&#34;cri-xxx&#34;)
-     *             .namespaceName(&#34;test-namespace&#34;)
-     *             .repoName(&#34;test-repo&#34;)
-     *             .targetInstanceId(&#34;cri-yyy&#34;)
-     *             .nameRegex(&#34;test-rule&#34;)
+     *             .instanceId("cri-xxx")
+     *             .namespaceName("test-namespace")
+     *             .repoName("test-repo")
+     *             .targetInstanceId("cri-yyy")
+     *             .nameRegex("test-rule")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -&gt; getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("output", mySyncRules.applyValue(getRegistryEnterpriseSyncRulesResult -> getRegistryEnterpriseSyncRulesResult.rules()).stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2839,7 +2959,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2862,15 +2983,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/serverless")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getServerlessKubernetesClustersResult -> getServerlessKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2887,7 +3009,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2910,15 +3033,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/serverless")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getServerlessKubernetesClustersResult -> getServerlessKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2935,7 +3059,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2958,15 +3083,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/serverless")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getServerlessKubernetesClustersResult -> getServerlessKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2983,7 +3109,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3006,15 +3133,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/serverless")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getServerlessKubernetesClustersResult -> getServerlessKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3031,7 +3159,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3054,15 +3183,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/serverless")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getServerlessKubernetesClustersResult -> getServerlessKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3079,7 +3209,8 @@ public final class CsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3102,15 +3233,16 @@ public final class CsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
-     *             .nameRegex(&#34;my-first-k8s&#34;)
-     *             .outputFile(&#34;my-first-k8s-json&#34;)
-     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
+     *             .nameRegex("my-first-k8s")
+     *             .outputFile("my-first-k8s-json")
+     *             .kubeConfigFilePrefix("~/.kube/serverless")
      *             .build());
      * 
-     *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
+     *         ctx.export("output", k8sClusters.applyValue(getServerlessKubernetesClustersResult -> getServerlessKubernetesClustersResult.clusters()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

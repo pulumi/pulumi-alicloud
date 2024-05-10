@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,42 +54,43 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaulteVpc = new Network(&#34;defaulteVpc&#34;, NetworkArgs.builder()        
- *             .description(&#34;test&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaulteVpc = new Network("defaulteVpc", NetworkArgs.builder()        
+ *             .description("test")
  *             .build());
  * 
- *         var defaultGE = new GatewayEndpoint(&#34;defaultGE&#34;, GatewayEndpointArgs.builder()        
- *             .serviceName(&#34;com.aliyun.cn-hangzhou.oss&#34;)
- *             .policyDocument(&#34;&#34;&#34;
+ *         var defaultGE = new GatewayEndpoint("defaultGE", GatewayEndpointArgs.builder()        
+ *             .serviceName("com.aliyun.cn-hangzhou.oss")
+ *             .policyDocument("""
  *         {
- *           &#34;Version&#34;: &#34;1&#34;,
- *           &#34;Statement&#34;: [{
- *             &#34;Effect&#34;: &#34;Allow&#34;,
- *             &#34;Resource&#34;: [&#34;*&#34;],
- *             &#34;Action&#34;: [&#34;*&#34;],
- *             &#34;Principal&#34;: [&#34;*&#34;]
+ *           "Version": "1",
+ *           "Statement": [{
+ *             "Effect": "Allow",
+ *             "Resource": ["*"],
+ *             "Action": ["*"],
+ *             "Principal": ["*"]
  *           }]
  *         }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .vpcId(defaulteVpc.id())
- *             .gatewayEndpointDescrption(&#34;test-gateway-endpoint&#34;)
- *             .gatewayEndpointName(String.format(&#34;%s1&#34;, name))
+ *             .gatewayEndpointDescrption("test-gateway-endpoint")
+ *             .gatewayEndpointName(String.format("%s1", name))
  *             .build());
  * 
- *         var defaultRT = new RouteTable(&#34;defaultRT&#34;, RouteTableArgs.builder()        
+ *         var defaultRT = new RouteTable("defaultRT", RouteTableArgs.builder()        
  *             .vpcId(defaulteVpc.id())
- *             .routeTableName(String.format(&#34;%s2&#34;, name))
+ *             .routeTableName(String.format("%s2", name))
  *             .build());
  * 
- *         var default_ = new GatewayEndpointRouteTableAttachment(&#34;default&#34;, GatewayEndpointRouteTableAttachmentArgs.builder()        
+ *         var default_ = new GatewayEndpointRouteTableAttachment("default", GatewayEndpointRouteTableAttachmentArgs.builder()        
  *             .gatewayEndpointId(defaultGE.id())
  *             .routeTableId(defaultRT.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

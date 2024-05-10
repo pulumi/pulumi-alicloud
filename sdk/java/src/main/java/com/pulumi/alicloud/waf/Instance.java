@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,27 +54,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = WafFunctions.getInstances();
  * 
- *         for (var i = 0; i &lt; default_.instances().length() &gt; 0 ? 0 : 1; i++) {
- *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
- *                 .bigScreen(&#34;0&#34;)
- *                 .exclusiveIpPackage(&#34;1&#34;)
- *                 .extBandwidth(&#34;50&#34;)
- *                 .extDomainPackage(&#34;1&#34;)
- *                 .packageCode(&#34;version_3&#34;)
- *                 .prefessionalService(&#34;false&#34;)
- *                 .subscriptionType(&#34;Subscription&#34;)
+ *         for (var i = 0; i < default_.instances().length() > 0 ? 0 : 1; i++) {
+ *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+ *                 .bigScreen("0")
+ *                 .exclusiveIpPackage("1")
+ *                 .extBandwidth("50")
+ *                 .extDomainPackage("1")
+ *                 .packageCode("version_3")
+ *                 .prefessionalService("false")
+ *                 .subscriptionType("Subscription")
  *                 .period(1)
- *                 .wafLog(&#34;false&#34;)
- *                 .logStorage(&#34;3&#34;)
- *                 .logTime(&#34;180&#34;)
- *                 .resourceGroupId(&#34;rs-abc12345&#34;)
+ *                 .wafLog("false")
+ *                 .logStorage("3")
+ *                 .logTime("180")
+ *                 .resourceGroupId("rs-abc12345")
  *                 .build());
  * 
  *         
  * }
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

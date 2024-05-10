@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,13 +57,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         final var name = config.get("name").orElse("tf_example");
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var defaultMonitorGroup = new MonitorGroup(&#34;defaultMonitorGroup&#34;, MonitorGroupArgs.builder()        
+ *         var defaultMonitorGroup = new MonitorGroup("defaultMonitorGroup", MonitorGroupArgs.builder()        
  *             .monitorGroupName(name)
  *             .build());
  * 
@@ -70,19 +71,20 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var example = new MonitorGroupInstances(&#34;example&#34;, MonitorGroupInstancesArgs.builder()        
+ *         var example = new MonitorGroupInstances("example", MonitorGroupInstancesArgs.builder()        
  *             .groupId(defaultMonitorGroup.id())
  *             .instances(MonitorGroupInstancesInstanceArgs.builder()
  *                 .instanceId(defaultNetwork.id())
  *                 .instanceName(name)
  *                 .regionId(default_.regions()[0].id())
- *                 .category(&#34;vpc&#34;)
+ *                 .category("vpc")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

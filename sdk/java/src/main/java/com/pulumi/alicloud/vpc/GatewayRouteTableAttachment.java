@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,32 +55,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
- *             .vpcName(&#34;terraform-example&#34;)
+ *         var example = new Network("example", NetworkArgs.builder()        
+ *             .cidrBlock("172.16.0.0/12")
+ *             .vpcName("terraform-example")
  *             .build());
  * 
- *         var exampleRouteTable = new RouteTable(&#34;exampleRouteTable&#34;, RouteTableArgs.builder()        
+ *         var exampleRouteTable = new RouteTable("exampleRouteTable", RouteTableArgs.builder()        
  *             .vpcId(example.id())
- *             .routeTableName(&#34;terraform-example&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .associateType(&#34;Gateway&#34;)
+ *             .routeTableName("terraform-example")
+ *             .description("terraform-example")
+ *             .associateType("Gateway")
  *             .build());
  * 
- *         var exampleIpv4Gateway = new Ipv4Gateway(&#34;exampleIpv4Gateway&#34;, Ipv4GatewayArgs.builder()        
- *             .ipv4GatewayName(&#34;terraform-example&#34;)
+ *         var exampleIpv4Gateway = new Ipv4Gateway("exampleIpv4Gateway", Ipv4GatewayArgs.builder()        
+ *             .ipv4GatewayName("terraform-example")
  *             .vpcId(example.id())
- *             .enabled(&#34;true&#34;)
+ *             .enabled("true")
  *             .build());
  * 
- *         var exampleGatewayRouteTableAttachment = new GatewayRouteTableAttachment(&#34;exampleGatewayRouteTableAttachment&#34;, GatewayRouteTableAttachmentArgs.builder()        
+ *         var exampleGatewayRouteTableAttachment = new GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment", GatewayRouteTableAttachmentArgs.builder()        
  *             .ipv4GatewayId(exampleIpv4Gateway.id())
  *             .routeTableId(exampleRouteTable.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

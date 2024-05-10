@@ -24,7 +24,8 @@ public final class EnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -46,14 +47,15 @@ public final class EnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = EnsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
-     *             .version(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .version("example_value")
+     *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export(&#34;ensKeyPairId1&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ensKeyPairId1", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -70,7 +72,8 @@ public final class EnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -92,14 +95,15 @@ public final class EnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = EnsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
-     *             .version(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .version("example_value")
+     *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export(&#34;ensKeyPairId1&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ensKeyPairId1", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -116,7 +120,8 @@ public final class EnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -138,14 +143,15 @@ public final class EnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = EnsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
-     *             .version(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .version("example_value")
+     *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export(&#34;ensKeyPairId1&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ensKeyPairId1", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -162,7 +168,8 @@ public final class EnsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -184,14 +191,15 @@ public final class EnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var nameRegex = EnsFunctions.getKeyPairs(GetKeyPairsArgs.builder()
-     *             .version(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-KeyPair&#34;)
+     *             .version("example_value")
+     *             .nameRegex("^my-KeyPair")
      *             .build());
      * 
-     *         ctx.export(&#34;ensKeyPairId1&#34;, nameRegex.applyValue(getKeyPairsResult -&gt; getKeyPairsResult.pairs()[0].id()));
+     *         ctx.export("ensKeyPairId1", nameRegex.applyValue(getKeyPairsResult -> getKeyPairsResult.pairs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

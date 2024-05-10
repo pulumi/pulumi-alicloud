@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * Using `vpc_ids` to attach being in same region several vpc instances to a private zone
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,21 +48,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var zone = new Zone(&#34;zone&#34;, ZoneArgs.builder()        
- *             .zoneName(&#34;foo.example.com&#34;)
+ *         var zone = new Zone("zone", ZoneArgs.builder()        
+ *             .zoneName("foo.example.com")
  *             .build());
  * 
- *         var first = new Network(&#34;first&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;the-first-vpc&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var first = new Network("first", NetworkArgs.builder()        
+ *             .vpcName("the-first-vpc")
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var second = new Network(&#34;second&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;the-second-vpc&#34;)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *         var second = new Network("second", NetworkArgs.builder()        
+ *             .vpcName("the-second-vpc")
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var zone_attachment = new ZoneAttachment(&#34;zone-attachment&#34;, ZoneAttachmentArgs.builder()        
+ *         var zone_attachment = new ZoneAttachment("zone-attachment", ZoneAttachmentArgs.builder()        
  *             .zoneId(zone.id())
  *             .vpcIds(            
  *                 first.id(),
@@ -70,13 +71,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Using `vpcs` to attach being in same region several vpc instances to a private zone
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -102,21 +105,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var zone = new Zone(&#34;zone&#34;, ZoneArgs.builder()        
- *             .zoneName(&#34;foo.example.com&#34;)
+ *         var zone = new Zone("zone", ZoneArgs.builder()        
+ *             .zoneName("foo.example.com")
  *             .build());
  * 
- *         var first = new Network(&#34;first&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;the-first-vpc&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var first = new Network("first", NetworkArgs.builder()        
+ *             .vpcName("the-first-vpc")
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var second = new Network(&#34;second&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;the-second-vpc&#34;)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *         var second = new Network("second", NetworkArgs.builder()        
+ *             .vpcName("the-second-vpc")
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var zone_attachment = new ZoneAttachment(&#34;zone-attachment&#34;, ZoneAttachmentArgs.builder()        
+ *         var zone_attachment = new ZoneAttachment("zone-attachment", ZoneAttachmentArgs.builder()        
  *             .zoneId(zone.id())
  *             .vpcs(            
  *                 ZoneAttachmentVpcArgs.builder()
@@ -129,13 +132,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Using `vpcs` to attach being in different regions several vpc instances to a private zone
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -161,26 +166,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var zone = new Zone(&#34;zone&#34;, ZoneArgs.builder()        
- *             .zoneName(&#34;foo.example.com&#34;)
+ *         var zone = new Zone("zone", ZoneArgs.builder()        
+ *             .zoneName("foo.example.com")
  *             .build());
  * 
- *         var first = new Network(&#34;first&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;the-first-vpc&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var first = new Network("first", NetworkArgs.builder()        
+ *             .vpcName("the-first-vpc")
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var second = new Network(&#34;second&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;the-second-vpc&#34;)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *         var second = new Network("second", NetworkArgs.builder()        
+ *             .vpcName("the-second-vpc")
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var third = new Network(&#34;third&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;the-third-vpc&#34;)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *         var third = new Network("third", NetworkArgs.builder()        
+ *             .vpcName("the-third-vpc")
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var zone_attachment = new ZoneAttachment(&#34;zone-attachment&#34;, ZoneAttachmentArgs.builder()        
+ *         var zone_attachment = new ZoneAttachment("zone-attachment", ZoneAttachmentArgs.builder()        
  *             .zoneId(zone.id())
  *             .vpcs(            
  *                 ZoneAttachmentVpcArgs.builder()
@@ -190,14 +195,15 @@ import javax.annotation.Nullable;
  *                     .vpcId(second.id())
  *                     .build(),
  *                 ZoneAttachmentVpcArgs.builder()
- *                     .regionId(&#34;eu-central-1&#34;)
+ *                     .regionId("eu-central-1")
  *                     .vpcId(third.id())
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

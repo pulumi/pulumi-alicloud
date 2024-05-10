@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,132 +65,132 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var alertName = config.get(&#34;alertName&#34;).orElse(&#34;openapi-terraform-alert&#34;);
- *         final var projectName = config.get(&#34;projectName&#34;).orElse(&#34;terraform-alert-example&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var alertName = config.get("alertName").orElse("openapi-terraform-alert");
+ *         final var projectName = config.get("projectName").orElse("terraform-alert-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultINsMgl = new Project(&#34;defaultINsMgl&#34;, ProjectArgs.builder()        
- *             .description(String.format(&#34;%s-%s&#34;, projectName,default_.result()))
- *             .name(String.format(&#34;%s-%s&#34;, projectName,default_.result()))
+ *         var defaultINsMgl = new Project("defaultINsMgl", ProjectArgs.builder()        
+ *             .description(String.format("%s-%s", projectName,default_.result()))
+ *             .name(String.format("%s-%s", projectName,default_.result()))
  *             .build());
  * 
- *         var defaultAlert = new Alert(&#34;defaultAlert&#34;, AlertArgs.builder()        
+ *         var defaultAlert = new Alert("defaultAlert", AlertArgs.builder()        
  *             .schedule(AlertScheduleArgs.builder()
- *                 .type(&#34;FixedRate&#34;)
- *                 .runImmdiately(&#34;true&#34;)
- *                 .interval(&#34;1m&#34;)
- *                 .timeZone(&#34;+0800&#34;)
- *                 .delay(&#34;10&#34;)
+ *                 .type("FixedRate")
+ *                 .runImmdiately("true")
+ *                 .interval("1m")
+ *                 .timeZone("+0800")
+ *                 .delay("10")
  *                 .build())
- *             .displayName(&#34;openapi-terraform&#34;)
- *             .description(&#34;create alert&#34;)
- *             .status(&#34;ENABLED&#34;)
+ *             .displayName("openapi-terraform")
+ *             .description("create alert")
+ *             .status("ENABLED")
  *             .configuration(AlertConfigurationArgs.builder()
  *                 .groupConfiguration(AlertConfigurationGroupConfigurationArgs.builder()
  *                     .fields(                    
- *                         &#34;a&#34;,
- *                         &#34;b&#34;)
- *                     .type(&#34;no_group&#34;)
+ *                         "a",
+ *                         "b")
+ *                     .type("no_group")
  *                     .build())
- *                 .noDataFire(&#34;false&#34;)
- *                 .version(&#34;2&#34;)
+ *                 .noDataFire("false")
+ *                 .version("2")
  *                 .severityConfigurations(AlertConfigurationSeverityConfigurationArgs.builder()
- *                     .severity(&#34;6&#34;)
+ *                     .severity("6")
  *                     .evalCondition(AlertConfigurationSeverityConfigurationEvalConditionArgs.builder()
- *                         .countCondition(&#34;cnt &gt; 0&#34;)
- *                         .condition(&#34;__count__ &gt; 1&#34;)
+ *                         .countCondition("cnt > 0")
+ *                         .condition("__count__ > 1")
  *                         .build())
  *                     .build())
  *                 .labels(AlertConfigurationLabelArgs.builder()
- *                     .key(&#34;a&#34;)
- *                     .value(&#34;b&#34;)
+ *                     .key("a")
+ *                     .value("b")
  *                     .build())
- *                 .autoAnnotation(&#34;true&#34;)
+ *                 .autoAnnotation("true")
  *                 .templateConfiguration(AlertConfigurationTemplateConfigurationArgs.builder()
- *                     .lang(&#34;cn&#34;)
- *                     .tokens(Map.of(&#34;a&#34;, &#34;b&#34;))
- *                     .annotations(Map.of(&#34;x&#34;, &#34;y&#34;))
- *                     .templateId(&#34;sls.app.ack.autoscaler.cluster_unhealthy&#34;)
- *                     .type(&#34;sys&#34;)
- *                     .version(&#34;1.0&#34;)
+ *                     .lang("cn")
+ *                     .tokens(Map.of("a", "b"))
+ *                     .annotations(Map.of("x", "y"))
+ *                     .templateId("sls.app.ack.autoscaler.cluster_unhealthy")
+ *                     .type("sys")
+ *                     .version("1.0")
  *                     .build())
- *                 .muteUntil(&#34;0&#34;)
+ *                 .muteUntil("0")
  *                 .annotations(AlertConfigurationAnnotationArgs.builder()
- *                     .key(&#34;x&#34;)
- *                     .value(&#34;y&#34;)
+ *                     .key("x")
+ *                     .value("y")
  *                     .build())
- *                 .sendResolved(&#34;false&#34;)
- *                 .threshold(&#34;1&#34;)
+ *                 .sendResolved("false")
+ *                 .threshold("1")
  *                 .sinkCms(AlertConfigurationSinkCmsArgs.builder()
- *                     .enabled(&#34;false&#34;)
+ *                     .enabled("false")
  *                     .build())
  *                 .conditionConfiguration(AlertConfigurationConditionConfigurationArgs.builder()
- *                     .condition(&#34;cnt &gt; 3&#34;)
- *                     .countCondition(&#34;__count__ &lt; 3&#34;)
+ *                     .condition("cnt > 3")
+ *                     .countCondition("__count__ < 3")
  *                     .build())
  *                 .policyConfiguration(AlertConfigurationPolicyConfigurationArgs.builder()
- *                     .alertPolicyId(&#34;sls.builtin.dynamic&#34;)
- *                     .actionPolicyId(&#34;wkb-action&#34;)
- *                     .repeatInterval(&#34;1m&#34;)
+ *                     .alertPolicyId("sls.builtin.dynamic")
+ *                     .actionPolicyId("wkb-action")
+ *                     .repeatInterval("1m")
  *                     .build())
- *                 .dashboard(&#34;internal-alert&#34;)
- *                 .type(&#34;tpl&#34;)
+ *                 .dashboard("internal-alert")
+ *                 .type("tpl")
  *                 .queryLists(                
  *                     AlertConfigurationQueryListArgs.builder()
- *                         .ui(&#34;{}&#34;)
- *                         .roleArn(&#34;acs:ram::1654218965343050:role/aliyunslsalertmonitorrole&#34;)
- *                         .query(&#34;* | select *&#34;)
- *                         .timeSpanType(&#34;Relative&#34;)
+ *                         .ui("{}")
+ *                         .roleArn("acs:ram::1654218965343050:role/aliyunslsalertmonitorrole")
+ *                         .query("* | select *")
+ *                         .timeSpanType("Relative")
  *                         .project(defaultINsMgl.name())
- *                         .powerSqlMode(&#34;disable&#34;)
- *                         .dashboardId(&#34;wkb-dashboard&#34;)
- *                         .chartTitle(&#34;wkb-chart&#34;)
- *                         .start(&#34;-15m&#34;)
- *                         .end(&#34;now&#34;)
- *                         .storeType(&#34;log&#34;)
- *                         .store(&#34;alert&#34;)
- *                         .region(&#34;cn-shanghai&#34;)
+ *                         .powerSqlMode("disable")
+ *                         .dashboardId("wkb-dashboard")
+ *                         .chartTitle("wkb-chart")
+ *                         .start("-15m")
+ *                         .end("now")
+ *                         .storeType("log")
+ *                         .store("alert")
+ *                         .region("cn-shanghai")
  *                         .build(),
  *                     AlertConfigurationQueryListArgs.builder()
- *                         .storeType(&#34;meta&#34;)
- *                         .store(&#34;user.rds_ip_whitelist&#34;)
+ *                         .storeType("meta")
+ *                         .store("user.rds_ip_whitelist")
  *                         .build(),
  *                     AlertConfigurationQueryListArgs.builder()
- *                         .storeType(&#34;meta&#34;)
- *                         .store(&#34;myexample1&#34;)
+ *                         .storeType("meta")
+ *                         .store("myexample1")
  *                         .build())
  *                 .joinConfigurations(                
  *                     AlertConfigurationJoinConfigurationArgs.builder()
- *                         .type(&#34;no_join&#34;)
- *                         .condition(&#34;aa&#34;)
+ *                         .type("no_join")
+ *                         .condition("aa")
  *                         .build(),
  *                     AlertConfigurationJoinConfigurationArgs.builder()
- *                         .type(&#34;cross_join&#34;)
- *                         .condition(&#34;qqq&#34;)
+ *                         .type("cross_join")
+ *                         .condition("qqq")
  *                         .build(),
  *                     AlertConfigurationJoinConfigurationArgs.builder()
- *                         .type(&#34;inner_join&#34;)
- *                         .condition(&#34;fefefe&#34;)
+ *                         .type("inner_join")
+ *                         .condition("fefefe")
  *                         .build())
  *                 .sinkEventStore(AlertConfigurationSinkEventStoreArgs.builder()
- *                     .enabled(&#34;true&#34;)
- *                     .endpoint(&#34;cn-shanghai-intranet.log.aliyuncs.com&#34;)
- *                     .project(&#34;wkb-wangren&#34;)
- *                     .eventStore(&#34;alert&#34;)
- *                     .roleArn(&#34;acs:ram::1654218965343050:role/aliyunlogetlrole&#34;)
+ *                     .enabled("true")
+ *                     .endpoint("cn-shanghai-intranet.log.aliyuncs.com")
+ *                     .project("wkb-wangren")
+ *                     .eventStore("alert")
+ *                     .roleArn("acs:ram::1654218965343050:role/aliyunlogetlrole")
  *                     .build())
  *                 .sinkAlerthub(AlertConfigurationSinkAlerthubArgs.builder()
- *                     .enabled(&#34;false&#34;)
+ *                     .enabled("false")
  *                     .build())
- *                 .noDataSeverity(&#34;6&#34;)
+ *                 .noDataSeverity("6")
  *                 .tags(                
- *                     &#34;wkb&#34;,
- *                     &#34;wangren&#34;,
- *                     &#34;sls&#34;)
+ *                     "wkb",
+ *                     "wangren",
+ *                     "sls")
  *                 .build())
  *             .alertName(alertName)
  *             .projectName(defaultINsMgl.name())
@@ -197,7 +198,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

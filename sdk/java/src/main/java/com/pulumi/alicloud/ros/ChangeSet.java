@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,22 +54,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new ChangeSet(&#34;example&#34;, ChangeSetArgs.builder()        
- *             .changeSetName(&#34;example_value&#34;)
- *             .stackName(String.format(&#34;tf-example-%s&#34;, default_.result()))
- *             .changeSetType(&#34;CREATE&#34;)
- *             .description(&#34;Test From Terraform&#34;)
- *             .templateBody(&#34;{\&#34;ROSTemplateFormatVersion\&#34;:\&#34;2015-09-01\&#34;}&#34;)
+ *         var example = new ChangeSet("example", ChangeSetArgs.builder()        
+ *             .changeSetName("example_value")
+ *             .stackName(String.format("tf-example-%s", default_.result()))
+ *             .changeSetType("CREATE")
+ *             .description("Test From Terraform")
+ *             .templateBody("{\"ROSTemplateFormatVersion\":\"2015-09-01\"}")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

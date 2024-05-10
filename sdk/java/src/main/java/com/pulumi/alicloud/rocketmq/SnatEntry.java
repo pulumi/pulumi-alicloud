@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,16 +50,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var sagId = config.get(&#34;sagId&#34;).orElse(&#34;sag-9bifk***&#34;);
- *         var default_ = new SnatEntry(&#34;default&#34;, SnatEntryArgs.builder()        
+ *         final var sagId = config.get("sagId").orElse("sag-9bifk***");
+ *         var default_ = new SnatEntry("default", SnatEntryArgs.builder()        
  *             .sagId(sagId)
- *             .cidrBlock(&#34;192.168.7.0/24&#34;)
- *             .snatIp(&#34;192.0.0.2&#34;)
+ *             .cidrBlock("192.168.7.0/24")
+ *             .snatIp("192.0.0.2")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -42,7 +42,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -64,14 +65,15 @@ public final class DmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DmsFunctions.getEnterpriseDatabases(GetEnterpriseDatabasesArgs.builder()
-     *             .nameRegex(&#34;test2&#34;)
-     *             .instanceId(&#34;2195118&#34;)
+     *             .nameRegex("test2")
+     *             .instanceId("2195118")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsEnterpriseDatabaseExampleId&#34;, default_.databases()[0].id());
+     *         ctx.export("alicloudDmsEnterpriseDatabaseExampleId", default_.databases()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -88,7 +90,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -110,14 +113,15 @@ public final class DmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DmsFunctions.getEnterpriseDatabases(GetEnterpriseDatabasesArgs.builder()
-     *             .nameRegex(&#34;test2&#34;)
-     *             .instanceId(&#34;2195118&#34;)
+     *             .nameRegex("test2")
+     *             .instanceId("2195118")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsEnterpriseDatabaseExampleId&#34;, default_.databases()[0].id());
+     *         ctx.export("alicloudDmsEnterpriseDatabaseExampleId", default_.databases()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -134,7 +138,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -156,14 +161,15 @@ public final class DmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DmsFunctions.getEnterpriseDatabases(GetEnterpriseDatabasesArgs.builder()
-     *             .nameRegex(&#34;test2&#34;)
-     *             .instanceId(&#34;2195118&#34;)
+     *             .nameRegex("test2")
+     *             .instanceId("2195118")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsEnterpriseDatabaseExampleId&#34;, default_.databases()[0].id());
+     *         ctx.export("alicloudDmsEnterpriseDatabaseExampleId", default_.databases()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -180,7 +186,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -202,14 +209,15 @@ public final class DmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DmsFunctions.getEnterpriseDatabases(GetEnterpriseDatabasesArgs.builder()
-     *             .nameRegex(&#34;test2&#34;)
-     *             .instanceId(&#34;2195118&#34;)
+     *             .nameRegex("test2")
+     *             .instanceId("2195118")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsEnterpriseDatabaseExampleId&#34;, default_.databases()[0].id());
+     *         ctx.export("alicloudDmsEnterpriseDatabaseExampleId", default_.databases()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -224,7 +232,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -247,17 +256,18 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .netType(&#34;CLASSIC&#34;)
-     *             .instanceType(&#34;mysql&#34;)
-     *             .envType(&#34;test&#34;)
-     *             .nameRegex(&#34;tf_testAcc&#34;)
-     *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
+     *             .netType("CLASSIC")
+     *             .instanceType("mysql")
+     *             .envType("test")
+     *             .nameRegex("tf_testAcc")
+     *             .outputFile("dms_enterprise_instances.json")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDatabaseInstanceId&#34;, dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -272,7 +282,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -295,17 +306,18 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .netType(&#34;CLASSIC&#34;)
-     *             .instanceType(&#34;mysql&#34;)
-     *             .envType(&#34;test&#34;)
-     *             .nameRegex(&#34;tf_testAcc&#34;)
-     *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
+     *             .netType("CLASSIC")
+     *             .instanceType("mysql")
+     *             .envType("test")
+     *             .nameRegex("tf_testAcc")
+     *             .outputFile("dms_enterprise_instances.json")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDatabaseInstanceId&#34;, dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -320,7 +332,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -343,17 +356,18 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .netType(&#34;CLASSIC&#34;)
-     *             .instanceType(&#34;mysql&#34;)
-     *             .envType(&#34;test&#34;)
-     *             .nameRegex(&#34;tf_testAcc&#34;)
-     *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
+     *             .netType("CLASSIC")
+     *             .instanceType("mysql")
+     *             .envType("test")
+     *             .nameRegex("tf_testAcc")
+     *             .outputFile("dms_enterprise_instances.json")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDatabaseInstanceId&#34;, dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -368,7 +382,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -391,17 +406,18 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .netType(&#34;CLASSIC&#34;)
-     *             .instanceType(&#34;mysql&#34;)
-     *             .envType(&#34;test&#34;)
-     *             .nameRegex(&#34;tf_testAcc&#34;)
-     *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
+     *             .netType("CLASSIC")
+     *             .instanceType("mysql")
+     *             .envType("test")
+     *             .nameRegex("tf_testAcc")
+     *             .outputFile("dms_enterprise_instances.json")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDatabaseInstanceId&#34;, dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -416,7 +432,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -439,17 +456,18 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .netType(&#34;CLASSIC&#34;)
-     *             .instanceType(&#34;mysql&#34;)
-     *             .envType(&#34;test&#34;)
-     *             .nameRegex(&#34;tf_testAcc&#34;)
-     *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
+     *             .netType("CLASSIC")
+     *             .instanceType("mysql")
+     *             .envType("test")
+     *             .nameRegex("tf_testAcc")
+     *             .outputFile("dms_enterprise_instances.json")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDatabaseInstanceId&#34;, dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -464,7 +482,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -487,17 +506,18 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .netType(&#34;CLASSIC&#34;)
-     *             .instanceType(&#34;mysql&#34;)
-     *             .envType(&#34;test&#34;)
-     *             .nameRegex(&#34;tf_testAcc&#34;)
-     *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
+     *             .netType("CLASSIC")
+     *             .instanceType("mysql")
+     *             .envType("test")
+     *             .nameRegex("tf_testAcc")
+     *             .outputFile("dms_enterprise_instances.json")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDatabaseInstanceId&#34;, dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()));
+     *         ctx.export("firstDatabaseInstanceId", dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -514,7 +534,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -537,18 +558,19 @@ public final class DmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .instanceType(&#34;mysql&#34;)
-     *             .searchKey(&#34;tf-test-no-deleting&#34;)
+     *             .instanceType("mysql")
+     *             .searchKey("tf-test-no-deleting")
      *             .build());
      * 
      *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
-     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()))
+     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()))
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsEnterpriseLogicDatabaseExampleId&#34;, default_.databases()[0].id());
+     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -565,7 +587,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -588,18 +611,19 @@ public final class DmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .instanceType(&#34;mysql&#34;)
-     *             .searchKey(&#34;tf-test-no-deleting&#34;)
+     *             .instanceType("mysql")
+     *             .searchKey("tf-test-no-deleting")
      *             .build());
      * 
      *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
-     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()))
+     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()))
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsEnterpriseLogicDatabaseExampleId&#34;, default_.databases()[0].id());
+     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -616,7 +640,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -639,18 +664,19 @@ public final class DmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .instanceType(&#34;mysql&#34;)
-     *             .searchKey(&#34;tf-test-no-deleting&#34;)
+     *             .instanceType("mysql")
+     *             .searchKey("tf-test-no-deleting")
      *             .build());
      * 
      *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
-     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()))
+     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()))
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsEnterpriseLogicDatabaseExampleId&#34;, default_.databases()[0].id());
+     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -667,7 +693,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -690,18 +717,19 @@ public final class DmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .instanceType(&#34;mysql&#34;)
-     *             .searchKey(&#34;tf-test-no-deleting&#34;)
+     *             .instanceType("mysql")
+     *             .searchKey("tf-test-no-deleting")
      *             .build());
      * 
      *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
-     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()))
+     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()))
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsEnterpriseLogicDatabaseExampleId&#34;, default_.databases()[0].id());
+     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -718,7 +746,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -741,18 +770,19 @@ public final class DmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .instanceType(&#34;mysql&#34;)
-     *             .searchKey(&#34;tf-test-no-deleting&#34;)
+     *             .instanceType("mysql")
+     *             .searchKey("tf-test-no-deleting")
      *             .build());
      * 
      *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
-     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()))
+     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()))
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsEnterpriseLogicDatabaseExampleId&#34;, default_.databases()[0].id());
+     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -769,7 +799,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -792,18 +823,19 @@ public final class DmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .instanceType(&#34;mysql&#34;)
-     *             .searchKey(&#34;tf-test-no-deleting&#34;)
+     *             .instanceType("mysql")
+     *             .searchKey("tf-test-no-deleting")
      *             .build());
      * 
      *         final var default = DmsFunctions.getEnterpriseLogicDatabases(GetEnterpriseLogicDatabasesArgs.builder()
-     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -&gt; getEnterpriseInstancesResult.instances()[0].instanceId()))
+     *             .instanceId(dmsEnterpriseInstancesDs.applyValue(getEnterpriseInstancesResult -> getEnterpriseInstancesResult.instances()[0].instanceId()))
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsEnterpriseLogicDatabaseExampleId&#34;, default_.databases()[0].id());
+     *         ctx.export("alicloudDmsEnterpriseLogicDatabaseExampleId", default_.databases()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -820,7 +852,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -843,10 +876,11 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DmsFunctions.getEnterpriseProxies();
      * 
-     *         ctx.export(&#34;dmsEnterpriseProxyId1&#34;, ids.applyValue(getEnterpriseProxiesResult -&gt; getEnterpriseProxiesResult.proxies()[0].id()));
+     *         ctx.export("dmsEnterpriseProxyId1", ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -863,7 +897,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -886,10 +921,11 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DmsFunctions.getEnterpriseProxies();
      * 
-     *         ctx.export(&#34;dmsEnterpriseProxyId1&#34;, ids.applyValue(getEnterpriseProxiesResult -&gt; getEnterpriseProxiesResult.proxies()[0].id()));
+     *         ctx.export("dmsEnterpriseProxyId1", ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -906,7 +942,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -929,10 +966,11 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DmsFunctions.getEnterpriseProxies();
      * 
-     *         ctx.export(&#34;dmsEnterpriseProxyId1&#34;, ids.applyValue(getEnterpriseProxiesResult -&gt; getEnterpriseProxiesResult.proxies()[0].id()));
+     *         ctx.export("dmsEnterpriseProxyId1", ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -949,7 +987,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -972,10 +1011,11 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DmsFunctions.getEnterpriseProxies();
      * 
-     *         ctx.export(&#34;dmsEnterpriseProxyId1&#34;, ids.applyValue(getEnterpriseProxiesResult -&gt; getEnterpriseProxiesResult.proxies()[0].id()));
+     *         ctx.export("dmsEnterpriseProxyId1", ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -992,7 +1032,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1015,10 +1056,11 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DmsFunctions.getEnterpriseProxies();
      * 
-     *         ctx.export(&#34;dmsEnterpriseProxyId1&#34;, ids.applyValue(getEnterpriseProxiesResult -&gt; getEnterpriseProxiesResult.proxies()[0].id()));
+     *         ctx.export("dmsEnterpriseProxyId1", ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1035,7 +1077,8 @@ public final class DmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1058,10 +1101,11 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DmsFunctions.getEnterpriseProxies();
      * 
-     *         ctx.export(&#34;dmsEnterpriseProxyId1&#34;, ids.applyValue(getEnterpriseProxiesResult -&gt; getEnterpriseProxiesResult.proxies()[0].id()));
+     *         ctx.export("dmsEnterpriseProxyId1", ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1076,7 +1120,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1099,10 +1144,10 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess(&#34;defaultEnterpriseProxyAccess&#34;, EnterpriseProxyAccessArgs.builder()        
-     *             .indepPassword(&#34;PASSWORD-DEMO&#34;)
+     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()        
+     *             .indepPassword("PASSWORD-DEMO")
      *             .proxyId(1881)
-     *             .indepAccount(&#34;dmstest&#34;)
+     *             .indepAccount("dmstest")
      *             .userId(104442)
      *             .build());
      * 
@@ -1111,10 +1156,11 @@ public final class DmsFunctions {
      *             .proxyId(1881)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, default_.applyValue(default_ -&gt; default_.accesses()[0].id()));
+     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(default_ -> default_.accesses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1129,7 +1175,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1152,10 +1199,10 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess(&#34;defaultEnterpriseProxyAccess&#34;, EnterpriseProxyAccessArgs.builder()        
-     *             .indepPassword(&#34;PASSWORD-DEMO&#34;)
+     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()        
+     *             .indepPassword("PASSWORD-DEMO")
      *             .proxyId(1881)
-     *             .indepAccount(&#34;dmstest&#34;)
+     *             .indepAccount("dmstest")
      *             .userId(104442)
      *             .build());
      * 
@@ -1164,10 +1211,11 @@ public final class DmsFunctions {
      *             .proxyId(1881)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, default_.applyValue(default_ -&gt; default_.accesses()[0].id()));
+     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(default_ -> default_.accesses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1182,7 +1230,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1205,10 +1254,10 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess(&#34;defaultEnterpriseProxyAccess&#34;, EnterpriseProxyAccessArgs.builder()        
-     *             .indepPassword(&#34;PASSWORD-DEMO&#34;)
+     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()        
+     *             .indepPassword("PASSWORD-DEMO")
      *             .proxyId(1881)
-     *             .indepAccount(&#34;dmstest&#34;)
+     *             .indepAccount("dmstest")
      *             .userId(104442)
      *             .build());
      * 
@@ -1217,10 +1266,11 @@ public final class DmsFunctions {
      *             .proxyId(1881)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, default_.applyValue(default_ -&gt; default_.accesses()[0].id()));
+     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(default_ -> default_.accesses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1235,7 +1285,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1258,10 +1309,10 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess(&#34;defaultEnterpriseProxyAccess&#34;, EnterpriseProxyAccessArgs.builder()        
-     *             .indepPassword(&#34;PASSWORD-DEMO&#34;)
+     *         var defaultEnterpriseProxyAccess = new EnterpriseProxyAccess("defaultEnterpriseProxyAccess", EnterpriseProxyAccessArgs.builder()        
+     *             .indepPassword("PASSWORD-DEMO")
      *             .proxyId(1881)
-     *             .indepAccount(&#34;dmstest&#34;)
+     *             .indepAccount("dmstest")
      *             .userId(104442)
      *             .build());
      * 
@@ -1270,10 +1321,11 @@ public final class DmsFunctions {
      *             .proxyId(1881)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, default_.applyValue(default_ -&gt; default_.accesses()[0].id()));
+     *         ctx.export("alicloudDmsProxyAccesesExampleId", default_.applyValue(default_ -> default_.accesses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1288,7 +1340,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1311,15 +1364,16 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
-     *             .ids(&#34;uid&#34;)
-     *             .role(&#34;USER&#34;)
-     *             .status(&#34;NORMAL&#34;)
+     *             .ids("uid")
+     *             .role("USER")
+     *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -&gt; getEnterpriseUsersResult.users()[0].id()));
+     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1334,7 +1388,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1357,15 +1412,16 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
-     *             .ids(&#34;uid&#34;)
-     *             .role(&#34;USER&#34;)
-     *             .status(&#34;NORMAL&#34;)
+     *             .ids("uid")
+     *             .role("USER")
+     *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -&gt; getEnterpriseUsersResult.users()[0].id()));
+     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1380,7 +1436,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1403,15 +1460,16 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
-     *             .ids(&#34;uid&#34;)
-     *             .role(&#34;USER&#34;)
-     *             .status(&#34;NORMAL&#34;)
+     *             .ids("uid")
+     *             .role("USER")
+     *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -&gt; getEnterpriseUsersResult.users()[0].id()));
+     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1426,7 +1484,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1449,15 +1508,16 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
-     *             .ids(&#34;uid&#34;)
-     *             .role(&#34;USER&#34;)
-     *             .status(&#34;NORMAL&#34;)
+     *             .ids("uid")
+     *             .role("USER")
+     *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -&gt; getEnterpriseUsersResult.users()[0].id()));
+     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1472,7 +1532,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1495,15 +1556,16 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
-     *             .ids(&#34;uid&#34;)
-     *             .role(&#34;USER&#34;)
-     *             .status(&#34;NORMAL&#34;)
+     *             .ids("uid")
+     *             .role("USER")
+     *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -&gt; getEnterpriseUsersResult.users()[0].id()));
+     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1518,7 +1580,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1541,15 +1604,16 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
-     *             .ids(&#34;uid&#34;)
-     *             .role(&#34;USER&#34;)
-     *             .status(&#34;NORMAL&#34;)
+     *             .ids("uid")
+     *             .role("USER")
+     *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -&gt; getEnterpriseUsersResult.users()[0].id()));
+     *         ctx.export("firstUserId", dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1564,7 +1628,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1587,13 +1652,14 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
-     *             .status(&#34;ACTIVE&#34;)
+     *             .status("ACTIVE")
      *             .build());
      * 
-     *         ctx.export(&#34;tid&#34;, default_.ids()[0]);
+     *         ctx.export("tid", default_.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1608,7 +1674,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1631,13 +1698,14 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
-     *             .status(&#34;ACTIVE&#34;)
+     *             .status("ACTIVE")
      *             .build());
      * 
-     *         ctx.export(&#34;tid&#34;, default_.ids()[0]);
+     *         ctx.export("tid", default_.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1652,7 +1720,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1675,13 +1744,14 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
-     *             .status(&#34;ACTIVE&#34;)
+     *             .status("ACTIVE")
      *             .build());
      * 
-     *         ctx.export(&#34;tid&#34;, default_.ids()[0]);
+     *         ctx.export("tid", default_.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1696,7 +1766,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1719,13 +1790,14 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
-     *             .status(&#34;ACTIVE&#34;)
+     *             .status("ACTIVE")
      *             .build());
      * 
-     *         ctx.export(&#34;tid&#34;, default_.ids()[0]);
+     *         ctx.export("tid", default_.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1740,7 +1812,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1763,13 +1836,14 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
-     *             .status(&#34;ACTIVE&#34;)
+     *             .status("ACTIVE")
      *             .build());
      * 
-     *         ctx.export(&#34;tid&#34;, default_.ids()[0]);
+     *         ctx.export("tid", default_.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1784,7 +1858,8 @@ public final class DmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1807,13 +1882,14 @@ public final class DmsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
-     *             .status(&#34;ACTIVE&#34;)
+     *             .status("ACTIVE")
      *             .build());
      * 
-     *         ctx.export(&#34;tid&#34;, default_.ids()[0]);
+     *         ctx.export("tid", default_.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
