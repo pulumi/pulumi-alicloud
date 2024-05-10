@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,64 +68,65 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .availableResourceCreation("Instance")
  *             .build());
  * 
  *         final var exampleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
  * 
  *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
- *             .owners(&#34;system&#34;)
+ *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
+ *             .owners("system")
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .availabilityZone(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .instanceName(name)
- *             .imageId(exampleGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .securityGroups(exampleSecurityGroup.id())
  *             .vswitchId(exampleSwitch.id())
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
- *         var exampleEipAddress = new EipAddress(&#34;exampleEipAddress&#34;, EipAddressArgs.builder()        
+ *         var exampleEipAddress = new EipAddress("exampleEipAddress", EipAddressArgs.builder()        
  *             .addressName(name)
  *             .build());
  * 
- *         var exampleEipAssociation = new EipAssociation(&#34;exampleEipAssociation&#34;, EipAssociationArgs.builder()        
+ *         var exampleEipAssociation = new EipAssociation("exampleEipAssociation", EipAssociationArgs.builder()        
  *             .allocationId(exampleEipAddress.id())
  *             .instanceId(exampleInstance.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Module Support

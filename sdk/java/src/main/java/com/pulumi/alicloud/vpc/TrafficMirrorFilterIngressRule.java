@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,24 +52,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TrafficMirrorFilter(&#34;example&#34;, TrafficMirrorFilterArgs.builder()        
- *             .trafficMirrorFilterName(&#34;example_value&#34;)
+ *         var example = new TrafficMirrorFilter("example", TrafficMirrorFilterArgs.builder()        
+ *             .trafficMirrorFilterName("example_value")
  *             .build());
  * 
- *         var exampleTrafficMirrorFilterIngressRule = new TrafficMirrorFilterIngressRule(&#34;exampleTrafficMirrorFilterIngressRule&#34;, TrafficMirrorFilterIngressRuleArgs.builder()        
+ *         var exampleTrafficMirrorFilterIngressRule = new TrafficMirrorFilterIngressRule("exampleTrafficMirrorFilterIngressRule", TrafficMirrorFilterIngressRuleArgs.builder()        
  *             .trafficMirrorFilterId(example.id())
- *             .priority(&#34;1&#34;)
- *             .ruleAction(&#34;accept&#34;)
- *             .protocol(&#34;UDP&#34;)
- *             .destinationCidrBlock(&#34;10.0.0.0/24&#34;)
- *             .sourceCidrBlock(&#34;10.0.0.0/24&#34;)
- *             .destinationPortRange(&#34;1/120&#34;)
- *             .sourcePortRange(&#34;1/120&#34;)
+ *             .priority("1")
+ *             .ruleAction("accept")
+ *             .protocol("UDP")
+ *             .destinationCidrBlock("10.0.0.0/24")
+ *             .sourceCidrBlock("10.0.0.0/24")
+ *             .destinationPortRange("1/120")
+ *             .sourcePortRange("1/120")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

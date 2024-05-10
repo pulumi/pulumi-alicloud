@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,28 +59,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var foo = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
+ *             .vswitchName("terraform-example")
+ *             .cidrBlock("172.16.0.0/21")
  *             .vpcId(fooNetwork.id())
- *             .zoneId(foo.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(foo.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -107,41 +110,43 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var foo = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var vpc = new Network("vpc", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var cidrBlocks = new Ipv4CidrBlock(&#34;cidrBlocks&#34;, Ipv4CidrBlockArgs.builder()        
+ *         var cidrBlocks = new Ipv4CidrBlock("cidrBlocks", Ipv4CidrBlockArgs.builder()        
  *             .vpcId(vpc.id())
- *             .secondaryCidrBlock(&#34;192.163.0.0/16&#34;)
+ *             .secondaryCidrBlock("192.163.0.0/16")
  *             .build());
  * 
- *         var island_nat = new Switch(&#34;island-nat&#34;, SwitchArgs.builder()        
+ *         var island_nat = new Switch("island-nat", SwitchArgs.builder()        
  *             .vpcId(cidrBlocks.vpcId())
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .zoneId(foo.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock("172.16.0.0/21")
+ *             .zoneId(foo.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .vswitchName("terraform-example")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;BuiltBy&#34;, &#34;example_value&#34;),
- *                 Map.entry(&#34;cnm_version&#34;, &#34;example_value&#34;),
- *                 Map.entry(&#34;Environment&#34;, &#34;example_value&#34;),
- *                 Map.entry(&#34;ManagedBy&#34;, &#34;example_value&#34;)
+ *                 Map.entry("BuiltBy", "example_value"),
+ *                 Map.entry("cnm_version", "example_value"),
+ *                 Map.entry("Environment", "example_value"),
+ *                 Map.entry("ManagedBy", "example_value")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Create a switch associated with the additional network segment
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -169,28 +174,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var foo = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var fooIpv4CidrBlock = new Ipv4CidrBlock(&#34;fooIpv4CidrBlock&#34;, Ipv4CidrBlockArgs.builder()        
+ *         var fooIpv4CidrBlock = new Ipv4CidrBlock("fooIpv4CidrBlock", Ipv4CidrBlockArgs.builder()        
  *             .vpcId(fooNetwork.id())
- *             .secondaryCidrBlock(&#34;192.163.0.0/16&#34;)
+ *             .secondaryCidrBlock("192.163.0.0/16")
  *             .build());
  * 
- *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+ *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
  *             .vpcId(fooIpv4CidrBlock.vpcId())
- *             .cidrBlock(&#34;192.163.0.0/24&#34;)
- *             .zoneId(foo.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cidrBlock("192.163.0.0/24")
+ *             .zoneId(foo.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

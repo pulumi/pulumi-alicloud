@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,37 +56,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var acceptingRegion = config.get(&#34;acceptingRegion&#34;).orElse(&#34;cn-beijing&#34;);
- *         final var acceptUid = config.get(&#34;acceptUid&#34;).orElse(&#34;xxxx&#34;);
- *         var local = new Network(&#34;local&#34;, NetworkArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var acceptingRegion = config.get("acceptingRegion").orElse("cn-beijing");
+ *         final var acceptUid = config.get("acceptUid").orElse("xxxx");
+ *         var local = new Network("local", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var acceptingNetwork = new Network(&#34;acceptingNetwork&#34;, NetworkArgs.builder()        
+ *         var acceptingNetwork = new Network("acceptingNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
  *         final var accepting = AlicloudFunctions.getAccount();
  * 
- *         var default_ = new PeerConnection(&#34;default&#34;, PeerConnectionArgs.builder()        
+ *         var default_ = new PeerConnection("default", PeerConnectionArgs.builder()        
  *             .peerConnectionName(name)
  *             .vpcId(local.id())
- *             .acceptingAliUid(accepting.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .acceptingAliUid(accepting.applyValue(getAccountResult -> getAccountResult.id()))
  *             .acceptingRegionId(acceptingRegion)
  *             .acceptingVpcId(acceptingNetwork.id())
  *             .description(name)
  *             .build());
  * 
- *         var defaultPeerConnectionAccepter = new PeerConnectionAccepter(&#34;defaultPeerConnectionAccepter&#34;, PeerConnectionAccepterArgs.builder()        
+ *         var defaultPeerConnectionAccepter = new PeerConnectionAccepter("defaultPeerConnectionAccepter", PeerConnectionAccepterArgs.builder()        
  *             .instanceId(default_.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

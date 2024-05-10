@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,17 +50,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SystemGroup(&#34;default&#34;, SystemGroupArgs.builder()        
- *             .groupName(&#34;your_group_name&#34;)
- *             .inProtocol(&#34;rtmp&#34;)
- *             .outProtocol(&#34;flv&#34;)
- *             .playDomain(&#34;your_plan_domain&#34;)
- *             .pushDomain(&#34;your_push_domain&#34;)
+ *         var default_ = new SystemGroup("default", SystemGroupArgs.builder()        
+ *             .groupName("your_group_name")
+ *             .inProtocol("rtmp")
+ *             .outProtocol("flv")
+ *             .playDomain("your_plan_domain")
+ *             .pushDomain("your_push_domain")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

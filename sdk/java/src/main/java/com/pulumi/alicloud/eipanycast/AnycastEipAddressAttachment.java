@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -65,50 +66,51 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = SlbFunctions.getZones(GetZonesArgs.builder()
- *             .availableSlbAddressType(&#34;vpc&#34;)
+ *             .availableSlbAddressType("vpc")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .cidrBlock("10.1.0.0/16")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
- *             .addressType(&#34;intranet&#34;)
+ *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+ *             .addressType("intranet")
  *             .vswitchId(defaultSwitch.id())
  *             .loadBalancerName(name)
- *             .loadBalancerSpec(&#34;slb.s1.small&#34;)
+ *             .loadBalancerSpec("slb.s1.small")
  *             .masterZoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultAnycastEipAddress = new AnycastEipAddress(&#34;defaultAnycastEipAddress&#34;, AnycastEipAddressArgs.builder()        
+ *         var defaultAnycastEipAddress = new AnycastEipAddress("defaultAnycastEipAddress", AnycastEipAddressArgs.builder()        
  *             .anycastEipAddressName(name)
- *             .serviceLocation(&#34;ChineseMainland&#34;)
+ *             .serviceLocation("ChineseMainland")
  *             .build());
  * 
  *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultAnycastEipAddressAttachment = new AnycastEipAddressAttachment(&#34;defaultAnycastEipAddressAttachment&#34;, AnycastEipAddressAttachmentArgs.builder()        
+ *         var defaultAnycastEipAddressAttachment = new AnycastEipAddressAttachment("defaultAnycastEipAddressAttachment", AnycastEipAddressAttachmentArgs.builder()        
  *             .bindInstanceId(defaultApplicationLoadBalancer.id())
- *             .bindInstanceType(&#34;SlbInstance&#34;)
- *             .bindInstanceRegionId(defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .bindInstanceType("SlbInstance")
+ *             .bindInstanceRegionId(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()))
  *             .anycastId(defaultAnycastEipAddress.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Multiple Usage
@@ -116,7 +118,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:**  Anycast EIP supports binding cloud resource instances in multiple regions. Only one cloud resource instance is supported as the default origin station, and the rest are normal origin stations. When no access point is specified or an access point is added, the access request is forwarded to the default origin by default.  If you are bound for the first time, the Default value of the binding mode is **Default * *. /li&gt; li&gt; If you are not binding for the first time, you can set the binding mode to **Default**, and the new Default origin will take effect. The original Default origin will be changed to a common origin.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -153,16 +156,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .nameRegex("^ubuntu_18.*64")
  *             .mostRecent(true)
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
@@ -171,97 +174,98 @@ import javax.annotation.Nullable;
  *             .memorySize(2)
  *             .build());
  * 
- *         var defaultVpc = new Network(&#34;defaultVpc&#34;, NetworkArgs.builder()        
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var defaultVsw = new Switch(&#34;defaultVsw&#34;, SwitchArgs.builder()        
+ *         var defaultVsw = new Switch("defaultVsw", SwitchArgs.builder()        
  *             .vpcId(defaultVpc.id())
- *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+ *             .cidrBlock("192.168.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultuBsECI = new SecurityGroup(&#34;defaultuBsECI&#34;, SecurityGroupArgs.builder()        
+ *         var defaultuBsECI = new SecurityGroup("defaultuBsECI", SecurityGroupArgs.builder()        
  *             .vpcId(defaultVpc.id())
  *             .build());
  * 
- *         var default9KDlN7 = new Instance(&#34;default9KDlN7&#34;, InstanceArgs.builder()        
- *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *         var default9KDlN7 = new Instance("default9KDlN7", InstanceArgs.builder()        
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .instanceName(name)
  *             .securityGroups(defaultuBsECI.id())
  *             .availabilityZone(defaultVsw.zoneId())
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .instanceChargeType("PostPaid")
+ *             .systemDiskCategory("cloud_efficiency")
  *             .vswitchId(defaultVsw.id())
  *             .build());
  * 
- *         var defaultXkpFRs = new AnycastEipAddress(&#34;defaultXkpFRs&#34;, AnycastEipAddressArgs.builder()        
- *             .serviceLocation(&#34;ChineseMainland&#34;)
+ *         var defaultXkpFRs = new AnycastEipAddress("defaultXkpFRs", AnycastEipAddressArgs.builder()        
+ *             .serviceLocation("ChineseMainland")
  *             .build());
  * 
- *         var defaultVpc2 = new Network(&#34;defaultVpc2&#34;, NetworkArgs.builder()        
- *             .vpcName(String.format(&#34;%s6&#34;, name))
- *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *         var defaultVpc2 = new Network("defaultVpc2", NetworkArgs.builder()        
+ *             .vpcName(String.format("%s6", name))
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
  *         final var default2 = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var default2GetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .nameRegex("^ubuntu_18.*64")
  *             .mostRecent(true)
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
  *         final var default2GetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(default2.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .availabilityZone(default2.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
  * 
- *         var defaultdsVsw2 = new Switch(&#34;defaultdsVsw2&#34;, SwitchArgs.builder()        
+ *         var defaultdsVsw2 = new Switch("defaultdsVsw2", SwitchArgs.builder()        
  *             .vpcId(defaultVpc2.id())
- *             .cidrBlock(&#34;192.168.0.0/24&#34;)
- *             .zoneId(default2.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
+ *             .cidrBlock("192.168.0.0/24")
+ *             .zoneId(default2.applyValue(getZonesResult -> getZonesResult.zones()[1].id()))
  *             .build());
  * 
- *         var defaultuBsECI2 = new SecurityGroup(&#34;defaultuBsECI2&#34;, SecurityGroupArgs.builder()        
+ *         var defaultuBsECI2 = new SecurityGroup("defaultuBsECI2", SecurityGroupArgs.builder()        
  *             .vpcId(defaultVpc2.id())
  *             .build());
  * 
- *         var defaultEcs2 = new Instance(&#34;defaultEcs2&#34;, InstanceArgs.builder()        
- *             .imageId(default2GetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(default2GetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *         var defaultEcs2 = new Instance("defaultEcs2", InstanceArgs.builder()        
+ *             .imageId(default2GetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(default2GetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .instanceName(name)
  *             .securityGroups(defaultuBsECI2.id())
  *             .availabilityZone(defaultdsVsw2.zoneId())
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .instanceChargeType("PostPaid")
+ *             .systemDiskCategory("cloud_efficiency")
  *             .vswitchId(defaultdsVsw2.id())
  *             .build());
  * 
- *         var defaultEfYBJY = new AnycastEipAddressAttachment(&#34;defaultEfYBJY&#34;, AnycastEipAddressAttachmentArgs.builder()        
+ *         var defaultEfYBJY = new AnycastEipAddressAttachment("defaultEfYBJY", AnycastEipAddressAttachmentArgs.builder()        
  *             .bindInstanceId(default9KDlN7.networkInterfaceId())
- *             .bindInstanceType(&#34;NetworkInterface&#34;)
- *             .bindInstanceRegionId(&#34;cn-beijing&#34;)
+ *             .bindInstanceType("NetworkInterface")
+ *             .bindInstanceRegionId("cn-beijing")
  *             .anycastId(defaultXkpFRs.id())
- *             .associationMode(&#34;Default&#34;)
+ *             .associationMode("Default")
  *             .build());
  * 
- *         var normal = new AnycastEipAddressAttachment(&#34;normal&#34;, AnycastEipAddressAttachmentArgs.builder()        
+ *         var normal = new AnycastEipAddressAttachment("normal", AnycastEipAddressAttachmentArgs.builder()        
  *             .bindInstanceId(defaultEcs2.networkInterfaceId())
- *             .bindInstanceType(&#34;NetworkInterface&#34;)
- *             .bindInstanceRegionId(&#34;cn-hangzhou&#34;)
+ *             .bindInstanceType("NetworkInterface")
+ *             .bindInstanceRegionId("cn-hangzhou")
  *             .anycastId(defaultEfYBJY.anycastId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

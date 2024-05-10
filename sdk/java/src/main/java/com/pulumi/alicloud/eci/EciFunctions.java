@@ -33,7 +33,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -55,13 +56,14 @@ public final class EciFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EciFunctions.getContainerGroups(GetContainerGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEciContainerGroupId&#34;, example.applyValue(getContainerGroupsResult -&gt; getContainerGroupsResult.groups()[0].id()));
+     *         ctx.export("firstEciContainerGroupId", example.applyValue(getContainerGroupsResult -> getContainerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -78,7 +80,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -100,13 +103,14 @@ public final class EciFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EciFunctions.getContainerGroups(GetContainerGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEciContainerGroupId&#34;, example.applyValue(getContainerGroupsResult -&gt; getContainerGroupsResult.groups()[0].id()));
+     *         ctx.export("firstEciContainerGroupId", example.applyValue(getContainerGroupsResult -> getContainerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -123,7 +127,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -145,13 +150,14 @@ public final class EciFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EciFunctions.getContainerGroups(GetContainerGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEciContainerGroupId&#34;, example.applyValue(getContainerGroupsResult -&gt; getContainerGroupsResult.groups()[0].id()));
+     *         ctx.export("firstEciContainerGroupId", example.applyValue(getContainerGroupsResult -> getContainerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -168,7 +174,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -190,13 +197,14 @@ public final class EciFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EciFunctions.getContainerGroups(GetContainerGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEciContainerGroupId&#34;, example.applyValue(getContainerGroupsResult -&gt; getContainerGroupsResult.groups()[0].id()));
+     *         ctx.export("firstEciContainerGroupId", example.applyValue(getContainerGroupsResult -> getContainerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -213,7 +221,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -235,13 +244,14 @@ public final class EciFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EciFunctions.getContainerGroups(GetContainerGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEciContainerGroupId&#34;, example.applyValue(getContainerGroupsResult -&gt; getContainerGroupsResult.groups()[0].id()));
+     *         ctx.export("firstEciContainerGroupId", example.applyValue(getContainerGroupsResult -> getContainerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -258,7 +268,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -280,13 +291,14 @@ public final class EciFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EciFunctions.getContainerGroups(GetContainerGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEciContainerGroupId&#34;, example.applyValue(getContainerGroupsResult -&gt; getContainerGroupsResult.groups()[0].id()));
+     *         ctx.export("firstEciContainerGroupId", example.applyValue(getContainerGroupsResult -> getContainerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -301,7 +313,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -323,13 +336,14 @@ public final class EciFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
-     *             .ids(&#34;imc-bp1ef0dyp7ldhb1d****&#34;)
+     *             .ids("imc-bp1ef0dyp7ldhb1d****")
      *             .build());
      * 
-     *         ctx.export(&#34;imageCache&#34;, example.applyValue(getImageCachesResult -&gt; getImageCachesResult.caches()[0].id()));
+     *         ctx.export("imageCache", example.applyValue(getImageCachesResult -> getImageCachesResult.caches()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -344,7 +358,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -366,13 +381,14 @@ public final class EciFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
-     *             .ids(&#34;imc-bp1ef0dyp7ldhb1d****&#34;)
+     *             .ids("imc-bp1ef0dyp7ldhb1d****")
      *             .build());
      * 
-     *         ctx.export(&#34;imageCache&#34;, example.applyValue(getImageCachesResult -&gt; getImageCachesResult.caches()[0].id()));
+     *         ctx.export("imageCache", example.applyValue(getImageCachesResult -> getImageCachesResult.caches()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -387,7 +403,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -409,13 +426,14 @@ public final class EciFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
-     *             .ids(&#34;imc-bp1ef0dyp7ldhb1d****&#34;)
+     *             .ids("imc-bp1ef0dyp7ldhb1d****")
      *             .build());
      * 
-     *         ctx.export(&#34;imageCache&#34;, example.applyValue(getImageCachesResult -&gt; getImageCachesResult.caches()[0].id()));
+     *         ctx.export("imageCache", example.applyValue(getImageCachesResult -> getImageCachesResult.caches()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -430,7 +448,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -452,13 +471,14 @@ public final class EciFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
-     *             .ids(&#34;imc-bp1ef0dyp7ldhb1d****&#34;)
+     *             .ids("imc-bp1ef0dyp7ldhb1d****")
      *             .build());
      * 
-     *         ctx.export(&#34;imageCache&#34;, example.applyValue(getImageCachesResult -&gt; getImageCachesResult.caches()[0].id()));
+     *         ctx.export("imageCache", example.applyValue(getImageCachesResult -> getImageCachesResult.caches()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -473,7 +493,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -495,13 +516,14 @@ public final class EciFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
-     *             .ids(&#34;imc-bp1ef0dyp7ldhb1d****&#34;)
+     *             .ids("imc-bp1ef0dyp7ldhb1d****")
      *             .build());
      * 
-     *         ctx.export(&#34;imageCache&#34;, example.applyValue(getImageCachesResult -&gt; getImageCachesResult.caches()[0].id()));
+     *         ctx.export("imageCache", example.applyValue(getImageCachesResult -> getImageCachesResult.caches()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -516,7 +538,8 @@ public final class EciFunctions {
      * ## Example Usage
      * 
      *  &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -538,13 +561,14 @@ public final class EciFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EciFunctions.getImageCaches(GetImageCachesArgs.builder()
-     *             .ids(&#34;imc-bp1ef0dyp7ldhb1d****&#34;)
+     *             .ids("imc-bp1ef0dyp7ldhb1d****")
      *             .build());
      * 
-     *         ctx.export(&#34;imageCache&#34;, example.applyValue(getImageCachesResult -&gt; getImageCachesResult.caches()[0].id()));
+     *         ctx.export("imageCache", example.applyValue(getImageCachesResult -> getImageCachesResult.caches()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -561,7 +585,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -584,19 +609,20 @@ public final class EciFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;eciVirtualNodeId1&#34;, ids.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId1", ids.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
      *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
-     *             .nameRegex(&#34;^my-VirtualNode&#34;)
+     *             .nameRegex("^my-VirtualNode")
      *             .build());
      * 
-     *         ctx.export(&#34;eciVirtualNodeId2&#34;, nameRegex.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId2", nameRegex.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -613,7 +639,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -636,19 +663,20 @@ public final class EciFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;eciVirtualNodeId1&#34;, ids.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId1", ids.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
      *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
-     *             .nameRegex(&#34;^my-VirtualNode&#34;)
+     *             .nameRegex("^my-VirtualNode")
      *             .build());
      * 
-     *         ctx.export(&#34;eciVirtualNodeId2&#34;, nameRegex.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId2", nameRegex.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -665,7 +693,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -688,19 +717,20 @@ public final class EciFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;eciVirtualNodeId1&#34;, ids.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId1", ids.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
      *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
-     *             .nameRegex(&#34;^my-VirtualNode&#34;)
+     *             .nameRegex("^my-VirtualNode")
      *             .build());
      * 
-     *         ctx.export(&#34;eciVirtualNodeId2&#34;, nameRegex.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId2", nameRegex.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -717,7 +747,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -740,19 +771,20 @@ public final class EciFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;eciVirtualNodeId1&#34;, ids.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId1", ids.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
      *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
-     *             .nameRegex(&#34;^my-VirtualNode&#34;)
+     *             .nameRegex("^my-VirtualNode")
      *             .build());
      * 
-     *         ctx.export(&#34;eciVirtualNodeId2&#34;, nameRegex.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId2", nameRegex.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -769,7 +801,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -792,19 +825,20 @@ public final class EciFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;eciVirtualNodeId1&#34;, ids.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId1", ids.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
      *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
-     *             .nameRegex(&#34;^my-VirtualNode&#34;)
+     *             .nameRegex("^my-VirtualNode")
      *             .build());
      * 
-     *         ctx.export(&#34;eciVirtualNodeId2&#34;, nameRegex.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId2", nameRegex.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -821,7 +855,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -844,19 +879,20 @@ public final class EciFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;eciVirtualNodeId1&#34;, ids.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId1", ids.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
      *         final var nameRegex = EciFunctions.getVirtualNodes(GetVirtualNodesArgs.builder()
-     *             .nameRegex(&#34;^my-VirtualNode&#34;)
+     *             .nameRegex("^my-VirtualNode")
      *             .build());
      * 
-     *         ctx.export(&#34;eciVirtualNodeId2&#34;, nameRegex.applyValue(getVirtualNodesResult -&gt; getVirtualNodesResult.nodes()[0].id()));
+     *         ctx.export("eciVirtualNodeId2", nameRegex.applyValue(getVirtualNodesResult -> getVirtualNodesResult.nodes()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -873,7 +909,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -896,10 +933,11 @@ public final class EciFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EciFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstEciZonesId&#34;, default_.zones()[0].zoneIds()[0]);
+     *         ctx.export("firstEciZonesId", default_.zones()[0].zoneIds()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -916,7 +954,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -939,10 +978,11 @@ public final class EciFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EciFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstEciZonesId&#34;, default_.zones()[0].zoneIds()[0]);
+     *         ctx.export("firstEciZonesId", default_.zones()[0].zoneIds()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -959,7 +999,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -982,10 +1023,11 @@ public final class EciFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EciFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstEciZonesId&#34;, default_.zones()[0].zoneIds()[0]);
+     *         ctx.export("firstEciZonesId", default_.zones()[0].zoneIds()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1002,7 +1044,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1025,10 +1068,11 @@ public final class EciFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EciFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstEciZonesId&#34;, default_.zones()[0].zoneIds()[0]);
+     *         ctx.export("firstEciZonesId", default_.zones()[0].zoneIds()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1045,7 +1089,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1068,10 +1113,11 @@ public final class EciFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EciFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstEciZonesId&#34;, default_.zones()[0].zoneIds()[0]);
+     *         ctx.export("firstEciZonesId", default_.zones()[0].zoneIds()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1088,7 +1134,8 @@ public final class EciFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1111,10 +1158,11 @@ public final class EciFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EciFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstEciZonesId&#34;, default_.zones()[0].zoneIds()[0]);
+     *         ctx.export("firstEciZonesId", default_.zones()[0].zoneIds()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,27 +54,28 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;tf_example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var example = new Network("example", NetworkArgs.builder()        
+ *             .vpcName("tf_example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf_example&#34;)
- *             .description(&#34;an example for cen&#34;)
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *             .cenInstanceName("tf_example")
+ *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleTransitRouterGrantAttachment = new TransitRouterGrantAttachment(&#34;exampleTransitRouterGrantAttachment&#34;, TransitRouterGrantAttachmentArgs.builder()        
+ *         var exampleTransitRouterGrantAttachment = new TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment", TransitRouterGrantAttachmentArgs.builder()        
  *             .cenId(exampleInstance.id())
  *             .cenOwnerId(default_.id())
  *             .instanceId(example.id())
- *             .instanceType(&#34;VPC&#34;)
- *             .orderType(&#34;PayByCenOwner&#34;)
+ *             .instanceType("VPC")
+ *             .orderType("PayByCenOwner")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,27 +52,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
  *             .clusterName(name)
- *             .clusterType(&#34;2&#34;)
- *             .networkMode(&#34;2&#34;)
+ *             .clusterType("2")
+ *             .networkMode("2")
  *             .logicalRegionId(default_.regions()[0].id())
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

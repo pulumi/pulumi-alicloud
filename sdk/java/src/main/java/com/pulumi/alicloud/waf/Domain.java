@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,27 +52,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var domain = new Domain(&#34;domain&#34;, DomainArgs.builder()        
- *             .domainName(&#34;alicloud-provider.cn&#34;)
- *             .instanceId(&#34;waf-123455&#34;)
- *             .isAccessProduct(&#34;On&#34;)
- *             .sourceIps(&#34;1.1.1.1&#34;)
- *             .clusterType(&#34;PhysicalCluster&#34;)
+ *         var domain = new Domain("domain", DomainArgs.builder()        
+ *             .domainName("alicloud-provider.cn")
+ *             .instanceId("waf-123455")
+ *             .isAccessProduct("On")
+ *             .sourceIps("1.1.1.1")
+ *             .clusterType("PhysicalCluster")
  *             .http2Ports(443)
  *             .httpPorts(80)
  *             .httpsPorts(443)
- *             .httpToUserIp(&#34;Off&#34;)
- *             .httpsRedirect(&#34;Off&#34;)
- *             .loadBalancing(&#34;IpHash&#34;)
+ *             .httpToUserIp("Off")
+ *             .httpsRedirect("Off")
+ *             .loadBalancing("IpHash")
  *             .logHeaders(DomainLogHeaderArgs.builder()
- *                 .key(&#34;foo&#34;)
- *                 .value(&#34;http&#34;)
+ *                 .key("foo")
+ *                 .value("http")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

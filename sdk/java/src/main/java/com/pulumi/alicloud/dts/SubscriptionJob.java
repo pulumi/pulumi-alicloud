@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -72,106 +73,107 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var example = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
  *         final var exampleGetZones = RdsFunctions.getZones(GetZonesArgs.builder()
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;8.0&#34;)
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .category(&#34;Basic&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceChargeType("PostPaid")
+ *             .category("Basic")
+ *             .dbInstanceStorageType("cloud_essd")
  *             .build());
  * 
  *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(exampleGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;8.0&#34;)
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .category(&#34;Basic&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .zoneId(exampleGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceChargeType("PostPaid")
+ *             .category("Basic")
+ *             .dbInstanceStorageType("cloud_essd")
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
  *             .vpcId(exampleNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(exampleGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(exampleGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(name)
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;8.0&#34;)
- *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
- *             .instanceChargeType(&#34;Postpaid&#34;)
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceChargeType("Postpaid")
  *             .instanceName(name)
  *             .vswitchId(exampleSwitch.id())
- *             .monitoringPeriod(&#34;60&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .monitoringPeriod("60")
+ *             .dbInstanceStorageType("cloud_essd")
  *             .securityGroupIds(exampleSecurityGroup.id())
  *             .build());
  * 
- *         var exampleRdsAccount = new RdsAccount(&#34;exampleRdsAccount&#34;, RdsAccountArgs.builder()        
+ *         var exampleRdsAccount = new RdsAccount("exampleRdsAccount", RdsAccountArgs.builder()        
  *             .dbInstanceId(exampleInstance.id())
- *             .accountName(&#34;test_mysql&#34;)
- *             .accountPassword(&#34;N1cetest&#34;)
+ *             .accountName("test_mysql")
+ *             .accountPassword("N1cetest")
  *             .build());
  * 
- *         var exampleDatabase = new Database(&#34;exampleDatabase&#34;, DatabaseArgs.builder()        
+ *         var exampleDatabase = new Database("exampleDatabase", DatabaseArgs.builder()        
  *             .instanceId(exampleInstance.id())
  *             .name(name)
  *             .build());
  * 
- *         var exampleAccountPrivilege = new AccountPrivilege(&#34;exampleAccountPrivilege&#34;, AccountPrivilegeArgs.builder()        
+ *         var exampleAccountPrivilege = new AccountPrivilege("exampleAccountPrivilege", AccountPrivilegeArgs.builder()        
  *             .instanceId(exampleInstance.id())
  *             .accountName(exampleRdsAccount.name())
- *             .privilege(&#34;ReadWrite&#34;)
+ *             .privilege("ReadWrite")
  *             .dbNames(exampleDatabase.name())
  *             .build());
  * 
- *         var exampleSubscriptionJob = new SubscriptionJob(&#34;exampleSubscriptionJob&#34;, SubscriptionJobArgs.builder()        
+ *         var exampleSubscriptionJob = new SubscriptionJob("exampleSubscriptionJob", SubscriptionJobArgs.builder()        
  *             .dtsJobName(name)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .sourceEndpointEngineName(&#34;MySQL&#34;)
- *             .sourceEndpointRegion(example.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
- *             .sourceEndpointInstanceType(&#34;RDS&#34;)
+ *             .paymentType("PayAsYouGo")
+ *             .sourceEndpointEngineName("MySQL")
+ *             .sourceEndpointRegion(example.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()))
+ *             .sourceEndpointInstanceType("RDS")
  *             .sourceEndpointInstanceId(exampleInstance.id())
  *             .sourceEndpointDatabaseName(exampleDatabase.name())
  *             .sourceEndpointUserName(exampleRdsAccount.accountName())
  *             .sourceEndpointPassword(exampleRdsAccount.accountPassword())
- *             .dbList(Output.tuple(exampleDatabase.name(), exampleDatabase.name()).applyValue(values -&gt; {
+ *             .dbList(Output.tuple(exampleDatabase.name(), exampleDatabase.name()).applyValue(values -> {
  *                 var exampleDatabaseName = values.t1;
  *                 var exampleDatabaseName1 = values.t2;
  *                 return serializeJson(
  *                     jsonObject(
  *                         jsonProperty(exampleDatabaseName, jsonObject(
- *                             jsonProperty(&#34;name&#34;, exampleDatabaseName1),
- *                             jsonProperty(&#34;all&#34;, true)
+ *                             jsonProperty("name", exampleDatabaseName1),
+ *                             jsonProperty("all", true)
  *                         ))
  *                     ));
  *             }))
- *             .subscriptionInstanceNetworkType(&#34;vpc&#34;)
+ *             .subscriptionInstanceNetworkType("vpc")
  *             .subscriptionInstanceVpcId(exampleNetwork.id())
  *             .subscriptionInstanceVswitchId(exampleSwitch.id())
- *             .status(&#34;Normal&#34;)
+ *             .status("Normal")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

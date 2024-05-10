@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,24 +60,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var example = new VpcEndpointService(&#34;example&#34;, VpcEndpointServiceArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var example = new VpcEndpointService("example", VpcEndpointServiceArgs.builder()        
  *             .serviceDescription(name)
  *             .connectBandwidth(103)
  *             .autoAcceptConnection(false)
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleVpcEndpoint = new VpcEndpoint(&#34;exampleVpcEndpoint&#34;, VpcEndpointArgs.builder()        
+ *         var exampleVpcEndpoint = new VpcEndpoint("exampleVpcEndpoint", VpcEndpointArgs.builder()        
  *             .serviceId(example.id())
  *             .securityGroupIds(exampleSecurityGroup.id())
  *             .vpcId(exampleNetwork.id())
@@ -85,7 +86,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

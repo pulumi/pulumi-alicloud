@@ -38,7 +38,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -68,37 +69,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var slbServerGroupName = config.get(&#34;slbServerGroupName&#34;).orElse(&#34;forSlbServerGroup&#34;);
+ *         final var slbServerGroupName = config.get("slbServerGroupName").orElse("forSlbServerGroup");
  *         final var serverGroup = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var serverGroupNetwork = new Network(&#34;serverGroupNetwork&#34;, NetworkArgs.builder()        
+ *         var serverGroupNetwork = new Network("serverGroupNetwork", NetworkArgs.builder()        
  *             .vpcName(slbServerGroupName)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var serverGroupSwitch = new Switch(&#34;serverGroupSwitch&#34;, SwitchArgs.builder()        
+ *         var serverGroupSwitch = new Switch("serverGroupSwitch", SwitchArgs.builder()        
  *             .vpcId(serverGroupNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
- *             .zoneId(serverGroup.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cidrBlock("172.16.0.0/16")
+ *             .zoneId(serverGroup.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(slbServerGroupName)
  *             .build());
  * 
- *         var serverGroupApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;serverGroupApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *         var serverGroupApplicationLoadBalancer = new ApplicationLoadBalancer("serverGroupApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
  *             .loadBalancerName(slbServerGroupName)
  *             .vswitchId(serverGroupSwitch.id())
- *             .instanceChargeType(&#34;PayByCLCU&#34;)
+ *             .instanceChargeType("PayByCLCU")
  *             .build());
  * 
- *         var serverGroupServerGroup = new ServerGroup(&#34;serverGroupServerGroup&#34;, ServerGroupArgs.builder()        
+ *         var serverGroupServerGroup = new ServerGroup("serverGroupServerGroup", ServerGroupArgs.builder()        
  *             .loadBalancerId(serverGroupApplicationLoadBalancer.id())
  *             .name(slbServerGroupName)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

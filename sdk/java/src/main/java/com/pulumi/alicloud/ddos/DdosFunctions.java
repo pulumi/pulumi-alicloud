@@ -120,7 +120,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -142,16 +143,17 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DdosFunctions.getDdosBgpIps(GetDdosBgpIpsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;ddosbgpIpId1&#34;, ids.applyValue(getDdosBgpIpsResult -&gt; getDdosBgpIpsResult.ips()[0].id()));
+     *         ctx.export("ddosbgpIpId1", ids.applyValue(getDdosBgpIpsResult -> getDdosBgpIpsResult.ips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -168,7 +170,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -190,16 +193,17 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DdosFunctions.getDdosBgpIps(GetDdosBgpIpsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;ddosbgpIpId1&#34;, ids.applyValue(getDdosBgpIpsResult -&gt; getDdosBgpIpsResult.ips()[0].id()));
+     *         ctx.export("ddosbgpIpId1", ids.applyValue(getDdosBgpIpsResult -> getDdosBgpIpsResult.ips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -216,7 +220,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -238,16 +243,17 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DdosFunctions.getDdosBgpIps(GetDdosBgpIpsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;ddosbgpIpId1&#34;, ids.applyValue(getDdosBgpIpsResult -&gt; getDdosBgpIpsResult.ips()[0].id()));
+     *         ctx.export("ddosbgpIpId1", ids.applyValue(getDdosBgpIpsResult -> getDdosBgpIpsResult.ips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -264,7 +270,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -286,16 +293,17 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DdosFunctions.getDdosBgpIps(GetDdosBgpIpsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;ddosbgpIpId1&#34;, ids.applyValue(getDdosBgpIpsResult -&gt; getDdosBgpIpsResult.ips()[0].id()));
+     *         ctx.export("ddosbgpIpId1", ids.applyValue(getDdosBgpIpsResult -> getDdosBgpIpsResult.ips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -312,7 +320,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -334,13 +343,14 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DdosFunctions.getDdosCooDomainResources(GetDdosCooDomainResourcesArgs.builder()
-     *             .ids(&#34;tftestacc1234.abc&#34;)
+     *             .ids("tftestacc1234.abc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDdoscooDomainResourceId&#34;, example.applyValue(getDdosCooDomainResourcesResult -&gt; getDdosCooDomainResourcesResult.resources()[0].id()));
+     *         ctx.export("firstDdoscooDomainResourceId", example.applyValue(getDdosCooDomainResourcesResult -> getDdosCooDomainResourcesResult.resources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -357,7 +367,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -379,13 +390,14 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DdosFunctions.getDdosCooDomainResources(GetDdosCooDomainResourcesArgs.builder()
-     *             .ids(&#34;tftestacc1234.abc&#34;)
+     *             .ids("tftestacc1234.abc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDdoscooDomainResourceId&#34;, example.applyValue(getDdosCooDomainResourcesResult -&gt; getDdosCooDomainResourcesResult.resources()[0].id()));
+     *         ctx.export("firstDdoscooDomainResourceId", example.applyValue(getDdosCooDomainResourcesResult -> getDdosCooDomainResourcesResult.resources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -402,7 +414,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -424,13 +437,14 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DdosFunctions.getDdosCooDomainResources(GetDdosCooDomainResourcesArgs.builder()
-     *             .ids(&#34;tftestacc1234.abc&#34;)
+     *             .ids("tftestacc1234.abc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDdoscooDomainResourceId&#34;, example.applyValue(getDdosCooDomainResourcesResult -&gt; getDdosCooDomainResourcesResult.resources()[0].id()));
+     *         ctx.export("firstDdoscooDomainResourceId", example.applyValue(getDdosCooDomainResourcesResult -> getDdosCooDomainResourcesResult.resources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -447,7 +461,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -469,13 +484,14 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DdosFunctions.getDdosCooDomainResources(GetDdosCooDomainResourcesArgs.builder()
-     *             .ids(&#34;tftestacc1234.abc&#34;)
+     *             .ids("tftestacc1234.abc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDdoscooDomainResourceId&#34;, example.applyValue(getDdosCooDomainResourcesResult -&gt; getDdosCooDomainResourcesResult.resources()[0].id()));
+     *         ctx.export("firstDdoscooDomainResourceId", example.applyValue(getDdosCooDomainResourcesResult -> getDdosCooDomainResourcesResult.resources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -492,7 +508,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -514,13 +531,14 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DdosFunctions.getDdosCooDomainResources(GetDdosCooDomainResourcesArgs.builder()
-     *             .ids(&#34;tftestacc1234.abc&#34;)
+     *             .ids("tftestacc1234.abc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDdoscooDomainResourceId&#34;, example.applyValue(getDdosCooDomainResourcesResult -&gt; getDdosCooDomainResourcesResult.resources()[0].id()));
+     *         ctx.export("firstDdoscooDomainResourceId", example.applyValue(getDdosCooDomainResourcesResult -> getDdosCooDomainResourcesResult.resources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -537,7 +555,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -559,13 +578,14 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DdosFunctions.getDdosCooDomainResources(GetDdosCooDomainResourcesArgs.builder()
-     *             .ids(&#34;tftestacc1234.abc&#34;)
+     *             .ids("tftestacc1234.abc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDdoscooDomainResourceId&#34;, example.applyValue(getDdosCooDomainResourcesResult -&gt; getDdosCooDomainResourcesResult.resources()[0].id()));
+     *         ctx.export("firstDdoscooDomainResourceId", example.applyValue(getDdosCooDomainResourcesResult -> getDdosCooDomainResourcesResult.resources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -582,7 +602,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -604,13 +625,14 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, default_.instances().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instance", default_.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -627,7 +649,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -649,13 +672,14 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, default_.instances().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instance", default_.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -672,7 +696,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -694,13 +719,14 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, default_.instances().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instance", default_.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -717,7 +743,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -739,13 +766,14 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, default_.instances().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instance", default_.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -762,7 +790,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -784,13 +813,14 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, default_.instances().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instance", default_.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -807,7 +837,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -829,13 +860,14 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DdosFunctions.getDdosCooInstances(GetDdosCooInstancesArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, default_.instances().stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instance", default_.instances().stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -852,7 +884,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -874,14 +907,15 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DdosFunctions.getDdosCooPorts(GetDdosCooPortsArgs.builder()
-     *             .instanceId(&#34;ddoscoo-cn-6ja1rl4j****&#34;)
-     *             .ids(&#34;ddoscoo-cn-6ja1rl4j****:7001:tcp&#34;)
+     *             .instanceId("ddoscoo-cn-6ja1rl4j****")
+     *             .ids("ddoscoo-cn-6ja1rl4j****:7001:tcp")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDdoscooPortId&#34;, example.applyValue(getDdosCooPortsResult -&gt; getDdosCooPortsResult.ports()[0].id()));
+     *         ctx.export("firstDdoscooPortId", example.applyValue(getDdosCooPortsResult -> getDdosCooPortsResult.ports()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -898,7 +932,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -920,14 +955,15 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DdosFunctions.getDdosCooPorts(GetDdosCooPortsArgs.builder()
-     *             .instanceId(&#34;ddoscoo-cn-6ja1rl4j****&#34;)
-     *             .ids(&#34;ddoscoo-cn-6ja1rl4j****:7001:tcp&#34;)
+     *             .instanceId("ddoscoo-cn-6ja1rl4j****")
+     *             .ids("ddoscoo-cn-6ja1rl4j****:7001:tcp")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDdoscooPortId&#34;, example.applyValue(getDdosCooPortsResult -&gt; getDdosCooPortsResult.ports()[0].id()));
+     *         ctx.export("firstDdoscooPortId", example.applyValue(getDdosCooPortsResult -> getDdosCooPortsResult.ports()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -944,7 +980,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -966,14 +1003,15 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DdosFunctions.getDdosCooPorts(GetDdosCooPortsArgs.builder()
-     *             .instanceId(&#34;ddoscoo-cn-6ja1rl4j****&#34;)
-     *             .ids(&#34;ddoscoo-cn-6ja1rl4j****:7001:tcp&#34;)
+     *             .instanceId("ddoscoo-cn-6ja1rl4j****")
+     *             .ids("ddoscoo-cn-6ja1rl4j****:7001:tcp")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDdoscooPortId&#34;, example.applyValue(getDdosCooPortsResult -&gt; getDdosCooPortsResult.ports()[0].id()));
+     *         ctx.export("firstDdoscooPortId", example.applyValue(getDdosCooPortsResult -> getDdosCooPortsResult.ports()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -990,7 +1028,8 @@ public final class DdosFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1012,14 +1051,15 @@ public final class DdosFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DdosFunctions.getDdosCooPorts(GetDdosCooPortsArgs.builder()
-     *             .instanceId(&#34;ddoscoo-cn-6ja1rl4j****&#34;)
-     *             .ids(&#34;ddoscoo-cn-6ja1rl4j****:7001:tcp&#34;)
+     *             .instanceId("ddoscoo-cn-6ja1rl4j****")
+     *             .ids("ddoscoo-cn-6ja1rl4j****:7001:tcp")
      *             .build());
      * 
-     *         ctx.export(&#34;firstDdoscooPortId&#34;, example.applyValue(getDdosCooPortsResult -&gt; getDdosCooPortsResult.ports()[0].id()));
+     *         ctx.export("firstDdoscooPortId", example.applyValue(getDdosCooPortsResult -> getDdosCooPortsResult.ports()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,15 +47,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // You need to activate the link before you can return to the alarm contact information, otherwise diff will appear in terraform. So please confirm the activation link as soon as possible. Besides, you can ignore the diff of the alarm contact information by `lifestyle`. 
- *         var example = new AlarmContact(&#34;example&#34;, AlarmContactArgs.builder()        
- *             .alarmContactName(&#34;tf-example&#34;)
- *             .describe(&#34;For example&#34;)
- *             .channelsMail(&#34;terraform@test.com&#34;)
+ *         var example = new AlarmContact("example", AlarmContactArgs.builder()        
+ *             .alarmContactName("tf-example")
+ *             .describe("For example")
+ *             .channelsMail("terraform{@literal @}test.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

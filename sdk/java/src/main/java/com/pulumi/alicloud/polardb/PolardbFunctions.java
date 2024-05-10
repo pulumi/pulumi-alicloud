@@ -44,7 +44,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -76,55 +77,56 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.description())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
-     *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
-     *             .accountName(&#34;tfnormal_01&#34;)
-     *             .accountPassword(&#34;Test12345&#34;)
-     *             .accountDescription(&#34;tf_account_description&#34;)
-     *             .accountType(&#34;Normal&#34;)
+     *         var account = new Account("account", AccountArgs.builder()        
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
+     *             .accountName("tfnormal_01")
+     *             .accountPassword("Test12345")
+     *             .accountDescription("tf_account_description")
+     *             .accountType("Normal")
      *             .build());
      * 
      *         final var default = PolardbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .nameRegex(account.accountName())
      *             .build());
      * 
-     *         ctx.export(&#34;account&#34;, default_.applyValue(default_ -&gt; default_.accounts()[0].accountName()));
+     *         ctx.export("account", default_.applyValue(default_ -> default_.accounts()[0].accountName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -140,7 +142,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -172,55 +175,56 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.description())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
-     *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
-     *             .accountName(&#34;tfnormal_01&#34;)
-     *             .accountPassword(&#34;Test12345&#34;)
-     *             .accountDescription(&#34;tf_account_description&#34;)
-     *             .accountType(&#34;Normal&#34;)
+     *         var account = new Account("account", AccountArgs.builder()        
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
+     *             .accountName("tfnormal_01")
+     *             .accountPassword("Test12345")
+     *             .accountDescription("tf_account_description")
+     *             .accountType("Normal")
      *             .build());
      * 
      *         final var default = PolardbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .nameRegex(account.accountName())
      *             .build());
      * 
-     *         ctx.export(&#34;account&#34;, default_.applyValue(default_ -&gt; default_.accounts()[0].accountName()));
+     *         ctx.export("account", default_.applyValue(default_ -> default_.accounts()[0].accountName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -236,7 +240,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -268,55 +273,56 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.description())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
-     *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
-     *             .accountName(&#34;tfnormal_01&#34;)
-     *             .accountPassword(&#34;Test12345&#34;)
-     *             .accountDescription(&#34;tf_account_description&#34;)
-     *             .accountType(&#34;Normal&#34;)
+     *         var account = new Account("account", AccountArgs.builder()        
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
+     *             .accountName("tfnormal_01")
+     *             .accountPassword("Test12345")
+     *             .accountDescription("tf_account_description")
+     *             .accountType("Normal")
      *             .build());
      * 
      *         final var default = PolardbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .nameRegex(account.accountName())
      *             .build());
      * 
-     *         ctx.export(&#34;account&#34;, default_.applyValue(default_ -&gt; default_.accounts()[0].accountName()));
+     *         ctx.export("account", default_.applyValue(default_ -> default_.accounts()[0].accountName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -332,7 +338,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -364,55 +371,56 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.description())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
-     *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
-     *             .accountName(&#34;tfnormal_01&#34;)
-     *             .accountPassword(&#34;Test12345&#34;)
-     *             .accountDescription(&#34;tf_account_description&#34;)
-     *             .accountType(&#34;Normal&#34;)
+     *         var account = new Account("account", AccountArgs.builder()        
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
+     *             .accountName("tfnormal_01")
+     *             .accountPassword("Test12345")
+     *             .accountDescription("tf_account_description")
+     *             .accountType("Normal")
      *             .build());
      * 
      *         final var default = PolardbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .nameRegex(account.accountName())
      *             .build());
      * 
-     *         ctx.export(&#34;account&#34;, default_.applyValue(default_ -&gt; default_.accounts()[0].accountName()));
+     *         ctx.export("account", default_.applyValue(default_ -> default_.accounts()[0].accountName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -428,7 +436,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -457,42 +466,43 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(default_.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.id())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolardbClusterId&#34;, polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())));
+     *         ctx.export("firstPolardbClusterId", polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -508,7 +518,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -537,42 +548,43 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(default_.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.id())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolardbClusterId&#34;, polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())));
+     *         ctx.export("firstPolardbClusterId", polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -588,7 +600,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -617,42 +630,43 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(default_.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.id())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolardbClusterId&#34;, polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())));
+     *         ctx.export("firstPolardbClusterId", polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -668,7 +682,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -697,42 +712,43 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(default_.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.id())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolardbClusterId&#34;, polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())));
+     *         ctx.export("firstPolardbClusterId", polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -748,7 +764,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -777,42 +794,43 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(default_.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.id())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolardbClusterId&#34;, polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())));
+     *         ctx.export("firstPolardbClusterId", polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -828,7 +846,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -857,42 +876,43 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(default_.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.id())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolardbClusterId&#34;, polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())));
+     *         ctx.export("firstPolardbClusterId", polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -908,7 +928,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -940,53 +961,54 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.description())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
-     *         var defaultDatabase = new Database(&#34;defaultDatabase&#34;, DatabaseArgs.builder()        
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
-     *             .dbName(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; String.format(&#34;tfaccountpri_%s&#34;, polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()))))
-     *             .dbDescription(&#34;from terraform&#34;)
+     *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()        
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
+     *             .dbName(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> String.format("tfaccountpri_%s", polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()))))
+     *             .dbDescription("from terraform")
      *             .build());
      * 
      *         final var default = PolardbFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .nameRegex(defaultDatabase.dbName())
      *             .build());
      * 
-     *         ctx.export(&#34;database&#34;, default_.applyValue(default_ -&gt; default_.databases()[0].dbName()));
+     *         ctx.export("database", default_.applyValue(default_ -> default_.databases()[0].dbName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1002,7 +1024,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1034,53 +1057,54 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.description())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
-     *         var defaultDatabase = new Database(&#34;defaultDatabase&#34;, DatabaseArgs.builder()        
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
-     *             .dbName(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; String.format(&#34;tfaccountpri_%s&#34;, polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()))))
-     *             .dbDescription(&#34;from terraform&#34;)
+     *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()        
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
+     *             .dbName(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> String.format("tfaccountpri_%s", polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()))))
+     *             .dbDescription("from terraform")
      *             .build());
      * 
      *         final var default = PolardbFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .nameRegex(defaultDatabase.dbName())
      *             .build());
      * 
-     *         ctx.export(&#34;database&#34;, default_.applyValue(default_ -&gt; default_.databases()[0].dbName()));
+     *         ctx.export("database", default_.applyValue(default_ -> default_.databases()[0].dbName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1096,7 +1120,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1128,53 +1153,54 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.description())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
-     *         var defaultDatabase = new Database(&#34;defaultDatabase&#34;, DatabaseArgs.builder()        
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
-     *             .dbName(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; String.format(&#34;tfaccountpri_%s&#34;, polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()))))
-     *             .dbDescription(&#34;from terraform&#34;)
+     *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()        
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
+     *             .dbName(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> String.format("tfaccountpri_%s", polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()))))
+     *             .dbDescription("from terraform")
      *             .build());
      * 
      *         final var default = PolardbFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .nameRegex(defaultDatabase.dbName())
      *             .build());
      * 
-     *         ctx.export(&#34;database&#34;, default_.applyValue(default_ -&gt; default_.databases()[0].dbName()));
+     *         ctx.export("database", default_.applyValue(default_ -> default_.databases()[0].dbName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1190,7 +1216,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1222,53 +1249,54 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.description())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
-     *         var defaultDatabase = new Database(&#34;defaultDatabase&#34;, DatabaseArgs.builder()        
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
-     *             .dbName(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; String.format(&#34;tfaccountpri_%s&#34;, polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id()))))
-     *             .dbDescription(&#34;from terraform&#34;)
+     *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()        
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
+     *             .dbName(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> String.format("tfaccountpri_%s", polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()))))
+     *             .dbDescription("from terraform")
      *             .build());
      * 
      *         final var default = PolardbFunctions.getDatabases(GetDatabasesArgs.builder()
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .nameRegex(defaultDatabase.dbName())
      *             .build());
      * 
-     *         ctx.export(&#34;database&#34;, default_.applyValue(default_ -&gt; default_.databases()[0].dbName()));
+     *         ctx.export("database", default_.applyValue(default_ -> default_.databases()[0].dbName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1284,7 +1312,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1314,46 +1343,47 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.description())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
      *         final var default = PolardbFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .build());
      * 
-     *         ctx.export(&#34;endpoint&#34;, default_.applyValue(default_ -&gt; default_.endpoints()[0].dbEndpointId()));
+     *         ctx.export("endpoint", default_.applyValue(default_ -> default_.endpoints()[0].dbEndpointId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1369,7 +1399,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1399,46 +1430,47 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.description())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
      *         final var default = PolardbFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .build());
      * 
-     *         ctx.export(&#34;endpoint&#34;, default_.applyValue(default_ -&gt; default_.endpoints()[0].dbEndpointId()));
+     *         ctx.export("endpoint", default_.applyValue(default_ -> default_.endpoints()[0].dbEndpointId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1454,7 +1486,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1484,46 +1517,47 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.description())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
      *         final var default = PolardbFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .build());
      * 
-     *         ctx.export(&#34;endpoint&#34;, default_.applyValue(default_ -&gt; default_.endpoints()[0].dbEndpointId()));
+     *         ctx.export("endpoint", default_.applyValue(default_ -> default_.endpoints()[0].dbEndpointId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1539,7 +1573,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1569,46 +1604,47 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var polardbClustersDs = PolardbFunctions.getClusters(GetClustersArgs.builder()
      *             .descriptionRegex(cluster.description())
-     *             .status(&#34;Running&#34;)
+     *             .status("Running")
      *             .build());
      * 
      *         final var default = PolardbFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
+     *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -> getClustersResult).applyValue(polardbClustersDs -> polardbClustersDs.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())))
      *             .build());
      * 
-     *         ctx.export(&#34;endpoint&#34;, default_.applyValue(default_ -&gt; default_.endpoints()[0].dbEndpointId()));
+     *         ctx.export("endpoint", default_.applyValue(default_ -> default_.endpoints()[0].dbEndpointId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1625,7 +1661,8 @@ public final class PolardbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1656,34 +1693,34 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(default_.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork(&#34;defaultGlobalDatabaseNetwork&#34;, GlobalDatabaseNetworkArgs.builder()        
+     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()        
      *             .dbClusterId(cluster.id())
      *             .description(cluster.id())
      *             .build());
@@ -1692,15 +1729,16 @@ public final class PolardbFunctions {
      *             .ids(defaultGlobalDatabaseNetwork.id())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId1&#34;, ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult).applyValue(ids -&gt; ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id())));
+     *         ctx.export("polardbGlobalDatabaseNetworkId1", ids.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult).applyValue(ids -> ids.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult.networks()[0].id())));
      *         final var description = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
      *             .description(defaultGlobalDatabaseNetwork.description())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId2&#34;, description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult).applyValue(description -&gt; description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id())));
+     *         ctx.export("polardbGlobalDatabaseNetworkId2", description.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult).applyValue(description -> description.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult.networks()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1717,7 +1755,8 @@ public final class PolardbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1748,34 +1787,34 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(default_.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork(&#34;defaultGlobalDatabaseNetwork&#34;, GlobalDatabaseNetworkArgs.builder()        
+     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()        
      *             .dbClusterId(cluster.id())
      *             .description(cluster.id())
      *             .build());
@@ -1784,15 +1823,16 @@ public final class PolardbFunctions {
      *             .ids(defaultGlobalDatabaseNetwork.id())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId1&#34;, ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult).applyValue(ids -&gt; ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id())));
+     *         ctx.export("polardbGlobalDatabaseNetworkId1", ids.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult).applyValue(ids -> ids.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult.networks()[0].id())));
      *         final var description = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
      *             .description(defaultGlobalDatabaseNetwork.description())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId2&#34;, description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult).applyValue(description -&gt; description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id())));
+     *         ctx.export("polardbGlobalDatabaseNetworkId2", description.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult).applyValue(description -> description.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult.networks()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1809,7 +1849,8 @@ public final class PolardbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1840,34 +1881,34 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(default_.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork(&#34;defaultGlobalDatabaseNetwork&#34;, GlobalDatabaseNetworkArgs.builder()        
+     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()        
      *             .dbClusterId(cluster.id())
      *             .description(cluster.id())
      *             .build());
@@ -1876,15 +1917,16 @@ public final class PolardbFunctions {
      *             .ids(defaultGlobalDatabaseNetwork.id())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId1&#34;, ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult).applyValue(ids -&gt; ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id())));
+     *         ctx.export("polardbGlobalDatabaseNetworkId1", ids.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult).applyValue(ids -> ids.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult.networks()[0].id())));
      *         final var description = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
      *             .description(defaultGlobalDatabaseNetwork.description())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId2&#34;, description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult).applyValue(description -&gt; description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id())));
+     *         ctx.export("polardbGlobalDatabaseNetworkId2", description.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult).applyValue(description -> description.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult.networks()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1901,7 +1943,8 @@ public final class PolardbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1932,34 +1975,34 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(default_.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork(&#34;defaultGlobalDatabaseNetwork&#34;, GlobalDatabaseNetworkArgs.builder()        
+     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()        
      *             .dbClusterId(cluster.id())
      *             .description(cluster.id())
      *             .build());
@@ -1968,15 +2011,16 @@ public final class PolardbFunctions {
      *             .ids(defaultGlobalDatabaseNetwork.id())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId1&#34;, ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult).applyValue(ids -&gt; ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id())));
+     *         ctx.export("polardbGlobalDatabaseNetworkId1", ids.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult).applyValue(ids -> ids.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult.networks()[0].id())));
      *         final var description = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
      *             .description(defaultGlobalDatabaseNetwork.description())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId2&#34;, description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult).applyValue(description -&gt; description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id())));
+     *         ctx.export("polardbGlobalDatabaseNetworkId2", description.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult).applyValue(description -> description.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult.networks()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1993,7 +2037,8 @@ public final class PolardbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2024,34 +2069,34 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(default_.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork(&#34;defaultGlobalDatabaseNetwork&#34;, GlobalDatabaseNetworkArgs.builder()        
+     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()        
      *             .dbClusterId(cluster.id())
      *             .description(cluster.id())
      *             .build());
@@ -2060,15 +2105,16 @@ public final class PolardbFunctions {
      *             .ids(defaultGlobalDatabaseNetwork.id())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId1&#34;, ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult).applyValue(ids -&gt; ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id())));
+     *         ctx.export("polardbGlobalDatabaseNetworkId1", ids.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult).applyValue(ids -> ids.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult.networks()[0].id())));
      *         final var description = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
      *             .description(defaultGlobalDatabaseNetwork.description())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId2&#34;, description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult).applyValue(description -&gt; description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id())));
+     *         ctx.export("polardbGlobalDatabaseNetworkId2", description.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult).applyValue(description -> description.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult.networks()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2085,7 +2131,8 @@ public final class PolardbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2116,34 +2163,34 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .category(&#34;Normal&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .category("Normal")
      *             .build());
      * 
-     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
-     *             .vpcName(&#34;terraform-example&#34;)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *         var default_ = new Network("default", NetworkArgs.builder()        
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(default_.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(this_.classes()[0].zoneId())
-     *             .vswitchName(&#34;terraform-example&#34;)
+     *             .vswitchName("terraform-example")
      *             .build());
      * 
-     *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbNodeCount(&#34;2&#34;)
+     *         var cluster = new Cluster("cluster", ClusterArgs.builder()        
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
+     *             .payType("PostPaid")
+     *             .dbNodeCount("2")
      *             .dbNodeClass(this_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork(&#34;defaultGlobalDatabaseNetwork&#34;, GlobalDatabaseNetworkArgs.builder()        
+     *         var defaultGlobalDatabaseNetwork = new GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork", GlobalDatabaseNetworkArgs.builder()        
      *             .dbClusterId(cluster.id())
      *             .description(cluster.id())
      *             .build());
@@ -2152,15 +2199,16 @@ public final class PolardbFunctions {
      *             .ids(defaultGlobalDatabaseNetwork.id())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId1&#34;, ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult).applyValue(ids -&gt; ids.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id())));
+     *         ctx.export("polardbGlobalDatabaseNetworkId1", ids.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult).applyValue(ids -> ids.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult.networks()[0].id())));
      *         final var description = PolardbFunctions.getGlobalDatabaseNetworks(GetGlobalDatabaseNetworksArgs.builder()
      *             .description(defaultGlobalDatabaseNetwork.description())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbGlobalDatabaseNetworkId2&#34;, description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult).applyValue(description -&gt; description.applyValue(getGlobalDatabaseNetworksResult -&gt; getGlobalDatabaseNetworksResult.networks()[0].id())));
+     *         ctx.export("polardbGlobalDatabaseNetworkId2", description.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult).applyValue(description -> description.applyValue(getGlobalDatabaseNetworksResult -> getGlobalDatabaseNetworksResult.networks()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2175,7 +2223,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2197,16 +2246,17 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;5.6&#34;)
+     *             .payType("PostPaid")
+     *             .dbType("MySQL")
+     *             .dbVersion("5.6")
      *             .build());
      * 
-     *         ctx.export(&#34;polardbNodeClasses&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
-     *         ctx.export(&#34;polardbAvailableZoneId&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()));
+     *         ctx.export("polardbNodeClasses", resources.applyValue(getNodeClassesResult -> getNodeClassesResult.classes()));
+     *         ctx.export("polardbAvailableZoneId", resources.applyValue(getNodeClassesResult -> getNodeClassesResult.classes()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2221,7 +2271,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2243,16 +2294,17 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;5.6&#34;)
+     *             .payType("PostPaid")
+     *             .dbType("MySQL")
+     *             .dbVersion("5.6")
      *             .build());
      * 
-     *         ctx.export(&#34;polardbNodeClasses&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
-     *         ctx.export(&#34;polardbAvailableZoneId&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()));
+     *         ctx.export("polardbNodeClasses", resources.applyValue(getNodeClassesResult -> getNodeClassesResult.classes()));
+     *         ctx.export("polardbAvailableZoneId", resources.applyValue(getNodeClassesResult -> getNodeClassesResult.classes()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2267,7 +2319,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2289,16 +2342,17 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;5.6&#34;)
+     *             .payType("PostPaid")
+     *             .dbType("MySQL")
+     *             .dbVersion("5.6")
      *             .build());
      * 
-     *         ctx.export(&#34;polardbNodeClasses&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
-     *         ctx.export(&#34;polardbAvailableZoneId&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()));
+     *         ctx.export("polardbNodeClasses", resources.applyValue(getNodeClassesResult -> getNodeClassesResult.classes()));
+     *         ctx.export("polardbAvailableZoneId", resources.applyValue(getNodeClassesResult -> getNodeClassesResult.classes()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2313,7 +2367,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2335,16 +2390,17 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
-     *             .payType(&#34;PostPaid&#34;)
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;5.6&#34;)
+     *             .payType("PostPaid")
+     *             .dbType("MySQL")
+     *             .dbVersion("5.6")
      *             .build());
      * 
-     *         ctx.export(&#34;polardbNodeClasses&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()));
-     *         ctx.export(&#34;polardbAvailableZoneId&#34;, resources.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()));
+     *         ctx.export("polardbNodeClasses", resources.applyValue(getNodeClassesResult -> getNodeClassesResult.classes()));
+     *         ctx.export("polardbAvailableZoneId", resources.applyValue(getNodeClassesResult -> getNodeClassesResult.classes()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2361,7 +2417,8 @@ public final class PolardbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2383,23 +2440,24 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
      *             .build());
      * 
      *         final var ids = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
      *             .ids(default_.groups()[0].id())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbParameterGroupId1&#34;, ids.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         ctx.export("polardbParameterGroupId1", ids.applyValue(getParameterGroupsResult -> getParameterGroupsResult.groups()[0].id()));
      *         final var nameRegex = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
      *             .nameRegex(default_.groups()[0].parameterGroupName())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbParameterGroupId2&#34;, nameRegex.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         ctx.export("polardbParameterGroupId2", nameRegex.applyValue(getParameterGroupsResult -> getParameterGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2416,7 +2474,8 @@ public final class PolardbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2438,23 +2497,24 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
      *             .build());
      * 
      *         final var ids = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
      *             .ids(default_.groups()[0].id())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbParameterGroupId1&#34;, ids.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         ctx.export("polardbParameterGroupId1", ids.applyValue(getParameterGroupsResult -> getParameterGroupsResult.groups()[0].id()));
      *         final var nameRegex = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
      *             .nameRegex(default_.groups()[0].parameterGroupName())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbParameterGroupId2&#34;, nameRegex.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         ctx.export("polardbParameterGroupId2", nameRegex.applyValue(getParameterGroupsResult -> getParameterGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2471,7 +2531,8 @@ public final class PolardbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2493,23 +2554,24 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
      *             .build());
      * 
      *         final var ids = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
      *             .ids(default_.groups()[0].id())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbParameterGroupId1&#34;, ids.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         ctx.export("polardbParameterGroupId1", ids.applyValue(getParameterGroupsResult -> getParameterGroupsResult.groups()[0].id()));
      *         final var nameRegex = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
      *             .nameRegex(default_.groups()[0].parameterGroupName())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbParameterGroupId2&#34;, nameRegex.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         ctx.export("polardbParameterGroupId2", nameRegex.applyValue(getParameterGroupsResult -> getParameterGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2526,7 +2588,8 @@ public final class PolardbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2548,23 +2611,24 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
      *             .build());
      * 
      *         final var ids = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
      *             .ids(default_.groups()[0].id())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbParameterGroupId1&#34;, ids.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         ctx.export("polardbParameterGroupId1", ids.applyValue(getParameterGroupsResult -> getParameterGroupsResult.groups()[0].id()));
      *         final var nameRegex = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
      *             .nameRegex(default_.groups()[0].parameterGroupName())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbParameterGroupId2&#34;, nameRegex.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         ctx.export("polardbParameterGroupId2", nameRegex.applyValue(getParameterGroupsResult -> getParameterGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2581,7 +2645,8 @@ public final class PolardbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2603,23 +2668,24 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
      *             .build());
      * 
      *         final var ids = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
      *             .ids(default_.groups()[0].id())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbParameterGroupId1&#34;, ids.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         ctx.export("polardbParameterGroupId1", ids.applyValue(getParameterGroupsResult -> getParameterGroupsResult.groups()[0].id()));
      *         final var nameRegex = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
      *             .nameRegex(default_.groups()[0].parameterGroupName())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbParameterGroupId2&#34;, nameRegex.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         ctx.export("polardbParameterGroupId2", nameRegex.applyValue(getParameterGroupsResult -> getParameterGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2636,7 +2702,8 @@ public final class PolardbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2658,23 +2725,24 @@ public final class PolardbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
-     *             .dbType(&#34;MySQL&#34;)
-     *             .dbVersion(&#34;8.0&#34;)
+     *             .dbType("MySQL")
+     *             .dbVersion("8.0")
      *             .build());
      * 
      *         final var ids = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
      *             .ids(default_.groups()[0].id())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbParameterGroupId1&#34;, ids.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         ctx.export("polardbParameterGroupId1", ids.applyValue(getParameterGroupsResult -> getParameterGroupsResult.groups()[0].id()));
      *         final var nameRegex = PolardbFunctions.getParameterGroups(GetParameterGroupsArgs.builder()
      *             .nameRegex(default_.groups()[0].parameterGroupName())
      *             .build());
      * 
-     *         ctx.export(&#34;polardbParameterGroupId2&#34;, nameRegex.applyValue(getParameterGroupsResult -&gt; getParameterGroupsResult.groups()[0].id()));
+     *         ctx.export("polardbParameterGroupId2", nameRegex.applyValue(getParameterGroupsResult -> getParameterGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2689,7 +2757,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2715,7 +2784,8 @@ public final class PolardbFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2730,7 +2800,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2756,7 +2827,8 @@ public final class PolardbFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2771,7 +2843,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2797,7 +2870,8 @@ public final class PolardbFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2812,7 +2886,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2838,7 +2913,8 @@ public final class PolardbFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2853,7 +2929,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2879,7 +2956,8 @@ public final class PolardbFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2894,7 +2972,8 @@ public final class PolardbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2920,7 +2999,8 @@ public final class PolardbFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

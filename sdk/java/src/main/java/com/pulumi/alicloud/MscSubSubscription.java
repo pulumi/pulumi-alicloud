@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,18 +48,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new MscSubSubscription(&#34;example&#34;, MscSubSubscriptionArgs.builder()        
- *             .itemName(&#34;Notifications of Product Expiration&#34;)
- *             .smsStatus(&#34;1&#34;)
- *             .emailStatus(&#34;1&#34;)
- *             .pmsgStatus(&#34;1&#34;)
- *             .ttsStatus(&#34;1&#34;)
- *             .webhookStatus(&#34;0&#34;)
+ *         var example = new MscSubSubscription("example", MscSubSubscriptionArgs.builder()        
+ *             .itemName("Notifications of Product Expiration")
+ *             .smsStatus("1")
+ *             .emailStatus("1")
+ *             .pmsgStatus("1")
+ *             .ttsStatus("1")
+ *             .webhookStatus("0")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

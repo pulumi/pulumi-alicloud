@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,62 +63,63 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = CddcFunctions.getZones();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
- *         var defaultDedicatedHostGroup = new DedicatedHostGroup(&#34;defaultDedicatedHostGroup&#34;, DedicatedHostGroupArgs.builder()        
- *             .engine(&#34;MySQL&#34;)
+ *         var defaultDedicatedHostGroup = new DedicatedHostGroup("defaultDedicatedHostGroup", DedicatedHostGroupArgs.builder()        
+ *             .engine("MySQL")
  *             .vpcId(defaultNetwork.id())
  *             .cpuAllocationRatio(101)
  *             .memAllocationRatio(50)
  *             .diskAllocationRatio(200)
- *             .allocationPolicy(&#34;Evenly&#34;)
- *             .hostReplacePolicy(&#34;Manual&#34;)
+ *             .allocationPolicy("Evenly")
+ *             .hostReplacePolicy("Manual")
  *             .dedicatedHostGroupDesc(name)
  *             .openPermission(true)
  *             .build());
  * 
  *         final var defaultGetHostEcsLevelInfos = CddcFunctions.getHostEcsLevelInfos(GetHostEcsLevelInfosArgs.builder()
- *             .dbType(&#34;mysql&#34;)
+ *             .dbType("mysql")
  *             .zoneId(default_.ids()[0])
- *             .storageType(&#34;cloud_essd&#34;)
+ *             .storageType("cloud_essd")
  *             .build());
  * 
- *         var defaultDedicatedHost = new DedicatedHost(&#34;defaultDedicatedHost&#34;, DedicatedHostArgs.builder()        
+ *         var defaultDedicatedHost = new DedicatedHost("defaultDedicatedHost", DedicatedHostArgs.builder()        
  *             .hostName(name)
  *             .dedicatedHostGroupId(defaultDedicatedHostGroup.id())
- *             .hostClass(defaultGetHostEcsLevelInfos.applyValue(getHostEcsLevelInfosResult -&gt; getHostEcsLevelInfosResult.infos()[0].resClassCode()))
+ *             .hostClass(defaultGetHostEcsLevelInfos.applyValue(getHostEcsLevelInfosResult -> getHostEcsLevelInfosResult.infos()[0].resClassCode()))
  *             .zoneId(default_.ids()[0])
  *             .vswitchId(defaultSwitch.id())
- *             .paymentType(&#34;Subscription&#34;)
+ *             .paymentType("Subscription")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;CDDC_DEDICATED&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "CDDC_DEDICATED")
  *             ))
  *             .build());
  * 
- *         var defaultDedicatedHostAccount = new DedicatedHostAccount(&#34;defaultDedicatedHostAccount&#34;, DedicatedHostAccountArgs.builder()        
+ *         var defaultDedicatedHostAccount = new DedicatedHostAccount("defaultDedicatedHostAccount", DedicatedHostAccountArgs.builder()        
  *             .accountName(name)
- *             .accountPassword(&#34;Password1234&#34;)
+ *             .accountPassword("Password1234")
  *             .dedicatedHostId(defaultDedicatedHost.dedicatedHostId())
- *             .accountType(&#34;Normal&#34;)
+ *             .accountType("Normal")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -146,14 +148,14 @@ public class DedicatedHostAccount extends com.pulumi.resources.CustomResource {
         return this.accountName;
     }
     /**
-     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&amp;*()_+-=`.
+     * The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!{@literal @}#$%^&amp;*()_+-=`.
      * 
      */
     @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output<String> accountPassword;
 
     /**
-     * @return The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!@#$%^&amp;*()_+-=`.
+     * @return The password of the Dedicated host account. The account password must be 6 to 32 characters in length, and can contain letters, digits, and special characters `!{@literal @}#$%^&amp;*()_+-=`.
      * 
      */
     public Output<String> accountPassword() {

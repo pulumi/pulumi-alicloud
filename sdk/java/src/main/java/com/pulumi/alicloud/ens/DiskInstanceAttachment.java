@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,41 +54,42 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new Disk(&#34;default&#34;, DiskArgs.builder()        
- *             .size(&#34;20&#34;)
- *             .ensRegionId(&#34;cn-chenzhou-telecom_unicom_cmcc&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .category(&#34;cloud_efficiency&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Disk("default", DiskArgs.builder()        
+ *             .size("20")
+ *             .ensRegionId("cn-chenzhou-telecom_unicom_cmcc")
+ *             .paymentType("PayAsYouGo")
+ *             .category("cloud_efficiency")
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .systemDisk(InstanceSystemDiskArgs.builder()
- *                 .size(&#34;20&#34;)
+ *                 .size("20")
  *                 .build())
- *             .imageId(&#34;centos_6_08_64_20G_alibase_20171208&#34;)
- *             .paymentType(&#34;Subscription&#34;)
- *             .instanceType(&#34;ens.sn1.stiny&#34;)
- *             .password(&#34;12345678ABCabc&#34;)
- *             .amount(&#34;1&#34;)
- *             .internetMaxBandwidthOut(&#34;10&#34;)
+ *             .imageId("centos_6_08_64_20G_alibase_20171208")
+ *             .paymentType("Subscription")
+ *             .instanceType("ens.sn1.stiny")
+ *             .password("12345678ABCabc")
+ *             .amount("1")
+ *             .internetMaxBandwidthOut("10")
  *             .uniqueSuffix(true)
  *             .publicIpIdentification(true)
- *             .ensRegionId(&#34;cn-chenzhou-telecom_unicom_cmcc&#34;)
- *             .scheduleAreaLevel(&#34;Region&#34;)
- *             .periodUnit(&#34;Month&#34;)
- *             .period(&#34;1&#34;)
+ *             .ensRegionId("cn-chenzhou-telecom_unicom_cmcc")
+ *             .scheduleAreaLevel("Region")
+ *             .periodUnit("Month")
+ *             .period("1")
  *             .build());
  * 
- *         var defaultDiskInstanceAttachment = new DiskInstanceAttachment(&#34;defaultDiskInstanceAttachment&#34;, DiskInstanceAttachmentArgs.builder()        
+ *         var defaultDiskInstanceAttachment = new DiskInstanceAttachment("defaultDiskInstanceAttachment", DiskInstanceAttachmentArgs.builder()        
  *             .instanceId(defaultInstance.id())
- *             .deleteWithInstance(&#34;false&#34;)
+ *             .deleteWithInstance("false")
  *             .diskId(default_.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * Empty resource sets defaults values for every property.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,15 +42,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AccountPasswordPolicy(&#34;default&#34;);
+ *         var default_ = new AccountPasswordPolicy("default");
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -70,7 +73,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var corporate = new AccountPasswordPolicy(&#34;corporate&#34;, AccountPasswordPolicyArgs.builder()        
+ *         var corporate = new AccountPasswordPolicy("corporate", AccountPasswordPolicyArgs.builder()        
  *             .minimumPasswordLength(9)
  *             .requireLowercaseCharacters(false)
  *             .requireUppercaseCharacters(false)
@@ -84,7 +87,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * For not specified values sets defaults.
  * 

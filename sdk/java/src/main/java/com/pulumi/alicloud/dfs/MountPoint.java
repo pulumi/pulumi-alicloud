@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,62 +61,63 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = DfsFunctions.getZones();
  * 
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultVPC = new Network(&#34;defaultVPC&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var defaultVPC = new Network("defaultVPC", NetworkArgs.builder()        
+ *             .cidrBlock("172.16.0.0/12")
  *             .vpcName(name)
  *             .build());
  * 
- *         var defaultVSwitch = new Switch(&#34;defaultVSwitch&#34;, SwitchArgs.builder()        
- *             .description(&#34;example&#34;)
+ *         var defaultVSwitch = new Switch("defaultVSwitch", SwitchArgs.builder()        
+ *             .description("example")
  *             .vpcId(defaultVPC.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .vswitchName(name)
  *             .zoneId(default_.zones()[0].zoneId())
  *             .build());
  * 
- *         var defaultAccessGroup = new AccessGroup(&#34;defaultAccessGroup&#34;, AccessGroupArgs.builder()        
- *             .description(&#34;AccessGroup resource manager center example&#34;)
- *             .networkType(&#34;VPC&#34;)
- *             .accessGroupName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
+ *         var defaultAccessGroup = new AccessGroup("defaultAccessGroup", AccessGroupArgs.builder()        
+ *             .description("AccessGroup resource manager center example")
+ *             .networkType("VPC")
+ *             .accessGroupName(String.format("%s-%s", name,defaultInteger.result()))
  *             .build());
  * 
- *         var updateAccessGroup = new AccessGroup(&#34;updateAccessGroup&#34;, AccessGroupArgs.builder()        
- *             .description(&#34;Second AccessGroup resource manager center example&#34;)
- *             .networkType(&#34;VPC&#34;)
- *             .accessGroupName(String.format(&#34;%s-update-%s&#34;, name,defaultInteger.result()))
+ *         var updateAccessGroup = new AccessGroup("updateAccessGroup", AccessGroupArgs.builder()        
+ *             .description("Second AccessGroup resource manager center example")
+ *             .networkType("VPC")
+ *             .accessGroupName(String.format("%s-update-%s", name,defaultInteger.result()))
  *             .build());
  * 
- *         var defaultFs = new FileSystem(&#34;defaultFs&#34;, FileSystemArgs.builder()        
- *             .spaceCapacity(&#34;1024&#34;)
- *             .description(&#34;for mountpoint  example&#34;)
- *             .storageType(&#34;STANDARD&#34;)
+ *         var defaultFs = new FileSystem("defaultFs", FileSystemArgs.builder()        
+ *             .spaceCapacity("1024")
+ *             .description("for mountpoint  example")
+ *             .storageType("STANDARD")
  *             .zoneId(default_.zones()[0].zoneId())
- *             .protocolType(&#34;HDFS&#34;)
- *             .dataRedundancyType(&#34;LRS&#34;)
- *             .fileSystemName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
+ *             .protocolType("HDFS")
+ *             .dataRedundancyType("LRS")
+ *             .fileSystemName(String.format("%s-%s", name,defaultInteger.result()))
  *             .build());
  * 
- *         var defaultMountPoint = new MountPoint(&#34;defaultMountPoint&#34;, MountPointArgs.builder()        
+ *         var defaultMountPoint = new MountPoint("defaultMountPoint", MountPointArgs.builder()        
  *             .vpcId(defaultVPC.id())
- *             .description(&#34;mountpoint example&#34;)
- *             .networkType(&#34;VPC&#34;)
+ *             .description("mountpoint example")
+ *             .networkType("VPC")
  *             .vswitchId(defaultVSwitch.id())
  *             .fileSystemId(defaultFs.id())
  *             .accessGroupId(defaultAccessGroup.id())
- *             .status(&#34;Active&#34;)
+ *             .status("Active")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

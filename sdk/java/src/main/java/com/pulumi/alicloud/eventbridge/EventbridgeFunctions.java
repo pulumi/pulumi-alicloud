@@ -33,7 +33,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -56,15 +57,16 @@ public final class EventbridgeFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EventbridgeFunctions.getEventBuses();
      * 
-     *         ctx.export(&#34;eventBridgeEventBusId1&#34;, ids.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId1", ids.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
      *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
-     *             .nameRegex(&#34;^my-EventBus&#34;)
+     *             .nameRegex("^my-EventBus")
      *             .build());
      * 
-     *         ctx.export(&#34;eventBridgeEventBusId2&#34;, nameRegex.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId2", nameRegex.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -81,7 +83,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -104,15 +107,16 @@ public final class EventbridgeFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EventbridgeFunctions.getEventBuses();
      * 
-     *         ctx.export(&#34;eventBridgeEventBusId1&#34;, ids.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId1", ids.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
      *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
-     *             .nameRegex(&#34;^my-EventBus&#34;)
+     *             .nameRegex("^my-EventBus")
      *             .build());
      * 
-     *         ctx.export(&#34;eventBridgeEventBusId2&#34;, nameRegex.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId2", nameRegex.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -129,7 +133,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -152,15 +157,16 @@ public final class EventbridgeFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EventbridgeFunctions.getEventBuses();
      * 
-     *         ctx.export(&#34;eventBridgeEventBusId1&#34;, ids.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId1", ids.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
      *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
-     *             .nameRegex(&#34;^my-EventBus&#34;)
+     *             .nameRegex("^my-EventBus")
      *             .build());
      * 
-     *         ctx.export(&#34;eventBridgeEventBusId2&#34;, nameRegex.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId2", nameRegex.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -177,7 +183,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -200,15 +207,16 @@ public final class EventbridgeFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EventbridgeFunctions.getEventBuses();
      * 
-     *         ctx.export(&#34;eventBridgeEventBusId1&#34;, ids.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId1", ids.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
      *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
-     *             .nameRegex(&#34;^my-EventBus&#34;)
+     *             .nameRegex("^my-EventBus")
      *             .build());
      * 
-     *         ctx.export(&#34;eventBridgeEventBusId2&#34;, nameRegex.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId2", nameRegex.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -225,7 +233,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -248,15 +257,16 @@ public final class EventbridgeFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EventbridgeFunctions.getEventBuses();
      * 
-     *         ctx.export(&#34;eventBridgeEventBusId1&#34;, ids.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId1", ids.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
      *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
-     *             .nameRegex(&#34;^my-EventBus&#34;)
+     *             .nameRegex("^my-EventBus")
      *             .build());
      * 
-     *         ctx.export(&#34;eventBridgeEventBusId2&#34;, nameRegex.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId2", nameRegex.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -273,7 +283,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -296,15 +307,16 @@ public final class EventbridgeFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = EventbridgeFunctions.getEventBuses();
      * 
-     *         ctx.export(&#34;eventBridgeEventBusId1&#34;, ids.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId1", ids.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
      *         final var nameRegex = EventbridgeFunctions.getEventBuses(GetEventBusesArgs.builder()
-     *             .nameRegex(&#34;^my-EventBus&#34;)
+     *             .nameRegex("^my-EventBus")
      *             .build());
      * 
-     *         ctx.export(&#34;eventBridgeEventBusId2&#34;, nameRegex.applyValue(getEventBusesResult -&gt; getEventBusesResult.buses()[0].id()));
+     *         ctx.export("eventBridgeEventBusId2", nameRegex.applyValue(getEventBusesResult -> getEventBusesResult.buses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -321,7 +333,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -343,14 +356,15 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EventbridgeFunctions.getEventSources(GetEventSourcesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEventBridgeEventSourceId&#34;, example.applyValue(getEventSourcesResult -&gt; getEventSourcesResult.sources()[0].id()));
+     *         ctx.export("firstEventBridgeEventSourceId", example.applyValue(getEventSourcesResult -> getEventSourcesResult.sources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -367,7 +381,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -389,14 +404,15 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EventbridgeFunctions.getEventSources(GetEventSourcesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEventBridgeEventSourceId&#34;, example.applyValue(getEventSourcesResult -&gt; getEventSourcesResult.sources()[0].id()));
+     *         ctx.export("firstEventBridgeEventSourceId", example.applyValue(getEventSourcesResult -> getEventSourcesResult.sources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -413,7 +429,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -435,14 +452,15 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EventbridgeFunctions.getEventSources(GetEventSourcesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEventBridgeEventSourceId&#34;, example.applyValue(getEventSourcesResult -&gt; getEventSourcesResult.sources()[0].id()));
+     *         ctx.export("firstEventBridgeEventSourceId", example.applyValue(getEventSourcesResult -> getEventSourcesResult.sources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -459,7 +477,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -481,14 +500,15 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EventbridgeFunctions.getEventSources(GetEventSourcesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEventBridgeEventSourceId&#34;, example.applyValue(getEventSourcesResult -&gt; getEventSourcesResult.sources()[0].id()));
+     *         ctx.export("firstEventBridgeEventSourceId", example.applyValue(getEventSourcesResult -> getEventSourcesResult.sources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -505,7 +525,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -527,14 +548,15 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EventbridgeFunctions.getEventSources(GetEventSourcesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEventBridgeEventSourceId&#34;, example.applyValue(getEventSourcesResult -&gt; getEventSourcesResult.sources()[0].id()));
+     *         ctx.export("firstEventBridgeEventSourceId", example.applyValue(getEventSourcesResult -> getEventSourcesResult.sources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -551,7 +573,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -573,14 +596,15 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EventbridgeFunctions.getEventSources(GetEventSourcesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEventBridgeEventSourceId&#34;, example.applyValue(getEventSourcesResult -&gt; getEventSourcesResult.sources()[0].id()));
+     *         ctx.export("firstEventBridgeEventSourceId", example.applyValue(getEventSourcesResult -> getEventSourcesResult.sources()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -597,7 +621,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -619,15 +644,16 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EventbridgeFunctions.getRules(GetRulesArgs.builder()
-     *             .eventBusName(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .eventBusName("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEventBridgeRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("firstEventBridgeRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -644,7 +670,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -666,15 +693,16 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EventbridgeFunctions.getRules(GetRulesArgs.builder()
-     *             .eventBusName(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .eventBusName("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEventBridgeRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("firstEventBridgeRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -691,7 +719,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -713,15 +742,16 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EventbridgeFunctions.getRules(GetRulesArgs.builder()
-     *             .eventBusName(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .eventBusName("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEventBridgeRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("firstEventBridgeRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -738,7 +768,8 @@ public final class EventbridgeFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -760,15 +791,16 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EventbridgeFunctions.getRules(GetRulesArgs.builder()
-     *             .eventBusName(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .eventBusName("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEventBridgeRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("firstEventBridgeRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -787,7 +819,8 @@ public final class EventbridgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -809,12 +842,13 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = EventbridgeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -833,7 +867,8 @@ public final class EventbridgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -855,12 +890,13 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = EventbridgeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -879,7 +915,8 @@ public final class EventbridgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -901,12 +938,13 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = EventbridgeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -925,7 +963,8 @@ public final class EventbridgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -947,12 +986,13 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = EventbridgeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -971,7 +1011,8 @@ public final class EventbridgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -993,12 +1034,13 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = EventbridgeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1017,7 +1059,8 @@ public final class EventbridgeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1039,12 +1082,13 @@ public final class EventbridgeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = EventbridgeFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

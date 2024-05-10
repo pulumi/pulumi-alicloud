@@ -25,7 +25,8 @@ public final class MarketplaceFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -47,15 +48,16 @@ public final class MarketplaceFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = MarketplaceFunctions.getProduct(GetProductArgs.builder()
-     *             .productCode(&#34;cmapi022206&#34;)
+     *             .productCode("cmapi022206")
      *             .build());
      * 
-     *         ctx.export(&#34;productName&#34;, default_.products()[0].name());
-     *         ctx.export(&#34;firstProductSkuCode&#34;, default_.products()[0].skuses()[0].skuCode());
-     *         ctx.export(&#34;firstProductPackageVersion&#34;, default_.products()[0].skuses()[0].packageVersions()[0].packageVersion());
+     *         ctx.export("productName", default_.products()[0].name());
+     *         ctx.export("firstProductSkuCode", default_.products()[0].skuses()[0].skuCode());
+     *         ctx.export("firstProductPackageVersion", default_.products()[0].skuses()[0].packageVersions()[0].packageVersion());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -70,7 +72,8 @@ public final class MarketplaceFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -92,15 +95,16 @@ public final class MarketplaceFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = MarketplaceFunctions.getProduct(GetProductArgs.builder()
-     *             .productCode(&#34;cmapi022206&#34;)
+     *             .productCode("cmapi022206")
      *             .build());
      * 
-     *         ctx.export(&#34;productName&#34;, default_.products()[0].name());
-     *         ctx.export(&#34;firstProductSkuCode&#34;, default_.products()[0].skuses()[0].skuCode());
-     *         ctx.export(&#34;firstProductPackageVersion&#34;, default_.products()[0].skuses()[0].packageVersions()[0].packageVersion());
+     *         ctx.export("productName", default_.products()[0].name());
+     *         ctx.export("firstProductSkuCode", default_.products()[0].skuses()[0].skuCode());
+     *         ctx.export("firstProductPackageVersion", default_.products()[0].skuses()[0].packageVersions()[0].packageVersion());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -115,7 +119,8 @@ public final class MarketplaceFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -137,15 +142,16 @@ public final class MarketplaceFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = MarketplaceFunctions.getProduct(GetProductArgs.builder()
-     *             .productCode(&#34;cmapi022206&#34;)
+     *             .productCode("cmapi022206")
      *             .build());
      * 
-     *         ctx.export(&#34;productName&#34;, default_.products()[0].name());
-     *         ctx.export(&#34;firstProductSkuCode&#34;, default_.products()[0].skuses()[0].skuCode());
-     *         ctx.export(&#34;firstProductPackageVersion&#34;, default_.products()[0].skuses()[0].packageVersions()[0].packageVersion());
+     *         ctx.export("productName", default_.products()[0].name());
+     *         ctx.export("firstProductSkuCode", default_.products()[0].skuses()[0].skuCode());
+     *         ctx.export("firstProductPackageVersion", default_.products()[0].skuses()[0].packageVersions()[0].packageVersion());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -160,7 +166,8 @@ public final class MarketplaceFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -182,15 +189,16 @@ public final class MarketplaceFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = MarketplaceFunctions.getProduct(GetProductArgs.builder()
-     *             .productCode(&#34;cmapi022206&#34;)
+     *             .productCode("cmapi022206")
      *             .build());
      * 
-     *         ctx.export(&#34;productName&#34;, default_.products()[0].name());
-     *         ctx.export(&#34;firstProductSkuCode&#34;, default_.products()[0].skuses()[0].skuCode());
-     *         ctx.export(&#34;firstProductPackageVersion&#34;, default_.products()[0].skuses()[0].packageVersions()[0].packageVersion());
+     *         ctx.export("productName", default_.products()[0].name());
+     *         ctx.export("firstProductSkuCode", default_.products()[0].skuses()[0].skuCode());
+     *         ctx.export("firstProductPackageVersion", default_.products()[0].skuses()[0].packageVersions()[0].packageVersion());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

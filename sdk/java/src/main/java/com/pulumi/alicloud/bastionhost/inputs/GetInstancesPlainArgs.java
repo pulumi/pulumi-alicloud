@@ -65,7 +65,8 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     /**
      * A map of tags assigned to the bastionhost instance. It must be in the format:
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -87,12 +88,13 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-     *             .tags(Map.of(&#34;tagKey1&#34;, &#34;tagValue1&#34;))
+     *             .tags(Map.of("tagKey1", "tagValue1"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -102,7 +104,8 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     /**
      * @return A map of tags assigned to the bastionhost instance. It must be in the format:
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -124,12 +127,13 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-     *             .tags(Map.of(&#34;tagKey1&#34;, &#34;tagValue1&#34;))
+     *             .tags(Map.of("tagKey1", "tagValue1"))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -210,7 +214,8 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         /**
          * @param tags A map of tags assigned to the bastionhost instance. It must be in the format:
          * &lt;!--Start PulumiCodeChooser --&gt;
-         * ```java
+         * <pre>
+         * {@code
          * package generated_program;
          * 
          * import com.pulumi.Context;
@@ -232,12 +237,13 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
          * 
          *     public static void stack(Context ctx) {
          *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-         *             .tags(Map.of(&#34;tagKey1&#34;, &#34;tagValue1&#34;))
+         *             .tags(Map.of("tagKey1", "tagValue1"))
          *             .build());
          * 
          *     }
          * }
-         * ```
+         * }
+         * </pre>
          * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder

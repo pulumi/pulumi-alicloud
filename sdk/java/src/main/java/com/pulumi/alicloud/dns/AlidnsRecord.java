@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,31 +51,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new DomainGroup(&#34;default&#34;, DomainGroupArgs.builder()        
- *             .domainGroupName(&#34;tf-example&#34;)
+ *         var default_ = new DomainGroup("default", DomainGroupArgs.builder()        
+ *             .domainGroupName("tf-example")
  *             .build());
  * 
- *         var defaultAlidnsDomain = new AlidnsDomain(&#34;defaultAlidnsDomain&#34;, AlidnsDomainArgs.builder()        
- *             .domainName(&#34;starmove.com&#34;)
+ *         var defaultAlidnsDomain = new AlidnsDomain("defaultAlidnsDomain", AlidnsDomainArgs.builder()        
+ *             .domainName("starmove.com")
  *             .groupId(default_.id())
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
- *         var record = new AlidnsRecord(&#34;record&#34;, AlidnsRecordArgs.builder()        
+ *         var record = new AlidnsRecord("record", AlidnsRecordArgs.builder()        
  *             .domainName(defaultAlidnsDomain.domainName())
- *             .rr(&#34;alimail&#34;)
- *             .type(&#34;CNAME&#34;)
- *             .value(&#34;mail.mxhichin.com&#34;)
- *             .remark(&#34;tf-example&#34;)
- *             .status(&#34;ENABLE&#34;)
+ *             .rr("alimail")
+ *             .type("CNAME")
+ *             .value("mail.mxhichin.com")
+ *             .remark("tf-example")
+ *             .status("ENABLE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -159,14 +161,14 @@ public class AlidnsRecord extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.remark);
     }
     /**
-     * Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
+     * Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `{@literal @}`, and must not begin or end with `-`.
      * 
      */
     @Export(name="rr", refs={String.class}, tree="[0]")
     private Output<String> rr;
 
     /**
-     * @return Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `@`, and must not begin or end with `-`.
+     * @return Host record for the domain record. This host_record can have at most 253 characters, and each part split with `.` can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as `-`, `.`, `*`, `{@literal @}`, and must not begin or end with `-`.
      * 
      */
     public Output<String> rr() {

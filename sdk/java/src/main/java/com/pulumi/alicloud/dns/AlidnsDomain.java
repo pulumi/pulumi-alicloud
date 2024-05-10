@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,22 +51,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new DomainGroup(&#34;default&#34;, DomainGroupArgs.builder()        
- *             .domainGroupName(&#34;tf-example&#34;)
+ *         var default_ = new DomainGroup("default", DomainGroupArgs.builder()        
+ *             .domainGroupName("tf-example")
  *             .build());
  * 
- *         var defaultAlidnsDomain = new AlidnsDomain(&#34;defaultAlidnsDomain&#34;, AlidnsDomainArgs.builder()        
- *             .domainName(&#34;starmove.com&#34;)
+ *         var defaultAlidnsDomain = new AlidnsDomain("defaultAlidnsDomain", AlidnsDomainArgs.builder()        
+ *             .domainName("starmove.com")
  *             .groupId(default_.id())
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

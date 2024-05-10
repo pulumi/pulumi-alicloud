@@ -38,7 +38,8 @@ import javax.annotation.Nullable;
  * ### Create a cassandra cluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,25 +60,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
- *             .clusterName(&#34;cassandra-cluster-name-tf&#34;)
- *             .dataCenterName(&#34;dc-1&#34;)
- *             .autoRenew(&#34;false&#34;)
- *             .instanceType(&#34;cassandra.c.large&#34;)
- *             .majorVersion(&#34;3.11&#34;)
- *             .nodeCount(&#34;2&#34;)
- *             .payType(&#34;PayAsYouGo&#34;)
- *             .vswitchId(&#34;vsw-xxxx&#34;)
- *             .diskSize(&#34;160&#34;)
- *             .diskType(&#34;cloud_ssd&#34;)
- *             .maintainStartTime(&#34;18:00Z&#34;)
- *             .maintainEndTime(&#34;20:00Z&#34;)
- *             .ipWhite(&#34;127.0.0.1&#34;)
+ *         var default_ = new Cluster("default", ClusterArgs.builder()        
+ *             .clusterName("cassandra-cluster-name-tf")
+ *             .dataCenterName("dc-1")
+ *             .autoRenew("false")
+ *             .instanceType("cassandra.c.large")
+ *             .majorVersion("3.11")
+ *             .nodeCount("2")
+ *             .payType("PayAsYouGo")
+ *             .vswitchId("vsw-xxxx")
+ *             .diskSize("160")
+ *             .diskType("cloud_ssd")
+ *             .maintainStartTime("18:00Z")
+ *             .maintainEndTime("20:00Z")
+ *             .ipWhite("127.0.0.1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.

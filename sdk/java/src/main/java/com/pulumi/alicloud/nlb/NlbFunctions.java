@@ -93,7 +93,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -115,18 +116,19 @@ public final class NlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *         final var nameRegex = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -143,7 +145,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -165,18 +168,19 @@ public final class NlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *         final var nameRegex = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -193,7 +197,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -215,18 +220,19 @@ public final class NlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *         final var nameRegex = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -243,7 +249,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -265,18 +272,19 @@ public final class NlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *         final var nameRegex = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -293,7 +301,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -315,18 +324,19 @@ public final class NlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *         final var nameRegex = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -343,7 +353,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -365,18 +376,19 @@ public final class NlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbLoadBalancerId1&#34;, ids.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId1", ids.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *         final var nameRegex = NlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;^my-LoadBalancer&#34;)
+     *             .nameRegex("^my-LoadBalancer")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbLoadBalancerId2&#34;, nameRegex.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("nlbLoadBalancerId2", nameRegex.applyValue(getLoadBalancersResult -> getLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -393,7 +405,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -416,15 +429,16 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getSecurityPolicies();
      * 
-     *         ctx.export(&#34;nlbSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *         final var nameRegex = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -441,7 +455,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -464,15 +479,16 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getSecurityPolicies();
      * 
-     *         ctx.export(&#34;nlbSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *         final var nameRegex = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -489,7 +505,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -512,15 +529,16 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getSecurityPolicies();
      * 
-     *         ctx.export(&#34;nlbSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *         final var nameRegex = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -537,7 +555,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -560,15 +579,16 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getSecurityPolicies();
      * 
-     *         ctx.export(&#34;nlbSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *         final var nameRegex = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -585,7 +605,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -608,15 +629,16 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getSecurityPolicies();
      * 
-     *         ctx.export(&#34;nlbSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *         final var nameRegex = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -633,7 +655,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -656,15 +679,16 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getSecurityPolicies();
      * 
-     *         ctx.export(&#34;nlbSecurityPolicyId1&#34;, ids.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId1", ids.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *         final var nameRegex = NlbFunctions.getSecurityPolicies(GetSecurityPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-SecurityPolicy&#34;)
+     *             .nameRegex("^my-SecurityPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbSecurityPolicyId2&#34;, nameRegex.applyValue(getSecurityPoliciesResult -&gt; getSecurityPoliciesResult.policies()[0].id()));
+     *         ctx.export("nlbSecurityPolicyId2", nameRegex.applyValue(getSecurityPoliciesResult -> getSecurityPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -681,7 +705,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -703,13 +728,14 @@ public final class NlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getServerGroupServerAttachments(GetServerGroupServerAttachmentsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbServerGroupServerAttachmentId1&#34;, ids.applyValue(getServerGroupServerAttachmentsResult -&gt; getServerGroupServerAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.applyValue(getServerGroupServerAttachmentsResult -> getServerGroupServerAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -726,7 +752,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -748,13 +775,14 @@ public final class NlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getServerGroupServerAttachments(GetServerGroupServerAttachmentsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbServerGroupServerAttachmentId1&#34;, ids.applyValue(getServerGroupServerAttachmentsResult -&gt; getServerGroupServerAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.applyValue(getServerGroupServerAttachmentsResult -> getServerGroupServerAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -771,7 +799,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -793,13 +822,14 @@ public final class NlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getServerGroupServerAttachments(GetServerGroupServerAttachmentsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbServerGroupServerAttachmentId1&#34;, ids.applyValue(getServerGroupServerAttachmentsResult -&gt; getServerGroupServerAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.applyValue(getServerGroupServerAttachmentsResult -> getServerGroupServerAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -816,7 +846,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -838,13 +869,14 @@ public final class NlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getServerGroupServerAttachments(GetServerGroupServerAttachmentsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbServerGroupServerAttachmentId1&#34;, ids.applyValue(getServerGroupServerAttachmentsResult -&gt; getServerGroupServerAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.applyValue(getServerGroupServerAttachmentsResult -> getServerGroupServerAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -861,7 +893,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -883,13 +916,14 @@ public final class NlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getServerGroupServerAttachments(GetServerGroupServerAttachmentsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbServerGroupServerAttachmentId1&#34;, ids.applyValue(getServerGroupServerAttachmentsResult -&gt; getServerGroupServerAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.applyValue(getServerGroupServerAttachmentsResult -> getServerGroupServerAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -906,7 +940,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -928,13 +963,14 @@ public final class NlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getServerGroupServerAttachments(GetServerGroupServerAttachmentsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbServerGroupServerAttachmentId1&#34;, ids.applyValue(getServerGroupServerAttachmentsResult -&gt; getServerGroupServerAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("nlbServerGroupServerAttachmentId1", ids.applyValue(getServerGroupServerAttachmentsResult -> getServerGroupServerAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -951,7 +987,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -974,15 +1011,16 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getServerGroups();
      * 
-     *         ctx.export(&#34;nlbServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *         final var nameRegex = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -999,7 +1037,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1022,15 +1061,16 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getServerGroups();
      * 
-     *         ctx.export(&#34;nlbServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *         final var nameRegex = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1047,7 +1087,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1070,15 +1111,16 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getServerGroups();
      * 
-     *         ctx.export(&#34;nlbServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *         final var nameRegex = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1095,7 +1137,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1118,15 +1161,16 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getServerGroups();
      * 
-     *         ctx.export(&#34;nlbServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *         final var nameRegex = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1143,7 +1187,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1166,15 +1211,16 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getServerGroups();
      * 
-     *         ctx.export(&#34;nlbServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *         final var nameRegex = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1191,7 +1237,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1214,15 +1261,16 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = NlbFunctions.getServerGroups();
      * 
-     *         ctx.export(&#34;nlbServerGroupId1&#34;, ids.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId1", ids.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *         final var nameRegex = NlbFunctions.getServerGroups(GetServerGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-ServerGroup&#34;)
+     *             .nameRegex("^my-ServerGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;nlbServerGroupId2&#34;, nameRegex.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.groups()[0].id()));
+     *         ctx.export("nlbServerGroupId2", nameRegex.applyValue(getServerGroupsResult -> getServerGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1239,7 +1287,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1262,10 +1311,11 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = NlbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstNlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstNlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1282,7 +1332,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1305,10 +1356,11 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = NlbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstNlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstNlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1325,7 +1377,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1348,10 +1401,11 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = NlbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstNlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstNlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1368,7 +1422,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1391,10 +1446,11 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = NlbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstNlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstNlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1411,7 +1467,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1434,10 +1491,11 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = NlbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstNlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstNlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1454,7 +1512,8 @@ public final class NlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1477,10 +1536,11 @@ public final class NlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = NlbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstNlbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstNlbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

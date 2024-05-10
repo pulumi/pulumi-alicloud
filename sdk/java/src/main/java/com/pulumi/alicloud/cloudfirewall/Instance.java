@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * create a pay-as-you-go instance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,18 +52,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var payAsYouGo = new Instance(&#34;payAsYouGo&#34;, InstanceArgs.builder()        
- *             .paymentType(&#34;PayAsYouGo&#34;)
+ *         var payAsYouGo = new Instance("payAsYouGo", InstanceArgs.builder()        
+ *             .paymentType("PayAsYouGo")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * create a subscription instance
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -83,9 +86,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var subscription = new Instance(&#34;subscription&#34;, InstanceArgs.builder()        
- *             .paymentType(&#34;Subscription&#34;)
- *             .spec(&#34;premium_version&#34;)
+ *         var subscription = new Instance("subscription", InstanceArgs.builder()        
+ *             .paymentType("Subscription")
+ *             .spec("premium_version")
  *             .ipNumber(20)
  *             .bandWidth(10)
  *             .cfwLog(false)
@@ -94,7 +97,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,76 +56,77 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
- *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+ *             .nameRegex("plan-tf-used-dont-delete")
  *             .build());
  * 
  *         final var defaultGetOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
- *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+ *             .nameRegex("plan-tf-used-dont-delete")
  *             .build());
  * 
  *         final var defaultGetNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
- *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+ *             .nameRegex("plan-tf-used-dont-delete")
  *             .build());
  * 
  *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
- *             .sourceType(&#34;ECS_FILE&#34;)
+ *             .sourceType("ECS_FILE")
  *             .vaultId(default_.plans()[0].vaultId())
  *             .instanceId(default_.plans()[0].instanceId())
  *             .build());
  * 
  *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
- *             .sourceType(&#34;OSS&#34;)
- *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
- *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
+ *             .sourceType("OSS")
+ *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].vaultId()))
+ *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].bucket()))
  *             .build());
  * 
  *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
- *             .sourceType(&#34;NAS&#34;)
- *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
- *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
- *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
+ *             .sourceType("NAS")
+ *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].vaultId()))
+ *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].fileSystemId()))
+ *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].createTime()))
  *             .build());
  * 
- *         var nasJob = new RestoreJob(&#34;nasJob&#34;, RestoreJobArgs.builder()        
- *             .snapshotHash(nasSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotHash()))
- *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
- *             .sourceType(&#34;NAS&#34;)
- *             .restoreType(&#34;NAS&#34;)
- *             .snapshotId(nasSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotId()))
- *             .targetFileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
- *             .targetCreateTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
- *             .targetPath(&#34;/&#34;)
- *             .options(&#34;&#34;&#34;
- *     {&#34;includes&#34;:[], &#34;excludes&#34;:[]}
- *             &#34;&#34;&#34;)
+ *         var nasJob = new RestoreJob("nasJob", RestoreJobArgs.builder()        
+ *             .snapshotHash(nasSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].snapshotHash()))
+ *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].vaultId()))
+ *             .sourceType("NAS")
+ *             .restoreType("NAS")
+ *             .snapshotId(nasSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].snapshotId()))
+ *             .targetFileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].fileSystemId()))
+ *             .targetCreateTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].createTime()))
+ *             .targetPath("/")
+ *             .options("""
+ *     {"includes":[], "excludes":[]}
+ *             """)
  *             .build());
  * 
- *         var ossJob = new RestoreJob(&#34;ossJob&#34;, RestoreJobArgs.builder()        
- *             .snapshotHash(ossSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotHash()))
- *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
- *             .sourceType(&#34;OSS&#34;)
- *             .restoreType(&#34;OSS&#34;)
- *             .snapshotId(ossSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotId()))
- *             .targetBucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
- *             .targetPrefix(&#34;&#34;)
- *             .options(&#34;&#34;&#34;
- *     {&#34;includes&#34;:[], &#34;excludes&#34;:[]}
- *             &#34;&#34;&#34;)
+ *         var ossJob = new RestoreJob("ossJob", RestoreJobArgs.builder()        
+ *             .snapshotHash(ossSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].snapshotHash()))
+ *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].vaultId()))
+ *             .sourceType("OSS")
+ *             .restoreType("OSS")
+ *             .snapshotId(ossSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].snapshotId()))
+ *             .targetBucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].bucket()))
+ *             .targetPrefix("")
+ *             .options("""
+ *     {"includes":[], "excludes":[]}
+ *             """)
  *             .build());
  * 
- *         var ecsJob = new RestoreJob(&#34;ecsJob&#34;, RestoreJobArgs.builder()        
- *             .snapshotHash(ecsSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotHash()))
+ *         var ecsJob = new RestoreJob("ecsJob", RestoreJobArgs.builder()        
+ *             .snapshotHash(ecsSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].snapshotHash()))
  *             .vaultId(default_.plans()[0].vaultId())
- *             .sourceType(&#34;ECS_FILE&#34;)
- *             .restoreType(&#34;ECS_FILE&#34;)
- *             .snapshotId(ecsSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].snapshotId()))
+ *             .sourceType("ECS_FILE")
+ *             .restoreType("ECS_FILE")
+ *             .snapshotId(ecsSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].snapshotId()))
  *             .targetInstanceId(default_.plans()[0].instanceId())
- *             .targetPath(&#34;/&#34;)
+ *             .targetPath("/")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; **NOTE:** This resource can only be created, cannot be modified or deleted. Therefore, any modification of the resource attribute will not affect exist resource.

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,23 +48,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Certificate(&#34;default&#34;, CertificateArgs.builder()        
- *             .certificateName(&#34;your_certificate_name&#34;)
- *             .instanceId(&#34;your_instance_id&#34;)
- *             .domain(&#34;your_domain_name&#34;)
- *             .privateKey(&#34;your_private_key&#34;)
- *             .certificate(&#34;your_certificate&#34;)
+ *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *             .certificateName("your_certificate_name")
+ *             .instanceId("your_instance_id")
+ *             .domain("your_domain_name")
+ *             .privateKey("your_private_key")
+ *             .certificate("your_certificate")
  *             .build());
  * 
- *         var default2 = new Certificate(&#34;default2&#34;, CertificateArgs.builder()        
- *             .instanceId(&#34;your_instance_id&#34;)
- *             .domain(&#34;your_domain_name&#34;)
- *             .certificateId(&#34;your_certificate_id&#34;)
+ *         var default2 = new Certificate("default2", CertificateArgs.builder()        
+ *             .instanceId("your_instance_id")
+ *             .domain("your_domain_name")
+ *             .certificateId("your_certificate_id")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

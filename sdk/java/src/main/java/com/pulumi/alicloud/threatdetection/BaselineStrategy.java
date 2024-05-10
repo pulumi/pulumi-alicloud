@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,19 +48,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new BaselineStrategy(&#34;default&#34;, BaselineStrategyArgs.builder()        
- *             .customType(&#34;custom&#34;)
- *             .endTime(&#34;08:00:00&#34;)
- *             .baselineStrategyName(&#34;apispec&#34;)
+ *         var default_ = new BaselineStrategy("default", BaselineStrategyArgs.builder()        
+ *             .customType("custom")
+ *             .endTime("08:00:00")
+ *             .baselineStrategyName("apispec")
  *             .cycleDays(3)
- *             .targetType(&#34;groupId&#34;)
- *             .startTime(&#34;05:00:00&#34;)
- *             .riskSubTypeName(&#34;hc_exploit_redis&#34;)
+ *             .targetType("groupId")
+ *             .startTime("05:00:00")
+ *             .riskSubTypeName("hc_exploit_redis")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

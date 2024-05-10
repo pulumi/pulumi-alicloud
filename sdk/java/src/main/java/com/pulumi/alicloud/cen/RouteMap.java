@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,70 +60,71 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var sourceRegion = config.get(&#34;sourceRegion&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         final var destinationRegion = config.get(&#34;destinationRegion&#34;).orElse(&#34;cn-shanghai&#34;);
- *         var exampleHz = new Network(&#34;exampleHz&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;tf_example&#34;)
- *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *         final var sourceRegion = config.get("sourceRegion").orElse("cn-hangzhou");
+ *         final var destinationRegion = config.get("destinationRegion").orElse("cn-shanghai");
+ *         var exampleHz = new Network("exampleHz", NetworkArgs.builder()        
+ *             .vpcName("tf_example")
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var exampleSh = new Network(&#34;exampleSh&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;tf_example&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var exampleSh = new Network("exampleSh", NetworkArgs.builder()        
+ *             .vpcName("tf_example")
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf_example&#34;)
- *             .description(&#34;an example for cen&#34;)
+ *         var example = new Instance("example", InstanceArgs.builder()        
+ *             .cenInstanceName("tf_example")
+ *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleHzInstanceAttachment = new InstanceAttachment(&#34;exampleHzInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *         var exampleHzInstanceAttachment = new InstanceAttachment("exampleHzInstanceAttachment", InstanceAttachmentArgs.builder()        
  *             .instanceId(example.id())
  *             .childInstanceId(exampleHz.id())
- *             .childInstanceType(&#34;VPC&#34;)
+ *             .childInstanceType("VPC")
  *             .childInstanceRegionId(sourceRegion)
  *             .build());
  * 
- *         var exampleShInstanceAttachment = new InstanceAttachment(&#34;exampleShInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *         var exampleShInstanceAttachment = new InstanceAttachment("exampleShInstanceAttachment", InstanceAttachmentArgs.builder()        
  *             .instanceId(example.id())
  *             .childInstanceId(exampleSh.id())
- *             .childInstanceType(&#34;VPC&#34;)
+ *             .childInstanceType("VPC")
  *             .childInstanceRegionId(destinationRegion)
  *             .build());
  * 
- *         var default_ = new RouteMap(&#34;default&#34;, RouteMapArgs.builder()        
+ *         var default_ = new RouteMap("default", RouteMapArgs.builder()        
  *             .cenRegionId(sourceRegion)
  *             .cenId(example.id())
- *             .description(&#34;tf_example&#34;)
- *             .priority(&#34;1&#34;)
- *             .transmitDirection(&#34;RegionIn&#34;)
- *             .mapResult(&#34;Permit&#34;)
- *             .nextPriority(&#34;1&#34;)
+ *             .description("tf_example")
+ *             .priority("1")
+ *             .transmitDirection("RegionIn")
+ *             .mapResult("Permit")
+ *             .nextPriority("1")
  *             .sourceRegionIds(sourceRegion)
  *             .sourceInstanceIds(exampleHzInstanceAttachment.childInstanceId())
- *             .sourceInstanceIdsReverseMatch(&#34;false&#34;)
+ *             .sourceInstanceIdsReverseMatch("false")
  *             .destinationInstanceIds(exampleShInstanceAttachment.childInstanceId())
- *             .destinationInstanceIdsReverseMatch(&#34;false&#34;)
+ *             .destinationInstanceIdsReverseMatch("false")
  *             .sourceRouteTableIds(exampleHz.routeTableId())
  *             .destinationRouteTableIds(exampleSh.routeTableId())
- *             .sourceChildInstanceTypes(&#34;VPC&#34;)
- *             .destinationChildInstanceTypes(&#34;VPC&#34;)
+ *             .sourceChildInstanceTypes("VPC")
+ *             .destinationChildInstanceTypes("VPC")
  *             .destinationCidrBlocks(exampleSh.cidrBlock())
- *             .cidrMatchMode(&#34;Include&#34;)
- *             .routeTypes(&#34;System&#34;)
- *             .matchAsns(&#34;65501&#34;)
- *             .asPathMatchMode(&#34;Include&#34;)
- *             .matchCommunitySets(&#34;65501:1&#34;)
- *             .communityMatchMode(&#34;Include&#34;)
- *             .communityOperateMode(&#34;Additive&#34;)
- *             .operateCommunitySets(&#34;65501:1&#34;)
- *             .preference(&#34;20&#34;)
- *             .prependAsPaths(&#34;65501&#34;)
+ *             .cidrMatchMode("Include")
+ *             .routeTypes("System")
+ *             .matchAsns("65501")
+ *             .asPathMatchMode("Include")
+ *             .matchCommunitySets("65501:1")
+ *             .communityMatchMode("Include")
+ *             .communityOperateMode("Additive")
+ *             .operateCommunitySets("65501:1")
+ *             .preference("20")
+ *             .prependAsPaths("65501")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

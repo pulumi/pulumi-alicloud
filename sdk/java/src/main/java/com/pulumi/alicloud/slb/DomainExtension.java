@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,32 +62,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var slbDomainExtensionName = config.get(&#34;slbDomainExtensionName&#34;).orElse(&#34;forDomainExtension&#34;);
+ *         final var slbDomainExtensionName = config.get("slbDomainExtensionName").orElse("forDomainExtension");
  *         final var domainExtension = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var domainExtensionNetwork = new Network(&#34;domainExtensionNetwork&#34;, NetworkArgs.builder()        
+ *         var domainExtensionNetwork = new Network("domainExtensionNetwork", NetworkArgs.builder()        
  *             .vpcName(slbDomainExtensionName)
  *             .build());
  * 
- *         var domainExtensionSwitch = new Switch(&#34;domainExtensionSwitch&#34;, SwitchArgs.builder()        
+ *         var domainExtensionSwitch = new Switch("domainExtensionSwitch", SwitchArgs.builder()        
  *             .vpcId(domainExtensionNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .zoneId(domainExtension.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cidrBlock("172.16.0.0/21")
+ *             .zoneId(domainExtension.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(slbDomainExtensionName)
  *             .build());
  * 
- *         var instance = new ApplicationLoadBalancer(&#34;instance&#34;, ApplicationLoadBalancerArgs.builder()        
+ *         var instance = new ApplicationLoadBalancer("instance", ApplicationLoadBalancerArgs.builder()        
  *             .loadBalancerName(slbDomainExtensionName)
- *             .addressType(&#34;intranet&#34;)
- *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
+ *             .addressType("intranet")
+ *             .loadBalancerSpec("slb.s2.small")
  *             .vswitchId(domainExtensionSwitch.id())
  *             .build());
  * 
- *         var domainExtensionServerCertificate = new ServerCertificate(&#34;domainExtensionServerCertificate&#34;, ServerCertificateArgs.builder()        
- *             .name(&#34;tf-testAccSlbServerCertificate&#34;)
- *             .serverCertificate(&#34;&#34;&#34;
+ *         var domainExtensionServerCertificate = new ServerCertificate("domainExtensionServerCertificate", ServerCertificateArgs.builder()        
+ *             .name("tf-testAccSlbServerCertificate")
+ *             .serverCertificate("""
  * -----BEGIN CERTIFICATE-----
  * MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
  * bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1
@@ -107,8 +108,8 @@ import javax.annotation.Nullable;
  * t+c7jX7uOSBq2/38iGStlrX5yB1at/gJXXiA5CL5OtlR3Okvb0/QH37efO1Nu39m
  * lFi0ODPAVyXjVypAiLguDxPn6AtDTdk9Iw9B19OD4NrzNRWgSSX5vuxo/VcRcgWk
  * 3gEe9Ca0ZKN20q9XgthAiFFjl1S9ZgdA6Zc=
- * -----END CERTIFICATE-----            &#34;&#34;&#34;)
- *             .privateKey(&#34;&#34;&#34;
+ * -----END CERTIFICATE-----            """)
+ *             .privateKey("""
  * -----BEGIN RSA PRIVATE KEY-----
  * MIIEowIBAAKCAQEAyjCheapjf7qDI3R9w/Gj0XFDgNLPK2aWIRvM25BdY/IB2KAf
  * xQ7zOxu3X1bMo2zMCzsSrwIVrxx0qRM/7e4AfkHcKwDIjCcBprQp164dhFol4GpT
@@ -135,40 +136,41 @@ import javax.annotation.Nullable;
  * y0zN3wKBgGDS6YttCN6aI4EOABYE8fI1EYQ7vhfiYsaWGWSR1l6bQey7KR6M1ACz
  * ZzMASNyytVt12yXE4/Emv6/pYqigbDLfL1zQJSLJ3EHJYTh2RxjR+AaGDudYFG/T
  * liQ9YXhV5Iu2x1pNwrtFnssDdaaGpfA7l3xC00BL7Z+SAJyI4QKA
- * -----END RSA PRIVATE KEY-----            &#34;&#34;&#34;)
+ * -----END RSA PRIVATE KEY-----            """)
  *             .build());
  * 
- *         var https = new Listener(&#34;https&#34;, ListenerArgs.builder()        
+ *         var https = new Listener("https", ListenerArgs.builder()        
  *             .loadBalancerId(instance.id())
  *             .backendPort(80)
  *             .frontendPort(443)
- *             .protocol(&#34;https&#34;)
- *             .stickySession(&#34;on&#34;)
- *             .stickySessionType(&#34;insert&#34;)
- *             .cookie(&#34;testslblistenercookie&#34;)
+ *             .protocol("https")
+ *             .stickySession("on")
+ *             .stickySessionType("insert")
+ *             .cookie("testslblistenercookie")
  *             .cookieTimeout(86400)
- *             .healthCheck(&#34;on&#34;)
- *             .healthCheckUri(&#34;/cons&#34;)
+ *             .healthCheck("on")
+ *             .healthCheckUri("/cons")
  *             .healthCheckConnectPort(20)
  *             .healthyThreshold(8)
  *             .unhealthyThreshold(8)
  *             .healthCheckTimeout(8)
  *             .healthCheckInterval(5)
- *             .healthCheckHttpCode(&#34;http_2xx,http_3xx&#34;)
+ *             .healthCheckHttpCode("http_2xx,http_3xx")
  *             .bandwidth(10)
  *             .serverCertificateId(domainExtensionServerCertificate.id())
  *             .build());
  * 
- *         var example1 = new DomainExtension(&#34;example1&#34;, DomainExtensionArgs.builder()        
+ *         var example1 = new DomainExtension("example1", DomainExtensionArgs.builder()        
  *             .loadBalancerId(instance.id())
  *             .frontendPort(https.frontendPort())
- *             .domain(&#34;www.test.com&#34;)
+ *             .domain("www.test.com")
  *             .serverCertificateId(domainExtensionServerCertificate.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

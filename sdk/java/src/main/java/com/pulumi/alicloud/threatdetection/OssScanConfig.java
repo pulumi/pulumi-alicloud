@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,62 +56,63 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
  *         final var bucketRandom = default_.result();
  * 
- *         var default8j4t1R = new Bucket(&#34;default8j4t1R&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;%s-1-%s&#34;, name,bucketRandom))
- *             .storageClass(&#34;Standard&#34;)
+ *         var default8j4t1R = new Bucket("default8j4t1R", BucketArgs.builder()        
+ *             .bucket(String.format("%s-1-%s", name,bucketRandom))
+ *             .storageClass("Standard")
  *             .build());
  * 
- *         var default9HMqfT = new Bucket(&#34;default9HMqfT&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;%s-2-%s&#34;, name,bucketRandom))
- *             .storageClass(&#34;Standard&#34;)
+ *         var default9HMqfT = new Bucket("default9HMqfT", BucketArgs.builder()        
+ *             .bucket(String.format("%s-2-%s", name,bucketRandom))
+ *             .storageClass("Standard")
  *             .build());
  * 
- *         var defaultxBXqFQ = new Bucket(&#34;defaultxBXqFQ&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;%s-3-%s&#34;, name,bucketRandom))
- *             .storageClass(&#34;Standard&#34;)
+ *         var defaultxBXqFQ = new Bucket("defaultxBXqFQ", BucketArgs.builder()        
+ *             .bucket(String.format("%s-3-%s", name,bucketRandom))
+ *             .storageClass("Standard")
  *             .build());
  * 
- *         var defaulthZvCmR = new Bucket(&#34;defaulthZvCmR&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;%s-4-%s&#34;, name,bucketRandom))
- *             .storageClass(&#34;Standard&#34;)
+ *         var defaulthZvCmR = new Bucket("defaulthZvCmR", BucketArgs.builder()        
+ *             .bucket(String.format("%s-4-%s", name,bucketRandom))
+ *             .storageClass("Standard")
  *             .build());
  * 
- *         var defaultOssScanConfig = new OssScanConfig(&#34;defaultOssScanConfig&#34;, OssScanConfigArgs.builder()        
+ *         var defaultOssScanConfig = new OssScanConfig("defaultOssScanConfig", OssScanConfigArgs.builder()        
  *             .keySuffixLists(            
- *                 &#34;.jsp&#34;,
- *                 &#34;.php&#34;,
- *                 &#34;.k&#34;)
+ *                 ".jsp",
+ *                 ".php",
+ *                 ".k")
  *             .scanDayLists(            
- *                 &#34;2&#34;,
- *                 &#34;5&#34;,
- *                 &#34;4&#34;,
- *                 &#34;3&#34;)
+ *                 "2",
+ *                 "5",
+ *                 "4",
+ *                 "3")
  *             .ossScanConfigName(name)
- *             .endTime(&#34;00:00:02&#34;)
- *             .startTime(&#34;00:00:01&#34;)
- *             .enable(&#34;1&#34;)
- *             .allKeyPrefix(&#34;false&#34;)
+ *             .endTime("00:00:02")
+ *             .startTime("00:00:01")
+ *             .enable("1")
+ *             .allKeyPrefix("false")
  *             .bucketNameLists(            
  *                 default8j4t1R.bucket(),
  *                 default9HMqfT.bucket(),
  *                 defaultxBXqFQ.bucket())
  *             .keyPrefixLists(            
- *                 &#34;/root&#34;,
- *                 &#34;/usr&#34;,
- *                 &#34;/123&#34;)
+ *                 "/root",
+ *                 "/usr",
+ *                 "/123")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

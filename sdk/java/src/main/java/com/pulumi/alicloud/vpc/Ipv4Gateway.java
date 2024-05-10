@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,32 +56,33 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc-example&#34;);
- *         var default_ = new ResourceGroup(&#34;default&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;tf-testAcc-rg665&#34;)
+ *         final var name = config.get("name").orElse("tf-testacc-example");
+ *         var default_ = new ResourceGroup("default", ResourceGroupArgs.builder()        
+ *             .displayName("tf-testAcc-rg665")
  *             .resourceGroupName(name)
  *             .build());
  * 
- *         var modify = new ResourceGroup(&#34;modify&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;tf-testAcc-rg298&#34;)
- *             .resourceGroupName(String.format(&#34;%s1&#34;, name))
+ *         var modify = new ResourceGroup("modify", ResourceGroupArgs.builder()        
+ *             .displayName("tf-testAcc-rg298")
+ *             .resourceGroupName(String.format("%s1", name))
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(String.format(&#34;%s2&#34;, name))
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .vpcName(String.format("%s2", name))
+ *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var defaultIpv4Gateway = new Ipv4Gateway(&#34;defaultIpv4Gateway&#34;, Ipv4GatewayArgs.builder()        
+ *         var defaultIpv4Gateway = new Ipv4Gateway("defaultIpv4Gateway", Ipv4GatewayArgs.builder()        
  *             .ipv4GatewayName(name)
- *             .ipv4GatewayDescription(&#34;tf-testAcc-Ipv4Gateway&#34;)
+ *             .ipv4GatewayDescription("tf-testAcc-Ipv4Gateway")
  *             .resourceGroupId(default_.id())
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

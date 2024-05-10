@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,59 +61,60 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = RdsFunctions.getZones(GetZonesArgs.builder()
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;5.6&#34;)
+ *             .engine("MySQL")
+ *             .engineVersion("5.6")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;5.6&#34;)
- *             .instanceType(&#34;rds.mysql.s1.small&#34;)
- *             .instanceStorage(&#34;10&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .engine("MySQL")
+ *             .engineVersion("5.6")
+ *             .instanceType("rds.mysql.s1.small")
+ *             .instanceStorage("10")
  *             .vswitchId(defaultSwitch.id())
  *             .instanceName(name)
  *             .build());
  * 
- *         for (var i = 0; i &lt; 2; i++) {
- *             new Database(&#34;db-&#34; + i, DatabaseArgs.builder()            
+ *         for (var i = 0; i < 2; i++) {
+ *             new Database("db-" + i, DatabaseArgs.builder()            
  *                 .instanceId(instance.id())
- *                 .name(String.format(&#34;%s_%s&#34;, name,range.value()))
- *                 .description(&#34;from terraform&#34;)
+ *                 .name(String.format("%s_%s", name,range.value()))
+ *                 .description("from terraform")
  *                 .build());
  * 
  *         
  * }
- *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
+ *         var account = new Account("account", AccountArgs.builder()        
  *             .dbInstanceId(instance.id())
- *             .accountName(&#34;tfexample&#34;)
- *             .accountPassword(&#34;Example12345&#34;)
- *             .accountDescription(&#34;from terraform&#34;)
+ *             .accountName("tfexample")
+ *             .accountPassword("Example12345")
+ *             .accountDescription("from terraform")
  *             .build());
  * 
- *         var privilege = new AccountPrivilege(&#34;privilege&#34;, AccountPrivilegeArgs.builder()        
+ *         var privilege = new AccountPrivilege("privilege", AccountPrivilegeArgs.builder()        
  *             .instanceId(instance.id())
  *             .accountName(account.name())
- *             .privilege(&#34;ReadOnly&#34;)
- *             .dbNames(db.stream().map(element -&gt; element.name()).collect(toList()))
+ *             .privilege("ReadOnly")
+ *             .dbNames(db.stream().map(element -> element.name()).collect(toList()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

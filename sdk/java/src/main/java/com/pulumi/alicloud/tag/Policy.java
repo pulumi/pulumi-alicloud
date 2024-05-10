@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,19 +50,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var example = new Policy(&#34;example&#34;, PolicyArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var example = new Policy("example", PolicyArgs.builder()        
  *             .policyName(name)
  *             .policyDesc(name)
- *             .userType(&#34;USER&#34;)
- *             .policyContent(&#34;&#34;&#34;
- * 		{&#34;tags&#34;:{&#34;CostCenter&#34;:{&#34;tag_value&#34;:{&#34;@@assign&#34;:[&#34;Beijing&#34;,&#34;Shanghai&#34;]},&#34;tag_key&#34;:{&#34;@@assign&#34;:&#34;CostCenter&#34;}}}}
- *             &#34;&#34;&#34;)
+ *             .userType("USER")
+ *             .policyContent("""
+ * 		{"tags":{"CostCenter":{"tag_value":{"{@literal @@}assign":["Beijing","Shanghai"]},"tag_key":{"{@literal @@}assign":"CostCenter"}}}}
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

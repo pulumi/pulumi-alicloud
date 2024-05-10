@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,19 +45,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var order = new Order(&#34;order&#34;, OrderArgs.builder()        
- *             .productCode(&#34;cmapi033136&#34;)
- *             .payType(&#34;prepay&#34;)
+ *         var order = new Order("order", OrderArgs.builder()        
+ *             .productCode("cmapi033136")
+ *             .payType("prepay")
  *             .quantity(1)
  *             .duration(1)
- *             .pricingCycle(&#34;Month&#34;)
- *             .packageVersion(&#34;yuncode2713600001&#34;)
- *             .couponId(&#34;&#34;)
+ *             .pricingCycle("Month")
+ *             .packageVersion("yuncode2713600001")
+ *             .couponId("")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

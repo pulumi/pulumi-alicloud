@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,46 +58,47 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.regions()[0].zoneIds()[0].zoneId())
  *             .build());
  * 
- *         var defaultDbCluster = new DbCluster(&#34;defaultDbCluster&#34;, DbClusterArgs.builder()        
- *             .dbClusterVersion(&#34;22.8.5.29&#34;)
- *             .category(&#34;Basic&#34;)
- *             .dbClusterClass(&#34;S8&#34;)
- *             .dbClusterNetworkType(&#34;vpc&#34;)
- *             .dbNodeGroupCount(&#34;1&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .dbNodeStorage(&#34;500&#34;)
- *             .storageType(&#34;cloud_essd&#34;)
+ *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
+ *             .dbClusterVersion("22.8.5.29")
+ *             .category("Basic")
+ *             .dbClusterClass("S8")
+ *             .dbClusterNetworkType("vpc")
+ *             .dbNodeGroupCount("1")
+ *             .paymentType("PayAsYouGo")
+ *             .dbNodeStorage("500")
+ *             .storageType("cloud_essd")
  *             .vswitchId(defaultSwitch.id())
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+ *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
  *             .dbClusterId(defaultDbCluster.id())
- *             .accountDescription(&#34;tf-example-description&#34;)
- *             .accountName(&#34;examplename&#34;)
- *             .accountPassword(&#34;Example1234&#34;)
+ *             .accountDescription("tf-example-description")
+ *             .accountName("examplename")
+ *             .accountPassword("Example1234")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -27,7 +27,8 @@ public final class MhubFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -51,25 +52,26 @@ public final class MhubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new App(&#34;default&#34;, AppArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new App("default", AppArgs.builder()        
      *             .appName(name)
      *             .productId(defaultAlicloudMhubProduct.id())
-     *             .packageName(&#34;com.test.android&#34;)
-     *             .type(&#34;2&#34;)
+     *             .packageName("com.test.android")
+     *             .type("2")
      *             .build());
      * 
      *         final var ids = MhubFunctions.getApps();
      * 
-     *         ctx.export(&#34;mhubAppId1&#34;, ids.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId1", ids.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
      *         final var nameRegex = MhubFunctions.getApps(GetAppsArgs.builder()
-     *             .nameRegex(&#34;^my-App&#34;)
+     *             .nameRegex("^my-App")
      *             .build());
      * 
-     *         ctx.export(&#34;mhubAppId2&#34;, nameRegex.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId2", nameRegex.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -86,7 +88,8 @@ public final class MhubFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -110,25 +113,26 @@ public final class MhubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new App(&#34;default&#34;, AppArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new App("default", AppArgs.builder()        
      *             .appName(name)
      *             .productId(defaultAlicloudMhubProduct.id())
-     *             .packageName(&#34;com.test.android&#34;)
-     *             .type(&#34;2&#34;)
+     *             .packageName("com.test.android")
+     *             .type("2")
      *             .build());
      * 
      *         final var ids = MhubFunctions.getApps();
      * 
-     *         ctx.export(&#34;mhubAppId1&#34;, ids.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId1", ids.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
      *         final var nameRegex = MhubFunctions.getApps(GetAppsArgs.builder()
-     *             .nameRegex(&#34;^my-App&#34;)
+     *             .nameRegex("^my-App")
      *             .build());
      * 
-     *         ctx.export(&#34;mhubAppId2&#34;, nameRegex.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId2", nameRegex.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -145,7 +149,8 @@ public final class MhubFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -169,25 +174,26 @@ public final class MhubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new App(&#34;default&#34;, AppArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new App("default", AppArgs.builder()        
      *             .appName(name)
      *             .productId(defaultAlicloudMhubProduct.id())
-     *             .packageName(&#34;com.test.android&#34;)
-     *             .type(&#34;2&#34;)
+     *             .packageName("com.test.android")
+     *             .type("2")
      *             .build());
      * 
      *         final var ids = MhubFunctions.getApps();
      * 
-     *         ctx.export(&#34;mhubAppId1&#34;, ids.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId1", ids.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
      *         final var nameRegex = MhubFunctions.getApps(GetAppsArgs.builder()
-     *             .nameRegex(&#34;^my-App&#34;)
+     *             .nameRegex("^my-App")
      *             .build());
      * 
-     *         ctx.export(&#34;mhubAppId2&#34;, nameRegex.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId2", nameRegex.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -204,7 +210,8 @@ public final class MhubFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -228,25 +235,26 @@ public final class MhubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new App(&#34;default&#34;, AppArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new App("default", AppArgs.builder()        
      *             .appName(name)
      *             .productId(defaultAlicloudMhubProduct.id())
-     *             .packageName(&#34;com.test.android&#34;)
-     *             .type(&#34;2&#34;)
+     *             .packageName("com.test.android")
+     *             .type("2")
      *             .build());
      * 
      *         final var ids = MhubFunctions.getApps();
      * 
-     *         ctx.export(&#34;mhubAppId1&#34;, ids.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId1", ids.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
      *         final var nameRegex = MhubFunctions.getApps(GetAppsArgs.builder()
-     *             .nameRegex(&#34;^my-App&#34;)
+     *             .nameRegex("^my-App")
      *             .build());
      * 
-     *         ctx.export(&#34;mhubAppId2&#34;, nameRegex.applyValue(getAppsResult -&gt; getAppsResult.apps()[0].id()));
+     *         ctx.export("mhubAppId2", nameRegex.applyValue(getAppsResult -> getAppsResult.apps()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -263,7 +271,8 @@ public final class MhubFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -287,22 +296,23 @@ public final class MhubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new Product(&#34;default&#34;, ProductArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new Product("default", ProductArgs.builder()        
      *             .productName(name)
      *             .build());
      * 
      *         final var ids = MhubFunctions.getProducts();
      * 
-     *         ctx.export(&#34;mhubProductId1&#34;, ids.applyValue(getProductsResult -&gt; getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId1", ids.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
      *         final var nameRegex = MhubFunctions.getProducts(GetProductsArgs.builder()
-     *             .nameRegex(&#34;^my-Product&#34;)
+     *             .nameRegex("^my-Product")
      *             .build());
      * 
-     *         ctx.export(&#34;mhubProductId2&#34;, nameRegex.applyValue(getProductsResult -&gt; getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId2", nameRegex.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -319,7 +329,8 @@ public final class MhubFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -343,22 +354,23 @@ public final class MhubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new Product(&#34;default&#34;, ProductArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new Product("default", ProductArgs.builder()        
      *             .productName(name)
      *             .build());
      * 
      *         final var ids = MhubFunctions.getProducts();
      * 
-     *         ctx.export(&#34;mhubProductId1&#34;, ids.applyValue(getProductsResult -&gt; getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId1", ids.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
      *         final var nameRegex = MhubFunctions.getProducts(GetProductsArgs.builder()
-     *             .nameRegex(&#34;^my-Product&#34;)
+     *             .nameRegex("^my-Product")
      *             .build());
      * 
-     *         ctx.export(&#34;mhubProductId2&#34;, nameRegex.applyValue(getProductsResult -&gt; getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId2", nameRegex.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -375,7 +387,8 @@ public final class MhubFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -399,22 +412,23 @@ public final class MhubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new Product(&#34;default&#34;, ProductArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new Product("default", ProductArgs.builder()        
      *             .productName(name)
      *             .build());
      * 
      *         final var ids = MhubFunctions.getProducts();
      * 
-     *         ctx.export(&#34;mhubProductId1&#34;, ids.applyValue(getProductsResult -&gt; getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId1", ids.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
      *         final var nameRegex = MhubFunctions.getProducts(GetProductsArgs.builder()
-     *             .nameRegex(&#34;^my-Product&#34;)
+     *             .nameRegex("^my-Product")
      *             .build());
      * 
-     *         ctx.export(&#34;mhubProductId2&#34;, nameRegex.applyValue(getProductsResult -&gt; getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId2", nameRegex.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -431,7 +445,8 @@ public final class MhubFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -455,22 +470,23 @@ public final class MhubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new Product(&#34;default&#34;, ProductArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new Product("default", ProductArgs.builder()        
      *             .productName(name)
      *             .build());
      * 
      *         final var ids = MhubFunctions.getProducts();
      * 
-     *         ctx.export(&#34;mhubProductId1&#34;, ids.applyValue(getProductsResult -&gt; getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId1", ids.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
      *         final var nameRegex = MhubFunctions.getProducts(GetProductsArgs.builder()
-     *             .nameRegex(&#34;^my-Product&#34;)
+     *             .nameRegex("^my-Product")
      *             .build());
      * 
-     *         ctx.export(&#34;mhubProductId2&#34;, nameRegex.applyValue(getProductsResult -&gt; getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId2", nameRegex.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -487,7 +503,8 @@ public final class MhubFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -511,22 +528,23 @@ public final class MhubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new Product(&#34;default&#34;, ProductArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new Product("default", ProductArgs.builder()        
      *             .productName(name)
      *             .build());
      * 
      *         final var ids = MhubFunctions.getProducts();
      * 
-     *         ctx.export(&#34;mhubProductId1&#34;, ids.applyValue(getProductsResult -&gt; getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId1", ids.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
      *         final var nameRegex = MhubFunctions.getProducts(GetProductsArgs.builder()
-     *             .nameRegex(&#34;^my-Product&#34;)
+     *             .nameRegex("^my-Product")
      *             .build());
      * 
-     *         ctx.export(&#34;mhubProductId2&#34;, nameRegex.applyValue(getProductsResult -&gt; getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId2", nameRegex.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -543,7 +561,8 @@ public final class MhubFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -567,22 +586,23 @@ public final class MhubFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new Product(&#34;default&#34;, ProductArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new Product("default", ProductArgs.builder()        
      *             .productName(name)
      *             .build());
      * 
      *         final var ids = MhubFunctions.getProducts();
      * 
-     *         ctx.export(&#34;mhubProductId1&#34;, ids.applyValue(getProductsResult -&gt; getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId1", ids.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
      *         final var nameRegex = MhubFunctions.getProducts(GetProductsArgs.builder()
-     *             .nameRegex(&#34;^my-Product&#34;)
+     *             .nameRegex("^my-Product")
      *             .build());
      * 
-     *         ctx.export(&#34;mhubProductId2&#34;, nameRegex.applyValue(getProductsResult -&gt; getProductsResult.products()[0].id()));
+     *         ctx.export("mhubProductId2", nameRegex.applyValue(getProductsResult -> getProductsResult.products()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

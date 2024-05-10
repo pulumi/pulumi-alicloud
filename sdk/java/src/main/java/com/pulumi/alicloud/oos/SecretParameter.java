@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,28 +57,29 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var example = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var exampleKey = new Key(&#34;exampleKey&#34;, KeyArgs.builder()        
- *             .description(&#34;terraform-example&#34;)
- *             .status(&#34;Enabled&#34;)
+ *         var exampleKey = new Key("exampleKey", KeyArgs.builder()        
+ *             .description("terraform-example")
+ *             .status("Enabled")
  *             .pendingWindowInDays(7)
  *             .build());
  * 
- *         var exampleSecretParameter = new SecretParameter(&#34;exampleSecretParameter&#34;, SecretParameterArgs.builder()        
- *             .secretParameterName(&#34;terraform-example&#34;)
- *             .value(&#34;terraform-example&#34;)
- *             .type(&#34;Secret&#34;)
+ *         var exampleSecretParameter = new SecretParameter("exampleSecretParameter", SecretParameterArgs.builder()        
+ *             .secretParameterName("terraform-example")
+ *             .value("terraform-example")
+ *             .type("Secret")
  *             .keyId(exampleKey.id())
- *             .description(&#34;terraform-example&#34;)
+ *             .description("terraform-example")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;OosSecretParameter&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "OosSecretParameter")
  *             ))
- *             .resourceGroupId(example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(example.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

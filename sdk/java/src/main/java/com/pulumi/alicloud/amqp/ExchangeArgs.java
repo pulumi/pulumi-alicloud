@@ -52,14 +52,14 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+     * The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
      * 
      */
     @Import(name="exchangeName", required=true)
     private Output<String> exchangeName;
 
     /**
-     * @return The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+     * @return The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
      * 
      */
     public Output<String> exchangeName() {
@@ -221,7 +221,7 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exchangeName The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+         * @param exchangeName The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class ExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exchangeName The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+         * @param exchangeName The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
          * 
          * @return builder
          * 

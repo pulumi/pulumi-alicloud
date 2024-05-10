@@ -36,7 +36,8 @@ import javax.annotation.Nullable;
  * ### 1. Create A Cluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -74,135 +75,136 @@ import javax.annotation.Nullable;
  *         final var default = EmrFunctions.getMainVersions();
  * 
  *         final var defaultGetInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .destinationResource(&#34;InstanceType&#34;)
+ *             .destinationResource("InstanceType")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .supportLocalStorage(false)
- *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .instanceChargeType("PostPaid")
  *             .supportNodeTypes(            
- *                 &#34;MASTER&#34;,
- *                 &#34;CORE&#34;,
- *                 &#34;TASK&#34;)
+ *                 "MASTER",
+ *                 "CORE",
+ *                 "TASK")
  *             .build());
  * 
  *         final var dataDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
- *             .destinationResource(&#34;DataDisk&#34;)
+ *             .destinationResource("DataDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceChargeType("PostPaid")
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
  *             .build());
  * 
  *         final var systemDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
- *             .destinationResource(&#34;SystemDisk&#34;)
+ *             .destinationResource("SystemDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceChargeType("PostPaid")
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
  *             .build());
  * 
- *         for (var i = 0; i &lt; (vpcId == &#34;&#34; ? 1 : 0); i++) {
- *             new Network(&#34;vpc-&#34; + i, NetworkArgs.builder()            
+ *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
+ *             new Network("vpc-" + i, NetworkArgs.builder()            
  *                 .name(vpcName)
  *                 .cidrBlock(vpcCidr)
  *                 .build());
  * 
  *         
  * }
- *         for (var i = 0; i &lt; (securityGroupId == &#34;&#34; ? 1 : 0); i++) {
- *             new SecurityGroup(&#34;defaultSecurityGroup-&#34; + i, SecurityGroupArgs.builder()            
+ *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
+ *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()            
  *                 .name(securityGroupName)
- *                 .vpcId(vpcId == &#34;&#34; ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
  *                 .build());
  * 
  *         
  * }
  *         // VSwitch Resource for Module
- *         for (var i = 0; i &lt; (vswitchId == &#34;&#34; ? 1 : 0); i++) {
- *             new Switch(&#34;vswitch-&#34; + i, SwitchArgs.builder()            
- *                 .availabilityZone(availabilityZone == &#34;&#34; ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
+ *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
+ *             new Switch("vswitch-" + i, SwitchArgs.builder()            
+ *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
- *                 .vpcId(vpcId == &#34;&#34; ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
  *                 .build());
  * 
  *         
  * }
  *         // Ram role Resource for Module
- *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
  *             .name(ramName)
- *             .document(&#34;&#34;&#34;
+ *             .document("""
  *     {
- *         &#34;Statement&#34;: [
+ *         "Statement": [
  *         {
- *             &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *             &#34;Effect&#34;: &#34;Allow&#34;,
- *             &#34;Principal&#34;: {
- *             &#34;Service&#34;: [
- *                 &#34;emr.aliyuncs.com&#34;,
- *                 &#34;ecs.aliyuncs.com&#34;
+ *             "Action": "sts:AssumeRole",
+ *             "Effect": "Allow",
+ *             "Principal": {
+ *             "Service": [
+ *                 "emr.aliyuncs.com",
+ *                 "ecs.aliyuncs.com"
  *             ]
  *             }
  *         }
  *         ],
- *         &#34;Version&#34;: &#34;1&#34;
+ *         "Version": "1"
  *     }
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a role test.&#34;)
+ *             """)
+ *             .description("this is a role test.")
  *             .force(true)
  *             .build());
  * 
- *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;terraform-create-cluster-test&#34;)
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *             .name("terraform-create-cluster-test")
  *             .emrVer(default_.mainVersions()[0].emrVersion())
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .hostGroups(            
  *                 ClusterHostGroupArgs.builder()
- *                     .hostGroupName(&#34;master_group&#34;)
- *                     .hostGroupType(&#34;MASTER&#34;)
- *                     .nodeCount(&#34;2&#34;)
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
- *                     .diskCount(&#34;1&#34;)
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
+ *                     .hostGroupName("master_group")
+ *                     .hostGroupType("MASTER")
+ *                     .nodeCount("2")
+ *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .diskCount("1")
+ *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
  *                     .build(),
  *                 ClusterHostGroupArgs.builder()
- *                     .hostGroupName(&#34;core_group&#34;)
- *                     .hostGroupType(&#34;CORE&#34;)
- *                     .nodeCount(&#34;3&#34;)
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
- *                     .diskCount(&#34;4&#34;)
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
+ *                     .hostGroupName("core_group")
+ *                     .hostGroupType("CORE")
+ *                     .nodeCount("3")
+ *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .diskCount("4")
+ *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
  *                     .build(),
  *                 ClusterHostGroupArgs.builder()
- *                     .hostGroupName(&#34;task_group&#34;)
- *                     .hostGroupType(&#34;TASK&#34;)
- *                     .nodeCount(&#34;2&#34;)
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
- *                     .diskCount(&#34;4&#34;)
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
+ *                     .hostGroupName("task_group")
+ *                     .hostGroupType("TASK")
+ *                     .nodeCount("2")
+ *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .diskCount("4")
+ *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
  *                     .build())
  *             .highAvailabilityEnable(true)
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
- *             .securityGroupId(securityGroupId == &#34;&#34; ? defaultSecurityGroup[0].id() : securityGroupId)
+ *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup[0].id() : securityGroupId)
  *             .isOpenPublicIp(true)
- *             .chargeType(&#34;PostPaid&#34;)
- *             .vswitchId(vswitchId == &#34;&#34; ? vswitch[0].id() : vswitchId)
+ *             .chargeType("PostPaid")
+ *             .vswitchId(vswitchId == "" ? vswitch[0].id() : vswitchId)
  *             .userDefinedEmrEcsRole(defaultRole.name())
  *             .sshEnable(true)
- *             .masterPwd(&#34;ABCtest1234!&#34;)
+ *             .masterPwd("ABCtest1234!")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### 2. Scale Up
@@ -216,7 +218,8 @@ import javax.annotation.Nullable;
  * As the following case, we scale up the TASK group 2 nodes by increasing host_group.node_count by 2.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -254,135 +257,136 @@ import javax.annotation.Nullable;
  *         final var default = EmrFunctions.getMainVersions();
  * 
  *         final var defaultGetInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .destinationResource(&#34;InstanceType&#34;)
+ *             .destinationResource("InstanceType")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .supportLocalStorage(false)
- *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .instanceChargeType("PostPaid")
  *             .supportNodeTypes(            
- *                 &#34;MASTER&#34;,
- *                 &#34;CORE&#34;,
- *                 &#34;TASK&#34;)
+ *                 "MASTER",
+ *                 "CORE",
+ *                 "TASK")
  *             .build());
  * 
  *         final var dataDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
- *             .destinationResource(&#34;DataDisk&#34;)
+ *             .destinationResource("DataDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceChargeType("PostPaid")
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
  *             .build());
  * 
  *         final var systemDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
- *             .destinationResource(&#34;SystemDisk&#34;)
+ *             .destinationResource("SystemDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceChargeType("PostPaid")
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
  *             .build());
  * 
- *         for (var i = 0; i &lt; (vpcId == &#34;&#34; ? 1 : 0); i++) {
- *             new Network(&#34;vpc-&#34; + i, NetworkArgs.builder()            
+ *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
+ *             new Network("vpc-" + i, NetworkArgs.builder()            
  *                 .name(vpcName)
  *                 .cidrBlock(vpcCidr)
  *                 .build());
  * 
  *         
  * }
- *         for (var i = 0; i &lt; (securityGroupId == &#34;&#34; ? 1 : 0); i++) {
- *             new SecurityGroup(&#34;defaultSecurityGroup-&#34; + i, SecurityGroupArgs.builder()            
+ *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
+ *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()            
  *                 .name(securityGroupName)
- *                 .vpcId(vpcId == &#34;&#34; ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
  *                 .build());
  * 
  *         
  * }
  *         // VSwitch Resource for Module
- *         for (var i = 0; i &lt; (vswitchId == &#34;&#34; ? 1 : 0); i++) {
- *             new Switch(&#34;vswitch-&#34; + i, SwitchArgs.builder()            
- *                 .availabilityZone(availabilityZone == &#34;&#34; ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
+ *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
+ *             new Switch("vswitch-" + i, SwitchArgs.builder()            
+ *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
- *                 .vpcId(vpcId == &#34;&#34; ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
  *                 .build());
  * 
  *         
  * }
  *         // Ram role Resource for Module
- *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
  *             .name(ramName)
- *             .document(&#34;&#34;&#34;
+ *             .document("""
  *     {
- *         &#34;Statement&#34;: [
+ *         "Statement": [
  *         {
- *             &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *             &#34;Effect&#34;: &#34;Allow&#34;,
- *             &#34;Principal&#34;: {
- *             &#34;Service&#34;: [
- *                 &#34;emr.aliyuncs.com&#34;,
- *                 &#34;ecs.aliyuncs.com&#34;
+ *             "Action": "sts:AssumeRole",
+ *             "Effect": "Allow",
+ *             "Principal": {
+ *             "Service": [
+ *                 "emr.aliyuncs.com",
+ *                 "ecs.aliyuncs.com"
  *             ]
  *             }
  *         }
  *         ],
- *         &#34;Version&#34;: &#34;1&#34;
+ *         "Version": "1"
  *     }
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a role test.&#34;)
+ *             """)
+ *             .description("this is a role test.")
  *             .force(true)
  *             .build());
  * 
- *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;terraform-resize-cluster-test&#34;)
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *             .name("terraform-resize-cluster-test")
  *             .emrVer(default_.mainVersions()[0].emrVersion())
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .hostGroups(            
  *                 ClusterHostGroupArgs.builder()
- *                     .hostGroupName(&#34;master_group&#34;)
- *                     .hostGroupType(&#34;MASTER&#34;)
- *                     .nodeCount(&#34;2&#34;)
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
- *                     .diskCount(&#34;1&#34;)
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
+ *                     .hostGroupName("master_group")
+ *                     .hostGroupType("MASTER")
+ *                     .nodeCount("2")
+ *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .diskCount("1")
+ *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
  *                     .build(),
  *                 ClusterHostGroupArgs.builder()
- *                     .hostGroupName(&#34;core_group&#34;)
- *                     .hostGroupType(&#34;CORE&#34;)
- *                     .nodeCount(&#34;3&#34;)
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
- *                     .diskCount(&#34;4&#34;)
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
+ *                     .hostGroupName("core_group")
+ *                     .hostGroupType("CORE")
+ *                     .nodeCount("3")
+ *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .diskCount("4")
+ *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
  *                     .build(),
  *                 ClusterHostGroupArgs.builder()
- *                     .hostGroupName(&#34;task_group&#34;)
- *                     .hostGroupType(&#34;TASK&#34;)
- *                     .nodeCount(&#34;4&#34;)
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
- *                     .diskCount(&#34;4&#34;)
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
+ *                     .hostGroupName("task_group")
+ *                     .hostGroupType("TASK")
+ *                     .nodeCount("4")
+ *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .diskCount("4")
+ *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
  *                     .build())
  *             .highAvailabilityEnable(true)
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
- *             .securityGroupId(securityGroupId == &#34;&#34; ? defaultSecurityGroup[0].id() : securityGroupId)
+ *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup[0].id() : securityGroupId)
  *             .isOpenPublicIp(true)
- *             .chargeType(&#34;PostPaid&#34;)
- *             .vswitchId(vswitchId == &#34;&#34; ? vswitch[0].id() : vswitchId)
+ *             .chargeType("PostPaid")
+ *             .vswitchId(vswitchId == "" ? vswitch[0].id() : vswitchId)
  *             .userDefinedEmrEcsRole(defaultRole.name())
  *             .sshEnable(true)
- *             .masterPwd(&#34;ABCtest1234!&#34;)
+ *             .masterPwd("ABCtest1234!")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### 3. Scale Down
@@ -394,7 +398,8 @@ import javax.annotation.Nullable;
  * The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -432,141 +437,143 @@ import javax.annotation.Nullable;
  *         final var default = EmrFunctions.getMainVersions();
  * 
  *         final var defaultGetInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .destinationResource(&#34;InstanceType&#34;)
+ *             .destinationResource("InstanceType")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .supportLocalStorage(false)
- *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .instanceChargeType("PostPaid")
  *             .supportNodeTypes(            
- *                 &#34;MASTER&#34;,
- *                 &#34;CORE&#34;,
- *                 &#34;TASK&#34;)
+ *                 "MASTER",
+ *                 "CORE",
+ *                 "TASK")
  *             .build());
  * 
  *         final var dataDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
- *             .destinationResource(&#34;DataDisk&#34;)
+ *             .destinationResource("DataDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceChargeType("PostPaid")
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
  *             .build());
  * 
  *         final var systemDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
- *             .destinationResource(&#34;SystemDisk&#34;)
+ *             .destinationResource("SystemDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceChargeType("PostPaid")
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
  *             .build());
  * 
- *         for (var i = 0; i &lt; (vpcId == &#34;&#34; ? 1 : 0); i++) {
- *             new Network(&#34;vpc-&#34; + i, NetworkArgs.builder()            
+ *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
+ *             new Network("vpc-" + i, NetworkArgs.builder()            
  *                 .name(vpcName)
  *                 .cidrBlock(vpcCidr)
  *                 .build());
  * 
  *         
  * }
- *         for (var i = 0; i &lt; (securityGroupId == &#34;&#34; ? 1 : 0); i++) {
- *             new SecurityGroup(&#34;defaultSecurityGroup-&#34; + i, SecurityGroupArgs.builder()            
+ *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
+ *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()            
  *                 .name(securityGroupName)
- *                 .vpcId(vpcId == &#34;&#34; ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
  *                 .build());
  * 
  *         
  * }
  *         // VSwitch Resource for Module
- *         for (var i = 0; i &lt; (vswitchId == &#34;&#34; ? 1 : 0); i++) {
- *             new Switch(&#34;vswitch-&#34; + i, SwitchArgs.builder()            
- *                 .availabilityZone(availabilityZone == &#34;&#34; ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
+ *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
+ *             new Switch("vswitch-" + i, SwitchArgs.builder()            
+ *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
- *                 .vpcId(vpcId == &#34;&#34; ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
  *                 .build());
  * 
  *         
  * }
  *         // Ram role Resource for Module
- *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
  *             .name(ramName)
- *             .document(&#34;&#34;&#34;
+ *             .document("""
  *     {
- *         &#34;Statement&#34;: [
+ *         "Statement": [
  *         {
- *             &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *             &#34;Effect&#34;: &#34;Allow&#34;,
- *             &#34;Principal&#34;: {
- *             &#34;Service&#34;: [
- *                 &#34;emr.aliyuncs.com&#34;,
- *                 &#34;ecs.aliyuncs.com&#34;
+ *             "Action": "sts:AssumeRole",
+ *             "Effect": "Allow",
+ *             "Principal": {
+ *             "Service": [
+ *                 "emr.aliyuncs.com",
+ *                 "ecs.aliyuncs.com"
  *             ]
  *             }
  *         }
  *         ],
- *         &#34;Version&#34;: &#34;1&#34;
+ *         "Version": "1"
  *     }
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a role test.&#34;)
+ *             """)
+ *             .description("this is a role test.")
  *             .force(true)
  *             .build());
  * 
- *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
- *             .name(&#34;terraform-resize-cluster-test&#34;)
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *             .name("terraform-resize-cluster-test")
  *             .emrVer(default_.mainVersions()[0].emrVersion())
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .hostGroups(            
  *                 ClusterHostGroupArgs.builder()
- *                     .hostGroupName(&#34;master_group&#34;)
- *                     .hostGroupType(&#34;MASTER&#34;)
- *                     .nodeCount(&#34;2&#34;)
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
- *                     .diskCount(&#34;1&#34;)
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
+ *                     .hostGroupName("master_group")
+ *                     .hostGroupType("MASTER")
+ *                     .nodeCount("2")
+ *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .diskCount("1")
+ *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
  *                     .build(),
  *                 ClusterHostGroupArgs.builder()
- *                     .hostGroupName(&#34;core_group&#34;)
- *                     .hostGroupType(&#34;CORE&#34;)
- *                     .nodeCount(&#34;3&#34;)
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
- *                     .diskCount(&#34;4&#34;)
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
+ *                     .hostGroupName("core_group")
+ *                     .hostGroupType("CORE")
+ *                     .nodeCount("3")
+ *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .diskCount("4")
+ *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
  *                     .build(),
  *                 ClusterHostGroupArgs.builder()
- *                     .hostGroupName(&#34;task_group&#34;)
- *                     .hostGroupType(&#34;TASK&#34;)
- *                     .nodeCount(&#34;2&#34;)
- *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
- *                     .diskCount(&#34;4&#34;)
- *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
+ *                     .hostGroupName("task_group")
+ *                     .hostGroupType("TASK")
+ *                     .nodeCount("2")
+ *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *                     .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                     .diskCount("4")
+ *                     .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
  *                     .build())
  *             .highAvailabilityEnable(true)
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
- *             .securityGroupId(securityGroupId == &#34;&#34; ? defaultSecurityGroup[0].id() : securityGroupId)
+ *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup[0].id() : securityGroupId)
  *             .isOpenPublicIp(true)
- *             .chargeType(&#34;PostPaid&#34;)
- *             .vswitchId(vswitchId == &#34;&#34; ? vswitch[0].id() : vswitchId)
+ *             .chargeType("PostPaid")
+ *             .vswitchId(vswitchId == "" ? vswitch[0].id() : vswitchId)
  *             .userDefinedEmrEcsRole(defaultRole.name())
  *             .sshEnable(true)
- *             .masterPwd(&#34;ABCtest1234!&#34;)
+ *             .masterPwd("ABCtest1234!")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### 4. Create a emr gateway cluster
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -604,110 +611,111 @@ import javax.annotation.Nullable;
  *         final var default = EmrFunctions.getMainVersions();
  * 
  *         final var defaultGetInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .destinationResource(&#34;InstanceType&#34;)
+ *             .destinationResource("InstanceType")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
  *             .supportLocalStorage(false)
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .supportNodeTypes(&#34;GATEWAY&#34;)
+ *             .instanceChargeType("PostPaid")
+ *             .supportNodeTypes("GATEWAY")
  *             .build());
  * 
  *         final var dataDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
- *             .destinationResource(&#34;DataDisk&#34;)
+ *             .destinationResource("DataDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceChargeType("PostPaid")
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
  *             .build());
  * 
  *         final var systemDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
- *             .destinationResource(&#34;SystemDisk&#34;)
+ *             .destinationResource("SystemDisk")
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+ *             .instanceChargeType("PostPaid")
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
  *             .build());
  * 
- *         for (var i = 0; i &lt; (vpcId == &#34;&#34; ? 1 : 0); i++) {
- *             new Network(&#34;vpc-&#34; + i, NetworkArgs.builder()            
+ *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
+ *             new Network("vpc-" + i, NetworkArgs.builder()            
  *                 .name(vpcName)
  *                 .cidrBlock(vpcCidr)
  *                 .build());
  * 
  *         
  * }
- *         for (var i = 0; i &lt; (securityGroupId == &#34;&#34; ? 1 : 0); i++) {
- *             new SecurityGroup(&#34;defaultSecurityGroup-&#34; + i, SecurityGroupArgs.builder()            
+ *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
+ *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()            
  *                 .name(securityGroupName)
- *                 .vpcId(vpcId == &#34;&#34; ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
  *                 .build());
  * 
  *         
  * }
  *         // VSwitch Resource for Module
- *         for (var i = 0; i &lt; (vswitchId == &#34;&#34; ? 1 : 0); i++) {
- *             new Switch(&#34;vswitch-&#34; + i, SwitchArgs.builder()            
- *                 .availabilityZone(availabilityZone == &#34;&#34; ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
+ *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
+ *             new Switch("vswitch-" + i, SwitchArgs.builder()            
+ *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
- *                 .vpcId(vpcId == &#34;&#34; ? vpc[0].id() : vpcId)
+ *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
  *                 .build());
  * 
  *         
  * }
  *         // Ram role Resource for Module
- *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
  *             .name(ramName)
- *             .document(&#34;&#34;&#34;
+ *             .document("""
  *     {
- *         &#34;Statement&#34;: [
+ *         "Statement": [
  *         {
- *             &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *             &#34;Effect&#34;: &#34;Allow&#34;,
- *             &#34;Principal&#34;: {
- *             &#34;Service&#34;: [
- *                 &#34;emr.aliyuncs.com&#34;,
- *                 &#34;ecs.aliyuncs.com&#34;
+ *             "Action": "sts:AssumeRole",
+ *             "Effect": "Allow",
+ *             "Principal": {
+ *             "Service": [
+ *                 "emr.aliyuncs.com",
+ *                 "ecs.aliyuncs.com"
  *             ]
  *             }
  *         }
  *         ],
- *         &#34;Version&#34;: &#34;1&#34;
+ *         "Version": "1"
  *     }
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a role test.&#34;)
+ *             """)
+ *             .description("this is a role test.")
  *             .force(true)
  *             .build());
  * 
- *         var gateway = new Cluster(&#34;gateway&#34;, ClusterArgs.builder()        
- *             .name(&#34;terraform-gateway-cluster-test&#34;)
+ *         var gateway = new Cluster("gateway", ClusterArgs.builder()        
+ *             .name("terraform-gateway-cluster-test")
  *             .emrVer(default_.mainVersions()[0].emrVersion())
- *             .clusterType(&#34;GATEWAY&#34;)
+ *             .clusterType("GATEWAY")
  *             .hostGroups(ClusterHostGroupArgs.builder()
- *                 .hostGroupName(&#34;master_group&#34;)
- *                 .hostGroupType(&#34;GATEWAY&#34;)
- *                 .nodeCount(&#34;1&#34;)
- *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
- *                 .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                 .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
- *                 .diskCount(&#34;1&#34;)
- *                 .sysDiskType(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
- *                 .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
+ *                 .hostGroupName("master_group")
+ *                 .hostGroupType("GATEWAY")
+ *                 .nodeCount("1")
+ *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].id()))
+ *                 .diskType(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                 .diskCapacity(dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? dataDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
+ *                 .diskCount("1")
+ *                 .sysDiskType(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].value()))
+ *                 .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) > 160 ? systemDisk.applyValue(getDiskTypesResult -> getDiskTypesResult.types()[0].min()) : 160)
  *                 .build())
  *             .highAvailabilityEnable(true)
- *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
- *             .securityGroupId(securityGroupId == &#34;&#34; ? defaultSecurityGroup[0].id() : securityGroupId)
+ *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
+ *             .securityGroupId(securityGroupId == "" ? defaultSecurityGroup[0].id() : securityGroupId)
  *             .isOpenPublicIp(true)
- *             .chargeType(&#34;PostPaid&#34;)
- *             .vswitchId(vswitchId == &#34;&#34; ? vswitch[0].id() : vswitchId)
+ *             .chargeType("PostPaid")
+ *             .vswitchId(vswitchId == "" ? vswitch[0].id() : vswitchId)
  *             .userDefinedEmrEcsRole(defaultRole.name())
  *             .sshEnable(true)
- *             .masterPwd(&#34;ABCtest1234!&#34;)
+ *             .masterPwd("ABCtest1234!")
  *             .relatedClusterId(relatedClusterId)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

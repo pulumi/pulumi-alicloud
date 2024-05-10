@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,18 +56,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultDomainNew = new DomainNew(&#34;defaultDomainNew&#34;, DomainNewArgs.builder()        
- *             .scope(&#34;overseas&#34;)
- *             .domainName(String.format(&#34;mycdndomain-%s.alicloud-provider.cn&#34;, default_.result()))
- *             .cdnType(&#34;web&#34;)
+ *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()        
+ *             .scope("overseas")
+ *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
+ *             .cdnType("web")
  *             .sources(DomainNewSourceArgs.builder()
- *                 .type(&#34;ipaddr&#34;)
- *                 .content(&#34;1.1.1.1&#34;)
+ *                 .type("ipaddr")
+ *                 .content("1.1.1.1")
  *                 .priority(20)
  *                 .port(80)
  *                 .weight(15)
@@ -75,7 +76,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

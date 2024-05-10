@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,32 +58,32 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var zoneId = &#34;cn-hangzhou-h&#34;;
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var zoneId = "cn-hangzhou-h";
  * 
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .cidrBlock("10.1.0.0/16")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .instanceType(&#34;eais.ei-a6.2xlarge&#34;)
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .instanceType("eais.ei-a6.2xlarge")
  *             .instanceName(name)
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
@@ -90,7 +91,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

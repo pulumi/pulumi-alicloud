@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,24 +48,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
- *         var example = new Policy(&#34;example&#34;, PolicyArgs.builder()        
+ *         final var name = config.get("name").orElse("tfexample");
+ *         var example = new Policy("example", PolicyArgs.builder()        
  *             .policyName(name)
- *             .policyDocument(&#34;&#34;&#34;
+ *             .policyDocument("""
  * 		{
- * 			&#34;Statement&#34;: [{
- * 				&#34;Action&#34;: [&#34;oss:*&#34;],
- * 				&#34;Effect&#34;: &#34;Allow&#34;,
- * 				&#34;Resource&#34;: [&#34;acs:oss:*:*:*&#34;]
+ * 			"Statement": [{
+ * 				"Action": ["oss:*"],
+ * 				"Effect": "Allow",
+ * 				"Resource": ["acs:oss:*:*:*"]
  * 			}],
- * 			&#34;Version&#34;: &#34;1&#34;
+ * 			"Version": "1"
  * 		}
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,17 +49,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Activation(&#34;example&#34;, ActivationArgs.builder()        
- *             .description(&#34;terraform-example&#34;)
+ *         var example = new Activation("example", ActivationArgs.builder()        
+ *             .description("terraform-example")
  *             .instanceCount(10)
- *             .instanceName(&#34;terraform-example&#34;)
- *             .ipAddressRange(&#34;0.0.0.0/0&#34;)
+ *             .instanceName("terraform-example")
+ *             .ipAddressRange("0.0.0.0/0")
  *             .timeToLiveInHours(4)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

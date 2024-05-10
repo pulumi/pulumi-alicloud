@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,39 +58,40 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
- *             .status(&#34;CreateSuccess&#34;)
+ *             .status("CreateSuccess")
  *             .build());
  * 
- *         var defaultAggregator = new Aggregator(&#34;defaultAggregator&#34;, AggregatorArgs.builder()        
+ *         var defaultAggregator = new Aggregator("defaultAggregator", AggregatorArgs.builder()        
  *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()
  *                 .accountId(default_.accounts()[0].accountId())
  *                 .accountName(default_.accounts()[0].displayName())
- *                 .accountType(&#34;ResourceDirectory&#34;)
+ *                 .accountType("ResourceDirectory")
  *                 .build())
  *             .aggregatorName(name)
  *             .description(name)
- *             .aggregatorType(&#34;CUSTOM&#34;)
+ *             .aggregatorType("CUSTOM")
  *             .build());
  * 
- *         var defaultAggregateConfigRule = new AggregateConfigRule(&#34;defaultAggregateConfigRule&#34;, AggregateConfigRuleArgs.builder()        
- *             .aggregateConfigRuleName(&#34;contains-tag&#34;)
+ *         var defaultAggregateConfigRule = new AggregateConfigRule("defaultAggregateConfigRule", AggregateConfigRuleArgs.builder()        
+ *             .aggregateConfigRuleName("contains-tag")
  *             .aggregatorId(defaultAggregator.id())
- *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
- *             .sourceOwner(&#34;ALIYUN&#34;)
- *             .sourceIdentifier(&#34;contains-tag&#34;)
+ *             .configRuleTriggerTypes("ConfigurationItemChangeNotification")
+ *             .sourceOwner("ALIYUN")
+ *             .sourceIdentifier("contains-tag")
  *             .riskLevel(1)
- *             .resourceTypesScopes(&#34;ACS::ECS::Instance&#34;)
+ *             .resourceTypesScopes("ACS::ECS::Instance")
  *             .inputParameters(Map.ofEntries(
- *                 Map.entry(&#34;key&#34;, &#34;example&#34;),
- *                 Map.entry(&#34;value&#34;, &#34;example&#34;)
+ *                 Map.entry("key", "example"),
+ *                 Map.entry("value", "example")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

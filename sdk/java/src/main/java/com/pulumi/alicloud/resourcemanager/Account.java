@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,23 +55,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var displayName = config.get(&#34;displayName&#34;).orElse(&#34;EAccount&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var displayName = config.get("displayName").orElse("EAccount");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
  *         final var example = ResourcemanagerFunctions.getFolders();
  * 
- *         var exampleAccount = new Account(&#34;exampleAccount&#34;, AccountArgs.builder()        
- *             .displayName(String.format(&#34;%s-%s&#34;, displayName,default_.result()))
- *             .folderId(example.applyValue(getFoldersResult -&gt; getFoldersResult.ids()[0]))
+ *         var exampleAccount = new Account("exampleAccount", AccountArgs.builder()        
+ *             .displayName(String.format("%s-%s", displayName,default_.result()))
+ *             .folderId(example.applyValue(getFoldersResult -> getFoldersResult.ids()[0]))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Deleting `alicloud.resourcemanager.Account` or removing it from your configuration

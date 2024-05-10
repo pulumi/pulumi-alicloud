@@ -35,7 +35,8 @@ public final class CassandraFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -57,13 +58,14 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CassandraFunctions.getBackupPlans(GetBackupPlansArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
+     *             .clusterId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCassandraBackupPlanId&#34;, example.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("firstCassandraBackupPlanId", example.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -82,7 +84,8 @@ public final class CassandraFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -104,13 +107,14 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CassandraFunctions.getBackupPlans(GetBackupPlansArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
+     *             .clusterId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCassandraBackupPlanId&#34;, example.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("firstCassandraBackupPlanId", example.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -129,7 +133,8 @@ public final class CassandraFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -151,13 +156,14 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CassandraFunctions.getBackupPlans(GetBackupPlansArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
+     *             .clusterId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCassandraBackupPlanId&#34;, example.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("firstCassandraBackupPlanId", example.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -176,7 +182,8 @@ public final class CassandraFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -198,13 +205,14 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CassandraFunctions.getBackupPlans(GetBackupPlansArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
+     *             .clusterId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCassandraBackupPlanId&#34;, example.applyValue(getBackupPlansResult -&gt; getBackupPlansResult.plans()[0].id()));
+     *         ctx.export("firstCassandraBackupPlanId", example.applyValue(getBackupPlansResult -> getBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -222,7 +230,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -244,12 +253,13 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cassandra = CassandraFunctions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(&#34;tf_testAccCassandra&#34;)
+     *             .nameRegex("tf_testAccCassandra")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -267,7 +277,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -289,12 +300,13 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cassandra = CassandraFunctions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(&#34;tf_testAccCassandra&#34;)
+     *             .nameRegex("tf_testAccCassandra")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -312,7 +324,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -334,12 +347,13 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cassandra = CassandraFunctions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(&#34;tf_testAccCassandra&#34;)
+     *             .nameRegex("tf_testAccCassandra")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -357,7 +371,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -379,12 +394,13 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cassandra = CassandraFunctions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(&#34;tf_testAccCassandra&#34;)
+     *             .nameRegex("tf_testAccCassandra")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -402,7 +418,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -424,12 +441,13 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cassandra = CassandraFunctions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(&#34;tf_testAccCassandra&#34;)
+     *             .nameRegex("tf_testAccCassandra")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -447,7 +465,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -469,12 +488,13 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cassandra = CassandraFunctions.getClusters(GetClustersArgs.builder()
-     *             .nameRegex(&#34;tf_testAccCassandra&#34;)
+     *             .nameRegex("tf_testAccCassandra")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -492,7 +512,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -514,13 +535,14 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cassandra = CassandraFunctions.getDataCenters(GetDataCentersArgs.builder()
-     *             .nameRegex(&#34;tf_testAccCassandra_dc&#34;)
-     *             .clusterId(&#34;cds-xxxxx&#34;)
+     *             .nameRegex("tf_testAccCassandra_dc")
+     *             .clusterId("cds-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -538,7 +560,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -560,13 +583,14 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cassandra = CassandraFunctions.getDataCenters(GetDataCentersArgs.builder()
-     *             .nameRegex(&#34;tf_testAccCassandra_dc&#34;)
-     *             .clusterId(&#34;cds-xxxxx&#34;)
+     *             .nameRegex("tf_testAccCassandra_dc")
+     *             .clusterId("cds-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -584,7 +608,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -606,13 +631,14 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cassandra = CassandraFunctions.getDataCenters(GetDataCentersArgs.builder()
-     *             .nameRegex(&#34;tf_testAccCassandra_dc&#34;)
-     *             .clusterId(&#34;cds-xxxxx&#34;)
+     *             .nameRegex("tf_testAccCassandra_dc")
+     *             .clusterId("cds-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -630,7 +656,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -652,13 +679,14 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cassandra = CassandraFunctions.getDataCenters(GetDataCentersArgs.builder()
-     *             .nameRegex(&#34;tf_testAccCassandra_dc&#34;)
-     *             .clusterId(&#34;cds-xxxxx&#34;)
+     *             .nameRegex("tf_testAccCassandra_dc")
+     *             .clusterId("cds-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -675,7 +703,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -702,13 +731,14 @@ public final class CassandraFunctions {
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
-     *         var cassandra = new Cluster(&#34;cassandra&#34;, ClusterArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -725,7 +755,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -752,13 +783,14 @@ public final class CassandraFunctions {
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
-     *         var cassandra = new Cluster(&#34;cassandra&#34;, ClusterArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -775,7 +807,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -802,13 +835,14 @@ public final class CassandraFunctions {
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
-     *         var cassandra = new Cluster(&#34;cassandra&#34;, ClusterArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -825,7 +859,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -852,13 +887,14 @@ public final class CassandraFunctions {
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
-     *         var cassandra = new Cluster(&#34;cassandra&#34;, ClusterArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -875,7 +911,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -902,13 +939,14 @@ public final class CassandraFunctions {
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
-     *         var cassandra = new Cluster(&#34;cassandra&#34;, ClusterArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -925,7 +963,8 @@ public final class CassandraFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -952,13 +991,14 @@ public final class CassandraFunctions {
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
-     *         var cassandra = new Cluster(&#34;cassandra&#34;, ClusterArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

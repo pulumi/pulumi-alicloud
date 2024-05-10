@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,28 +54,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Stack(&#34;example&#34;, StackArgs.builder()        
- *             .stackName(&#34;tf-testaccstack&#34;)
- *             .templateBody(&#34;&#34;&#34;
+ *         var example = new Stack("example", StackArgs.builder()        
+ *             .stackName("tf-testaccstack")
+ *             .templateBody("""
  *     {
- *     	&#34;ROSTemplateFormatVersion&#34;: &#34;2015-09-01&#34;
+ *     	"ROSTemplateFormatVersion": "2015-09-01"
  *     }
- *             &#34;&#34;&#34;)
- *             .stackPolicyBody(&#34;&#34;&#34;
+ *             """)
+ *             .stackPolicyBody("""
  *     {
- *     	&#34;Statement&#34;: [{
- *     		&#34;Action&#34;: &#34;Update:Delete&#34;,
- *     		&#34;Resource&#34;: &#34;*&#34;,
- *     		&#34;Effect&#34;: &#34;Allow&#34;,
- *     		&#34;Principal&#34;: &#34;*&#34;
+ *     	"Statement": [{
+ *     		"Action": "Update:Delete",
+ *     		"Resource": "*",
+ *     		"Effect": "Allow",
+ *     		"Principal": "*"
  *     	}]
  *     }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

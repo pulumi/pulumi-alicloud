@@ -42,7 +42,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -64,13 +65,14 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
-     *             .instanceImageType(&#34;system&#34;)
+     *             .instanceImageType("system")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, ids.images()[0].id());
+     *         ctx.export("simpleApplicationServerImageId1", ids.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -95,7 +97,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -117,13 +120,14 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
-     *             .instanceImageType(&#34;system&#34;)
+     *             .instanceImageType("system")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, ids.images()[0].id());
+     *         ctx.export("simpleApplicationServerImageId1", ids.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -148,7 +152,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -170,13 +175,14 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
-     *             .instanceImageType(&#34;system&#34;)
+     *             .instanceImageType("system")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, ids.images()[0].id());
+     *         ctx.export("simpleApplicationServerImageId1", ids.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -201,7 +207,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -223,13 +230,14 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
-     *             .instanceImageType(&#34;system&#34;)
+     *             .instanceImageType("system")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, ids.images()[0].id());
+     *         ctx.export("simpleApplicationServerImageId1", ids.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -254,7 +262,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -276,13 +285,14 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
-     *             .instanceImageType(&#34;system&#34;)
+     *             .instanceImageType("system")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, ids.images()[0].id());
+     *         ctx.export("simpleApplicationServerImageId1", ids.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -307,7 +317,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -329,13 +340,14 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instanceImageType = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
-     *             .instanceImageType(&#34;system&#34;)
+     *             .instanceImageType("system")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerImageId1&#34;, ids.images()[0].id());
+     *         ctx.export("simpleApplicationServerImageId1", ids.images()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -360,7 +372,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -382,18 +395,19 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -410,7 +424,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -432,18 +447,19 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -460,7 +476,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -482,18 +499,19 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -510,7 +528,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -532,18 +551,19 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -560,7 +580,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -582,18 +603,19 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -610,7 +632,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -632,18 +655,19 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("simpleApplicationServerInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -660,7 +684,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -682,18 +707,19 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerCustomImageId1&#34;, ids.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId1", ids.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
-     *             .nameRegex(&#34;^my-CustomImage&#34;)
+     *             .nameRegex("^my-CustomImage")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerCustomImageId2&#34;, nameRegex.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -710,7 +736,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -732,18 +759,19 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerCustomImageId1&#34;, ids.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId1", ids.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
-     *             .nameRegex(&#34;^my-CustomImage&#34;)
+     *             .nameRegex("^my-CustomImage")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerCustomImageId2&#34;, nameRegex.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -760,7 +788,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -782,18 +811,19 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerCustomImageId1&#34;, ids.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId1", ids.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
-     *             .nameRegex(&#34;^my-CustomImage&#34;)
+     *             .nameRegex("^my-CustomImage")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerCustomImageId2&#34;, nameRegex.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -810,7 +840,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -832,18 +863,19 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerCustomImageId1&#34;, ids.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId1", ids.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
-     *             .nameRegex(&#34;^my-CustomImage&#34;)
+     *             .nameRegex("^my-CustomImage")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerCustomImageId2&#34;, nameRegex.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -860,7 +892,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -882,18 +915,19 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerCustomImageId1&#34;, ids.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId1", ids.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
-     *             .nameRegex(&#34;^my-CustomImage&#34;)
+     *             .nameRegex("^my-CustomImage")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerCustomImageId2&#34;, nameRegex.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -910,7 +944,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -932,18 +967,19 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerCustomImageId1&#34;, ids.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId1", ids.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerCustomImages(GetServerCustomImagesArgs.builder()
-     *             .nameRegex(&#34;^my-CustomImage&#34;)
+     *             .nameRegex("^my-CustomImage")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerCustomImageId2&#34;, nameRegex.applyValue(getServerCustomImagesResult -&gt; getServerCustomImagesResult.images()[0].id()));
+     *         ctx.export("simpleApplicationServerCustomImageId2", nameRegex.applyValue(getServerCustomImagesResult -> getServerCustomImagesResult.images()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -960,7 +996,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -982,33 +1019,34 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId1&#34;, ids.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId1", ids.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .nameRegex(&#34;^my-Disk&#34;)
+     *             .nameRegex("^my-Disk")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId2&#34;, nameRegex.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .status(&#34;In_use&#34;)
+     *             .status("In_use")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId3&#34;, status.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId3", status.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId4&#34;, instanceId.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId4", instanceId.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .diskType(&#34;System&#34;)
+     *             .diskType("System")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId5&#34;, diskType.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId5", diskType.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1025,7 +1063,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1047,33 +1086,34 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId1&#34;, ids.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId1", ids.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .nameRegex(&#34;^my-Disk&#34;)
+     *             .nameRegex("^my-Disk")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId2&#34;, nameRegex.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .status(&#34;In_use&#34;)
+     *             .status("In_use")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId3&#34;, status.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId3", status.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId4&#34;, instanceId.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId4", instanceId.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .diskType(&#34;System&#34;)
+     *             .diskType("System")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId5&#34;, diskType.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId5", diskType.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1090,7 +1130,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1112,33 +1153,34 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId1&#34;, ids.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId1", ids.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .nameRegex(&#34;^my-Disk&#34;)
+     *             .nameRegex("^my-Disk")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId2&#34;, nameRegex.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .status(&#34;In_use&#34;)
+     *             .status("In_use")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId3&#34;, status.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId3", status.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId4&#34;, instanceId.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId4", instanceId.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .diskType(&#34;System&#34;)
+     *             .diskType("System")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId5&#34;, diskType.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId5", diskType.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1155,7 +1197,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1177,33 +1220,34 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId1&#34;, ids.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId1", ids.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .nameRegex(&#34;^my-Disk&#34;)
+     *             .nameRegex("^my-Disk")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId2&#34;, nameRegex.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .status(&#34;In_use&#34;)
+     *             .status("In_use")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId3&#34;, status.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId3", status.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId4&#34;, instanceId.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId4", instanceId.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .diskType(&#34;System&#34;)
+     *             .diskType("System")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId5&#34;, diskType.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId5", diskType.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1220,7 +1264,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1242,33 +1287,34 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId1&#34;, ids.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId1", ids.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .nameRegex(&#34;^my-Disk&#34;)
+     *             .nameRegex("^my-Disk")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId2&#34;, nameRegex.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .status(&#34;In_use&#34;)
+     *             .status("In_use")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId3&#34;, status.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId3", status.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId4&#34;, instanceId.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId4", instanceId.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .diskType(&#34;System&#34;)
+     *             .diskType("System")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId5&#34;, diskType.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId5", diskType.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1285,7 +1331,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1307,33 +1354,34 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId1&#34;, ids.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId1", ids.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .nameRegex(&#34;^my-Disk&#34;)
+     *             .nameRegex("^my-Disk")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId2&#34;, nameRegex.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId2", nameRegex.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var status = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .status(&#34;In_use&#34;)
+     *             .status("In_use")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId3&#34;, status.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId3", status.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var instanceId = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId4&#34;, instanceId.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId4", instanceId.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *         final var diskType = SimpleapplicationserverFunctions.getServerDisks(GetServerDisksArgs.builder()
-     *             .diskType(&#34;System&#34;)
+     *             .diskType("System")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerDiskId5&#34;, diskType.applyValue(getServerDisksResult -&gt; getServerDisksResult.disks()[0].id()));
+     *         ctx.export("simpleApplicationServerDiskId5", diskType.applyValue(getServerDisksResult -> getServerDisksResult.disks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1350,7 +1398,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1372,16 +1421,17 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerFirewallRules(GetServerFirewallRulesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerFirewallRuleId1&#34;, ids.applyValue(getServerFirewallRulesResult -&gt; getServerFirewallRulesResult.rules()[0].id()));
+     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.applyValue(getServerFirewallRulesResult -> getServerFirewallRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1398,7 +1448,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1420,16 +1471,17 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerFirewallRules(GetServerFirewallRulesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerFirewallRuleId1&#34;, ids.applyValue(getServerFirewallRulesResult -&gt; getServerFirewallRulesResult.rules()[0].id()));
+     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.applyValue(getServerFirewallRulesResult -> getServerFirewallRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1446,7 +1498,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1468,16 +1521,17 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerFirewallRules(GetServerFirewallRulesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerFirewallRuleId1&#34;, ids.applyValue(getServerFirewallRulesResult -&gt; getServerFirewallRulesResult.rules()[0].id()));
+     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.applyValue(getServerFirewallRulesResult -> getServerFirewallRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1494,7 +1548,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1516,16 +1571,17 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerFirewallRules(GetServerFirewallRulesArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerFirewallRuleId1&#34;, ids.applyValue(getServerFirewallRulesResult -&gt; getServerFirewallRulesResult.rules()[0].id()));
+     *         ctx.export("simpleApplicationServerFirewallRuleId1", ids.applyValue(getServerFirewallRulesResult -> getServerFirewallRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1542,7 +1598,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1571,10 +1628,11 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, ids.plans()[0].id());
+     *         ctx.export("simpleApplicationServerPlanId1", ids.plans()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1591,7 +1649,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1620,10 +1679,11 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, ids.plans()[0].id());
+     *         ctx.export("simpleApplicationServerPlanId1", ids.plans()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1640,7 +1700,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1669,10 +1730,11 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, ids.plans()[0].id());
+     *         ctx.export("simpleApplicationServerPlanId1", ids.plans()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1689,7 +1751,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1718,10 +1781,11 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, ids.plans()[0].id());
+     *         ctx.export("simpleApplicationServerPlanId1", ids.plans()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1738,7 +1802,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1767,10 +1832,11 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, ids.plans()[0].id());
+     *         ctx.export("simpleApplicationServerPlanId1", ids.plans()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1787,7 +1853,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1816,10 +1883,11 @@ public final class SimpleapplicationserverFunctions {
      *             .core(2)
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerPlanId1&#34;, ids.plans()[0].id());
+     *         ctx.export("simpleApplicationServerPlanId1", ids.plans()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1836,7 +1904,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1858,30 +1927,31 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId1&#34;, ids.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId1", ids.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId2&#34;, nameRegex.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .diskId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .diskId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId3&#34;, diskIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .instanceId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId4&#34;, instanceIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1898,7 +1968,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1920,30 +1991,31 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId1&#34;, ids.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId1", ids.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId2&#34;, nameRegex.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .diskId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .diskId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId3&#34;, diskIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .instanceId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId4&#34;, instanceIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1960,7 +2032,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1982,30 +2055,31 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId1&#34;, ids.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId1", ids.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId2&#34;, nameRegex.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .diskId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .diskId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId3&#34;, diskIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .instanceId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId4&#34;, instanceIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2022,7 +2096,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2044,30 +2119,31 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId1&#34;, ids.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId1", ids.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId2&#34;, nameRegex.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .diskId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .diskId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId3&#34;, diskIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .instanceId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId4&#34;, instanceIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2084,7 +2160,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2106,30 +2183,31 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId1&#34;, ids.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId1", ids.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId2&#34;, nameRegex.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .diskId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .diskId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId3&#34;, diskIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .instanceId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId4&#34;, instanceIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2146,7 +2224,8 @@ public final class SimpleapplicationserverFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2168,30 +2247,31 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId1&#34;, ids.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId1", ids.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId2&#34;, nameRegex.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId2", nameRegex.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var diskIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .diskId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .diskId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId3&#34;, diskIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId3", diskIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *         final var instanceIdConf = SimpleapplicationserverFunctions.getServerSnapshots(GetServerSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .instanceId(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;simpleApplicationServerSnapshotId4&#34;, instanceIdConf.applyValue(getServerSnapshotsResult -&gt; getServerSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("simpleApplicationServerSnapshotId4", instanceIdConf.applyValue(getServerSnapshotsResult -> getServerSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

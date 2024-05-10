@@ -24,7 +24,8 @@ public final class GraphdatabaseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -46,25 +47,26 @@ public final class GraphdatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId1&#34;, ids.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId1", ids.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .ids("example_id")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId2&#34;, status.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId2", status.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .dbInstanceDescription("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId3&#34;, description.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId3", description.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -81,7 +83,8 @@ public final class GraphdatabaseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -103,25 +106,26 @@ public final class GraphdatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId1&#34;, ids.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId1", ids.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .ids("example_id")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId2&#34;, status.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId2", status.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .dbInstanceDescription("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId3&#34;, description.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId3", description.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -138,7 +142,8 @@ public final class GraphdatabaseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -160,25 +165,26 @@ public final class GraphdatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId1&#34;, ids.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId1", ids.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .ids("example_id")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId2&#34;, status.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId2", status.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .dbInstanceDescription("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId3&#34;, description.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId3", description.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -195,7 +201,8 @@ public final class GraphdatabaseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -217,25 +224,26 @@ public final class GraphdatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId1&#34;, ids.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId1", ids.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .ids("example_id")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId2&#34;, status.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId2", status.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .dbInstanceDescription("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId3&#34;, description.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId3", description.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -252,7 +260,8 @@ public final class GraphdatabaseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -274,25 +283,26 @@ public final class GraphdatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId1&#34;, ids.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId1", ids.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .ids("example_id")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId2&#34;, status.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId2", status.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .dbInstanceDescription("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId3&#34;, description.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId3", description.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -309,7 +319,8 @@ public final class GraphdatabaseFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -331,25 +342,26 @@ public final class GraphdatabaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId1&#34;, ids.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId1", ids.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *         final var status = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .ids("example_id")
+     *             .status("Running")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId2&#34;, status.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId2", status.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *         final var description = GraphdatabaseFunctions.getDbInstances(GetDbInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .dbInstanceDescription(&#34;example_value&#34;)
+     *             .ids("example_id")
+     *             .dbInstanceDescription("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;graphDatabaseDbInstanceId3&#34;, description.applyValue(getDbInstancesResult -&gt; getDbInstancesResult.instances()[0].id()));
+     *         ctx.export("graphDatabaseDbInstanceId3", description.applyValue(getDbInstancesResult -> getDbInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

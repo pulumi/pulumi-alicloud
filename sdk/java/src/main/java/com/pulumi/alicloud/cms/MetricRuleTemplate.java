@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,20 +55,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var example = new MetricRuleTemplate(&#34;example&#34;, MetricRuleTemplateArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var example = new MetricRuleTemplate("example", MetricRuleTemplateArgs.builder()        
  *             .metricRuleTemplateName(name)
  *             .alertTemplates(MetricRuleTemplateAlertTemplateArgs.builder()
- *                 .category(&#34;ecs&#34;)
- *                 .metricName(&#34;cpu_total&#34;)
- *                 .namespace(&#34;acs_ecs_dashboard&#34;)
- *                 .ruleName(&#34;tf_example&#34;)
+ *                 .category("ecs")
+ *                 .metricName("cpu_total")
+ *                 .namespace("acs_ecs_dashboard")
+ *                 .ruleName("tf_example")
  *                 .escalations(MetricRuleTemplateAlertTemplateEscalationsArgs.builder()
  *                     .critical(MetricRuleTemplateAlertTemplateEscalationsCriticalArgs.builder()
- *                         .comparisonOperator(&#34;GreaterThanThreshold&#34;)
- *                         .statistics(&#34;Average&#34;)
- *                         .threshold(&#34;90&#34;)
- *                         .times(&#34;3&#34;)
+ *                         .comparisonOperator("GreaterThanThreshold")
+ *                         .statistics("Average")
+ *                         .threshold("90")
+ *                         .times("3")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -75,7 +76,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,27 +48,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new CommonBandwithPackage(&#34;default&#34;, CommonBandwithPackageArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new CommonBandwithPackage("default", CommonBandwithPackageArgs.builder()        
  *             .bandwidth(3)
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .internetChargeType("PayByBandwidth")
  *             .build());
  * 
- *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
- *             .bandwidth(&#34;3&#34;)
- *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+ *             .bandwidth("3")
+ *             .internetChargeType("PayByTraffic")
  *             .build());
  * 
- *         var defaultCommonBandwithPackageAttachment = new CommonBandwithPackageAttachment(&#34;defaultCommonBandwithPackageAttachment&#34;, CommonBandwithPackageAttachmentArgs.builder()        
+ *         var defaultCommonBandwithPackageAttachment = new CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment", CommonBandwithPackageAttachmentArgs.builder()        
  *             .bandwidthPackageId(default_.id())
  *             .instanceId(defaultEipAddress.id())
- *             .bandwidthPackageBandwidth(&#34;2&#34;)
- *             .ipType(&#34;EIP&#34;)
+ *             .bandwidthPackageBandwidth("2")
+ *             .ipType("EIP")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

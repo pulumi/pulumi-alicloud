@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,21 +56,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;testacc&#34;);
+ *         final var name = config.get("name").orElse("testacc");
  *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
- *             .fileSystemType(&#34;extreme&#34;)
+ *             .fileSystemType("extreme")
  *             .build());
  * 
- *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
- *             .fileSystemType(&#34;extreme&#34;)
- *             .protocolType(&#34;NFS&#34;)
+ *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()        
+ *             .fileSystemType("extreme")
+ *             .protocolType("NFS")
  *             .zoneId(default_.zones()[0].zoneId())
- *             .storageType(&#34;standard&#34;)
+ *             .storageType("standard")
  *             .description(name)
  *             .capacity(100)
  *             .build());
  * 
- *         var defaultSnapshot = new Snapshot(&#34;defaultSnapshot&#34;, SnapshotArgs.builder()        
+ *         var defaultSnapshot = new Snapshot("defaultSnapshot", SnapshotArgs.builder()        
  *             .fileSystemId(defaultFileSystem.id())
  *             .description(name)
  *             .retentionDays(20)
@@ -78,7 +79,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

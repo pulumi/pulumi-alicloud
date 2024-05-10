@@ -186,7 +186,8 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -209,14 +210,15 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
      *     public static void stack(Context ctx) {
      *         final var taggedInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
-     *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
      *             ))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -226,7 +228,8 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     /**
      * @return A map of tags assigned to the ECS instances. It must be in the format:
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -249,14 +252,15 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
      *     public static void stack(Context ctx) {
      *         final var taggedInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
-     *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
      *             ))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -465,7 +469,8 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         /**
          * @param tags A map of tags assigned to the ECS instances. It must be in the format:
          * &lt;!--Start PulumiCodeChooser --&gt;
-         * ```java
+         * <pre>
+         * {@code
          * package generated_program;
          * 
          * import com.pulumi.Context;
@@ -488,14 +493,15 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
          *     public static void stack(Context ctx) {
          *         final var taggedInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
          *             .tags(Map.ofEntries(
-         *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
-         *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+         *                 Map.entry("tagKey1", "tagValue1"),
+         *                 Map.entry("tagKey2", "tagValue2")
          *             ))
          *             .build());
          * 
          *     }
          * }
-         * ```
+         * }
+         * </pre>
          * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder

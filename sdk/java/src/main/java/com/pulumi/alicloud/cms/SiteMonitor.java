@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,37 +51,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new SiteMonitor(&#34;basic&#34;, SiteMonitorArgs.builder()        
- *             .address(&#34;http://www.alibabacloud.com&#34;)
- *             .taskName(&#34;tf-example&#34;)
- *             .taskType(&#34;HTTP&#34;)
+ *         var basic = new SiteMonitor("basic", SiteMonitorArgs.builder()        
+ *             .address("http://www.alibabacloud.com")
+ *             .taskName("tf-example")
+ *             .taskType("HTTP")
  *             .interval(5)
  *             .ispCities(SiteMonitorIspCityArgs.builder()
- *                 .city(&#34;546&#34;)
- *                 .isp(&#34;465&#34;)
+ *                 .city("546")
+ *                 .isp("465")
  *                 .build())
- *             .optionsJson(&#34;&#34;&#34;
+ *             .optionsJson("""
  * {
- *     &#34;http_method&#34;: &#34;get&#34;,
- *     &#34;waitTime_after_completion&#34;: null,
- *     &#34;ipv6_task&#34;: false,
- *     &#34;diagnosis_ping&#34;: false,
- *     &#34;diagnosis_mtr&#34;: false,
- *     &#34;assertions&#34;: [
+ *     "http_method": "get",
+ *     "waitTime_after_completion": null,
+ *     "ipv6_task": false,
+ *     "diagnosis_ping": false,
+ *     "diagnosis_mtr": false,
+ *     "assertions": [
  *         {
- *             &#34;operator&#34;: &#34;lessThan&#34;,
- *             &#34;type&#34;: &#34;response_time&#34;,
- *             &#34;target&#34;: 1000
+ *             "operator": "lessThan",
+ *             "type": "response_time",
+ *             "target": 1000
  *         }
  *     ],
- *     &#34;time_out&#34;: 30000
+ *     "time_out": 30000
  * }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

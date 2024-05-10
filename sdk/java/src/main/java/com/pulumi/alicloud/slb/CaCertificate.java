@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * * using CA certificate content
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,9 +50,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new CaCertificate(&#34;foo&#34;, CaCertificateArgs.builder()        
- *             .caCertificateName(&#34;tf-testAccSlbCACertificate&#34;)
- *             .caCertificate(&#34;&#34;&#34;
+ *         var foo = new CaCertificate("foo", CaCertificateArgs.builder()        
+ *             .caCertificateName("tf-testAccSlbCACertificate")
+ *             .caCertificate("""
  * -----BEGIN CERTIFICATE-----
  * MIIDRjCCAq+gAwIBAgIJAJn3ox4K13PoMA0GCSqGSIb3DQEBBQUAMHYxCzAJBgNV
  * BAYTAkNOMQswCQYDVQQIEwJCSjELMAkGA1UEBxMCQkoxDDAKBgNVBAoTA0FMSTEP
@@ -71,12 +72,13 @@ import javax.annotation.Nullable;
  * cQzfhiiG7ASjiPakw5wXoycHt5GCvLG5htp2TKVzgv9QTliA3gtfv6oV4zRZx7X1
  * Ofi6hVgErtHaXJheuPVeW6eAW8mHBoEfvDAfU3y9waYrtUevSl07643bzKL6v+Qd
  * DUBTxOAvSYfXTtI90EAxEG/bJJyOm5LqoiA=
- * -----END CERTIFICATE-----            &#34;&#34;&#34;)
+ * -----END CERTIFICATE-----            """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * * using CA certificate file

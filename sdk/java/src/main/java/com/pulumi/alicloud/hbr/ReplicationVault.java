@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,29 +55,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var sourceRegion = config.get(&#34;sourceRegion&#34;).orElse(&#34;cn-hangzhou&#34;);
+ *         final var sourceRegion = config.get("sourceRegion").orElse("cn-hangzhou");
  *         final var default = HbrFunctions.getReplicationVaultRegions();
  * 
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultVault = new Vault(&#34;defaultVault&#34;, VaultArgs.builder()        
- *             .vaultName(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
+ *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()        
+ *             .vaultName(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
- *         var defaultReplicationVault = new ReplicationVault(&#34;defaultReplicationVault&#34;, ReplicationVaultArgs.builder()        
+ *         var defaultReplicationVault = new ReplicationVault("defaultReplicationVault", ReplicationVaultArgs.builder()        
  *             .replicationSourceRegionId(sourceRegion)
  *             .replicationSourceVaultId(defaultVault.id())
- *             .vaultName(&#34;terraform-example&#34;)
- *             .vaultStorageClass(&#34;STANDARD&#34;)
- *             .description(&#34;terraform-example&#34;)
+ *             .vaultName("terraform-example")
+ *             .vaultStorageClass("STANDARD")
+ *             .description("terraform-example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

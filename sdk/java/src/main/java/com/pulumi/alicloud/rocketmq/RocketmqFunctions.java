@@ -75,7 +75,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -99,22 +100,23 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceDatasourceName&#34;);
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         final var name = config.get("name").orElse("onsInstanceDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .name(name)
-     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .remark("default_ons_instance_remark")
      *             .build());
      * 
      *         final var instancesDs = RocketmqFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(default_.id())
      *             .nameRegex(default_.name())
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult).applyValue(instancesDs -&gt; instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].instanceId())));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult).applyValue(instancesDs -> instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceId())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -129,7 +131,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -153,22 +156,23 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceDatasourceName&#34;);
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         final var name = config.get("name").orElse("onsInstanceDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .name(name)
-     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .remark("default_ons_instance_remark")
      *             .build());
      * 
      *         final var instancesDs = RocketmqFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(default_.id())
      *             .nameRegex(default_.name())
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult).applyValue(instancesDs -&gt; instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].instanceId())));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult).applyValue(instancesDs -> instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceId())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -183,7 +187,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -207,22 +212,23 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceDatasourceName&#34;);
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         final var name = config.get("name").orElse("onsInstanceDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .name(name)
-     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .remark("default_ons_instance_remark")
      *             .build());
      * 
      *         final var instancesDs = RocketmqFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(default_.id())
      *             .nameRegex(default_.name())
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult).applyValue(instancesDs -&gt; instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].instanceId())));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult).applyValue(instancesDs -> instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceId())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -237,7 +243,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -261,22 +268,23 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceDatasourceName&#34;);
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         final var name = config.get("name").orElse("onsInstanceDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .name(name)
-     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .remark("default_ons_instance_remark")
      *             .build());
      * 
      *         final var instancesDs = RocketmqFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(default_.id())
      *             .nameRegex(default_.name())
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult).applyValue(instancesDs -&gt; instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].instanceId())));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult).applyValue(instancesDs -> instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceId())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -291,7 +299,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -315,22 +324,23 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceDatasourceName&#34;);
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         final var name = config.get("name").orElse("onsInstanceDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .name(name)
-     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .remark("default_ons_instance_remark")
      *             .build());
      * 
      *         final var instancesDs = RocketmqFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(default_.id())
      *             .nameRegex(default_.name())
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult).applyValue(instancesDs -&gt; instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].instanceId())));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult).applyValue(instancesDs -> instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceId())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -345,7 +355,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -369,22 +380,23 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceDatasourceName&#34;);
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         final var name = config.get("name").orElse("onsInstanceDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .name(name)
-     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .remark("default_ons_instance_remark")
      *             .build());
      * 
      *         final var instancesDs = RocketmqFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(default_.id())
      *             .nameRegex(default_.name())
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceId&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult).applyValue(instancesDs -&gt; instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].instanceId())));
+     *         ctx.export("firstInstanceId", instancesDs.applyValue(getInstancesResult -> getInstancesResult).applyValue(instancesDs -> instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].instanceId())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -401,7 +413,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -423,12 +436,13 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = RocketmqFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -445,7 +459,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -467,12 +482,13 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = RocketmqFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -489,7 +505,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -511,12 +528,13 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = RocketmqFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -533,7 +551,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -555,12 +574,13 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = RocketmqFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -577,7 +597,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -599,12 +620,13 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = RocketmqFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -621,7 +643,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -643,12 +666,13 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = RocketmqFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -663,7 +687,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -689,30 +714,31 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
-     *         final var topic = config.get(&#34;topic&#34;).orElse(&#34;onsTopicDatasourceName&#34;);
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         final var name = config.get("name").orElse("onsInstanceName");
+     *         final var topic = config.get("topic").orElse("onsTopicDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .instanceName(name)
-     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .remark("default_ons_instance_remark")
      *             .build());
      * 
-     *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
+     *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
      *             .topicName(topic)
      *             .instanceId(default_.id())
      *             .messageType(0)
-     *             .remark(&#34;dafault_ons_topic_remark&#34;)
+     *             .remark("dafault_ons_topic_remark")
      *             .build());
      * 
      *         final var topicsDs = RocketmqFunctions.getTopics(GetTopicsArgs.builder()
      *             .instanceId(defaultTopic.instanceId())
      *             .nameRegex(topic)
-     *             .outputFile(&#34;topics.txt&#34;)
+     *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicName&#34;, topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult).applyValue(topicsDs -&gt; topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].topicName())));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult).applyValue(topicsDs -> topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topicName())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -727,7 +753,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -753,30 +780,31 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
-     *         final var topic = config.get(&#34;topic&#34;).orElse(&#34;onsTopicDatasourceName&#34;);
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         final var name = config.get("name").orElse("onsInstanceName");
+     *         final var topic = config.get("topic").orElse("onsTopicDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .instanceName(name)
-     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .remark("default_ons_instance_remark")
      *             .build());
      * 
-     *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
+     *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
      *             .topicName(topic)
      *             .instanceId(default_.id())
      *             .messageType(0)
-     *             .remark(&#34;dafault_ons_topic_remark&#34;)
+     *             .remark("dafault_ons_topic_remark")
      *             .build());
      * 
      *         final var topicsDs = RocketmqFunctions.getTopics(GetTopicsArgs.builder()
      *             .instanceId(defaultTopic.instanceId())
      *             .nameRegex(topic)
-     *             .outputFile(&#34;topics.txt&#34;)
+     *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicName&#34;, topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult).applyValue(topicsDs -&gt; topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].topicName())));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult).applyValue(topicsDs -> topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topicName())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -791,7 +819,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -817,30 +846,31 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
-     *         final var topic = config.get(&#34;topic&#34;).orElse(&#34;onsTopicDatasourceName&#34;);
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         final var name = config.get("name").orElse("onsInstanceName");
+     *         final var topic = config.get("topic").orElse("onsTopicDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .instanceName(name)
-     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .remark("default_ons_instance_remark")
      *             .build());
      * 
-     *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
+     *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
      *             .topicName(topic)
      *             .instanceId(default_.id())
      *             .messageType(0)
-     *             .remark(&#34;dafault_ons_topic_remark&#34;)
+     *             .remark("dafault_ons_topic_remark")
      *             .build());
      * 
      *         final var topicsDs = RocketmqFunctions.getTopics(GetTopicsArgs.builder()
      *             .instanceId(defaultTopic.instanceId())
      *             .nameRegex(topic)
-     *             .outputFile(&#34;topics.txt&#34;)
+     *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicName&#34;, topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult).applyValue(topicsDs -&gt; topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].topicName())));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult).applyValue(topicsDs -> topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topicName())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -855,7 +885,8 @@ public final class RocketmqFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -881,30 +912,31 @@ public final class RocketmqFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;onsInstanceName&#34;);
-     *         final var topic = config.get(&#34;topic&#34;).orElse(&#34;onsTopicDatasourceName&#34;);
-     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *         final var name = config.get("name").orElse("onsInstanceName");
+     *         final var topic = config.get("topic").orElse("onsTopicDatasourceName");
+     *         var default_ = new Instance("default", InstanceArgs.builder()        
      *             .instanceName(name)
-     *             .remark(&#34;default_ons_instance_remark&#34;)
+     *             .remark("default_ons_instance_remark")
      *             .build());
      * 
-     *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
+     *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
      *             .topicName(topic)
      *             .instanceId(default_.id())
      *             .messageType(0)
-     *             .remark(&#34;dafault_ons_topic_remark&#34;)
+     *             .remark("dafault_ons_topic_remark")
      *             .build());
      * 
      *         final var topicsDs = RocketmqFunctions.getTopics(GetTopicsArgs.builder()
      *             .instanceId(defaultTopic.instanceId())
      *             .nameRegex(topic)
-     *             .outputFile(&#34;topics.txt&#34;)
+     *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicName&#34;, topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult).applyValue(topicsDs -&gt; topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].topicName())));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult).applyValue(topicsDs -> topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topicName())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

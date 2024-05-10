@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,23 +54,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
- *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;example-store&#34;)
+ *             .name("example-store")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -77,44 +78,45 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var exampleIngestion = new Ingestion(&#34;exampleIngestion&#34;, IngestionArgs.builder()        
+ *         var exampleIngestion = new Ingestion("exampleIngestion", IngestionArgs.builder()        
  *             .project(example.name())
  *             .logstore(exampleStore.name())
- *             .ingestionName(&#34;terraform-example&#34;)
- *             .displayName(&#34;terraform-example&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .interval(&#34;30m&#34;)
+ *             .ingestionName("terraform-example")
+ *             .displayName("terraform-example")
+ *             .description("terraform-example")
+ *             .interval("30m")
  *             .runImmediately(true)
- *             .timeZone(&#34;+0800&#34;)
- *             .source(&#34;&#34;&#34;
+ *             .timeZone("+0800")
+ *             .source("""
  *         {
- *           &#34;bucket&#34;: &#34;bucket_name&#34;,
- *           &#34;compressionCodec&#34;: &#34;none&#34;,
- *           &#34;encoding&#34;: &#34;UTF-8&#34;,
- *           &#34;endpoint&#34;: &#34;oss-cn-hangzhou-internal.aliyuncs.com&#34;,
- *           &#34;format&#34;: {
- *             &#34;escapeChar&#34;: &#34;\\&#34;,
- *             &#34;fieldDelimiter&#34;: &#34;,&#34;,
- *             &#34;fieldNames&#34;: [],
- *             &#34;firstRowAsHeader&#34;: true,
- *             &#34;maxLines&#34;: 1,
- *             &#34;quoteChar&#34;: &#34;\&#34;&#34;,
- *             &#34;skipLeadingRows&#34;: 0,
- *             &#34;timeField&#34;: &#34;&#34;,
- *             &#34;type&#34;: &#34;DelimitedText&#34;
+ *           "bucket": "bucket_name",
+ *           "compressionCodec": "none",
+ *           "encoding": "UTF-8",
+ *           "endpoint": "oss-cn-hangzhou-internal.aliyuncs.com",
+ *           "format": {
+ *             "escapeChar": "\\",
+ *             "fieldDelimiter": ",",
+ *             "fieldNames": [],
+ *             "firstRowAsHeader": true,
+ *             "maxLines": 1,
+ *             "quoteChar": "\"",
+ *             "skipLeadingRows": 0,
+ *             "timeField": "",
+ *             "type": "DelimitedText"
  *           },
- *           &#34;pattern&#34;: &#34;&#34;,
- *           &#34;prefix&#34;: &#34;test-prefix/&#34;,
- *           &#34;restoreObjectEnabled&#34;: false,
- *           &#34;roleARN&#34;: &#34;acs:ram::1049446484210612:role/aliyunlogimportossrole&#34;,
- *           &#34;type&#34;: &#34;AliyunOSS&#34;
+ *           "pattern": "",
+ *           "prefix": "test-prefix/",
+ *           "restoreObjectEnabled": false,
+ *           "roleARN": "acs:ram::1049446484210612:role/aliyunlogimportossrole",
+ *           "type": "AliyunOSS"
  *         }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

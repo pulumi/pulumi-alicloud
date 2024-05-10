@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,33 +56,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultyk84Hc = new Vault(&#34;defaultyk84Hc&#34;, VaultArgs.builder()        
- *             .vaultType(&#34;STANDARD&#34;)
- *             .vaultName(String.format(&#34;example-value-%s&#34;, default_.result()))
+ *         var defaultyk84Hc = new Vault("defaultyk84Hc", VaultArgs.builder()        
+ *             .vaultType("STANDARD")
+ *             .vaultName(String.format("example-value-%s", default_.result()))
  *             .build());
  * 
- *         var defaultoqWvHQ = new Policy(&#34;defaultoqWvHQ&#34;, PolicyArgs.builder()        
- *             .policyName(String.format(&#34;example-value-%s&#34;, default_.result()))
+ *         var defaultoqWvHQ = new Policy("defaultoqWvHQ", PolicyArgs.builder()        
+ *             .policyName(String.format("example-value-%s", default_.result()))
  *             .rules(PolicyRuleArgs.builder()
- *                 .ruleType(&#34;BACKUP&#34;)
- *                 .backupType(&#34;COMPLETE&#34;)
- *                 .schedule(&#34;I|1631685600|P1D&#34;)
- *                 .retention(&#34;7&#34;)
- *                 .archiveDays(&#34;0&#34;)
+ *                 .ruleType("BACKUP")
+ *                 .backupType("COMPLETE")
+ *                 .schedule("I|1631685600|P1D")
+ *                 .retention("7")
+ *                 .archiveDays("0")
  *                 .vaultId(defaultyk84Hc.id())
  *                 .build())
- *             .policyDescription(&#34;policy example&#34;)
+ *             .policyDescription("policy example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -48,7 +48,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -70,15 +71,16 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getAggregateCompliancePacks(GetAggregateCompliancePacksArgs.builder()
-     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
-     *             .ids(&#34;cp-152a626622af00bc****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .aggregatorId("ca-3a9b626622af001d****")
+     *             .ids("cp-152a626622af00bc****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigAggregateCompliancePackId&#34;, example.applyValue(getAggregateCompliancePacksResult -&gt; getAggregateCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigAggregateCompliancePackId", example.applyValue(getAggregateCompliancePacksResult -> getAggregateCompliancePacksResult.packs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -95,7 +97,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -117,15 +120,16 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getAggregateCompliancePacks(GetAggregateCompliancePacksArgs.builder()
-     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
-     *             .ids(&#34;cp-152a626622af00bc****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .aggregatorId("ca-3a9b626622af001d****")
+     *             .ids("cp-152a626622af00bc****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigAggregateCompliancePackId&#34;, example.applyValue(getAggregateCompliancePacksResult -&gt; getAggregateCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigAggregateCompliancePackId", example.applyValue(getAggregateCompliancePacksResult -> getAggregateCompliancePacksResult.packs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -142,7 +146,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -164,15 +169,16 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getAggregateCompliancePacks(GetAggregateCompliancePacksArgs.builder()
-     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
-     *             .ids(&#34;cp-152a626622af00bc****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .aggregatorId("ca-3a9b626622af001d****")
+     *             .ids("cp-152a626622af00bc****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigAggregateCompliancePackId&#34;, example.applyValue(getAggregateCompliancePacksResult -&gt; getAggregateCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigAggregateCompliancePackId", example.applyValue(getAggregateCompliancePacksResult -> getAggregateCompliancePacksResult.packs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -189,7 +195,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -211,15 +218,16 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getAggregateCompliancePacks(GetAggregateCompliancePacksArgs.builder()
-     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
-     *             .ids(&#34;cp-152a626622af00bc****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .aggregatorId("ca-3a9b626622af001d****")
+     *             .ids("cp-152a626622af00bc****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigAggregateCompliancePackId&#34;, example.applyValue(getAggregateCompliancePacksResult -&gt; getAggregateCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigAggregateCompliancePackId", example.applyValue(getAggregateCompliancePacksResult -> getAggregateCompliancePacksResult.packs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -236,7 +244,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -258,15 +267,16 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getAggregateConfigRules(GetAggregateConfigRulesArgs.builder()
-     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
-     *             .ids(&#34;cr-5154626622af0034****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .aggregatorId("ca-3a9b626622af001d****")
+     *             .ids("cr-5154626622af0034****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigAggregateConfigRuleId&#34;, example.applyValue(getAggregateConfigRulesResult -&gt; getAggregateConfigRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigAggregateConfigRuleId", example.applyValue(getAggregateConfigRulesResult -> getAggregateConfigRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -283,7 +293,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -305,15 +316,16 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getAggregateConfigRules(GetAggregateConfigRulesArgs.builder()
-     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
-     *             .ids(&#34;cr-5154626622af0034****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .aggregatorId("ca-3a9b626622af001d****")
+     *             .ids("cr-5154626622af0034****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigAggregateConfigRuleId&#34;, example.applyValue(getAggregateConfigRulesResult -&gt; getAggregateConfigRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigAggregateConfigRuleId", example.applyValue(getAggregateConfigRulesResult -> getAggregateConfigRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -330,7 +342,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -352,15 +365,16 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getAggregateConfigRules(GetAggregateConfigRulesArgs.builder()
-     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
-     *             .ids(&#34;cr-5154626622af0034****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .aggregatorId("ca-3a9b626622af001d****")
+     *             .ids("cr-5154626622af0034****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigAggregateConfigRuleId&#34;, example.applyValue(getAggregateConfigRulesResult -&gt; getAggregateConfigRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigAggregateConfigRuleId", example.applyValue(getAggregateConfigRulesResult -> getAggregateConfigRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -377,7 +391,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -399,15 +414,16 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getAggregateConfigRules(GetAggregateConfigRulesArgs.builder()
-     *             .aggregatorId(&#34;ca-3a9b626622af001d****&#34;)
-     *             .ids(&#34;cr-5154626622af0034****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .aggregatorId("ca-3a9b626622af001d****")
+     *             .ids("cr-5154626622af0034****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigAggregateConfigRuleId&#34;, example.applyValue(getAggregateConfigRulesResult -&gt; getAggregateConfigRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigAggregateConfigRuleId", example.applyValue(getAggregateConfigRulesResult -> getAggregateConfigRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -424,7 +440,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -446,16 +463,17 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CfgFunctions.getAggregateDeliveries(GetAggregateDeliveriesArgs.builder()
-     *             .aggregatorId(&#34;example_value&#34;)
+     *             .aggregatorId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;configAggregateDeliveryId1&#34;, ids.applyValue(getAggregateDeliveriesResult -&gt; getAggregateDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configAggregateDeliveryId1", ids.applyValue(getAggregateDeliveriesResult -> getAggregateDeliveriesResult.deliveries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -472,7 +490,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -494,16 +513,17 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CfgFunctions.getAggregateDeliveries(GetAggregateDeliveriesArgs.builder()
-     *             .aggregatorId(&#34;example_value&#34;)
+     *             .aggregatorId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;configAggregateDeliveryId1&#34;, ids.applyValue(getAggregateDeliveriesResult -&gt; getAggregateDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configAggregateDeliveryId1", ids.applyValue(getAggregateDeliveriesResult -> getAggregateDeliveriesResult.deliveries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -520,7 +540,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -542,16 +563,17 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CfgFunctions.getAggregateDeliveries(GetAggregateDeliveriesArgs.builder()
-     *             .aggregatorId(&#34;example_value&#34;)
+     *             .aggregatorId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;configAggregateDeliveryId1&#34;, ids.applyValue(getAggregateDeliveriesResult -&gt; getAggregateDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configAggregateDeliveryId1", ids.applyValue(getAggregateDeliveriesResult -> getAggregateDeliveriesResult.deliveries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -568,7 +590,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -590,16 +613,17 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CfgFunctions.getAggregateDeliveries(GetAggregateDeliveriesArgs.builder()
-     *             .aggregatorId(&#34;example_value&#34;)
+     *             .aggregatorId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;configAggregateDeliveryId1&#34;, ids.applyValue(getAggregateDeliveriesResult -&gt; getAggregateDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configAggregateDeliveryId1", ids.applyValue(getAggregateDeliveriesResult -> getAggregateDeliveriesResult.deliveries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -616,7 +640,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -638,14 +663,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getAggregators(GetAggregatorsArgs.builder()
-     *             .ids(&#34;ca-3ce2626622af0005****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("ca-3ce2626622af0005****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigAggregatorId&#34;, example.applyValue(getAggregatorsResult -&gt; getAggregatorsResult.aggregators()[0].id()));
+     *         ctx.export("firstConfigAggregatorId", example.applyValue(getAggregatorsResult -> getAggregatorsResult.aggregators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -662,7 +688,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -684,14 +711,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getAggregators(GetAggregatorsArgs.builder()
-     *             .ids(&#34;ca-3ce2626622af0005****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("ca-3ce2626622af0005****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigAggregatorId&#34;, example.applyValue(getAggregatorsResult -&gt; getAggregatorsResult.aggregators()[0].id()));
+     *         ctx.export("firstConfigAggregatorId", example.applyValue(getAggregatorsResult -> getAggregatorsResult.aggregators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -708,7 +736,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -730,14 +759,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getAggregators(GetAggregatorsArgs.builder()
-     *             .ids(&#34;ca-3ce2626622af0005****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("ca-3ce2626622af0005****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigAggregatorId&#34;, example.applyValue(getAggregatorsResult -&gt; getAggregatorsResult.aggregators()[0].id()));
+     *         ctx.export("firstConfigAggregatorId", example.applyValue(getAggregatorsResult -> getAggregatorsResult.aggregators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -754,7 +784,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -776,14 +807,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getAggregators(GetAggregatorsArgs.builder()
-     *             .ids(&#34;ca-3ce2626622af0005****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("ca-3ce2626622af0005****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigAggregatorId&#34;, example.applyValue(getAggregatorsResult -&gt; getAggregatorsResult.aggregators()[0].id()));
+     *         ctx.export("firstConfigAggregatorId", example.applyValue(getAggregatorsResult -> getAggregatorsResult.aggregators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -800,7 +832,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -822,14 +855,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getAggregators(GetAggregatorsArgs.builder()
-     *             .ids(&#34;ca-3ce2626622af0005****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("ca-3ce2626622af0005****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigAggregatorId&#34;, example.applyValue(getAggregatorsResult -&gt; getAggregatorsResult.aggregators()[0].id()));
+     *         ctx.export("firstConfigAggregatorId", example.applyValue(getAggregatorsResult -> getAggregatorsResult.aggregators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -846,7 +880,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -868,14 +903,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getAggregators(GetAggregatorsArgs.builder()
-     *             .ids(&#34;ca-3ce2626622af0005****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("ca-3ce2626622af0005****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigAggregatorId&#34;, example.applyValue(getAggregatorsResult -&gt; getAggregatorsResult.aggregators()[0].id()));
+     *         ctx.export("firstConfigAggregatorId", example.applyValue(getAggregatorsResult -> getAggregatorsResult.aggregators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -892,7 +928,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -914,14 +951,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getCompliancePacks(GetCompliancePacksArgs.builder()
-     *             .ids(&#34;cp-152a626622af00bc****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("cp-152a626622af00bc****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigCompliancePackId&#34;, example.applyValue(getCompliancePacksResult -&gt; getCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigCompliancePackId", example.applyValue(getCompliancePacksResult -> getCompliancePacksResult.packs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -938,7 +976,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -960,14 +999,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getCompliancePacks(GetCompliancePacksArgs.builder()
-     *             .ids(&#34;cp-152a626622af00bc****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("cp-152a626622af00bc****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigCompliancePackId&#34;, example.applyValue(getCompliancePacksResult -&gt; getCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigCompliancePackId", example.applyValue(getCompliancePacksResult -> getCompliancePacksResult.packs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -984,7 +1024,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1006,14 +1047,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getCompliancePacks(GetCompliancePacksArgs.builder()
-     *             .ids(&#34;cp-152a626622af00bc****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("cp-152a626622af00bc****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigCompliancePackId&#34;, example.applyValue(getCompliancePacksResult -&gt; getCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigCompliancePackId", example.applyValue(getCompliancePacksResult -> getCompliancePacksResult.packs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1030,7 +1072,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1052,14 +1095,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getCompliancePacks(GetCompliancePacksArgs.builder()
-     *             .ids(&#34;cp-152a626622af00bc****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("cp-152a626622af00bc****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigCompliancePackId&#34;, example.applyValue(getCompliancePacksResult -&gt; getCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigCompliancePackId", example.applyValue(getCompliancePacksResult -> getCompliancePacksResult.packs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1076,7 +1120,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1098,14 +1143,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getCompliancePacks(GetCompliancePacksArgs.builder()
-     *             .ids(&#34;cp-152a626622af00bc****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("cp-152a626622af00bc****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigCompliancePackId&#34;, example.applyValue(getCompliancePacksResult -&gt; getCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigCompliancePackId", example.applyValue(getCompliancePacksResult -> getCompliancePacksResult.packs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1122,7 +1168,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1144,14 +1191,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getCompliancePacks(GetCompliancePacksArgs.builder()
-     *             .ids(&#34;cp-152a626622af00bc****&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("cp-152a626622af00bc****")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigCompliancePackId&#34;, example.applyValue(getCompliancePacksResult -&gt; getCompliancePacksResult.packs()[0].id()));
+     *         ctx.export("firstConfigCompliancePackId", example.applyValue(getCompliancePacksResult -> getCompliancePacksResult.packs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1168,7 +1216,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1191,10 +1240,11 @@ public final class CfgFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getConfigurationRecorders();
      * 
-     *         ctx.export(&#34;listOfResourceTypes&#34;, this_.recorders()[0].resourceTypes());
+     *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1211,7 +1261,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1234,10 +1285,11 @@ public final class CfgFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getConfigurationRecorders();
      * 
-     *         ctx.export(&#34;listOfResourceTypes&#34;, this_.recorders()[0].resourceTypes());
+     *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1254,7 +1306,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1277,10 +1330,11 @@ public final class CfgFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getConfigurationRecorders();
      * 
-     *         ctx.export(&#34;listOfResourceTypes&#34;, this_.recorders()[0].resourceTypes());
+     *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1297,7 +1351,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1320,10 +1375,11 @@ public final class CfgFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getConfigurationRecorders();
      * 
-     *         ctx.export(&#34;listOfResourceTypes&#34;, this_.recorders()[0].resourceTypes());
+     *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1340,7 +1396,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1363,10 +1420,11 @@ public final class CfgFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getConfigurationRecorders();
      * 
-     *         ctx.export(&#34;listOfResourceTypes&#34;, this_.recorders()[0].resourceTypes());
+     *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1383,7 +1441,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1406,10 +1465,11 @@ public final class CfgFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getConfigurationRecorders();
      * 
-     *         ctx.export(&#34;listOfResourceTypes&#34;, this_.recorders()[0].resourceTypes());
+     *         ctx.export("listOfResourceTypes", this_.recorders()[0].resourceTypes());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1426,7 +1486,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1448,13 +1509,14 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CfgFunctions.getDeliveries(GetDeliveriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;configDeliveryId1&#34;, ids.applyValue(getDeliveriesResult -&gt; getDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configDeliveryId1", ids.applyValue(getDeliveriesResult -> getDeliveriesResult.deliveries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1471,7 +1533,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1493,13 +1556,14 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CfgFunctions.getDeliveries(GetDeliveriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;configDeliveryId1&#34;, ids.applyValue(getDeliveriesResult -&gt; getDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configDeliveryId1", ids.applyValue(getDeliveriesResult -> getDeliveriesResult.deliveries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1516,7 +1580,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1538,13 +1603,14 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CfgFunctions.getDeliveries(GetDeliveriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;configDeliveryId1&#34;, ids.applyValue(getDeliveriesResult -&gt; getDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configDeliveryId1", ids.applyValue(getDeliveriesResult -> getDeliveriesResult.deliveries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1561,7 +1627,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1583,13 +1650,14 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CfgFunctions.getDeliveries(GetDeliveriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;configDeliveryId1&#34;, ids.applyValue(getDeliveriesResult -&gt; getDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configDeliveryId1", ids.applyValue(getDeliveriesResult -> getDeliveriesResult.deliveries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1606,7 +1674,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1628,13 +1697,14 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CfgFunctions.getDeliveries(GetDeliveriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;configDeliveryId1&#34;, ids.applyValue(getDeliveriesResult -&gt; getDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configDeliveryId1", ids.applyValue(getDeliveriesResult -> getDeliveriesResult.deliveries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1651,7 +1721,8 @@ public final class CfgFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1673,13 +1744,14 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CfgFunctions.getDeliveries(GetDeliveriesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;configDeliveryId1&#34;, ids.applyValue(getDeliveriesResult -&gt; getDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("configDeliveryId1", ids.applyValue(getDeliveriesResult -> getDeliveriesResult.deliveries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1699,7 +1771,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1721,14 +1794,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getDeliveryChannels(GetDeliveryChannelsArgs.builder()
-     *             .ids(&#34;cdc-49a2ad756057********&#34;)
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .ids("cdc-49a2ad756057********")
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigDeliveryChannelId&#34;, example.applyValue(getDeliveryChannelsResult -&gt; getDeliveryChannelsResult.channels()[0].id()));
+     *         ctx.export("firstConfigDeliveryChannelId", example.applyValue(getDeliveryChannelsResult -> getDeliveryChannelsResult.channels()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1748,7 +1822,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1770,14 +1845,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getDeliveryChannels(GetDeliveryChannelsArgs.builder()
-     *             .ids(&#34;cdc-49a2ad756057********&#34;)
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .ids("cdc-49a2ad756057********")
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigDeliveryChannelId&#34;, example.applyValue(getDeliveryChannelsResult -&gt; getDeliveryChannelsResult.channels()[0].id()));
+     *         ctx.export("firstConfigDeliveryChannelId", example.applyValue(getDeliveryChannelsResult -> getDeliveryChannelsResult.channels()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1797,7 +1873,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1819,14 +1896,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getDeliveryChannels(GetDeliveryChannelsArgs.builder()
-     *             .ids(&#34;cdc-49a2ad756057********&#34;)
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .ids("cdc-49a2ad756057********")
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigDeliveryChannelId&#34;, example.applyValue(getDeliveryChannelsResult -&gt; getDeliveryChannelsResult.channels()[0].id()));
+     *         ctx.export("firstConfigDeliveryChannelId", example.applyValue(getDeliveryChannelsResult -> getDeliveryChannelsResult.channels()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1846,7 +1924,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1868,14 +1947,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getDeliveryChannels(GetDeliveryChannelsArgs.builder()
-     *             .ids(&#34;cdc-49a2ad756057********&#34;)
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .ids("cdc-49a2ad756057********")
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigDeliveryChannelId&#34;, example.applyValue(getDeliveryChannelsResult -&gt; getDeliveryChannelsResult.channels()[0].id()));
+     *         ctx.export("firstConfigDeliveryChannelId", example.applyValue(getDeliveryChannelsResult -> getDeliveryChannelsResult.channels()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1895,7 +1975,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1917,14 +1998,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getDeliveryChannels(GetDeliveryChannelsArgs.builder()
-     *             .ids(&#34;cdc-49a2ad756057********&#34;)
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .ids("cdc-49a2ad756057********")
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigDeliveryChannelId&#34;, example.applyValue(getDeliveryChannelsResult -&gt; getDeliveryChannelsResult.channels()[0].id()));
+     *         ctx.export("firstConfigDeliveryChannelId", example.applyValue(getDeliveryChannelsResult -> getDeliveryChannelsResult.channels()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1944,7 +2026,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1966,14 +2049,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getDeliveryChannels(GetDeliveryChannelsArgs.builder()
-     *             .ids(&#34;cdc-49a2ad756057********&#34;)
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .ids("cdc-49a2ad756057********")
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigDeliveryChannelId&#34;, example.applyValue(getDeliveryChannelsResult -&gt; getDeliveryChannelsResult.channels()[0].id()));
+     *         ctx.export("firstConfigDeliveryChannelId", example.applyValue(getDeliveryChannelsResult -> getDeliveryChannelsResult.channels()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1990,7 +2074,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2012,14 +2097,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getRules(GetRulesArgs.builder()
-     *             .ids(&#34;cr-ed4bad756057********&#34;)
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .ids("cr-ed4bad756057********")
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2036,7 +2122,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2058,14 +2145,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getRules(GetRulesArgs.builder()
-     *             .ids(&#34;cr-ed4bad756057********&#34;)
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .ids("cr-ed4bad756057********")
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2082,7 +2170,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2104,14 +2193,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getRules(GetRulesArgs.builder()
-     *             .ids(&#34;cr-ed4bad756057********&#34;)
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .ids("cr-ed4bad756057********")
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2128,7 +2218,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2150,14 +2241,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getRules(GetRulesArgs.builder()
-     *             .ids(&#34;cr-ed4bad756057********&#34;)
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .ids("cr-ed4bad756057********")
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2174,7 +2266,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2196,14 +2289,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getRules(GetRulesArgs.builder()
-     *             .ids(&#34;cr-ed4bad756057********&#34;)
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .ids("cr-ed4bad756057********")
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2220,7 +2314,8 @@ public final class CfgFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2242,14 +2337,15 @@ public final class CfgFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CfgFunctions.getRules(GetRulesArgs.builder()
-     *             .ids(&#34;cr-ed4bad756057********&#34;)
-     *             .nameRegex(&#34;tftest&#34;)
+     *             .ids("cr-ed4bad756057********")
+     *             .nameRegex("tftest")
      *             .build());
      * 
-     *         ctx.export(&#34;firstConfigRuleId&#34;, example.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("firstConfigRuleId", example.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

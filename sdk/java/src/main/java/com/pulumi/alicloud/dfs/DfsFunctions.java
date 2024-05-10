@@ -36,7 +36,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -58,18 +59,19 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessGroupId1&#34;, ids.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId1", ids.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-AccessGroup&#34;)
+     *             .nameRegex("^my-AccessGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessGroupId2&#34;, nameRegex.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId2", nameRegex.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -86,7 +88,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -108,18 +111,19 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessGroupId1&#34;, ids.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId1", ids.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-AccessGroup&#34;)
+     *             .nameRegex("^my-AccessGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessGroupId2&#34;, nameRegex.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId2", nameRegex.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -136,7 +140,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -158,18 +163,19 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessGroupId1&#34;, ids.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId1", ids.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-AccessGroup&#34;)
+     *             .nameRegex("^my-AccessGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessGroupId2&#34;, nameRegex.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId2", nameRegex.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -186,7 +192,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -208,18 +215,19 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessGroupId1&#34;, ids.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId1", ids.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-AccessGroup&#34;)
+     *             .nameRegex("^my-AccessGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessGroupId2&#34;, nameRegex.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId2", nameRegex.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -236,7 +244,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -258,18 +267,19 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessGroupId1&#34;, ids.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId1", ids.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-AccessGroup&#34;)
+     *             .nameRegex("^my-AccessGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessGroupId2&#34;, nameRegex.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId2", nameRegex.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -286,7 +296,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -308,18 +319,19 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessGroupId1&#34;, ids.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId1", ids.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *         final var nameRegex = DfsFunctions.getAccessGroups(GetAccessGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-AccessGroup&#34;)
+     *             .nameRegex("^my-AccessGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessGroupId2&#34;, nameRegex.applyValue(getAccessGroupsResult -&gt; getAccessGroupsResult.groups()[0].id()));
+     *         ctx.export("dfsAccessGroupId2", nameRegex.applyValue(getAccessGroupsResult -> getAccessGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -336,7 +348,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -358,16 +371,17 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getAccessRules(GetAccessRulesArgs.builder()
-     *             .accessGroupId(&#34;example_value&#34;)
+     *             .accessGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessRuleId1&#34;, ids.applyValue(getAccessRulesResult -&gt; getAccessRulesResult.rules()[0].id()));
+     *         ctx.export("dfsAccessRuleId1", ids.applyValue(getAccessRulesResult -> getAccessRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -384,7 +398,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -406,16 +421,17 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getAccessRules(GetAccessRulesArgs.builder()
-     *             .accessGroupId(&#34;example_value&#34;)
+     *             .accessGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessRuleId1&#34;, ids.applyValue(getAccessRulesResult -&gt; getAccessRulesResult.rules()[0].id()));
+     *         ctx.export("dfsAccessRuleId1", ids.applyValue(getAccessRulesResult -> getAccessRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -432,7 +448,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -454,16 +471,17 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getAccessRules(GetAccessRulesArgs.builder()
-     *             .accessGroupId(&#34;example_value&#34;)
+     *             .accessGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessRuleId1&#34;, ids.applyValue(getAccessRulesResult -&gt; getAccessRulesResult.rules()[0].id()));
+     *         ctx.export("dfsAccessRuleId1", ids.applyValue(getAccessRulesResult -> getAccessRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -480,7 +498,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -502,16 +521,17 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getAccessRules(GetAccessRulesArgs.builder()
-     *             .accessGroupId(&#34;example_value&#34;)
+     *             .accessGroupId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsAccessRuleId1&#34;, ids.applyValue(getAccessRulesResult -&gt; getAccessRulesResult.rules()[0].id()));
+     *         ctx.export("dfsAccessRuleId1", ids.applyValue(getAccessRulesResult -> getAccessRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -528,7 +548,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -550,18 +571,19 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsFileSystemId1&#34;, ids.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId1", ids.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .nameRegex(&#34;^my-FileSystem&#34;)
+     *             .nameRegex("^my-FileSystem")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsFileSystemId2&#34;, nameRegex.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId2", nameRegex.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -578,7 +600,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -600,18 +623,19 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsFileSystemId1&#34;, ids.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId1", ids.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .nameRegex(&#34;^my-FileSystem&#34;)
+     *             .nameRegex("^my-FileSystem")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsFileSystemId2&#34;, nameRegex.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId2", nameRegex.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -628,7 +652,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -650,18 +675,19 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsFileSystemId1&#34;, ids.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId1", ids.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .nameRegex(&#34;^my-FileSystem&#34;)
+     *             .nameRegex("^my-FileSystem")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsFileSystemId2&#34;, nameRegex.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId2", nameRegex.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -678,7 +704,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -700,18 +727,19 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsFileSystemId1&#34;, ids.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId1", ids.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .nameRegex(&#34;^my-FileSystem&#34;)
+     *             .nameRegex("^my-FileSystem")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsFileSystemId2&#34;, nameRegex.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId2", nameRegex.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -728,7 +756,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -750,18 +779,19 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsFileSystemId1&#34;, ids.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId1", ids.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .nameRegex(&#34;^my-FileSystem&#34;)
+     *             .nameRegex("^my-FileSystem")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsFileSystemId2&#34;, nameRegex.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId2", nameRegex.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -778,7 +808,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -800,18 +831,19 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsFileSystemId1&#34;, ids.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId1", ids.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *         final var nameRegex = DfsFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .nameRegex(&#34;^my-FileSystem&#34;)
+     *             .nameRegex("^my-FileSystem")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsFileSystemId2&#34;, nameRegex.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
+     *         ctx.export("dfsFileSystemId2", nameRegex.applyValue(getFileSystemsResult -> getFileSystemsResult.systems()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -828,7 +860,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -850,16 +883,17 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getMountPoints(GetMountPointsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsMountPointId1&#34;, ids.applyValue(getMountPointsResult -&gt; getMountPointsResult.points()[0].id()));
+     *         ctx.export("dfsMountPointId1", ids.applyValue(getMountPointsResult -> getMountPointsResult.points()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -876,7 +910,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -898,16 +933,17 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getMountPoints(GetMountPointsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsMountPointId1&#34;, ids.applyValue(getMountPointsResult -&gt; getMountPointsResult.points()[0].id()));
+     *         ctx.export("dfsMountPointId1", ids.applyValue(getMountPointsResult -> getMountPointsResult.points()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -924,7 +960,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -946,16 +983,17 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getMountPoints(GetMountPointsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsMountPointId1&#34;, ids.applyValue(getMountPointsResult -&gt; getMountPointsResult.points()[0].id()));
+     *         ctx.export("dfsMountPointId1", ids.applyValue(getMountPointsResult -> getMountPointsResult.points()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -972,7 +1010,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -994,16 +1033,17 @@ public final class DfsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DfsFunctions.getMountPoints(GetMountPointsArgs.builder()
-     *             .fileSystemId(&#34;example_value&#34;)
+     *             .fileSystemId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;dfsMountPointId1&#34;, ids.applyValue(getMountPointsResult -&gt; getMountPointsResult.points()[0].id()));
+     *         ctx.export("dfsMountPointId1", ids.applyValue(getMountPointsResult -> getMountPointsResult.points()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1020,7 +1060,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1045,7 +1086,8 @@ public final class DfsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1062,7 +1104,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1087,7 +1130,8 @@ public final class DfsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1104,7 +1148,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1129,7 +1174,8 @@ public final class DfsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1146,7 +1192,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1171,7 +1218,8 @@ public final class DfsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1188,7 +1236,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1213,7 +1262,8 @@ public final class DfsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1230,7 +1280,8 @@ public final class DfsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1255,7 +1306,8 @@ public final class DfsFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

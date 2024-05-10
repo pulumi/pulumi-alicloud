@@ -25,7 +25,8 @@ public final class EfloFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -48,15 +49,16 @@ public final class EfloFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getSubnets(GetSubnetsArgs.builder()
      *             .nameRegex(defaultAlicloudEfloSubnet.name())
-     *             .subnetName(&#34;SubnetTestForTerraform&#34;)
+     *             .subnetName("SubnetTestForTerraform")
      *             .vpdId(vpdId)
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEfloSubnetExampleId&#34;, default_.subnets()[0].id());
+     *         ctx.export("alicloudEfloSubnetExampleId", default_.subnets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -71,7 +73,8 @@ public final class EfloFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -94,15 +97,16 @@ public final class EfloFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getSubnets(GetSubnetsArgs.builder()
      *             .nameRegex(defaultAlicloudEfloSubnet.name())
-     *             .subnetName(&#34;SubnetTestForTerraform&#34;)
+     *             .subnetName("SubnetTestForTerraform")
      *             .vpdId(vpdId)
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEfloSubnetExampleId&#34;, default_.subnets()[0].id());
+     *         ctx.export("alicloudEfloSubnetExampleId", default_.subnets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -117,7 +121,8 @@ public final class EfloFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -140,15 +145,16 @@ public final class EfloFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getSubnets(GetSubnetsArgs.builder()
      *             .nameRegex(defaultAlicloudEfloSubnet.name())
-     *             .subnetName(&#34;SubnetTestForTerraform&#34;)
+     *             .subnetName("SubnetTestForTerraform")
      *             .vpdId(vpdId)
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEfloSubnetExampleId&#34;, default_.subnets()[0].id());
+     *         ctx.export("alicloudEfloSubnetExampleId", default_.subnets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -163,7 +169,8 @@ public final class EfloFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -186,15 +193,16 @@ public final class EfloFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getSubnets(GetSubnetsArgs.builder()
      *             .nameRegex(defaultAlicloudEfloSubnet.name())
-     *             .subnetName(&#34;SubnetTestForTerraform&#34;)
+     *             .subnetName("SubnetTestForTerraform")
      *             .vpdId(vpdId)
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEfloSubnetExampleId&#34;, default_.subnets()[0].id());
+     *         ctx.export("alicloudEfloSubnetExampleId", default_.subnets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -209,7 +217,8 @@ public final class EfloFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -232,15 +241,16 @@ public final class EfloFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getSubnets(GetSubnetsArgs.builder()
      *             .nameRegex(defaultAlicloudEfloSubnet.name())
-     *             .subnetName(&#34;SubnetTestForTerraform&#34;)
+     *             .subnetName("SubnetTestForTerraform")
      *             .vpdId(vpdId)
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEfloSubnetExampleId&#34;, default_.subnets()[0].id());
+     *         ctx.export("alicloudEfloSubnetExampleId", default_.subnets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -255,7 +265,8 @@ public final class EfloFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -278,15 +289,16 @@ public final class EfloFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EfloFunctions.getSubnets(GetSubnetsArgs.builder()
      *             .nameRegex(defaultAlicloudEfloSubnet.name())
-     *             .subnetName(&#34;SubnetTestForTerraform&#34;)
+     *             .subnetName("SubnetTestForTerraform")
      *             .vpdId(vpdId)
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEfloSubnetExampleId&#34;, default_.subnets()[0].id());
+     *         ctx.export("alicloudEfloSubnetExampleId", default_.subnets()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -301,7 +313,8 @@ public final class EfloFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -325,13 +338,14 @@ public final class EfloFunctions {
      *         final var default = EfloFunctions.getVpds(GetVpdsArgs.builder()
      *             .ids(defaultAlicloudEfloVpd.id())
      *             .nameRegex(defaultAlicloudEfloVpd.name())
-     *             .vpdName(&#34;RMC-Terraform-Test&#34;)
+     *             .vpdName("RMC-Terraform-Test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEfloVpdExampleId&#34;, default_.vpds()[0].id());
+     *         ctx.export("alicloudEfloVpdExampleId", default_.vpds()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -346,7 +360,8 @@ public final class EfloFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -370,13 +385,14 @@ public final class EfloFunctions {
      *         final var default = EfloFunctions.getVpds(GetVpdsArgs.builder()
      *             .ids(defaultAlicloudEfloVpd.id())
      *             .nameRegex(defaultAlicloudEfloVpd.name())
-     *             .vpdName(&#34;RMC-Terraform-Test&#34;)
+     *             .vpdName("RMC-Terraform-Test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEfloVpdExampleId&#34;, default_.vpds()[0].id());
+     *         ctx.export("alicloudEfloVpdExampleId", default_.vpds()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -391,7 +407,8 @@ public final class EfloFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -415,13 +432,14 @@ public final class EfloFunctions {
      *         final var default = EfloFunctions.getVpds(GetVpdsArgs.builder()
      *             .ids(defaultAlicloudEfloVpd.id())
      *             .nameRegex(defaultAlicloudEfloVpd.name())
-     *             .vpdName(&#34;RMC-Terraform-Test&#34;)
+     *             .vpdName("RMC-Terraform-Test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEfloVpdExampleId&#34;, default_.vpds()[0].id());
+     *         ctx.export("alicloudEfloVpdExampleId", default_.vpds()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -436,7 +454,8 @@ public final class EfloFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -460,13 +479,14 @@ public final class EfloFunctions {
      *         final var default = EfloFunctions.getVpds(GetVpdsArgs.builder()
      *             .ids(defaultAlicloudEfloVpd.id())
      *             .nameRegex(defaultAlicloudEfloVpd.name())
-     *             .vpdName(&#34;RMC-Terraform-Test&#34;)
+     *             .vpdName("RMC-Terraform-Test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEfloVpdExampleId&#34;, default_.vpds()[0].id());
+     *         ctx.export("alicloudEfloVpdExampleId", default_.vpds()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -481,7 +501,8 @@ public final class EfloFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -505,13 +526,14 @@ public final class EfloFunctions {
      *         final var default = EfloFunctions.getVpds(GetVpdsArgs.builder()
      *             .ids(defaultAlicloudEfloVpd.id())
      *             .nameRegex(defaultAlicloudEfloVpd.name())
-     *             .vpdName(&#34;RMC-Terraform-Test&#34;)
+     *             .vpdName("RMC-Terraform-Test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEfloVpdExampleId&#34;, default_.vpds()[0].id());
+     *         ctx.export("alicloudEfloVpdExampleId", default_.vpds()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -526,7 +548,8 @@ public final class EfloFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -550,13 +573,14 @@ public final class EfloFunctions {
      *         final var default = EfloFunctions.getVpds(GetVpdsArgs.builder()
      *             .ids(defaultAlicloudEfloVpd.id())
      *             .nameRegex(defaultAlicloudEfloVpd.name())
-     *             .vpdName(&#34;RMC-Terraform-Test&#34;)
+     *             .vpdName("RMC-Terraform-Test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEfloVpdExampleId&#34;, default_.vpds()[0].id());
+     *         ctx.export("alicloudEfloVpdExampleId", default_.vpds()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

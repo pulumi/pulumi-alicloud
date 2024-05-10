@@ -30,7 +30,8 @@ public final class ServicemeshFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -52,22 +53,23 @@ public final class ServicemeshFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
-     *             .type(&#34;httpextauth&#34;)
+     *             .ids("example_id")
+     *             .serviceMeshId("example_service_mesh_id")
+     *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshExtensionProvidersId1&#34;, ids.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId1", ids.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
      *         final var nameRegex = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
-     *             .nameRegex(&#34;^my-ServiceMeshExtensionProvider&#34;)
-     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
-     *             .type(&#34;httpextauth&#34;)
+     *             .nameRegex("^my-ServiceMeshExtensionProvider")
+     *             .serviceMeshId("example_service_mesh_id")
+     *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshExtensionProvidersId2&#34;, nameRegex.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -84,7 +86,8 @@ public final class ServicemeshFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -106,22 +109,23 @@ public final class ServicemeshFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
-     *             .type(&#34;httpextauth&#34;)
+     *             .ids("example_id")
+     *             .serviceMeshId("example_service_mesh_id")
+     *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshExtensionProvidersId1&#34;, ids.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId1", ids.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
      *         final var nameRegex = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
-     *             .nameRegex(&#34;^my-ServiceMeshExtensionProvider&#34;)
-     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
-     *             .type(&#34;httpextauth&#34;)
+     *             .nameRegex("^my-ServiceMeshExtensionProvider")
+     *             .serviceMeshId("example_service_mesh_id")
+     *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshExtensionProvidersId2&#34;, nameRegex.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -138,7 +142,8 @@ public final class ServicemeshFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -160,22 +165,23 @@ public final class ServicemeshFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
-     *             .type(&#34;httpextauth&#34;)
+     *             .ids("example_id")
+     *             .serviceMeshId("example_service_mesh_id")
+     *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshExtensionProvidersId1&#34;, ids.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId1", ids.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
      *         final var nameRegex = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
-     *             .nameRegex(&#34;^my-ServiceMeshExtensionProvider&#34;)
-     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
-     *             .type(&#34;httpextauth&#34;)
+     *             .nameRegex("^my-ServiceMeshExtensionProvider")
+     *             .serviceMeshId("example_service_mesh_id")
+     *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshExtensionProvidersId2&#34;, nameRegex.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -192,7 +198,8 @@ public final class ServicemeshFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -214,22 +221,23 @@ public final class ServicemeshFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
-     *             .type(&#34;httpextauth&#34;)
+     *             .ids("example_id")
+     *             .serviceMeshId("example_service_mesh_id")
+     *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshExtensionProvidersId1&#34;, ids.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId1", ids.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
      *         final var nameRegex = ServicemeshFunctions.getExtensionProviders(GetExtensionProvidersArgs.builder()
-     *             .nameRegex(&#34;^my-ServiceMeshExtensionProvider&#34;)
-     *             .serviceMeshId(&#34;example_service_mesh_id&#34;)
-     *             .type(&#34;httpextauth&#34;)
+     *             .nameRegex("^my-ServiceMeshExtensionProvider")
+     *             .serviceMeshId("example_service_mesh_id")
+     *             .type("httpextauth")
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshExtensionProvidersId2&#34;, nameRegex.applyValue(getExtensionProvidersResult -&gt; getExtensionProvidersResult.providers()[0].id()));
+     *         ctx.export("serviceMeshExtensionProvidersId2", nameRegex.applyValue(getExtensionProvidersResult -> getExtensionProvidersResult.providers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -300,7 +308,8 @@ public final class ServicemeshFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -322,13 +331,14 @@ public final class ServicemeshFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
-     *             .edition(&#34;Default&#34;)
+     *             .edition("Default")
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshVersion&#34;, versions[0].version());
+     *         ctx.export("serviceMeshVersion", versions[0].version());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -345,7 +355,8 @@ public final class ServicemeshFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -367,13 +378,14 @@ public final class ServicemeshFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
-     *             .edition(&#34;Default&#34;)
+     *             .edition("Default")
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshVersion&#34;, versions[0].version());
+     *         ctx.export("serviceMeshVersion", versions[0].version());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -390,7 +402,8 @@ public final class ServicemeshFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -412,13 +425,14 @@ public final class ServicemeshFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
-     *             .edition(&#34;Default&#34;)
+     *             .edition("Default")
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshVersion&#34;, versions[0].version());
+     *         ctx.export("serviceMeshVersion", versions[0].version());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -435,7 +449,8 @@ public final class ServicemeshFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -457,13 +472,14 @@ public final class ServicemeshFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
-     *             .edition(&#34;Default&#34;)
+     *             .edition("Default")
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshVersion&#34;, versions[0].version());
+     *         ctx.export("serviceMeshVersion", versions[0].version());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -480,7 +496,8 @@ public final class ServicemeshFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -502,13 +519,14 @@ public final class ServicemeshFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
-     *             .edition(&#34;Default&#34;)
+     *             .edition("Default")
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshVersion&#34;, versions[0].version());
+     *         ctx.export("serviceMeshVersion", versions[0].version());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -525,7 +543,8 @@ public final class ServicemeshFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -547,13 +566,14 @@ public final class ServicemeshFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicemeshFunctions.getVersions(GetVersionsArgs.builder()
-     *             .edition(&#34;Default&#34;)
+     *             .edition("Default")
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshVersion&#34;, versions[0].version());
+     *         ctx.export("serviceMeshVersion", versions[0].version());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

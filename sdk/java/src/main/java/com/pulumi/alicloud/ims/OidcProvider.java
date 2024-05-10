@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,22 +51,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var oidcProviderName = config.get(&#34;oidcProviderName&#34;).orElse(&#34;amp-resource-example-oidc-provider&#34;);
- *         var default_ = new OidcProvider(&#34;default&#34;, OidcProviderArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var oidcProviderName = config.get("oidcProviderName").orElse("amp-resource-example-oidc-provider");
+ *         var default_ = new OidcProvider("default", OidcProviderArgs.builder()        
  *             .description(oidcProviderName)
- *             .issuerUrl(&#34;https://oauth.aliyun.com&#34;)
- *             .fingerprints(&#34;902ef2deeb3c5b13ea4c3d5193629309e231ae55&#34;)
- *             .issuanceLimitTime(&#34;12&#34;)
+ *             .issuerUrl("https://oauth.aliyun.com")
+ *             .fingerprints("902ef2deeb3c5b13ea4c3d5193629309e231ae55")
+ *             .issuanceLimitTime("12")
  *             .oidcProviderName(name)
  *             .clientIds(            
- *                 &#34;123&#34;,
- *                 &#34;456&#34;)
+ *                 "123",
+ *                 "456")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

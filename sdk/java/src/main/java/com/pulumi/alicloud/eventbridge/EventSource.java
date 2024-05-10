@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,27 +56,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var example = new EventBus(&#34;example&#34;, EventBusArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var example = new EventBus("example", EventBusArgs.builder()        
  *             .eventBusName(name)
  *             .build());
  * 
- *         var exampleQueue = new Queue(&#34;exampleQueue&#34;, QueueArgs.builder()        
+ *         var exampleQueue = new Queue("exampleQueue", QueueArgs.builder()        
  *             .name(name)
  *             .build());
  * 
- *         var exampleEventSource = new EventSource(&#34;exampleEventSource&#34;, EventSourceArgs.builder()        
+ *         var exampleEventSource = new EventSource("exampleEventSource", EventSourceArgs.builder()        
  *             .eventBusName(example.eventBusName())
  *             .eventSourceName(name)
  *             .description(name)
  *             .linkedExternalSource(true)
- *             .externalSourceType(&#34;MNS&#34;)
- *             .externalSourceConfig(Map.of(&#34;QueueName&#34;, exampleQueue.name()))
+ *             .externalSourceType("MNS")
+ *             .externalSourceConfig(Map.of("QueueName", exampleQueue.name()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

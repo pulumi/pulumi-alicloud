@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,20 +53,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
- *             .role(&#34;USER&#34;)
- *             .status(&#34;NORMAL&#34;)
+ *             .role("USER")
+ *             .status("NORMAL")
  *             .build());
  * 
  *         final var ids = DmsFunctions.getEnterpriseProxies();
  * 
- *         var default_ = new EnterpriseProxyAccess(&#34;default&#34;, EnterpriseProxyAccessArgs.builder()        
- *             .proxyId(ids.applyValue(getEnterpriseProxiesResult -&gt; getEnterpriseProxiesResult.proxies()[0].id()))
- *             .userId(dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -&gt; getEnterpriseUsersResult.users()[0].userId()))
+ *         var default_ = new EnterpriseProxyAccess("default", EnterpriseProxyAccessArgs.builder()        
+ *             .proxyId(ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()))
+ *             .userId(dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].userId()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,30 +54,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = SimpleapplicationserverFunctions.getImages();
  * 
  *         final var defaultGetServerPlans = SimpleapplicationserverFunctions.getServerPlans();
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .paymentType(&#34;Subscription&#34;)
- *             .planId(defaultGetServerPlans.applyValue(getServerPlansResult -&gt; getServerPlansResult.plans()[0].id()))
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .paymentType("Subscription")
+ *             .planId(defaultGetServerPlans.applyValue(getServerPlansResult -> getServerPlansResult.plans()[0].id()))
  *             .instanceName(name)
  *             .imageId(default_.images()[0].id())
  *             .period(1)
  *             .dataDiskSize(100)
  *             .build());
  * 
- *         var defaultFirewallRule = new FirewallRule(&#34;defaultFirewallRule&#34;, FirewallRuleArgs.builder()        
+ *         var defaultFirewallRule = new FirewallRule("defaultFirewallRule", FirewallRuleArgs.builder()        
  *             .instanceId(defaultInstance.id())
- *             .ruleProtocol(&#34;Tcp&#34;)
- *             .port(&#34;9999&#34;)
+ *             .ruleProtocol("Tcp")
+ *             .port("9999")
  *             .remark(name)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

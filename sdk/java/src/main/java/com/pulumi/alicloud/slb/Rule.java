@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -73,70 +74,71 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var slbRuleName = config.get(&#34;slbRuleName&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var slbRuleName = config.get("slbRuleName").orElse("terraform-example");
  *         final var rule = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var ruleNetwork = new Network(&#34;ruleNetwork&#34;, NetworkArgs.builder()        
+ *         var ruleNetwork = new Network("ruleNetwork", NetworkArgs.builder()        
  *             .vpcName(slbRuleName)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var ruleSwitch = new Switch(&#34;ruleSwitch&#34;, SwitchArgs.builder()        
+ *         var ruleSwitch = new Switch("ruleSwitch", SwitchArgs.builder()        
  *             .vpcId(ruleNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
- *             .zoneId(rule.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cidrBlock("172.16.0.0/16")
+ *             .zoneId(rule.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(slbRuleName)
  *             .build());
  * 
- *         var ruleApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;ruleApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *         var ruleApplicationLoadBalancer = new ApplicationLoadBalancer("ruleApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
  *             .loadBalancerName(slbRuleName)
  *             .vswitchId(ruleSwitch.id())
- *             .instanceChargeType(&#34;PayByCLCU&#34;)
+ *             .instanceChargeType("PayByCLCU")
  *             .build());
  * 
- *         var ruleListener = new Listener(&#34;ruleListener&#34;, ListenerArgs.builder()        
+ *         var ruleListener = new Listener("ruleListener", ListenerArgs.builder()        
  *             .loadBalancerId(ruleApplicationLoadBalancer.id())
  *             .backendPort(22)
  *             .frontendPort(22)
- *             .protocol(&#34;http&#34;)
+ *             .protocol("http")
  *             .bandwidth(5)
- *             .healthCheckConnectPort(&#34;20&#34;)
+ *             .healthCheckConnectPort("20")
  *             .build());
  * 
- *         var ruleServerGroup = new ServerGroup(&#34;ruleServerGroup&#34;, ServerGroupArgs.builder()        
+ *         var ruleServerGroup = new ServerGroup("ruleServerGroup", ServerGroupArgs.builder()        
  *             .loadBalancerId(ruleApplicationLoadBalancer.id())
  *             .name(slbRuleName)
  *             .build());
  * 
- *         var ruleRule = new Rule(&#34;ruleRule&#34;, RuleArgs.builder()        
+ *         var ruleRule = new Rule("ruleRule", RuleArgs.builder()        
  *             .loadBalancerId(ruleApplicationLoadBalancer.id())
  *             .frontendPort(ruleListener.frontendPort())
  *             .name(slbRuleName)
- *             .domain(&#34;*.aliyun.com&#34;)
- *             .url(&#34;/image&#34;)
+ *             .domain("*.aliyun.com")
+ *             .url("/image")
  *             .serverGroupId(ruleServerGroup.id())
- *             .cookie(&#34;23ffsa&#34;)
+ *             .cookie("23ffsa")
  *             .cookieTimeout(100)
- *             .healthCheckHttpCode(&#34;http_2xx&#34;)
+ *             .healthCheckHttpCode("http_2xx")
  *             .healthCheckInterval(10)
- *             .healthCheckUri(&#34;/test&#34;)
+ *             .healthCheckUri("/test")
  *             .healthCheckConnectPort(80)
  *             .healthCheckTimeout(30)
  *             .healthyThreshold(3)
  *             .unhealthyThreshold(5)
- *             .stickySession(&#34;on&#34;)
- *             .stickySessionType(&#34;server&#34;)
- *             .listenerSync(&#34;off&#34;)
- *             .scheduler(&#34;rr&#34;)
- *             .healthCheckDomain(&#34;test&#34;)
- *             .healthCheck(&#34;on&#34;)
+ *             .stickySession("on")
+ *             .stickySessionType("server")
+ *             .listenerSync("off")
+ *             .scheduler("rr")
+ *             .healthCheckDomain("test")
+ *             .healthCheck("on")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

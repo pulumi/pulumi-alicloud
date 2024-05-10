@@ -27,7 +27,8 @@ public final class TsdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -49,13 +50,14 @@ public final class TsdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = TsdbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTsdbInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstTsdbInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -72,7 +74,8 @@ public final class TsdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -94,13 +97,14 @@ public final class TsdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = TsdbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTsdbInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstTsdbInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -117,7 +121,8 @@ public final class TsdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -139,13 +144,14 @@ public final class TsdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = TsdbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTsdbInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstTsdbInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -162,7 +168,8 @@ public final class TsdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -184,13 +191,14 @@ public final class TsdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = TsdbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTsdbInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstTsdbInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -207,7 +215,8 @@ public final class TsdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -229,13 +238,14 @@ public final class TsdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = TsdbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTsdbInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstTsdbInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -252,7 +262,8 @@ public final class TsdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -274,13 +285,14 @@ public final class TsdbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = TsdbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTsdbInstanceId&#34;, example.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstTsdbInstanceId", example.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -297,7 +309,8 @@ public final class TsdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -320,10 +333,11 @@ public final class TsdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = TsdbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstTsdbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstTsdbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -340,7 +354,8 @@ public final class TsdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -363,10 +378,11 @@ public final class TsdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = TsdbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstTsdbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstTsdbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -383,7 +399,8 @@ public final class TsdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -406,10 +423,11 @@ public final class TsdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = TsdbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstTsdbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstTsdbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -426,7 +444,8 @@ public final class TsdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -449,10 +468,11 @@ public final class TsdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = TsdbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstTsdbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstTsdbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -469,7 +489,8 @@ public final class TsdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -492,10 +513,11 @@ public final class TsdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = TsdbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstTsdbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstTsdbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -512,7 +534,8 @@ public final class TsdbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -535,10 +558,11 @@ public final class TsdbFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = TsdbFunctions.getZones();
      * 
-     *         ctx.export(&#34;firstTsdbZonesId&#34;, example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()));
+     *         ctx.export("firstTsdbZonesId", example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

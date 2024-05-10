@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -68,61 +69,62 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;NetworkAclEntries&#34;);
+ *         final var name = config.get("name").orElse("NetworkAclEntries");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .name(name)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var defaultNetworkAcl = new NetworkAcl(&#34;defaultNetworkAcl&#34;, NetworkAclArgs.builder()        
+ *         var defaultNetworkAcl = new NetworkAcl("defaultNetworkAcl", NetworkAclArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .name(name)
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(default_.zones()[0].id())
  *             .name(name)
  *             .build());
  * 
- *         var defaultNetworkAclAttachment = new NetworkAclAttachment(&#34;defaultNetworkAclAttachment&#34;, NetworkAclAttachmentArgs.builder()        
+ *         var defaultNetworkAclAttachment = new NetworkAclAttachment("defaultNetworkAclAttachment", NetworkAclAttachmentArgs.builder()        
  *             .networkAclId(defaultNetworkAcl.id())
  *             .resources(NetworkAclAttachmentResourceArgs.builder()
  *                 .resourceId(defaultSwitch.id())
- *                 .resourceType(&#34;VSwitch&#34;)
+ *                 .resourceType("VSwitch")
  *                 .build())
  *             .build());
  * 
- *         var defaultNetworkAclEntries = new NetworkAclEntries(&#34;defaultNetworkAclEntries&#34;, NetworkAclEntriesArgs.builder()        
+ *         var defaultNetworkAclEntries = new NetworkAclEntries("defaultNetworkAclEntries", NetworkAclEntriesArgs.builder()        
  *             .networkAclId(defaultNetworkAcl.id())
  *             .ingresses(NetworkAclEntriesIngressArgs.builder()
- *                 .protocol(&#34;all&#34;)
- *                 .port(&#34;-1/-1&#34;)
- *                 .sourceCidrIp(&#34;0.0.0.0/32&#34;)
+ *                 .protocol("all")
+ *                 .port("-1/-1")
+ *                 .sourceCidrIp("0.0.0.0/32")
  *                 .name(name)
- *                 .entryType(&#34;custom&#34;)
- *                 .policy(&#34;accept&#34;)
+ *                 .entryType("custom")
+ *                 .policy("accept")
  *                 .description(name)
  *                 .build())
  *             .egresses(NetworkAclEntriesEgressArgs.builder()
- *                 .protocol(&#34;all&#34;)
- *                 .port(&#34;-1/-1&#34;)
- *                 .destinationCidrIp(&#34;0.0.0.0/32&#34;)
+ *                 .protocol("all")
+ *                 .port("-1/-1")
+ *                 .destinationCidrIp("0.0.0.0/32")
  *                 .name(name)
- *                 .entryType(&#34;custom&#34;)
- *                 .policy(&#34;accept&#34;)
+ *                 .entryType("custom")
+ *                 .policy("accept")
  *                 .description(name)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

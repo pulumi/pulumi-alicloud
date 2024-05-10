@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,30 +58,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;alicloud-provider.com&#34;);
+ *         final var domainName = config.get("domainName").orElse("alicloud-provider.com");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
- *             .alarmContactGroupName(&#34;tf_example&#34;)
+ *         var defaultAlarmContactGroup = new AlarmContactGroup("defaultAlarmContactGroup", AlarmContactGroupArgs.builder()        
+ *             .alarmContactGroupName("tf_example")
  *             .build());
  * 
- *         var defaultGtmInstance = new GtmInstance(&#34;defaultGtmInstance&#34;, GtmInstanceArgs.builder()        
- *             .instanceName(&#34;tf_example&#34;)
- *             .paymentType(&#34;Subscription&#34;)
+ *         var defaultGtmInstance = new GtmInstance("defaultGtmInstance", GtmInstanceArgs.builder()        
+ *             .instanceName("tf_example")
+ *             .paymentType("Subscription")
  *             .period(1)
- *             .renewalStatus(&#34;ManualRenewal&#34;)
- *             .packageEdition(&#34;standard&#34;)
+ *             .renewalStatus("ManualRenewal")
+ *             .packageEdition("standard")
  *             .healthCheckTaskCount(100)
  *             .smsNotificationCount(1000)
- *             .publicCnameMode(&#34;SYSTEM_ASSIGN&#34;)
+ *             .publicCnameMode("SYSTEM_ASSIGN")
  *             .ttl(60)
- *             .cnameType(&#34;PUBLIC&#34;)
+ *             .cnameType("PUBLIC")
  *             .resourceGroupId(default_.groups()[0].id())
  *             .alertGroups(defaultAlarmContactGroup.alarmContactGroupName())
  *             .publicUserDomainName(domainName)
  *             .alertConfigs(GtmInstanceAlertConfigArgs.builder()
  *                 .smsNotice(true)
- *                 .noticeType(&#34;ADDR_ALERT&#34;)
+ *                 .noticeType("ADDR_ALERT")
  *                 .emailNotice(true)
  *                 .dingtalkNotice(true)
  *                 .build())
@@ -88,7 +89,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

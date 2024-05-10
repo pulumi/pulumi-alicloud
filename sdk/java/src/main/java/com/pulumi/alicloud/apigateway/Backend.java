@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,16 +50,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var default_ = new Backend(&#34;default&#34;, BackendArgs.builder()        
+ *         final var name = config.get("name").orElse("tf_example");
+ *         var default_ = new Backend("default", BackendArgs.builder()        
  *             .backendName(name)
  *             .description(name)
- *             .backendType(&#34;HTTP&#34;)
+ *             .backendType("HTTP")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,9 +59,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var example = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
@@ -70,54 +71,55 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
- *             .owners(&#34;system&#34;)
+ *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
+ *             .owners("system")
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(exampleNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var exampleHAVip = new HAVip(&#34;exampleHAVip&#34;, HAVipArgs.builder()        
+ *         var exampleHAVip = new HAVip("exampleHAVip", HAVipArgs.builder()        
  *             .vswitchId(exampleSwitch.id())
  *             .description(name)
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .description(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
  *             .availabilityZone(default_.zones()[0].id())
  *             .vswitchId(exampleSwitch.id())
- *             .imageId(exampleGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(example.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .internetChargeType("PayByTraffic")
  *             .internetMaxBandwidthOut(5)
  *             .securityGroups(exampleSecurityGroup.id())
  *             .instanceName(name)
- *             .userData(&#34;echo &#39;net.ipv4.ip_forward=1&#39;&gt;&gt; /etc/sysctl.conf&#34;)
+ *             .userData("echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf")
  *             .build());
  * 
- *         var exampleHAVipAttachment = new HAVipAttachment(&#34;exampleHAVipAttachment&#34;, HAVipAttachmentArgs.builder()        
+ *         var exampleHAVipAttachment = new HAVipAttachment("exampleHAVipAttachment", HAVipAttachmentArgs.builder()        
  *             .havipId(exampleHAVip.id())
  *             .instanceId(exampleInstance.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

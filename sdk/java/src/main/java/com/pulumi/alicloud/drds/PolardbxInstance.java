@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,38 +56,39 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()        
  *             .vpcName(name)
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
  *             .vpcId(example.id())
  *             .zoneId(default_.zones()[0].id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultPolardbxInstance = new PolardbxInstance(&#34;defaultPolardbxInstance&#34;, PolardbxInstanceArgs.builder()        
- *             .topologyType(&#34;3azones&#34;)
+ *         var defaultPolardbxInstance = new PolardbxInstance("defaultPolardbxInstance", PolardbxInstanceArgs.builder()        
+ *             .topologyType("3azones")
  *             .vswitchId(exampleSwitch.id())
- *             .primaryZone(&#34;ap-southeast-1a&#34;)
- *             .cnNodeCount(&#34;2&#34;)
- *             .dnClass(&#34;mysql.n4.medium.25&#34;)
- *             .cnClass(&#34;polarx.x4.medium.2e&#34;)
- *             .dnNodeCount(&#34;2&#34;)
- *             .secondaryZone(&#34;ap-southeast-1b&#34;)
- *             .tertiaryZone(&#34;ap-southeast-1c&#34;)
+ *             .primaryZone("ap-southeast-1a")
+ *             .cnNodeCount("2")
+ *             .dnClass("mysql.n4.medium.25")
+ *             .cnClass("polarx.x4.medium.2e")
+ *             .dnNodeCount("2")
+ *             .secondaryZone("ap-southeast-1b")
+ *             .tertiaryZone("ap-southeast-1c")
  *             .vpcId(example.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

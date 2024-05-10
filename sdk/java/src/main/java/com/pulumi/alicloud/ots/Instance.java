@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,25 +51,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .name(String.format(&#34;%s-%s&#34;, name,default_.result()))
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .name(String.format("%s-%s", name,default_.result()))
  *             .description(name)
- *             .networkTypeAcls(&#34;VPC&#34;)
+ *             .networkTypeAcls("VPC")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;Building table&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "Building table")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

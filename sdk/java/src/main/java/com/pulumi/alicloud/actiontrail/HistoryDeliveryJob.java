@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,8 +63,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -74,23 +75,24 @@ import javax.annotation.Nullable;
  * 
  *         final var exampleGetAccount = AlicloudFunctions.getAccount();
  * 
- *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .projectName(String.format(&#34;%s-%s&#34;, name,default_.result()))
- *             .description(&#34;tf actiontrail example&#34;)
+ *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()        
+ *             .projectName(String.format("%s-%s", name,default_.result()))
+ *             .description("tf actiontrail example")
  *             .build());
  * 
- *         var exampleTrail = new Trail(&#34;exampleTrail&#34;, TrailArgs.builder()        
- *             .trailName(String.format(&#34;%s-%s&#34;, name,default_.result()))
- *             .slsProjectArn(exampleProject.name().applyValue(name -&gt; String.format(&#34;acs:log:%s:%s:project/%s&#34;, example.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),exampleGetAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
+ *         var exampleTrail = new Trail("exampleTrail", TrailArgs.builder()        
+ *             .trailName(String.format("%s-%s", name,default_.result()))
+ *             .slsProjectArn(exampleProject.name().applyValue(name -> String.format("acs:log:%s:%s:project/%s", example.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),exampleGetAccount.applyValue(getAccountResult -> getAccountResult.id()),name)))
  *             .build());
  * 
- *         var exampleHistoryDeliveryJob = new HistoryDeliveryJob(&#34;exampleHistoryDeliveryJob&#34;, HistoryDeliveryJobArgs.builder()        
+ *         var exampleHistoryDeliveryJob = new HistoryDeliveryJob("exampleHistoryDeliveryJob", HistoryDeliveryJobArgs.builder()        
  *             .trailName(exampleTrail.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

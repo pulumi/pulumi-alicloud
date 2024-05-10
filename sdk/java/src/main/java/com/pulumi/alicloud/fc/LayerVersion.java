@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,37 +50,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;terraform-example-%s&#34;, default_.result()))
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *             .bucket(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
- *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
- *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
  *             .bucket(defaultBucket.id())
- *             .key(&#34;index.py&#34;)
- *             .content(&#34;&#34;&#34;
+ *             .key("index.py")
+ *             .content("""
  * import logging 
  * def handler(event, context): 
  * logger = logging.getLogger() 
- * logger.info(&#39;hello world&#39;) 
- * return &#39;hello world&#39;            &#34;&#34;&#34;)
+ * logger.info('hello world') 
+ * return 'hello world'            """)
  *             .build());
  * 
- *         var example = new LayerVersion(&#34;example&#34;, LayerVersionArgs.builder()        
- *             .layerName(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .compatibleRuntimes(&#34;python2.7&#34;)
+ *         var example = new LayerVersion("example", LayerVersionArgs.builder()        
+ *             .layerName(String.format("terraform-example-%s", default_.result()))
+ *             .compatibleRuntimes("python2.7")
  *             .ossBucketName(defaultBucket.bucket())
  *             .ossObjectName(defaultBucketObject.key())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

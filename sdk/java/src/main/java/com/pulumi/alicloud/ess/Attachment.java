@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -71,10 +72,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
@@ -84,75 +85,75 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .nameRegex("^ubuntu_18.*64")
  *             .mostRecent(true)
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultSecurityGroupRule = new SecurityGroupRule(&#34;defaultSecurityGroupRule&#34;, SecurityGroupRuleArgs.builder()        
- *             .type(&#34;ingress&#34;)
- *             .ipProtocol(&#34;tcp&#34;)
- *             .nicType(&#34;intranet&#34;)
- *             .policy(&#34;accept&#34;)
- *             .portRange(&#34;22/22&#34;)
+ *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()        
+ *             .type("ingress")
+ *             .ipProtocol("tcp")
+ *             .nicType("intranet")
+ *             .policy("accept")
+ *             .portRange("22/22")
  *             .priority(1)
  *             .securityGroupId(defaultSecurityGroup.id())
- *             .cidrIp(&#34;172.16.0.0/24&#34;)
+ *             .cidrIp("172.16.0.0/24")
  *             .build());
  * 
- *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
+ *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()        
  *             .minSize(0)
  *             .maxSize(2)
  *             .scalingGroupName(name)
  *             .removalPolicies(            
- *                 &#34;OldestInstance&#34;,
- *                 &#34;NewestInstance&#34;)
+ *                 "OldestInstance",
+ *                 "NewestInstance")
  *             .vswitchIds(defaultSwitch.id())
  *             .build());
  * 
- *         var defaultScalingConfiguration = new ScalingConfiguration(&#34;defaultScalingConfiguration&#34;, ScalingConfigurationArgs.builder()        
+ *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()        
  *             .scalingGroupId(defaultScalingGroup.id())
- *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .forceDelete(true)
  *             .active(true)
  *             .enable(true)
  *             .build());
  * 
- *         for (var i = 0; i &lt; 2; i++) {
- *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
- *                 .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *         for (var i = 0; i < 2; i++) {
+ *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+ *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *                 .securityGroups(defaultSecurityGroup.id())
- *                 .internetChargeType(&#34;PayByTraffic&#34;)
- *                 .internetMaxBandwidthOut(&#34;10&#34;)
- *                 .instanceChargeType(&#34;PostPaid&#34;)
- *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *                 .internetChargeType("PayByTraffic")
+ *                 .internetMaxBandwidthOut("10")
+ *                 .instanceChargeType("PostPaid")
+ *                 .systemDiskCategory("cloud_efficiency")
  *                 .vswitchId(defaultSwitch.id())
  *                 .instanceName(name)
  *                 .build());
  * 
  *         
  * }
- *         var defaultAttachment = new Attachment(&#34;defaultAttachment&#34;, AttachmentArgs.builder()        
+ *         var defaultAttachment = new Attachment("defaultAttachment", AttachmentArgs.builder()        
  *             .scalingGroupId(defaultScalingGroup.id())
  *             .instanceIds(            
  *                 defaultInstance[0].id(),
@@ -162,7 +163,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,22 +65,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var zoneId = &#34;cn-hangzhou-i&#34;;
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var zoneId = "cn-hangzhou-i";
  * 
  *         final var example = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(zoneId)
- *             .instanceTypeFamily(&#34;ecs.g7se&#34;)
+ *             .instanceTypeFamily("ecs.g7se")
  *             .build());
  * 
  *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .instanceType(example.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[example.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length() - 1].id())
- *             .nameRegex(&#34;^aliyun_2_1903_x64_20G_alibase_20231221.vhd&#34;)
- *             .owners(&#34;system&#34;)
+ *             .instanceType(example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length() - 1].id())
+ *             .nameRegex("^aliyun_2_1903_x64_20G_alibase_20231221.vhd")
+ *             .owners("system")
  *             .build());
  * 
  *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *             .nameRegex("^default-NODELETING$")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
@@ -87,35 +88,35 @@ import javax.annotation.Nullable;
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(default_.ids()[0])
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .availabilityZone(zoneId)
  *             .instanceName(name)
- *             .imageId(exampleGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(example.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[example.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length() - 1].id())
+ *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length() - 1].id())
  *             .securityGroups(exampleSecurityGroup.id())
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
- *             .systemDiskCategory(&#34;cloud_essd&#34;)
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .systemDiskCategory("cloud_essd")
  *             .build());
  * 
- *         var defaultInstance2 = new Instance(&#34;defaultInstance2&#34;, InstanceArgs.builder()        
- *             .category(&#34;enterprise&#34;)
+ *         var defaultInstance2 = new Instance("defaultInstance2", InstanceArgs.builder()        
+ *             .category("enterprise")
  *             .zoneId(defaultInstance.availabilityZone())
- *             .performanceLevel(&#34;PL1&#34;)
+ *             .performanceLevel("PL1")
  *             .fsName(name)
  *             .size(100)
  *             .build());
  * 
- *         var defaultInstanceAttachment = new InstanceAttachment(&#34;defaultInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
+ *         var defaultInstanceAttachment = new InstanceAttachment("defaultInstanceAttachment", InstanceAttachmentArgs.builder()        
  *             .ecsId(defaultInstance.id())
  *             .instanceId(defaultInstance2.id())
  *             .build());
  * 
- *         var exampleSnapshot = new Snapshot(&#34;exampleSnapshot&#34;, SnapshotArgs.builder()        
+ *         var exampleSnapshot = new Snapshot("exampleSnapshot", SnapshotArgs.builder()        
  *             .instanceId(defaultInstanceAttachment.instanceId())
  *             .snapshotName(name)
  *             .description(name)
@@ -124,7 +125,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -24,7 +24,8 @@ public final class CloudauthFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -47,9 +48,9 @@ public final class CloudauthFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultFaceConfig = new FaceConfig(&#34;defaultFaceConfig&#34;, FaceConfigArgs.builder()        
-     *             .bizName(&#34;example-value&#34;)
-     *             .bizType(&#34;example-value&#34;)
+     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()        
+     *             .bizName("example-value")
+     *             .bizType("example-value")
      *             .build());
      * 
      *         final var default = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
@@ -57,10 +58,11 @@ public final class CloudauthFunctions {
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export(&#34;faceConfig&#34;, default_.applyValue(default_ -&gt; default_.configs()[0]));
+     *         ctx.export("faceConfig", default_.applyValue(default_ -> default_.configs()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -77,7 +79,8 @@ public final class CloudauthFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -100,9 +103,9 @@ public final class CloudauthFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultFaceConfig = new FaceConfig(&#34;defaultFaceConfig&#34;, FaceConfigArgs.builder()        
-     *             .bizName(&#34;example-value&#34;)
-     *             .bizType(&#34;example-value&#34;)
+     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()        
+     *             .bizName("example-value")
+     *             .bizType("example-value")
      *             .build());
      * 
      *         final var default = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
@@ -110,10 +113,11 @@ public final class CloudauthFunctions {
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export(&#34;faceConfig&#34;, default_.applyValue(default_ -&gt; default_.configs()[0]));
+     *         ctx.export("faceConfig", default_.applyValue(default_ -> default_.configs()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -130,7 +134,8 @@ public final class CloudauthFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -153,9 +158,9 @@ public final class CloudauthFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultFaceConfig = new FaceConfig(&#34;defaultFaceConfig&#34;, FaceConfigArgs.builder()        
-     *             .bizName(&#34;example-value&#34;)
-     *             .bizType(&#34;example-value&#34;)
+     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()        
+     *             .bizName("example-value")
+     *             .bizType("example-value")
      *             .build());
      * 
      *         final var default = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
@@ -163,10 +168,11 @@ public final class CloudauthFunctions {
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export(&#34;faceConfig&#34;, default_.applyValue(default_ -&gt; default_.configs()[0]));
+     *         ctx.export("faceConfig", default_.applyValue(default_ -> default_.configs()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -183,7 +189,8 @@ public final class CloudauthFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -206,9 +213,9 @@ public final class CloudauthFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultFaceConfig = new FaceConfig(&#34;defaultFaceConfig&#34;, FaceConfigArgs.builder()        
-     *             .bizName(&#34;example-value&#34;)
-     *             .bizType(&#34;example-value&#34;)
+     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()        
+     *             .bizName("example-value")
+     *             .bizType("example-value")
      *             .build());
      * 
      *         final var default = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
@@ -216,10 +223,11 @@ public final class CloudauthFunctions {
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export(&#34;faceConfig&#34;, default_.applyValue(default_ -&gt; default_.configs()[0]));
+     *         ctx.export("faceConfig", default_.applyValue(default_ -> default_.configs()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -236,7 +244,8 @@ public final class CloudauthFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -259,9 +268,9 @@ public final class CloudauthFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultFaceConfig = new FaceConfig(&#34;defaultFaceConfig&#34;, FaceConfigArgs.builder()        
-     *             .bizName(&#34;example-value&#34;)
-     *             .bizType(&#34;example-value&#34;)
+     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()        
+     *             .bizName("example-value")
+     *             .bizType("example-value")
      *             .build());
      * 
      *         final var default = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
@@ -269,10 +278,11 @@ public final class CloudauthFunctions {
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export(&#34;faceConfig&#34;, default_.applyValue(default_ -&gt; default_.configs()[0]));
+     *         ctx.export("faceConfig", default_.applyValue(default_ -> default_.configs()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -289,7 +299,8 @@ public final class CloudauthFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -312,9 +323,9 @@ public final class CloudauthFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultFaceConfig = new FaceConfig(&#34;defaultFaceConfig&#34;, FaceConfigArgs.builder()        
-     *             .bizName(&#34;example-value&#34;)
-     *             .bizType(&#34;example-value&#34;)
+     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()        
+     *             .bizName("example-value")
+     *             .bizType("example-value")
      *             .build());
      * 
      *         final var default = CloudauthFunctions.getFaceConfigs(GetFaceConfigsArgs.builder()
@@ -322,10 +333,11 @@ public final class CloudauthFunctions {
      *             .nameRegex(defaultFaceConfig.bizName())
      *             .build());
      * 
-     *         ctx.export(&#34;faceConfig&#34;, default_.applyValue(default_ -&gt; default_.configs()[0]));
+     *         ctx.export("faceConfig", default_.applyValue(default_ -> default_.configs()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

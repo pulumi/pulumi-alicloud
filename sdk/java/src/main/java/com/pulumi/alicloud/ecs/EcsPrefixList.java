@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,20 +52,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EcsPrefixList(&#34;default&#34;, EcsPrefixListArgs.builder()        
- *             .addressFamily(&#34;IPv4&#34;)
+ *         var default_ = new EcsPrefixList("default", EcsPrefixListArgs.builder()        
+ *             .addressFamily("IPv4")
  *             .maxEntries(2)
- *             .prefixListName(&#34;tftest&#34;)
- *             .description(&#34;description&#34;)
+ *             .prefixListName("tftest")
+ *             .description("description")
  *             .entries(EcsPrefixListEntryArgs.builder()
- *                 .cidr(&#34;192.168.0.0/24&#34;)
- *                 .description(&#34;description&#34;)
+ *                 .cidr("192.168.0.0/24")
+ *                 .description("description")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

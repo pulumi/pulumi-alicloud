@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,13 +48,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new IndustrialPidOrganization(&#34;example&#34;, IndustrialPidOrganizationArgs.builder()        
- *             .pidOrganizationName(&#34;tf-testAcc&#34;)
+ *         var example = new IndustrialPidOrganization("example", IndustrialPidOrganizationArgs.builder()        
+ *             .pidOrganizationName("tf-testAcc")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

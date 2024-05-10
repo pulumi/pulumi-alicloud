@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -69,82 +70,83 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var name = config.get("name").orElse("tfexample");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
+ *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .instanceTypeFamily("ecs.sn1ne")
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
- *             .owners(&#34;system&#34;)
+ *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
+ *             .owners("system")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .cidrBlock("10.1.0.0/16")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
- *             .internetChargeType(&#34;PayByTraffic&#34;)
- *             .internetMaxBandwidthOut(&#34;10&#34;)
- *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+ *             .internetChargeType("PayByTraffic")
+ *             .internetMaxBandwidthOut("10")
+ *             .availabilityZone(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .instanceChargeType("PostPaid")
+ *             .systemDiskCategory("cloud_efficiency")
  *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
- *         var defaultNestServiceInstance = new NestServiceInstance(&#34;defaultNestServiceInstance&#34;, NestServiceInstanceArgs.builder()        
- *             .serviceId(&#34;service-dd475e6e468348799f0f&#34;)
- *             .serviceVersion(&#34;1&#34;)
+ *         var defaultNestServiceInstance = new NestServiceInstance("defaultNestServiceInstance", NestServiceInstanceArgs.builder()        
+ *             .serviceId("service-dd475e6e468348799f0f")
+ *             .serviceVersion("1")
  *             .serviceInstanceName(name)
  *             .resourceGroupId(default_.groups()[0].id())
- *             .paymentType(&#34;Permanent&#34;)
+ *             .paymentType("Permanent")
  *             .operationMetadata(NestServiceInstanceOperationMetadataArgs.builder()
- *                 .operationStartTime(&#34;1681281179000&#34;)
- *                 .operationEndTime(&#34;1681367579000&#34;)
- *                 .resources(defaultInstance.id().applyValue(id -&gt; &#34;&#34;&#34;
+ *                 .operationStartTime("1681281179000")
+ *                 .operationEndTime("1681367579000")
+ *                 .resources(defaultInstance.id().applyValue(id -> """
  *     {
- *       &#34;Type&#34;: &#34;ResourceIds&#34;,
- *       &#34;RegionId&#34;: &#34;cn-hangzhou&#34;,
- *       &#34;ResourceIds&#34;: {
- *       &#34;ALIYUN::ECS::INSTANCE&#34;: [
- *         &#34;%s&#34;
+ *       "Type": "ResourceIds",
+ *       "RegionId": "cn-hangzhou",
+ *       "ResourceIds": {
+ *       "ALIYUN::ECS::INSTANCE": [
+ *         "%s"
  *         ]
  *       } 
  *     }
- * &#34;, id)))
+ * ", id)))
  *                 .build())
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;ServiceInstance&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "ServiceInstance")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

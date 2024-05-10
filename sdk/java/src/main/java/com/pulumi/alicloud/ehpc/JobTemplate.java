@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,14 +50,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new JobTemplate(&#34;default&#34;, JobTemplateArgs.builder()        
- *             .jobTemplateName(&#34;example_value&#34;)
- *             .commandLine(&#34;./LammpsTest/lammps.pbs&#34;)
+ *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()        
+ *             .jobTemplateName("example_value")
+ *             .commandLine("./LammpsTest/lammps.pbs")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

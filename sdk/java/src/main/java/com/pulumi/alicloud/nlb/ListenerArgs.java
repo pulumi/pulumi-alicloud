@@ -162,14 +162,14 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+     * Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
      * 
      */
     @Import(name="listenerDescription")
     private @Nullable Output<String> listenerDescription;
 
     /**
-     * @return Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+     * @return Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
      * 
      */
     public Optional<Output<String>> listenerDescription() {
@@ -607,7 +607,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerDescription Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+         * @param listenerDescription Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
          * 
          * @return builder
          * 
@@ -618,7 +618,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerDescription Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+         * @param listenerDescription Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
          * 
          * @return builder
          * 

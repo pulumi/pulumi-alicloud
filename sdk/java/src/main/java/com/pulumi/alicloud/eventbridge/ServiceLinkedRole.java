@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,13 +45,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var serviceLinkedRole = new ServiceLinkedRole(&#34;serviceLinkedRole&#34;, ServiceLinkedRoleArgs.builder()        
- *             .productName(&#34;AliyunServiceRoleForEventBridgeSourceRocketMQ&#34;)
+ *         var serviceLinkedRole = new ServiceLinkedRole("serviceLinkedRole", ServiceLinkedRoleArgs.builder()        
+ *             .productName("AliyunServiceRoleForEventBridgeSourceRocketMQ")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

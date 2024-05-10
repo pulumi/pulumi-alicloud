@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,38 +57,39 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-sls&#34;);
+ *         final var name = config.get("name").orElse("tf-example-sls");
  *         final var this = AlicloudFunctions.getAccount();
  * 
  *         final var thisGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var default_ = new Project(&#34;default&#34;, ProjectArgs.builder()        
+ *         var default_ = new Project("default", ProjectArgs.builder()        
  *             .name(name)
  *             .build());
  * 
- *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
+ *         var defaultStore = new Store("defaultStore", StoreArgs.builder()        
  *             .name(name)
  *             .project(default_.name())
  *             .build());
  * 
- *         var defaultDelivery = new Delivery(&#34;defaultDelivery&#34;, DeliveryArgs.builder()        
+ *         var defaultDelivery = new Delivery("defaultDelivery", DeliveryArgs.builder()        
  *             .configurationItemChangeNotification(true)
  *             .nonCompliantNotification(true)
  *             .deliveryChannelName(name)
- *             .deliveryChannelTargetArn(Output.tuple(default_.name(), defaultStore.name()).applyValue(values -&gt; {
+ *             .deliveryChannelTargetArn(Output.tuple(default_.name(), defaultStore.name()).applyValue(values -> {
  *                 var defaultName = values.t1;
  *                 var defaultStoreName = values.t2;
- *                 return String.format(&#34;acs:log:%s:%s:project/%s/logstore/%s&#34;, thisGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.ids()[0]),this_.id(),defaultName,defaultStoreName);
+ *                 return String.format("acs:log:%s:%s:project/%s/logstore/%s", thisGetRegions.applyValue(getRegionsResult -> getRegionsResult.ids()[0]),this_.id(),defaultName,defaultStoreName);
  *             }))
- *             .deliveryChannelType(&#34;SLS&#34;)
+ *             .deliveryChannelType("SLS")
  *             .description(name)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,22 +59,23 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var example = new TemplateScratch(&#34;example&#34;, TemplateScratchArgs.builder()        
- *             .description(&#34;tf_testacc&#34;)
- *             .templateScratchType(&#34;ResourceImport&#34;)
+ *         var example = new TemplateScratch("example", TemplateScratchArgs.builder()        
+ *             .description("tf_testacc")
+ *             .templateScratchType("ResourceImport")
  *             .preferenceParameters(TemplateScratchPreferenceParameterArgs.builder()
- *                 .parameterKey(&#34;DeletionPolicy&#34;)
- *                 .parameterValue(&#34;Retain&#34;)
+ *                 .parameterKey("DeletionPolicy")
+ *                 .parameterValue("Retain")
  *                 .build())
  *             .sourceResourceGroup(TemplateScratchSourceResourceGroupArgs.builder()
  *                 .resourceGroupId(default_.ids()[0])
- *                 .resourceTypeFilters(&#34;ALIYUN::ECS::VPC&#34;)
+ *                 .resourceTypeFilters("ALIYUN::ECS::VPC")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

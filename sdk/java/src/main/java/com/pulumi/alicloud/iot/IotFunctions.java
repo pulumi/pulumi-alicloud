@@ -27,7 +27,8 @@ public final class IotFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -50,10 +51,11 @@ public final class IotFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = IotFunctions.getDeviceGroups();
      * 
-     *         ctx.export(&#34;iotDeviceGroupId1&#34;, ids.applyValue(getDeviceGroupsResult -&gt; getDeviceGroupsResult.groups()[0].id()));
+     *         ctx.export("iotDeviceGroupId1", ids.applyValue(getDeviceGroupsResult -> getDeviceGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -70,7 +72,8 @@ public final class IotFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -93,10 +96,11 @@ public final class IotFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = IotFunctions.getDeviceGroups();
      * 
-     *         ctx.export(&#34;iotDeviceGroupId1&#34;, ids.applyValue(getDeviceGroupsResult -&gt; getDeviceGroupsResult.groups()[0].id()));
+     *         ctx.export("iotDeviceGroupId1", ids.applyValue(getDeviceGroupsResult -> getDeviceGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -113,7 +117,8 @@ public final class IotFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -136,10 +141,11 @@ public final class IotFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = IotFunctions.getDeviceGroups();
      * 
-     *         ctx.export(&#34;iotDeviceGroupId1&#34;, ids.applyValue(getDeviceGroupsResult -&gt; getDeviceGroupsResult.groups()[0].id()));
+     *         ctx.export("iotDeviceGroupId1", ids.applyValue(getDeviceGroupsResult -> getDeviceGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -156,7 +162,8 @@ public final class IotFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -179,10 +186,11 @@ public final class IotFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = IotFunctions.getDeviceGroups();
      * 
-     *         ctx.export(&#34;iotDeviceGroupId1&#34;, ids.applyValue(getDeviceGroupsResult -&gt; getDeviceGroupsResult.groups()[0].id()));
+     *         ctx.export("iotDeviceGroupId1", ids.applyValue(getDeviceGroupsResult -> getDeviceGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -199,7 +207,8 @@ public final class IotFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -222,10 +231,11 @@ public final class IotFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = IotFunctions.getDeviceGroups();
      * 
-     *         ctx.export(&#34;iotDeviceGroupId1&#34;, ids.applyValue(getDeviceGroupsResult -&gt; getDeviceGroupsResult.groups()[0].id()));
+     *         ctx.export("iotDeviceGroupId1", ids.applyValue(getDeviceGroupsResult -> getDeviceGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -242,7 +252,8 @@ public final class IotFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -265,10 +276,11 @@ public final class IotFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = IotFunctions.getDeviceGroups();
      * 
-     *         ctx.export(&#34;iotDeviceGroupId1&#34;, ids.applyValue(getDeviceGroupsResult -&gt; getDeviceGroupsResult.groups()[0].id()));
+     *         ctx.export("iotDeviceGroupId1", ids.applyValue(getDeviceGroupsResult -> getDeviceGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -285,7 +297,8 @@ public final class IotFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -307,12 +320,13 @@ public final class IotFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = IotFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -329,7 +343,8 @@ public final class IotFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -351,12 +366,13 @@ public final class IotFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = IotFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -373,7 +389,8 @@ public final class IotFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -395,12 +412,13 @@ public final class IotFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = IotFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -417,7 +435,8 @@ public final class IotFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -439,12 +458,13 @@ public final class IotFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = IotFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -461,7 +481,8 @@ public final class IotFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -483,12 +504,13 @@ public final class IotFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = IotFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -505,7 +527,8 @@ public final class IotFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -527,12 +550,13 @@ public final class IotFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = IotFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

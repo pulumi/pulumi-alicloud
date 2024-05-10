@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,24 +56,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultVpc = new Network(&#34;defaultVpc&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()        
+ *             .cidrBlock("172.16.0.0/12")
  *             .vpcName(name)
  *             .build());
  * 
- *         var defaultyVSwitch = new Switch(&#34;defaultyVSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultyVSwitch = new Switch("defaultyVSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultVpc.id())
- *             .cidrBlock(&#34;172.16.2.0/24&#34;)
+ *             .cidrBlock("172.16.2.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
  *             .network(ClusterNetworkArgs.builder()
  *                 .vpcId(defaultVpc.id())
  *                 .vswitches(defaultyVSwitch.id())
@@ -81,7 +82,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

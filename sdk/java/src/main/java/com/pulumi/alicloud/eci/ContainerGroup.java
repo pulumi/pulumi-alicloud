@@ -40,7 +40,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -73,102 +74,103 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = EciFunctions.getZones();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .cidrBlock("10.1.0.0/16")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].zoneIds()[0])
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultContainerGroup = new ContainerGroup(&#34;defaultContainerGroup&#34;, ContainerGroupArgs.builder()        
+ *         var defaultContainerGroup = new ContainerGroup("defaultContainerGroup", ContainerGroupArgs.builder()        
  *             .containerGroupName(name)
  *             .cpu(8)
  *             .memory(16)
- *             .restartPolicy(&#34;OnFailure&#34;)
+ *             .restartPolicy("OnFailure")
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
  *             .autoCreateEip(true)
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .containers(ContainerGroupContainerArgs.builder()
- *                 .image(&#34;registry.cn-beijing.aliyuncs.com/eci_open/nginx:alpine&#34;)
- *                 .name(&#34;nginx&#34;)
- *                 .workingDir(&#34;/tmp/nginx&#34;)
- *                 .imagePullPolicy(&#34;IfNotPresent&#34;)
+ *                 .image("registry.cn-beijing.aliyuncs.com/eci_open/nginx:alpine")
+ *                 .name("nginx")
+ *                 .workingDir("/tmp/nginx")
+ *                 .imagePullPolicy("IfNotPresent")
  *                 .commands(                
- *                     &#34;/bin/sh&#34;,
- *                     &#34;-c&#34;,
- *                     &#34;sleep 9999&#34;)
+ *                     "/bin/sh",
+ *                     "-c",
+ *                     "sleep 9999")
  *                 .volumeMounts(ContainerGroupContainerVolumeMountArgs.builder()
- *                     .mountPath(&#34;/tmp/example&#34;)
+ *                     .mountPath("/tmp/example")
  *                     .readOnly(false)
- *                     .name(&#34;empty1&#34;)
+ *                     .name("empty1")
  *                     .build())
  *                 .ports(ContainerGroupContainerPortArgs.builder()
  *                     .port(80)
- *                     .protocol(&#34;TCP&#34;)
+ *                     .protocol("TCP")
  *                     .build())
  *                 .environmentVars(ContainerGroupContainerEnvironmentVarArgs.builder()
- *                     .key(&#34;name&#34;)
- *                     .value(&#34;nginx&#34;)
+ *                     .key("name")
+ *                     .value("nginx")
  *                     .build())
  *                 .livenessProbes(ContainerGroupContainerLivenessProbeArgs.builder()
- *                     .periodSeconds(&#34;5&#34;)
- *                     .initialDelaySeconds(&#34;5&#34;)
- *                     .successThreshold(&#34;1&#34;)
- *                     .failureThreshold(&#34;3&#34;)
- *                     .timeoutSeconds(&#34;1&#34;)
+ *                     .periodSeconds("5")
+ *                     .initialDelaySeconds("5")
+ *                     .successThreshold("1")
+ *                     .failureThreshold("3")
+ *                     .timeoutSeconds("1")
  *                     .execs(ContainerGroupContainerLivenessProbeExecArgs.builder()
- *                         .commands(&#34;cat /tmp/healthy&#34;)
+ *                         .commands("cat /tmp/healthy")
  *                         .build())
  *                     .build())
  *                 .readinessProbes(ContainerGroupContainerReadinessProbeArgs.builder()
- *                     .periodSeconds(&#34;5&#34;)
- *                     .initialDelaySeconds(&#34;5&#34;)
- *                     .successThreshold(&#34;1&#34;)
- *                     .failureThreshold(&#34;3&#34;)
- *                     .timeoutSeconds(&#34;1&#34;)
+ *                     .periodSeconds("5")
+ *                     .initialDelaySeconds("5")
+ *                     .successThreshold("1")
+ *                     .failureThreshold("3")
+ *                     .timeoutSeconds("1")
  *                     .execs(ContainerGroupContainerReadinessProbeExecArgs.builder()
- *                         .commands(&#34;cat /tmp/healthy&#34;)
+ *                         .commands("cat /tmp/healthy")
  *                         .build())
  *                     .build())
  *                 .build())
  *             .initContainers(ContainerGroupInitContainerArgs.builder()
- *                 .name(&#34;init-busybox&#34;)
- *                 .image(&#34;registry.cn-beijing.aliyuncs.com/eci_open/busybox:1.30&#34;)
- *                 .imagePullPolicy(&#34;IfNotPresent&#34;)
- *                 .commands(&#34;echo&#34;)
- *                 .args(&#34;hello initcontainer&#34;)
+ *                 .name("init-busybox")
+ *                 .image("registry.cn-beijing.aliyuncs.com/eci_open/busybox:1.30")
+ *                 .imagePullPolicy("IfNotPresent")
+ *                 .commands("echo")
+ *                 .args("hello initcontainer")
  *                 .build())
  *             .volumes(            
  *                 ContainerGroupVolumeArgs.builder()
- *                     .name(&#34;empty1&#34;)
- *                     .type(&#34;EmptyDirVolume&#34;)
+ *                     .name("empty1")
+ *                     .type("EmptyDirVolume")
  *                     .build(),
  *                 ContainerGroupVolumeArgs.builder()
- *                     .name(&#34;empty2&#34;)
- *                     .type(&#34;EmptyDirVolume&#34;)
+ *                     .name("empty2")
+ *                     .type("EmptyDirVolume")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

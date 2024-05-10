@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,52 +48,52 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a RAM Role Policy attachment.
- *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
- *             .name(&#34;roleName&#34;)
- *             .document(&#34;&#34;&#34;
+ *         var role = new Role("role", RoleArgs.builder()        
+ *             .name("roleName")
+ *             .document("""
  *     {
- *       &#34;Statement&#34;: [
+ *       "Statement": [
  *         {
- *           &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *           &#34;Effect&#34;: &#34;Allow&#34;,
- *           &#34;Principal&#34;: {
- *             &#34;Service&#34;: [
- *               &#34;apigateway.aliyuncs.com&#34;, 
- *               &#34;ecs.aliyuncs.com&#34;
+ *           "Action": "sts:AssumeRole",
+ *           "Effect": "Allow",
+ *           "Principal": {
+ *             "Service": [
+ *               "apigateway.aliyuncs.com", 
+ *               "ecs.aliyuncs.com"
  *             ]
  *           }
  *         }
  *       ],
- *       &#34;Version&#34;: &#34;1&#34;
+ *       "Version": "1"
  *     }
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a role test.&#34;)
+ *             """)
+ *             .description("this is a role test.")
  *             .build());
  * 
- *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
- *             .name(&#34;policyName&#34;)
- *             .document(&#34;&#34;&#34;
+ *         var policy = new Policy("policy", PolicyArgs.builder()        
+ *             .name("policyName")
+ *             .document("""
  *   {
- *     &#34;Statement&#34;: [
+ *     "Statement": [
  *       {
- *         &#34;Action&#34;: [
- *           &#34;oss:ListObjects&#34;,
- *           &#34;oss:GetObject&#34;
+ *         "Action": [
+ *           "oss:ListObjects",
+ *           "oss:GetObject"
  *         ],
- *         &#34;Effect&#34;: &#34;Allow&#34;,
- *         &#34;Resource&#34;: [
- *           &#34;acs:oss:*:*:mybucket&#34;,
- *           &#34;acs:oss:*:*:mybucket/*&#34;
+ *         "Effect": "Allow",
+ *         "Resource": [
+ *           "acs:oss:*:*:mybucket",
+ *           "acs:oss:*:*:mybucket/*"
  *         ]
  *       }
  *     ],
- *       &#34;Version&#34;: &#34;1&#34;
+ *       "Version": "1"
  *   }
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a policy test&#34;)
+ *             """)
+ *             .description("this is a policy test")
  *             .build());
  * 
- *         var attach = new RolePolicyAttachment(&#34;attach&#34;, RolePolicyAttachmentArgs.builder()        
+ *         var attach = new RolePolicyAttachment("attach", RolePolicyAttachmentArgs.builder()        
  *             .policyName(policy.name())
  *             .policyType(policy.type())
  *             .roleName(role.name())
@@ -100,7 +101,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

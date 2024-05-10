@@ -42,7 +42,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -64,14 +65,15 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .accountName(&#34;root&#34;)
+     *             .instanceId("example_value")
+     *             .accountName("root")
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbAccountId1&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("mongodbAccountId1", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -88,7 +90,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -110,14 +113,15 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .accountName(&#34;root&#34;)
+     *             .instanceId("example_value")
+     *             .accountName("root")
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbAccountId1&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("mongodbAccountId1", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -134,7 +138,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -156,14 +161,15 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .accountName(&#34;root&#34;)
+     *             .instanceId("example_value")
+     *             .accountName("root")
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbAccountId1&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("mongodbAccountId1", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -180,7 +186,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -202,14 +209,15 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .accountName(&#34;root&#34;)
+     *             .instanceId("example_value")
+     *             .accountName("root")
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbAccountId1&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("mongodbAccountId1", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -226,7 +234,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -248,13 +257,14 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getAuditPolicies(GetAuditPoliciesArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbAuditPolicyId1&#34;, example.applyValue(getAuditPoliciesResult -&gt; getAuditPoliciesResult.policies()[0].id()));
+     *         ctx.export("mongodbAuditPolicyId1", example.applyValue(getAuditPoliciesResult -> getAuditPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -271,7 +281,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -293,13 +304,14 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getAuditPolicies(GetAuditPoliciesArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbAuditPolicyId1&#34;, example.applyValue(getAuditPoliciesResult -&gt; getAuditPoliciesResult.policies()[0].id()));
+     *         ctx.export("mongodbAuditPolicyId1", example.applyValue(getAuditPoliciesResult -> getAuditPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -316,7 +328,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -338,13 +351,14 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getAuditPolicies(GetAuditPoliciesArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbAuditPolicyId1&#34;, example.applyValue(getAuditPoliciesResult -&gt; getAuditPoliciesResult.policies()[0].id()));
+     *         ctx.export("mongodbAuditPolicyId1", example.applyValue(getAuditPoliciesResult -> getAuditPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -361,7 +375,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -383,13 +398,14 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getAuditPolicies(GetAuditPoliciesArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbAuditPolicyId1&#34;, example.applyValue(getAuditPoliciesResult -&gt; getAuditPoliciesResult.policies()[0].id()));
+     *         ctx.export("mongodbAuditPolicyId1", example.applyValue(getAuditPoliciesResult -> getAuditPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -403,7 +419,8 @@ public final class MongodbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -425,15 +442,16 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;dds-.+\\d+&#34;)
-     *             .instanceType(&#34;replicate&#34;)
-     *             .instanceClass(&#34;dds.mongo.mid&#34;)
-     *             .availabilityZone(&#34;eu-central-1a&#34;)
+     *             .nameRegex("dds-.+\\d+")
+     *             .instanceType("replicate")
+     *             .instanceClass("dds.mongo.mid")
+     *             .availabilityZone("eu-central-1a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -447,7 +465,8 @@ public final class MongodbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -469,15 +488,16 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;dds-.+\\d+&#34;)
-     *             .instanceType(&#34;replicate&#34;)
-     *             .instanceClass(&#34;dds.mongo.mid&#34;)
-     *             .availabilityZone(&#34;eu-central-1a&#34;)
+     *             .nameRegex("dds-.+\\d+")
+     *             .instanceType("replicate")
+     *             .instanceClass("dds.mongo.mid")
+     *             .availabilityZone("eu-central-1a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -491,7 +511,8 @@ public final class MongodbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -513,15 +534,16 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;dds-.+\\d+&#34;)
-     *             .instanceType(&#34;replicate&#34;)
-     *             .instanceClass(&#34;dds.mongo.mid&#34;)
-     *             .availabilityZone(&#34;eu-central-1a&#34;)
+     *             .nameRegex("dds-.+\\d+")
+     *             .instanceType("replicate")
+     *             .instanceClass("dds.mongo.mid")
+     *             .availabilityZone("eu-central-1a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -535,7 +557,8 @@ public final class MongodbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -557,15 +580,16 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;dds-.+\\d+&#34;)
-     *             .instanceType(&#34;replicate&#34;)
-     *             .instanceClass(&#34;dds.mongo.mid&#34;)
-     *             .availabilityZone(&#34;eu-central-1a&#34;)
+     *             .nameRegex("dds-.+\\d+")
+     *             .instanceType("replicate")
+     *             .instanceClass("dds.mongo.mid")
+     *             .availabilityZone("eu-central-1a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -579,7 +603,8 @@ public final class MongodbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -601,15 +626,16 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;dds-.+\\d+&#34;)
-     *             .instanceType(&#34;replicate&#34;)
-     *             .instanceClass(&#34;dds.mongo.mid&#34;)
-     *             .availabilityZone(&#34;eu-central-1a&#34;)
+     *             .nameRegex("dds-.+\\d+")
+     *             .instanceType("replicate")
+     *             .instanceClass("dds.mongo.mid")
+     *             .availabilityZone("eu-central-1a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -623,7 +649,8 @@ public final class MongodbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -645,15 +672,16 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;dds-.+\\d+&#34;)
-     *             .instanceType(&#34;replicate&#34;)
-     *             .instanceClass(&#34;dds.mongo.mid&#34;)
-     *             .availabilityZone(&#34;eu-central-1a&#34;)
+     *             .nameRegex("dds-.+\\d+")
+     *             .instanceType("replicate")
+     *             .instanceClass("dds.mongo.mid")
+     *             .availabilityZone("eu-central-1a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -670,7 +698,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -692,25 +721,26 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getServerlessInstances(GetServerlessInstancesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .dbInstanceClass(&#34;example_value&#34;)
-     *             .dbInstanceDescription(&#34;example_value&#34;)
-     *             .networkType(&#34;VPC&#34;)
-     *             .resourceGroupId(&#34;example_value&#34;)
-     *             .status(&#34;Running&#34;)
-     *             .vpcId(&#34;example_value&#34;)
-     *             .vswitchId(&#34;example_value&#34;)
-     *             .zoneId(&#34;example_value&#34;)
+     *             .ids("example_value")
+     *             .dbInstanceClass("example_value")
+     *             .dbInstanceDescription("example_value")
+     *             .networkType("VPC")
+     *             .resourceGroupId("example_value")
+     *             .status("Running")
+     *             .vpcId("example_value")
+     *             .vswitchId("example_value")
+     *             .zoneId("example_value")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;MongodbServerlessInstance&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;TF&#34;)
+     *                 Map.entry("Created", "MongodbServerlessInstance"),
+     *                 Map.entry("For", "TF")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbServerlessInstanceId1&#34;, example.applyValue(getServerlessInstancesResult -&gt; getServerlessInstancesResult.instances()[0].id()));
+     *         ctx.export("mongodbServerlessInstanceId1", example.applyValue(getServerlessInstancesResult -> getServerlessInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -727,7 +757,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -749,25 +780,26 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getServerlessInstances(GetServerlessInstancesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .dbInstanceClass(&#34;example_value&#34;)
-     *             .dbInstanceDescription(&#34;example_value&#34;)
-     *             .networkType(&#34;VPC&#34;)
-     *             .resourceGroupId(&#34;example_value&#34;)
-     *             .status(&#34;Running&#34;)
-     *             .vpcId(&#34;example_value&#34;)
-     *             .vswitchId(&#34;example_value&#34;)
-     *             .zoneId(&#34;example_value&#34;)
+     *             .ids("example_value")
+     *             .dbInstanceClass("example_value")
+     *             .dbInstanceDescription("example_value")
+     *             .networkType("VPC")
+     *             .resourceGroupId("example_value")
+     *             .status("Running")
+     *             .vpcId("example_value")
+     *             .vswitchId("example_value")
+     *             .zoneId("example_value")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;MongodbServerlessInstance&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;TF&#34;)
+     *                 Map.entry("Created", "MongodbServerlessInstance"),
+     *                 Map.entry("For", "TF")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbServerlessInstanceId1&#34;, example.applyValue(getServerlessInstancesResult -&gt; getServerlessInstancesResult.instances()[0].id()));
+     *         ctx.export("mongodbServerlessInstanceId1", example.applyValue(getServerlessInstancesResult -> getServerlessInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -784,7 +816,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -806,25 +839,26 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getServerlessInstances(GetServerlessInstancesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .dbInstanceClass(&#34;example_value&#34;)
-     *             .dbInstanceDescription(&#34;example_value&#34;)
-     *             .networkType(&#34;VPC&#34;)
-     *             .resourceGroupId(&#34;example_value&#34;)
-     *             .status(&#34;Running&#34;)
-     *             .vpcId(&#34;example_value&#34;)
-     *             .vswitchId(&#34;example_value&#34;)
-     *             .zoneId(&#34;example_value&#34;)
+     *             .ids("example_value")
+     *             .dbInstanceClass("example_value")
+     *             .dbInstanceDescription("example_value")
+     *             .networkType("VPC")
+     *             .resourceGroupId("example_value")
+     *             .status("Running")
+     *             .vpcId("example_value")
+     *             .vswitchId("example_value")
+     *             .zoneId("example_value")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;MongodbServerlessInstance&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;TF&#34;)
+     *                 Map.entry("Created", "MongodbServerlessInstance"),
+     *                 Map.entry("For", "TF")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbServerlessInstanceId1&#34;, example.applyValue(getServerlessInstancesResult -&gt; getServerlessInstancesResult.instances()[0].id()));
+     *         ctx.export("mongodbServerlessInstanceId1", example.applyValue(getServerlessInstancesResult -> getServerlessInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -841,7 +875,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -863,25 +898,26 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getServerlessInstances(GetServerlessInstancesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .dbInstanceClass(&#34;example_value&#34;)
-     *             .dbInstanceDescription(&#34;example_value&#34;)
-     *             .networkType(&#34;VPC&#34;)
-     *             .resourceGroupId(&#34;example_value&#34;)
-     *             .status(&#34;Running&#34;)
-     *             .vpcId(&#34;example_value&#34;)
-     *             .vswitchId(&#34;example_value&#34;)
-     *             .zoneId(&#34;example_value&#34;)
+     *             .ids("example_value")
+     *             .dbInstanceClass("example_value")
+     *             .dbInstanceDescription("example_value")
+     *             .networkType("VPC")
+     *             .resourceGroupId("example_value")
+     *             .status("Running")
+     *             .vpcId("example_value")
+     *             .vswitchId("example_value")
+     *             .zoneId("example_value")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;MongodbServerlessInstance&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;TF&#34;)
+     *                 Map.entry("Created", "MongodbServerlessInstance"),
+     *                 Map.entry("For", "TF")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbServerlessInstanceId1&#34;, example.applyValue(getServerlessInstancesResult -&gt; getServerlessInstancesResult.instances()[0].id()));
+     *         ctx.export("mongodbServerlessInstanceId1", example.applyValue(getServerlessInstancesResult -> getServerlessInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -898,7 +934,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -920,25 +957,26 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getServerlessInstances(GetServerlessInstancesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .dbInstanceClass(&#34;example_value&#34;)
-     *             .dbInstanceDescription(&#34;example_value&#34;)
-     *             .networkType(&#34;VPC&#34;)
-     *             .resourceGroupId(&#34;example_value&#34;)
-     *             .status(&#34;Running&#34;)
-     *             .vpcId(&#34;example_value&#34;)
-     *             .vswitchId(&#34;example_value&#34;)
-     *             .zoneId(&#34;example_value&#34;)
+     *             .ids("example_value")
+     *             .dbInstanceClass("example_value")
+     *             .dbInstanceDescription("example_value")
+     *             .networkType("VPC")
+     *             .resourceGroupId("example_value")
+     *             .status("Running")
+     *             .vpcId("example_value")
+     *             .vswitchId("example_value")
+     *             .zoneId("example_value")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;MongodbServerlessInstance&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;TF&#34;)
+     *                 Map.entry("Created", "MongodbServerlessInstance"),
+     *                 Map.entry("For", "TF")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbServerlessInstanceId1&#34;, example.applyValue(getServerlessInstancesResult -&gt; getServerlessInstancesResult.instances()[0].id()));
+     *         ctx.export("mongodbServerlessInstanceId1", example.applyValue(getServerlessInstancesResult -> getServerlessInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -955,7 +993,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -977,25 +1016,26 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getServerlessInstances(GetServerlessInstancesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .dbInstanceClass(&#34;example_value&#34;)
-     *             .dbInstanceDescription(&#34;example_value&#34;)
-     *             .networkType(&#34;VPC&#34;)
-     *             .resourceGroupId(&#34;example_value&#34;)
-     *             .status(&#34;Running&#34;)
-     *             .vpcId(&#34;example_value&#34;)
-     *             .vswitchId(&#34;example_value&#34;)
-     *             .zoneId(&#34;example_value&#34;)
+     *             .ids("example_value")
+     *             .dbInstanceClass("example_value")
+     *             .dbInstanceDescription("example_value")
+     *             .networkType("VPC")
+     *             .resourceGroupId("example_value")
+     *             .status("Running")
+     *             .vpcId("example_value")
+     *             .vswitchId("example_value")
+     *             .zoneId("example_value")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;Created&#34;, &#34;MongodbServerlessInstance&#34;),
-     *                 Map.entry(&#34;For&#34;, &#34;TF&#34;)
+     *                 Map.entry("Created", "MongodbServerlessInstance"),
+     *                 Map.entry("For", "TF")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbServerlessInstanceId1&#34;, example.applyValue(getServerlessInstancesResult -&gt; getServerlessInstancesResult.instances()[0].id()));
+     *         ctx.export("mongodbServerlessInstanceId1", example.applyValue(getServerlessInstancesResult -> getServerlessInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1048,7 +1088,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1070,15 +1111,16 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getShardingNetworkPublicAddresses(GetShardingNetworkPublicAddressesArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nodeId(&#34;example_value&#34;)
-     *             .role(&#34;Primary&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nodeId("example_value")
+     *             .role("Primary")
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbShardingNetworkPublicAddressDbInstanceId1&#34;, example.applyValue(getShardingNetworkPublicAddressesResult -&gt; getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
+     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.applyValue(getShardingNetworkPublicAddressesResult -> getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1095,7 +1137,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1117,15 +1160,16 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getShardingNetworkPublicAddresses(GetShardingNetworkPublicAddressesArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nodeId(&#34;example_value&#34;)
-     *             .role(&#34;Primary&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nodeId("example_value")
+     *             .role("Primary")
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbShardingNetworkPublicAddressDbInstanceId1&#34;, example.applyValue(getShardingNetworkPublicAddressesResult -&gt; getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
+     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.applyValue(getShardingNetworkPublicAddressesResult -> getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1142,7 +1186,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1164,15 +1209,16 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getShardingNetworkPublicAddresses(GetShardingNetworkPublicAddressesArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nodeId(&#34;example_value&#34;)
-     *             .role(&#34;Primary&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nodeId("example_value")
+     *             .role("Primary")
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbShardingNetworkPublicAddressDbInstanceId1&#34;, example.applyValue(getShardingNetworkPublicAddressesResult -&gt; getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
+     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.applyValue(getShardingNetworkPublicAddressesResult -> getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1189,7 +1235,8 @@ public final class MongodbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1211,15 +1258,16 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = MongodbFunctions.getShardingNetworkPublicAddresses(GetShardingNetworkPublicAddressesArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nodeId(&#34;example_value&#34;)
-     *             .role(&#34;Primary&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nodeId("example_value")
+     *             .role("Primary")
      *             .build());
      * 
-     *         ctx.export(&#34;mongodbShardingNetworkPublicAddressDbInstanceId1&#34;, example.applyValue(getShardingNetworkPublicAddressesResult -&gt; getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
+     *         ctx.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.applyValue(getShardingNetworkPublicAddressesResult -> getShardingNetworkPublicAddressesResult.addresses()[0].dbInstanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1234,7 +1282,8 @@ public final class MongodbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1261,13 +1310,14 @@ public final class MongodbFunctions {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
-     *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1282,7 +1332,8 @@ public final class MongodbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1309,13 +1360,14 @@ public final class MongodbFunctions {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
-     *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1330,7 +1382,8 @@ public final class MongodbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1357,13 +1410,14 @@ public final class MongodbFunctions {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
-     *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1378,7 +1432,8 @@ public final class MongodbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1405,13 +1460,14 @@ public final class MongodbFunctions {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
-     *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1426,7 +1482,8 @@ public final class MongodbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1453,13 +1510,14 @@ public final class MongodbFunctions {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
-     *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1474,7 +1532,8 @@ public final class MongodbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1501,13 +1560,14 @@ public final class MongodbFunctions {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
-     *         var mongodb = new Instance(&#34;mongodb&#34;, InstanceArgs.builder()        
-     *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()        
+     *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

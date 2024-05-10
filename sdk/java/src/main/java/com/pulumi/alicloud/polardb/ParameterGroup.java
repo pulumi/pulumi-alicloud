@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,20 +51,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ParameterGroup(&#34;example&#34;, ParameterGroupArgs.builder()        
- *             .name(&#34;example_value&#34;)
- *             .dbType(&#34;MySQL&#34;)
- *             .dbVersion(&#34;8.0&#34;)
+ *         var example = new ParameterGroup("example", ParameterGroupArgs.builder()        
+ *             .name("example_value")
+ *             .dbType("MySQL")
+ *             .dbVersion("8.0")
  *             .parameters(ParameterGroupParameterArgs.builder()
- *                 .paramName(&#34;wait_timeout&#34;)
- *                 .paramValue(&#34;86400&#34;)
+ *                 .paramName("wait_timeout")
+ *                 .paramValue("86400")
  *                 .build())
- *             .description(&#34;example_value&#34;)
+ *             .description("example_value")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,45 +57,46 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var domainName = config.get(&#34;domainName&#34;).orElse(&#34;tf-example.com&#34;);
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var domainName = config.get("domainName").orElse("tf-example.com");
+ *         final var name = config.get("name").orElse("tf_example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new Domain(&#34;example&#34;, DomainArgs.builder()        
- *             .domainName(String.format(&#34;%s-%s&#34;, domainName,default_.result()))
- *             .scope(&#34;overseas&#34;)
+ *         var example = new Domain("example", DomainArgs.builder()        
+ *             .domainName(String.format("%s-%s", domainName,default_.result()))
+ *             .scope("overseas")
  *             .sources(DomainSourceArgs.builder()
- *                 .content(&#34;1.1.1.1&#34;)
- *                 .port(&#34;80&#34;)
- *                 .priority(&#34;20&#34;)
- *                 .type(&#34;ipaddr&#34;)
- *                 .weight(&#34;10&#34;)
+ *                 .content("1.1.1.1")
+ *                 .port("80")
+ *                 .priority("20")
+ *                 .type("ipaddr")
+ *                 .weight("10")
  *                 .build())
  *             .build());
  * 
- *         var exampleWafDomain = new WafDomain(&#34;exampleWafDomain&#34;, WafDomainArgs.builder()        
+ *         var exampleWafDomain = new WafDomain("exampleWafDomain", WafDomainArgs.builder()        
  *             .domainName(example.domainName())
- *             .clientIpTag(&#34;X-Forwarded-For&#34;)
+ *             .clientIpTag("X-Forwarded-For")
  *             .build());
  * 
- *         var exampleWafPolicy = new WafPolicy(&#34;exampleWafPolicy&#34;, WafPolicyArgs.builder()        
- *             .defenseScene(&#34;waf_group&#34;)
- *             .policyName(String.format(&#34;%s_%s&#34;, name,default_.result()))
- *             .policyType(&#34;custom&#34;)
- *             .status(&#34;on&#34;)
+ *         var exampleWafPolicy = new WafPolicy("exampleWafPolicy", WafPolicyArgs.builder()        
+ *             .defenseScene("waf_group")
+ *             .policyName(String.format("%s_%s", name,default_.result()))
+ *             .policyType("custom")
+ *             .status("on")
  *             .build());
  * 
- *         var exampleWafPolicyDomainAttachment = new WafPolicyDomainAttachment(&#34;exampleWafPolicyDomainAttachment&#34;, WafPolicyDomainAttachmentArgs.builder()        
+ *         var exampleWafPolicyDomainAttachment = new WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment", WafPolicyDomainAttachmentArgs.builder()        
  *             .domainName(exampleWafDomain.domainName())
  *             .policyId(exampleWafPolicy.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -63,52 +64,53 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(example.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var exampleNetworkAcl = new NetworkAcl(&#34;exampleNetworkAcl&#34;, NetworkAclArgs.builder()        
+ *         var exampleNetworkAcl = new NetworkAcl("exampleNetworkAcl", NetworkAclArgs.builder()        
  *             .vpcId(example.id())
  *             .networkAclName(name)
  *             .description(name)
  *             .ingressAclEntries(NetworkAclIngressAclEntryArgs.builder()
- *                 .description(String.format(&#34;%s-ingress&#34;, name))
- *                 .networkAclEntryName(String.format(&#34;%s-ingress&#34;, name))
- *                 .sourceCidrIp(&#34;10.0.0.0/24&#34;)
- *                 .policy(&#34;accept&#34;)
- *                 .port(&#34;20/80&#34;)
- *                 .protocol(&#34;tcp&#34;)
+ *                 .description(String.format("%s-ingress", name))
+ *                 .networkAclEntryName(String.format("%s-ingress", name))
+ *                 .sourceCidrIp("10.0.0.0/24")
+ *                 .policy("accept")
+ *                 .port("20/80")
+ *                 .protocol("tcp")
  *                 .build())
  *             .egressAclEntries(NetworkAclEgressAclEntryArgs.builder()
- *                 .description(String.format(&#34;%s-egress&#34;, name))
- *                 .networkAclEntryName(String.format(&#34;%s-egress&#34;, name))
- *                 .destinationCidrIp(&#34;10.0.0.0/24&#34;)
- *                 .policy(&#34;accept&#34;)
- *                 .port(&#34;20/80&#34;)
- *                 .protocol(&#34;tcp&#34;)
+ *                 .description(String.format("%s-egress", name))
+ *                 .networkAclEntryName(String.format("%s-egress", name))
+ *                 .destinationCidrIp("10.0.0.0/24")
+ *                 .policy("accept")
+ *                 .port("20/80")
+ *                 .protocol("tcp")
  *                 .build())
  *             .resources(NetworkAclResourceArgs.builder()
  *                 .resourceId(exampleSwitch.id())
- *                 .resourceType(&#34;VSwitch&#34;)
+ *                 .resourceType("VSwitch")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

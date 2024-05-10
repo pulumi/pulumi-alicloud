@@ -40,7 +40,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,18 +63,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
- *             .ipv6Isp(&#34;BGP&#34;)
- *             .description(&#34;test&#34;)
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Network("default", NetworkArgs.builder()        
+ *             .ipv6Isp("BGP")
+ *             .description("test")
+ *             .cidrBlock("10.0.0.0/8")
  *             .vpcName(name)
  *             .enableIpv6(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

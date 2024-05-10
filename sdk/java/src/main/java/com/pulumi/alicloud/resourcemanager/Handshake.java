@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,15 +46,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Add a Resource Manager handshake.
- *         var example = new Handshake(&#34;example&#34;, HandshakeArgs.builder()        
- *             .targetEntity(&#34;1182775234******&#34;)
- *             .targetType(&#34;Account&#34;)
- *             .note(&#34;test resource manager handshake&#34;)
+ *         var example = new Handshake("example", HandshakeArgs.builder()        
+ *             .targetEntity("1182775234******")
+ *             .targetType("Account")
+ *             .note("test resource manager handshake")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

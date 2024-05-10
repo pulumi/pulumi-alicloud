@@ -16,7 +16,7 @@ public final class InstanceBabelfishConfig {
      */
     private String babelfishEnabled;
     /**
-     * @return The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ &amp; * () _ + - =
+     * @return The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:!{@literal @} # $ % ^ &amp; * () _ + - =
      * 
      */
     private String masterUserPassword;
@@ -40,7 +40,7 @@ public final class InstanceBabelfishConfig {
         return this.babelfishEnabled;
     }
     /**
-     * @return The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:! @ # $ % ^ &amp; * () _ + - =
+     * @return The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters:!{@literal @} # $ % ^ &amp; * () _ + - =
      * 
      */
     public String masterUserPassword() {

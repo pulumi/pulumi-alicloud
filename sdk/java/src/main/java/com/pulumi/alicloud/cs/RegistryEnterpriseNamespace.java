@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,26 +53,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example-name&#34;);
- *         var example = new RegistryEnterpriseInstance(&#34;example&#34;, RegistryEnterpriseInstanceArgs.builder()        
- *             .paymentType(&#34;Subscription&#34;)
+ *         final var name = config.get("name").orElse("terraform-example-name");
+ *         var example = new RegistryEnterpriseInstance("example", RegistryEnterpriseInstanceArgs.builder()        
+ *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
- *             .renewalStatus(&#34;ManualRenewal&#34;)
- *             .instanceType(&#34;Advanced&#34;)
+ *             .renewalStatus("ManualRenewal")
+ *             .instanceType("Advanced")
  *             .instanceName(name)
  *             .build());
  * 
- *         var exampleRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace(&#34;exampleRegistryEnterpriseNamespace&#34;, RegistryEnterpriseNamespaceArgs.builder()        
+ *         var exampleRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()        
  *             .instanceId(example.id())
  *             .name(name)
  *             .autoCreate(false)
- *             .defaultVisibility(&#34;PUBLIC&#34;)
+ *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

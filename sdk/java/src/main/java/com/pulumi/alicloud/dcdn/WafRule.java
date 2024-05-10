@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,51 +59,52 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("tf_example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new WafPolicy(&#34;example&#34;, WafPolicyArgs.builder()        
- *             .defenseScene(&#34;waf_group&#34;)
- *             .policyName(String.format(&#34;%s_%s&#34;, name,default_.result()))
- *             .policyType(&#34;custom&#34;)
- *             .status(&#34;on&#34;)
+ *         var example = new WafPolicy("example", WafPolicyArgs.builder()        
+ *             .defenseScene("waf_group")
+ *             .policyName(String.format("%s_%s", name,default_.result()))
+ *             .policyType("custom")
+ *             .status("on")
  *             .build());
  * 
- *         var exampleWafRule = new WafRule(&#34;exampleWafRule&#34;, WafRuleArgs.builder()        
+ *         var exampleWafRule = new WafRule("exampleWafRule", WafRuleArgs.builder()        
  *             .policyId(example.id())
  *             .ruleName(name)
  *             .conditions(            
  *                 WafRuleConditionArgs.builder()
- *                     .key(&#34;URI&#34;)
- *                     .opValue(&#34;ne&#34;)
- *                     .values(&#34;/login.php&#34;)
+ *                     .key("URI")
+ *                     .opValue("ne")
+ *                     .values("/login.php")
  *                     .build(),
  *                 WafRuleConditionArgs.builder()
- *                     .key(&#34;Header&#34;)
- *                     .subKey(&#34;a&#34;)
- *                     .opValue(&#34;eq&#34;)
- *                     .values(&#34;b&#34;)
+ *                     .key("Header")
+ *                     .subKey("a")
+ *                     .opValue("eq")
+ *                     .values("b")
  *                     .build())
- *             .status(&#34;on&#34;)
- *             .action(&#34;monitor&#34;)
+ *             .status("on")
+ *             .action("monitor")
  *             .rateLimit(WafRuleRateLimitArgs.builder()
- *                 .target(&#34;IP&#34;)
- *                 .interval(&#34;5&#34;)
- *                 .threshold(&#34;5&#34;)
- *                 .ttl(&#34;1800&#34;)
+ *                 .target("IP")
+ *                 .interval("5")
+ *                 .threshold("5")
+ *                 .ttl("1800")
  *                 .status(WafRuleRateLimitStatusArgs.builder()
- *                     .code(&#34;200&#34;)
- *                     .ratio(&#34;60&#34;)
+ *                     .code("200")
+ *                     .ratio("60")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

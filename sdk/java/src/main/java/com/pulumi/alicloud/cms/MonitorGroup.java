@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,23 +51,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new MonitorGroup(&#34;example&#34;, MonitorGroupArgs.builder()        
- *             .monitorGroupName(&#34;tf-example-accmonitorgroup&#34;)
+ *         var example = new MonitorGroup("example", MonitorGroupArgs.builder()        
+ *             .monitorGroupName("tf-example-accmonitorgroup")
  *             .build());
  * 
- *         var default2 = new MonitorGroup(&#34;default2&#34;, MonitorGroupArgs.builder()        
- *             .contactGroups(&#34;your_contact_groups&#34;)
- *             .resourceGroupId(&#34;your_resource_group_id&#34;)
- *             .resourceGroupName(&#34;resource_group_name&#34;)
+ *         var default2 = new MonitorGroup("default2", MonitorGroupArgs.builder()        
+ *             .contactGroups("your_contact_groups")
+ *             .resourceGroupId("your_resource_group_id")
+ *             .resourceGroupName("resource_group_name")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;Acceptance-example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "Acceptance-example")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

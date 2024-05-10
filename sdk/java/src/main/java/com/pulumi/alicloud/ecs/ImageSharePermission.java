@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -65,60 +66,61 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .availableResourceCreation("Instance")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
+ *             .instanceTypeFamily("ecs.sn1ne")
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
- *             .owners(&#34;system&#34;)
+ *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
+ *             .owners("system")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *             .vswitchName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .name(&#34;terraform-example&#34;)
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *             .name("terraform-example")
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .availabilityZone(default_.zones()[0].id())
- *             .instanceName(&#34;terraform-example&#34;)
+ *             .instanceName("terraform-example")
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.ids()[0]))
- *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.ids()[0]))
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.ids()[0]))
  *             .internetMaxBandwidthOut(10)
  *             .build());
  * 
- *         var defaultImage = new Image(&#34;defaultImage&#34;, ImageArgs.builder()        
+ *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
  *             .instanceId(defaultInstance.id())
- *             .imageName(&#34;terraform-example&#34;)
- *             .description(&#34;terraform-example&#34;)
+ *             .imageName("terraform-example")
+ *             .description("terraform-example")
  *             .build());
  * 
- *         final var accountId = config.get(&#34;accountId&#34;).orElse(&#34;123456789&#34;);
- *         var defaultImageSharePermission = new ImageSharePermission(&#34;defaultImageSharePermission&#34;, ImageSharePermissionArgs.builder()        
+ *         final var accountId = config.get("accountId").orElse("123456789");
+ *         var defaultImageSharePermission = new ImageSharePermission("defaultImageSharePermission", ImageSharePermissionArgs.builder()        
  *             .imageId(defaultImage.id())
  *             .accountId(accountId)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Attributes Reference0

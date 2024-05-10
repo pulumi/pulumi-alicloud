@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,18 +47,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AlidnsInstance(&#34;example&#34;, AlidnsInstanceArgs.builder()        
- *             .dnsSecurity(&#34;no&#34;)
- *             .domainNumbers(&#34;2&#34;)
+ *         var example = new AlidnsInstance("example", AlidnsInstanceArgs.builder()        
+ *             .dnsSecurity("no")
+ *             .domainNumbers("2")
  *             .period(1)
  *             .renewPeriod(1)
- *             .renewalStatus(&#34;ManualRenewal&#34;)
- *             .versionCode(&#34;version_personal&#34;)
+ *             .renewalStatus("ManualRenewal")
+ *             .versionCode("version_personal")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

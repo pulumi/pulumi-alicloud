@@ -79,7 +79,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -101,15 +102,16 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
-     *             .outputFile(&#34;groups.txt&#34;)
-     *             .userName(&#34;user1&#34;)
-     *             .nameRegex(&#34;^group[0-9]*&#34;)
+     *             .outputFile("groups.txt")
+     *             .userName("user1")
+     *             .nameRegex("^group[0-9]*")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -124,7 +126,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -146,15 +149,16 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
-     *             .outputFile(&#34;groups.txt&#34;)
-     *             .userName(&#34;user1&#34;)
-     *             .nameRegex(&#34;^group[0-9]*&#34;)
+     *             .outputFile("groups.txt")
+     *             .userName("user1")
+     *             .nameRegex("^group[0-9]*")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -169,7 +173,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -191,15 +196,16 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
-     *             .outputFile(&#34;groups.txt&#34;)
-     *             .userName(&#34;user1&#34;)
-     *             .nameRegex(&#34;^group[0-9]*&#34;)
+     *             .outputFile("groups.txt")
+     *             .userName("user1")
+     *             .nameRegex("^group[0-9]*")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -214,7 +220,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -236,15 +243,16 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
-     *             .outputFile(&#34;groups.txt&#34;)
-     *             .userName(&#34;user1&#34;)
-     *             .nameRegex(&#34;^group[0-9]*&#34;)
+     *             .outputFile("groups.txt")
+     *             .userName("user1")
+     *             .nameRegex("^group[0-9]*")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -259,7 +267,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -281,15 +290,16 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
-     *             .outputFile(&#34;groups.txt&#34;)
-     *             .userName(&#34;user1&#34;)
-     *             .nameRegex(&#34;^group[0-9]*&#34;)
+     *             .outputFile("groups.txt")
+     *             .userName("user1")
+     *             .nameRegex("^group[0-9]*")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -304,7 +314,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -326,15 +337,16 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var groupsDs = RamFunctions.getGroups(GetGroupsArgs.builder()
-     *             .outputFile(&#34;groups.txt&#34;)
-     *             .userName(&#34;user1&#34;)
-     *             .nameRegex(&#34;^group[0-9]*&#34;)
+     *             .outputFile("groups.txt")
+     *             .userName("user1")
+     *             .nameRegex("^group[0-9]*")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, groupsDs.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
+     *         ctx.export("firstGroupName", groupsDs.applyValue(getGroupsResult -> getGroupsResult.groups()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -349,7 +361,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -371,16 +384,17 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .outputFile(&#34;policies.txt&#34;)
-     *             .userName(&#34;user1&#34;)
-     *             .groupName(&#34;group1&#34;)
-     *             .type(&#34;System&#34;)
+     *             .outputFile("policies.txt")
+     *             .userName("user1")
+     *             .groupName("group1")
+     *             .type("System")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -395,7 +409,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -417,16 +432,17 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .outputFile(&#34;policies.txt&#34;)
-     *             .userName(&#34;user1&#34;)
-     *             .groupName(&#34;group1&#34;)
-     *             .type(&#34;System&#34;)
+     *             .outputFile("policies.txt")
+     *             .userName("user1")
+     *             .groupName("group1")
+     *             .type("System")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -441,7 +457,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -463,16 +480,17 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .outputFile(&#34;policies.txt&#34;)
-     *             .userName(&#34;user1&#34;)
-     *             .groupName(&#34;group1&#34;)
-     *             .type(&#34;System&#34;)
+     *             .outputFile("policies.txt")
+     *             .userName("user1")
+     *             .groupName("group1")
+     *             .type("System")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -487,7 +505,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -509,16 +528,17 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .outputFile(&#34;policies.txt&#34;)
-     *             .userName(&#34;user1&#34;)
-     *             .groupName(&#34;group1&#34;)
-     *             .type(&#34;System&#34;)
+     *             .outputFile("policies.txt")
+     *             .userName("user1")
+     *             .groupName("group1")
+     *             .type("System")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -533,7 +553,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -555,16 +576,17 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .outputFile(&#34;policies.txt&#34;)
-     *             .userName(&#34;user1&#34;)
-     *             .groupName(&#34;group1&#34;)
-     *             .type(&#34;System&#34;)
+     *             .outputFile("policies.txt")
+     *             .userName("user1")
+     *             .groupName("group1")
+     *             .type("System")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -579,7 +601,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -601,16 +624,17 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var policiesDs = RamFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .outputFile(&#34;policies.txt&#34;)
-     *             .userName(&#34;user1&#34;)
-     *             .groupName(&#34;group1&#34;)
-     *             .type(&#34;System&#34;)
+     *             .outputFile("policies.txt")
+     *             .userName("user1")
+     *             .groupName("group1")
+     *             .type("System")
      *             .build());
      * 
-     *         ctx.export(&#34;firstPolicyName&#34;, policiesDs.applyValue(getPoliciesResult -&gt; getPoliciesResult.policies()[0].name()));
+     *         ctx.export("firstPolicyName", policiesDs.applyValue(getPoliciesResult -> getPoliciesResult.policies()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -627,7 +651,8 @@ public final class RamFunctions {
      * ### Basic Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -651,25 +676,26 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basicExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .version(&#34;1&#34;)
+     *             .version("1")
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;oss:*&#34;)
+     *                 .effect("Allow")
+     *                 .actions("oss:*")
      *                 .resources(                
-     *                     &#34;acs:oss:*:*:myphotos&#34;,
-     *                     &#34;acs:oss:*:*:myphotos/*&#34;)
+     *                     "acs:oss:*:*:myphotos",
+     *                     "acs:oss:*:*:myphotos/*")
      *                 .build())
      *             .build());
      * 
-     *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-example&#34;)
-     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var default_ = new Policy("default", PolicyArgs.builder()        
+     *             .policyName("tf-example")
+     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
@@ -677,7 +703,8 @@ public final class RamFunctions {
      * ### Example Multiple Condition Keys and Values
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -701,55 +728,56 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var multipleCondition = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .version(&#34;1&#34;)
+     *             .version("1")
      *             .statements(            
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
+     *                     .effect("Allow")
      *                     .actions(                    
-     *                         &#34;oss:ListBuckets&#34;,
-     *                         &#34;oss:GetBucketStat&#34;,
-     *                         &#34;oss:GetBucketInfo&#34;,
-     *                         &#34;oss:GetBucketTagging&#34;,
-     *                         &#34;oss:GetBucketAcl&#34;)
-     *                     .resources(&#34;acs:oss:*:*:*&#34;)
+     *                         "oss:ListBuckets",
+     *                         "oss:GetBucketStat",
+     *                         "oss:GetBucketInfo",
+     *                         "oss:GetBucketTagging",
+     *                         "oss:GetBucketAcl")
+     *                     .resources("acs:oss:*:*:*")
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
+     *                     .effect("Allow")
      *                     .actions(                    
-     *                         &#34;oss:GetObject&#34;,
-     *                         &#34;oss:GetObjectAcl&#34;)
-     *                     .resources(&#34;acs:oss:*:*:myphotos/hangzhou/2015/*&#34;)
+     *                         "oss:GetObject",
+     *                         "oss:GetObjectAcl")
+     *                     .resources("acs:oss:*:*:myphotos/hangzhou/2015/*")
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;oss:ListObjects&#34;)
-     *                     .resources(&#34;acs:oss:*:*:myphotos&#34;)
+     *                     .effect("Allow")
+     *                     .actions("oss:ListObjects")
+     *                     .resources("acs:oss:*:*:myphotos")
      *                     .conditions(                    
      *                         GetPolicyDocumentStatementConditionArgs.builder()
-     *                             .operator(&#34;StringLike&#34;)
-     *                             .variable(&#34;oss:Delimiter&#34;)
-     *                             .values(&#34;/&#34;)
+     *                             .operator("StringLike")
+     *                             .variable("oss:Delimiter")
+     *                             .values("/")
      *                             .build(),
      *                         GetPolicyDocumentStatementConditionArgs.builder()
-     *                             .operator(&#34;StringLike&#34;)
-     *                             .variable(&#34;oss:Prefix&#34;)
+     *                             .operator("StringLike")
+     *                             .variable("oss:Prefix")
      *                             .values(                            
-     *                                 &#34;&#34;,
-     *                                 &#34;hangzhou/&#34;,
-     *                                 &#34;hangzhou/2015/*&#34;)
+     *                                 "",
+     *                                 "hangzhou/",
+     *                                 "hangzhou/2015/*")
      *                             .build())
      *                     .build())
      *             .build());
      * 
-     *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-example-condition&#34;)
-     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var policy = new Policy("policy", PolicyArgs.builder()        
+     *             .policyName("tf-example-condition")
+     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
@@ -757,7 +785,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with RAM Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -782,24 +811,25 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var ramExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;RAM&#34;)
-     *                     .identifiers(&#34;acs:ram::123456789012****:root&#34;)
+     *                     .entity("RAM")
+     *                     .identifiers("acs:ram::123456789012****:root")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-ram&#34;)
-     *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-ram")
+     *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
@@ -807,7 +837,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with Service Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -832,24 +863,25 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var serviceExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;Service&#34;)
-     *                     .identifiers(&#34;ecs.aliyuncs.com&#34;)
+     *                     .entity("Service")
+     *                     .identifiers("ecs.aliyuncs.com")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-service&#34;)
-     *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-service")
+     *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
@@ -857,7 +889,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with Federated Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -882,29 +915,30 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var federatedExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;Federated&#34;)
-     *                     .identifiers(&#34;acs:ram::123456789012****:saml-provider/testprovider&#34;)
+     *                     .entity("Federated")
+     *                     .identifiers("acs:ram::123456789012****:saml-provider/testprovider")
      *                     .build())
      *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                     .operator(&#34;StringEquals&#34;)
-     *                     .variable(&#34;saml:recipient&#34;)
-     *                     .values(&#34;https://signin.aliyun.com/saml-role/sso&#34;)
+     *                     .operator("StringEquals")
+     *                     .variable("saml:recipient")
+     *                     .values("https://signin.aliyun.com/saml-role/sso")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-federated&#34;)
-     *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-federated")
+     *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
@@ -923,7 +957,8 @@ public final class RamFunctions {
      * ### Basic Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -947,25 +982,26 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basicExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .version(&#34;1&#34;)
+     *             .version("1")
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;oss:*&#34;)
+     *                 .effect("Allow")
+     *                 .actions("oss:*")
      *                 .resources(                
-     *                     &#34;acs:oss:*:*:myphotos&#34;,
-     *                     &#34;acs:oss:*:*:myphotos/*&#34;)
+     *                     "acs:oss:*:*:myphotos",
+     *                     "acs:oss:*:*:myphotos/*")
      *                 .build())
      *             .build());
      * 
-     *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-example&#34;)
-     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var default_ = new Policy("default", PolicyArgs.builder()        
+     *             .policyName("tf-example")
+     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
@@ -973,7 +1009,8 @@ public final class RamFunctions {
      * ### Example Multiple Condition Keys and Values
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -997,55 +1034,56 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var multipleCondition = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .version(&#34;1&#34;)
+     *             .version("1")
      *             .statements(            
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
+     *                     .effect("Allow")
      *                     .actions(                    
-     *                         &#34;oss:ListBuckets&#34;,
-     *                         &#34;oss:GetBucketStat&#34;,
-     *                         &#34;oss:GetBucketInfo&#34;,
-     *                         &#34;oss:GetBucketTagging&#34;,
-     *                         &#34;oss:GetBucketAcl&#34;)
-     *                     .resources(&#34;acs:oss:*:*:*&#34;)
+     *                         "oss:ListBuckets",
+     *                         "oss:GetBucketStat",
+     *                         "oss:GetBucketInfo",
+     *                         "oss:GetBucketTagging",
+     *                         "oss:GetBucketAcl")
+     *                     .resources("acs:oss:*:*:*")
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
+     *                     .effect("Allow")
      *                     .actions(                    
-     *                         &#34;oss:GetObject&#34;,
-     *                         &#34;oss:GetObjectAcl&#34;)
-     *                     .resources(&#34;acs:oss:*:*:myphotos/hangzhou/2015/*&#34;)
+     *                         "oss:GetObject",
+     *                         "oss:GetObjectAcl")
+     *                     .resources("acs:oss:*:*:myphotos/hangzhou/2015/*")
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;oss:ListObjects&#34;)
-     *                     .resources(&#34;acs:oss:*:*:myphotos&#34;)
+     *                     .effect("Allow")
+     *                     .actions("oss:ListObjects")
+     *                     .resources("acs:oss:*:*:myphotos")
      *                     .conditions(                    
      *                         GetPolicyDocumentStatementConditionArgs.builder()
-     *                             .operator(&#34;StringLike&#34;)
-     *                             .variable(&#34;oss:Delimiter&#34;)
-     *                             .values(&#34;/&#34;)
+     *                             .operator("StringLike")
+     *                             .variable("oss:Delimiter")
+     *                             .values("/")
      *                             .build(),
      *                         GetPolicyDocumentStatementConditionArgs.builder()
-     *                             .operator(&#34;StringLike&#34;)
-     *                             .variable(&#34;oss:Prefix&#34;)
+     *                             .operator("StringLike")
+     *                             .variable("oss:Prefix")
      *                             .values(                            
-     *                                 &#34;&#34;,
-     *                                 &#34;hangzhou/&#34;,
-     *                                 &#34;hangzhou/2015/*&#34;)
+     *                                 "",
+     *                                 "hangzhou/",
+     *                                 "hangzhou/2015/*")
      *                             .build())
      *                     .build())
      *             .build());
      * 
-     *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-example-condition&#34;)
-     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var policy = new Policy("policy", PolicyArgs.builder()        
+     *             .policyName("tf-example-condition")
+     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
@@ -1053,7 +1091,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with RAM Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1078,24 +1117,25 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var ramExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;RAM&#34;)
-     *                     .identifiers(&#34;acs:ram::123456789012****:root&#34;)
+     *                     .entity("RAM")
+     *                     .identifiers("acs:ram::123456789012****:root")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-ram&#34;)
-     *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-ram")
+     *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
@@ -1103,7 +1143,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with Service Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1128,24 +1169,25 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var serviceExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;Service&#34;)
-     *                     .identifiers(&#34;ecs.aliyuncs.com&#34;)
+     *                     .entity("Service")
+     *                     .identifiers("ecs.aliyuncs.com")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-service&#34;)
-     *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-service")
+     *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
@@ -1153,7 +1195,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with Federated Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1178,29 +1221,30 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var federatedExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;Federated&#34;)
-     *                     .identifiers(&#34;acs:ram::123456789012****:saml-provider/testprovider&#34;)
+     *                     .entity("Federated")
+     *                     .identifiers("acs:ram::123456789012****:saml-provider/testprovider")
      *                     .build())
      *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                     .operator(&#34;StringEquals&#34;)
-     *                     .variable(&#34;saml:recipient&#34;)
-     *                     .values(&#34;https://signin.aliyun.com/saml-role/sso&#34;)
+     *                     .operator("StringEquals")
+     *                     .variable("saml:recipient")
+     *                     .values("https://signin.aliyun.com/saml-role/sso")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-federated&#34;)
-     *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-federated")
+     *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
@@ -1219,7 +1263,8 @@ public final class RamFunctions {
      * ### Basic Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1243,25 +1288,26 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basicExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .version(&#34;1&#34;)
+     *             .version("1")
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;oss:*&#34;)
+     *                 .effect("Allow")
+     *                 .actions("oss:*")
      *                 .resources(                
-     *                     &#34;acs:oss:*:*:myphotos&#34;,
-     *                     &#34;acs:oss:*:*:myphotos/*&#34;)
+     *                     "acs:oss:*:*:myphotos",
+     *                     "acs:oss:*:*:myphotos/*")
      *                 .build())
      *             .build());
      * 
-     *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-example&#34;)
-     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var default_ = new Policy("default", PolicyArgs.builder()        
+     *             .policyName("tf-example")
+     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
@@ -1269,7 +1315,8 @@ public final class RamFunctions {
      * ### Example Multiple Condition Keys and Values
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1293,55 +1340,56 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var multipleCondition = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .version(&#34;1&#34;)
+     *             .version("1")
      *             .statements(            
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
+     *                     .effect("Allow")
      *                     .actions(                    
-     *                         &#34;oss:ListBuckets&#34;,
-     *                         &#34;oss:GetBucketStat&#34;,
-     *                         &#34;oss:GetBucketInfo&#34;,
-     *                         &#34;oss:GetBucketTagging&#34;,
-     *                         &#34;oss:GetBucketAcl&#34;)
-     *                     .resources(&#34;acs:oss:*:*:*&#34;)
+     *                         "oss:ListBuckets",
+     *                         "oss:GetBucketStat",
+     *                         "oss:GetBucketInfo",
+     *                         "oss:GetBucketTagging",
+     *                         "oss:GetBucketAcl")
+     *                     .resources("acs:oss:*:*:*")
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
+     *                     .effect("Allow")
      *                     .actions(                    
-     *                         &#34;oss:GetObject&#34;,
-     *                         &#34;oss:GetObjectAcl&#34;)
-     *                     .resources(&#34;acs:oss:*:*:myphotos/hangzhou/2015/*&#34;)
+     *                         "oss:GetObject",
+     *                         "oss:GetObjectAcl")
+     *                     .resources("acs:oss:*:*:myphotos/hangzhou/2015/*")
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;oss:ListObjects&#34;)
-     *                     .resources(&#34;acs:oss:*:*:myphotos&#34;)
+     *                     .effect("Allow")
+     *                     .actions("oss:ListObjects")
+     *                     .resources("acs:oss:*:*:myphotos")
      *                     .conditions(                    
      *                         GetPolicyDocumentStatementConditionArgs.builder()
-     *                             .operator(&#34;StringLike&#34;)
-     *                             .variable(&#34;oss:Delimiter&#34;)
-     *                             .values(&#34;/&#34;)
+     *                             .operator("StringLike")
+     *                             .variable("oss:Delimiter")
+     *                             .values("/")
      *                             .build(),
      *                         GetPolicyDocumentStatementConditionArgs.builder()
-     *                             .operator(&#34;StringLike&#34;)
-     *                             .variable(&#34;oss:Prefix&#34;)
+     *                             .operator("StringLike")
+     *                             .variable("oss:Prefix")
      *                             .values(                            
-     *                                 &#34;&#34;,
-     *                                 &#34;hangzhou/&#34;,
-     *                                 &#34;hangzhou/2015/*&#34;)
+     *                                 "",
+     *                                 "hangzhou/",
+     *                                 "hangzhou/2015/*")
      *                             .build())
      *                     .build())
      *             .build());
      * 
-     *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-example-condition&#34;)
-     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var policy = new Policy("policy", PolicyArgs.builder()        
+     *             .policyName("tf-example-condition")
+     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
@@ -1349,7 +1397,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with RAM Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1374,24 +1423,25 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var ramExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;RAM&#34;)
-     *                     .identifiers(&#34;acs:ram::123456789012****:root&#34;)
+     *                     .entity("RAM")
+     *                     .identifiers("acs:ram::123456789012****:root")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-ram&#34;)
-     *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-ram")
+     *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
@@ -1399,7 +1449,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with Service Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1424,24 +1475,25 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var serviceExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;Service&#34;)
-     *                     .identifiers(&#34;ecs.aliyuncs.com&#34;)
+     *                     .entity("Service")
+     *                     .identifiers("ecs.aliyuncs.com")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-service&#34;)
-     *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-service")
+     *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
@@ -1449,7 +1501,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with Federated Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1474,29 +1527,30 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var federatedExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;Federated&#34;)
-     *                     .identifiers(&#34;acs:ram::123456789012****:saml-provider/testprovider&#34;)
+     *                     .entity("Federated")
+     *                     .identifiers("acs:ram::123456789012****:saml-provider/testprovider")
      *                     .build())
      *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                     .operator(&#34;StringEquals&#34;)
-     *                     .variable(&#34;saml:recipient&#34;)
-     *                     .values(&#34;https://signin.aliyun.com/saml-role/sso&#34;)
+     *                     .operator("StringEquals")
+     *                     .variable("saml:recipient")
+     *                     .values("https://signin.aliyun.com/saml-role/sso")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-federated&#34;)
-     *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-federated")
+     *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
@@ -1515,7 +1569,8 @@ public final class RamFunctions {
      * ### Basic Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1539,25 +1594,26 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basicExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .version(&#34;1&#34;)
+     *             .version("1")
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;oss:*&#34;)
+     *                 .effect("Allow")
+     *                 .actions("oss:*")
      *                 .resources(                
-     *                     &#34;acs:oss:*:*:myphotos&#34;,
-     *                     &#34;acs:oss:*:*:myphotos/*&#34;)
+     *                     "acs:oss:*:*:myphotos",
+     *                     "acs:oss:*:*:myphotos/*")
      *                 .build())
      *             .build());
      * 
-     *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-example&#34;)
-     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var default_ = new Policy("default", PolicyArgs.builder()        
+     *             .policyName("tf-example")
+     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
@@ -1565,7 +1621,8 @@ public final class RamFunctions {
      * ### Example Multiple Condition Keys and Values
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1589,55 +1646,56 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var multipleCondition = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .version(&#34;1&#34;)
+     *             .version("1")
      *             .statements(            
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
+     *                     .effect("Allow")
      *                     .actions(                    
-     *                         &#34;oss:ListBuckets&#34;,
-     *                         &#34;oss:GetBucketStat&#34;,
-     *                         &#34;oss:GetBucketInfo&#34;,
-     *                         &#34;oss:GetBucketTagging&#34;,
-     *                         &#34;oss:GetBucketAcl&#34;)
-     *                     .resources(&#34;acs:oss:*:*:*&#34;)
+     *                         "oss:ListBuckets",
+     *                         "oss:GetBucketStat",
+     *                         "oss:GetBucketInfo",
+     *                         "oss:GetBucketTagging",
+     *                         "oss:GetBucketAcl")
+     *                     .resources("acs:oss:*:*:*")
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
+     *                     .effect("Allow")
      *                     .actions(                    
-     *                         &#34;oss:GetObject&#34;,
-     *                         &#34;oss:GetObjectAcl&#34;)
-     *                     .resources(&#34;acs:oss:*:*:myphotos/hangzhou/2015/*&#34;)
+     *                         "oss:GetObject",
+     *                         "oss:GetObjectAcl")
+     *                     .resources("acs:oss:*:*:myphotos/hangzhou/2015/*")
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;oss:ListObjects&#34;)
-     *                     .resources(&#34;acs:oss:*:*:myphotos&#34;)
+     *                     .effect("Allow")
+     *                     .actions("oss:ListObjects")
+     *                     .resources("acs:oss:*:*:myphotos")
      *                     .conditions(                    
      *                         GetPolicyDocumentStatementConditionArgs.builder()
-     *                             .operator(&#34;StringLike&#34;)
-     *                             .variable(&#34;oss:Delimiter&#34;)
-     *                             .values(&#34;/&#34;)
+     *                             .operator("StringLike")
+     *                             .variable("oss:Delimiter")
+     *                             .values("/")
      *                             .build(),
      *                         GetPolicyDocumentStatementConditionArgs.builder()
-     *                             .operator(&#34;StringLike&#34;)
-     *                             .variable(&#34;oss:Prefix&#34;)
+     *                             .operator("StringLike")
+     *                             .variable("oss:Prefix")
      *                             .values(                            
-     *                                 &#34;&#34;,
-     *                                 &#34;hangzhou/&#34;,
-     *                                 &#34;hangzhou/2015/*&#34;)
+     *                                 "",
+     *                                 "hangzhou/",
+     *                                 "hangzhou/2015/*")
      *                             .build())
      *                     .build())
      *             .build());
      * 
-     *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-example-condition&#34;)
-     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var policy = new Policy("policy", PolicyArgs.builder()        
+     *             .policyName("tf-example-condition")
+     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
@@ -1645,7 +1703,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with RAM Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1670,24 +1729,25 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var ramExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;RAM&#34;)
-     *                     .identifiers(&#34;acs:ram::123456789012****:root&#34;)
+     *                     .entity("RAM")
+     *                     .identifiers("acs:ram::123456789012****:root")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-ram&#34;)
-     *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-ram")
+     *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
@@ -1695,7 +1755,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with Service Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1720,24 +1781,25 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var serviceExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;Service&#34;)
-     *                     .identifiers(&#34;ecs.aliyuncs.com&#34;)
+     *                     .entity("Service")
+     *                     .identifiers("ecs.aliyuncs.com")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-service&#34;)
-     *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-service")
+     *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
@@ -1745,7 +1807,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with Federated Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1770,29 +1833,30 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var federatedExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;Federated&#34;)
-     *                     .identifiers(&#34;acs:ram::123456789012****:saml-provider/testprovider&#34;)
+     *                     .entity("Federated")
+     *                     .identifiers("acs:ram::123456789012****:saml-provider/testprovider")
      *                     .build())
      *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                     .operator(&#34;StringEquals&#34;)
-     *                     .variable(&#34;saml:recipient&#34;)
-     *                     .values(&#34;https://signin.aliyun.com/saml-role/sso&#34;)
+     *                     .operator("StringEquals")
+     *                     .variable("saml:recipient")
+     *                     .values("https://signin.aliyun.com/saml-role/sso")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-federated&#34;)
-     *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-federated")
+     *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
@@ -1811,7 +1875,8 @@ public final class RamFunctions {
      * ### Basic Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1835,25 +1900,26 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basicExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .version(&#34;1&#34;)
+     *             .version("1")
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;oss:*&#34;)
+     *                 .effect("Allow")
+     *                 .actions("oss:*")
      *                 .resources(                
-     *                     &#34;acs:oss:*:*:myphotos&#34;,
-     *                     &#34;acs:oss:*:*:myphotos/*&#34;)
+     *                     "acs:oss:*:*:myphotos",
+     *                     "acs:oss:*:*:myphotos/*")
      *                 .build())
      *             .build());
      * 
-     *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-example&#34;)
-     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var default_ = new Policy("default", PolicyArgs.builder()        
+     *             .policyName("tf-example")
+     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
@@ -1861,7 +1927,8 @@ public final class RamFunctions {
      * ### Example Multiple Condition Keys and Values
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1885,55 +1952,56 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var multipleCondition = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .version(&#34;1&#34;)
+     *             .version("1")
      *             .statements(            
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
+     *                     .effect("Allow")
      *                     .actions(                    
-     *                         &#34;oss:ListBuckets&#34;,
-     *                         &#34;oss:GetBucketStat&#34;,
-     *                         &#34;oss:GetBucketInfo&#34;,
-     *                         &#34;oss:GetBucketTagging&#34;,
-     *                         &#34;oss:GetBucketAcl&#34;)
-     *                     .resources(&#34;acs:oss:*:*:*&#34;)
+     *                         "oss:ListBuckets",
+     *                         "oss:GetBucketStat",
+     *                         "oss:GetBucketInfo",
+     *                         "oss:GetBucketTagging",
+     *                         "oss:GetBucketAcl")
+     *                     .resources("acs:oss:*:*:*")
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
+     *                     .effect("Allow")
      *                     .actions(                    
-     *                         &#34;oss:GetObject&#34;,
-     *                         &#34;oss:GetObjectAcl&#34;)
-     *                     .resources(&#34;acs:oss:*:*:myphotos/hangzhou/2015/*&#34;)
+     *                         "oss:GetObject",
+     *                         "oss:GetObjectAcl")
+     *                     .resources("acs:oss:*:*:myphotos/hangzhou/2015/*")
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;oss:ListObjects&#34;)
-     *                     .resources(&#34;acs:oss:*:*:myphotos&#34;)
+     *                     .effect("Allow")
+     *                     .actions("oss:ListObjects")
+     *                     .resources("acs:oss:*:*:myphotos")
      *                     .conditions(                    
      *                         GetPolicyDocumentStatementConditionArgs.builder()
-     *                             .operator(&#34;StringLike&#34;)
-     *                             .variable(&#34;oss:Delimiter&#34;)
-     *                             .values(&#34;/&#34;)
+     *                             .operator("StringLike")
+     *                             .variable("oss:Delimiter")
+     *                             .values("/")
      *                             .build(),
      *                         GetPolicyDocumentStatementConditionArgs.builder()
-     *                             .operator(&#34;StringLike&#34;)
-     *                             .variable(&#34;oss:Prefix&#34;)
+     *                             .operator("StringLike")
+     *                             .variable("oss:Prefix")
      *                             .values(                            
-     *                                 &#34;&#34;,
-     *                                 &#34;hangzhou/&#34;,
-     *                                 &#34;hangzhou/2015/*&#34;)
+     *                                 "",
+     *                                 "hangzhou/",
+     *                                 "hangzhou/2015/*")
      *                             .build())
      *                     .build())
      *             .build());
      * 
-     *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-example-condition&#34;)
-     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var policy = new Policy("policy", PolicyArgs.builder()        
+     *             .policyName("tf-example-condition")
+     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
@@ -1941,7 +2009,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with RAM Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1966,24 +2035,25 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var ramExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;RAM&#34;)
-     *                     .identifiers(&#34;acs:ram::123456789012****:root&#34;)
+     *                     .entity("RAM")
+     *                     .identifiers("acs:ram::123456789012****:root")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-ram&#34;)
-     *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-ram")
+     *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
@@ -1991,7 +2061,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with Service Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2016,24 +2087,25 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var serviceExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;Service&#34;)
-     *                     .identifiers(&#34;ecs.aliyuncs.com&#34;)
+     *                     .entity("Service")
+     *                     .identifiers("ecs.aliyuncs.com")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-service&#34;)
-     *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-service")
+     *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
@@ -2041,7 +2113,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with Federated Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2066,29 +2139,30 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var federatedExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;Federated&#34;)
-     *                     .identifiers(&#34;acs:ram::123456789012****:saml-provider/testprovider&#34;)
+     *                     .entity("Federated")
+     *                     .identifiers("acs:ram::123456789012****:saml-provider/testprovider")
      *                     .build())
      *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                     .operator(&#34;StringEquals&#34;)
-     *                     .variable(&#34;saml:recipient&#34;)
-     *                     .values(&#34;https://signin.aliyun.com/saml-role/sso&#34;)
+     *                     .operator("StringEquals")
+     *                     .variable("saml:recipient")
+     *                     .values("https://signin.aliyun.com/saml-role/sso")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-federated&#34;)
-     *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-federated")
+     *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
@@ -2107,7 +2181,8 @@ public final class RamFunctions {
      * ### Basic Example
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2131,25 +2206,26 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var basicExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .version(&#34;1&#34;)
+     *             .version("1")
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;oss:*&#34;)
+     *                 .effect("Allow")
+     *                 .actions("oss:*")
      *                 .resources(                
-     *                     &#34;acs:oss:*:*:myphotos&#34;,
-     *                     &#34;acs:oss:*:*:myphotos/*&#34;)
+     *                     "acs:oss:*:*:myphotos",
+     *                     "acs:oss:*:*:myphotos/*")
      *                 .build())
      *             .build());
      * 
-     *         var default_ = new Policy(&#34;default&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-example&#34;)
-     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var default_ = new Policy("default", PolicyArgs.builder()        
+     *             .policyName("tf-example")
+     *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
@@ -2157,7 +2233,8 @@ public final class RamFunctions {
      * ### Example Multiple Condition Keys and Values
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2181,55 +2258,56 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var multipleCondition = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
-     *             .version(&#34;1&#34;)
+     *             .version("1")
      *             .statements(            
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
+     *                     .effect("Allow")
      *                     .actions(                    
-     *                         &#34;oss:ListBuckets&#34;,
-     *                         &#34;oss:GetBucketStat&#34;,
-     *                         &#34;oss:GetBucketInfo&#34;,
-     *                         &#34;oss:GetBucketTagging&#34;,
-     *                         &#34;oss:GetBucketAcl&#34;)
-     *                     .resources(&#34;acs:oss:*:*:*&#34;)
+     *                         "oss:ListBuckets",
+     *                         "oss:GetBucketStat",
+     *                         "oss:GetBucketInfo",
+     *                         "oss:GetBucketTagging",
+     *                         "oss:GetBucketAcl")
+     *                     .resources("acs:oss:*:*:*")
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
+     *                     .effect("Allow")
      *                     .actions(                    
-     *                         &#34;oss:GetObject&#34;,
-     *                         &#34;oss:GetObjectAcl&#34;)
-     *                     .resources(&#34;acs:oss:*:*:myphotos/hangzhou/2015/*&#34;)
+     *                         "oss:GetObject",
+     *                         "oss:GetObjectAcl")
+     *                     .resources("acs:oss:*:*:myphotos/hangzhou/2015/*")
      *                     .build(),
      *                 GetPolicyDocumentStatementArgs.builder()
-     *                     .effect(&#34;Allow&#34;)
-     *                     .actions(&#34;oss:ListObjects&#34;)
-     *                     .resources(&#34;acs:oss:*:*:myphotos&#34;)
+     *                     .effect("Allow")
+     *                     .actions("oss:ListObjects")
+     *                     .resources("acs:oss:*:*:myphotos")
      *                     .conditions(                    
      *                         GetPolicyDocumentStatementConditionArgs.builder()
-     *                             .operator(&#34;StringLike&#34;)
-     *                             .variable(&#34;oss:Delimiter&#34;)
-     *                             .values(&#34;/&#34;)
+     *                             .operator("StringLike")
+     *                             .variable("oss:Delimiter")
+     *                             .values("/")
      *                             .build(),
      *                         GetPolicyDocumentStatementConditionArgs.builder()
-     *                             .operator(&#34;StringLike&#34;)
-     *                             .variable(&#34;oss:Prefix&#34;)
+     *                             .operator("StringLike")
+     *                             .variable("oss:Prefix")
      *                             .values(                            
-     *                                 &#34;&#34;,
-     *                                 &#34;hangzhou/&#34;,
-     *                                 &#34;hangzhou/2015/*&#34;)
+     *                                 "",
+     *                                 "hangzhou/",
+     *                                 "hangzhou/2015/*")
      *                             .build())
      *                     .build())
      *             .build());
      * 
-     *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;tf-example-condition&#34;)
-     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var policy = new Policy("policy", PolicyArgs.builder()        
+     *             .policyName("tf-example-condition")
+     *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
@@ -2237,7 +2315,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with RAM Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2262,24 +2341,25 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var ramExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;RAM&#34;)
-     *                     .identifiers(&#34;acs:ram::123456789012****:root&#34;)
+     *                     .entity("RAM")
+     *                     .identifiers("acs:ram::123456789012****:root")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-ram&#34;)
-     *             .document(ramExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-ram")
+     *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
@@ -2287,7 +2367,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with Service Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2312,24 +2393,25 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var serviceExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;Service&#34;)
-     *                     .identifiers(&#34;ecs.aliyuncs.com&#34;)
+     *                     .entity("Service")
+     *                     .identifiers("ecs.aliyuncs.com")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-service&#34;)
-     *             .document(serviceExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-service")
+     *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
@@ -2337,7 +2419,8 @@ public final class RamFunctions {
      * ### Example Assume-Role Policy with Federated Principal
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2362,29 +2445,30 @@ public final class RamFunctions {
      *     public static void stack(Context ctx) {
      *         final var federatedExample = RamFunctions.getPolicyDocument(GetPolicyDocumentArgs.builder()
      *             .statements(GetPolicyDocumentStatementArgs.builder()
-     *                 .effect(&#34;Allow&#34;)
-     *                 .actions(&#34;sts:AssumeRole&#34;)
+     *                 .effect("Allow")
+     *                 .actions("sts:AssumeRole")
      *                 .principals(GetPolicyDocumentStatementPrincipalArgs.builder()
-     *                     .entity(&#34;Federated&#34;)
-     *                     .identifiers(&#34;acs:ram::123456789012****:saml-provider/testprovider&#34;)
+     *                     .entity("Federated")
+     *                     .identifiers("acs:ram::123456789012****:saml-provider/testprovider")
      *                     .build())
      *                 .conditions(GetPolicyDocumentStatementConditionArgs.builder()
-     *                     .operator(&#34;StringEquals&#34;)
-     *                     .variable(&#34;saml:recipient&#34;)
-     *                     .values(&#34;https://signin.aliyun.com/saml-role/sso&#34;)
+     *                     .operator("StringEquals")
+     *                     .variable("saml:recipient")
+     *                     .values("https://signin.aliyun.com/saml-role/sso")
      *                     .build())
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
-     *             .name(&#34;tf-example-role-federated&#34;)
-     *             .document(federatedExample.applyValue(getPolicyDocumentResult -&gt; getPolicyDocumentResult.document()))
+     *         var role = new Role("role", RoleArgs.builder()        
+     *             .name("tf-example-role-federated")
+     *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
@@ -2401,7 +2485,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2423,16 +2508,17 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .outputFile(&#34;roles.txt&#34;)
-     *             .nameRegex(&#34;.*test.*&#34;)
-     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .outputFile("roles.txt")
+     *             .nameRegex(".*test.*")
+     *             .policyName("AliyunACSDefaultAccess")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRoleId&#34;, rolesDs.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", rolesDs.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2447,7 +2533,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2469,16 +2556,17 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .outputFile(&#34;roles.txt&#34;)
-     *             .nameRegex(&#34;.*test.*&#34;)
-     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .outputFile("roles.txt")
+     *             .nameRegex(".*test.*")
+     *             .policyName("AliyunACSDefaultAccess")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRoleId&#34;, rolesDs.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", rolesDs.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2493,7 +2581,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2515,16 +2604,17 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .outputFile(&#34;roles.txt&#34;)
-     *             .nameRegex(&#34;.*test.*&#34;)
-     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .outputFile("roles.txt")
+     *             .nameRegex(".*test.*")
+     *             .policyName("AliyunACSDefaultAccess")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRoleId&#34;, rolesDs.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", rolesDs.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2539,7 +2629,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2561,16 +2652,17 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .outputFile(&#34;roles.txt&#34;)
-     *             .nameRegex(&#34;.*test.*&#34;)
-     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .outputFile("roles.txt")
+     *             .nameRegex(".*test.*")
+     *             .policyName("AliyunACSDefaultAccess")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRoleId&#34;, rolesDs.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", rolesDs.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2585,7 +2677,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2607,16 +2700,17 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .outputFile(&#34;roles.txt&#34;)
-     *             .nameRegex(&#34;.*test.*&#34;)
-     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .outputFile("roles.txt")
+     *             .nameRegex(".*test.*")
+     *             .policyName("AliyunACSDefaultAccess")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRoleId&#34;, rolesDs.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", rolesDs.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2631,7 +2725,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2653,16 +2748,17 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var rolesDs = RamFunctions.getRoles(GetRolesArgs.builder()
-     *             .outputFile(&#34;roles.txt&#34;)
-     *             .nameRegex(&#34;.*test.*&#34;)
-     *             .policyName(&#34;AliyunACSDefaultAccess&#34;)
-     *             .policyType(&#34;Custom&#34;)
+     *             .outputFile("roles.txt")
+     *             .nameRegex(".*test.*")
+     *             .policyName("AliyunACSDefaultAccess")
+     *             .policyType("Custom")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRoleId&#34;, rolesDs.applyValue(getRolesResult -&gt; getRolesResult.roles()[0].id()));
+     *         ctx.export("firstRoleId", rolesDs.applyValue(getRolesResult -> getRolesResult.roles()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2679,7 +2775,8 @@ public final class RamFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2701,14 +2798,15 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RamFunctions.getSamlProviders(GetSamlProvidersArgs.builder()
-     *             .ids(&#34;samlProviderName&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("samlProviderName")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRamSamlProviderId&#34;, example.applyValue(getSamlProvidersResult -&gt; getSamlProvidersResult.providers()[0].id()));
+     *         ctx.export("firstRamSamlProviderId", example.applyValue(getSamlProvidersResult -> getSamlProvidersResult.providers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2725,7 +2823,8 @@ public final class RamFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2747,14 +2846,15 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RamFunctions.getSamlProviders(GetSamlProvidersArgs.builder()
-     *             .ids(&#34;samlProviderName&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("samlProviderName")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRamSamlProviderId&#34;, example.applyValue(getSamlProvidersResult -&gt; getSamlProvidersResult.providers()[0].id()));
+     *         ctx.export("firstRamSamlProviderId", example.applyValue(getSamlProvidersResult -> getSamlProvidersResult.providers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2771,7 +2871,8 @@ public final class RamFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2793,14 +2894,15 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RamFunctions.getSamlProviders(GetSamlProvidersArgs.builder()
-     *             .ids(&#34;samlProviderName&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("samlProviderName")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRamSamlProviderId&#34;, example.applyValue(getSamlProvidersResult -&gt; getSamlProvidersResult.providers()[0].id()));
+     *         ctx.export("firstRamSamlProviderId", example.applyValue(getSamlProvidersResult -> getSamlProvidersResult.providers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2817,7 +2919,8 @@ public final class RamFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2839,14 +2942,15 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RamFunctions.getSamlProviders(GetSamlProvidersArgs.builder()
-     *             .ids(&#34;samlProviderName&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("samlProviderName")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRamSamlProviderId&#34;, example.applyValue(getSamlProvidersResult -&gt; getSamlProvidersResult.providers()[0].id()));
+     *         ctx.export("firstRamSamlProviderId", example.applyValue(getSamlProvidersResult -> getSamlProvidersResult.providers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2863,7 +2967,8 @@ public final class RamFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2885,14 +2990,15 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RamFunctions.getSamlProviders(GetSamlProvidersArgs.builder()
-     *             .ids(&#34;samlProviderName&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("samlProviderName")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRamSamlProviderId&#34;, example.applyValue(getSamlProvidersResult -&gt; getSamlProvidersResult.providers()[0].id()));
+     *         ctx.export("firstRamSamlProviderId", example.applyValue(getSamlProvidersResult -> getSamlProvidersResult.providers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2909,7 +3015,8 @@ public final class RamFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2931,14 +3038,15 @@ public final class RamFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RamFunctions.getSamlProviders(GetSamlProvidersArgs.builder()
-     *             .ids(&#34;samlProviderName&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("samlProviderName")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRamSamlProviderId&#34;, example.applyValue(getSamlProvidersResult -&gt; getSamlProvidersResult.providers()[0].id()));
+     *         ctx.export("firstRamSamlProviderId", example.applyValue(getSamlProvidersResult -> getSamlProvidersResult.providers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2953,7 +3061,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2984,67 +3093,68 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
-     *             .name(&#34;group1&#34;)
-     *             .comments(&#34;group comments&#34;)
+     *         var default_ = new Group("default", GroupArgs.builder()        
+     *             .name("group1")
+     *             .comments("group comments")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
-     *             .name(&#34;user-example&#34;)
-     *             .displayName(&#34;displayname&#34;)
-     *             .mobile(&#34;86-18888888888&#34;)
-     *             .email(&#34;hello.uuu@aaa.com&#34;)
-     *             .comments(&#34;yoyoyo&#34;)
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *             .name("user-example")
+     *             .displayName("displayname")
+     *             .mobile("86-18888888888")
+     *             .email("hello.uuu{@literal @}aaa.com")
+     *             .comments("yoyoyo")
      *             .build());
      * 
-     *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
+     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()        
      *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
-     *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;ram-policy-example&#34;)
-     *             .policyDocument(&#34;&#34;&#34;
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+     *             .policyName("ram-policy-example")
+     *             .policyDocument("""
      * 			{
-     * 				&#34;Statement&#34;: [
+     * 				"Statement": [
      * 				 {
-     * 					&#34;Action&#34;: [
-     * 					&#34;oss:ListObjects&#34;,
-     * 					&#34;oss:ListObjects&#34;
+     * 					"Action": [
+     * 					"oss:ListObjects",
+     * 					"oss:ListObjects"
      * 			  		],
-     * 			  		&#34;Effect&#34;: &#34;Deny&#34;,
-     * 			  		&#34;Resource&#34;: [
-     * 						&#34;acs:oss:*:*:mybucket&#34;,
-     * 						&#34;acs:oss:*:*:mybucket/*&#34;
+     * 			  		"Effect": "Deny",
+     * 			  		"Resource": [
+     * 						"acs:oss:*:*:mybucket",
+     * 						"acs:oss:*:*:mybucket/*"
      * 			  		]
      * 				 }
      * 		  		],
-     * 				&#34;Version&#34;: &#34;1&#34;
+     * 				"Version": "1"
      * 			}
-     *             &#34;&#34;&#34;)
-     *             .description(&#34;this is a policy example&#34;)
+     *             """)
+     *             .description("this is a policy example")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUserPolicyAttachment = new UserPolicyAttachment(&#34;defaultUserPolicyAttachment&#34;, UserPolicyAttachmentArgs.builder()        
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()        
      *             .policyName(defaultPolicy.policyName())
      *             .userName(defaultUser.name())
      *             .policyType(defaultPolicy.type())
      *             .build());
      * 
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .outputFile(&#34;users.txt&#34;)
+     *             .outputFile("users.txt")
      *             .groupName(default_.name())
      *             .policyName(defaultPolicy.policyName())
-     *             .policyType(&#34;Custom&#34;)
+     *             .policyType("Custom")
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult).applyValue(usersDs -&gt; usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id())));
+     *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3059,7 +3169,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3090,67 +3201,68 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
-     *             .name(&#34;group1&#34;)
-     *             .comments(&#34;group comments&#34;)
+     *         var default_ = new Group("default", GroupArgs.builder()        
+     *             .name("group1")
+     *             .comments("group comments")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
-     *             .name(&#34;user-example&#34;)
-     *             .displayName(&#34;displayname&#34;)
-     *             .mobile(&#34;86-18888888888&#34;)
-     *             .email(&#34;hello.uuu@aaa.com&#34;)
-     *             .comments(&#34;yoyoyo&#34;)
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *             .name("user-example")
+     *             .displayName("displayname")
+     *             .mobile("86-18888888888")
+     *             .email("hello.uuu{@literal @}aaa.com")
+     *             .comments("yoyoyo")
      *             .build());
      * 
-     *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
+     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()        
      *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
-     *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;ram-policy-example&#34;)
-     *             .policyDocument(&#34;&#34;&#34;
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+     *             .policyName("ram-policy-example")
+     *             .policyDocument("""
      * 			{
-     * 				&#34;Statement&#34;: [
+     * 				"Statement": [
      * 				 {
-     * 					&#34;Action&#34;: [
-     * 					&#34;oss:ListObjects&#34;,
-     * 					&#34;oss:ListObjects&#34;
+     * 					"Action": [
+     * 					"oss:ListObjects",
+     * 					"oss:ListObjects"
      * 			  		],
-     * 			  		&#34;Effect&#34;: &#34;Deny&#34;,
-     * 			  		&#34;Resource&#34;: [
-     * 						&#34;acs:oss:*:*:mybucket&#34;,
-     * 						&#34;acs:oss:*:*:mybucket/*&#34;
+     * 			  		"Effect": "Deny",
+     * 			  		"Resource": [
+     * 						"acs:oss:*:*:mybucket",
+     * 						"acs:oss:*:*:mybucket/*"
      * 			  		]
      * 				 }
      * 		  		],
-     * 				&#34;Version&#34;: &#34;1&#34;
+     * 				"Version": "1"
      * 			}
-     *             &#34;&#34;&#34;)
-     *             .description(&#34;this is a policy example&#34;)
+     *             """)
+     *             .description("this is a policy example")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUserPolicyAttachment = new UserPolicyAttachment(&#34;defaultUserPolicyAttachment&#34;, UserPolicyAttachmentArgs.builder()        
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()        
      *             .policyName(defaultPolicy.policyName())
      *             .userName(defaultUser.name())
      *             .policyType(defaultPolicy.type())
      *             .build());
      * 
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .outputFile(&#34;users.txt&#34;)
+     *             .outputFile("users.txt")
      *             .groupName(default_.name())
      *             .policyName(defaultPolicy.policyName())
-     *             .policyType(&#34;Custom&#34;)
+     *             .policyType("Custom")
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult).applyValue(usersDs -&gt; usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id())));
+     *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3165,7 +3277,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3196,67 +3309,68 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
-     *             .name(&#34;group1&#34;)
-     *             .comments(&#34;group comments&#34;)
+     *         var default_ = new Group("default", GroupArgs.builder()        
+     *             .name("group1")
+     *             .comments("group comments")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
-     *             .name(&#34;user-example&#34;)
-     *             .displayName(&#34;displayname&#34;)
-     *             .mobile(&#34;86-18888888888&#34;)
-     *             .email(&#34;hello.uuu@aaa.com&#34;)
-     *             .comments(&#34;yoyoyo&#34;)
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *             .name("user-example")
+     *             .displayName("displayname")
+     *             .mobile("86-18888888888")
+     *             .email("hello.uuu{@literal @}aaa.com")
+     *             .comments("yoyoyo")
      *             .build());
      * 
-     *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
+     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()        
      *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
-     *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;ram-policy-example&#34;)
-     *             .policyDocument(&#34;&#34;&#34;
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+     *             .policyName("ram-policy-example")
+     *             .policyDocument("""
      * 			{
-     * 				&#34;Statement&#34;: [
+     * 				"Statement": [
      * 				 {
-     * 					&#34;Action&#34;: [
-     * 					&#34;oss:ListObjects&#34;,
-     * 					&#34;oss:ListObjects&#34;
+     * 					"Action": [
+     * 					"oss:ListObjects",
+     * 					"oss:ListObjects"
      * 			  		],
-     * 			  		&#34;Effect&#34;: &#34;Deny&#34;,
-     * 			  		&#34;Resource&#34;: [
-     * 						&#34;acs:oss:*:*:mybucket&#34;,
-     * 						&#34;acs:oss:*:*:mybucket/*&#34;
+     * 			  		"Effect": "Deny",
+     * 			  		"Resource": [
+     * 						"acs:oss:*:*:mybucket",
+     * 						"acs:oss:*:*:mybucket/*"
      * 			  		]
      * 				 }
      * 		  		],
-     * 				&#34;Version&#34;: &#34;1&#34;
+     * 				"Version": "1"
      * 			}
-     *             &#34;&#34;&#34;)
-     *             .description(&#34;this is a policy example&#34;)
+     *             """)
+     *             .description("this is a policy example")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUserPolicyAttachment = new UserPolicyAttachment(&#34;defaultUserPolicyAttachment&#34;, UserPolicyAttachmentArgs.builder()        
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()        
      *             .policyName(defaultPolicy.policyName())
      *             .userName(defaultUser.name())
      *             .policyType(defaultPolicy.type())
      *             .build());
      * 
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .outputFile(&#34;users.txt&#34;)
+     *             .outputFile("users.txt")
      *             .groupName(default_.name())
      *             .policyName(defaultPolicy.policyName())
-     *             .policyType(&#34;Custom&#34;)
+     *             .policyType("Custom")
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult).applyValue(usersDs -&gt; usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id())));
+     *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3271,7 +3385,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3302,67 +3417,68 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
-     *             .name(&#34;group1&#34;)
-     *             .comments(&#34;group comments&#34;)
+     *         var default_ = new Group("default", GroupArgs.builder()        
+     *             .name("group1")
+     *             .comments("group comments")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
-     *             .name(&#34;user-example&#34;)
-     *             .displayName(&#34;displayname&#34;)
-     *             .mobile(&#34;86-18888888888&#34;)
-     *             .email(&#34;hello.uuu@aaa.com&#34;)
-     *             .comments(&#34;yoyoyo&#34;)
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *             .name("user-example")
+     *             .displayName("displayname")
+     *             .mobile("86-18888888888")
+     *             .email("hello.uuu{@literal @}aaa.com")
+     *             .comments("yoyoyo")
      *             .build());
      * 
-     *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
+     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()        
      *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
-     *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;ram-policy-example&#34;)
-     *             .policyDocument(&#34;&#34;&#34;
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+     *             .policyName("ram-policy-example")
+     *             .policyDocument("""
      * 			{
-     * 				&#34;Statement&#34;: [
+     * 				"Statement": [
      * 				 {
-     * 					&#34;Action&#34;: [
-     * 					&#34;oss:ListObjects&#34;,
-     * 					&#34;oss:ListObjects&#34;
+     * 					"Action": [
+     * 					"oss:ListObjects",
+     * 					"oss:ListObjects"
      * 			  		],
-     * 			  		&#34;Effect&#34;: &#34;Deny&#34;,
-     * 			  		&#34;Resource&#34;: [
-     * 						&#34;acs:oss:*:*:mybucket&#34;,
-     * 						&#34;acs:oss:*:*:mybucket/*&#34;
+     * 			  		"Effect": "Deny",
+     * 			  		"Resource": [
+     * 						"acs:oss:*:*:mybucket",
+     * 						"acs:oss:*:*:mybucket/*"
      * 			  		]
      * 				 }
      * 		  		],
-     * 				&#34;Version&#34;: &#34;1&#34;
+     * 				"Version": "1"
      * 			}
-     *             &#34;&#34;&#34;)
-     *             .description(&#34;this is a policy example&#34;)
+     *             """)
+     *             .description("this is a policy example")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUserPolicyAttachment = new UserPolicyAttachment(&#34;defaultUserPolicyAttachment&#34;, UserPolicyAttachmentArgs.builder()        
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()        
      *             .policyName(defaultPolicy.policyName())
      *             .userName(defaultUser.name())
      *             .policyType(defaultPolicy.type())
      *             .build());
      * 
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .outputFile(&#34;users.txt&#34;)
+     *             .outputFile("users.txt")
      *             .groupName(default_.name())
      *             .policyName(defaultPolicy.policyName())
-     *             .policyType(&#34;Custom&#34;)
+     *             .policyType("Custom")
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult).applyValue(usersDs -&gt; usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id())));
+     *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3377,7 +3493,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3408,67 +3525,68 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
-     *             .name(&#34;group1&#34;)
-     *             .comments(&#34;group comments&#34;)
+     *         var default_ = new Group("default", GroupArgs.builder()        
+     *             .name("group1")
+     *             .comments("group comments")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
-     *             .name(&#34;user-example&#34;)
-     *             .displayName(&#34;displayname&#34;)
-     *             .mobile(&#34;86-18888888888&#34;)
-     *             .email(&#34;hello.uuu@aaa.com&#34;)
-     *             .comments(&#34;yoyoyo&#34;)
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *             .name("user-example")
+     *             .displayName("displayname")
+     *             .mobile("86-18888888888")
+     *             .email("hello.uuu{@literal @}aaa.com")
+     *             .comments("yoyoyo")
      *             .build());
      * 
-     *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
+     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()        
      *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
-     *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;ram-policy-example&#34;)
-     *             .policyDocument(&#34;&#34;&#34;
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+     *             .policyName("ram-policy-example")
+     *             .policyDocument("""
      * 			{
-     * 				&#34;Statement&#34;: [
+     * 				"Statement": [
      * 				 {
-     * 					&#34;Action&#34;: [
-     * 					&#34;oss:ListObjects&#34;,
-     * 					&#34;oss:ListObjects&#34;
+     * 					"Action": [
+     * 					"oss:ListObjects",
+     * 					"oss:ListObjects"
      * 			  		],
-     * 			  		&#34;Effect&#34;: &#34;Deny&#34;,
-     * 			  		&#34;Resource&#34;: [
-     * 						&#34;acs:oss:*:*:mybucket&#34;,
-     * 						&#34;acs:oss:*:*:mybucket/*&#34;
+     * 			  		"Effect": "Deny",
+     * 			  		"Resource": [
+     * 						"acs:oss:*:*:mybucket",
+     * 						"acs:oss:*:*:mybucket/*"
      * 			  		]
      * 				 }
      * 		  		],
-     * 				&#34;Version&#34;: &#34;1&#34;
+     * 				"Version": "1"
      * 			}
-     *             &#34;&#34;&#34;)
-     *             .description(&#34;this is a policy example&#34;)
+     *             """)
+     *             .description("this is a policy example")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUserPolicyAttachment = new UserPolicyAttachment(&#34;defaultUserPolicyAttachment&#34;, UserPolicyAttachmentArgs.builder()        
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()        
      *             .policyName(defaultPolicy.policyName())
      *             .userName(defaultUser.name())
      *             .policyType(defaultPolicy.type())
      *             .build());
      * 
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .outputFile(&#34;users.txt&#34;)
+     *             .outputFile("users.txt")
      *             .groupName(default_.name())
      *             .policyName(defaultPolicy.policyName())
-     *             .policyType(&#34;Custom&#34;)
+     *             .policyType("Custom")
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult).applyValue(usersDs -&gt; usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id())));
+     *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3483,7 +3601,8 @@ public final class RamFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3514,67 +3633,68 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
-     *             .name(&#34;group1&#34;)
-     *             .comments(&#34;group comments&#34;)
+     *         var default_ = new Group("default", GroupArgs.builder()        
+     *             .name("group1")
+     *             .comments("group comments")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUser = new User(&#34;defaultUser&#34;, UserArgs.builder()        
-     *             .name(&#34;user-example&#34;)
-     *             .displayName(&#34;displayname&#34;)
-     *             .mobile(&#34;86-18888888888&#34;)
-     *             .email(&#34;hello.uuu@aaa.com&#34;)
-     *             .comments(&#34;yoyoyo&#34;)
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *             .name("user-example")
+     *             .displayName("displayname")
+     *             .mobile("86-18888888888")
+     *             .email("hello.uuu{@literal @}aaa.com")
+     *             .comments("yoyoyo")
      *             .build());
      * 
-     *         var defaultGroupMembership = new GroupMembership(&#34;defaultGroupMembership&#34;, GroupMembershipArgs.builder()        
+     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()        
      *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
-     *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
-     *             .policyName(&#34;ram-policy-example&#34;)
-     *             .policyDocument(&#34;&#34;&#34;
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+     *             .policyName("ram-policy-example")
+     *             .policyDocument("""
      * 			{
-     * 				&#34;Statement&#34;: [
+     * 				"Statement": [
      * 				 {
-     * 					&#34;Action&#34;: [
-     * 					&#34;oss:ListObjects&#34;,
-     * 					&#34;oss:ListObjects&#34;
+     * 					"Action": [
+     * 					"oss:ListObjects",
+     * 					"oss:ListObjects"
      * 			  		],
-     * 			  		&#34;Effect&#34;: &#34;Deny&#34;,
-     * 			  		&#34;Resource&#34;: [
-     * 						&#34;acs:oss:*:*:mybucket&#34;,
-     * 						&#34;acs:oss:*:*:mybucket/*&#34;
+     * 			  		"Effect": "Deny",
+     * 			  		"Resource": [
+     * 						"acs:oss:*:*:mybucket",
+     * 						"acs:oss:*:*:mybucket/*"
      * 			  		]
      * 				 }
      * 		  		],
-     * 				&#34;Version&#34;: &#34;1&#34;
+     * 				"Version": "1"
      * 			}
-     *             &#34;&#34;&#34;)
-     *             .description(&#34;this is a policy example&#34;)
+     *             """)
+     *             .description("this is a policy example")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUserPolicyAttachment = new UserPolicyAttachment(&#34;defaultUserPolicyAttachment&#34;, UserPolicyAttachmentArgs.builder()        
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()        
      *             .policyName(defaultPolicy.policyName())
      *             .userName(defaultUser.name())
      *             .policyType(defaultPolicy.type())
      *             .build());
      * 
      *         final var usersDs = RamFunctions.getUsers(GetUsersArgs.builder()
-     *             .outputFile(&#34;users.txt&#34;)
+     *             .outputFile("users.txt")
      *             .groupName(default_.name())
      *             .policyName(defaultPolicy.policyName())
-     *             .policyType(&#34;Custom&#34;)
+     *             .policyType("Custom")
      *             .nameRegex(defaultUser.name())
      *             .build());
      * 
-     *         ctx.export(&#34;firstUserId&#34;, usersDs.applyValue(getUsersResult -&gt; getUsersResult).applyValue(usersDs -&gt; usersDs.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id())));
+     *         ctx.export("firstUserId", usersDs.applyValue(getUsersResult -> getUsersResult).applyValue(usersDs -> usersDs.applyValue(getUsersResult -> getUsersResult.users()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

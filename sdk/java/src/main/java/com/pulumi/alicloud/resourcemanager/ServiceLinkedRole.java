@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,13 +48,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ServiceLinkedRole(&#34;default&#34;, ServiceLinkedRoleArgs.builder()        
- *             .serviceName(&#34;ops.elasticsearch.aliyuncs.com&#34;)
+ *         var default_ = new ServiceLinkedRole("default", ServiceLinkedRoleArgs.builder()        
+ *             .serviceName("ops.elasticsearch.aliyuncs.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

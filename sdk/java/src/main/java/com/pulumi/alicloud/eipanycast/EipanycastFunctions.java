@@ -24,7 +24,8 @@ public final class EipanycastFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -46,14 +47,15 @@ public final class EipanycastFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EipanycastFunctions.getAnycastEipAddresses(GetAnycastEipAddressesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEipanycastAnycastEipAddressId&#34;, example.applyValue(getAnycastEipAddressesResult -&gt; getAnycastEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipanycastAnycastEipAddressId", example.applyValue(getAnycastEipAddressesResult -> getAnycastEipAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -70,7 +72,8 @@ public final class EipanycastFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -92,14 +95,15 @@ public final class EipanycastFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EipanycastFunctions.getAnycastEipAddresses(GetAnycastEipAddressesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEipanycastAnycastEipAddressId&#34;, example.applyValue(getAnycastEipAddressesResult -&gt; getAnycastEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipanycastAnycastEipAddressId", example.applyValue(getAnycastEipAddressesResult -> getAnycastEipAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -116,7 +120,8 @@ public final class EipanycastFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -138,14 +143,15 @@ public final class EipanycastFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EipanycastFunctions.getAnycastEipAddresses(GetAnycastEipAddressesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEipanycastAnycastEipAddressId&#34;, example.applyValue(getAnycastEipAddressesResult -&gt; getAnycastEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipanycastAnycastEipAddressId", example.applyValue(getAnycastEipAddressesResult -> getAnycastEipAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -162,7 +168,8 @@ public final class EipanycastFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -184,14 +191,15 @@ public final class EipanycastFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EipanycastFunctions.getAnycastEipAddresses(GetAnycastEipAddressesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEipanycastAnycastEipAddressId&#34;, example.applyValue(getAnycastEipAddressesResult -&gt; getAnycastEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipanycastAnycastEipAddressId", example.applyValue(getAnycastEipAddressesResult -> getAnycastEipAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -208,7 +216,8 @@ public final class EipanycastFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -230,14 +239,15 @@ public final class EipanycastFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EipanycastFunctions.getAnycastEipAddresses(GetAnycastEipAddressesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEipanycastAnycastEipAddressId&#34;, example.applyValue(getAnycastEipAddressesResult -&gt; getAnycastEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipanycastAnycastEipAddressId", example.applyValue(getAnycastEipAddressesResult -> getAnycastEipAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -254,7 +264,8 @@ public final class EipanycastFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -276,14 +287,15 @@ public final class EipanycastFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = EipanycastFunctions.getAnycastEipAddresses(GetAnycastEipAddressesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstEipanycastAnycastEipAddressId&#34;, example.applyValue(getAnycastEipAddressesResult -&gt; getAnycastEipAddressesResult.addresses()[0].id()));
+     *         ctx.export("firstEipanycastAnycastEipAddressId", example.applyValue(getAnycastEipAddressesResult -> getAnycastEipAddressesResult.addresses()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

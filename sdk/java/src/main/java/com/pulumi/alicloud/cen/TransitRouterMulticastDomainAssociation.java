@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,39 +63,39 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = CenFunctions.getTransitRouterAvailableResources();
  * 
  *         final var zone = default_.resources()[0].masterZones()[1];
  * 
- *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;192.168.1.0/24&#34;)
+ *             .cidrBlock("192.168.1.0/24")
  *             .vpcId(example.id())
  *             .zoneId(zone)
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
  *             .cenInstanceName(name)
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
  *             .transitRouterName(name)
  *             .cenId(exampleInstance.id())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var exampleTransitRouterMulticastDomain = new TransitRouterMulticastDomain(&#34;exampleTransitRouterMulticastDomain&#34;, TransitRouterMulticastDomainArgs.builder()        
+ *         var exampleTransitRouterMulticastDomain = new TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()        
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .transitRouterMulticastDomainName(name)
  *             .build());
  * 
- *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment(&#34;exampleTransitRouterVpcAttachment&#34;, TransitRouterVpcAttachmentArgs.builder()        
+ *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()        
  *             .cenId(exampleTransitRouter.cenId())
  *             .transitRouterId(exampleTransitRouterMulticastDomain.transitRouterId())
  *             .vpcId(example.id())
@@ -104,7 +105,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleTransitRouterMulticastDomainAssociation = new TransitRouterMulticastDomainAssociation(&#34;exampleTransitRouterMulticastDomainAssociation&#34;, TransitRouterMulticastDomainAssociationArgs.builder()        
+ *         var exampleTransitRouterMulticastDomainAssociation = new TransitRouterMulticastDomainAssociation("exampleTransitRouterMulticastDomainAssociation", TransitRouterMulticastDomainAssociationArgs.builder()        
  *             .transitRouterMulticastDomainId(exampleTransitRouterMulticastDomain.id())
  *             .transitRouterAttachmentId(exampleTransitRouterVpcAttachment.transitRouterAttachmentId())
  *             .vswitchId(exampleSwitch.id())
@@ -112,7 +113,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

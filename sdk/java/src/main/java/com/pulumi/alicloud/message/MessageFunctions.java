@@ -28,7 +28,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -50,18 +51,19 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;queueId1&#34;, ids.applyValue(getServiceQueuesResult -&gt; getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId1", ids.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
      *         final var name = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
-     *             .queueName(&#34;tf-example&#34;)
+     *             .queueName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;queueId2&#34;, name.applyValue(getServiceQueuesResult -&gt; getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId2", name.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -76,7 +78,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -98,18 +101,19 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;queueId1&#34;, ids.applyValue(getServiceQueuesResult -&gt; getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId1", ids.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
      *         final var name = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
-     *             .queueName(&#34;tf-example&#34;)
+     *             .queueName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;queueId2&#34;, name.applyValue(getServiceQueuesResult -&gt; getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId2", name.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -124,7 +128,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -146,18 +151,19 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;queueId1&#34;, ids.applyValue(getServiceQueuesResult -&gt; getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId1", ids.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
      *         final var name = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
-     *             .queueName(&#34;tf-example&#34;)
+     *             .queueName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;queueId2&#34;, name.applyValue(getServiceQueuesResult -&gt; getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId2", name.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -172,7 +178,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -194,18 +201,19 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;queueId1&#34;, ids.applyValue(getServiceQueuesResult -&gt; getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId1", ids.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
      *         final var name = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
-     *             .queueName(&#34;tf-example&#34;)
+     *             .queueName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;queueId2&#34;, name.applyValue(getServiceQueuesResult -&gt; getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId2", name.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -220,7 +228,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -242,18 +251,19 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;queueId1&#34;, ids.applyValue(getServiceQueuesResult -&gt; getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId1", ids.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
      *         final var name = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
-     *             .queueName(&#34;tf-example&#34;)
+     *             .queueName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;queueId2&#34;, name.applyValue(getServiceQueuesResult -&gt; getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId2", name.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -268,7 +278,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -290,18 +301,19 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;queueId1&#34;, ids.applyValue(getServiceQueuesResult -&gt; getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId1", ids.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
      *         final var name = MessageFunctions.getServiceQueues(GetServiceQueuesArgs.builder()
-     *             .queueName(&#34;tf-example&#34;)
+     *             .queueName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;queueId2&#34;, name.applyValue(getServiceQueuesResult -&gt; getServiceQueuesResult.queues()[0].id()));
+     *         ctx.export("queueId2", name.applyValue(getServiceQueuesResult -> getServiceQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -316,7 +328,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -338,19 +351,20 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceSubscriptions(GetServiceSubscriptionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .topicName(&#34;tf-example&#34;)
+     *             .ids("example_id")
+     *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;subscriptionId1&#34;, ids.applyValue(getServiceSubscriptionsResult -&gt; getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId1", ids.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
      *         final var name = MessageFunctions.getServiceSubscriptions(GetServiceSubscriptionsArgs.builder()
-     *             .topicName(&#34;tf-example&#34;)
+     *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;subscriptionId2&#34;, name.applyValue(getServiceSubscriptionsResult -&gt; getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId2", name.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -365,7 +379,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -387,19 +402,20 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceSubscriptions(GetServiceSubscriptionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .topicName(&#34;tf-example&#34;)
+     *             .ids("example_id")
+     *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;subscriptionId1&#34;, ids.applyValue(getServiceSubscriptionsResult -&gt; getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId1", ids.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
      *         final var name = MessageFunctions.getServiceSubscriptions(GetServiceSubscriptionsArgs.builder()
-     *             .topicName(&#34;tf-example&#34;)
+     *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;subscriptionId2&#34;, name.applyValue(getServiceSubscriptionsResult -&gt; getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId2", name.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -414,7 +430,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -436,19 +453,20 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceSubscriptions(GetServiceSubscriptionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .topicName(&#34;tf-example&#34;)
+     *             .ids("example_id")
+     *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;subscriptionId1&#34;, ids.applyValue(getServiceSubscriptionsResult -&gt; getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId1", ids.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
      *         final var name = MessageFunctions.getServiceSubscriptions(GetServiceSubscriptionsArgs.builder()
-     *             .topicName(&#34;tf-example&#34;)
+     *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;subscriptionId2&#34;, name.applyValue(getServiceSubscriptionsResult -&gt; getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId2", name.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -463,7 +481,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -485,19 +504,20 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceSubscriptions(GetServiceSubscriptionsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .topicName(&#34;tf-example&#34;)
+     *             .ids("example_id")
+     *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;subscriptionId1&#34;, ids.applyValue(getServiceSubscriptionsResult -&gt; getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId1", ids.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
      *         final var name = MessageFunctions.getServiceSubscriptions(GetServiceSubscriptionsArgs.builder()
-     *             .topicName(&#34;tf-example&#34;)
+     *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;subscriptionId2&#34;, name.applyValue(getServiceSubscriptionsResult -&gt; getServiceSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("subscriptionId2", name.applyValue(getServiceSubscriptionsResult -> getServiceSubscriptionsResult.subscriptions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -512,7 +532,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -534,18 +555,19 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;topicId1&#34;, ids.applyValue(getServiceTopicsResult -&gt; getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId1", ids.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
      *         final var name = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
-     *             .topicName(&#34;tf-example&#34;)
+     *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;topicId2&#34;, name.applyValue(getServiceTopicsResult -&gt; getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId2", name.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -560,7 +582,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -582,18 +605,19 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;topicId1&#34;, ids.applyValue(getServiceTopicsResult -&gt; getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId1", ids.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
      *         final var name = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
-     *             .topicName(&#34;tf-example&#34;)
+     *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;topicId2&#34;, name.applyValue(getServiceTopicsResult -&gt; getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId2", name.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -608,7 +632,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -630,18 +655,19 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;topicId1&#34;, ids.applyValue(getServiceTopicsResult -&gt; getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId1", ids.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
      *         final var name = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
-     *             .topicName(&#34;tf-example&#34;)
+     *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;topicId2&#34;, name.applyValue(getServiceTopicsResult -&gt; getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId2", name.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -656,7 +682,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -678,18 +705,19 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;topicId1&#34;, ids.applyValue(getServiceTopicsResult -&gt; getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId1", ids.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
      *         final var name = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
-     *             .topicName(&#34;tf-example&#34;)
+     *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;topicId2&#34;, name.applyValue(getServiceTopicsResult -&gt; getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId2", name.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -704,7 +732,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -726,18 +755,19 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;topicId1&#34;, ids.applyValue(getServiceTopicsResult -&gt; getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId1", ids.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
      *         final var name = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
-     *             .topicName(&#34;tf-example&#34;)
+     *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;topicId2&#34;, name.applyValue(getServiceTopicsResult -&gt; getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId2", name.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -752,7 +782,8 @@ public final class MessageFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -774,18 +805,19 @@ public final class MessageFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;topicId1&#34;, ids.applyValue(getServiceTopicsResult -&gt; getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId1", ids.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
      *         final var name = MessageFunctions.getServiceTopics(GetServiceTopicsArgs.builder()
-     *             .topicName(&#34;tf-example&#34;)
+     *             .topicName("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;topicId2&#34;, name.applyValue(getServiceTopicsResult -&gt; getServiceTopicsResult.topics()[0].id()));
+     *         ctx.export("topicId2", name.applyValue(getServiceTopicsResult -> getServiceTopicsResult.topics()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

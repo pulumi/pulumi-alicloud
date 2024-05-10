@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,24 +52,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new AccessGroup(&#34;default&#34;, AccessGroupArgs.builder()        
- *             .description(&#34;example&#34;)
- *             .networkType(&#34;VPC&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new AccessGroup("default", AccessGroupArgs.builder()        
+ *             .description("example")
+ *             .networkType("VPC")
  *             .accessGroupName(name)
  *             .build());
  * 
- *         var defaultAccessRule = new AccessRule(&#34;defaultAccessRule&#34;, AccessRuleArgs.builder()        
- *             .description(&#34;example&#34;)
- *             .rwAccessType(&#34;RDWR&#34;)
- *             .priority(&#34;1&#34;)
- *             .networkSegment(&#34;192.168.81.1&#34;)
+ *         var defaultAccessRule = new AccessRule("defaultAccessRule", AccessRuleArgs.builder()        
+ *             .description("example")
+ *             .rwAccessType("RDWR")
+ *             .priority("1")
+ *             .networkSegment("192.168.81.1")
  *             .accessGroupId(default_.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

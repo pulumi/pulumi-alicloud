@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,39 +61,40 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;networkInterfaceName&#34;);
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *         final var name = config.get("name").orElse("networkInterfaceName");
+ *         var vpc = new Network("vpc", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+ *             .cidrBlock("192.168.0.0/24")
  *             .build());
  * 
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+ *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
  *             .name(name)
- *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+ *             .cidrBlock("192.168.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vpcId(vpc.id())
  *             .build());
  * 
- *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(vpc.id())
  *             .build());
  * 
- *         var defaultNetworkInterface = new NetworkInterface(&#34;defaultNetworkInterface&#34;, NetworkInterfaceArgs.builder()        
+ *         var defaultNetworkInterface = new NetworkInterface("defaultNetworkInterface", NetworkInterfaceArgs.builder()        
  *             .networkInterfaceName(name)
  *             .vswitchId(vswitch.id())
  *             .securityGroupIds(group.id())
- *             .privateIp(&#34;192.168.0.2&#34;)
+ *             .privateIp("192.168.0.2")
  *             .privateIpsCount(3)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

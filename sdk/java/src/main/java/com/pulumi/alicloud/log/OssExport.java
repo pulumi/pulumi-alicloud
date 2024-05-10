@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,23 +57,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
- *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;example-store&#34;)
+ *             .name("example-store")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -80,28 +81,29 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var exampleOssExport = new OssExport(&#34;exampleOssExport&#34;, OssExportArgs.builder()        
+ *         var exampleOssExport = new OssExport("exampleOssExport", OssExportArgs.builder()        
  *             .projectName(example.name())
  *             .logstoreName(exampleStore.name())
- *             .exportName(&#34;terraform-example&#34;)
- *             .displayName(&#34;terraform-example&#34;)
- *             .bucket(&#34;example-bucket&#34;)
- *             .prefix(&#34;root&#34;)
- *             .suffix(&#34;&#34;)
+ *             .exportName("terraform-example")
+ *             .displayName("terraform-example")
+ *             .bucket("example-bucket")
+ *             .prefix("root")
+ *             .suffix("")
  *             .bufferInterval(300)
  *             .bufferSize(250)
- *             .compressType(&#34;none&#34;)
- *             .pathFormat(&#34;%Y/%m/%d/%H/%M&#34;)
- *             .contentType(&#34;json&#34;)
+ *             .compressType("none")
+ *             .pathFormat("%Y/%m/%d/%H/%M")
+ *             .contentType("json")
  *             .jsonEnableTag(true)
- *             .roleArn(&#34;role_arn_for_oss_write&#34;)
- *             .logReadRoleArn(&#34;role_arn_for_sls_read&#34;)
- *             .timeZone(&#34;+0800&#34;)
+ *             .roleArn("role_arn_for_oss_write")
+ *             .logReadRoleArn("role_arn_for_sls_read")
+ *             .timeZone("+0800")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

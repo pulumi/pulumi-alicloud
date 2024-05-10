@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,36 +56,37 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var name = config.get("name").orElse("tfexample");
  *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .cidrBlock("192.168.0.0/16")
  *             .vpcId(exampleNetwork.id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var exampleResourceShare = new ResourceShare(&#34;exampleResourceShare&#34;, ResourceShareArgs.builder()        
+ *         var exampleResourceShare = new ResourceShare("exampleResourceShare", ResourceShareArgs.builder()        
  *             .resourceShareName(name)
  *             .build());
  * 
- *         var exampleSharedResource = new SharedResource(&#34;exampleSharedResource&#34;, SharedResourceArgs.builder()        
+ *         var exampleSharedResource = new SharedResource("exampleSharedResource", SharedResourceArgs.builder()        
  *             .resourceId(exampleSwitch.id())
  *             .resourceShareId(exampleResourceShare.id())
- *             .resourceType(&#34;VSwitch&#34;)
+ *             .resourceType("VSwitch")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,17 +52,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var default_ = new Project(&#34;default&#34;, ProjectArgs.builder()        
- *             .defaultQuota(&#34;默认后付费Quota&#34;)
+ *         final var name = config.get("name").orElse("tf_example");
+ *         var default_ = new Project("default", ProjectArgs.builder()        
+ *             .defaultQuota("默认后付费Quota")
  *             .projectName(name)
  *             .comment(name)
- *             .productType(&#34;PayAsYouGo&#34;)
+ *             .productType("PayAsYouGo")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,19 +59,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;example-store&#34;)
+ *             .name("example-store")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -78,37 +79,37 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var exampleLogTailConfig = new LogTailConfig(&#34;exampleLogTailConfig&#34;, LogTailConfigArgs.builder()        
+ *         var exampleLogTailConfig = new LogTailConfig("exampleLogTailConfig", LogTailConfigArgs.builder()        
  *             .project(example.name())
  *             .logstore(exampleStore.name())
- *             .inputType(&#34;file&#34;)
- *             .name(&#34;terraform-example&#34;)
- *             .outputType(&#34;LogService&#34;)
- *             .inputDetail(&#34;&#34;&#34;
+ *             .inputType("file")
+ *             .name("terraform-example")
+ *             .outputType("LogService")
+ *             .inputDetail("""
  *   	{
- * 		&#34;logPath&#34;: &#34;/logPath&#34;,
- * 		&#34;filePattern&#34;: &#34;access.log&#34;,
- * 		&#34;logType&#34;: &#34;json_log&#34;,
- * 		&#34;topicFormat&#34;: &#34;default&#34;,
- * 		&#34;discardUnmatch&#34;: false,
- * 		&#34;enableRawLog&#34;: true,
- * 		&#34;fileEncoding&#34;: &#34;gbk&#34;,
- * 		&#34;maxDepth&#34;: 10
+ * 		"logPath": "/logPath",
+ * 		"filePattern": "access.log",
+ * 		"logType": "json_log",
+ * 		"topicFormat": "default",
+ * 		"discardUnmatch": false,
+ * 		"enableRawLog": true,
+ * 		"fileEncoding": "gbk",
+ * 		"maxDepth": 10
  * 	}
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var exampleMachineGroup = new MachineGroup(&#34;exampleMachineGroup&#34;, MachineGroupArgs.builder()        
+ *         var exampleMachineGroup = new MachineGroup("exampleMachineGroup", MachineGroupArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;terraform-example&#34;)
- *             .identifyType(&#34;ip&#34;)
- *             .topic(&#34;terraform&#34;)
+ *             .name("terraform-example")
+ *             .identifyType("ip")
+ *             .topic("terraform")
  *             .identifyLists(            
- *                 &#34;10.0.0.1&#34;,
- *                 &#34;10.0.0.2&#34;)
+ *                 "10.0.0.1",
+ *                 "10.0.0.2")
  *             .build());
  * 
- *         var exampleLogTailAttachment = new LogTailAttachment(&#34;exampleLogTailAttachment&#34;, LogTailAttachmentArgs.builder()        
+ *         var exampleLogTailAttachment = new LogTailAttachment("exampleLogTailAttachment", LogTailAttachmentArgs.builder()        
  *             .project(example.name())
  *             .logtailConfigName(exampleLogTailConfig.name())
  *             .machineGroupName(exampleMachineGroup.name())
@@ -116,7 +117,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

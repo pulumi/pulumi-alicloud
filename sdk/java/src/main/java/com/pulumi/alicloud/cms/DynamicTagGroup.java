@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,24 +53,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
- *             .alarmContactGroupName(&#34;example_value&#34;)
- *             .describe(&#34;example_value&#34;)
+ *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
+ *             .alarmContactGroupName("example_value")
+ *             .describe("example_value")
  *             .enableSubscribed(true)
  *             .build());
  * 
- *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
+ *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()        
  *             .contactGroupLists(default_.id())
- *             .tagKey(&#34;your_tag_key&#34;)
+ *             .tagKey("your_tag_key")
  *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
- *                 .tagValue(&#34;your_tag_value&#34;)
- *                 .tagValueMatchFunction(&#34;all&#34;)
+ *                 .tagValue("your_tag_value")
+ *                 .tagValueMatchFunction("all")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

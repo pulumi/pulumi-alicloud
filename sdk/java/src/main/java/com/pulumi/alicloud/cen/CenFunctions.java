@@ -119,7 +119,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -141,13 +142,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bwl = CenFunctions.getBandwidthLimits(GetBandwidthLimitsArgs.builder()
-     *             .instanceIds(&#34;cen-id1&#34;)
+     *             .instanceIds("cen-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenBandwidthLimitsLocalRegionId&#34;, bwl.applyValue(getBandwidthLimitsResult -&gt; getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.applyValue(getBandwidthLimitsResult -> getBandwidthLimitsResult.limits()[0].localRegionId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -160,7 +162,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -182,13 +185,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bwl = CenFunctions.getBandwidthLimits(GetBandwidthLimitsArgs.builder()
-     *             .instanceIds(&#34;cen-id1&#34;)
+     *             .instanceIds("cen-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenBandwidthLimitsLocalRegionId&#34;, bwl.applyValue(getBandwidthLimitsResult -&gt; getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.applyValue(getBandwidthLimitsResult -> getBandwidthLimitsResult.limits()[0].localRegionId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -201,7 +205,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -223,13 +228,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bwl = CenFunctions.getBandwidthLimits(GetBandwidthLimitsArgs.builder()
-     *             .instanceIds(&#34;cen-id1&#34;)
+     *             .instanceIds("cen-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenBandwidthLimitsLocalRegionId&#34;, bwl.applyValue(getBandwidthLimitsResult -&gt; getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.applyValue(getBandwidthLimitsResult -> getBandwidthLimitsResult.limits()[0].localRegionId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -242,7 +248,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -264,13 +271,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bwl = CenFunctions.getBandwidthLimits(GetBandwidthLimitsArgs.builder()
-     *             .instanceIds(&#34;cen-id1&#34;)
+     *             .instanceIds("cen-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenBandwidthLimitsLocalRegionId&#34;, bwl.applyValue(getBandwidthLimitsResult -&gt; getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.applyValue(getBandwidthLimitsResult -> getBandwidthLimitsResult.limits()[0].localRegionId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -283,7 +291,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -305,13 +314,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bwl = CenFunctions.getBandwidthLimits(GetBandwidthLimitsArgs.builder()
-     *             .instanceIds(&#34;cen-id1&#34;)
+     *             .instanceIds("cen-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenBandwidthLimitsLocalRegionId&#34;, bwl.applyValue(getBandwidthLimitsResult -&gt; getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.applyValue(getBandwidthLimitsResult -> getBandwidthLimitsResult.limits()[0].localRegionId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -324,7 +334,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -346,13 +357,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bwl = CenFunctions.getBandwidthLimits(GetBandwidthLimitsArgs.builder()
-     *             .instanceIds(&#34;cen-id1&#34;)
+     *             .instanceIds("cen-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenBandwidthLimitsLocalRegionId&#34;, bwl.applyValue(getBandwidthLimitsResult -&gt; getBandwidthLimitsResult.limits()[0].localRegionId()));
+     *         ctx.export("firstCenBandwidthLimitsLocalRegionId", bwl.applyValue(getBandwidthLimitsResult -> getBandwidthLimitsResult.limits()[0].localRegionId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -365,7 +377,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -387,14 +400,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CenFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
-     *             .instanceId(&#34;cen-id1&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .instanceId("cen-id1")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstCenBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -407,7 +421,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -429,14 +444,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CenFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
-     *             .instanceId(&#34;cen-id1&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .instanceId("cen-id1")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstCenBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -449,7 +465,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -471,14 +488,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CenFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
-     *             .instanceId(&#34;cen-id1&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .instanceId("cen-id1")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstCenBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -491,7 +509,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -513,14 +532,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CenFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
-     *             .instanceId(&#34;cen-id1&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .instanceId("cen-id1")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstCenBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -533,7 +553,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -555,14 +576,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CenFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
-     *             .instanceId(&#34;cen-id1&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .instanceId("cen-id1")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstCenBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -575,7 +597,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -597,14 +620,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CenFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
-     *             .instanceId(&#34;cen-id1&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .instanceId("cen-id1")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstCenBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -619,7 +643,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -641,14 +666,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs.builder()
-     *             .childInstanceRouteTableId(&#34;vtb-t4nt0z5xxbti85c78nkzy&#34;)
-     *             .transitRouterAttachmentId(&#34;tr-attach-f1fd1y50rql00emvej&#34;)
+     *             .childInstanceRouteTableId("vtb-t4nt0z5xxbti85c78nkzy")
+     *             .transitRouterAttachmentId("tr-attach-f1fd1y50rql00emvej")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenChildInstanceRouteEntryToAttachmentExampleId&#34;, default_.attachments()[0].id());
+     *         ctx.export("alicloudCenChildInstanceRouteEntryToAttachmentExampleId", default_.attachments()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -663,7 +689,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -685,14 +712,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs.builder()
-     *             .childInstanceRouteTableId(&#34;vtb-t4nt0z5xxbti85c78nkzy&#34;)
-     *             .transitRouterAttachmentId(&#34;tr-attach-f1fd1y50rql00emvej&#34;)
+     *             .childInstanceRouteTableId("vtb-t4nt0z5xxbti85c78nkzy")
+     *             .transitRouterAttachmentId("tr-attach-f1fd1y50rql00emvej")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenChildInstanceRouteEntryToAttachmentExampleId&#34;, default_.attachments()[0].id());
+     *         ctx.export("alicloudCenChildInstanceRouteEntryToAttachmentExampleId", default_.attachments()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -707,7 +735,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -729,14 +758,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs.builder()
-     *             .childInstanceRouteTableId(&#34;vtb-t4nt0z5xxbti85c78nkzy&#34;)
-     *             .transitRouterAttachmentId(&#34;tr-attach-f1fd1y50rql00emvej&#34;)
+     *             .childInstanceRouteTableId("vtb-t4nt0z5xxbti85c78nkzy")
+     *             .transitRouterAttachmentId("tr-attach-f1fd1y50rql00emvej")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenChildInstanceRouteEntryToAttachmentExampleId&#34;, default_.attachments()[0].id());
+     *         ctx.export("alicloudCenChildInstanceRouteEntryToAttachmentExampleId", default_.attachments()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -751,7 +781,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -773,14 +804,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getChildInstanceRouteEntryToAttachments(GetChildInstanceRouteEntryToAttachmentsArgs.builder()
-     *             .childInstanceRouteTableId(&#34;vtb-t4nt0z5xxbti85c78nkzy&#34;)
-     *             .transitRouterAttachmentId(&#34;tr-attach-f1fd1y50rql00emvej&#34;)
+     *             .childInstanceRouteTableId("vtb-t4nt0z5xxbti85c78nkzy")
+     *             .transitRouterAttachmentId("tr-attach-f1fd1y50rql00emvej")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenChildInstanceRouteEntryToAttachmentExampleId&#34;, default_.attachments()[0].id());
+     *         ctx.export("alicloudCenChildInstanceRouteEntryToAttachmentExampleId", default_.attachments()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -797,7 +829,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -819,14 +852,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
-     *             .ids(&#34;flowlog-tig1xxxxx&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("flowlog-tig1xxxxx")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenFlowlogId&#34;, defaultAlicloudCenInstances.flowlogs()[0].id());
+     *         ctx.export("firstCenFlowlogId", defaultAlicloudCenInstances.flowlogs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -843,7 +877,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -865,14 +900,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
-     *             .ids(&#34;flowlog-tig1xxxxx&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("flowlog-tig1xxxxx")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenFlowlogId&#34;, defaultAlicloudCenInstances.flowlogs()[0].id());
+     *         ctx.export("firstCenFlowlogId", defaultAlicloudCenInstances.flowlogs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -889,7 +925,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -911,14 +948,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
-     *             .ids(&#34;flowlog-tig1xxxxx&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("flowlog-tig1xxxxx")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenFlowlogId&#34;, defaultAlicloudCenInstances.flowlogs()[0].id());
+     *         ctx.export("firstCenFlowlogId", defaultAlicloudCenInstances.flowlogs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -935,7 +973,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -957,14 +996,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
-     *             .ids(&#34;flowlog-tig1xxxxx&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("flowlog-tig1xxxxx")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenFlowlogId&#34;, defaultAlicloudCenInstances.flowlogs()[0].id());
+     *         ctx.export("firstCenFlowlogId", defaultAlicloudCenInstances.flowlogs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -981,7 +1021,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1003,14 +1044,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
-     *             .ids(&#34;flowlog-tig1xxxxx&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("flowlog-tig1xxxxx")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenFlowlogId&#34;, defaultAlicloudCenInstances.flowlogs()[0].id());
+     *         ctx.export("firstCenFlowlogId", defaultAlicloudCenInstances.flowlogs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1027,7 +1069,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1049,14 +1092,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
-     *             .ids(&#34;flowlog-tig1xxxxx&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("flowlog-tig1xxxxx")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenFlowlogId&#34;, defaultAlicloudCenInstances.flowlogs()[0].id());
+     *         ctx.export("firstCenFlowlogId", defaultAlicloudCenInstances.flowlogs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1071,7 +1115,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1093,13 +1138,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CenFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
-     *             .instanceId(&#34;cen-o40h17ll9w********&#34;)
+     *             .instanceId("cen-o40h17ll9w********")
      *             .build());
      * 
-     *         ctx.export(&#34;theFirstAttachmentedInstanceId&#34;, example.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
+     *         ctx.export("theFirstAttachmentedInstanceId", example.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1114,7 +1160,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1136,13 +1183,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CenFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
-     *             .instanceId(&#34;cen-o40h17ll9w********&#34;)
+     *             .instanceId("cen-o40h17ll9w********")
      *             .build());
      * 
-     *         ctx.export(&#34;theFirstAttachmentedInstanceId&#34;, example.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
+     *         ctx.export("theFirstAttachmentedInstanceId", example.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1157,7 +1205,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1179,13 +1228,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CenFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
-     *             .instanceId(&#34;cen-o40h17ll9w********&#34;)
+     *             .instanceId("cen-o40h17ll9w********")
      *             .build());
      * 
-     *         ctx.export(&#34;theFirstAttachmentedInstanceId&#34;, example.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
+     *         ctx.export("theFirstAttachmentedInstanceId", example.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1200,7 +1250,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1222,13 +1273,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CenFunctions.getInstanceAttachments(GetInstanceAttachmentsArgs.builder()
-     *             .instanceId(&#34;cen-o40h17ll9w********&#34;)
+     *             .instanceId("cen-o40h17ll9w********")
      *             .build());
      * 
-     *         ctx.export(&#34;theFirstAttachmentedInstanceId&#34;, example.applyValue(getInstanceAttachmentsResult -&gt; getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
+     *         ctx.export("theFirstAttachmentedInstanceId", example.applyValue(getInstanceAttachmentsResult -> getInstanceAttachmentsResult.attachments()[0].childInstanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1241,7 +1293,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1263,14 +1316,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cenInstancesDs = CenFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;cen-id1&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("cen-id1")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenInstanceId&#34;, cenInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstCenInstanceId", cenInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1283,7 +1337,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1305,14 +1360,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cenInstancesDs = CenFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;cen-id1&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("cen-id1")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenInstanceId&#34;, cenInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstCenInstanceId", cenInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1325,7 +1381,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1347,14 +1404,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cenInstancesDs = CenFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;cen-id1&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("cen-id1")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenInstanceId&#34;, cenInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstCenInstanceId", cenInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1367,7 +1425,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1389,14 +1448,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cenInstancesDs = CenFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;cen-id1&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("cen-id1")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenInstanceId&#34;, cenInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstCenInstanceId", cenInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1409,7 +1469,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1431,14 +1492,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cenInstancesDs = CenFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;cen-id1&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("cen-id1")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenInstanceId&#34;, cenInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstCenInstanceId", cenInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1451,7 +1513,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1473,14 +1536,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cenInstancesDs = CenFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;cen-id1&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
+     *             .ids("cen-id1")
+     *             .nameRegex("^foo")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenInstanceId&#34;, cenInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstCenInstanceId", cenInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1497,7 +1561,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1519,22 +1584,23 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
-     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouterId("your_transit_router_id")
+     *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId0&#34;, ids.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
      *         final var nameRegex = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
-     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("your_transit_router_id")
+     *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId1&#34;, nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1551,7 +1617,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1573,22 +1640,23 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
-     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouterId("your_transit_router_id")
+     *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId0&#34;, ids.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
      *         final var nameRegex = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
-     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("your_transit_router_id")
+     *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId1&#34;, nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1605,7 +1673,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1627,22 +1696,23 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
-     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouterId("your_transit_router_id")
+     *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId0&#34;, ids.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
      *         final var nameRegex = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
-     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("your_transit_router_id")
+     *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId1&#34;, nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1659,7 +1729,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1681,22 +1752,23 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
-     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouterId("your_transit_router_id")
+     *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId0&#34;, ids.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId0", ids.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
      *         final var nameRegex = CenFunctions.getInterRegionTrafficQosPolicies(GetInterRegionTrafficQosPoliciesArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
-     *             .transitRouterAttachmentId(&#34;your_transit_router_attachment_id&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("your_transit_router_id")
+     *             .transitRouterAttachmentId("your_transit_router_attachment_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenInterRegionTrafficQosPolicyId1&#34;, nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -&gt; getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenInterRegionTrafficQosPolicyId1", nameRegex.applyValue(getInterRegionTrafficQosPoliciesResult -> getInterRegionTrafficQosPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1711,7 +1783,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1735,13 +1808,14 @@ public final class CenFunctions {
      *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
      *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.id())
      *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.name())
-     *             .trafficQosPolicyId(&#34;qos-xxxxxxx&#34;)
+     *             .trafficQosPolicyId("qos-xxxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenInterRegionTrafficQosQueueExampleId&#34;, default_.queues()[0].id());
+     *         ctx.export("alicloudCenInterRegionTrafficQosQueueExampleId", default_.queues()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1756,7 +1830,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1780,13 +1855,14 @@ public final class CenFunctions {
      *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
      *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.id())
      *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.name())
-     *             .trafficQosPolicyId(&#34;qos-xxxxxxx&#34;)
+     *             .trafficQosPolicyId("qos-xxxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenInterRegionTrafficQosQueueExampleId&#34;, default_.queues()[0].id());
+     *         ctx.export("alicloudCenInterRegionTrafficQosQueueExampleId", default_.queues()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1801,7 +1877,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1825,13 +1902,14 @@ public final class CenFunctions {
      *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
      *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.id())
      *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.name())
-     *             .trafficQosPolicyId(&#34;qos-xxxxxxx&#34;)
+     *             .trafficQosPolicyId("qos-xxxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenInterRegionTrafficQosQueueExampleId&#34;, default_.queues()[0].id());
+     *         ctx.export("alicloudCenInterRegionTrafficQosQueueExampleId", default_.queues()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1846,7 +1924,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1870,13 +1949,14 @@ public final class CenFunctions {
      *         final var default = CenFunctions.getInterRegionTrafficQosQueues(GetInterRegionTrafficQosQueuesArgs.builder()
      *             .ids(defaultAlicloudCenInterRegionTrafficQosQueue.id())
      *             .nameRegex(defaultAlicloudCenInterRegionTrafficQosQueue.name())
-     *             .trafficQosPolicyId(&#34;qos-xxxxxxx&#34;)
+     *             .trafficQosPolicyId("qos-xxxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenInterRegionTrafficQosQueueExampleId&#34;, default_.queues()[0].id());
+     *         ctx.export("alicloudCenInterRegionTrafficQosQueueExampleId", default_.queues()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1891,7 +1971,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1913,15 +1994,16 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = CenFunctions.getPrivateZones(GetPrivateZonesArgs.builder()
-     *             .cenId(&#34;cen-o40h17ll9w********&#34;)
-     *             .ids(&#34;cn-hangzhou&#34;)
-     *             .status(&#34;Active&#34;)
+     *             .cenId("cen-o40h17ll9w********")
+     *             .ids("cn-hangzhou")
+     *             .status("Active")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenPrivateZonesId&#34;, this_.zones()[0].id());
+     *         ctx.export("firstCenPrivateZonesId", this_.zones()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1936,7 +2018,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1958,15 +2041,16 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = CenFunctions.getPrivateZones(GetPrivateZonesArgs.builder()
-     *             .cenId(&#34;cen-o40h17ll9w********&#34;)
-     *             .ids(&#34;cn-hangzhou&#34;)
-     *             .status(&#34;Active&#34;)
+     *             .cenId("cen-o40h17ll9w********")
+     *             .ids("cn-hangzhou")
+     *             .status("Active")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenPrivateZonesId&#34;, this_.zones()[0].id());
+     *         ctx.export("firstCenPrivateZonesId", this_.zones()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1981,7 +2065,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2003,15 +2088,16 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = CenFunctions.getPrivateZones(GetPrivateZonesArgs.builder()
-     *             .cenId(&#34;cen-o40h17ll9w********&#34;)
-     *             .ids(&#34;cn-hangzhou&#34;)
-     *             .status(&#34;Active&#34;)
+     *             .cenId("cen-o40h17ll9w********")
+     *             .ids("cn-hangzhou")
+     *             .status("Active")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenPrivateZonesId&#34;, this_.zones()[0].id());
+     *         ctx.export("firstCenPrivateZonesId", this_.zones()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2026,7 +2112,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2048,15 +2135,16 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = CenFunctions.getPrivateZones(GetPrivateZonesArgs.builder()
-     *             .cenId(&#34;cen-o40h17ll9w********&#34;)
-     *             .ids(&#34;cn-hangzhou&#34;)
-     *             .status(&#34;Active&#34;)
+     *             .cenId("cen-o40h17ll9w********")
+     *             .ids("cn-hangzhou")
+     *             .status("Active")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenPrivateZonesId&#34;, this_.zones()[0].id());
+     *         ctx.export("firstCenPrivateZonesId", this_.zones()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2069,7 +2157,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2091,14 +2180,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var entry = CenFunctions.getRegionRouteEntries(GetRegionRouteEntriesArgs.builder()
-     *             .instanceId(&#34;cen-id1&#34;)
-     *             .regionId(&#34;cn-beijing&#34;)
+     *             .instanceId("cen-id1")
+     *             .regionId("cn-beijing")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRegionRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRegionRouteEntriesResult -&gt; getRegionRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRegionRouteEntriesResult -> getRegionRouteEntriesResult.entries()[0].cidrBlock()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2111,7 +2201,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2133,14 +2224,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var entry = CenFunctions.getRegionRouteEntries(GetRegionRouteEntriesArgs.builder()
-     *             .instanceId(&#34;cen-id1&#34;)
-     *             .regionId(&#34;cn-beijing&#34;)
+     *             .instanceId("cen-id1")
+     *             .regionId("cn-beijing")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRegionRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRegionRouteEntriesResult -&gt; getRegionRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRegionRouteEntriesResult -> getRegionRouteEntriesResult.entries()[0].cidrBlock()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2153,7 +2245,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2175,14 +2268,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var entry = CenFunctions.getRegionRouteEntries(GetRegionRouteEntriesArgs.builder()
-     *             .instanceId(&#34;cen-id1&#34;)
-     *             .regionId(&#34;cn-beijing&#34;)
+     *             .instanceId("cen-id1")
+     *             .regionId("cn-beijing")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRegionRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRegionRouteEntriesResult -&gt; getRegionRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRegionRouteEntriesResult -> getRegionRouteEntriesResult.entries()[0].cidrBlock()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2195,7 +2289,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2217,14 +2312,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var entry = CenFunctions.getRegionRouteEntries(GetRegionRouteEntriesArgs.builder()
-     *             .instanceId(&#34;cen-id1&#34;)
-     *             .regionId(&#34;cn-beijing&#34;)
+     *             .instanceId("cen-id1")
+     *             .regionId("cn-beijing")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRegionRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRegionRouteEntriesResult -&gt; getRegionRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRegionRouteEntriesResult -> getRegionRouteEntriesResult.entries()[0].cidrBlock()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2237,7 +2333,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2259,14 +2356,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var entry = CenFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
-     *             .instanceId(&#34;cen-id1&#34;)
-     *             .routeTableId(&#34;vtb-id1&#34;)
+     *             .instanceId("cen-id1")
+     *             .routeTableId("vtb-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRouteEntriesResult -&gt; getRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRouteEntriesResult -> getRouteEntriesResult.entries()[0].cidrBlock()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2279,7 +2377,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2301,14 +2400,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var entry = CenFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
-     *             .instanceId(&#34;cen-id1&#34;)
-     *             .routeTableId(&#34;vtb-id1&#34;)
+     *             .instanceId("cen-id1")
+     *             .routeTableId("vtb-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRouteEntriesResult -&gt; getRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRouteEntriesResult -> getRouteEntriesResult.entries()[0].cidrBlock()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2321,7 +2421,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2343,14 +2444,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var entry = CenFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
-     *             .instanceId(&#34;cen-id1&#34;)
-     *             .routeTableId(&#34;vtb-id1&#34;)
+     *             .instanceId("cen-id1")
+     *             .routeTableId("vtb-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRouteEntriesResult -&gt; getRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRouteEntriesResult -> getRouteEntriesResult.entries()[0].cidrBlock()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2363,7 +2465,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2385,14 +2488,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var entry = CenFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
-     *             .instanceId(&#34;cen-id1&#34;)
-     *             .routeTableId(&#34;vtb-id1&#34;)
+     *             .instanceId("cen-id1")
+     *             .routeTableId("vtb-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRouteEntriesRouteEntryCidrBlock&#34;, entry.applyValue(getRouteEntriesResult -&gt; getRouteEntriesResult.entries()[0].cidrBlock()));
+     *         ctx.export("firstRouteEntriesRouteEntryCidrBlock", entry.applyValue(getRouteEntriesResult -> getRouteEntriesResult.entries()[0].cidrBlock()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2407,7 +2511,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2429,18 +2534,19 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = CenFunctions.getRouteMaps(GetRouteMapsArgs.builder()
-     *             .cenId(&#34;cen-ihdlgo87ai********&#34;)
-     *             .ids(&#34;cen-ihdlgo87ai:cenrmap-bnh97kb3mn********&#34;)
-     *             .descriptionRegex(&#34;datasource_test&#34;)
-     *             .cenRegionId(&#34;cn-hangzhou&#34;)
-     *             .transmitDirection(&#34;RegionIn&#34;)
-     *             .status(&#34;Active&#34;)
+     *             .cenId("cen-ihdlgo87ai********")
+     *             .ids("cen-ihdlgo87ai:cenrmap-bnh97kb3mn********")
+     *             .descriptionRegex("datasource_test")
+     *             .cenRegionId("cn-hangzhou")
+     *             .transmitDirection("RegionIn")
+     *             .status("Active")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenRouteMapId&#34;, this_.maps()[0].routeMapId());
+     *         ctx.export("firstCenRouteMapId", this_.maps()[0].routeMapId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2455,7 +2561,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2477,18 +2584,19 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = CenFunctions.getRouteMaps(GetRouteMapsArgs.builder()
-     *             .cenId(&#34;cen-ihdlgo87ai********&#34;)
-     *             .ids(&#34;cen-ihdlgo87ai:cenrmap-bnh97kb3mn********&#34;)
-     *             .descriptionRegex(&#34;datasource_test&#34;)
-     *             .cenRegionId(&#34;cn-hangzhou&#34;)
-     *             .transmitDirection(&#34;RegionIn&#34;)
-     *             .status(&#34;Active&#34;)
+     *             .cenId("cen-ihdlgo87ai********")
+     *             .ids("cen-ihdlgo87ai:cenrmap-bnh97kb3mn********")
+     *             .descriptionRegex("datasource_test")
+     *             .cenRegionId("cn-hangzhou")
+     *             .transmitDirection("RegionIn")
+     *             .status("Active")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenRouteMapId&#34;, this_.maps()[0].routeMapId());
+     *         ctx.export("firstCenRouteMapId", this_.maps()[0].routeMapId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2503,7 +2611,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2525,18 +2634,19 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = CenFunctions.getRouteMaps(GetRouteMapsArgs.builder()
-     *             .cenId(&#34;cen-ihdlgo87ai********&#34;)
-     *             .ids(&#34;cen-ihdlgo87ai:cenrmap-bnh97kb3mn********&#34;)
-     *             .descriptionRegex(&#34;datasource_test&#34;)
-     *             .cenRegionId(&#34;cn-hangzhou&#34;)
-     *             .transmitDirection(&#34;RegionIn&#34;)
-     *             .status(&#34;Active&#34;)
+     *             .cenId("cen-ihdlgo87ai********")
+     *             .ids("cen-ihdlgo87ai:cenrmap-bnh97kb3mn********")
+     *             .descriptionRegex("datasource_test")
+     *             .cenRegionId("cn-hangzhou")
+     *             .transmitDirection("RegionIn")
+     *             .status("Active")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenRouteMapId&#34;, this_.maps()[0].routeMapId());
+     *         ctx.export("firstCenRouteMapId", this_.maps()[0].routeMapId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2551,7 +2661,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2573,18 +2684,19 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var this = CenFunctions.getRouteMaps(GetRouteMapsArgs.builder()
-     *             .cenId(&#34;cen-ihdlgo87ai********&#34;)
-     *             .ids(&#34;cen-ihdlgo87ai:cenrmap-bnh97kb3mn********&#34;)
-     *             .descriptionRegex(&#34;datasource_test&#34;)
-     *             .cenRegionId(&#34;cn-hangzhou&#34;)
-     *             .transmitDirection(&#34;RegionIn&#34;)
-     *             .status(&#34;Active&#34;)
+     *             .cenId("cen-ihdlgo87ai********")
+     *             .ids("cen-ihdlgo87ai:cenrmap-bnh97kb3mn********")
+     *             .descriptionRegex("datasource_test")
+     *             .cenRegionId("cn-hangzhou")
+     *             .transmitDirection("RegionIn")
+     *             .status("Active")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenRouteMapId&#34;, this_.maps()[0].routeMapId());
+     *         ctx.export("firstCenRouteMapId", this_.maps()[0].routeMapId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2601,7 +2713,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2623,13 +2736,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CenFunctions.getRouteServices(GetRouteServicesArgs.builder()
-     *             .cenId(&#34;cen-7qthudw0ll6jmc****&#34;)
+     *             .cenId("cen-7qthudw0ll6jmc****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenRouteServiceId&#34;, example.applyValue(getRouteServicesResult -&gt; getRouteServicesResult.services()[0].id()));
+     *         ctx.export("firstCenRouteServiceId", example.applyValue(getRouteServicesResult -> getRouteServicesResult.services()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2646,7 +2760,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2668,13 +2783,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CenFunctions.getRouteServices(GetRouteServicesArgs.builder()
-     *             .cenId(&#34;cen-7qthudw0ll6jmc****&#34;)
+     *             .cenId("cen-7qthudw0ll6jmc****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenRouteServiceId&#34;, example.applyValue(getRouteServicesResult -&gt; getRouteServicesResult.services()[0].id()));
+     *         ctx.export("firstCenRouteServiceId", example.applyValue(getRouteServicesResult -> getRouteServicesResult.services()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2691,7 +2807,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2713,13 +2830,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CenFunctions.getRouteServices(GetRouteServicesArgs.builder()
-     *             .cenId(&#34;cen-7qthudw0ll6jmc****&#34;)
+     *             .cenId("cen-7qthudw0ll6jmc****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenRouteServiceId&#34;, example.applyValue(getRouteServicesResult -&gt; getRouteServicesResult.services()[0].id()));
+     *         ctx.export("firstCenRouteServiceId", example.applyValue(getRouteServicesResult -> getRouteServicesResult.services()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2736,7 +2854,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2758,13 +2877,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CenFunctions.getRouteServices(GetRouteServicesArgs.builder()
-     *             .cenId(&#34;cen-7qthudw0ll6jmc****&#34;)
+     *             .cenId("cen-7qthudw0ll6jmc****")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCenRouteServiceId&#34;, example.applyValue(getRouteServicesResult -&gt; getRouteServicesResult.services()[0].id()));
+     *         ctx.export("firstCenRouteServiceId", example.applyValue(getRouteServicesResult -> getRouteServicesResult.services()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2781,7 +2901,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2803,22 +2924,23 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
-     *             .transitRouterId(&#34;example_value&#34;)
+     *             .transitRouterId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTrafficMarkingPolicyId1&#34;, ids.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId1", ids.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
      *         final var nameRegex = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
-     *             .transitRouterId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-TrafficMarkingPolicy&#34;)
+     *             .transitRouterId("example_value")
+     *             .nameRegex("^my-TrafficMarkingPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTrafficMarkingPolicyId2&#34;, nameRegex.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2835,7 +2957,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2857,22 +2980,23 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
-     *             .transitRouterId(&#34;example_value&#34;)
+     *             .transitRouterId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTrafficMarkingPolicyId1&#34;, ids.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId1", ids.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
      *         final var nameRegex = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
-     *             .transitRouterId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-TrafficMarkingPolicy&#34;)
+     *             .transitRouterId("example_value")
+     *             .nameRegex("^my-TrafficMarkingPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTrafficMarkingPolicyId2&#34;, nameRegex.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2889,7 +3013,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2911,22 +3036,23 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
-     *             .transitRouterId(&#34;example_value&#34;)
+     *             .transitRouterId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTrafficMarkingPolicyId1&#34;, ids.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId1", ids.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
      *         final var nameRegex = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
-     *             .transitRouterId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-TrafficMarkingPolicy&#34;)
+     *             .transitRouterId("example_value")
+     *             .nameRegex("^my-TrafficMarkingPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTrafficMarkingPolicyId2&#34;, nameRegex.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2943,7 +3069,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2965,22 +3092,23 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
-     *             .transitRouterId(&#34;example_value&#34;)
+     *             .transitRouterId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTrafficMarkingPolicyId1&#34;, ids.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId1", ids.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
      *         final var nameRegex = CenFunctions.getTrafficMarkingPolicies(GetTrafficMarkingPoliciesArgs.builder()
-     *             .transitRouterId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-TrafficMarkingPolicy&#34;)
+     *             .transitRouterId("example_value")
+     *             .nameRegex("^my-TrafficMarkingPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTrafficMarkingPolicyId2&#34;, nameRegex.applyValue(getTrafficMarkingPoliciesResult -&gt; getTrafficMarkingPoliciesResult.policies()[0].id()));
+     *         ctx.export("cenTrafficMarkingPolicyId2", nameRegex.applyValue(getTrafficMarkingPoliciesResult -> getTrafficMarkingPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2997,7 +3125,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3019,20 +3148,21 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
      *         final var nameRegex = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3049,7 +3179,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3071,20 +3202,21 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
      *         final var nameRegex = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3101,7 +3233,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3123,20 +3256,21 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
      *         final var nameRegex = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3153,7 +3287,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3175,20 +3310,21 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
      *         final var nameRegex = CenFunctions.getTransitRouteTableAggregations(GetTransitRouteTableAggregationsArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouteTableId(&#34;your_transit_route_table_id&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouteTableId("your_transit_route_table_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouteTableAggregationsResult -&gt; getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouteTableAggregationsResult -> getTransitRouteTableAggregationsResult.transitRouteTableAggregations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3205,7 +3341,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3228,11 +3365,12 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export(&#34;masterId&#34;, default_.resources()[0].masterZones()[0]);
-     *         ctx.export(&#34;slaveId&#34;, default_.resources()[0].slaveZones()[0]);
+     *         ctx.export("masterId", default_.resources()[0].masterZones()[0]);
+     *         ctx.export("slaveId", default_.resources()[0].slaveZones()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3249,7 +3387,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3272,11 +3411,12 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export(&#34;masterId&#34;, default_.resources()[0].masterZones()[0]);
-     *         ctx.export(&#34;slaveId&#34;, default_.resources()[0].slaveZones()[0]);
+     *         ctx.export("masterId", default_.resources()[0].masterZones()[0]);
+     *         ctx.export("slaveId", default_.resources()[0].slaveZones()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3293,7 +3433,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3316,11 +3457,12 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export(&#34;masterId&#34;, default_.resources()[0].masterZones()[0]);
-     *         ctx.export(&#34;slaveId&#34;, default_.resources()[0].slaveZones()[0]);
+     *         ctx.export("masterId", default_.resources()[0].masterZones()[0]);
+     *         ctx.export("slaveId", default_.resources()[0].slaveZones()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3337,7 +3479,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3360,11 +3503,12 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export(&#34;masterId&#34;, default_.resources()[0].masterZones()[0]);
-     *         ctx.export(&#34;slaveId&#34;, default_.resources()[0].slaveZones()[0]);
+     *         ctx.export("masterId", default_.resources()[0].masterZones()[0]);
+     *         ctx.export("slaveId", default_.resources()[0].slaveZones()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3381,7 +3525,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3404,11 +3549,12 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export(&#34;masterId&#34;, default_.resources()[0].masterZones()[0]);
-     *         ctx.export(&#34;slaveId&#34;, default_.resources()[0].slaveZones()[0]);
+     *         ctx.export("masterId", default_.resources()[0].masterZones()[0]);
+     *         ctx.export("slaveId", default_.resources()[0].slaveZones()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3425,7 +3571,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3448,11 +3595,12 @@ public final class CenFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         ctx.export(&#34;masterId&#34;, default_.resources()[0].masterZones()[0]);
-     *         ctx.export(&#34;slaveId&#34;, default_.resources()[0].slaveZones()[0]);
+     *         ctx.export("masterId", default_.resources()[0].masterZones()[0]);
+     *         ctx.export("slaveId", default_.resources()[0].slaveZones()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3469,7 +3617,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3491,20 +3640,21 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .ids("example_id")
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterCidrId0&#34;, ids.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId0", ids.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
      *         final var nameRegex = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterCidrId1&#34;, nameRegex.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId1", nameRegex.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3521,7 +3671,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3543,20 +3694,21 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .ids("example_id")
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterCidrId0&#34;, ids.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId0", ids.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
      *         final var nameRegex = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterCidrId1&#34;, nameRegex.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId1", nameRegex.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3573,7 +3725,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3595,20 +3748,21 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .ids("example_id")
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterCidrId0&#34;, ids.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId0", ids.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
      *         final var nameRegex = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterCidrId1&#34;, nameRegex.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId1", nameRegex.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3625,7 +3779,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3647,20 +3802,21 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .ids("example_id")
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterCidrId0&#34;, ids.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId0", ids.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
      *         final var nameRegex = CenFunctions.getTransitRouterCidrs(GetTransitRouterCidrsArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterCidrId1&#34;, nameRegex.applyValue(getTransitRouterCidrsResult -&gt; getTransitRouterCidrsResult.cidrs()[0].id()));
+     *         ctx.export("cenTransitRouterCidrId1", nameRegex.applyValue(getTransitRouterCidrsResult -> getTransitRouterCidrsResult.cidrs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3677,7 +3833,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3699,14 +3856,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterMulticastDomainAssociations(GetTransitRouterMulticastDomainAssociationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterMulticastDomainId(&#34;your_transit_router_multicast_domain_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouterMulticastDomainId("your_transit_router_multicast_domain_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -&gt; getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -> getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3723,7 +3881,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3745,14 +3904,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterMulticastDomainAssociations(GetTransitRouterMulticastDomainAssociationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterMulticastDomainId(&#34;your_transit_router_multicast_domain_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouterMulticastDomainId("your_transit_router_multicast_domain_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -&gt; getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -> getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3769,7 +3929,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3791,14 +3952,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterMulticastDomainAssociations(GetTransitRouterMulticastDomainAssociationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterMulticastDomainId(&#34;your_transit_router_multicast_domain_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouterMulticastDomainId("your_transit_router_multicast_domain_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -&gt; getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -> getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3815,7 +3977,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3837,14 +4000,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterMulticastDomainAssociations(GetTransitRouterMulticastDomainAssociationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterMulticastDomainId(&#34;your_transit_router_multicast_domain_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouterMulticastDomainId("your_transit_router_multicast_domain_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -&gt; getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainAssociationsResult -> getTransitRouterMulticastDomainAssociationsResult.associations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3861,7 +4025,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3883,13 +4048,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs.builder()
-     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfr29&#34;)
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-2d9oq455uk533zfr29")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainMemberExampleId&#34;, default_.members()[0].id());
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainMemberExampleId", default_.members()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3906,7 +4072,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3928,13 +4095,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs.builder()
-     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfr29&#34;)
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-2d9oq455uk533zfr29")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainMemberExampleId&#34;, default_.members()[0].id());
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainMemberExampleId", default_.members()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3951,7 +4119,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3973,13 +4142,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs.builder()
-     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfr29&#34;)
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-2d9oq455uk533zfr29")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainMemberExampleId&#34;, default_.members()[0].id());
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainMemberExampleId", default_.members()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3996,7 +4166,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4018,13 +4189,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterMulticastDomainMembers(GetTransitRouterMulticastDomainMembersArgs.builder()
-     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfr29&#34;)
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-2d9oq455uk533zfr29")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainMemberExampleId&#34;, default_.members()[0].id());
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainMemberExampleId", default_.members()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4041,7 +4213,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4063,13 +4236,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterMulticastDomainPeerMembers(GetTransitRouterMulticastDomainPeerMembersArgs.builder()
-     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfrxx&#34;)
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-2d9oq455uk533zfrxx")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainPeerMemberExampleId&#34;, default_.members()[0].id());
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainPeerMemberExampleId", default_.members()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4086,7 +4260,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4108,13 +4283,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterMulticastDomainPeerMembers(GetTransitRouterMulticastDomainPeerMembersArgs.builder()
-     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfrxx&#34;)
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-2d9oq455uk533zfrxx")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainPeerMemberExampleId&#34;, default_.members()[0].id());
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainPeerMemberExampleId", default_.members()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4131,7 +4307,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4153,13 +4330,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterMulticastDomainPeerMembers(GetTransitRouterMulticastDomainPeerMembersArgs.builder()
-     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfrxx&#34;)
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-2d9oq455uk533zfrxx")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainPeerMemberExampleId&#34;, default_.members()[0].id());
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainPeerMemberExampleId", default_.members()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4176,7 +4354,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4198,13 +4377,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterMulticastDomainPeerMembers(GetTransitRouterMulticastDomainPeerMembersArgs.builder()
-     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-2d9oq455uk533zfrxx&#34;)
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-2d9oq455uk533zfrxx")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainPeerMemberExampleId&#34;, default_.members()[0].id());
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainPeerMemberExampleId", default_.members()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4219,7 +4399,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4241,13 +4422,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs.builder()
-     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-xxxxxx&#34;)
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-xxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainSourceExampleId&#34;, default_.sources()[0].id());
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainSourceExampleId", default_.sources()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4262,7 +4444,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4284,13 +4467,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs.builder()
-     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-xxxxxx&#34;)
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-xxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainSourceExampleId&#34;, default_.sources()[0].id());
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainSourceExampleId", default_.sources()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4305,7 +4489,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4327,13 +4512,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs.builder()
-     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-xxxxxx&#34;)
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-xxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainSourceExampleId&#34;, default_.sources()[0].id());
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainSourceExampleId", default_.sources()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4348,7 +4534,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4370,13 +4557,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterMulticastDomainSources(GetTransitRouterMulticastDomainSourcesArgs.builder()
-     *             .transitRouterMulticastDomainId(&#34;tr-mcast-domain-xxxxxx&#34;)
+     *             .transitRouterMulticastDomainId("tr-mcast-domain-xxxxxx")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCenTransitRouterMulticastDomainSourceExampleId&#34;, default_.sources()[0].id());
+     *         ctx.export("alicloudCenTransitRouterMulticastDomainSourceExampleId", default_.sources()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4393,7 +4581,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4415,20 +4604,21 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
      *         final var nameRegex = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4445,7 +4635,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4467,20 +4658,21 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
      *         final var nameRegex = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4497,7 +4689,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4519,20 +4712,21 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
      *         final var nameRegex = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4549,7 +4743,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4571,20 +4766,21 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .ids("example_id")
+     *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId0&#34;, ids.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId0", ids.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
      *         final var nameRegex = CenFunctions.getTransitRouterMulticastDomains(GetTransitRouterMulticastDomainsArgs.builder()
-     *             .nameRegex(&#34;^my-name&#34;)
-     *             .transitRouterId(&#34;your_transit_router_id&#34;)
+     *             .nameRegex("^my-name")
+     *             .transitRouterId("your_transit_router_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterMulticastDomainId1&#34;, nameRegex.applyValue(getTransitRouterMulticastDomainsResult -&gt; getTransitRouterMulticastDomainsResult.domains()[0].id()));
+     *         ctx.export("cenTransitRouterMulticastDomainId1", nameRegex.applyValue(getTransitRouterMulticastDomainsResult -> getTransitRouterMulticastDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4637,7 +4833,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4659,14 +4856,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterPrefixListAssociations(GetTransitRouterPrefixListAssociationsArgs.builder()
-     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
-     *             .transitRouterTableId(&#34;vtb-6ehgc262hr170qgyc****&#34;)
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
+     *             .transitRouterTableId("vtb-6ehgc262hr170qgyc****")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterPrefixListAssociationId&#34;, default_.associations()[0].id());
+     *         ctx.export("cenTransitRouterPrefixListAssociationId", default_.associations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4683,7 +4881,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4705,14 +4904,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterPrefixListAssociations(GetTransitRouterPrefixListAssociationsArgs.builder()
-     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
-     *             .transitRouterTableId(&#34;vtb-6ehgc262hr170qgyc****&#34;)
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
+     *             .transitRouterTableId("vtb-6ehgc262hr170qgyc****")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterPrefixListAssociationId&#34;, default_.associations()[0].id());
+     *         ctx.export("cenTransitRouterPrefixListAssociationId", default_.associations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4729,7 +4929,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4751,14 +4952,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterPrefixListAssociations(GetTransitRouterPrefixListAssociationsArgs.builder()
-     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
-     *             .transitRouterTableId(&#34;vtb-6ehgc262hr170qgyc****&#34;)
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
+     *             .transitRouterTableId("vtb-6ehgc262hr170qgyc****")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterPrefixListAssociationId&#34;, default_.associations()[0].id());
+     *         ctx.export("cenTransitRouterPrefixListAssociationId", default_.associations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4775,7 +4977,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4797,14 +5000,15 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterPrefixListAssociations(GetTransitRouterPrefixListAssociationsArgs.builder()
-     *             .transitRouterId(&#34;tr-6ehx7q2jze8ch5ji0****&#34;)
-     *             .transitRouterTableId(&#34;vtb-6ehgc262hr170qgyc****&#34;)
+     *             .transitRouterId("tr-6ehx7q2jze8ch5ji0****")
+     *             .transitRouterTableId("vtb-6ehgc262hr170qgyc****")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterPrefixListAssociationId&#34;, default_.associations()[0].id());
+     *         ctx.export("cenTransitRouterPrefixListAssociationId", default_.associations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4855,7 +5059,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4877,13 +5082,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.builder()
-     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .transitRouterRouteTableId("rtb-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.associations()[0].resourceType());
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.associations()[0].resourceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4898,7 +5104,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4920,13 +5127,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.builder()
-     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .transitRouterRouteTableId("rtb-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.associations()[0].resourceType());
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.associations()[0].resourceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4941,7 +5149,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4963,13 +5172,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.builder()
-     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .transitRouterRouteTableId("rtb-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.associations()[0].resourceType());
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.associations()[0].resourceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4984,7 +5194,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5006,13 +5217,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.builder()
-     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .transitRouterRouteTableId("rtb-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.associations()[0].resourceType());
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.associations()[0].resourceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5027,7 +5239,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5049,13 +5262,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.builder()
-     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .transitRouterRouteTableId("rtb-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.associations()[0].resourceType());
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.associations()[0].resourceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5070,7 +5284,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5092,13 +5307,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterRouteTableAssociations(GetTransitRouterRouteTableAssociationsArgs.builder()
-     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .transitRouterRouteTableId("rtb-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.associations()[0].resourceType());
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.associations()[0].resourceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5113,7 +5329,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5135,13 +5352,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs.builder()
-     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .transitRouterRouteTableId("rtb-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.propagations()[0].resourceType());
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.propagations()[0].resourceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5156,7 +5374,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5178,13 +5397,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs.builder()
-     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .transitRouterRouteTableId("rtb-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.propagations()[0].resourceType());
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.propagations()[0].resourceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5199,7 +5419,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5221,13 +5442,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs.builder()
-     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .transitRouterRouteTableId("rtb-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.propagations()[0].resourceType());
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.propagations()[0].resourceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5242,7 +5464,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5264,13 +5487,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouterRouteTablePropagations(GetTransitRouterRouteTablePropagationsArgs.builder()
-     *             .transitRouterRouteTableId(&#34;rtb-id1&#34;)
+     *             .transitRouterRouteTableId("rtb-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType&#34;, default_.propagations()[0].resourceType());
+     *         ctx.export("firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType", default_.propagations()[0].resourceType());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5323,7 +5547,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5345,12 +5570,13 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5367,7 +5593,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5389,12 +5616,13 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5411,7 +5639,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5433,12 +5662,13 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5455,7 +5685,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5477,12 +5708,13 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5499,7 +5731,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5521,12 +5754,13 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5543,7 +5777,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5565,12 +5800,13 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CenFunctions.getTransitRouterService(GetTransitRouterServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5659,7 +5895,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5681,13 +5918,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *             .cenId(&#34;example_value&#34;)
+     *             .cenId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterVpnAttachmentId1&#34;, ids.applyValue(getTransitRouterVpnAttachmentsResult -&gt; getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpnAttachmentId1", ids.applyValue(getTransitRouterVpnAttachmentsResult -> getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5704,7 +5942,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5726,13 +5965,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *             .cenId(&#34;example_value&#34;)
+     *             .cenId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterVpnAttachmentId1&#34;, ids.applyValue(getTransitRouterVpnAttachmentsResult -&gt; getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpnAttachmentId1", ids.applyValue(getTransitRouterVpnAttachmentsResult -> getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5749,7 +5989,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5771,13 +6012,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *             .cenId(&#34;example_value&#34;)
+     *             .cenId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterVpnAttachmentId1&#34;, ids.applyValue(getTransitRouterVpnAttachmentsResult -&gt; getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpnAttachmentId1", ids.applyValue(getTransitRouterVpnAttachmentsResult -> getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5794,7 +6036,8 @@ public final class CenFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5816,13 +6059,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CenFunctions.getTransitRouterVpnAttachments(GetTransitRouterVpnAttachmentsArgs.builder()
-     *             .cenId(&#34;example_value&#34;)
+     *             .cenId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cenTransitRouterVpnAttachmentId1&#34;, ids.applyValue(getTransitRouterVpnAttachmentsResult -&gt; getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("cenTransitRouterVpnAttachmentId1", ids.applyValue(getTransitRouterVpnAttachmentsResult -> getTransitRouterVpnAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5837,7 +6081,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5859,13 +6104,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouters(GetTransitRoutersArgs.builder()
-     *             .cenId(&#34;cen-id1&#34;)
+     *             .cenId("cen-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTransitRoutersType&#34;, default_.transitRouters()[0].type());
+     *         ctx.export("firstTransitRoutersType", default_.transitRouters()[0].type());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5880,7 +6126,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5902,13 +6149,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouters(GetTransitRoutersArgs.builder()
-     *             .cenId(&#34;cen-id1&#34;)
+     *             .cenId("cen-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTransitRoutersType&#34;, default_.transitRouters()[0].type());
+     *         ctx.export("firstTransitRoutersType", default_.transitRouters()[0].type());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5923,7 +6171,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5945,13 +6194,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouters(GetTransitRoutersArgs.builder()
-     *             .cenId(&#34;cen-id1&#34;)
+     *             .cenId("cen-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTransitRoutersType&#34;, default_.transitRouters()[0].type());
+     *         ctx.export("firstTransitRoutersType", default_.transitRouters()[0].type());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5966,7 +6216,8 @@ public final class CenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5988,13 +6239,14 @@ public final class CenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CenFunctions.getTransitRouters(GetTransitRoutersArgs.builder()
-     *             .cenId(&#34;cen-id1&#34;)
+     *             .cenId("cen-id1")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTransitRoutersType&#34;, default_.transitRouters()[0].type());
+     *         ctx.export("firstTransitRoutersType", default_.transitRouters()[0].type());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

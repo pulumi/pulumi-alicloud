@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,24 +50,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new EcsKeyPair(&#34;example&#34;, EcsKeyPairArgs.builder()        
- *             .keyPairName(&#34;key_pair_name&#34;)
+ *         var example = new EcsKeyPair("example", EcsKeyPairArgs.builder()        
+ *             .keyPairName("key_pair_name")
  *             .build());
  * 
  *         // Using name prefix to build key pair
- *         var prefix = new EcsKeyPair(&#34;prefix&#34;, EcsKeyPairArgs.builder()        
- *             .keyNamePrefix(&#34;terraform-test-key-pair-prefix&#34;)
+ *         var prefix = new EcsKeyPair("prefix", EcsKeyPairArgs.builder()        
+ *             .keyNamePrefix("terraform-test-key-pair-prefix")
  *             .build());
  * 
  *         // Import an existing public key to build a alicloud key pair
- *         var publickey = new EcsKeyPair(&#34;publickey&#34;, EcsKeyPairArgs.builder()        
- *             .keyPairName(&#34;my_public_key&#34;)
- *             .publicKey(&#34;ssh-rsa AAAAB3Nza12345678qwertyuudsfsg&#34;)
+ *         var publickey = new EcsKeyPair("publickey", EcsKeyPairArgs.builder()        
+ *             .keyPairName("my_public_key")
+ *             .publicKey("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

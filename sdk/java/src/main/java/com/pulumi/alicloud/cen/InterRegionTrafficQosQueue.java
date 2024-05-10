@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,37 +63,37 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         final var defaultRegion = config.get(&#34;defaultRegion&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         final var peerRegion = config.get(&#34;peerRegion&#34;).orElse(&#34;cn-beijing&#34;);
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var defaultRegion = config.get("defaultRegion").orElse("cn-hangzhou");
+ *         final var peerRegion = config.get("peerRegion").orElse("cn-beijing");
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
  *             .cenInstanceName(name)
- *             .protectionLevel(&#34;REDUCED&#34;)
+ *             .protectionLevel("REDUCED")
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
  *             .bandwidth(5)
- *             .cenBandwidthPackageName(&#34;tf_example&#34;)
- *             .geographicRegionAId(&#34;China&#34;)
- *             .geographicRegionBId(&#34;China&#34;)
+ *             .cenBandwidthPackageName("tf_example")
+ *             .geographicRegionAId("China")
+ *             .geographicRegionBId("China")
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
  *             .instanceId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+ *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()        
  *             .cenId(default_.id())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var peer = new TransitRouter(&#34;peer&#34;, TransitRouterArgs.builder()        
+ *         var peer = new TransitRouter("peer", TransitRouterArgs.builder()        
  *             .cenId(defaultTransitRouter.cenId())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment(&#34;defaultTransitRouterPeerAttachment&#34;, TransitRouterPeerAttachmentArgs.builder()        
+ *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", TransitRouterPeerAttachmentArgs.builder()        
  *             .cenId(default_.id())
  *             .transitRouterId(defaultTransitRouter.transitRouterId())
  *             .peerTransitRouterRegionId(peerRegion)
@@ -103,14 +104,14 @@ import javax.annotation.Nullable;
  *             .transitRouterAttachmentName(name)
  *             .build());
  * 
- *         var defaultInterRegionTrafficQosPolicy = new InterRegionTrafficQosPolicy(&#34;defaultInterRegionTrafficQosPolicy&#34;, InterRegionTrafficQosPolicyArgs.builder()        
+ *         var defaultInterRegionTrafficQosPolicy = new InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy", InterRegionTrafficQosPolicyArgs.builder()        
  *             .transitRouterId(defaultTransitRouter.transitRouterId())
  *             .transitRouterAttachmentId(defaultTransitRouterPeerAttachment.transitRouterAttachmentId())
  *             .interRegionTrafficQosPolicyName(name)
  *             .interRegionTrafficQosPolicyDescription(name)
  *             .build());
  * 
- *         var defaultInterRegionTrafficQosQueue = new InterRegionTrafficQosQueue(&#34;defaultInterRegionTrafficQosQueue&#34;, InterRegionTrafficQosQueueArgs.builder()        
+ *         var defaultInterRegionTrafficQosQueue = new InterRegionTrafficQosQueue("defaultInterRegionTrafficQosQueue", InterRegionTrafficQosQueueArgs.builder()        
  *             .remainBandwidthPercent(20)
  *             .trafficQosPolicyId(defaultInterRegionTrafficQosPolicy.id())
  *             .dscps(            
@@ -121,7 +122,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

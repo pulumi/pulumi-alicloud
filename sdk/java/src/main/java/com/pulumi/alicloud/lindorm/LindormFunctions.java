@@ -24,7 +24,8 @@ public final class LindormFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -47,15 +48,16 @@ public final class LindormFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = LindormFunctions.getInstances();
      * 
-     *         ctx.export(&#34;lindormInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = LindormFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;lindormInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -72,7 +74,8 @@ public final class LindormFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -95,15 +98,16 @@ public final class LindormFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = LindormFunctions.getInstances();
      * 
-     *         ctx.export(&#34;lindormInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = LindormFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;lindormInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -120,7 +124,8 @@ public final class LindormFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -143,15 +148,16 @@ public final class LindormFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = LindormFunctions.getInstances();
      * 
-     *         ctx.export(&#34;lindormInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = LindormFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;lindormInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -168,7 +174,8 @@ public final class LindormFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -191,15 +198,16 @@ public final class LindormFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = LindormFunctions.getInstances();
      * 
-     *         ctx.export(&#34;lindormInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = LindormFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;lindormInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -216,7 +224,8 @@ public final class LindormFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -239,15 +248,16 @@ public final class LindormFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = LindormFunctions.getInstances();
      * 
-     *         ctx.export(&#34;lindormInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = LindormFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;lindormInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -264,7 +274,8 @@ public final class LindormFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -287,15 +298,16 @@ public final class LindormFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = LindormFunctions.getInstances();
      * 
-     *         ctx.export(&#34;lindormInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = LindormFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;lindormInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("lindormInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

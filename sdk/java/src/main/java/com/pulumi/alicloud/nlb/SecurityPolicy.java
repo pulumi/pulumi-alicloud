@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,28 +54,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultSecurityPolicy = new SecurityPolicy(&#34;defaultSecurityPolicy&#34;, SecurityPolicyArgs.builder()        
+ *         var defaultSecurityPolicy = new SecurityPolicy("defaultSecurityPolicy", SecurityPolicyArgs.builder()        
  *             .resourceGroupId(default_.ids()[0])
  *             .securityPolicyName(name)
  *             .ciphers(            
- *                 &#34;ECDHE-RSA-AES128-SHA&#34;,
- *                 &#34;ECDHE-ECDSA-AES128-SHA&#34;)
+ *                 "ECDHE-RSA-AES128-SHA",
+ *                 "ECDHE-ECDSA-AES128-SHA")
  *             .tlsVersions(            
- *                 &#34;TLSv1.0&#34;,
- *                 &#34;TLSv1.1&#34;,
- *                 &#34;TLSv1.2&#34;)
+ *                 "TLSv1.0",
+ *                 "TLSv1.1",
+ *                 "TLSv1.2")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,13 +58,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         final var myName = String.format(&#34;%s-%s&#34;, name,defaultInteger.result());
+ *         final var myName = String.format("%s-%s", name,defaultInteger.result());
  * 
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
@@ -72,47 +73,48 @@ import javax.annotation.Nullable;
  *         final var defaultGetAccount = AlicloudFunctions.getAccount();
  * 
  *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(myName)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(myName)
  *             .build());
  * 
- *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
+ *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()        
  *             .minSize(1)
  *             .maxSize(1)
  *             .scalingGroupName(myName)
  *             .removalPolicies(            
- *                 &#34;OldestInstance&#34;,
- *                 &#34;NewestInstance&#34;)
+ *                 "OldestInstance",
+ *                 "NewestInstance")
  *             .vswitchIds(defaultSwitch.id())
  *             .build());
  * 
- *         var defaultQueue = new Queue(&#34;defaultQueue&#34;, QueueArgs.builder()        
+ *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()        
  *             .name(myName)
  *             .build());
  * 
- *         var defaultNotification = new Notification(&#34;defaultNotification&#34;, NotificationArgs.builder()        
+ *         var defaultNotification = new Notification("defaultNotification", NotificationArgs.builder()        
  *             .scalingGroupId(defaultScalingGroup.id())
  *             .notificationTypes(            
- *                 &#34;AUTOSCALING:SCALE_OUT_SUCCESS&#34;,
- *                 &#34;AUTOSCALING:SCALE_OUT_ERROR&#34;)
- *             .notificationArn(defaultQueue.name().applyValue(name -&gt; String.format(&#34;acs:ess:%s:%s:queue/%s&#34;, default_.regions()[0].id(),defaultGetAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
+ *                 "AUTOSCALING:SCALE_OUT_SUCCESS",
+ *                 "AUTOSCALING:SCALE_OUT_ERROR")
+ *             .notificationArn(defaultQueue.name().applyValue(name -> String.format("acs:ess:%s:%s:queue/%s", default_.regions()[0].id(),defaultGetAccount.applyValue(getAccountResult -> getAccountResult.id()),name)))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

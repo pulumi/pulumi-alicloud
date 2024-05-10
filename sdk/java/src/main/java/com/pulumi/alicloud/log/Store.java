@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,19 +57,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;example-store&#34;)
+ *             .name("example-store")
  *             .shardCount(3)
  *             .autoSplit(true)
  *             .maxSplitShardCount(60)
@@ -77,13 +78,15 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Encrypt Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -114,37 +117,37 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
+ *         final var region = config.get("region").orElse("cn-hangzhou");
  *         final var example = AlicloudFunctions.getAccount();
  * 
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var exampleKey = new Key(&#34;exampleKey&#34;, KeyArgs.builder()        
- *             .description(&#34;terraform-example&#34;)
- *             .pendingWindowInDays(&#34;7&#34;)
- *             .status(&#34;Enabled&#34;)
+ *         var exampleKey = new Key("exampleKey", KeyArgs.builder()        
+ *             .description("terraform-example")
+ *             .pendingWindowInDays("7")
+ *             .status("Enabled")
  *             .build());
  * 
- *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
  *             .project(exampleProject.name())
- *             .name(&#34;example-store&#34;)
+ *             .name("example-store")
  *             .shardCount(1)
  *             .autoSplit(true)
  *             .maxSplitShardCount(60)
  *             .encryptConf(StoreEncryptConfArgs.builder()
  *                 .enable(true)
- *                 .encryptType(&#34;default&#34;)
+ *                 .encryptType("default")
  *                 .userCmkInfo(StoreEncryptConfUserCmkInfoArgs.builder()
  *                     .cmkKeyId(exampleKey.id())
- *                     .arn(String.format(&#34;acs:ram::%s:role/aliyunlogdefaultrole&#34;, example.applyValue(getAccountResult -&gt; getAccountResult.id())))
+ *                     .arn(String.format("acs:ram::%s:role/aliyunlogdefaultrole", example.applyValue(getAccountResult -> getAccountResult.id())))
  *                     .regionId(region)
  *                     .build())
  *                 .build())
@@ -152,7 +155,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Module Support

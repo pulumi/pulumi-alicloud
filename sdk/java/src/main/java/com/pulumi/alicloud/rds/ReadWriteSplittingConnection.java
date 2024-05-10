@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,73 +61,74 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;5.7&#34;)
- *             .category(&#34;HighAvailability&#34;)
- *             .dbInstanceStorageType(&#34;local_ssd&#34;)
+ *             .engine("MySQL")
+ *             .engineVersion("5.7")
+ *             .category("HighAvailability")
+ *             .dbInstanceStorageType("local_ssd")
  *             .build());
  * 
  *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;5.7&#34;)
- *             .category(&#34;HighAvailability&#34;)
- *             .dbInstanceStorageType(&#34;local_ssd&#34;)
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.ids()[0]))
+ *             .engine("MySQL")
+ *             .engineVersion("5.7")
+ *             .category("HighAvailability")
+ *             .dbInstanceStorageType("local_ssd")
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
  *             .vpcId(exampleNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(name)
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;5.7&#34;)
- *             .category(&#34;HighAvailability&#34;)
- *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
- *             .instanceChargeType(&#34;Postpaid&#34;)
- *             .dbInstanceStorageType(&#34;local_ssd&#34;)
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *             .engine("MySQL")
+ *             .engineVersion("5.7")
+ *             .category("HighAvailability")
+ *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceChargeType("Postpaid")
+ *             .dbInstanceStorageType("local_ssd")
  *             .instanceName(name)
  *             .vswitchId(exampleSwitch.id())
  *             .securityIps(            
- *                 &#34;10.168.1.12&#34;,
- *                 &#34;100.69.7.112&#34;)
+ *                 "10.168.1.12",
+ *                 "100.69.7.112")
  *             .build());
  * 
- *         var exampleReadOnlyInstance = new ReadOnlyInstance(&#34;exampleReadOnlyInstance&#34;, ReadOnlyInstanceArgs.builder()        
+ *         var exampleReadOnlyInstance = new ReadOnlyInstance("exampleReadOnlyInstance", ReadOnlyInstanceArgs.builder()        
  *             .zoneId(exampleInstance.zoneId())
  *             .masterDbInstanceId(exampleInstance.id())
  *             .engineVersion(exampleInstance.engineVersion())
  *             .instanceStorage(exampleInstance.instanceStorage())
  *             .instanceType(exampleInstance.instanceType())
- *             .instanceName(String.format(&#34;%sreadonly&#34;, name))
+ *             .instanceName(String.format("%sreadonly", name))
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
- *         var exampleReadWriteSplittingConnection = new ReadWriteSplittingConnection(&#34;exampleReadWriteSplittingConnection&#34;, ReadWriteSplittingConnectionArgs.builder()        
+ *         var exampleReadWriteSplittingConnection = new ReadWriteSplittingConnection("exampleReadWriteSplittingConnection", ReadWriteSplittingConnectionArgs.builder()        
  *             .instanceId(exampleReadOnlyInstance.masterDbInstanceId())
- *             .connectionPrefix(&#34;example-con-123&#34;)
- *             .distributionType(&#34;Standard&#34;)
+ *             .connectionPrefix("example-con-123")
+ *             .distributionType("Standard")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; **NOTE:** Resource `alicloud.rds.ReadWriteSplittingConnection` should be created after `alicloud.rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.

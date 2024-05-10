@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -70,17 +71,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         final var myName = String.format(&#34;%s-%s&#34;, name,defaultInteger.result());
+ *         final var myName = String.format("%s-%s", name,defaultInteger.result());
  * 
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
@@ -90,47 +91,47 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .nameRegex("^ubuntu_18.*64")
  *             .mostRecent(true)
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(myName)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(myName)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(myName)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultSecurityGroupRule = new SecurityGroupRule(&#34;defaultSecurityGroupRule&#34;, SecurityGroupRuleArgs.builder()        
- *             .type(&#34;ingress&#34;)
- *             .ipProtocol(&#34;tcp&#34;)
- *             .nicType(&#34;intranet&#34;)
- *             .policy(&#34;accept&#34;)
- *             .portRange(&#34;22/22&#34;)
+ *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()        
+ *             .type("ingress")
+ *             .ipProtocol("tcp")
+ *             .nicType("intranet")
+ *             .policy("accept")
+ *             .portRange("22/22")
  *             .priority(1)
  *             .securityGroupId(defaultSecurityGroup.id())
- *             .cidrIp(&#34;172.16.0.0/24&#34;)
+ *             .cidrIp("172.16.0.0/24")
  *             .build());
  * 
- *         var default2 = new Switch(&#34;default2&#34;, SwitchArgs.builder()        
+ *         var default2 = new Switch("default2", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.1.0/24&#34;)
+ *             .cidrBlock("172.16.1.0/24")
  *             .zoneId(default_.zones()[0].id())
- *             .vswitchName(String.format(&#34;%s-bar&#34;, name))
+ *             .vswitchName(String.format("%s-bar", name))
  *             .build());
  * 
- *         var defaultScalingGroup = new ScalingGroup(&#34;defaultScalingGroup&#34;, ScalingGroupArgs.builder()        
+ *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()        
  *             .minSize(1)
  *             .maxSize(1)
  *             .scalingGroupName(myName)
@@ -139,35 +140,36 @@ import javax.annotation.Nullable;
  *                 defaultSwitch.id(),
  *                 default2.id())
  *             .removalPolicies(            
- *                 &#34;OldestInstance&#34;,
- *                 &#34;NewestInstance&#34;)
+ *                 "OldestInstance",
+ *                 "NewestInstance")
  *             .build());
  * 
- *         var defaultScalingRule = new ScalingRule(&#34;defaultScalingRule&#34;, ScalingRuleArgs.builder()        
+ *         var defaultScalingRule = new ScalingRule("defaultScalingRule", ScalingRuleArgs.builder()        
  *             .scalingRuleName(myName)
  *             .scalingGroupId(defaultScalingGroup.id())
- *             .adjustmentType(&#34;TotalCapacity&#34;)
+ *             .adjustmentType("TotalCapacity")
  *             .adjustmentValue(2)
  *             .cooldown(60)
  *             .build());
  * 
- *         var defaultAlarm = new Alarm(&#34;defaultAlarm&#34;, AlarmArgs.builder()        
+ *         var defaultAlarm = new Alarm("defaultAlarm", AlarmArgs.builder()        
  *             .name(myName)
  *             .description(name)
  *             .alarmActions(defaultScalingRule.ari())
  *             .scalingGroupId(defaultScalingGroup.id())
- *             .metricType(&#34;system&#34;)
- *             .metricName(&#34;CpuUtilization&#34;)
+ *             .metricType("system")
+ *             .metricName("CpuUtilization")
  *             .period(300)
- *             .statistics(&#34;Average&#34;)
+ *             .statistics("Average")
  *             .threshold(200.3)
- *             .comparisonOperator(&#34;&gt;=&#34;)
+ *             .comparisonOperator(">=")
  *             .evaluationCount(2)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Module Support

@@ -182,14 +182,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.idleTimeout;
     }
     /**
-     * The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
+     * The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/{@literal @}-]){2,256}$/`.
      * 
      */
     @Export(name="listenerDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> listenerDescription;
 
     /**
-     * @return The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/@-]){2,256}$/`.
+     * @return The description of the listener. The description must be 2 to 256 characters in length. The name can contain only the characters in the following string: `/^([^\x00-\xff]|[\w.,;/{@literal @}-]){2,256}$/`.
      * 
      */
     public Output<Optional<String>> listenerDescription() {

@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,50 +60,50 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new CustomerGateway(&#34;default&#34;, CustomerGatewayArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new CustomerGateway("default", CustomerGatewayArgs.builder()        
  *             .name(name)
- *             .ipAddress(&#34;42.104.22.210&#34;)
- *             .asn(&#34;45014&#34;)
+ *             .ipAddress("42.104.22.210")
+ *             .asn("45014")
  *             .description(name)
  *             .build());
  * 
- *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment(&#34;defaultGatewayVpnAttachment&#34;, GatewayVpnAttachmentArgs.builder()        
+ *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment("defaultGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()        
  *             .customerGatewayId(default_.id())
- *             .networkType(&#34;public&#34;)
- *             .localSubnet(&#34;0.0.0.0/0&#34;)
- *             .remoteSubnet(&#34;0.0.0.0/0&#34;)
+ *             .networkType("public")
+ *             .localSubnet("0.0.0.0/0")
+ *             .remoteSubnet("0.0.0.0/0")
  *             .effectImmediately(false)
  *             .ikeConfig(GatewayVpnAttachmentIkeConfigArgs.builder()
- *                 .ikeAuthAlg(&#34;md5&#34;)
- *                 .ikeEncAlg(&#34;des&#34;)
- *                 .ikeVersion(&#34;ikev2&#34;)
- *                 .ikeMode(&#34;main&#34;)
+ *                 .ikeAuthAlg("md5")
+ *                 .ikeEncAlg("des")
+ *                 .ikeVersion("ikev2")
+ *                 .ikeMode("main")
  *                 .ikeLifetime(86400)
- *                 .psk(&#34;tf-testvpn2&#34;)
- *                 .ikePfs(&#34;group1&#34;)
- *                 .remoteId(&#34;testbob2&#34;)
- *                 .localId(&#34;testalice2&#34;)
+ *                 .psk("tf-testvpn2")
+ *                 .ikePfs("group1")
+ *                 .remoteId("testbob2")
+ *                 .localId("testalice2")
  *                 .build())
  *             .ipsecConfig(GatewayVpnAttachmentIpsecConfigArgs.builder()
- *                 .ipsecPfs(&#34;group5&#34;)
- *                 .ipsecEncAlg(&#34;des&#34;)
- *                 .ipsecAuthAlg(&#34;md5&#34;)
+ *                 .ipsecPfs("group5")
+ *                 .ipsecEncAlg("des")
+ *                 .ipsecAuthAlg("md5")
  *                 .ipsecLifetime(86400)
  *                 .build())
  *             .bgpConfig(GatewayVpnAttachmentBgpConfigArgs.builder()
  *                 .enable(true)
  *                 .localAsn(45014)
- *                 .tunnelCidr(&#34;169.254.11.0/30&#34;)
- *                 .localBgpIp(&#34;169.254.11.1&#34;)
+ *                 .tunnelCidr("169.254.11.0/30")
+ *                 .localBgpIp("169.254.11.1")
  *                 .build())
  *             .healthCheckConfig(GatewayVpnAttachmentHealthCheckConfigArgs.builder()
  *                 .enable(true)
- *                 .sip(&#34;192.168.1.1&#34;)
- *                 .dip(&#34;10.0.0.1&#34;)
+ *                 .sip("192.168.1.1")
+ *                 .dip("10.0.0.1")
  *                 .interval(10)
  *                 .retry(10)
- *                 .policy(&#34;revoke_route&#34;)
+ *                 .policy("revoke_route")
  *                 .build())
  *             .enableDpd(true)
  *             .enableNatTraversal(true)
@@ -111,7 +112,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

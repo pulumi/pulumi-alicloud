@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,21 +51,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultVpc = new Network(&#34;defaultVpc&#34;, NetworkArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()        
  *             .vpcName(name)
  *             .build());
  * 
- *         var default_ = new RouteTable(&#34;default&#34;, RouteTableArgs.builder()        
- *             .description(&#34;test-description&#34;)
+ *         var default_ = new RouteTable("default", RouteTableArgs.builder()        
+ *             .description("test-description")
  *             .vpcId(defaultVpc.id())
  *             .routeTableName(name)
- *             .associateType(&#34;VSwitch&#34;)
+ *             .associateType("VSwitch")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

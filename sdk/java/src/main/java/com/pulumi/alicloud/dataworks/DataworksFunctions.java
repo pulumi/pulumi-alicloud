@@ -27,7 +27,8 @@ public final class DataworksFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -50,21 +51,22 @@ public final class DataworksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Folder(&#34;default&#34;, FolderArgs.builder()        
-     *             .projectId(&#34;xxxx&#34;)
-     *             .folderPath(&#34;Business Flow/tfTestAcc/folderDi&#34;)
+     *         var default_ = new Folder("default", FolderArgs.builder()        
+     *             .projectId("xxxx")
+     *             .folderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
      *         final var ids = DataworksFunctions.getFolders(GetFoldersArgs.builder()
      *             .ids(default_.folderId())
      *             .projectId(default_.projectId())
-     *             .parentFolderPath(&#34;Business Flow/tfTestAcc/folderDi&#34;)
+     *             .parentFolderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
-     *         ctx.export(&#34;dataWorksFolderId1&#34;, ids.applyValue(getFoldersResult -&gt; getFoldersResult).applyValue(ids -&gt; ids.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id())));
+     *         ctx.export("dataWorksFolderId1", ids.applyValue(getFoldersResult -> getFoldersResult).applyValue(ids -> ids.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -81,7 +83,8 @@ public final class DataworksFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -104,21 +107,22 @@ public final class DataworksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Folder(&#34;default&#34;, FolderArgs.builder()        
-     *             .projectId(&#34;xxxx&#34;)
-     *             .folderPath(&#34;Business Flow/tfTestAcc/folderDi&#34;)
+     *         var default_ = new Folder("default", FolderArgs.builder()        
+     *             .projectId("xxxx")
+     *             .folderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
      *         final var ids = DataworksFunctions.getFolders(GetFoldersArgs.builder()
      *             .ids(default_.folderId())
      *             .projectId(default_.projectId())
-     *             .parentFolderPath(&#34;Business Flow/tfTestAcc/folderDi&#34;)
+     *             .parentFolderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
-     *         ctx.export(&#34;dataWorksFolderId1&#34;, ids.applyValue(getFoldersResult -&gt; getFoldersResult).applyValue(ids -&gt; ids.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id())));
+     *         ctx.export("dataWorksFolderId1", ids.applyValue(getFoldersResult -> getFoldersResult).applyValue(ids -> ids.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -135,7 +139,8 @@ public final class DataworksFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -158,21 +163,22 @@ public final class DataworksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Folder(&#34;default&#34;, FolderArgs.builder()        
-     *             .projectId(&#34;xxxx&#34;)
-     *             .folderPath(&#34;Business Flow/tfTestAcc/folderDi&#34;)
+     *         var default_ = new Folder("default", FolderArgs.builder()        
+     *             .projectId("xxxx")
+     *             .folderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
      *         final var ids = DataworksFunctions.getFolders(GetFoldersArgs.builder()
      *             .ids(default_.folderId())
      *             .projectId(default_.projectId())
-     *             .parentFolderPath(&#34;Business Flow/tfTestAcc/folderDi&#34;)
+     *             .parentFolderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
-     *         ctx.export(&#34;dataWorksFolderId1&#34;, ids.applyValue(getFoldersResult -&gt; getFoldersResult).applyValue(ids -&gt; ids.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id())));
+     *         ctx.export("dataWorksFolderId1", ids.applyValue(getFoldersResult -> getFoldersResult).applyValue(ids -> ids.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -189,7 +195,8 @@ public final class DataworksFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -212,21 +219,22 @@ public final class DataworksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Folder(&#34;default&#34;, FolderArgs.builder()        
-     *             .projectId(&#34;xxxx&#34;)
-     *             .folderPath(&#34;Business Flow/tfTestAcc/folderDi&#34;)
+     *         var default_ = new Folder("default", FolderArgs.builder()        
+     *             .projectId("xxxx")
+     *             .folderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
      *         final var ids = DataworksFunctions.getFolders(GetFoldersArgs.builder()
      *             .ids(default_.folderId())
      *             .projectId(default_.projectId())
-     *             .parentFolderPath(&#34;Business Flow/tfTestAcc/folderDi&#34;)
+     *             .parentFolderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
      * 
-     *         ctx.export(&#34;dataWorksFolderId1&#34;, ids.applyValue(getFoldersResult -&gt; getFoldersResult).applyValue(ids -&gt; ids.applyValue(getFoldersResult -&gt; getFoldersResult.folders()[0].id())));
+     *         ctx.export("dataWorksFolderId1", ids.applyValue(getFoldersResult -> getFoldersResult).applyValue(ids -> ids.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -243,7 +251,8 @@ public final class DataworksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -265,12 +274,13 @@ public final class DataworksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = DataworksFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -287,7 +297,8 @@ public final class DataworksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -309,12 +320,13 @@ public final class DataworksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = DataworksFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -331,7 +343,8 @@ public final class DataworksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -353,12 +366,13 @@ public final class DataworksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = DataworksFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -375,7 +389,8 @@ public final class DataworksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -397,12 +412,13 @@ public final class DataworksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = DataworksFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -419,7 +435,8 @@ public final class DataworksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -441,12 +458,13 @@ public final class DataworksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = DataworksFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -463,7 +481,8 @@ public final class DataworksFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -485,12 +504,13 @@ public final class DataworksFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = DataworksFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

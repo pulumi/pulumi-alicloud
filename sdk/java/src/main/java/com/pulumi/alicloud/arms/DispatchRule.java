@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,31 +60,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AlertContact(&#34;default&#34;, AlertContactArgs.builder()        
- *             .alertContactName(&#34;example_value&#34;)
- *             .email(&#34;example_value@aaa.com&#34;)
+ *         var default_ = new AlertContact("default", AlertContactArgs.builder()        
+ *             .alertContactName("example_value")
+ *             .email("example_value{@literal @}aaa.com")
  *             .build());
  * 
- *         var defaultAlertContactGroup = new AlertContactGroup(&#34;defaultAlertContactGroup&#34;, AlertContactGroupArgs.builder()        
- *             .alertContactGroupName(&#34;example_value&#34;)
+ *         var defaultAlertContactGroup = new AlertContactGroup("defaultAlertContactGroup", AlertContactGroupArgs.builder()        
+ *             .alertContactGroupName("example_value")
  *             .contactIds(default_.id())
  *             .build());
  * 
- *         var defaultDispatchRule = new DispatchRule(&#34;defaultDispatchRule&#34;, DispatchRuleArgs.builder()        
- *             .dispatchRuleName(&#34;example_value&#34;)
- *             .dispatchType(&#34;CREATE_ALERT&#34;)
+ *         var defaultDispatchRule = new DispatchRule("defaultDispatchRule", DispatchRuleArgs.builder()        
+ *             .dispatchRuleName("example_value")
+ *             .dispatchType("CREATE_ALERT")
  *             .groupRules(DispatchRuleGroupRuleArgs.builder()
  *                 .groupWaitTime(5)
  *                 .groupInterval(15)
  *                 .repeatInterval(100)
- *                 .groupingFields(&#34;alertname&#34;)
+ *                 .groupingFields("alertname")
  *                 .build())
  *             .labelMatchExpressionGrids(DispatchRuleLabelMatchExpressionGridArgs.builder()
  *                 .labelMatchExpressionGroups(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs.builder()
  *                     .labelMatchExpressions(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs.builder()
- *                         .key(&#34;_aliyun_arms_involvedObject_kind&#34;)
- *                         .value(&#34;app&#34;)
- *                         .operator(&#34;eq&#34;)
+ *                         .key("_aliyun_arms_involvedObject_kind")
+ *                         .value("app")
+ *                         .operator("eq")
  *                         .build())
  *                     .build())
  *                 .build())
@@ -91,23 +92,24 @@ import javax.annotation.Nullable;
  *                 .notifyObjects(                
  *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
  *                         .notifyObjectId(default_.id())
- *                         .notifyType(&#34;ARMS_CONTACT&#34;)
- *                         .name(&#34;example_value&#34;)
+ *                         .notifyType("ARMS_CONTACT")
+ *                         .name("example_value")
  *                         .build(),
  *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
  *                         .notifyObjectId(defaultAlertContactGroup.id())
- *                         .notifyType(&#34;ARMS_CONTACT_GROUP&#34;)
- *                         .name(&#34;example_value&#34;)
+ *                         .notifyType("ARMS_CONTACT_GROUP")
+ *                         .name("example_value")
  *                         .build())
  *                 .notifyChannels(                
- *                     &#34;dingTalk&#34;,
- *                     &#34;wechat&#34;)
+ *                     "dingTalk",
+ *                     "wechat")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

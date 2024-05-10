@@ -24,7 +24,8 @@ public final class OceanFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -47,15 +48,16 @@ public final class OceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OceanFunctions.getBaseInstances();
      * 
-     *         ctx.export(&#34;oceanBaseInstanceId1&#34;, ids.applyValue(getBaseInstancesResult -&gt; getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId1", ids.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
      *         final var nameRegex = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;oceanBaseInstanceId2&#34;, nameRegex.applyValue(getBaseInstancesResult -&gt; getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId2", nameRegex.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -72,7 +74,8 @@ public final class OceanFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -95,15 +98,16 @@ public final class OceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OceanFunctions.getBaseInstances();
      * 
-     *         ctx.export(&#34;oceanBaseInstanceId1&#34;, ids.applyValue(getBaseInstancesResult -&gt; getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId1", ids.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
      *         final var nameRegex = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;oceanBaseInstanceId2&#34;, nameRegex.applyValue(getBaseInstancesResult -&gt; getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId2", nameRegex.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -120,7 +124,8 @@ public final class OceanFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -143,15 +148,16 @@ public final class OceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OceanFunctions.getBaseInstances();
      * 
-     *         ctx.export(&#34;oceanBaseInstanceId1&#34;, ids.applyValue(getBaseInstancesResult -&gt; getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId1", ids.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
      *         final var nameRegex = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;oceanBaseInstanceId2&#34;, nameRegex.applyValue(getBaseInstancesResult -&gt; getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId2", nameRegex.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -168,7 +174,8 @@ public final class OceanFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -191,15 +198,16 @@ public final class OceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OceanFunctions.getBaseInstances();
      * 
-     *         ctx.export(&#34;oceanBaseInstanceId1&#34;, ids.applyValue(getBaseInstancesResult -&gt; getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId1", ids.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
      *         final var nameRegex = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;oceanBaseInstanceId2&#34;, nameRegex.applyValue(getBaseInstancesResult -&gt; getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId2", nameRegex.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -216,7 +224,8 @@ public final class OceanFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -239,15 +248,16 @@ public final class OceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OceanFunctions.getBaseInstances();
      * 
-     *         ctx.export(&#34;oceanBaseInstanceId1&#34;, ids.applyValue(getBaseInstancesResult -&gt; getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId1", ids.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
      *         final var nameRegex = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;oceanBaseInstanceId2&#34;, nameRegex.applyValue(getBaseInstancesResult -&gt; getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId2", nameRegex.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -264,7 +274,8 @@ public final class OceanFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -287,15 +298,16 @@ public final class OceanFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = OceanFunctions.getBaseInstances();
      * 
-     *         ctx.export(&#34;oceanBaseInstanceId1&#34;, ids.applyValue(getBaseInstancesResult -&gt; getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId1", ids.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
      *         final var nameRegex = OceanFunctions.getBaseInstances(GetBaseInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;oceanBaseInstanceId2&#34;, nameRegex.applyValue(getBaseInstancesResult -&gt; getBaseInstancesResult.instances()[0].id()));
+     *         ctx.export("oceanBaseInstanceId2", nameRegex.applyValue(getBaseInstancesResult -> getBaseInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

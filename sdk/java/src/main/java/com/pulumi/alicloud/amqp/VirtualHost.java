@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,24 +49,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
- *             .instanceType(&#34;professional&#34;)
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *             .instanceType("professional")
  *             .maxTps(1000)
  *             .queueCapacity(50)
  *             .supportEip(true)
  *             .maxEipTps(128)
- *             .paymentType(&#34;Subscription&#34;)
+ *             .paymentType("Subscription")
  *             .period(1)
  *             .build());
  * 
- *         var defaultVirtualHost = new VirtualHost(&#34;defaultVirtualHost&#34;, VirtualHostArgs.builder()        
+ *         var defaultVirtualHost = new VirtualHost("defaultVirtualHost", VirtualHostArgs.builder()        
  *             .instanceId(default_.id())
- *             .virtualHostName(&#34;tf-example&#34;)
+ *             .virtualHostName("tf-example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

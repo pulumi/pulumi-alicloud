@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,16 +58,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ResourcemanagerFunctions.getResourceDirectories();
  * 
- *         for (var i = 0; i &lt; default_.directories().length() &gt; 0 ? 0 : 1; i++) {
- *             new ResourceDirectory(&#34;defaultResourceDirectory-&#34; + i, ResourceDirectoryArgs.builder()            
- *                 .status(&#34;Enabled&#34;)
+ *         for (var i = 0; i < default_.directories().length() > 0 ? 0 : 1; i++) {
+ *             new ResourceDirectory("defaultResourceDirectory-" + i, ResourceDirectoryArgs.builder()            
+ *                 .status("Enabled")
  *                 .build());
  * 
  *         
  * }
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

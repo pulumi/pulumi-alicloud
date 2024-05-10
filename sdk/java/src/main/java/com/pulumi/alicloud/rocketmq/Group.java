@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,26 +56,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;GID-tf-example&#34;);
- *         final var groupName = config.get(&#34;groupName&#34;).orElse(&#34;GID-tf-example&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("GID-tf-example");
+ *         final var groupName = config.get("groupName").orElse("GID-tf-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .name(String.format(&#34;%s-%s&#34;, name,default_.result()))
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .name(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var defaultGroup = new Group(&#34;defaultGroup&#34;, GroupArgs.builder()        
+ *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()        
  *             .groupName(groupName)
  *             .instanceId(defaultInstance.id())
- *             .remark(&#34;dafault_ons_group_remark&#34;)
+ *             .remark("dafault_ons_group_remark")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

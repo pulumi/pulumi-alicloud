@@ -59,7 +59,7 @@ public final class GetListenersListener {
      */
     private Integer idleTimeout;
     /**
-     * @return Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+     * @return Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
      * 
      */
     private String listenerDescription;
@@ -184,7 +184,7 @@ public final class GetListenersListener {
         return this.idleTimeout;
     }
     /**
-     * @return Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+     * @return Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
      * 
      */
     public String listenerDescription() {

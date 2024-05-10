@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,14 +49,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Organization(&#34;example&#34;, OrganizationArgs.builder()        
- *             .organizationName(&#34;example_value&#34;)
- *             .source(&#34;example_value&#34;)
+ *         var example = new Organization("example", OrganizationArgs.builder()        
+ *             .organizationName("example_value")
+ *             .source("example_value")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,24 +48,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new KeyPair(&#34;basic&#34;, KeyPairArgs.builder()        
- *             .keyName(&#34;terraform-test-key-pair&#34;)
+ *         var basic = new KeyPair("basic", KeyPairArgs.builder()        
+ *             .keyName("terraform-test-key-pair")
  *             .build());
  * 
  *         // Using name prefix to build key pair
- *         var prefix = new KeyPair(&#34;prefix&#34;, KeyPairArgs.builder()        
- *             .keyNamePrefix(&#34;terraform-test-key-pair-prefix&#34;)
+ *         var prefix = new KeyPair("prefix", KeyPairArgs.builder()        
+ *             .keyNamePrefix("terraform-test-key-pair-prefix")
  *             .build());
  * 
  *         // Import an existing public key to build a alicloud key pair
- *         var publickey = new KeyPair(&#34;publickey&#34;, KeyPairArgs.builder()        
- *             .keyName(&#34;my_public_key&#34;)
- *             .publicKey(&#34;ssh-rsa AAAAB3Nza12345678qwertyuudsfsg&#34;)
+ *         var publickey = new KeyPair("publickey", KeyPairArgs.builder()        
+ *             .keyName("my_public_key")
+ *             .publicKey("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

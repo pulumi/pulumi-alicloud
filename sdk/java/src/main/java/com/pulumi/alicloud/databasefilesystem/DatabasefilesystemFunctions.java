@@ -28,7 +28,8 @@ public final class DatabasefilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -53,10 +54,11 @@ public final class DatabasefilesystemFunctions {
      *             .ids(defaultAlicloudDbfsAutoSnapShotPolicy.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
+     *         ctx.export("alicloudDbfsAutoSnapShotPolicyExampleId", default_.autoSnapShotPolicies()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -71,7 +73,8 @@ public final class DatabasefilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -96,10 +99,11 @@ public final class DatabasefilesystemFunctions {
      *             .ids(defaultAlicloudDbfsAutoSnapShotPolicy.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
+     *         ctx.export("alicloudDbfsAutoSnapShotPolicyExampleId", default_.autoSnapShotPolicies()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -114,7 +118,8 @@ public final class DatabasefilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -139,10 +144,11 @@ public final class DatabasefilesystemFunctions {
      *             .ids(defaultAlicloudDbfsAutoSnapShotPolicy.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
+     *         ctx.export("alicloudDbfsAutoSnapShotPolicyExampleId", default_.autoSnapShotPolicies()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -157,7 +163,8 @@ public final class DatabasefilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -182,10 +189,11 @@ public final class DatabasefilesystemFunctions {
      *             .ids(defaultAlicloudDbfsAutoSnapShotPolicy.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
+     *         ctx.export("alicloudDbfsAutoSnapShotPolicyExampleId", default_.autoSnapShotPolicies()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -200,7 +208,8 @@ public final class DatabasefilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -225,10 +234,11 @@ public final class DatabasefilesystemFunctions {
      *             .ids(defaultAlicloudDbfsAutoSnapShotPolicy.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
+     *         ctx.export("alicloudDbfsAutoSnapShotPolicyExampleId", default_.autoSnapShotPolicies()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -243,7 +253,8 @@ public final class DatabasefilesystemFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -268,10 +279,11 @@ public final class DatabasefilesystemFunctions {
      *             .ids(defaultAlicloudDbfsAutoSnapShotPolicy.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
+     *         ctx.export("alicloudDbfsAutoSnapShotPolicyExampleId", default_.autoSnapShotPolicies()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -288,7 +300,8 @@ public final class DatabasefilesystemFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -310,18 +323,19 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -338,7 +352,8 @@ public final class DatabasefilesystemFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -360,18 +375,19 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -388,7 +404,8 @@ public final class DatabasefilesystemFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -410,18 +427,19 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -438,7 +456,8 @@ public final class DatabasefilesystemFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -460,18 +479,19 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -488,7 +508,8 @@ public final class DatabasefilesystemFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -510,18 +531,19 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -538,7 +560,8 @@ public final class DatabasefilesystemFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -560,18 +583,19 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = DatabasefilesystemFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("dbfsInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -588,7 +612,8 @@ public final class DatabasefilesystemFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -610,23 +635,24 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var status = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .status(&#34;accomplished&#34;)
+     *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId3&#34;, status.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId3", status.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -643,7 +669,8 @@ public final class DatabasefilesystemFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -665,23 +692,24 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var status = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .status(&#34;accomplished&#34;)
+     *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId3&#34;, status.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId3", status.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -698,7 +726,8 @@ public final class DatabasefilesystemFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -720,23 +749,24 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var status = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .status(&#34;accomplished&#34;)
+     *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId3&#34;, status.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId3", status.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -753,7 +783,8 @@ public final class DatabasefilesystemFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -775,23 +806,24 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var status = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .status(&#34;accomplished&#34;)
+     *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId3&#34;, status.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId3", status.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -808,7 +840,8 @@ public final class DatabasefilesystemFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -830,23 +863,24 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var status = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .status(&#34;accomplished&#34;)
+     *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId3&#34;, status.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId3", status.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -863,7 +897,8 @@ public final class DatabasefilesystemFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -885,23 +920,24 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId1&#34;, ids.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId1", ids.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var nameRegex = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .nameRegex(&#34;^my-Snapshot&#34;)
+     *             .nameRegex("^my-Snapshot")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId2&#34;, nameRegex.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId2", nameRegex.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *         final var status = DatabasefilesystemFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .status(&#34;accomplished&#34;)
+     *             .status("accomplished")
      *             .build());
      * 
-     *         ctx.export(&#34;dbfsSnapshotId3&#34;, status.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("dbfsSnapshotId3", status.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

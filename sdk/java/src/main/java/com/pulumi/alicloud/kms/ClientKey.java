@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,24 +52,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var aAP0 = new ApplicationAccessPoint(&#34;AAP0&#34;, ApplicationAccessPointArgs.builder()        
- *             .policies(&#34;aa&#34;)
- *             .description(&#34;aa&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var aAP0 = new ApplicationAccessPoint("AAP0", ApplicationAccessPointArgs.builder()        
+ *             .policies("aa")
+ *             .description("aa")
  *             .applicationAccessPointName(name)
  *             .build());
  * 
- *         var default_ = new ClientKey(&#34;default&#34;, ClientKeyArgs.builder()        
+ *         var default_ = new ClientKey("default", ClientKeyArgs.builder()        
  *             .aapName(AAP0.applicationAccessPointName())
- *             .password(&#34;YouPassword123!&#34;)
- *             .notBefore(&#34;2023-09-01T14:11:22Z&#34;)
- *             .notAfter(&#34;2028-09-01T14:11:22Z&#34;)
- *             .privateKeyDataFile(&#34;./private_key_data_file.txt&#34;)
+ *             .password("YouPassword123!")
+ *             .notBefore("2023-09-01T14:11:22Z")
+ *             .notAfter("2028-09-01T14:11:22Z")
+ *             .privateKeyDataFile("./private_key_data_file.txt")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -48,7 +48,8 @@ public final class QuotasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -70,14 +71,15 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = QuotasFunctions.getQuotaAlarms(GetQuotaAlarmsArgs.builder()
-     *             .ids(&#34;5VR90-421F886-81E9-xxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("5VR90-421F886-81E9-xxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQuotasQuotaAlarmId&#34;, example.applyValue(getQuotaAlarmsResult -&gt; getQuotaAlarmsResult.alarms()[0].id()));
+     *         ctx.export("firstQuotasQuotaAlarmId", example.applyValue(getQuotaAlarmsResult -> getQuotaAlarmsResult.alarms()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -94,7 +96,8 @@ public final class QuotasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -116,14 +119,15 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = QuotasFunctions.getQuotaAlarms(GetQuotaAlarmsArgs.builder()
-     *             .ids(&#34;5VR90-421F886-81E9-xxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("5VR90-421F886-81E9-xxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQuotasQuotaAlarmId&#34;, example.applyValue(getQuotaAlarmsResult -&gt; getQuotaAlarmsResult.alarms()[0].id()));
+     *         ctx.export("firstQuotasQuotaAlarmId", example.applyValue(getQuotaAlarmsResult -> getQuotaAlarmsResult.alarms()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -140,7 +144,8 @@ public final class QuotasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -162,14 +167,15 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = QuotasFunctions.getQuotaAlarms(GetQuotaAlarmsArgs.builder()
-     *             .ids(&#34;5VR90-421F886-81E9-xxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("5VR90-421F886-81E9-xxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQuotasQuotaAlarmId&#34;, example.applyValue(getQuotaAlarmsResult -&gt; getQuotaAlarmsResult.alarms()[0].id()));
+     *         ctx.export("firstQuotasQuotaAlarmId", example.applyValue(getQuotaAlarmsResult -> getQuotaAlarmsResult.alarms()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -186,7 +192,8 @@ public final class QuotasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -208,14 +215,15 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = QuotasFunctions.getQuotaAlarms(GetQuotaAlarmsArgs.builder()
-     *             .ids(&#34;5VR90-421F886-81E9-xxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("5VR90-421F886-81E9-xxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQuotasQuotaAlarmId&#34;, example.applyValue(getQuotaAlarmsResult -&gt; getQuotaAlarmsResult.alarms()[0].id()));
+     *         ctx.export("firstQuotasQuotaAlarmId", example.applyValue(getQuotaAlarmsResult -> getQuotaAlarmsResult.alarms()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -232,7 +240,8 @@ public final class QuotasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -254,14 +263,15 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = QuotasFunctions.getQuotaAlarms(GetQuotaAlarmsArgs.builder()
-     *             .ids(&#34;5VR90-421F886-81E9-xxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("5VR90-421F886-81E9-xxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQuotasQuotaAlarmId&#34;, example.applyValue(getQuotaAlarmsResult -&gt; getQuotaAlarmsResult.alarms()[0].id()));
+     *         ctx.export("firstQuotasQuotaAlarmId", example.applyValue(getQuotaAlarmsResult -> getQuotaAlarmsResult.alarms()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -278,7 +288,8 @@ public final class QuotasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -300,14 +311,15 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = QuotasFunctions.getQuotaAlarms(GetQuotaAlarmsArgs.builder()
-     *             .ids(&#34;5VR90-421F886-81E9-xxx&#34;)
-     *             .nameRegex(&#34;tf-testAcc&#34;)
+     *             .ids("5VR90-421F886-81E9-xxx")
+     *             .nameRegex("tf-testAcc")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQuotasQuotaAlarmId&#34;, example.applyValue(getQuotaAlarmsResult -&gt; getQuotaAlarmsResult.alarms()[0].id()));
+     *         ctx.export("firstQuotasQuotaAlarmId", example.applyValue(getQuotaAlarmsResult -> getQuotaAlarmsResult.alarms()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -324,7 +336,8 @@ public final class QuotasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -347,29 +360,30 @@ public final class QuotasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultQuotaApplication = new QuotaApplication(&#34;defaultQuotaApplication&#34;, QuotaApplicationArgs.builder()        
-     *             .productCode(&#34;vpc&#34;)
-     *             .noticeType(&#34;3&#34;)
-     *             .effectiveTime(&#34;2023-05-22T16:00:00Z&#34;)
-     *             .expireTime(&#34;2024-09-15T00:08:32Z&#34;)
-     *             .desireValue(&#34;1&#34;)
-     *             .reason(&#34;&#34;)
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .auditMode(&#34;Sync&#34;)
-     *             .envLanguage(&#34;zh&#34;)
-     *             .quotaCategory(&#34;WhiteListLabel&#34;)
+     *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()        
+     *             .productCode("vpc")
+     *             .noticeType("3")
+     *             .effectiveTime("2023-05-22T16:00:00Z")
+     *             .expireTime("2024-09-15T00:08:32Z")
+     *             .desireValue("1")
+     *             .reason("")
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .auditMode("Sync")
+     *             .envLanguage("zh")
+     *             .quotaCategory("WhiteListLabel")
      *             .build());
      * 
      *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *             .productCode(&#34;vpc&#34;)
-     *             .enableDetails(&#34;true&#34;)
+     *             .productCode("vpc")
+     *             .enableDetails("true")
      *             .quotaCategory(defaultQuotaApplication.quotaCategory())
      *             .ids(defaultQuotaApplication.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -386,7 +400,8 @@ public final class QuotasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -409,29 +424,30 @@ public final class QuotasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultQuotaApplication = new QuotaApplication(&#34;defaultQuotaApplication&#34;, QuotaApplicationArgs.builder()        
-     *             .productCode(&#34;vpc&#34;)
-     *             .noticeType(&#34;3&#34;)
-     *             .effectiveTime(&#34;2023-05-22T16:00:00Z&#34;)
-     *             .expireTime(&#34;2024-09-15T00:08:32Z&#34;)
-     *             .desireValue(&#34;1&#34;)
-     *             .reason(&#34;&#34;)
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .auditMode(&#34;Sync&#34;)
-     *             .envLanguage(&#34;zh&#34;)
-     *             .quotaCategory(&#34;WhiteListLabel&#34;)
+     *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()        
+     *             .productCode("vpc")
+     *             .noticeType("3")
+     *             .effectiveTime("2023-05-22T16:00:00Z")
+     *             .expireTime("2024-09-15T00:08:32Z")
+     *             .desireValue("1")
+     *             .reason("")
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .auditMode("Sync")
+     *             .envLanguage("zh")
+     *             .quotaCategory("WhiteListLabel")
      *             .build());
      * 
      *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *             .productCode(&#34;vpc&#34;)
-     *             .enableDetails(&#34;true&#34;)
+     *             .productCode("vpc")
+     *             .enableDetails("true")
      *             .quotaCategory(defaultQuotaApplication.quotaCategory())
      *             .ids(defaultQuotaApplication.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -448,7 +464,8 @@ public final class QuotasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -471,29 +488,30 @@ public final class QuotasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultQuotaApplication = new QuotaApplication(&#34;defaultQuotaApplication&#34;, QuotaApplicationArgs.builder()        
-     *             .productCode(&#34;vpc&#34;)
-     *             .noticeType(&#34;3&#34;)
-     *             .effectiveTime(&#34;2023-05-22T16:00:00Z&#34;)
-     *             .expireTime(&#34;2024-09-15T00:08:32Z&#34;)
-     *             .desireValue(&#34;1&#34;)
-     *             .reason(&#34;&#34;)
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .auditMode(&#34;Sync&#34;)
-     *             .envLanguage(&#34;zh&#34;)
-     *             .quotaCategory(&#34;WhiteListLabel&#34;)
+     *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()        
+     *             .productCode("vpc")
+     *             .noticeType("3")
+     *             .effectiveTime("2023-05-22T16:00:00Z")
+     *             .expireTime("2024-09-15T00:08:32Z")
+     *             .desireValue("1")
+     *             .reason("")
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .auditMode("Sync")
+     *             .envLanguage("zh")
+     *             .quotaCategory("WhiteListLabel")
      *             .build());
      * 
      *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *             .productCode(&#34;vpc&#34;)
-     *             .enableDetails(&#34;true&#34;)
+     *             .productCode("vpc")
+     *             .enableDetails("true")
      *             .quotaCategory(defaultQuotaApplication.quotaCategory())
      *             .ids(defaultQuotaApplication.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -510,7 +528,8 @@ public final class QuotasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -533,29 +552,30 @@ public final class QuotasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultQuotaApplication = new QuotaApplication(&#34;defaultQuotaApplication&#34;, QuotaApplicationArgs.builder()        
-     *             .productCode(&#34;vpc&#34;)
-     *             .noticeType(&#34;3&#34;)
-     *             .effectiveTime(&#34;2023-05-22T16:00:00Z&#34;)
-     *             .expireTime(&#34;2024-09-15T00:08:32Z&#34;)
-     *             .desireValue(&#34;1&#34;)
-     *             .reason(&#34;&#34;)
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .auditMode(&#34;Sync&#34;)
-     *             .envLanguage(&#34;zh&#34;)
-     *             .quotaCategory(&#34;WhiteListLabel&#34;)
+     *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()        
+     *             .productCode("vpc")
+     *             .noticeType("3")
+     *             .effectiveTime("2023-05-22T16:00:00Z")
+     *             .expireTime("2024-09-15T00:08:32Z")
+     *             .desireValue("1")
+     *             .reason("")
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .auditMode("Sync")
+     *             .envLanguage("zh")
+     *             .quotaCategory("WhiteListLabel")
      *             .build());
      * 
      *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
-     *             .productCode(&#34;vpc&#34;)
-     *             .enableDetails(&#34;true&#34;)
+     *             .productCode("vpc")
+     *             .enableDetails("true")
      *             .quotaCategory(defaultQuotaApplication.quotaCategory())
      *             .ids(defaultQuotaApplication.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -572,7 +592,8 @@ public final class QuotasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -594,14 +615,15 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = QuotasFunctions.getQuotas(GetQuotasArgs.builder()
-     *             .productCode(&#34;ecs&#34;)
-     *             .nameRegex(&#34;专有宿主机总数量上限&#34;)
+     *             .productCode("ecs")
+     *             .nameRegex("专有宿主机总数量上限")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQuotasQuotaId&#34;, example.applyValue(getQuotasResult -&gt; getQuotasResult.quotas()[0].id()));
+     *         ctx.export("firstQuotasQuotaId", example.applyValue(getQuotasResult -> getQuotasResult.quotas()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -618,7 +640,8 @@ public final class QuotasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -640,14 +663,15 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = QuotasFunctions.getQuotas(GetQuotasArgs.builder()
-     *             .productCode(&#34;ecs&#34;)
-     *             .nameRegex(&#34;专有宿主机总数量上限&#34;)
+     *             .productCode("ecs")
+     *             .nameRegex("专有宿主机总数量上限")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQuotasQuotaId&#34;, example.applyValue(getQuotasResult -&gt; getQuotasResult.quotas()[0].id()));
+     *         ctx.export("firstQuotasQuotaId", example.applyValue(getQuotasResult -> getQuotasResult.quotas()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -664,7 +688,8 @@ public final class QuotasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -686,14 +711,15 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = QuotasFunctions.getQuotas(GetQuotasArgs.builder()
-     *             .productCode(&#34;ecs&#34;)
-     *             .nameRegex(&#34;专有宿主机总数量上限&#34;)
+     *             .productCode("ecs")
+     *             .nameRegex("专有宿主机总数量上限")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQuotasQuotaId&#34;, example.applyValue(getQuotasResult -&gt; getQuotasResult.quotas()[0].id()));
+     *         ctx.export("firstQuotasQuotaId", example.applyValue(getQuotasResult -> getQuotasResult.quotas()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -710,7 +736,8 @@ public final class QuotasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -732,14 +759,15 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = QuotasFunctions.getQuotas(GetQuotasArgs.builder()
-     *             .productCode(&#34;ecs&#34;)
-     *             .nameRegex(&#34;专有宿主机总数量上限&#34;)
+     *             .productCode("ecs")
+     *             .nameRegex("专有宿主机总数量上限")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQuotasQuotaId&#34;, example.applyValue(getQuotasResult -&gt; getQuotasResult.quotas()[0].id()));
+     *         ctx.export("firstQuotasQuotaId", example.applyValue(getQuotasResult -> getQuotasResult.quotas()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -754,7 +782,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -781,44 +810,45 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .status(&#34;CreateSuccess&#34;)
+     *             .status("CreateSuccess")
      *             .build());
      * 
-     *         var defaultTemplateApplications = new TemplateApplications(&#34;defaultTemplateApplications&#34;, TemplateApplicationsArgs.builder()        
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .productCode(&#34;vpc&#34;)
-     *             .quotaCategory(&#34;FlowControl&#34;)
+     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()        
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .productCode("vpc")
+     *             .quotaCategory("FlowControl")
      *             .aliyunUids(default_.ids()[0])
      *             .desireValue(6)
-     *             .noticeType(&#34;0&#34;)
-     *             .envLanguage(&#34;zh&#34;)
-     *             .reason(&#34;example&#34;)
+     *             .noticeType("0")
+     *             .envLanguage("zh")
+     *             .reason("example")
      *             .dimensions(            
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;apiName&#34;)
-     *                     .value(&#34;GetProductQuotaDimension&#34;)
+     *                     .key("apiName")
+     *                     .value("GetProductQuotaDimension")
      *                     .build(),
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;apiVersion&#34;)
-     *                     .value(&#34;2020-05-10&#34;)
+     *                     .key("apiVersion")
+     *                     .value("2020-05-10")
      *                     .build(),
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;regionId&#34;)
-     *                     .value(&#34;cn-hangzhou&#34;)
+     *                     .key("regionId")
+     *                     .value("cn-hangzhou")
      *                     .build())
      *             .build());
      * 
      *         final var defaultGetTemplateApplications = QuotasFunctions.getTemplateApplications(GetTemplateApplicationsArgs.builder()
      *             .ids(defaultTemplateApplications.id())
-     *             .productCode(&#34;vpc&#34;)
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .productCode("vpc")
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudQuotasTemplateApplicationsExampleId&#34;, defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -&gt; defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult.applications()[0].id())));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -> defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult.applications()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -833,7 +863,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -860,44 +891,45 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .status(&#34;CreateSuccess&#34;)
+     *             .status("CreateSuccess")
      *             .build());
      * 
-     *         var defaultTemplateApplications = new TemplateApplications(&#34;defaultTemplateApplications&#34;, TemplateApplicationsArgs.builder()        
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .productCode(&#34;vpc&#34;)
-     *             .quotaCategory(&#34;FlowControl&#34;)
+     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()        
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .productCode("vpc")
+     *             .quotaCategory("FlowControl")
      *             .aliyunUids(default_.ids()[0])
      *             .desireValue(6)
-     *             .noticeType(&#34;0&#34;)
-     *             .envLanguage(&#34;zh&#34;)
-     *             .reason(&#34;example&#34;)
+     *             .noticeType("0")
+     *             .envLanguage("zh")
+     *             .reason("example")
      *             .dimensions(            
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;apiName&#34;)
-     *                     .value(&#34;GetProductQuotaDimension&#34;)
+     *                     .key("apiName")
+     *                     .value("GetProductQuotaDimension")
      *                     .build(),
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;apiVersion&#34;)
-     *                     .value(&#34;2020-05-10&#34;)
+     *                     .key("apiVersion")
+     *                     .value("2020-05-10")
      *                     .build(),
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;regionId&#34;)
-     *                     .value(&#34;cn-hangzhou&#34;)
+     *                     .key("regionId")
+     *                     .value("cn-hangzhou")
      *                     .build())
      *             .build());
      * 
      *         final var defaultGetTemplateApplications = QuotasFunctions.getTemplateApplications(GetTemplateApplicationsArgs.builder()
      *             .ids(defaultTemplateApplications.id())
-     *             .productCode(&#34;vpc&#34;)
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .productCode("vpc")
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudQuotasTemplateApplicationsExampleId&#34;, defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -&gt; defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult.applications()[0].id())));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -> defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult.applications()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -912,7 +944,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -939,44 +972,45 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .status(&#34;CreateSuccess&#34;)
+     *             .status("CreateSuccess")
      *             .build());
      * 
-     *         var defaultTemplateApplications = new TemplateApplications(&#34;defaultTemplateApplications&#34;, TemplateApplicationsArgs.builder()        
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .productCode(&#34;vpc&#34;)
-     *             .quotaCategory(&#34;FlowControl&#34;)
+     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()        
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .productCode("vpc")
+     *             .quotaCategory("FlowControl")
      *             .aliyunUids(default_.ids()[0])
      *             .desireValue(6)
-     *             .noticeType(&#34;0&#34;)
-     *             .envLanguage(&#34;zh&#34;)
-     *             .reason(&#34;example&#34;)
+     *             .noticeType("0")
+     *             .envLanguage("zh")
+     *             .reason("example")
      *             .dimensions(            
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;apiName&#34;)
-     *                     .value(&#34;GetProductQuotaDimension&#34;)
+     *                     .key("apiName")
+     *                     .value("GetProductQuotaDimension")
      *                     .build(),
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;apiVersion&#34;)
-     *                     .value(&#34;2020-05-10&#34;)
+     *                     .key("apiVersion")
+     *                     .value("2020-05-10")
      *                     .build(),
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;regionId&#34;)
-     *                     .value(&#34;cn-hangzhou&#34;)
+     *                     .key("regionId")
+     *                     .value("cn-hangzhou")
      *                     .build())
      *             .build());
      * 
      *         final var defaultGetTemplateApplications = QuotasFunctions.getTemplateApplications(GetTemplateApplicationsArgs.builder()
      *             .ids(defaultTemplateApplications.id())
-     *             .productCode(&#34;vpc&#34;)
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .productCode("vpc")
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudQuotasTemplateApplicationsExampleId&#34;, defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -&gt; defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult.applications()[0].id())));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -> defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult.applications()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -991,7 +1025,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1018,44 +1053,45 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .status(&#34;CreateSuccess&#34;)
+     *             .status("CreateSuccess")
      *             .build());
      * 
-     *         var defaultTemplateApplications = new TemplateApplications(&#34;defaultTemplateApplications&#34;, TemplateApplicationsArgs.builder()        
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .productCode(&#34;vpc&#34;)
-     *             .quotaCategory(&#34;FlowControl&#34;)
+     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()        
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .productCode("vpc")
+     *             .quotaCategory("FlowControl")
      *             .aliyunUids(default_.ids()[0])
      *             .desireValue(6)
-     *             .noticeType(&#34;0&#34;)
-     *             .envLanguage(&#34;zh&#34;)
-     *             .reason(&#34;example&#34;)
+     *             .noticeType("0")
+     *             .envLanguage("zh")
+     *             .reason("example")
      *             .dimensions(            
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;apiName&#34;)
-     *                     .value(&#34;GetProductQuotaDimension&#34;)
+     *                     .key("apiName")
+     *                     .value("GetProductQuotaDimension")
      *                     .build(),
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;apiVersion&#34;)
-     *                     .value(&#34;2020-05-10&#34;)
+     *                     .key("apiVersion")
+     *                     .value("2020-05-10")
      *                     .build(),
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;regionId&#34;)
-     *                     .value(&#34;cn-hangzhou&#34;)
+     *                     .key("regionId")
+     *                     .value("cn-hangzhou")
      *                     .build())
      *             .build());
      * 
      *         final var defaultGetTemplateApplications = QuotasFunctions.getTemplateApplications(GetTemplateApplicationsArgs.builder()
      *             .ids(defaultTemplateApplications.id())
-     *             .productCode(&#34;vpc&#34;)
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .productCode("vpc")
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudQuotasTemplateApplicationsExampleId&#34;, defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -&gt; defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult.applications()[0].id())));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -> defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult.applications()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1070,7 +1106,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1097,44 +1134,45 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .status(&#34;CreateSuccess&#34;)
+     *             .status("CreateSuccess")
      *             .build());
      * 
-     *         var defaultTemplateApplications = new TemplateApplications(&#34;defaultTemplateApplications&#34;, TemplateApplicationsArgs.builder()        
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .productCode(&#34;vpc&#34;)
-     *             .quotaCategory(&#34;FlowControl&#34;)
+     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()        
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .productCode("vpc")
+     *             .quotaCategory("FlowControl")
      *             .aliyunUids(default_.ids()[0])
      *             .desireValue(6)
-     *             .noticeType(&#34;0&#34;)
-     *             .envLanguage(&#34;zh&#34;)
-     *             .reason(&#34;example&#34;)
+     *             .noticeType("0")
+     *             .envLanguage("zh")
+     *             .reason("example")
      *             .dimensions(            
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;apiName&#34;)
-     *                     .value(&#34;GetProductQuotaDimension&#34;)
+     *                     .key("apiName")
+     *                     .value("GetProductQuotaDimension")
      *                     .build(),
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;apiVersion&#34;)
-     *                     .value(&#34;2020-05-10&#34;)
+     *                     .key("apiVersion")
+     *                     .value("2020-05-10")
      *                     .build(),
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;regionId&#34;)
-     *                     .value(&#34;cn-hangzhou&#34;)
+     *                     .key("regionId")
+     *                     .value("cn-hangzhou")
      *                     .build())
      *             .build());
      * 
      *         final var defaultGetTemplateApplications = QuotasFunctions.getTemplateApplications(GetTemplateApplicationsArgs.builder()
      *             .ids(defaultTemplateApplications.id())
-     *             .productCode(&#34;vpc&#34;)
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .productCode("vpc")
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudQuotasTemplateApplicationsExampleId&#34;, defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -&gt; defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult.applications()[0].id())));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -> defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult.applications()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1149,7 +1187,8 @@ public final class QuotasFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1176,44 +1215,45 @@ public final class QuotasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .status(&#34;CreateSuccess&#34;)
+     *             .status("CreateSuccess")
      *             .build());
      * 
-     *         var defaultTemplateApplications = new TemplateApplications(&#34;defaultTemplateApplications&#34;, TemplateApplicationsArgs.builder()        
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .productCode(&#34;vpc&#34;)
-     *             .quotaCategory(&#34;FlowControl&#34;)
+     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()        
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .productCode("vpc")
+     *             .quotaCategory("FlowControl")
      *             .aliyunUids(default_.ids()[0])
      *             .desireValue(6)
-     *             .noticeType(&#34;0&#34;)
-     *             .envLanguage(&#34;zh&#34;)
-     *             .reason(&#34;example&#34;)
+     *             .noticeType("0")
+     *             .envLanguage("zh")
+     *             .reason("example")
      *             .dimensions(            
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;apiName&#34;)
-     *                     .value(&#34;GetProductQuotaDimension&#34;)
+     *                     .key("apiName")
+     *                     .value("GetProductQuotaDimension")
      *                     .build(),
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;apiVersion&#34;)
-     *                     .value(&#34;2020-05-10&#34;)
+     *                     .key("apiVersion")
+     *                     .value("2020-05-10")
      *                     .build(),
      *                 TemplateApplicationsDimensionArgs.builder()
-     *                     .key(&#34;regionId&#34;)
-     *                     .value(&#34;cn-hangzhou&#34;)
+     *                     .key("regionId")
+     *                     .value("cn-hangzhou")
      *                     .build())
      *             .build());
      * 
      *         final var defaultGetTemplateApplications = QuotasFunctions.getTemplateApplications(GetTemplateApplicationsArgs.builder()
      *             .ids(defaultTemplateApplications.id())
-     *             .productCode(&#34;vpc&#34;)
-     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
-     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .productCode("vpc")
+     *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
+     *             .quotaCategory("FlowControl")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudQuotasTemplateApplicationsExampleId&#34;, defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -&gt; defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult.applications()[0].id())));
+     *         ctx.export("alicloudQuotasTemplateApplicationsExampleId", defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -> defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -> getTemplateApplicationsResult.applications()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

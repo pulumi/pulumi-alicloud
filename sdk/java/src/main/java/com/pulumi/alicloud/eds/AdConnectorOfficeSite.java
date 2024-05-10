@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,32 +54,33 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
  *             .cenInstanceName(name)
- *             .protectionLevel(&#34;REDUCED&#34;)
+ *             .protectionLevel("REDUCED")
  *             .build());
  * 
- *         var defaultAdConnectorOfficeSite = new AdConnectorOfficeSite(&#34;defaultAdConnectorOfficeSite&#34;, AdConnectorOfficeSiteArgs.builder()        
+ *         var defaultAdConnectorOfficeSite = new AdConnectorOfficeSite("defaultAdConnectorOfficeSite", AdConnectorOfficeSiteArgs.builder()        
  *             .adConnectorOfficeSiteName(name)
  *             .bandwidth(100)
  *             .cenId(default_.id())
- *             .cidrBlock(&#34;10.0.0.0/12&#34;)
- *             .desktopAccessType(&#34;INTERNET&#34;)
- *             .dnsAddresses(&#34;127.0.0.2&#34;)
- *             .domainName(&#34;corp.example.com&#34;)
- *             .domainPassword(&#34;Example1234&#34;)
- *             .domainUserName(&#34;sAMAccountName&#34;)
+ *             .cidrBlock("10.0.0.0/12")
+ *             .desktopAccessType("INTERNET")
+ *             .dnsAddresses("127.0.0.2")
+ *             .domainName("corp.example.com")
+ *             .domainPassword("Example1234")
+ *             .domainUserName("sAMAccountName")
  *             .enableAdminAccess(false)
  *             .enableInternetAccess(false)
  *             .mfaEnabled(false)
- *             .subDomainDnsAddresses(&#34;127.0.0.3&#34;)
- *             .subDomainName(&#34;child.example.com&#34;)
+ *             .subDomainDnsAddresses("127.0.0.3")
+ *             .subDomainName("child.example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

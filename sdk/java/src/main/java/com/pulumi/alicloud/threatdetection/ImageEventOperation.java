@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,32 +49,33 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new ImageEventOperation(&#34;default&#34;, ImageEventOperationArgs.builder()        
- *             .eventType(&#34;maliciousFile&#34;)
- *             .operationCode(&#34;whitelist&#34;)
- *             .eventKey(&#34;alibabacloud_ak&#34;)
- *             .scenarios(&#34;&#34;&#34;
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new ImageEventOperation("default", ImageEventOperationArgs.builder()        
+ *             .eventType("maliciousFile")
+ *             .operationCode("whitelist")
+ *             .eventKey("alibabacloud_ak")
+ *             .scenarios("""
  * {
- *   &#34;type&#34;:&#34;default&#34;,
- *   &#34;value&#34;:&#34;&#34;
+ *   "type":"default",
+ *   "value":""
  * }
- *             &#34;&#34;&#34;)
- *             .eventName(&#34;阿里云AK&#34;)
- *             .conditions(&#34;&#34;&#34;
+ *             """)
+ *             .eventName("阿里云AK")
+ *             .conditions("""
  * [
  *   {
- *       &#34;condition&#34;:&#34;MD5&#34;,
- *       &#34;type&#34;:&#34;equals&#34;,
- *       &#34;value&#34;:&#34;0083a31cc0083a31ccf7c10367a6e783e&#34;
+ *       "condition":"MD5",
+ *       "type":"equals",
+ *       "value":"0083a31cc0083a31ccf7c10367a6e783e"
  *   }
  * ]
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

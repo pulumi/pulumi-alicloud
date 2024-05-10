@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,32 +58,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultDomainNew = new DomainNew(&#34;defaultDomainNew&#34;, DomainNewArgs.builder()        
- *             .scope(&#34;overseas&#34;)
- *             .domainName(String.format(&#34;mycdndomain-%s.alicloud-provider.cn&#34;, defaultInteger.result()))
- *             .cdnType(&#34;web&#34;)
+ *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()        
+ *             .scope("overseas")
+ *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", defaultInteger.result()))
+ *             .cdnType("web")
  *             .sources(DomainNewSourceArgs.builder()
- *                 .type(&#34;ipaddr&#34;)
- *                 .content(&#34;1.1.3.1&#34;)
+ *                 .type("ipaddr")
+ *                 .content("1.1.3.1")
  *                 .priority(20)
  *                 .port(80)
  *                 .weight(15)
  *                 .build())
  *             .build());
  * 
- *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
- *             .projectName(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+ *             .projectName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .description("terraform-example")
  *             .build());
  * 
- *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
+ *         var defaultStore = new Store("defaultStore", StoreArgs.builder()        
  *             .projectName(defaultProject.name())
- *             .logstoreName(&#34;example-store&#34;)
+ *             .logstoreName("example-store")
  *             .shardCount(3)
  *             .autoSplit(true)
  *             .maxSplitShardCount(60)
@@ -93,7 +94,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultRealTimeLogDelivery = new RealTimeLogDelivery(&#34;defaultRealTimeLogDelivery&#34;, RealTimeLogDeliveryArgs.builder()        
+ *         var defaultRealTimeLogDelivery = new RealTimeLogDelivery("defaultRealTimeLogDelivery", RealTimeLogDeliveryArgs.builder()        
  *             .domain(defaultDomainNew.domainName())
  *             .logstore(defaultStore.logstoreName())
  *             .project(defaultProject.projectName())
@@ -102,7 +103,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

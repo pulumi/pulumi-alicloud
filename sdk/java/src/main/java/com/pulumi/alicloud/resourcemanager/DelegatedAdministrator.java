@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,30 +54,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var displayName = config.get(&#34;displayName&#34;).orElse(&#34;EAccount&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var displayName = config.get("displayName").orElse("EAccount");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new Folder(&#34;example&#34;, FolderArgs.builder()        
- *             .folderName(String.format(&#34;%s-%s&#34;, name,default_.result()))
+ *         var example = new Folder("example", FolderArgs.builder()        
+ *             .folderName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var exampleAccount = new Account(&#34;exampleAccount&#34;, AccountArgs.builder()        
- *             .displayName(String.format(&#34;%s-%s&#34;, displayName,default_.result()))
+ *         var exampleAccount = new Account("exampleAccount", AccountArgs.builder()        
+ *             .displayName(String.format("%s-%s", displayName,default_.result()))
  *             .folderId(example.id())
  *             .build());
  * 
- *         var exampleDelegatedAdministrator = new DelegatedAdministrator(&#34;exampleDelegatedAdministrator&#34;, DelegatedAdministratorArgs.builder()        
+ *         var exampleDelegatedAdministrator = new DelegatedAdministrator("exampleDelegatedAdministrator", DelegatedAdministratorArgs.builder()        
  *             .accountId(exampleAccount.id())
- *             .servicePrincipal(&#34;cloudfw.aliyuncs.com&#34;)
+ *             .servicePrincipal("cloudfw.aliyuncs.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

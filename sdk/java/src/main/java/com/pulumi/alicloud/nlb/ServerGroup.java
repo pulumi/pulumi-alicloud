@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,47 +59,48 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
+ *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
  *             .resourceGroupId(default_.ids()[0])
  *             .serverGroupName(name)
- *             .serverGroupType(&#34;Instance&#34;)
+ *             .serverGroupType("Instance")
  *             .vpcId(defaultNetwork.id())
- *             .scheduler(&#34;Wrr&#34;)
- *             .protocol(&#34;TCP&#34;)
+ *             .scheduler("Wrr")
+ *             .protocol("TCP")
  *             .connectionDrain(true)
  *             .connectionDrainTimeout(60)
- *             .addressIpVersion(&#34;Ipv4&#34;)
+ *             .addressIpVersion("Ipv4")
  *             .healthCheck(ServerGroupHealthCheckArgs.builder()
  *                 .healthCheckEnabled(true)
- *                 .healthCheckType(&#34;TCP&#34;)
+ *                 .healthCheckType("TCP")
  *                 .healthCheckConnectPort(0)
  *                 .healthyThreshold(2)
  *                 .unhealthyThreshold(2)
  *                 .healthCheckConnectTimeout(5)
  *                 .healthCheckInterval(10)
- *                 .httpCheckMethod(&#34;GET&#34;)
+ *                 .httpCheckMethod("GET")
  *                 .healthCheckHttpCodes(                
- *                     &#34;http_2xx&#34;,
- *                     &#34;http_3xx&#34;,
- *                     &#34;http_4xx&#34;)
+ *                     "http_2xx",
+ *                     "http_3xx",
+ *                     "http_4xx")
  *                 .build())
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,24 +54,25 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultStateConfiguration = new StateConfiguration(&#34;defaultStateConfiguration&#34;, StateConfigurationArgs.builder()        
- *             .templateName(&#34;ACS-ECS-InventoryDataCollection&#34;)
- *             .configureMode(&#34;ApplyOnly&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .scheduleType(&#34;rate&#34;)
- *             .scheduleExpression(&#34;1 hour&#34;)
+ *         var defaultStateConfiguration = new StateConfiguration("defaultStateConfiguration", StateConfigurationArgs.builder()        
+ *             .templateName("ACS-ECS-InventoryDataCollection")
+ *             .configureMode("ApplyOnly")
+ *             .description("terraform-example")
+ *             .scheduleType("rate")
+ *             .scheduleExpression("1 hour")
  *             .resourceGroupId(default_.ids()[0])
- *             .targets(&#34;{\&#34;Filters\&#34;: [{\&#34;Type\&#34;: \&#34;All\&#34;, \&#34;Parameters\&#34;: {\&#34;InstanceChargeType\&#34;: \&#34;PrePaid\&#34;}}], \&#34;ResourceType\&#34;: \&#34;ALIYUN::ECS::Instance\&#34;}&#34;)
- *             .parameters(&#34;{\&#34;policy\&#34;: {\&#34;ACS:Application\&#34;: {\&#34;Collection\&#34;: \&#34;Enabled\&#34;}}}&#34;)
+ *             .targets("{\"Filters\": [{\"Type\": \"All\", \"Parameters\": {\"InstanceChargeType\": \"PrePaid\"}}], \"ResourceType\": \"ALIYUN::ECS::Instance\"}")
+ *             .parameters("{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

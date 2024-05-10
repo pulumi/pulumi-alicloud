@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,62 +68,62 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^centos_7_6_x64*&#34;)
- *             .owners(&#34;system&#34;)
+ *             .nameRegex("^centos_7_6_x64*")
+ *             .owners("system")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .cidrBlock("10.1.0.0/16")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
- *             .storageType(&#34;Performance&#34;)
- *             .protocolType(&#34;NFS&#34;)
+ *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()        
+ *             .storageType("Performance")
+ *             .protocolType("NFS")
  *             .build());
  * 
- *         var defaultMountTarget = new MountTarget(&#34;defaultMountTarget&#34;, MountTargetArgs.builder()        
+ *         var defaultMountTarget = new MountTarget("defaultMountTarget", MountTargetArgs.builder()        
  *             .fileSystemId(defaultFileSystem.id())
- *             .accessGroupName(&#34;DEFAULT_VPC_GROUP_NAME&#34;)
+ *             .accessGroupName("DEFAULT_VPC_GROUP_NAME")
  *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
- *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
  *             .clusterName(name)
- *             .deployMode(&#34;Simple&#34;)
+ *             .deployMode("Simple")
  *             .description(name)
  *             .haEnable(false)
- *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .imageOwnerAlias(&#34;system&#34;)
- *             .volumeProtocol(&#34;nfs&#34;)
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .imageOwnerAlias("system")
+ *             .volumeProtocol("nfs")
  *             .volumeId(defaultFileSystem.id())
  *             .volumeMountpoint(defaultMountTarget.mountTargetDomain())
  *             .computeCount(1)
- *             .computeInstanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .computeInstanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .loginCount(1)
- *             .loginInstanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .loginInstanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .managerCount(1)
- *             .managerInstanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .osTag(&#34;CentOS_7.6_64&#34;)
- *             .schedulerType(&#34;pbs&#34;)
- *             .password(&#34;your-password123&#34;)
+ *             .managerInstanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .osTag("CentOS_7.6_64")
+ *             .schedulerType("pbs")
+ *             .password("your-password123")
  *             .vswitchId(defaultSwitch.id())
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
@@ -130,7 +131,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -565,14 +567,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.osTag;
     }
     /**
-     * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+     * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ !{@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
+     * @return The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ !{@literal @} # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
      * 
      */
     public Output<Optional<String>> password() {

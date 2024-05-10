@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,42 +57,43 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;Rds&#34;);
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;dbaccountmysql&#34;);
+ *         final var creation = config.get("creation").orElse("Rds");
+ *         final var name = config.get("name").orElse("dbaccountmysql");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(creation)
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;5.6&#34;)
- *             .instanceType(&#34;rds.mysql.s1.small&#34;)
- *             .instanceStorage(&#34;10&#34;)
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *             .engine("MySQL")
+ *             .engineVersion("5.6")
+ *             .instanceType("rds.mysql.s1.small")
+ *             .instanceStorage("10")
  *             .vswitchId(defaultSwitch.id())
  *             .instanceName(name)
  *             .build());
  * 
- *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
+ *         var account = new Account("account", AccountArgs.builder()        
  *             .instanceId(instance.id())
- *             .name(&#34;tftestnormal&#34;)
- *             .password(&#34;Test12345&#34;)
+ *             .name("tftestnormal")
+ *             .password("Test12345")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,60 +59,61 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = AdbFunctions.getZones();
  * 
  *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .status(&#34;OK&#34;)
+ *             .status("OK")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .cidrBlock("10.4.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultDBCluster = new DBCluster(&#34;defaultDBCluster&#34;, DBClusterArgs.builder()        
- *             .computeResource(&#34;48Core192GBNEW&#34;)
- *             .dbClusterCategory(&#34;MixedStorage&#34;)
- *             .dbClusterVersion(&#34;3.0&#34;)
- *             .dbNodeClass(&#34;E32&#34;)
+ *         var defaultDBCluster = new DBCluster("defaultDBCluster", DBClusterArgs.builder()        
+ *             .computeResource("48Core192GBNEW")
+ *             .dbClusterCategory("MixedStorage")
+ *             .dbClusterVersion("3.0")
+ *             .dbNodeClass("E32")
  *             .dbNodeCount(1)
  *             .dbNodeStorage(100)
  *             .description(name)
  *             .elasticIoResource(1)
- *             .maintainTime(&#34;04:00Z-05:00Z&#34;)
- *             .mode(&#34;flexible&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .maintainTime("04:00Z-05:00Z")
+ *             .mode("flexible")
+ *             .paymentType("PayAsYouGo")
+ *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
  *             .securityIps(            
- *                 &#34;10.168.1.12&#34;,
- *                 &#34;10.168.1.11&#34;)
+ *                 "10.168.1.12",
+ *                 "10.168.1.11")
  *             .vpcId(defaultNetwork.id())
  *             .vswitchId(defaultSwitch.id())
  *             .zoneId(default_.zones()[0].id())
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
- *         var defaultResourceGroup = new ResourceGroup(&#34;defaultResourceGroup&#34;, ResourceGroupArgs.builder()        
- *             .groupName(&#34;TF_EXAMPLE&#34;)
- *             .groupType(&#34;batch&#34;)
+ *         var defaultResourceGroup = new ResourceGroup("defaultResourceGroup", ResourceGroupArgs.builder()        
+ *             .groupName("TF_EXAMPLE")
+ *             .groupType("batch")
  *             .nodeNum(1)
  *             .dbClusterId(defaultDBCluster.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

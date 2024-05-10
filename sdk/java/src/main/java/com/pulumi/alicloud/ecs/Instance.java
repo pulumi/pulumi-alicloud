@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,54 +67,54 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         // Create a new ECS instance for VPC
- *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
+ *         var vpc = new Network("vpc", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
  *         // Create a new ECS instance for a VPC
- *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
  *             .name(name)
- *             .description(&#34;foo&#34;)
+ *             .description("foo")
  *             .vpcId(vpc.id())
  *             .build());
  * 
- *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
- *             .description(&#34;Hello KMS&#34;)
- *             .pendingWindowInDays(&#34;7&#34;)
- *             .status(&#34;Enabled&#34;)
+ *         var key = new Key("key", KeyArgs.builder()        
+ *             .description("Hello KMS")
+ *             .pendingWindowInDays("7")
+ *             .status("Enabled")
  *             .build());
  * 
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+ *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
  *             .vpcId(vpc.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()        
  *             .availabilityZone(default_.zones()[0].id())
- *             .securityGroups(group.stream().map(element -&gt; element.id()).collect(toList()))
- *             .instanceType(&#34;ecs.n4.large&#34;)
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .securityGroups(group.stream().map(element -> element.id()).collect(toList()))
+ *             .instanceType("ecs.n4.large")
+ *             .systemDiskCategory("cloud_efficiency")
  *             .systemDiskName(name)
- *             .systemDiskDescription(&#34;test_foo_system_disk_description&#34;)
- *             .imageId(&#34;ubuntu_18_04_64_20G_alibase_20190624.vhd&#34;)
+ *             .systemDiskDescription("test_foo_system_disk_description")
+ *             .imageId("ubuntu_18_04_64_20G_alibase_20190624.vhd")
  *             .instanceName(name)
  *             .vswitchId(vswitch.id())
  *             .internetMaxBandwidthOut(10)
  *             .dataDisks(InstanceDataDiskArgs.builder()
- *                 .name(&#34;disk2&#34;)
+ *                 .name("disk2")
  *                 .size(20)
- *                 .category(&#34;cloud_efficiency&#34;)
- *                 .description(&#34;disk2&#34;)
+ *                 .category("cloud_efficiency")
+ *                 .description("disk2")
  *                 .encrypted(true)
  *                 .kmsKeyId(key.id())
  *                 .build())
@@ -121,7 +122,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Module Support

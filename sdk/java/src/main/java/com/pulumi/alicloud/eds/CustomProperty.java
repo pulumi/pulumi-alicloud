@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,16 +53,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CustomProperty(&#34;example&#34;, CustomPropertyArgs.builder()        
- *             .propertyKey(&#34;example_key&#34;)
+ *         var example = new CustomProperty("example", CustomPropertyArgs.builder()        
+ *             .propertyKey("example_key")
  *             .propertyValues(CustomPropertyPropertyValueArgs.builder()
- *                 .propertyValue(&#34;example_value&#34;)
+ *                 .propertyValue("example_value")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

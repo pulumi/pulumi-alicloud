@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,31 +55,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .cenInstanceName(name)
- *             .description(&#34;example_value&#34;)
+ *             .description("example_value")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;acceptance test&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "acceptance test")
  *             ))
  *             .build());
  * 
- *         var defaultFirewallVpcFirewallControlPolicy = new FirewallVpcFirewallControlPolicy(&#34;defaultFirewallVpcFirewallControlPolicy&#34;, FirewallVpcFirewallControlPolicyArgs.builder()        
- *             .order(&#34;1&#34;)
- *             .destination(&#34;127.0.0.2/32&#34;)
- *             .applicationName(&#34;ANY&#34;)
- *             .description(&#34;example_value&#34;)
- *             .sourceType(&#34;net&#34;)
- *             .destPort(&#34;80/88&#34;)
- *             .aclAction(&#34;accept&#34;)
- *             .lang(&#34;zh&#34;)
- *             .destinationType(&#34;net&#34;)
- *             .source(&#34;127.0.0.1/32&#34;)
- *             .destPortType(&#34;port&#34;)
- *             .proto(&#34;TCP&#34;)
+ *         var defaultFirewallVpcFirewallControlPolicy = new FirewallVpcFirewallControlPolicy("defaultFirewallVpcFirewallControlPolicy", FirewallVpcFirewallControlPolicyArgs.builder()        
+ *             .order("1")
+ *             .destination("127.0.0.2/32")
+ *             .applicationName("ANY")
+ *             .description("example_value")
+ *             .sourceType("net")
+ *             .destPort("80/88")
+ *             .aclAction("accept")
+ *             .lang("zh")
+ *             .destinationType("net")
+ *             .source("127.0.0.1/32")
+ *             .destPortType("port")
+ *             .proto("TCP")
  *             .release(true)
  *             .memberUid(default_.id())
  *             .vpcFirewallId(defaultInstance.id())
@@ -86,7 +87,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

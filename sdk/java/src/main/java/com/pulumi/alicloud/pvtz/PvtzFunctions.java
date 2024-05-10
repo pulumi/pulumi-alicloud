@@ -39,7 +39,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -61,18 +62,19 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzEndpointId1&#34;, ids.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId1", ids.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
      *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .nameRegex(&#34;^my-Endpoint&#34;)
+     *             .nameRegex("^my-Endpoint")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzEndpointId2&#34;, nameRegex.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId2", nameRegex.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -89,7 +91,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -111,18 +114,19 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzEndpointId1&#34;, ids.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId1", ids.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
      *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .nameRegex(&#34;^my-Endpoint&#34;)
+     *             .nameRegex("^my-Endpoint")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzEndpointId2&#34;, nameRegex.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId2", nameRegex.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -139,7 +143,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -161,18 +166,19 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzEndpointId1&#34;, ids.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId1", ids.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
      *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .nameRegex(&#34;^my-Endpoint&#34;)
+     *             .nameRegex("^my-Endpoint")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzEndpointId2&#34;, nameRegex.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId2", nameRegex.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -189,7 +195,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -211,18 +218,19 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzEndpointId1&#34;, ids.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId1", ids.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
      *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .nameRegex(&#34;^my-Endpoint&#34;)
+     *             .nameRegex("^my-Endpoint")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzEndpointId2&#34;, nameRegex.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId2", nameRegex.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -239,7 +247,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -261,18 +270,19 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzEndpointId1&#34;, ids.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId1", ids.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
      *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .nameRegex(&#34;^my-Endpoint&#34;)
+     *             .nameRegex("^my-Endpoint")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzEndpointId2&#34;, nameRegex.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId2", nameRegex.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -289,7 +299,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -311,18 +322,19 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzEndpointId1&#34;, ids.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId1", ids.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
      *         final var nameRegex = PvtzFunctions.getEndpoints(GetEndpointsArgs.builder()
-     *             .nameRegex(&#34;^my-Endpoint&#34;)
+     *             .nameRegex("^my-Endpoint")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzEndpointId2&#34;, nameRegex.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("pvtzEndpointId2", nameRegex.applyValue(getEndpointsResult -> getEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -339,7 +351,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -361,13 +374,14 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
-     *             .status(&#34;NORMAL&#34;)
+     *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("firstZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -384,7 +398,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -406,13 +421,14 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
-     *             .status(&#34;NORMAL&#34;)
+     *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("firstZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -429,7 +445,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -451,13 +468,14 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
-     *             .status(&#34;NORMAL&#34;)
+     *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("firstZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -474,7 +492,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -496,13 +515,14 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
-     *             .status(&#34;NORMAL&#34;)
+     *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("firstZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -519,7 +539,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -541,13 +562,14 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
-     *             .status(&#34;NORMAL&#34;)
+     *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("firstZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -564,7 +586,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -586,13 +609,14 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = PvtzFunctions.getResolverZones(GetResolverZonesArgs.builder()
-     *             .status(&#34;NORMAL&#34;)
+     *             .status("NORMAL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstZonesId&#34;, default_.zones()[0].zoneId());
+     *         ctx.export("firstZonesId", default_.zones()[0].zoneId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -609,7 +633,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -632,15 +657,16 @@ public final class PvtzFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = PvtzFunctions.getRules();
      * 
-     *         ctx.export(&#34;pvtzRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId1", ids.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
-     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .nameRegex("^my-Rule")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId2", nameRegex.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -657,7 +683,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -680,15 +707,16 @@ public final class PvtzFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = PvtzFunctions.getRules();
      * 
-     *         ctx.export(&#34;pvtzRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId1", ids.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
-     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .nameRegex("^my-Rule")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId2", nameRegex.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -705,7 +733,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -728,15 +757,16 @@ public final class PvtzFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = PvtzFunctions.getRules();
      * 
-     *         ctx.export(&#34;pvtzRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId1", ids.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
-     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .nameRegex("^my-Rule")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId2", nameRegex.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -753,7 +783,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -776,15 +807,16 @@ public final class PvtzFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = PvtzFunctions.getRules();
      * 
-     *         ctx.export(&#34;pvtzRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId1", ids.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
-     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .nameRegex("^my-Rule")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId2", nameRegex.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -801,7 +833,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -824,15 +857,16 @@ public final class PvtzFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = PvtzFunctions.getRules();
      * 
-     *         ctx.export(&#34;pvtzRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId1", ids.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
-     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .nameRegex("^my-Rule")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId2", nameRegex.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -849,7 +883,8 @@ public final class PvtzFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -872,15 +907,16 @@ public final class PvtzFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = PvtzFunctions.getRules();
      * 
-     *         ctx.export(&#34;pvtzRuleId1&#34;, ids.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId1", ids.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *         final var nameRegex = PvtzFunctions.getRules(GetRulesArgs.builder()
-     *             .nameRegex(&#34;^my-Rule&#34;)
+     *             .nameRegex("^my-Rule")
      *             .build());
      * 
-     *         ctx.export(&#34;pvtzRuleId2&#34;, nameRegex.applyValue(getRulesResult -&gt; getRulesResult.rules()[0].id()));
+     *         ctx.export("pvtzRuleId2", nameRegex.applyValue(getRulesResult -> getRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -897,7 +933,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -919,12 +956,13 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = PvtzFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -941,7 +979,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -963,12 +1002,13 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = PvtzFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -985,7 +1025,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1007,12 +1048,13 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = PvtzFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1029,7 +1071,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1051,12 +1094,13 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = PvtzFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1073,7 +1117,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1095,12 +1140,13 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = PvtzFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1117,7 +1163,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1139,12 +1186,13 @@ public final class PvtzFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = PvtzFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1157,7 +1205,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1183,10 +1232,11 @@ public final class PvtzFunctions {
      *             .keyword(foo.value())
      *             .build());
      * 
-     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getZoneRecordsResult -&gt; getZoneRecordsResult.records()[0].id()));
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getZoneRecordsResult -> getZoneRecordsResult.records()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1199,7 +1249,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1225,10 +1276,11 @@ public final class PvtzFunctions {
      *             .keyword(foo.value())
      *             .build());
      * 
-     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getZoneRecordsResult -&gt; getZoneRecordsResult.records()[0].id()));
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getZoneRecordsResult -> getZoneRecordsResult.records()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1241,7 +1293,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1267,10 +1320,11 @@ public final class PvtzFunctions {
      *             .keyword(foo.value())
      *             .build());
      * 
-     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getZoneRecordsResult -&gt; getZoneRecordsResult.records()[0].id()));
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getZoneRecordsResult -> getZoneRecordsResult.records()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1283,7 +1337,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1309,10 +1364,11 @@ public final class PvtzFunctions {
      *             .keyword(foo.value())
      *             .build());
      * 
-     *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getZoneRecordsResult -&gt; getZoneRecordsResult.records()[0].id()));
+     *         ctx.export("firstRecordId", recordsDs.applyValue(getZoneRecordsResult -> getZoneRecordsResult.records()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1325,7 +1381,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1350,10 +1407,11 @@ public final class PvtzFunctions {
      *             .keyword(basic.zoneName())
      *             .build());
      * 
-     *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *         ctx.export("firstZoneId", pvtzZonesDs.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1366,7 +1424,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1391,10 +1450,11 @@ public final class PvtzFunctions {
      *             .keyword(basic.zoneName())
      *             .build());
      * 
-     *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *         ctx.export("firstZoneId", pvtzZonesDs.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1407,7 +1467,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1432,10 +1493,11 @@ public final class PvtzFunctions {
      *             .keyword(basic.zoneName())
      *             .build());
      * 
-     *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *         ctx.export("firstZoneId", pvtzZonesDs.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1448,7 +1510,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1473,10 +1536,11 @@ public final class PvtzFunctions {
      *             .keyword(basic.zoneName())
      *             .build());
      * 
-     *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *         ctx.export("firstZoneId", pvtzZonesDs.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1489,7 +1553,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1514,10 +1579,11 @@ public final class PvtzFunctions {
      *             .keyword(basic.zoneName())
      *             .build());
      * 
-     *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *         ctx.export("firstZoneId", pvtzZonesDs.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1530,7 +1596,8 @@ public final class PvtzFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1555,10 +1622,11 @@ public final class PvtzFunctions {
      *             .keyword(basic.zoneName())
      *             .build());
      * 
-     *         ctx.export(&#34;firstZoneId&#34;, pvtzZonesDs.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()));
+     *         ctx.export("firstZoneId", pvtzZonesDs.applyValue(getZonesResult -> getZonesResult.zones()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

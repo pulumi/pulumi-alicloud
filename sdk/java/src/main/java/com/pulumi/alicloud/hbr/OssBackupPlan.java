@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,32 +56,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultVault = new Vault(&#34;defaultVault&#34;, VaultArgs.builder()        
- *             .vaultName(String.format(&#34;terraform-example-%s&#34;, default_.result()))
+ *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()        
+ *             .vaultName(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
- *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;terraform-example-%s&#34;, default_.result()))
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *             .bucket(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
- *         var defaultOssBackupPlan = new OssBackupPlan(&#34;defaultOssBackupPlan&#34;, OssBackupPlanArgs.builder()        
- *             .ossBackupPlanName(&#34;terraform-example&#34;)
- *             .prefix(&#34;/example&#34;)
+ *         var defaultOssBackupPlan = new OssBackupPlan("defaultOssBackupPlan", OssBackupPlanArgs.builder()        
+ *             .ossBackupPlanName("terraform-example")
+ *             .prefix("/example")
  *             .bucket(defaultBucket.bucket())
  *             .vaultId(defaultVault.id())
- *             .schedule(&#34;I|1602673264|PT2H&#34;)
- *             .backupType(&#34;COMPLETE&#34;)
- *             .retention(&#34;2&#34;)
+ *             .schedule("I|1602673264|PT2H")
+ *             .backupType("COMPLETE")
+ *             .retention("2")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

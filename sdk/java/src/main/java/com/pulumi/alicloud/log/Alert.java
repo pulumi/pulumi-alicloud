@@ -40,7 +40,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -70,19 +71,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;example-store&#34;)
+ *             .name("example-store")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -90,15 +91,15 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var exampleAlert = new Alert(&#34;exampleAlert&#34;, AlertArgs.builder()        
+ *         var exampleAlert = new Alert("exampleAlert", AlertArgs.builder()        
  *             .projectName(example.name())
- *             .alertName(&#34;example-alert&#34;)
- *             .alertDisplayname(&#34;example-alert&#34;)
- *             .condition(&#34;count&gt; 100&#34;)
- *             .dashboard(&#34;example-dashboard&#34;)
+ *             .alertName("example-alert")
+ *             .alertDisplayname("example-alert")
+ *             .condition("count> 100")
+ *             .dashboard("example-dashboard")
  *             .schedule(AlertScheduleArgs.builder()
- *                 .type(&#34;FixedRate&#34;)
- *                 .interval(&#34;5m&#34;)
+ *                 .type("FixedRate")
+ *                 .interval("5m")
  *                 .hour(0)
  *                 .dayOfWeek(0)
  *                 .delay(0)
@@ -106,42 +107,44 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .queryLists(AlertQueryListArgs.builder()
  *                 .logstore(exampleStore.name())
- *                 .chartTitle(&#34;chart_title&#34;)
- *                 .start(&#34;-60s&#34;)
- *                 .end(&#34;20s&#34;)
- *                 .query(&#34;* AND aliyun&#34;)
+ *                 .chartTitle("chart_title")
+ *                 .start("-60s")
+ *                 .end("20s")
+ *                 .query("* AND aliyun")
  *                 .build())
  *             .notificationLists(            
  *                 AlertNotificationListArgs.builder()
- *                     .type(&#34;SMS&#34;)
+ *                     .type("SMS")
  *                     .mobileLists(                    
- *                         &#34;12345678&#34;,
- *                         &#34;87654321&#34;)
- *                     .content(&#34;alert content&#34;)
+ *                         "12345678",
+ *                         "87654321")
+ *                     .content("alert content")
  *                     .build(),
  *                 AlertNotificationListArgs.builder()
- *                     .type(&#34;Email&#34;)
+ *                     .type("Email")
  *                     .emailLists(                    
- *                         &#34;aliyun@alibaba-inc.com&#34;,
- *                         &#34;tf-example@123.com&#34;)
- *                     .content(&#34;alert content&#34;)
+ *                         "aliyun{@literal @}alibaba-inc.com",
+ *                         "tf-example{@literal @}123.com")
+ *                     .content("alert content")
  *                     .build(),
  *                 AlertNotificationListArgs.builder()
- *                     .type(&#34;DingTalk&#34;)
- *                     .serviceUri(&#34;www.aliyun.com&#34;)
- *                     .content(&#34;alert content&#34;)
+ *                     .type("DingTalk")
+ *                     .serviceUri("www.aliyun.com")
+ *                     .content("alert content")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Basic Usage for new alert
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -176,19 +179,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;example-store&#34;)
+ *             .name("example-store")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -196,21 +199,21 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var example_2 = new Alert(&#34;example-2&#34;, AlertArgs.builder()        
- *             .version(&#34;2.0&#34;)
- *             .type(&#34;default&#34;)
+ *         var example_2 = new Alert("example-2", AlertArgs.builder()        
+ *             .version("2.0")
+ *             .type("default")
  *             .projectName(example.name())
- *             .alertName(&#34;example-alert&#34;)
- *             .alertDisplayname(&#34;example-alert&#34;)
- *             .muteUntil(&#34;1632486684&#34;)
- *             .noDataFire(&#34;false&#34;)
+ *             .alertName("example-alert")
+ *             .alertDisplayname("example-alert")
+ *             .muteUntil("1632486684")
+ *             .noDataFire("false")
  *             .noDataSeverity(8)
  *             .sendResolved(true)
  *             .autoAnnotation(true)
- *             .dashboard(&#34;example-dashboard&#34;)
+ *             .dashboard("example-dashboard")
  *             .schedule(AlertScheduleArgs.builder()
- *                 .type(&#34;FixedRate&#34;)
- *                 .interval(&#34;5m&#34;)
+ *                 .type("FixedRate")
+ *                 .interval("5m")
  *                 .hour(0)
  *                 .dayOfWeek(0)
  *                 .delay(0)
@@ -219,89 +222,91 @@ import javax.annotation.Nullable;
  *             .queryLists(            
  *                 AlertQueryListArgs.builder()
  *                     .store(exampleStore.name())
- *                     .storeType(&#34;log&#34;)
+ *                     .storeType("log")
  *                     .project(example.name())
- *                     .region(&#34;cn-heyuan&#34;)
- *                     .chartTitle(&#34;chart_title&#34;)
- *                     .start(&#34;-60s&#34;)
- *                     .end(&#34;20s&#34;)
- *                     .query(&#34;* AND aliyun | select count(1) as cnt&#34;)
- *                     .powerSqlMode(&#34;auto&#34;)
+ *                     .region("cn-heyuan")
+ *                     .chartTitle("chart_title")
+ *                     .start("-60s")
+ *                     .end("20s")
+ *                     .query("* AND aliyun | select count(1) as cnt")
+ *                     .powerSqlMode("auto")
  *                     .build(),
  *                 AlertQueryListArgs.builder()
  *                     .store(exampleStore.name())
- *                     .storeType(&#34;log&#34;)
+ *                     .storeType("log")
  *                     .project(example.name())
- *                     .region(&#34;cn-heyuan&#34;)
- *                     .chartTitle(&#34;chart_title&#34;)
- *                     .start(&#34;-60s&#34;)
- *                     .end(&#34;20s&#34;)
- *                     .query(&#34;error | select count(1) as error_cnt&#34;)
- *                     .powerSqlMode(&#34;enable&#34;)
+ *                     .region("cn-heyuan")
+ *                     .chartTitle("chart_title")
+ *                     .start("-60s")
+ *                     .end("20s")
+ *                     .query("error | select count(1) as error_cnt")
+ *                     .powerSqlMode("enable")
  *                     .build())
  *             .labels(AlertLabelArgs.builder()
- *                 .key(&#34;env&#34;)
- *                 .value(&#34;test&#34;)
+ *                 .key("env")
+ *                 .value("test")
  *                 .build())
  *             .annotations(            
  *                 AlertAnnotationArgs.builder()
- *                     .key(&#34;title&#34;)
- *                     .value(&#34;alert title&#34;)
+ *                     .key("title")
+ *                     .value("alert title")
  *                     .build(),
  *                 AlertAnnotationArgs.builder()
- *                     .key(&#34;desc&#34;)
- *                     .value(&#34;alert desc&#34;)
+ *                     .key("desc")
+ *                     .value("alert desc")
  *                     .build(),
  *                 AlertAnnotationArgs.builder()
- *                     .key(&#34;test_key&#34;)
- *                     .value(&#34;test value&#34;)
+ *                     .key("test_key")
+ *                     .value("test value")
  *                     .build())
  *             .groupConfiguration(AlertGroupConfigurationArgs.builder()
- *                 .type(&#34;custom&#34;)
- *                 .fields(&#34;cnt&#34;)
+ *                 .type("custom")
+ *                 .fields("cnt")
  *                 .build())
  *             .policyConfiguration(AlertPolicyConfigurationArgs.builder()
- *                 .alertPolicyId(&#34;sls.bultin&#34;)
- *                 .actionPolicyId(&#34;sls_test_action&#34;)
- *                 .repeatInterval(&#34;4h&#34;)
+ *                 .alertPolicyId("sls.bultin")
+ *                 .actionPolicyId("sls_test_action")
+ *                 .repeatInterval("4h")
  *                 .build())
  *             .severityConfigurations(            
  *                 AlertSeverityConfigurationArgs.builder()
  *                     .severity(8)
  *                     .evalCondition(Map.ofEntries(
- *                         Map.entry(&#34;condition&#34;, &#34;cnt &gt; 3&#34;),
- *                         Map.entry(&#34;count_condition&#34;, &#34;__count__ &gt; 3&#34;)
+ *                         Map.entry("condition", "cnt > 3"),
+ *                         Map.entry("count_condition", "__count__ > 3")
  *                     ))
  *                     .build(),
  *                 AlertSeverityConfigurationArgs.builder()
  *                     .severity(6)
  *                     .evalCondition(Map.ofEntries(
- *                         Map.entry(&#34;condition&#34;, &#34;&#34;),
- *                         Map.entry(&#34;count_condition&#34;, &#34;__count__ &gt; 0&#34;)
+ *                         Map.entry("condition", ""),
+ *                         Map.entry("count_condition", "__count__ > 0")
  *                     ))
  *                     .build(),
  *                 AlertSeverityConfigurationArgs.builder()
  *                     .severity(2)
  *                     .evalCondition(Map.ofEntries(
- *                         Map.entry(&#34;condition&#34;, &#34;&#34;),
- *                         Map.entry(&#34;count_condition&#34;, &#34;&#34;)
+ *                         Map.entry("condition", ""),
+ *                         Map.entry("count_condition", "")
  *                     ))
  *                     .build())
  *             .joinConfigurations(AlertJoinConfigurationArgs.builder()
- *                 .type(&#34;cross_join&#34;)
- *                 .condition(&#34;&#34;)
+ *                 .type("cross_join")
+ *                 .condition("")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Basic Usage for alert template
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -330,19 +335,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;example-store&#34;)
+ *             .name("example-store")
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -350,43 +355,44 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var example_3 = new Alert(&#34;example-3&#34;, AlertArgs.builder()        
- *             .version(&#34;2.0&#34;)
- *             .type(&#34;tpl&#34;)
+ *         var example_3 = new Alert("example-3", AlertArgs.builder()        
+ *             .version("2.0")
+ *             .type("tpl")
  *             .projectName(example.name())
- *             .alertName(&#34;example-alert&#34;)
- *             .alertDisplayname(&#34;example-alert&#34;)
- *             .muteUntil(&#34;1632486684&#34;)
+ *             .alertName("example-alert")
+ *             .alertDisplayname("example-alert")
+ *             .muteUntil("1632486684")
  *             .schedule(AlertScheduleArgs.builder()
- *                 .type(&#34;FixedRate&#34;)
- *                 .interval(&#34;5m&#34;)
+ *                 .type("FixedRate")
+ *                 .interval("5m")
  *                 .hour(0)
  *                 .dayOfWeek(0)
  *                 .delay(0)
  *                 .runImmediately(false)
  *                 .build())
  *             .templateConfiguration(AlertTemplateConfigurationArgs.builder()
- *                 .id(&#34;sls.app.sls_ack.node.down&#34;)
- *                 .type(&#34;sys&#34;)
- *                 .lang(&#34;cn&#34;)
+ *                 .id("sls.app.sls_ack.node.down")
+ *                 .type("sys")
+ *                 .lang("cn")
  *                 .annotations()
  *                 .tokens(Map.ofEntries(
- *                     Map.entry(&#34;interval_minute&#34;, &#34;5&#34;),
- *                     Map.entry(&#34;default.action_policy&#34;, &#34;sls.app.ack.builtin&#34;),
- *                     Map.entry(&#34;default.severity&#34;, &#34;6&#34;),
- *                     Map.entry(&#34;sendResolved&#34;, &#34;false&#34;),
- *                     Map.entry(&#34;default.project&#34;, example.name()),
- *                     Map.entry(&#34;default.logstore&#34;, &#34;k8s-event&#34;),
- *                     Map.entry(&#34;default.repeatInterval&#34;, &#34;4h&#34;),
- *                     Map.entry(&#34;trigger_threshold&#34;, &#34;1&#34;),
- *                     Map.entry(&#34;default.clusterId&#34;, &#34;example-cluster-id&#34;)
+ *                     Map.entry("interval_minute", "5"),
+ *                     Map.entry("default.action_policy", "sls.app.ack.builtin"),
+ *                     Map.entry("default.severity", "6"),
+ *                     Map.entry("sendResolved", "false"),
+ *                     Map.entry("default.project", example.name()),
+ *                     Map.entry("default.logstore", "k8s-event"),
+ *                     Map.entry("default.repeatInterval", "4h"),
+ *                     Map.entry("trigger_threshold", "1"),
+ *                     Map.entry("default.clusterId", "example-cluster-id")
  *                 ))
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

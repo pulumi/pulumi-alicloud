@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,27 +54,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var cenUid = config.get(&#34;cenUid&#34;).orElse(123456789);
- *         // Method 2: Use the target cen account&#39;s access_key, secret_key
- *         // provider &#34;alicloud&#34; {
- *         //   region     = &#34;cn-hangzhou&#34;
- *         //   access_key = &#34;access_key&#34;
- *         //   secret_key = &#34;secret_key&#34;
- *         //   alias      = &#34;cen_account&#34;
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var cenUid = config.get("cenUid").orElse(123456789);
+ *         // Method 2: Use the target cen account's access_key, secret_key
+ *         // provider "alicloud" {
+ *         //   region     = "cn-hangzhou"
+ *         //   access_key = "access_key"
+ *         //   secret_key = "secret_key"
+ *         //   alias      = "cen_account"
  *         // }
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()        
  *             .name(name)
  *             .description(name)
- *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+ *             .cidrBlock("192.168.0.0/24")
  *             .isDefault(true)
  *             .build());
  * 
- *         var cen = new Instance(&#34;cen&#34;, InstanceArgs.builder()        
+ *         var cen = new Instance("cen", InstanceArgs.builder()        
  *             .cenInstanceName(name)
  *             .build());
  * 
- *         var defaultNetworkGrant = new NetworkGrant(&#34;defaultNetworkGrant&#34;, NetworkGrantArgs.builder()        
+ *         var defaultNetworkGrant = new NetworkGrant("defaultNetworkGrant", NetworkGrantArgs.builder()        
  *             .ccnId(default_.id())
  *             .cenId(cen.id())
  *             .cenUid(cenUid)
@@ -81,7 +82,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

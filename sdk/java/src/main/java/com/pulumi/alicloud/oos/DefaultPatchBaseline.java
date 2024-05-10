@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,20 +49,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new PatchBaseline(&#34;default&#34;, PatchBaselineArgs.builder()        
- *             .operationSystem(&#34;Windows&#34;)
- *             .patchBaselineName(&#34;terraform-example&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .approvalRules(&#34;{\&#34;PatchRules\&#34;:[{\&#34;PatchFilterGroup\&#34;:[{\&#34;Key\&#34;:\&#34;PatchSet\&#34;,\&#34;Values\&#34;:[\&#34;OS\&#34;]},{\&#34;Key\&#34;:\&#34;ProductFamily\&#34;,\&#34;Values\&#34;:[\&#34;Windows\&#34;]},{\&#34;Key\&#34;:\&#34;Product\&#34;,\&#34;Values\&#34;:[\&#34;Windows 10\&#34;,\&#34;Windows 7\&#34;]},{\&#34;Key\&#34;:\&#34;Classification\&#34;,\&#34;Values\&#34;:[\&#34;Security Updates\&#34;,\&#34;Updates\&#34;,\&#34;Update Rollups\&#34;,\&#34;Critical Updates\&#34;]},{\&#34;Key\&#34;:\&#34;Severity\&#34;,\&#34;Values\&#34;:[\&#34;Critical\&#34;,\&#34;Important\&#34;,\&#34;Moderate\&#34;]}],\&#34;ApproveAfterDays\&#34;:7,\&#34;EnableNonSecurity\&#34;:true,\&#34;ComplianceLevel\&#34;:\&#34;Medium\&#34;}]}&#34;)
+ *         var default_ = new PatchBaseline("default", PatchBaselineArgs.builder()        
+ *             .operationSystem("Windows")
+ *             .patchBaselineName("terraform-example")
+ *             .description("terraform-example")
+ *             .approvalRules("{\"PatchRules\":[{\"PatchFilterGroup\":[{\"Key\":\"PatchSet\",\"Values\":[\"OS\"]},{\"Key\":\"ProductFamily\",\"Values\":[\"Windows\"]},{\"Key\":\"Product\",\"Values\":[\"Windows 10\",\"Windows 7\"]},{\"Key\":\"Classification\",\"Values\":[\"Security Updates\",\"Updates\",\"Update Rollups\",\"Critical Updates\"]},{\"Key\":\"Severity\",\"Values\":[\"Critical\",\"Important\",\"Moderate\"]}],\"ApproveAfterDays\":7,\"EnableNonSecurity\":true,\"ComplianceLevel\":\"Medium\"}]}")
  *             .build());
  * 
- *         var defaultDefaultPatchBaseline = new DefaultPatchBaseline(&#34;defaultDefaultPatchBaseline&#34;, DefaultPatchBaselineArgs.builder()        
+ *         var defaultDefaultPatchBaseline = new DefaultPatchBaseline("defaultDefaultPatchBaseline", DefaultPatchBaselineArgs.builder()        
  *             .patchBaselineName(default_.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

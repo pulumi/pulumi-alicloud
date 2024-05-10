@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,46 +57,47 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
- *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;example-store&#34;)
+ *             .name("example-store")
  *             .retentionPeriod(3650)
  *             .autoSplit(true)
  *             .maxSplitShardCount(60)
  *             .appendMeta(true)
  *             .build());
  * 
- *         var exampleOssShipper = new OssShipper(&#34;exampleOssShipper&#34;, OssShipperArgs.builder()        
+ *         var exampleOssShipper = new OssShipper("exampleOssShipper", OssShipperArgs.builder()        
  *             .projectName(example.name())
  *             .logstoreName(exampleStore.name())
- *             .shipperName(&#34;terraform-example&#34;)
- *             .ossBucket(&#34;example_bucket&#34;)
- *             .ossPrefix(&#34;root&#34;)
+ *             .shipperName("terraform-example")
+ *             .ossBucket("example_bucket")
+ *             .ossPrefix("root")
  *             .bufferInterval(300)
  *             .bufferSize(250)
- *             .compressType(&#34;none&#34;)
- *             .pathFormat(&#34;%Y/%m/%d/%H/%M&#34;)
- *             .format(&#34;json&#34;)
+ *             .compressType("none")
+ *             .pathFormat("%Y/%m/%d/%H/%M")
+ *             .format("json")
  *             .jsonEnableTag(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

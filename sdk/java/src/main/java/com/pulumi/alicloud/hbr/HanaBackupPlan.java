@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,41 +55,42 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
- *             .status(&#34;OK&#34;)
+ *             .status("OK")
  *             .build());
  * 
- *         var exampleVault = new Vault(&#34;exampleVault&#34;, VaultArgs.builder()        
- *             .vaultName(&#34;terraform-example&#34;)
+ *         var exampleVault = new Vault("exampleVault", VaultArgs.builder()        
+ *             .vaultName("terraform-example")
  *             .build());
  * 
- *         var exampleHanaInstance = new HanaInstance(&#34;exampleHanaInstance&#34;, HanaInstanceArgs.builder()        
- *             .alertSetting(&#34;INHERITED&#34;)
- *             .hanaName(&#34;terraform-example&#34;)
- *             .host(&#34;1.1.1.1&#34;)
+ *         var exampleHanaInstance = new HanaInstance("exampleHanaInstance", HanaInstanceArgs.builder()        
+ *             .alertSetting("INHERITED")
+ *             .hanaName("terraform-example")
+ *             .host("1.1.1.1")
  *             .instanceNumber(1)
- *             .password(&#34;YouPassword123&#34;)
- *             .resourceGroupId(example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
- *             .sid(&#34;HXE&#34;)
+ *             .password("YouPassword123")
+ *             .resourceGroupId(example.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()))
+ *             .sid("HXE")
  *             .useSsl(false)
- *             .userName(&#34;admin&#34;)
+ *             .userName("admin")
  *             .validateCertificate(false)
  *             .vaultId(exampleVault.id())
  *             .build());
  * 
- *         var exampleHanaBackupPlan = new HanaBackupPlan(&#34;exampleHanaBackupPlan&#34;, HanaBackupPlanArgs.builder()        
- *             .backupPrefix(&#34;DIFF_DATA_BACKUP&#34;)
- *             .backupType(&#34;COMPLETE&#34;)
+ *         var exampleHanaBackupPlan = new HanaBackupPlan("exampleHanaBackupPlan", HanaBackupPlanArgs.builder()        
+ *             .backupPrefix("DIFF_DATA_BACKUP")
+ *             .backupType("COMPLETE")
  *             .clusterId(exampleHanaInstance.hanaInstanceId())
- *             .databaseName(&#34;SYSTEMDB&#34;)
- *             .planName(&#34;terraform-example&#34;)
- *             .resourceGroupId(example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
- *             .schedule(&#34;I|1602673264|P1D&#34;)
+ *             .databaseName("SYSTEMDB")
+ *             .planName("terraform-example")
+ *             .resourceGroupId(example.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()))
+ *             .schedule("I|1602673264|P1D")
  *             .vaultId(exampleHanaInstance.vaultId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

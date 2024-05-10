@@ -18,14 +18,14 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
     public static final RecordState Empty = new RecordState();
 
     /**
-     * Host record for the domain record. This host_record can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;@&#34;,  and must not begin or end with &#34;-&#34;.
+     * Host record for the domain record. This host_record can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;{@literal @}&#34;,  and must not begin or end with &#34;-&#34;.
      * 
      */
     @Import(name="hostRecord")
     private @Nullable Output<String> hostRecord;
 
     /**
-     * @return Host record for the domain record. This host_record can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;@&#34;,  and must not begin or end with &#34;-&#34;.
+     * @return Host record for the domain record. This host_record can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;{@literal @}&#34;,  and must not begin or end with &#34;-&#34;.
      * 
      */
     public Optional<Output<String>> hostRecord() {
@@ -177,7 +177,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostRecord Host record for the domain record. This host_record can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;@&#34;,  and must not begin or end with &#34;-&#34;.
+         * @param hostRecord Host record for the domain record. This host_record can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;{@literal @}&#34;,  and must not begin or end with &#34;-&#34;.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostRecord Host record for the domain record. This host_record can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;@&#34;,  and must not begin or end with &#34;-&#34;.
+         * @param hostRecord Host record for the domain record. This host_record can have at most 253 characters, and each part split with &#34;.&#34; can have at most 63 characters, and must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;*&#34;,&#34;{@literal @}&#34;,  and must not begin or end with &#34;-&#34;.
          * 
          * @return builder
          * 

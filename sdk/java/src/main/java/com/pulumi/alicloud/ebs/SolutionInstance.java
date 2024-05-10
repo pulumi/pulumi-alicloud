@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,82 +54,83 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var zoneId = config.get(&#34;zoneId&#34;).orElse(&#34;cn-shanghai-l&#34;);
- *         final var regionId = config.get(&#34;regionId&#34;).orElse(&#34;cn-shanghai&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var zoneId = config.get("zoneId").orElse("cn-shanghai-l");
+ *         final var regionId = config.get("regionId").orElse("cn-shanghai");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultSolutionInstance = new SolutionInstance(&#34;defaultSolutionInstance&#34;, SolutionInstanceArgs.builder()        
+ *         var defaultSolutionInstance = new SolutionInstance("defaultSolutionInstance", SolutionInstanceArgs.builder()        
  *             .solutionInstanceName(name)
  *             .resourceGroupId(default_.ids()[0])
- *             .description(&#34;description&#34;)
- *             .solutionId(&#34;mysql&#34;)
+ *             .description("description")
+ *             .solutionId("mysql")
  *             .parameters(            
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;zoneId&#34;)
+ *                     .parameterKey("zoneId")
  *                     .parameterValue(zoneId)
  *                     .build(),
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;ecsType&#34;)
- *                     .parameterValue(&#34;ecs.c6.large&#34;)
+ *                     .parameterKey("ecsType")
+ *                     .parameterValue("ecs.c6.large")
  *                     .build(),
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;ecsImageId&#34;)
- *                     .parameterValue(&#34;CentOS_7&#34;)
+ *                     .parameterKey("ecsImageId")
+ *                     .parameterValue("CentOS_7")
  *                     .build(),
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;internetMaxBandwidthOut&#34;)
- *                     .parameterValue(&#34;100&#34;)
+ *                     .parameterKey("internetMaxBandwidthOut")
+ *                     .parameterValue("100")
  *                     .build(),
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;internetChargeType&#34;)
- *                     .parameterValue(&#34;PayByTraffic&#34;)
+ *                     .parameterKey("internetChargeType")
+ *                     .parameterValue("PayByTraffic")
  *                     .build(),
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;ecsPassword&#34;)
- *                     .parameterValue(&#34;Ebs12345&#34;)
+ *                     .parameterKey("ecsPassword")
+ *                     .parameterValue("Ebs12345")
  *                     .build(),
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;sysDiskType&#34;)
- *                     .parameterValue(&#34;cloud_essd&#34;)
+ *                     .parameterKey("sysDiskType")
+ *                     .parameterValue("cloud_essd")
  *                     .build(),
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;sysDiskPerformance&#34;)
- *                     .parameterValue(&#34;PL0&#34;)
+ *                     .parameterKey("sysDiskPerformance")
+ *                     .parameterValue("PL0")
  *                     .build(),
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;sysDiskSize&#34;)
- *                     .parameterValue(&#34;40&#34;)
+ *                     .parameterKey("sysDiskSize")
+ *                     .parameterValue("40")
  *                     .build(),
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;dataDiskType&#34;)
- *                     .parameterValue(&#34;cloud_essd&#34;)
+ *                     .parameterKey("dataDiskType")
+ *                     .parameterValue("cloud_essd")
  *                     .build(),
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;dataDiskPerformance&#34;)
- *                     .parameterValue(&#34;PL0&#34;)
+ *                     .parameterKey("dataDiskPerformance")
+ *                     .parameterValue("PL0")
  *                     .build(),
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;dataDiskSize&#34;)
- *                     .parameterValue(&#34;40&#34;)
+ *                     .parameterKey("dataDiskSize")
+ *                     .parameterValue("40")
  *                     .build(),
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;mysqlVersion&#34;)
- *                     .parameterValue(&#34;MySQL80&#34;)
+ *                     .parameterKey("mysqlVersion")
+ *                     .parameterValue("MySQL80")
  *                     .build(),
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;mysqlUser&#34;)
- *                     .parameterValue(&#34;root&#34;)
+ *                     .parameterKey("mysqlUser")
+ *                     .parameterValue("root")
  *                     .build(),
  *                 SolutionInstanceParameterArgs.builder()
- *                     .parameterKey(&#34;mysqlPassword&#34;)
- *                     .parameterValue(&#34;Ebs12345&#34;)
+ *                     .parameterKey("mysqlPassword")
+ *                     .parameterValue("Ebs12345")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

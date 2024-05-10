@@ -33,7 +33,8 @@ public final class FnfFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -55,16 +56,17 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = FnfFunctions.getExecutions(GetExecutionsArgs.builder()
-     *             .flowName(&#34;example_value&#34;)
+     *             .flowName("example_value")
      *             .ids(            
-     *                 &#34;my-Execution-1&#34;,
-     *                 &#34;my-Execution-2&#34;)
+     *                 "my-Execution-1",
+     *                 "my-Execution-2")
      *             .build());
      * 
-     *         ctx.export(&#34;fnfExecutionId1&#34;, idsAlicloudFnFExecutions.executions()[0].id());
+     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.executions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -81,7 +83,8 @@ public final class FnfFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -103,16 +106,17 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = FnfFunctions.getExecutions(GetExecutionsArgs.builder()
-     *             .flowName(&#34;example_value&#34;)
+     *             .flowName("example_value")
      *             .ids(            
-     *                 &#34;my-Execution-1&#34;,
-     *                 &#34;my-Execution-2&#34;)
+     *                 "my-Execution-1",
+     *                 "my-Execution-2")
      *             .build());
      * 
-     *         ctx.export(&#34;fnfExecutionId1&#34;, idsAlicloudFnFExecutions.executions()[0].id());
+     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.executions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -129,7 +133,8 @@ public final class FnfFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -151,16 +156,17 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = FnfFunctions.getExecutions(GetExecutionsArgs.builder()
-     *             .flowName(&#34;example_value&#34;)
+     *             .flowName("example_value")
      *             .ids(            
-     *                 &#34;my-Execution-1&#34;,
-     *                 &#34;my-Execution-2&#34;)
+     *                 "my-Execution-1",
+     *                 "my-Execution-2")
      *             .build());
      * 
-     *         ctx.export(&#34;fnfExecutionId1&#34;, idsAlicloudFnFExecutions.executions()[0].id());
+     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.executions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -177,7 +183,8 @@ public final class FnfFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -199,16 +206,17 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = FnfFunctions.getExecutions(GetExecutionsArgs.builder()
-     *             .flowName(&#34;example_value&#34;)
+     *             .flowName("example_value")
      *             .ids(            
-     *                 &#34;my-Execution-1&#34;,
-     *                 &#34;my-Execution-2&#34;)
+     *                 "my-Execution-1",
+     *                 "my-Execution-2")
      *             .build());
      * 
-     *         ctx.export(&#34;fnfExecutionId1&#34;, idsAlicloudFnFExecutions.executions()[0].id());
+     *         ctx.export("fnfExecutionId1", idsAlicloudFnFExecutions.executions()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -225,7 +233,8 @@ public final class FnfFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -247,14 +256,15 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = FnfFunctions.getFlows(GetFlowsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFnfFlowId&#34;, example.applyValue(getFlowsResult -&gt; getFlowsResult.flows()[0].id()));
+     *         ctx.export("firstFnfFlowId", example.applyValue(getFlowsResult -> getFlowsResult.flows()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -271,7 +281,8 @@ public final class FnfFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -293,14 +304,15 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = FnfFunctions.getFlows(GetFlowsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFnfFlowId&#34;, example.applyValue(getFlowsResult -&gt; getFlowsResult.flows()[0].id()));
+     *         ctx.export("firstFnfFlowId", example.applyValue(getFlowsResult -> getFlowsResult.flows()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -317,7 +329,8 @@ public final class FnfFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -339,14 +352,15 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = FnfFunctions.getFlows(GetFlowsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFnfFlowId&#34;, example.applyValue(getFlowsResult -&gt; getFlowsResult.flows()[0].id()));
+     *         ctx.export("firstFnfFlowId", example.applyValue(getFlowsResult -> getFlowsResult.flows()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -363,7 +377,8 @@ public final class FnfFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -385,14 +400,15 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = FnfFunctions.getFlows(GetFlowsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFnfFlowId&#34;, example.applyValue(getFlowsResult -&gt; getFlowsResult.flows()[0].id()));
+     *         ctx.export("firstFnfFlowId", example.applyValue(getFlowsResult -> getFlowsResult.flows()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -409,7 +425,8 @@ public final class FnfFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -431,14 +448,15 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = FnfFunctions.getFlows(GetFlowsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFnfFlowId&#34;, example.applyValue(getFlowsResult -&gt; getFlowsResult.flows()[0].id()));
+     *         ctx.export("firstFnfFlowId", example.applyValue(getFlowsResult -> getFlowsResult.flows()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -455,7 +473,8 @@ public final class FnfFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -477,14 +496,15 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = FnfFunctions.getFlows(GetFlowsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFnfFlowId&#34;, example.applyValue(getFlowsResult -&gt; getFlowsResult.flows()[0].id()));
+     *         ctx.export("firstFnfFlowId", example.applyValue(getFlowsResult -> getFlowsResult.flows()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -501,7 +521,8 @@ public final class FnfFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -523,15 +544,16 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = FnfFunctions.getSchedules(GetSchedulesArgs.builder()
-     *             .flowName(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .flowName("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFnfScheduleId&#34;, example.applyValue(getSchedulesResult -&gt; getSchedulesResult.schedules()[0].id()));
+     *         ctx.export("firstFnfScheduleId", example.applyValue(getSchedulesResult -> getSchedulesResult.schedules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -548,7 +570,8 @@ public final class FnfFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -570,15 +593,16 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = FnfFunctions.getSchedules(GetSchedulesArgs.builder()
-     *             .flowName(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .flowName("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFnfScheduleId&#34;, example.applyValue(getSchedulesResult -&gt; getSchedulesResult.schedules()[0].id()));
+     *         ctx.export("firstFnfScheduleId", example.applyValue(getSchedulesResult -> getSchedulesResult.schedules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -595,7 +619,8 @@ public final class FnfFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -617,15 +642,16 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = FnfFunctions.getSchedules(GetSchedulesArgs.builder()
-     *             .flowName(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .flowName("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFnfScheduleId&#34;, example.applyValue(getSchedulesResult -&gt; getSchedulesResult.schedules()[0].id()));
+     *         ctx.export("firstFnfScheduleId", example.applyValue(getSchedulesResult -> getSchedulesResult.schedules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -642,7 +668,8 @@ public final class FnfFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -664,15 +691,16 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = FnfFunctions.getSchedules(GetSchedulesArgs.builder()
-     *             .flowName(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .flowName("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFnfScheduleId&#34;, example.applyValue(getSchedulesResult -&gt; getSchedulesResult.schedules()[0].id()));
+     *         ctx.export("firstFnfScheduleId", example.applyValue(getSchedulesResult -> getSchedulesResult.schedules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -689,7 +717,8 @@ public final class FnfFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -711,12 +740,13 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = FnfFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -733,7 +763,8 @@ public final class FnfFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -755,12 +786,13 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = FnfFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -777,7 +809,8 @@ public final class FnfFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -799,12 +832,13 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = FnfFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -821,7 +855,8 @@ public final class FnfFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -843,12 +878,13 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = FnfFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -865,7 +901,8 @@ public final class FnfFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -887,12 +924,13 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = FnfFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -909,7 +947,8 @@ public final class FnfFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -931,12 +970,13 @@ public final class FnfFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = FnfFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

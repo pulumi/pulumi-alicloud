@@ -179,7 +179,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The name of the queue.
-     * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+     * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
      * 
      */
     @Import(name="queueName", required=true)
@@ -187,7 +187,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The name of the queue.
-     * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+     * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
      * 
      */
     public Output<String> queueName() {
@@ -458,7 +458,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param queueName The name of the queue.
-         * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+         * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
          * 
          * @return builder
          * 
@@ -470,7 +470,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param queueName The name of the queue.
-         * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
+         * The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs ({@literal @}).
          * 
          * @return builder
          * 

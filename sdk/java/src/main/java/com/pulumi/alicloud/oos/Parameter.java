@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,21 +54,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var example = new Parameter(&#34;example&#34;, ParameterArgs.builder()        
- *             .parameterName(&#34;my-Parameter&#34;)
- *             .type(&#34;String&#34;)
- *             .value(&#34;example_value&#34;)
- *             .description(&#34;example_value&#34;)
+ *         var example = new Parameter("example", ParameterArgs.builder()        
+ *             .parameterName("my-Parameter")
+ *             .type("String")
+ *             .value("example_value")
+ *             .description("example_value")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;OosParameter&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "OosParameter")
  *             ))
  *             .resourceGroupId(default_.groups()[0].id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,18 +52,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Add a new Domain.
- *         var dns = new DnsDomain(&#34;dns&#34;, DnsDomainArgs.builder()        
- *             .domainName(&#34;starmove.com&#34;)
- *             .groupId(&#34;85ab8713-4a30-4de4-9d20-155ff830****&#34;)
+ *         var dns = new DnsDomain("dns", DnsDomainArgs.builder()        
+ *             .domainName("starmove.com")
+ *             .groupId("85ab8713-4a30-4de4-9d20-155ff830****")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;Terraform&#34;),
- *                 Map.entry(&#34;Environment&#34;, &#34;test&#34;)
+ *                 Map.entry("Created", "Terraform"),
+ *                 Map.entry("Environment", "test")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

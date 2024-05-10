@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,15 +52,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Accelerator(&#34;example&#34;, AcceleratorArgs.builder()        
+ *         var example = new Accelerator("example", AcceleratorArgs.builder()        
  *             .duration(1)
  *             .autoUseCoupon(true)
- *             .spec(&#34;1&#34;)
+ *             .spec("1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

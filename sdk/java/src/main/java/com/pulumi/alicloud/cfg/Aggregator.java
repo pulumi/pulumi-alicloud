@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,25 +53,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
- *             .status(&#34;CreateSuccess&#34;)
+ *             .status("CreateSuccess")
  *             .build());
  * 
- *         var defaultAggregator = new Aggregator(&#34;defaultAggregator&#34;, AggregatorArgs.builder()        
+ *         var defaultAggregator = new Aggregator("defaultAggregator", AggregatorArgs.builder()        
  *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()
  *                 .accountId(default_.accounts()[0].accountId())
  *                 .accountName(default_.accounts()[0].displayName())
- *                 .accountType(&#34;ResourceDirectory&#34;)
+ *                 .accountType("ResourceDirectory")
  *                 .build())
  *             .aggregatorName(name)
  *             .description(name)
- *             .aggregatorType(&#34;CUSTOM&#34;)
+ *             .aggregatorType("CUSTOM")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

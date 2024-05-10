@@ -37,7 +37,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -59,15 +60,16 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .ids(&#34;fake-conn-id&#34;)
-     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
-     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
-     *             .outputFile(&#34;/tmp/vpnconn&#34;)
+     *             .ids("fake-conn-id")
+     *             .vpnGatewayId("fake-vpn-id")
+     *             .customerGatewayId("fake-cgw-id")
+     *             .outputFile("/tmp/vpnconn")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -82,7 +84,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -104,15 +107,16 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .ids(&#34;fake-conn-id&#34;)
-     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
-     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
-     *             .outputFile(&#34;/tmp/vpnconn&#34;)
+     *             .ids("fake-conn-id")
+     *             .vpnGatewayId("fake-vpn-id")
+     *             .customerGatewayId("fake-cgw-id")
+     *             .outputFile("/tmp/vpnconn")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -127,7 +131,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -149,15 +154,16 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .ids(&#34;fake-conn-id&#34;)
-     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
-     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
-     *             .outputFile(&#34;/tmp/vpnconn&#34;)
+     *             .ids("fake-conn-id")
+     *             .vpnGatewayId("fake-vpn-id")
+     *             .customerGatewayId("fake-cgw-id")
+     *             .outputFile("/tmp/vpnconn")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -172,7 +178,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -194,15 +201,16 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .ids(&#34;fake-conn-id&#34;)
-     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
-     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
-     *             .outputFile(&#34;/tmp/vpnconn&#34;)
+     *             .ids("fake-conn-id")
+     *             .vpnGatewayId("fake-vpn-id")
+     *             .customerGatewayId("fake-cgw-id")
+     *             .outputFile("/tmp/vpnconn")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -217,7 +225,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -239,15 +248,16 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .ids(&#34;fake-conn-id&#34;)
-     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
-     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
-     *             .outputFile(&#34;/tmp/vpnconn&#34;)
+     *             .ids("fake-conn-id")
+     *             .vpnGatewayId("fake-vpn-id")
+     *             .customerGatewayId("fake-cgw-id")
+     *             .outputFile("/tmp/vpnconn")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -262,7 +272,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -284,15 +295,16 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .ids(&#34;fake-conn-id&#34;)
-     *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
-     *             .customerGatewayId(&#34;fake-cgw-id&#34;)
-     *             .outputFile(&#34;/tmp/vpnconn&#34;)
+     *             .ids("fake-conn-id")
+     *             .vpnGatewayId("fake-vpn-id")
+     *             .customerGatewayId("fake-cgw-id")
+     *             .outputFile("/tmp/vpnconn")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -305,7 +317,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -327,16 +340,17 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getCustomerGateways(GetCustomerGatewaysArgs.builder()
-     *             .nameRegex(&#34;testAcc*&#34;)
+     *             .nameRegex("testAcc*")
      *             .ids(            
-     *                 &#34;fake-id1&#34;,
-     *                 &#34;fake-id2&#34;)
-     *             .outputFile(&#34;/tmp/cgws&#34;)
+     *                 "fake-id1",
+     *                 "fake-id2")
+     *             .outputFile("/tmp/cgws")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -349,7 +363,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -371,16 +386,17 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getCustomerGateways(GetCustomerGatewaysArgs.builder()
-     *             .nameRegex(&#34;testAcc*&#34;)
+     *             .nameRegex("testAcc*")
      *             .ids(            
-     *                 &#34;fake-id1&#34;,
-     *                 &#34;fake-id2&#34;)
-     *             .outputFile(&#34;/tmp/cgws&#34;)
+     *                 "fake-id1",
+     *                 "fake-id2")
+     *             .outputFile("/tmp/cgws")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -393,7 +409,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -415,16 +432,17 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getCustomerGateways(GetCustomerGatewaysArgs.builder()
-     *             .nameRegex(&#34;testAcc*&#34;)
+     *             .nameRegex("testAcc*")
      *             .ids(            
-     *                 &#34;fake-id1&#34;,
-     *                 &#34;fake-id2&#34;)
-     *             .outputFile(&#34;/tmp/cgws&#34;)
+     *                 "fake-id1",
+     *                 "fake-id2")
+     *             .outputFile("/tmp/cgws")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -437,7 +455,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -459,16 +478,17 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getCustomerGateways(GetCustomerGatewaysArgs.builder()
-     *             .nameRegex(&#34;testAcc*&#34;)
+     *             .nameRegex("testAcc*")
      *             .ids(            
-     *                 &#34;fake-id1&#34;,
-     *                 &#34;fake-id2&#34;)
-     *             .outputFile(&#34;/tmp/cgws&#34;)
+     *                 "fake-id1",
+     *                 "fake-id2")
+     *             .outputFile("/tmp/cgws")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -481,7 +501,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -503,16 +524,17 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getCustomerGateways(GetCustomerGatewaysArgs.builder()
-     *             .nameRegex(&#34;testAcc*&#34;)
+     *             .nameRegex("testAcc*")
      *             .ids(            
-     *                 &#34;fake-id1&#34;,
-     *                 &#34;fake-id2&#34;)
-     *             .outputFile(&#34;/tmp/cgws&#34;)
+     *                 "fake-id1",
+     *                 "fake-id2")
+     *             .outputFile("/tmp/cgws")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -525,7 +547,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -547,16 +570,17 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = VpnFunctions.getCustomerGateways(GetCustomerGatewaysArgs.builder()
-     *             .nameRegex(&#34;testAcc*&#34;)
+     *             .nameRegex("testAcc*")
      *             .ids(            
-     *                 &#34;fake-id1&#34;,
-     *                 &#34;fake-id2&#34;)
-     *             .outputFile(&#34;/tmp/cgws&#34;)
+     *                 "fake-id1",
+     *                 "fake-id2")
+     *             .outputFile("/tmp/cgws")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -573,7 +597,8 @@ public final class VpnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -613,68 +638,68 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .cenInstanceName(name)
      *             .build());
      * 
-     *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()        
      *             .cenId(defaultInstance.id())
-     *             .transitRouterDescription(&#34;desd&#34;)
+     *             .transitRouterDescription("desd")
      *             .transitRouterName(name)
      *             .build());
      * 
      *         final var default = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+     *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()        
      *             .name(name)
-     *             .ipAddress(&#34;42.104.22.210&#34;)
-     *             .asn(&#34;45014&#34;)
-     *             .description(&#34;testAccVpnConnectionDesc&#34;)
+     *             .ipAddress("42.104.22.210")
+     *             .asn("45014")
+     *             .description("testAccVpnConnectionDesc")
      *             .build());
      * 
-     *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment(&#34;defaultGatewayVpnAttachment&#34;, GatewayVpnAttachmentArgs.builder()        
+     *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment("defaultGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()        
      *             .customerGatewayId(defaultCustomerGateway.id())
-     *             .networkType(&#34;public&#34;)
-     *             .localSubnet(&#34;0.0.0.0/0&#34;)
-     *             .remoteSubnet(&#34;0.0.0.0/0&#34;)
+     *             .networkType("public")
+     *             .localSubnet("0.0.0.0/0")
+     *             .remoteSubnet("0.0.0.0/0")
      *             .effectImmediately(false)
      *             .ikeConfig(GatewayVpnAttachmentIkeConfigArgs.builder()
-     *                 .ikeAuthAlg(&#34;md5&#34;)
-     *                 .ikeEncAlg(&#34;des&#34;)
-     *                 .ikeVersion(&#34;ikev2&#34;)
-     *                 .ikeMode(&#34;main&#34;)
+     *                 .ikeAuthAlg("md5")
+     *                 .ikeEncAlg("des")
+     *                 .ikeVersion("ikev2")
+     *                 .ikeMode("main")
      *                 .ikeLifetime(86400)
-     *                 .psk(&#34;tf-testvpn2&#34;)
-     *                 .ikePfs(&#34;group1&#34;)
-     *                 .remoteId(&#34;testbob2&#34;)
-     *                 .localId(&#34;testalice2&#34;)
+     *                 .psk("tf-testvpn2")
+     *                 .ikePfs("group1")
+     *                 .remoteId("testbob2")
+     *                 .localId("testalice2")
      *                 .build())
      *             .ipsecConfig(GatewayVpnAttachmentIpsecConfigArgs.builder()
-     *                 .ipsecPfs(&#34;group5&#34;)
-     *                 .ipsecEncAlg(&#34;des&#34;)
-     *                 .ipsecAuthAlg(&#34;md5&#34;)
+     *                 .ipsecPfs("group5")
+     *                 .ipsecEncAlg("des")
+     *                 .ipsecAuthAlg("md5")
      *                 .ipsecLifetime(86400)
      *                 .build())
      *             .bgpConfig(GatewayVpnAttachmentBgpConfigArgs.builder()
      *                 .enable(true)
      *                 .localAsn(45014)
-     *                 .tunnelCidr(&#34;169.254.11.0/30&#34;)
-     *                 .localBgpIp(&#34;169.254.11.1&#34;)
+     *                 .tunnelCidr("169.254.11.0/30")
+     *                 .localBgpIp("169.254.11.1")
      *                 .build())
      *             .healthCheckConfig(GatewayVpnAttachmentHealthCheckConfigArgs.builder()
      *                 .enable(true)
-     *                 .sip(&#34;192.168.1.1&#34;)
-     *                 .dip(&#34;10.0.0.1&#34;)
+     *                 .sip("192.168.1.1")
+     *                 .dip("10.0.0.1")
      *                 .interval(10)
      *                 .retry(10)
-     *                 .policy(&#34;revoke_route&#34;)
+     *                 .policy("revoke_route")
      *                 .build())
      *             .enableDpd(true)
      *             .enableNatTraversal(true)
      *             .vpnAttachmentName(name)
      *             .build());
      * 
-     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()        
      *             .autoPublishRouteEnabled(false)
      *             .transitRouterAttachmentDescription(name)
      *             .transitRouterAttachmentName(name)
@@ -686,8 +711,8 @@ public final class VpnFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultGatewayVcoRoute = new GatewayVcoRoute(&#34;defaultGatewayVcoRoute&#34;, GatewayVcoRouteArgs.builder()        
-     *             .routeDest(&#34;192.168.12.0/24&#34;)
+     *         var defaultGatewayVcoRoute = new GatewayVcoRoute("defaultGatewayVcoRoute", GatewayVcoRouteArgs.builder()        
+     *             .routeDest("192.168.12.0/24")
      *             .nextHop(defaultTransitRouterVpnAttachment.vpnId())
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .weight(100)
@@ -697,10 +722,11 @@ public final class VpnFunctions {
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .build());
      * 
-     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, ids.routes()[0].id());
+     *         ctx.export("vpnGatewayVcoRouteId1", ids.routes()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -717,7 +743,8 @@ public final class VpnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -757,68 +784,68 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .cenInstanceName(name)
      *             .build());
      * 
-     *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()        
      *             .cenId(defaultInstance.id())
-     *             .transitRouterDescription(&#34;desd&#34;)
+     *             .transitRouterDescription("desd")
      *             .transitRouterName(name)
      *             .build());
      * 
      *         final var default = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+     *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()        
      *             .name(name)
-     *             .ipAddress(&#34;42.104.22.210&#34;)
-     *             .asn(&#34;45014&#34;)
-     *             .description(&#34;testAccVpnConnectionDesc&#34;)
+     *             .ipAddress("42.104.22.210")
+     *             .asn("45014")
+     *             .description("testAccVpnConnectionDesc")
      *             .build());
      * 
-     *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment(&#34;defaultGatewayVpnAttachment&#34;, GatewayVpnAttachmentArgs.builder()        
+     *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment("defaultGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()        
      *             .customerGatewayId(defaultCustomerGateway.id())
-     *             .networkType(&#34;public&#34;)
-     *             .localSubnet(&#34;0.0.0.0/0&#34;)
-     *             .remoteSubnet(&#34;0.0.0.0/0&#34;)
+     *             .networkType("public")
+     *             .localSubnet("0.0.0.0/0")
+     *             .remoteSubnet("0.0.0.0/0")
      *             .effectImmediately(false)
      *             .ikeConfig(GatewayVpnAttachmentIkeConfigArgs.builder()
-     *                 .ikeAuthAlg(&#34;md5&#34;)
-     *                 .ikeEncAlg(&#34;des&#34;)
-     *                 .ikeVersion(&#34;ikev2&#34;)
-     *                 .ikeMode(&#34;main&#34;)
+     *                 .ikeAuthAlg("md5")
+     *                 .ikeEncAlg("des")
+     *                 .ikeVersion("ikev2")
+     *                 .ikeMode("main")
      *                 .ikeLifetime(86400)
-     *                 .psk(&#34;tf-testvpn2&#34;)
-     *                 .ikePfs(&#34;group1&#34;)
-     *                 .remoteId(&#34;testbob2&#34;)
-     *                 .localId(&#34;testalice2&#34;)
+     *                 .psk("tf-testvpn2")
+     *                 .ikePfs("group1")
+     *                 .remoteId("testbob2")
+     *                 .localId("testalice2")
      *                 .build())
      *             .ipsecConfig(GatewayVpnAttachmentIpsecConfigArgs.builder()
-     *                 .ipsecPfs(&#34;group5&#34;)
-     *                 .ipsecEncAlg(&#34;des&#34;)
-     *                 .ipsecAuthAlg(&#34;md5&#34;)
+     *                 .ipsecPfs("group5")
+     *                 .ipsecEncAlg("des")
+     *                 .ipsecAuthAlg("md5")
      *                 .ipsecLifetime(86400)
      *                 .build())
      *             .bgpConfig(GatewayVpnAttachmentBgpConfigArgs.builder()
      *                 .enable(true)
      *                 .localAsn(45014)
-     *                 .tunnelCidr(&#34;169.254.11.0/30&#34;)
-     *                 .localBgpIp(&#34;169.254.11.1&#34;)
+     *                 .tunnelCidr("169.254.11.0/30")
+     *                 .localBgpIp("169.254.11.1")
      *                 .build())
      *             .healthCheckConfig(GatewayVpnAttachmentHealthCheckConfigArgs.builder()
      *                 .enable(true)
-     *                 .sip(&#34;192.168.1.1&#34;)
-     *                 .dip(&#34;10.0.0.1&#34;)
+     *                 .sip("192.168.1.1")
+     *                 .dip("10.0.0.1")
      *                 .interval(10)
      *                 .retry(10)
-     *                 .policy(&#34;revoke_route&#34;)
+     *                 .policy("revoke_route")
      *                 .build())
      *             .enableDpd(true)
      *             .enableNatTraversal(true)
      *             .vpnAttachmentName(name)
      *             .build());
      * 
-     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()        
      *             .autoPublishRouteEnabled(false)
      *             .transitRouterAttachmentDescription(name)
      *             .transitRouterAttachmentName(name)
@@ -830,8 +857,8 @@ public final class VpnFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultGatewayVcoRoute = new GatewayVcoRoute(&#34;defaultGatewayVcoRoute&#34;, GatewayVcoRouteArgs.builder()        
-     *             .routeDest(&#34;192.168.12.0/24&#34;)
+     *         var defaultGatewayVcoRoute = new GatewayVcoRoute("defaultGatewayVcoRoute", GatewayVcoRouteArgs.builder()        
+     *             .routeDest("192.168.12.0/24")
      *             .nextHop(defaultTransitRouterVpnAttachment.vpnId())
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .weight(100)
@@ -841,10 +868,11 @@ public final class VpnFunctions {
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .build());
      * 
-     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, ids.routes()[0].id());
+     *         ctx.export("vpnGatewayVcoRouteId1", ids.routes()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -861,7 +889,8 @@ public final class VpnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -901,68 +930,68 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .cenInstanceName(name)
      *             .build());
      * 
-     *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()        
      *             .cenId(defaultInstance.id())
-     *             .transitRouterDescription(&#34;desd&#34;)
+     *             .transitRouterDescription("desd")
      *             .transitRouterName(name)
      *             .build());
      * 
      *         final var default = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+     *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()        
      *             .name(name)
-     *             .ipAddress(&#34;42.104.22.210&#34;)
-     *             .asn(&#34;45014&#34;)
-     *             .description(&#34;testAccVpnConnectionDesc&#34;)
+     *             .ipAddress("42.104.22.210")
+     *             .asn("45014")
+     *             .description("testAccVpnConnectionDesc")
      *             .build());
      * 
-     *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment(&#34;defaultGatewayVpnAttachment&#34;, GatewayVpnAttachmentArgs.builder()        
+     *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment("defaultGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()        
      *             .customerGatewayId(defaultCustomerGateway.id())
-     *             .networkType(&#34;public&#34;)
-     *             .localSubnet(&#34;0.0.0.0/0&#34;)
-     *             .remoteSubnet(&#34;0.0.0.0/0&#34;)
+     *             .networkType("public")
+     *             .localSubnet("0.0.0.0/0")
+     *             .remoteSubnet("0.0.0.0/0")
      *             .effectImmediately(false)
      *             .ikeConfig(GatewayVpnAttachmentIkeConfigArgs.builder()
-     *                 .ikeAuthAlg(&#34;md5&#34;)
-     *                 .ikeEncAlg(&#34;des&#34;)
-     *                 .ikeVersion(&#34;ikev2&#34;)
-     *                 .ikeMode(&#34;main&#34;)
+     *                 .ikeAuthAlg("md5")
+     *                 .ikeEncAlg("des")
+     *                 .ikeVersion("ikev2")
+     *                 .ikeMode("main")
      *                 .ikeLifetime(86400)
-     *                 .psk(&#34;tf-testvpn2&#34;)
-     *                 .ikePfs(&#34;group1&#34;)
-     *                 .remoteId(&#34;testbob2&#34;)
-     *                 .localId(&#34;testalice2&#34;)
+     *                 .psk("tf-testvpn2")
+     *                 .ikePfs("group1")
+     *                 .remoteId("testbob2")
+     *                 .localId("testalice2")
      *                 .build())
      *             .ipsecConfig(GatewayVpnAttachmentIpsecConfigArgs.builder()
-     *                 .ipsecPfs(&#34;group5&#34;)
-     *                 .ipsecEncAlg(&#34;des&#34;)
-     *                 .ipsecAuthAlg(&#34;md5&#34;)
+     *                 .ipsecPfs("group5")
+     *                 .ipsecEncAlg("des")
+     *                 .ipsecAuthAlg("md5")
      *                 .ipsecLifetime(86400)
      *                 .build())
      *             .bgpConfig(GatewayVpnAttachmentBgpConfigArgs.builder()
      *                 .enable(true)
      *                 .localAsn(45014)
-     *                 .tunnelCidr(&#34;169.254.11.0/30&#34;)
-     *                 .localBgpIp(&#34;169.254.11.1&#34;)
+     *                 .tunnelCidr("169.254.11.0/30")
+     *                 .localBgpIp("169.254.11.1")
      *                 .build())
      *             .healthCheckConfig(GatewayVpnAttachmentHealthCheckConfigArgs.builder()
      *                 .enable(true)
-     *                 .sip(&#34;192.168.1.1&#34;)
-     *                 .dip(&#34;10.0.0.1&#34;)
+     *                 .sip("192.168.1.1")
+     *                 .dip("10.0.0.1")
      *                 .interval(10)
      *                 .retry(10)
-     *                 .policy(&#34;revoke_route&#34;)
+     *                 .policy("revoke_route")
      *                 .build())
      *             .enableDpd(true)
      *             .enableNatTraversal(true)
      *             .vpnAttachmentName(name)
      *             .build());
      * 
-     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()        
      *             .autoPublishRouteEnabled(false)
      *             .transitRouterAttachmentDescription(name)
      *             .transitRouterAttachmentName(name)
@@ -974,8 +1003,8 @@ public final class VpnFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultGatewayVcoRoute = new GatewayVcoRoute(&#34;defaultGatewayVcoRoute&#34;, GatewayVcoRouteArgs.builder()        
-     *             .routeDest(&#34;192.168.12.0/24&#34;)
+     *         var defaultGatewayVcoRoute = new GatewayVcoRoute("defaultGatewayVcoRoute", GatewayVcoRouteArgs.builder()        
+     *             .routeDest("192.168.12.0/24")
      *             .nextHop(defaultTransitRouterVpnAttachment.vpnId())
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .weight(100)
@@ -985,10 +1014,11 @@ public final class VpnFunctions {
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .build());
      * 
-     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, ids.routes()[0].id());
+     *         ctx.export("vpnGatewayVcoRouteId1", ids.routes()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1005,7 +1035,8 @@ public final class VpnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1045,68 +1076,68 @@ public final class VpnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .cenInstanceName(name)
      *             .build());
      * 
-     *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
+     *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()        
      *             .cenId(defaultInstance.id())
-     *             .transitRouterDescription(&#34;desd&#34;)
+     *             .transitRouterDescription("desd")
      *             .transitRouterName(name)
      *             .build());
      * 
      *         final var default = CenFunctions.getTransitRouterAvailableResources();
      * 
-     *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+     *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()        
      *             .name(name)
-     *             .ipAddress(&#34;42.104.22.210&#34;)
-     *             .asn(&#34;45014&#34;)
-     *             .description(&#34;testAccVpnConnectionDesc&#34;)
+     *             .ipAddress("42.104.22.210")
+     *             .asn("45014")
+     *             .description("testAccVpnConnectionDesc")
      *             .build());
      * 
-     *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment(&#34;defaultGatewayVpnAttachment&#34;, GatewayVpnAttachmentArgs.builder()        
+     *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment("defaultGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()        
      *             .customerGatewayId(defaultCustomerGateway.id())
-     *             .networkType(&#34;public&#34;)
-     *             .localSubnet(&#34;0.0.0.0/0&#34;)
-     *             .remoteSubnet(&#34;0.0.0.0/0&#34;)
+     *             .networkType("public")
+     *             .localSubnet("0.0.0.0/0")
+     *             .remoteSubnet("0.0.0.0/0")
      *             .effectImmediately(false)
      *             .ikeConfig(GatewayVpnAttachmentIkeConfigArgs.builder()
-     *                 .ikeAuthAlg(&#34;md5&#34;)
-     *                 .ikeEncAlg(&#34;des&#34;)
-     *                 .ikeVersion(&#34;ikev2&#34;)
-     *                 .ikeMode(&#34;main&#34;)
+     *                 .ikeAuthAlg("md5")
+     *                 .ikeEncAlg("des")
+     *                 .ikeVersion("ikev2")
+     *                 .ikeMode("main")
      *                 .ikeLifetime(86400)
-     *                 .psk(&#34;tf-testvpn2&#34;)
-     *                 .ikePfs(&#34;group1&#34;)
-     *                 .remoteId(&#34;testbob2&#34;)
-     *                 .localId(&#34;testalice2&#34;)
+     *                 .psk("tf-testvpn2")
+     *                 .ikePfs("group1")
+     *                 .remoteId("testbob2")
+     *                 .localId("testalice2")
      *                 .build())
      *             .ipsecConfig(GatewayVpnAttachmentIpsecConfigArgs.builder()
-     *                 .ipsecPfs(&#34;group5&#34;)
-     *                 .ipsecEncAlg(&#34;des&#34;)
-     *                 .ipsecAuthAlg(&#34;md5&#34;)
+     *                 .ipsecPfs("group5")
+     *                 .ipsecEncAlg("des")
+     *                 .ipsecAuthAlg("md5")
      *                 .ipsecLifetime(86400)
      *                 .build())
      *             .bgpConfig(GatewayVpnAttachmentBgpConfigArgs.builder()
      *                 .enable(true)
      *                 .localAsn(45014)
-     *                 .tunnelCidr(&#34;169.254.11.0/30&#34;)
-     *                 .localBgpIp(&#34;169.254.11.1&#34;)
+     *                 .tunnelCidr("169.254.11.0/30")
+     *                 .localBgpIp("169.254.11.1")
      *                 .build())
      *             .healthCheckConfig(GatewayVpnAttachmentHealthCheckConfigArgs.builder()
      *                 .enable(true)
-     *                 .sip(&#34;192.168.1.1&#34;)
-     *                 .dip(&#34;10.0.0.1&#34;)
+     *                 .sip("192.168.1.1")
+     *                 .dip("10.0.0.1")
      *                 .interval(10)
      *                 .retry(10)
-     *                 .policy(&#34;revoke_route&#34;)
+     *                 .policy("revoke_route")
      *                 .build())
      *             .enableDpd(true)
      *             .enableNatTraversal(true)
      *             .vpnAttachmentName(name)
      *             .build());
      * 
-     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
+     *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()        
      *             .autoPublishRouteEnabled(false)
      *             .transitRouterAttachmentDescription(name)
      *             .transitRouterAttachmentName(name)
@@ -1118,8 +1149,8 @@ public final class VpnFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultGatewayVcoRoute = new GatewayVcoRoute(&#34;defaultGatewayVcoRoute&#34;, GatewayVcoRouteArgs.builder()        
-     *             .routeDest(&#34;192.168.12.0/24&#34;)
+     *         var defaultGatewayVcoRoute = new GatewayVcoRoute("defaultGatewayVcoRoute", GatewayVcoRouteArgs.builder()        
+     *             .routeDest("192.168.12.0/24")
      *             .nextHop(defaultTransitRouterVpnAttachment.vpnId())
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .weight(100)
@@ -1129,10 +1160,11 @@ public final class VpnFunctions {
      *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
      *             .build());
      * 
-     *         ctx.export(&#34;vpnGatewayVcoRouteId1&#34;, ids.routes()[0].id());
+     *         ctx.export("vpnGatewayVcoRouteId1", ids.routes()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1149,7 +1181,8 @@ public final class VpnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1172,17 +1205,18 @@ public final class VpnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpnFunctions.getGatewayVpnAttachments();
      * 
-     *         ctx.export(&#34;vpnGatewayVpnAttachmentId1&#34;, ids.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
      *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
-     *             .nameRegex(&#34;^my-VpnAttachment&#34;)
+     *             .nameRegex("^my-VpnAttachment")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export(&#34;localId&#34;, vpnAttachments.attachments()[0].ikeConfig()[0].localId());
-     *         ctx.export(&#34;internetIp&#34;, vpnAttachments.attachments()[0].internetIp());
+     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
+     *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1199,7 +1233,8 @@ public final class VpnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1222,17 +1257,18 @@ public final class VpnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpnFunctions.getGatewayVpnAttachments();
      * 
-     *         ctx.export(&#34;vpnGatewayVpnAttachmentId1&#34;, ids.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
      *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
-     *             .nameRegex(&#34;^my-VpnAttachment&#34;)
+     *             .nameRegex("^my-VpnAttachment")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export(&#34;localId&#34;, vpnAttachments.attachments()[0].ikeConfig()[0].localId());
-     *         ctx.export(&#34;internetIp&#34;, vpnAttachments.attachments()[0].internetIp());
+     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
+     *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1249,7 +1285,8 @@ public final class VpnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1272,17 +1309,18 @@ public final class VpnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpnFunctions.getGatewayVpnAttachments();
      * 
-     *         ctx.export(&#34;vpnGatewayVpnAttachmentId1&#34;, ids.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
      *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
-     *             .nameRegex(&#34;^my-VpnAttachment&#34;)
+     *             .nameRegex("^my-VpnAttachment")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export(&#34;localId&#34;, vpnAttachments.attachments()[0].ikeConfig()[0].localId());
-     *         ctx.export(&#34;internetIp&#34;, vpnAttachments.attachments()[0].internetIp());
+     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
+     *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1299,7 +1337,8 @@ public final class VpnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1322,17 +1361,18 @@ public final class VpnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpnFunctions.getGatewayVpnAttachments();
      * 
-     *         ctx.export(&#34;vpnGatewayVpnAttachmentId1&#34;, ids.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
      *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
-     *             .nameRegex(&#34;^my-VpnAttachment&#34;)
+     *             .nameRegex("^my-VpnAttachment")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export(&#34;localId&#34;, vpnAttachments.attachments()[0].ikeConfig()[0].localId());
-     *         ctx.export(&#34;internetIp&#34;, vpnAttachments.attachments()[0].internetIp());
+     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
+     *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1349,7 +1389,8 @@ public final class VpnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1372,17 +1413,18 @@ public final class VpnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpnFunctions.getGatewayVpnAttachments();
      * 
-     *         ctx.export(&#34;vpnGatewayVpnAttachmentId1&#34;, ids.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
      *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
-     *             .nameRegex(&#34;^my-VpnAttachment&#34;)
+     *             .nameRegex("^my-VpnAttachment")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export(&#34;localId&#34;, vpnAttachments.attachments()[0].ikeConfig()[0].localId());
-     *         ctx.export(&#34;internetIp&#34;, vpnAttachments.attachments()[0].internetIp());
+     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
+     *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1399,7 +1441,8 @@ public final class VpnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1422,17 +1465,18 @@ public final class VpnFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = VpnFunctions.getGatewayVpnAttachments();
      * 
-     *         ctx.export(&#34;vpnGatewayVpnAttachmentId1&#34;, ids.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("vpnGatewayVpnAttachmentId1", ids.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
      *         final var nameRegex = VpnFunctions.getGatewayVpnAttachments(GetGatewayVpnAttachmentsArgs.builder()
-     *             .nameRegex(&#34;^my-VpnAttachment&#34;)
+     *             .nameRegex("^my-VpnAttachment")
      *             .build());
      * 
-     *         ctx.export(&#34;vpnGatewayVpnAttachmentId2&#34;, nameRegex.applyValue(getGatewayVpnAttachmentsResult -&gt; getGatewayVpnAttachmentsResult.attachments()[0].id()));
-     *         ctx.export(&#34;localId&#34;, vpnAttachments.attachments()[0].ikeConfig()[0].localId());
-     *         ctx.export(&#34;internetIp&#34;, vpnAttachments.attachments()[0].internetIp());
+     *         ctx.export("vpnGatewayVpnAttachmentId2", nameRegex.applyValue(getGatewayVpnAttachmentsResult -> getGatewayVpnAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("localId", vpnAttachments.attachments()[0].ikeConfig()[0].localId());
+     *         ctx.export("internetIp", vpnAttachments.attachments()[0].internetIp());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1447,7 +1491,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1469,12 +1514,13 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VpnFunctions.getGatewayZones(GetGatewayZonesArgs.builder()
-     *             .spec(&#34;5M&#34;)
+     *             .spec("5M")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1489,7 +1535,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1511,12 +1558,13 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VpnFunctions.getGatewayZones(GetGatewayZonesArgs.builder()
-     *             .spec(&#34;5M&#34;)
+     *             .spec("5M")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1531,7 +1579,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1553,12 +1602,13 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VpnFunctions.getGatewayZones(GetGatewayZonesArgs.builder()
-     *             .spec(&#34;5M&#34;)
+     *             .spec("5M")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1573,7 +1623,8 @@ public final class VpnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1595,12 +1646,13 @@ public final class VpnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = VpnFunctions.getGatewayZones(GetGatewayZonesArgs.builder()
-     *             .spec(&#34;5M&#34;)
+     *             .spec("5M")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

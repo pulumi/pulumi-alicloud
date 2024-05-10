@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,44 +59,45 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default3iXhoa = new ResourceGroup(&#34;default3iXhoa&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;testname03&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default3iXhoa = new ResourceGroup("default3iXhoa", ResourceGroupArgs.builder()        
+ *             .displayName("testname03")
  *             .resourceGroupName(name)
  *             .build());
  * 
- *         var defaultdNz2qk = new ResourceGroup(&#34;defaultdNz2qk&#34;, ResourceGroupArgs.builder()        
- *             .displayName(&#34;testname04&#34;)
- *             .resourceGroupName(String.format(&#34;%s1&#34;, name))
+ *         var defaultdNz2qk = new ResourceGroup("defaultdNz2qk", ResourceGroupArgs.builder()        
+ *             .displayName("testname04")
+ *             .resourceGroupName(String.format("%s1", name))
  *             .build());
  * 
- *         var default_ = new TrafficMirrorFilter(&#34;default&#34;, TrafficMirrorFilterArgs.builder()        
- *             .trafficMirrorFilterDescription(&#34;test&#34;)
+ *         var default_ = new TrafficMirrorFilter("default", TrafficMirrorFilterArgs.builder()        
+ *             .trafficMirrorFilterDescription("test")
  *             .trafficMirrorFilterName(name)
  *             .resourceGroupId(default3iXhoa.id())
  *             .egressRules(TrafficMirrorFilterEgressRuleArgs.builder()
  *                 .priority(1)
- *                 .protocol(&#34;TCP&#34;)
- *                 .action(&#34;accept&#34;)
- *                 .destinationCidrBlock(&#34;32.0.0.0/4&#34;)
- *                 .destinationPortRange(&#34;80/80&#34;)
- *                 .sourceCidrBlock(&#34;16.0.0.0/4&#34;)
- *                 .sourcePortRange(&#34;80/80&#34;)
+ *                 .protocol("TCP")
+ *                 .action("accept")
+ *                 .destinationCidrBlock("32.0.0.0/4")
+ *                 .destinationPortRange("80/80")
+ *                 .sourceCidrBlock("16.0.0.0/4")
+ *                 .sourcePortRange("80/80")
  *                 .build())
  *             .ingressRules(TrafficMirrorFilterIngressRuleArgs.builder()
  *                 .priority(1)
- *                 .protocol(&#34;TCP&#34;)
- *                 .action(&#34;accept&#34;)
- *                 .destinationCidrBlock(&#34;10.64.0.0/10&#34;)
- *                 .destinationPortRange(&#34;80/80&#34;)
- *                 .sourceCidrBlock(&#34;10.0.0.0/8&#34;)
- *                 .sourcePortRange(&#34;80/80&#34;)
+ *                 .protocol("TCP")
+ *                 .action("accept")
+ *                 .destinationCidrBlock("10.64.0.0/10")
+ *                 .destinationPortRange("80/80")
+ *                 .sourceCidrBlock("10.0.0.0/8")
+ *                 .sourcePortRange("80/80")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

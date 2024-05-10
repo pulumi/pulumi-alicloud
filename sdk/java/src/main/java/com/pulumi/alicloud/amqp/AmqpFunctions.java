@@ -39,7 +39,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -61,13 +62,14 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var examples = AmqpFunctions.getBindings(GetBindingsArgs.builder()
-     *             .instanceId(&#34;amqp-cn-xxxxx&#34;)
-     *             .virtualHostName(&#34;my-vh&#34;)
+     *             .instanceId("amqp-cn-xxxxx")
+     *             .virtualHostName("my-vh")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -84,7 +86,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -106,13 +109,14 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var examples = AmqpFunctions.getBindings(GetBindingsArgs.builder()
-     *             .instanceId(&#34;amqp-cn-xxxxx&#34;)
-     *             .virtualHostName(&#34;my-vh&#34;)
+     *             .instanceId("amqp-cn-xxxxx")
+     *             .virtualHostName("my-vh")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -129,7 +133,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -151,13 +156,14 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var examples = AmqpFunctions.getBindings(GetBindingsArgs.builder()
-     *             .instanceId(&#34;amqp-cn-xxxxx&#34;)
-     *             .virtualHostName(&#34;my-vh&#34;)
+     *             .instanceId("amqp-cn-xxxxx")
+     *             .virtualHostName("my-vh")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -174,7 +180,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -196,13 +203,14 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var examples = AmqpFunctions.getBindings(GetBindingsArgs.builder()
-     *             .instanceId(&#34;amqp-cn-xxxxx&#34;)
-     *             .virtualHostName(&#34;my-vh&#34;)
+     *             .instanceId("amqp-cn-xxxxx")
+     *             .virtualHostName("my-vh")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -219,7 +227,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -241,24 +250,25 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
      *             .ids(            
-     *                 &#34;my-Exchange-1&#34;,
-     *                 &#34;my-Exchange-2&#34;)
+     *                 "my-Exchange-1",
+     *                 "my-Exchange-2")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpExchangeId1&#34;, ids.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId1", ids.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
      *         final var nameRegex = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
-     *             .nameRegex(&#34;^my-Exchange&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
+     *             .nameRegex("^my-Exchange")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpExchangeId2&#34;, nameRegex.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId2", nameRegex.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -275,7 +285,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -297,24 +308,25 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
      *             .ids(            
-     *                 &#34;my-Exchange-1&#34;,
-     *                 &#34;my-Exchange-2&#34;)
+     *                 "my-Exchange-1",
+     *                 "my-Exchange-2")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpExchangeId1&#34;, ids.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId1", ids.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
      *         final var nameRegex = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
-     *             .nameRegex(&#34;^my-Exchange&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
+     *             .nameRegex("^my-Exchange")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpExchangeId2&#34;, nameRegex.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId2", nameRegex.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -331,7 +343,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -353,24 +366,25 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
      *             .ids(            
-     *                 &#34;my-Exchange-1&#34;,
-     *                 &#34;my-Exchange-2&#34;)
+     *                 "my-Exchange-1",
+     *                 "my-Exchange-2")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpExchangeId1&#34;, ids.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId1", ids.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
      *         final var nameRegex = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
-     *             .nameRegex(&#34;^my-Exchange&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
+     *             .nameRegex("^my-Exchange")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpExchangeId2&#34;, nameRegex.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId2", nameRegex.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -387,7 +401,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -409,24 +424,25 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
      *             .ids(            
-     *                 &#34;my-Exchange-1&#34;,
-     *                 &#34;my-Exchange-2&#34;)
+     *                 "my-Exchange-1",
+     *                 "my-Exchange-2")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpExchangeId1&#34;, ids.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId1", ids.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
      *         final var nameRegex = AmqpFunctions.getExchanges(GetExchangesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
-     *             .nameRegex(&#34;^my-Exchange&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
+     *             .nameRegex("^my-Exchange")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpExchangeId2&#34;, nameRegex.applyValue(getExchangesResult -&gt; getExchangesResult.exchanges()[0].id()));
+     *         ctx.export("amqpExchangeId2", nameRegex.applyValue(getExchangesResult -> getExchangesResult.exchanges()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -443,7 +459,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -466,19 +483,20 @@ public final class AmqpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(            
-     *                 &#34;amqp-abc12345&#34;,
-     *                 &#34;amqp-abc34567&#34;)
+     *                 "amqp-abc12345",
+     *                 "amqp-abc34567")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -495,7 +513,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -518,19 +537,20 @@ public final class AmqpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(            
-     *                 &#34;amqp-abc12345&#34;,
-     *                 &#34;amqp-abc34567&#34;)
+     *                 "amqp-abc12345",
+     *                 "amqp-abc34567")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -547,7 +567,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -570,19 +591,20 @@ public final class AmqpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(            
-     *                 &#34;amqp-abc12345&#34;,
-     *                 &#34;amqp-abc34567&#34;)
+     *                 "amqp-abc12345",
+     *                 "amqp-abc34567")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -599,7 +621,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -622,19 +645,20 @@ public final class AmqpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(            
-     *                 &#34;amqp-abc12345&#34;,
-     *                 &#34;amqp-abc34567&#34;)
+     *                 "amqp-abc12345",
+     *                 "amqp-abc34567")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -651,7 +675,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -674,19 +699,20 @@ public final class AmqpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(            
-     *                 &#34;amqp-abc12345&#34;,
-     *                 &#34;amqp-abc34567&#34;)
+     *                 "amqp-abc12345",
+     *                 "amqp-abc34567")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -703,7 +729,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -726,19 +753,20 @@ public final class AmqpFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(            
-     *                 &#34;amqp-abc12345&#34;,
-     *                 &#34;amqp-abc34567&#34;)
+     *                 "amqp-abc12345",
+     *                 "amqp-abc34567")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *         final var nameRegex = AmqpFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;^my-Instance&#34;)
+     *             .nameRegex("^my-Instance")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpInstanceId2&#34;, nameRegex.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("amqpInstanceId2", nameRegex.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -755,7 +783,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -777,24 +806,25 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getQueues(GetQueuesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
      *             .ids(            
-     *                 &#34;my-Queue-1&#34;,
-     *                 &#34;my-Queue-2&#34;)
+     *                 "my-Queue-1",
+     *                 "my-Queue-2")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpQueueId1&#34;, ids.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId1", ids.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
      *         final var nameRegex = AmqpFunctions.getQueues(GetQueuesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
-     *             .nameRegex(&#34;^my-Queue&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
+     *             .nameRegex("^my-Queue")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpQueueId2&#34;, nameRegex.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId2", nameRegex.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -811,7 +841,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -833,24 +864,25 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getQueues(GetQueuesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
      *             .ids(            
-     *                 &#34;my-Queue-1&#34;,
-     *                 &#34;my-Queue-2&#34;)
+     *                 "my-Queue-1",
+     *                 "my-Queue-2")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpQueueId1&#34;, ids.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId1", ids.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
      *         final var nameRegex = AmqpFunctions.getQueues(GetQueuesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
-     *             .nameRegex(&#34;^my-Queue&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
+     *             .nameRegex("^my-Queue")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpQueueId2&#34;, nameRegex.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId2", nameRegex.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -867,7 +899,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -889,24 +922,25 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getQueues(GetQueuesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
      *             .ids(            
-     *                 &#34;my-Queue-1&#34;,
-     *                 &#34;my-Queue-2&#34;)
+     *                 "my-Queue-1",
+     *                 "my-Queue-2")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpQueueId1&#34;, ids.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId1", ids.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
      *         final var nameRegex = AmqpFunctions.getQueues(GetQueuesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
-     *             .nameRegex(&#34;^my-Queue&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
+     *             .nameRegex("^my-Queue")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpQueueId2&#34;, nameRegex.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId2", nameRegex.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -923,7 +957,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -945,24 +980,25 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getQueues(GetQueuesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
      *             .ids(            
-     *                 &#34;my-Queue-1&#34;,
-     *                 &#34;my-Queue-2&#34;)
+     *                 "my-Queue-1",
+     *                 "my-Queue-2")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpQueueId1&#34;, ids.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId1", ids.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
      *         final var nameRegex = AmqpFunctions.getQueues(GetQueuesArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .virtualHostName(&#34;my-VirtualHost&#34;)
-     *             .nameRegex(&#34;^my-Queue&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .virtualHostName("my-VirtualHost")
+     *             .nameRegex("^my-Queue")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpQueueId2&#34;, nameRegex.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         ctx.export("amqpQueueId2", nameRegex.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -977,7 +1013,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -999,13 +1036,14 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AmqpFunctions.getStaticAccounts(GetStaticAccountsArgs.builder()
-     *             .instanceId(&#34;amqp-cn-0ju2y01zs001&#34;)
+     *             .instanceId("amqp-cn-0ju2y01zs001")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAmqpStaticAccountExampleId&#34;, default_.accounts()[0].id());
+     *         ctx.export("alicloudAmqpStaticAccountExampleId", default_.accounts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1020,7 +1058,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1042,13 +1081,14 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AmqpFunctions.getStaticAccounts(GetStaticAccountsArgs.builder()
-     *             .instanceId(&#34;amqp-cn-0ju2y01zs001&#34;)
+     *             .instanceId("amqp-cn-0ju2y01zs001")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAmqpStaticAccountExampleId&#34;, default_.accounts()[0].id());
+     *         ctx.export("alicloudAmqpStaticAccountExampleId", default_.accounts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1063,7 +1103,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1085,13 +1126,14 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AmqpFunctions.getStaticAccounts(GetStaticAccountsArgs.builder()
-     *             .instanceId(&#34;amqp-cn-0ju2y01zs001&#34;)
+     *             .instanceId("amqp-cn-0ju2y01zs001")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAmqpStaticAccountExampleId&#34;, default_.accounts()[0].id());
+     *         ctx.export("alicloudAmqpStaticAccountExampleId", default_.accounts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1106,7 +1148,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1128,13 +1171,14 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AmqpFunctions.getStaticAccounts(GetStaticAccountsArgs.builder()
-     *             .instanceId(&#34;amqp-cn-0ju2y01zs001&#34;)
+     *             .instanceId("amqp-cn-0ju2y01zs001")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAmqpStaticAccountExampleId&#34;, default_.accounts()[0].id());
+     *         ctx.export("alicloudAmqpStaticAccountExampleId", default_.accounts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1149,7 +1193,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1171,13 +1216,14 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AmqpFunctions.getStaticAccounts(GetStaticAccountsArgs.builder()
-     *             .instanceId(&#34;amqp-cn-0ju2y01zs001&#34;)
+     *             .instanceId("amqp-cn-0ju2y01zs001")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAmqpStaticAccountExampleId&#34;, default_.accounts()[0].id());
+     *         ctx.export("alicloudAmqpStaticAccountExampleId", default_.accounts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1192,7 +1238,8 @@ public final class AmqpFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1214,13 +1261,14 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = AmqpFunctions.getStaticAccounts(GetStaticAccountsArgs.builder()
-     *             .instanceId(&#34;amqp-cn-0ju2y01zs001&#34;)
+     *             .instanceId("amqp-cn-0ju2y01zs001")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudAmqpStaticAccountExampleId&#34;, default_.accounts()[0].id());
+     *         ctx.export("alicloudAmqpStaticAccountExampleId", default_.accounts()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1237,7 +1285,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1259,22 +1308,23 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .instanceId("amqp-abc12345")
      *             .ids(            
-     *                 &#34;my-VirtualHost-1&#34;,
-     *                 &#34;my-VirtualHost-2&#34;)
+     *                 "my-VirtualHost-1",
+     *                 "my-VirtualHost-2")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpVirtualHostId1&#34;, ids.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId1", ids.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
      *         final var nameRegex = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .nameRegex(&#34;^my-VirtualHost&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .nameRegex("^my-VirtualHost")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpVirtualHostId2&#34;, nameRegex.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId2", nameRegex.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1291,7 +1341,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1313,22 +1364,23 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .instanceId("amqp-abc12345")
      *             .ids(            
-     *                 &#34;my-VirtualHost-1&#34;,
-     *                 &#34;my-VirtualHost-2&#34;)
+     *                 "my-VirtualHost-1",
+     *                 "my-VirtualHost-2")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpVirtualHostId1&#34;, ids.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId1", ids.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
      *         final var nameRegex = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .nameRegex(&#34;^my-VirtualHost&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .nameRegex("^my-VirtualHost")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpVirtualHostId2&#34;, nameRegex.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId2", nameRegex.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1345,7 +1397,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1367,22 +1420,23 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .instanceId("amqp-abc12345")
      *             .ids(            
-     *                 &#34;my-VirtualHost-1&#34;,
-     *                 &#34;my-VirtualHost-2&#34;)
+     *                 "my-VirtualHost-1",
+     *                 "my-VirtualHost-2")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpVirtualHostId1&#34;, ids.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId1", ids.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
      *         final var nameRegex = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .nameRegex(&#34;^my-VirtualHost&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .nameRegex("^my-VirtualHost")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpVirtualHostId2&#34;, nameRegex.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId2", nameRegex.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1399,7 +1453,8 @@ public final class AmqpFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1421,22 +1476,23 @@ public final class AmqpFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
+     *             .instanceId("amqp-abc12345")
      *             .ids(            
-     *                 &#34;my-VirtualHost-1&#34;,
-     *                 &#34;my-VirtualHost-2&#34;)
+     *                 "my-VirtualHost-1",
+     *                 "my-VirtualHost-2")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpVirtualHostId1&#34;, ids.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId1", ids.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
      *         final var nameRegex = AmqpFunctions.getVirtualHosts(GetVirtualHostsArgs.builder()
-     *             .instanceId(&#34;amqp-abc12345&#34;)
-     *             .nameRegex(&#34;^my-VirtualHost&#34;)
+     *             .instanceId("amqp-abc12345")
+     *             .nameRegex("^my-VirtualHost")
      *             .build());
      * 
-     *         ctx.export(&#34;amqpVirtualHostId2&#34;, nameRegex.applyValue(getVirtualHostsResult -&gt; getVirtualHostsResult.hosts()[0].id()));
+     *         ctx.export("amqpVirtualHostId2", nameRegex.applyValue(getVirtualHostsResult -> getVirtualHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -24,7 +24,8 @@ public final class RdcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -48,8 +49,8 @@ public final class RdcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccOrganizations-Organizations&#34;);
-     *         var default_ = new Organization(&#34;default&#34;, OrganizationArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-testAccOrganizations-Organizations");
+     *         var default_ = new Organization("default", OrganizationArgs.builder()        
      *             .organizationName(name)
      *             .source(name)
      *             .build());
@@ -58,15 +59,16 @@ public final class RdcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;rdcOrganizationId1&#34;, ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult).applyValue(ids -&gt; ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id())));
+     *         ctx.export("rdcOrganizationId1", ids.applyValue(getOrganizationsResult -> getOrganizationsResult).applyValue(ids -> ids.applyValue(getOrganizationsResult -> getOrganizationsResult.id())));
      *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
-     *             .nameRegex(&#34;^my-Organization&#34;)
+     *             .nameRegex("^my-Organization")
      *             .build());
      * 
-     *         ctx.export(&#34;rdcOrganizationId2&#34;, nameRegex.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id()));
+     *         ctx.export("rdcOrganizationId2", nameRegex.applyValue(getOrganizationsResult -> getOrganizationsResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -83,7 +85,8 @@ public final class RdcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -107,8 +110,8 @@ public final class RdcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccOrganizations-Organizations&#34;);
-     *         var default_ = new Organization(&#34;default&#34;, OrganizationArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-testAccOrganizations-Organizations");
+     *         var default_ = new Organization("default", OrganizationArgs.builder()        
      *             .organizationName(name)
      *             .source(name)
      *             .build());
@@ -117,15 +120,16 @@ public final class RdcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;rdcOrganizationId1&#34;, ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult).applyValue(ids -&gt; ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id())));
+     *         ctx.export("rdcOrganizationId1", ids.applyValue(getOrganizationsResult -> getOrganizationsResult).applyValue(ids -> ids.applyValue(getOrganizationsResult -> getOrganizationsResult.id())));
      *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
-     *             .nameRegex(&#34;^my-Organization&#34;)
+     *             .nameRegex("^my-Organization")
      *             .build());
      * 
-     *         ctx.export(&#34;rdcOrganizationId2&#34;, nameRegex.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id()));
+     *         ctx.export("rdcOrganizationId2", nameRegex.applyValue(getOrganizationsResult -> getOrganizationsResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -142,7 +146,8 @@ public final class RdcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -166,8 +171,8 @@ public final class RdcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccOrganizations-Organizations&#34;);
-     *         var default_ = new Organization(&#34;default&#34;, OrganizationArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-testAccOrganizations-Organizations");
+     *         var default_ = new Organization("default", OrganizationArgs.builder()        
      *             .organizationName(name)
      *             .source(name)
      *             .build());
@@ -176,15 +181,16 @@ public final class RdcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;rdcOrganizationId1&#34;, ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult).applyValue(ids -&gt; ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id())));
+     *         ctx.export("rdcOrganizationId1", ids.applyValue(getOrganizationsResult -> getOrganizationsResult).applyValue(ids -> ids.applyValue(getOrganizationsResult -> getOrganizationsResult.id())));
      *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
-     *             .nameRegex(&#34;^my-Organization&#34;)
+     *             .nameRegex("^my-Organization")
      *             .build());
      * 
-     *         ctx.export(&#34;rdcOrganizationId2&#34;, nameRegex.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id()));
+     *         ctx.export("rdcOrganizationId2", nameRegex.applyValue(getOrganizationsResult -> getOrganizationsResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -201,7 +207,8 @@ public final class RdcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -225,8 +232,8 @@ public final class RdcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccOrganizations-Organizations&#34;);
-     *         var default_ = new Organization(&#34;default&#34;, OrganizationArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-testAccOrganizations-Organizations");
+     *         var default_ = new Organization("default", OrganizationArgs.builder()        
      *             .organizationName(name)
      *             .source(name)
      *             .build());
@@ -235,15 +242,16 @@ public final class RdcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;rdcOrganizationId1&#34;, ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult).applyValue(ids -&gt; ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id())));
+     *         ctx.export("rdcOrganizationId1", ids.applyValue(getOrganizationsResult -> getOrganizationsResult).applyValue(ids -> ids.applyValue(getOrganizationsResult -> getOrganizationsResult.id())));
      *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
-     *             .nameRegex(&#34;^my-Organization&#34;)
+     *             .nameRegex("^my-Organization")
      *             .build());
      * 
-     *         ctx.export(&#34;rdcOrganizationId2&#34;, nameRegex.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id()));
+     *         ctx.export("rdcOrganizationId2", nameRegex.applyValue(getOrganizationsResult -> getOrganizationsResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -260,7 +268,8 @@ public final class RdcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -284,8 +293,8 @@ public final class RdcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccOrganizations-Organizations&#34;);
-     *         var default_ = new Organization(&#34;default&#34;, OrganizationArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-testAccOrganizations-Organizations");
+     *         var default_ = new Organization("default", OrganizationArgs.builder()        
      *             .organizationName(name)
      *             .source(name)
      *             .build());
@@ -294,15 +303,16 @@ public final class RdcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;rdcOrganizationId1&#34;, ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult).applyValue(ids -&gt; ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id())));
+     *         ctx.export("rdcOrganizationId1", ids.applyValue(getOrganizationsResult -> getOrganizationsResult).applyValue(ids -> ids.applyValue(getOrganizationsResult -> getOrganizationsResult.id())));
      *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
-     *             .nameRegex(&#34;^my-Organization&#34;)
+     *             .nameRegex("^my-Organization")
      *             .build());
      * 
-     *         ctx.export(&#34;rdcOrganizationId2&#34;, nameRegex.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id()));
+     *         ctx.export("rdcOrganizationId2", nameRegex.applyValue(getOrganizationsResult -> getOrganizationsResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -319,7 +329,8 @@ public final class RdcFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -343,8 +354,8 @@ public final class RdcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccOrganizations-Organizations&#34;);
-     *         var default_ = new Organization(&#34;default&#34;, OrganizationArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-testAccOrganizations-Organizations");
+     *         var default_ = new Organization("default", OrganizationArgs.builder()        
      *             .organizationName(name)
      *             .source(name)
      *             .build());
@@ -353,15 +364,16 @@ public final class RdcFunctions {
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;rdcOrganizationId1&#34;, ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult).applyValue(ids -&gt; ids.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id())));
+     *         ctx.export("rdcOrganizationId1", ids.applyValue(getOrganizationsResult -> getOrganizationsResult).applyValue(ids -> ids.applyValue(getOrganizationsResult -> getOrganizationsResult.id())));
      *         final var nameRegex = RdcFunctions.getOrganizations(GetOrganizationsArgs.builder()
-     *             .nameRegex(&#34;^my-Organization&#34;)
+     *             .nameRegex("^my-Organization")
      *             .build());
      * 
-     *         ctx.export(&#34;rdcOrganizationId2&#34;, nameRegex.applyValue(getOrganizationsResult -&gt; getOrganizationsResult.id()));
+     *         ctx.export("rdcOrganizationId2", nameRegex.applyValue(getOrganizationsResult -> getOrganizationsResult.id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

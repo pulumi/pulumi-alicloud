@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,26 +51,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new ServiceTopic(&#34;default&#34;, ServiceTopicArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new ServiceTopic("default", ServiceTopicArgs.builder()        
  *             .topicName(name)
  *             .maxMessageSize(12357)
  *             .loggingEnabled(true)
  *             .build());
  * 
- *         var defaultServiceSubscription = new ServiceSubscription(&#34;defaultServiceSubscription&#34;, ServiceSubscriptionArgs.builder()        
+ *         var defaultServiceSubscription = new ServiceSubscription("defaultServiceSubscription", ServiceSubscriptionArgs.builder()        
  *             .topicName(default_.topicName())
  *             .subscriptionName(name)
- *             .endpoint(&#34;http://example.com&#34;)
- *             .pushType(&#34;http&#34;)
- *             .filterTag(&#34;tf-example&#34;)
- *             .notifyContentFormat(&#34;XML&#34;)
- *             .notifyStrategy(&#34;BACKOFF_RETRY&#34;)
+ *             .endpoint("http://example.com")
+ *             .pushType("http")
+ *             .filterTag("tf-example")
+ *             .notifyContentFormat("XML")
+ *             .notifyStrategy("BACKOFF_RETRY")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

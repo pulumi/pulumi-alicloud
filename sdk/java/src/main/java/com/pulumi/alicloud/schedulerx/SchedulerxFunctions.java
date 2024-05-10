@@ -24,7 +24,8 @@ public final class SchedulerxFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -47,15 +48,16 @@ public final class SchedulerxFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SchedulerxFunctions.getNamespaces();
      * 
-     *         ctx.export(&#34;schedulerxNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;schedulerxNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -72,7 +74,8 @@ public final class SchedulerxFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -95,15 +98,16 @@ public final class SchedulerxFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SchedulerxFunctions.getNamespaces();
      * 
-     *         ctx.export(&#34;schedulerxNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;schedulerxNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -120,7 +124,8 @@ public final class SchedulerxFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -143,15 +148,16 @@ public final class SchedulerxFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SchedulerxFunctions.getNamespaces();
      * 
-     *         ctx.export(&#34;schedulerxNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;schedulerxNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -168,7 +174,8 @@ public final class SchedulerxFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -191,15 +198,16 @@ public final class SchedulerxFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SchedulerxFunctions.getNamespaces();
      * 
-     *         ctx.export(&#34;schedulerxNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;schedulerxNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -216,7 +224,8 @@ public final class SchedulerxFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -239,15 +248,16 @@ public final class SchedulerxFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SchedulerxFunctions.getNamespaces();
      * 
-     *         ctx.export(&#34;schedulerxNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;schedulerxNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -264,7 +274,8 @@ public final class SchedulerxFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -287,15 +298,16 @@ public final class SchedulerxFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SchedulerxFunctions.getNamespaces();
      * 
-     *         ctx.export(&#34;schedulerxNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *         final var nameRegex = SchedulerxFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .nameRegex(&#34;^my-Namespace&#34;)
+     *             .nameRegex("^my-Namespace")
      *             .build());
      * 
-     *         ctx.export(&#34;schedulerxNamespaceId2&#34;, nameRegex.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("schedulerxNamespaceId2", nameRegex.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

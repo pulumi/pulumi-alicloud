@@ -18,14 +18,14 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
     public static final ServerGroupServerAttachmentArgs Empty = new ServerGroupServerAttachmentArgs();
 
     /**
-     * The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * @return The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> description() {
@@ -157,7 +157,7 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+         * @param description The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ServerGroupServerAttachmentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+         * @param description The description of the servers. The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 

@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,40 +58,40 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-config-name&#34;);
+ *         final var name = config.get("name").orElse("tf-example-config-name");
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var rule1 = new Rule(&#34;rule1&#34;, RuleArgs.builder()        
+ *         var rule1 = new Rule("rule1", RuleArgs.builder()        
  *             .description(name)
- *             .sourceOwner(&#34;ALIYUN&#34;)
- *             .sourceIdentifier(&#34;ram-user-ak-create-date-expired-check&#34;)
+ *             .sourceOwner("ALIYUN")
+ *             .sourceIdentifier("ram-user-ak-create-date-expired-check")
  *             .riskLevel(1)
- *             .maximumExecutionFrequency(&#34;TwentyFour_Hours&#34;)
+ *             .maximumExecutionFrequency("TwentyFour_Hours")
  *             .regionIdsScope(default_.regions()[0].id())
- *             .configRuleTriggerTypes(&#34;ScheduledNotification&#34;)
- *             .resourceTypesScopes(&#34;ACS::RAM::User&#34;)
- *             .ruleName(&#34;ciscompliancecheck_ram-user-ak-create-date-expired-check&#34;)
- *             .inputParameters(Map.of(&#34;days&#34;, &#34;90&#34;))
+ *             .configRuleTriggerTypes("ScheduledNotification")
+ *             .resourceTypesScopes("ACS::RAM::User")
+ *             .ruleName("ciscompliancecheck_ram-user-ak-create-date-expired-check")
+ *             .inputParameters(Map.of("days", "90"))
  *             .build());
  * 
- *         var rule2 = new Rule(&#34;rule2&#34;, RuleArgs.builder()        
+ *         var rule2 = new Rule("rule2", RuleArgs.builder()        
  *             .description(name)
- *             .sourceOwner(&#34;ALIYUN&#34;)
- *             .sourceIdentifier(&#34;adb-cluster-maintain-time-check&#34;)
+ *             .sourceOwner("ALIYUN")
+ *             .sourceIdentifier("adb-cluster-maintain-time-check")
  *             .riskLevel(2)
  *             .regionIdsScope(default_.regions()[0].id())
- *             .configRuleTriggerTypes(&#34;ScheduledNotification&#34;)
- *             .resourceTypesScopes(&#34;ACS::ADB::DBCluster&#34;)
- *             .ruleName(&#34;governance-evaluation-adb-cluster-maintain-time-check&#34;)
- *             .inputParameters(Map.of(&#34;maintainTimes&#34;, &#34;02:00-04:00,06:00-08:00,12:00-13:00&#34;))
+ *             .configRuleTriggerTypes("ScheduledNotification")
+ *             .resourceTypesScopes("ACS::ADB::DBCluster")
+ *             .ruleName("governance-evaluation-adb-cluster-maintain-time-check")
+ *             .inputParameters(Map.of("maintainTimes", "02:00-04:00,06:00-08:00,12:00-13:00"))
  *             .build());
  * 
- *         var defaultCompliancePack = new CompliancePack(&#34;defaultCompliancePack&#34;, CompliancePackArgs.builder()        
+ *         var defaultCompliancePack = new CompliancePack("defaultCompliancePack", CompliancePackArgs.builder()        
  *             .compliancePackName(name)
- *             .description(&#34;CloudGovernanceCenter evaluation&#34;)
- *             .riskLevel(&#34;2&#34;)
+ *             .description("CloudGovernanceCenter evaluation")
+ *             .riskLevel("2")
  *             .configRuleIds(            
  *                 CompliancePackConfigRuleIdArgs.builder()
  *                     .configRuleId(rule1.id())
@@ -102,7 +103,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,14 +54,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var default = SimpleapplicationserverFunctions.getImages();
  * 
  *         final var defaultGetServerPlans = SimpleapplicationserverFunctions.getServerPlans();
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .paymentType(&#34;Subscription&#34;)
- *             .planId(defaultGetServerPlans.applyValue(getServerPlansResult -&gt; getServerPlansResult.plans()[0].id()))
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .paymentType("Subscription")
+ *             .planId(defaultGetServerPlans.applyValue(getServerPlansResult -> getServerPlansResult.plans()[0].id()))
  *             .instanceName(name)
  *             .imageId(default_.images()[0].id())
  *             .period(1)
@@ -71,14 +72,15 @@ import javax.annotation.Nullable;
  *             .instanceId(defaultInstance.id())
  *             .build());
  * 
- *         var defaultSnapshot = new Snapshot(&#34;defaultSnapshot&#34;, SnapshotArgs.builder()        
- *             .diskId(defaultGetServerDisks.applyValue(getServerDisksResult -&gt; getServerDisksResult).applyValue(defaultGetServerDisks -&gt; defaultGetServerDisks.applyValue(getServerDisksResult -&gt; getServerDisksResult.ids()[0])))
+ *         var defaultSnapshot = new Snapshot("defaultSnapshot", SnapshotArgs.builder()        
+ *             .diskId(defaultGetServerDisks.applyValue(getServerDisksResult -> getServerDisksResult).applyValue(defaultGetServerDisks -> defaultGetServerDisks.applyValue(getServerDisksResult -> getServerDisksResult.ids()[0])))
  *             .snapshotName(name)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

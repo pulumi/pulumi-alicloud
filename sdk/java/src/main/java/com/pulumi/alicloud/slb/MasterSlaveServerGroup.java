@@ -37,7 +37,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -83,73 +84,73 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var msServerGroup = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableDiskCategory("cloud_efficiency")
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var msServerGroupGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(msServerGroup.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .availabilityZone(msServerGroup.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .eniAmount(2)
  *             .build());
  * 
  *         final var image = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .nameRegex("^ubuntu_18.*64")
  *             .mostRecent(true)
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
- *         final var slbMasterSlaveServerGroup = config.get(&#34;slbMasterSlaveServerGroup&#34;).orElse(&#34;forSlbMasterSlaveServerGroup&#34;);
- *         var main = new Network(&#34;main&#34;, NetworkArgs.builder()        
+ *         final var slbMasterSlaveServerGroup = config.get("slbMasterSlaveServerGroup").orElse("forSlbMasterSlaveServerGroup");
+ *         var main = new Network("main", NetworkArgs.builder()        
  *             .vpcName(slbMasterSlaveServerGroup)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var mainSwitch = new Switch(&#34;mainSwitch&#34;, SwitchArgs.builder()        
+ *         var mainSwitch = new Switch("mainSwitch", SwitchArgs.builder()        
  *             .vpcId(main.id())
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
- *             .zoneId(msServerGroup.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cidrBlock("172.16.0.0/16")
+ *             .zoneId(msServerGroup.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(slbMasterSlaveServerGroup)
  *             .build());
  * 
- *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
  *             .name(slbMasterSlaveServerGroup)
  *             .vpcId(main.id())
  *             .build());
  * 
- *         for (var i = 0; i &lt; 2; i++) {
- *             new Instance(&#34;msServerGroupInstance-&#34; + i, InstanceArgs.builder()            
- *                 .imageId(image.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *                 .instanceType(msServerGroupGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *         for (var i = 0; i < 2; i++) {
+ *             new Instance("msServerGroupInstance-" + i, InstanceArgs.builder()            
+ *                 .imageId(image.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *                 .instanceType(msServerGroupGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *                 .instanceName(slbMasterSlaveServerGroup)
  *                 .securityGroups(group.id())
- *                 .internetChargeType(&#34;PayByTraffic&#34;)
- *                 .internetMaxBandwidthOut(&#34;10&#34;)
- *                 .availabilityZone(msServerGroup.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *                 .instanceChargeType(&#34;PostPaid&#34;)
- *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *                 .internetChargeType("PayByTraffic")
+ *                 .internetMaxBandwidthOut("10")
+ *                 .availabilityZone(msServerGroup.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *                 .instanceChargeType("PostPaid")
+ *                 .systemDiskCategory("cloud_efficiency")
  *                 .vswitchId(mainSwitch.id())
  *                 .build());
  * 
  *         
  * }
- *         var msServerGroupApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;msServerGroupApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *         var msServerGroupApplicationLoadBalancer = new ApplicationLoadBalancer("msServerGroupApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
  *             .loadBalancerName(slbMasterSlaveServerGroup)
  *             .vswitchId(mainSwitch.id())
- *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
+ *             .loadBalancerSpec("slb.s2.small")
  *             .build());
  * 
- *         var msServerGroupEcsNetworkInterface = new EcsNetworkInterface(&#34;msServerGroupEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+ *         var msServerGroupEcsNetworkInterface = new EcsNetworkInterface("msServerGroupEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
  *             .networkInterfaceName(slbMasterSlaveServerGroup)
  *             .vswitchId(mainSwitch.id())
  *             .securityGroupIds(group.id())
  *             .build());
  * 
- *         var msServerGroupEcsNetworkInterfaceAttachment = new EcsNetworkInterfaceAttachment(&#34;msServerGroupEcsNetworkInterfaceAttachment&#34;, EcsNetworkInterfaceAttachmentArgs.builder()        
+ *         var msServerGroupEcsNetworkInterfaceAttachment = new EcsNetworkInterfaceAttachment("msServerGroupEcsNetworkInterfaceAttachment", EcsNetworkInterfaceAttachmentArgs.builder()        
  *             .instanceId(msServerGroupInstance[0].id())
  *             .networkInterfaceId(msServerGroupEcsNetworkInterface.id())
  *             .build());
  * 
- *         var groupMasterSlaveServerGroup = new MasterSlaveServerGroup(&#34;groupMasterSlaveServerGroup&#34;, MasterSlaveServerGroupArgs.builder()        
+ *         var groupMasterSlaveServerGroup = new MasterSlaveServerGroup("groupMasterSlaveServerGroup", MasterSlaveServerGroupArgs.builder()        
  *             .loadBalancerId(msServerGroupApplicationLoadBalancer.id())
  *             .name(slbMasterSlaveServerGroup)
  *             .servers(            
@@ -157,37 +158,38 @@ import javax.annotation.Nullable;
  *                     .serverId(msServerGroupInstance[0].id())
  *                     .port(100)
  *                     .weight(100)
- *                     .serverType(&#34;Master&#34;)
+ *                     .serverType("Master")
  *                     .build(),
  *                 MasterSlaveServerGroupServerArgs.builder()
  *                     .serverId(msServerGroupInstance[1].id())
  *                     .port(100)
  *                     .weight(100)
- *                     .serverType(&#34;Slave&#34;)
+ *                     .serverType("Slave")
  *                     .build())
  *             .build());
  * 
- *         var tcp = new Listener(&#34;tcp&#34;, ListenerArgs.builder()        
+ *         var tcp = new Listener("tcp", ListenerArgs.builder()        
  *             .loadBalancerId(msServerGroupApplicationLoadBalancer.id())
  *             .masterSlaveServerGroupId(groupMasterSlaveServerGroup.id())
- *             .frontendPort(&#34;22&#34;)
- *             .protocol(&#34;tcp&#34;)
- *             .bandwidth(&#34;10&#34;)
- *             .healthCheckType(&#34;tcp&#34;)
+ *             .frontendPort("22")
+ *             .protocol("tcp")
+ *             .bandwidth("10")
+ *             .healthCheckType("tcp")
  *             .persistenceTimeout(3600)
  *             .healthyThreshold(8)
  *             .unhealthyThreshold(8)
  *             .healthCheckTimeout(8)
  *             .healthCheckInterval(5)
- *             .healthCheckHttpCode(&#34;http_2xx&#34;)
+ *             .healthCheckHttpCode("http_2xx")
  *             .healthCheckConnectPort(20)
- *             .healthCheckUri(&#34;/console&#34;)
+ *             .healthCheckUri("/console")
  *             .establishedTimeout(600)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Block servers

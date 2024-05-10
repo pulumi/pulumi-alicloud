@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,16 +49,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EnterpriseLogicDatabase(&#34;default&#34;, EnterpriseLogicDatabaseArgs.builder()        
- *             .alias(&#34;TF_logic_db_test&#34;)
+ *         var default_ = new EnterpriseLogicDatabase("default", EnterpriseLogicDatabaseArgs.builder()        
+ *             .alias("TF_logic_db_test")
  *             .databaseIds(            
- *                 &#34;35617919&#34;,
- *                 &#34;35617920&#34;)
+ *                 "35617919",
+ *                 "35617920")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

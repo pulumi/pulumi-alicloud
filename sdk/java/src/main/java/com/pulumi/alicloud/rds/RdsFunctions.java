@@ -66,7 +66,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -88,14 +89,15 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsAccountId&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstRdsAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -112,7 +114,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -134,14 +137,15 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsAccountId&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstRdsAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -158,7 +162,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -180,14 +185,15 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsAccountId&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstRdsAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -204,7 +210,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -226,14 +233,15 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .dbInstanceId("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsAccountId&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstRdsAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -248,7 +256,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -271,13 +280,14 @@ public final class RdsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
+     *             .engine("MySQL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsCharacterSetNames&#34;, names.applyValue(getCharacterSetNamesResult -&gt; getCharacterSetNamesResult.names()[0]));
+     *         ctx.export("firstRdsCharacterSetNames", names.applyValue(getCharacterSetNamesResult -> getCharacterSetNamesResult.names()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -292,7 +302,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -315,13 +326,14 @@ public final class RdsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
+     *             .engine("MySQL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsCharacterSetNames&#34;, names.applyValue(getCharacterSetNamesResult -&gt; getCharacterSetNamesResult.names()[0]));
+     *         ctx.export("firstRdsCharacterSetNames", names.applyValue(getCharacterSetNamesResult -> getCharacterSetNamesResult.names()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -336,7 +348,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -359,13 +372,14 @@ public final class RdsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
+     *             .engine("MySQL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsCharacterSetNames&#34;, names.applyValue(getCharacterSetNamesResult -&gt; getCharacterSetNamesResult.names()[0]));
+     *         ctx.export("firstRdsCharacterSetNames", names.applyValue(getCharacterSetNamesResult -> getCharacterSetNamesResult.names()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -380,7 +394,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -403,13 +418,14 @@ public final class RdsFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var names = RdsFunctions.getCharacterSetNames(GetCharacterSetNamesArgs.builder()
-     *             .engine(&#34;MySQL&#34;)
+     *             .engine("MySQL")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsCharacterSetNames&#34;, names.applyValue(getCharacterSetNamesResult -&gt; getCharacterSetNamesResult.names()[0]));
+     *         ctx.export("firstRdsCharacterSetNames", names.applyValue(getCharacterSetNamesResult -> getCharacterSetNamesResult.names()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -426,7 +442,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -448,15 +465,16 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = RdsFunctions.getClassDetails(GetClassDetailsArgs.builder()
-     *             .commodityCode(&#34;bards&#34;)
-     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
-     *             .engineVersion(&#34;8.0&#34;)
-     *             .engine(&#34;MySQL&#34;)
+     *             .commodityCode("bards")
+     *             .classCode("mysql.n4.medium.2c")
+     *             .engineVersion("8.0")
+     *             .engine("MySQL")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -473,7 +491,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -495,15 +514,16 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = RdsFunctions.getClassDetails(GetClassDetailsArgs.builder()
-     *             .commodityCode(&#34;bards&#34;)
-     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
-     *             .engineVersion(&#34;8.0&#34;)
-     *             .engine(&#34;MySQL&#34;)
+     *             .commodityCode("bards")
+     *             .classCode("mysql.n4.medium.2c")
+     *             .engineVersion("8.0")
+     *             .engine("MySQL")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -520,7 +540,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -542,15 +563,16 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = RdsFunctions.getClassDetails(GetClassDetailsArgs.builder()
-     *             .commodityCode(&#34;bards&#34;)
-     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
-     *             .engineVersion(&#34;8.0&#34;)
-     *             .engine(&#34;MySQL&#34;)
+     *             .commodityCode("bards")
+     *             .classCode("mysql.n4.medium.2c")
+     *             .engineVersion("8.0")
+     *             .engine("MySQL")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -567,7 +589,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -589,15 +612,16 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = RdsFunctions.getClassDetails(GetClassDetailsArgs.builder()
-     *             .commodityCode(&#34;bards&#34;)
-     *             .classCode(&#34;mysql.n4.medium.2c&#34;)
-     *             .engineVersion(&#34;8.0&#34;)
-     *             .engine(&#34;MySQL&#34;)
+     *             .commodityCode("bards")
+     *             .classCode("mysql.n4.medium.2c")
+     *             .engineVersion("8.0")
+     *             .engine("MySQL")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -614,7 +638,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -636,13 +661,14 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zones = RdsFunctions.getCollationTimeZones(GetCollationTimeZonesArgs.builder()
-     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsCollationTimeZones&#34;, zones.applyValue(getCollationTimeZonesResult -&gt; getCollationTimeZonesResult.collationTimeZones()[0]));
+     *         ctx.export("firstRdsCollationTimeZones", zones.applyValue(getCollationTimeZonesResult -> getCollationTimeZonesResult.collationTimeZones()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -659,7 +685,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -681,13 +708,14 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zones = RdsFunctions.getCollationTimeZones(GetCollationTimeZonesArgs.builder()
-     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsCollationTimeZones&#34;, zones.applyValue(getCollationTimeZonesResult -&gt; getCollationTimeZonesResult.collationTimeZones()[0]));
+     *         ctx.export("firstRdsCollationTimeZones", zones.applyValue(getCollationTimeZonesResult -> getCollationTimeZonesResult.collationTimeZones()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -704,7 +732,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -726,13 +755,14 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zones = RdsFunctions.getCollationTimeZones(GetCollationTimeZonesArgs.builder()
-     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsCollationTimeZones&#34;, zones.applyValue(getCollationTimeZonesResult -&gt; getCollationTimeZonesResult.collationTimeZones()[0]));
+     *         ctx.export("firstRdsCollationTimeZones", zones.applyValue(getCollationTimeZonesResult -> getCollationTimeZonesResult.collationTimeZones()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -749,7 +779,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -771,13 +802,14 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zones = RdsFunctions.getCollationTimeZones(GetCollationTimeZonesArgs.builder()
-     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsCollationTimeZones&#34;, zones.applyValue(getCollationTimeZonesResult -&gt; getCollationTimeZonesResult.collationTimeZones()[0]));
+     *         ctx.export("firstRdsCollationTimeZones", zones.applyValue(getCollationTimeZonesResult -> getCollationTimeZonesResult.collationTimeZones()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -794,7 +826,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -816,13 +849,14 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zones = RdsFunctions.getCollationTimeZones(GetCollationTimeZonesArgs.builder()
-     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsCollationTimeZones&#34;, zones.applyValue(getCollationTimeZonesResult -&gt; getCollationTimeZonesResult.collationTimeZones()[0]));
+     *         ctx.export("firstRdsCollationTimeZones", zones.applyValue(getCollationTimeZonesResult -> getCollationTimeZonesResult.collationTimeZones()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -839,7 +873,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -861,13 +896,14 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zones = RdsFunctions.getCollationTimeZones(GetCollationTimeZonesArgs.builder()
-     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsCollationTimeZones&#34;, zones.applyValue(getCollationTimeZonesResult -&gt; getCollationTimeZonesResult.collationTimeZones()[0]));
+     *         ctx.export("firstRdsCollationTimeZones", zones.applyValue(getCollationTimeZonesResult -> getCollationTimeZonesResult.collationTimeZones()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -884,7 +920,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -906,15 +943,16 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var backups = RdsFunctions.getCrossRegionBackups(GetCrossRegionBackupsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .startTime(&#34;2022-12-01T00:00:00Z&#34;)
-     *             .endTime(&#34;2022-12-16T00:00:00Z&#34;)
+     *             .dbInstanceId("example_value")
+     *             .startTime("2022-12-01T00:00:00Z")
+     *             .endTime("2022-12-16T00:00:00Z")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsCrossRegionBackups&#34;, backups.applyValue(getCrossRegionBackupsResult -&gt; getCrossRegionBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsCrossRegionBackups", backups.applyValue(getCrossRegionBackupsResult -> getCrossRegionBackupsResult.backups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -931,7 +969,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -953,15 +992,16 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var backups = RdsFunctions.getCrossRegionBackups(GetCrossRegionBackupsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .startTime(&#34;2022-12-01T00:00:00Z&#34;)
-     *             .endTime(&#34;2022-12-16T00:00:00Z&#34;)
+     *             .dbInstanceId("example_value")
+     *             .startTime("2022-12-01T00:00:00Z")
+     *             .endTime("2022-12-16T00:00:00Z")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsCrossRegionBackups&#34;, backups.applyValue(getCrossRegionBackupsResult -&gt; getCrossRegionBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsCrossRegionBackups", backups.applyValue(getCrossRegionBackupsResult -> getCrossRegionBackupsResult.backups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -978,7 +1018,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1000,15 +1041,16 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var backups = RdsFunctions.getCrossRegionBackups(GetCrossRegionBackupsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .startTime(&#34;2022-12-01T00:00:00Z&#34;)
-     *             .endTime(&#34;2022-12-16T00:00:00Z&#34;)
+     *             .dbInstanceId("example_value")
+     *             .startTime("2022-12-01T00:00:00Z")
+     *             .endTime("2022-12-16T00:00:00Z")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsCrossRegionBackups&#34;, backups.applyValue(getCrossRegionBackupsResult -&gt; getCrossRegionBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsCrossRegionBackups", backups.applyValue(getCrossRegionBackupsResult -> getCrossRegionBackupsResult.backups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1025,7 +1067,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1047,15 +1090,16 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var backups = RdsFunctions.getCrossRegionBackups(GetCrossRegionBackupsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .startTime(&#34;2022-12-01T00:00:00Z&#34;)
-     *             .endTime(&#34;2022-12-16T00:00:00Z&#34;)
+     *             .dbInstanceId("example_value")
+     *             .startTime("2022-12-01T00:00:00Z")
+     *             .endTime("2022-12-16T00:00:00Z")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsCrossRegionBackups&#34;, backups.applyValue(getCrossRegionBackupsResult -&gt; getCrossRegionBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsCrossRegionBackups", backups.applyValue(getCrossRegionBackupsResult -> getCrossRegionBackupsResult.backups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1070,7 +1114,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1094,10 +1139,11 @@ public final class RdsFunctions {
      *         // Declare the data source
      *         final var crossRegions = RdsFunctions.getCrossRegions();
      * 
-     *         ctx.export(&#34;firstRdsCrossRegions&#34;, regions.ids()[0]);
+     *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1112,7 +1158,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1136,10 +1183,11 @@ public final class RdsFunctions {
      *         // Declare the data source
      *         final var crossRegions = RdsFunctions.getCrossRegions();
      * 
-     *         ctx.export(&#34;firstRdsCrossRegions&#34;, regions.ids()[0]);
+     *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1154,7 +1202,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1178,10 +1227,11 @@ public final class RdsFunctions {
      *         // Declare the data source
      *         final var crossRegions = RdsFunctions.getCrossRegions();
      * 
-     *         ctx.export(&#34;firstRdsCrossRegions&#34;, regions.ids()[0]);
+     *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1196,7 +1246,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1220,10 +1271,11 @@ public final class RdsFunctions {
      *         // Declare the data source
      *         final var crossRegions = RdsFunctions.getCrossRegions();
      * 
-     *         ctx.export(&#34;firstRdsCrossRegions&#34;, regions.ids()[0]);
+     *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1238,7 +1290,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1262,10 +1315,11 @@ public final class RdsFunctions {
      *         // Declare the data source
      *         final var crossRegions = RdsFunctions.getCrossRegions();
      * 
-     *         ctx.export(&#34;firstRdsCrossRegions&#34;, regions.ids()[0]);
+     *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1280,7 +1334,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1304,10 +1359,11 @@ public final class RdsFunctions {
      *         // Declare the data source
      *         final var crossRegions = RdsFunctions.getCrossRegions();
      * 
-     *         ctx.export(&#34;firstRdsCrossRegions&#34;, regions.ids()[0]);
+     *         ctx.export("firstRdsCrossRegions", regions.ids()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1499,7 +1555,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1521,18 +1578,19 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dbInstancesDs = RdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;data-\\d+&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("data-\\d+")
+     *             .status("Running")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;type&#34;, &#34;database&#34;),
-     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;)
+     *                 Map.entry("type", "database"),
+     *                 Map.entry("size", "tiny")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstDbInstanceId&#34;, dbInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", dbInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1548,7 +1606,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1570,18 +1629,19 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dbInstancesDs = RdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;data-\\d+&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("data-\\d+")
+     *             .status("Running")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;type&#34;, &#34;database&#34;),
-     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;)
+     *                 Map.entry("type", "database"),
+     *                 Map.entry("size", "tiny")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstDbInstanceId&#34;, dbInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", dbInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1597,7 +1657,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1619,18 +1680,19 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dbInstancesDs = RdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;data-\\d+&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("data-\\d+")
+     *             .status("Running")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;type&#34;, &#34;database&#34;),
-     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;)
+     *                 Map.entry("type", "database"),
+     *                 Map.entry("size", "tiny")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstDbInstanceId&#34;, dbInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", dbInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1646,7 +1708,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1668,18 +1731,19 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dbInstancesDs = RdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;data-\\d+&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("data-\\d+")
+     *             .status("Running")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;type&#34;, &#34;database&#34;),
-     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;)
+     *                 Map.entry("type", "database"),
+     *                 Map.entry("size", "tiny")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstDbInstanceId&#34;, dbInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", dbInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1695,7 +1759,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1717,18 +1782,19 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dbInstancesDs = RdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;data-\\d+&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("data-\\d+")
+     *             .status("Running")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;type&#34;, &#34;database&#34;),
-     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;)
+     *                 Map.entry("type", "database"),
+     *                 Map.entry("size", "tiny")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstDbInstanceId&#34;, dbInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", dbInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1744,7 +1810,8 @@ public final class RdsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1766,18 +1833,19 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var dbInstancesDs = RdsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;data-\\d+&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("data-\\d+")
+     *             .status("Running")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;type&#34;, &#34;database&#34;),
-     *                 Map.entry(&#34;size&#34;, &#34;tiny&#34;)
+     *                 Map.entry("type", "database"),
+     *                 Map.entry("size", "tiny")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstDbInstanceId&#34;, dbInstancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("firstDbInstanceId", dbInstancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1794,7 +1862,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1816,14 +1885,15 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getModifyParameterLogs(GetModifyParameterLogsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .startTime(&#34;2022-06-04T13:56Z&#34;)
-     *             .endTime(&#34;2022-06-08T13:56Z&#34;)
+     *             .dbInstanceId("example_value")
+     *             .startTime("2022-06-04T13:56Z")
+     *             .endTime("2022-06-08T13:56Z")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1840,7 +1910,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1862,14 +1933,15 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getModifyParameterLogs(GetModifyParameterLogsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .startTime(&#34;2022-06-04T13:56Z&#34;)
-     *             .endTime(&#34;2022-06-08T13:56Z&#34;)
+     *             .dbInstanceId("example_value")
+     *             .startTime("2022-06-04T13:56Z")
+     *             .endTime("2022-06-08T13:56Z")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1886,7 +1958,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1908,14 +1981,15 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getModifyParameterLogs(GetModifyParameterLogsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .startTime(&#34;2022-06-04T13:56Z&#34;)
-     *             .endTime(&#34;2022-06-08T13:56Z&#34;)
+     *             .dbInstanceId("example_value")
+     *             .startTime("2022-06-04T13:56Z")
+     *             .endTime("2022-06-08T13:56Z")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1932,7 +2006,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1954,14 +2029,15 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getModifyParameterLogs(GetModifyParameterLogsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
-     *             .startTime(&#34;2022-06-04T13:56Z&#34;)
-     *             .endTime(&#34;2022-06-08T13:56Z&#34;)
+     *             .dbInstanceId("example_value")
+     *             .startTime("2022-06-04T13:56Z")
+     *             .endTime("2022-06-08T13:56Z")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1978,7 +2054,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2000,13 +2077,14 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getRdsBackups(GetRdsBackupsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsBackupId&#34;, example.applyValue(getRdsBackupsResult -&gt; getRdsBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsBackupId", example.applyValue(getRdsBackupsResult -> getRdsBackupsResult.backups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2023,7 +2101,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2045,13 +2124,14 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getRdsBackups(GetRdsBackupsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsBackupId&#34;, example.applyValue(getRdsBackupsResult -&gt; getRdsBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsBackupId", example.applyValue(getRdsBackupsResult -> getRdsBackupsResult.backups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2068,7 +2148,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2090,13 +2171,14 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getRdsBackups(GetRdsBackupsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsBackupId&#34;, example.applyValue(getRdsBackupsResult -&gt; getRdsBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsBackupId", example.applyValue(getRdsBackupsResult -> getRdsBackupsResult.backups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2113,7 +2195,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2135,13 +2218,14 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getRdsBackups(GetRdsBackupsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsBackupId&#34;, example.applyValue(getRdsBackupsResult -&gt; getRdsBackupsResult.backups()[0].id()));
+     *         ctx.export("firstRdsBackupId", example.applyValue(getRdsBackupsResult -> getRdsBackupsResult.backups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2176,7 +2260,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2198,13 +2283,14 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getSlots(GetSlotsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsSlotsName&#34;, example.applyValue(getSlotsResult -&gt; getSlotsResult.slots()[0].slotName()));
+     *         ctx.export("firstRdsSlotsName", example.applyValue(getSlotsResult -> getSlotsResult.slots()[0].slotName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2221,7 +2307,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2243,13 +2330,14 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getSlots(GetSlotsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsSlotsName&#34;, example.applyValue(getSlotsResult -&gt; getSlotsResult.slots()[0].slotName()));
+     *         ctx.export("firstRdsSlotsName", example.applyValue(getSlotsResult -> getSlotsResult.slots()[0].slotName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2266,7 +2354,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2288,13 +2377,14 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getSlots(GetSlotsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsSlotsName&#34;, example.applyValue(getSlotsResult -&gt; getSlotsResult.slots()[0].slotName()));
+     *         ctx.export("firstRdsSlotsName", example.applyValue(getSlotsResult -> getSlotsResult.slots()[0].slotName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2311,7 +2401,8 @@ public final class RdsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2333,13 +2424,14 @@ public final class RdsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = RdsFunctions.getSlots(GetSlotsArgs.builder()
-     *             .dbInstanceId(&#34;example_value&#34;)
+     *             .dbInstanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstRdsSlotsName&#34;, example.applyValue(getSlotsResult -&gt; getSlotsResult.slots()[0].slotName()));
+     *         ctx.export("firstRdsSlotsName", example.applyValue(getSlotsResult -> getSlotsResult.slots()[0].slotName()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

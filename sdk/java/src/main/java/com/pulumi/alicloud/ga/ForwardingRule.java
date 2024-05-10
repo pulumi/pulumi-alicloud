@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -73,45 +74,45 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var region = config.get("region").orElse("cn-hangzhou");
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var example = new Accelerator(&#34;example&#34;, AcceleratorArgs.builder()        
+ *         var example = new Accelerator("example", AcceleratorArgs.builder()        
  *             .duration(3)
- *             .spec(&#34;2&#34;)
+ *             .spec("2")
  *             .acceleratorName(name)
  *             .autoUseCoupon(false)
  *             .description(name)
- *             .autoRenewDuration(&#34;2&#34;)
- *             .renewalStatus(&#34;AutoRenewal&#34;)
+ *             .autoRenewDuration("2")
+ *             .renewalStatus("AutoRenewal")
  *             .build());
  * 
- *         var exampleBandwidthPackage = new BandwidthPackage(&#34;exampleBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
- *             .type(&#34;Basic&#34;)
+ *         var exampleBandwidthPackage = new BandwidthPackage("exampleBandwidthPackage", BandwidthPackageArgs.builder()        
+ *             .type("Basic")
  *             .bandwidth(20)
- *             .bandwidthType(&#34;Basic&#34;)
+ *             .bandwidthType("Basic")
  *             .duration(1)
  *             .autoPay(true)
- *             .paymentType(&#34;Subscription&#34;)
+ *             .paymentType("Subscription")
  *             .autoUseCoupon(false)
  *             .bandwidthPackageName(name)
  *             .description(name)
  *             .build());
  * 
- *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;exampleBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment("exampleBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
  *             .acceleratorId(example.id())
  *             .bandwidthPackageId(exampleBandwidthPackage.id())
  *             .build());
  * 
- *         var exampleListener = new Listener(&#34;exampleListener&#34;, ListenerArgs.builder()        
+ *         var exampleListener = new Listener("exampleListener", ListenerArgs.builder()        
  *             .acceleratorId(exampleBandwidthPackageAttachment.acceleratorId())
- *             .clientAffinity(&#34;SOURCE_IP&#34;)
+ *             .clientAffinity("SOURCE_IP")
  *             .description(name)
  *             .name(name)
- *             .protocol(&#34;HTTP&#34;)
+ *             .protocol("HTTP")
  *             .proxyProtocol(true)
  *             .portRanges(ListenerPortRangeArgs.builder()
  *                 .fromPort(60)
@@ -119,26 +120,26 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleEipAddress = new EipAddress(&#34;exampleEipAddress&#34;, EipAddressArgs.builder()        
- *             .bandwidth(&#34;10&#34;)
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *         var exampleEipAddress = new EipAddress("exampleEipAddress", EipAddressArgs.builder()        
+ *             .bandwidth("10")
+ *             .internetChargeType("PayByBandwidth")
  *             .build());
  * 
- *         var virtual = new EndpointGroup(&#34;virtual&#34;, EndpointGroupArgs.builder()        
+ *         var virtual = new EndpointGroup("virtual", EndpointGroupArgs.builder()        
  *             .acceleratorId(example.id())
  *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
  *                 .endpoint(exampleEipAddress.ipAddress())
- *                 .type(&#34;PublicIp&#34;)
- *                 .weight(&#34;20&#34;)
+ *                 .type("PublicIp")
+ *                 .weight("20")
  *                 .enableClientipPreservation(true)
  *                 .build())
  *             .endpointGroupRegion(default_.regions()[0].id())
  *             .listenerId(exampleListener.id())
  *             .description(name)
- *             .endpointGroupType(&#34;virtual&#34;)
- *             .endpointRequestProtocol(&#34;HTTPS&#34;)
+ *             .endpointGroupType("virtual")
+ *             .endpointRequestProtocol("HTTPS")
  *             .healthCheckIntervalSeconds(4)
- *             .healthCheckPath(&#34;/path&#34;)
+ *             .healthCheckPath("/path")
  *             .name(name)
  *             .thresholdCount(4)
  *             .trafficPercentage(20)
@@ -148,25 +149,25 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleForwardingRule = new ForwardingRule(&#34;exampleForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *         var exampleForwardingRule = new ForwardingRule("exampleForwardingRule", ForwardingRuleArgs.builder()        
  *             .acceleratorId(example.id())
  *             .listenerId(exampleListener.id())
  *             .ruleConditions(            
  *                 ForwardingRuleRuleConditionArgs.builder()
- *                     .ruleConditionType(&#34;Path&#34;)
+ *                     .ruleConditionType("Path")
  *                     .pathConfig(ForwardingRuleRuleConditionPathConfigArgs.builder()
- *                         .values(&#34;/testpathconfig&#34;)
+ *                         .values("/testpathconfig")
  *                         .build())
  *                     .build(),
  *                 ForwardingRuleRuleConditionArgs.builder()
- *                     .ruleConditionType(&#34;Host&#34;)
+ *                     .ruleConditionType("Host")
  *                     .hostConfigs(ForwardingRuleRuleConditionHostConfigArgs.builder()
- *                         .values(&#34;www.test.com&#34;)
+ *                         .values("www.test.com")
  *                         .build())
  *                     .build())
  *             .ruleActions(ForwardingRuleRuleActionArgs.builder()
- *                 .order(&#34;40&#34;)
- *                 .ruleActionType(&#34;ForwardGroup&#34;)
+ *                 .order("40")
+ *                 .ruleActionType("ForwardGroup")
  *                 .forwardGroupConfig(ForwardingRuleRuleActionForwardGroupConfigArgs.builder()
  *                     .serverGroupTuples(ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs.builder()
  *                         .endpointGroupId(virtual.id())
@@ -179,7 +180,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

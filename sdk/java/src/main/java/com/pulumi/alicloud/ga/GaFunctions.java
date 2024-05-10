@@ -81,7 +81,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -103,16 +104,17 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;gaAcceleratorSpareIpAttachmentId1&#34;, ids.applyValue(getAcceleratorSpareIpAttachmentsResult -&gt; getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.applyValue(getAcceleratorSpareIpAttachmentsResult -> getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -129,7 +131,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -151,16 +154,17 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;gaAcceleratorSpareIpAttachmentId1&#34;, ids.applyValue(getAcceleratorSpareIpAttachmentsResult -&gt; getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.applyValue(getAcceleratorSpareIpAttachmentsResult -> getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -177,7 +181,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -199,16 +204,17 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;gaAcceleratorSpareIpAttachmentId1&#34;, ids.applyValue(getAcceleratorSpareIpAttachmentsResult -&gt; getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.applyValue(getAcceleratorSpareIpAttachmentsResult -> getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -225,7 +231,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -247,16 +254,17 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getAcceleratorSpareIpAttachments(GetAcceleratorSpareIpAttachmentsArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;gaAcceleratorSpareIpAttachmentId1&#34;, ids.applyValue(getAcceleratorSpareIpAttachmentsResult -&gt; getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
+     *         ctx.export("gaAcceleratorSpareIpAttachmentId1", ids.applyValue(getAcceleratorSpareIpAttachmentsResult -> getAcceleratorSpareIpAttachmentsResult.attachments()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -273,7 +281,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -295,13 +304,14 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("firstGaAcceleratorId", example.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -318,7 +328,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -340,13 +351,14 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("firstGaAcceleratorId", example.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -363,7 +375,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -385,13 +398,14 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("firstGaAcceleratorId", example.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -408,7 +422,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -430,13 +445,14 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("firstGaAcceleratorId", example.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -453,7 +469,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -475,13 +492,14 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("firstGaAcceleratorId", example.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -498,7 +516,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -520,13 +539,14 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .nameRegex(&#34;tf&#34;)
+     *             .nameRegex("tf")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaAcceleratorId&#34;, example.applyValue(getAcceleratorsResult -&gt; getAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("firstGaAcceleratorId", example.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -543,7 +563,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -566,15 +587,16 @@ public final class GaFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getAcls();
      * 
-     *         ctx.export(&#34;gaAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
-     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export(&#34;gaAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -591,7 +613,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -614,15 +637,16 @@ public final class GaFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getAcls();
      * 
-     *         ctx.export(&#34;gaAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
-     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export(&#34;gaAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -639,7 +663,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -662,15 +687,16 @@ public final class GaFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getAcls();
      * 
-     *         ctx.export(&#34;gaAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
-     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export(&#34;gaAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -687,7 +713,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -710,15 +737,16 @@ public final class GaFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getAcls();
      * 
-     *         ctx.export(&#34;gaAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
-     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export(&#34;gaAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -735,7 +763,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -758,15 +787,16 @@ public final class GaFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getAcls();
      * 
-     *         ctx.export(&#34;gaAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
-     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export(&#34;gaAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -783,7 +813,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -806,15 +837,16 @@ public final class GaFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getAcls();
      * 
-     *         ctx.export(&#34;gaAclId1&#34;, ids.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId1", ids.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *         final var nameRegex = GaFunctions.getAcls(GetAclsArgs.builder()
-     *             .nameRegex(&#34;^my-Acl&#34;)
+     *             .nameRegex("^my-Acl")
      *             .build());
      * 
-     *         ctx.export(&#34;gaAclId2&#34;, nameRegex.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("gaAclId2", nameRegex.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -831,7 +863,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -853,17 +886,18 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getAdditionalCertificates(GetAdditionalCertificatesArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .listenerId(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
+     *             .listenerId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;gaAdditionalCertificateId1&#34;, ids.applyValue(getAdditionalCertificatesResult -&gt; getAdditionalCertificatesResult.certificates()[0].id()));
+     *         ctx.export("gaAdditionalCertificateId1", ids.applyValue(getAdditionalCertificatesResult -> getAdditionalCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -880,7 +914,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -902,17 +937,18 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getAdditionalCertificates(GetAdditionalCertificatesArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .listenerId(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
+     *             .listenerId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;gaAdditionalCertificateId1&#34;, ids.applyValue(getAdditionalCertificatesResult -&gt; getAdditionalCertificatesResult.certificates()[0].id()));
+     *         ctx.export("gaAdditionalCertificateId1", ids.applyValue(getAdditionalCertificatesResult -> getAdditionalCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -929,7 +965,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -951,17 +988,18 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getAdditionalCertificates(GetAdditionalCertificatesArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .listenerId(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
+     *             .listenerId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;gaAdditionalCertificateId1&#34;, ids.applyValue(getAdditionalCertificatesResult -&gt; getAdditionalCertificatesResult.certificates()[0].id()));
+     *         ctx.export("gaAdditionalCertificateId1", ids.applyValue(getAdditionalCertificatesResult -> getAdditionalCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -978,7 +1016,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1000,17 +1039,18 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getAdditionalCertificates(GetAdditionalCertificatesArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .listenerId(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
+     *             .listenerId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;gaAdditionalCertificateId1&#34;, ids.applyValue(getAdditionalCertificatesResult -&gt; getAdditionalCertificatesResult.certificates()[0].id()));
+     *         ctx.export("gaAdditionalCertificateId1", ids.applyValue(getAdditionalCertificatesResult -> getAdditionalCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1027,7 +1067,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1049,14 +1090,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstGaBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1073,7 +1115,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1095,14 +1138,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstGaBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1119,7 +1163,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1141,14 +1186,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstGaBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1165,7 +1211,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1187,14 +1234,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstGaBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1211,7 +1259,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1233,14 +1282,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstGaBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1257,7 +1307,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1279,14 +1330,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getBandwidthPackages(GetBandwidthPackagesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaBandwidthPackageId&#34;, example.applyValue(getBandwidthPackagesResult -&gt; getBandwidthPackagesResult.packages()[0].id()));
+     *         ctx.export("firstGaBandwidthPackageId", example.applyValue(getBandwidthPackagesResult -> getBandwidthPackagesResult.packages()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1303,7 +1355,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1325,14 +1378,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicAccelerateIpEndpointRelations(GetBasicAccelerateIpEndpointRelationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;example_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAccelerateIpEndpointRelationsId1&#34;, ids.applyValue(getBasicAccelerateIpEndpointRelationsResult -&gt; getBasicAccelerateIpEndpointRelationsResult.relations()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.applyValue(getBasicAccelerateIpEndpointRelationsResult -> getBasicAccelerateIpEndpointRelationsResult.relations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1349,7 +1403,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1371,14 +1426,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicAccelerateIpEndpointRelations(GetBasicAccelerateIpEndpointRelationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;example_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAccelerateIpEndpointRelationsId1&#34;, ids.applyValue(getBasicAccelerateIpEndpointRelationsResult -&gt; getBasicAccelerateIpEndpointRelationsResult.relations()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.applyValue(getBasicAccelerateIpEndpointRelationsResult -> getBasicAccelerateIpEndpointRelationsResult.relations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1395,7 +1451,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1417,14 +1474,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicAccelerateIpEndpointRelations(GetBasicAccelerateIpEndpointRelationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;example_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAccelerateIpEndpointRelationsId1&#34;, ids.applyValue(getBasicAccelerateIpEndpointRelationsResult -&gt; getBasicAccelerateIpEndpointRelationsResult.relations()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.applyValue(getBasicAccelerateIpEndpointRelationsResult -> getBasicAccelerateIpEndpointRelationsResult.relations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1441,7 +1499,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1463,14 +1522,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicAccelerateIpEndpointRelations(GetBasicAccelerateIpEndpointRelationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;example_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAccelerateIpEndpointRelationsId1&#34;, ids.applyValue(getBasicAccelerateIpEndpointRelationsResult -&gt; getBasicAccelerateIpEndpointRelationsResult.relations()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpEndpointRelationsId1", ids.applyValue(getBasicAccelerateIpEndpointRelationsResult -> getBasicAccelerateIpEndpointRelationsResult.relations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1487,7 +1547,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1509,14 +1570,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicAccelerateIps(GetBasicAccelerateIpsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .ipSetId(&#34;example_ip_set_id&#34;)
+     *             .ids("example_id")
+     *             .ipSetId("example_ip_set_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAccelerateIpId1&#34;, ids.applyValue(getBasicAccelerateIpsResult -&gt; getBasicAccelerateIpsResult.ips()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpId1", ids.applyValue(getBasicAccelerateIpsResult -> getBasicAccelerateIpsResult.ips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1533,7 +1595,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1555,14 +1618,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicAccelerateIps(GetBasicAccelerateIpsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .ipSetId(&#34;example_ip_set_id&#34;)
+     *             .ids("example_id")
+     *             .ipSetId("example_ip_set_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAccelerateIpId1&#34;, ids.applyValue(getBasicAccelerateIpsResult -&gt; getBasicAccelerateIpsResult.ips()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpId1", ids.applyValue(getBasicAccelerateIpsResult -> getBasicAccelerateIpsResult.ips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1579,7 +1643,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1601,14 +1666,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicAccelerateIps(GetBasicAccelerateIpsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .ipSetId(&#34;example_ip_set_id&#34;)
+     *             .ids("example_id")
+     *             .ipSetId("example_ip_set_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAccelerateIpId1&#34;, ids.applyValue(getBasicAccelerateIpsResult -&gt; getBasicAccelerateIpsResult.ips()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpId1", ids.applyValue(getBasicAccelerateIpsResult -> getBasicAccelerateIpsResult.ips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1625,7 +1691,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1647,14 +1714,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicAccelerateIps(GetBasicAccelerateIpsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .ipSetId(&#34;example_ip_set_id&#34;)
+     *             .ids("example_id")
+     *             .ipSetId("example_ip_set_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAccelerateIpId1&#34;, ids.applyValue(getBasicAccelerateIpsResult -&gt; getBasicAccelerateIpsResult.ips()[0].id()));
+     *         ctx.export("gaBasicAccelerateIpId1", ids.applyValue(getBasicAccelerateIpsResult -> getBasicAccelerateIpsResult.ips()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1671,7 +1739,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1693,18 +1762,19 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAcceleratorId1&#34;, ids.applyValue(getBasicAcceleratorsResult -&gt; getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId1", ids.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
      *         final var nameRegex = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAcceleratorId2&#34;, nameRegex.applyValue(getBasicAcceleratorsResult -&gt; getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId2", nameRegex.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1721,7 +1791,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1743,18 +1814,19 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAcceleratorId1&#34;, ids.applyValue(getBasicAcceleratorsResult -&gt; getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId1", ids.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
      *         final var nameRegex = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAcceleratorId2&#34;, nameRegex.applyValue(getBasicAcceleratorsResult -&gt; getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId2", nameRegex.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1771,7 +1843,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1793,18 +1866,19 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAcceleratorId1&#34;, ids.applyValue(getBasicAcceleratorsResult -&gt; getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId1", ids.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
      *         final var nameRegex = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAcceleratorId2&#34;, nameRegex.applyValue(getBasicAcceleratorsResult -&gt; getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId2", nameRegex.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1821,7 +1895,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1843,18 +1918,19 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAcceleratorId1&#34;, ids.applyValue(getBasicAcceleratorsResult -&gt; getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId1", ids.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
      *         final var nameRegex = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAcceleratorId2&#34;, nameRegex.applyValue(getBasicAcceleratorsResult -&gt; getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId2", nameRegex.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1871,7 +1947,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1893,18 +1970,19 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAcceleratorId1&#34;, ids.applyValue(getBasicAcceleratorsResult -&gt; getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId1", ids.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
      *         final var nameRegex = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAcceleratorId2&#34;, nameRegex.applyValue(getBasicAcceleratorsResult -&gt; getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId2", nameRegex.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1921,7 +1999,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1943,18 +2022,19 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAcceleratorId1&#34;, ids.applyValue(getBasicAcceleratorsResult -&gt; getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId1", ids.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
      *         final var nameRegex = GaFunctions.getBasicAccelerators(GetBasicAcceleratorsArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
+     *             .nameRegex("tf-example")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicAcceleratorId2&#34;, nameRegex.applyValue(getBasicAcceleratorsResult -&gt; getBasicAcceleratorsResult.accelerators()[0].id()));
+     *         ctx.export("gaBasicAcceleratorId2", nameRegex.applyValue(getBasicAcceleratorsResult -> getBasicAcceleratorsResult.accelerators()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1971,7 +2051,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1993,20 +2074,21 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .endpointGroupId(&#34;example_id&#34;)
+     *             .ids("example_id")
+     *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicEndpointsId1&#34;, ids.applyValue(getBasicEndpointsResult -&gt; getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId1", ids.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
      *         final var nameRegex = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
-     *             .endpointGroupId(&#34;example_id&#34;)
+     *             .nameRegex("tf-example")
+     *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicEndpointsId2&#34;, nameRegex.applyValue(getBasicEndpointsResult -&gt; getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId2", nameRegex.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2023,7 +2105,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2045,20 +2128,21 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .endpointGroupId(&#34;example_id&#34;)
+     *             .ids("example_id")
+     *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicEndpointsId1&#34;, ids.applyValue(getBasicEndpointsResult -&gt; getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId1", ids.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
      *         final var nameRegex = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
-     *             .endpointGroupId(&#34;example_id&#34;)
+     *             .nameRegex("tf-example")
+     *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicEndpointsId2&#34;, nameRegex.applyValue(getBasicEndpointsResult -&gt; getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId2", nameRegex.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2075,7 +2159,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2097,20 +2182,21 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .endpointGroupId(&#34;example_id&#34;)
+     *             .ids("example_id")
+     *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicEndpointsId1&#34;, ids.applyValue(getBasicEndpointsResult -&gt; getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId1", ids.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
      *         final var nameRegex = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
-     *             .endpointGroupId(&#34;example_id&#34;)
+     *             .nameRegex("tf-example")
+     *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicEndpointsId2&#34;, nameRegex.applyValue(getBasicEndpointsResult -&gt; getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId2", nameRegex.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2127,7 +2213,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2149,20 +2236,21 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .endpointGroupId(&#34;example_id&#34;)
+     *             .ids("example_id")
+     *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicEndpointsId1&#34;, ids.applyValue(getBasicEndpointsResult -&gt; getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId1", ids.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
      *         final var nameRegex = GaFunctions.getBasicEndpoints(GetBasicEndpointsArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
-     *             .endpointGroupId(&#34;example_id&#34;)
+     *             .nameRegex("tf-example")
+     *             .endpointGroupId("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaBasicEndpointsId2&#34;, nameRegex.applyValue(getBasicEndpointsResult -&gt; getBasicEndpointsResult.endpoints()[0].id()));
+     *         ctx.export("gaBasicEndpointsId2", nameRegex.applyValue(getBasicEndpointsResult -> getBasicEndpointsResult.endpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2179,7 +2267,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2201,14 +2290,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointGroupDestinationsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -&gt; getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -> getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2225,7 +2315,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2247,14 +2338,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointGroupDestinationsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -&gt; getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -> getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2271,7 +2363,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2293,14 +2386,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointGroupDestinationsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -&gt; getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -> getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2317,7 +2411,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2339,14 +2434,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpointGroupDestinations(GetCustomRoutingEndpointGroupDestinationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointGroupDestinationsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -&gt; getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupDestinationsId1", ids.applyValue(getCustomRoutingEndpointGroupDestinationsResult -> getCustomRoutingEndpointGroupDestinationsResult.customRoutingEndpointGroupDestinations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2363,7 +2459,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2385,20 +2482,21 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
      *         final var nameRegex = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .nameRegex("tf-example")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId2&#34;, nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2415,7 +2513,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2437,20 +2536,21 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
      *         final var nameRegex = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .nameRegex("tf-example")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId2&#34;, nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2467,7 +2567,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2489,20 +2590,21 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
      *         final var nameRegex = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .nameRegex("tf-example")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId2&#34;, nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2519,7 +2621,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2541,20 +2644,21 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId1&#34;, ids.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId1", ids.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
      *         final var nameRegex = GaFunctions.getCustomRoutingEndpointGroups(GetCustomRoutingEndpointGroupsArgs.builder()
-     *             .nameRegex(&#34;tf-example&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .nameRegex("tf-example")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointGroupsId2&#34;, nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -&gt; getCustomRoutingEndpointGroupsResult.groups()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointGroupsId2", nameRegex.applyValue(getCustomRoutingEndpointGroupsResult -> getCustomRoutingEndpointGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2571,7 +2675,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2593,14 +2698,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointTrafficPoliciesId1&#34;, ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -&gt; getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -> getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2617,7 +2723,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2639,14 +2746,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointTrafficPoliciesId1&#34;, ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -&gt; getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -> getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2663,7 +2771,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2685,14 +2794,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointTrafficPoliciesId1&#34;, ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -&gt; getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -> getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2709,7 +2819,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2731,14 +2842,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpointTrafficPolicies(GetCustomRoutingEndpointTrafficPoliciesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointTrafficPoliciesId1&#34;, ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -&gt; getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.applyValue(getCustomRoutingEndpointTrafficPoliciesResult -> getCustomRoutingEndpointTrafficPoliciesResult.customRoutingEndpointTrafficPolicies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2755,7 +2867,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2777,14 +2890,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpoints(GetCustomRoutingEndpointsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointsId1&#34;, ids.applyValue(getCustomRoutingEndpointsResult -&gt; getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointsId1", ids.applyValue(getCustomRoutingEndpointsResult -> getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2801,7 +2915,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2823,14 +2938,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpoints(GetCustomRoutingEndpointsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointsId1&#34;, ids.applyValue(getCustomRoutingEndpointsResult -&gt; getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointsId1", ids.applyValue(getCustomRoutingEndpointsResult -> getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2847,7 +2963,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2869,14 +2986,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpoints(GetCustomRoutingEndpointsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointsId1&#34;, ids.applyValue(getCustomRoutingEndpointsResult -&gt; getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointsId1", ids.applyValue(getCustomRoutingEndpointsResult -> getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2893,7 +3011,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2915,14 +3034,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = GaFunctions.getCustomRoutingEndpoints(GetCustomRoutingEndpointsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .ids("example_id")
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingEndpointsId1&#34;, ids.applyValue(getCustomRoutingEndpointsResult -&gt; getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
+     *         ctx.export("gaCustomRoutingEndpointsId1", ids.applyValue(getCustomRoutingEndpointsResult -> getCustomRoutingEndpointsResult.customRoutingEndpoints()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2939,7 +3059,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2961,13 +3082,14 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = GaFunctions.getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs.builder()
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingPortMappingsAcceleratorId1&#34;, default_.customRoutingPortMappings()[0].acceleratorId());
+     *         ctx.export("gaCustomRoutingPortMappingsAcceleratorId1", default_.customRoutingPortMappings()[0].acceleratorId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2984,7 +3106,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3006,13 +3129,14 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = GaFunctions.getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs.builder()
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingPortMappingsAcceleratorId1&#34;, default_.customRoutingPortMappings()[0].acceleratorId());
+     *         ctx.export("gaCustomRoutingPortMappingsAcceleratorId1", default_.customRoutingPortMappings()[0].acceleratorId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3029,7 +3153,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3051,13 +3176,14 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = GaFunctions.getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs.builder()
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingPortMappingsAcceleratorId1&#34;, default_.customRoutingPortMappings()[0].acceleratorId());
+     *         ctx.export("gaCustomRoutingPortMappingsAcceleratorId1", default_.customRoutingPortMappings()[0].acceleratorId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3074,7 +3200,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3096,13 +3223,14 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = GaFunctions.getCustomRoutingPortMappings(GetCustomRoutingPortMappingsArgs.builder()
-     *             .acceleratorId(&#34;your_accelerator_id&#34;)
+     *             .acceleratorId("your_accelerator_id")
      *             .build());
      * 
-     *         ctx.export(&#34;gaCustomRoutingPortMappingsAcceleratorId1&#34;, default_.customRoutingPortMappings()[0].acceleratorId());
+     *         ctx.export("gaCustomRoutingPortMappingsAcceleratorId1", default_.customRoutingPortMappings()[0].acceleratorId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3117,7 +3245,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3143,29 +3272,30 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .status(&#34;active&#34;)
+     *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i &lt; default_.accelerators().length() &gt; 0 ? 0 : 1; i++) {
-     *             new Accelerator(&#34;defaultAccelerator-&#34; + i, AcceleratorArgs.builder()            
+     *         for (var i = 0; i < default_.accelerators().length() > 0 ? 0 : 1; i++) {
+     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()            
      *                 .duration(1)
      *                 .autoUseCoupon(true)
-     *                 .spec(&#34;1&#34;)
+     *                 .spec("1")
      *                 .build());
      * 
      *         
      * }
-     *         final var acceleratorId = default_.accelerators().length() &gt; 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
+     *         final var acceleratorId = default_.accelerators().length() > 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
      * 
      *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
      *             .acceleratorId(acceleratorIdLocals)
-     *             .domain(&#34;your_domain&#34;)
+     *             .domain("your_domain")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudGaDomainExampleId&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3180,7 +3310,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3206,29 +3337,30 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .status(&#34;active&#34;)
+     *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i &lt; default_.accelerators().length() &gt; 0 ? 0 : 1; i++) {
-     *             new Accelerator(&#34;defaultAccelerator-&#34; + i, AcceleratorArgs.builder()            
+     *         for (var i = 0; i < default_.accelerators().length() > 0 ? 0 : 1; i++) {
+     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()            
      *                 .duration(1)
      *                 .autoUseCoupon(true)
-     *                 .spec(&#34;1&#34;)
+     *                 .spec("1")
      *                 .build());
      * 
      *         
      * }
-     *         final var acceleratorId = default_.accelerators().length() &gt; 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
+     *         final var acceleratorId = default_.accelerators().length() > 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
      * 
      *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
      *             .acceleratorId(acceleratorIdLocals)
-     *             .domain(&#34;your_domain&#34;)
+     *             .domain("your_domain")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudGaDomainExampleId&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3243,7 +3375,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3269,29 +3402,30 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .status(&#34;active&#34;)
+     *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i &lt; default_.accelerators().length() &gt; 0 ? 0 : 1; i++) {
-     *             new Accelerator(&#34;defaultAccelerator-&#34; + i, AcceleratorArgs.builder()            
+     *         for (var i = 0; i < default_.accelerators().length() > 0 ? 0 : 1; i++) {
+     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()            
      *                 .duration(1)
      *                 .autoUseCoupon(true)
-     *                 .spec(&#34;1&#34;)
+     *                 .spec("1")
      *                 .build());
      * 
      *         
      * }
-     *         final var acceleratorId = default_.accelerators().length() &gt; 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
+     *         final var acceleratorId = default_.accelerators().length() > 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
      * 
      *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
      *             .acceleratorId(acceleratorIdLocals)
-     *             .domain(&#34;your_domain&#34;)
+     *             .domain("your_domain")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudGaDomainExampleId&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3306,7 +3440,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3332,29 +3467,30 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .status(&#34;active&#34;)
+     *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i &lt; default_.accelerators().length() &gt; 0 ? 0 : 1; i++) {
-     *             new Accelerator(&#34;defaultAccelerator-&#34; + i, AcceleratorArgs.builder()            
+     *         for (var i = 0; i < default_.accelerators().length() > 0 ? 0 : 1; i++) {
+     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()            
      *                 .duration(1)
      *                 .autoUseCoupon(true)
-     *                 .spec(&#34;1&#34;)
+     *                 .spec("1")
      *                 .build());
      * 
      *         
      * }
-     *         final var acceleratorId = default_.accelerators().length() &gt; 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
+     *         final var acceleratorId = default_.accelerators().length() > 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
      * 
      *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
      *             .acceleratorId(acceleratorIdLocals)
-     *             .domain(&#34;your_domain&#34;)
+     *             .domain("your_domain")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudGaDomainExampleId&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3369,7 +3505,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3395,29 +3532,30 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .status(&#34;active&#34;)
+     *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i &lt; default_.accelerators().length() &gt; 0 ? 0 : 1; i++) {
-     *             new Accelerator(&#34;defaultAccelerator-&#34; + i, AcceleratorArgs.builder()            
+     *         for (var i = 0; i < default_.accelerators().length() > 0 ? 0 : 1; i++) {
+     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()            
      *                 .duration(1)
      *                 .autoUseCoupon(true)
-     *                 .spec(&#34;1&#34;)
+     *                 .spec("1")
      *                 .build());
      * 
      *         
      * }
-     *         final var acceleratorId = default_.accelerators().length() &gt; 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
+     *         final var acceleratorId = default_.accelerators().length() > 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
      * 
      *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
      *             .acceleratorId(acceleratorIdLocals)
-     *             .domain(&#34;your_domain&#34;)
+     *             .domain("your_domain")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudGaDomainExampleId&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3432,7 +3570,8 @@ public final class GaFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3458,29 +3597,30 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .status(&#34;active&#34;)
+     *             .status("active")
      *             .build());
      * 
-     *         for (var i = 0; i &lt; default_.accelerators().length() &gt; 0 ? 0 : 1; i++) {
-     *             new Accelerator(&#34;defaultAccelerator-&#34; + i, AcceleratorArgs.builder()            
+     *         for (var i = 0; i < default_.accelerators().length() > 0 ? 0 : 1; i++) {
+     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()            
      *                 .duration(1)
      *                 .autoUseCoupon(true)
-     *                 .spec(&#34;1&#34;)
+     *                 .spec("1")
      *                 .build());
      * 
      *         
      * }
-     *         final var acceleratorId = default_.accelerators().length() &gt; 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
+     *         final var acceleratorId = default_.accelerators().length() > 0 ? default_.accelerators()[0].id() : defaultAccelerator[0].id();
      * 
      *         final var defaultGetDomains = GaFunctions.getDomains(GetDomainsArgs.builder()
      *             .acceleratorId(acceleratorIdLocals)
-     *             .domain(&#34;your_domain&#34;)
+     *             .domain("your_domain")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudGaDomainExampleId&#34;, defaultGetDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].id()));
+     *         ctx.export("alicloudGaDomainExampleId", defaultGetDomains.applyValue(getDomainsResult -> getDomainsResult.domains()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3497,7 +3637,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3519,13 +3660,14 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = GaFunctions.getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs.builder()
-     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
+     *             .endpointGroupRegion("cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export(&#34;gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion&#34;, default_.endpointGroupIpAddressCidrBlocks()[0].endpointGroupRegion());
+     *         ctx.export("gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion", default_.endpointGroupIpAddressCidrBlocks()[0].endpointGroupRegion());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3542,7 +3684,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3564,13 +3707,14 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = GaFunctions.getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs.builder()
-     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
+     *             .endpointGroupRegion("cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export(&#34;gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion&#34;, default_.endpointGroupIpAddressCidrBlocks()[0].endpointGroupRegion());
+     *         ctx.export("gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion", default_.endpointGroupIpAddressCidrBlocks()[0].endpointGroupRegion());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3587,7 +3731,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3609,13 +3754,14 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = GaFunctions.getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs.builder()
-     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
+     *             .endpointGroupRegion("cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export(&#34;gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion&#34;, default_.endpointGroupIpAddressCidrBlocks()[0].endpointGroupRegion());
+     *         ctx.export("gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion", default_.endpointGroupIpAddressCidrBlocks()[0].endpointGroupRegion());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3632,7 +3778,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3654,13 +3801,14 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = GaFunctions.getEndpointGroupIpAddressCidrBlocks(GetEndpointGroupIpAddressCidrBlocksArgs.builder()
-     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
+     *             .endpointGroupRegion("cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export(&#34;gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion&#34;, default_.endpointGroupIpAddressCidrBlocks()[0].endpointGroupRegion());
+     *         ctx.export("gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion", default_.endpointGroupIpAddressCidrBlocks()[0].endpointGroupRegion());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3677,7 +3825,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3713,66 +3862,66 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .status(&#34;active&#34;)
+     *             .status("active")
      *             .build());
      * 
-     *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+     *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
      *             .bandwidth(100)
-     *             .type(&#34;Basic&#34;)
-     *             .bandwidthType(&#34;Basic&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .billingType(&#34;PayBy95&#34;)
+     *             .type("Basic")
+     *             .bandwidthType("Basic")
+     *             .paymentType("PayAsYouGo")
+     *             .billingType("PayBy95")
      *             .ratio(30)
      *             .bandwidthPackageName(name)
      *             .autoPay(true)
      *             .autoUseCoupon(true)
      *             .build());
      * 
-     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
      *             .acceleratorId(default_.ids()[0])
      *             .bandwidthPackageId(defaultBandwidthPackage.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
      *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
-     *             .clientAffinity(&#34;SOURCE_IP&#34;)
-     *             .protocol(&#34;UDP&#34;)
+     *             .clientAffinity("SOURCE_IP")
+     *             .protocol("UDP")
      *             .name(name)
      *             .portRanges(ListenerPortRangeArgs.builder()
-     *                 .fromPort(&#34;60&#34;)
-     *                 .toPort(&#34;70&#34;)
+     *                 .fromPort("60")
+     *                 .toPort("70")
      *                 .build())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
-     *             .bandwidth(&#34;10&#34;)
-     *             .internetChargeType(&#34;PayByBandwidth&#34;)
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+     *             .bandwidth("10")
+     *             .internetChargeType("PayByBandwidth")
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEndpointGroup = new EndpointGroup(&#34;defaultEndpointGroup&#34;, EndpointGroupArgs.builder()        
+     *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()        
      *             .acceleratorId(defaultListener.acceleratorId())
      *             .listenerId(defaultListener.id())
      *             .description(name)
      *             .name(name)
      *             .thresholdCount(4)
      *             .trafficPercentage(20)
-     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
-     *             .healthCheckIntervalSeconds(&#34;3&#34;)
-     *             .healthCheckPath(&#34;/healthcheck&#34;)
-     *             .healthCheckPort(&#34;9999&#34;)
-     *             .healthCheckProtocol(&#34;http&#34;)
+     *             .endpointGroupRegion("cn-hangzhou")
+     *             .healthCheckIntervalSeconds("3")
+     *             .healthCheckPath("/healthcheck")
+     *             .healthCheckPort("9999")
+     *             .healthCheckProtocol("http")
      *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
-     *                 .endpointPort(&#34;10&#34;)
-     *                 .listenerPort(&#34;60&#34;)
+     *                 .endpointPort("10")
+     *                 .listenerPort("60")
      *                 .build())
      *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
      *                 .endpoint(defaultEipAddress.ipAddress())
-     *                 .type(&#34;PublicIp&#34;)
-     *                 .weight(&#34;20&#34;)
+     *                 .type("PublicIp")
+     *                 .weight("20")
      *                 .build())
      *             .build());
      * 
@@ -3781,10 +3930,11 @@ public final class GaFunctions {
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -&gt; defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -> defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3801,7 +3951,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3837,66 +3988,66 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .status(&#34;active&#34;)
+     *             .status("active")
      *             .build());
      * 
-     *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+     *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
      *             .bandwidth(100)
-     *             .type(&#34;Basic&#34;)
-     *             .bandwidthType(&#34;Basic&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .billingType(&#34;PayBy95&#34;)
+     *             .type("Basic")
+     *             .bandwidthType("Basic")
+     *             .paymentType("PayAsYouGo")
+     *             .billingType("PayBy95")
      *             .ratio(30)
      *             .bandwidthPackageName(name)
      *             .autoPay(true)
      *             .autoUseCoupon(true)
      *             .build());
      * 
-     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
      *             .acceleratorId(default_.ids()[0])
      *             .bandwidthPackageId(defaultBandwidthPackage.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
      *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
-     *             .clientAffinity(&#34;SOURCE_IP&#34;)
-     *             .protocol(&#34;UDP&#34;)
+     *             .clientAffinity("SOURCE_IP")
+     *             .protocol("UDP")
      *             .name(name)
      *             .portRanges(ListenerPortRangeArgs.builder()
-     *                 .fromPort(&#34;60&#34;)
-     *                 .toPort(&#34;70&#34;)
+     *                 .fromPort("60")
+     *                 .toPort("70")
      *                 .build())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
-     *             .bandwidth(&#34;10&#34;)
-     *             .internetChargeType(&#34;PayByBandwidth&#34;)
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+     *             .bandwidth("10")
+     *             .internetChargeType("PayByBandwidth")
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEndpointGroup = new EndpointGroup(&#34;defaultEndpointGroup&#34;, EndpointGroupArgs.builder()        
+     *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()        
      *             .acceleratorId(defaultListener.acceleratorId())
      *             .listenerId(defaultListener.id())
      *             .description(name)
      *             .name(name)
      *             .thresholdCount(4)
      *             .trafficPercentage(20)
-     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
-     *             .healthCheckIntervalSeconds(&#34;3&#34;)
-     *             .healthCheckPath(&#34;/healthcheck&#34;)
-     *             .healthCheckPort(&#34;9999&#34;)
-     *             .healthCheckProtocol(&#34;http&#34;)
+     *             .endpointGroupRegion("cn-hangzhou")
+     *             .healthCheckIntervalSeconds("3")
+     *             .healthCheckPath("/healthcheck")
+     *             .healthCheckPort("9999")
+     *             .healthCheckProtocol("http")
      *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
-     *                 .endpointPort(&#34;10&#34;)
-     *                 .listenerPort(&#34;60&#34;)
+     *                 .endpointPort("10")
+     *                 .listenerPort("60")
      *                 .build())
      *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
      *                 .endpoint(defaultEipAddress.ipAddress())
-     *                 .type(&#34;PublicIp&#34;)
-     *                 .weight(&#34;20&#34;)
+     *                 .type("PublicIp")
+     *                 .weight("20")
      *                 .build())
      *             .build());
      * 
@@ -3905,10 +4056,11 @@ public final class GaFunctions {
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -&gt; defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -> defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3925,7 +4077,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3961,66 +4114,66 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .status(&#34;active&#34;)
+     *             .status("active")
      *             .build());
      * 
-     *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+     *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
      *             .bandwidth(100)
-     *             .type(&#34;Basic&#34;)
-     *             .bandwidthType(&#34;Basic&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .billingType(&#34;PayBy95&#34;)
+     *             .type("Basic")
+     *             .bandwidthType("Basic")
+     *             .paymentType("PayAsYouGo")
+     *             .billingType("PayBy95")
      *             .ratio(30)
      *             .bandwidthPackageName(name)
      *             .autoPay(true)
      *             .autoUseCoupon(true)
      *             .build());
      * 
-     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
      *             .acceleratorId(default_.ids()[0])
      *             .bandwidthPackageId(defaultBandwidthPackage.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
      *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
-     *             .clientAffinity(&#34;SOURCE_IP&#34;)
-     *             .protocol(&#34;UDP&#34;)
+     *             .clientAffinity("SOURCE_IP")
+     *             .protocol("UDP")
      *             .name(name)
      *             .portRanges(ListenerPortRangeArgs.builder()
-     *                 .fromPort(&#34;60&#34;)
-     *                 .toPort(&#34;70&#34;)
+     *                 .fromPort("60")
+     *                 .toPort("70")
      *                 .build())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
-     *             .bandwidth(&#34;10&#34;)
-     *             .internetChargeType(&#34;PayByBandwidth&#34;)
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+     *             .bandwidth("10")
+     *             .internetChargeType("PayByBandwidth")
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEndpointGroup = new EndpointGroup(&#34;defaultEndpointGroup&#34;, EndpointGroupArgs.builder()        
+     *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()        
      *             .acceleratorId(defaultListener.acceleratorId())
      *             .listenerId(defaultListener.id())
      *             .description(name)
      *             .name(name)
      *             .thresholdCount(4)
      *             .trafficPercentage(20)
-     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
-     *             .healthCheckIntervalSeconds(&#34;3&#34;)
-     *             .healthCheckPath(&#34;/healthcheck&#34;)
-     *             .healthCheckPort(&#34;9999&#34;)
-     *             .healthCheckProtocol(&#34;http&#34;)
+     *             .endpointGroupRegion("cn-hangzhou")
+     *             .healthCheckIntervalSeconds("3")
+     *             .healthCheckPath("/healthcheck")
+     *             .healthCheckPort("9999")
+     *             .healthCheckProtocol("http")
      *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
-     *                 .endpointPort(&#34;10&#34;)
-     *                 .listenerPort(&#34;60&#34;)
+     *                 .endpointPort("10")
+     *                 .listenerPort("60")
      *                 .build())
      *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
      *                 .endpoint(defaultEipAddress.ipAddress())
-     *                 .type(&#34;PublicIp&#34;)
-     *                 .weight(&#34;20&#34;)
+     *                 .type("PublicIp")
+     *                 .weight("20")
      *                 .build())
      *             .build());
      * 
@@ -4029,10 +4182,11 @@ public final class GaFunctions {
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -&gt; defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -> defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4049,7 +4203,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4085,66 +4240,66 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+     *         final var region = config.get("region").orElse("cn-hangzhou");
+     *         final var name = config.get("name").orElse("tf-example");
      *         final var default = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
-     *             .status(&#34;active&#34;)
+     *             .status("active")
      *             .build());
      * 
-     *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+     *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
      *             .bandwidth(100)
-     *             .type(&#34;Basic&#34;)
-     *             .bandwidthType(&#34;Basic&#34;)
-     *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .billingType(&#34;PayBy95&#34;)
+     *             .type("Basic")
+     *             .bandwidthType("Basic")
+     *             .paymentType("PayAsYouGo")
+     *             .billingType("PayBy95")
      *             .ratio(30)
      *             .bandwidthPackageName(name)
      *             .autoPay(true)
      *             .autoUseCoupon(true)
      *             .build());
      * 
-     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
      *             .acceleratorId(default_.ids()[0])
      *             .bandwidthPackageId(defaultBandwidthPackage.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
      *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
-     *             .clientAffinity(&#34;SOURCE_IP&#34;)
-     *             .protocol(&#34;UDP&#34;)
+     *             .clientAffinity("SOURCE_IP")
+     *             .protocol("UDP")
      *             .name(name)
      *             .portRanges(ListenerPortRangeArgs.builder()
-     *                 .fromPort(&#34;60&#34;)
-     *                 .toPort(&#34;70&#34;)
+     *                 .fromPort("60")
+     *                 .toPort("70")
      *                 .build())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
-     *             .bandwidth(&#34;10&#34;)
-     *             .internetChargeType(&#34;PayByBandwidth&#34;)
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+     *             .bandwidth("10")
+     *             .internetChargeType("PayByBandwidth")
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEndpointGroup = new EndpointGroup(&#34;defaultEndpointGroup&#34;, EndpointGroupArgs.builder()        
+     *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()        
      *             .acceleratorId(defaultListener.acceleratorId())
      *             .listenerId(defaultListener.id())
      *             .description(name)
      *             .name(name)
      *             .thresholdCount(4)
      *             .trafficPercentage(20)
-     *             .endpointGroupRegion(&#34;cn-hangzhou&#34;)
-     *             .healthCheckIntervalSeconds(&#34;3&#34;)
-     *             .healthCheckPath(&#34;/healthcheck&#34;)
-     *             .healthCheckPort(&#34;9999&#34;)
-     *             .healthCheckProtocol(&#34;http&#34;)
+     *             .endpointGroupRegion("cn-hangzhou")
+     *             .healthCheckIntervalSeconds("3")
+     *             .healthCheckPath("/healthcheck")
+     *             .healthCheckPort("9999")
+     *             .healthCheckProtocol("http")
      *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
-     *                 .endpointPort(&#34;10&#34;)
-     *                 .listenerPort(&#34;60&#34;)
+     *                 .endpointPort("10")
+     *                 .listenerPort("60")
      *                 .build())
      *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
      *                 .endpoint(defaultEipAddress.ipAddress())
-     *                 .type(&#34;PublicIp&#34;)
-     *                 .weight(&#34;20&#34;)
+     *                 .type("PublicIp")
+     *                 .weight("20")
      *                 .build())
      *             .build());
      * 
@@ -4153,10 +4308,11 @@ public final class GaFunctions {
      *             .ids(defaultEndpointGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaEndpointGroupId&#34;, defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -&gt; defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -&gt; getEndpointGroupsResult.groups()[0].id())));
+     *         ctx.export("firstGaEndpointGroupId", defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult).applyValue(defaultGetEndpointGroups -> defaultGetEndpointGroups.applyValue(getEndpointGroupsResult -> getEndpointGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4173,7 +4329,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4195,15 +4352,16 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .listenerId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
+     *             .listenerId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaForwardingRuleId&#34;, example.applyValue(getForwardingRulesResult -&gt; getForwardingRulesResult.forwardingRules()[0].id()));
+     *         ctx.export("firstGaForwardingRuleId", example.applyValue(getForwardingRulesResult -> getForwardingRulesResult.forwardingRules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4220,7 +4378,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4242,15 +4401,16 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .listenerId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
+     *             .listenerId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaForwardingRuleId&#34;, example.applyValue(getForwardingRulesResult -&gt; getForwardingRulesResult.forwardingRules()[0].id()));
+     *         ctx.export("firstGaForwardingRuleId", example.applyValue(getForwardingRulesResult -> getForwardingRulesResult.forwardingRules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4267,7 +4427,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4289,15 +4450,16 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .listenerId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
+     *             .listenerId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaForwardingRuleId&#34;, example.applyValue(getForwardingRulesResult -&gt; getForwardingRulesResult.forwardingRules()[0].id()));
+     *         ctx.export("firstGaForwardingRuleId", example.applyValue(getForwardingRulesResult -> getForwardingRulesResult.forwardingRules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4314,7 +4476,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4336,15 +4499,16 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getForwardingRules(GetForwardingRulesArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .listenerId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
+     *             .listenerId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaForwardingRuleId&#34;, example.applyValue(getForwardingRulesResult -&gt; getForwardingRulesResult.forwardingRules()[0].id()));
+     *         ctx.export("firstGaForwardingRuleId", example.applyValue(getForwardingRulesResult -> getForwardingRulesResult.forwardingRules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4361,7 +4525,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4383,14 +4548,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getIpSets(GetIpSetsArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaIpSetId&#34;, example.applyValue(getIpSetsResult -&gt; getIpSetsResult.sets()[0].id()));
+     *         ctx.export("firstGaIpSetId", example.applyValue(getIpSetsResult -> getIpSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4407,7 +4573,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4429,14 +4596,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getIpSets(GetIpSetsArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaIpSetId&#34;, example.applyValue(getIpSetsResult -&gt; getIpSetsResult.sets()[0].id()));
+     *         ctx.export("firstGaIpSetId", example.applyValue(getIpSetsResult -> getIpSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4453,7 +4621,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4475,14 +4644,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getIpSets(GetIpSetsArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaIpSetId&#34;, example.applyValue(getIpSetsResult -&gt; getIpSetsResult.sets()[0].id()));
+     *         ctx.export("firstGaIpSetId", example.applyValue(getIpSetsResult -> getIpSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4499,7 +4669,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4521,14 +4692,15 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getIpSets(GetIpSetsArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
+     *             .acceleratorId("example_value")
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaIpSetId&#34;, example.applyValue(getIpSetsResult -&gt; getIpSetsResult.sets()[0].id()));
+     *         ctx.export("firstGaIpSetId", example.applyValue(getIpSetsResult -> getIpSetsResult.sets()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4545,7 +4717,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4567,15 +4740,16 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getListeners(GetListenersArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .acceleratorId("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaListenerId&#34;, example.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *         ctx.export("firstGaListenerId", example.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4592,7 +4766,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4614,15 +4789,16 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getListeners(GetListenersArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .acceleratorId("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaListenerId&#34;, example.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *         ctx.export("firstGaListenerId", example.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4639,7 +4815,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4661,15 +4838,16 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getListeners(GetListenersArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .acceleratorId("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaListenerId&#34;, example.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *         ctx.export("firstGaListenerId", example.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4686,7 +4864,8 @@ public final class GaFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4708,15 +4887,16 @@ public final class GaFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = GaFunctions.getListeners(GetListenersArgs.builder()
-     *             .acceleratorId(&#34;example_value&#34;)
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .acceleratorId("example_value")
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGaListenerId&#34;, example.applyValue(getListenersResult -&gt; getListenersResult.listeners()[0].id()));
+     *         ctx.export("firstGaListenerId", example.applyValue(getListenersResult -> getListenersResult.listeners()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

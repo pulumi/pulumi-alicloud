@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,30 +54,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var name = config.get("name").orElse("tfexample");
  *         final var default = ThreatdetectionFunctions.getHoneypotImages(GetHoneypotImagesArgs.builder()
- *             .nameRegex(&#34;^ruoyi&#34;)
+ *             .nameRegex("^ruoyi")
  *             .build());
  * 
- *         var defaultHoneypotNode = new HoneypotNode(&#34;defaultHoneypotNode&#34;, HoneypotNodeArgs.builder()        
+ *         var defaultHoneypotNode = new HoneypotNode("defaultHoneypotNode", HoneypotNodeArgs.builder()        
  *             .nodeName(name)
  *             .availableProbeNum(20)
- *             .securityGroupProbeIpLists(&#34;0.0.0.0/0&#34;)
+ *             .securityGroupProbeIpLists("0.0.0.0/0")
  *             .build());
  * 
- *         var defaultHoneypotPreset = new HoneypotPreset(&#34;defaultHoneypotPreset&#34;, HoneypotPresetArgs.builder()        
+ *         var defaultHoneypotPreset = new HoneypotPreset("defaultHoneypotPreset", HoneypotPresetArgs.builder()        
  *             .presetName(name)
  *             .nodeId(defaultHoneypotNode.id())
  *             .honeypotImageName(default_.images()[0].honeypotImageName())
  *             .meta(HoneypotPresetMetaArgs.builder()
  *                 .portraitOption(true)
- *                 .burp(&#34;open&#34;)
+ *                 .burp("open")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

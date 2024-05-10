@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var current = AlicloudFunctions.getAccount();
  * 
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
@@ -74,80 +75,80 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetUserTenants = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
- *             .status(&#34;ACTIVE&#34;)
+ *             .status("ACTIVE")
  *             .build());
  * 
  *         final var defaultGetZones = RdsFunctions.getZones(GetZonesArgs.builder()
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;8.0&#34;)
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .category(&#34;HighAvailability&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .instanceChargeType("PostPaid")
+ *             .category("HighAvailability")
+ *             .dbInstanceStorageType("cloud_essd")
  *             .build());
  * 
  *         final var defaultGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;8.0&#34;)
- *             .category(&#34;HighAvailability&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
- *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .category("HighAvailability")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .instanceChargeType("PostPaid")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;8.0&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
- *             .instanceType(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .engine("MySQL")
+ *             .engineVersion("8.0")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .instanceType(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
  *             .vswitchId(defaultSwitch.id())
  *             .instanceName(name)
  *             .securityIps(            
- *                 &#34;100.104.5.0/24&#34;,
- *                 &#34;192.168.0.6&#34;)
+ *                 "100.104.5.0/24",
+ *                 "192.168.0.6")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
- *         var defaultAccount = new Account(&#34;defaultAccount&#34;, AccountArgs.builder()        
+ *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
  *             .dbInstanceId(defaultInstance.id())
- *             .accountName(&#34;tfexamplename&#34;)
- *             .accountPassword(&#34;Example12345&#34;)
- *             .accountType(&#34;Normal&#34;)
+ *             .accountName("tfexamplename")
+ *             .accountPassword("Example12345")
+ *             .accountType("Normal")
  *             .build());
  * 
- *         var defaultEnterpriseInstance = new EnterpriseInstance(&#34;defaultEnterpriseInstance&#34;, EnterpriseInstanceArgs.builder()        
- *             .tid(defaultGetUserTenants.applyValue(getUserTenantsResult -&gt; getUserTenantsResult.ids()[0]))
- *             .instanceType(&#34;mysql&#34;)
- *             .instanceSource(&#34;RDS&#34;)
- *             .networkType(&#34;VPC&#34;)
- *             .envType(&#34;dev&#34;)
+ *         var defaultEnterpriseInstance = new EnterpriseInstance("defaultEnterpriseInstance", EnterpriseInstanceArgs.builder()        
+ *             .tid(defaultGetUserTenants.applyValue(getUserTenantsResult -> getUserTenantsResult.ids()[0]))
+ *             .instanceType("mysql")
+ *             .instanceSource("RDS")
+ *             .networkType("VPC")
+ *             .envType("dev")
  *             .host(defaultInstance.connectionString())
  *             .port(3306)
  *             .databaseUser(defaultAccount.accountName())
  *             .databasePassword(defaultAccount.accountPassword())
  *             .instanceName(name)
- *             .dbaUid(current.applyValue(getAccountResult -&gt; getAccountResult.id()))
- *             .safeRule(&#34;904496&#34;)
+ *             .dbaUid(current.applyValue(getAccountResult -> getAccountResult.id()))
+ *             .safeRule("904496")
  *             .useDsql(1)
  *             .queryTimeout(60)
  *             .exportTimeout(600)
@@ -156,7 +157,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

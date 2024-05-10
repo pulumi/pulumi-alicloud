@@ -45,7 +45,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -67,18 +68,19 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getAccessPoints(GetAccessPointsArgs.builder()
-     *             .ids(&#34;ap-cn-hangzhou-yh-C&#34;)
+     *             .ids("ap-cn-hangzhou-yh-C")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectAccessPointId1&#34;, ids.applyValue(getAccessPointsResult -&gt; getAccessPointsResult.points()[0].id()));
+     *         ctx.export("expressConnectAccessPointId1", ids.applyValue(getAccessPointsResult -> getAccessPointsResult.points()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getAccessPoints(GetAccessPointsArgs.builder()
-     *             .nameRegex(&#34;^杭州-&#34;)
+     *             .nameRegex("^杭州-")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectAccessPointId2&#34;, nameRegex.applyValue(getAccessPointsResult -&gt; getAccessPointsResult.points()[0].id()));
+     *         ctx.export("expressConnectAccessPointId2", nameRegex.applyValue(getAccessPointsResult -> getAccessPointsResult.points()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -95,7 +97,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -117,18 +120,19 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getAccessPoints(GetAccessPointsArgs.builder()
-     *             .ids(&#34;ap-cn-hangzhou-yh-C&#34;)
+     *             .ids("ap-cn-hangzhou-yh-C")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectAccessPointId1&#34;, ids.applyValue(getAccessPointsResult -&gt; getAccessPointsResult.points()[0].id()));
+     *         ctx.export("expressConnectAccessPointId1", ids.applyValue(getAccessPointsResult -> getAccessPointsResult.points()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getAccessPoints(GetAccessPointsArgs.builder()
-     *             .nameRegex(&#34;^杭州-&#34;)
+     *             .nameRegex("^杭州-")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectAccessPointId2&#34;, nameRegex.applyValue(getAccessPointsResult -&gt; getAccessPointsResult.points()[0].id()));
+     *         ctx.export("expressConnectAccessPointId2", nameRegex.applyValue(getAccessPointsResult -> getAccessPointsResult.points()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -145,7 +149,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -167,18 +172,19 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getAccessPoints(GetAccessPointsArgs.builder()
-     *             .ids(&#34;ap-cn-hangzhou-yh-C&#34;)
+     *             .ids("ap-cn-hangzhou-yh-C")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectAccessPointId1&#34;, ids.applyValue(getAccessPointsResult -&gt; getAccessPointsResult.points()[0].id()));
+     *         ctx.export("expressConnectAccessPointId1", ids.applyValue(getAccessPointsResult -> getAccessPointsResult.points()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getAccessPoints(GetAccessPointsArgs.builder()
-     *             .nameRegex(&#34;^杭州-&#34;)
+     *             .nameRegex("^杭州-")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectAccessPointId2&#34;, nameRegex.applyValue(getAccessPointsResult -&gt; getAccessPointsResult.points()[0].id()));
+     *         ctx.export("expressConnectAccessPointId2", nameRegex.applyValue(getAccessPointsResult -> getAccessPointsResult.points()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -195,7 +201,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -217,18 +224,19 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getAccessPoints(GetAccessPointsArgs.builder()
-     *             .ids(&#34;ap-cn-hangzhou-yh-C&#34;)
+     *             .ids("ap-cn-hangzhou-yh-C")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectAccessPointId1&#34;, ids.applyValue(getAccessPointsResult -&gt; getAccessPointsResult.points()[0].id()));
+     *         ctx.export("expressConnectAccessPointId1", ids.applyValue(getAccessPointsResult -> getAccessPointsResult.points()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getAccessPoints(GetAccessPointsArgs.builder()
-     *             .nameRegex(&#34;^杭州-&#34;)
+     *             .nameRegex("^杭州-")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectAccessPointId2&#34;, nameRegex.applyValue(getAccessPointsResult -&gt; getAccessPointsResult.points()[0].id()));
+     *         ctx.export("expressConnectAccessPointId2", nameRegex.applyValue(getAccessPointsResult -> getAccessPointsResult.points()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -245,7 +253,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -267,18 +276,19 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getAccessPoints(GetAccessPointsArgs.builder()
-     *             .ids(&#34;ap-cn-hangzhou-yh-C&#34;)
+     *             .ids("ap-cn-hangzhou-yh-C")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectAccessPointId1&#34;, ids.applyValue(getAccessPointsResult -&gt; getAccessPointsResult.points()[0].id()));
+     *         ctx.export("expressConnectAccessPointId1", ids.applyValue(getAccessPointsResult -> getAccessPointsResult.points()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getAccessPoints(GetAccessPointsArgs.builder()
-     *             .nameRegex(&#34;^杭州-&#34;)
+     *             .nameRegex("^杭州-")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectAccessPointId2&#34;, nameRegex.applyValue(getAccessPointsResult -&gt; getAccessPointsResult.points()[0].id()));
+     *         ctx.export("expressConnectAccessPointId2", nameRegex.applyValue(getAccessPointsResult -> getAccessPointsResult.points()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -295,7 +305,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -317,18 +328,19 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getAccessPoints(GetAccessPointsArgs.builder()
-     *             .ids(&#34;ap-cn-hangzhou-yh-C&#34;)
+     *             .ids("ap-cn-hangzhou-yh-C")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectAccessPointId1&#34;, ids.applyValue(getAccessPointsResult -&gt; getAccessPointsResult.points()[0].id()));
+     *         ctx.export("expressConnectAccessPointId1", ids.applyValue(getAccessPointsResult -> getAccessPointsResult.points()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getAccessPoints(GetAccessPointsArgs.builder()
-     *             .nameRegex(&#34;^杭州-&#34;)
+     *             .nameRegex("^杭州-")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectAccessPointId2&#34;, nameRegex.applyValue(getAccessPointsResult -&gt; getAccessPointsResult.points()[0].id()));
+     *         ctx.export("expressConnectAccessPointId2", nameRegex.applyValue(getAccessPointsResult -> getAccessPointsResult.points()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -345,7 +357,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -367,14 +380,15 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getGrantRuleToCens(GetGrantRuleToCensArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .instanceId(&#34;your_vbr_instance_id&#34;)
+     *             .ids("example_id")
+     *             .instanceId("your_vbr_instance_id")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectGrantRuleToCenId0&#34;, ids.applyValue(getGrantRuleToCensResult -&gt; getGrantRuleToCensResult.cens()[0].id()));
+     *         ctx.export("expressConnectGrantRuleToCenId0", ids.applyValue(getGrantRuleToCensResult -> getGrantRuleToCensResult.cens()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -391,7 +405,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -413,14 +428,15 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getGrantRuleToCens(GetGrantRuleToCensArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .instanceId(&#34;your_vbr_instance_id&#34;)
+     *             .ids("example_id")
+     *             .instanceId("your_vbr_instance_id")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectGrantRuleToCenId0&#34;, ids.applyValue(getGrantRuleToCensResult -&gt; getGrantRuleToCensResult.cens()[0].id()));
+     *         ctx.export("expressConnectGrantRuleToCenId0", ids.applyValue(getGrantRuleToCensResult -> getGrantRuleToCensResult.cens()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -437,7 +453,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -459,14 +476,15 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getGrantRuleToCens(GetGrantRuleToCensArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .instanceId(&#34;your_vbr_instance_id&#34;)
+     *             .ids("example_id")
+     *             .instanceId("your_vbr_instance_id")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectGrantRuleToCenId0&#34;, ids.applyValue(getGrantRuleToCensResult -&gt; getGrantRuleToCensResult.cens()[0].id()));
+     *         ctx.export("expressConnectGrantRuleToCenId0", ids.applyValue(getGrantRuleToCensResult -> getGrantRuleToCensResult.cens()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -483,7 +501,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -505,14 +524,15 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getGrantRuleToCens(GetGrantRuleToCensArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .instanceId(&#34;your_vbr_instance_id&#34;)
+     *             .ids("example_id")
+     *             .instanceId("your_vbr_instance_id")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectGrantRuleToCenId0&#34;, ids.applyValue(getGrantRuleToCensResult -&gt; getGrantRuleToCensResult.cens()[0].id()));
+     *         ctx.export("expressConnectGrantRuleToCenId0", ids.applyValue(getGrantRuleToCensResult -> getGrantRuleToCensResult.cens()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -529,7 +549,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -551,12 +572,13 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ExpressconnectFunctions.getPhysicalConnectionService(GetPhysicalConnectionServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -573,7 +595,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -595,12 +618,13 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ExpressconnectFunctions.getPhysicalConnectionService(GetPhysicalConnectionServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -617,7 +641,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -639,12 +664,13 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ExpressconnectFunctions.getPhysicalConnectionService(GetPhysicalConnectionServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -661,7 +687,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -683,12 +710,13 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ExpressconnectFunctions.getPhysicalConnectionService(GetPhysicalConnectionServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -705,7 +733,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -727,12 +756,13 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ExpressconnectFunctions.getPhysicalConnectionService(GetPhysicalConnectionServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -749,7 +779,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -771,12 +802,13 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = ExpressconnectFunctions.getPhysicalConnectionService(GetPhysicalConnectionServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -793,7 +825,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -815,18 +848,19 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
-     *             .ids(&#34;pc-2345678&#34;)
+     *             .ids("pc-2345678")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectPhysicalConnectionId1&#34;, ids.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()));
+     *         ctx.export("expressConnectPhysicalConnectionId1", ids.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
-     *             .nameRegex(&#34;^my-PhysicalConnection&#34;)
+     *             .nameRegex("^my-PhysicalConnection")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectPhysicalConnectionId2&#34;, nameRegex.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()));
+     *         ctx.export("expressConnectPhysicalConnectionId2", nameRegex.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -843,7 +877,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -865,18 +900,19 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
-     *             .ids(&#34;pc-2345678&#34;)
+     *             .ids("pc-2345678")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectPhysicalConnectionId1&#34;, ids.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()));
+     *         ctx.export("expressConnectPhysicalConnectionId1", ids.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
-     *             .nameRegex(&#34;^my-PhysicalConnection&#34;)
+     *             .nameRegex("^my-PhysicalConnection")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectPhysicalConnectionId2&#34;, nameRegex.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()));
+     *         ctx.export("expressConnectPhysicalConnectionId2", nameRegex.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -893,7 +929,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -915,18 +952,19 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
-     *             .ids(&#34;pc-2345678&#34;)
+     *             .ids("pc-2345678")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectPhysicalConnectionId1&#34;, ids.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()));
+     *         ctx.export("expressConnectPhysicalConnectionId1", ids.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
-     *             .nameRegex(&#34;^my-PhysicalConnection&#34;)
+     *             .nameRegex("^my-PhysicalConnection")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectPhysicalConnectionId2&#34;, nameRegex.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()));
+     *         ctx.export("expressConnectPhysicalConnectionId2", nameRegex.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -943,7 +981,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -965,18 +1004,19 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
-     *             .ids(&#34;pc-2345678&#34;)
+     *             .ids("pc-2345678")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectPhysicalConnectionId1&#34;, ids.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()));
+     *         ctx.export("expressConnectPhysicalConnectionId1", ids.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
-     *             .nameRegex(&#34;^my-PhysicalConnection&#34;)
+     *             .nameRegex("^my-PhysicalConnection")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectPhysicalConnectionId2&#34;, nameRegex.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()));
+     *         ctx.export("expressConnectPhysicalConnectionId2", nameRegex.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -993,7 +1033,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1015,18 +1056,19 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
-     *             .ids(&#34;pc-2345678&#34;)
+     *             .ids("pc-2345678")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectPhysicalConnectionId1&#34;, ids.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()));
+     *         ctx.export("expressConnectPhysicalConnectionId1", ids.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
-     *             .nameRegex(&#34;^my-PhysicalConnection&#34;)
+     *             .nameRegex("^my-PhysicalConnection")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectPhysicalConnectionId2&#34;, nameRegex.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()));
+     *         ctx.export("expressConnectPhysicalConnectionId2", nameRegex.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1043,7 +1085,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1065,18 +1108,19 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
-     *             .ids(&#34;pc-2345678&#34;)
+     *             .ids("pc-2345678")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectPhysicalConnectionId1&#34;, ids.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()));
+     *         ctx.export("expressConnectPhysicalConnectionId1", ids.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
-     *             .nameRegex(&#34;^my-PhysicalConnection&#34;)
+     *             .nameRegex("^my-PhysicalConnection")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectPhysicalConnectionId2&#34;, nameRegex.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()));
+     *         ctx.export("expressConnectPhysicalConnectionId2", nameRegex.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1091,7 +1135,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1117,10 +1162,11 @@ public final class ExpressconnectFunctions {
      *             .nameRegex(defaultAlicloudRouterInterface.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
+     *         ctx.export("alicloudRouterInterfaceExampleId", default_.interfaces()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1135,7 +1181,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1161,10 +1208,11 @@ public final class ExpressconnectFunctions {
      *             .nameRegex(defaultAlicloudRouterInterface.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
+     *         ctx.export("alicloudRouterInterfaceExampleId", default_.interfaces()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1179,7 +1227,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1205,10 +1254,11 @@ public final class ExpressconnectFunctions {
      *             .nameRegex(defaultAlicloudRouterInterface.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
+     *         ctx.export("alicloudRouterInterfaceExampleId", default_.interfaces()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1223,7 +1273,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1249,10 +1300,11 @@ public final class ExpressconnectFunctions {
      *             .nameRegex(defaultAlicloudRouterInterface.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
+     *         ctx.export("alicloudRouterInterfaceExampleId", default_.interfaces()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1267,7 +1319,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1293,10 +1346,11 @@ public final class ExpressconnectFunctions {
      *             .nameRegex(defaultAlicloudRouterInterface.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
+     *         ctx.export("alicloudRouterInterfaceExampleId", default_.interfaces()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1311,7 +1365,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1337,10 +1392,11 @@ public final class ExpressconnectFunctions {
      *             .nameRegex(defaultAlicloudRouterInterface.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
+     *         ctx.export("alicloudRouterInterfaceExampleId", default_.interfaces()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1355,7 +1411,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1377,14 +1434,15 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudExpressConnectVbrPconnAssociationExampleId&#34;, default_.associations()[0].id());
+     *         ctx.export("alicloudExpressConnectVbrPconnAssociationExampleId", default_.associations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1399,7 +1457,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1421,14 +1480,15 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudExpressConnectVbrPconnAssociationExampleId&#34;, default_.associations()[0].id());
+     *         ctx.export("alicloudExpressConnectVbrPconnAssociationExampleId", default_.associations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1443,7 +1503,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1465,14 +1526,15 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudExpressConnectVbrPconnAssociationExampleId&#34;, default_.associations()[0].id());
+     *         ctx.export("alicloudExpressConnectVbrPconnAssociationExampleId", default_.associations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1487,7 +1549,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1509,14 +1572,15 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudExpressConnectVbrPconnAssociationExampleId&#34;, default_.associations()[0].id());
+     *         ctx.export("alicloudExpressConnectVbrPconnAssociationExampleId", default_.associations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1531,7 +1595,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1553,14 +1618,15 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudExpressConnectVbrPconnAssociationExampleId&#34;, default_.associations()[0].id());
+     *         ctx.export("alicloudExpressConnectVbrPconnAssociationExampleId", default_.associations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1575,7 +1641,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1597,14 +1664,15 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudExpressConnectVbrPconnAssociationExampleId&#34;, default_.associations()[0].id());
+     *         ctx.export("alicloudExpressConnectVbrPconnAssociationExampleId", default_.associations()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1621,7 +1689,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1644,30 +1713,31 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getVirtualBorderRouters();
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId1&#34;, ids.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId1", ids.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getVirtualBorderRouters(GetVirtualBorderRoutersArgs.builder()
-     *             .nameRegex(&#34;^my-VirtualBorderRouter&#34;)
+     *             .nameRegex("^my-VirtualBorderRouter")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId2&#34;, nameRegex.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId2", nameRegex.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *         final var filter = ExpressconnectFunctions.getVirtualBorderRouters(GetVirtualBorderRoutersArgs.builder()
      *             .filters(            
      *                 GetVirtualBorderRoutersFilterArgs.builder()
-     *                     .key(&#34;PhysicalConnectionId&#34;)
-     *                     .values(&#34;pc-xxxx1&#34;)
+     *                     .key("PhysicalConnectionId")
+     *                     .values("pc-xxxx1")
      *                     .build(),
      *                 GetVirtualBorderRoutersFilterArgs.builder()
-     *                     .key(&#34;VbrId&#34;)
+     *                     .key("VbrId")
      *                     .values(                    
-     *                         &#34;vbr-xxxx1&#34;,
-     *                         &#34;vbr-xxxx2&#34;)
+     *                         "vbr-xxxx1",
+     *                         "vbr-xxxx2")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId3&#34;, filter.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId3", filter.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1684,7 +1754,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1707,30 +1778,31 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getVirtualBorderRouters();
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId1&#34;, ids.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId1", ids.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getVirtualBorderRouters(GetVirtualBorderRoutersArgs.builder()
-     *             .nameRegex(&#34;^my-VirtualBorderRouter&#34;)
+     *             .nameRegex("^my-VirtualBorderRouter")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId2&#34;, nameRegex.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId2", nameRegex.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *         final var filter = ExpressconnectFunctions.getVirtualBorderRouters(GetVirtualBorderRoutersArgs.builder()
      *             .filters(            
      *                 GetVirtualBorderRoutersFilterArgs.builder()
-     *                     .key(&#34;PhysicalConnectionId&#34;)
-     *                     .values(&#34;pc-xxxx1&#34;)
+     *                     .key("PhysicalConnectionId")
+     *                     .values("pc-xxxx1")
      *                     .build(),
      *                 GetVirtualBorderRoutersFilterArgs.builder()
-     *                     .key(&#34;VbrId&#34;)
+     *                     .key("VbrId")
      *                     .values(                    
-     *                         &#34;vbr-xxxx1&#34;,
-     *                         &#34;vbr-xxxx2&#34;)
+     *                         "vbr-xxxx1",
+     *                         "vbr-xxxx2")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId3&#34;, filter.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId3", filter.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1747,7 +1819,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1770,30 +1843,31 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getVirtualBorderRouters();
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId1&#34;, ids.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId1", ids.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getVirtualBorderRouters(GetVirtualBorderRoutersArgs.builder()
-     *             .nameRegex(&#34;^my-VirtualBorderRouter&#34;)
+     *             .nameRegex("^my-VirtualBorderRouter")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId2&#34;, nameRegex.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId2", nameRegex.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *         final var filter = ExpressconnectFunctions.getVirtualBorderRouters(GetVirtualBorderRoutersArgs.builder()
      *             .filters(            
      *                 GetVirtualBorderRoutersFilterArgs.builder()
-     *                     .key(&#34;PhysicalConnectionId&#34;)
-     *                     .values(&#34;pc-xxxx1&#34;)
+     *                     .key("PhysicalConnectionId")
+     *                     .values("pc-xxxx1")
      *                     .build(),
      *                 GetVirtualBorderRoutersFilterArgs.builder()
-     *                     .key(&#34;VbrId&#34;)
+     *                     .key("VbrId")
      *                     .values(                    
-     *                         &#34;vbr-xxxx1&#34;,
-     *                         &#34;vbr-xxxx2&#34;)
+     *                         "vbr-xxxx1",
+     *                         "vbr-xxxx2")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId3&#34;, filter.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId3", filter.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1810,7 +1884,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1833,30 +1908,31 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getVirtualBorderRouters();
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId1&#34;, ids.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId1", ids.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getVirtualBorderRouters(GetVirtualBorderRoutersArgs.builder()
-     *             .nameRegex(&#34;^my-VirtualBorderRouter&#34;)
+     *             .nameRegex("^my-VirtualBorderRouter")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId2&#34;, nameRegex.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId2", nameRegex.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *         final var filter = ExpressconnectFunctions.getVirtualBorderRouters(GetVirtualBorderRoutersArgs.builder()
      *             .filters(            
      *                 GetVirtualBorderRoutersFilterArgs.builder()
-     *                     .key(&#34;PhysicalConnectionId&#34;)
-     *                     .values(&#34;pc-xxxx1&#34;)
+     *                     .key("PhysicalConnectionId")
+     *                     .values("pc-xxxx1")
      *                     .build(),
      *                 GetVirtualBorderRoutersFilterArgs.builder()
-     *                     .key(&#34;VbrId&#34;)
+     *                     .key("VbrId")
      *                     .values(                    
-     *                         &#34;vbr-xxxx1&#34;,
-     *                         &#34;vbr-xxxx2&#34;)
+     *                         "vbr-xxxx1",
+     *                         "vbr-xxxx2")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId3&#34;, filter.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId3", filter.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1873,7 +1949,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1896,30 +1973,31 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getVirtualBorderRouters();
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId1&#34;, ids.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId1", ids.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getVirtualBorderRouters(GetVirtualBorderRoutersArgs.builder()
-     *             .nameRegex(&#34;^my-VirtualBorderRouter&#34;)
+     *             .nameRegex("^my-VirtualBorderRouter")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId2&#34;, nameRegex.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId2", nameRegex.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *         final var filter = ExpressconnectFunctions.getVirtualBorderRouters(GetVirtualBorderRoutersArgs.builder()
      *             .filters(            
      *                 GetVirtualBorderRoutersFilterArgs.builder()
-     *                     .key(&#34;PhysicalConnectionId&#34;)
-     *                     .values(&#34;pc-xxxx1&#34;)
+     *                     .key("PhysicalConnectionId")
+     *                     .values("pc-xxxx1")
      *                     .build(),
      *                 GetVirtualBorderRoutersFilterArgs.builder()
-     *                     .key(&#34;VbrId&#34;)
+     *                     .key("VbrId")
      *                     .values(                    
-     *                         &#34;vbr-xxxx1&#34;,
-     *                         &#34;vbr-xxxx2&#34;)
+     *                         "vbr-xxxx1",
+     *                         "vbr-xxxx2")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId3&#34;, filter.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId3", filter.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1936,7 +2014,8 @@ public final class ExpressconnectFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1959,30 +2038,31 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = ExpressconnectFunctions.getVirtualBorderRouters();
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId1&#34;, ids.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId1", ids.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *         final var nameRegex = ExpressconnectFunctions.getVirtualBorderRouters(GetVirtualBorderRoutersArgs.builder()
-     *             .nameRegex(&#34;^my-VirtualBorderRouter&#34;)
+     *             .nameRegex("^my-VirtualBorderRouter")
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId2&#34;, nameRegex.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId2", nameRegex.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *         final var filter = ExpressconnectFunctions.getVirtualBorderRouters(GetVirtualBorderRoutersArgs.builder()
      *             .filters(            
      *                 GetVirtualBorderRoutersFilterArgs.builder()
-     *                     .key(&#34;PhysicalConnectionId&#34;)
-     *                     .values(&#34;pc-xxxx1&#34;)
+     *                     .key("PhysicalConnectionId")
+     *                     .values("pc-xxxx1")
      *                     .build(),
      *                 GetVirtualBorderRoutersFilterArgs.builder()
-     *                     .key(&#34;VbrId&#34;)
+     *                     .key("VbrId")
      *                     .values(                    
-     *                         &#34;vbr-xxxx1&#34;,
-     *                         &#34;vbr-xxxx2&#34;)
+     *                         "vbr-xxxx1",
+     *                         "vbr-xxxx2")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;expressConnectVirtualBorderRouterId3&#34;, filter.applyValue(getVirtualBorderRoutersResult -&gt; getVirtualBorderRoutersResult.routers()[0].id()));
+     *         ctx.export("expressConnectVirtualBorderRouterId3", filter.applyValue(getVirtualBorderRoutersResult -> getVirtualBorderRoutersResult.routers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1997,7 +2077,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2026,10 +2107,11 @@ public final class ExpressconnectFunctions {
      *             .vpconnAliUid(1234567890)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudExpressConnectVirtualPhysicalConnectionExampleId&#34;, default_.connections()[0].id());
+     *         ctx.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default_.connections()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2044,7 +2126,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2073,10 +2156,11 @@ public final class ExpressconnectFunctions {
      *             .vpconnAliUid(1234567890)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudExpressConnectVirtualPhysicalConnectionExampleId&#34;, default_.connections()[0].id());
+     *         ctx.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default_.connections()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2091,7 +2175,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2120,10 +2205,11 @@ public final class ExpressconnectFunctions {
      *             .vpconnAliUid(1234567890)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudExpressConnectVirtualPhysicalConnectionExampleId&#34;, default_.connections()[0].id());
+     *         ctx.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default_.connections()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2138,7 +2224,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2167,10 +2254,11 @@ public final class ExpressconnectFunctions {
      *             .vpconnAliUid(1234567890)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudExpressConnectVirtualPhysicalConnectionExampleId&#34;, default_.connections()[0].id());
+     *         ctx.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default_.connections()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2185,7 +2273,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2214,10 +2303,11 @@ public final class ExpressconnectFunctions {
      *             .vpconnAliUid(1234567890)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudExpressConnectVirtualPhysicalConnectionExampleId&#34;, default_.connections()[0].id());
+     *         ctx.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default_.connections()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2232,7 +2322,8 @@ public final class ExpressconnectFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2261,10 +2352,11 @@ public final class ExpressconnectFunctions {
      *             .vpconnAliUid(1234567890)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudExpressConnectVirtualPhysicalConnectionExampleId&#34;, default_.connections()[0].id());
+     *         ctx.export("alicloudExpressConnectVirtualPhysicalConnectionExampleId", default_.connections()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

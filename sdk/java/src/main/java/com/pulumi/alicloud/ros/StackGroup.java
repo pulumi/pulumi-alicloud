@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,18 +50,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new StackGroup(&#34;example&#34;, StackGroupArgs.builder()        
- *             .stackGroupName(&#34;example_value&#34;)
- *             .templateBody(&#34;&#34;&#34;
+ *         var example = new StackGroup("example", StackGroupArgs.builder()        
+ *             .stackGroupName("example_value")
+ *             .templateBody("""
  *     {
- *     	&#34;ROSTemplateFormatVersion&#34;: &#34;2015-09-01&#34;
+ *     	"ROSTemplateFormatVersion": "2015-09-01"
  *     }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

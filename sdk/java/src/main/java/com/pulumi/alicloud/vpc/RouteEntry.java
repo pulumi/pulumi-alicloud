@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,7 +61,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
@@ -70,63 +71,64 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .nameRegex("^ubuntu_18.*64")
  *             .mostRecent(true)
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;RouteEntryConfig&#34;);
- *         var foo = new Network(&#34;foo&#34;, NetworkArgs.builder()        
+ *         final var name = config.get("name").orElse("RouteEntryConfig");
+ *         var foo = new Network("foo", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.1.0.0/21&#34;)
+ *             .cidrBlock("10.1.0.0/21")
  *             .build());
  * 
- *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
+ *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
  *             .vpcId(foo.id())
- *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+ *             .cidrBlock("10.1.1.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+ *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()        
  *             .name(name)
- *             .description(&#34;foo&#34;)
+ *             .description("foo")
  *             .vpcId(foo.id())
  *             .build());
  * 
- *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
- *             .type(&#34;ingress&#34;)
- *             .ipProtocol(&#34;tcp&#34;)
- *             .nicType(&#34;intranet&#34;)
- *             .policy(&#34;accept&#34;)
- *             .portRange(&#34;22/22&#34;)
+ *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()        
+ *             .type("ingress")
+ *             .ipProtocol("tcp")
+ *             .nicType("intranet")
+ *             .policy("accept")
+ *             .portRange("22/22")
  *             .priority(1)
  *             .securityGroupId(tfTestFoo.id())
- *             .cidrIp(&#34;0.0.0.0/0&#34;)
+ *             .cidrIp("0.0.0.0/0")
  *             .build());
  * 
- *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+ *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
  *             .securityGroups(tfTestFoo.id())
  *             .vswitchId(fooSwitch.id())
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .internetChargeType(&#34;PayByTraffic&#34;)
+ *             .instanceChargeType("PostPaid")
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .internetChargeType("PayByTraffic")
  *             .internetMaxBandwidthOut(5)
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .instanceName(name)
  *             .build());
  * 
- *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
+ *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()        
  *             .routeTableId(foo.routeTableId())
- *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
- *             .nexthopType(&#34;Instance&#34;)
+ *             .destinationCidrblock("172.11.1.1/32")
+ *             .nexthopType("Instance")
  *             .nexthopId(fooInstance.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Module Support

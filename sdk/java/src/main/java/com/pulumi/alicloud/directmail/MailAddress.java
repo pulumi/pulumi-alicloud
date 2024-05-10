@@ -33,14 +33,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:directmail/mailAddress:MailAddress")
 public class MailAddress extends com.pulumi.resources.CustomResource {
     /**
-     * The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
+     * The sender address. The email address must be filled in the format of account{@literal @}domain, and only lowercase letters or numbers can be used.
      * 
      */
     @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
-     * @return The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
+     * @return The sender address. The email address must be filled in the format of account{@literal @}domain, and only lowercase letters or numbers can be used.
      * 
      */
     public Output<String> accountName() {

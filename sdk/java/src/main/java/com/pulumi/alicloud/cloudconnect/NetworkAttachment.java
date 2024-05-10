@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,23 +52,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var sagId = config.get(&#34;sagId&#34;).orElse(&#34;sag-9bifkf***&#34;);
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var sagId = config.get("sagId").orElse("sag-9bifkf***");
+ *         var default_ = new Network("default", NetworkArgs.builder()        
  *             .name(name)
  *             .description(name)
- *             .cidrBlock(&#34;192.168.0.0/24&#34;)
+ *             .cidrBlock("192.168.0.0/24")
  *             .isDefault(true)
  *             .build());
  * 
- *         var defaultNetworkAttachment = new NetworkAttachment(&#34;defaultNetworkAttachment&#34;, NetworkAttachmentArgs.builder()        
+ *         var defaultNetworkAttachment = new NetworkAttachment("defaultNetworkAttachment", NetworkAttachmentArgs.builder()        
  *             .ccnId(default_.id())
  *             .sagId(sagId)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

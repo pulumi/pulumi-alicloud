@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,43 +60,43 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
+ *         final var name = config.get("name").orElse("tfexample");
  *         final var default = AlicloudFunctions.getAccount();
  * 
  *         final var defaultGetNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
- *             .dbType(&#34;MySQL&#34;)
- *             .dbVersion(&#34;8.0&#34;)
- *             .payType(&#34;PostPaid&#34;)
+ *             .dbType("MySQL")
+ *             .dbVersion("8.0")
+ *             .payType("PostPaid")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultGetNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()))
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(defaultGetNodeClasses.applyValue(getNodeClassesResult -> getNodeClassesResult.classes()[0].zoneId()))
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
- *             .dbType(&#34;MySQL&#34;)
- *             .dbVersion(&#34;8.0&#34;)
- *             .dbNodeClass(&#34;polar.mysql.x4.large&#34;)
- *             .payType(&#34;PostPaid&#34;)
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *             .dbType("MySQL")
+ *             .dbVersion("8.0")
+ *             .dbNodeClass("polar.mysql.x4.large")
+ *             .payType("PostPaid")
  *             .vswitchId(defaultSwitch.id())
  *             .description(name)
  *             .dbClusterIpArrays(ClusterDbClusterIpArrayArgs.builder()
- *                 .dbClusterIpArrayName(&#34;default&#34;)
+ *                 .dbClusterIpArrayName("default")
  *                 .securityIps(                
- *                     &#34;1.2.3.4&#34;,
- *                     &#34;1.2.3.5&#34;)
+ *                     "1.2.3.4",
+ *                     "1.2.3.5")
  *                 .build())
  *             .build());
  * 
- *         var defaultSwitchDasPro = new SwitchDasPro(&#34;defaultSwitchDasPro&#34;, SwitchDasProArgs.builder()        
+ *         var defaultSwitchDasPro = new SwitchDasPro("defaultSwitchDasPro", SwitchDasProArgs.builder()        
  *             .instanceId(defaultCluster.id())
  *             .sqlRetention(30)
  *             .userId(default_.id())
@@ -103,7 +104,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,23 +52,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = Wafv3Functions.getInstances();
  * 
- *         var defaultDefenseTemplate = new DefenseTemplate(&#34;defaultDefenseTemplate&#34;, DefenseTemplateArgs.builder()        
- *             .status(&#34;1&#34;)
+ *         var defaultDefenseTemplate = new DefenseTemplate("defaultDefenseTemplate", DefenseTemplateArgs.builder()        
+ *             .status("1")
  *             .instanceId(default_.ids()[0])
  *             .defenseTemplateName(name)
- *             .templateType(&#34;user_custom&#34;)
- *             .templateOrigin(&#34;custom&#34;)
- *             .defenseScene(&#34;antiscan&#34;)
- *             .resourceManagerResourceGroupId(&#34;example&#34;)
+ *             .templateType("user_custom")
+ *             .templateOrigin("custom")
+ *             .defenseScene("antiscan")
+ *             .resourceManagerResourceGroupId("example")
  *             .description(name)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

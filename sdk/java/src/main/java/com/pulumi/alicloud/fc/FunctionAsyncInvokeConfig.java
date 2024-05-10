@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * &gt; **NOTE** Ensure the FC Function RAM Role has necessary permissions for the destination, such as `mns:SendMessage`, `mns:PublishMessage` or `fc:InvokeFunction`, otherwise the API will return a generic error.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -82,117 +83,118 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
- *             .name(String.format(&#34;examplerole%s&#34;, defaultInteger.result()))
- *             .document(&#34;&#34;&#34;
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+ *             .name(String.format("examplerole%s", defaultInteger.result()))
+ *             .document("""
  * 	{
- * 		&#34;Statement&#34;: [
+ * 		"Statement": [
  * 		  {
- * 			&#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- * 			&#34;Effect&#34;: &#34;Allow&#34;,
- * 			&#34;Principal&#34;: {
- * 			  &#34;Service&#34;: [
- * 				&#34;fc.aliyuncs.com&#34;
+ * 			"Action": "sts:AssumeRole",
+ * 			"Effect": "Allow",
+ * 			"Principal": {
+ * 			  "Service": [
+ * 				"fc.aliyuncs.com"
  * 			  ]
  * 			}
  * 		  }
  * 		],
- * 		&#34;Version&#34;: &#34;1&#34;
+ * 		"Version": "1"
  * 	}
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a example&#34;)
+ *             """)
+ *             .description("this is a example")
  *             .force(true)
  *             .build());
  * 
- *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
- *             .policyName(String.format(&#34;examplepolicy%s&#34;, defaultInteger.result()))
- *             .policyDocument(&#34;&#34;&#34;
+ *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+ *             .policyName(String.format("examplepolicy%s", defaultInteger.result()))
+ *             .policyDocument("""
  * 	{
- * 		&#34;Version&#34;: &#34;1&#34;,
- * 		&#34;Statement&#34;: [
+ * 		"Version": "1",
+ * 		"Statement": [
  * 		  {
- * 			&#34;Action&#34;: &#34;mns:*&#34;,
- * 			&#34;Resource&#34;: &#34;*&#34;,
- * 			&#34;Effect&#34;: &#34;Allow&#34;
+ * 			"Action": "mns:*",
+ * 			"Resource": "*",
+ * 			"Effect": "Allow"
  * 		  }
  * 		]
  * 	  }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
- *         var defaultRolePolicyAttachment = new RolePolicyAttachment(&#34;defaultRolePolicyAttachment&#34;, RolePolicyAttachmentArgs.builder()        
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
  *             .roleName(defaultRole.name())
  *             .policyName(defaultPolicy.name())
- *             .policyType(&#34;Custom&#34;)
+ *             .policyType("Custom")
  *             .build());
  * 
- *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
- *             .name(String.format(&#34;example-value-%s&#34;, defaultInteger.result()))
- *             .description(&#34;example-value&#34;)
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *             .name(String.format("example-value-%s", defaultInteger.result()))
+ *             .description("example-value")
  *             .role(defaultRole.arn())
  *             .internetAccess(false)
  *             .build());
  * 
- *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
- *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
- *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
  *             .bucket(defaultBucket.id())
- *             .key(&#34;index.py&#34;)
- *             .content(&#34;&#34;&#34;
+ *             .key("index.py")
+ *             .content("""
  * import logging 
  * def handler(event, context): 
  * logger = logging.getLogger() 
- * logger.info(&#39;hello world&#39;) 
- * return &#39;hello world&#39;            &#34;&#34;&#34;)
+ * logger.info('hello world') 
+ * return 'hello world'            """)
  *             .build());
  * 
- *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
+ *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()        
  *             .service(defaultService.name())
- *             .name(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
- *             .description(&#34;example&#34;)
+ *             .name(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .description("example")
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
- *             .memorySize(&#34;512&#34;)
- *             .runtime(&#34;python3.10&#34;)
- *             .handler(&#34;hello.handler&#34;)
+ *             .memorySize("512")
+ *             .runtime("python3.10")
+ *             .handler("hello.handler")
  *             .build());
  * 
- *         var defaultQueue = new Queue(&#34;defaultQueue&#34;, QueueArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
+ *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()        
+ *             .name(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
- *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
+ *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
+ *             .name(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
- *         var defaultFunctionAsyncInvokeConfig = new FunctionAsyncInvokeConfig(&#34;defaultFunctionAsyncInvokeConfig&#34;, FunctionAsyncInvokeConfigArgs.builder()        
+ *         var defaultFunctionAsyncInvokeConfig = new FunctionAsyncInvokeConfig("defaultFunctionAsyncInvokeConfig", FunctionAsyncInvokeConfigArgs.builder()        
  *             .serviceName(defaultService.name())
  *             .functionName(defaultFunction.name())
  *             .destinationConfig(FunctionAsyncInvokeConfigDestinationConfigArgs.builder()
  *                 .onFailure(FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs.builder()
- *                     .destination(defaultQueue.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/queues/%s/messages&#34;, defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),default_.id(),name)))
+ *                     .destination(defaultQueue.name().applyValue(name -> String.format("acs:mns:%s:%s:/queues/%s/messages", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),default_.id(),name)))
  *                     .build())
  *                 .onSuccess(FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs.builder()
- *                     .destination(defaultTopic.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/topics/%s/messages&#34;, defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),default_.id(),name)))
+ *                     .destination(defaultTopic.name().applyValue(name -> String.format("acs:mns:%s:%s:/topics/%s/messages", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),default_.id(),name)))
  *                     .build())
  *                 .build())
  *             .maximumEventAgeInSeconds(60)
  *             .maximumRetryAttempts(0)
  *             .statefulInvocation(true)
- *             .qualifier(&#34;LATEST&#34;)
+ *             .qualifier("LATEST")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

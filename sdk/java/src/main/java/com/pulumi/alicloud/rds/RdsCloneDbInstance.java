@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ### Create an RDS MySQL clone instance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -65,60 +66,61 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
- *             .engine(&#34;PostgreSQL&#34;)
- *             .engineVersion(&#34;13.0&#34;)
- *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .category(&#34;HighAvailability&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
+ *             .engine("PostgreSQL")
+ *             .engineVersion("13.0")
+ *             .instanceChargeType("PostPaid")
+ *             .category("HighAvailability")
+ *             .dbInstanceStorageType("cloud_essd")
  *             .build());
  * 
  *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .engine(&#34;PostgreSQL&#34;)
- *             .engineVersion(&#34;13.0&#34;)
- *             .category(&#34;HighAvailability&#34;)
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
- *             .instanceChargeType(&#34;PostPaid&#34;)
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .engine("PostgreSQL")
+ *             .engineVersion("13.0")
+ *             .category("HighAvailability")
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .instanceChargeType("PostPaid")
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
  *             .vpcId(exampleNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .vswitchName(&#34;terraform-example&#34;)
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .vswitchName("terraform-example")
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .engine(&#34;PostgreSQL&#34;)
- *             .engineVersion(&#34;13.0&#34;)
- *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
- *             .instanceChargeType(&#34;Postpaid&#34;)
- *             .instanceName(&#34;terraform-example&#34;)
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *             .engine("PostgreSQL")
+ *             .engineVersion("13.0")
+ *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceChargeType("Postpaid")
+ *             .instanceName("terraform-example")
  *             .vswitchId(exampleSwitch.id())
- *             .monitoringPeriod(&#34;60&#34;)
+ *             .monitoringPeriod("60")
  *             .build());
  * 
- *         var exampleRdsBackup = new RdsBackup(&#34;exampleRdsBackup&#34;, RdsBackupArgs.builder()        
+ *         var exampleRdsBackup = new RdsBackup("exampleRdsBackup", RdsBackupArgs.builder()        
  *             .dbInstanceId(exampleInstance.id())
- *             .removeFromState(&#34;true&#34;)
+ *             .removeFromState("true")
  *             .build());
  * 
- *         var exampleRdsCloneDbInstance = new RdsCloneDbInstance(&#34;exampleRdsCloneDbInstance&#34;, RdsCloneDbInstanceArgs.builder()        
+ *         var exampleRdsCloneDbInstance = new RdsCloneDbInstance("exampleRdsCloneDbInstance", RdsCloneDbInstanceArgs.builder()        
  *             .sourceDbInstanceId(exampleInstance.id())
- *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .dbInstanceStorageType("cloud_essd")
+ *             .paymentType("PayAsYouGo")
  *             .backupId(exampleRdsBackup.backupId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

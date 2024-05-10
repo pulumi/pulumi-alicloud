@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,43 +58,44 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance(&#34;defaultRegistryEnterpriseInstance&#34;, RegistryEnterpriseInstanceArgs.builder()        
- *             .paymentType(&#34;Subscription&#34;)
+ *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()        
+ *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
- *             .renewalStatus(&#34;ManualRenewal&#34;)
- *             .instanceType(&#34;Advanced&#34;)
+ *             .renewalStatus("ManualRenewal")
+ *             .instanceType("Advanced")
  *             .instanceName(name)
  *             .build());
  * 
- *         var defaultVpcEndpointLinkedVpc = new VpcEndpointLinkedVpc(&#34;defaultVpcEndpointLinkedVpc&#34;, VpcEndpointLinkedVpcArgs.builder()        
+ *         var defaultVpcEndpointLinkedVpc = new VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc", VpcEndpointLinkedVpcArgs.builder()        
  *             .instanceId(defaultRegistryEnterpriseInstance.id())
  *             .vpcId(defaultNetwork.id())
  *             .vswitchId(defaultSwitch.id())
- *             .moduleName(&#34;Registry&#34;)
+ *             .moduleName("Registry")
  *             .enableCreateDnsRecordInPvzt(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

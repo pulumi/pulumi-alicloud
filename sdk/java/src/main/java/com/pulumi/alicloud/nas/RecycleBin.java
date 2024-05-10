@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,25 +53,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = NasFunctions.getZones(GetZonesArgs.builder()
- *             .fileSystemType(&#34;standard&#34;)
+ *             .fileSystemType("standard")
  *             .build());
  * 
- *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
- *             .protocolType(&#34;NFS&#34;)
- *             .storageType(&#34;Performance&#34;)
- *             .description(&#34;terraform-example&#34;)
- *             .encryptType(&#34;1&#34;)
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *         var exampleFileSystem = new FileSystem("exampleFileSystem", FileSystemArgs.builder()        
+ *             .protocolType("NFS")
+ *             .storageType("Performance")
+ *             .description("terraform-example")
+ *             .encryptType("1")
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()))
  *             .build());
  * 
- *         var exampleRecycleBin = new RecycleBin(&#34;exampleRecycleBin&#34;, RecycleBinArgs.builder()        
+ *         var exampleRecycleBin = new RecycleBin("exampleRecycleBin", RecycleBinArgs.builder()        
  *             .fileSystemId(exampleFileSystem.id())
  *             .reservedDays(3)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

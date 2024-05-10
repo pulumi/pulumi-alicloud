@@ -59,7 +59,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -82,10 +83,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getAcls();
      * 
-     *         ctx.export(&#34;firstSlbAclId&#34;, sampleDs.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("firstSlbAclId", sampleDs.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Entry Block
@@ -114,7 +116,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -137,10 +140,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getAcls();
      * 
-     *         ctx.export(&#34;firstSlbAclId&#34;, sampleDs.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("firstSlbAclId", sampleDs.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Entry Block
@@ -169,7 +173,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -192,10 +197,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getAcls();
      * 
-     *         ctx.export(&#34;firstSlbAclId&#34;, sampleDs.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("firstSlbAclId", sampleDs.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Entry Block
@@ -224,7 +230,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -247,10 +254,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getAcls();
      * 
-     *         ctx.export(&#34;firstSlbAclId&#34;, sampleDs.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("firstSlbAclId", sampleDs.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Entry Block
@@ -279,7 +287,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -302,10 +311,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getAcls();
      * 
-     *         ctx.export(&#34;firstSlbAclId&#34;, sampleDs.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("firstSlbAclId", sampleDs.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Entry Block
@@ -334,7 +344,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -357,10 +368,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getAcls();
      * 
-     *         ctx.export(&#34;firstSlbAclId&#34;, sampleDs.applyValue(getAclsResult -&gt; getAclsResult.acls()[0].id()));
+     *         ctx.export("firstSlbAclId", sampleDs.applyValue(getAclsResult -> getAclsResult.acls()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ## Entry Block
@@ -391,7 +403,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -413,17 +426,18 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = SlbFunctions.getApplicationLoadBalancers(GetApplicationLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;sample_slb&#34;)
+     *             .nameRegex("sample_slb")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
-     *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbId&#34;, example.applyValue(getApplicationLoadBalancersResult -&gt; getApplicationLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("firstSlbId", example.applyValue(getApplicationLoadBalancersResult -> getApplicationLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -438,7 +452,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -460,17 +475,18 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = SlbFunctions.getApplicationLoadBalancers(GetApplicationLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;sample_slb&#34;)
+     *             .nameRegex("sample_slb")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
-     *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbId&#34;, example.applyValue(getApplicationLoadBalancersResult -&gt; getApplicationLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("firstSlbId", example.applyValue(getApplicationLoadBalancersResult -> getApplicationLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -485,7 +501,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -507,17 +524,18 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = SlbFunctions.getApplicationLoadBalancers(GetApplicationLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;sample_slb&#34;)
+     *             .nameRegex("sample_slb")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
-     *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbId&#34;, example.applyValue(getApplicationLoadBalancersResult -&gt; getApplicationLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("firstSlbId", example.applyValue(getApplicationLoadBalancersResult -> getApplicationLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -532,7 +550,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -554,17 +573,18 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = SlbFunctions.getApplicationLoadBalancers(GetApplicationLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;sample_slb&#34;)
+     *             .nameRegex("sample_slb")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
-     *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbId&#34;, example.applyValue(getApplicationLoadBalancersResult -&gt; getApplicationLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("firstSlbId", example.applyValue(getApplicationLoadBalancersResult -> getApplicationLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -579,7 +599,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -601,17 +622,18 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = SlbFunctions.getApplicationLoadBalancers(GetApplicationLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;sample_slb&#34;)
+     *             .nameRegex("sample_slb")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
-     *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbId&#34;, example.applyValue(getApplicationLoadBalancersResult -&gt; getApplicationLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("firstSlbId", example.applyValue(getApplicationLoadBalancersResult -> getApplicationLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -626,7 +648,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -648,17 +671,18 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = SlbFunctions.getApplicationLoadBalancers(GetApplicationLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;sample_slb&#34;)
+     *             .nameRegex("sample_slb")
      *             .tags(Map.ofEntries(
-     *                 Map.entry(&#34;tagKey1&#34;, &#34;tagValue1&#34;),
-     *                 Map.entry(&#34;tagKey2&#34;, &#34;tagValue2&#34;)
+     *                 Map.entry("tagKey1", "tagValue1"),
+     *                 Map.entry("tagKey2", "tagValue2")
      *             ))
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbId&#34;, example.applyValue(getApplicationLoadBalancersResult -&gt; getApplicationLoadBalancersResult.balancers()[0].id()));
+     *         ctx.export("firstSlbId", example.applyValue(getApplicationLoadBalancersResult -> getApplicationLoadBalancersResult.balancers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -671,7 +695,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -696,10 +721,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbAttachmentInstanceId&#34;, sampleDs.applyValue(getAttachmentsResult -&gt; getAttachmentsResult.slbAttachments()[0].instanceId()));
+     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.applyValue(getAttachmentsResult -> getAttachmentsResult.slbAttachments()[0].instanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -712,7 +738,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -737,10 +764,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbAttachmentInstanceId&#34;, sampleDs.applyValue(getAttachmentsResult -&gt; getAttachmentsResult.slbAttachments()[0].instanceId()));
+     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.applyValue(getAttachmentsResult -> getAttachmentsResult.slbAttachments()[0].instanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -753,7 +781,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -778,10 +807,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbAttachmentInstanceId&#34;, sampleDs.applyValue(getAttachmentsResult -&gt; getAttachmentsResult.slbAttachments()[0].instanceId()));
+     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.applyValue(getAttachmentsResult -> getAttachmentsResult.slbAttachments()[0].instanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -794,7 +824,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -819,10 +850,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbAttachmentInstanceId&#34;, sampleDs.applyValue(getAttachmentsResult -&gt; getAttachmentsResult.slbAttachments()[0].instanceId()));
+     *         ctx.export("firstSlbAttachmentInstanceId", sampleDs.applyValue(getAttachmentsResult -> getAttachmentsResult.slbAttachments()[0].instanceId()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -837,7 +869,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -862,10 +895,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbBackendServerId&#34;, sampleDs.applyValue(getBackendServersResult -&gt; getBackendServersResult.backendServers()[0].id()));
+     *         ctx.export("firstSlbBackendServerId", sampleDs.applyValue(getBackendServersResult -> getBackendServersResult.backendServers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -880,7 +914,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -905,10 +940,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbBackendServerId&#34;, sampleDs.applyValue(getBackendServersResult -&gt; getBackendServersResult.backendServers()[0].id()));
+     *         ctx.export("firstSlbBackendServerId", sampleDs.applyValue(getBackendServersResult -> getBackendServersResult.backendServers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -923,7 +959,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -948,10 +985,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbBackendServerId&#34;, sampleDs.applyValue(getBackendServersResult -&gt; getBackendServersResult.backendServers()[0].id()));
+     *         ctx.export("firstSlbBackendServerId", sampleDs.applyValue(getBackendServersResult -> getBackendServersResult.backendServers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -966,7 +1004,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -991,10 +1030,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(sampleSlb.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbBackendServerId&#34;, sampleDs.applyValue(getBackendServersResult -&gt; getBackendServersResult.backendServers()[0].id()));
+     *         ctx.export("firstSlbBackendServerId", sampleDs.applyValue(getBackendServersResult -> getBackendServersResult.backendServers()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1007,7 +1047,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1030,10 +1071,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getCaCertificates();
      * 
-     *         ctx.export(&#34;firstSlbCaCertificateId&#34;, sampleDs.applyValue(getCaCertificatesResult -&gt; getCaCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbCaCertificateId", sampleDs.applyValue(getCaCertificatesResult -> getCaCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1046,7 +1088,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1069,10 +1112,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getCaCertificates();
      * 
-     *         ctx.export(&#34;firstSlbCaCertificateId&#34;, sampleDs.applyValue(getCaCertificatesResult -&gt; getCaCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbCaCertificateId", sampleDs.applyValue(getCaCertificatesResult -> getCaCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1085,7 +1129,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1108,10 +1153,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getCaCertificates();
      * 
-     *         ctx.export(&#34;firstSlbCaCertificateId&#34;, sampleDs.applyValue(getCaCertificatesResult -&gt; getCaCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbCaCertificateId", sampleDs.applyValue(getCaCertificatesResult -> getCaCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1124,7 +1170,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1147,10 +1194,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getCaCertificates();
      * 
-     *         ctx.export(&#34;firstSlbCaCertificateId&#34;, sampleDs.applyValue(getCaCertificatesResult -&gt; getCaCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbCaCertificateId", sampleDs.applyValue(getCaCertificatesResult -> getCaCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1163,7 +1211,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1186,10 +1235,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getCaCertificates();
      * 
-     *         ctx.export(&#34;firstSlbCaCertificateId&#34;, sampleDs.applyValue(getCaCertificatesResult -&gt; getCaCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbCaCertificateId", sampleDs.applyValue(getCaCertificatesResult -> getCaCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1202,7 +1252,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1225,10 +1276,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getCaCertificates();
      * 
-     *         ctx.export(&#34;firstSlbCaCertificateId&#34;, sampleDs.applyValue(getCaCertificatesResult -&gt; getCaCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbCaCertificateId", sampleDs.applyValue(getCaCertificatesResult -> getCaCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1243,7 +1295,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1265,14 +1318,15 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SlbFunctions.getDomainExtensions(GetDomainExtensionsArgs.builder()
-     *             .ids(&#34;fake-de-id&#34;)
-     *             .loadBalancerId(&#34;fake-lb-id&#34;)
-     *             .frontendPort(&#34;fake-port&#34;)
+     *             .ids("fake-de-id")
+     *             .loadBalancerId("fake-lb-id")
+     *             .frontendPort("fake-port")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1287,7 +1341,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1309,14 +1364,15 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SlbFunctions.getDomainExtensions(GetDomainExtensionsArgs.builder()
-     *             .ids(&#34;fake-de-id&#34;)
-     *             .loadBalancerId(&#34;fake-lb-id&#34;)
-     *             .frontendPort(&#34;fake-port&#34;)
+     *             .ids("fake-de-id")
+     *             .loadBalancerId("fake-lb-id")
+     *             .frontendPort("fake-port")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1331,7 +1387,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1353,14 +1410,15 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SlbFunctions.getDomainExtensions(GetDomainExtensionsArgs.builder()
-     *             .ids(&#34;fake-de-id&#34;)
-     *             .loadBalancerId(&#34;fake-lb-id&#34;)
-     *             .frontendPort(&#34;fake-port&#34;)
+     *             .ids("fake-de-id")
+     *             .loadBalancerId("fake-lb-id")
+     *             .frontendPort("fake-port")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1375,7 +1433,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1397,14 +1456,15 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foo = SlbFunctions.getDomainExtensions(GetDomainExtensionsArgs.builder()
-     *             .ids(&#34;fake-de-id&#34;)
-     *             .loadBalancerId(&#34;fake-lb-id&#34;)
-     *             .frontendPort(&#34;fake-port&#34;)
+     *             .ids("fake-de-id")
+     *             .loadBalancerId("fake-lb-id")
+     *             .frontendPort("fake-port")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1417,7 +1477,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1442,25 +1503,25 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new ApplicationLoadBalancer(&#34;default&#34;, ApplicationLoadBalancerArgs.builder()        
-     *             .loadBalancerName(&#34;tf-testAccSlbListenertcp&#34;)
+     *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()        
+     *             .loadBalancerName("tf-testAccSlbListenertcp")
      *             .build());
      * 
-     *         var tcp = new Listener(&#34;tcp&#34;, ListenerArgs.builder()        
+     *         var tcp = new Listener("tcp", ListenerArgs.builder()        
      *             .loadBalancerId(default_.id())
-     *             .backendPort(&#34;22&#34;)
-     *             .frontendPort(&#34;22&#34;)
-     *             .protocol(&#34;tcp&#34;)
-     *             .bandwidth(&#34;10&#34;)
-     *             .healthCheckType(&#34;tcp&#34;)
+     *             .backendPort("22")
+     *             .frontendPort("22")
+     *             .protocol("tcp")
+     *             .bandwidth("10")
+     *             .healthCheckType("tcp")
      *             .persistenceTimeout(3600)
      *             .healthyThreshold(8)
      *             .unhealthyThreshold(8)
      *             .healthCheckTimeout(8)
      *             .healthCheckInterval(5)
-     *             .healthCheckHttpCode(&#34;http_2xx&#34;)
+     *             .healthCheckHttpCode("http_2xx")
      *             .healthCheckConnectPort(20)
-     *             .healthCheckUri(&#34;/console&#34;)
+     *             .healthCheckUri("/console")
      *             .establishedTimeout(600)
      *             .build());
      * 
@@ -1468,10 +1529,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbListenerProtocol&#34;, sampleDs.applyValue(getListenersResult -&gt; getListenersResult).applyValue(sampleDs -&gt; sampleDs.applyValue(getListenersResult -&gt; getListenersResult.slbListeners()[0].protocol())));
+     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(getListenersResult -> getListenersResult).applyValue(sampleDs -> sampleDs.applyValue(getListenersResult -> getListenersResult.slbListeners()[0].protocol())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1484,7 +1546,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1509,25 +1572,25 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new ApplicationLoadBalancer(&#34;default&#34;, ApplicationLoadBalancerArgs.builder()        
-     *             .loadBalancerName(&#34;tf-testAccSlbListenertcp&#34;)
+     *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()        
+     *             .loadBalancerName("tf-testAccSlbListenertcp")
      *             .build());
      * 
-     *         var tcp = new Listener(&#34;tcp&#34;, ListenerArgs.builder()        
+     *         var tcp = new Listener("tcp", ListenerArgs.builder()        
      *             .loadBalancerId(default_.id())
-     *             .backendPort(&#34;22&#34;)
-     *             .frontendPort(&#34;22&#34;)
-     *             .protocol(&#34;tcp&#34;)
-     *             .bandwidth(&#34;10&#34;)
-     *             .healthCheckType(&#34;tcp&#34;)
+     *             .backendPort("22")
+     *             .frontendPort("22")
+     *             .protocol("tcp")
+     *             .bandwidth("10")
+     *             .healthCheckType("tcp")
      *             .persistenceTimeout(3600)
      *             .healthyThreshold(8)
      *             .unhealthyThreshold(8)
      *             .healthCheckTimeout(8)
      *             .healthCheckInterval(5)
-     *             .healthCheckHttpCode(&#34;http_2xx&#34;)
+     *             .healthCheckHttpCode("http_2xx")
      *             .healthCheckConnectPort(20)
-     *             .healthCheckUri(&#34;/console&#34;)
+     *             .healthCheckUri("/console")
      *             .establishedTimeout(600)
      *             .build());
      * 
@@ -1535,10 +1598,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbListenerProtocol&#34;, sampleDs.applyValue(getListenersResult -&gt; getListenersResult).applyValue(sampleDs -&gt; sampleDs.applyValue(getListenersResult -&gt; getListenersResult.slbListeners()[0].protocol())));
+     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(getListenersResult -> getListenersResult).applyValue(sampleDs -> sampleDs.applyValue(getListenersResult -> getListenersResult.slbListeners()[0].protocol())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1551,7 +1615,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1576,25 +1641,25 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new ApplicationLoadBalancer(&#34;default&#34;, ApplicationLoadBalancerArgs.builder()        
-     *             .loadBalancerName(&#34;tf-testAccSlbListenertcp&#34;)
+     *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()        
+     *             .loadBalancerName("tf-testAccSlbListenertcp")
      *             .build());
      * 
-     *         var tcp = new Listener(&#34;tcp&#34;, ListenerArgs.builder()        
+     *         var tcp = new Listener("tcp", ListenerArgs.builder()        
      *             .loadBalancerId(default_.id())
-     *             .backendPort(&#34;22&#34;)
-     *             .frontendPort(&#34;22&#34;)
-     *             .protocol(&#34;tcp&#34;)
-     *             .bandwidth(&#34;10&#34;)
-     *             .healthCheckType(&#34;tcp&#34;)
+     *             .backendPort("22")
+     *             .frontendPort("22")
+     *             .protocol("tcp")
+     *             .bandwidth("10")
+     *             .healthCheckType("tcp")
      *             .persistenceTimeout(3600)
      *             .healthyThreshold(8)
      *             .unhealthyThreshold(8)
      *             .healthCheckTimeout(8)
      *             .healthCheckInterval(5)
-     *             .healthCheckHttpCode(&#34;http_2xx&#34;)
+     *             .healthCheckHttpCode("http_2xx")
      *             .healthCheckConnectPort(20)
-     *             .healthCheckUri(&#34;/console&#34;)
+     *             .healthCheckUri("/console")
      *             .establishedTimeout(600)
      *             .build());
      * 
@@ -1602,10 +1667,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbListenerProtocol&#34;, sampleDs.applyValue(getListenersResult -&gt; getListenersResult).applyValue(sampleDs -&gt; sampleDs.applyValue(getListenersResult -&gt; getListenersResult.slbListeners()[0].protocol())));
+     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(getListenersResult -> getListenersResult).applyValue(sampleDs -> sampleDs.applyValue(getListenersResult -> getListenersResult.slbListeners()[0].protocol())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1618,7 +1684,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1643,25 +1710,25 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new ApplicationLoadBalancer(&#34;default&#34;, ApplicationLoadBalancerArgs.builder()        
-     *             .loadBalancerName(&#34;tf-testAccSlbListenertcp&#34;)
+     *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()        
+     *             .loadBalancerName("tf-testAccSlbListenertcp")
      *             .build());
      * 
-     *         var tcp = new Listener(&#34;tcp&#34;, ListenerArgs.builder()        
+     *         var tcp = new Listener("tcp", ListenerArgs.builder()        
      *             .loadBalancerId(default_.id())
-     *             .backendPort(&#34;22&#34;)
-     *             .frontendPort(&#34;22&#34;)
-     *             .protocol(&#34;tcp&#34;)
-     *             .bandwidth(&#34;10&#34;)
-     *             .healthCheckType(&#34;tcp&#34;)
+     *             .backendPort("22")
+     *             .frontendPort("22")
+     *             .protocol("tcp")
+     *             .bandwidth("10")
+     *             .healthCheckType("tcp")
      *             .persistenceTimeout(3600)
      *             .healthyThreshold(8)
      *             .unhealthyThreshold(8)
      *             .healthCheckTimeout(8)
      *             .healthCheckInterval(5)
-     *             .healthCheckHttpCode(&#34;http_2xx&#34;)
+     *             .healthCheckHttpCode("http_2xx")
      *             .healthCheckConnectPort(20)
-     *             .healthCheckUri(&#34;/console&#34;)
+     *             .healthCheckUri("/console")
      *             .establishedTimeout(600)
      *             .build());
      * 
@@ -1669,10 +1736,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbListenerProtocol&#34;, sampleDs.applyValue(getListenersResult -&gt; getListenersResult).applyValue(sampleDs -&gt; sampleDs.applyValue(getListenersResult -&gt; getListenersResult.slbListeners()[0].protocol())));
+     *         ctx.export("firstSlbListenerProtocol", sampleDs.applyValue(getListenersResult -> getListenersResult).applyValue(sampleDs -> sampleDs.applyValue(getListenersResult -> getListenersResult.slbListeners()[0].protocol())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1687,7 +1755,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1710,18 +1779,19 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer(&#34;default&#34;, LoadBalancerArgs.builder()        
-     *             .name(&#34;sample_slb&#34;)
+     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()        
+     *             .name("sample_slb")
      *             .build());
      * 
      *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;sample_slb&#34;)
+     *             .nameRegex("sample_slb")
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbId&#34;, slbsDs.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.slbs()[0].id()));
+     *         ctx.export("firstSlbId", slbsDs.applyValue(getLoadBalancersResult -> getLoadBalancersResult.slbs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1736,7 +1806,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1759,18 +1830,19 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer(&#34;default&#34;, LoadBalancerArgs.builder()        
-     *             .name(&#34;sample_slb&#34;)
+     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()        
+     *             .name("sample_slb")
      *             .build());
      * 
      *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;sample_slb&#34;)
+     *             .nameRegex("sample_slb")
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbId&#34;, slbsDs.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.slbs()[0].id()));
+     *         ctx.export("firstSlbId", slbsDs.applyValue(getLoadBalancersResult -> getLoadBalancersResult.slbs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1785,7 +1857,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1808,18 +1881,19 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer(&#34;default&#34;, LoadBalancerArgs.builder()        
-     *             .name(&#34;sample_slb&#34;)
+     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()        
+     *             .name("sample_slb")
      *             .build());
      * 
      *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;sample_slb&#34;)
+     *             .nameRegex("sample_slb")
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbId&#34;, slbsDs.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.slbs()[0].id()));
+     *         ctx.export("firstSlbId", slbsDs.applyValue(getLoadBalancersResult -> getLoadBalancersResult.slbs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1834,7 +1908,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1857,18 +1932,19 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer(&#34;default&#34;, LoadBalancerArgs.builder()        
-     *             .name(&#34;sample_slb&#34;)
+     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()        
+     *             .name("sample_slb")
      *             .build());
      * 
      *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;sample_slb&#34;)
+     *             .nameRegex("sample_slb")
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbId&#34;, slbsDs.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.slbs()[0].id()));
+     *         ctx.export("firstSlbId", slbsDs.applyValue(getLoadBalancersResult -> getLoadBalancersResult.slbs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1883,7 +1959,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1906,18 +1983,19 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer(&#34;default&#34;, LoadBalancerArgs.builder()        
-     *             .name(&#34;sample_slb&#34;)
+     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()        
+     *             .name("sample_slb")
      *             .build());
      * 
      *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;sample_slb&#34;)
+     *             .nameRegex("sample_slb")
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbId&#34;, slbsDs.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.slbs()[0].id()));
+     *         ctx.export("firstSlbId", slbsDs.applyValue(getLoadBalancersResult -> getLoadBalancersResult.slbs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1932,7 +2010,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1955,18 +2034,19 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer(&#34;default&#34;, LoadBalancerArgs.builder()        
-     *             .name(&#34;sample_slb&#34;)
+     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()        
+     *             .name("sample_slb")
      *             .build());
      * 
      *         final var slbsDs = SlbFunctions.getLoadBalancers(GetLoadBalancersArgs.builder()
-     *             .nameRegex(&#34;sample_slb&#34;)
+     *             .nameRegex("sample_slb")
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbId&#34;, slbsDs.applyValue(getLoadBalancersResult -&gt; getLoadBalancersResult.slbs()[0].id()));
+     *         ctx.export("firstSlbId", slbsDs.applyValue(getLoadBalancersResult -> getLoadBalancersResult.slbs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2015,7 +2095,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2051,48 +2132,48 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbrulebasicconfig&#34;);
+     *         final var name = config.get("name").orElse("slbrulebasicconfig");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .name(name)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .backendPort(22)
      *             .frontendPort(22)
-     *             .protocol(&#34;http&#34;)
+     *             .protocol("http")
      *             .bandwidth(5)
-     *             .healthCheckConnectPort(&#34;20&#34;)
+     *             .healthCheckConnectPort("20")
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(defaultListener.frontendPort())
      *             .name(name)
-     *             .domain(&#34;*.aliyun.com&#34;)
-     *             .url(&#34;/image&#34;)
+     *             .domain("*.aliyun.com")
+     *             .url("/image")
      *             .serverGroupId(defaultServerGroup.id())
      *             .build());
      * 
@@ -2101,10 +2182,11 @@ public final class SlbFunctions {
      *             .frontendPort(22)
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbRuleId&#34;, sampleDs.applyValue(getRulesResult -&gt; getRulesResult).applyValue(sampleDs -&gt; sampleDs.applyValue(getRulesResult -&gt; getRulesResult.slbRules()[0].id())));
+     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(getRulesResult -> getRulesResult).applyValue(sampleDs -> sampleDs.applyValue(getRulesResult -> getRulesResult.slbRules()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2117,7 +2199,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2153,48 +2236,48 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbrulebasicconfig&#34;);
+     *         final var name = config.get("name").orElse("slbrulebasicconfig");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .name(name)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .backendPort(22)
      *             .frontendPort(22)
-     *             .protocol(&#34;http&#34;)
+     *             .protocol("http")
      *             .bandwidth(5)
-     *             .healthCheckConnectPort(&#34;20&#34;)
+     *             .healthCheckConnectPort("20")
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(defaultListener.frontendPort())
      *             .name(name)
-     *             .domain(&#34;*.aliyun.com&#34;)
-     *             .url(&#34;/image&#34;)
+     *             .domain("*.aliyun.com")
+     *             .url("/image")
      *             .serverGroupId(defaultServerGroup.id())
      *             .build());
      * 
@@ -2203,10 +2286,11 @@ public final class SlbFunctions {
      *             .frontendPort(22)
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbRuleId&#34;, sampleDs.applyValue(getRulesResult -&gt; getRulesResult).applyValue(sampleDs -&gt; sampleDs.applyValue(getRulesResult -&gt; getRulesResult.slbRules()[0].id())));
+     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(getRulesResult -> getRulesResult).applyValue(sampleDs -> sampleDs.applyValue(getRulesResult -> getRulesResult.slbRules()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2219,7 +2303,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2255,48 +2340,48 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbrulebasicconfig&#34;);
+     *         final var name = config.get("name").orElse("slbrulebasicconfig");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .name(name)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .backendPort(22)
      *             .frontendPort(22)
-     *             .protocol(&#34;http&#34;)
+     *             .protocol("http")
      *             .bandwidth(5)
-     *             .healthCheckConnectPort(&#34;20&#34;)
+     *             .healthCheckConnectPort("20")
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(defaultListener.frontendPort())
      *             .name(name)
-     *             .domain(&#34;*.aliyun.com&#34;)
-     *             .url(&#34;/image&#34;)
+     *             .domain("*.aliyun.com")
+     *             .url("/image")
      *             .serverGroupId(defaultServerGroup.id())
      *             .build());
      * 
@@ -2305,10 +2390,11 @@ public final class SlbFunctions {
      *             .frontendPort(22)
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbRuleId&#34;, sampleDs.applyValue(getRulesResult -&gt; getRulesResult).applyValue(sampleDs -&gt; sampleDs.applyValue(getRulesResult -&gt; getRulesResult.slbRules()[0].id())));
+     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(getRulesResult -> getRulesResult).applyValue(sampleDs -> sampleDs.applyValue(getRulesResult -> getRulesResult.slbRules()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2321,7 +2407,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2357,48 +2444,48 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbrulebasicconfig&#34;);
+     *         final var name = config.get("name").orElse("slbrulebasicconfig");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .name(name)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .backendPort(22)
      *             .frontendPort(22)
-     *             .protocol(&#34;http&#34;)
+     *             .protocol("http")
      *             .bandwidth(5)
-     *             .healthCheckConnectPort(&#34;20&#34;)
+     *             .healthCheckConnectPort("20")
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         var defaultRule = new Rule(&#34;defaultRule&#34;, RuleArgs.builder()        
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(defaultListener.frontendPort())
      *             .name(name)
-     *             .domain(&#34;*.aliyun.com&#34;)
-     *             .url(&#34;/image&#34;)
+     *             .domain("*.aliyun.com")
+     *             .url("/image")
      *             .serverGroupId(defaultServerGroup.id())
      *             .build());
      * 
@@ -2407,10 +2494,11 @@ public final class SlbFunctions {
      *             .frontendPort(22)
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbRuleId&#34;, sampleDs.applyValue(getRulesResult -&gt; getRulesResult).applyValue(sampleDs -&gt; sampleDs.applyValue(getRulesResult -&gt; getRulesResult.slbRules()[0].id())));
+     *         ctx.export("firstSlbRuleId", sampleDs.applyValue(getRulesResult -> getRulesResult).applyValue(sampleDs -> sampleDs.applyValue(getRulesResult -> getRulesResult.slbRules()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2423,7 +2511,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2446,10 +2535,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getServerCertificates();
      * 
-     *         ctx.export(&#34;firstSlbServerCertificateId&#34;, sampleDs.applyValue(getServerCertificatesResult -&gt; getServerCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbServerCertificateId", sampleDs.applyValue(getServerCertificatesResult -> getServerCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2462,7 +2552,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2485,10 +2576,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getServerCertificates();
      * 
-     *         ctx.export(&#34;firstSlbServerCertificateId&#34;, sampleDs.applyValue(getServerCertificatesResult -&gt; getServerCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbServerCertificateId", sampleDs.applyValue(getServerCertificatesResult -> getServerCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2501,7 +2593,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2524,10 +2617,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getServerCertificates();
      * 
-     *         ctx.export(&#34;firstSlbServerCertificateId&#34;, sampleDs.applyValue(getServerCertificatesResult -&gt; getServerCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbServerCertificateId", sampleDs.applyValue(getServerCertificatesResult -> getServerCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2540,7 +2634,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2563,10 +2658,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getServerCertificates();
      * 
-     *         ctx.export(&#34;firstSlbServerCertificateId&#34;, sampleDs.applyValue(getServerCertificatesResult -&gt; getServerCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbServerCertificateId", sampleDs.applyValue(getServerCertificatesResult -> getServerCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2579,7 +2675,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2602,10 +2699,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getServerCertificates();
      * 
-     *         ctx.export(&#34;firstSlbServerCertificateId&#34;, sampleDs.applyValue(getServerCertificatesResult -&gt; getServerCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbServerCertificateId", sampleDs.applyValue(getServerCertificatesResult -> getServerCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2618,7 +2716,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2641,10 +2740,11 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var sampleDs = SlbFunctions.getServerCertificates();
      * 
-     *         ctx.export(&#34;firstSlbServerCertificateId&#34;, sampleDs.applyValue(getServerCertificatesResult -&gt; getServerCertificatesResult.certificates()[0].id()));
+     *         ctx.export("firstSlbServerCertificateId", sampleDs.applyValue(getServerCertificatesResult -> getServerCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2657,7 +2757,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2689,30 +2790,30 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbservergroups&#34;);
+     *         final var name = config.get("name").orElse("slbservergroups");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
@@ -2720,10 +2821,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbServerGroupId&#34;, sampleDs.applyValue(getServerGroupsResult -&gt; getServerGroupsResult).applyValue(sampleDs -&gt; sampleDs.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.slbServerGroups()[0].id())));
+     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(sampleDs -> sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult.slbServerGroups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2736,7 +2838,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2768,30 +2871,30 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbservergroups&#34;);
+     *         final var name = config.get("name").orElse("slbservergroups");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
@@ -2799,10 +2902,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbServerGroupId&#34;, sampleDs.applyValue(getServerGroupsResult -&gt; getServerGroupsResult).applyValue(sampleDs -&gt; sampleDs.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.slbServerGroups()[0].id())));
+     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(sampleDs -> sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult.slbServerGroups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2815,7 +2919,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2847,30 +2952,30 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbservergroups&#34;);
+     *         final var name = config.get("name").orElse("slbservergroups");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
@@ -2878,10 +2983,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbServerGroupId&#34;, sampleDs.applyValue(getServerGroupsResult -&gt; getServerGroupsResult).applyValue(sampleDs -&gt; sampleDs.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.slbServerGroups()[0].id())));
+     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(sampleDs -> sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult.slbServerGroups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2894,7 +3000,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2926,30 +3033,30 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;slbservergroups&#34;);
+     *         final var name = config.get("name").orElse("slbservergroups");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
      *             .vpcName(name)
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+     *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
@@ -2957,10 +3064,11 @@ public final class SlbFunctions {
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         ctx.export(&#34;firstSlbServerGroupId&#34;, sampleDs.applyValue(getServerGroupsResult -&gt; getServerGroupsResult).applyValue(sampleDs -&gt; sampleDs.applyValue(getServerGroupsResult -&gt; getServerGroupsResult.slbServerGroups()[0].id())));
+     *         ctx.export("firstSlbServerGroupId", sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult).applyValue(sampleDs -> sampleDs.applyValue(getServerGroupsResult -> getServerGroupsResult.slbServerGroups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2977,7 +3085,8 @@ public final class SlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3000,19 +3109,20 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;slbTlsCipherPolicyId1&#34;, ids.applyValue(getTlsCipherPoliciesResult -&gt; getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId1", ids.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
      *         final var nameRegex = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
-     *             .nameRegex(&#34;^My-TlsCipherPolicy&#34;)
+     *             .nameRegex("^My-TlsCipherPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;slbTlsCipherPolicyId2&#34;, nameRegex.applyValue(getTlsCipherPoliciesResult -&gt; getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3029,7 +3139,8 @@ public final class SlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3052,19 +3163,20 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;slbTlsCipherPolicyId1&#34;, ids.applyValue(getTlsCipherPoliciesResult -&gt; getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId1", ids.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
      *         final var nameRegex = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
-     *             .nameRegex(&#34;^My-TlsCipherPolicy&#34;)
+     *             .nameRegex("^My-TlsCipherPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;slbTlsCipherPolicyId2&#34;, nameRegex.applyValue(getTlsCipherPoliciesResult -&gt; getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3081,7 +3193,8 @@ public final class SlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3104,19 +3217,20 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;slbTlsCipherPolicyId1&#34;, ids.applyValue(getTlsCipherPoliciesResult -&gt; getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId1", ids.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
      *         final var nameRegex = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
-     *             .nameRegex(&#34;^My-TlsCipherPolicy&#34;)
+     *             .nameRegex("^My-TlsCipherPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;slbTlsCipherPolicyId2&#34;, nameRegex.applyValue(getTlsCipherPoliciesResult -&gt; getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3133,7 +3247,8 @@ public final class SlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3156,19 +3271,20 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;slbTlsCipherPolicyId1&#34;, ids.applyValue(getTlsCipherPoliciesResult -&gt; getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId1", ids.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
      *         final var nameRegex = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
-     *             .nameRegex(&#34;^My-TlsCipherPolicy&#34;)
+     *             .nameRegex("^My-TlsCipherPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;slbTlsCipherPolicyId2&#34;, nameRegex.applyValue(getTlsCipherPoliciesResult -&gt; getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3185,7 +3301,8 @@ public final class SlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3208,19 +3325,20 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;slbTlsCipherPolicyId1&#34;, ids.applyValue(getTlsCipherPoliciesResult -&gt; getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId1", ids.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
      *         final var nameRegex = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
-     *             .nameRegex(&#34;^My-TlsCipherPolicy&#34;)
+     *             .nameRegex("^My-TlsCipherPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;slbTlsCipherPolicyId2&#34;, nameRegex.applyValue(getTlsCipherPoliciesResult -&gt; getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3237,7 +3355,8 @@ public final class SlbFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3260,19 +3379,20 @@ public final class SlbFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;slbTlsCipherPolicyId1&#34;, ids.applyValue(getTlsCipherPoliciesResult -&gt; getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId1", ids.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
      *         final var nameRegex = SlbFunctions.getTlsCipherPolicies(GetTlsCipherPoliciesArgs.builder()
-     *             .nameRegex(&#34;^My-TlsCipherPolicy&#34;)
+     *             .nameRegex("^My-TlsCipherPolicy")
      *             .build());
      * 
-     *         ctx.export(&#34;slbTlsCipherPolicyId2&#34;, nameRegex.applyValue(getTlsCipherPoliciesResult -&gt; getTlsCipherPoliciesResult.policies()[0].id()));
+     *         ctx.export("slbTlsCipherPolicyId2", nameRegex.applyValue(getTlsCipherPoliciesResult -> getTlsCipherPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3287,7 +3407,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3309,13 +3430,14 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zonesIds = SlbFunctions.getZones(GetZonesArgs.builder()
-     *             .availableSlbAddressType(&#34;vpc&#34;)
-     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
+     *             .availableSlbAddressType("vpc")
+     *             .availableSlbAddressIpVersion("ipv4")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3330,7 +3452,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3352,13 +3475,14 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zonesIds = SlbFunctions.getZones(GetZonesArgs.builder()
-     *             .availableSlbAddressType(&#34;vpc&#34;)
-     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
+     *             .availableSlbAddressType("vpc")
+     *             .availableSlbAddressIpVersion("ipv4")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3373,7 +3497,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3395,13 +3520,14 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zonesIds = SlbFunctions.getZones(GetZonesArgs.builder()
-     *             .availableSlbAddressType(&#34;vpc&#34;)
-     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
+     *             .availableSlbAddressType("vpc")
+     *             .availableSlbAddressIpVersion("ipv4")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3416,7 +3542,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3438,13 +3565,14 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zonesIds = SlbFunctions.getZones(GetZonesArgs.builder()
-     *             .availableSlbAddressType(&#34;vpc&#34;)
-     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
+     *             .availableSlbAddressType("vpc")
+     *             .availableSlbAddressIpVersion("ipv4")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3459,7 +3587,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3481,13 +3610,14 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zonesIds = SlbFunctions.getZones(GetZonesArgs.builder()
-     *             .availableSlbAddressType(&#34;vpc&#34;)
-     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
+     *             .availableSlbAddressType("vpc")
+     *             .availableSlbAddressIpVersion("ipv4")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3502,7 +3632,8 @@ public final class SlbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3524,13 +3655,14 @@ public final class SlbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var zonesIds = SlbFunctions.getZones(GetZonesArgs.builder()
-     *             .availableSlbAddressType(&#34;vpc&#34;)
-     *             .availableSlbAddressIpVersion(&#34;ipv4&#34;)
+     *             .availableSlbAddressType("vpc")
+     *             .availableSlbAddressIpVersion("ipv4")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

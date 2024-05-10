@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,21 +52,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var example = new DbInstance(&#34;example&#34;, DbInstanceArgs.builder()        
- *             .dbNodeClass(&#34;gdb.r.2xlarge&#34;)
- *             .dbInstanceNetworkType(&#34;vpc&#34;)
- *             .dbVersion(&#34;1.0&#34;)
- *             .dbInstanceCategory(&#34;HA&#34;)
- *             .dbInstanceStorageType(&#34;cloud_ssd&#34;)
- *             .dbNodeStorage(&#34;50&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var example = new DbInstance("example", DbInstanceArgs.builder()        
+ *             .dbNodeClass("gdb.r.2xlarge")
+ *             .dbInstanceNetworkType("vpc")
+ *             .dbVersion("1.0")
+ *             .dbInstanceCategory("HA")
+ *             .dbInstanceStorageType("cloud_ssd")
+ *             .dbNodeStorage("50")
+ *             .paymentType("PayAsYouGo")
  *             .dbInstanceDescription(name)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

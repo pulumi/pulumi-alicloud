@@ -368,14 +368,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.masterNodeSpec);
     }
     /**
-     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&amp;*()_+-=`).
+     * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!{@literal @}#$%^&amp;*()_+-=`).
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&amp;*()_+-=`).
+     * @return The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!{@literal @}#$%^&amp;*()_+-=`).
      * 
      */
     public Output<Optional<String>> password() {

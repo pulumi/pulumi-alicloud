@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,68 +53,69 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
- *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .description(&#34;terraform-example&#34;)
+ *         var example = new Project("example", ProjectArgs.builder()        
+ *             .name(String.format("terraform-example-%s", default_.result()))
+ *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
  *             .project(example.name())
- *             .name(&#34;example-store&#34;)
+ *             .name("example-store")
  *             .shardCount(3)
  *             .autoSplit(true)
  *             .maxSplitShardCount(60)
  *             .appendMeta(true)
  *             .build());
  * 
- *         var exampleDashboard = new Dashboard(&#34;exampleDashboard&#34;, DashboardArgs.builder()        
+ *         var exampleDashboard = new Dashboard("exampleDashboard", DashboardArgs.builder()        
  *             .projectName(example.name())
- *             .dashboardName(&#34;terraform-example&#34;)
- *             .displayName(&#34;terraform-example&#34;)
- *             .attribute(&#34;&#34;&#34;
+ *             .dashboardName("terraform-example")
+ *             .displayName("terraform-example")
+ *             .attribute("""
  *   {
- *     &#34;type&#34;:&#34;grid&#34;
+ *     "type":"grid"
  *   }
- *             &#34;&#34;&#34;)
- *             .charList(&#34;&#34;&#34;
+ *             """)
+ *             .charList("""
  *   [
  *     {
- *       &#34;action&#34;: {},
- *       &#34;title&#34;:&#34;new_title&#34;,
- *       &#34;type&#34;:&#34;map&#34;,
- *       &#34;search&#34;:{
- *         &#34;logstore&#34;:&#34;example-store&#34;,
- *         &#34;topic&#34;:&#34;new_topic&#34;,
- *         &#34;query&#34;:&#34;* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product&#34;,
- *         &#34;start&#34;:&#34;-86400s&#34;,
- *         &#34;end&#34;:&#34;now&#34;
+ *       "action": {},
+ *       "title":"new_title",
+ *       "type":"map",
+ *       "search":{
+ *         "logstore":"example-store",
+ *         "topic":"new_topic",
+ *         "query":"* | SELECT COUNT(name) as ct_name, COUNT(product) as ct_product, name,product GROUP BY name,product",
+ *         "start":"-86400s",
+ *         "end":"now"
  *       },
- *       &#34;display&#34;:{
- *         &#34;xAxis&#34;:[
- *           &#34;ct_name&#34;
+ *       "display":{
+ *         "xAxis":[
+ *           "ct_name"
  *         ],
- *         &#34;yAxis&#34;:[
- *           &#34;ct_product&#34;
+ *         "yAxis":[
+ *           "ct_product"
  *         ],
- *         &#34;xPos&#34;:0,
- *         &#34;yPos&#34;:0,
- *         &#34;width&#34;:10,
- *         &#34;height&#34;:12,
- *         &#34;displayName&#34;:&#34;terraform-example&#34;
+ *         "xPos":0,
+ *         "yPos":0,
+ *         "width":10,
+ *         "height":12,
+ *         "displayName":"terraform-example"
  *       }
  *     }
  *   ]
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

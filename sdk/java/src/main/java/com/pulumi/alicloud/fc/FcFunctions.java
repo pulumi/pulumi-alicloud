@@ -37,7 +37,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -59,13 +60,14 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcDomains = FcFunctions.getCustomDomains(GetCustomDomainsArgs.builder()
-     *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
+     *             .nameRegex("sample_fc_custom_domain")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcCustomDomainName&#34;, fcDomainsDs.domains()[0].domainName());
+     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.domains()[0].domainName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -80,7 +82,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -102,13 +105,14 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcDomains = FcFunctions.getCustomDomains(GetCustomDomainsArgs.builder()
-     *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
+     *             .nameRegex("sample_fc_custom_domain")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcCustomDomainName&#34;, fcDomainsDs.domains()[0].domainName());
+     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.domains()[0].domainName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -123,7 +127,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -145,13 +150,14 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcDomains = FcFunctions.getCustomDomains(GetCustomDomainsArgs.builder()
-     *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
+     *             .nameRegex("sample_fc_custom_domain")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcCustomDomainName&#34;, fcDomainsDs.domains()[0].domainName());
+     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.domains()[0].domainName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -166,7 +172,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -188,13 +195,14 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcDomains = FcFunctions.getCustomDomains(GetCustomDomainsArgs.builder()
-     *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
+     *             .nameRegex("sample_fc_custom_domain")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcCustomDomainName&#34;, fcDomainsDs.domains()[0].domainName());
+     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.domains()[0].domainName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -209,7 +217,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -231,13 +240,14 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcDomains = FcFunctions.getCustomDomains(GetCustomDomainsArgs.builder()
-     *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
+     *             .nameRegex("sample_fc_custom_domain")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcCustomDomainName&#34;, fcDomainsDs.domains()[0].domainName());
+     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.domains()[0].domainName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -252,7 +262,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -274,13 +285,14 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcDomains = FcFunctions.getCustomDomains(GetCustomDomainsArgs.builder()
-     *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
+     *             .nameRegex("sample_fc_custom_domain")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcCustomDomainName&#34;, fcDomainsDs.domains()[0].domainName());
+     *         ctx.export("firstFcCustomDomainName", fcDomainsDs.domains()[0].domainName());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -293,7 +305,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -315,14 +328,15 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var functionsDs = FcFunctions.getFunctions(GetFunctionsArgs.builder()
-     *             .serviceName(&#34;sample_service&#34;)
-     *             .nameRegex(&#34;sample_fc_function&#34;)
+     *             .serviceName("sample_service")
+     *             .nameRegex("sample_fc_function")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcFunctionName&#34;, functionsDs.applyValue(getFunctionsResult -&gt; getFunctionsResult.functions()[0].name()));
+     *         ctx.export("firstFcFunctionName", functionsDs.applyValue(getFunctionsResult -> getFunctionsResult.functions()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -335,7 +349,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -357,14 +372,15 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var functionsDs = FcFunctions.getFunctions(GetFunctionsArgs.builder()
-     *             .serviceName(&#34;sample_service&#34;)
-     *             .nameRegex(&#34;sample_fc_function&#34;)
+     *             .serviceName("sample_service")
+     *             .nameRegex("sample_fc_function")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcFunctionName&#34;, functionsDs.applyValue(getFunctionsResult -&gt; getFunctionsResult.functions()[0].name()));
+     *         ctx.export("firstFcFunctionName", functionsDs.applyValue(getFunctionsResult -> getFunctionsResult.functions()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -377,7 +393,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -399,14 +416,15 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var functionsDs = FcFunctions.getFunctions(GetFunctionsArgs.builder()
-     *             .serviceName(&#34;sample_service&#34;)
-     *             .nameRegex(&#34;sample_fc_function&#34;)
+     *             .serviceName("sample_service")
+     *             .nameRegex("sample_fc_function")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcFunctionName&#34;, functionsDs.applyValue(getFunctionsResult -&gt; getFunctionsResult.functions()[0].name()));
+     *         ctx.export("firstFcFunctionName", functionsDs.applyValue(getFunctionsResult -> getFunctionsResult.functions()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -419,7 +437,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -441,14 +460,15 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var functionsDs = FcFunctions.getFunctions(GetFunctionsArgs.builder()
-     *             .serviceName(&#34;sample_service&#34;)
-     *             .nameRegex(&#34;sample_fc_function&#34;)
+     *             .serviceName("sample_service")
+     *             .nameRegex("sample_fc_function")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcFunctionName&#34;, functionsDs.applyValue(getFunctionsResult -&gt; getFunctionsResult.functions()[0].name()));
+     *         ctx.export("firstFcFunctionName", functionsDs.applyValue(getFunctionsResult -> getFunctionsResult.functions()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -465,7 +485,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -487,12 +508,13 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = FcFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -509,7 +531,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -531,12 +554,13 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = FcFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -553,7 +577,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -575,12 +600,13 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = FcFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -597,7 +623,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -619,12 +646,13 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = FcFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -641,7 +669,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -663,12 +692,13 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = FcFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -685,7 +715,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -707,12 +738,13 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = FcFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -725,7 +757,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -747,13 +780,14 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcServicesDs = FcFunctions.getServices(GetServicesArgs.builder()
-     *             .nameRegex(&#34;sample_fc_service&#34;)
+     *             .nameRegex("sample_fc_service")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcServiceName&#34;, fcServicesDs.applyValue(getServicesResult -&gt; getServicesResult.services()[0].name()));
+     *         ctx.export("firstFcServiceName", fcServicesDs.applyValue(getServicesResult -> getServicesResult.services()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -766,7 +800,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -788,13 +823,14 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcServicesDs = FcFunctions.getServices(GetServicesArgs.builder()
-     *             .nameRegex(&#34;sample_fc_service&#34;)
+     *             .nameRegex("sample_fc_service")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcServiceName&#34;, fcServicesDs.applyValue(getServicesResult -&gt; getServicesResult.services()[0].name()));
+     *         ctx.export("firstFcServiceName", fcServicesDs.applyValue(getServicesResult -> getServicesResult.services()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -807,7 +843,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -829,13 +866,14 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcServicesDs = FcFunctions.getServices(GetServicesArgs.builder()
-     *             .nameRegex(&#34;sample_fc_service&#34;)
+     *             .nameRegex("sample_fc_service")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcServiceName&#34;, fcServicesDs.applyValue(getServicesResult -&gt; getServicesResult.services()[0].name()));
+     *         ctx.export("firstFcServiceName", fcServicesDs.applyValue(getServicesResult -> getServicesResult.services()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -848,7 +886,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -870,13 +909,14 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcServicesDs = FcFunctions.getServices(GetServicesArgs.builder()
-     *             .nameRegex(&#34;sample_fc_service&#34;)
+     *             .nameRegex("sample_fc_service")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcServiceName&#34;, fcServicesDs.applyValue(getServicesResult -&gt; getServicesResult.services()[0].name()));
+     *         ctx.export("firstFcServiceName", fcServicesDs.applyValue(getServicesResult -> getServicesResult.services()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -889,7 +929,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -911,13 +952,14 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcServicesDs = FcFunctions.getServices(GetServicesArgs.builder()
-     *             .nameRegex(&#34;sample_fc_service&#34;)
+     *             .nameRegex("sample_fc_service")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcServiceName&#34;, fcServicesDs.applyValue(getServicesResult -&gt; getServicesResult.services()[0].name()));
+     *         ctx.export("firstFcServiceName", fcServicesDs.applyValue(getServicesResult -> getServicesResult.services()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -930,7 +972,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -952,13 +995,14 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcServicesDs = FcFunctions.getServices(GetServicesArgs.builder()
-     *             .nameRegex(&#34;sample_fc_service&#34;)
+     *             .nameRegex("sample_fc_service")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcServiceName&#34;, fcServicesDs.applyValue(getServicesResult -&gt; getServicesResult.services()[0].name()));
+     *         ctx.export("firstFcServiceName", fcServicesDs.applyValue(getServicesResult -> getServicesResult.services()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -971,7 +1015,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -993,15 +1038,16 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcTriggersDs = FcFunctions.getTriggers(GetTriggersArgs.builder()
-     *             .serviceName(&#34;sample_service&#34;)
-     *             .functionName(&#34;sample_function&#34;)
-     *             .nameRegex(&#34;sample_fc_trigger&#34;)
+     *             .serviceName("sample_service")
+     *             .functionName("sample_function")
+     *             .nameRegex("sample_fc_trigger")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcTriggerName&#34;, fcTriggersDs.applyValue(getTriggersResult -&gt; getTriggersResult.triggers()[0].name()));
+     *         ctx.export("firstFcTriggerName", fcTriggersDs.applyValue(getTriggersResult -> getTriggersResult.triggers()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1014,7 +1060,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1036,15 +1083,16 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcTriggersDs = FcFunctions.getTriggers(GetTriggersArgs.builder()
-     *             .serviceName(&#34;sample_service&#34;)
-     *             .functionName(&#34;sample_function&#34;)
-     *             .nameRegex(&#34;sample_fc_trigger&#34;)
+     *             .serviceName("sample_service")
+     *             .functionName("sample_function")
+     *             .nameRegex("sample_fc_trigger")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcTriggerName&#34;, fcTriggersDs.applyValue(getTriggersResult -&gt; getTriggersResult.triggers()[0].name()));
+     *         ctx.export("firstFcTriggerName", fcTriggersDs.applyValue(getTriggersResult -> getTriggersResult.triggers()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1057,7 +1105,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1079,15 +1128,16 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcTriggersDs = FcFunctions.getTriggers(GetTriggersArgs.builder()
-     *             .serviceName(&#34;sample_service&#34;)
-     *             .functionName(&#34;sample_function&#34;)
-     *             .nameRegex(&#34;sample_fc_trigger&#34;)
+     *             .serviceName("sample_service")
+     *             .functionName("sample_function")
+     *             .nameRegex("sample_fc_trigger")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcTriggerName&#34;, fcTriggersDs.applyValue(getTriggersResult -&gt; getTriggersResult.triggers()[0].name()));
+     *         ctx.export("firstFcTriggerName", fcTriggersDs.applyValue(getTriggersResult -> getTriggersResult.triggers()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1100,7 +1150,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1122,15 +1173,16 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcTriggersDs = FcFunctions.getTriggers(GetTriggersArgs.builder()
-     *             .serviceName(&#34;sample_service&#34;)
-     *             .functionName(&#34;sample_function&#34;)
-     *             .nameRegex(&#34;sample_fc_trigger&#34;)
+     *             .serviceName("sample_service")
+     *             .functionName("sample_function")
+     *             .nameRegex("sample_fc_trigger")
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcTriggerName&#34;, fcTriggersDs.applyValue(getTriggersResult -&gt; getTriggersResult.triggers()[0].name()));
+     *         ctx.export("firstFcTriggerName", fcTriggersDs.applyValue(getTriggersResult -> getTriggersResult.triggers()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1145,7 +1197,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1171,7 +1224,8 @@ public final class FcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1186,7 +1240,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1212,7 +1267,8 @@ public final class FcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1227,7 +1283,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1253,7 +1310,8 @@ public final class FcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1268,7 +1326,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1294,7 +1353,8 @@ public final class FcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1309,7 +1369,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1335,7 +1396,8 @@ public final class FcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1350,7 +1412,8 @@ public final class FcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1376,7 +1439,8 @@ public final class FcFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

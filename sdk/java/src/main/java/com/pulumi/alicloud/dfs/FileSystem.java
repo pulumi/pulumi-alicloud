@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,8 +54,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -65,20 +66,21 @@ import javax.annotation.Nullable;
  * 
  *         final var storageType = default_.zones()[0].options()[0].storageType();
  * 
- *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
- *             .protocolType(&#34;HDFS&#34;)
+ *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()        
+ *             .protocolType("HDFS")
  *             .description(name)
- *             .fileSystemName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
- *             .spaceCapacity(&#34;1024&#34;)
- *             .throughputMode(&#34;Provisioned&#34;)
- *             .provisionedThroughputInMiBps(&#34;512&#34;)
+ *             .fileSystemName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .spaceCapacity("1024")
+ *             .throughputMode("Provisioned")
+ *             .provisionedThroughputInMiBps("512")
  *             .storageType(storageType)
  *             .zoneId(zoneId)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -67,84 +68,85 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
+ *             .systemDiskCategory("cloud_efficiency")
  *             .cpuCoreCount(4)
  *             .minimumEniIpv6AddressQuantity(1)
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+ *             .nameRegex("^ubuntu_18.*64")
  *             .mostRecent(true)
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .enableIpv6(&#34;true&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .enableIpv6("true")
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
- *             .ipv6CidrBlockMask(&#34;64&#34;)
+ *             .ipv6CidrBlockMask("64")
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .description(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .availabilityZone(default_.zones()[0].id())
  *             .ipv6AddressCount(1)
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .instanceName(name)
  *             .vswitchId(defaultSwitch.id())
  *             .internetMaxBandwidthOut(10)
  *             .securityGroups(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var defaultIpv6Gateway = new Ipv6Gateway(&#34;defaultIpv6Gateway&#34;, Ipv6GatewayArgs.builder()        
+ *         var defaultIpv6Gateway = new Ipv6Gateway("defaultIpv6Gateway", Ipv6GatewayArgs.builder()        
  *             .ipv6GatewayName(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         final var defaultGetIpv6Addresses = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
  *             .associatedInstanceId(defaultInstance.id())
- *             .status(&#34;Available&#34;)
+ *             .status("Available")
  *             .build());
  * 
- *         var defaultIpv6InternetBandwidth = new Ipv6InternetBandwidth(&#34;defaultIpv6InternetBandwidth&#34;, Ipv6InternetBandwidthArgs.builder()        
- *             .ipv6AddressId(defaultGetIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult).applyValue(defaultGetIpv6Addresses -&gt; defaultGetIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id())))
+ *         var defaultIpv6InternetBandwidth = new Ipv6InternetBandwidth("defaultIpv6InternetBandwidth", Ipv6InternetBandwidthArgs.builder()        
+ *             .ipv6AddressId(defaultGetIpv6Addresses.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult).applyValue(defaultGetIpv6Addresses -> defaultGetIpv6Addresses.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id())))
  *             .ipv6GatewayId(defaultIpv6Gateway.ipv6GatewayId())
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
- *             .bandwidth(&#34;20&#34;)
+ *             .internetChargeType("PayByBandwidth")
+ *             .bandwidth("20")
  *             .build());
  * 
- *         var defaultIpv6EgressRule = new Ipv6EgressRule(&#34;defaultIpv6EgressRule&#34;, Ipv6EgressRuleArgs.builder()        
+ *         var defaultIpv6EgressRule = new Ipv6EgressRule("defaultIpv6EgressRule", Ipv6EgressRuleArgs.builder()        
  *             .instanceId(defaultIpv6InternetBandwidth.ipv6AddressId())
  *             .ipv6EgressRuleName(name)
  *             .description(name)
  *             .ipv6GatewayId(defaultIpv6InternetBandwidth.ipv6GatewayId())
- *             .instanceType(&#34;Ipv6Address&#34;)
+ *             .instanceType("Ipv6Address")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

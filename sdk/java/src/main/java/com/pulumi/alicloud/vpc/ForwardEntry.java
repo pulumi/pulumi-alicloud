@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,52 +58,53 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;forward-entry-example-name&#34;);
+ *         final var name = config.get("name").orElse("forward-entry-example-name");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultNatGateway = new NatGateway(&#34;defaultNatGateway&#34;, NatGatewayArgs.builder()        
+ *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .internetChargeType(&#34;PayByLcu&#34;)
+ *             .internetChargeType("PayByLcu")
  *             .natGatewayName(name)
- *             .natType(&#34;Enhanced&#34;)
+ *             .natType("Enhanced")
  *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
- *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
+ *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
  *             .addressName(name)
  *             .build());
  * 
- *         var defaultEipAssociation = new EipAssociation(&#34;defaultEipAssociation&#34;, EipAssociationArgs.builder()        
+ *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()        
  *             .allocationId(defaultEipAddress.id())
  *             .instanceId(defaultNatGateway.id())
  *             .build());
  * 
- *         var defaultForwardEntry = new ForwardEntry(&#34;defaultForwardEntry&#34;, ForwardEntryArgs.builder()        
+ *         var defaultForwardEntry = new ForwardEntry("defaultForwardEntry", ForwardEntryArgs.builder()        
  *             .forwardTableId(defaultNatGateway.forwardTableIds())
  *             .externalIp(defaultEipAddress.ipAddress())
- *             .externalPort(&#34;80&#34;)
- *             .ipProtocol(&#34;tcp&#34;)
- *             .internalIp(&#34;172.16.0.3&#34;)
- *             .internalPort(&#34;8080&#34;)
+ *             .externalPort("80")
+ *             .ipProtocol("tcp")
+ *             .internalIp("172.16.0.3")
+ *             .internalPort("8080")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

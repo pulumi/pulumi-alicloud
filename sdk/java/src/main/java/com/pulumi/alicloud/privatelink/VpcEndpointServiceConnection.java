@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,63 +67,64 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
+ *         final var name = config.get("name").orElse("tf_example");
  *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var exampleVpcEndpointService = new VpcEndpointService(&#34;exampleVpcEndpointService&#34;, VpcEndpointServiceArgs.builder()        
+ *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()        
  *             .serviceDescription(name)
  *             .connectBandwidth(103)
  *             .autoAcceptConnection(false)
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.1.0.0/16&#34;)
+ *             .cidrBlock("10.1.0.0/16")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;exampleApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
+ *         var exampleApplicationLoadBalancer = new ApplicationLoadBalancer("exampleApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
  *             .loadBalancerName(name)
  *             .vswitchId(exampleSwitch.id())
- *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
- *             .addressType(&#34;intranet&#34;)
+ *             .loadBalancerSpec("slb.s2.small")
+ *             .addressType("intranet")
  *             .build());
  * 
- *         var exampleVpcEndpointServiceResource = new VpcEndpointServiceResource(&#34;exampleVpcEndpointServiceResource&#34;, VpcEndpointServiceResourceArgs.builder()        
+ *         var exampleVpcEndpointServiceResource = new VpcEndpointServiceResource("exampleVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()        
  *             .serviceId(exampleVpcEndpointService.id())
  *             .resourceId(exampleApplicationLoadBalancer.id())
- *             .resourceType(&#34;slb&#34;)
+ *             .resourceType("slb")
  *             .build());
  * 
- *         var exampleVpcEndpoint = new VpcEndpoint(&#34;exampleVpcEndpoint&#34;, VpcEndpointArgs.builder()        
+ *         var exampleVpcEndpoint = new VpcEndpoint("exampleVpcEndpoint", VpcEndpointArgs.builder()        
  *             .serviceId(exampleVpcEndpointServiceResource.serviceId())
  *             .securityGroupIds(exampleSecurityGroup.id())
  *             .vpcId(exampleNetwork.id())
  *             .vpcEndpointName(name)
  *             .build());
  * 
- *         var exampleVpcEndpointServiceConnection = new VpcEndpointServiceConnection(&#34;exampleVpcEndpointServiceConnection&#34;, VpcEndpointServiceConnectionArgs.builder()        
+ *         var exampleVpcEndpointServiceConnection = new VpcEndpointServiceConnection("exampleVpcEndpointServiceConnection", VpcEndpointServiceConnectionArgs.builder()        
  *             .endpointId(exampleVpcEndpoint.id())
  *             .serviceId(exampleVpcEndpoint.serviceId())
- *             .bandwidth(&#34;1024&#34;)
+ *             .bandwidth("1024")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

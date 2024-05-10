@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,55 +61,56 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;5.6&#34;)
+ *             .engine("MySQL")
+ *             .engineVersion("5.6")
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
  *             .vpcId(exampleNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .cidrBlock("172.16.0.0/24")
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(name)
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;5.6&#34;)
- *             .instanceType(&#34;rds.mysql.t1.small&#34;)
- *             .instanceStorage(&#34;20&#34;)
- *             .instanceChargeType(&#34;Postpaid&#34;)
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *             .engine("MySQL")
+ *             .engineVersion("5.6")
+ *             .instanceType("rds.mysql.t1.small")
+ *             .instanceStorage("20")
+ *             .instanceChargeType("Postpaid")
  *             .instanceName(name)
  *             .vswitchId(exampleSwitch.id())
  *             .securityIps(            
- *                 &#34;10.168.1.12&#34;,
- *                 &#34;100.69.7.112&#34;)
+ *                 "10.168.1.12",
+ *                 "100.69.7.112")
  *             .build());
  * 
- *         var exampleReadOnlyInstance = new ReadOnlyInstance(&#34;exampleReadOnlyInstance&#34;, ReadOnlyInstanceArgs.builder()        
+ *         var exampleReadOnlyInstance = new ReadOnlyInstance("exampleReadOnlyInstance", ReadOnlyInstanceArgs.builder()        
  *             .zoneId(exampleInstance.zoneId())
  *             .masterDbInstanceId(exampleInstance.id())
  *             .engineVersion(exampleInstance.engineVersion())
  *             .instanceStorage(exampleInstance.instanceStorage())
  *             .instanceType(exampleInstance.instanceType())
- *             .instanceName(String.format(&#34;%sreadonly&#34;, name))
+ *             .instanceName(String.format("%sreadonly", name))
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

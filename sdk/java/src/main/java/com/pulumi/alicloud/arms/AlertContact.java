@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,16 +49,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AlertContact(&#34;example&#34;, AlertContactArgs.builder()        
- *             .alertContactName(&#34;example_value&#34;)
- *             .dingRobotWebhookUrl(&#34;https://oapi.dingtalk.com/robot/send?access_token=91f2f6****&#34;)
- *             .email(&#34;someone@example.com&#34;)
- *             .phoneNum(&#34;1381111****&#34;)
+ *         var example = new AlertContact("example", AlertContactArgs.builder()        
+ *             .alertContactName("example_value")
+ *             .dingRobotWebhookUrl("https://oapi.dingtalk.com/robot/send?access_token=91f2f6****")
+ *             .email("someone{@literal @}example.com")
+ *             .phoneNum("1381111****")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

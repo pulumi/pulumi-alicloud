@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,23 +55,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccServiceCatalogProvisionedProduct&#34;);
- *         var default_ = new ProvisionedProduct(&#34;default&#34;, ProvisionedProductArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-testAccServiceCatalogProvisionedProduct");
+ *         var default_ = new ProvisionedProduct("default", ProvisionedProductArgs.builder()        
  *             .provisionedProductName(name)
- *             .stackRegionId(&#34;cn-hangzhou&#34;)
- *             .productVersionId(&#34;pv-bp1d7dxy2pcc1g&#34;)
- *             .productId(&#34;prod-bp1u3dkc282cwd&#34;)
- *             .portfolioId(&#34;port-bp119dvn27jccw&#34;)
- *             .tags(Map.of(&#34;v1&#34;, &#34;tf-test&#34;))
+ *             .stackRegionId("cn-hangzhou")
+ *             .productVersionId("pv-bp1d7dxy2pcc1g")
+ *             .productId("prod-bp1u3dkc282cwd")
+ *             .portfolioId("port-bp119dvn27jccw")
+ *             .tags(Map.of("v1", "tf-test"))
  *             .parameters(ProvisionedProductParameterArgs.builder()
- *                 .parameterKey(&#34;role_name&#34;)
+ *                 .parameterKey("role_name")
  *                 .parameterValue(name)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

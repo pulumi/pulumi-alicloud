@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,26 +56,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfacc&#34;);
+ *         final var name = config.get("name").orElse("tfacc");
  *         final var default = VpnFunctions.getGateways();
  * 
- *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+ *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()        
  *             .name(name)
- *             .ipAddress(&#34;192.168.1.1&#34;)
+ *             .ipAddress("192.168.1.1")
  *             .build());
  * 
- *         var defaultConnection = new Connection(&#34;defaultConnection&#34;, ConnectionArgs.builder()        
+ *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()        
  *             .name(name)
  *             .customerGatewayId(defaultCustomerGateway.id())
  *             .vpnGatewayId(default_.ids()[0])
- *             .localSubnets(&#34;192.168.2.0/24&#34;)
- *             .remoteSubnets(&#34;192.168.3.0/24&#34;)
+ *             .localSubnets("192.168.2.0/24")
+ *             .remoteSubnets("192.168.3.0/24")
  *             .build());
  * 
- *         var defaultPbrRouteEntry = new PbrRouteEntry(&#34;defaultPbrRouteEntry&#34;, PbrRouteEntryArgs.builder()        
+ *         var defaultPbrRouteEntry = new PbrRouteEntry("defaultPbrRouteEntry", PbrRouteEntryArgs.builder()        
  *             .vpnGatewayId(default_.ids()[0])
- *             .routeSource(&#34;192.168.1.0/24&#34;)
- *             .routeDest(&#34;10.0.0.0/24&#34;)
+ *             .routeSource("192.168.1.0/24")
+ *             .routeDest("10.0.0.0/24")
  *             .nextHop(defaultConnection.id())
  *             .weight(0)
  *             .publishVpc(false)
@@ -82,7 +83,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

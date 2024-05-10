@@ -36,7 +36,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -59,10 +60,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getConsumerChannels();
      * 
-     *         ctx.export(&#34;dtsConsumerChannelId1&#34;, ids.applyValue(getConsumerChannelsResult -&gt; getConsumerChannelsResult.channels()[0].id()));
+     *         ctx.export("dtsConsumerChannelId1", ids.applyValue(getConsumerChannelsResult -> getConsumerChannelsResult.channels()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -79,7 +81,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -102,10 +105,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getConsumerChannels();
      * 
-     *         ctx.export(&#34;dtsConsumerChannelId1&#34;, ids.applyValue(getConsumerChannelsResult -&gt; getConsumerChannelsResult.channels()[0].id()));
+     *         ctx.export("dtsConsumerChannelId1", ids.applyValue(getConsumerChannelsResult -> getConsumerChannelsResult.channels()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -122,7 +126,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -145,10 +150,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getConsumerChannels();
      * 
-     *         ctx.export(&#34;dtsConsumerChannelId1&#34;, ids.applyValue(getConsumerChannelsResult -&gt; getConsumerChannelsResult.channels()[0].id()));
+     *         ctx.export("dtsConsumerChannelId1", ids.applyValue(getConsumerChannelsResult -> getConsumerChannelsResult.channels()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -165,7 +171,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -188,10 +195,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getConsumerChannels();
      * 
-     *         ctx.export(&#34;dtsConsumerChannelId1&#34;, ids.applyValue(getConsumerChannelsResult -&gt; getConsumerChannelsResult.channels()[0].id()));
+     *         ctx.export("dtsConsumerChannelId1", ids.applyValue(getConsumerChannelsResult -> getConsumerChannelsResult.channels()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -206,7 +214,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -229,13 +238,14 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(defaultAlicloudDtsInstance.id())
-     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDtsInstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudDtsInstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -250,7 +260,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -273,13 +284,14 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(defaultAlicloudDtsInstance.id())
-     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDtsInstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudDtsInstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -294,7 +306,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -317,13 +330,14 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(defaultAlicloudDtsInstance.id())
-     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDtsInstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudDtsInstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -338,7 +352,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -361,13 +376,14 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(defaultAlicloudDtsInstance.id())
-     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDtsInstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudDtsInstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -382,7 +398,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -405,13 +422,14 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(defaultAlicloudDtsInstance.id())
-     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDtsInstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudDtsInstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -426,7 +444,8 @@ public final class DtsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -449,13 +468,14 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = DtsFunctions.getInstances(GetInstancesArgs.builder()
      *             .ids(defaultAlicloudDtsInstance.id())
-     *             .resourceGroupId(&#34;example_value&#34;)
+     *             .resourceGroupId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDtsInstanceExampleId&#34;, default_.instances()[0].id());
+     *         ctx.export("alicloudDtsInstanceExampleId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -472,7 +492,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -494,13 +515,14 @@ public final class DtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getMigrationJobs(GetMigrationJobsArgs.builder()
-     *             .ids(&#34;dts_job_id&#34;)
+     *             .ids("dts_job_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dtsMigrationJobId1&#34;, ids.applyValue(getMigrationJobsResult -&gt; getMigrationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsMigrationJobId1", ids.applyValue(getMigrationJobsResult -> getMigrationJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -517,7 +539,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -539,13 +562,14 @@ public final class DtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getMigrationJobs(GetMigrationJobsArgs.builder()
-     *             .ids(&#34;dts_job_id&#34;)
+     *             .ids("dts_job_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dtsMigrationJobId1&#34;, ids.applyValue(getMigrationJobsResult -&gt; getMigrationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsMigrationJobId1", ids.applyValue(getMigrationJobsResult -> getMigrationJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -562,7 +586,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -584,13 +609,14 @@ public final class DtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getMigrationJobs(GetMigrationJobsArgs.builder()
-     *             .ids(&#34;dts_job_id&#34;)
+     *             .ids("dts_job_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dtsMigrationJobId1&#34;, ids.applyValue(getMigrationJobsResult -&gt; getMigrationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsMigrationJobId1", ids.applyValue(getMigrationJobsResult -> getMigrationJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -607,7 +633,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -629,13 +656,14 @@ public final class DtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getMigrationJobs(GetMigrationJobsArgs.builder()
-     *             .ids(&#34;dts_job_id&#34;)
+     *             .ids("dts_job_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dtsMigrationJobId1&#34;, ids.applyValue(getMigrationJobsResult -&gt; getMigrationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsMigrationJobId1", ids.applyValue(getMigrationJobsResult -> getMigrationJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -652,7 +680,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -674,13 +703,14 @@ public final class DtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getMigrationJobs(GetMigrationJobsArgs.builder()
-     *             .ids(&#34;dts_job_id&#34;)
+     *             .ids("dts_job_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dtsMigrationJobId1&#34;, ids.applyValue(getMigrationJobsResult -&gt; getMigrationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsMigrationJobId1", ids.applyValue(getMigrationJobsResult -> getMigrationJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -697,7 +727,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -719,13 +750,14 @@ public final class DtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getMigrationJobs(GetMigrationJobsArgs.builder()
-     *             .ids(&#34;dts_job_id&#34;)
+     *             .ids("dts_job_id")
      *             .build());
      * 
-     *         ctx.export(&#34;dtsMigrationJobId1&#34;, ids.applyValue(getMigrationJobsResult -&gt; getMigrationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsMigrationJobId1", ids.applyValue(getMigrationJobsResult -> getMigrationJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -742,7 +774,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -765,10 +798,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getSubscriptionJobs();
      * 
-     *         ctx.export(&#34;dtsSubscriptionJobId1&#34;, ids.applyValue(getSubscriptionJobsResult -&gt; getSubscriptionJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSubscriptionJobId1", ids.applyValue(getSubscriptionJobsResult -> getSubscriptionJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -785,7 +819,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -808,10 +843,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getSubscriptionJobs();
      * 
-     *         ctx.export(&#34;dtsSubscriptionJobId1&#34;, ids.applyValue(getSubscriptionJobsResult -&gt; getSubscriptionJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSubscriptionJobId1", ids.applyValue(getSubscriptionJobsResult -> getSubscriptionJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -828,7 +864,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -851,10 +888,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getSubscriptionJobs();
      * 
-     *         ctx.export(&#34;dtsSubscriptionJobId1&#34;, ids.applyValue(getSubscriptionJobsResult -&gt; getSubscriptionJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSubscriptionJobId1", ids.applyValue(getSubscriptionJobsResult -> getSubscriptionJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -871,7 +909,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -894,10 +933,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getSubscriptionJobs();
      * 
-     *         ctx.export(&#34;dtsSubscriptionJobId1&#34;, ids.applyValue(getSubscriptionJobsResult -&gt; getSubscriptionJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSubscriptionJobId1", ids.applyValue(getSubscriptionJobsResult -> getSubscriptionJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -914,7 +954,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -937,10 +978,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getSubscriptionJobs();
      * 
-     *         ctx.export(&#34;dtsSubscriptionJobId1&#34;, ids.applyValue(getSubscriptionJobsResult -&gt; getSubscriptionJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSubscriptionJobId1", ids.applyValue(getSubscriptionJobsResult -> getSubscriptionJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -957,7 +999,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -980,10 +1023,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getSubscriptionJobs();
      * 
-     *         ctx.export(&#34;dtsSubscriptionJobId1&#34;, ids.applyValue(getSubscriptionJobsResult -&gt; getSubscriptionJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSubscriptionJobId1", ids.applyValue(getSubscriptionJobsResult -> getSubscriptionJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1000,7 +1044,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1023,10 +1068,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getSynchronizationJobs();
      * 
-     *         ctx.export(&#34;dtsSynchronizationJobId1&#34;, ids.applyValue(getSynchronizationJobsResult -&gt; getSynchronizationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSynchronizationJobId1", ids.applyValue(getSynchronizationJobsResult -> getSynchronizationJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1043,7 +1089,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1066,10 +1113,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getSynchronizationJobs();
      * 
-     *         ctx.export(&#34;dtsSynchronizationJobId1&#34;, ids.applyValue(getSynchronizationJobsResult -&gt; getSynchronizationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSynchronizationJobId1", ids.applyValue(getSynchronizationJobsResult -> getSynchronizationJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1086,7 +1134,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1109,10 +1158,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getSynchronizationJobs();
      * 
-     *         ctx.export(&#34;dtsSynchronizationJobId1&#34;, ids.applyValue(getSynchronizationJobsResult -&gt; getSynchronizationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSynchronizationJobId1", ids.applyValue(getSynchronizationJobsResult -> getSynchronizationJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1129,7 +1179,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1152,10 +1203,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getSynchronizationJobs();
      * 
-     *         ctx.export(&#34;dtsSynchronizationJobId1&#34;, ids.applyValue(getSynchronizationJobsResult -&gt; getSynchronizationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSynchronizationJobId1", ids.applyValue(getSynchronizationJobsResult -> getSynchronizationJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1172,7 +1224,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1195,10 +1248,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getSynchronizationJobs();
      * 
-     *         ctx.export(&#34;dtsSynchronizationJobId1&#34;, ids.applyValue(getSynchronizationJobsResult -&gt; getSynchronizationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSynchronizationJobId1", ids.applyValue(getSynchronizationJobsResult -> getSynchronizationJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1215,7 +1269,8 @@ public final class DtsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1238,10 +1293,11 @@ public final class DtsFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = DtsFunctions.getSynchronizationJobs();
      * 
-     *         ctx.export(&#34;dtsSynchronizationJobId1&#34;, ids.applyValue(getSynchronizationJobsResult -&gt; getSynchronizationJobsResult.jobs()[0].id()));
+     *         ctx.export("dtsSynchronizationJobId1", ids.applyValue(getSynchronizationJobsResult -> getSynchronizationJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

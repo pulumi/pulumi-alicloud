@@ -39,7 +39,8 @@ import javax.annotation.Nullable;
  * Private Bucket
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,25 +63,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var bucket_acl = new Bucket(&#34;bucket-acl&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;example-value-%s&#34;, default_.result()))
- *             .acl(&#34;private&#34;)
+ *         var bucket_acl = new Bucket("bucket-acl", BucketArgs.builder()        
+ *             .bucket(String.format("example-value-%s", default_.result()))
+ *             .acl("private")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Static Website
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -104,28 +107,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var bucket_website = new Bucket(&#34;bucket-website&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;example-value-%s&#34;, default_.result()))
+ *         var bucket_website = new Bucket("bucket-website", BucketArgs.builder()        
+ *             .bucket(String.format("example-value-%s", default_.result()))
  *             .website(BucketWebsiteArgs.builder()
- *                 .indexDocument(&#34;index.html&#34;)
- *                 .errorDocument(&#34;error.html&#34;)
+ *                 .indexDocument("index.html")
+ *                 .errorDocument("error.html")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Enable Logging
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -149,33 +154,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var bucket_target = new Bucket(&#34;bucket-target&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;example-value-%s&#34;, default_.result()))
- *             .acl(&#34;public-read&#34;)
+ *         var bucket_target = new Bucket("bucket-target", BucketArgs.builder()        
+ *             .bucket(String.format("example-value-%s", default_.result()))
+ *             .acl("public-read")
  *             .build());
  * 
- *         var bucket_logging = new Bucket(&#34;bucket-logging&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;example-logging-%s&#34;, default_.result()))
+ *         var bucket_logging = new Bucket("bucket-logging", BucketArgs.builder()        
+ *             .bucket(String.format("example-logging-%s", default_.result()))
  *             .logging(BucketLoggingArgs.builder()
  *                 .targetBucket(bucket_target.id())
- *                 .targetPrefix(&#34;log/&#34;)
+ *                 .targetPrefix("log/")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Referer configuration
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -199,25 +206,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var bucket_referer = new Bucket(&#34;bucket-referer&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;example-value-%s&#34;, default_.result()))
- *             .acl(&#34;private&#34;)
+ *         var bucket_referer = new Bucket("bucket-referer", BucketArgs.builder()        
+ *             .bucket(String.format("example-value-%s", default_.result()))
+ *             .acl("private")
  *             .refererConfig(BucketRefererConfigArgs.builder()
  *                 .allowEmpty(false)
  *                 .referers(                
- *                     &#34;http://www.aliyun.com&#34;,
- *                     &#34;https://www.aliyun.com&#34;)
+ *                     "http://www.aliyun.com",
+ *                     "https://www.aliyun.com")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Set lifecycle rule

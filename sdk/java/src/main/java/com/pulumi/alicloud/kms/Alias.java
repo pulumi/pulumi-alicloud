@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,18 +47,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Key(&#34;this&#34;, KeyArgs.builder()        
+ *         var this_ = new Key("this", KeyArgs.builder()        
  *             .pendingWindowInDays(7)
  *             .build());
  * 
- *         var thisAlias = new Alias(&#34;thisAlias&#34;, AliasArgs.builder()        
- *             .aliasName(&#34;alias/example_kms_alias&#34;)
+ *         var thisAlias = new Alias("thisAlias", AliasArgs.builder()        
+ *             .aliasName("alias/example_kms_alias")
  *             .keyId(this_.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

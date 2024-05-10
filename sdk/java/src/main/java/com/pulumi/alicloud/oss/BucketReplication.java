@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Set bucket replication configuration
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -69,83 +70,83 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var bucketSrc = new Bucket(&#34;bucketSrc&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;example-src-%s&#34;, default_.result()))
+ *         var bucketSrc = new Bucket("bucketSrc", BucketArgs.builder()        
+ *             .bucket(String.format("example-src-%s", default_.result()))
  *             .build());
  * 
- *         var bucketDest = new Bucket(&#34;bucketDest&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;example-dest-%s&#34;, default_.result()))
+ *         var bucketDest = new Bucket("bucketDest", BucketArgs.builder()        
+ *             .bucket(String.format("example-dest-%s", default_.result()))
  *             .build());
  * 
- *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
- *             .name(String.format(&#34;example-role-%s&#34;, default_.result()))
- *             .document(&#34;&#34;&#34;
+ *         var role = new Role("role", RoleArgs.builder()        
+ *             .name(String.format("example-role-%s", default_.result()))
+ *             .document("""
  * 		{
- * 		  &#34;Statement&#34;: [
+ * 		  "Statement": [
  * 			{
- * 			  &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- * 			  &#34;Effect&#34;: &#34;Allow&#34;,
- * 			  &#34;Principal&#34;: {
- * 				&#34;Service&#34;: [
- * 				  &#34;oss.aliyuncs.com&#34;
+ * 			  "Action": "sts:AssumeRole",
+ * 			  "Effect": "Allow",
+ * 			  "Principal": {
+ * 				"Service": [
+ * 				  "oss.aliyuncs.com"
  * 				]
  * 			  }
  * 			}
  * 		  ],
- * 		  &#34;Version&#34;: &#34;1&#34;
+ * 		  "Version": "1"
  * 		}
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a test&#34;)
+ *             """)
+ *             .description("this is a test")
  *             .force(true)
  *             .build());
  * 
- *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
- *             .policyName(String.format(&#34;example-policy-%s&#34;, default_.result()))
- *             .policyDocument(&#34;&#34;&#34;
+ *         var policy = new Policy("policy", PolicyArgs.builder()        
+ *             .policyName(String.format("example-policy-%s", default_.result()))
+ *             .policyDocument("""
  * 		{
- * 		  &#34;Statement&#34;: [
+ * 		  "Statement": [
  * 			{
- * 			  &#34;Action&#34;: [
- * 				&#34;*&#34;
+ * 			  "Action": [
+ * 				"*"
  * 			  ],
- * 			  &#34;Effect&#34;: &#34;Allow&#34;,
- * 			  &#34;Resource&#34;: [
- * 				&#34;*&#34;
+ * 			  "Effect": "Allow",
+ * 			  "Resource": [
+ * 				"*"
  * 			  ]
  * 			}
  * 		  ],
- * 			&#34;Version&#34;: &#34;1&#34;
+ * 			"Version": "1"
  * 		}
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a policy test&#34;)
+ *             """)
+ *             .description("this is a policy test")
  *             .force(true)
  *             .build());
  * 
- *         var attach = new RolePolicyAttachment(&#34;attach&#34;, RolePolicyAttachmentArgs.builder()        
+ *         var attach = new RolePolicyAttachment("attach", RolePolicyAttachmentArgs.builder()        
  *             .policyName(policy.name())
  *             .policyType(policy.type())
  *             .roleName(role.name())
  *             .build());
  * 
- *         var key = new Key(&#34;key&#34;, KeyArgs.builder()        
- *             .description(&#34;Hello KMS&#34;)
- *             .pendingWindowInDays(&#34;7&#34;)
- *             .status(&#34;Enabled&#34;)
+ *         var key = new Key("key", KeyArgs.builder()        
+ *             .description("Hello KMS")
+ *             .pendingWindowInDays("7")
+ *             .status("Enabled")
  *             .build());
  * 
- *         var cross_region_replication = new BucketReplication(&#34;cross-region-replication&#34;, BucketReplicationArgs.builder()        
+ *         var cross_region_replication = new BucketReplication("cross-region-replication", BucketReplicationArgs.builder()        
  *             .bucket(bucketSrc.id())
- *             .action(&#34;PUT,DELETE&#34;)
- *             .historicalObjectReplication(&#34;enabled&#34;)
+ *             .action("PUT,DELETE")
+ *             .historicalObjectReplication("enabled")
  *             .prefixSet(BucketReplicationPrefixSetArgs.builder()
  *                 .prefixes(                
- *                     &#34;prefix1/&#34;,
- *                     &#34;prefix2/&#34;)
+ *                     "prefix1/",
+ *                     "prefix2/")
  *                 .build())
  *             .destination(BucketReplicationDestinationArgs.builder()
  *                 .bucket(bucketDest.id())
@@ -157,14 +158,15 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .sourceSelectionCriteria(BucketReplicationSourceSelectionCriteriaArgs.builder()
  *                 .sseKmsEncryptedObjects(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs.builder()
- *                     .status(&#34;Enabled&#34;)
+ *                     .status("Enabled")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

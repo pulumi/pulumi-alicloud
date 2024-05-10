@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -69,102 +70,103 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         final var defaultGetZones = NlbFunctions.getZones();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var default1 = new Switch(&#34;default1&#34;, SwitchArgs.builder()        
+ *         var default1 = new Switch("default1", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.1.0/24&#34;)
+ *             .cidrBlock("10.4.1.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[1].id()))
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultLoadBalancer = new LoadBalancer(&#34;defaultLoadBalancer&#34;, LoadBalancerArgs.builder()        
+ *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()        
  *             .loadBalancerName(name)
  *             .resourceGroupId(default_.ids()[0])
- *             .loadBalancerType(&#34;Network&#34;)
- *             .addressType(&#34;Internet&#34;)
- *             .addressIpVersion(&#34;Ipv4&#34;)
+ *             .loadBalancerType("Network")
+ *             .addressType("Internet")
+ *             .addressIpVersion("Ipv4")
  *             .vpcId(defaultNetwork.id())
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .zoneMappings(            
  *                 LoadBalancerZoneMappingArgs.builder()
  *                     .vswitchId(defaultSwitch.id())
- *                     .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *                     .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *                     .build(),
  *                 LoadBalancerZoneMappingArgs.builder()
  *                     .vswitchId(default1.id())
- *                     .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
+ *                     .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[1].id()))
  *                     .build())
  *             .build());
  * 
- *         var defaultServerGroup = new ServerGroup(&#34;defaultServerGroup&#34;, ServerGroupArgs.builder()        
+ *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
  *             .resourceGroupId(default_.ids()[0])
  *             .serverGroupName(name)
- *             .serverGroupType(&#34;Instance&#34;)
+ *             .serverGroupType("Instance")
  *             .vpcId(defaultNetwork.id())
- *             .scheduler(&#34;Wrr&#34;)
- *             .protocol(&#34;TCP&#34;)
+ *             .scheduler("Wrr")
+ *             .protocol("TCP")
  *             .connectionDrainEnabled(true)
  *             .connectionDrainTimeout(60)
- *             .addressIpVersion(&#34;Ipv4&#34;)
+ *             .addressIpVersion("Ipv4")
  *             .healthCheck(ServerGroupHealthCheckArgs.builder()
  *                 .healthCheckEnabled(true)
- *                 .healthCheckType(&#34;TCP&#34;)
+ *                 .healthCheckType("TCP")
  *                 .healthCheckConnectPort(0)
  *                 .healthyThreshold(2)
  *                 .unhealthyThreshold(2)
  *                 .healthCheckConnectTimeout(5)
  *                 .healthCheckInterval(10)
- *                 .httpCheckMethod(&#34;GET&#34;)
+ *                 .httpCheckMethod("GET")
  *                 .healthCheckHttpCodes(                
- *                     &#34;http_2xx&#34;,
- *                     &#34;http_3xx&#34;,
- *                     &#34;http_4xx&#34;)
+ *                     "http_2xx",
+ *                     "http_3xx",
+ *                     "http_4xx")
  *                 .build())
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
- *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
- *             .listenerProtocol(&#34;TCP&#34;)
- *             .listenerPort(&#34;80&#34;)
+ *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+ *             .listenerProtocol("TCP")
+ *             .listenerPort("80")
  *             .listenerDescription(name)
  *             .loadBalancerId(defaultLoadBalancer.id())
  *             .serverGroupId(defaultServerGroup.id())
- *             .idleTimeout(&#34;900&#34;)
- *             .proxyProtocolEnabled(&#34;true&#34;)
- *             .cps(&#34;10000&#34;)
- *             .mss(&#34;0&#34;)
+ *             .idleTimeout("900")
+ *             .proxyProtocolEnabled("true")
+ *             .cps("10000")
+ *             .mss("0")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -311,14 +313,14 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return this.idleTimeout;
     }
     /**
-     * Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+     * Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
      * 
      */
     @Export(name="listenerDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> listenerDescription;
 
     /**
-     * @return Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+     * @return Custom listener name.The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
      * 
      */
     public Output<Optional<String>> listenerDescription() {

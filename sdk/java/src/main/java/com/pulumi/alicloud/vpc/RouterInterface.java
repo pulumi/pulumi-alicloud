@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,24 +51,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Network(&#34;foo&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;tf_test_foo12345&#34;)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *         var foo = new Network("foo", NetworkArgs.builder()        
+ *             .vpcName("tf_test_foo12345")
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var interface_ = new RouterInterface(&#34;interface&#34;, RouterInterfaceArgs.builder()        
- *             .oppositeRegion(&#34;cn-beijing&#34;)
- *             .routerType(&#34;VRouter&#34;)
+ *         var interface_ = new RouterInterface("interface", RouterInterfaceArgs.builder()        
+ *             .oppositeRegion("cn-beijing")
+ *             .routerType("VRouter")
  *             .routerId(foo.routerId())
- *             .role(&#34;InitiatingSide&#34;)
- *             .specification(&#34;Large.2&#34;)
- *             .name(&#34;test1&#34;)
- *             .description(&#34;test1&#34;)
+ *             .role("InitiatingSide")
+ *             .specification("Large.2")
+ *             .name("test1")
+ *             .description("test1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

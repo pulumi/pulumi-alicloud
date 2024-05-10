@@ -42,7 +42,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -64,24 +65,25 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
-     *             .hostId(&#34;15&#34;)
-     *             .instanceId(&#34;example_value&#34;)
+     *             .hostId("15")
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;2&#34;)
+     *                 "1",
+     *                 "2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostAccountId1&#34;, ids.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId1", ids.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
-     *             .hostId(&#34;15&#34;)
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-HostAccount&#34;)
+     *             .hostId("15")
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-HostAccount")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostAccountId2&#34;, nameRegex.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId2", nameRegex.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -98,7 +100,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -120,24 +123,25 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
-     *             .hostId(&#34;15&#34;)
-     *             .instanceId(&#34;example_value&#34;)
+     *             .hostId("15")
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;2&#34;)
+     *                 "1",
+     *                 "2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostAccountId1&#34;, ids.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId1", ids.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
-     *             .hostId(&#34;15&#34;)
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-HostAccount&#34;)
+     *             .hostId("15")
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-HostAccount")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostAccountId2&#34;, nameRegex.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId2", nameRegex.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -154,7 +158,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -176,24 +181,25 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
-     *             .hostId(&#34;15&#34;)
-     *             .instanceId(&#34;example_value&#34;)
+     *             .hostId("15")
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;2&#34;)
+     *                 "1",
+     *                 "2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostAccountId1&#34;, ids.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId1", ids.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
-     *             .hostId(&#34;15&#34;)
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-HostAccount&#34;)
+     *             .hostId("15")
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-HostAccount")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostAccountId2&#34;, nameRegex.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId2", nameRegex.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -210,7 +216,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -232,24 +239,25 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
-     *             .hostId(&#34;15&#34;)
-     *             .instanceId(&#34;example_value&#34;)
+     *             .hostId("15")
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;2&#34;)
+     *                 "1",
+     *                 "2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostAccountId1&#34;, ids.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId1", ids.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHostAccounts(GetHostAccountsArgs.builder()
-     *             .hostId(&#34;15&#34;)
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-HostAccount&#34;)
+     *             .hostId("15")
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-HostAccount")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostAccountId2&#34;, nameRegex.applyValue(getHostAccountsResult -&gt; getHostAccountsResult.accounts()[0].id()));
+     *         ctx.export("bastionhostHostAccountId2", nameRegex.applyValue(getHostAccountsResult -> getHostAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -266,7 +274,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -288,22 +297,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
+     *             .instanceId("bastionhost-cn-tl3xxxxxxx")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostGroupId1&#34;, ids.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId1", ids.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
-     *             .nameRegex(&#34;^my-HostGroup&#34;)
+     *             .instanceId("bastionhost-cn-tl3xxxxxxx")
+     *             .nameRegex("^my-HostGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostGroupId2&#34;, nameRegex.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId2", nameRegex.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -320,7 +330,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -342,22 +353,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
+     *             .instanceId("bastionhost-cn-tl3xxxxxxx")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostGroupId1&#34;, ids.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId1", ids.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
-     *             .nameRegex(&#34;^my-HostGroup&#34;)
+     *             .instanceId("bastionhost-cn-tl3xxxxxxx")
+     *             .nameRegex("^my-HostGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostGroupId2&#34;, nameRegex.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId2", nameRegex.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -374,7 +386,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -396,22 +409,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
+     *             .instanceId("bastionhost-cn-tl3xxxxxxx")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostGroupId1&#34;, ids.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId1", ids.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
-     *             .nameRegex(&#34;^my-HostGroup&#34;)
+     *             .instanceId("bastionhost-cn-tl3xxxxxxx")
+     *             .nameRegex("^my-HostGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostGroupId2&#34;, nameRegex.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId2", nameRegex.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -428,7 +442,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -450,22 +465,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
+     *             .instanceId("bastionhost-cn-tl3xxxxxxx")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostGroupId1&#34;, ids.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId1", ids.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHostGroups(GetHostGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-tl3xxxxxxx&#34;)
-     *             .nameRegex(&#34;^my-HostGroup&#34;)
+     *             .instanceId("bastionhost-cn-tl3xxxxxxx")
+     *             .nameRegex("^my-HostGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostGroupId2&#34;, nameRegex.applyValue(getHostGroupsResult -&gt; getHostGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostHostGroupId2", nameRegex.applyValue(getHostGroupsResult -> getHostGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -482,7 +498,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -504,22 +521,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostShareKeyId1&#34;, ids.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId1", ids.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-HostShareKey&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-HostShareKey")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostShareKeyId2&#34;, nameRegex.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId2", nameRegex.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -536,7 +554,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -558,22 +577,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostShareKeyId1&#34;, ids.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId1", ids.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-HostShareKey&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-HostShareKey")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostShareKeyId2&#34;, nameRegex.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId2", nameRegex.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -590,7 +610,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -612,22 +633,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostShareKeyId1&#34;, ids.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId1", ids.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-HostShareKey&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-HostShareKey")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostShareKeyId2&#34;, nameRegex.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId2", nameRegex.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -644,7 +666,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -666,22 +689,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostShareKeyId1&#34;, ids.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId1", ids.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHostShareKeys(GetHostShareKeysArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-HostShareKey&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-HostShareKey")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostShareKeyId2&#34;, nameRegex.applyValue(getHostShareKeysResult -&gt; getHostShareKeysResult.keys()[0].id()));
+     *         ctx.export("bastionhostHostShareKeyId2", nameRegex.applyValue(getHostShareKeysResult -> getHostShareKeysResult.keys()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -698,7 +722,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -720,22 +745,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHosts(GetHostsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;2&#34;)
+     *                 "1",
+     *                 "2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostId1&#34;, ids.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId1", ids.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHosts(GetHostsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Host&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-Host")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostId2&#34;, nameRegex.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId2", nameRegex.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -752,7 +778,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -774,22 +801,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHosts(GetHostsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;2&#34;)
+     *                 "1",
+     *                 "2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostId1&#34;, ids.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId1", ids.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHosts(GetHostsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Host&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-Host")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostId2&#34;, nameRegex.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId2", nameRegex.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -806,7 +834,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -828,22 +857,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHosts(GetHostsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;2&#34;)
+     *                 "1",
+     *                 "2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostId1&#34;, ids.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId1", ids.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHosts(GetHostsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Host&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-Host")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostId2&#34;, nameRegex.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId2", nameRegex.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -860,7 +890,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -882,22 +913,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getHosts(GetHostsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;2&#34;)
+     *                 "1",
+     *                 "2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostId1&#34;, ids.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId1", ids.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getHosts(GetHostsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-Host&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-Host")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostHostId2&#34;, nameRegex.applyValue(getHostsResult -&gt; getHostsResult.hosts()[0].id()));
+     *         ctx.export("bastionhostHostId2", nameRegex.applyValue(getHostsResult -> getHostsResult.hosts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -914,7 +946,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -936,13 +969,14 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-     *             .descriptionRegex(&#34;^bastionhost&#34;)
+     *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, instanceAlicloudBastionhostInstances.stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instance", instanceAlicloudBastionhostInstances.stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -959,7 +993,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -981,13 +1016,14 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-     *             .descriptionRegex(&#34;^bastionhost&#34;)
+     *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, instanceAlicloudBastionhostInstances.stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instance", instanceAlicloudBastionhostInstances.stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1004,7 +1040,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1026,13 +1063,14 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-     *             .descriptionRegex(&#34;^bastionhost&#34;)
+     *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, instanceAlicloudBastionhostInstances.stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instance", instanceAlicloudBastionhostInstances.stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1049,7 +1087,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1071,13 +1110,14 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-     *             .descriptionRegex(&#34;^bastionhost&#34;)
+     *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, instanceAlicloudBastionhostInstances.stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instance", instanceAlicloudBastionhostInstances.stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1094,7 +1134,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1116,13 +1157,14 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-     *             .descriptionRegex(&#34;^bastionhost&#34;)
+     *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, instanceAlicloudBastionhostInstances.stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instance", instanceAlicloudBastionhostInstances.stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1139,7 +1181,8 @@ public final class BastionhostFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1161,13 +1204,14 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instance = BastionhostFunctions.getInstances(GetInstancesArgs.builder()
-     *             .descriptionRegex(&#34;^bastionhost&#34;)
+     *             .descriptionRegex("^bastionhost")
      *             .build());
      * 
-     *         ctx.export(&#34;instance&#34;, instanceAlicloudBastionhostInstances.stream().map(element -&gt; element.id()).collect(toList()));
+     *         ctx.export("instance", instanceAlicloudBastionhostInstances.stream().map(element -> element.id()).collect(toList()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1184,7 +1228,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1206,22 +1251,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
+     *             .instanceId("bastionhost-cn-xxxx")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;2&#34;)
+     *                 "1",
+     *                 "2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserGroupId1&#34;, ids.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId1", ids.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
-     *             .nameRegex(&#34;^my-UserGroup&#34;)
+     *             .instanceId("bastionhost-cn-xxxx")
+     *             .nameRegex("^my-UserGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserGroupId2&#34;, nameRegex.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId2", nameRegex.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1238,7 +1284,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1260,22 +1307,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
+     *             .instanceId("bastionhost-cn-xxxx")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;2&#34;)
+     *                 "1",
+     *                 "2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserGroupId1&#34;, ids.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId1", ids.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
-     *             .nameRegex(&#34;^my-UserGroup&#34;)
+     *             .instanceId("bastionhost-cn-xxxx")
+     *             .nameRegex("^my-UserGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserGroupId2&#34;, nameRegex.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId2", nameRegex.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1292,7 +1340,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1314,22 +1363,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
+     *             .instanceId("bastionhost-cn-xxxx")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;2&#34;)
+     *                 "1",
+     *                 "2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserGroupId1&#34;, ids.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId1", ids.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
-     *             .nameRegex(&#34;^my-UserGroup&#34;)
+     *             .instanceId("bastionhost-cn-xxxx")
+     *             .nameRegex("^my-UserGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserGroupId2&#34;, nameRegex.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId2", nameRegex.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1346,7 +1396,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1368,22 +1419,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
+     *             .instanceId("bastionhost-cn-xxxx")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;2&#34;)
+     *                 "1",
+     *                 "2")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserGroupId1&#34;, ids.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId1", ids.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getUserGroups(GetUserGroupsArgs.builder()
-     *             .instanceId(&#34;bastionhost-cn-xxxx&#34;)
-     *             .nameRegex(&#34;^my-UserGroup&#34;)
+     *             .instanceId("bastionhost-cn-xxxx")
+     *             .nameRegex("^my-UserGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserGroupId2&#34;, nameRegex.applyValue(getUserGroupsResult -&gt; getUserGroupsResult.groups()[0].id()));
+     *         ctx.export("bastionhostUserGroupId2", nameRegex.applyValue(getUserGroupsResult -> getUserGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1400,7 +1452,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1422,22 +1475,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getUsers(GetUsersArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;10&#34;)
+     *                 "1",
+     *                 "10")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getUsers(GetUsersArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-User&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-User")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserId2&#34;, nameRegex.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1454,7 +1508,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1476,22 +1531,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getUsers(GetUsersArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;10&#34;)
+     *                 "1",
+     *                 "10")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getUsers(GetUsersArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-User&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-User")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserId2&#34;, nameRegex.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1508,7 +1564,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1530,22 +1587,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getUsers(GetUsersArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;10&#34;)
+     *                 "1",
+     *                 "10")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getUsers(GetUsersArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-User&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-User")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserId2&#34;, nameRegex.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1562,7 +1620,8 @@ public final class BastionhostFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1584,22 +1643,23 @@ public final class BastionhostFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = BastionhostFunctions.getUsers(GetUsersArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .ids(            
-     *                 &#34;1&#34;,
-     *                 &#34;10&#34;)
+     *                 "1",
+     *                 "10")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserId1&#34;, ids.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId1", ids.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *         final var nameRegex = BastionhostFunctions.getUsers(GetUsersArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
-     *             .nameRegex(&#34;^my-User&#34;)
+     *             .instanceId("example_value")
+     *             .nameRegex("^my-User")
      *             .build());
      * 
-     *         ctx.export(&#34;bastionhostUserId2&#34;, nameRegex.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()));
+     *         ctx.export("bastionhostUserId2", nameRegex.applyValue(getUsersResult -> getUsersResult.users()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

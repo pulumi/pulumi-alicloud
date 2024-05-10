@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -57,30 +58,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Domain config.
- *         var domain = new Domain(&#34;domain&#34;, DomainArgs.builder()        
- *             .domainName(&#34;mydomain.alicloud-provider.cn&#34;)
- *             .cdnType(&#34;web&#34;)
- *             .scope(&#34;overseas&#34;)
+ *         var domain = new Domain("domain", DomainArgs.builder()        
+ *             .domainName("mydomain.alicloud-provider.cn")
+ *             .cdnType("web")
+ *             .scope("overseas")
  *             .sources(DomainSourceArgs.builder()
- *                 .content(&#34;1.1.1.1&#34;)
- *                 .type(&#34;ipaddr&#34;)
- *                 .priority(&#34;20&#34;)
+ *                 .content("1.1.1.1")
+ *                 .type("ipaddr")
+ *                 .priority("20")
  *                 .port(80)
  *                 .build())
  *             .build());
  * 
- *         var config = new DomainConfig(&#34;config&#34;, DomainConfigArgs.builder()        
+ *         var config = new DomainConfig("config", DomainConfigArgs.builder()        
  *             .domainName(domain.domainName())
- *             .functionName(&#34;ip_allow_list_set&#34;)
+ *             .functionName("ip_allow_list_set")
  *             .functionArgs(DomainConfigFunctionArgArgs.builder()
- *                 .argName(&#34;ip_list&#34;)
- *                 .argValue(&#34;110.110.110.110&#34;)
+ *                 .argName("ip_list")
+ *                 .argValue("110.110.110.110")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

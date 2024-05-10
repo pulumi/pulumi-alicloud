@@ -33,7 +33,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,33 +60,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultJkW46o = new EcsDisk(&#34;defaultJkW46o&#34;, EcsDiskArgs.builder()        
- *             .category(&#34;cloud_essd&#34;)
- *             .description(&#34;esp-attachment-test&#34;)
- *             .zoneId(&#34;cn-hangzhou-i&#34;)
- *             .performanceLevel(&#34;PL1&#34;)
- *             .size(&#34;20&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var defaultJkW46o = new EcsDisk("defaultJkW46o", EcsDiskArgs.builder()        
+ *             .category("cloud_essd")
+ *             .description("esp-attachment-test")
+ *             .zoneId("cn-hangzhou-i")
+ *             .performanceLevel("PL1")
+ *             .size("20")
  *             .diskName(name)
  *             .build());
  * 
- *         var defaultPE3jjR = new EnterpriseSnapshotPolicy(&#34;defaultPE3jjR&#34;, EnterpriseSnapshotPolicyArgs.builder()        
- *             .status(&#34;DISABLED&#34;)
- *             .desc(&#34;DESC&#34;)
+ *         var defaultPE3jjR = new EnterpriseSnapshotPolicy("defaultPE3jjR", EnterpriseSnapshotPolicyArgs.builder()        
+ *             .status("DISABLED")
+ *             .desc("DESC")
  *             .schedule(EnterpriseSnapshotPolicyScheduleArgs.builder()
- *                 .cronExpression(&#34;0 0 0 1 * ?&#34;)
+ *                 .cronExpression("0 0 0 1 * ?")
  *                 .build())
  *             .enterpriseSnapshotPolicyName(name)
- *             .targetType(&#34;DISK&#34;)
+ *             .targetType("DISK")
  *             .retainRule(EnterpriseSnapshotPolicyRetainRuleArgs.builder()
- *                 .timeInterval(&#34;120&#34;)
- *                 .timeUnit(&#34;DAYS&#34;)
+ *                 .timeInterval("120")
+ *                 .timeUnit("DAYS")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

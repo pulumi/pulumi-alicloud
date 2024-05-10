@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -71,75 +72,75 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
- *             .namespaceId(String.format(&#34;%s:example%s&#34;, default_.regions()[0].id(),defaultInteger.result()))
+ *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+ *             .namespaceId(String.format("%s:example%s", default_.regions()[0].id(),defaultInteger.result()))
  *             .namespaceName(name)
  *             .namespaceDescription(name)
  *             .enableMicroRegistration(false)
  *             .build());
  * 
- *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
+ *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
  *             .appDescription(name)
- *             .appName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
+ *             .appName(String.format("%s-%s", name,defaultInteger.result()))
  *             .namespaceId(defaultNamespace.id())
- *             .imageUrl(String.format(&#34;registry-vpc.%s.aliyuncs.com/sae-demo-image/consumer:1.0&#34;, default_.regions()[0].id()))
- *             .packageType(&#34;Image&#34;)
+ *             .imageUrl(String.format("registry-vpc.%s.aliyuncs.com/sae-demo-image/consumer:1.0", default_.regions()[0].id()))
+ *             .packageType("Image")
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .vpcId(defaultNetwork.id())
  *             .vswitchId(defaultSwitch.id())
- *             .timezone(&#34;Asia/Beijing&#34;)
- *             .replicas(&#34;5&#34;)
- *             .cpu(&#34;500&#34;)
- *             .memory(&#34;2048&#34;)
+ *             .timezone("Asia/Beijing")
+ *             .replicas("5")
+ *             .cpu("500")
+ *             .memory("2048")
  *             .build());
  * 
- *         var defaultApplicationScalingRule = new ApplicationScalingRule(&#34;defaultApplicationScalingRule&#34;, ApplicationScalingRuleArgs.builder()        
+ *         var defaultApplicationScalingRule = new ApplicationScalingRule("defaultApplicationScalingRule", ApplicationScalingRuleArgs.builder()        
  *             .appId(defaultApplication.id())
  *             .scalingRuleName(name)
  *             .scalingRuleEnable(true)
- *             .scalingRuleType(&#34;mix&#34;)
- *             .minReadyInstances(&#34;3&#34;)
- *             .minReadyInstanceRatio(&#34;-1&#34;)
+ *             .scalingRuleType("mix")
+ *             .minReadyInstances("3")
+ *             .minReadyInstanceRatio("-1")
  *             .scalingRuleTimer(ApplicationScalingRuleScalingRuleTimerArgs.builder()
- *                 .period(&#34;* * *&#34;)
+ *                 .period("* * *")
  *                 .schedules(                
  *                     ApplicationScalingRuleScalingRuleTimerScheduleArgs.builder()
- *                         .atTime(&#34;08:00&#34;)
+ *                         .atTime("08:00")
  *                         .maxReplicas(10)
  *                         .minReplicas(3)
  *                         .build(),
  *                     ApplicationScalingRuleScalingRuleTimerScheduleArgs.builder()
- *                         .atTime(&#34;20:00&#34;)
+ *                         .atTime("20:00")
  *                         .maxReplicas(50)
  *                         .minReplicas(3)
  *                         .build())
@@ -149,15 +150,15 @@ import javax.annotation.Nullable;
  *                 .minReplicas(3)
  *                 .metrics(                
  *                     ApplicationScalingRuleScalingRuleMetricMetricArgs.builder()
- *                         .metricType(&#34;CPU&#34;)
+ *                         .metricType("CPU")
  *                         .metricTargetAverageUtilization(20)
  *                         .build(),
  *                     ApplicationScalingRuleScalingRuleMetricMetricArgs.builder()
- *                         .metricType(&#34;MEMORY&#34;)
+ *                         .metricType("MEMORY")
  *                         .metricTargetAverageUtilization(30)
  *                         .build(),
  *                     ApplicationScalingRuleScalingRuleMetricMetricArgs.builder()
- *                         .metricType(&#34;tcpActiveConn&#34;)
+ *                         .metricType("tcpActiveConn")
  *                         .metricTargetAverageUtilization(20)
  *                         .build())
  *                 .scaleUpRules(ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs.builder()
@@ -175,7 +176,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

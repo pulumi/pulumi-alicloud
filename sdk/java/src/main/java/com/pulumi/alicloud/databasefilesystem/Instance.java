@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,18 +55,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
- *             .category(&#34;standard&#34;)
- *             .zoneId(&#34;cn-hangzhou-i&#34;)
- *             .performanceLevel(&#34;PL1&#34;)
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var example = new Instance("example", InstanceArgs.builder()        
+ *             .category("standard")
+ *             .zoneId("cn-hangzhou-i")
+ *             .performanceLevel("PL1")
  *             .instanceName(name)
  *             .size(100)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

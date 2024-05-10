@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,43 +55,44 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var example = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
- *             .nameRegex(&#34;^preserved-NODELETING&#34;)
+ *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
- *         var default_ = new VirtualBorderRouter(&#34;default&#34;, VirtualBorderRouterArgs.builder()        
- *             .localGatewayIp(&#34;10.0.0.1&#34;)
- *             .peerGatewayIp(&#34;10.0.0.2&#34;)
- *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
- *             .physicalConnectionId(example.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[0].id()))
+ *         var default_ = new VirtualBorderRouter("default", VirtualBorderRouterArgs.builder()        
+ *             .localGatewayIp("10.0.0.1")
+ *             .peerGatewayIp("10.0.0.2")
+ *             .peeringSubnetMask("255.255.255.252")
+ *             .physicalConnectionId(example.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[0].id()))
  *             .virtualBorderRouterName(name)
  *             .vlanId(110)
  *             .minRxInterval(1000)
  *             .minTxInterval(1000)
  *             .detectMultiplier(10)
  *             .enableIpv6(true)
- *             .localIpv6GatewayIp(&#34;2408:4004:cc:400::1&#34;)
- *             .peerIpv6GatewayIp(&#34;2408:4004:cc:400::2&#34;)
- *             .peeringIpv6SubnetMask(&#34;2408:4004:cc:400::/56&#34;)
+ *             .localIpv6GatewayIp("2408:4004:cc:400::1")
+ *             .peerIpv6GatewayIp("2408:4004:cc:400::2")
+ *             .peeringIpv6SubnetMask("2408:4004:cc:400::/56")
  *             .build());
  * 
- *         var exampleVbrPconnAssociation = new VbrPconnAssociation(&#34;exampleVbrPconnAssociation&#34;, VbrPconnAssociationArgs.builder()        
- *             .peerGatewayIp(&#34;10.0.0.6&#34;)
- *             .localGatewayIp(&#34;10.0.0.5&#34;)
- *             .physicalConnectionId(example.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.connections()[2].id()))
+ *         var exampleVbrPconnAssociation = new VbrPconnAssociation("exampleVbrPconnAssociation", VbrPconnAssociationArgs.builder()        
+ *             .peerGatewayIp("10.0.0.6")
+ *             .localGatewayIp("10.0.0.5")
+ *             .physicalConnectionId(example.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[2].id()))
  *             .vbrId(default_.id())
- *             .peeringSubnetMask(&#34;255.255.255.252&#34;)
- *             .vlanId(&#34;1122&#34;)
+ *             .peeringSubnetMask("255.255.255.252")
+ *             .vlanId("1122")
  *             .enableIpv6(true)
- *             .localIpv6GatewayIp(&#34;2408:4004:cc::3&#34;)
- *             .peerIpv6GatewayIp(&#34;2408:4004:cc::4&#34;)
- *             .peeringIpv6SubnetMask(&#34;2408:4004:cc::/56&#34;)
+ *             .localIpv6GatewayIp("2408:4004:cc::3")
+ *             .peerIpv6GatewayIp("2408:4004:cc::4")
+ *             .peeringIpv6SubnetMask("2408:4004:cc::/56")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

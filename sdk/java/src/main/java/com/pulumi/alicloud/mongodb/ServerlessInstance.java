@@ -34,7 +34,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,44 +67,45 @@ import javax.annotation.Nullable;
  *         final var default = MongodbFunctions.getZones();
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;default-NODELETING&#34;)
+ *             .nameRegex("default-NODELETING")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
  *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var example = new ServerlessInstance(&#34;example&#34;, ServerlessInstanceArgs.builder()        
- *             .accountPassword(&#34;Abc12345&#34;)
- *             .dbInstanceDescription(&#34;example_value&#34;)
+ *         var example = new ServerlessInstance("example", ServerlessInstanceArgs.builder()        
+ *             .accountPassword("Abc12345")
+ *             .dbInstanceDescription("example_value")
  *             .dbInstanceStorage(5)
- *             .storageEngine(&#34;WiredTiger&#34;)
+ *             .storageEngine("WiredTiger")
  *             .capacityUnit(100)
- *             .engine(&#34;MongoDB&#34;)
- *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
- *             .engineVersion(&#34;4.2&#34;)
+ *             .engine("MongoDB")
+ *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()))
+ *             .engineVersion("4.2")
  *             .period(1)
- *             .periodPriceType(&#34;Month&#34;)
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .periodPriceType("Month")
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .zoneId(default_.zones()[0].id())
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;MongodbServerlessInstance&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;TF&#34;)
+ *                 Map.entry("Created", "MongodbServerlessInstance"),
+ *                 Map.entry("For", "TF")
  *             ))
  *             .securityIpGroups(ServerlessInstanceSecurityIpGroupArgs.builder()
- *                 .securityIpGroupAttribute(&#34;example_value&#34;)
- *                 .securityIpGroupName(&#34;example_value&#34;)
- *                 .securityIpList(&#34;192.168.0.1&#34;)
+ *                 .securityIpGroupAttribute("example_value")
+ *                 .securityIpGroupName("example_value")
+ *                 .securityIpList("192.168.0.1")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

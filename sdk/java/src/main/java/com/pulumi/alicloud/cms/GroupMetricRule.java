@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,40 +60,40 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
  *             .alarmContactGroupName(name)
  *             .describe(name)
  *             .build());
  * 
- *         var defaultMonitorGroup = new MonitorGroup(&#34;defaultMonitorGroup&#34;, MonitorGroupArgs.builder()        
+ *         var defaultMonitorGroup = new MonitorGroup("defaultMonitorGroup", MonitorGroupArgs.builder()        
  *             .monitorGroupName(name)
  *             .contactGroups(default_.id())
  *             .build());
  * 
- *         var this_ = new GroupMetricRule(&#34;this&#34;, GroupMetricRuleArgs.builder()        
+ *         var this_ = new GroupMetricRule("this", GroupMetricRuleArgs.builder()        
  *             .groupId(defaultMonitorGroup.id())
  *             .groupMetricRuleName(name)
- *             .category(&#34;ecs&#34;)
- *             .metricName(&#34;cpu_total&#34;)
- *             .namespace(&#34;acs_ecs_dashboard&#34;)
+ *             .category("ecs")
+ *             .metricName("cpu_total")
+ *             .namespace("acs_ecs_dashboard")
  *             .ruleId(name)
- *             .period(&#34;60&#34;)
- *             .interval(&#34;3600&#34;)
+ *             .period("60")
+ *             .interval("3600")
  *             .silenceTime(85800)
- *             .noEffectiveInterval(&#34;00:00-05:30&#34;)
- *             .webhook(&#34;http://www.aliyun.com&#34;)
+ *             .noEffectiveInterval("00:00-05:30")
+ *             .webhook("http://www.aliyun.com")
  *             .escalations(GroupMetricRuleEscalationsArgs.builder()
  *                 .warn(GroupMetricRuleEscalationsWarnArgs.builder()
- *                     .comparisonOperator(&#34;GreaterThanOrEqualToThreshold&#34;)
- *                     .statistics(&#34;Average&#34;)
- *                     .threshold(&#34;90&#34;)
+ *                     .comparisonOperator("GreaterThanOrEqualToThreshold")
+ *                     .statistics("Average")
+ *                     .threshold("90")
  *                     .times(3)
  *                     .build())
  *                 .info(GroupMetricRuleEscalationsInfoArgs.builder()
- *                     .comparisonOperator(&#34;LessThanLastWeek&#34;)
- *                     .statistics(&#34;Average&#34;)
- *                     .threshold(&#34;90&#34;)
+ *                     .comparisonOperator("LessThanLastWeek")
+ *                     .statistics("Average")
+ *                     .threshold("90")
  *                     .times(5)
  *                     .build())
  *                 .build())
@@ -100,7 +101,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

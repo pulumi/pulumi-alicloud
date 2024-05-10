@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,18 +51,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var source = new Namespace(&#34;source&#34;, NamespaceArgs.builder()        
+ *         var source = new Namespace("source", NamespaceArgs.builder()        
  *             .namespace(name)
  *             .build());
  * 
- *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
- *             .namespace(String.format(&#34;%s-source&#34;, name))
+ *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+ *             .namespace(String.format("%s-source", name))
  *             .build());
  * 
- *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite(&#34;defaultServiceHybridDoubleWrite&#34;, ServiceHybridDoubleWriteArgs.builder()        
+ *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()        
  *             .sourceNamespace(source.id())
  *             .sourceUserId(default_.id())
  *             .namespace(defaultNamespace.id())
@@ -70,7 +71,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ### Uploading a file to a bucket
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,31 +48,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .acl(&#34;private&#34;)
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .acl("private")
  *             .build());
  * 
- *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
  *             .bucket(defaultBucket.bucket())
- *             .key(&#34;example_key&#34;)
- *             .source(&#34;./main.tf&#34;)
+ *             .key("example_key")
+ *             .source("./main.tf")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ### Uploading a content to a bucket
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -96,25 +99,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(String.format(&#34;terraform-example-%s&#34;, default_.result()))
- *             .acl(&#34;private&#34;)
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *             .bucket(String.format("terraform-example-%s", default_.result()))
+ *             .acl("private")
  *             .build());
  * 
- *         var defaultBucketObject = new BucketObject(&#34;defaultBucketObject&#34;, BucketObjectArgs.builder()        
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
  *             .bucket(defaultBucket.bucket())
- *             .key(&#34;example_key&#34;)
- *             .content(&#34;the content that you want to upload.&#34;)
+ *             .key("example_key")
+ *             .content("the content that you want to upload.")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

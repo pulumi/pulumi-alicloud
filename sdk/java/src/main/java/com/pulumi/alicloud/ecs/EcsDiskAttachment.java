@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,76 +65,77 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .availableResourceCreation("Instance")
  *             .build());
  * 
  *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
- *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
+ *             .instanceTypeFamily("ecs.sn1ne")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
+ *             .cidrBlock("10.4.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .name(&#34;tf-example&#34;)
- *             .description(&#34;New security group&#34;)
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *             .name("tf-example")
+ *             .description("New security group")
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+ *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
  *             .mostRecent(true)
- *             .owners(&#34;system&#34;)
+ *             .owners("system")
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .availabilityZone(default_.zones()[0].id())
  *             .instanceName(name)
  *             .hostName(name)
- *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .securityGroups(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
  *         final var disk = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultEcsDisk = new EcsDisk(&#34;defaultEcsDisk&#34;, EcsDiskArgs.builder()        
- *             .zoneId(disk.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .category(&#34;cloud_efficiency&#34;)
- *             .deleteAutoSnapshot(&#34;true&#34;)
- *             .description(&#34;Test For Terraform&#34;)
+ *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()        
+ *             .zoneId(disk.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .category("cloud_efficiency")
+ *             .deleteAutoSnapshot("true")
+ *             .description("Test For Terraform")
  *             .diskName(name)
- *             .enableAutoSnapshot(&#34;true&#34;)
- *             .encrypted(&#34;true&#34;)
- *             .size(&#34;500&#34;)
+ *             .enableAutoSnapshot("true")
+ *             .encrypted("true")
+ *             .size("500")
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;Environment&#34;, &#34;Acceptance-test&#34;)
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("Environment", "Acceptance-test")
  *             ))
  *             .build());
  * 
- *         var defaultEcsDiskAttachment = new EcsDiskAttachment(&#34;defaultEcsDiskAttachment&#34;, EcsDiskAttachmentArgs.builder()        
+ *         var defaultEcsDiskAttachment = new EcsDiskAttachment("defaultEcsDiskAttachment", EcsDiskAttachmentArgs.builder()        
  *             .diskId(defaultEcsDisk.id())
  *             .instanceId(defaultInstance.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

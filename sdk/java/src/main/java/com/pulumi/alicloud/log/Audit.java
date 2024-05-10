@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,106 +54,108 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var example = new Audit(&#34;example&#34;, AuditArgs.builder()        
- *             .displayName(&#34;tf-audit-example&#34;)
+ *         var example = new Audit("example", AuditArgs.builder()        
+ *             .displayName("tf-audit-example")
  *             .aliuid(default_.id())
  *             .variableMap(Map.ofEntries(
- *                 Map.entry(&#34;actiontrail_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;actiontrail_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;oss_access_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;oss_access_ttl&#34;, &#34;7&#34;),
- *                 Map.entry(&#34;oss_sync_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;oss_sync_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;oss_metering_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;oss_metering_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;rds_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;rds_audit_collection_policy&#34;, &#34;&#34;),
- *                 Map.entry(&#34;rds_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;rds_slow_enabled&#34;, &#34;false&#34;),
- *                 Map.entry(&#34;rds_slow_collection_policy&#34;, &#34;&#34;),
- *                 Map.entry(&#34;rds_slow_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;rds_perf_enabled&#34;, &#34;false&#34;),
- *                 Map.entry(&#34;rds_perf_collection_policy&#34;, &#34;&#34;),
- *                 Map.entry(&#34;rds_perf_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;vpc_flow_enabled&#34;, &#34;false&#34;),
- *                 Map.entry(&#34;vpc_flow_ttl&#34;, &#34;7&#34;),
- *                 Map.entry(&#34;vpc_flow_collection_policy&#34;, &#34;&#34;),
- *                 Map.entry(&#34;vpc_sync_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;vpc_sync_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;polardb_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;polardb_audit_collection_policy&#34;, &#34;&#34;),
- *                 Map.entry(&#34;polardb_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;polardb_slow_enabled&#34;, &#34;false&#34;),
- *                 Map.entry(&#34;polardb_slow_collection_policy&#34;, &#34;&#34;),
- *                 Map.entry(&#34;polardb_slow_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;polardb_perf_enabled&#34;, &#34;false&#34;),
- *                 Map.entry(&#34;polardb_perf_collection_policy&#34;, &#34;&#34;),
- *                 Map.entry(&#34;polardb_perf_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;drds_audit_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;drds_audit_collection_policy&#34;, &#34;&#34;),
- *                 Map.entry(&#34;drds_audit_ttl&#34;, &#34;7&#34;),
- *                 Map.entry(&#34;drds_sync_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;drds_sync_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;slb_access_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;slb_access_collection_policy&#34;, &#34;&#34;),
- *                 Map.entry(&#34;slb_access_ttl&#34;, &#34;7&#34;),
- *                 Map.entry(&#34;slb_sync_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;slb_sync_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;bastion_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;bastion_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;waf_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;waf_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;cloudfirewall_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;cloudfirewall_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;ddos_coo_access_enabled&#34;, &#34;false&#34;),
- *                 Map.entry(&#34;ddos_coo_access_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;ddos_bgp_access_enabled&#34;, &#34;false&#34;),
- *                 Map.entry(&#34;ddos_bgp_access_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;ddos_dip_access_enabled&#34;, &#34;false&#34;),
- *                 Map.entry(&#34;ddos_dip_access_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;sas_crack_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;sas_dns_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;sas_http_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;sas_local_dns_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;sas_login_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;sas_network_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;sas_process_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;sas_security_alert_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;sas_security_hc_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;sas_security_vul_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;sas_session_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;sas_snapshot_account_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;sas_snapshot_port_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;sas_snapshot_process_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;sas_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;apigateway_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;apigateway_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;nas_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;nas_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;appconnect_enabled&#34;, &#34;false&#34;),
- *                 Map.entry(&#34;appconnect_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;cps_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;cps_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;k8s_audit_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;k8s_audit_collection_policy&#34;, &#34;&#34;),
- *                 Map.entry(&#34;k8s_audit_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;k8s_event_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;k8s_event_collection_policy&#34;, &#34;&#34;),
- *                 Map.entry(&#34;k8s_event_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;k8s_ingress_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;k8s_ingress_collection_policy&#34;, &#34;&#34;),
- *                 Map.entry(&#34;k8s_ingress_ttl&#34;, &#34;180&#34;)
+ *                 Map.entry("actiontrail_enabled", "true"),
+ *                 Map.entry("actiontrail_ttl", "180"),
+ *                 Map.entry("oss_access_enabled", "true"),
+ *                 Map.entry("oss_access_ttl", "7"),
+ *                 Map.entry("oss_sync_enabled", "true"),
+ *                 Map.entry("oss_sync_ttl", "180"),
+ *                 Map.entry("oss_metering_enabled", "true"),
+ *                 Map.entry("oss_metering_ttl", "180"),
+ *                 Map.entry("rds_enabled", "true"),
+ *                 Map.entry("rds_audit_collection_policy", ""),
+ *                 Map.entry("rds_ttl", "180"),
+ *                 Map.entry("rds_slow_enabled", "false"),
+ *                 Map.entry("rds_slow_collection_policy", ""),
+ *                 Map.entry("rds_slow_ttl", "180"),
+ *                 Map.entry("rds_perf_enabled", "false"),
+ *                 Map.entry("rds_perf_collection_policy", ""),
+ *                 Map.entry("rds_perf_ttl", "180"),
+ *                 Map.entry("vpc_flow_enabled", "false"),
+ *                 Map.entry("vpc_flow_ttl", "7"),
+ *                 Map.entry("vpc_flow_collection_policy", ""),
+ *                 Map.entry("vpc_sync_enabled", "true"),
+ *                 Map.entry("vpc_sync_ttl", "180"),
+ *                 Map.entry("polardb_enabled", "true"),
+ *                 Map.entry("polardb_audit_collection_policy", ""),
+ *                 Map.entry("polardb_ttl", "180"),
+ *                 Map.entry("polardb_slow_enabled", "false"),
+ *                 Map.entry("polardb_slow_collection_policy", ""),
+ *                 Map.entry("polardb_slow_ttl", "180"),
+ *                 Map.entry("polardb_perf_enabled", "false"),
+ *                 Map.entry("polardb_perf_collection_policy", ""),
+ *                 Map.entry("polardb_perf_ttl", "180"),
+ *                 Map.entry("drds_audit_enabled", "true"),
+ *                 Map.entry("drds_audit_collection_policy", ""),
+ *                 Map.entry("drds_audit_ttl", "7"),
+ *                 Map.entry("drds_sync_enabled", "true"),
+ *                 Map.entry("drds_sync_ttl", "180"),
+ *                 Map.entry("slb_access_enabled", "true"),
+ *                 Map.entry("slb_access_collection_policy", ""),
+ *                 Map.entry("slb_access_ttl", "7"),
+ *                 Map.entry("slb_sync_enabled", "true"),
+ *                 Map.entry("slb_sync_ttl", "180"),
+ *                 Map.entry("bastion_enabled", "true"),
+ *                 Map.entry("bastion_ttl", "180"),
+ *                 Map.entry("waf_enabled", "true"),
+ *                 Map.entry("waf_ttl", "180"),
+ *                 Map.entry("cloudfirewall_enabled", "true"),
+ *                 Map.entry("cloudfirewall_ttl", "180"),
+ *                 Map.entry("ddos_coo_access_enabled", "false"),
+ *                 Map.entry("ddos_coo_access_ttl", "180"),
+ *                 Map.entry("ddos_bgp_access_enabled", "false"),
+ *                 Map.entry("ddos_bgp_access_ttl", "180"),
+ *                 Map.entry("ddos_dip_access_enabled", "false"),
+ *                 Map.entry("ddos_dip_access_ttl", "180"),
+ *                 Map.entry("sas_crack_enabled", "true"),
+ *                 Map.entry("sas_dns_enabled", "true"),
+ *                 Map.entry("sas_http_enabled", "true"),
+ *                 Map.entry("sas_local_dns_enabled", "true"),
+ *                 Map.entry("sas_login_enabled", "true"),
+ *                 Map.entry("sas_network_enabled", "true"),
+ *                 Map.entry("sas_process_enabled", "true"),
+ *                 Map.entry("sas_security_alert_enabled", "true"),
+ *                 Map.entry("sas_security_hc_enabled", "true"),
+ *                 Map.entry("sas_security_vul_enabled", "true"),
+ *                 Map.entry("sas_session_enabled", "true"),
+ *                 Map.entry("sas_snapshot_account_enabled", "true"),
+ *                 Map.entry("sas_snapshot_port_enabled", "true"),
+ *                 Map.entry("sas_snapshot_process_enabled", "true"),
+ *                 Map.entry("sas_ttl", "180"),
+ *                 Map.entry("apigateway_enabled", "true"),
+ *                 Map.entry("apigateway_ttl", "180"),
+ *                 Map.entry("nas_enabled", "true"),
+ *                 Map.entry("nas_ttl", "180"),
+ *                 Map.entry("appconnect_enabled", "false"),
+ *                 Map.entry("appconnect_ttl", "180"),
+ *                 Map.entry("cps_enabled", "true"),
+ *                 Map.entry("cps_ttl", "180"),
+ *                 Map.entry("k8s_audit_enabled", "true"),
+ *                 Map.entry("k8s_audit_collection_policy", ""),
+ *                 Map.entry("k8s_audit_ttl", "180"),
+ *                 Map.entry("k8s_event_enabled", "true"),
+ *                 Map.entry("k8s_event_collection_policy", ""),
+ *                 Map.entry("k8s_event_ttl", "180"),
+ *                 Map.entry("k8s_ingress_enabled", "true"),
+ *                 Map.entry("k8s_ingress_collection_policy", ""),
+ *                 Map.entry("k8s_ingress_ttl", "180")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * Multiple accounts Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -176,28 +179,30 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var example = new Audit(&#34;example&#34;, AuditArgs.builder()        
- *             .displayName(&#34;tf-audit-example&#34;)
+ *         var example = new Audit("example", AuditArgs.builder()        
+ *             .displayName("tf-audit-example")
  *             .aliuid(default_.id())
  *             .variableMap(Map.ofEntries(
- *                 Map.entry(&#34;actiontrail_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;actiontrail_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;oss_access_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;oss_access_ttl&#34;, &#34;180&#34;)
+ *                 Map.entry("actiontrail_enabled", "true"),
+ *                 Map.entry("actiontrail_ttl", "180"),
+ *                 Map.entry("oss_access_enabled", "true"),
+ *                 Map.entry("oss_access_ttl", "180")
  *             ))
  *             .multiAccounts(            
- *                 &#34;123456789123&#34;,
- *                 &#34;12345678912300123&#34;)
+ *                 "123456789123",
+ *                 "12345678912300123")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * Resource Directory Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -221,24 +226,26 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var example = new Audit(&#34;example&#34;, AuditArgs.builder()        
- *             .displayName(&#34;tf-audit-example&#34;)
+ *         var example = new Audit("example", AuditArgs.builder()        
+ *             .displayName("tf-audit-example")
  *             .aliuid(default_.id())
  *             .variableMap(Map.ofEntries(
- *                 Map.entry(&#34;actiontrail_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;actiontrail_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;oss_access_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;oss_access_ttl&#34;, &#34;180&#34;)
+ *                 Map.entry("actiontrail_enabled", "true"),
+ *                 Map.entry("actiontrail_ttl", "180"),
+ *                 Map.entry("oss_access_enabled", "true"),
+ *                 Map.entry("oss_access_ttl", "180")
  *             ))
- *             .resourceDirectoryType(&#34;all&#34;)
+ *             .resourceDirectoryType("all")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -262,22 +269,23 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var example = new Audit(&#34;example&#34;, AuditArgs.builder()        
- *             .displayName(&#34;tf-audit-example&#34;)
+ *         var example = new Audit("example", AuditArgs.builder()        
+ *             .displayName("tf-audit-example")
  *             .aliuid(default_.id())
  *             .variableMap(Map.ofEntries(
- *                 Map.entry(&#34;actiontrail_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;actiontrail_ttl&#34;, &#34;180&#34;),
- *                 Map.entry(&#34;oss_access_enabled&#34;, &#34;true&#34;),
- *                 Map.entry(&#34;oss_access_ttl&#34;, &#34;180&#34;)
+ *                 Map.entry("actiontrail_enabled", "true"),
+ *                 Map.entry("actiontrail_ttl", "180"),
+ *                 Map.entry("oss_access_enabled", "true"),
+ *                 Map.entry("oss_access_ttl", "180")
  *             ))
  *             .multiAccounts()
- *             .resourceDirectoryType(&#34;custom&#34;)
+ *             .resourceDirectoryType("custom")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

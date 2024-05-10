@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,17 +50,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Command(&#34;example&#34;, CommandArgs.builder()        
- *             .name(&#34;tf-testAcc&#34;)
- *             .commandContent(&#34;bHMK&#34;)
- *             .description(&#34;For Terraform Test&#34;)
- *             .type(&#34;RunShellScript&#34;)
- *             .workingDir(&#34;/root&#34;)
+ *         var example = new Command("example", CommandArgs.builder()        
+ *             .name("tf-testAcc")
+ *             .commandContent("bHMK")
+ *             .description("For Terraform Test")
+ *             .type("RunShellScript")
+ *             .workingDir("/root")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

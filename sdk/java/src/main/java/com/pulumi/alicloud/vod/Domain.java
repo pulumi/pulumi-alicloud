@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,28 +55,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
- *             .domainName(String.format(&#34;example-%s.com&#34;, default_.result()))
- *             .scope(&#34;domestic&#34;)
+ *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+ *             .domainName(String.format("example-%s.com", default_.result()))
+ *             .scope("domestic")
  *             .sources(DomainSourceArgs.builder()
- *                 .sourceType(&#34;domain&#34;)
- *                 .sourceContent(&#34;outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com&#34;)
- *                 .sourcePort(&#34;443&#34;)
+ *                 .sourceType("domain")
+ *                 .sourceContent("outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com")
+ *                 .sourcePort("443")
  *                 .build())
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Created&#34;, &#34;terraform&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;example&#34;)
+ *                 Map.entry("Created", "terraform"),
+ *                 Map.entry("For", "example")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -66,73 +67,74 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;Instance&#34;)
+ *             .availableResourceCreation("Instance")
  *             .build());
  * 
  *         final var exampleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
  * 
  *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
- *             .owners(&#34;system&#34;)
+ *             .nameRegex("^ubuntu_[0-9]+_[0-9]+_x64*")
+ *             .owners("system")
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *             .vswitchName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .name(&#34;terraform-example&#34;)
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
+ *             .name("terraform-example")
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .imageId(exampleGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
- *             .availabilityZone(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(exampleGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .securityGroups(exampleSecurityGroup.id())
- *             .instanceName(&#34;terraform-example&#34;)
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
+ *             .instanceName("terraform-example")
+ *             .internetChargeType("PayByBandwidth")
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
- *         var exampleVault = new Vault(&#34;exampleVault&#34;, VaultArgs.builder()        
- *             .vaultName(&#34;terraform-example&#34;)
+ *         var exampleVault = new Vault("exampleVault", VaultArgs.builder()        
+ *             .vaultName("terraform-example")
  *             .build());
  * 
- *         var exampleEcsBackupPlan = new EcsBackupPlan(&#34;exampleEcsBackupPlan&#34;, EcsBackupPlanArgs.builder()        
- *             .ecsBackupPlanName(&#34;terraform-example&#34;)
+ *         var exampleEcsBackupPlan = new EcsBackupPlan("exampleEcsBackupPlan", EcsBackupPlanArgs.builder()        
+ *             .ecsBackupPlanName("terraform-example")
  *             .instanceId(exampleInstance.id())
  *             .vaultId(exampleVault.id())
- *             .retention(&#34;1&#34;)
- *             .schedule(&#34;I|1602673264|PT2H&#34;)
- *             .backupType(&#34;COMPLETE&#34;)
- *             .speedLimit(&#34;0:24:5120&#34;)
+ *             .retention("1")
+ *             .schedule("I|1602673264|PT2H")
+ *             .backupType("COMPLETE")
+ *             .speedLimit("0:24:5120")
  *             .paths(            
- *                 &#34;/home&#34;,
- *                 &#34;/var&#34;)
- *             .exclude(&#34;&#34;&#34;
- *   [&#34;/home/exclude&#34;]
- *             &#34;&#34;&#34;)
- *             .include(&#34;&#34;&#34;
- *   [&#34;/home/include&#34;]
- *             &#34;&#34;&#34;)
+ *                 "/home",
+ *                 "/var")
+ *             .exclude("""
+ *   ["/home/exclude"]
+ *             """)
+ *             .include("""
+ *   ["/home/include"]
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Notice

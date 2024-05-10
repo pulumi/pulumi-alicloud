@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,44 +57,45 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *             .vpcName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
- *             .vswitchName(&#34;terraform-example&#34;)
- *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *             .vswitchName("terraform-example")
+ *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var exampleCluster = new Cluster(&#34;exampleCluster&#34;, ClusterArgs.builder()        
- *             .clusterSpecification(&#34;MSE_SC_1_2_60_c&#34;)
- *             .clusterType(&#34;ZooKeeper&#34;)
- *             .clusterVersion(&#34;ZooKeeper_3_8_0&#34;)
+ *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()        
+ *             .clusterSpecification("MSE_SC_1_2_60_c")
+ *             .clusterType("ZooKeeper")
+ *             .clusterVersion("ZooKeeper_3_8_0")
  *             .instanceCount(1)
- *             .netType(&#34;privatenet&#34;)
- *             .pubNetworkFlow(&#34;1&#34;)
- *             .aclEntryLists(&#34;127.0.0.1/32&#34;)
- *             .clusterAliasName(&#34;terraform-example&#34;)
- *             .mseVersion(&#34;mse_dev&#34;)
+ *             .netType("privatenet")
+ *             .pubNetworkFlow("1")
+ *             .aclEntryLists("127.0.0.1/32")
+ *             .clusterAliasName("terraform-example")
+ *             .mseVersion("mse_dev")
  *             .vswitchId(exampleSwitch.id())
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleZnode = new Znode(&#34;exampleZnode&#34;, ZnodeArgs.builder()        
+ *         var exampleZnode = new Znode("exampleZnode", ZnodeArgs.builder()        
  *             .clusterId(exampleCluster.clusterId())
- *             .data(&#34;terraform-example&#34;)
- *             .path(&#34;/example&#34;)
+ *             .data("terraform-example")
+ *             .path("/example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,29 +56,30 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var example = TsdbFunctions.getZones();
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
- *             .cidrBlock(&#34;192.168.0.0/16&#34;)
- *             .name(&#34;tf-testaccTsdbInstance&#34;)
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *             .cidrBlock("192.168.0.0/16")
+ *             .name("tf-testaccTsdbInstance")
  *             .build());
  * 
- *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
- *             .availabilityZone(example.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
- *             .cidrBlock(&#34;192.168.1.0/24&#34;)
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.ids()[0]))
+ *             .cidrBlock("192.168.1.0/24")
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
- *             .paymentType(&#34;PayAsYouGo&#34;)
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *             .paymentType("PayAsYouGo")
  *             .vswitchId(exampleSwitch.id())
- *             .instanceStorage(&#34;50&#34;)
- *             .instanceClass(&#34;tsdb.1x.basic&#34;)
- *             .engineType(&#34;tsdb_tsdb&#34;)
- *             .instanceAlias(&#34;tf-testaccTsdbInstance&#34;)
+ *             .instanceStorage("50")
+ *             .instanceClass("tsdb.1x.basic")
+ *             .engineType("tsdb_tsdb")
+ *             .instanceAlias("tf-testaccTsdbInstance")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

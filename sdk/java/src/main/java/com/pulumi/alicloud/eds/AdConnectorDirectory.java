@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,44 +60,45 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = EdsFunctions.getZones();
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.ids()[0])
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultAdConnectorDirectory = new AdConnectorDirectory(&#34;defaultAdConnectorDirectory&#34;, AdConnectorDirectoryArgs.builder()        
- *             .directoryName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
- *             .desktopAccessType(&#34;INTERNET&#34;)
- *             .dnsAddresses(&#34;127.0.0.2&#34;)
- *             .domainName(&#34;corp.example.com&#34;)
- *             .domainPassword(&#34;Example1234&#34;)
- *             .domainUserName(&#34;sAMAccountName&#34;)
+ *         var defaultAdConnectorDirectory = new AdConnectorDirectory("defaultAdConnectorDirectory", AdConnectorDirectoryArgs.builder()        
+ *             .directoryName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .desktopAccessType("INTERNET")
+ *             .dnsAddresses("127.0.0.2")
+ *             .domainName("corp.example.com")
+ *             .domainPassword("Example1234")
+ *             .domainUserName("sAMAccountName")
  *             .enableAdminAccess(false)
  *             .mfaEnabled(false)
  *             .specification(1)
- *             .subDomainDnsAddresses(&#34;127.0.0.3&#34;)
- *             .subDomainName(&#34;child.example.com&#34;)
+ *             .subDomainDnsAddresses("127.0.0.3")
+ *             .subDomainName("child.example.com")
  *             .vswitchIds(defaultSwitch.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

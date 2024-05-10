@@ -42,7 +42,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -66,25 +67,26 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         var default_ = new AddressBook(&#34;default&#34;, AddressBookArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var default_ = new AddressBook("default", AddressBookArgs.builder()        
      *             .groupName(name)
-     *             .groupType(&#34;ip&#34;)
-     *             .description(&#34;tf-description&#34;)
+     *             .groupType("ip")
+     *             .description("tf-description")
      *             .autoAddTagEcs(0)
      *             .addressLists(            
-     *                 &#34;10.21.0.0/16&#34;,
-     *                 &#34;10.168.0.0/16&#34;)
+     *                 "10.21.0.0/16",
+     *                 "10.168.0.0/16")
      *             .build());
      * 
      *         final var ids = CloudfirewallFunctions.getAddressBooks(GetAddressBooksArgs.builder()
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult).applyValue(ids -&gt; ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id())));
+     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(getAddressBooksResult -> getAddressBooksResult).applyValue(ids -> ids.applyValue(getAddressBooksResult -> getAddressBooksResult.books()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -101,7 +103,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -125,25 +128,26 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         var default_ = new AddressBook(&#34;default&#34;, AddressBookArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var default_ = new AddressBook("default", AddressBookArgs.builder()        
      *             .groupName(name)
-     *             .groupType(&#34;ip&#34;)
-     *             .description(&#34;tf-description&#34;)
+     *             .groupType("ip")
+     *             .description("tf-description")
      *             .autoAddTagEcs(0)
      *             .addressLists(            
-     *                 &#34;10.21.0.0/16&#34;,
-     *                 &#34;10.168.0.0/16&#34;)
+     *                 "10.21.0.0/16",
+     *                 "10.168.0.0/16")
      *             .build());
      * 
      *         final var ids = CloudfirewallFunctions.getAddressBooks(GetAddressBooksArgs.builder()
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult).applyValue(ids -&gt; ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id())));
+     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(getAddressBooksResult -> getAddressBooksResult).applyValue(ids -> ids.applyValue(getAddressBooksResult -> getAddressBooksResult.books()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -160,7 +164,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -184,25 +189,26 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         var default_ = new AddressBook(&#34;default&#34;, AddressBookArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var default_ = new AddressBook("default", AddressBookArgs.builder()        
      *             .groupName(name)
-     *             .groupType(&#34;ip&#34;)
-     *             .description(&#34;tf-description&#34;)
+     *             .groupType("ip")
+     *             .description("tf-description")
      *             .autoAddTagEcs(0)
      *             .addressLists(            
-     *                 &#34;10.21.0.0/16&#34;,
-     *                 &#34;10.168.0.0/16&#34;)
+     *                 "10.21.0.0/16",
+     *                 "10.168.0.0/16")
      *             .build());
      * 
      *         final var ids = CloudfirewallFunctions.getAddressBooks(GetAddressBooksArgs.builder()
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult).applyValue(ids -&gt; ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id())));
+     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(getAddressBooksResult -> getAddressBooksResult).applyValue(ids -> ids.applyValue(getAddressBooksResult -> getAddressBooksResult.books()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -219,7 +225,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -243,25 +250,26 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         var default_ = new AddressBook(&#34;default&#34;, AddressBookArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var default_ = new AddressBook("default", AddressBookArgs.builder()        
      *             .groupName(name)
-     *             .groupType(&#34;ip&#34;)
-     *             .description(&#34;tf-description&#34;)
+     *             .groupType("ip")
+     *             .description("tf-description")
      *             .autoAddTagEcs(0)
      *             .addressLists(            
-     *                 &#34;10.21.0.0/16&#34;,
-     *                 &#34;10.168.0.0/16&#34;)
+     *                 "10.21.0.0/16",
+     *                 "10.168.0.0/16")
      *             .build());
      * 
      *         final var ids = CloudfirewallFunctions.getAddressBooks(GetAddressBooksArgs.builder()
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult).applyValue(ids -&gt; ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id())));
+     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(getAddressBooksResult -> getAddressBooksResult).applyValue(ids -> ids.applyValue(getAddressBooksResult -> getAddressBooksResult.books()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -278,7 +286,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -302,25 +311,26 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         var default_ = new AddressBook(&#34;default&#34;, AddressBookArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var default_ = new AddressBook("default", AddressBookArgs.builder()        
      *             .groupName(name)
-     *             .groupType(&#34;ip&#34;)
-     *             .description(&#34;tf-description&#34;)
+     *             .groupType("ip")
+     *             .description("tf-description")
      *             .autoAddTagEcs(0)
      *             .addressLists(            
-     *                 &#34;10.21.0.0/16&#34;,
-     *                 &#34;10.168.0.0/16&#34;)
+     *                 "10.21.0.0/16",
+     *                 "10.168.0.0/16")
      *             .build());
      * 
      *         final var ids = CloudfirewallFunctions.getAddressBooks(GetAddressBooksArgs.builder()
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult).applyValue(ids -&gt; ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id())));
+     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(getAddressBooksResult -> getAddressBooksResult).applyValue(ids -> ids.applyValue(getAddressBooksResult -> getAddressBooksResult.books()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -337,7 +347,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -361,25 +372,26 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         var default_ = new AddressBook(&#34;default&#34;, AddressBookArgs.builder()        
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var default_ = new AddressBook("default", AddressBookArgs.builder()        
      *             .groupName(name)
-     *             .groupType(&#34;ip&#34;)
-     *             .description(&#34;tf-description&#34;)
+     *             .groupType("ip")
+     *             .description("tf-description")
      *             .autoAddTagEcs(0)
      *             .addressLists(            
-     *                 &#34;10.21.0.0/16&#34;,
-     *                 &#34;10.168.0.0/16&#34;)
+     *                 "10.21.0.0/16",
+     *                 "10.168.0.0/16")
      *             .build());
      * 
      *         final var ids = CloudfirewallFunctions.getAddressBooks(GetAddressBooksArgs.builder()
      *             .ids(default_.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cloudFirewallAddressBookId1&#34;, ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult).applyValue(ids -&gt; ids.applyValue(getAddressBooksResult -&gt; getAddressBooksResult.books()[0].id())));
+     *         ctx.export("cloudFirewallAddressBookId1", ids.applyValue(getAddressBooksResult -> getAddressBooksResult).applyValue(ids -> ids.applyValue(getAddressBooksResult -> getAddressBooksResult.books()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -396,7 +408,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -418,12 +431,13 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudfirewallFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
-     *             .direction(&#34;in&#34;)
+     *             .direction("in")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -440,7 +454,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -462,12 +477,13 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudfirewallFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
-     *             .direction(&#34;in&#34;)
+     *             .direction("in")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -484,7 +500,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -506,12 +523,13 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudfirewallFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
-     *             .direction(&#34;in&#34;)
+     *             .direction("in")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -528,7 +546,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -550,12 +569,13 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudfirewallFunctions.getControlPolicies(GetControlPoliciesArgs.builder()
-     *             .direction(&#34;in&#34;)
+     *             .direction("in")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -570,7 +590,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -595,10 +616,11 @@ public final class CloudfirewallFunctions {
      *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallInstanceMemberExampleId&#34;, default_.members()[0].id());
+     *         ctx.export("alicloudCloudFirewallInstanceMemberExampleId", default_.members()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -613,7 +635,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -638,10 +661,11 @@ public final class CloudfirewallFunctions {
      *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallInstanceMemberExampleId&#34;, default_.members()[0].id());
+     *         ctx.export("alicloudCloudFirewallInstanceMemberExampleId", default_.members()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -656,7 +680,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -681,10 +706,11 @@ public final class CloudfirewallFunctions {
      *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallInstanceMemberExampleId&#34;, default_.members()[0].id());
+     *         ctx.export("alicloudCloudFirewallInstanceMemberExampleId", default_.members()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -699,7 +725,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -724,10 +751,11 @@ public final class CloudfirewallFunctions {
      *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallInstanceMemberExampleId&#34;, default_.members()[0].id());
+     *         ctx.export("alicloudCloudFirewallInstanceMemberExampleId", default_.members()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -742,7 +770,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -767,10 +796,11 @@ public final class CloudfirewallFunctions {
      *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallInstanceMemberExampleId&#34;, default_.members()[0].id());
+     *         ctx.export("alicloudCloudFirewallInstanceMemberExampleId", default_.members()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -785,7 +815,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -810,10 +841,11 @@ public final class CloudfirewallFunctions {
      *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallInstanceMemberExampleId&#34;, default_.members()[0].id());
+     *         ctx.export("alicloudCloudFirewallInstanceMemberExampleId", default_.members()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -830,7 +862,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -853,10 +886,11 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CloudfirewallFunctions.getInstances();
      * 
-     *         ctx.export(&#34;cloudFirewallInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("cloudFirewallInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -873,7 +907,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -896,10 +931,11 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CloudfirewallFunctions.getInstances();
      * 
-     *         ctx.export(&#34;cloudFirewallInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("cloudFirewallInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -916,7 +952,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -939,10 +976,11 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CloudfirewallFunctions.getInstances();
      * 
-     *         ctx.export(&#34;cloudFirewallInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("cloudFirewallInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -959,7 +997,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -982,10 +1021,11 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CloudfirewallFunctions.getInstances();
      * 
-     *         ctx.export(&#34;cloudFirewallInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("cloudFirewallInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1002,7 +1042,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1025,10 +1066,11 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CloudfirewallFunctions.getInstances();
      * 
-     *         ctx.export(&#34;cloudFirewallInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("cloudFirewallInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1045,7 +1087,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1068,10 +1111,11 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var ids = CloudfirewallFunctions.getInstances();
      * 
-     *         ctx.export(&#34;cloudFirewallInstanceId1&#34;, ids.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].id()));
+     *         ctx.export("cloudFirewallInstanceId1", ids.applyValue(getInstancesResult -> getInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1086,7 +1130,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1109,16 +1154,17 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
      *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
-     *             .cenId(&#34;cen-cjok7uyb5w2b27573v&#34;)
-     *             .memberUid(&#34;1415189284827022&#34;)
-     *             .status(&#34;closed&#34;)
-     *             .vpcFirewallName(&#34;tf-test&#34;)
+     *             .cenId("cen-cjok7uyb5w2b27573v")
+     *             .memberUid("1415189284827022")
+     *             .status("closed")
+     *             .vpcFirewallName("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallVpcFirewallCenExampleId&#34;, default_.cens()[0].id());
+     *         ctx.export("alicloudCloudFirewallVpcFirewallCenExampleId", default_.cens()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1133,7 +1179,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1156,16 +1203,17 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
      *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
-     *             .cenId(&#34;cen-cjok7uyb5w2b27573v&#34;)
-     *             .memberUid(&#34;1415189284827022&#34;)
-     *             .status(&#34;closed&#34;)
-     *             .vpcFirewallName(&#34;tf-test&#34;)
+     *             .cenId("cen-cjok7uyb5w2b27573v")
+     *             .memberUid("1415189284827022")
+     *             .status("closed")
+     *             .vpcFirewallName("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallVpcFirewallCenExampleId&#34;, default_.cens()[0].id());
+     *         ctx.export("alicloudCloudFirewallVpcFirewallCenExampleId", default_.cens()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1180,7 +1228,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1203,16 +1252,17 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
      *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
-     *             .cenId(&#34;cen-cjok7uyb5w2b27573v&#34;)
-     *             .memberUid(&#34;1415189284827022&#34;)
-     *             .status(&#34;closed&#34;)
-     *             .vpcFirewallName(&#34;tf-test&#34;)
+     *             .cenId("cen-cjok7uyb5w2b27573v")
+     *             .memberUid("1415189284827022")
+     *             .status("closed")
+     *             .vpcFirewallName("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallVpcFirewallCenExampleId&#34;, default_.cens()[0].id());
+     *         ctx.export("alicloudCloudFirewallVpcFirewallCenExampleId", default_.cens()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1227,7 +1277,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1250,16 +1301,17 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
      *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
-     *             .cenId(&#34;cen-cjok7uyb5w2b27573v&#34;)
-     *             .memberUid(&#34;1415189284827022&#34;)
-     *             .status(&#34;closed&#34;)
-     *             .vpcFirewallName(&#34;tf-test&#34;)
+     *             .cenId("cen-cjok7uyb5w2b27573v")
+     *             .memberUid("1415189284827022")
+     *             .status("closed")
+     *             .vpcFirewallName("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallVpcFirewallCenExampleId&#34;, default_.cens()[0].id());
+     *         ctx.export("alicloudCloudFirewallVpcFirewallCenExampleId", default_.cens()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1274,7 +1326,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1297,16 +1350,17 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
      *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
-     *             .cenId(&#34;cen-cjok7uyb5w2b27573v&#34;)
-     *             .memberUid(&#34;1415189284827022&#34;)
-     *             .status(&#34;closed&#34;)
-     *             .vpcFirewallName(&#34;tf-test&#34;)
+     *             .cenId("cen-cjok7uyb5w2b27573v")
+     *             .memberUid("1415189284827022")
+     *             .status("closed")
+     *             .vpcFirewallName("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallVpcFirewallCenExampleId&#34;, default_.cens()[0].id());
+     *         ctx.export("alicloudCloudFirewallVpcFirewallCenExampleId", default_.cens()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1321,7 +1375,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1344,16 +1399,17 @@ public final class CloudfirewallFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
      *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
-     *             .cenId(&#34;cen-cjok7uyb5w2b27573v&#34;)
-     *             .memberUid(&#34;1415189284827022&#34;)
-     *             .status(&#34;closed&#34;)
-     *             .vpcFirewallName(&#34;tf-test&#34;)
+     *             .cenId("cen-cjok7uyb5w2b27573v")
+     *             .memberUid("1415189284827022")
+     *             .status("closed")
+     *             .vpcFirewallName("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallVpcFirewallCenExampleId&#34;, default_.cens()[0].id());
+     *         ctx.export("alicloudCloudFirewallVpcFirewallCenExampleId", default_.cens()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1370,7 +1426,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1392,16 +1449,17 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudfirewallFunctions.getVpcFirewallControlPolicies(GetVpcFirewallControlPoliciesArgs.builder()
-     *             .vpcFirewallId(&#34;example_value&#34;)
+     *             .vpcFirewallId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallVpcFirewallControlPoliciesId1&#34;, ids.applyValue(getVpcFirewallControlPoliciesResult -&gt; getVpcFirewallControlPoliciesResult.policies()[0].id()));
+     *         ctx.export("alicloudCloudFirewallVpcFirewallControlPoliciesId1", ids.applyValue(getVpcFirewallControlPoliciesResult -> getVpcFirewallControlPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1418,7 +1476,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1440,16 +1499,17 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudfirewallFunctions.getVpcFirewallControlPolicies(GetVpcFirewallControlPoliciesArgs.builder()
-     *             .vpcFirewallId(&#34;example_value&#34;)
+     *             .vpcFirewallId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallVpcFirewallControlPoliciesId1&#34;, ids.applyValue(getVpcFirewallControlPoliciesResult -&gt; getVpcFirewallControlPoliciesResult.policies()[0].id()));
+     *         ctx.export("alicloudCloudFirewallVpcFirewallControlPoliciesId1", ids.applyValue(getVpcFirewallControlPoliciesResult -> getVpcFirewallControlPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1466,7 +1526,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1488,16 +1549,17 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudfirewallFunctions.getVpcFirewallControlPolicies(GetVpcFirewallControlPoliciesArgs.builder()
-     *             .vpcFirewallId(&#34;example_value&#34;)
+     *             .vpcFirewallId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallVpcFirewallControlPoliciesId1&#34;, ids.applyValue(getVpcFirewallControlPoliciesResult -&gt; getVpcFirewallControlPoliciesResult.policies()[0].id()));
+     *         ctx.export("alicloudCloudFirewallVpcFirewallControlPoliciesId1", ids.applyValue(getVpcFirewallControlPoliciesResult -> getVpcFirewallControlPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1514,7 +1576,8 @@ public final class CloudfirewallFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1536,16 +1599,17 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CloudfirewallFunctions.getVpcFirewallControlPolicies(GetVpcFirewallControlPoliciesArgs.builder()
-     *             .vpcFirewallId(&#34;example_value&#34;)
+     *             .vpcFirewallId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCloudFirewallVpcFirewallControlPoliciesId1&#34;, ids.applyValue(getVpcFirewallControlPoliciesResult -&gt; getVpcFirewallControlPoliciesResult.policies()[0].id()));
+     *         ctx.export("alicloudCloudFirewallVpcFirewallControlPoliciesId1", ids.applyValue(getVpcFirewallControlPoliciesResult -> getVpcFirewallControlPoliciesResult.policies()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1560,7 +1624,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1582,16 +1647,17 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewalls(GetVpcFirewallsArgs.builder()
-     *             .ids(&#34;id-example&#34;)
-     *             .memberUid(&#34;1415189284827022&#34;)
-     *             .status(&#34;closed&#34;)
-     *             .vpcFirewallName(&#34;tf-test&#34;)
+     *             .ids("id-example")
+     *             .memberUid("1415189284827022")
+     *             .status("closed")
+     *             .vpcFirewallName("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCfwVpcFirewallExampleId&#34;, default_.firewalls()[0].id());
+     *         ctx.export("alicloudCfwVpcFirewallExampleId", default_.firewalls()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1606,7 +1672,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1628,16 +1695,17 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewalls(GetVpcFirewallsArgs.builder()
-     *             .ids(&#34;id-example&#34;)
-     *             .memberUid(&#34;1415189284827022&#34;)
-     *             .status(&#34;closed&#34;)
-     *             .vpcFirewallName(&#34;tf-test&#34;)
+     *             .ids("id-example")
+     *             .memberUid("1415189284827022")
+     *             .status("closed")
+     *             .vpcFirewallName("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCfwVpcFirewallExampleId&#34;, default_.firewalls()[0].id());
+     *         ctx.export("alicloudCfwVpcFirewallExampleId", default_.firewalls()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1652,7 +1720,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1674,16 +1743,17 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewalls(GetVpcFirewallsArgs.builder()
-     *             .ids(&#34;id-example&#34;)
-     *             .memberUid(&#34;1415189284827022&#34;)
-     *             .status(&#34;closed&#34;)
-     *             .vpcFirewallName(&#34;tf-test&#34;)
+     *             .ids("id-example")
+     *             .memberUid("1415189284827022")
+     *             .status("closed")
+     *             .vpcFirewallName("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCfwVpcFirewallExampleId&#34;, default_.firewalls()[0].id());
+     *         ctx.export("alicloudCfwVpcFirewallExampleId", default_.firewalls()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1698,7 +1768,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1720,16 +1791,17 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewalls(GetVpcFirewallsArgs.builder()
-     *             .ids(&#34;id-example&#34;)
-     *             .memberUid(&#34;1415189284827022&#34;)
-     *             .status(&#34;closed&#34;)
-     *             .vpcFirewallName(&#34;tf-test&#34;)
+     *             .ids("id-example")
+     *             .memberUid("1415189284827022")
+     *             .status("closed")
+     *             .vpcFirewallName("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCfwVpcFirewallExampleId&#34;, default_.firewalls()[0].id());
+     *         ctx.export("alicloudCfwVpcFirewallExampleId", default_.firewalls()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1744,7 +1816,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1766,16 +1839,17 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewalls(GetVpcFirewallsArgs.builder()
-     *             .ids(&#34;id-example&#34;)
-     *             .memberUid(&#34;1415189284827022&#34;)
-     *             .status(&#34;closed&#34;)
-     *             .vpcFirewallName(&#34;tf-test&#34;)
+     *             .ids("id-example")
+     *             .memberUid("1415189284827022")
+     *             .status("closed")
+     *             .vpcFirewallName("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCfwVpcFirewallExampleId&#34;, default_.firewalls()[0].id());
+     *         ctx.export("alicloudCfwVpcFirewallExampleId", default_.firewalls()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1790,7 +1864,8 @@ public final class CloudfirewallFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1812,16 +1887,17 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewalls(GetVpcFirewallsArgs.builder()
-     *             .ids(&#34;id-example&#34;)
-     *             .memberUid(&#34;1415189284827022&#34;)
-     *             .status(&#34;closed&#34;)
-     *             .vpcFirewallName(&#34;tf-test&#34;)
+     *             .ids("id-example")
+     *             .memberUid("1415189284827022")
+     *             .status("closed")
+     *             .vpcFirewallName("tf-test")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCfwVpcFirewallExampleId&#34;, default_.firewalls()[0].id());
+     *         ctx.export("alicloudCfwVpcFirewallExampleId", default_.firewalls()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

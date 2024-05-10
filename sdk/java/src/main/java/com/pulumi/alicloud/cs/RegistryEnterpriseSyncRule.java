@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -58,76 +59,77 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var source = new RegistryEnterpriseInstance(&#34;source&#34;, RegistryEnterpriseInstanceArgs.builder()        
- *             .paymentType(&#34;Subscription&#34;)
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var source = new RegistryEnterpriseInstance("source", RegistryEnterpriseInstanceArgs.builder()        
+ *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
- *             .renewalStatus(&#34;ManualRenewal&#34;)
- *             .instanceType(&#34;Advanced&#34;)
- *             .instanceName(String.format(&#34;%s-source&#34;, name))
+ *             .renewalStatus("ManualRenewal")
+ *             .instanceType("Advanced")
+ *             .instanceName(String.format("%s-source", name))
  *             .build());
  * 
- *         var target = new RegistryEnterpriseInstance(&#34;target&#34;, RegistryEnterpriseInstanceArgs.builder()        
- *             .paymentType(&#34;Subscription&#34;)
+ *         var target = new RegistryEnterpriseInstance("target", RegistryEnterpriseInstanceArgs.builder()        
+ *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
- *             .renewalStatus(&#34;ManualRenewal&#34;)
- *             .instanceType(&#34;Advanced&#34;)
- *             .instanceName(String.format(&#34;%s-target&#34;, name))
+ *             .renewalStatus("ManualRenewal")
+ *             .instanceType("Advanced")
+ *             .instanceName(String.format("%s-target", name))
  *             .build());
  * 
- *         var sourceRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace(&#34;sourceRegistryEnterpriseNamespace&#34;, RegistryEnterpriseNamespaceArgs.builder()        
+ *         var sourceRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()        
  *             .instanceId(source.id())
  *             .name(name)
  *             .autoCreate(false)
- *             .defaultVisibility(&#34;PUBLIC&#34;)
+ *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
- *         var targetRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace(&#34;targetRegistryEnterpriseNamespace&#34;, RegistryEnterpriseNamespaceArgs.builder()        
+ *         var targetRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("targetRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()        
  *             .instanceId(target.id())
  *             .name(name)
  *             .autoCreate(false)
- *             .defaultVisibility(&#34;PUBLIC&#34;)
+ *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
- *         var sourceRegistryEnterpriseRepo = new RegistryEnterpriseRepo(&#34;sourceRegistryEnterpriseRepo&#34;, RegistryEnterpriseRepoArgs.builder()        
+ *         var sourceRegistryEnterpriseRepo = new RegistryEnterpriseRepo("sourceRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()        
  *             .instanceId(source.id())
  *             .namespace(sourceRegistryEnterpriseNamespace.name())
  *             .name(name)
- *             .summary(&#34;this is summary of my new repo&#34;)
- *             .repoType(&#34;PUBLIC&#34;)
- *             .detail(&#34;this is a public repo&#34;)
+ *             .summary("this is summary of my new repo")
+ *             .repoType("PUBLIC")
+ *             .detail("this is a public repo")
  *             .build());
  * 
- *         var targetRegistryEnterpriseRepo = new RegistryEnterpriseRepo(&#34;targetRegistryEnterpriseRepo&#34;, RegistryEnterpriseRepoArgs.builder()        
+ *         var targetRegistryEnterpriseRepo = new RegistryEnterpriseRepo("targetRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()        
  *             .instanceId(target.id())
  *             .namespace(targetRegistryEnterpriseNamespace.name())
  *             .name(name)
- *             .summary(&#34;this is summary of my new repo&#34;)
- *             .repoType(&#34;PUBLIC&#34;)
- *             .detail(&#34;this is a public repo&#34;)
+ *             .summary("this is summary of my new repo")
+ *             .repoType("PUBLIC")
+ *             .detail("this is a public repo")
  *             .build());
  * 
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultRegistryEnterpriseSyncRule = new RegistryEnterpriseSyncRule(&#34;defaultRegistryEnterpriseSyncRule&#34;, RegistryEnterpriseSyncRuleArgs.builder()        
+ *         var defaultRegistryEnterpriseSyncRule = new RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule", RegistryEnterpriseSyncRuleArgs.builder()        
  *             .instanceId(source.id())
  *             .namespaceName(sourceRegistryEnterpriseNamespace.name())
  *             .name(name)
  *             .targetRegionId(default_.regions()[0].id())
  *             .targetInstanceId(target.id())
  *             .targetNamespaceName(targetRegistryEnterpriseNamespace.name())
- *             .tagFilter(&#34;.*&#34;)
+ *             .tagFilter(".*")
  *             .repoName(sourceRegistryEnterpriseRepo.name())
  *             .targetRepoName(targetRegistryEnterpriseRepo.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

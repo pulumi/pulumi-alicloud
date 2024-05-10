@@ -30,7 +30,8 @@ public final class WafFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -52,15 +53,16 @@ public final class WafFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .ids(&#34;your_certificate_id&#34;)
-     *             .instanceId(&#34;your_instance_id&#34;)
-     *             .domain(&#34;your_domain_name&#34;)
+     *             .ids("your_certificate_id")
+     *             .instanceId("your_instance_id")
+     *             .domain("your_domain_name")
      *             .build());
      * 
-     *         ctx.export(&#34;wafCertificate&#34;, default_.certificates()[0]);
+     *         ctx.export("wafCertificate", default_.certificates()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -77,7 +79,8 @@ public final class WafFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -99,15 +102,16 @@ public final class WafFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .ids(&#34;your_certificate_id&#34;)
-     *             .instanceId(&#34;your_instance_id&#34;)
-     *             .domain(&#34;your_domain_name&#34;)
+     *             .ids("your_certificate_id")
+     *             .instanceId("your_instance_id")
+     *             .domain("your_domain_name")
      *             .build());
      * 
-     *         ctx.export(&#34;wafCertificate&#34;, default_.certificates()[0]);
+     *         ctx.export("wafCertificate", default_.certificates()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -124,7 +128,8 @@ public final class WafFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -146,15 +151,16 @@ public final class WafFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .ids(&#34;your_certificate_id&#34;)
-     *             .instanceId(&#34;your_instance_id&#34;)
-     *             .domain(&#34;your_domain_name&#34;)
+     *             .ids("your_certificate_id")
+     *             .instanceId("your_instance_id")
+     *             .domain("your_domain_name")
      *             .build());
      * 
-     *         ctx.export(&#34;wafCertificate&#34;, default_.certificates()[0]);
+     *         ctx.export("wafCertificate", default_.certificates()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -171,7 +177,8 @@ public final class WafFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -193,15 +200,16 @@ public final class WafFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .ids(&#34;your_certificate_id&#34;)
-     *             .instanceId(&#34;your_instance_id&#34;)
-     *             .domain(&#34;your_domain_name&#34;)
+     *             .ids("your_certificate_id")
+     *             .instanceId("your_instance_id")
+     *             .domain("your_domain_name")
      *             .build());
      * 
-     *         ctx.export(&#34;wafCertificate&#34;, default_.certificates()[0]);
+     *         ctx.export("wafCertificate", default_.certificates()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -218,7 +226,8 @@ public final class WafFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -240,12 +249,13 @@ public final class WafFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getDomains(GetDomainsArgs.builder()
-     *             .instanceId(&#34;waf-cf-xxxxx&#34;)
+     *             .instanceId("waf-cf-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -262,7 +272,8 @@ public final class WafFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -284,12 +295,13 @@ public final class WafFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getDomains(GetDomainsArgs.builder()
-     *             .instanceId(&#34;waf-cf-xxxxx&#34;)
+     *             .instanceId("waf-cf-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -306,7 +318,8 @@ public final class WafFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -328,12 +341,13 @@ public final class WafFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getDomains(GetDomainsArgs.builder()
-     *             .instanceId(&#34;waf-cf-xxxxx&#34;)
+     *             .instanceId("waf-cf-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -350,7 +364,8 @@ public final class WafFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -372,12 +387,13 @@ public final class WafFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getDomains(GetDomainsArgs.builder()
-     *             .instanceId(&#34;waf-cf-xxxxx&#34;)
+     *             .instanceId("waf-cf-xxxxx")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -394,7 +410,8 @@ public final class WafFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -416,16 +433,17 @@ public final class WafFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;waf-cn-09k********&#34;)
-     *             .status(&#34;1&#34;)
-     *             .resourceGroupId(&#34;rg-acfmwvv********&#34;)
-     *             .instanceSource(&#34;waf-cloud&#34;)
+     *             .ids("waf-cn-09k********")
+     *             .status("1")
+     *             .resourceGroupId("rg-acfmwvv********")
+     *             .instanceSource("waf-cloud")
      *             .build());
      * 
-     *         ctx.export(&#34;theFirstWafInstanceId&#34;, default_.instances()[0].id());
+     *         ctx.export("theFirstWafInstanceId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -442,7 +460,8 @@ public final class WafFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -464,16 +483,17 @@ public final class WafFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;waf-cn-09k********&#34;)
-     *             .status(&#34;1&#34;)
-     *             .resourceGroupId(&#34;rg-acfmwvv********&#34;)
-     *             .instanceSource(&#34;waf-cloud&#34;)
+     *             .ids("waf-cn-09k********")
+     *             .status("1")
+     *             .resourceGroupId("rg-acfmwvv********")
+     *             .instanceSource("waf-cloud")
      *             .build());
      * 
-     *         ctx.export(&#34;theFirstWafInstanceId&#34;, default_.instances()[0].id());
+     *         ctx.export("theFirstWafInstanceId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -490,7 +510,8 @@ public final class WafFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -512,16 +533,17 @@ public final class WafFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;waf-cn-09k********&#34;)
-     *             .status(&#34;1&#34;)
-     *             .resourceGroupId(&#34;rg-acfmwvv********&#34;)
-     *             .instanceSource(&#34;waf-cloud&#34;)
+     *             .ids("waf-cn-09k********")
+     *             .status("1")
+     *             .resourceGroupId("rg-acfmwvv********")
+     *             .instanceSource("waf-cloud")
      *             .build());
      * 
-     *         ctx.export(&#34;theFirstWafInstanceId&#34;, default_.instances()[0].id());
+     *         ctx.export("theFirstWafInstanceId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -538,7 +560,8 @@ public final class WafFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -560,16 +583,17 @@ public final class WafFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;waf-cn-09k********&#34;)
-     *             .status(&#34;1&#34;)
-     *             .resourceGroupId(&#34;rg-acfmwvv********&#34;)
-     *             .instanceSource(&#34;waf-cloud&#34;)
+     *             .ids("waf-cn-09k********")
+     *             .status("1")
+     *             .resourceGroupId("rg-acfmwvv********")
+     *             .instanceSource("waf-cloud")
      *             .build());
      * 
-     *         ctx.export(&#34;theFirstWafInstanceId&#34;, default_.instances()[0].id());
+     *         ctx.export("theFirstWafInstanceId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -586,7 +610,8 @@ public final class WafFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -608,16 +633,17 @@ public final class WafFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;waf-cn-09k********&#34;)
-     *             .status(&#34;1&#34;)
-     *             .resourceGroupId(&#34;rg-acfmwvv********&#34;)
-     *             .instanceSource(&#34;waf-cloud&#34;)
+     *             .ids("waf-cn-09k********")
+     *             .status("1")
+     *             .resourceGroupId("rg-acfmwvv********")
+     *             .instanceSource("waf-cloud")
      *             .build());
      * 
-     *         ctx.export(&#34;theFirstWafInstanceId&#34;, default_.instances()[0].id());
+     *         ctx.export("theFirstWafInstanceId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -634,7 +660,8 @@ public final class WafFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -656,16 +683,17 @@ public final class WafFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = WafFunctions.getInstances(GetInstancesArgs.builder()
-     *             .ids(&#34;waf-cn-09k********&#34;)
-     *             .status(&#34;1&#34;)
-     *             .resourceGroupId(&#34;rg-acfmwvv********&#34;)
-     *             .instanceSource(&#34;waf-cloud&#34;)
+     *             .ids("waf-cn-09k********")
+     *             .status("1")
+     *             .resourceGroupId("rg-acfmwvv********")
+     *             .instanceSource("waf-cloud")
      *             .build());
      * 
-     *         ctx.export(&#34;theFirstWafInstanceId&#34;, default_.instances()[0].id());
+     *         ctx.export("theFirstWafInstanceId", default_.instances()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

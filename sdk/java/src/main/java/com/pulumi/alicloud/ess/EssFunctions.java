@@ -94,7 +94,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -116,14 +117,15 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
-     *             .nameRegex(&#34;lifecyclehook_name&#34;)
+     *             .scalingGroupId("scaling_group_id")
+     *             .nameRegex("lifecyclehook_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
+     *         ctx.export("firstLifecycleHook", ds.applyValue(getLifecycleHooksResult -> getLifecycleHooksResult.hooks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -138,7 +140,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -160,14 +163,15 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
-     *             .nameRegex(&#34;lifecyclehook_name&#34;)
+     *             .scalingGroupId("scaling_group_id")
+     *             .nameRegex("lifecyclehook_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
+     *         ctx.export("firstLifecycleHook", ds.applyValue(getLifecycleHooksResult -> getLifecycleHooksResult.hooks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -182,7 +186,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -204,14 +209,15 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
-     *             .nameRegex(&#34;lifecyclehook_name&#34;)
+     *             .scalingGroupId("scaling_group_id")
+     *             .nameRegex("lifecyclehook_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
+     *         ctx.export("firstLifecycleHook", ds.applyValue(getLifecycleHooksResult -> getLifecycleHooksResult.hooks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -226,7 +232,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -248,14 +255,15 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
-     *             .nameRegex(&#34;lifecyclehook_name&#34;)
+     *             .scalingGroupId("scaling_group_id")
+     *             .nameRegex("lifecyclehook_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
+     *         ctx.export("firstLifecycleHook", ds.applyValue(getLifecycleHooksResult -> getLifecycleHooksResult.hooks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -270,7 +278,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -292,14 +301,15 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
-     *             .nameRegex(&#34;lifecyclehook_name&#34;)
+     *             .scalingGroupId("scaling_group_id")
+     *             .nameRegex("lifecyclehook_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
+     *         ctx.export("firstLifecycleHook", ds.applyValue(getLifecycleHooksResult -> getLifecycleHooksResult.hooks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -314,7 +324,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -336,14 +347,15 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getLifecycleHooks(GetLifecycleHooksArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
-     *             .nameRegex(&#34;lifecyclehook_name&#34;)
+     *             .scalingGroupId("scaling_group_id")
+     *             .nameRegex("lifecyclehook_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstLifecycleHook&#34;, ds.applyValue(getLifecycleHooksResult -&gt; getLifecycleHooksResult.hooks()[0].id()));
+     *         ctx.export("firstLifecycleHook", ds.applyValue(getLifecycleHooksResult -> getLifecycleHooksResult.hooks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -358,7 +370,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -380,13 +393,14 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getNotifications(GetNotificationsArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .build());
      * 
-     *         ctx.export(&#34;firstNotification&#34;, ds.applyValue(getNotificationsResult -&gt; getNotificationsResult.notifications()[0].id()));
+     *         ctx.export("firstNotification", ds.applyValue(getNotificationsResult -> getNotificationsResult.notifications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -401,7 +415,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -423,13 +438,14 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getNotifications(GetNotificationsArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .build());
      * 
-     *         ctx.export(&#34;firstNotification&#34;, ds.applyValue(getNotificationsResult -&gt; getNotificationsResult.notifications()[0].id()));
+     *         ctx.export("firstNotification", ds.applyValue(getNotificationsResult -> getNotificationsResult.notifications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -444,7 +460,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -466,13 +483,14 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getNotifications(GetNotificationsArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .build());
      * 
-     *         ctx.export(&#34;firstNotification&#34;, ds.applyValue(getNotificationsResult -&gt; getNotificationsResult.notifications()[0].id()));
+     *         ctx.export("firstNotification", ds.applyValue(getNotificationsResult -> getNotificationsResult.notifications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -487,7 +505,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -509,13 +528,14 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getNotifications(GetNotificationsArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .build());
      * 
-     *         ctx.export(&#34;firstNotification&#34;, ds.applyValue(getNotificationsResult -&gt; getNotificationsResult.notifications()[0].id()));
+     *         ctx.export("firstNotification", ds.applyValue(getNotificationsResult -> getNotificationsResult.notifications()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -528,7 +548,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -550,17 +571,18 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .ids(            
-     *                 &#34;scaling_configuration_id1&#34;,
-     *                 &#34;scaling_configuration_id2&#34;)
-     *             .nameRegex(&#34;scaling_configuration_name&#34;)
+     *                 "scaling_configuration_id1",
+     *                 "scaling_configuration_id2")
+     *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("firstScalingRule", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -573,7 +595,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -595,17 +618,18 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .ids(            
-     *                 &#34;scaling_configuration_id1&#34;,
-     *                 &#34;scaling_configuration_id2&#34;)
-     *             .nameRegex(&#34;scaling_configuration_name&#34;)
+     *                 "scaling_configuration_id1",
+     *                 "scaling_configuration_id2")
+     *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("firstScalingRule", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -618,7 +642,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -640,17 +665,18 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .ids(            
-     *                 &#34;scaling_configuration_id1&#34;,
-     *                 &#34;scaling_configuration_id2&#34;)
-     *             .nameRegex(&#34;scaling_configuration_name&#34;)
+     *                 "scaling_configuration_id1",
+     *                 "scaling_configuration_id2")
+     *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("firstScalingRule", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -663,7 +689,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -685,17 +712,18 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .ids(            
-     *                 &#34;scaling_configuration_id1&#34;,
-     *                 &#34;scaling_configuration_id2&#34;)
-     *             .nameRegex(&#34;scaling_configuration_name&#34;)
+     *                 "scaling_configuration_id1",
+     *                 "scaling_configuration_id2")
+     *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("firstScalingRule", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -708,7 +736,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -730,17 +759,18 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .ids(            
-     *                 &#34;scaling_configuration_id1&#34;,
-     *                 &#34;scaling_configuration_id2&#34;)
-     *             .nameRegex(&#34;scaling_configuration_name&#34;)
+     *                 "scaling_configuration_id1",
+     *                 "scaling_configuration_id2")
+     *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("firstScalingRule", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -753,7 +783,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -775,17 +806,18 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingconfigurationsDs = EssFunctions.getScalingConfigurations(GetScalingConfigurationsArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .ids(            
-     *                 &#34;scaling_configuration_id1&#34;,
-     *                 &#34;scaling_configuration_id2&#34;)
-     *             .nameRegex(&#34;scaling_configuration_name&#34;)
+     *                 "scaling_configuration_id1",
+     *                 "scaling_configuration_id2")
+     *             .nameRegex("scaling_configuration_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingRule&#34;, scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -&gt; getScalingConfigurationsResult.configurations()[0].id()));
+     *         ctx.export("firstScalingRule", scalingconfigurationsDs.applyValue(getScalingConfigurationsResult -> getScalingConfigurationsResult.configurations()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -798,7 +830,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -821,15 +854,16 @@ public final class EssFunctions {
      *     public static void stack(Context ctx) {
      *         final var scalinggroupsDs = EssFunctions.getScalingGroups(GetScalingGroupsArgs.builder()
      *             .ids(            
-     *                 &#34;scaling_group_id1&#34;,
-     *                 &#34;scaling_group_id2&#34;)
-     *             .nameRegex(&#34;scaling_group_name&#34;)
+     *                 "scaling_group_id1",
+     *                 "scaling_group_id2")
+     *             .nameRegex("scaling_group_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingGroup&#34;, scalinggroupsDs.applyValue(getScalingGroupsResult -&gt; getScalingGroupsResult.groups()[0].id()));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -842,7 +876,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -865,15 +900,16 @@ public final class EssFunctions {
      *     public static void stack(Context ctx) {
      *         final var scalinggroupsDs = EssFunctions.getScalingGroups(GetScalingGroupsArgs.builder()
      *             .ids(            
-     *                 &#34;scaling_group_id1&#34;,
-     *                 &#34;scaling_group_id2&#34;)
-     *             .nameRegex(&#34;scaling_group_name&#34;)
+     *                 "scaling_group_id1",
+     *                 "scaling_group_id2")
+     *             .nameRegex("scaling_group_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingGroup&#34;, scalinggroupsDs.applyValue(getScalingGroupsResult -&gt; getScalingGroupsResult.groups()[0].id()));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -886,7 +922,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -909,15 +946,16 @@ public final class EssFunctions {
      *     public static void stack(Context ctx) {
      *         final var scalinggroupsDs = EssFunctions.getScalingGroups(GetScalingGroupsArgs.builder()
      *             .ids(            
-     *                 &#34;scaling_group_id1&#34;,
-     *                 &#34;scaling_group_id2&#34;)
-     *             .nameRegex(&#34;scaling_group_name&#34;)
+     *                 "scaling_group_id1",
+     *                 "scaling_group_id2")
+     *             .nameRegex("scaling_group_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingGroup&#34;, scalinggroupsDs.applyValue(getScalingGroupsResult -&gt; getScalingGroupsResult.groups()[0].id()));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -930,7 +968,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -953,15 +992,16 @@ public final class EssFunctions {
      *     public static void stack(Context ctx) {
      *         final var scalinggroupsDs = EssFunctions.getScalingGroups(GetScalingGroupsArgs.builder()
      *             .ids(            
-     *                 &#34;scaling_group_id1&#34;,
-     *                 &#34;scaling_group_id2&#34;)
-     *             .nameRegex(&#34;scaling_group_name&#34;)
+     *                 "scaling_group_id1",
+     *                 "scaling_group_id2")
+     *             .nameRegex("scaling_group_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingGroup&#34;, scalinggroupsDs.applyValue(getScalingGroupsResult -&gt; getScalingGroupsResult.groups()[0].id()));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -974,7 +1014,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -997,15 +1038,16 @@ public final class EssFunctions {
      *     public static void stack(Context ctx) {
      *         final var scalinggroupsDs = EssFunctions.getScalingGroups(GetScalingGroupsArgs.builder()
      *             .ids(            
-     *                 &#34;scaling_group_id1&#34;,
-     *                 &#34;scaling_group_id2&#34;)
-     *             .nameRegex(&#34;scaling_group_name&#34;)
+     *                 "scaling_group_id1",
+     *                 "scaling_group_id2")
+     *             .nameRegex("scaling_group_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingGroup&#34;, scalinggroupsDs.applyValue(getScalingGroupsResult -&gt; getScalingGroupsResult.groups()[0].id()));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1018,7 +1060,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1041,15 +1084,16 @@ public final class EssFunctions {
      *     public static void stack(Context ctx) {
      *         final var scalinggroupsDs = EssFunctions.getScalingGroups(GetScalingGroupsArgs.builder()
      *             .ids(            
-     *                 &#34;scaling_group_id1&#34;,
-     *                 &#34;scaling_group_id2&#34;)
-     *             .nameRegex(&#34;scaling_group_name&#34;)
+     *                 "scaling_group_id1",
+     *                 "scaling_group_id2")
+     *             .nameRegex("scaling_group_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingGroup&#34;, scalinggroupsDs.applyValue(getScalingGroupsResult -&gt; getScalingGroupsResult.groups()[0].id()));
+     *         ctx.export("firstScalingGroup", scalinggroupsDs.applyValue(getScalingGroupsResult -> getScalingGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1062,7 +1106,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1084,17 +1129,18 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .ids(            
-     *                 &#34;scaling_rule_id1&#34;,
-     *                 &#34;scaling_rule_id2&#34;)
-     *             .nameRegex(&#34;scaling_rule_name&#34;)
+     *                 "scaling_rule_id1",
+     *                 "scaling_rule_id2")
+     *             .nameRegex("scaling_rule_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1107,7 +1153,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1129,17 +1176,18 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .ids(            
-     *                 &#34;scaling_rule_id1&#34;,
-     *                 &#34;scaling_rule_id2&#34;)
-     *             .nameRegex(&#34;scaling_rule_name&#34;)
+     *                 "scaling_rule_id1",
+     *                 "scaling_rule_id2")
+     *             .nameRegex("scaling_rule_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1152,7 +1200,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1174,17 +1223,18 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .ids(            
-     *                 &#34;scaling_rule_id1&#34;,
-     *                 &#34;scaling_rule_id2&#34;)
-     *             .nameRegex(&#34;scaling_rule_name&#34;)
+     *                 "scaling_rule_id1",
+     *                 "scaling_rule_id2")
+     *             .nameRegex("scaling_rule_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1197,7 +1247,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1219,17 +1270,18 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .ids(            
-     *                 &#34;scaling_rule_id1&#34;,
-     *                 &#34;scaling_rule_id2&#34;)
-     *             .nameRegex(&#34;scaling_rule_name&#34;)
+     *                 "scaling_rule_id1",
+     *                 "scaling_rule_id2")
+     *             .nameRegex("scaling_rule_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1242,7 +1294,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1264,17 +1317,18 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .ids(            
-     *                 &#34;scaling_rule_id1&#34;,
-     *                 &#34;scaling_rule_id2&#34;)
-     *             .nameRegex(&#34;scaling_rule_name&#34;)
+     *                 "scaling_rule_id1",
+     *                 "scaling_rule_id2")
+     *             .nameRegex("scaling_rule_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1287,7 +1341,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1309,17 +1364,18 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var scalingrulesDs = EssFunctions.getScalingRules(GetScalingRulesArgs.builder()
-     *             .scalingGroupId(&#34;scaling_group_id&#34;)
+     *             .scalingGroupId("scaling_group_id")
      *             .ids(            
-     *                 &#34;scaling_rule_id1&#34;,
-     *                 &#34;scaling_rule_id2&#34;)
-     *             .nameRegex(&#34;scaling_rule_name&#34;)
+     *                 "scaling_rule_id1",
+     *                 "scaling_rule_id2")
+     *             .nameRegex("scaling_rule_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScalingRule&#34;, scalingrulesDs.applyValue(getScalingRulesResult -&gt; getScalingRulesResult.rules()[0].id()));
+     *         ctx.export("firstScalingRule", scalingrulesDs.applyValue(getScalingRulesResult -> getScalingRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1334,7 +1390,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1356,14 +1413,15 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
-     *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
-     *             .nameRegex(&#34;scheduled_task_name&#34;)
+     *             .scheduledTaskId("scheduled_task_id")
+     *             .nameRegex("scheduled_task_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
+     *         ctx.export("firstScheduledTask", ds.applyValue(getScheduledTasksResult -> getScheduledTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1378,7 +1436,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1400,14 +1459,15 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
-     *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
-     *             .nameRegex(&#34;scheduled_task_name&#34;)
+     *             .scheduledTaskId("scheduled_task_id")
+     *             .nameRegex("scheduled_task_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
+     *         ctx.export("firstScheduledTask", ds.applyValue(getScheduledTasksResult -> getScheduledTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1422,7 +1482,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1444,14 +1505,15 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
-     *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
-     *             .nameRegex(&#34;scheduled_task_name&#34;)
+     *             .scheduledTaskId("scheduled_task_id")
+     *             .nameRegex("scheduled_task_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
+     *         ctx.export("firstScheduledTask", ds.applyValue(getScheduledTasksResult -> getScheduledTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1466,7 +1528,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1488,14 +1551,15 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
-     *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
-     *             .nameRegex(&#34;scheduled_task_name&#34;)
+     *             .scheduledTaskId("scheduled_task_id")
+     *             .nameRegex("scheduled_task_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
+     *         ctx.export("firstScheduledTask", ds.applyValue(getScheduledTasksResult -> getScheduledTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1510,7 +1574,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1532,14 +1597,15 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
-     *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
-     *             .nameRegex(&#34;scheduled_task_name&#34;)
+     *             .scheduledTaskId("scheduled_task_id")
+     *             .nameRegex("scheduled_task_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
+     *         ctx.export("firstScheduledTask", ds.applyValue(getScheduledTasksResult -> getScheduledTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1554,7 +1620,8 @@ public final class EssFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1576,14 +1643,15 @@ public final class EssFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ds = EssFunctions.getScheduledTasks(GetScheduledTasksArgs.builder()
-     *             .scheduledTaskId(&#34;scheduled_task_id&#34;)
-     *             .nameRegex(&#34;scheduled_task_name&#34;)
+     *             .scheduledTaskId("scheduled_task_id")
+     *             .nameRegex("scheduled_task_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstScheduledTask&#34;, ds.applyValue(getScheduledTasksResult -&gt; getScheduledTasksResult.tasks()[0].id()));
+     *         ctx.export("firstScheduledTask", ds.applyValue(getScheduledTasksResult -> getScheduledTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

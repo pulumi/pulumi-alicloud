@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,26 +54,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf_example&#34;)
- *             .description(&#34;an example for cen&#34;)
+ *         var example = new Instance("example", InstanceArgs.builder()        
+ *             .cenInstanceName("tf_example")
+ *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .transitRouterName(&#34;tf_example&#34;)
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
+ *             .transitRouterName("tf_example")
  *             .cenId(example.id())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var exampleTransitRouterMulticastDomain = new TransitRouterMulticastDomain(&#34;exampleTransitRouterMulticastDomain&#34;, TransitRouterMulticastDomainArgs.builder()        
+ *         var exampleTransitRouterMulticastDomain = new TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()        
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
- *             .transitRouterMulticastDomainName(&#34;tf_example&#34;)
- *             .transitRouterMulticastDomainDescription(&#34;tf_example&#34;)
+ *             .transitRouterMulticastDomainName("tf_example")
+ *             .transitRouterMulticastDomainDescription("tf_example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -129,28 +131,28 @@ public class TransitRouterMulticastDomain extends com.pulumi.resources.CustomRes
         return this.transitRouterId;
     }
     /**
-     * The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
      * 
      */
     @Export(name="transitRouterMulticastDomainDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterMulticastDomainDescription;
 
     /**
-     * @return The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * @return The description of the multicast domain. The description must be 0 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
      * 
      */
     public Output<Optional<String>> transitRouterMulticastDomainDescription() {
         return Codegen.optional(this.transitRouterMulticastDomainDescription);
     }
     /**
-     * The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
      * 
      */
     @Export(name="transitRouterMulticastDomainName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterMulticastDomainName;
 
     /**
-     * @return The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+     * @return The name of the multicast domain. The name must be 0 to 128 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (_), and hyphens (-).
      * 
      */
     public Output<Optional<String>> transitRouterMulticastDomainName() {

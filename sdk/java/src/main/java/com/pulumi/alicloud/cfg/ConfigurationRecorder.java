@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,15 +49,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ConfigurationRecorder(&#34;example&#34;, ConfigurationRecorderArgs.builder()        
+ *         var example = new ConfigurationRecorder("example", ConfigurationRecorderArgs.builder()        
  *             .resourceTypes(            
- *                 &#34;ACS::ECS::Instance&#34;,
- *                 &#34;ACS::ECS::Disk&#34;)
+ *                 "ACS::ECS::Instance",
+ *                 "ACS::ECS::Disk")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

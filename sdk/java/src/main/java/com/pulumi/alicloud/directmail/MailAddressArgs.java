@@ -17,14 +17,14 @@ public final class MailAddressArgs extends com.pulumi.resources.ResourceArgs {
     public static final MailAddressArgs Empty = new MailAddressArgs();
 
     /**
-     * The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
+     * The sender address. The email address must be filled in the format of account{@literal @}domain, and only lowercase letters or numbers can be used.
      * 
      */
     @Import(name="accountName", required=true)
     private Output<String> accountName;
 
     /**
-     * @return The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
+     * @return The sender address. The email address must be filled in the format of account{@literal @}domain, and only lowercase letters or numbers can be used.
      * 
      */
     public Output<String> accountName() {
@@ -104,7 +104,7 @@ public final class MailAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountName The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
+         * @param accountName The sender address. The email address must be filled in the format of account{@literal @}domain, and only lowercase letters or numbers can be used.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class MailAddressArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountName The sender address. The email address must be filled in the format of account@domain, and only lowercase letters or numbers can be used.
+         * @param accountName The sender address. The email address must be filled in the format of account{@literal @}domain, and only lowercase letters or numbers can be used.
          * 
          * @return builder
          * 

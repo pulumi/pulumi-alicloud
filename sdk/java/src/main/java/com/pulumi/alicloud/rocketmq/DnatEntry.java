@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,20 +51,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var sagId = config.get(&#34;sagId&#34;).orElse(&#34;sag-9bifkfaz***&#34;);
- *         var default_ = new DnatEntry(&#34;default&#34;, DnatEntryArgs.builder()        
+ *         final var sagId = config.get("sagId").orElse("sag-9bifkfaz***");
+ *         var default_ = new DnatEntry("default", DnatEntryArgs.builder()        
  *             .sagId(sagId)
- *             .type(&#34;Intranet&#34;)
- *             .ipProtocol(&#34;any&#34;)
- *             .externalIp(&#34;172.32.0.2&#34;)
- *             .externalPort(&#34;any&#34;)
- *             .internalIp(&#34;172.16.0.4&#34;)
- *             .internalPort(&#34;any&#34;)
+ *             .type("Intranet")
+ *             .ipProtocol("any")
+ *             .externalIp("172.32.0.2")
+ *             .externalPort("any")
+ *             .internalIp("172.16.0.4")
+ *             .internalPort("any")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

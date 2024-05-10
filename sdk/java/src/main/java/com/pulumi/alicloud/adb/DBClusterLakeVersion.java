@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,28 +57,29 @@ import javax.annotation.Nullable;
  *         final var default = AdbFunctions.getZones();
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *             .nameRegex("^default-NODELETING$")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
- *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion(&#34;defaultDBClusterLakeVersion&#34;, DBClusterLakeVersionArgs.builder()        
- *             .dbClusterVersion(&#34;5.0&#34;)
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion("defaultDBClusterLakeVersion", DBClusterLakeVersionArgs.builder()        
+ *             .dbClusterVersion("5.0")
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
  *             .zoneId(default_.ids()[0])
- *             .computeResource(&#34;16ACU&#34;)
- *             .storageResource(&#34;0ACU&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .computeResource("16ACU")
+ *             .storageResource("0ACU")
+ *             .paymentType("PayAsYouGo")
  *             .enableDefaultResourceGroup(false)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

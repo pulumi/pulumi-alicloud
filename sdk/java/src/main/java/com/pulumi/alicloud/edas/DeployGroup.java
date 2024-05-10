@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,8 +57,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -66,33 +67,34 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
- *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
- *             .clusterType(&#34;2&#34;)
- *             .networkMode(&#34;2&#34;)
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *             .clusterName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .clusterType("2")
+ *             .networkMode("2")
  *             .logicalRegionId(default_.regions()[0].id())
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultApplication = new Application(&#34;defaultApplication&#34;, ApplicationArgs.builder()        
- *             .applicationName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
+ *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+ *             .applicationName(String.format("%s-%s", name,defaultInteger.result()))
  *             .clusterId(defaultCluster.id())
- *             .packageType(&#34;JAR&#34;)
+ *             .packageType("JAR")
  *             .build());
  * 
- *         var defaultDeployGroup = new DeployGroup(&#34;defaultDeployGroup&#34;, DeployGroupArgs.builder()        
+ *         var defaultDeployGroup = new DeployGroup("defaultDeployGroup", DeployGroupArgs.builder()        
  *             .appId(defaultApplication.id())
- *             .groupName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
+ *             .groupName(String.format("%s-%s", name,defaultInteger.result()))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,37 +53,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Instance("default", InstanceArgs.builder()        
  *             .systemDisk(InstanceSystemDiskArgs.builder()
- *                 .size(&#34;20&#34;)
+ *                 .size("20")
  *                 .build())
- *             .scheduleAreaLevel(&#34;Region&#34;)
- *             .imageId(&#34;centos_6_08_64_20G_alibase_20171208&#34;)
- *             .paymentType(&#34;Subscription&#34;)
- *             .instanceType(&#34;ens.sn1.stiny&#34;)
- *             .password(&#34;12345678ABCabc&#34;)
- *             .amount(&#34;1&#34;)
- *             .period(&#34;1&#34;)
- *             .internetMaxBandwidthOut(&#34;10&#34;)
+ *             .scheduleAreaLevel("Region")
+ *             .imageId("centos_6_08_64_20G_alibase_20171208")
+ *             .paymentType("Subscription")
+ *             .instanceType("ens.sn1.stiny")
+ *             .password("12345678ABCabc")
+ *             .amount("1")
+ *             .period("1")
+ *             .internetMaxBandwidthOut("10")
  *             .publicIpIdentification(true)
- *             .ensRegionId(&#34;cn-chenzhou-telecom_unicom_cmcc&#34;)
- *             .periodUnit(&#34;Month&#34;)
+ *             .ensRegionId("cn-chenzhou-telecom_unicom_cmcc")
+ *             .periodUnit("Month")
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .description(&#34;InstanceSecurityGroupAttachment_Description&#34;)
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *             .description("InstanceSecurityGroupAttachment_Description")
  *             .securityGroupName(name)
  *             .build());
  * 
- *         var defaultInstanceSecurityGroupAttachment = new InstanceSecurityGroupAttachment(&#34;defaultInstanceSecurityGroupAttachment&#34;, InstanceSecurityGroupAttachmentArgs.builder()        
+ *         var defaultInstanceSecurityGroupAttachment = new InstanceSecurityGroupAttachment("defaultInstanceSecurityGroupAttachment", InstanceSecurityGroupAttachmentArgs.builder()        
  *             .instanceId(default_.id())
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -66,7 +66,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -88,12 +89,13 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getAlarmContactGroups(GetAlarmContactGroupsArgs.builder()
-     *             .nameRegex(&#34;tf-testacc&#34;)
+     *             .nameRegex("tf-testacc")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -110,7 +112,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -132,12 +135,13 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getAlarmContactGroups(GetAlarmContactGroupsArgs.builder()
-     *             .nameRegex(&#34;tf-testacc&#34;)
+     *             .nameRegex("tf-testacc")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -154,7 +158,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -176,12 +181,13 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getAlarmContactGroups(GetAlarmContactGroupsArgs.builder()
-     *             .nameRegex(&#34;tf-testacc&#34;)
+     *             .nameRegex("tf-testacc")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -198,7 +204,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -220,12 +227,13 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getAlarmContactGroups(GetAlarmContactGroupsArgs.builder()
-     *             .nameRegex(&#34;tf-testacc&#34;)
+     *             .nameRegex("tf-testacc")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -242,7 +250,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -264,12 +273,13 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getAlarmContactGroups(GetAlarmContactGroupsArgs.builder()
-     *             .nameRegex(&#34;tf-testacc&#34;)
+     *             .nameRegex("tf-testacc")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -286,7 +296,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -308,12 +319,13 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getAlarmContactGroups(GetAlarmContactGroupsArgs.builder()
-     *             .nameRegex(&#34;tf-testacc&#34;)
+     *             .nameRegex("tf-testacc")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -330,7 +342,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -352,13 +365,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getAlarmContacts(GetAlarmContactsArgs.builder()
-     *             .ids(&#34;tf-testAccCmsAlarmContact&#34;)
+     *             .ids("tf-testAccCmsAlarmContact")
      *             .build());
      * 
-     *         ctx.export(&#34;first-contact&#34;, this_.contacts());
+     *         ctx.export("first-contact", this_.contacts());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -375,7 +389,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -397,13 +412,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getAlarmContacts(GetAlarmContactsArgs.builder()
-     *             .ids(&#34;tf-testAccCmsAlarmContact&#34;)
+     *             .ids("tf-testAccCmsAlarmContact")
      *             .build());
      * 
-     *         ctx.export(&#34;first-contact&#34;, this_.contacts());
+     *         ctx.export("first-contact", this_.contacts());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -420,7 +436,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -442,13 +459,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getAlarmContacts(GetAlarmContactsArgs.builder()
-     *             .ids(&#34;tf-testAccCmsAlarmContact&#34;)
+     *             .ids("tf-testAccCmsAlarmContact")
      *             .build());
      * 
-     *         ctx.export(&#34;first-contact&#34;, this_.contacts());
+     *         ctx.export("first-contact", this_.contacts());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -465,7 +483,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -487,13 +506,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getAlarmContacts(GetAlarmContactsArgs.builder()
-     *             .ids(&#34;tf-testAccCmsAlarmContact&#34;)
+     *             .ids("tf-testAccCmsAlarmContact")
      *             .build());
      * 
-     *         ctx.export(&#34;first-contact&#34;, this_.contacts());
+     *         ctx.export("first-contact", this_.contacts());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -510,7 +530,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -532,13 +553,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getAlarmContacts(GetAlarmContactsArgs.builder()
-     *             .ids(&#34;tf-testAccCmsAlarmContact&#34;)
+     *             .ids("tf-testAccCmsAlarmContact")
      *             .build());
      * 
-     *         ctx.export(&#34;first-contact&#34;, this_.contacts());
+     *         ctx.export("first-contact", this_.contacts());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -555,7 +577,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -577,13 +600,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getAlarmContacts(GetAlarmContactsArgs.builder()
-     *             .ids(&#34;tf-testAccCmsAlarmContact&#34;)
+     *             .ids("tf-testAccCmsAlarmContact")
      *             .build());
      * 
-     *         ctx.export(&#34;first-contact&#34;, this_.contacts());
+     *         ctx.export("first-contact", this_.contacts());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -600,7 +624,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -627,19 +652,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
      *             .alarmContactGroupName(name)
-     *             .describe(&#34;example_value&#34;)
+     *             .describe("example_value")
      *             .enableSubscribed(true)
      *             .build());
      * 
-     *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
+     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()        
      *             .contactGroupLists(default_.id())
-     *             .tagKey(&#34;your_tag_key&#34;)
+     *             .tagKey("your_tag_key")
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
-     *                 .tagValue(&#34;your_tag_value&#34;)
-     *                 .tagValueMatchFunction(&#34;all&#34;)
+     *                 .tagValue("your_tag_value")
+     *                 .tagValueMatchFunction("all")
      *                 .build())
      *             .build());
      * 
@@ -647,10 +672,11 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cmsDynamicTagGroupId1&#34;, ids.applyValue(getDynamicTagGroupsResult -&gt; getDynamicTagGroupsResult).applyValue(ids -&gt; ids.applyValue(getDynamicTagGroupsResult -&gt; getDynamicTagGroupsResult.groups()[0].id())));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult).applyValue(ids -> ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -667,7 +693,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -694,19 +721,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
      *             .alarmContactGroupName(name)
-     *             .describe(&#34;example_value&#34;)
+     *             .describe("example_value")
      *             .enableSubscribed(true)
      *             .build());
      * 
-     *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
+     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()        
      *             .contactGroupLists(default_.id())
-     *             .tagKey(&#34;your_tag_key&#34;)
+     *             .tagKey("your_tag_key")
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
-     *                 .tagValue(&#34;your_tag_value&#34;)
-     *                 .tagValueMatchFunction(&#34;all&#34;)
+     *                 .tagValue("your_tag_value")
+     *                 .tagValueMatchFunction("all")
      *                 .build())
      *             .build());
      * 
@@ -714,10 +741,11 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cmsDynamicTagGroupId1&#34;, ids.applyValue(getDynamicTagGroupsResult -&gt; getDynamicTagGroupsResult).applyValue(ids -&gt; ids.applyValue(getDynamicTagGroupsResult -&gt; getDynamicTagGroupsResult.groups()[0].id())));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult).applyValue(ids -> ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -734,7 +762,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -761,19 +790,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
      *             .alarmContactGroupName(name)
-     *             .describe(&#34;example_value&#34;)
+     *             .describe("example_value")
      *             .enableSubscribed(true)
      *             .build());
      * 
-     *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
+     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()        
      *             .contactGroupLists(default_.id())
-     *             .tagKey(&#34;your_tag_key&#34;)
+     *             .tagKey("your_tag_key")
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
-     *                 .tagValue(&#34;your_tag_value&#34;)
-     *                 .tagValueMatchFunction(&#34;all&#34;)
+     *                 .tagValue("your_tag_value")
+     *                 .tagValueMatchFunction("all")
      *                 .build())
      *             .build());
      * 
@@ -781,10 +810,11 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cmsDynamicTagGroupId1&#34;, ids.applyValue(getDynamicTagGroupsResult -&gt; getDynamicTagGroupsResult).applyValue(ids -&gt; ids.applyValue(getDynamicTagGroupsResult -&gt; getDynamicTagGroupsResult.groups()[0].id())));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult).applyValue(ids -> ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -801,7 +831,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -828,19 +859,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
      *             .alarmContactGroupName(name)
-     *             .describe(&#34;example_value&#34;)
+     *             .describe("example_value")
      *             .enableSubscribed(true)
      *             .build());
      * 
-     *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
+     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()        
      *             .contactGroupLists(default_.id())
-     *             .tagKey(&#34;your_tag_key&#34;)
+     *             .tagKey("your_tag_key")
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
-     *                 .tagValue(&#34;your_tag_value&#34;)
-     *                 .tagValueMatchFunction(&#34;all&#34;)
+     *                 .tagValue("your_tag_value")
+     *                 .tagValueMatchFunction("all")
      *                 .build())
      *             .build());
      * 
@@ -848,10 +879,11 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cmsDynamicTagGroupId1&#34;, ids.applyValue(getDynamicTagGroupsResult -&gt; getDynamicTagGroupsResult).applyValue(ids -&gt; ids.applyValue(getDynamicTagGroupsResult -&gt; getDynamicTagGroupsResult.groups()[0].id())));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult).applyValue(ids -> ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -868,7 +900,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -895,19 +928,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
      *             .alarmContactGroupName(name)
-     *             .describe(&#34;example_value&#34;)
+     *             .describe("example_value")
      *             .enableSubscribed(true)
      *             .build());
      * 
-     *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
+     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()        
      *             .contactGroupLists(default_.id())
-     *             .tagKey(&#34;your_tag_key&#34;)
+     *             .tagKey("your_tag_key")
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
-     *                 .tagValue(&#34;your_tag_value&#34;)
-     *                 .tagValueMatchFunction(&#34;all&#34;)
+     *                 .tagValue("your_tag_value")
+     *                 .tagValueMatchFunction("all")
      *                 .build())
      *             .build());
      * 
@@ -915,10 +948,11 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cmsDynamicTagGroupId1&#34;, ids.applyValue(getDynamicTagGroupsResult -&gt; getDynamicTagGroupsResult).applyValue(ids -&gt; ids.applyValue(getDynamicTagGroupsResult -&gt; getDynamicTagGroupsResult.groups()[0].id())));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult).applyValue(ids -> ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -935,7 +969,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -962,19 +997,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
+     *         final var name = config.get("name").orElse("example_value");
+     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
      *             .alarmContactGroupName(name)
-     *             .describe(&#34;example_value&#34;)
+     *             .describe("example_value")
      *             .enableSubscribed(true)
      *             .build());
      * 
-     *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
+     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()        
      *             .contactGroupLists(default_.id())
-     *             .tagKey(&#34;your_tag_key&#34;)
+     *             .tagKey("your_tag_key")
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
-     *                 .tagValue(&#34;your_tag_value&#34;)
-     *                 .tagValueMatchFunction(&#34;all&#34;)
+     *                 .tagValue("your_tag_value")
+     *                 .tagValueMatchFunction("all")
      *                 .build())
      *             .build());
      * 
@@ -982,10 +1017,11 @@ public final class CmsFunctions {
      *             .ids(defaultDynamicTagGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;cmsDynamicTagGroupId1&#34;, ids.applyValue(getDynamicTagGroupsResult -&gt; getDynamicTagGroupsResult).applyValue(ids -&gt; ids.applyValue(getDynamicTagGroupsResult -&gt; getDynamicTagGroupsResult.groups()[0].id())));
+     *         ctx.export("cmsDynamicTagGroupId1", ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult).applyValue(ids -> ids.applyValue(getDynamicTagGroupsResult -> getDynamicTagGroupsResult.groups()[0].id())));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1002,7 +1038,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1024,18 +1061,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsEventRuleId1&#34;, ids.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId1", ids.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
      *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
-     *             .nameRegex(&#34;^my-EventRule&#34;)
+     *             .nameRegex("^my-EventRule")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsEventRuleId2&#34;, nameRegex.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId2", nameRegex.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1052,7 +1090,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1074,18 +1113,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsEventRuleId1&#34;, ids.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId1", ids.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
      *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
-     *             .nameRegex(&#34;^my-EventRule&#34;)
+     *             .nameRegex("^my-EventRule")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsEventRuleId2&#34;, nameRegex.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId2", nameRegex.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1102,7 +1142,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1124,18 +1165,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsEventRuleId1&#34;, ids.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId1", ids.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
      *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
-     *             .nameRegex(&#34;^my-EventRule&#34;)
+     *             .nameRegex("^my-EventRule")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsEventRuleId2&#34;, nameRegex.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId2", nameRegex.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1152,7 +1194,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1174,18 +1217,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsEventRuleId1&#34;, ids.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId1", ids.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
      *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
-     *             .nameRegex(&#34;^my-EventRule&#34;)
+     *             .nameRegex("^my-EventRule")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsEventRuleId2&#34;, nameRegex.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId2", nameRegex.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1202,7 +1246,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1224,18 +1269,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsEventRuleId1&#34;, ids.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId1", ids.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
      *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
-     *             .nameRegex(&#34;^my-EventRule&#34;)
+     *             .nameRegex("^my-EventRule")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsEventRuleId2&#34;, nameRegex.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId2", nameRegex.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1252,7 +1298,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1274,18 +1321,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsEventRuleId1&#34;, ids.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId1", ids.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
      *         final var nameRegex = CmsFunctions.getEventRules(GetEventRulesArgs.builder()
-     *             .nameRegex(&#34;^my-EventRule&#34;)
+     *             .nameRegex("^my-EventRule")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsEventRuleId2&#34;, nameRegex.applyValue(getEventRulesResult -&gt; getEventRulesResult.rules()[0].id()));
+     *         ctx.export("cmsEventRuleId2", nameRegex.applyValue(getEventRulesResult -> getEventRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1302,7 +1350,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1324,14 +1373,15 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getGroupMetricRules(GetGroupMetricRulesArgs.builder()
-     *             .ids(&#34;4a9a8978-a9cc-55ca-aa7c-530ccd91ae57&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("4a9a8978-a9cc-55ca-aa7c-530ccd91ae57")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCmsGroupMetricRuleId&#34;, example.applyValue(getGroupMetricRulesResult -&gt; getGroupMetricRulesResult.rules()[0].id()));
+     *         ctx.export("firstCmsGroupMetricRuleId", example.applyValue(getGroupMetricRulesResult -> getGroupMetricRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1348,7 +1398,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1370,14 +1421,15 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getGroupMetricRules(GetGroupMetricRulesArgs.builder()
-     *             .ids(&#34;4a9a8978-a9cc-55ca-aa7c-530ccd91ae57&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("4a9a8978-a9cc-55ca-aa7c-530ccd91ae57")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCmsGroupMetricRuleId&#34;, example.applyValue(getGroupMetricRulesResult -&gt; getGroupMetricRulesResult.rules()[0].id()));
+     *         ctx.export("firstCmsGroupMetricRuleId", example.applyValue(getGroupMetricRulesResult -> getGroupMetricRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1394,7 +1446,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1416,14 +1469,15 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getGroupMetricRules(GetGroupMetricRulesArgs.builder()
-     *             .ids(&#34;4a9a8978-a9cc-55ca-aa7c-530ccd91ae57&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("4a9a8978-a9cc-55ca-aa7c-530ccd91ae57")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCmsGroupMetricRuleId&#34;, example.applyValue(getGroupMetricRulesResult -&gt; getGroupMetricRulesResult.rules()[0].id()));
+     *         ctx.export("firstCmsGroupMetricRuleId", example.applyValue(getGroupMetricRulesResult -> getGroupMetricRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1440,7 +1494,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1462,14 +1517,15 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getGroupMetricRules(GetGroupMetricRulesArgs.builder()
-     *             .ids(&#34;4a9a8978-a9cc-55ca-aa7c-530ccd91ae57&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("4a9a8978-a9cc-55ca-aa7c-530ccd91ae57")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCmsGroupMetricRuleId&#34;, example.applyValue(getGroupMetricRulesResult -&gt; getGroupMetricRulesResult.rules()[0].id()));
+     *         ctx.export("firstCmsGroupMetricRuleId", example.applyValue(getGroupMetricRulesResult -> getGroupMetricRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1486,7 +1542,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1508,14 +1565,15 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getGroupMetricRules(GetGroupMetricRulesArgs.builder()
-     *             .ids(&#34;4a9a8978-a9cc-55ca-aa7c-530ccd91ae57&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("4a9a8978-a9cc-55ca-aa7c-530ccd91ae57")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCmsGroupMetricRuleId&#34;, example.applyValue(getGroupMetricRulesResult -&gt; getGroupMetricRulesResult.rules()[0].id()));
+     *         ctx.export("firstCmsGroupMetricRuleId", example.applyValue(getGroupMetricRulesResult -> getGroupMetricRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1532,7 +1590,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1554,14 +1613,15 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getGroupMetricRules(GetGroupMetricRulesArgs.builder()
-     *             .ids(&#34;4a9a8978-a9cc-55ca-aa7c-530ccd91ae57&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("4a9a8978-a9cc-55ca-aa7c-530ccd91ae57")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCmsGroupMetricRuleId&#34;, example.applyValue(getGroupMetricRulesResult -&gt; getGroupMetricRulesResult.rules()[0].id()));
+     *         ctx.export("firstCmsGroupMetricRuleId", example.applyValue(getGroupMetricRulesResult -> getGroupMetricRulesResult.rules()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1578,7 +1638,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1600,16 +1661,17 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getHybridMonitorDatas(GetHybridMonitorDatasArgs.builder()
-     *             .namespace(&#34;example_value&#34;)
-     *             .promSql(&#34;AliyunEcs_cpu_total&#34;)
-     *             .start(&#34;1657505665&#34;)
-     *             .end(&#34;1657520065&#34;)
+     *             .namespace("example_value")
+     *             .promSql("AliyunEcs_cpu_total")
+     *             .start("1657505665")
+     *             .end("1657520065")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId1&#34;, default_.datas()[0]);
+     *         ctx.export("cmsMetricRuleTemplateId1", default_.datas()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1626,7 +1688,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1648,16 +1711,17 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getHybridMonitorDatas(GetHybridMonitorDatasArgs.builder()
-     *             .namespace(&#34;example_value&#34;)
-     *             .promSql(&#34;AliyunEcs_cpu_total&#34;)
-     *             .start(&#34;1657505665&#34;)
-     *             .end(&#34;1657520065&#34;)
+     *             .namespace("example_value")
+     *             .promSql("AliyunEcs_cpu_total")
+     *             .start("1657505665")
+     *             .end("1657520065")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId1&#34;, default_.datas()[0]);
+     *         ctx.export("cmsMetricRuleTemplateId1", default_.datas()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1674,7 +1738,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1696,16 +1761,17 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getHybridMonitorDatas(GetHybridMonitorDatasArgs.builder()
-     *             .namespace(&#34;example_value&#34;)
-     *             .promSql(&#34;AliyunEcs_cpu_total&#34;)
-     *             .start(&#34;1657505665&#34;)
-     *             .end(&#34;1657520065&#34;)
+     *             .namespace("example_value")
+     *             .promSql("AliyunEcs_cpu_total")
+     *             .start("1657505665")
+     *             .end("1657520065")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId1&#34;, default_.datas()[0]);
+     *         ctx.export("cmsMetricRuleTemplateId1", default_.datas()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1722,7 +1788,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1744,16 +1811,17 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getHybridMonitorDatas(GetHybridMonitorDatasArgs.builder()
-     *             .namespace(&#34;example_value&#34;)
-     *             .promSql(&#34;AliyunEcs_cpu_total&#34;)
-     *             .start(&#34;1657505665&#34;)
-     *             .end(&#34;1657520065&#34;)
+     *             .namespace("example_value")
+     *             .promSql("AliyunEcs_cpu_total")
+     *             .start("1657505665")
+     *             .end("1657520065")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId1&#34;, default_.datas()[0]);
+     *         ctx.export("cmsMetricRuleTemplateId1", default_.datas()[0]);
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1770,7 +1838,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1792,13 +1861,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getHybridMonitorFcTasks(GetHybridMonitorFcTasksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsHybridMonitorFcTaskId1&#34;, ids.applyValue(getHybridMonitorFcTasksResult -&gt; getHybridMonitorFcTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.applyValue(getHybridMonitorFcTasksResult -> getHybridMonitorFcTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1815,7 +1885,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1837,13 +1908,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getHybridMonitorFcTasks(GetHybridMonitorFcTasksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsHybridMonitorFcTaskId1&#34;, ids.applyValue(getHybridMonitorFcTasksResult -&gt; getHybridMonitorFcTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.applyValue(getHybridMonitorFcTasksResult -> getHybridMonitorFcTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1860,7 +1932,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1882,13 +1955,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getHybridMonitorFcTasks(GetHybridMonitorFcTasksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsHybridMonitorFcTaskId1&#34;, ids.applyValue(getHybridMonitorFcTasksResult -&gt; getHybridMonitorFcTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.applyValue(getHybridMonitorFcTasksResult -> getHybridMonitorFcTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1905,7 +1979,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1927,13 +2002,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getHybridMonitorFcTasks(GetHybridMonitorFcTasksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsHybridMonitorFcTaskId1&#34;, ids.applyValue(getHybridMonitorFcTasksResult -&gt; getHybridMonitorFcTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.applyValue(getHybridMonitorFcTasksResult -> getHybridMonitorFcTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1950,7 +2026,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1972,13 +2049,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getHybridMonitorFcTasks(GetHybridMonitorFcTasksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsHybridMonitorFcTaskId1&#34;, ids.applyValue(getHybridMonitorFcTasksResult -&gt; getHybridMonitorFcTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.applyValue(getHybridMonitorFcTasksResult -> getHybridMonitorFcTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1995,7 +2073,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2017,13 +2096,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getHybridMonitorFcTasks(GetHybridMonitorFcTasksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsHybridMonitorFcTaskId1&#34;, ids.applyValue(getHybridMonitorFcTasksResult -&gt; getHybridMonitorFcTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorFcTaskId1", ids.applyValue(getHybridMonitorFcTasksResult -> getHybridMonitorFcTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2040,7 +2120,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2062,13 +2143,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getHybridMonitorSlsTasks(GetHybridMonitorSlsTasksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsHybridMonitorSlsTaskId1&#34;, ids.applyValue(getHybridMonitorSlsTasksResult -&gt; getHybridMonitorSlsTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.applyValue(getHybridMonitorSlsTasksResult -> getHybridMonitorSlsTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2085,7 +2167,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2107,13 +2190,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getHybridMonitorSlsTasks(GetHybridMonitorSlsTasksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsHybridMonitorSlsTaskId1&#34;, ids.applyValue(getHybridMonitorSlsTasksResult -&gt; getHybridMonitorSlsTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.applyValue(getHybridMonitorSlsTasksResult -> getHybridMonitorSlsTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2130,7 +2214,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2152,13 +2237,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getHybridMonitorSlsTasks(GetHybridMonitorSlsTasksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsHybridMonitorSlsTaskId1&#34;, ids.applyValue(getHybridMonitorSlsTasksResult -&gt; getHybridMonitorSlsTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.applyValue(getHybridMonitorSlsTasksResult -> getHybridMonitorSlsTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2175,7 +2261,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2197,13 +2284,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getHybridMonitorSlsTasks(GetHybridMonitorSlsTasksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsHybridMonitorSlsTaskId1&#34;, ids.applyValue(getHybridMonitorSlsTasksResult -&gt; getHybridMonitorSlsTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.applyValue(getHybridMonitorSlsTasksResult -> getHybridMonitorSlsTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2220,7 +2308,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2242,13 +2331,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getHybridMonitorSlsTasks(GetHybridMonitorSlsTasksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsHybridMonitorSlsTaskId1&#34;, ids.applyValue(getHybridMonitorSlsTasksResult -&gt; getHybridMonitorSlsTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.applyValue(getHybridMonitorSlsTasksResult -> getHybridMonitorSlsTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2265,7 +2355,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2287,13 +2378,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getHybridMonitorSlsTasks(GetHybridMonitorSlsTasksArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsHybridMonitorSlsTaskId1&#34;, ids.applyValue(getHybridMonitorSlsTasksResult -&gt; getHybridMonitorSlsTasksResult.tasks()[0].id()));
+     *         ctx.export("cmsHybridMonitorSlsTaskId1", ids.applyValue(getHybridMonitorSlsTasksResult -> getHybridMonitorSlsTasksResult.tasks()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2308,7 +2400,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2331,14 +2424,15 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
      *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
-     *             .category(&#34;ecs&#34;)
-     *             .namespace(&#34;acs_ecs_dashboard&#34;)
+     *             .category("ecs")
+     *             .namespace("acs_ecs_dashboard")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, lists[0].id());
+     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2353,7 +2447,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2376,14 +2471,15 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
      *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
-     *             .category(&#34;ecs&#34;)
-     *             .namespace(&#34;acs_ecs_dashboard&#34;)
+     *             .category("ecs")
+     *             .namespace("acs_ecs_dashboard")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, lists[0].id());
+     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2398,7 +2494,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2421,14 +2518,15 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
      *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
-     *             .category(&#34;ecs&#34;)
-     *             .namespace(&#34;acs_ecs_dashboard&#34;)
+     *             .category("ecs")
+     *             .namespace("acs_ecs_dashboard")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, lists[0].id());
+     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2443,7 +2541,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2466,14 +2565,15 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
      *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
-     *             .category(&#34;ecs&#34;)
-     *             .namespace(&#34;acs_ecs_dashboard&#34;)
+     *             .category("ecs")
+     *             .namespace("acs_ecs_dashboard")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, lists[0].id());
+     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2488,7 +2588,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2511,14 +2612,15 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
      *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
-     *             .category(&#34;ecs&#34;)
-     *             .namespace(&#34;acs_ecs_dashboard&#34;)
+     *             .category("ecs")
+     *             .namespace("acs_ecs_dashboard")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, lists[0].id());
+     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2533,7 +2635,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2556,14 +2659,15 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
      *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
-     *             .category(&#34;ecs&#34;)
-     *             .namespace(&#34;acs_ecs_dashboard&#34;)
+     *             .category("ecs")
+     *             .namespace("acs_ecs_dashboard")
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, lists[0].id());
+     *         ctx.export("alicloudCmsRuleBlackListExampleId", lists[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2580,7 +2684,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2602,28 +2707,29 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId1&#34;, ids.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId1", ids.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var nameRegex = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .nameRegex(&#34;^my-MetricRuleTemplate&#34;)
+     *             .nameRegex("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId2&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var keyword = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .keyword(&#34;^my-MetricRuleTemplate&#34;)
+     *             .keyword("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId3&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var templateId = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .templateId(&#34;example_value&#34;)
+     *             .templateId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId4&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2640,7 +2746,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2662,28 +2769,29 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId1&#34;, ids.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId1", ids.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var nameRegex = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .nameRegex(&#34;^my-MetricRuleTemplate&#34;)
+     *             .nameRegex("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId2&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var keyword = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .keyword(&#34;^my-MetricRuleTemplate&#34;)
+     *             .keyword("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId3&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var templateId = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .templateId(&#34;example_value&#34;)
+     *             .templateId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId4&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2700,7 +2808,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2722,28 +2831,29 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId1&#34;, ids.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId1", ids.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var nameRegex = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .nameRegex(&#34;^my-MetricRuleTemplate&#34;)
+     *             .nameRegex("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId2&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var keyword = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .keyword(&#34;^my-MetricRuleTemplate&#34;)
+     *             .keyword("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId3&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var templateId = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .templateId(&#34;example_value&#34;)
+     *             .templateId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId4&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2760,7 +2870,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2782,28 +2893,29 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId1&#34;, ids.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId1", ids.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var nameRegex = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .nameRegex(&#34;^my-MetricRuleTemplate&#34;)
+     *             .nameRegex("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId2&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var keyword = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .keyword(&#34;^my-MetricRuleTemplate&#34;)
+     *             .keyword("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId3&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var templateId = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .templateId(&#34;example_value&#34;)
+     *             .templateId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId4&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2820,7 +2932,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2842,28 +2955,29 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId1&#34;, ids.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId1", ids.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var nameRegex = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .nameRegex(&#34;^my-MetricRuleTemplate&#34;)
+     *             .nameRegex("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId2&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var keyword = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .keyword(&#34;^my-MetricRuleTemplate&#34;)
+     *             .keyword("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId3&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var templateId = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .templateId(&#34;example_value&#34;)
+     *             .templateId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId4&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2880,7 +2994,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2902,28 +3017,29 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .ids(&#34;example_value&#34;)
+     *             .ids("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId1&#34;, ids.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId1", ids.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var nameRegex = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .nameRegex(&#34;^my-MetricRuleTemplate&#34;)
+     *             .nameRegex("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId2&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId2", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var keyword = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .keyword(&#34;^my-MetricRuleTemplate&#34;)
+     *             .keyword("^my-MetricRuleTemplate")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId3&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId3", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *         final var templateId = CmsFunctions.getMetricRuleTemplates(GetMetricRuleTemplatesArgs.builder()
-     *             .templateId(&#34;example_value&#34;)
+     *             .templateId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsMetricRuleTemplateId4&#34;, nameRegex.applyValue(getMetricRuleTemplatesResult -&gt; getMetricRuleTemplatesResult.templates()[0].id()));
+     *         ctx.export("cmsMetricRuleTemplateId4", nameRegex.applyValue(getMetricRuleTemplatesResult -> getMetricRuleTemplatesResult.templates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2952,7 +3068,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2974,14 +3091,15 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getMonitorGroups(GetMonitorGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCmsMonitorGroupId&#34;, example.applyValue(getMonitorGroupsResult -&gt; getMonitorGroupsResult.groups()[0].id()));
+     *         ctx.export("firstCmsMonitorGroupId", example.applyValue(getMonitorGroupsResult -> getMonitorGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2998,7 +3116,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3020,14 +3139,15 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getMonitorGroups(GetMonitorGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCmsMonitorGroupId&#34;, example.applyValue(getMonitorGroupsResult -&gt; getMonitorGroupsResult.groups()[0].id()));
+     *         ctx.export("firstCmsMonitorGroupId", example.applyValue(getMonitorGroupsResult -> getMonitorGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3044,7 +3164,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3066,14 +3187,15 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getMonitorGroups(GetMonitorGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCmsMonitorGroupId&#34;, example.applyValue(getMonitorGroupsResult -&gt; getMonitorGroupsResult.groups()[0].id()));
+     *         ctx.export("firstCmsMonitorGroupId", example.applyValue(getMonitorGroupsResult -> getMonitorGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3090,7 +3212,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3112,14 +3235,15 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getMonitorGroups(GetMonitorGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCmsMonitorGroupId&#34;, example.applyValue(getMonitorGroupsResult -&gt; getMonitorGroupsResult.groups()[0].id()));
+     *         ctx.export("firstCmsMonitorGroupId", example.applyValue(getMonitorGroupsResult -> getMonitorGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3136,7 +3260,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3158,14 +3283,15 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getMonitorGroups(GetMonitorGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCmsMonitorGroupId&#34;, example.applyValue(getMonitorGroupsResult -&gt; getMonitorGroupsResult.groups()[0].id()));
+     *         ctx.export("firstCmsMonitorGroupId", example.applyValue(getMonitorGroupsResult -> getMonitorGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3182,7 +3308,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3204,14 +3331,15 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CmsFunctions.getMonitorGroups(GetMonitorGroupsArgs.builder()
-     *             .ids(&#34;example_value&#34;)
-     *             .nameRegex(&#34;the_resource_name&#34;)
+     *             .ids("example_value")
+     *             .nameRegex("the_resource_name")
      *             .build());
      * 
-     *         ctx.export(&#34;firstCmsMonitorGroupId&#34;, example.applyValue(getMonitorGroupsResult -&gt; getMonitorGroupsResult.groups()[0].id()));
+     *         ctx.export("firstCmsMonitorGroupId", example.applyValue(getMonitorGroupsResult -> getMonitorGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3228,7 +3356,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3250,13 +3379,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("cmsNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3273,7 +3403,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3295,13 +3426,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("cmsNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3318,7 +3450,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3340,13 +3473,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("cmsNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3363,7 +3497,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3385,13 +3520,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("cmsNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3408,7 +3544,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3430,13 +3567,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("cmsNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3453,7 +3591,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3475,13 +3614,14 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getNamespaces(GetNamespacesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsNamespaceId1&#34;, ids.applyValue(getNamespacesResult -&gt; getNamespacesResult.namespaces()[0].id()));
+     *         ctx.export("cmsNamespaceId1", ids.applyValue(getNamespacesResult -> getNamespacesResult.namespaces()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3500,7 +3640,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3522,12 +3663,13 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CmsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3546,7 +3688,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3568,12 +3711,13 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CmsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3592,7 +3736,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3614,12 +3759,13 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CmsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3638,7 +3784,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3660,12 +3807,13 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CmsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3684,7 +3832,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3706,12 +3855,13 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CmsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3730,7 +3880,8 @@ public final class CmsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3752,12 +3903,13 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CmsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3774,7 +3926,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3796,18 +3949,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsSlsGroupId1&#34;, ids.applyValue(getSlsGroupsResult -&gt; getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId1", ids.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
      *         final var nameRegex = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-SlsGroup&#34;)
+     *             .nameRegex("^my-SlsGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsSlsGroupId2&#34;, nameRegex.applyValue(getSlsGroupsResult -&gt; getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId2", nameRegex.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3824,7 +3978,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3846,18 +4001,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsSlsGroupId1&#34;, ids.applyValue(getSlsGroupsResult -&gt; getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId1", ids.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
      *         final var nameRegex = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-SlsGroup&#34;)
+     *             .nameRegex("^my-SlsGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsSlsGroupId2&#34;, nameRegex.applyValue(getSlsGroupsResult -&gt; getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId2", nameRegex.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3874,7 +4030,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3896,18 +4053,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsSlsGroupId1&#34;, ids.applyValue(getSlsGroupsResult -&gt; getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId1", ids.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
      *         final var nameRegex = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-SlsGroup&#34;)
+     *             .nameRegex("^my-SlsGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsSlsGroupId2&#34;, nameRegex.applyValue(getSlsGroupsResult -&gt; getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId2", nameRegex.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3924,7 +4082,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3946,18 +4105,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsSlsGroupId1&#34;, ids.applyValue(getSlsGroupsResult -&gt; getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId1", ids.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
      *         final var nameRegex = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-SlsGroup&#34;)
+     *             .nameRegex("^my-SlsGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsSlsGroupId2&#34;, nameRegex.applyValue(getSlsGroupsResult -&gt; getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId2", nameRegex.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3974,7 +4134,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3996,18 +4157,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsSlsGroupId1&#34;, ids.applyValue(getSlsGroupsResult -&gt; getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId1", ids.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
      *         final var nameRegex = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-SlsGroup&#34;)
+     *             .nameRegex("^my-SlsGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsSlsGroupId2&#34;, nameRegex.applyValue(getSlsGroupsResult -&gt; getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId2", nameRegex.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4024,7 +4186,8 @@ public final class CmsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4046,18 +4209,19 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsSlsGroupId1&#34;, ids.applyValue(getSlsGroupsResult -&gt; getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId1", ids.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
      *         final var nameRegex = CmsFunctions.getSlsGroups(GetSlsGroupsArgs.builder()
-     *             .nameRegex(&#34;^my-SlsGroup&#34;)
+     *             .nameRegex("^my-SlsGroup")
      *             .build());
      * 
-     *         ctx.export(&#34;cmsSlsGroupId2&#34;, nameRegex.applyValue(getSlsGroupsResult -&gt; getSlsGroupsResult.groups()[0].id()));
+     *         ctx.export("cmsSlsGroupId2", nameRegex.applyValue(getSlsGroupsResult -> getSlsGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

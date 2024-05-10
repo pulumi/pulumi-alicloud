@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,30 +54,31 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EcdPolicyGroup(&#34;default&#34;, EcdPolicyGroupArgs.builder()        
- *             .policyGroupName(&#34;terraform-example&#34;)
- *             .clipboard(&#34;read&#34;)
- *             .localDrive(&#34;read&#34;)
- *             .usbRedirect(&#34;off&#34;)
- *             .watermark(&#34;off&#34;)
+ *         var default_ = new EcdPolicyGroup("default", EcdPolicyGroupArgs.builder()        
+ *             .policyGroupName("terraform-example")
+ *             .clipboard("read")
+ *             .localDrive("read")
+ *             .usbRedirect("off")
+ *             .watermark("off")
  *             .authorizeAccessPolicyRules(EcdPolicyGroupAuthorizeAccessPolicyRuleArgs.builder()
- *                 .description(&#34;terraform-example&#34;)
- *                 .cidrIp(&#34;1.2.3.45/24&#34;)
+ *                 .description("terraform-example")
+ *                 .cidrIp("1.2.3.45/24")
  *                 .build())
  *             .authorizeSecurityPolicyRules(EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs.builder()
- *                 .type(&#34;inflow&#34;)
- *                 .policy(&#34;accept&#34;)
- *                 .description(&#34;terraform-example&#34;)
- *                 .portRange(&#34;80/80&#34;)
- *                 .ipProtocol(&#34;TCP&#34;)
- *                 .priority(&#34;1&#34;)
- *                 .cidrIp(&#34;1.2.3.4/24&#34;)
+ *                 .type("inflow")
+ *                 .policy("accept")
+ *                 .description("terraform-example")
+ *                 .portRange("80/80")
+ *                 .ipProtocol("TCP")
+ *                 .priority("1")
+ *                 .cidrIp("1.2.3.4/24")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

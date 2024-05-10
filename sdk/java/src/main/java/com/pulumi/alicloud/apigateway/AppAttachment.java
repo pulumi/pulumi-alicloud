@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,60 +51,61 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform_example&#34;);
- *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform_example");
+ *         var example = new Group("example", GroupArgs.builder()        
  *             .name(name)
  *             .description(name)
  *             .build());
  * 
- *         var exampleApi = new Api(&#34;exampleApi&#34;, ApiArgs.builder()        
+ *         var exampleApi = new Api("exampleApi", ApiArgs.builder()        
  *             .groupId(example.id())
  *             .name(name)
  *             .description(name)
- *             .authType(&#34;APP&#34;)
+ *             .authType("APP")
  *             .forceNonceCheck(false)
  *             .requestConfig(ApiRequestConfigArgs.builder()
- *                 .protocol(&#34;HTTP&#34;)
- *                 .method(&#34;GET&#34;)
- *                 .path(&#34;/example/path&#34;)
- *                 .mode(&#34;MAPPING&#34;)
+ *                 .protocol("HTTP")
+ *                 .method("GET")
+ *                 .path("/example/path")
+ *                 .mode("MAPPING")
  *                 .build())
- *             .serviceType(&#34;HTTP&#34;)
+ *             .serviceType("HTTP")
  *             .httpServiceConfig(ApiHttpServiceConfigArgs.builder()
- *                 .address(&#34;http://apigateway-backend.alicloudapi.com:8080&#34;)
- *                 .method(&#34;GET&#34;)
- *                 .path(&#34;/web/cloudapi&#34;)
+ *                 .address("http://apigateway-backend.alicloudapi.com:8080")
+ *                 .method("GET")
+ *                 .path("/web/cloudapi")
  *                 .timeout(12)
- *                 .aoneName(&#34;cloudapi-openapi&#34;)
+ *                 .aoneName("cloudapi-openapi")
  *                 .build())
  *             .requestParameters(ApiRequestParameterArgs.builder()
- *                 .name(&#34;example&#34;)
- *                 .type(&#34;STRING&#34;)
- *                 .required(&#34;OPTIONAL&#34;)
- *                 .in(&#34;QUERY&#34;)
- *                 .inService(&#34;QUERY&#34;)
- *                 .nameService(&#34;exampleservice&#34;)
+ *                 .name("example")
+ *                 .type("STRING")
+ *                 .required("OPTIONAL")
+ *                 .in("QUERY")
+ *                 .inService("QUERY")
+ *                 .nameService("exampleservice")
  *                 .build())
  *             .stageNames(            
- *                 &#34;RELEASE&#34;,
- *                 &#34;TEST&#34;)
+ *                 "RELEASE",
+ *                 "TEST")
  *             .build());
  * 
- *         var exampleApp = new App(&#34;exampleApp&#34;, AppArgs.builder()        
+ *         var exampleApp = new App("exampleApp", AppArgs.builder()        
  *             .name(name)
  *             .description(name)
  *             .build());
  * 
- *         var exampleAppAttachment = new AppAttachment(&#34;exampleAppAttachment&#34;, AppAttachmentArgs.builder()        
+ *         var exampleAppAttachment = new AppAttachment("exampleAppAttachment", AppAttachmentArgs.builder()        
  *             .apiId(exampleApi.apiId())
  *             .groupId(example.id())
  *             .appId(exampleApp.id())
- *             .stageName(&#34;PRE&#34;)
+ *             .stageName("PRE")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,36 +54,37 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AdbFunctions.getZones();
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *             .nameRegex("^default-NODELETING$")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
- *         final var vswitchId = defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]);
+ *         final var vswitchId = defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]);
  * 
- *         var cluster = new DBCluster(&#34;cluster&#34;, DBClusterArgs.builder()        
- *             .dbClusterCategory(&#34;MixedStorage&#34;)
- *             .mode(&#34;flexible&#34;)
- *             .computeResource(&#34;8Core32GB&#34;)
+ *         var cluster = new DBCluster("cluster", DBClusterArgs.builder()        
+ *             .dbClusterCategory("MixedStorage")
+ *             .mode("flexible")
+ *             .computeResource("8Core32GB")
  *             .vswitchId(vswitchId)
  *             .description(name)
  *             .build());
  * 
- *         var defaultConnection = new Connection(&#34;defaultConnection&#34;, ConnectionArgs.builder()        
+ *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()        
  *             .dbClusterId(cluster.id())
- *             .connectionPrefix(&#34;example&#34;)
+ *             .connectionPrefix("example")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

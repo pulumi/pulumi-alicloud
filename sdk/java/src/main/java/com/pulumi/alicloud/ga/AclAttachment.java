@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,27 +62,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Accelerator(&#34;default&#34;, AcceleratorArgs.builder()        
+ *         var default_ = new Accelerator("default", AcceleratorArgs.builder()        
  *             .duration(1)
  *             .autoUseCoupon(true)
- *             .spec(&#34;1&#34;)
+ *             .spec("1")
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
  *             .bandwidth(100)
- *             .type(&#34;Basic&#34;)
- *             .bandwidthType(&#34;Basic&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .billingType(&#34;PayBy95&#34;)
+ *             .type("Basic")
+ *             .bandwidthType("Basic")
+ *             .paymentType("PayAsYouGo")
+ *             .billingType("PayBy95")
  *             .ratio(30)
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
  *             .acceleratorId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var defaultListener = new Listener(&#34;defaultListener&#34;, ListenerArgs.builder()        
+ *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
  *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
  *             .portRanges(ListenerPortRangeArgs.builder()
  *                 .fromPort(80)
@@ -89,26 +90,27 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
- *             .aclName(&#34;terraform-example&#34;)
- *             .addressIpVersion(&#34;IPv4&#34;)
+ *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+ *             .aclName("terraform-example")
+ *             .addressIpVersion("IPv4")
  *             .build());
  * 
- *         var defaultAclEntryAttachment = new AclEntryAttachment(&#34;defaultAclEntryAttachment&#34;, AclEntryAttachmentArgs.builder()        
+ *         var defaultAclEntryAttachment = new AclEntryAttachment("defaultAclEntryAttachment", AclEntryAttachmentArgs.builder()        
  *             .aclId(defaultAcl.id())
- *             .entry(&#34;192.168.1.1/32&#34;)
- *             .entryDescription(&#34;terraform-example&#34;)
+ *             .entry("192.168.1.1/32")
+ *             .entryDescription("terraform-example")
  *             .build());
  * 
- *         var defaultAclAttachment = new AclAttachment(&#34;defaultAclAttachment&#34;, AclAttachmentArgs.builder()        
+ *         var defaultAclAttachment = new AclAttachment("defaultAclAttachment", AclAttachmentArgs.builder()        
  *             .listenerId(defaultListener.id())
  *             .aclId(defaultAcl.id())
- *             .aclType(&#34;white&#34;)
+ *             .aclType("white")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

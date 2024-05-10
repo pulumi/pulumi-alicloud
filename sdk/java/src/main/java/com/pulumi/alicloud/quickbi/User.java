@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,17 +49,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new User(&#34;example&#34;, UserArgs.builder()        
- *             .accountName(&#34;example_value&#34;)
+ *         var example = new User("example", UserArgs.builder()        
+ *             .accountName("example_value")
  *             .adminUser(false)
  *             .authAdminUser(false)
- *             .nickName(&#34;example_value&#34;)
- *             .userType(&#34;Analyst&#34;)
+ *             .nickName("example_value")
+ *             .userType("Analyst")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

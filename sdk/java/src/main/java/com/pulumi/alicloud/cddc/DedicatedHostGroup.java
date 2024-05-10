@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,26 +53,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Network("default", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultDedicatedHostGroup = new DedicatedHostGroup(&#34;defaultDedicatedHostGroup&#34;, DedicatedHostGroupArgs.builder()        
- *             .engine(&#34;MySQL&#34;)
+ *         var defaultDedicatedHostGroup = new DedicatedHostGroup("defaultDedicatedHostGroup", DedicatedHostGroupArgs.builder()        
+ *             .engine("MySQL")
  *             .vpcId(default_.id())
  *             .cpuAllocationRatio(101)
  *             .memAllocationRatio(50)
  *             .diskAllocationRatio(200)
- *             .allocationPolicy(&#34;Evenly&#34;)
- *             .hostReplacePolicy(&#34;Manual&#34;)
+ *             .allocationPolicy("Evenly")
+ *             .hostReplacePolicy("Manual")
  *             .dedicatedHostGroupDesc(name)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

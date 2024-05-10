@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,19 +55,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var example = AlicloudFunctions.getZones();
  * 
- *         var exampleEcsDedicatedHostCluster = new EcsDedicatedHostCluster(&#34;exampleEcsDedicatedHostCluster&#34;, EcsDedicatedHostClusterArgs.builder()        
- *             .dedicatedHostClusterName(&#34;example_value&#34;)
- *             .description(&#34;example_value&#34;)
- *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         var exampleEcsDedicatedHostCluster = new EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster", EcsDedicatedHostClusterArgs.builder()        
+ *             .dedicatedHostClusterName("example_value")
+ *             .description("example_value")
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;Create&#34;, &#34;TF&#34;),
- *                 Map.entry(&#34;For&#34;, &#34;DDH_Cluster_Test&#34;)
+ *                 Map.entry("Create", "TF"),
+ *                 Map.entry("For", "DDH_Cluster_Test")
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

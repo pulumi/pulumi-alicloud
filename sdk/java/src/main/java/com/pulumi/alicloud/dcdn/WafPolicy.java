@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,22 +50,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
+ *         final var name = config.get("name").orElse("tf_example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new WafPolicy(&#34;example&#34;, WafPolicyArgs.builder()        
- *             .defenseScene(&#34;waf_group&#34;)
- *             .policyName(String.format(&#34;%s_%s&#34;, name,default_.result()))
- *             .policyType(&#34;custom&#34;)
- *             .status(&#34;on&#34;)
+ *         var example = new WafPolicy("example", WafPolicyArgs.builder()        
+ *             .defenseScene("waf_group")
+ *             .policyName(String.format("%s_%s", name,default_.result()))
+ *             .policyType("custom")
+ *             .status("on")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

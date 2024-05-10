@@ -42,7 +42,8 @@ public final class KvstoreFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -64,13 +65,14 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KvstoreFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreAccountId&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstKvstoreAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -87,7 +89,8 @@ public final class KvstoreFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -109,13 +112,14 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KvstoreFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreAccountId&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstKvstoreAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -132,7 +136,8 @@ public final class KvstoreFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -154,13 +159,14 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KvstoreFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreAccountId&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstKvstoreAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -177,7 +183,8 @@ public final class KvstoreFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -199,13 +206,14 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = KvstoreFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .instanceId(&#34;example_value&#34;)
+     *             .instanceId("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreAccountId&#34;, example.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].id()));
+     *         ctx.export("firstKvstoreAccountId", example.applyValue(getAccountsResult -> getAccountsResult.accounts()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -220,7 +228,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -243,13 +252,14 @@ public final class KvstoreFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = KvstoreFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .ids(&#34;r-wer123456&#34;)
+     *             .ids("r-wer123456")
      *             .build());
      * 
-     *         ctx.export(&#34;connectionString&#34;, example.applyValue(getConnectionsResult -&gt; getConnectionsResult.connections()[0].connectionString()));
+     *         ctx.export("connectionString", example.applyValue(getConnectionsResult -> getConnectionsResult.connections()[0].connectionString()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -264,7 +274,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -287,13 +298,14 @@ public final class KvstoreFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = KvstoreFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .ids(&#34;r-wer123456&#34;)
+     *             .ids("r-wer123456")
      *             .build());
      * 
-     *         ctx.export(&#34;connectionString&#34;, example.applyValue(getConnectionsResult -&gt; getConnectionsResult.connections()[0].connectionString()));
+     *         ctx.export("connectionString", example.applyValue(getConnectionsResult -> getConnectionsResult.connections()[0].connectionString()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -308,7 +320,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -331,13 +344,14 @@ public final class KvstoreFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = KvstoreFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .ids(&#34;r-wer123456&#34;)
+     *             .ids("r-wer123456")
      *             .build());
      * 
-     *         ctx.export(&#34;connectionString&#34;, example.applyValue(getConnectionsResult -&gt; getConnectionsResult.connections()[0].connectionString()));
+     *         ctx.export("connectionString", example.applyValue(getConnectionsResult -> getConnectionsResult.connections()[0].connectionString()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -352,7 +366,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -375,13 +390,14 @@ public final class KvstoreFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var example = KvstoreFunctions.getConnections(GetConnectionsArgs.builder()
-     *             .ids(&#34;r-wer123456&#34;)
+     *             .ids("r-wer123456")
      *             .build());
      * 
-     *         ctx.export(&#34;connectionString&#34;, example.applyValue(getConnectionsResult -&gt; getConnectionsResult.connections()[0].connectionString()));
+     *         ctx.export("connectionString", example.applyValue(getConnectionsResult -> getConnectionsResult.connections()[0].connectionString()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -396,7 +412,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -420,21 +437,22 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .availableResourceCreation("KVStore")
      *             .build());
      * 
      *         final var resourcesGetInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .instanceChargeType(&#34;PrePaid&#34;)
-     *             .engine(&#34;Redis&#34;)
-     *             .engineVersion(&#34;5.0&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .instanceChargeType("PrePaid")
+     *             .engine("Redis")
+     *             .engineVersion("5.0")
+     *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -449,7 +467,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -473,21 +492,22 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .availableResourceCreation("KVStore")
      *             .build());
      * 
      *         final var resourcesGetInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .instanceChargeType(&#34;PrePaid&#34;)
-     *             .engine(&#34;Redis&#34;)
-     *             .engineVersion(&#34;5.0&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .instanceChargeType("PrePaid")
+     *             .engine("Redis")
+     *             .engineVersion("5.0")
+     *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -502,7 +522,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -526,21 +547,22 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .availableResourceCreation("KVStore")
      *             .build());
      * 
      *         final var resourcesGetInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .instanceChargeType(&#34;PrePaid&#34;)
-     *             .engine(&#34;Redis&#34;)
-     *             .engineVersion(&#34;5.0&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .instanceChargeType("PrePaid")
+     *             .engine("Redis")
+     *             .engineVersion("5.0")
+     *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -555,7 +577,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -579,21 +602,22 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .availableResourceCreation("KVStore")
      *             .build());
      * 
      *         final var resourcesGetInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .instanceChargeType(&#34;PrePaid&#34;)
-     *             .engine(&#34;Redis&#34;)
-     *             .engineVersion(&#34;5.0&#34;)
-     *             .outputFile(&#34;./classes.txt&#34;)
+     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .instanceChargeType("PrePaid")
+     *             .engine("Redis")
+     *             .engineVersion("5.0")
+     *             .outputFile("./classes.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -608,7 +632,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -632,21 +657,22 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .availableResourceCreation("KVStore")
      *             .build());
      * 
      *         final var resourcesGetInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .instanceChargeType(&#34;PrePaid&#34;)
-     *             .engine(&#34;Redis&#34;)
-     *             .engineVersion(&#34;5.0&#34;)
-     *             .outputFile(&#34;./engines.txt&#34;)
+     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .instanceChargeType("PrePaid")
+     *             .engine("Redis")
+     *             .engineVersion("5.0")
+     *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].engine()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -661,7 +687,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -685,21 +712,22 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .availableResourceCreation("KVStore")
      *             .build());
      * 
      *         final var resourcesGetInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .instanceChargeType(&#34;PrePaid&#34;)
-     *             .engine(&#34;Redis&#34;)
-     *             .engineVersion(&#34;5.0&#34;)
-     *             .outputFile(&#34;./engines.txt&#34;)
+     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .instanceChargeType("PrePaid")
+     *             .engine("Redis")
+     *             .engineVersion("5.0")
+     *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].engine()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -714,7 +742,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -738,21 +767,22 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .availableResourceCreation("KVStore")
      *             .build());
      * 
      *         final var resourcesGetInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .instanceChargeType(&#34;PrePaid&#34;)
-     *             .engine(&#34;Redis&#34;)
-     *             .engineVersion(&#34;5.0&#34;)
-     *             .outputFile(&#34;./engines.txt&#34;)
+     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .instanceChargeType("PrePaid")
+     *             .engine("Redis")
+     *             .engineVersion("5.0")
+     *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].engine()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -767,7 +797,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -791,21 +822,22 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;KVStore&#34;)
+     *             .availableResourceCreation("KVStore")
      *             .build());
      * 
      *         final var resourcesGetInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
-     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .instanceChargeType(&#34;PrePaid&#34;)
-     *             .engine(&#34;Redis&#34;)
-     *             .engineVersion(&#34;5.0&#34;)
-     *             .outputFile(&#34;./engines.txt&#34;)
+     *             .zoneId(resources.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .instanceChargeType("PrePaid")
+     *             .engine("Redis")
+     *             .engineVersion("5.0")
+     *             .outputFile("./engines.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *         ctx.export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -> getInstanceEnginesResult.instanceEngines()[0].engine()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -819,7 +851,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -841,13 +874,14 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = KvstoreFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;testname&#34;)
+     *             .nameRegex("testname")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceName&#34;, default_.instances()[0].name());
+     *         ctx.export("firstInstanceName", default_.instances()[0].name());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -861,7 +895,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -883,13 +918,14 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = KvstoreFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;testname&#34;)
+     *             .nameRegex("testname")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceName&#34;, default_.instances()[0].name());
+     *         ctx.export("firstInstanceName", default_.instances()[0].name());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -903,7 +939,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -925,13 +962,14 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = KvstoreFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;testname&#34;)
+     *             .nameRegex("testname")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceName&#34;, default_.instances()[0].name());
+     *         ctx.export("firstInstanceName", default_.instances()[0].name());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -945,7 +983,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -967,13 +1006,14 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = KvstoreFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;testname&#34;)
+     *             .nameRegex("testname")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceName&#34;, default_.instances()[0].name());
+     *         ctx.export("firstInstanceName", default_.instances()[0].name());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -987,7 +1027,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1009,13 +1050,14 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = KvstoreFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;testname&#34;)
+     *             .nameRegex("testname")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceName&#34;, default_.instances()[0].name());
+     *         ctx.export("firstInstanceName", default_.instances()[0].name());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1029,7 +1071,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1051,13 +1094,14 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = KvstoreFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;testname&#34;)
+     *             .nameRegex("testname")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceName&#34;, default_.instances()[0].name());
+     *         ctx.export("firstInstanceName", default_.instances()[0].name());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1076,7 +1120,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1098,12 +1143,13 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = KvstoreFunctions.getPermission(GetPermissionArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1122,7 +1168,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1144,12 +1191,13 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = KvstoreFunctions.getPermission(GetPermissionArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1168,7 +1216,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1190,12 +1239,13 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = KvstoreFunctions.getPermission(GetPermissionArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1214,7 +1264,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1236,12 +1287,13 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = KvstoreFunctions.getPermission(GetPermissionArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1260,7 +1312,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1282,12 +1335,13 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = KvstoreFunctions.getPermission(GetPermissionArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1306,7 +1360,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1328,12 +1383,13 @@ public final class KvstoreFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = KvstoreFunctions.getPermission(GetPermissionArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1348,7 +1404,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1371,12 +1428,13 @@ public final class KvstoreFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
-     *             .instanceChargeType(&#34;PostPaid&#34;)
+     *             .instanceChargeType("PostPaid")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1391,7 +1449,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1414,12 +1473,13 @@ public final class KvstoreFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
-     *             .instanceChargeType(&#34;PostPaid&#34;)
+     *             .instanceChargeType("PostPaid")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1434,7 +1494,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1457,12 +1518,13 @@ public final class KvstoreFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
-     *             .instanceChargeType(&#34;PostPaid&#34;)
+     *             .instanceChargeType("PostPaid")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1477,7 +1539,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1500,12 +1563,13 @@ public final class KvstoreFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
-     *             .instanceChargeType(&#34;PostPaid&#34;)
+     *             .instanceChargeType("PostPaid")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1520,7 +1584,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1543,12 +1608,13 @@ public final class KvstoreFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
-     *             .instanceChargeType(&#34;PostPaid&#34;)
+     *             .instanceChargeType("PostPaid")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1563,7 +1629,8 @@ public final class KvstoreFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1586,12 +1653,13 @@ public final class KvstoreFunctions {
      *     public static void stack(Context ctx) {
      *         // Declare the data source
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
-     *             .instanceChargeType(&#34;PostPaid&#34;)
+     *             .instanceChargeType("PostPaid")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

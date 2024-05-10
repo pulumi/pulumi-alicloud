@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,19 +51,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example1 = new ControlPolicy(&#34;example1&#34;, ControlPolicyArgs.builder()        
- *             .applicationName(&#34;ANY&#34;)
- *             .aclAction(&#34;accept&#34;)
- *             .description(&#34;example&#34;)
- *             .destinationType(&#34;net&#34;)
- *             .destination(&#34;100.1.1.0/24&#34;)
- *             .direction(&#34;out&#34;)
- *             .proto(&#34;ANY&#34;)
- *             .source(&#34;1.2.3.0/24&#34;)
- *             .sourceType(&#34;net&#34;)
+ *         var example1 = new ControlPolicy("example1", ControlPolicyArgs.builder()        
+ *             .applicationName("ANY")
+ *             .aclAction("accept")
+ *             .description("example")
+ *             .destinationType("net")
+ *             .destination("100.1.1.0/24")
+ *             .direction("out")
+ *             .proto("ANY")
+ *             .source("1.2.3.0/24")
+ *             .sourceType("net")
  *             .build());
  * 
- *         var example2 = new ControlPolicyOrder(&#34;example2&#34;, ControlPolicyOrderArgs.builder()        
+ *         var example2 = new ControlPolicyOrder("example2", ControlPolicyOrderArgs.builder()        
  *             .aclUuid(example1.aclUuid())
  *             .direction(example1.direction())
  *             .order(1)
@@ -70,7 +71,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

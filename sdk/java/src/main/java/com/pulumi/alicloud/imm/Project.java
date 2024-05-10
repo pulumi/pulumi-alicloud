@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,37 +50,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
- *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+ *         final var name = config.get("name").orElse("tfexample");
+ *         var role = new Role("role", RoleArgs.builder()        
  *             .name(name)
- *             .document(&#34;&#34;&#34;
+ *             .document("""
  *   {
- *     &#34;Statement&#34;: [
+ *     "Statement": [
  *       {
- *         &#34;Action&#34;: &#34;sts:AssumeRole&#34;,
- *         &#34;Effect&#34;: &#34;Allow&#34;,
- *         &#34;Principal&#34;: {
- *           &#34;Service&#34;: [
- *             &#34;imm.aliyuncs.com&#34;
+ *         "Action": "sts:AssumeRole",
+ *         "Effect": "Allow",
+ *         "Principal": {
+ *           "Service": [
+ *             "imm.aliyuncs.com"
  *           ]
  *         }
  *       }
  *     ],
- *     &#34;Version&#34;: &#34;1&#34;
+ *     "Version": "1"
  *   }
- *             &#34;&#34;&#34;)
- *             .description(&#34;this is a role test.&#34;)
+ *             """)
+ *             .description("this is a role test.")
  *             .force(true)
  *             .build());
  * 
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
+ *         var example = new Project("example", ProjectArgs.builder()        
  *             .project(name)
  *             .serviceRole(role.name())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

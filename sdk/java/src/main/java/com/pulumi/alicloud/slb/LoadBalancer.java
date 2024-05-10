@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -60,44 +61,45 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraformslbconfig&#34;);
+ *         final var name = config.get("name").orElse("terraformslbconfig");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+ *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/21&#34;)
+ *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultLoadBalancer = new LoadBalancer(&#34;defaultLoadBalancer&#34;, LoadBalancerArgs.builder()        
+ *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()        
  *             .loadBalancerName(name)
- *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
+ *             .loadBalancerSpec("slb.s2.small")
  *             .vswitchId(defaultSwitch.id())
  *             .tags(Map.ofEntries(
- *                 Map.entry(&#34;tag_a&#34;, 1),
- *                 Map.entry(&#34;tag_b&#34;, 2),
- *                 Map.entry(&#34;tag_c&#34;, 3),
- *                 Map.entry(&#34;tag_d&#34;, 4),
- *                 Map.entry(&#34;tag_e&#34;, 5),
- *                 Map.entry(&#34;tag_f&#34;, 6),
- *                 Map.entry(&#34;tag_g&#34;, 7),
- *                 Map.entry(&#34;tag_h&#34;, 8),
- *                 Map.entry(&#34;tag_i&#34;, 9),
- *                 Map.entry(&#34;tag_j&#34;, 10)
+ *                 Map.entry("tag_a", 1),
+ *                 Map.entry("tag_b", 2),
+ *                 Map.entry("tag_c", 3),
+ *                 Map.entry("tag_d", 4),
+ *                 Map.entry("tag_e", 5),
+ *                 Map.entry("tag_f", 6),
+ *                 Map.entry("tag_g", 7),
+ *                 Map.entry("tag_h", 8),
+ *                 Map.entry("tag_i", 9),
+ *                 Map.entry("tag_j", 10)
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

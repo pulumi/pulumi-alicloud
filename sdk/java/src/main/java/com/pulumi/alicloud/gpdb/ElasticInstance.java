@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ### Create a AnalyticDB for PostgreSQL instance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,37 +60,38 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;Gpdb&#34;)
+ *             .availableResourceCreation("Gpdb")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .name(&#34;vpc-123456&#34;)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *             .name("vpc-123456")
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .zoneId(default_.zones()[0].id())
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .vswitchName(&#34;vpc-123456&#34;)
+ *             .cidrBlock("172.16.0.0/24")
+ *             .vswitchName("vpc-123456")
  *             .build());
  * 
- *         var adbPgInstance = new ElasticInstance(&#34;adbPgInstance&#34;, ElasticInstanceArgs.builder()        
- *             .engine(&#34;gpdb&#34;)
- *             .engineVersion(&#34;6.0&#34;)
- *             .segStorageType(&#34;cloud_essd&#34;)
+ *         var adbPgInstance = new ElasticInstance("adbPgInstance", ElasticInstanceArgs.builder()        
+ *             .engine("gpdb")
+ *             .engineVersion("6.0")
+ *             .segStorageType("cloud_essd")
  *             .segNodeNum(4)
  *             .storageSize(50)
- *             .instanceSpec(&#34;2C16G&#34;)
- *             .dbInstanceDescription(&#34;Created by terraform&#34;)
- *             .instanceNetworkType(&#34;VPC&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .instanceSpec("2C16G")
+ *             .dbInstanceDescription("Created by terraform")
+ *             .instanceNetworkType("VPC")
+ *             .paymentType("PayAsYouGo")
  *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

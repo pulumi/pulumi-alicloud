@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,26 +54,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf_example&#34;)
- *             .description(&#34;an example for cen&#34;)
+ *         var example = new Instance("example", InstanceArgs.builder()        
+ *             .cenInstanceName("tf_example")
+ *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .transitRouterName(&#34;tf_example&#34;)
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
+ *             .transitRouterName("tf_example")
  *             .cenId(example.id())
  *             .build());
  * 
- *         var exampleTrafficMarkingPolicy = new TrafficMarkingPolicy(&#34;exampleTrafficMarkingPolicy&#34;, TrafficMarkingPolicyArgs.builder()        
+ *         var exampleTrafficMarkingPolicy = new TrafficMarkingPolicy("exampleTrafficMarkingPolicy", TrafficMarkingPolicyArgs.builder()        
  *             .markingDscp(1)
  *             .priority(1)
- *             .trafficMarkingPolicyName(&#34;tf_example&#34;)
+ *             .trafficMarkingPolicyName("tf_example")
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

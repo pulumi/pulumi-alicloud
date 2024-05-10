@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,29 +54,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexampleuser&#34;);
- *         var example = new VpcEndpointService(&#34;example&#34;, VpcEndpointServiceArgs.builder()        
+ *         final var name = config.get("name").orElse("tfexampleuser");
+ *         var example = new VpcEndpointService("example", VpcEndpointServiceArgs.builder()        
  *             .serviceDescription(name)
  *             .connectBandwidth(103)
  *             .autoAcceptConnection(false)
  *             .build());
  * 
- *         var exampleUser = new User(&#34;exampleUser&#34;, UserArgs.builder()        
+ *         var exampleUser = new User("exampleUser", UserArgs.builder()        
  *             .name(name)
- *             .displayName(&#34;user_display_name&#34;)
- *             .mobile(&#34;86-18688888888&#34;)
- *             .email(&#34;hello.uuu@aaa.com&#34;)
- *             .comments(&#34;yoyoyo&#34;)
+ *             .displayName("user_display_name")
+ *             .mobile("86-18688888888")
+ *             .email("hello.uuu{@literal @}aaa.com")
+ *             .comments("yoyoyo")
  *             .build());
  * 
- *         var exampleVpcEndpointServiceUser = new VpcEndpointServiceUser(&#34;exampleVpcEndpointServiceUser&#34;, VpcEndpointServiceUserArgs.builder()        
+ *         var exampleVpcEndpointServiceUser = new VpcEndpointServiceUser("exampleVpcEndpointServiceUser", VpcEndpointServiceUserArgs.builder()        
  *             .serviceId(example.id())
  *             .userId(exampleUser.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

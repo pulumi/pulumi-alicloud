@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,40 +52,41 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
+ *         final var name = config.get("name").orElse("tf_example");
+ *         var example = new Project("example", ProjectArgs.builder()        
  *             .name(name)
- *             .comment(&#34;created by terraform&#34;)
+ *             .comment("created by terraform")
  *             .build());
  * 
- *         var exampleBlob = new Topic(&#34;exampleBlob&#34;, TopicArgs.builder()        
- *             .name(String.format(&#34;%s_blob&#34;, name))
+ *         var exampleBlob = new Topic("exampleBlob", TopicArgs.builder()        
+ *             .name(String.format("%s_blob", name))
  *             .projectName(example.name())
- *             .recordType(&#34;BLOB&#34;)
+ *             .recordType("BLOB")
  *             .shardCount(3)
  *             .lifeCycle(7)
- *             .comment(&#34;created by terraform&#34;)
+ *             .comment("created by terraform")
  *             .build());
  * 
- *         var exampleTuple = new Topic(&#34;exampleTuple&#34;, TopicArgs.builder()        
- *             .name(String.format(&#34;%s_tuple&#34;, name))
+ *         var exampleTuple = new Topic("exampleTuple", TopicArgs.builder()        
+ *             .name(String.format("%s_tuple", name))
  *             .projectName(example.name())
- *             .recordType(&#34;TUPLE&#34;)
+ *             .recordType("TUPLE")
  *             .recordSchema(Map.ofEntries(
- *                 Map.entry(&#34;bigint_field&#34;, &#34;BIGINT&#34;),
- *                 Map.entry(&#34;timestamp_field&#34;, &#34;TIMESTAMP&#34;),
- *                 Map.entry(&#34;string_field&#34;, &#34;STRING&#34;),
- *                 Map.entry(&#34;double_field&#34;, &#34;DOUBLE&#34;),
- *                 Map.entry(&#34;boolean_field&#34;, &#34;BOOLEAN&#34;)
+ *                 Map.entry("bigint_field", "BIGINT"),
+ *                 Map.entry("timestamp_field", "TIMESTAMP"),
+ *                 Map.entry("string_field", "STRING"),
+ *                 Map.entry("double_field", "DOUBLE"),
+ *                 Map.entry("boolean_field", "BOOLEAN")
  *             ))
  *             .shardCount(3)
  *             .lifeCycle(7)
- *             .comment(&#34;created by terraform&#34;)
+ *             .comment("created by terraform")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

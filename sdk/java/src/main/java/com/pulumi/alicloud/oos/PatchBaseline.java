@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,43 +54,44 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var default_ = new PatchBaseline(&#34;default&#34;, PatchBaselineArgs.builder()        
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new PatchBaseline("default", PatchBaselineArgs.builder()        
  *             .patchBaselineName(name)
- *             .operationSystem(&#34;Windows&#34;)
+ *             .operationSystem("Windows")
  *             .approvalRules(serializeJson(
  *                 jsonObject(
- *                     jsonProperty(&#34;PatchRules&#34;, jsonArray(jsonObject(
- *                         jsonProperty(&#34;EnableNonSecurity&#34;, true),
- *                         jsonProperty(&#34;PatchFilterGroup&#34;, jsonArray(
+ *                     jsonProperty("PatchRules", jsonArray(jsonObject(
+ *                         jsonProperty("EnableNonSecurity", true),
+ *                         jsonProperty("PatchFilterGroup", jsonArray(
  *                             jsonObject(
- *                                 jsonProperty(&#34;Values&#34;, jsonArray(&#34;*&#34;)),
- *                                 jsonProperty(&#34;Key&#34;, &#34;Product&#34;)
+ *                                 jsonProperty("Values", jsonArray("*")),
+ *                                 jsonProperty("Key", "Product")
  *                             ), 
  *                             jsonObject(
- *                                 jsonProperty(&#34;Values&#34;, jsonArray(
- *                                     &#34;Security&#34;, 
- *                                     &#34;Bugfix&#34;
+ *                                 jsonProperty("Values", jsonArray(
+ *                                     "Security", 
+ *                                     "Bugfix"
  *                                 )),
- *                                 jsonProperty(&#34;Key&#34;, &#34;Classification&#34;)
+ *                                 jsonProperty("Key", "Classification")
  *                             ), 
  *                             jsonObject(
- *                                 jsonProperty(&#34;Values&#34;, jsonArray(
- *                                     &#34;Critical&#34;, 
- *                                     &#34;Important&#34;
+ *                                 jsonProperty("Values", jsonArray(
+ *                                     "Critical", 
+ *                                     "Important"
  *                                 )),
- *                                 jsonProperty(&#34;Key&#34;, &#34;Severity&#34;)
+ *                                 jsonProperty("Key", "Severity")
  *                             )
  *                         )),
- *                         jsonProperty(&#34;ApproveAfterDays&#34;, 7),
- *                         jsonProperty(&#34;ComplianceLevel&#34;, &#34;Unspecified&#34;)
+ *                         jsonProperty("ApproveAfterDays", 7),
+ *                         jsonProperty("ComplianceLevel", "Unspecified")
  *                     )))
  *                 )))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

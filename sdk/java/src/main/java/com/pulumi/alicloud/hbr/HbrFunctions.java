@@ -69,7 +69,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -92,57 +93,58 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-name&#34;)
+     *             .nameRegex("plan-name")
      *             .build());
      * 
      *         final var defaultGetBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
-     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .sourceType("ECS_FILE")
      *             .filters(            
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;VaultId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("VaultId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;InstanceId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("InstanceId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;CompleteTime&#34;)
-     *                     .operator(&#34;BETWEEN&#34;)
+     *                     .key("CompleteTime")
+     *                     .operator("BETWEEN")
      *                     .values(                    
-     *                         &#34;2021-08-23T14:17:15CST&#34;,
-     *                         &#34;2021-08-24T14:17:15CST&#34;)
+     *                         "2021-08-23T14:17:15CST",
+     *                         "2021-08-24T14:17:15CST")
      *                     .build())
      *             .build());
      * 
      *         final var example = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
-     *             .sourceType(&#34;ECS_FILE&#34;)
-     *             .status(&#34;COMPLETE&#34;)
+     *             .sourceType("ECS_FILE")
+     *             .status("COMPLETE")
      *             .filters(            
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;VaultId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("VaultId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;InstanceId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("InstanceId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;CompleteTime&#34;)
-     *                     .operator(&#34;LESS_THAN&#34;)
-     *                     .values(&#34;2021-10-20T20:20:20CST&#34;)
+     *                     .key("CompleteTime")
+     *                     .operator("LESS_THAN")
+     *                     .values("2021-10-20T20:20:20CST")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultGetBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
-     *         ctx.export(&#34;alicloudHbrBackupJobsExample1&#34;, example.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export("alicloudHbrBackupJobsExample1", example.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -159,7 +161,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -182,57 +185,58 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-name&#34;)
+     *             .nameRegex("plan-name")
      *             .build());
      * 
      *         final var defaultGetBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
-     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .sourceType("ECS_FILE")
      *             .filters(            
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;VaultId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("VaultId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;InstanceId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("InstanceId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;CompleteTime&#34;)
-     *                     .operator(&#34;BETWEEN&#34;)
+     *                     .key("CompleteTime")
+     *                     .operator("BETWEEN")
      *                     .values(                    
-     *                         &#34;2021-08-23T14:17:15CST&#34;,
-     *                         &#34;2021-08-24T14:17:15CST&#34;)
+     *                         "2021-08-23T14:17:15CST",
+     *                         "2021-08-24T14:17:15CST")
      *                     .build())
      *             .build());
      * 
      *         final var example = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
-     *             .sourceType(&#34;ECS_FILE&#34;)
-     *             .status(&#34;COMPLETE&#34;)
+     *             .sourceType("ECS_FILE")
+     *             .status("COMPLETE")
      *             .filters(            
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;VaultId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("VaultId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;InstanceId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("InstanceId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;CompleteTime&#34;)
-     *                     .operator(&#34;LESS_THAN&#34;)
-     *                     .values(&#34;2021-10-20T20:20:20CST&#34;)
+     *                     .key("CompleteTime")
+     *                     .operator("LESS_THAN")
+     *                     .values("2021-10-20T20:20:20CST")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultGetBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
-     *         ctx.export(&#34;alicloudHbrBackupJobsExample1&#34;, example.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export("alicloudHbrBackupJobsExample1", example.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -249,7 +253,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -272,57 +277,58 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-name&#34;)
+     *             .nameRegex("plan-name")
      *             .build());
      * 
      *         final var defaultGetBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
-     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .sourceType("ECS_FILE")
      *             .filters(            
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;VaultId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("VaultId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;InstanceId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("InstanceId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;CompleteTime&#34;)
-     *                     .operator(&#34;BETWEEN&#34;)
+     *                     .key("CompleteTime")
+     *                     .operator("BETWEEN")
      *                     .values(                    
-     *                         &#34;2021-08-23T14:17:15CST&#34;,
-     *                         &#34;2021-08-24T14:17:15CST&#34;)
+     *                         "2021-08-23T14:17:15CST",
+     *                         "2021-08-24T14:17:15CST")
      *                     .build())
      *             .build());
      * 
      *         final var example = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
-     *             .sourceType(&#34;ECS_FILE&#34;)
-     *             .status(&#34;COMPLETE&#34;)
+     *             .sourceType("ECS_FILE")
+     *             .status("COMPLETE")
      *             .filters(            
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;VaultId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("VaultId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;InstanceId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("InstanceId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;CompleteTime&#34;)
-     *                     .operator(&#34;LESS_THAN&#34;)
-     *                     .values(&#34;2021-10-20T20:20:20CST&#34;)
+     *                     .key("CompleteTime")
+     *                     .operator("LESS_THAN")
+     *                     .values("2021-10-20T20:20:20CST")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultGetBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
-     *         ctx.export(&#34;alicloudHbrBackupJobsExample1&#34;, example.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export("alicloudHbrBackupJobsExample1", example.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -339,7 +345,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -362,57 +369,58 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-name&#34;)
+     *             .nameRegex("plan-name")
      *             .build());
      * 
      *         final var defaultGetBackupJobs = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
-     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .sourceType("ECS_FILE")
      *             .filters(            
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;VaultId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("VaultId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;InstanceId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("InstanceId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;CompleteTime&#34;)
-     *                     .operator(&#34;BETWEEN&#34;)
+     *                     .key("CompleteTime")
+     *                     .operator("BETWEEN")
      *                     .values(                    
-     *                         &#34;2021-08-23T14:17:15CST&#34;,
-     *                         &#34;2021-08-24T14:17:15CST&#34;)
+     *                         "2021-08-23T14:17:15CST",
+     *                         "2021-08-24T14:17:15CST")
      *                     .build())
      *             .build());
      * 
      *         final var example = HbrFunctions.getBackupJobs(GetBackupJobsArgs.builder()
-     *             .sourceType(&#34;ECS_FILE&#34;)
-     *             .status(&#34;COMPLETE&#34;)
+     *             .sourceType("ECS_FILE")
+     *             .status("COMPLETE")
      *             .filters(            
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;VaultId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("VaultId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].vaultId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;InstanceId&#34;)
-     *                     .operator(&#34;IN&#34;)
+     *                     .key("InstanceId")
+     *                     .operator("IN")
      *                     .values(default_.plans()[0].instanceId())
      *                     .build(),
      *                 GetBackupJobsFilterArgs.builder()
-     *                     .key(&#34;CompleteTime&#34;)
-     *                     .operator(&#34;LESS_THAN&#34;)
-     *                     .values(&#34;2021-10-20T20:20:20CST&#34;)
+     *                     .key("CompleteTime")
+     *                     .operator("LESS_THAN")
+     *                     .values("2021-10-20T20:20:20CST")
      *                     .build())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudHbrBackupJobsDefault1&#34;, defaultGetBackupJobs.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
-     *         ctx.export(&#34;alicloudHbrBackupJobsExample1&#34;, example.applyValue(getBackupJobsResult -&gt; getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export("alicloudHbrBackupJobsDefault1", defaultGetBackupJobs.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
+     *         ctx.export("alicloudHbrBackupJobsExample1", example.applyValue(getBackupJobsResult -> getBackupJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -429,7 +437,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -453,8 +462,8 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;ecs_instance_name&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("ecs_instance_name")
+     *             .status("Running")
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
@@ -462,10 +471,11 @@ public final class HbrFunctions {
      *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
-     *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
+     *         ctx.export("hbrEcsBackupClientId1", ids.applyValue(getEcsBackupClientsResult -> getEcsBackupClientsResult.clients()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -482,7 +492,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -506,8 +517,8 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;ecs_instance_name&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("ecs_instance_name")
+     *             .status("Running")
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
@@ -515,10 +526,11 @@ public final class HbrFunctions {
      *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
-     *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
+     *         ctx.export("hbrEcsBackupClientId1", ids.applyValue(getEcsBackupClientsResult -> getEcsBackupClientsResult.clients()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -535,7 +547,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -559,8 +572,8 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;ecs_instance_name&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("ecs_instance_name")
+     *             .status("Running")
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
@@ -568,10 +581,11 @@ public final class HbrFunctions {
      *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
-     *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
+     *         ctx.export("hbrEcsBackupClientId1", ids.applyValue(getEcsBackupClientsResult -> getEcsBackupClientsResult.clients()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -588,7 +602,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -612,8 +627,8 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;ecs_instance_name&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("ecs_instance_name")
+     *             .status("Running")
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
@@ -621,10 +636,11 @@ public final class HbrFunctions {
      *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
-     *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
+     *         ctx.export("hbrEcsBackupClientId1", ids.applyValue(getEcsBackupClientsResult -> getEcsBackupClientsResult.clients()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -641,7 +657,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -665,8 +682,8 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;ecs_instance_name&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("ecs_instance_name")
+     *             .status("Running")
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
@@ -674,10 +691,11 @@ public final class HbrFunctions {
      *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
-     *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
+     *         ctx.export("hbrEcsBackupClientId1", ids.applyValue(getEcsBackupClientsResult -> getEcsBackupClientsResult.clients()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -694,7 +712,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -718,8 +737,8 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;ecs_instance_name&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("ecs_instance_name")
+     *             .status("Running")
      *             .build());
      * 
      *         final var ids = HbrFunctions.getEcsBackupClients(GetEcsBackupClientsArgs.builder()
@@ -727,10 +746,11 @@ public final class HbrFunctions {
      *             .instanceIds(defaultAlicloudHbrEcsBackupClient.instanceId())
      *             .build());
      * 
-     *         ctx.export(&#34;hbrEcsBackupClientId1&#34;, ids.applyValue(getEcsBackupClientsResult -&gt; getEcsBackupClientsResult.clients()[0].id()));
+     *         ctx.export("hbrEcsBackupClientId1", ids.applyValue(getEcsBackupClientsResult -> getEcsBackupClientsResult.clients()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -747,7 +767,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -769,13 +790,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-name&#34;)
+     *             .nameRegex("plan-name")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrEcsBackupPlanId&#34;, ids.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrEcsBackupPlanId", ids.applyValue(getEcsBackupPlansResult -> getEcsBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -792,7 +814,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -814,13 +837,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-name&#34;)
+     *             .nameRegex("plan-name")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrEcsBackupPlanId&#34;, ids.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrEcsBackupPlanId", ids.applyValue(getEcsBackupPlansResult -> getEcsBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -837,7 +861,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -859,13 +884,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-name&#34;)
+     *             .nameRegex("plan-name")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrEcsBackupPlanId&#34;, ids.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrEcsBackupPlanId", ids.applyValue(getEcsBackupPlansResult -> getEcsBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -882,7 +908,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -904,13 +931,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-name&#34;)
+     *             .nameRegex("plan-name")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrEcsBackupPlanId&#34;, ids.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrEcsBackupPlanId", ids.applyValue(getEcsBackupPlansResult -> getEcsBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -927,7 +955,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -949,13 +978,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-name&#34;)
+     *             .nameRegex("plan-name")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrEcsBackupPlanId&#34;, ids.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrEcsBackupPlanId", ids.applyValue(getEcsBackupPlansResult -> getEcsBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -972,7 +1002,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -994,13 +1025,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-name&#34;)
+     *             .nameRegex("plan-name")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrEcsBackupPlanId&#34;, ids.applyValue(getEcsBackupPlansResult -&gt; getEcsBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrEcsBackupPlanId", ids.applyValue(getEcsBackupPlansResult -> getEcsBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1017,7 +1049,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1039,14 +1072,15 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getHanaBackupClients(GetHanaBackupClientsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .vaultId(&#34;your_vault_id&#34;)
+     *             .ids("example_id")
+     *             .vaultId("your_vault_id")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrHanaBackupClientsId1&#34;, ids.applyValue(getHanaBackupClientsResult -&gt; getHanaBackupClientsResult.hanaBackupClients()[0].id()));
+     *         ctx.export("hbrHanaBackupClientsId1", ids.applyValue(getHanaBackupClientsResult -> getHanaBackupClientsResult.hanaBackupClients()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1063,7 +1097,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1085,14 +1120,15 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getHanaBackupClients(GetHanaBackupClientsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .vaultId(&#34;your_vault_id&#34;)
+     *             .ids("example_id")
+     *             .vaultId("your_vault_id")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrHanaBackupClientsId1&#34;, ids.applyValue(getHanaBackupClientsResult -&gt; getHanaBackupClientsResult.hanaBackupClients()[0].id()));
+     *         ctx.export("hbrHanaBackupClientsId1", ids.applyValue(getHanaBackupClientsResult -> getHanaBackupClientsResult.hanaBackupClients()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1109,7 +1145,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1131,14 +1168,15 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getHanaBackupClients(GetHanaBackupClientsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .vaultId(&#34;your_vault_id&#34;)
+     *             .ids("example_id")
+     *             .vaultId("your_vault_id")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrHanaBackupClientsId1&#34;, ids.applyValue(getHanaBackupClientsResult -&gt; getHanaBackupClientsResult.hanaBackupClients()[0].id()));
+     *         ctx.export("hbrHanaBackupClientsId1", ids.applyValue(getHanaBackupClientsResult -> getHanaBackupClientsResult.hanaBackupClients()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1155,7 +1193,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1177,14 +1216,15 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getHanaBackupClients(GetHanaBackupClientsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .vaultId(&#34;your_vault_id&#34;)
+     *             .ids("example_id")
+     *             .vaultId("your_vault_id")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrHanaBackupClientsId1&#34;, ids.applyValue(getHanaBackupClientsResult -&gt; getHanaBackupClientsResult.hanaBackupClients()[0].id()));
+     *         ctx.export("hbrHanaBackupClientsId1", ids.applyValue(getHanaBackupClientsResult -> getHanaBackupClientsResult.hanaBackupClients()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1201,7 +1241,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1223,16 +1264,17 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getHanaBackupPlans(GetHanaBackupPlansArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
+     *             .clusterId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrHanaBackupPlanId1&#34;, ids.applyValue(getHanaBackupPlansResult -&gt; getHanaBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrHanaBackupPlanId1", ids.applyValue(getHanaBackupPlansResult -> getHanaBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1249,7 +1291,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1271,16 +1314,17 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getHanaBackupPlans(GetHanaBackupPlansArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
+     *             .clusterId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrHanaBackupPlanId1&#34;, ids.applyValue(getHanaBackupPlansResult -&gt; getHanaBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrHanaBackupPlanId1", ids.applyValue(getHanaBackupPlansResult -> getHanaBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1297,7 +1341,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1319,16 +1364,17 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getHanaBackupPlans(GetHanaBackupPlansArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
+     *             .clusterId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrHanaBackupPlanId1&#34;, ids.applyValue(getHanaBackupPlansResult -&gt; getHanaBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrHanaBackupPlanId1", ids.applyValue(getHanaBackupPlansResult -> getHanaBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1345,7 +1391,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1367,16 +1414,17 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getHanaBackupPlans(GetHanaBackupPlansArgs.builder()
-     *             .clusterId(&#34;example_value&#34;)
+     *             .clusterId("example_value")
      *             .ids(            
-     *                 &#34;example_value-1&#34;,
-     *                 &#34;example_value-2&#34;)
+     *                 "example_value-1",
+     *                 "example_value-2")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrHanaBackupPlanId1&#34;, ids.applyValue(getHanaBackupPlansResult -&gt; getHanaBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrHanaBackupPlanId1", ids.applyValue(getHanaBackupPlansResult -> getHanaBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1393,7 +1441,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1415,13 +1464,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getHanaInstances(GetHanaInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrHanaInstanceId1&#34;, ids.applyValue(getHanaInstancesResult -&gt; getHanaInstancesResult.instances()[0].id()));
+     *         ctx.export("hbrHanaInstanceId1", ids.applyValue(getHanaInstancesResult -> getHanaInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1438,7 +1488,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1460,13 +1511,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getHanaInstances(GetHanaInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrHanaInstanceId1&#34;, ids.applyValue(getHanaInstancesResult -&gt; getHanaInstancesResult.instances()[0].id()));
+     *         ctx.export("hbrHanaInstanceId1", ids.applyValue(getHanaInstancesResult -> getHanaInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1483,7 +1535,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1505,13 +1558,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getHanaInstances(GetHanaInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrHanaInstanceId1&#34;, ids.applyValue(getHanaInstancesResult -&gt; getHanaInstancesResult.instances()[0].id()));
+     *         ctx.export("hbrHanaInstanceId1", ids.applyValue(getHanaInstancesResult -> getHanaInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1528,7 +1582,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1550,13 +1605,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getHanaInstances(GetHanaInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrHanaInstanceId1&#34;, ids.applyValue(getHanaInstancesResult -&gt; getHanaInstancesResult.instances()[0].id()));
+     *         ctx.export("hbrHanaInstanceId1", ids.applyValue(getHanaInstancesResult -> getHanaInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1573,7 +1629,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1595,13 +1652,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getHanaInstances(GetHanaInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrHanaInstanceId1&#34;, ids.applyValue(getHanaInstancesResult -&gt; getHanaInstancesResult.instances()[0].id()));
+     *         ctx.export("hbrHanaInstanceId1", ids.applyValue(getHanaInstancesResult -> getHanaInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1618,7 +1676,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1640,13 +1699,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getHanaInstances(GetHanaInstancesArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrHanaInstanceId1&#34;, ids.applyValue(getHanaInstancesResult -&gt; getHanaInstancesResult.instances()[0].id()));
+     *         ctx.export("hbrHanaInstanceId1", ids.applyValue(getHanaInstancesResult -> getHanaInstancesResult.instances()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1663,7 +1723,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1685,13 +1746,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-NasBackupPlan&#34;)
+     *             .nameRegex("^my-NasBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrNasBackupPlanId&#34;, ids.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrNasBackupPlanId", ids.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1708,7 +1770,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1730,13 +1793,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-NasBackupPlan&#34;)
+     *             .nameRegex("^my-NasBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrNasBackupPlanId&#34;, ids.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrNasBackupPlanId", ids.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1753,7 +1817,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1775,13 +1840,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-NasBackupPlan&#34;)
+     *             .nameRegex("^my-NasBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrNasBackupPlanId&#34;, ids.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrNasBackupPlanId", ids.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1798,7 +1864,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1820,13 +1887,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-NasBackupPlan&#34;)
+     *             .nameRegex("^my-NasBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrNasBackupPlanId&#34;, ids.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrNasBackupPlanId", ids.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1843,7 +1911,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1865,13 +1934,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-NasBackupPlan&#34;)
+     *             .nameRegex("^my-NasBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrNasBackupPlanId&#34;, ids.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrNasBackupPlanId", ids.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1888,7 +1958,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1910,13 +1981,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-NasBackupPlan&#34;)
+     *             .nameRegex("^my-NasBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrNasBackupPlanId&#34;, ids.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrNasBackupPlanId", ids.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1933,7 +2005,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1955,13 +2028,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-OssBackupPlan&#34;)
+     *             .nameRegex("^my-OssBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOssBackupPlanId&#34;, ids.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrOssBackupPlanId", ids.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1978,7 +2052,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2000,13 +2075,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-OssBackupPlan&#34;)
+     *             .nameRegex("^my-OssBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOssBackupPlanId&#34;, ids.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrOssBackupPlanId", ids.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2023,7 +2099,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2045,13 +2122,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-OssBackupPlan&#34;)
+     *             .nameRegex("^my-OssBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOssBackupPlanId&#34;, ids.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrOssBackupPlanId", ids.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2068,7 +2146,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2090,13 +2169,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-OssBackupPlan&#34;)
+     *             .nameRegex("^my-OssBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOssBackupPlanId&#34;, ids.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrOssBackupPlanId", ids.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2113,7 +2193,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2135,13 +2216,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-OssBackupPlan&#34;)
+     *             .nameRegex("^my-OssBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOssBackupPlanId&#34;, ids.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrOssBackupPlanId", ids.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2158,7 +2240,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2180,13 +2263,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-OssBackupPlan&#34;)
+     *             .nameRegex("^my-OssBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOssBackupPlanId&#34;, ids.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrOssBackupPlanId", ids.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2203,7 +2287,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2225,13 +2310,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getOtsBackupPlans(GetOtsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
+     *             .nameRegex("^my-otsBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, plans[0].id());
+     *         ctx.export("hbrOtsBackupPlanId", plans[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2248,7 +2334,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2270,13 +2357,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getOtsBackupPlans(GetOtsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
+     *             .nameRegex("^my-otsBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, plans[0].id());
+     *         ctx.export("hbrOtsBackupPlanId", plans[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2293,7 +2381,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2315,13 +2404,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getOtsBackupPlans(GetOtsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
+     *             .nameRegex("^my-otsBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, plans[0].id());
+     *         ctx.export("hbrOtsBackupPlanId", plans[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2338,7 +2428,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2360,13 +2451,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getOtsBackupPlans(GetOtsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
+     *             .nameRegex("^my-otsBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, plans[0].id());
+     *         ctx.export("hbrOtsBackupPlanId", plans[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2383,7 +2475,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2405,13 +2498,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getOtsBackupPlans(GetOtsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
+     *             .nameRegex("^my-otsBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, plans[0].id());
+     *         ctx.export("hbrOtsBackupPlanId", plans[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2428,7 +2522,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2450,13 +2545,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getOtsBackupPlans(GetOtsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;^my-otsBackupPlan&#34;)
+     *             .nameRegex("^my-otsBackupPlan")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrOtsBackupPlanId&#34;, plans[0].id());
+     *         ctx.export("hbrOtsBackupPlanId", plans[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2473,7 +2569,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2498,7 +2595,8 @@ public final class HbrFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2515,7 +2613,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2540,7 +2639,8 @@ public final class HbrFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2557,7 +2657,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2582,7 +2683,8 @@ public final class HbrFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2599,7 +2701,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2624,7 +2727,8 @@ public final class HbrFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2641,7 +2745,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2666,7 +2771,8 @@ public final class HbrFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2683,7 +2789,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2708,7 +2815,8 @@ public final class HbrFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2725,7 +2833,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2748,10 +2857,11 @@ public final class HbrFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getReplicationVaultRegions();
      * 
-     *         ctx.export(&#34;hbrReplicationVaultRegionRegionId1&#34;, default_.regions()[0].replicationRegionId());
+     *         ctx.export("hbrReplicationVaultRegionRegionId1", default_.regions()[0].replicationRegionId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2768,7 +2878,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2791,10 +2902,11 @@ public final class HbrFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getReplicationVaultRegions();
      * 
-     *         ctx.export(&#34;hbrReplicationVaultRegionRegionId1&#34;, default_.regions()[0].replicationRegionId());
+     *         ctx.export("hbrReplicationVaultRegionRegionId1", default_.regions()[0].replicationRegionId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2811,7 +2923,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2834,10 +2947,11 @@ public final class HbrFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getReplicationVaultRegions();
      * 
-     *         ctx.export(&#34;hbrReplicationVaultRegionRegionId1&#34;, default_.regions()[0].replicationRegionId());
+     *         ctx.export("hbrReplicationVaultRegionRegionId1", default_.regions()[0].replicationRegionId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2854,7 +2968,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2877,10 +2992,11 @@ public final class HbrFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getReplicationVaultRegions();
      * 
-     *         ctx.export(&#34;hbrReplicationVaultRegionRegionId1&#34;, default_.regions()[0].replicationRegionId());
+     *         ctx.export("hbrReplicationVaultRegionRegionId1", default_.regions()[0].replicationRegionId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2897,7 +3013,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2920,10 +3037,11 @@ public final class HbrFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getReplicationVaultRegions();
      * 
-     *         ctx.export(&#34;hbrReplicationVaultRegionRegionId1&#34;, default_.regions()[0].replicationRegionId());
+     *         ctx.export("hbrReplicationVaultRegionRegionId1", default_.regions()[0].replicationRegionId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2940,7 +3058,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2963,10 +3082,11 @@ public final class HbrFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getReplicationVaultRegions();
      * 
-     *         ctx.export(&#34;hbrReplicationVaultRegionRegionId1&#34;, default_.regions()[0].replicationRegionId());
+     *         ctx.export("hbrReplicationVaultRegionRegionId1", default_.regions()[0].replicationRegionId());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2983,7 +3103,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3006,18 +3127,19 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-name&#34;)
+     *             .nameRegex("plan-name")
      *             .build());
      * 
      *         final var defaultGetRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
-     *             .restoreType(&#34;ECS_FILE&#34;)
+     *             .restoreType("ECS_FILE")
      *             .vaultIds(default_.plans()[0].vaultId())
      *             .targetInstanceIds(default_.plans()[0].instanceId())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3034,7 +3156,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3057,18 +3180,19 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-name&#34;)
+     *             .nameRegex("plan-name")
      *             .build());
      * 
      *         final var defaultGetRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
-     *             .restoreType(&#34;ECS_FILE&#34;)
+     *             .restoreType("ECS_FILE")
      *             .vaultIds(default_.plans()[0].vaultId())
      *             .targetInstanceIds(default_.plans()[0].instanceId())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3085,7 +3209,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3108,18 +3233,19 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-name&#34;)
+     *             .nameRegex("plan-name")
      *             .build());
      * 
      *         final var defaultGetRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
-     *             .restoreType(&#34;ECS_FILE&#34;)
+     *             .restoreType("ECS_FILE")
      *             .vaultIds(default_.plans()[0].vaultId())
      *             .targetInstanceIds(default_.plans()[0].instanceId())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3136,7 +3262,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3159,18 +3286,19 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-name&#34;)
+     *             .nameRegex("plan-name")
      *             .build());
      * 
      *         final var defaultGetRestoreJobs = HbrFunctions.getRestoreJobs(GetRestoreJobsArgs.builder()
-     *             .restoreType(&#34;ECS_FILE&#34;)
+     *             .restoreType("ECS_FILE")
      *             .vaultIds(default_.plans()[0].vaultId())
      *             .targetInstanceIds(default_.plans()[0].instanceId())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3187,7 +3315,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3211,21 +3340,22 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;no-deleteing-hbr-ecs-server-backup-plan&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("no-deleteing-hbr-ecs-server-backup-plan")
+     *             .status("Running")
      *             .build());
      * 
      *         final var ids = HbrFunctions.getServerBackupPlans(GetServerBackupPlansArgs.builder()
      *             .filters(GetServerBackupPlansFilterArgs.builder()
-     *                 .key(&#34;instanceId&#34;)
+     *                 .key("instanceId")
      *                 .values(default_.instances()[0].id())
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;hbrServerBackupPlanId1&#34;, ids.applyValue(getServerBackupPlansResult -&gt; getServerBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrServerBackupPlanId1", ids.applyValue(getServerBackupPlansResult -> getServerBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3242,7 +3372,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3266,21 +3397,22 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;no-deleteing-hbr-ecs-server-backup-plan&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("no-deleteing-hbr-ecs-server-backup-plan")
+     *             .status("Running")
      *             .build());
      * 
      *         final var ids = HbrFunctions.getServerBackupPlans(GetServerBackupPlansArgs.builder()
      *             .filters(GetServerBackupPlansFilterArgs.builder()
-     *                 .key(&#34;instanceId&#34;)
+     *                 .key("instanceId")
      *                 .values(default_.instances()[0].id())
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;hbrServerBackupPlanId1&#34;, ids.applyValue(getServerBackupPlansResult -&gt; getServerBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrServerBackupPlanId1", ids.applyValue(getServerBackupPlansResult -> getServerBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3297,7 +3429,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3321,21 +3454,22 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;no-deleteing-hbr-ecs-server-backup-plan&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("no-deleteing-hbr-ecs-server-backup-plan")
+     *             .status("Running")
      *             .build());
      * 
      *         final var ids = HbrFunctions.getServerBackupPlans(GetServerBackupPlansArgs.builder()
      *             .filters(GetServerBackupPlansFilterArgs.builder()
-     *                 .key(&#34;instanceId&#34;)
+     *                 .key("instanceId")
      *                 .values(default_.instances()[0].id())
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;hbrServerBackupPlanId1&#34;, ids.applyValue(getServerBackupPlansResult -&gt; getServerBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrServerBackupPlanId1", ids.applyValue(getServerBackupPlansResult -> getServerBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3352,7 +3486,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3376,21 +3511,22 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;no-deleteing-hbr-ecs-server-backup-plan&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("no-deleteing-hbr-ecs-server-backup-plan")
+     *             .status("Running")
      *             .build());
      * 
      *         final var ids = HbrFunctions.getServerBackupPlans(GetServerBackupPlansArgs.builder()
      *             .filters(GetServerBackupPlansFilterArgs.builder()
-     *                 .key(&#34;instanceId&#34;)
+     *                 .key("instanceId")
      *                 .values(default_.instances()[0].id())
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;hbrServerBackupPlanId1&#34;, ids.applyValue(getServerBackupPlansResult -&gt; getServerBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrServerBackupPlanId1", ids.applyValue(getServerBackupPlansResult -> getServerBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3407,7 +3543,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3431,21 +3568,22 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;no-deleteing-hbr-ecs-server-backup-plan&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("no-deleteing-hbr-ecs-server-backup-plan")
+     *             .status("Running")
      *             .build());
      * 
      *         final var ids = HbrFunctions.getServerBackupPlans(GetServerBackupPlansArgs.builder()
      *             .filters(GetServerBackupPlansFilterArgs.builder()
-     *                 .key(&#34;instanceId&#34;)
+     *                 .key("instanceId")
      *                 .values(default_.instances()[0].id())
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;hbrServerBackupPlanId1&#34;, ids.applyValue(getServerBackupPlansResult -&gt; getServerBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrServerBackupPlanId1", ids.applyValue(getServerBackupPlansResult -> getServerBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3462,7 +3600,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3486,21 +3625,22 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EcsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;no-deleteing-hbr-ecs-server-backup-plan&#34;)
-     *             .status(&#34;Running&#34;)
+     *             .nameRegex("no-deleteing-hbr-ecs-server-backup-plan")
+     *             .status("Running")
      *             .build());
      * 
      *         final var ids = HbrFunctions.getServerBackupPlans(GetServerBackupPlansArgs.builder()
      *             .filters(GetServerBackupPlansFilterArgs.builder()
-     *                 .key(&#34;instanceId&#34;)
+     *                 .key("instanceId")
      *                 .values(default_.instances()[0].id())
      *                 .build())
      *             .build());
      * 
-     *         ctx.export(&#34;hbrServerBackupPlanId1&#34;, ids.applyValue(getServerBackupPlansResult -&gt; getServerBackupPlansResult.plans()[0].id()));
+     *         ctx.export("hbrServerBackupPlanId1", ids.applyValue(getServerBackupPlansResult -> getServerBackupPlansResult.plans()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3519,7 +3659,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3541,12 +3682,13 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = HbrFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3565,7 +3707,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3587,12 +3730,13 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = HbrFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3611,7 +3755,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3633,12 +3778,13 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = HbrFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3657,7 +3803,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3679,12 +3826,13 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = HbrFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3703,7 +3851,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3725,12 +3874,13 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = HbrFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3749,7 +3899,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3771,12 +3922,13 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = HbrFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3793,7 +3945,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3818,44 +3971,45 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .nameRegex("plan-tf-used-dont-delete")
      *             .build());
      * 
      *         final var defaultGetOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .nameRegex("plan-tf-used-dont-delete")
      *             .build());
      * 
      *         final var defaultGetNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .nameRegex("plan-tf-used-dont-delete")
      *             .build());
      * 
      *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .sourceType("ECS_FILE")
      *             .vaultId(default_.plans()[0].vaultId())
      *             .instanceId(default_.plans()[0].instanceId())
      *             .build());
      * 
      *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .sourceType(&#34;OSS&#34;)
-     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
-     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
-     *             .completeTime(&#34;2021-07-20T14:17:15CST,2021-07-24T14:17:15CST&#34;)
-     *             .completeTimeChecker(&#34;BETWEEN&#34;)
+     *             .sourceType("OSS")
+     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].vaultId()))
+     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].bucket()))
+     *             .completeTime("2021-07-20T14:17:15CST,2021-07-24T14:17:15CST")
+     *             .completeTimeChecker("BETWEEN")
      *             .build());
      * 
      *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .sourceType(&#34;NAS&#34;)
-     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
-     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
-     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
-     *             .completeTime(&#34;2021-08-23T14:17:15CST&#34;)
-     *             .completeTimeChecker(&#34;GREATER_THAN_OR_EQUAL&#34;)
+     *             .sourceType("NAS")
+     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].vaultId()))
+     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].fileSystemId()))
+     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].createTime()))
+     *             .completeTime("2021-08-23T14:17:15CST")
+     *             .completeTimeChecker("GREATER_THAN_OR_EQUAL")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrSnapshotId1&#34;, nasSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("hbrSnapshotId1", nasSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3872,7 +4026,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3897,44 +4052,45 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .nameRegex("plan-tf-used-dont-delete")
      *             .build());
      * 
      *         final var defaultGetOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .nameRegex("plan-tf-used-dont-delete")
      *             .build());
      * 
      *         final var defaultGetNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .nameRegex("plan-tf-used-dont-delete")
      *             .build());
      * 
      *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .sourceType("ECS_FILE")
      *             .vaultId(default_.plans()[0].vaultId())
      *             .instanceId(default_.plans()[0].instanceId())
      *             .build());
      * 
      *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .sourceType(&#34;OSS&#34;)
-     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
-     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
-     *             .completeTime(&#34;2021-07-20T14:17:15CST,2021-07-24T14:17:15CST&#34;)
-     *             .completeTimeChecker(&#34;BETWEEN&#34;)
+     *             .sourceType("OSS")
+     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].vaultId()))
+     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].bucket()))
+     *             .completeTime("2021-07-20T14:17:15CST,2021-07-24T14:17:15CST")
+     *             .completeTimeChecker("BETWEEN")
      *             .build());
      * 
      *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .sourceType(&#34;NAS&#34;)
-     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
-     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
-     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
-     *             .completeTime(&#34;2021-08-23T14:17:15CST&#34;)
-     *             .completeTimeChecker(&#34;GREATER_THAN_OR_EQUAL&#34;)
+     *             .sourceType("NAS")
+     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].vaultId()))
+     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].fileSystemId()))
+     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].createTime()))
+     *             .completeTime("2021-08-23T14:17:15CST")
+     *             .completeTimeChecker("GREATER_THAN_OR_EQUAL")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrSnapshotId1&#34;, nasSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("hbrSnapshotId1", nasSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3951,7 +4107,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3976,44 +4133,45 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .nameRegex("plan-tf-used-dont-delete")
      *             .build());
      * 
      *         final var defaultGetOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .nameRegex("plan-tf-used-dont-delete")
      *             .build());
      * 
      *         final var defaultGetNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .nameRegex("plan-tf-used-dont-delete")
      *             .build());
      * 
      *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .sourceType("ECS_FILE")
      *             .vaultId(default_.plans()[0].vaultId())
      *             .instanceId(default_.plans()[0].instanceId())
      *             .build());
      * 
      *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .sourceType(&#34;OSS&#34;)
-     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
-     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
-     *             .completeTime(&#34;2021-07-20T14:17:15CST,2021-07-24T14:17:15CST&#34;)
-     *             .completeTimeChecker(&#34;BETWEEN&#34;)
+     *             .sourceType("OSS")
+     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].vaultId()))
+     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].bucket()))
+     *             .completeTime("2021-07-20T14:17:15CST,2021-07-24T14:17:15CST")
+     *             .completeTimeChecker("BETWEEN")
      *             .build());
      * 
      *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .sourceType(&#34;NAS&#34;)
-     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
-     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
-     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
-     *             .completeTime(&#34;2021-08-23T14:17:15CST&#34;)
-     *             .completeTimeChecker(&#34;GREATER_THAN_OR_EQUAL&#34;)
+     *             .sourceType("NAS")
+     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].vaultId()))
+     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].fileSystemId()))
+     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].createTime()))
+     *             .completeTime("2021-08-23T14:17:15CST")
+     *             .completeTimeChecker("GREATER_THAN_OR_EQUAL")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrSnapshotId1&#34;, nasSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("hbrSnapshotId1", nasSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4030,7 +4188,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4055,44 +4214,45 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = HbrFunctions.getEcsBackupPlans(GetEcsBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .nameRegex("plan-tf-used-dont-delete")
      *             .build());
      * 
      *         final var defaultGetOssBackupPlans = HbrFunctions.getOssBackupPlans(GetOssBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .nameRegex("plan-tf-used-dont-delete")
      *             .build());
      * 
      *         final var defaultGetNasBackupPlans = HbrFunctions.getNasBackupPlans(GetNasBackupPlansArgs.builder()
-     *             .nameRegex(&#34;plan-tf-used-dont-delete&#34;)
+     *             .nameRegex("plan-tf-used-dont-delete")
      *             .build());
      * 
      *         final var ecsSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .sourceType(&#34;ECS_FILE&#34;)
+     *             .sourceType("ECS_FILE")
      *             .vaultId(default_.plans()[0].vaultId())
      *             .instanceId(default_.plans()[0].instanceId())
      *             .build());
      * 
      *         final var ossSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .sourceType(&#34;OSS&#34;)
-     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].vaultId()))
-     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -&gt; getOssBackupPlansResult.plans()[0].bucket()))
-     *             .completeTime(&#34;2021-07-20T14:17:15CST,2021-07-24T14:17:15CST&#34;)
-     *             .completeTimeChecker(&#34;BETWEEN&#34;)
+     *             .sourceType("OSS")
+     *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].vaultId()))
+     *             .bucket(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].bucket()))
+     *             .completeTime("2021-07-20T14:17:15CST,2021-07-24T14:17:15CST")
+     *             .completeTimeChecker("BETWEEN")
      *             .build());
      * 
      *         final var nasSnapshots = HbrFunctions.getSnapshots(GetSnapshotsArgs.builder()
-     *             .sourceType(&#34;NAS&#34;)
-     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].vaultId()))
-     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].fileSystemId()))
-     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -&gt; getNasBackupPlansResult.plans()[0].createTime()))
-     *             .completeTime(&#34;2021-08-23T14:17:15CST&#34;)
-     *             .completeTimeChecker(&#34;GREATER_THAN_OR_EQUAL&#34;)
+     *             .sourceType("NAS")
+     *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].vaultId()))
+     *             .fileSystemId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].fileSystemId()))
+     *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].createTime()))
+     *             .completeTime("2021-08-23T14:17:15CST")
+     *             .completeTimeChecker("GREATER_THAN_OR_EQUAL")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrSnapshotId1&#34;, nasSnapshots.applyValue(getSnapshotsResult -&gt; getSnapshotsResult.snapshots()[0].id()));
+     *         ctx.export("hbrSnapshotId1", nasSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4109,7 +4269,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4131,13 +4292,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getVaults(GetVaultsArgs.builder()
-     *             .nameRegex(&#34;^my-Vault&#34;)
+     *             .nameRegex("^my-Vault")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrVaultId1&#34;, ids.applyValue(getVaultsResult -&gt; getVaultsResult.vaults()[0].id()));
+     *         ctx.export("hbrVaultId1", ids.applyValue(getVaultsResult -> getVaultsResult.vaults()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4154,7 +4316,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4176,13 +4339,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getVaults(GetVaultsArgs.builder()
-     *             .nameRegex(&#34;^my-Vault&#34;)
+     *             .nameRegex("^my-Vault")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrVaultId1&#34;, ids.applyValue(getVaultsResult -&gt; getVaultsResult.vaults()[0].id()));
+     *         ctx.export("hbrVaultId1", ids.applyValue(getVaultsResult -> getVaultsResult.vaults()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4199,7 +4363,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4221,13 +4386,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getVaults(GetVaultsArgs.builder()
-     *             .nameRegex(&#34;^my-Vault&#34;)
+     *             .nameRegex("^my-Vault")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrVaultId1&#34;, ids.applyValue(getVaultsResult -&gt; getVaultsResult.vaults()[0].id()));
+     *         ctx.export("hbrVaultId1", ids.applyValue(getVaultsResult -> getVaultsResult.vaults()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4244,7 +4410,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4266,13 +4433,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getVaults(GetVaultsArgs.builder()
-     *             .nameRegex(&#34;^my-Vault&#34;)
+     *             .nameRegex("^my-Vault")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrVaultId1&#34;, ids.applyValue(getVaultsResult -&gt; getVaultsResult.vaults()[0].id()));
+     *         ctx.export("hbrVaultId1", ids.applyValue(getVaultsResult -> getVaultsResult.vaults()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4289,7 +4457,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4311,13 +4480,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getVaults(GetVaultsArgs.builder()
-     *             .nameRegex(&#34;^my-Vault&#34;)
+     *             .nameRegex("^my-Vault")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrVaultId1&#34;, ids.applyValue(getVaultsResult -&gt; getVaultsResult.vaults()[0].id()));
+     *         ctx.export("hbrVaultId1", ids.applyValue(getVaultsResult -> getVaultsResult.vaults()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4334,7 +4504,8 @@ public final class HbrFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4356,13 +4527,14 @@ public final class HbrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = HbrFunctions.getVaults(GetVaultsArgs.builder()
-     *             .nameRegex(&#34;^my-Vault&#34;)
+     *             .nameRegex("^my-Vault")
      *             .build());
      * 
-     *         ctx.export(&#34;hbrVaultId1&#34;, ids.applyValue(getVaultsResult -&gt; getVaultsResult.vaults()[0].id()));
+     *         ctx.export("hbrVaultId1", ids.applyValue(getVaultsResult -> getVaultsResult.vaults()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -45,7 +45,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -67,15 +68,16 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var consumerGroupsDs = ActiontrailFunctions.getConsumerGroups(GetConsumerGroupsArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .consumerIdRegex(&#34;CID-alikafkaGroupDatasourceName&#34;)
-     *             .outputFile(&#34;consumerGroups.txt&#34;)
+     *             .instanceId("xxx")
+     *             .consumerIdRegex("CID-alikafkaGroupDatasourceName")
+     *             .outputFile("consumerGroups.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, consumerGroupsDs.applyValue(getConsumerGroupsResult -&gt; getConsumerGroupsResult.consumerIds()[0]));
+     *         ctx.export("firstGroupName", consumerGroupsDs.applyValue(getConsumerGroupsResult -> getConsumerGroupsResult.consumerIds()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -90,7 +92,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -112,15 +115,16 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var consumerGroupsDs = ActiontrailFunctions.getConsumerGroups(GetConsumerGroupsArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .consumerIdRegex(&#34;CID-alikafkaGroupDatasourceName&#34;)
-     *             .outputFile(&#34;consumerGroups.txt&#34;)
+     *             .instanceId("xxx")
+     *             .consumerIdRegex("CID-alikafkaGroupDatasourceName")
+     *             .outputFile("consumerGroups.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, consumerGroupsDs.applyValue(getConsumerGroupsResult -&gt; getConsumerGroupsResult.consumerIds()[0]));
+     *         ctx.export("firstGroupName", consumerGroupsDs.applyValue(getConsumerGroupsResult -> getConsumerGroupsResult.consumerIds()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -135,7 +139,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -157,15 +162,16 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var consumerGroupsDs = ActiontrailFunctions.getConsumerGroups(GetConsumerGroupsArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .consumerIdRegex(&#34;CID-alikafkaGroupDatasourceName&#34;)
-     *             .outputFile(&#34;consumerGroups.txt&#34;)
+     *             .instanceId("xxx")
+     *             .consumerIdRegex("CID-alikafkaGroupDatasourceName")
+     *             .outputFile("consumerGroups.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, consumerGroupsDs.applyValue(getConsumerGroupsResult -&gt; getConsumerGroupsResult.consumerIds()[0]));
+     *         ctx.export("firstGroupName", consumerGroupsDs.applyValue(getConsumerGroupsResult -> getConsumerGroupsResult.consumerIds()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -180,7 +186,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -202,15 +209,16 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var consumerGroupsDs = ActiontrailFunctions.getConsumerGroups(GetConsumerGroupsArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .consumerIdRegex(&#34;CID-alikafkaGroupDatasourceName&#34;)
-     *             .outputFile(&#34;consumerGroups.txt&#34;)
+     *             .instanceId("xxx")
+     *             .consumerIdRegex("CID-alikafkaGroupDatasourceName")
+     *             .outputFile("consumerGroups.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstGroupName&#34;, consumerGroupsDs.applyValue(getConsumerGroupsResult -&gt; getConsumerGroupsResult.consumerIds()[0]));
+     *         ctx.export("firstGroupName", consumerGroupsDs.applyValue(getConsumerGroupsResult -> getConsumerGroupsResult.consumerIds()[0]));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -227,7 +235,8 @@ public final class ActiontrailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -249,10 +258,11 @@ public final class ActiontrailFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
      * 
-     *         ctx.export(&#34;alicloudActiontrailGlobalEventsStorageRegion1&#34;, default_.storageRegion());
+     *         ctx.export("alicloudActiontrailGlobalEventsStorageRegion1", default_.storageRegion());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -269,7 +279,8 @@ public final class ActiontrailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -291,10 +302,11 @@ public final class ActiontrailFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
      * 
-     *         ctx.export(&#34;alicloudActiontrailGlobalEventsStorageRegion1&#34;, default_.storageRegion());
+     *         ctx.export("alicloudActiontrailGlobalEventsStorageRegion1", default_.storageRegion());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -311,7 +323,8 @@ public final class ActiontrailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -333,10 +346,11 @@ public final class ActiontrailFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
      * 
-     *         ctx.export(&#34;alicloudActiontrailGlobalEventsStorageRegion1&#34;, default_.storageRegion());
+     *         ctx.export("alicloudActiontrailGlobalEventsStorageRegion1", default_.storageRegion());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -353,7 +367,8 @@ public final class ActiontrailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -375,10 +390,11 @@ public final class ActiontrailFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
      * 
-     *         ctx.export(&#34;alicloudActiontrailGlobalEventsStorageRegion1&#34;, default_.storageRegion());
+     *         ctx.export("alicloudActiontrailGlobalEventsStorageRegion1", default_.storageRegion());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -395,7 +411,8 @@ public final class ActiontrailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -417,10 +434,11 @@ public final class ActiontrailFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
      * 
-     *         ctx.export(&#34;alicloudActiontrailGlobalEventsStorageRegion1&#34;, default_.storageRegion());
+     *         ctx.export("alicloudActiontrailGlobalEventsStorageRegion1", default_.storageRegion());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -437,7 +455,8 @@ public final class ActiontrailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -459,10 +478,11 @@ public final class ActiontrailFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ActiontrailFunctions.getGlobalEventsStorageRegion();
      * 
-     *         ctx.export(&#34;alicloudActiontrailGlobalEventsStorageRegion1&#34;, default_.storageRegion());
+     *         ctx.export("alicloudActiontrailGlobalEventsStorageRegion1", default_.storageRegion());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -479,7 +499,8 @@ public final class ActiontrailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -501,19 +522,20 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;actiontrailHistoryDeliveryJobId1&#34;, ids.applyValue(getHistoryDeliveryJobsResult -&gt; getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
      *         final var status = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;2&#34;)
+     *             .ids("example_id")
+     *             .status("2")
      *             .build());
      * 
-     *         ctx.export(&#34;actiontrailHistoryDeliveryJobId2&#34;, status.applyValue(getHistoryDeliveryJobsResult -&gt; getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -530,7 +552,8 @@ public final class ActiontrailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -552,19 +575,20 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;actiontrailHistoryDeliveryJobId1&#34;, ids.applyValue(getHistoryDeliveryJobsResult -&gt; getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
      *         final var status = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;2&#34;)
+     *             .ids("example_id")
+     *             .status("2")
      *             .build());
      * 
-     *         ctx.export(&#34;actiontrailHistoryDeliveryJobId2&#34;, status.applyValue(getHistoryDeliveryJobsResult -&gt; getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -581,7 +605,8 @@ public final class ActiontrailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -603,19 +628,20 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;actiontrailHistoryDeliveryJobId1&#34;, ids.applyValue(getHistoryDeliveryJobsResult -&gt; getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
      *         final var status = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;2&#34;)
+     *             .ids("example_id")
+     *             .status("2")
      *             .build());
      * 
-     *         ctx.export(&#34;actiontrailHistoryDeliveryJobId2&#34;, status.applyValue(getHistoryDeliveryJobsResult -&gt; getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -632,7 +658,8 @@ public final class ActiontrailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -654,19 +681,20 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;actiontrailHistoryDeliveryJobId1&#34;, ids.applyValue(getHistoryDeliveryJobsResult -&gt; getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
      *         final var status = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;2&#34;)
+     *             .ids("example_id")
+     *             .status("2")
      *             .build());
      * 
-     *         ctx.export(&#34;actiontrailHistoryDeliveryJobId2&#34;, status.applyValue(getHistoryDeliveryJobsResult -&gt; getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -683,7 +711,8 @@ public final class ActiontrailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -705,19 +734,20 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;actiontrailHistoryDeliveryJobId1&#34;, ids.applyValue(getHistoryDeliveryJobsResult -&gt; getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
      *         final var status = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;2&#34;)
+     *             .ids("example_id")
+     *             .status("2")
      *             .build());
      * 
-     *         ctx.export(&#34;actiontrailHistoryDeliveryJobId2&#34;, status.applyValue(getHistoryDeliveryJobsResult -&gt; getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -734,7 +764,8 @@ public final class ActiontrailFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -756,19 +787,20 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;actiontrailHistoryDeliveryJobId1&#34;, ids.applyValue(getHistoryDeliveryJobsResult -&gt; getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId1", ids.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
      *         final var status = ActiontrailFunctions.getHistoryDeliveryJobs(GetHistoryDeliveryJobsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
-     *             .status(&#34;2&#34;)
+     *             .ids("example_id")
+     *             .status("2")
      *             .build());
      * 
-     *         ctx.export(&#34;actiontrailHistoryDeliveryJobId2&#34;, status.applyValue(getHistoryDeliveryJobsResult -&gt; getHistoryDeliveryJobsResult.jobs()[0].id()));
+     *         ctx.export("actiontrailHistoryDeliveryJobId2", status.applyValue(getHistoryDeliveryJobsResult -> getHistoryDeliveryJobsResult.jobs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -783,7 +815,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -813,40 +846,41 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var instanceName = config.get(&#34;instanceName&#34;).orElse(&#34;alikafkaInstanceName&#34;);
+     *         final var instanceName = config.get("instanceName").orElse("alikafkaInstanceName");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .name(instanceName)
-     *             .partitionNum(&#34;50&#34;)
-     *             .diskType(&#34;1&#34;)
-     *             .diskSize(&#34;500&#34;)
-     *             .deployType(&#34;4&#34;)
-     *             .ioMax(&#34;20&#34;)
+     *             .partitionNum("50")
+     *             .diskType("1")
+     *             .diskSize("500")
+     *             .deployType("4")
+     *             .ioMax("20")
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var instancesDs = ActiontrailFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;alikafkaInstanceName&#34;)
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .nameRegex("alikafkaInstanceName")
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceName&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].name()));
+     *         ctx.export("firstInstanceName", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -861,7 +895,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -891,40 +926,41 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var instanceName = config.get(&#34;instanceName&#34;).orElse(&#34;alikafkaInstanceName&#34;);
+     *         final var instanceName = config.get("instanceName").orElse("alikafkaInstanceName");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .name(instanceName)
-     *             .partitionNum(&#34;50&#34;)
-     *             .diskType(&#34;1&#34;)
-     *             .diskSize(&#34;500&#34;)
-     *             .deployType(&#34;4&#34;)
-     *             .ioMax(&#34;20&#34;)
+     *             .partitionNum("50")
+     *             .diskType("1")
+     *             .diskSize("500")
+     *             .deployType("4")
+     *             .ioMax("20")
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var instancesDs = ActiontrailFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;alikafkaInstanceName&#34;)
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .nameRegex("alikafkaInstanceName")
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceName&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].name()));
+     *         ctx.export("firstInstanceName", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -939,7 +975,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -969,40 +1006,41 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var instanceName = config.get(&#34;instanceName&#34;).orElse(&#34;alikafkaInstanceName&#34;);
+     *         final var instanceName = config.get("instanceName").orElse("alikafkaInstanceName");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .name(instanceName)
-     *             .partitionNum(&#34;50&#34;)
-     *             .diskType(&#34;1&#34;)
-     *             .diskSize(&#34;500&#34;)
-     *             .deployType(&#34;4&#34;)
-     *             .ioMax(&#34;20&#34;)
+     *             .partitionNum("50")
+     *             .diskType("1")
+     *             .diskSize("500")
+     *             .deployType("4")
+     *             .ioMax("20")
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var instancesDs = ActiontrailFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;alikafkaInstanceName&#34;)
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .nameRegex("alikafkaInstanceName")
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceName&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].name()));
+     *         ctx.export("firstInstanceName", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1017,7 +1055,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1047,40 +1086,41 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var instanceName = config.get(&#34;instanceName&#34;).orElse(&#34;alikafkaInstanceName&#34;);
+     *         final var instanceName = config.get("instanceName").orElse("alikafkaInstanceName");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .name(instanceName)
-     *             .partitionNum(&#34;50&#34;)
-     *             .diskType(&#34;1&#34;)
-     *             .diskSize(&#34;500&#34;)
-     *             .deployType(&#34;4&#34;)
-     *             .ioMax(&#34;20&#34;)
+     *             .partitionNum("50")
+     *             .diskType("1")
+     *             .diskSize("500")
+     *             .deployType("4")
+     *             .ioMax("20")
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var instancesDs = ActiontrailFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;alikafkaInstanceName&#34;)
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .nameRegex("alikafkaInstanceName")
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceName&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].name()));
+     *         ctx.export("firstInstanceName", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1095,7 +1135,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1125,40 +1166,41 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var instanceName = config.get(&#34;instanceName&#34;).orElse(&#34;alikafkaInstanceName&#34;);
+     *         final var instanceName = config.get("instanceName").orElse("alikafkaInstanceName");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .name(instanceName)
-     *             .partitionNum(&#34;50&#34;)
-     *             .diskType(&#34;1&#34;)
-     *             .diskSize(&#34;500&#34;)
-     *             .deployType(&#34;4&#34;)
-     *             .ioMax(&#34;20&#34;)
+     *             .partitionNum("50")
+     *             .diskType("1")
+     *             .diskSize("500")
+     *             .deployType("4")
+     *             .ioMax("20")
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var instancesDs = ActiontrailFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;alikafkaInstanceName&#34;)
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .nameRegex("alikafkaInstanceName")
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceName&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].name()));
+     *         ctx.export("firstInstanceName", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1173,7 +1215,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1203,40 +1246,41 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var instanceName = config.get(&#34;instanceName&#34;).orElse(&#34;alikafkaInstanceName&#34;);
+     *         final var instanceName = config.get("instanceName").orElse("alikafkaInstanceName");
      *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
-     *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+     *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
      *             .name(instanceName)
-     *             .partitionNum(&#34;50&#34;)
-     *             .diskType(&#34;1&#34;)
-     *             .diskSize(&#34;500&#34;)
-     *             .deployType(&#34;4&#34;)
-     *             .ioMax(&#34;20&#34;)
+     *             .partitionNum("50")
+     *             .diskType("1")
+     *             .diskSize("500")
+     *             .deployType("4")
+     *             .ioMax("20")
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
      *         final var instancesDs = ActiontrailFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;alikafkaInstanceName&#34;)
-     *             .outputFile(&#34;instances.txt&#34;)
+     *             .nameRegex("alikafkaInstanceName")
+     *             .outputFile("instances.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstInstanceName&#34;, instancesDs.applyValue(getInstancesResult -&gt; getInstancesResult.instances()[0].name()));
+     *         ctx.export("firstInstanceName", instancesDs.applyValue(getInstancesResult -> getInstancesResult.instances()[0].name()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1251,7 +1295,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1273,17 +1318,18 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var saslAclsDs = ActiontrailFunctions.getSaslAcls(GetSaslAclsArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .username(&#34;username&#34;)
-     *             .aclResourceType(&#34;Topic&#34;)
-     *             .aclResourceName(&#34;testTopic&#34;)
-     *             .outputFile(&#34;saslAcls.txt&#34;)
+     *             .instanceId("xxx")
+     *             .username("username")
+     *             .aclResourceType("Topic")
+     *             .aclResourceName("testTopic")
+     *             .outputFile("saslAcls.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstSaslAclUsername&#34;, saslAclsDs.applyValue(getSaslAclsResult -&gt; getSaslAclsResult.acls()[0].username()));
+     *         ctx.export("firstSaslAclUsername", saslAclsDs.applyValue(getSaslAclsResult -> getSaslAclsResult.acls()[0].username()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1298,7 +1344,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1320,17 +1367,18 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var saslAclsDs = ActiontrailFunctions.getSaslAcls(GetSaslAclsArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .username(&#34;username&#34;)
-     *             .aclResourceType(&#34;Topic&#34;)
-     *             .aclResourceName(&#34;testTopic&#34;)
-     *             .outputFile(&#34;saslAcls.txt&#34;)
+     *             .instanceId("xxx")
+     *             .username("username")
+     *             .aclResourceType("Topic")
+     *             .aclResourceName("testTopic")
+     *             .outputFile("saslAcls.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstSaslAclUsername&#34;, saslAclsDs.applyValue(getSaslAclsResult -&gt; getSaslAclsResult.acls()[0].username()));
+     *         ctx.export("firstSaslAclUsername", saslAclsDs.applyValue(getSaslAclsResult -> getSaslAclsResult.acls()[0].username()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1345,7 +1393,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1367,17 +1416,18 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var saslAclsDs = ActiontrailFunctions.getSaslAcls(GetSaslAclsArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .username(&#34;username&#34;)
-     *             .aclResourceType(&#34;Topic&#34;)
-     *             .aclResourceName(&#34;testTopic&#34;)
-     *             .outputFile(&#34;saslAcls.txt&#34;)
+     *             .instanceId("xxx")
+     *             .username("username")
+     *             .aclResourceType("Topic")
+     *             .aclResourceName("testTopic")
+     *             .outputFile("saslAcls.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstSaslAclUsername&#34;, saslAclsDs.applyValue(getSaslAclsResult -&gt; getSaslAclsResult.acls()[0].username()));
+     *         ctx.export("firstSaslAclUsername", saslAclsDs.applyValue(getSaslAclsResult -> getSaslAclsResult.acls()[0].username()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1392,7 +1442,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1414,17 +1465,18 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var saslAclsDs = ActiontrailFunctions.getSaslAcls(GetSaslAclsArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .username(&#34;username&#34;)
-     *             .aclResourceType(&#34;Topic&#34;)
-     *             .aclResourceName(&#34;testTopic&#34;)
-     *             .outputFile(&#34;saslAcls.txt&#34;)
+     *             .instanceId("xxx")
+     *             .username("username")
+     *             .aclResourceType("Topic")
+     *             .aclResourceName("testTopic")
+     *             .outputFile("saslAcls.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstSaslAclUsername&#34;, saslAclsDs.applyValue(getSaslAclsResult -&gt; getSaslAclsResult.acls()[0].username()));
+     *         ctx.export("firstSaslAclUsername", saslAclsDs.applyValue(getSaslAclsResult -> getSaslAclsResult.acls()[0].username()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1439,7 +1491,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1461,15 +1514,16 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var saslUsersDs = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .nameRegex(&#34;username&#34;)
-     *             .outputFile(&#34;saslUsers.txt&#34;)
+     *             .instanceId("xxx")
+     *             .nameRegex("username")
+     *             .outputFile("saslUsers.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstSaslUsername&#34;, saslUsersDs.applyValue(getSaslUsersResult -&gt; getSaslUsersResult.users()[0].username()));
+     *         ctx.export("firstSaslUsername", saslUsersDs.applyValue(getSaslUsersResult -> getSaslUsersResult.users()[0].username()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1484,7 +1538,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1506,15 +1561,16 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var saslUsersDs = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .nameRegex(&#34;username&#34;)
-     *             .outputFile(&#34;saslUsers.txt&#34;)
+     *             .instanceId("xxx")
+     *             .nameRegex("username")
+     *             .outputFile("saslUsers.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstSaslUsername&#34;, saslUsersDs.applyValue(getSaslUsersResult -&gt; getSaslUsersResult.users()[0].username()));
+     *         ctx.export("firstSaslUsername", saslUsersDs.applyValue(getSaslUsersResult -> getSaslUsersResult.users()[0].username()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1529,7 +1585,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1551,15 +1608,16 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var saslUsersDs = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .nameRegex(&#34;username&#34;)
-     *             .outputFile(&#34;saslUsers.txt&#34;)
+     *             .instanceId("xxx")
+     *             .nameRegex("username")
+     *             .outputFile("saslUsers.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstSaslUsername&#34;, saslUsersDs.applyValue(getSaslUsersResult -&gt; getSaslUsersResult.users()[0].username()));
+     *         ctx.export("firstSaslUsername", saslUsersDs.applyValue(getSaslUsersResult -> getSaslUsersResult.users()[0].username()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1574,7 +1632,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1596,15 +1655,16 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var saslUsersDs = ActiontrailFunctions.getSaslUsers(GetSaslUsersArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .nameRegex(&#34;username&#34;)
-     *             .outputFile(&#34;saslUsers.txt&#34;)
+     *             .instanceId("xxx")
+     *             .nameRegex("username")
+     *             .outputFile("saslUsers.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstSaslUsername&#34;, saslUsersDs.applyValue(getSaslUsersResult -&gt; getSaslUsersResult.users()[0].username()));
+     *         ctx.export("firstSaslUsername", saslUsersDs.applyValue(getSaslUsersResult -> getSaslUsersResult.users()[0].username()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1619,7 +1679,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1641,15 +1702,16 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topicsDs = ActiontrailFunctions.getTopics(GetTopicsArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .nameRegex(&#34;alikafkaTopicName&#34;)
-     *             .outputFile(&#34;topics.txt&#34;)
+     *             .instanceId("xxx")
+     *             .nameRegex("alikafkaTopicName")
+     *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicName&#34;, topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].topic()));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topic()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1664,7 +1726,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1686,15 +1749,16 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topicsDs = ActiontrailFunctions.getTopics(GetTopicsArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .nameRegex(&#34;alikafkaTopicName&#34;)
-     *             .outputFile(&#34;topics.txt&#34;)
+     *             .instanceId("xxx")
+     *             .nameRegex("alikafkaTopicName")
+     *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicName&#34;, topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].topic()));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topic()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1709,7 +1773,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1731,15 +1796,16 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topicsDs = ActiontrailFunctions.getTopics(GetTopicsArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .nameRegex(&#34;alikafkaTopicName&#34;)
-     *             .outputFile(&#34;topics.txt&#34;)
+     *             .instanceId("xxx")
+     *             .nameRegex("alikafkaTopicName")
+     *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicName&#34;, topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].topic()));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topic()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1754,7 +1820,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1776,15 +1843,16 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topicsDs = ActiontrailFunctions.getTopics(GetTopicsArgs.builder()
-     *             .instanceId(&#34;xxx&#34;)
-     *             .nameRegex(&#34;alikafkaTopicName&#34;)
-     *             .outputFile(&#34;topics.txt&#34;)
+     *             .instanceId("xxx")
+     *             .nameRegex("alikafkaTopicName")
+     *             .outputFile("topics.txt")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicName&#34;, topicsDs.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].topic()));
+     *         ctx.export("firstTopicName", topicsDs.applyValue(getTopicsResult -> getTopicsResult.topics()[0].topic()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1799,7 +1867,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1821,13 +1890,14 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ActiontrailFunctions.getTrails(GetTrailsArgs.builder()
-     *             .nameRegex(&#34;tf-testacc-actiontrail&#34;)
+     *             .nameRegex("tf-testacc-actiontrail")
      *             .build());
      * 
-     *         ctx.export(&#34;trailName&#34;, default_.trails()[0].id());
+     *         ctx.export("trailName", default_.trails()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1842,7 +1912,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1864,13 +1935,14 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ActiontrailFunctions.getTrails(GetTrailsArgs.builder()
-     *             .nameRegex(&#34;tf-testacc-actiontrail&#34;)
+     *             .nameRegex("tf-testacc-actiontrail")
      *             .build());
      * 
-     *         ctx.export(&#34;trailName&#34;, default_.trails()[0].id());
+     *         ctx.export("trailName", default_.trails()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1885,7 +1957,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1907,13 +1980,14 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ActiontrailFunctions.getTrails(GetTrailsArgs.builder()
-     *             .nameRegex(&#34;tf-testacc-actiontrail&#34;)
+     *             .nameRegex("tf-testacc-actiontrail")
      *             .build());
      * 
-     *         ctx.export(&#34;trailName&#34;, default_.trails()[0].id());
+     *         ctx.export("trailName", default_.trails()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1928,7 +2002,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1950,13 +2025,14 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ActiontrailFunctions.getTrails(GetTrailsArgs.builder()
-     *             .nameRegex(&#34;tf-testacc-actiontrail&#34;)
+     *             .nameRegex("tf-testacc-actiontrail")
      *             .build());
      * 
-     *         ctx.export(&#34;trailName&#34;, default_.trails()[0].id());
+     *         ctx.export("trailName", default_.trails()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1971,7 +2047,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1993,13 +2070,14 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ActiontrailFunctions.getTrails(GetTrailsArgs.builder()
-     *             .nameRegex(&#34;tf-testacc-actiontrail&#34;)
+     *             .nameRegex("tf-testacc-actiontrail")
      *             .build());
      * 
-     *         ctx.export(&#34;trailName&#34;, default_.trails()[0].id());
+     *         ctx.export("trailName", default_.trails()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2014,7 +2092,8 @@ public final class ActiontrailFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2036,13 +2115,14 @@ public final class ActiontrailFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ActiontrailFunctions.getTrails(GetTrailsArgs.builder()
-     *             .nameRegex(&#34;tf-testacc-actiontrail&#34;)
+     *             .nameRegex("tf-testacc-actiontrail")
      *             .build());
      * 
-     *         ctx.export(&#34;trailName&#34;, default_.trails()[0].id());
+     *         ctx.export("trailName", default_.trails()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

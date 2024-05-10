@@ -33,7 +33,8 @@ public final class CdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -55,12 +56,13 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CdnFunctions.getBlockedRegions(GetBlockedRegionsArgs.builder()
-     *             .language(&#34;zh&#34;)
+     *             .language("zh")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -77,7 +79,8 @@ public final class CdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -99,12 +102,13 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CdnFunctions.getBlockedRegions(GetBlockedRegionsArgs.builder()
-     *             .language(&#34;zh&#34;)
+     *             .language("zh")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -121,7 +125,8 @@ public final class CdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -143,12 +148,13 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CdnFunctions.getBlockedRegions(GetBlockedRegionsArgs.builder()
-     *             .language(&#34;zh&#34;)
+     *             .language("zh")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -165,7 +171,8 @@ public final class CdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -187,12 +194,13 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CdnFunctions.getBlockedRegions(GetBlockedRegionsArgs.builder()
-     *             .language(&#34;zh&#34;)
+     *             .language("zh")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -209,7 +217,8 @@ public final class CdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -231,12 +240,13 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ipTest = CdnFunctions.getIpInfo(GetIpInfoArgs.builder()
-     *             .ip(&#34;114.114.114.114&#34;)
+     *             .ip("114.114.114.114")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -253,7 +263,8 @@ public final class CdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -275,12 +286,13 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ipTest = CdnFunctions.getIpInfo(GetIpInfoArgs.builder()
-     *             .ip(&#34;114.114.114.114&#34;)
+     *             .ip("114.114.114.114")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -297,7 +309,8 @@ public final class CdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -319,12 +332,13 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ipTest = CdnFunctions.getIpInfo(GetIpInfoArgs.builder()
-     *             .ip(&#34;114.114.114.114&#34;)
+     *             .ip("114.114.114.114")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -341,7 +355,8 @@ public final class CdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -363,12 +378,13 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ipTest = CdnFunctions.getIpInfo(GetIpInfoArgs.builder()
-     *             .ip(&#34;114.114.114.114&#34;)
+     *             .ip("114.114.114.114")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -385,7 +401,8 @@ public final class CdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -407,13 +424,14 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CdnFunctions.getRealTimeLogDeliveries(GetRealTimeLogDeliveriesArgs.builder()
-     *             .domain(&#34;example_value&#34;)
+     *             .domain("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cdnRealTimeLogDelivery1&#34;, example.applyValue(getRealTimeLogDeliveriesResult -&gt; getRealTimeLogDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("cdnRealTimeLogDelivery1", example.applyValue(getRealTimeLogDeliveriesResult -> getRealTimeLogDeliveriesResult.deliveries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -430,7 +448,8 @@ public final class CdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -452,13 +471,14 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CdnFunctions.getRealTimeLogDeliveries(GetRealTimeLogDeliveriesArgs.builder()
-     *             .domain(&#34;example_value&#34;)
+     *             .domain("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cdnRealTimeLogDelivery1&#34;, example.applyValue(getRealTimeLogDeliveriesResult -&gt; getRealTimeLogDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("cdnRealTimeLogDelivery1", example.applyValue(getRealTimeLogDeliveriesResult -> getRealTimeLogDeliveriesResult.deliveries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -475,7 +495,8 @@ public final class CdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -497,13 +518,14 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CdnFunctions.getRealTimeLogDeliveries(GetRealTimeLogDeliveriesArgs.builder()
-     *             .domain(&#34;example_value&#34;)
+     *             .domain("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cdnRealTimeLogDelivery1&#34;, example.applyValue(getRealTimeLogDeliveriesResult -&gt; getRealTimeLogDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("cdnRealTimeLogDelivery1", example.applyValue(getRealTimeLogDeliveriesResult -> getRealTimeLogDeliveriesResult.deliveries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -520,7 +542,8 @@ public final class CdnFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -542,13 +565,14 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CdnFunctions.getRealTimeLogDeliveries(GetRealTimeLogDeliveriesArgs.builder()
-     *             .domain(&#34;example_value&#34;)
+     *             .domain("example_value")
      *             .build());
      * 
-     *         ctx.export(&#34;cdnRealTimeLogDelivery1&#34;, example.applyValue(getRealTimeLogDeliveriesResult -&gt; getRealTimeLogDeliveriesResult.deliveries()[0].id()));
+     *         ctx.export("cdnRealTimeLogDelivery1", example.applyValue(getRealTimeLogDeliveriesResult -> getRealTimeLogDeliveriesResult.deliveries()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -565,7 +589,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -587,13 +612,14 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CdnFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
-     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .enable("On")
+     *             .internetChargeType("PayByTraffic")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -610,7 +636,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -632,13 +659,14 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CdnFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
-     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .enable("On")
+     *             .internetChargeType("PayByTraffic")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -655,7 +683,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -677,13 +706,14 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CdnFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
-     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .enable("On")
+     *             .internetChargeType("PayByTraffic")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -700,7 +730,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -722,13 +753,14 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CdnFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
-     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .enable("On")
+     *             .internetChargeType("PayByTraffic")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -745,7 +777,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -767,13 +800,14 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CdnFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
-     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .enable("On")
+     *             .internetChargeType("PayByTraffic")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -790,7 +824,8 @@ public final class CdnFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -812,13 +847,14 @@ public final class CdnFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = CdnFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
-     *             .internetChargeType(&#34;PayByTraffic&#34;)
+     *             .enable("On")
+     *             .internetChargeType("PayByTraffic")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

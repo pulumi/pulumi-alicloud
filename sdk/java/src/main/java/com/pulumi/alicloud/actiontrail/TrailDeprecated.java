@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,17 +48,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new action trail.
- *         var foo = new TrailDeprecated(&#34;foo&#34;, TrailDeprecatedArgs.builder()        
- *             .name(&#34;action-trail&#34;)
- *             .eventRw(&#34;Write-test&#34;)
+ *         var foo = new TrailDeprecated("foo", TrailDeprecatedArgs.builder()        
+ *             .name("action-trail")
+ *             .eventRw("Write-test")
  *             .ossBucketName(bucket.id())
  *             .roleName(attach.roleName())
- *             .ossKeyPrefix(&#34;at-product-account-audit-B&#34;)
+ *             .ossKeyPrefix("at-product-account-audit-B")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

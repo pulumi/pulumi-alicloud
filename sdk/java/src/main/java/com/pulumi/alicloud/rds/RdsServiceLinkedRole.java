@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,13 +47,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RdsServiceLinkedRole(&#34;default&#34;, RdsServiceLinkedRoleArgs.builder()        
- *             .serviceName(&#34;AliyunServiceRoleForRdsPgsqlOnEcs&#34;)
+ *         var default_ = new RdsServiceLinkedRole("default", RdsServiceLinkedRoleArgs.builder()        
+ *             .serviceName("AliyunServiceRoleForRdsPgsqlOnEcs")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

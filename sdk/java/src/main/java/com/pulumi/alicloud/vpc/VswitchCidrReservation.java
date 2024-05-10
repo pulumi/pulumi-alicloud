@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,35 +55,36 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultVpc = new Network(&#34;defaultVpc&#34;, NetworkArgs.builder()        
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;10.0.0.0/8&#34;)
+ *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var defaultVSwitch = new Switch(&#34;defaultVSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultVSwitch = new Switch("defaultVSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultVpc.id())
- *             .cidrBlock(&#34;10.0.0.0/20&#34;)
- *             .vswitchName(String.format(&#34;%s1&#34;, name))
+ *             .cidrBlock("10.0.0.0/20")
+ *             .vswitchName(String.format("%s1", name))
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultVswitchCidrReservation = new VswitchCidrReservation(&#34;defaultVswitchCidrReservation&#34;, VswitchCidrReservationArgs.builder()        
- *             .ipVersion(&#34;IPv4&#34;)
+ *         var defaultVswitchCidrReservation = new VswitchCidrReservation("defaultVswitchCidrReservation", VswitchCidrReservationArgs.builder()        
+ *             .ipVersion("IPv4")
  *             .vswitchId(defaultVSwitch.id())
  *             .cidrReservationDescription(name)
- *             .cidrReservationCidr(&#34;10.0.10.0/24&#34;)
+ *             .cidrReservationCidr("10.0.10.0/24")
  *             .vswitchCidrReservationName(name)
- *             .cidrReservationType(&#34;Prefix&#34;)
+ *             .cidrReservationType("Prefix")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

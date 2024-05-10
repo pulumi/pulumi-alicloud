@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,25 +52,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var default_ = new EipAddress(&#34;default&#34;, EipAddressArgs.builder()        
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new EipAddress("default", EipAddressArgs.builder()        
  *             .addressName(name)
- *             .isp(&#34;BGP&#34;)
- *             .internetChargeType(&#34;PayByBandwidth&#34;)
- *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .isp("BGP")
+ *             .internetChargeType("PayByBandwidth")
+ *             .paymentType("PayAsYouGo")
  *             .build());
  * 
- *         var defaultBasicDefenseThreshold = new BasicDefenseThreshold(&#34;defaultBasicDefenseThreshold&#34;, BasicDefenseThresholdArgs.builder()        
+ *         var defaultBasicDefenseThreshold = new BasicDefenseThreshold("defaultBasicDefenseThreshold", BasicDefenseThresholdArgs.builder()        
  *             .instanceId(default_.id())
- *             .ddosType(&#34;defense&#34;)
- *             .instanceType(&#34;eip&#34;)
+ *             .ddosType("defense")
+ *             .instanceType("eip")
  *             .bps(390)
  *             .pps(90000)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

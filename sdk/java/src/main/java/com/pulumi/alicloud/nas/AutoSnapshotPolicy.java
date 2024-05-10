@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,22 +50,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AutoSnapshotPolicy(&#34;example&#34;, AutoSnapshotPolicyArgs.builder()        
- *             .autoSnapshotPolicyName(&#34;example_value&#34;)
+ *         var example = new AutoSnapshotPolicy("example", AutoSnapshotPolicyArgs.builder()        
+ *             .autoSnapshotPolicyName("example_value")
  *             .repeatWeekdays(            
- *                 &#34;3&#34;,
- *                 &#34;4&#34;,
- *                 &#34;5&#34;)
+ *                 "3",
+ *                 "4",
+ *                 "5")
  *             .retentionDays(30)
  *             .timePoints(            
- *                 &#34;3&#34;,
- *                 &#34;4&#34;,
- *                 &#34;5&#34;)
+ *                 "3",
+ *                 "4",
+ *                 "5")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

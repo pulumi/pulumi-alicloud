@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -56,35 +57,35 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         final var peerRegion = config.get(&#34;peerRegion&#34;).orElse(&#34;cn-beijing&#34;);
- *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
+ *         final var name = config.get("name").orElse("tf_example");
+ *         final var region = config.get("region").orElse("cn-hangzhou");
+ *         final var peerRegion = config.get("peerRegion").orElse("cn-beijing");
+ *         var example = new Instance("example", InstanceArgs.builder()        
  *             .cenInstanceName(name)
- *             .protectionLevel(&#34;REDUCED&#34;)
+ *             .protectionLevel("REDUCED")
  *             .build());
  * 
- *         var exampleBandwidthPackage = new BandwidthPackage(&#34;exampleBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
+ *         var exampleBandwidthPackage = new BandwidthPackage("exampleBandwidthPackage", BandwidthPackageArgs.builder()        
  *             .bandwidth(5)
- *             .cenBandwidthPackageName(&#34;tf_example&#34;)
- *             .geographicRegionAId(&#34;China&#34;)
- *             .geographicRegionBId(&#34;China&#34;)
+ *             .cenBandwidthPackageName("tf_example")
+ *             .geographicRegionAId("China")
+ *             .geographicRegionBId("China")
  *             .build());
  * 
- *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;exampleBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
+ *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment("exampleBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
  *             .instanceId(example.id())
  *             .bandwidthPackageId(exampleBandwidthPackage.id())
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
  *             .cenId(exampleBandwidthPackageAttachment.instanceId())
  *             .build());
  * 
- *         var peer = new TransitRouter(&#34;peer&#34;, TransitRouterArgs.builder()        
+ *         var peer = new TransitRouter("peer", TransitRouterArgs.builder()        
  *             .cenId(exampleTransitRouter.cenId())
  *             .build());
  * 
- *         var exampleTransitRouterPeerAttachment = new TransitRouterPeerAttachment(&#34;exampleTransitRouterPeerAttachment&#34;, TransitRouterPeerAttachmentArgs.builder()        
+ *         var exampleTransitRouterPeerAttachment = new TransitRouterPeerAttachment("exampleTransitRouterPeerAttachment", TransitRouterPeerAttachmentArgs.builder()        
  *             .cenId(example.id())
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .peerTransitRouterRegionId(peerRegion)
@@ -97,7 +98,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

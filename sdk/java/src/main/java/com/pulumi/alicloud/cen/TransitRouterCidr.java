@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,27 +53,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(&#34;tf_example&#34;)
- *             .description(&#34;an example for cen&#34;)
+ *         var example = new Instance("example", InstanceArgs.builder()        
+ *             .cenInstanceName("tf_example")
+ *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .transitRouterName(&#34;tf_example&#34;)
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
+ *             .transitRouterName("tf_example")
  *             .cenId(example.id())
  *             .build());
  * 
- *         var exampleTransitRouterCidr = new TransitRouterCidr(&#34;exampleTransitRouterCidr&#34;, TransitRouterCidrArgs.builder()        
+ *         var exampleTransitRouterCidr = new TransitRouterCidr("exampleTransitRouterCidr", TransitRouterCidrArgs.builder()        
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
- *             .cidr(&#34;192.168.0.0/16&#34;)
- *             .transitRouterCidrName(&#34;tf_example&#34;)
- *             .description(&#34;tf_example&#34;)
+ *             .cidr("192.168.0.0/16")
+ *             .transitRouterCidrName("tf_example")
+ *             .description("tf_example")
  *             .publishCidrRoute(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

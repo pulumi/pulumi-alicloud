@@ -105,7 +105,8 @@ public final class CasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -127,14 +128,15 @@ public final class CasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .nameRegex(&#34;^cas&#34;)
-     *             .ids(&#34;Certificate Id&#34;)
+     *             .nameRegex("^cas")
+     *             .ids("Certificate Id")
      *             .build());
      * 
-     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *         ctx.export("cert", certs.applyValue(getCertificatesResult -> getCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -151,7 +153,8 @@ public final class CasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -173,14 +176,15 @@ public final class CasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .nameRegex(&#34;^cas&#34;)
-     *             .ids(&#34;Certificate Id&#34;)
+     *             .nameRegex("^cas")
+     *             .ids("Certificate Id")
      *             .build());
      * 
-     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *         ctx.export("cert", certs.applyValue(getCertificatesResult -> getCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -197,7 +201,8 @@ public final class CasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -219,14 +224,15 @@ public final class CasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .nameRegex(&#34;^cas&#34;)
-     *             .ids(&#34;Certificate Id&#34;)
+     *             .nameRegex("^cas")
+     *             .ids("Certificate Id")
      *             .build());
      * 
-     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *         ctx.export("cert", certs.applyValue(getCertificatesResult -> getCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -243,7 +249,8 @@ public final class CasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -265,14 +272,15 @@ public final class CasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .nameRegex(&#34;^cas&#34;)
-     *             .ids(&#34;Certificate Id&#34;)
+     *             .nameRegex("^cas")
+     *             .ids("Certificate Id")
      *             .build());
      * 
-     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *         ctx.export("cert", certs.applyValue(getCertificatesResult -> getCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -289,7 +297,8 @@ public final class CasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -311,14 +320,15 @@ public final class CasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .nameRegex(&#34;^cas&#34;)
-     *             .ids(&#34;Certificate Id&#34;)
+     *             .nameRegex("^cas")
+     *             .ids("Certificate Id")
      *             .build());
      * 
-     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *         ctx.export("cert", certs.applyValue(getCertificatesResult -> getCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -335,7 +345,8 @@ public final class CasFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -357,14 +368,15 @@ public final class CasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var certs = CasFunctions.getCertificates(GetCertificatesArgs.builder()
-     *             .nameRegex(&#34;^cas&#34;)
-     *             .ids(&#34;Certificate Id&#34;)
+     *             .nameRegex("^cas")
+     *             .ids("Certificate Id")
      *             .build());
      * 
-     *         ctx.export(&#34;cert&#34;, certs.applyValue(getCertificatesResult -&gt; getCertificatesResult.certificates()[0].id()));
+     *         ctx.export("cert", certs.applyValue(getCertificatesResult -> getCertificatesResult.certificates()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

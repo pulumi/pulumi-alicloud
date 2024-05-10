@@ -29,7 +29,8 @@ public final class SagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -54,16 +55,17 @@ public final class SagFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
      *             .ids(defaultAlicloudSagAcls.id())
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
-     *             .name(&#34;tf-testAccSagAclName&#34;)
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+     *             .name("tf-testAccSagAclName")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -82,7 +84,8 @@ public final class SagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -107,16 +110,17 @@ public final class SagFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
      *             .ids(defaultAlicloudSagAcls.id())
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
-     *             .name(&#34;tf-testAccSagAclName&#34;)
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+     *             .name("tf-testAccSagAclName")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -135,7 +139,8 @@ public final class SagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -160,16 +165,17 @@ public final class SagFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
      *             .ids(defaultAlicloudSagAcls.id())
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
-     *             .name(&#34;tf-testAccSagAclName&#34;)
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+     *             .name("tf-testAccSagAclName")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -188,7 +194,8 @@ public final class SagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -213,16 +220,17 @@ public final class SagFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
      *             .ids(defaultAlicloudSagAcls.id())
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
-     *             .name(&#34;tf-testAccSagAclName&#34;)
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+     *             .name("tf-testAccSagAclName")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -241,7 +249,8 @@ public final class SagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -266,16 +275,17 @@ public final class SagFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
      *             .ids(defaultAlicloudSagAcls.id())
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
-     *             .name(&#34;tf-testAccSagAclName&#34;)
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+     *             .name("tf-testAccSagAclName")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -294,7 +304,8 @@ public final class SagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -319,16 +330,17 @@ public final class SagFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = SagFunctions.getAcls(GetAclsArgs.builder()
      *             .ids(defaultAlicloudSagAcls.id())
-     *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultAcl = new Acl(&#34;defaultAcl&#34;, AclArgs.builder()        
-     *             .name(&#34;tf-testAccSagAclName&#34;)
+     *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+     *             .name("tf-testAccSagAclName")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -345,7 +357,8 @@ public final class SagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -367,18 +380,19 @@ public final class SagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;smartagFlowLogId1&#34;, ids.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId1", ids.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
      *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
-     *             .nameRegex(&#34;^my-FlowLog&#34;)
+     *             .nameRegex("^my-FlowLog")
      *             .build());
      * 
-     *         ctx.export(&#34;smartagFlowLogId2&#34;, nameRegex.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId2", nameRegex.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -395,7 +409,8 @@ public final class SagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -417,18 +432,19 @@ public final class SagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;smartagFlowLogId1&#34;, ids.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId1", ids.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
      *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
-     *             .nameRegex(&#34;^my-FlowLog&#34;)
+     *             .nameRegex("^my-FlowLog")
      *             .build());
      * 
-     *         ctx.export(&#34;smartagFlowLogId2&#34;, nameRegex.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId2", nameRegex.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -445,7 +461,8 @@ public final class SagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -467,18 +484,19 @@ public final class SagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;smartagFlowLogId1&#34;, ids.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId1", ids.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
      *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
-     *             .nameRegex(&#34;^my-FlowLog&#34;)
+     *             .nameRegex("^my-FlowLog")
      *             .build());
      * 
-     *         ctx.export(&#34;smartagFlowLogId2&#34;, nameRegex.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId2", nameRegex.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -495,7 +513,8 @@ public final class SagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -517,18 +536,19 @@ public final class SagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;smartagFlowLogId1&#34;, ids.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId1", ids.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
      *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
-     *             .nameRegex(&#34;^my-FlowLog&#34;)
+     *             .nameRegex("^my-FlowLog")
      *             .build());
      * 
-     *         ctx.export(&#34;smartagFlowLogId2&#34;, nameRegex.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId2", nameRegex.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -545,7 +565,8 @@ public final class SagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -567,18 +588,19 @@ public final class SagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;smartagFlowLogId1&#34;, ids.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId1", ids.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
      *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
-     *             .nameRegex(&#34;^my-FlowLog&#34;)
+     *             .nameRegex("^my-FlowLog")
      *             .build());
      * 
-     *         ctx.export(&#34;smartagFlowLogId2&#34;, nameRegex.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId2", nameRegex.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -595,7 +617,8 @@ public final class SagFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -617,18 +640,19 @@ public final class SagFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;smartagFlowLogId1&#34;, ids.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId1", ids.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
      *         final var nameRegex = SagFunctions.getSmartagFlowLogs(GetSmartagFlowLogsArgs.builder()
-     *             .nameRegex(&#34;^my-FlowLog&#34;)
+     *             .nameRegex("^my-FlowLog")
      *             .build());
      * 
-     *         ctx.export(&#34;smartagFlowLogId2&#34;, nameRegex.applyValue(getSmartagFlowLogsResult -&gt; getSmartagFlowLogsResult.logs()[0].id()));
+     *         ctx.export("smartagFlowLogId2", nameRegex.applyValue(getSmartagFlowLogsResult -> getSmartagFlowLogsResult.logs()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

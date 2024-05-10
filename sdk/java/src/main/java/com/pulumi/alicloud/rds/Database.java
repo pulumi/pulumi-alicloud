@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,41 +53,42 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = RdsFunctions.getZones(GetZonesArgs.builder()
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;5.6&#34;)
+ *             .engine("MySQL")
+ *             .engineVersion("5.6")
  *             .build());
  * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
- *             .cidrBlock(&#34;172.16.0.0/16&#34;)
+ *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;172.16.0.0/24&#34;)
+ *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .engine(&#34;MySQL&#34;)
- *             .engineVersion(&#34;5.6&#34;)
- *             .instanceType(&#34;rds.mysql.s1.small&#34;)
- *             .instanceStorage(&#34;10&#34;)
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *             .engine("MySQL")
+ *             .engineVersion("5.6")
+ *             .instanceType("rds.mysql.s1.small")
+ *             .instanceStorage("10")
  *             .vswitchId(defaultSwitch.id())
  *             .instanceName(name)
  *             .build());
  * 
- *         var defaultDatabase = new Database(&#34;defaultDatabase&#34;, DatabaseArgs.builder()        
+ *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()        
  *             .instanceId(defaultInstance.id())
  *             .name(name)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

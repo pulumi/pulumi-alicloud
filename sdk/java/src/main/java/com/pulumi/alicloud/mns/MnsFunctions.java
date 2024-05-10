@@ -31,7 +31,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -53,13 +54,14 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var queues = MnsFunctions.getQueues(GetQueuesArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQueueId&#34;, queues.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         ctx.export("firstQueueId", queues.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -74,7 +76,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -96,13 +99,14 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var queues = MnsFunctions.getQueues(GetQueuesArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQueueId&#34;, queues.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         ctx.export("firstQueueId", queues.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -117,7 +121,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -139,13 +144,14 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var queues = MnsFunctions.getQueues(GetQueuesArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQueueId&#34;, queues.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         ctx.export("firstQueueId", queues.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -160,7 +166,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -182,13 +189,14 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var queues = MnsFunctions.getQueues(GetQueuesArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQueueId&#34;, queues.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         ctx.export("firstQueueId", queues.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -203,7 +211,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -225,13 +234,14 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var queues = MnsFunctions.getQueues(GetQueuesArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQueueId&#34;, queues.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         ctx.export("firstQueueId", queues.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -246,7 +256,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -268,13 +279,14 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var queues = MnsFunctions.getQueues(GetQueuesArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstQueueId&#34;, queues.applyValue(getQueuesResult -&gt; getQueuesResult.queues()[0].id()));
+     *         ctx.export("firstQueueId", queues.applyValue(getQueuesResult -> getQueuesResult.queues()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -293,7 +305,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -315,12 +328,13 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = MnsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -339,7 +353,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -361,12 +376,13 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = MnsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -385,7 +401,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -407,12 +424,13 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = MnsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -431,7 +449,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -453,12 +472,13 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = MnsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -477,7 +497,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -499,12 +520,13 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = MnsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -523,7 +545,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -545,12 +568,13 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var open = MnsFunctions.getService(GetServiceArgs.builder()
-     *             .enable(&#34;On&#34;)
+     *             .enable("On")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -565,7 +589,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -587,14 +612,15 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subscriptions = MnsFunctions.getTopicSubscriptions(GetTopicSubscriptionsArgs.builder()
-     *             .topicName(&#34;topic_name&#34;)
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .topicName("topic_name")
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicSubscriptionId&#34;, subscriptions.applyValue(getTopicSubscriptionsResult -&gt; getTopicSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("firstTopicSubscriptionId", subscriptions.applyValue(getTopicSubscriptionsResult -> getTopicSubscriptionsResult.subscriptions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -609,7 +635,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -631,14 +658,15 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subscriptions = MnsFunctions.getTopicSubscriptions(GetTopicSubscriptionsArgs.builder()
-     *             .topicName(&#34;topic_name&#34;)
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .topicName("topic_name")
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicSubscriptionId&#34;, subscriptions.applyValue(getTopicSubscriptionsResult -&gt; getTopicSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("firstTopicSubscriptionId", subscriptions.applyValue(getTopicSubscriptionsResult -> getTopicSubscriptionsResult.subscriptions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -653,7 +681,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -675,14 +704,15 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subscriptions = MnsFunctions.getTopicSubscriptions(GetTopicSubscriptionsArgs.builder()
-     *             .topicName(&#34;topic_name&#34;)
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .topicName("topic_name")
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicSubscriptionId&#34;, subscriptions.applyValue(getTopicSubscriptionsResult -&gt; getTopicSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("firstTopicSubscriptionId", subscriptions.applyValue(getTopicSubscriptionsResult -> getTopicSubscriptionsResult.subscriptions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -697,7 +727,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -719,14 +750,15 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var subscriptions = MnsFunctions.getTopicSubscriptions(GetTopicSubscriptionsArgs.builder()
-     *             .topicName(&#34;topic_name&#34;)
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .topicName("topic_name")
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicSubscriptionId&#34;, subscriptions.applyValue(getTopicSubscriptionsResult -&gt; getTopicSubscriptionsResult.subscriptions()[0].id()));
+     *         ctx.export("firstTopicSubscriptionId", subscriptions.applyValue(getTopicSubscriptionsResult -> getTopicSubscriptionsResult.subscriptions()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -741,7 +773,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -763,13 +796,14 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topics = MnsFunctions.getTopics(GetTopicsArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicId&#34;, topics.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].id()));
+     *         ctx.export("firstTopicId", topics.applyValue(getTopicsResult -> getTopicsResult.topics()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -784,7 +818,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -806,13 +841,14 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topics = MnsFunctions.getTopics(GetTopicsArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicId&#34;, topics.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].id()));
+     *         ctx.export("firstTopicId", topics.applyValue(getTopicsResult -> getTopicsResult.topics()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -827,7 +863,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -849,13 +886,14 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topics = MnsFunctions.getTopics(GetTopicsArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicId&#34;, topics.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].id()));
+     *         ctx.export("firstTopicId", topics.applyValue(getTopicsResult -> getTopicsResult.topics()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -870,7 +908,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -892,13 +931,14 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topics = MnsFunctions.getTopics(GetTopicsArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicId&#34;, topics.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].id()));
+     *         ctx.export("firstTopicId", topics.applyValue(getTopicsResult -> getTopicsResult.topics()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -913,7 +953,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -935,13 +976,14 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topics = MnsFunctions.getTopics(GetTopicsArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicId&#34;, topics.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].id()));
+     *         ctx.export("firstTopicId", topics.applyValue(getTopicsResult -> getTopicsResult.topics()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -956,7 +998,8 @@ public final class MnsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -978,13 +1021,14 @@ public final class MnsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var topics = MnsFunctions.getTopics(GetTopicsArgs.builder()
-     *             .namePrefix(&#34;tf-&#34;)
+     *             .namePrefix("tf-")
      *             .build());
      * 
-     *         ctx.export(&#34;firstTopicId&#34;, topics.applyValue(getTopicsResult -&gt; getTopicsResult.topics()[0].id()));
+     *         ctx.export("firstTopicId", topics.applyValue(getTopicsResult -> getTopicsResult.topics()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

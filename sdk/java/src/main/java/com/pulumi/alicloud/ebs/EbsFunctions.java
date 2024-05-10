@@ -31,7 +31,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -53,14 +54,15 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .nameRegex(defaultAlicloudEbsDedicatedBlockStorageCluster.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEbsDedicatedBlockStorageClusterExampleId&#34;, default_.clusters()[0].id());
+     *         ctx.export("alicloudEbsDedicatedBlockStorageClusterExampleId", default_.clusters()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -75,7 +77,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -97,14 +100,15 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .nameRegex(defaultAlicloudEbsDedicatedBlockStorageCluster.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEbsDedicatedBlockStorageClusterExampleId&#34;, default_.clusters()[0].id());
+     *         ctx.export("alicloudEbsDedicatedBlockStorageClusterExampleId", default_.clusters()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -119,7 +123,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -141,14 +146,15 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .nameRegex(defaultAlicloudEbsDedicatedBlockStorageCluster.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEbsDedicatedBlockStorageClusterExampleId&#34;, default_.clusters()[0].id());
+     *         ctx.export("alicloudEbsDedicatedBlockStorageClusterExampleId", default_.clusters()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -163,7 +169,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -185,14 +192,15 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .nameRegex(defaultAlicloudEbsDedicatedBlockStorageCluster.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEbsDedicatedBlockStorageClusterExampleId&#34;, default_.clusters()[0].id());
+     *         ctx.export("alicloudEbsDedicatedBlockStorageClusterExampleId", default_.clusters()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -207,7 +215,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -229,14 +238,15 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .nameRegex(defaultAlicloudEbsDedicatedBlockStorageCluster.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEbsDedicatedBlockStorageClusterExampleId&#34;, default_.clusters()[0].id());
+     *         ctx.export("alicloudEbsDedicatedBlockStorageClusterExampleId", default_.clusters()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -251,7 +261,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -273,14 +284,15 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .nameRegex(defaultAlicloudEbsDedicatedBlockStorageCluster.name())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEbsDedicatedBlockStorageClusterExampleId&#34;, default_.clusters()[0].id());
+     *         ctx.export("alicloudEbsDedicatedBlockStorageClusterExampleId", default_.clusters()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -297,7 +309,8 @@ public final class EbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -319,13 +332,14 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EbsFunctions.getDiskReplicaGroups(GetDiskReplicaGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ebsDiskReplicaGroupId1&#34;, ids.applyValue(getDiskReplicaGroupsResult -&gt; getDiskReplicaGroupsResult.groups()[0].id()));
+     *         ctx.export("ebsDiskReplicaGroupId1", ids.applyValue(getDiskReplicaGroupsResult -> getDiskReplicaGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -342,7 +356,8 @@ public final class EbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -364,13 +379,14 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EbsFunctions.getDiskReplicaGroups(GetDiskReplicaGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ebsDiskReplicaGroupId1&#34;, ids.applyValue(getDiskReplicaGroupsResult -&gt; getDiskReplicaGroupsResult.groups()[0].id()));
+     *         ctx.export("ebsDiskReplicaGroupId1", ids.applyValue(getDiskReplicaGroupsResult -> getDiskReplicaGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -387,7 +403,8 @@ public final class EbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -409,13 +426,14 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EbsFunctions.getDiskReplicaGroups(GetDiskReplicaGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ebsDiskReplicaGroupId1&#34;, ids.applyValue(getDiskReplicaGroupsResult -&gt; getDiskReplicaGroupsResult.groups()[0].id()));
+     *         ctx.export("ebsDiskReplicaGroupId1", ids.applyValue(getDiskReplicaGroupsResult -> getDiskReplicaGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -432,7 +450,8 @@ public final class EbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -454,13 +473,14 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EbsFunctions.getDiskReplicaGroups(GetDiskReplicaGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ebsDiskReplicaGroupId1&#34;, ids.applyValue(getDiskReplicaGroupsResult -&gt; getDiskReplicaGroupsResult.groups()[0].id()));
+     *         ctx.export("ebsDiskReplicaGroupId1", ids.applyValue(getDiskReplicaGroupsResult -> getDiskReplicaGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -477,7 +497,8 @@ public final class EbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -499,13 +520,14 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EbsFunctions.getDiskReplicaGroups(GetDiskReplicaGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ebsDiskReplicaGroupId1&#34;, ids.applyValue(getDiskReplicaGroupsResult -&gt; getDiskReplicaGroupsResult.groups()[0].id()));
+     *         ctx.export("ebsDiskReplicaGroupId1", ids.applyValue(getDiskReplicaGroupsResult -> getDiskReplicaGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -522,7 +544,8 @@ public final class EbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -544,13 +567,14 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ids = EbsFunctions.getDiskReplicaGroups(GetDiskReplicaGroupsArgs.builder()
-     *             .ids(&#34;example_id&#34;)
+     *             .ids("example_id")
      *             .build());
      * 
-     *         ctx.export(&#34;ebsDiskReplicaGroupId1&#34;, ids.applyValue(getDiskReplicaGroupsResult -&gt; getDiskReplicaGroupsResult.groups()[0].id()));
+     *         ctx.export("ebsDiskReplicaGroupId1", ids.applyValue(getDiskReplicaGroupsResult -> getDiskReplicaGroupsResult.groups()[0].id()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -565,7 +589,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -590,10 +615,11 @@ public final class EbsFunctions {
      *             .ids(defaultAlicloudEbsDiskReplicaPair.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEbsDiskReplicaPairExampleId&#34;, default_.pairs()[0].id());
+     *         ctx.export("alicloudEbsDiskReplicaPairExampleId", default_.pairs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -608,7 +634,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -633,10 +660,11 @@ public final class EbsFunctions {
      *             .ids(defaultAlicloudEbsDiskReplicaPair.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEbsDiskReplicaPairExampleId&#34;, default_.pairs()[0].id());
+     *         ctx.export("alicloudEbsDiskReplicaPairExampleId", default_.pairs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -651,7 +679,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -676,10 +705,11 @@ public final class EbsFunctions {
      *             .ids(defaultAlicloudEbsDiskReplicaPair.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEbsDiskReplicaPairExampleId&#34;, default_.pairs()[0].id());
+     *         ctx.export("alicloudEbsDiskReplicaPairExampleId", default_.pairs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -694,7 +724,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -719,10 +750,11 @@ public final class EbsFunctions {
      *             .ids(defaultAlicloudEbsDiskReplicaPair.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEbsDiskReplicaPairExampleId&#34;, default_.pairs()[0].id());
+     *         ctx.export("alicloudEbsDiskReplicaPairExampleId", default_.pairs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -737,7 +769,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -762,10 +795,11 @@ public final class EbsFunctions {
      *             .ids(defaultAlicloudEbsDiskReplicaPair.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEbsDiskReplicaPairExampleId&#34;, default_.pairs()[0].id());
+     *         ctx.export("alicloudEbsDiskReplicaPairExampleId", default_.pairs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -780,7 +814,8 @@ public final class EbsFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -805,10 +840,11 @@ public final class EbsFunctions {
      *             .ids(defaultAlicloudEbsDiskReplicaPair.id())
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudEbsDiskReplicaPairExampleId&#34;, default_.pairs()[0].id());
+     *         ctx.export("alicloudEbsDiskReplicaPairExampleId", default_.pairs()[0].id());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -825,7 +861,8 @@ public final class EbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -847,13 +884,14 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getRegions(GetRegionsArgs.builder()
-     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .regionId("cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export(&#34;regions&#34;, default_.regions());
+     *         ctx.export("regions", default_.regions());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -870,7 +908,8 @@ public final class EbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -892,13 +931,14 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getRegions(GetRegionsArgs.builder()
-     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .regionId("cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export(&#34;regions&#34;, default_.regions());
+     *         ctx.export("regions", default_.regions());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -915,7 +955,8 @@ public final class EbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -937,13 +978,14 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getRegions(GetRegionsArgs.builder()
-     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .regionId("cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export(&#34;regions&#34;, default_.regions());
+     *         ctx.export("regions", default_.regions());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -960,7 +1002,8 @@ public final class EbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -982,13 +1025,14 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getRegions(GetRegionsArgs.builder()
-     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .regionId("cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export(&#34;regions&#34;, default_.regions());
+     *         ctx.export("regions", default_.regions());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1005,7 +1049,8 @@ public final class EbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1027,13 +1072,14 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getRegions(GetRegionsArgs.builder()
-     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .regionId("cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export(&#34;regions&#34;, default_.regions());
+     *         ctx.export("regions", default_.regions());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1050,7 +1096,8 @@ public final class EbsFunctions {
      * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1072,13 +1119,14 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getRegions(GetRegionsArgs.builder()
-     *             .regionId(&#34;cn-hangzhou&#34;)
+     *             .regionId("cn-hangzhou")
      *             .build());
      * 
-     *         ctx.export(&#34;regions&#34;, default_.regions());
+     *         ctx.export("regions", default_.regions());
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

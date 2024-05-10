@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,41 +60,42 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
  *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *             .nameRegex("^default-NODELETING$")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
- *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
  *             .name(name)
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .bandwidth(&#34;10&#34;)
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *             .bandwidth("10")
  *             .enableSsl(true)
  *             .description(name)
- *             .instanceChargeType(&#34;PrePaid&#34;)
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .instanceChargeType("PrePaid")
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
  *             .build());
  * 
- *         var foo = new IpsecServer(&#34;foo&#34;, IpsecServerArgs.builder()        
- *             .clientIpPool(&#34;10.0.0.0/24&#34;)
+ *         var foo = new IpsecServer("foo", IpsecServerArgs.builder()        
+ *             .clientIpPool("10.0.0.0/24")
  *             .ipsecServerName(name)
- *             .localSubnet(&#34;192.168.0.0/24&#34;)
+ *             .localSubnet("192.168.0.0/24")
  *             .vpnGatewayId(defaultGateway.id())
  *             .pskEnabled(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
