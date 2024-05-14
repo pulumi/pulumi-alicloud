@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshLoadBalancer {
     /**
-     * @return The IP address of a public network exposed API Server corresponding to the load balancing ID.
+     * @return The Instance ID of APIServer Load Balancer.
      * 
      */
     private @Nullable String apiServerLoadbalancerId;
@@ -28,14 +28,14 @@ public final class ServiceMeshLoadBalancer {
      */
     private @Nullable Boolean pilotPublicEip;
     /**
-     * @return The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
+     * @return The Instance ID of Pilot Load Balancer.
      * 
      */
     private @Nullable String pilotPublicLoadbalancerId;
 
     private ServiceMeshLoadBalancer() {}
     /**
-     * @return The IP address of a public network exposed API Server corresponding to the load balancing ID.
+     * @return The Instance ID of APIServer Load Balancer.
      * 
      */
     public Optional<String> apiServerLoadbalancerId() {
@@ -56,7 +56,7 @@ public final class ServiceMeshLoadBalancer {
         return Optional.ofNullable(this.pilotPublicEip);
     }
     /**
-     * @return The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
+     * @return The Instance ID of Pilot Load Balancer.
      * 
      */
     public Optional<String> pilotPublicLoadbalancerId() {

@@ -20,14 +20,19 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const example = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
- * const exampleVault = new alicloud.hbr.Vault("example", {vaultName: "terraform-example"});
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const exampleVault = new alicloud.hbr.Vault("example", {vaultName: `terraform-example-${_default.result}`});
  * const exampleHanaInstance = new alicloud.hbr.HanaInstance("example", {
  *     alertSetting: "INHERITED",
- *     hanaName: "terraform-example",
+ *     hanaName: `terraform-example-${_default.result}`,
  *     host: "1.1.1.1",
  *     instanceNumber: 1,
  *     password: "YouPassword123",

@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Rds
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "5.6",
-    ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[1]?.InstanceClass),
     ///         InstanceStorage = 10,
     ///         VswitchId = defaultSwitch.Id,
     ///         InstanceName = name,

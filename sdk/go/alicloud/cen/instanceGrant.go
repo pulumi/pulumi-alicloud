@@ -46,11 +46,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			childAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			_, err = alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_, err = alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -70,20 +70,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			childAccountInstanceGrant, err := cen.NewInstanceGrant(ctx, "child_account", &cen.InstanceGrantArgs{
+//			_, err = cen.NewInstanceGrant(ctx, "child_account", &cen.InstanceGrantArgs{
 //				CenId:           example.ID(),
 //				ChildInstanceId: childAccountNetwork.ID(),
 //				CenOwnerId:      pulumi.String(yourAccount.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cen.NewInstanceAttachment(ctx, "example", &cen.InstanceAttachmentArgs{
-//				InstanceId:            example.ID(),
-//				ChildInstanceId:       childAccountInstanceGrant.ChildInstanceId,
-//				ChildInstanceType:     pulumi.String("VPC"),
-//				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
-//				ChildInstanceOwnerId:  pulumi.String(childAccount.Id),
 //			})
 //			if err != nil {
 //				return err

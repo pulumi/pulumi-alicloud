@@ -53,10 +53,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("tfexample");
  *         var example = new ResourceGroup("example", ResourceGroupArgs.builder()        
- *             .displayName(name)
  *             .resourceGroupName(name)
+ *             .displayName(name)
  *             .build());
  * 
  *     }

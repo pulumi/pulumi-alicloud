@@ -21,6 +21,7 @@ class TransitRouterPeerAttachmentArgs:
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  bandwidth_type: Optional[pulumi.Input[str]] = None,
                  cen_bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+                 default_link_type: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
@@ -37,6 +38,7 @@ class TransitRouterPeerAttachmentArgs:
         :param pulumi.Input[int] bandwidth: The bandwidth of the bandwidth package.
         :param pulumi.Input[str] bandwidth_type: The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
         :param pulumi.Input[str] cen_bandwidth_package_id: The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
+        :param pulumi.Input[str] default_link_type: DefaultLinkType. Valid values: `Platinum` and `Gold`.
         :param pulumi.Input[bool] dry_run: Whether to perform pre-check for this request, including permission, instance status verification, etc.
         :param pulumi.Input[str] resource_type: The resource type to attachment. Only support `VR` and default value is `VR`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to association route table. System default is `false`.
@@ -56,6 +58,8 @@ class TransitRouterPeerAttachmentArgs:
             pulumi.set(__self__, "bandwidth_type", bandwidth_type)
         if cen_bandwidth_package_id is not None:
             pulumi.set(__self__, "cen_bandwidth_package_id", cen_bandwidth_package_id)
+        if default_link_type is not None:
+            pulumi.set(__self__, "default_link_type", default_link_type)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if resource_type is not None:
@@ -156,6 +160,18 @@ class TransitRouterPeerAttachmentArgs:
         pulumi.set(self, "cen_bandwidth_package_id", value)
 
     @property
+    @pulumi.getter(name="defaultLinkType")
+    def default_link_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        DefaultLinkType. Valid values: `Platinum` and `Gold`.
+        """
+        return pulumi.get(self, "default_link_type")
+
+    @default_link_type.setter
+    def default_link_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_link_type", value)
+
+    @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -248,6 +264,8 @@ class _TransitRouterPeerAttachmentState:
                  bandwidth_type: Optional[pulumi.Input[str]] = None,
                  cen_bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 default_link_type: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  peer_transit_router_id: Optional[pulumi.Input[str]] = None,
                  peer_transit_router_region_id: Optional[pulumi.Input[str]] = None,
@@ -266,13 +284,15 @@ class _TransitRouterPeerAttachmentState:
         :param pulumi.Input[str] bandwidth_type: The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
         :param pulumi.Input[str] cen_bandwidth_package_id: The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
         :param pulumi.Input[str] cen_id: The ID of the CEN.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[str] default_link_type: DefaultLinkType. Valid values: `Platinum` and `Gold`.
         :param pulumi.Input[bool] dry_run: Whether to perform pre-check for this request, including permission, instance status verification, etc.
         :param pulumi.Input[str] peer_transit_router_id: The ID of the peer transit router.
         :param pulumi.Input[str] peer_transit_router_region_id: The region ID of peer transit router.
         :param pulumi.Input[str] resource_type: The resource type to attachment. Only support `VR` and default value is `VR`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to association route table. System default is `false`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to propagation route table. System default is `false`.
-        :param pulumi.Input[str] status: The associating status of the network.
+        :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] transit_router_attachment_id: The ID of transit router attachment id.
         :param pulumi.Input[str] transit_router_attachment_name: The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
@@ -288,6 +308,10 @@ class _TransitRouterPeerAttachmentState:
             pulumi.set(__self__, "cen_bandwidth_package_id", cen_bandwidth_package_id)
         if cen_id is not None:
             pulumi.set(__self__, "cen_id", cen_id)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if default_link_type is not None:
+            pulumi.set(__self__, "default_link_type", default_link_type)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if peer_transit_router_id is not None:
@@ -372,6 +396,30 @@ class _TransitRouterPeerAttachmentState:
         pulumi.set(self, "cen_id", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="defaultLinkType")
+    def default_link_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        DefaultLinkType. Valid values: `Platinum` and `Gold`.
+        """
+        return pulumi.get(self, "default_link_type")
+
+    @default_link_type.setter
+    def default_link_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_link_type", value)
+
+    @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -447,7 +495,7 @@ class _TransitRouterPeerAttachmentState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The associating status of the network.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -514,6 +562,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
                  bandwidth_type: Optional[pulumi.Input[str]] = None,
                  cen_bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
+                 default_link_type: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  peer_transit_router_id: Optional[pulumi.Input[str]] = None,
                  peer_transit_router_region_id: Optional[pulumi.Input[str]] = None,
@@ -573,10 +622,10 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
 
         ## Import
 
-        CEN instance can be imported using the id, e.g.
+        CEN Transit Router Peer Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
+        $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -586,6 +635,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] bandwidth_type: The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
         :param pulumi.Input[str] cen_bandwidth_package_id: The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
         :param pulumi.Input[str] cen_id: The ID of the CEN.
+        :param pulumi.Input[str] default_link_type: DefaultLinkType. Valid values: `Platinum` and `Gold`.
         :param pulumi.Input[bool] dry_run: Whether to perform pre-check for this request, including permission, instance status verification, etc.
         :param pulumi.Input[str] peer_transit_router_id: The ID of the peer transit router.
         :param pulumi.Input[str] peer_transit_router_region_id: The region ID of peer transit router.
@@ -651,10 +701,10 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
 
         ## Import
 
-        CEN instance can be imported using the id, e.g.
+        CEN Transit Router Peer Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
+        $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -677,6 +727,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
                  bandwidth_type: Optional[pulumi.Input[str]] = None,
                  cen_bandwidth_package_id: Optional[pulumi.Input[str]] = None,
                  cen_id: Optional[pulumi.Input[str]] = None,
+                 default_link_type: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  peer_transit_router_id: Optional[pulumi.Input[str]] = None,
                  peer_transit_router_region_id: Optional[pulumi.Input[str]] = None,
@@ -702,6 +753,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
             if cen_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cen_id'")
             __props__.__dict__["cen_id"] = cen_id
+            __props__.__dict__["default_link_type"] = default_link_type
             __props__.__dict__["dry_run"] = dry_run
             if peer_transit_router_id is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_transit_router_id'")
@@ -715,6 +767,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
             __props__.__dict__["transit_router_attachment_description"] = transit_router_attachment_description
             __props__.__dict__["transit_router_attachment_name"] = transit_router_attachment_name
             __props__.__dict__["transit_router_id"] = transit_router_id
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["transit_router_attachment_id"] = None
         super(TransitRouterPeerAttachment, __self__).__init__(
@@ -732,6 +785,8 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
             bandwidth_type: Optional[pulumi.Input[str]] = None,
             cen_bandwidth_package_id: Optional[pulumi.Input[str]] = None,
             cen_id: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
+            default_link_type: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             peer_transit_router_id: Optional[pulumi.Input[str]] = None,
             peer_transit_router_region_id: Optional[pulumi.Input[str]] = None,
@@ -755,13 +810,15 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] bandwidth_type: The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
         :param pulumi.Input[str] cen_bandwidth_package_id: The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
         :param pulumi.Input[str] cen_id: The ID of the CEN.
+        :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[str] default_link_type: DefaultLinkType. Valid values: `Platinum` and `Gold`.
         :param pulumi.Input[bool] dry_run: Whether to perform pre-check for this request, including permission, instance status verification, etc.
         :param pulumi.Input[str] peer_transit_router_id: The ID of the peer transit router.
         :param pulumi.Input[str] peer_transit_router_region_id: The region ID of peer transit router.
         :param pulumi.Input[str] resource_type: The resource type to attachment. Only support `VR` and default value is `VR`.
         :param pulumi.Input[bool] route_table_association_enabled: Whether to association route table. System default is `false`.
         :param pulumi.Input[bool] route_table_propagation_enabled: Whether to propagation route table. System default is `false`.
-        :param pulumi.Input[str] status: The associating status of the network.
+        :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] transit_router_attachment_id: The ID of transit router attachment id.
         :param pulumi.Input[str] transit_router_attachment_name: The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
@@ -776,6 +833,8 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         __props__.__dict__["bandwidth_type"] = bandwidth_type
         __props__.__dict__["cen_bandwidth_package_id"] = cen_bandwidth_package_id
         __props__.__dict__["cen_id"] = cen_id
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["default_link_type"] = default_link_type
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["peer_transit_router_id"] = peer_transit_router_id
         __props__.__dict__["peer_transit_router_region_id"] = peer_transit_router_region_id
@@ -830,6 +889,22 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         return pulumi.get(self, "cen_id")
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="defaultLinkType")
+    def default_link_type(self) -> pulumi.Output[str]:
+        """
+        DefaultLinkType. Valid values: `Platinum` and `Gold`.
+        """
+        return pulumi.get(self, "default_link_type")
+
+    @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -881,7 +956,7 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The associating status of the network.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 

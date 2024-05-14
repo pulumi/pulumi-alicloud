@@ -165,6 +165,8 @@ type GetInstanceTypesArgs struct {
 	MemorySize *float64 `pulumi:"memorySize"`
 	// The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
 	MinimumEniIpv6AddressQuantity *int `pulumi:"minimumEniIpv6AddressQuantity"`
+	// The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
+	MinimumEniPrivateIpAddressQuantity *int `pulumi:"minimumEniPrivateIpAddressQuantity"`
 	// Filter the results by network type. Valid values: `Classic` and `Vpc`.
 	NetworkType *string `pulumi:"networkType"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -173,7 +175,7 @@ type GetInstanceTypesArgs struct {
 	SortedBy *string `pulumi:"sortedBy"`
 	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
-	// Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`.
+	// Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`, `cloudAuto`.
 	// **NOTE**: Its default value `cloudEfficiency` has been removed from the version v1.150.0.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 }
@@ -200,13 +202,14 @@ type GetInstanceTypesResult struct {
 	IsOutdated         *bool                          `pulumi:"isOutdated"`
 	KubernetesNodeRole *string                        `pulumi:"kubernetesNodeRole"`
 	// Size of memory, measured in GB.
-	MemorySize                    *float64 `pulumi:"memorySize"`
-	MinimumEniIpv6AddressQuantity *int     `pulumi:"minimumEniIpv6AddressQuantity"`
-	NetworkType                   *string  `pulumi:"networkType"`
-	OutputFile                    *string  `pulumi:"outputFile"`
-	SortedBy                      *string  `pulumi:"sortedBy"`
-	SpotStrategy                  *string  `pulumi:"spotStrategy"`
-	SystemDiskCategory            *string  `pulumi:"systemDiskCategory"`
+	MemorySize                         *float64 `pulumi:"memorySize"`
+	MinimumEniIpv6AddressQuantity      *int     `pulumi:"minimumEniIpv6AddressQuantity"`
+	MinimumEniPrivateIpAddressQuantity *int     `pulumi:"minimumEniPrivateIpAddressQuantity"`
+	NetworkType                        *string  `pulumi:"networkType"`
+	OutputFile                         *string  `pulumi:"outputFile"`
+	SortedBy                           *string  `pulumi:"sortedBy"`
+	SpotStrategy                       *string  `pulumi:"spotStrategy"`
+	SystemDiskCategory                 *string  `pulumi:"systemDiskCategory"`
 }
 
 func GetInstanceTypesOutput(ctx *pulumi.Context, args GetInstanceTypesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceTypesResultOutput {
@@ -251,6 +254,8 @@ type GetInstanceTypesOutputArgs struct {
 	MemorySize pulumi.Float64PtrInput `pulumi:"memorySize"`
 	// The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
 	MinimumEniIpv6AddressQuantity pulumi.IntPtrInput `pulumi:"minimumEniIpv6AddressQuantity"`
+	// The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
+	MinimumEniPrivateIpAddressQuantity pulumi.IntPtrInput `pulumi:"minimumEniPrivateIpAddressQuantity"`
 	// Filter the results by network type. Valid values: `Classic` and `Vpc`.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -259,7 +264,7 @@ type GetInstanceTypesOutputArgs struct {
 	SortedBy pulumi.StringPtrInput `pulumi:"sortedBy"`
 	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy pulumi.StringPtrInput `pulumi:"spotStrategy"`
-	// Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`.
+	// Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`, `cloudAuto`.
 	// **NOTE**: Its default value `cloudEfficiency` has been removed from the version v1.150.0.
 	SystemDiskCategory pulumi.StringPtrInput `pulumi:"systemDiskCategory"`
 }
@@ -351,6 +356,10 @@ func (o GetInstanceTypesResultOutput) MemorySize() pulumi.Float64PtrOutput {
 
 func (o GetInstanceTypesResultOutput) MinimumEniIpv6AddressQuantity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetInstanceTypesResult) *int { return v.MinimumEniIpv6AddressQuantity }).(pulumi.IntPtrOutput)
+}
+
+func (o GetInstanceTypesResultOutput) MinimumEniPrivateIpAddressQuantity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *int { return v.MinimumEniPrivateIpAddressQuantity }).(pulumi.IntPtrOutput)
 }
 
 func (o GetInstanceTypesResultOutput) NetworkType() pulumi.StringPtrOutput {

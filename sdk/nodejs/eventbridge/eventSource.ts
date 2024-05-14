@@ -18,11 +18,16 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const example = new alicloud.eventbridge.EventBus("example", {eventBusName: name});
- * const exampleQueue = new alicloud.mns.Queue("example", {name: name});
+ * const exampleQueue = new alicloud.mns.Queue("example", {name: `${name}-${_default.result}`});
  * const exampleEventSource = new alicloud.eventbridge.EventSource("example", {
  *     eventBusName: example.eventBusName,
  *     eventSourceName: name,

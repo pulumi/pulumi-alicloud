@@ -1563,7 +1563,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example-basic-edge"
+            name = "tf-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=4,
@@ -1578,9 +1578,10 @@ class EdgeKubernetes(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
         default_edge_kubernetes = alicloud.cs.EdgeKubernetes("default",
-            name=name,
+            name_prefix=name,
             worker_vswitch_ids=[default_switch.id],
             worker_instance_types=[default_get_instance_types.instance_types[0].id],
+            version="1.26.3-aliyun.1",
             worker_number=1,
             password="Test12345",
             pod_cidr="10.99.0.0/16",
@@ -1622,7 +1623,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
         default_edge_kubernetes = alicloud.cs.EdgeKubernetes("default",
-            name=name,
+            name_prefix=name,
             worker_vswitch_ids=[default_switch.id],
             worker_instance_types=[default_get_instance_types.instance_types[0].id],
             cluster_spec="ack.pro.small",
@@ -1741,7 +1742,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example-basic-edge"
+            name = "tf-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=4,
@@ -1756,9 +1757,10 @@ class EdgeKubernetes(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
         default_edge_kubernetes = alicloud.cs.EdgeKubernetes("default",
-            name=name,
+            name_prefix=name,
             worker_vswitch_ids=[default_switch.id],
             worker_instance_types=[default_get_instance_types.instance_types[0].id],
+            version="1.26.3-aliyun.1",
             worker_number=1,
             password="Test12345",
             pod_cidr="10.99.0.0/16",
@@ -1800,7 +1802,7 @@ class EdgeKubernetes(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
         default_edge_kubernetes = alicloud.cs.EdgeKubernetes("default",
-            name=name,
+            name_prefix=name,
             worker_vswitch_ids=[default_switch.id],
             worker_instance_types=[default_get_instance_types.instance_types[0].id],
             cluster_spec="ack.pro.small",

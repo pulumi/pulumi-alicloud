@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 public final class ServiceMeshMeshConfigKiali {
     private @Nullable Boolean enabled;
     /**
-     * @return Grid topology service address.
+     * @return Kiali service address.
      * 
      */
     private @Nullable String url;
@@ -24,7 +24,7 @@ public final class ServiceMeshMeshConfigKiali {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Grid topology service address.
+     * @return Kiali service address.
      * 
      */
     public Optional<String> url() {

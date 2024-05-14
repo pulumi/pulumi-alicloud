@@ -139,14 +139,18 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         # Create a RAM Group Policy attachment.
         group = alicloud.ram.Group("group",
             name="groupName",
             comments="this is a group comments.")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         policy = alicloud.ram.Policy("policy",
-            name="policyName",
-            document=\"\"\"    {
+            policy_name=f"tf-example-{default['result']}",
+            policy_document=\"\"\"    {
               "Statement": [
                 {
                   "Action": [
@@ -165,7 +169,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         \"\"\",
             description="this is a policy test")
         attach = alicloud.ram.GroupPolicyAttachment("attach",
-            policy_name=policy.name,
+            policy_name=policy.policy_name,
             policy_type=policy.type,
             group_name=group.name)
         ```
@@ -200,14 +204,18 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         # Create a RAM Group Policy attachment.
         group = alicloud.ram.Group("group",
             name="groupName",
             comments="this is a group comments.")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         policy = alicloud.ram.Policy("policy",
-            name="policyName",
-            document=\"\"\"    {
+            policy_name=f"tf-example-{default['result']}",
+            policy_document=\"\"\"    {
               "Statement": [
                 {
                   "Action": [
@@ -226,7 +234,7 @@ class GroupPolicyAttachment(pulumi.CustomResource):
         \"\"\",
             description="this is a policy test")
         attach = alicloud.ram.GroupPolicyAttachment("attach",
-            policy_name=policy.name,
+            policy_name=policy.policy_name,
             policy_type=policy.type,
             group_name=group.name)
         ```

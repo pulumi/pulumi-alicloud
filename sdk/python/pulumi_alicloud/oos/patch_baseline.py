@@ -422,7 +422,6 @@ class PatchBaseline(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import json
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
@@ -432,33 +431,7 @@ class PatchBaseline(pulumi.CustomResource):
         default = alicloud.oos.PatchBaseline("default",
             patch_baseline_name=name,
             operation_system="Windows",
-            approval_rules=json.dumps({
-                "PatchRules": [{
-                    "EnableNonSecurity": True,
-                    "PatchFilterGroup": [
-                        {
-                            "Values": ["*"],
-                            "Key": "Product",
-                        },
-                        {
-                            "Values": [
-                                "Security",
-                                "Bugfix",
-                            ],
-                            "Key": "Classification",
-                        },
-                        {
-                            "Values": [
-                                "Critical",
-                                "Important",
-                            ],
-                            "Key": "Severity",
-                        },
-                    ],
-                    "ApproveAfterDays": 7,
-                    "ComplianceLevel": "Unspecified",
-                }],
-            }))
+            approval_rules="{\\"PatchRules\\":[{\\"EnableNonSecurity\\":true,\\"PatchFilterGroup\\":[{\\"Values\\":[\\"*\\"],\\"Key\\":\\"Product\\"},{\\"Values\\":[\\"Security\\",\\"Bugfix\\"],\\"Key\\":\\"Classification\\"},{\\"Values\\":[\\"Critical\\",\\"Important\\"],\\"Key\\":\\"Severity\\"}],\\"ApproveAfterDays\\":7,\\"ComplianceLevel\\":\\"Unspecified\\"}]}")
         ```
 
         ## Import
@@ -502,7 +475,6 @@ class PatchBaseline(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import json
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
@@ -512,33 +484,7 @@ class PatchBaseline(pulumi.CustomResource):
         default = alicloud.oos.PatchBaseline("default",
             patch_baseline_name=name,
             operation_system="Windows",
-            approval_rules=json.dumps({
-                "PatchRules": [{
-                    "EnableNonSecurity": True,
-                    "PatchFilterGroup": [
-                        {
-                            "Values": ["*"],
-                            "Key": "Product",
-                        },
-                        {
-                            "Values": [
-                                "Security",
-                                "Bugfix",
-                            ],
-                            "Key": "Classification",
-                        },
-                        {
-                            "Values": [
-                                "Critical",
-                                "Important",
-                            ],
-                            "Key": "Severity",
-                        },
-                    ],
-                    "ApproveAfterDays": 7,
-                    "ComplianceLevel": "Unspecified",
-                }],
-            }))
+            approval_rules="{\\"PatchRules\\":[{\\"EnableNonSecurity\\":true,\\"PatchFilterGroup\\":[{\\"Values\\":[\\"*\\"],\\"Key\\":\\"Product\\"},{\\"Values\\":[\\"Security\\",\\"Bugfix\\"],\\"Key\\":\\"Classification\\"},{\\"Values\\":[\\"Critical\\",\\"Important\\"],\\"Key\\":\\"Severity\\"}],\\"ApproveAfterDays\\":7,\\"ComplianceLevel\\":\\"Unspecified\\"}]}")
         ```
 
         ## Import

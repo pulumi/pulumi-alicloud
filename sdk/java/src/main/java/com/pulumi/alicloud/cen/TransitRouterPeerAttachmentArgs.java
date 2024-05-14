@@ -94,6 +94,21 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
     }
 
     /**
+     * DefaultLinkType. Valid values: `Platinum` and `Gold`.
+     * 
+     */
+    @Import(name="defaultLinkType")
+    private @Nullable Output<String> defaultLinkType;
+
+    /**
+     * @return DefaultLinkType. Valid values: `Platinum` and `Gold`.
+     * 
+     */
+    public Optional<Output<String>> defaultLinkType() {
+        return Optional.ofNullable(this.defaultLinkType);
+    }
+
+    /**
      * Whether to perform pre-check for this request, including permission, instance status verification, etc.
      * 
      */
@@ -236,6 +251,7 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
         this.bandwidthType = $.bandwidthType;
         this.cenBandwidthPackageId = $.cenBandwidthPackageId;
         this.cenId = $.cenId;
+        this.defaultLinkType = $.defaultLinkType;
         this.dryRun = $.dryRun;
         this.peerTransitRouterId = $.peerTransitRouterId;
         this.peerTransitRouterRegionId = $.peerTransitRouterRegionId;
@@ -368,6 +384,27 @@ public final class TransitRouterPeerAttachmentArgs extends com.pulumi.resources.
          */
         public Builder cenId(String cenId) {
             return cenId(Output.of(cenId));
+        }
+
+        /**
+         * @param defaultLinkType DefaultLinkType. Valid values: `Platinum` and `Gold`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultLinkType(@Nullable Output<String> defaultLinkType) {
+            $.defaultLinkType = defaultLinkType;
+            return this;
+        }
+
+        /**
+         * @param defaultLinkType DefaultLinkType. Valid values: `Platinum` and `Gold`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultLinkType(String defaultLinkType) {
+            return defaultLinkType(Output.of(defaultLinkType));
         }
 
         /**

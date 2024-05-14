@@ -14,15 +14,20 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * // Create a RAM Group Policy attachment.
  * const group = new alicloud.ram.Group("group", {
  *     name: "groupName",
  *     comments: "this is a group comments.",
  * });
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const policy = new alicloud.ram.Policy("policy", {
- *     name: "policyName",
- *     document: `    {
+ *     policyName: `tf-example-${_default.result}`,
+ *     policyDocument: `    {
  *       "Statement": [
  *         {
  *           "Action": [
@@ -42,7 +47,7 @@ import * as utilities from "../utilities";
  *     description: "this is a policy test",
  * });
  * const attach = new alicloud.ram.GroupPolicyAttachment("attach", {
- *     policyName: policy.name,
+ *     policyName: policy.policyName,
  *     policyType: policy.type,
  *     groupName: group.name,
  * });

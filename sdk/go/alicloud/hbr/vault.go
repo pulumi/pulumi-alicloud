@@ -27,15 +27,25 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := hbr.NewVault(ctx, "example", &hbr.VaultArgs{
-//				VaultName: pulumi.String("example_value"),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = hbr.NewVault(ctx, "example", &hbr.VaultArgs{
+//				VaultName: pulumi.String(fmt.Sprintf("example_value_%v", _default.Result)),
 //			})
 //			if err != nil {
 //				return err

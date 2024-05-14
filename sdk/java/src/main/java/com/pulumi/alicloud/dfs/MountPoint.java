@@ -35,16 +35,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.dfs.DfsFunctions;
  * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.dfs.AccessGroup;
- * import com.pulumi.alicloud.dfs.AccessGroupArgs;
  * import com.pulumi.alicloud.dfs.FileSystem;
  * import com.pulumi.alicloud.dfs.FileSystemArgs;
+ * import com.pulumi.alicloud.dfs.AccessGroup;
+ * import com.pulumi.alicloud.dfs.AccessGroupArgs;
  * import com.pulumi.alicloud.dfs.MountPoint;
  * import com.pulumi.alicloud.dfs.MountPointArgs;
  * import java.util.List;
@@ -61,57 +59,45 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("terraform-example");
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = DfsFunctions.getZones();
  * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
- *             .min(10000)
- *             .max(99999)
- *             .build());
- * 
- *         var defaultVPC = new Network("defaultVPC", NetworkArgs.builder()        
- *             .cidrBlock("172.16.0.0/12")
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
  *             .vpcName(name)
+ *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultVSwitch = new Switch("defaultVSwitch", SwitchArgs.builder()        
- *             .description("example")
- *             .vpcId(defaultVPC.id())
- *             .cidrBlock("172.16.0.0/24")
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
  *             .vswitchName(name)
+ *             .cidrBlock("10.4.0.0/24")
+ *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].zoneId())
+ *             .build());
+ * 
+ *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()        
+ *             .storageType(default_.zones()[0].options()[0].storageType())
+ *             .zoneId(default_.zones()[0].zoneId())
+ *             .protocolType("HDFS")
+ *             .description(name)
+ *             .fileSystemName(name)
+ *             .throughputMode("Provisioned")
+ *             .spaceCapacity("1024")
+ *             .provisionedThroughputInMiBps("512")
  *             .build());
  * 
  *         var defaultAccessGroup = new AccessGroup("defaultAccessGroup", AccessGroupArgs.builder()        
- *             .description("AccessGroup resource manager center example")
+ *             .accessGroupName(name)
+ *             .description(name)
  *             .networkType("VPC")
- *             .accessGroupName(String.format("%s-%s", name,defaultInteger.result()))
- *             .build());
- * 
- *         var updateAccessGroup = new AccessGroup("updateAccessGroup", AccessGroupArgs.builder()        
- *             .description("Second AccessGroup resource manager center example")
- *             .networkType("VPC")
- *             .accessGroupName(String.format("%s-update-%s", name,defaultInteger.result()))
- *             .build());
- * 
- *         var defaultFs = new FileSystem("defaultFs", FileSystemArgs.builder()        
- *             .spaceCapacity("1024")
- *             .description("for mountpoint  example")
- *             .storageType("STANDARD")
- *             .zoneId(default_.zones()[0].zoneId())
- *             .protocolType("HDFS")
- *             .dataRedundancyType("LRS")
- *             .fileSystemName(String.format("%s-%s", name,defaultInteger.result()))
  *             .build());
  * 
  *         var defaultMountPoint = new MountPoint("defaultMountPoint", MountPointArgs.builder()        
- *             .vpcId(defaultVPC.id())
- *             .description("mountpoint example")
- *             .networkType("VPC")
- *             .vswitchId(defaultVSwitch.id())
- *             .fileSystemId(defaultFs.id())
+ *             .description(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .fileSystemId(defaultFileSystem.id())
  *             .accessGroupId(defaultAccessGroup.id())
- *             .status("Active")
+ *             .networkType("VPC")
+ *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
  *     }

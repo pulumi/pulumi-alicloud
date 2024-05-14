@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.ram.Group;
  * import com.pulumi.alicloud.ram.GroupArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ram.Policy;
  * import com.pulumi.alicloud.ram.PolicyArgs;
  * import com.pulumi.alicloud.ram.GroupPolicyAttachment;
@@ -53,9 +55,14 @@ import javax.annotation.Nullable;
  *             .comments("this is a group comments.")
  *             .build());
  * 
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var policy = new Policy("policy", PolicyArgs.builder()        
- *             .name("policyName")
- *             .document("""
+ *             .policyName(String.format("tf-example-%s", default_.result()))
+ *             .policyDocument("""
  *     {
  *       "Statement": [
  *         {
@@ -77,7 +84,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()        
- *             .policyName(policy.name())
+ *             .policyName(policy.policyName())
  *             .policyType(policy.type())
  *             .groupName(group.name())
  *             .build());

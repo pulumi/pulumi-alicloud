@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .name(String.format("%s-%s", name,default_.result()))
  *             .description(name)
- *             .networkTypeAcls("VPC")
+ *             .accessedBy("Vpc")
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
  *                 Map.entry("For", "Building table")

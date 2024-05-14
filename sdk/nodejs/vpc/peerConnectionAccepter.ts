@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const acceptingRegion = config.get("acceptingRegion") || "cn-beijing";
- * const acceptUid = config.get("acceptUid") || "xxxx";
+ * const anotherUid = config.get("anotherUid") || "xxxx";
  * const local = new alicloud.vpc.Network("local", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",

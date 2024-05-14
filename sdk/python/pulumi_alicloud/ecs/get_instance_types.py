@@ -22,7 +22,7 @@ class GetInstanceTypesResult:
     """
     A collection of values returned by getInstanceTypes.
     """
-    def __init__(__self__, availability_zone=None, cpu_core_count=None, eni_amount=None, gpu_amount=None, gpu_spec=None, id=None, ids=None, image_id=None, instance_charge_type=None, instance_type=None, instance_type_family=None, instance_types=None, is_outdated=None, kubernetes_node_role=None, memory_size=None, minimum_eni_ipv6_address_quantity=None, network_type=None, output_file=None, sorted_by=None, spot_strategy=None, system_disk_category=None):
+    def __init__(__self__, availability_zone=None, cpu_core_count=None, eni_amount=None, gpu_amount=None, gpu_spec=None, id=None, ids=None, image_id=None, instance_charge_type=None, instance_type=None, instance_type_family=None, instance_types=None, is_outdated=None, kubernetes_node_role=None, memory_size=None, minimum_eni_ipv6_address_quantity=None, minimum_eni_private_ip_address_quantity=None, network_type=None, output_file=None, sorted_by=None, spot_strategy=None, system_disk_category=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -71,6 +71,9 @@ class GetInstanceTypesResult:
         if minimum_eni_ipv6_address_quantity and not isinstance(minimum_eni_ipv6_address_quantity, int):
             raise TypeError("Expected argument 'minimum_eni_ipv6_address_quantity' to be a int")
         pulumi.set(__self__, "minimum_eni_ipv6_address_quantity", minimum_eni_ipv6_address_quantity)
+        if minimum_eni_private_ip_address_quantity and not isinstance(minimum_eni_private_ip_address_quantity, int):
+            raise TypeError("Expected argument 'minimum_eni_private_ip_address_quantity' to be a int")
+        pulumi.set(__self__, "minimum_eni_private_ip_address_quantity", minimum_eni_private_ip_address_quantity)
         if network_type and not isinstance(network_type, str):
             raise TypeError("Expected argument 'network_type' to be a str")
         pulumi.set(__self__, "network_type", network_type)
@@ -186,6 +189,11 @@ class GetInstanceTypesResult:
         return pulumi.get(self, "minimum_eni_ipv6_address_quantity")
 
     @property
+    @pulumi.getter(name="minimumEniPrivateIpAddressQuantity")
+    def minimum_eni_private_ip_address_quantity(self) -> Optional[int]:
+        return pulumi.get(self, "minimum_eni_private_ip_address_quantity")
+
+    @property
     @pulumi.getter(name="networkType")
     def network_type(self) -> Optional[str]:
         return pulumi.get(self, "network_type")
@@ -233,6 +241,7 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
             kubernetes_node_role=self.kubernetes_node_role,
             memory_size=self.memory_size,
             minimum_eni_ipv6_address_quantity=self.minimum_eni_ipv6_address_quantity,
+            minimum_eni_private_ip_address_quantity=self.minimum_eni_private_ip_address_quantity,
             network_type=self.network_type,
             output_file=self.output_file,
             sorted_by=self.sorted_by,
@@ -253,6 +262,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
                        kubernetes_node_role: Optional[str] = None,
                        memory_size: Optional[float] = None,
                        minimum_eni_ipv6_address_quantity: Optional[int] = None,
+                       minimum_eni_private_ip_address_quantity: Optional[int] = None,
                        network_type: Optional[str] = None,
                        output_file: Optional[str] = None,
                        sorted_by: Optional[str] = None,
@@ -330,11 +340,12 @@ def get_instance_types(availability_zone: Optional[str] = None,
            and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
     :param float memory_size: Filter the results to a specific memory size in GB.
     :param int minimum_eni_ipv6_address_quantity: The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
+    :param int minimum_eni_private_ip_address_quantity: The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
     :param str network_type: Filter the results by network type. Valid values: `Classic` and `Vpc`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str sorted_by: Sort mode, valid values: `CPU`, `Memory`, `Price`.
     :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
-    :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`. 
+    :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`. 
            **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
     """
     __args__ = dict()
@@ -351,6 +362,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
     __args__['kubernetesNodeRole'] = kubernetes_node_role
     __args__['memorySize'] = memory_size
     __args__['minimumEniIpv6AddressQuantity'] = minimum_eni_ipv6_address_quantity
+    __args__['minimumEniPrivateIpAddressQuantity'] = minimum_eni_private_ip_address_quantity
     __args__['networkType'] = network_type
     __args__['outputFile'] = output_file
     __args__['sortedBy'] = sorted_by
@@ -376,6 +388,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
         kubernetes_node_role=pulumi.get(__ret__, 'kubernetes_node_role'),
         memory_size=pulumi.get(__ret__, 'memory_size'),
         minimum_eni_ipv6_address_quantity=pulumi.get(__ret__, 'minimum_eni_ipv6_address_quantity'),
+        minimum_eni_private_ip_address_quantity=pulumi.get(__ret__, 'minimum_eni_private_ip_address_quantity'),
         network_type=pulumi.get(__ret__, 'network_type'),
         output_file=pulumi.get(__ret__, 'output_file'),
         sorted_by=pulumi.get(__ret__, 'sorted_by'),
@@ -397,6 +410,7 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
                               kubernetes_node_role: Optional[pulumi.Input[Optional[str]]] = None,
                               memory_size: Optional[pulumi.Input[Optional[float]]] = None,
                               minimum_eni_ipv6_address_quantity: Optional[pulumi.Input[Optional[int]]] = None,
+                              minimum_eni_private_ip_address_quantity: Optional[pulumi.Input[Optional[int]]] = None,
                               network_type: Optional[pulumi.Input[Optional[str]]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
                               sorted_by: Optional[pulumi.Input[Optional[str]]] = None,
@@ -474,11 +488,12 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
            and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
     :param float memory_size: Filter the results to a specific memory size in GB.
     :param int minimum_eni_ipv6_address_quantity: The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
+    :param int minimum_eni_private_ip_address_quantity: The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
     :param str network_type: Filter the results by network type. Valid values: `Classic` and `Vpc`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str sorted_by: Sort mode, valid values: `CPU`, `Memory`, `Price`.
     :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
-    :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`. 
+    :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`. 
            **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
     """
     ...

@@ -248,9 +248,9 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         accepting_region = config.get("acceptingRegion")
         if accepting_region is None:
             accepting_region = "cn-beijing"
-        accept_uid = config.get("acceptUid")
-        if accept_uid is None:
-            accept_uid = "xxxx"
+        another_uid = config.get("anotherUid")
+        if another_uid is None:
+            another_uid = "xxxx"
         local = alicloud.vpc.Network("local",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
@@ -309,9 +309,9 @@ class PeerConnectionAccepter(pulumi.CustomResource):
         accepting_region = config.get("acceptingRegion")
         if accepting_region is None:
             accepting_region = "cn-beijing"
-        accept_uid = config.get("acceptUid")
-        if accept_uid is None:
-            accept_uid = "xxxx"
+        another_uid = config.get("anotherUid")
+        if another_uid is None:
+            another_uid = "xxxx"
         local = alicloud.vpc.Network("local",
             vpc_name=name,
             cidr_block="10.4.0.0/16")

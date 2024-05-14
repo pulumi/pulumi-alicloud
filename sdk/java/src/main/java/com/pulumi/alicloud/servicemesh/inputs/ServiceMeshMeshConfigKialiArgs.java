@@ -24,14 +24,14 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Grid topology service address.
+     * Kiali service address.
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return Grid topology service address.
+     * @return Kiali service address.
      * 
      */
     public Optional<Output<String>> url() {
@@ -73,7 +73,7 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param url Grid topology service address.
+         * @param url Kiali service address.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param url Grid topology service address.
+         * @param url Kiali service address.
          * 
          * @return builder
          * 

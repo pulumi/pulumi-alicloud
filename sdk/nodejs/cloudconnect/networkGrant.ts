@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const cenUid = config.getNumber("cenUid") || 123456789;
+ * const anotherUid = config.getNumber("anotherUid") || 123456789;
  * // Method 2: Use the target cen account's access_key, secret_key
  * // provider "alicloud" {
  * //   region     = "cn-hangzhou"
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * const defaultNetworkGrant = new alicloud.cloudconnect.NetworkGrant("default", {
  *     ccnId: _default.id,
  *     cenId: cen.id,
- *     cenUid: cenUid,
+ *     cenUid: anotherUid,
  * });
  * ```
  *

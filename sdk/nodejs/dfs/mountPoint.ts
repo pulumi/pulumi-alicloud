@@ -18,53 +18,42 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
+ * const name = config.get("name") || "tf-example";
  * const default = alicloud.dfs.getZones({});
- * const defaultInteger = new random.index.Integer("default", {
- *     min: 10000,
- *     max: 99999,
- * });
- * const defaultVPC = new alicloud.vpc.Network("DefaultVPC", {
- *     cidrBlock: "172.16.0.0/12",
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultVSwitch = new alicloud.vpc.Switch("DefaultVSwitch", {
- *     description: "example",
- *     vpcId: defaultVPC.id,
- *     cidrBlock: "172.16.0.0/24",
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
  *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneId),
  * });
- * const defaultAccessGroup = new alicloud.dfs.AccessGroup("DefaultAccessGroup", {
- *     description: "AccessGroup resource manager center example",
- *     networkType: "VPC",
- *     accessGroupName: `${name}-${defaultInteger.result}`,
- * });
- * const updateAccessGroup = new alicloud.dfs.AccessGroup("UpdateAccessGroup", {
- *     description: "Second AccessGroup resource manager center example",
- *     networkType: "VPC",
- *     accessGroupName: `${name}-update-${defaultInteger.result}`,
- * });
- * const defaultFs = new alicloud.dfs.FileSystem("DefaultFs", {
- *     spaceCapacity: 1024,
- *     description: "for mountpoint  example",
- *     storageType: "STANDARD",
+ * const defaultFileSystem = new alicloud.dfs.FileSystem("default", {
+ *     storageType: _default.then(_default => _default.zones?.[0]?.options?.[0]?.storageType),
  *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneId),
  *     protocolType: "HDFS",
- *     dataRedundancyType: "LRS",
- *     fileSystemName: `${name}-${defaultInteger.result}`,
+ *     description: name,
+ *     fileSystemName: name,
+ *     throughputMode: "Provisioned",
+ *     spaceCapacity: 1024,
+ *     provisionedThroughputInMiBps: 512,
+ * });
+ * const defaultAccessGroup = new alicloud.dfs.AccessGroup("default", {
+ *     accessGroupName: name,
+ *     description: name,
+ *     networkType: "VPC",
  * });
  * const defaultMountPoint = new alicloud.dfs.MountPoint("default", {
- *     vpcId: defaultVPC.id,
- *     description: "mountpoint example",
- *     networkType: "VPC",
- *     vswitchId: defaultVSwitch.id,
- *     fileSystemId: defaultFs.id,
+ *     description: name,
+ *     vpcId: defaultNetwork.id,
+ *     fileSystemId: defaultFileSystem.id,
  *     accessGroupId: defaultAccessGroup.id,
- *     status: "Active",
+ *     networkType: "VPC",
+ *     vswitchId: defaultSwitch.id,
  * });
  * ```
  *

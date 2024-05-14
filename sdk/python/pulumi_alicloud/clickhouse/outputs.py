@@ -100,7 +100,7 @@ class GetAccountsAccountResult(dict):
         :param str account_type: The Valid Account type: `Normal`, `Super`.
         :param str db_cluster_id: The DBCluster id.
         :param str id: The ID of the Account. Its value is same as Queue Name.
-        :param str status: The status of the resource.
+        :param str status: The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
         """
         pulumi.set(__self__, "account_description", account_description)
         pulumi.set(__self__, "account_name", account_name)
@@ -153,7 +153,7 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
         """
         return pulumi.get(self, "status")
 

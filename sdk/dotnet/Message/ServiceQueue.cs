@@ -25,14 +25,21 @@ namespace Pulumi.AliCloud.Message
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var queue = new AliCloud.Message.ServiceQueue("queue", new()
     ///     {
-    ///         QueueName = name,
+    ///         QueueName = $"{name}-{@default.Result}",
     ///         DelaySeconds = 60478,
     ///         MaximumMessageSize = 12357,
     ///         MessageRetentionPeriod = 256000,

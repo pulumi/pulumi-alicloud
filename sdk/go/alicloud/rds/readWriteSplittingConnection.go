@@ -41,20 +41,16 @@ import (
 //				name = param
 //			}
 //			example, err := rds.GetZones(ctx, &rds.GetZonesArgs{
-//				Engine:                pulumi.StringRef("MySQL"),
-//				EngineVersion:         pulumi.StringRef("5.7"),
-//				Category:              pulumi.StringRef("HighAvailability"),
-//				DbInstanceStorageType: pulumi.StringRef("local_ssd"),
+//				Engine:        pulumi.StringRef("MySQL"),
+//				EngineVersion: pulumi.StringRef("5.6"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			exampleGetInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
-//				ZoneId:                pulumi.StringRef(example.Ids[0]),
-//				Engine:                pulumi.StringRef("MySQL"),
-//				EngineVersion:         pulumi.StringRef("5.7"),
-//				Category:              pulumi.StringRef("HighAvailability"),
-//				DbInstanceStorageType: pulumi.StringRef("local_ssd"),
+//				ZoneId:        pulumi.StringRef(example.Ids[0]),
+//				Engine:        pulumi.StringRef("MySQL"),
+//				EngineVersion: pulumi.StringRef("5.6"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -83,15 +79,14 @@ import (
 //				return err
 //			}
 //			exampleInstance, err := rds.NewInstance(ctx, "example", &rds.InstanceArgs{
-//				Engine:                pulumi.String("MySQL"),
-//				EngineVersion:         pulumi.String("5.7"),
-//				Category:              pulumi.String("HighAvailability"),
-//				InstanceType:          pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
-//				InstanceChargeType:    pulumi.String("Postpaid"),
-//				DbInstanceStorageType: pulumi.String("local_ssd"),
-//				InstanceName:          pulumi.String(name),
-//				VswitchId:             exampleSwitch.ID(),
+//				Engine:             pulumi.String("MySQL"),
+//				EngineVersion:      pulumi.String("5.6"),
+//				Category:           pulumi.String("HighAvailability"),
+//				InstanceType:       pulumi.String(exampleGetInstanceClasses.InstanceClasses[1].InstanceClass),
+//				InstanceStorage:    pulumi.Int(20),
+//				InstanceChargeType: pulumi.String("Postpaid"),
+//				InstanceName:       pulumi.String(name),
+//				VswitchId:          exampleSwitch.ID(),
 //				SecurityIps: pulumi.StringArray{
 //					pulumi.String("10.168.1.12"),
 //					pulumi.String("100.69.7.112"),

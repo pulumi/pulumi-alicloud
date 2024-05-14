@@ -2076,9 +2076,9 @@ func (o KubernetesMasterNodeArrayOutput) Index(i pulumi.IntInput) KubernetesMast
 }
 
 type KubernetesPermissionPermission struct {
-	// The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `roleType` must be null.
+	// The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `cluster` must be `""`.
 	Cluster string `pulumi:"cluster"`
-	// Specifies whether to perform a custom authorization. To perform a custom authorization, set `roleName` to a custom cluster role.
+	// Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `isCustom` must be `true`, and set `roleName` to a custom cluster role.
 	IsCustom *bool `pulumi:"isCustom"`
 	// Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `isRamRole` must be `true`.
 	IsRamRole *bool `pulumi:"isRamRole"`
@@ -2102,9 +2102,9 @@ type KubernetesPermissionPermissionInput interface {
 }
 
 type KubernetesPermissionPermissionArgs struct {
-	// The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `roleType` must be null.
+	// The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `cluster` must be `""`.
 	Cluster pulumi.StringInput `pulumi:"cluster"`
-	// Specifies whether to perform a custom authorization. To perform a custom authorization, set `roleName` to a custom cluster role.
+	// Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `isCustom` must be `true`, and set `roleName` to a custom cluster role.
 	IsCustom pulumi.BoolPtrInput `pulumi:"isCustom"`
 	// Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `isRamRole` must be `true`.
 	IsRamRole pulumi.BoolPtrInput `pulumi:"isRamRole"`
@@ -2167,12 +2167,12 @@ func (o KubernetesPermissionPermissionOutput) ToKubernetesPermissionPermissionOu
 	return o
 }
 
-// The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `roleType` must be null.
+// The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `cluster` must be `""`.
 func (o KubernetesPermissionPermissionOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v KubernetesPermissionPermission) string { return v.Cluster }).(pulumi.StringOutput)
 }
 
-// Specifies whether to perform a custom authorization. To perform a custom authorization, set `roleName` to a custom cluster role.
+// Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `isCustom` must be `true`, and set `roleName` to a custom cluster role.
 func (o KubernetesPermissionPermissionOutput) IsCustom() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KubernetesPermissionPermission) *bool { return v.IsCustom }).(pulumi.BoolPtrOutput)
 }
@@ -5098,7 +5098,7 @@ func (o NodePoolRollingPolicyPtrOutput) MaxParallelism() pulumi.IntPtrOutput {
 type NodePoolScalingConfig struct {
 	// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
 	EipBandwidth *int `pulumi:"eipBandwidth"`
-	// EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
+	// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
 	EipInternetChargeType *string `pulumi:"eipInternetChargeType"`
 	// Whether to enable automatic scaling. Value:
 	Enable *bool `pulumi:"enable"`
@@ -5126,7 +5126,7 @@ type NodePoolScalingConfigInput interface {
 type NodePoolScalingConfigArgs struct {
 	// Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
 	EipBandwidth pulumi.IntPtrInput `pulumi:"eipBandwidth"`
-	// EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
+	// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
 	EipInternetChargeType pulumi.StringPtrInput `pulumi:"eipInternetChargeType"`
 	// Whether to enable automatic scaling. Value:
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
@@ -5222,7 +5222,7 @@ func (o NodePoolScalingConfigOutput) EipBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolScalingConfig) *int { return v.EipBandwidth }).(pulumi.IntPtrOutput)
 }
 
-// EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
+// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
 func (o NodePoolScalingConfigOutput) EipInternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolScalingConfig) *string { return v.EipInternetChargeType }).(pulumi.StringPtrOutput)
 }
@@ -5286,7 +5286,7 @@ func (o NodePoolScalingConfigPtrOutput) EipBandwidth() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
+// EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
 func (o NodePoolScalingConfigPtrOutput) EipInternetChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePoolScalingConfig) *string {
 		if v == nil {

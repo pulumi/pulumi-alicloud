@@ -51,6 +51,7 @@ export class NetworkInterfaceAttachment extends pulumi.CustomResource {
      * The instance ID to attach.
      */
     public readonly instanceId!: pulumi.Output<string>;
+    public readonly networkCardIndex!: pulumi.Output<number | undefined>;
     /**
      * The ENI ID to attach.
      */
@@ -72,6 +73,7 @@ export class NetworkInterfaceAttachment extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NetworkInterfaceAttachmentState | undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["networkCardIndex"] = state ? state.networkCardIndex : undefined;
             resourceInputs["networkInterfaceId"] = state ? state.networkInterfaceId : undefined;
             resourceInputs["trunkNetworkInstanceId"] = state ? state.trunkNetworkInstanceId : undefined;
             resourceInputs["waitForNetworkConfigurationReady"] = state ? state.waitForNetworkConfigurationReady : undefined;
@@ -84,6 +86,7 @@ export class NetworkInterfaceAttachment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'networkInterfaceId'");
             }
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["networkCardIndex"] = args ? args.networkCardIndex : undefined;
             resourceInputs["networkInterfaceId"] = args ? args.networkInterfaceId : undefined;
             resourceInputs["trunkNetworkInstanceId"] = args ? args.trunkNetworkInstanceId : undefined;
             resourceInputs["waitForNetworkConfigurationReady"] = args ? args.waitForNetworkConfigurationReady : undefined;
@@ -101,6 +104,7 @@ export interface NetworkInterfaceAttachmentState {
      * The instance ID to attach.
      */
     instanceId?: pulumi.Input<string>;
+    networkCardIndex?: pulumi.Input<number>;
     /**
      * The ENI ID to attach.
      */
@@ -117,6 +121,7 @@ export interface NetworkInterfaceAttachmentArgs {
      * The instance ID to attach.
      */
     instanceId: pulumi.Input<string>;
+    networkCardIndex?: pulumi.Input<number>;
     /**
      * The ENI ID to attach.
      */

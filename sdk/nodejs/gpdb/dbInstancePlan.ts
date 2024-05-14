@@ -13,63 +13,6 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.189.0.
  *
- * ## Example Usage
- *
- * Basic Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as alicloud from "@pulumi/alicloud";
- *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const default = alicloud.gpdb.getZones({});
- * const defaultGetNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "^default-NODELETING$",
- * });
- * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultGetNetworks.ids?.[0],
- *     zoneId: _default.ids?.[0],
- * }));
- * const defaultInstance = new alicloud.gpdb.Instance("default", {
- *     dbInstanceCategory: "HighAvailability",
- *     dbInstanceClass: "gpdb.group.segsdx1",
- *     dbInstanceMode: "StorageElastic",
- *     description: name,
- *     engine: "gpdb",
- *     engineVersion: "6.0",
- *     zoneId: _default.then(_default => _default.ids?.[0]),
- *     instanceNetworkType: "VPC",
- *     instanceSpec: "2C16G",
- *     masterNodeNum: 1,
- *     paymentType: "PayAsYouGo",
- *     privateIpAddress: "1.1.1.1",
- *     segStorageType: "cloud_essd",
- *     segNodeNum: 4,
- *     storageSize: 50,
- *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
- *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
- *     ipWhitelists: [{
- *         securityIpList: "127.0.0.1",
- *     }],
- * });
- * const defaultDbInstancePlan = new alicloud.gpdb.DbInstancePlan("default", {
- *     dbInstancePlanName: name,
- *     planDesc: name,
- *     planType: "PauseResume",
- *     planScheduleType: "Regular",
- *     planConfigs: [{
- *         resume: {
- *             planCronTime: "0 0 0 1/1 * ? ",
- *         },
- *         pause: {
- *             planCronTime: "0 0 10 1/1 * ? ",
- *         },
- *     }],
- *     dbInstanceId: defaultInstance.id,
- * });
- * ```
- *
  * ## Import
  *
  * GPDB DB Instance Plan can be imported using the id, e.g.

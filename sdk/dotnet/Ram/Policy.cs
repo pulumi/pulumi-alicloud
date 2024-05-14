@@ -27,13 +27,20 @@ namespace Pulumi.AliCloud.Ram
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new RAM Policy.
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var policy = new AliCloud.Ram.Policy("policy", new()
     ///     {
-    ///         PolicyName = "policyName",
+    ///         PolicyName = $"tf-example-{@default.Result}",
     ///         PolicyDocument = @"  {
     ///     ""Statement"": [
     ///       {

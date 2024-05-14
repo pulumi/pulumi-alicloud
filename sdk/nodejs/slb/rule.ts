@@ -33,7 +33,18 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const slbRuleName = config.get("slbRuleName") || "terraform-example";
  * const rule = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
+ * });
+ * const ruleGetInstanceTypes = rule.then(rule => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: rule.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const ruleGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
+ *     owners: "system",
  * });
  * const ruleNetwork = new alicloud.vpc.Network("rule", {
  *     vpcName: slbRuleName,
@@ -44,6 +55,22 @@ import * as utilities from "../utilities";
  *     cidrBlock: "172.16.0.0/16",
  *     zoneId: rule.then(rule => rule.zones?.[0]?.id),
  *     vswitchName: slbRuleName,
+ * });
+ * const ruleSecurityGroup = new alicloud.ecs.SecurityGroup("rule", {
+ *     name: slbRuleName,
+ *     vpcId: ruleNetwork.id,
+ * });
+ * const ruleInstance = new alicloud.ecs.Instance("rule", {
+ *     imageId: ruleGetImages.then(ruleGetImages => ruleGetImages.images?.[0]?.id),
+ *     instanceType: ruleGetInstanceTypes.then(ruleGetInstanceTypes => ruleGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [ruleSecurityGroup].map(__item => __item.id),
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: 10,
+ *     availabilityZone: rule.then(rule => rule.zones?.[0]?.id),
+ *     instanceChargeType: "PostPaid",
+ *     systemDiskCategory: "cloud_efficiency",
+ *     vswitchId: ruleSwitch.id,
+ *     instanceName: slbRuleName,
  * });
  * const ruleApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("rule", {
  *     loadBalancerName: slbRuleName,

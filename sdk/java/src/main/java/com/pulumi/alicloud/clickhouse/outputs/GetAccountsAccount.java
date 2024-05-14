@@ -36,7 +36,7 @@ public final class GetAccountsAccount {
      */
     private String id;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
      * 
      */
     private String status;
@@ -78,7 +78,7 @@ public final class GetAccountsAccount {
         return this.id;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
      * 
      */
     public String status() {

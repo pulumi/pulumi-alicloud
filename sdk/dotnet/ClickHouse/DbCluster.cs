@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> DbClusterNetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
+        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         /// </summary>
         [Output("dbClusterVersion")]
         public Output<string> DbClusterVersion { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> StorageType { get; private set; } = null!;
 
         /// <summary>
-        /// The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
+        /// The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
         /// </summary>
         [Output("usedTime")]
         public Output<string?> UsedTime { get; private set; } = null!;
@@ -290,7 +290,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string> DbClusterNetworkType { get; set; } = null!;
 
         /// <summary>
-        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
+        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         /// </summary>
         [Input("dbClusterVersion", required: true)]
         public Input<string> DbClusterVersion { get; set; } = null!;
@@ -350,7 +350,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string> StorageType { get; set; } = null!;
 
         /// <summary>
-        /// The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
+        /// The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
         /// </summary>
         [Input("usedTime")]
         public Input<string>? UsedTime { get; set; }
@@ -426,7 +426,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? DbClusterNetworkType { get; set; }
 
         /// <summary>
-        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
+        /// The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
         /// </summary>
         [Input("dbClusterVersion")]
         public Input<string>? DbClusterVersion { get; set; }
@@ -492,7 +492,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? StorageType { get; set; }
 
         /// <summary>
-        /// The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
+        /// The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
         /// </summary>
         [Input("usedTime")]
         public Input<string>? UsedTime { get; set; }

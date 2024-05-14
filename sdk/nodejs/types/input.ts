@@ -3281,11 +3281,11 @@ export namespace cs {
 
     export interface KubernetesPermissionPermission {
         /**
-         * The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `roleType` must be null.
+         * The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `cluster` must be `""`.
          */
         cluster: pulumi.Input<string>;
         /**
-         * Specifies whether to perform a custom authorization. To perform a custom authorization, set `roleName` to a custom cluster role.
+         * Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `isCustom` must be `true`, and set `roleName` to a custom cluster role.
          */
         isCustom?: pulumi.Input<boolean>;
         /**
@@ -3649,7 +3649,7 @@ export namespace cs {
          */
         eipBandwidth?: pulumi.Input<number>;
         /**
-         * EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
+         * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
          */
         eipInternetChargeType?: pulumi.Input<string>;
         /**
@@ -10280,7 +10280,7 @@ export namespace servicemesh {
 
     export interface ServiceMeshLoadBalancer {
         /**
-         * The IP address of a public network exposed API Server corresponding to the load balancing ID.
+         * The Instance ID of APIServer Load Balancer.
          */
         apiServerLoadbalancerId?: pulumi.Input<string>;
         /**
@@ -10292,7 +10292,7 @@ export namespace servicemesh {
          */
         pilotPublicEip?: pulumi.Input<boolean>;
         /**
-         * The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
+         * The Instance ID of Pilot Load Balancer.
          */
         pilotPublicLoadbalancerId?: pulumi.Input<string>;
     }
@@ -10362,7 +10362,11 @@ export namespace servicemesh {
 
     export interface ServiceMeshMeshConfigAccessLog {
         enabled?: pulumi.Input<boolean>;
+        gatewayEnabled?: pulumi.Input<boolean>;
+        gatewayLifecycle?: pulumi.Input<number>;
         project?: pulumi.Input<string>;
+        sidecarEnabled?: pulumi.Input<boolean>;
+        sidecarLifecycle?: pulumi.Input<number>;
     }
 
     export interface ServiceMeshMeshConfigAudit {
@@ -10371,14 +10375,15 @@ export namespace servicemesh {
     }
 
     export interface ServiceMeshMeshConfigControlPlaneLog {
-        enabled?: pulumi.Input<boolean>;
+        enabled: pulumi.Input<boolean>;
+        logTtlInDay?: pulumi.Input<number>;
         project?: pulumi.Input<string>;
     }
 
     export interface ServiceMeshMeshConfigKiali {
         enabled?: pulumi.Input<boolean>;
         /**
-         * Grid topology service address.
+         * Kiali service address.
          */
         url?: pulumi.Input<string>;
     }
@@ -10410,7 +10415,7 @@ export namespace servicemesh {
 
     export interface ServiceMeshMeshConfigProxy {
         /**
-         * Trust cluster domain.
+         * Cluster domain name.
          */
         clusterDomain?: pulumi.Input<string>;
         limitCpu?: pulumi.Input<string>;
@@ -10428,7 +10433,7 @@ export namespace servicemesh {
         requestCpu?: pulumi.Input<string>;
         requestMemory?: pulumi.Input<string>;
         /**
-         * Other configurations of automatically injected sidecar (in YAML format).
+         * Other automatic injection Sidecar configuration (in YAML format).
          */
         sidecarInjectorWebhookAsYaml?: pulumi.Input<string>;
     }

@@ -7435,7 +7435,7 @@ export namespace clickhouse {
          */
         id: string;
         /**
-         * The status of the resource.
+         * The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
          */
         status: string;
     }
@@ -12825,11 +12825,11 @@ export namespace cs {
 
     export interface KubernetesPermissionPermission {
         /**
-         * The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `roleType` must be null.
+         * The ID of the cluster that you want to manage, When `roleType` value is `all-clusters`, the value of `cluster` must be `""`.
          */
         cluster: string;
         /**
-         * Specifies whether to perform a custom authorization. To perform a custom authorization, set `roleName` to a custom cluster role.
+         * Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `isCustom` must be `true`, and set `roleName` to a custom cluster role.
          */
         isCustom?: boolean;
         /**
@@ -13193,7 +13193,7 @@ export namespace cs {
          */
         eipBandwidth?: number;
         /**
-         * EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internetChargeType`, EIP and public network IP can only choose one.
+         * EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internetChargeType`. EIP and public network IP can only choose one.
          */
         eipInternetChargeType?: string;
         /**
@@ -41746,7 +41746,7 @@ export namespace servicemesh {
 
     export interface ServiceMeshLoadBalancer {
         /**
-         * The IP address of a public network exposed API Server corresponding to the load balancing ID.
+         * The Instance ID of APIServer Load Balancer.
          */
         apiServerLoadbalancerId: string;
         /**
@@ -41758,7 +41758,7 @@ export namespace servicemesh {
          */
         pilotPublicEip?: boolean;
         /**
-         * The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
+         * The Instance ID of Pilot Load Balancer.
          */
         pilotPublicLoadbalancerId: string;
     }
@@ -41803,7 +41803,7 @@ export namespace servicemesh {
         /**
          * Link trace sampling information. See `pilot` below.
          */
-        pilot: outputs.servicemesh.ServiceMeshMeshConfigPilot;
+        pilot?: outputs.servicemesh.ServiceMeshMeshConfigPilot;
         /**
          * Prometheus configuration.
          */
@@ -41827,8 +41827,12 @@ export namespace servicemesh {
     }
 
     export interface ServiceMeshMeshConfigAccessLog {
-        enabled: boolean;
-        project: string;
+        enabled?: boolean;
+        gatewayEnabled: boolean;
+        gatewayLifecycle: number;
+        project?: string;
+        sidecarEnabled: boolean;
+        sidecarLifecycle: number;
     }
 
     export interface ServiceMeshMeshConfigAudit {
@@ -41838,13 +41842,14 @@ export namespace servicemesh {
 
     export interface ServiceMeshMeshConfigControlPlaneLog {
         enabled: boolean;
-        project: string;
+        logTtlInDay: number;
+        project?: string;
     }
 
     export interface ServiceMeshMeshConfigKiali {
         enabled?: boolean;
         /**
-         * Grid topology service address.
+         * Kiali service address.
          */
         url: string;
     }
@@ -41859,7 +41864,7 @@ export namespace servicemesh {
     }
 
     export interface ServiceMeshMeshConfigPilot {
-        http10Enabled: boolean;
+        http10Enabled?: boolean;
         traceSampling?: number;
     }
 
@@ -41876,7 +41881,7 @@ export namespace servicemesh {
 
     export interface ServiceMeshMeshConfigProxy {
         /**
-         * Trust cluster domain.
+         * Cluster domain name.
          */
         clusterDomain: string;
         limitCpu?: string;
@@ -41894,7 +41899,7 @@ export namespace servicemesh {
         requestCpu: string;
         requestMemory: string;
         /**
-         * Other configurations of automatically injected sidecar (in YAML format).
+         * Other automatic injection Sidecar configuration (in YAML format).
          */
         sidecarInjectorWebhookAsYaml: string;
     }

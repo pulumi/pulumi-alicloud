@@ -93,6 +93,36 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
+     * The creation time of the resource.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * DefaultLinkType. Valid values: `Platinum` and `Gold`.
+     * 
+     */
+    @Import(name="defaultLinkType")
+    private @Nullable Output<String> defaultLinkType;
+
+    /**
+     * @return DefaultLinkType. Valid values: `Platinum` and `Gold`.
+     * 
+     */
+    public Optional<Output<String>> defaultLinkType() {
+        return Optional.ofNullable(this.defaultLinkType);
+    }
+
+    /**
      * Whether to perform pre-check for this request, including permission, instance status verification, etc.
      * 
      */
@@ -183,14 +213,14 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
     }
 
     /**
-     * The associating status of the network.
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The associating status of the network.
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -265,6 +295,8 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         this.bandwidthType = $.bandwidthType;
         this.cenBandwidthPackageId = $.cenBandwidthPackageId;
         this.cenId = $.cenId;
+        this.createTime = $.createTime;
+        this.defaultLinkType = $.defaultLinkType;
         this.dryRun = $.dryRun;
         this.peerTransitRouterId = $.peerTransitRouterId;
         this.peerTransitRouterRegionId = $.peerTransitRouterRegionId;
@@ -402,6 +434,48 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param defaultLinkType DefaultLinkType. Valid values: `Platinum` and `Gold`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultLinkType(@Nullable Output<String> defaultLinkType) {
+            $.defaultLinkType = defaultLinkType;
+            return this;
+        }
+
+        /**
+         * @param defaultLinkType DefaultLinkType. Valid values: `Platinum` and `Gold`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultLinkType(String defaultLinkType) {
+            return defaultLinkType(Output.of(defaultLinkType));
+        }
+
+        /**
          * @param dryRun Whether to perform pre-check for this request, including permission, instance status verification, etc.
          * 
          * @return builder
@@ -528,7 +602,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param status The associating status of the network.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -539,7 +613,7 @@ public final class TransitRouterPeerAttachmentState extends com.pulumi.resources
         }
 
         /**
-         * @param status The associating status of the network.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 

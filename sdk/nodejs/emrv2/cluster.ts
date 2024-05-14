@@ -100,7 +100,6 @@ import * as utilities from "../utilities";
  *         },
  *         {
  *             spotInstanceRemedy: false,
- *             deploymentSetStrategy: "CLUSTER",
  *             nodeGroupType: "CORE",
  *             vswitchIds: [defaultSwitch.id],
  *             nodeCount: 2,
@@ -143,10 +142,6 @@ import * as utilities from "../utilities";
  *         ramRole: defaultRole.name,
  *         securityGroupId: defaultSecurityGroup.id,
  *     }],
- *     logCollectStrategy: JSON.stringify({
- *         open: ["all"],
- *         close: [""],
- *     }),
  *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
  *     clusterName: name,
  *     paymentType: "PayAsYouGo",
@@ -199,7 +194,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly applications!: pulumi.Output<string[]>;
     /**
-     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
+     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrapScripts` below.
      */
     public readonly bootstrapScripts!: pulumi.Output<outputs.emrv2.ClusterBootstrapScript[] | undefined>;
     /**
@@ -333,7 +328,7 @@ export interface ClusterState {
      */
     applications?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
+     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrapScripts` below.
      */
     bootstrapScripts?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterBootstrapScript>[]>;
     /**
@@ -399,7 +394,7 @@ export interface ClusterArgs {
      */
     applications: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
+     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrapScripts` below.
      */
     bootstrapScripts?: pulumi.Input<pulumi.Input<inputs.emrv2.ClusterBootstrapScript>[]>;
     /**

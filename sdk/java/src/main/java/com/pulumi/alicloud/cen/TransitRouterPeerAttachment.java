@@ -104,10 +104,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CEN instance can be imported using the id, e.g.
+ * CEN Transit Router Peer Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
+ * $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example &lt;id&gt;
  * ```
  * 
  */
@@ -182,6 +182,34 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      */
     public Output<String> cenId() {
         return this.cenId;
+    }
+    /**
+     * The creation time of the resource.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * DefaultLinkType. Valid values: `Platinum` and `Gold`.
+     * 
+     */
+    @Export(name="defaultLinkType", refs={String.class}, tree="[0]")
+    private Output<String> defaultLinkType;
+
+    /**
+     * @return DefaultLinkType. Valid values: `Platinum` and `Gold`.
+     * 
+     */
+    public Output<String> defaultLinkType() {
+        return this.defaultLinkType;
     }
     /**
      * Whether to perform pre-check for this request, including permission, instance status verification, etc.
@@ -268,14 +296,14 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
         return Codegen.optional(this.routeTablePropagationEnabled);
     }
     /**
-     * The associating status of the network.
+     * The status of the resource.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The associating status of the network.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {

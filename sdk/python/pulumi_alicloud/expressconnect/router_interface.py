@@ -1111,14 +1111,12 @@ class RouterInterface(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_network = alicloud.vpc.Network("default",
-            vpc_name=name,
-            cidr_block="172.16.0.0/12")
-        default = alicloud.get_regions(current=True)
+        default = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_get_regions = alicloud.get_regions(current=True)
         default_router_interface = alicloud.expressconnect.RouterInterface("default",
             description=name,
-            opposite_region_id=default.regions[0].id,
-            router_id=default_network.router_id,
+            opposite_region_id=default_get_regions.regions[0].id,
+            router_id=default.vpcs[0].router_id,
             role="InitiatingSide",
             router_type="VRouter",
             payment_type="PayAsYouGo",
@@ -1186,14 +1184,12 @@ class RouterInterface(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_network = alicloud.vpc.Network("default",
-            vpc_name=name,
-            cidr_block="172.16.0.0/12")
-        default = alicloud.get_regions(current=True)
+        default = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_get_regions = alicloud.get_regions(current=True)
         default_router_interface = alicloud.expressconnect.RouterInterface("default",
             description=name,
-            opposite_region_id=default.regions[0].id,
-            router_id=default_network.router_id,
+            opposite_region_id=default_get_regions.regions[0].id,
+            router_id=default.vpcs[0].router_id,
             role="InitiatingSide",
             router_type="VRouter",
             payment_type="PayAsYouGo",

@@ -33,6 +33,9 @@ namespace Pulumi.AliCloud.Vpc
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
+        [Output("networkCardIndex")]
+        public Output<int?> NetworkCardIndex { get; private set; } = null!;
+
         /// <summary>
         /// The ENI ID to attach.
         /// </summary>
@@ -97,6 +100,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        [Input("networkCardIndex")]
+        public Input<int>? NetworkCardIndex { get; set; }
+
         /// <summary>
         /// The ENI ID to attach.
         /// </summary>
@@ -122,6 +128,9 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        [Input("networkCardIndex")]
+        public Input<int>? NetworkCardIndex { get; set; }
 
         /// <summary>
         /// The ENI ID to attach.

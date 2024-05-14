@@ -18,11 +18,16 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const queue = new alicloud.message.ServiceQueue("queue", {
- *     queueName: name,
+ *     queueName: `${name}-${_default.result}`,
  *     delaySeconds: 60478,
  *     maximumMessageSize: 12357,
  *     messageRetentionPeriod: 256000,

@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string> AcceleratorId { get; private set; } = null!;
 
         /// <summary>
-        /// Forwarding Policy ID.
+        /// The ID of the Forwarding Rule.
         /// </summary>
         [Output("forwardingRuleId")]
         public Output<string> ForwardingRuleId { get; private set; } = null!;
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<string?> ForwardingRuleName { get; private set; } = null!;
 
         /// <summary>
-        /// Forwarding Policy Status.
+        /// The status of the Forwarding Rule.
         /// </summary>
         [Output("forwardingRuleStatus")]
         public Output<string> ForwardingRuleStatus { get; private set; } = null!;
@@ -345,7 +345,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? AcceleratorId { get; set; }
 
         /// <summary>
-        /// Forwarding Policy ID.
+        /// The ID of the Forwarding Rule.
         /// </summary>
         [Input("forwardingRuleId")]
         public Input<string>? ForwardingRuleId { get; set; }
@@ -357,7 +357,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? ForwardingRuleName { get; set; }
 
         /// <summary>
-        /// Forwarding Policy Status.
+        /// The status of the Forwarding Rule.
         /// </summary>
         [Input("forwardingRuleStatus")]
         public Input<string>? ForwardingRuleStatus { get; set; }

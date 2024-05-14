@@ -63,15 +63,15 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
  *             .vpcId(default_.ids()[0])
- *             .zoneId("cn-hangzhou-k")
+ *             .zoneId("cn-hangzhou-h")
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .productVersion("3")
  *             .vpcId(default_.ids()[0])
  *             .zoneIds(            
- *                 "cn-hangzhou-k",
- *                 "cn-hangzhou-j")
+ *                 "cn-hangzhou-h",
+ *                 "cn-hangzhou-g")
  *             .vswitchIds(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
  *             .vpcNum("1")
  *             .keyNum("1000")

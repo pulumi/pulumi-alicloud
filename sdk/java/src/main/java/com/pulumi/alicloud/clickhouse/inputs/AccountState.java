@@ -152,31 +152,47 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of all databases. Separate databases with commas (,).
+     * The list of all databases. Separate databases with commas (,). Field &#39;total_databases&#39; has been deprecated from provider version 1.223.1.
+     * 
+     * @deprecated
+     * Field &#39;total_databases&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
      * 
      */
+    @Deprecated /* Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version. */
     @Import(name="totalDatabases")
     private @Nullable Output<String> totalDatabases;
 
     /**
-     * @return The list of all databases. Separate databases with commas (,).
+     * @return The list of all databases. Separate databases with commas (,). Field &#39;total_databases&#39; has been deprecated from provider version 1.223.1.
+     * 
+     * @deprecated
+     * Field &#39;total_databases&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
      * 
      */
+    @Deprecated /* Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version. */
     public Optional<Output<String>> totalDatabases() {
         return Optional.ofNullable(this.totalDatabases);
     }
 
     /**
-     * The list of all dictionaries. Separate dictionaries with commas (,).
+     * The list of all dictionaries. Separate dictionaries with commas (,). Field &#39;total_dictionaries&#39; has been deprecated from provider version 1.223.1.
+     * 
+     * @deprecated
+     * Field &#39;total_dictionaries&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
      * 
      */
+    @Deprecated /* Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version. */
     @Import(name="totalDictionaries")
     private @Nullable Output<String> totalDictionaries;
 
     /**
-     * @return The list of all dictionaries. Separate dictionaries with commas (,).
+     * @return The list of all dictionaries. Separate dictionaries with commas (,). Field &#39;total_dictionaries&#39; has been deprecated from provider version 1.223.1.
+     * 
+     * @deprecated
+     * Field &#39;total_dictionaries&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
      * 
      */
+    @Deprecated /* Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version. */
     public Optional<Output<String>> totalDictionaries() {
         return Optional.ofNullable(this.totalDictionaries);
     }
@@ -421,43 +437,59 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param totalDatabases The list of all databases. Separate databases with commas (,).
+         * @param totalDatabases The list of all databases. Separate databases with commas (,). Field &#39;total_databases&#39; has been deprecated from provider version 1.223.1.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;total_databases&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
+         * 
          */
+        @Deprecated /* Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version. */
         public Builder totalDatabases(@Nullable Output<String> totalDatabases) {
             $.totalDatabases = totalDatabases;
             return this;
         }
 
         /**
-         * @param totalDatabases The list of all databases. Separate databases with commas (,).
+         * @param totalDatabases The list of all databases. Separate databases with commas (,). Field &#39;total_databases&#39; has been deprecated from provider version 1.223.1.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;total_databases&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
+         * 
          */
+        @Deprecated /* Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version. */
         public Builder totalDatabases(String totalDatabases) {
             return totalDatabases(Output.of(totalDatabases));
         }
 
         /**
-         * @param totalDictionaries The list of all dictionaries. Separate dictionaries with commas (,).
+         * @param totalDictionaries The list of all dictionaries. Separate dictionaries with commas (,). Field &#39;total_dictionaries&#39; has been deprecated from provider version 1.223.1.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;total_dictionaries&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
+         * 
          */
+        @Deprecated /* Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version. */
         public Builder totalDictionaries(@Nullable Output<String> totalDictionaries) {
             $.totalDictionaries = totalDictionaries;
             return this;
         }
 
         /**
-         * @param totalDictionaries The list of all dictionaries. Separate dictionaries with commas (,).
+         * @param totalDictionaries The list of all dictionaries. Separate dictionaries with commas (,). Field &#39;total_dictionaries&#39; has been deprecated from provider version 1.223.1.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;total_dictionaries&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
+         * 
          */
+        @Deprecated /* Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version. */
         public Builder totalDictionaries(String totalDictionaries) {
             return totalDictionaries(Output.of(totalDictionaries));
         }

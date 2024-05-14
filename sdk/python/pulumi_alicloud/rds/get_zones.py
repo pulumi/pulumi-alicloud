@@ -22,13 +22,10 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, category=None, db_instance_class=None, db_instance_storage_type=None, engine=None, engine_version=None, id=None, ids=None, instance_charge_type=None, multi=None, multi_zone=None, output_file=None, zones=None):
+    def __init__(__self__, category=None, db_instance_storage_type=None, engine=None, engine_version=None, id=None, ids=None, instance_charge_type=None, multi=None, multi_zone=None, output_file=None, zones=None):
         if category and not isinstance(category, str):
             raise TypeError("Expected argument 'category' to be a str")
         pulumi.set(__self__, "category", category)
-        if db_instance_class and not isinstance(db_instance_class, str):
-            raise TypeError("Expected argument 'db_instance_class' to be a str")
-        pulumi.set(__self__, "db_instance_class", db_instance_class)
         if db_instance_storage_type and not isinstance(db_instance_storage_type, str):
             raise TypeError("Expected argument 'db_instance_storage_type' to be a str")
         pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
@@ -64,11 +61,6 @@ class GetZonesResult:
     @pulumi.getter
     def category(self) -> Optional[str]:
         return pulumi.get(self, "category")
-
-    @property
-    @pulumi.getter(name="dbInstanceClass")
-    def db_instance_class(self) -> Optional[str]:
-        return pulumi.get(self, "db_instance_class")
 
     @property
     @pulumi.getter(name="dbInstanceStorageType")
@@ -109,6 +101,9 @@ class GetZonesResult:
     @property
     @pulumi.getter
     def multi(self) -> Optional[bool]:
+        warnings.warn("""It has been deprecated from version 1.137.0 and using `multi_zone` instead.""", DeprecationWarning)
+        pulumi.log.warn("""multi is deprecated: It has been deprecated from version 1.137.0 and using `multi_zone` instead.""")
+
         return pulumi.get(self, "multi")
 
     @property
@@ -137,7 +132,6 @@ class AwaitableGetZonesResult(GetZonesResult):
             yield self
         return GetZonesResult(
             category=self.category,
-            db_instance_class=self.db_instance_class,
             db_instance_storage_type=self.db_instance_storage_type,
             engine=self.engine,
             engine_version=self.engine_version,
@@ -151,7 +145,6 @@ class AwaitableGetZonesResult(GetZonesResult):
 
 
 def get_zones(category: Optional[str] = None,
-              db_instance_class: Optional[str] = None,
               db_instance_storage_type: Optional[str] = None,
               engine: Optional[str] = None,
               engine_version: Optional[str] = None,
@@ -163,7 +156,20 @@ def get_zones(category: Optional[str] = None,
     """
     This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
-    > **NOTE:** Available in v1.73.0+.
+    > **NOTE:** Available since v1.73.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.rds.get_zones(engine="MySQL",
+        engine_version="8.0",
+        instance_charge_type="PostPaid",
+        category="Basic",
+        db_instance_storage_type="cloud_essd")
+    ```
 
 
     :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
@@ -177,7 +183,6 @@ def get_zones(category: Optional[str] = None,
     """
     __args__ = dict()
     __args__['category'] = category
-    __args__['dbInstanceClass'] = db_instance_class
     __args__['dbInstanceStorageType'] = db_instance_storage_type
     __args__['engine'] = engine
     __args__['engineVersion'] = engine_version
@@ -190,7 +195,6 @@ def get_zones(category: Optional[str] = None,
 
     return AwaitableGetZonesResult(
         category=pulumi.get(__ret__, 'category'),
-        db_instance_class=pulumi.get(__ret__, 'db_instance_class'),
         db_instance_storage_type=pulumi.get(__ret__, 'db_instance_storage_type'),
         engine=pulumi.get(__ret__, 'engine'),
         engine_version=pulumi.get(__ret__, 'engine_version'),
@@ -205,7 +209,6 @@ def get_zones(category: Optional[str] = None,
 
 @_utilities.lift_output_func(get_zones)
 def get_zones_output(category: Optional[pulumi.Input[Optional[str]]] = None,
-                     db_instance_class: Optional[pulumi.Input[Optional[str]]] = None,
                      db_instance_storage_type: Optional[pulumi.Input[Optional[str]]] = None,
                      engine: Optional[pulumi.Input[Optional[str]]] = None,
                      engine_version: Optional[pulumi.Input[Optional[str]]] = None,
@@ -217,7 +220,20 @@ def get_zones_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     """
     This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
-    > **NOTE:** Available in v1.73.0+.
+    > **NOTE:** Available since v1.73.0.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    example = alicloud.rds.get_zones(engine="MySQL",
+        engine_version="8.0",
+        instance_charge_type="PostPaid",
+        category="Basic",
+        db_instance_storage_type="cloud_essd")
+    ```
 
 
     :param str category: DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverless_basic`, `serverless_standard`, `serverless_ha`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).

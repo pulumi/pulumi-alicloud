@@ -260,8 +260,12 @@ class Vault(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example = alicloud.hbr.Vault("example", vault_name="example_value")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        example = alicloud.hbr.Vault("example", vault_name=f"example_value_{default['result']}")
         ```
 
         ## Import
@@ -301,8 +305,12 @@ class Vault(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        example = alicloud.hbr.Vault("example", vault_name="example_value")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        example = alicloud.hbr.Vault("example", vault_name=f"example_value_{default['result']}")
         ```
 
         ## Import

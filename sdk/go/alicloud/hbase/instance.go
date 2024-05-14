@@ -59,14 +59,14 @@ import (
 //			}
 //			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
 //				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(_default.Zones[0].Id),
+//				ZoneId: pulumi.StringRef(_default.Zones[1].Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = hbase.NewInstance(ctx, "default", &hbase.InstanceArgs{
 //				Name:                 pulumi.String(name),
-//				ZoneId:               pulumi.String(_default.Zones[0].Id),
+//				ZoneId:               pulumi.String(_default.Zones[1].Id),
 //				VswitchId:            pulumi.String(defaultGetSwitches.Ids[0]),
 //				VpcId:                pulumi.String(defaultGetNetworks.Ids[0]),
 //				Engine:               pulumi.String("hbaseue"),

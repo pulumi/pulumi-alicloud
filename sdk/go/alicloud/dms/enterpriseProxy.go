@@ -71,7 +71,7 @@ import (
 //				return err
 //			}
 //			defaultGetInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
-//				ZoneId:                pulumi.StringRef(defaultGetZones.Zones[0].Id),
+//				ZoneId:                pulumi.StringRef(defaultGetZones.Zones[1].Id),
 //				Engine:                pulumi.StringRef("MySQL"),
 //				EngineVersion:         pulumi.StringRef("8.0"),
 //				Category:              pulumi.StringRef("HighAvailability"),
@@ -92,7 +92,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultGetZones.Zones[1].Id),
 //			})
 //			if err != nil {
 //				return err

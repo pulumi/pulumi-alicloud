@@ -142,7 +142,7 @@ type Kubernetes struct {
 	Platform pulumi.StringOutput `pulumi:"platform"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrOutput `pulumi:"podCidr"`
-	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswitchIds` or `masterVswitchIds` but must be in same availability zones.
+	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayOutput `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
 	ProxyMode pulumi.StringPtrOutput `pulumi:"proxyMode"`
@@ -159,16 +159,14 @@ type Kubernetes struct {
 	ServiceAccountIssuer pulumi.StringPtrOutput `pulumi:"serviceAccountIssuer"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrOutput `pulumi:"serviceCidr"`
-	// (Deprecated) The ID of load balancer.
-	//
-	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+	// The ID of APIServer load balancer.
 	SlbId pulumi.StringOutput `pulumi:"slbId"`
 	// The public ip of load balancer.
 	SlbInternet pulumi.StringOutput `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
 	//
-	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
-	// If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
+	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
 	//
 	// *Master params*
 	SlbInternetEnabled pulumi.BoolPtrOutput `pulumi:"slbInternetEnabled"`
@@ -317,7 +315,7 @@ type kubernetesState struct {
 	Platform *string `pulumi:"platform"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
-	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswitchIds` or `masterVswitchIds` but must be in same availability zones.
+	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
 	ProxyMode *string `pulumi:"proxyMode"`
@@ -334,16 +332,14 @@ type kubernetesState struct {
 	ServiceAccountIssuer *string `pulumi:"serviceAccountIssuer"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
-	// (Deprecated) The ID of load balancer.
-	//
-	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+	// The ID of APIServer load balancer.
 	SlbId *string `pulumi:"slbId"`
 	// The public ip of load balancer.
 	SlbInternet *string `pulumi:"slbInternet"`
 	// Whether to create internet load balancer for API Server. Default to true.
 	//
-	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
-	// If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
+	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
 	//
 	// *Master params*
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
@@ -450,7 +446,7 @@ type KubernetesState struct {
 	Platform pulumi.StringPtrInput
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
-	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswitchIds` or `masterVswitchIds` but must be in same availability zones.
+	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayInput
 	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
 	ProxyMode pulumi.StringPtrInput
@@ -467,16 +463,14 @@ type KubernetesState struct {
 	ServiceAccountIssuer pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
-	// (Deprecated) The ID of load balancer.
-	//
-	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+	// The ID of APIServer load balancer.
 	SlbId pulumi.StringPtrInput
 	// The public ip of load balancer.
 	SlbInternet pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
 	//
-	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
-	// If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
+	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
 	//
 	// *Master params*
 	SlbInternetEnabled pulumi.BoolPtrInput
@@ -579,7 +573,7 @@ type kubernetesArgs struct {
 	Platform *string `pulumi:"platform"`
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr *string `pulumi:"podCidr"`
-	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswitchIds` or `masterVswitchIds` but must be in same availability zones.
+	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones.
 	PodVswitchIds []string `pulumi:"podVswitchIds"`
 	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
 	ProxyMode *string `pulumi:"proxyMode"`
@@ -598,8 +592,8 @@ type kubernetesArgs struct {
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Whether to create internet load balancer for API Server. Default to true.
 	//
-	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
-	// If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
+	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
 	//
 	// *Master params*
 	SlbInternetEnabled *bool `pulumi:"slbInternetEnabled"`
@@ -693,7 +687,7 @@ type KubernetesArgs struct {
 	Platform pulumi.StringPtrInput
 	// [Flannel Specific] The CIDR block for the pod network when using Flannel.
 	PodCidr pulumi.StringPtrInput
-	// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswitchIds` or `masterVswitchIds` but must be in same availability zones.
+	// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones.
 	PodVswitchIds pulumi.StringArrayInput
 	// Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
 	ProxyMode pulumi.StringPtrInput
@@ -712,8 +706,8 @@ type KubernetesArgs struct {
 	ServiceCidr pulumi.StringPtrInput
 	// Whether to create internet load balancer for API Server. Default to true.
 	//
-	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
-	// If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
+	// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+	// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
 	//
 	// *Master params*
 	SlbInternetEnabled pulumi.BoolPtrInput
@@ -1020,7 +1014,7 @@ func (o KubernetesOutput) PodCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringPtrOutput { return v.PodCidr }).(pulumi.StringPtrOutput)
 }
 
-// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswitchIds` or `masterVswitchIds` but must be in same availability zones.
+// [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones.
 func (o KubernetesOutput) PodVswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringArrayOutput { return v.PodVswitchIds }).(pulumi.StringArrayOutput)
 }
@@ -1064,9 +1058,7 @@ func (o KubernetesOutput) ServiceCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringPtrOutput { return v.ServiceCidr }).(pulumi.StringPtrOutput)
 }
 
-// (Deprecated) The ID of load balancer.
-//
-// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+// The ID of APIServer load balancer.
 func (o KubernetesOutput) SlbId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringOutput { return v.SlbId }).(pulumi.StringOutput)
 }
@@ -1078,8 +1070,8 @@ func (o KubernetesOutput) SlbInternet() pulumi.StringOutput {
 
 // Whether to create internet load balancer for API Server. Default to true.
 //
-// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
-// If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
+// > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+// If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
 //
 // *Master params*
 func (o KubernetesOutput) SlbInternetEnabled() pulumi.BoolPtrOutput {

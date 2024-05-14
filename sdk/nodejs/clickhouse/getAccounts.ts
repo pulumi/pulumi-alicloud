@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Click House Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -20,10 +20,24 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "testaccountname";
- * const pwd = config.get("pwd") || "Tf-testpwd";
+ * const name = config.get("name") || "oneaccountname";
+ * const pwd = config.get("pwd") || "Tf-onepwd";
+ * const type = config.get("type") || "Normal";
+ * const default = alicloud.clickhouse.getRegions({
+ *     current: true,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.regions?.[0]?.zoneIds?.[0]?.zoneId),
+ * });
  * const defaultDbCluster = new alicloud.clickhouse.DbCluster("default", {
- *     dbClusterVersion: "20.3.10.75",
+ *     dbClusterVersion: "22.8.5.29",
  *     category: "Basic",
  *     dbClusterClass: "S8",
  *     dbClusterNetworkType: "vpc",
@@ -32,19 +46,21 @@ import * as utilities from "../utilities";
  *     paymentType: "PayAsYouGo",
  *     dbNodeStorage: "500",
  *     storageType: "cloud_essd",
- *     vswitchId: "your_vswitch_id",
+ *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetwork.id,
  * });
  * const defaultAccount = new alicloud.clickhouse.Account("default", {
  *     dbClusterId: defaultDbCluster.id,
  *     accountDescription: "your_description",
  *     accountName: name,
  *     accountPassword: pwd,
+ *     type: type,
  * });
- * const default = alicloud.clickhouse.getAccountsOutput({
+ * const defaultGetAccounts = alicloud.clickhouse.getAccountsOutput({
  *     ids: [defaultAccount.id],
  *     dbClusterId: defaultDbCluster.id,
  * });
- * export const accountId = _default.apply(_default => _default.ids?.[0]);
+ * export const accountId = defaultGetAccounts.apply(defaultGetAccounts => defaultGetAccounts.ids?.[0]);
  * ```
  */
 export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
@@ -80,7 +96,7 @@ export interface GetAccountsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
      */
     status?: string;
 }
@@ -89,7 +105,13 @@ export interface GetAccountsArgs {
  * A collection of values returned by getAccounts.
  */
 export interface GetAccountsResult {
+    /**
+     * A list of Click House Accounts. Each element contains the following attributes:
+     */
     readonly accounts: outputs.clickhouse.GetAccountsAccount[];
+    /**
+     * The DBCluster id.
+     */
     readonly dbClusterId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -97,14 +119,20 @@ export interface GetAccountsResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Account names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The status of the resource.
+     */
     readonly status?: string;
 }
 /**
  * This data source provides the Click House Accounts of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.134.0+.
+ * > **NOTE:** Available since v1.134.0.
  *
  * ## Example Usage
  *
@@ -115,10 +143,24 @@ export interface GetAccountsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "testaccountname";
- * const pwd = config.get("pwd") || "Tf-testpwd";
+ * const name = config.get("name") || "oneaccountname";
+ * const pwd = config.get("pwd") || "Tf-onepwd";
+ * const type = config.get("type") || "Normal";
+ * const default = alicloud.clickhouse.getRegions({
+ *     current: true,
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "10.4.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.regions?.[0]?.zoneIds?.[0]?.zoneId),
+ * });
  * const defaultDbCluster = new alicloud.clickhouse.DbCluster("default", {
- *     dbClusterVersion: "20.3.10.75",
+ *     dbClusterVersion: "22.8.5.29",
  *     category: "Basic",
  *     dbClusterClass: "S8",
  *     dbClusterNetworkType: "vpc",
@@ -127,19 +169,21 @@ export interface GetAccountsResult {
  *     paymentType: "PayAsYouGo",
  *     dbNodeStorage: "500",
  *     storageType: "cloud_essd",
- *     vswitchId: "your_vswitch_id",
+ *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetwork.id,
  * });
  * const defaultAccount = new alicloud.clickhouse.Account("default", {
  *     dbClusterId: defaultDbCluster.id,
  *     accountDescription: "your_description",
  *     accountName: name,
  *     accountPassword: pwd,
+ *     type: type,
  * });
- * const default = alicloud.clickhouse.getAccountsOutput({
+ * const defaultGetAccounts = alicloud.clickhouse.getAccountsOutput({
  *     ids: [defaultAccount.id],
  *     dbClusterId: defaultDbCluster.id,
  * });
- * export const accountId = _default.apply(_default => _default.ids?.[0]);
+ * export const accountId = defaultGetAccounts.apply(defaultGetAccounts => defaultGetAccounts.ids?.[0]);
  * ```
  */
 export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
@@ -167,7 +211,7 @@ export interface GetAccountsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
      */
     status?: pulumi.Input<string>;
 }

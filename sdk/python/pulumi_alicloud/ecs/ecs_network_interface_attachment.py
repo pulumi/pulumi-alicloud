@@ -16,17 +16,21 @@ class EcsNetworkInterfaceAttachmentArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  network_interface_id: pulumi.Input[str],
+                 network_card_index: Optional[pulumi.Input[int]] = None,
                  trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
                  wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a EcsNetworkInterfaceAttachment resource.
-        :param pulumi.Input[str] instance_id: The instance id.
-        :param pulumi.Input[str] network_interface_id: The network interface id.
-        :param pulumi.Input[str] trunk_network_instance_id: The trunk network instance id.
+        :param pulumi.Input[str] instance_id: The ID of the ECS instance.
+        :param pulumi.Input[str] network_interface_id: The ID of the network interface.
+        :param pulumi.Input[int] network_card_index: The index of the network card.
+        :param pulumi.Input[str] trunk_network_instance_id: The ID of the trunk network instance.
         :param pulumi.Input[bool] wait_for_network_configuration_ready: The wait for network configuration ready.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "network_interface_id", network_interface_id)
+        if network_card_index is not None:
+            pulumi.set(__self__, "network_card_index", network_card_index)
         if trunk_network_instance_id is not None:
             pulumi.set(__self__, "trunk_network_instance_id", trunk_network_instance_id)
         if wait_for_network_configuration_ready is not None:
@@ -36,7 +40,7 @@ class EcsNetworkInterfaceAttachmentArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        The instance id.
+        The ID of the ECS instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -48,7 +52,7 @@ class EcsNetworkInterfaceAttachmentArgs:
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> pulumi.Input[str]:
         """
-        The network interface id.
+        The ID of the network interface.
         """
         return pulumi.get(self, "network_interface_id")
 
@@ -57,10 +61,22 @@ class EcsNetworkInterfaceAttachmentArgs:
         pulumi.set(self, "network_interface_id", value)
 
     @property
+    @pulumi.getter(name="networkCardIndex")
+    def network_card_index(self) -> Optional[pulumi.Input[int]]:
+        """
+        The index of the network card.
+        """
+        return pulumi.get(self, "network_card_index")
+
+    @network_card_index.setter
+    def network_card_index(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "network_card_index", value)
+
+    @property
     @pulumi.getter(name="trunkNetworkInstanceId")
     def trunk_network_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The trunk network instance id.
+        The ID of the trunk network instance.
         """
         return pulumi.get(self, "trunk_network_instance_id")
 
@@ -85,18 +101,22 @@ class EcsNetworkInterfaceAttachmentArgs:
 class _EcsNetworkInterfaceAttachmentState:
     def __init__(__self__, *,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 network_card_index: Optional[pulumi.Input[int]] = None,
                  network_interface_id: Optional[pulumi.Input[str]] = None,
                  trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
                  wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering EcsNetworkInterfaceAttachment resources.
-        :param pulumi.Input[str] instance_id: The instance id.
-        :param pulumi.Input[str] network_interface_id: The network interface id.
-        :param pulumi.Input[str] trunk_network_instance_id: The trunk network instance id.
+        :param pulumi.Input[str] instance_id: The ID of the ECS instance.
+        :param pulumi.Input[int] network_card_index: The index of the network card.
+        :param pulumi.Input[str] network_interface_id: The ID of the network interface.
+        :param pulumi.Input[str] trunk_network_instance_id: The ID of the trunk network instance.
         :param pulumi.Input[bool] wait_for_network_configuration_ready: The wait for network configuration ready.
         """
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if network_card_index is not None:
+            pulumi.set(__self__, "network_card_index", network_card_index)
         if network_interface_id is not None:
             pulumi.set(__self__, "network_interface_id", network_interface_id)
         if trunk_network_instance_id is not None:
@@ -108,7 +128,7 @@ class _EcsNetworkInterfaceAttachmentState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance id.
+        The ID of the ECS instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -117,10 +137,22 @@ class _EcsNetworkInterfaceAttachmentState:
         pulumi.set(self, "instance_id", value)
 
     @property
+    @pulumi.getter(name="networkCardIndex")
+    def network_card_index(self) -> Optional[pulumi.Input[int]]:
+        """
+        The index of the network card.
+        """
+        return pulumi.get(self, "network_card_index")
+
+    @network_card_index.setter
+    def network_card_index(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "network_card_index", value)
+
+    @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The network interface id.
+        The ID of the network interface.
         """
         return pulumi.get(self, "network_interface_id")
 
@@ -132,7 +164,7 @@ class _EcsNetworkInterfaceAttachmentState:
     @pulumi.getter(name="trunkNetworkInstanceId")
     def trunk_network_instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The trunk network instance id.
+        The ID of the trunk network instance.
         """
         return pulumi.get(self, "trunk_network_instance_id")
 
@@ -159,6 +191,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 network_card_index: Optional[pulumi.Input[int]] = None,
                  network_interface_id: Optional[pulumi.Input[str]] = None,
                  trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
                  wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None,
@@ -168,7 +201,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
 
         For information about ECS Network Interface Attachment and how to use it, see [What is Network Interface Attachment](https://www.alibabacloud.com/help/en/doc-detail/58515.htm).
 
-        > **NOTE:** Available since v1.123.1+.
+        > **NOTE:** Available since v1.123.1.
 
         ## Example Usage
 
@@ -230,14 +263,15 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         ECS Network Interface Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example eni-abcd1234:i-abcd1234
+        $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example <network_interface_id>:<instance_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] instance_id: The instance id.
-        :param pulumi.Input[str] network_interface_id: The network interface id.
-        :param pulumi.Input[str] trunk_network_instance_id: The trunk network instance id.
+        :param pulumi.Input[str] instance_id: The ID of the ECS instance.
+        :param pulumi.Input[int] network_card_index: The index of the network card.
+        :param pulumi.Input[str] network_interface_id: The ID of the network interface.
+        :param pulumi.Input[str] trunk_network_instance_id: The ID of the trunk network instance.
         :param pulumi.Input[bool] wait_for_network_configuration_ready: The wait for network configuration ready.
         """
         ...
@@ -251,7 +285,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
 
         For information about ECS Network Interface Attachment and how to use it, see [What is Network Interface Attachment](https://www.alibabacloud.com/help/en/doc-detail/58515.htm).
 
-        > **NOTE:** Available since v1.123.1+.
+        > **NOTE:** Available since v1.123.1.
 
         ## Example Usage
 
@@ -313,7 +347,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         ECS Network Interface Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example eni-abcd1234:i-abcd1234
+        $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example <network_interface_id>:<instance_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -332,6 +366,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 network_card_index: Optional[pulumi.Input[int]] = None,
                  network_interface_id: Optional[pulumi.Input[str]] = None,
                  trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
                  wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None,
@@ -347,6 +382,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["network_card_index"] = network_card_index
             if network_interface_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_interface_id'")
             __props__.__dict__["network_interface_id"] = network_interface_id
@@ -363,6 +399,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
+            network_card_index: Optional[pulumi.Input[int]] = None,
             network_interface_id: Optional[pulumi.Input[str]] = None,
             trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
             wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None) -> 'EcsNetworkInterfaceAttachment':
@@ -373,9 +410,10 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] instance_id: The instance id.
-        :param pulumi.Input[str] network_interface_id: The network interface id.
-        :param pulumi.Input[str] trunk_network_instance_id: The trunk network instance id.
+        :param pulumi.Input[str] instance_id: The ID of the ECS instance.
+        :param pulumi.Input[int] network_card_index: The index of the network card.
+        :param pulumi.Input[str] network_interface_id: The ID of the network interface.
+        :param pulumi.Input[str] trunk_network_instance_id: The ID of the trunk network instance.
         :param pulumi.Input[bool] wait_for_network_configuration_ready: The wait for network configuration ready.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -383,6 +421,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
         __props__ = _EcsNetworkInterfaceAttachmentState.__new__(_EcsNetworkInterfaceAttachmentState)
 
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["network_card_index"] = network_card_index
         __props__.__dict__["network_interface_id"] = network_interface_id
         __props__.__dict__["trunk_network_instance_id"] = trunk_network_instance_id
         __props__.__dict__["wait_for_network_configuration_ready"] = wait_for_network_configuration_ready
@@ -392,15 +431,23 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        The instance id.
+        The ID of the ECS instance.
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="networkCardIndex")
+    def network_card_index(self) -> pulumi.Output[Optional[int]]:
+        """
+        The index of the network card.
+        """
+        return pulumi.get(self, "network_card_index")
 
     @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> pulumi.Output[str]:
         """
-        The network interface id.
+        The ID of the network interface.
         """
         return pulumi.get(self, "network_interface_id")
 
@@ -408,7 +455,7 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
     @pulumi.getter(name="trunkNetworkInstanceId")
     def trunk_network_instance_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The trunk network instance id.
+        The ID of the trunk network instance.
         """
         return pulumi.get(self, "trunk_network_instance_id")
 

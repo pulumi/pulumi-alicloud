@@ -36,6 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.hbr.Vault;
  * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.nas.FileSystem;
@@ -55,8 +57,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Vault("default", VaultArgs.builder()        
- *             .vaultName("terraform-example2")
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()        
+ *             .vaultName(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
  *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()        
@@ -71,7 +78,7 @@ import javax.annotation.Nullable;
  *             .fileSystemId(defaultFileSystem.id())
  *             .schedule("I|1602673264|PT2H")
  *             .backupType("COMPLETE")
- *             .vaultId(default_.id())
+ *             .vaultId(defaultVault.id())
  *             .retention("2")
  *             .paths("/")
  *             .build());

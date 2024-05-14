@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
+ * const type = config.get("type") || "Normal";
  * const default = alicloud.clickhouse.getRegions({
  *     current: true,
  * });
@@ -51,6 +52,7 @@ import * as utilities from "../utilities";
  *     accountDescription: "tf-example-description",
  *     accountName: "examplename",
  *     accountPassword: "Example1234",
+ *     type: type,
  * });
  * ```
  *
@@ -127,17 +129,21 @@ export class Account extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The list of all databases. Separate databases with commas (,).
+     * The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
+     *
+     * @deprecated Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.
      */
     public readonly totalDatabases!: pulumi.Output<string>;
     /**
-     * The list of all dictionaries. Separate dictionaries with commas (,).
+     * The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
+     *
+     * @deprecated Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.
      */
     public readonly totalDictionaries!: pulumi.Output<string>;
     /**
      * The type of the database account. Valid values: `Normal` or `Super`.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Account resource with the given unique name, arguments, and options.
@@ -185,8 +191,8 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["dmlAuthority"] = args ? args.dmlAuthority : undefined;
             resourceInputs["totalDatabases"] = args ? args.totalDatabases : undefined;
             resourceInputs["totalDictionaries"] = args ? args.totalDictionaries : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["status"] = undefined /*out*/;
-            resourceInputs["type"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Account.__pulumiType, name, resourceInputs, opts);
@@ -234,11 +240,15 @@ export interface AccountState {
      */
     status?: pulumi.Input<string>;
     /**
-     * The list of all databases. Separate databases with commas (,).
+     * The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
+     *
+     * @deprecated Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.
      */
     totalDatabases?: pulumi.Input<string>;
     /**
-     * The list of all dictionaries. Separate dictionaries with commas (,).
+     * The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
+     *
+     * @deprecated Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.
      */
     totalDictionaries?: pulumi.Input<string>;
     /**
@@ -284,11 +294,19 @@ export interface AccountArgs {
      */
     dmlAuthority?: pulumi.Input<string>;
     /**
-     * The list of all databases. Separate databases with commas (,).
+     * The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
+     *
+     * @deprecated Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.
      */
     totalDatabases?: pulumi.Input<string>;
     /**
-     * The list of all dictionaries. Separate dictionaries with commas (,).
+     * The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
+     *
+     * @deprecated Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.
      */
     totalDictionaries?: pulumi.Input<string>;
+    /**
+     * The type of the database account. Valid values: `Normal` or `Super`.
+     */
+    type?: pulumi.Input<string>;
 }

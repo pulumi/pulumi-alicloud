@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.DBS
     /// 
     ///     var defaultGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
     ///     {
-    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
     ///         Category = "HighAvailability",
@@ -62,12 +62,12 @@ namespace Pulumi.AliCloud.DBS
     ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
     ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
     ///     });
     /// 
     ///     var vswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]);
     /// 
-    ///     var zoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]);
+    ///     var zoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Ids[1]);
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {

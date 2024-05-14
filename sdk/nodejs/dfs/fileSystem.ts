@@ -18,26 +18,19 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
- * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const defaultInteger = new random.index.Integer("default", {
- *     min: 10000,
- *     max: 99999,
- * });
+ * const name = config.get("name") || "tf-example";
  * const default = alicloud.dfs.getZones({});
- * const zoneId = _default.then(_default => _default.zones?.[0]?.zoneId);
- * const storageType = _default.then(_default => _default.zones?.[0]?.options?.[0]?.storageType);
  * const defaultFileSystem = new alicloud.dfs.FileSystem("default", {
+ *     storageType: _default.then(_default => _default.zones?.[0]?.options?.[0]?.storageType),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneId),
  *     protocolType: "HDFS",
  *     description: name,
- *     fileSystemName: `${name}-${defaultInteger.result}`,
- *     spaceCapacity: 1024,
+ *     fileSystemName: name,
  *     throughputMode: "Provisioned",
+ *     spaceCapacity: 1024,
  *     provisionedThroughputInMiBps: 512,
- *     storageType: storageType,
- *     zoneId: zoneId,
  * });
  * ```
  *

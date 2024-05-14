@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.CS
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example-basic-edge";
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     ///     var defaultEdgeKubernetes = new AliCloud.CS.EdgeKubernetes("default", new()
     ///     {
-    ///         Name = name,
+    ///         NamePrefix = name,
     ///         WorkerVswitchIds = new[]
     ///         {
     ///             defaultSwitch.Id,
@@ -81,6 +81,7 @@ namespace Pulumi.AliCloud.CS
     ///         {
     ///             defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         },
+    ///         Version = "1.26.3-aliyun.1",
     ///         WorkerNumber = 1,
     ///         Password = "Test12345",
     ///         PodCidr = "10.99.0.0/16",
@@ -146,7 +147,7 @@ namespace Pulumi.AliCloud.CS
     /// 
     ///     var defaultEdgeKubernetes = new AliCloud.CS.EdgeKubernetes("default", new()
     ///     {
-    ///         Name = name,
+    ///         NamePrefix = name,
     ///         WorkerVswitchIds = new[]
     ///         {
     ///             defaultSwitch.Id,

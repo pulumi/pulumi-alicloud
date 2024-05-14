@@ -66,7 +66,6 @@ import javax.annotation.Nullable;
  *             .protocolType("NFS")
  *             .zoneId(default_.zones()[0].zoneId())
  *             .storageType("standard")
- *             .description(name)
  *             .capacity(100)
  *             .build());
  * 

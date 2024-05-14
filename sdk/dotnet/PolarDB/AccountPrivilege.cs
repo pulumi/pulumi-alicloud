@@ -29,6 +29,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///         DbType = "MySQL",
     ///         DbVersion = "8.0",
     ///         PayType = "PostPaid",
+    ///         Category = "Normal",
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()

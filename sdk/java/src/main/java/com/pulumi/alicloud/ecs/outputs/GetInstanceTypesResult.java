@@ -57,6 +57,7 @@ public final class GetInstanceTypesResult {
      */
     private @Nullable Double memorySize;
     private @Nullable Integer minimumEniIpv6AddressQuantity;
+    private @Nullable Integer minimumEniPrivateIpAddressQuantity;
     private @Nullable String networkType;
     private @Nullable String outputFile;
     private @Nullable String sortedBy;
@@ -136,6 +137,9 @@ public final class GetInstanceTypesResult {
     public Optional<Integer> minimumEniIpv6AddressQuantity() {
         return Optional.ofNullable(this.minimumEniIpv6AddressQuantity);
     }
+    public Optional<Integer> minimumEniPrivateIpAddressQuantity() {
+        return Optional.ofNullable(this.minimumEniPrivateIpAddressQuantity);
+    }
     public Optional<String> networkType() {
         return Optional.ofNullable(this.networkType);
     }
@@ -177,6 +181,7 @@ public final class GetInstanceTypesResult {
         private @Nullable String kubernetesNodeRole;
         private @Nullable Double memorySize;
         private @Nullable Integer minimumEniIpv6AddressQuantity;
+        private @Nullable Integer minimumEniPrivateIpAddressQuantity;
         private @Nullable String networkType;
         private @Nullable String outputFile;
         private @Nullable String sortedBy;
@@ -201,6 +206,7 @@ public final class GetInstanceTypesResult {
     	      this.kubernetesNodeRole = defaults.kubernetesNodeRole;
     	      this.memorySize = defaults.memorySize;
     	      this.minimumEniIpv6AddressQuantity = defaults.minimumEniIpv6AddressQuantity;
+    	      this.minimumEniPrivateIpAddressQuantity = defaults.minimumEniPrivateIpAddressQuantity;
     	      this.networkType = defaults.networkType;
     	      this.outputFile = defaults.outputFile;
     	      this.sortedBy = defaults.sortedBy;
@@ -317,6 +323,12 @@ public final class GetInstanceTypesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder minimumEniPrivateIpAddressQuantity(@Nullable Integer minimumEniPrivateIpAddressQuantity) {
+
+            this.minimumEniPrivateIpAddressQuantity = minimumEniPrivateIpAddressQuantity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
 
             this.networkType = networkType;
@@ -364,6 +376,7 @@ public final class GetInstanceTypesResult {
             _resultValue.kubernetesNodeRole = kubernetesNodeRole;
             _resultValue.memorySize = memorySize;
             _resultValue.minimumEniIpv6AddressQuantity = minimumEniIpv6AddressQuantity;
+            _resultValue.minimumEniPrivateIpAddressQuantity = minimumEniPrivateIpAddressQuantity;
             _resultValue.networkType = networkType;
             _resultValue.outputFile = outputFile;
             _resultValue.sortedBy = sortedBy;

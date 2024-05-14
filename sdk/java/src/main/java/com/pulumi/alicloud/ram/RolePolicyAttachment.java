@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.ram.Role;
  * import com.pulumi.alicloud.ram.RoleArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ram.Policy;
  * import com.pulumi.alicloud.ram.PolicyArgs;
  * import com.pulumi.alicloud.ram.RolePolicyAttachment;
@@ -70,9 +72,14 @@ import javax.annotation.Nullable;
  *             .description("this is a role test.")
  *             .build());
  * 
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var policy = new Policy("policy", PolicyArgs.builder()        
- *             .name("policyName")
- *             .document("""
+ *             .policyName(String.format("tf-example-%s", default_.result()))
+ *             .policyDocument("""
  *   {
  *     "Statement": [
  *       {
@@ -94,7 +101,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var attach = new RolePolicyAttachment("attach", RolePolicyAttachmentArgs.builder()        
- *             .policyName(policy.name())
+ *             .policyName(policy.policyName())
  *             .policyType(policy.type())
  *             .roleName(role.name())
  *             .build());

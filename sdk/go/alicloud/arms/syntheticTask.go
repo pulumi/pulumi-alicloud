@@ -217,7 +217,7 @@ import (
 //					IsOpenTrace:     pulumi.Bool(true),
 //					TraceClientType: pulumi.Int(1),
 //				},
-//				ResourceGroupId: pulumi.String(_default.Ids[1]),
+//				ResourceGroupId: pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

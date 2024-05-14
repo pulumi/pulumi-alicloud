@@ -21,6 +21,7 @@ namespace Pulumi.AliCloud.Ram
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -47,10 +48,16 @@ namespace Pulumi.AliCloud.Ram
     ///         Description = "this is a role test.",
     ///     });
     /// 
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var policy = new AliCloud.Ram.Policy("policy", new()
     ///     {
-    ///         Name = "policyName",
-    ///         Document = @"  {
+    ///         PolicyName = $"tf-example-{@default.Result}",
+    ///         PolicyDocument = @"  {
     ///     ""Statement"": [
     ///       {
     ///         ""Action"": [
@@ -72,7 +79,7 @@ namespace Pulumi.AliCloud.Ram
     /// 
     ///     var attach = new AliCloud.Ram.RolePolicyAttachment("attach", new()
     ///     {
-    ///         PolicyName = policy.Name,
+    ///         PolicyName = policy.PolicyName,
     ///         PolicyType = policy.Type,
     ///         RoleName = role.Name,
     ///     });

@@ -21,7 +21,7 @@ public final class ServiceMeshMeshConfigSidecarInjector {
     private @Nullable String requestCpu;
     private @Nullable String requestMemory;
     /**
-     * @return Other configurations of automatically injected sidecar (in YAML format).
+     * @return Other automatic injection Sidecar configuration (in YAML format).
      * 
      */
     private @Nullable String sidecarInjectorWebhookAsYaml;
@@ -49,7 +49,7 @@ public final class ServiceMeshMeshConfigSidecarInjector {
         return Optional.ofNullable(this.requestMemory);
     }
     /**
-     * @return Other configurations of automatically injected sidecar (in YAML format).
+     * @return Other automatic injection Sidecar configuration (in YAML format).
      * 
      */
     public Optional<String> sidecarInjectorWebhookAsYaml() {

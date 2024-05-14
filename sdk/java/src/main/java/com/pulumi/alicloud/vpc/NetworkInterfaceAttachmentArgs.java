@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -30,6 +31,13 @@ public final class NetworkInterfaceAttachmentArgs extends com.pulumi.resources.R
      */
     public Output<String> instanceId() {
         return this.instanceId;
+    }
+
+    @Import(name="networkCardIndex")
+    private @Nullable Output<Integer> networkCardIndex;
+
+    public Optional<Output<Integer>> networkCardIndex() {
+        return Optional.ofNullable(this.networkCardIndex);
     }
 
     /**
@@ -65,6 +73,7 @@ public final class NetworkInterfaceAttachmentArgs extends com.pulumi.resources.R
 
     private NetworkInterfaceAttachmentArgs(NetworkInterfaceAttachmentArgs $) {
         this.instanceId = $.instanceId;
+        this.networkCardIndex = $.networkCardIndex;
         this.networkInterfaceId = $.networkInterfaceId;
         this.trunkNetworkInstanceId = $.trunkNetworkInstanceId;
         this.waitForNetworkConfigurationReady = $.waitForNetworkConfigurationReady;
@@ -107,6 +116,15 @@ public final class NetworkInterfaceAttachmentArgs extends com.pulumi.resources.R
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        public Builder networkCardIndex(@Nullable Output<Integer> networkCardIndex) {
+            $.networkCardIndex = networkCardIndex;
+            return this;
+        }
+
+        public Builder networkCardIndex(Integer networkCardIndex) {
+            return networkCardIndex(Output.of(networkCardIndex));
         }
 
         /**

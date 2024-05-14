@@ -24,33 +24,7 @@ import * as utilities from "../utilities";
  * const _default = new alicloud.oos.PatchBaseline("default", {
  *     patchBaselineName: name,
  *     operationSystem: "Windows",
- *     approvalRules: JSON.stringify({
- *         PatchRules: [{
- *             EnableNonSecurity: true,
- *             PatchFilterGroup: [
- *                 {
- *                     Values: ["*"],
- *                     Key: "Product",
- *                 },
- *                 {
- *                     Values: [
- *                         "Security",
- *                         "Bugfix",
- *                     ],
- *                     Key: "Classification",
- *                 },
- *                 {
- *                     Values: [
- *                         "Critical",
- *                         "Important",
- *                     ],
- *                     Key: "Severity",
- *                 },
- *             ],
- *             ApproveAfterDays: 7,
- *             ComplianceLevel: "Unspecified",
- *         }],
- *     }),
+ *     approvalRules: "{\"PatchRules\":[{\"EnableNonSecurity\":true,\"PatchFilterGroup\":[{\"Values\":[\"*\"],\"Key\":\"Product\"},{\"Values\":[\"Security\",\"Bugfix\"],\"Key\":\"Classification\"},{\"Values\":[\"Critical\",\"Important\"],\"Key\":\"Severity\"}],\"ApproveAfterDays\":7,\"ComplianceLevel\":\"Unspecified\"}]}",
  * });
  * ```
  *

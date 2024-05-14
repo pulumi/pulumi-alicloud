@@ -82,6 +82,8 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .owners("system")
+ *             .nameRegex("^ubuntu_18.*64")
+ *             .mostRecent(true)
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
@@ -126,7 +128,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultEcsSnapshotGroup = new EcsSnapshotGroup("defaultEcsSnapshotGroup", EcsSnapshotGroupArgs.builder()        
  *             .description("terraform-example")
- *             .diskIds(defaultEcsDisk.id())
+ *             .diskIds(defaultDiskAttachment.diskId())
  *             .snapshotGroupName("terraform-example")
  *             .instanceId(defaultInstance.id())
  *             .instantAccess(true)

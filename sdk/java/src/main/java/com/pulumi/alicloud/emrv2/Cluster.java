@@ -64,7 +64,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupArgs;
  * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
  * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeAttributeArgs;
- * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -168,7 +167,6 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 ClusterNodeGroupArgs.builder()
  *                     .spotInstanceRemedy("false")
- *                     .deploymentSetStrategy("CLUSTER")
  *                     .nodeGroupType("CORE")
  *                     .vswitchIds(defaultSwitch.id())
  *                     .nodeCount("2")
@@ -209,11 +207,6 @@ import javax.annotation.Nullable;
  *                 .ramRole(defaultRole.name())
  *                 .securityGroupId(defaultSecurityGroup.id())
  *                 .build())
- *             .logCollectStrategy(serializeJson(
- *                 jsonObject(
- *                     jsonProperty("open", jsonArray("all")),
- *                     jsonProperty("close", jsonArray(""))
- *                 )))
  *             .resourceGroupId(default_.ids()[0])
  *             .clusterName(name)
  *             .paymentType("PayAsYouGo")
@@ -266,14 +259,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.applications;
     }
     /**
-     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
+     * The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
      * 
      */
     @Export(name="bootstrapScripts", refs={List.class,ClusterBootstrapScript.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterBootstrapScript>> bootstrapScripts;
 
     /**
-     * @return The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
+     * @return The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
      * 
      */
     public Output<Optional<List<ClusterBootstrapScript>>> bootstrapScripts() {

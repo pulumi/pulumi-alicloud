@@ -25,16 +25,20 @@ namespace Pulumi.AliCloud.Dfs
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = new AliCloud.Dfs.AccessGroup("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         Description = name,
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultAccessGroup = new AliCloud.Dfs.AccessGroup("default", new()
+    ///     {
+    ///         AccessGroupName = $"tf-example-{@default.Result}",
     ///         NetworkType = "VPC",
-    ///         AccessGroupName = name,
     ///     });
     /// 
     /// });

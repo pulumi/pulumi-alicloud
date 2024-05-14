@@ -642,14 +642,14 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones.
      * 
      */
     @Import(name="podVswitchIds")
     private @Nullable Output<List<String>> podVswitchIds;
 
     /**
-     * @return [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+     * @return [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones.
      * 
      */
     public Optional<Output<List<String>>> podVswitchIds() {
@@ -769,24 +769,16 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Deprecated) The ID of load balancer.
-     * 
-     * @deprecated
-     * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
+     * The ID of APIServer load balancer.
      * 
      */
-    @Deprecated /* Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it. */
     @Import(name="slbId")
     private @Nullable Output<String> slbId;
 
     /**
-     * @return (Deprecated) The ID of load balancer.
-     * 
-     * @deprecated
-     * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
+     * @return The ID of APIServer load balancer.
      * 
      */
-    @Deprecated /* Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it. */
     public Optional<Output<String>> slbId() {
         return Optional.ofNullable(this.slbId);
     }
@@ -809,8 +801,8 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether to create internet load balancer for API Server. Default to true.
      * 
-     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
+     * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
      * 
      * *Master params*
      * 
@@ -821,8 +813,8 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Whether to create internet load balancer for API Server. Default to true.
      * 
-     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
+     * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
      * 
      * *Master params*
      * 
@@ -1927,7 +1919,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones.
          * 
          * @return builder
          * 
@@ -1938,7 +1930,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones.
          * 
          * @return builder
          * 
@@ -1948,7 +1940,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
+         * @param podVswitchIds [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` and `master_vswitch_ids` but must be in same availability zones.
          * 
          * @return builder
          * 
@@ -2128,30 +2120,22 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slbId (Deprecated) The ID of load balancer.
+         * @param slbId The ID of APIServer load balancer.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
-         * 
          */
-        @Deprecated /* Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it. */
         public Builder slbId(@Nullable Output<String> slbId) {
             $.slbId = slbId;
             return this;
         }
 
         /**
-         * @param slbId (Deprecated) The ID of load balancer.
+         * @param slbId The ID of APIServer load balancer.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
-         * 
          */
-        @Deprecated /* Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it. */
         public Builder slbId(String slbId) {
             return slbId(Output.of(slbId));
         }
@@ -2180,8 +2164,8 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param slbInternetEnabled Whether to create internet load balancer for API Server. Default to true.
          * 
-         * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
-         * If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+         * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
+         * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
          * 
          * *Master params*
          * 
@@ -2196,8 +2180,8 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param slbInternetEnabled Whether to create internet load balancer for API Server. Default to true.
          * 
-         * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
-         * If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
+         * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `pod_vswitch_ids` field and addons with `terway-eniip`.
+         * If you want to use `Flannel` as CNI network plugin, You need to specify the `pod_cidr` field and addons with `flannel`.
          * 
          * *Master params*
          * 

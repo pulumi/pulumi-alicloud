@@ -18,6 +18,8 @@ import (
 //
 // > **NOTE:** Available in v1.112.0+.
 //
+// > **DEPRECATED:**  This resource has been [deprecated](https://www.alibabacloud.com/en/notice/0313tsdb?_p_lc=1) from version `1.223.1`.
+//
 // ## Example Usage
 //
 // # Basic Usage

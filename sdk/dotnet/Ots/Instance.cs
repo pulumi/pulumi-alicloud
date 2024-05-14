@@ -38,10 +38,7 @@ namespace Pulumi.AliCloud.Ots
     ///     {
     ///         Name = $"{name}-{@default.Result}",
     ///         Description = name,
-    ///         NetworkTypeAcls = new[]
-    ///         {
-    ///             "VPC",
-    ///         },
+    ///         AccessedBy = "Vpc",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },

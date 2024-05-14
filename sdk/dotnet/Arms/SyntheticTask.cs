@@ -235,7 +235,7 @@ namespace Pulumi.AliCloud.Arms
     ///             IsOpenTrace = true,
     ///             TraceClientType = 1,
     ///         },
-    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[1])),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///     });
     /// 
     /// });

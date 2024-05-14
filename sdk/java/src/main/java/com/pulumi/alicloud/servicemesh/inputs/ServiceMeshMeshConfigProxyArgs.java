@@ -16,14 +16,14 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
     public static final ServiceMeshMeshConfigProxyArgs Empty = new ServiceMeshMeshConfigProxyArgs();
 
     /**
-     * Trust cluster domain.
+     * Cluster domain name.
      * 
      */
     @Import(name="clusterDomain")
     private @Nullable Output<String> clusterDomain;
 
     /**
-     * @return Trust cluster domain.
+     * @return Cluster domain name.
      * 
      */
     public Optional<Output<String>> clusterDomain() {
@@ -87,7 +87,7 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param clusterDomain Trust cluster domain.
+         * @param clusterDomain Cluster domain name.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param clusterDomain Trust cluster domain.
+         * @param clusterDomain Cluster domain name.
          * 
          * @return builder
          * 

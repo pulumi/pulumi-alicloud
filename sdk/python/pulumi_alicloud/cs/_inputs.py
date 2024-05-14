@@ -1020,10 +1020,10 @@ class KubernetesPermissionPermissionArgs:
                  is_ram_role: Optional[pulumi.Input[bool]] = None,
                  namespace: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] cluster: The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
+        :param pulumi.Input[str] cluster: The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `""`.
         :param pulumi.Input[str] role_name: Specifies the predefined role that you want to assign. Valid values `admin`, `ops`, `dev`, `restricted` and the custom cluster roles.
         :param pulumi.Input[str] role_type: The authorization type. Valid values `cluster`, `namespace` and `all-clusters`.
-        :param pulumi.Input[bool] is_custom: Specifies whether to perform a custom authorization. To perform a custom authorization, set `role_name` to a custom cluster role.
+        :param pulumi.Input[bool] is_custom: Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
         :param pulumi.Input[bool] is_ram_role: Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
         :param pulumi.Input[str] namespace: The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
         """
@@ -1041,7 +1041,7 @@ class KubernetesPermissionPermissionArgs:
     @pulumi.getter
     def cluster(self) -> pulumi.Input[str]:
         """
-        The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
+        The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `""`.
         """
         return pulumi.get(self, "cluster")
 
@@ -1077,7 +1077,7 @@ class KubernetesPermissionPermissionArgs:
     @pulumi.getter(name="isCustom")
     def is_custom(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to perform a custom authorization. To perform a custom authorization, set `role_name` to a custom cluster role.
+        Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
         """
         return pulumi.get(self, "is_custom")
 
@@ -2372,7 +2372,7 @@ class NodePoolScalingConfigArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] eip_bandwidth: Peak EIP bandwidth. Its valid value range [1~500] in Mbps. It works if `is_bond_eip=true`. Default to `5`.
-        :param pulumi.Input[str] eip_internet_charge_type: EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
+        :param pulumi.Input[str] eip_internet_charge_type: EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internet_charge_type`. EIP and public network IP can only choose one.
         :param pulumi.Input[bool] enable: Whether to enable automatic scaling. Value:
         :param pulumi.Input[bool] is_bond_eip: Whether to bind EIP for an instance. Default: `false`.
         :param pulumi.Input[int] max_size: Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
@@ -2410,7 +2410,7 @@ class NodePoolScalingConfigArgs:
     @pulumi.getter(name="eipInternetChargeType")
     def eip_internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        EIP billing type. It works if `is_bond_eip=true`. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. Conflict with `internet_charge_type`, EIP and public network IP can only choose one.
+        EIP billing type. `PayByBandwidth`: Charged at fixed bandwidth. `PayByTraffic`: Billed as used traffic. Default: `PayByBandwidth`. It works if `is_bond_eip=true`, conflict with `internet_charge_type`. EIP and public network IP can only choose one.
         """
         return pulumi.get(self, "eip_internet_charge_type")
 

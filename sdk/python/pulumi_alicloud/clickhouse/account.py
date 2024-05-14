@@ -23,7 +23,8 @@ class AccountArgs:
                  ddl_authority: Optional[pulumi.Input[bool]] = None,
                  dml_authority: Optional[pulumi.Input[str]] = None,
                  total_databases: Optional[pulumi.Input[str]] = None,
-                 total_dictionaries: Optional[pulumi.Input[str]] = None):
+                 total_dictionaries: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Account resource.
         :param pulumi.Input[str] account_name: Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
@@ -34,8 +35,9 @@ class AccountArgs:
         :param pulumi.Input[str] allow_dictionaries: The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
         :param pulumi.Input[bool] ddl_authority: Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
         :param pulumi.Input[str] dml_authority: Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
-        :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,).
-        :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,).
+        :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
+        :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
+        :param pulumi.Input[str] type: The type of the database account. Valid values: `Normal` or `Super`.
         """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "account_password", account_password)
@@ -51,9 +53,17 @@ class AccountArgs:
         if dml_authority is not None:
             pulumi.set(__self__, "dml_authority", dml_authority)
         if total_databases is not None:
+            warnings.warn("""Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
+            pulumi.log.warn("""total_databases is deprecated: Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
+        if total_databases is not None:
             pulumi.set(__self__, "total_databases", total_databases)
         if total_dictionaries is not None:
+            warnings.warn("""Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
+            pulumi.log.warn("""total_dictionaries is deprecated: Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
+        if total_dictionaries is not None:
             pulumi.set(__self__, "total_dictionaries", total_dictionaries)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="accountName")
@@ -155,8 +165,11 @@ class AccountArgs:
     @pulumi.getter(name="totalDatabases")
     def total_databases(self) -> Optional[pulumi.Input[str]]:
         """
-        The list of all databases. Separate databases with commas (,).
+        The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
         """
+        warnings.warn("""Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
+        pulumi.log.warn("""total_databases is deprecated: Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
+
         return pulumi.get(self, "total_databases")
 
     @total_databases.setter
@@ -167,13 +180,28 @@ class AccountArgs:
     @pulumi.getter(name="totalDictionaries")
     def total_dictionaries(self) -> Optional[pulumi.Input[str]]:
         """
-        The list of all dictionaries. Separate dictionaries with commas (,).
+        The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
         """
+        warnings.warn("""Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
+        pulumi.log.warn("""total_dictionaries is deprecated: Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
+
         return pulumi.get(self, "total_dictionaries")
 
     @total_dictionaries.setter
     def total_dictionaries(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "total_dictionaries", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the database account. Valid values: `Normal` or `Super`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -202,8 +230,8 @@ class _AccountState:
         :param pulumi.Input[bool] ddl_authority: Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
         :param pulumi.Input[str] dml_authority: Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
         :param pulumi.Input[str] status: The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
-        :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,).
-        :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,).
+        :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
+        :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
         :param pulumi.Input[str] type: The type of the database account. Valid values: `Normal` or `Super`.
         """
         if account_description is not None:
@@ -225,7 +253,13 @@ class _AccountState:
         if status is not None:
             pulumi.set(__self__, "status", status)
         if total_databases is not None:
+            warnings.warn("""Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
+            pulumi.log.warn("""total_databases is deprecated: Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
+        if total_databases is not None:
             pulumi.set(__self__, "total_databases", total_databases)
+        if total_dictionaries is not None:
+            warnings.warn("""Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
+            pulumi.log.warn("""total_dictionaries is deprecated: Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
         if total_dictionaries is not None:
             pulumi.set(__self__, "total_dictionaries", total_dictionaries)
         if type is not None:
@@ -343,8 +377,11 @@ class _AccountState:
     @pulumi.getter(name="totalDatabases")
     def total_databases(self) -> Optional[pulumi.Input[str]]:
         """
-        The list of all databases. Separate databases with commas (,).
+        The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
         """
+        warnings.warn("""Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
+        pulumi.log.warn("""total_databases is deprecated: Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
+
         return pulumi.get(self, "total_databases")
 
     @total_databases.setter
@@ -355,8 +392,11 @@ class _AccountState:
     @pulumi.getter(name="totalDictionaries")
     def total_dictionaries(self) -> Optional[pulumi.Input[str]]:
         """
-        The list of all dictionaries. Separate dictionaries with commas (,).
+        The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
         """
+        warnings.warn("""Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
+        pulumi.log.warn("""total_dictionaries is deprecated: Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
+
         return pulumi.get(self, "total_dictionaries")
 
     @total_dictionaries.setter
@@ -391,6 +431,7 @@ class Account(pulumi.CustomResource):
                  dml_authority: Optional[pulumi.Input[str]] = None,
                  total_databases: Optional[pulumi.Input[str]] = None,
                  total_dictionaries: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a Click House Account resource.
@@ -411,6 +452,9 @@ class Account(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        type = config.get("type")
+        if type is None:
+            type = "Normal"
         default = alicloud.clickhouse.get_regions(current=True)
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -435,7 +479,8 @@ class Account(pulumi.CustomResource):
             db_cluster_id=default_db_cluster.id,
             account_description="tf-example-description",
             account_name="examplename",
-            account_password="Example1234")
+            account_password="Example1234",
+            type=type)
         ```
 
         ## Import
@@ -456,8 +501,9 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] db_cluster_id: The db cluster id.
         :param pulumi.Input[bool] ddl_authority: Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
         :param pulumi.Input[str] dml_authority: Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
-        :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,).
-        :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,).
+        :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
+        :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
+        :param pulumi.Input[str] type: The type of the database account. Valid values: `Normal` or `Super`.
         """
         ...
     @overload
@@ -484,6 +530,9 @@ class Account(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        type = config.get("type")
+        if type is None:
+            type = "Normal"
         default = alicloud.clickhouse.get_regions(current=True)
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -508,7 +557,8 @@ class Account(pulumi.CustomResource):
             db_cluster_id=default_db_cluster.id,
             account_description="tf-example-description",
             account_name="examplename",
-            account_password="Example1234")
+            account_password="Example1234",
+            type=type)
         ```
 
         ## Import
@@ -544,6 +594,7 @@ class Account(pulumi.CustomResource):
                  dml_authority: Optional[pulumi.Input[str]] = None,
                  total_databases: Optional[pulumi.Input[str]] = None,
                  total_dictionaries: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -569,8 +620,8 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["dml_authority"] = dml_authority
             __props__.__dict__["total_databases"] = total_databases
             __props__.__dict__["total_dictionaries"] = total_dictionaries
+            __props__.__dict__["type"] = type
             __props__.__dict__["status"] = None
-            __props__.__dict__["type"] = None
         super(Account, __self__).__init__(
             'alicloud:clickhouse/account:Account',
             resource_name,
@@ -609,8 +660,8 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[bool] ddl_authority: Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
         :param pulumi.Input[str] dml_authority: Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
         :param pulumi.Input[str] status: The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
-        :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,).
-        :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,).
+        :param pulumi.Input[str] total_databases: The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
+        :param pulumi.Input[str] total_dictionaries: The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
         :param pulumi.Input[str] type: The type of the database account. Valid values: `Normal` or `Super`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -707,21 +758,27 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="totalDatabases")
     def total_databases(self) -> pulumi.Output[str]:
         """
-        The list of all databases. Separate databases with commas (,).
+        The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
         """
+        warnings.warn("""Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
+        pulumi.log.warn("""total_databases is deprecated: Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
+
         return pulumi.get(self, "total_databases")
 
     @property
     @pulumi.getter(name="totalDictionaries")
     def total_dictionaries(self) -> pulumi.Output[str]:
         """
-        The list of all dictionaries. Separate dictionaries with commas (,).
+        The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
         """
+        warnings.warn("""Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""", DeprecationWarning)
+        pulumi.log.warn("""total_dictionaries is deprecated: Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.""")
+
         return pulumi.get(self, "total_dictionaries")
 
     @property
     @pulumi.getter
-    def type(self) -> pulumi.Output[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of the database account. Valid values: `Normal` or `Super`.
         """

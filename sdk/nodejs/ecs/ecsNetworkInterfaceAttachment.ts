@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECS Network Interface Attachment and how to use it, see [What is Network Interface Attachment](https://www.alibabacloud.com/help/en/doc-detail/58515.htm).
  *
- * > **NOTE:** Available since v1.123.1+.
+ * > **NOTE:** Available since v1.123.1.
  *
  * ## Example Usage
  *
@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  * ECS Network Interface Attachment can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example eni-abcd1234:i-abcd1234
+ * $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example <network_interface_id>:<instance_id>
  * ```
  */
 export class EcsNetworkInterfaceAttachment extends pulumi.CustomResource {
@@ -115,15 +115,19 @@ export class EcsNetworkInterfaceAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * The instance id.
+     * The ID of the ECS instance.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The network interface id.
+     * The index of the network card.
+     */
+    public readonly networkCardIndex!: pulumi.Output<number | undefined>;
+    /**
+     * The ID of the network interface.
      */
     public readonly networkInterfaceId!: pulumi.Output<string>;
     /**
-     * The trunk network instance id.
+     * The ID of the trunk network instance.
      */
     public readonly trunkNetworkInstanceId!: pulumi.Output<string | undefined>;
     /**
@@ -145,6 +149,7 @@ export class EcsNetworkInterfaceAttachment extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EcsNetworkInterfaceAttachmentState | undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["networkCardIndex"] = state ? state.networkCardIndex : undefined;
             resourceInputs["networkInterfaceId"] = state ? state.networkInterfaceId : undefined;
             resourceInputs["trunkNetworkInstanceId"] = state ? state.trunkNetworkInstanceId : undefined;
             resourceInputs["waitForNetworkConfigurationReady"] = state ? state.waitForNetworkConfigurationReady : undefined;
@@ -157,6 +162,7 @@ export class EcsNetworkInterfaceAttachment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'networkInterfaceId'");
             }
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["networkCardIndex"] = args ? args.networkCardIndex : undefined;
             resourceInputs["networkInterfaceId"] = args ? args.networkInterfaceId : undefined;
             resourceInputs["trunkNetworkInstanceId"] = args ? args.trunkNetworkInstanceId : undefined;
             resourceInputs["waitForNetworkConfigurationReady"] = args ? args.waitForNetworkConfigurationReady : undefined;
@@ -171,15 +177,19 @@ export class EcsNetworkInterfaceAttachment extends pulumi.CustomResource {
  */
 export interface EcsNetworkInterfaceAttachmentState {
     /**
-     * The instance id.
+     * The ID of the ECS instance.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The network interface id.
+     * The index of the network card.
+     */
+    networkCardIndex?: pulumi.Input<number>;
+    /**
+     * The ID of the network interface.
      */
     networkInterfaceId?: pulumi.Input<string>;
     /**
-     * The trunk network instance id.
+     * The ID of the trunk network instance.
      */
     trunkNetworkInstanceId?: pulumi.Input<string>;
     /**
@@ -193,15 +203,19 @@ export interface EcsNetworkInterfaceAttachmentState {
  */
 export interface EcsNetworkInterfaceAttachmentArgs {
     /**
-     * The instance id.
+     * The ID of the ECS instance.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The network interface id.
+     * The index of the network card.
+     */
+    networkCardIndex?: pulumi.Input<number>;
+    /**
+     * The ID of the network interface.
      */
     networkInterfaceId: pulumi.Input<string>;
     /**
-     * The trunk network instance id.
+     * The ID of the trunk network instance.
      */
     trunkNetworkInstanceId?: pulumi.Input<string>;
     /**

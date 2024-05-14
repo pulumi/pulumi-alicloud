@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * const defaultElasticityAssurance = new alicloud.ecs.ElasticityAssurance("default", {
  *     instanceAmount: 1,
  *     description: "before",
- *     zoneIds: [defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id)],
+ *     zoneIds: [defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[2]?.id)],
  *     privatePoolOptionsName: "test_before",
  *     period: 1,
  *     privatePoolOptionsMatchCriteria: "Open",

@@ -798,7 +798,14 @@ class Rule(pulumi.CustomResource):
         slb_rule_name = config.get("slbRuleName")
         if slb_rule_name is None:
             slb_rule_name = "terraform-example"
-        rule = alicloud.get_zones(available_resource_creation="VSwitch")
+        rule = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        rule_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=rule.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        rule_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
         rule_network = alicloud.vpc.Network("rule",
             vpc_name=slb_rule_name,
             cidr_block="172.16.0.0/16")
@@ -807,6 +814,20 @@ class Rule(pulumi.CustomResource):
             cidr_block="172.16.0.0/16",
             zone_id=rule.zones[0].id,
             vswitch_name=slb_rule_name)
+        rule_security_group = alicloud.ecs.SecurityGroup("rule",
+            name=slb_rule_name,
+            vpc_id=rule_network.id)
+        rule_instance = alicloud.ecs.Instance("rule",
+            image_id=rule_get_images.images[0].id,
+            instance_type=rule_get_instance_types.instance_types[0].id,
+            security_groups=[__item.id for __item in [rule_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=rule.zones[0].id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=rule_switch.id,
+            instance_name=slb_rule_name)
         rule_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("rule",
             load_balancer_name=slb_rule_name,
             vswitch_id=rule_switch.id,
@@ -917,7 +938,14 @@ class Rule(pulumi.CustomResource):
         slb_rule_name = config.get("slbRuleName")
         if slb_rule_name is None:
             slb_rule_name = "terraform-example"
-        rule = alicloud.get_zones(available_resource_creation="VSwitch")
+        rule = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        rule_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=rule.zones[0].id,
+            cpu_core_count=1,
+            memory_size=2)
+        rule_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+            most_recent=True,
+            owners="system")
         rule_network = alicloud.vpc.Network("rule",
             vpc_name=slb_rule_name,
             cidr_block="172.16.0.0/16")
@@ -926,6 +954,20 @@ class Rule(pulumi.CustomResource):
             cidr_block="172.16.0.0/16",
             zone_id=rule.zones[0].id,
             vswitch_name=slb_rule_name)
+        rule_security_group = alicloud.ecs.SecurityGroup("rule",
+            name=slb_rule_name,
+            vpc_id=rule_network.id)
+        rule_instance = alicloud.ecs.Instance("rule",
+            image_id=rule_get_images.images[0].id,
+            instance_type=rule_get_instance_types.instance_types[0].id,
+            security_groups=[__item.id for __item in [rule_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=rule.zones[0].id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=rule_switch.id,
+            instance_name=slb_rule_name)
         rule_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("rule",
             load_balancer_name=slb_rule_name,
             vswitch_id=rule_switch.id,

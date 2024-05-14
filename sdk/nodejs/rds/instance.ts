@@ -151,6 +151,7 @@ export class Instance extends pulumi.CustomResource {
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     * - general_essd: general essd.
      */
     public readonly dbInstanceStorageType!: pulumi.Output<string>;
     /**
@@ -812,6 +813,7 @@ export interface InstanceState {
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     * - general_essd: general essd.
      */
     dbInstanceStorageType?: pulumi.Input<string>;
     /**
@@ -1275,6 +1277,7 @@ export interface InstanceArgs {
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     * - general_essd: general essd.
      */
     dbInstanceStorageType?: pulumi.Input<string>;
     /**

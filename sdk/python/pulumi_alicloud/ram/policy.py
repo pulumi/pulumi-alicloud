@@ -460,10 +460,14 @@ class Policy(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         # Create a new RAM Policy.
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         policy = alicloud.ram.Policy("policy",
-            policy_name="policyName",
+            policy_name=f"tf-example-{default['result']}",
             policy_document=\"\"\"  {
             "Statement": [
               {
@@ -526,10 +530,14 @@ class Policy(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         # Create a new RAM Policy.
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         policy = alicloud.ram.Policy("policy",
-            policy_name="policyName",
+            policy_name=f"tf-example-{default['result']}",
             policy_document=\"\"\"  {
             "Statement": [
               {

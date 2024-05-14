@@ -211,7 +211,6 @@ class Snapshot(pulumi.CustomResource):
             protocol_type="NFS",
             zone_id=default.zones[0].zone_id,
             storage_type="standard",
-            description=name,
             capacity=100)
         default_snapshot = alicloud.nas.Snapshot("default",
             file_system_id=default_file_system.id,
@@ -269,7 +268,6 @@ class Snapshot(pulumi.CustomResource):
             protocol_type="NFS",
             zone_id=default.zones[0].zone_id,
             storage_type="standard",
-            description=name,
             capacity=100)
         default_snapshot = alicloud.nas.Snapshot("default",
             file_system_id=default_file_system.id,

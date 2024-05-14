@@ -30,6 +30,7 @@ namespace Pulumi.AliCloud.ClickHouse
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
+    ///     var type = config.Get("type") ?? "Normal";
     ///     var @default = AliCloud.ClickHouse.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
@@ -69,6 +70,7 @@ namespace Pulumi.AliCloud.ClickHouse
     ///         AccountDescription = "tf-example-description",
     ///         AccountName = "examplename",
     ///         AccountPassword = "Example1234",
+    ///         Type = type,
     ///     });
     /// 
     /// });
@@ -140,13 +142,13 @@ namespace Pulumi.AliCloud.ClickHouse
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The list of all databases. Separate databases with commas (,).
+        /// The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
         /// </summary>
         [Output("totalDatabases")]
         public Output<string> TotalDatabases { get; private set; } = null!;
 
         /// <summary>
-        /// The list of all dictionaries. Separate dictionaries with commas (,).
+        /// The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
         /// </summary>
         [Output("totalDictionaries")]
         public Output<string> TotalDictionaries { get; private set; } = null!;
@@ -155,7 +157,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// The type of the database account. Valid values: `Normal` or `Super`.
         /// </summary>
         [Output("type")]
-        public Output<string> Type { get; private set; } = null!;
+        public Output<string?> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -252,16 +254,22 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? DmlAuthority { get; set; }
 
         /// <summary>
-        /// The list of all databases. Separate databases with commas (,).
+        /// The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
         /// </summary>
         [Input("totalDatabases")]
         public Input<string>? TotalDatabases { get; set; }
 
         /// <summary>
-        /// The list of all dictionaries. Separate dictionaries with commas (,).
+        /// The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
         /// </summary>
         [Input("totalDictionaries")]
         public Input<string>? TotalDictionaries { get; set; }
+
+        /// <summary>
+        /// The type of the database account. Valid values: `Normal` or `Super`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public AccountArgs()
         {
@@ -326,13 +334,13 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The list of all databases. Separate databases with commas (,).
+        /// The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
         /// </summary>
         [Input("totalDatabases")]
         public Input<string>? TotalDatabases { get; set; }
 
         /// <summary>
-        /// The list of all dictionaries. Separate dictionaries with commas (,).
+        /// The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
         /// </summary>
         [Input("totalDictionaries")]
         public Input<string>? TotalDictionaries { get; set; }

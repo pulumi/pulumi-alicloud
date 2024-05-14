@@ -26,7 +26,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -40,11 +40,16 @@ public final class ClickhouseFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.clickhouse.DbCluster;
      * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
      * import com.pulumi.alicloud.clickhouse.Account;
      * import com.pulumi.alicloud.clickhouse.AccountArgs;
-     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -60,10 +65,27 @@ public final class ClickhouseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("testaccountname");
-     *         final var pwd = config.get("pwd").orElse("Tf-testpwd");
+     *         final var name = config.get("name").orElse("oneaccountname");
+     *         final var pwd = config.get("pwd").orElse("Tf-onepwd");
+     *         final var type = config.get("type").orElse("Normal");
+     *         final var default = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.regions()[0].zoneIds()[0].zoneId())
+     *             .build());
+     * 
      *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
-     *             .dbClusterVersion("20.3.10.75")
+     *             .dbClusterVersion("22.8.5.29")
      *             .category("Basic")
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
@@ -72,7 +94,8 @@ public final class ClickhouseFunctions {
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
-     *             .vswitchId("your_vswitch_id")
+     *             .vswitchId(defaultSwitch.id())
+     *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
      *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
@@ -80,14 +103,15 @@ public final class ClickhouseFunctions {
      *             .accountDescription("your_description")
      *             .accountName(name)
      *             .accountPassword(pwd)
+     *             .type(type)
      *             .build());
      * 
-     *         final var default = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
+     *         final var defaultGetAccounts = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
      *             .ids(defaultAccount.id())
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("accountId", default_.applyValue(default_ -> default_.ids()[0]));
+     *         ctx.export("accountId", defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult).applyValue(defaultGetAccounts -> defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult.ids()[0])));
      *     }
      * }
      * }
@@ -101,7 +125,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -115,11 +139,16 @@ public final class ClickhouseFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.clickhouse.DbCluster;
      * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
      * import com.pulumi.alicloud.clickhouse.Account;
      * import com.pulumi.alicloud.clickhouse.AccountArgs;
-     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -135,10 +164,27 @@ public final class ClickhouseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("testaccountname");
-     *         final var pwd = config.get("pwd").orElse("Tf-testpwd");
+     *         final var name = config.get("name").orElse("oneaccountname");
+     *         final var pwd = config.get("pwd").orElse("Tf-onepwd");
+     *         final var type = config.get("type").orElse("Normal");
+     *         final var default = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.regions()[0].zoneIds()[0].zoneId())
+     *             .build());
+     * 
      *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
-     *             .dbClusterVersion("20.3.10.75")
+     *             .dbClusterVersion("22.8.5.29")
      *             .category("Basic")
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
@@ -147,7 +193,8 @@ public final class ClickhouseFunctions {
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
-     *             .vswitchId("your_vswitch_id")
+     *             .vswitchId(defaultSwitch.id())
+     *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
      *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
@@ -155,14 +202,15 @@ public final class ClickhouseFunctions {
      *             .accountDescription("your_description")
      *             .accountName(name)
      *             .accountPassword(pwd)
+     *             .type(type)
      *             .build());
      * 
-     *         final var default = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
+     *         final var defaultGetAccounts = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
      *             .ids(defaultAccount.id())
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("accountId", default_.applyValue(default_ -> default_.ids()[0]));
+     *         ctx.export("accountId", defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult).applyValue(defaultGetAccounts -> defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult.ids()[0])));
      *     }
      * }
      * }
@@ -176,7 +224,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -190,11 +238,16 @@ public final class ClickhouseFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.clickhouse.DbCluster;
      * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
      * import com.pulumi.alicloud.clickhouse.Account;
      * import com.pulumi.alicloud.clickhouse.AccountArgs;
-     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -210,10 +263,27 @@ public final class ClickhouseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("testaccountname");
-     *         final var pwd = config.get("pwd").orElse("Tf-testpwd");
+     *         final var name = config.get("name").orElse("oneaccountname");
+     *         final var pwd = config.get("pwd").orElse("Tf-onepwd");
+     *         final var type = config.get("type").orElse("Normal");
+     *         final var default = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.regions()[0].zoneIds()[0].zoneId())
+     *             .build());
+     * 
      *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
-     *             .dbClusterVersion("20.3.10.75")
+     *             .dbClusterVersion("22.8.5.29")
      *             .category("Basic")
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
@@ -222,7 +292,8 @@ public final class ClickhouseFunctions {
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
-     *             .vswitchId("your_vswitch_id")
+     *             .vswitchId(defaultSwitch.id())
+     *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
      *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
@@ -230,14 +301,15 @@ public final class ClickhouseFunctions {
      *             .accountDescription("your_description")
      *             .accountName(name)
      *             .accountPassword(pwd)
+     *             .type(type)
      *             .build());
      * 
-     *         final var default = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
+     *         final var defaultGetAccounts = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
      *             .ids(defaultAccount.id())
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("accountId", default_.applyValue(default_ -> default_.ids()[0]));
+     *         ctx.export("accountId", defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult).applyValue(defaultGetAccounts -> defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult.ids()[0])));
      *     }
      * }
      * }
@@ -251,7 +323,7 @@ public final class ClickhouseFunctions {
     /**
      * This data source provides the Click House Accounts of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.134.0+.
+     * &gt; **NOTE:** Available since v1.134.0.
      * 
      * ## Example Usage
      * 
@@ -265,11 +337,16 @@ public final class ClickhouseFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
+     * import com.pulumi.alicloud.clickhouse.inputs.GetRegionsArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
      * import com.pulumi.alicloud.clickhouse.DbCluster;
      * import com.pulumi.alicloud.clickhouse.DbClusterArgs;
      * import com.pulumi.alicloud.clickhouse.Account;
      * import com.pulumi.alicloud.clickhouse.AccountArgs;
-     * import com.pulumi.alicloud.clickhouse.ClickhouseFunctions;
      * import com.pulumi.alicloud.clickhouse.inputs.GetAccountsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -285,10 +362,27 @@ public final class ClickhouseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("testaccountname");
-     *         final var pwd = config.get("pwd").orElse("Tf-testpwd");
+     *         final var name = config.get("name").orElse("oneaccountname");
+     *         final var pwd = config.get("pwd").orElse("Tf-onepwd");
+     *         final var type = config.get("type").orElse("Normal");
+     *         final var default = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
+     *             .current(true)
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *             .vpcName(name)
+     *             .cidrBlock("10.4.0.0/16")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *             .vswitchName(name)
+     *             .cidrBlock("10.4.0.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.regions()[0].zoneIds()[0].zoneId())
+     *             .build());
+     * 
      *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
-     *             .dbClusterVersion("20.3.10.75")
+     *             .dbClusterVersion("22.8.5.29")
      *             .category("Basic")
      *             .dbClusterClass("S8")
      *             .dbClusterNetworkType("vpc")
@@ -297,7 +391,8 @@ public final class ClickhouseFunctions {
      *             .paymentType("PayAsYouGo")
      *             .dbNodeStorage("500")
      *             .storageType("cloud_essd")
-     *             .vswitchId("your_vswitch_id")
+     *             .vswitchId(defaultSwitch.id())
+     *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
      *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
@@ -305,14 +400,15 @@ public final class ClickhouseFunctions {
      *             .accountDescription("your_description")
      *             .accountName(name)
      *             .accountPassword(pwd)
+     *             .type(type)
      *             .build());
      * 
-     *         final var default = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
+     *         final var defaultGetAccounts = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
      *             .ids(defaultAccount.id())
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export("accountId", default_.applyValue(default_ -> default_.ids()[0]));
+     *         ctx.export("accountId", defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult).applyValue(defaultGetAccounts -> defaultGetAccounts.applyValue(getAccountsResult -> getAccountsResult.ids()[0])));
      *     }
      * }
      * }

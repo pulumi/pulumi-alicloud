@@ -85,7 +85,8 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
     /**
      * Whether to customize Prometheus. Value:
      * -&#39;true&#39;: custom Prometheus.
-     * -&#39;false&#39;: Do not customize Prometheus. Default value: &#39;false &#39;.
+     * -&#39;false&#39;: Do not customize Prometheus.
+     * Default value: &#39;false &#39;.
      * 
      */
     @Export(name="customizedPrometheus", refs={Boolean.class}, tree="[0]")
@@ -94,21 +95,22 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
     /**
      * @return Whether to customize Prometheus. Value:
      * -&#39;true&#39;: custom Prometheus.
-     * -&#39;false&#39;: Do not customize Prometheus. Default value: &#39;false &#39;.
+     * -&#39;false&#39;: Do not customize Prometheus.
+     * Default value: &#39;false &#39;.
      * 
      */
     public Output<Optional<Boolean>> customizedPrometheus() {
         return Codegen.optional(this.customizedPrometheus);
     }
     /**
-     * Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+     * Grid instance version type (for example: the standard, the Pro version, etc.).
      * 
      */
     @Export(name="edition", refs={String.class}, tree="[0]")
     private Output<String> edition;
 
     /**
-     * @return Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+     * @return Grid instance version type (for example: the standard, the Pro version, etc.).
      * 
      */
     public Output<String> edition() {
@@ -131,7 +133,8 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
     /**
      * Whether to forcibly delete the ASM instance. Value:
      * -&#39;true&#39;: force deletion of ASM instance
-     * -&#39;false&#39;: no forced deletion of ASM instance. Default value: false.
+     * -&#39;false&#39;: no forced deletion of ASM instance
+     * Default value: false.
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
@@ -140,7 +143,8 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
     /**
      * @return Whether to forcibly delete the ASM instance. Value:
      * -&#39;true&#39;: force deletion of ASM instance
-     * -&#39;false&#39;: no forced deletion of ASM instance. Default value: false.
+     * -&#39;false&#39;: no forced deletion of ASM instance
+     * Default value: false.
      * 
      */
     public Output<Optional<Boolean>> force() {

@@ -589,7 +589,7 @@ class RdsAccount(pulumi.CustomResource):
         default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
             engine_version="5.6",
-            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
+            instance_type=default_get_instance_classes.instance_classes[1].instance_class,
             instance_storage=10,
             vswitch_id=default_switch.id,
             instance_name=name)
@@ -668,7 +668,7 @@ class RdsAccount(pulumi.CustomResource):
         default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
             engine_version="5.6",
-            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
+            instance_type=default_get_instance_classes.instance_classes[1].instance_class,
             instance_storage=10,
             vswitch_id=default_switch.id,
             instance_name=name)

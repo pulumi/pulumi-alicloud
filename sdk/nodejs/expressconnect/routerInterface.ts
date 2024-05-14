@@ -21,17 +21,16 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/12",
+ * const default = alicloud.vpc.getNetworks({
+ *     nameRegex: "default-NODELETING",
  * });
- * const default = alicloud.getRegions({
+ * const defaultGetRegions = alicloud.getRegions({
  *     current: true,
  * });
  * const defaultRouterInterface = new alicloud.expressconnect.RouterInterface("default", {
  *     description: name,
- *     oppositeRegionId: _default.then(_default => _default.regions?.[0]?.id),
- *     routerId: defaultNetwork.routerId,
+ *     oppositeRegionId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.id),
+ *     routerId: _default.then(_default => _default.vpcs?.[0]?.routerId),
  *     role: "InitiatingSide",
  *     routerType: "VRouter",
  *     paymentType: "PayAsYouGo",

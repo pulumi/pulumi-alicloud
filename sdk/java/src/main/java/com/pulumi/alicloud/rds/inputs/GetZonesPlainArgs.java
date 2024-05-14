@@ -30,13 +30,6 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.category);
     }
 
-    @Import(name="dbInstanceClass")
-    private @Nullable String dbInstanceClass;
-
-    public Optional<String> dbInstanceClass() {
-        return Optional.ofNullable(this.dbInstanceClass);
-    }
-
     /**
      * The DB instance storage space required by the user. Valid values: &#34;cloud_ssd&#34;, &#34;local_ssd&#34;, &#34;cloud_essd&#34;, &#34;cloud_essd2&#34;, &#34;cloud_essd3&#34;.
      * 
@@ -100,14 +93,22 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * It has been deprecated from version 1.137.0 and using `multi_zone` instead.
      * 
+     * @deprecated
+     * It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+     * 
      */
+    @Deprecated /* It has been deprecated from version 1.137.0 and using `multi_zone` instead. */
     @Import(name="multi")
     private @Nullable Boolean multi;
 
     /**
      * @return It has been deprecated from version 1.137.0 and using `multi_zone` instead.
      * 
+     * @deprecated
+     * It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+     * 
      */
+    @Deprecated /* It has been deprecated from version 1.137.0 and using `multi_zone` instead. */
     public Optional<Boolean> multi() {
         return Optional.ofNullable(this.multi);
     }
@@ -146,7 +147,6 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetZonesPlainArgs(GetZonesPlainArgs $) {
         this.category = $.category;
-        this.dbInstanceClass = $.dbInstanceClass;
         this.dbInstanceStorageType = $.dbInstanceStorageType;
         this.engine = $.engine;
         this.engineVersion = $.engineVersion;
@@ -182,11 +182,6 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder category(@Nullable String category) {
             $.category = category;
-            return this;
-        }
-
-        public Builder dbInstanceClass(@Nullable String dbInstanceClass) {
-            $.dbInstanceClass = dbInstanceClass;
             return this;
         }
 
@@ -239,7 +234,11 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+         * 
          */
+        @Deprecated /* It has been deprecated from version 1.137.0 and using `multi_zone` instead. */
         public Builder multi(@Nullable Boolean multi) {
             $.multi = multi;
             return this;

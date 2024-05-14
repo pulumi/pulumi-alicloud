@@ -5,7 +5,9 @@ package com.pulumi.alicloud.servicemesh.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,11 +18,18 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
 
     public static final ServiceMeshMeshConfigControlPlaneLogArgs Empty = new ServiceMeshMeshConfigControlPlaneLogArgs();
 
-    @Import(name="enabled")
-    private @Nullable Output<Boolean> enabled;
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
 
-    public Optional<Output<Boolean>> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
+    }
+
+    @Import(name="logTtlInDay")
+    private @Nullable Output<Integer> logTtlInDay;
+
+    public Optional<Output<Integer>> logTtlInDay() {
+        return Optional.ofNullable(this.logTtlInDay);
     }
 
     @Import(name="project")
@@ -34,6 +43,7 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
 
     private ServiceMeshMeshConfigControlPlaneLogArgs(ServiceMeshMeshConfigControlPlaneLogArgs $) {
         this.enabled = $.enabled;
+        this.logTtlInDay = $.logTtlInDay;
         this.project = $.project;
     }
 
@@ -55,13 +65,22 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
             $ = new ServiceMeshMeshConfigControlPlaneLogArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder enabled(@Nullable Output<Boolean> enabled) {
+        public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        public Builder logTtlInDay(@Nullable Output<Integer> logTtlInDay) {
+            $.logTtlInDay = logTtlInDay;
+            return this;
+        }
+
+        public Builder logTtlInDay(Integer logTtlInDay) {
+            return logTtlInDay(Output.of(logTtlInDay));
         }
 
         public Builder project(@Nullable Output<String> project) {
@@ -74,6 +93,9 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
         }
 
         public ServiceMeshMeshConfigControlPlaneLogArgs build() {
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("ServiceMeshMeshConfigControlPlaneLogArgs", "enabled");
+            }
             return $;
         }
     }

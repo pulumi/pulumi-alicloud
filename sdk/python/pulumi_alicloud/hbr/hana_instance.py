@@ -476,12 +476,16 @@ class HanaInstance(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         example = alicloud.resourcemanager.get_resource_groups(status="OK")
-        example_vault = alicloud.hbr.Vault("example", vault_name="terraform-example")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        example_vault = alicloud.hbr.Vault("example", vault_name=f"terraform-example-{default['result']}")
         example_hana_instance = alicloud.hbr.HanaInstance("example",
             alert_setting="INHERITED",
-            hana_name="terraform-example",
+            hana_name=f"terraform-example-{default['result']}",
             host="1.1.1.1",
             instance_number=1,
             password="YouPassword123",
@@ -538,12 +542,16 @@ class HanaInstance(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         example = alicloud.resourcemanager.get_resource_groups(status="OK")
-        example_vault = alicloud.hbr.Vault("example", vault_name="terraform-example")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        example_vault = alicloud.hbr.Vault("example", vault_name=f"terraform-example-{default['result']}")
         example_hana_instance = alicloud.hbr.HanaInstance("example",
             alert_setting="INHERITED",
-            hana_name="terraform-example",
+            hana_name=f"terraform-example-{default['result']}",
             host="1.1.1.1",
             instance_number=1,
             password="YouPassword123",

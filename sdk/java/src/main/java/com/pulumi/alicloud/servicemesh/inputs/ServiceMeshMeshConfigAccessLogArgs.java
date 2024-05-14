@@ -6,6 +6,7 @@ package com.pulumi.alicloud.servicemesh.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -23,6 +24,20 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.enabled);
     }
 
+    @Import(name="gatewayEnabled")
+    private @Nullable Output<Boolean> gatewayEnabled;
+
+    public Optional<Output<Boolean>> gatewayEnabled() {
+        return Optional.ofNullable(this.gatewayEnabled);
+    }
+
+    @Import(name="gatewayLifecycle")
+    private @Nullable Output<Integer> gatewayLifecycle;
+
+    public Optional<Output<Integer>> gatewayLifecycle() {
+        return Optional.ofNullable(this.gatewayLifecycle);
+    }
+
     @Import(name="project")
     private @Nullable Output<String> project;
 
@@ -30,11 +45,29 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.project);
     }
 
+    @Import(name="sidecarEnabled")
+    private @Nullable Output<Boolean> sidecarEnabled;
+
+    public Optional<Output<Boolean>> sidecarEnabled() {
+        return Optional.ofNullable(this.sidecarEnabled);
+    }
+
+    @Import(name="sidecarLifecycle")
+    private @Nullable Output<Integer> sidecarLifecycle;
+
+    public Optional<Output<Integer>> sidecarLifecycle() {
+        return Optional.ofNullable(this.sidecarLifecycle);
+    }
+
     private ServiceMeshMeshConfigAccessLogArgs() {}
 
     private ServiceMeshMeshConfigAccessLogArgs(ServiceMeshMeshConfigAccessLogArgs $) {
         this.enabled = $.enabled;
+        this.gatewayEnabled = $.gatewayEnabled;
+        this.gatewayLifecycle = $.gatewayLifecycle;
         this.project = $.project;
+        this.sidecarEnabled = $.sidecarEnabled;
+        this.sidecarLifecycle = $.sidecarLifecycle;
     }
 
     public static Builder builder() {
@@ -64,6 +97,24 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
             return enabled(Output.of(enabled));
         }
 
+        public Builder gatewayEnabled(@Nullable Output<Boolean> gatewayEnabled) {
+            $.gatewayEnabled = gatewayEnabled;
+            return this;
+        }
+
+        public Builder gatewayEnabled(Boolean gatewayEnabled) {
+            return gatewayEnabled(Output.of(gatewayEnabled));
+        }
+
+        public Builder gatewayLifecycle(@Nullable Output<Integer> gatewayLifecycle) {
+            $.gatewayLifecycle = gatewayLifecycle;
+            return this;
+        }
+
+        public Builder gatewayLifecycle(Integer gatewayLifecycle) {
+            return gatewayLifecycle(Output.of(gatewayLifecycle));
+        }
+
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
@@ -71,6 +122,24 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
 
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        public Builder sidecarEnabled(@Nullable Output<Boolean> sidecarEnabled) {
+            $.sidecarEnabled = sidecarEnabled;
+            return this;
+        }
+
+        public Builder sidecarEnabled(Boolean sidecarEnabled) {
+            return sidecarEnabled(Output.of(sidecarEnabled));
+        }
+
+        public Builder sidecarLifecycle(@Nullable Output<Integer> sidecarLifecycle) {
+            $.sidecarLifecycle = sidecarLifecycle;
+            return this;
+        }
+
+        public Builder sidecarLifecycle(Integer sidecarLifecycle) {
+            return sidecarLifecycle(Output.of(sidecarLifecycle));
         }
 
         public ServiceMeshMeshConfigAccessLogArgs build() {

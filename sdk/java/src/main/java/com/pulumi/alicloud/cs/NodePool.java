@@ -74,14 +74,18 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoRenewPeriod);
     }
     /**
-     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+     * 
+     * @deprecated
+     * Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
      * 
      */
+    @Deprecated /* Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead. */
     @Export(name="cisEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cisEnabled;
 
     /**
-     * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
      * 
      */
     public Output<Optional<Boolean>> cisEnabled() {
@@ -768,8 +772,22 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.securityGroupIds;
     }
     /**
+     * Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+     * 
+     */
+    @Export(name="securityHardeningOs", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> securityHardeningOs;
+
+    /**
+     * @return Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+     * 
+     */
+    public Output<Optional<Boolean>> securityHardeningOs() {
+        return Codegen.optional(this.securityHardeningOs);
+    }
+    /**
      * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-     * &gt; **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+     * &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
      * 
      */
     @Export(name="socEnabled", refs={Boolean.class}, tree="[0]")
@@ -777,7 +795,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-     * &gt; **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+     * &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
      * 
      */
     public Output<Optional<Boolean>> socEnabled() {
@@ -1034,6 +1052,20 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> unschedulable() {
         return Codegen.optional(this.unschedulable);
+    }
+    /**
+     * Synchronously update node labels and taints.
+     * 
+     */
+    @Export(name="updateNodes", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> updateNodes;
+
+    /**
+     * @return Synchronously update node labels and taints.
+     * 
+     */
+    public Output<Optional<Boolean>> updateNodes() {
+        return Codegen.optional(this.updateNodes);
     }
     /**
      * Node custom data.

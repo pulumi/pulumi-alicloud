@@ -23,7 +23,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -41,9 +44,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-//				Name: pulumi.String("policyName"),
-//				Document: pulumi.String(`  {
+//				PolicyName: pulumi.String(fmt.Sprintf("tf-example-%v", _default.Result)),
+//				PolicyDocument: pulumi.String(`  {
 //	    "Statement": [
 //	      {
 //	        "Action": [
@@ -68,7 +78,7 @@ import (
 //				return err
 //			}
 //			_, err = ram.NewUserPolicyAttachment(ctx, "attach", &ram.UserPolicyAttachmentArgs{
-//				PolicyName: policy.Name,
+//				PolicyName: policy.PolicyName,
 //				PolicyType: policy.Type,
 //				UserName:   user.Name,
 //			})

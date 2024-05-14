@@ -518,7 +518,7 @@ class _ManagedKubernetesState:
         :param pulumi.Input[str] name: Node name.
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input['ManagedKubernetesRrsaMetadataArgs'] rrsa_metadata: (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
-        :param pulumi.Input[str] slb_id: (Deprecated) The ID of load balancer.
+        :param pulumi.Input[str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
@@ -590,9 +590,6 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "service_account_issuer", service_account_issuer)
         if service_cidr is not None:
             pulumi.set(__self__, "service_cidr", service_cidr)
-        if slb_id is not None:
-            warnings.warn("""Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""", DeprecationWarning)
-            pulumi.log.warn("""slb_id is deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""")
         if slb_id is not None:
             pulumi.set(__self__, "slb_id", slb_id)
         if slb_internet is not None:
@@ -944,11 +941,8 @@ class _ManagedKubernetesState:
     @pulumi.getter(name="slbId")
     def slb_id(self) -> Optional[pulumi.Input[str]]:
         """
-        (Deprecated) The ID of load balancer.
+        The ID of APIServer load balancer.
         """
-        warnings.warn("""Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""slb_id is deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""")
-
         return pulumi.get(self, "slb_id")
 
     @slb_id.setter
@@ -1370,7 +1364,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] name: Node name.
         :param pulumi.Input[str] nat_gateway_id: The ID of nat gateway used to launch kubernetes cluster.
         :param pulumi.Input[pulumi.InputType['ManagedKubernetesRrsaMetadataArgs']] rrsa_metadata: (Optional, Available in v1.185.0+) Nested attribute containing RRSA related data for your cluster.
-        :param pulumi.Input[str] slb_id: (Deprecated) The ID of load balancer.
+        :param pulumi.Input[str] slb_id: The ID of APIServer load balancer.
         :param pulumi.Input[str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[str] slb_intranet: The ID of private load balancer where the current cluster master node is located.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
@@ -1622,11 +1616,8 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="slbId")
     def slb_id(self) -> pulumi.Output[str]:
         """
-        (Deprecated) The ID of load balancer.
+        The ID of APIServer load balancer.
         """
-        warnings.warn("""Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""", DeprecationWarning)
-        pulumi.log.warn("""slb_id is deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""")
-
         return pulumi.get(self, "slb_id")
 
     @property

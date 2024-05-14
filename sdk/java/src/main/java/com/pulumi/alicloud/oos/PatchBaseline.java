@@ -39,7 +39,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.oos.PatchBaseline;
  * import com.pulumi.alicloud.oos.PatchBaselineArgs;
- * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -58,34 +57,7 @@ import javax.annotation.Nullable;
  *         var default_ = new PatchBaseline("default", PatchBaselineArgs.builder()        
  *             .patchBaselineName(name)
  *             .operationSystem("Windows")
- *             .approvalRules(serializeJson(
- *                 jsonObject(
- *                     jsonProperty("PatchRules", jsonArray(jsonObject(
- *                         jsonProperty("EnableNonSecurity", true),
- *                         jsonProperty("PatchFilterGroup", jsonArray(
- *                             jsonObject(
- *                                 jsonProperty("Values", jsonArray("*")),
- *                                 jsonProperty("Key", "Product")
- *                             ), 
- *                             jsonObject(
- *                                 jsonProperty("Values", jsonArray(
- *                                     "Security", 
- *                                     "Bugfix"
- *                                 )),
- *                                 jsonProperty("Key", "Classification")
- *                             ), 
- *                             jsonObject(
- *                                 jsonProperty("Values", jsonArray(
- *                                     "Critical", 
- *                                     "Important"
- *                                 )),
- *                                 jsonProperty("Key", "Severity")
- *                             )
- *                         )),
- *                         jsonProperty("ApproveAfterDays", 7),
- *                         jsonProperty("ComplianceLevel", "Unspecified")
- *                     )))
- *                 )))
+ *             .approvalRules("{\"PatchRules\":[{\"EnableNonSecurity\":true,\"PatchFilterGroup\":[{\"Values\":[\"*\"],\"Key\":\"Product\"},{\"Values\":[\"Security\",\"Bugfix\"],\"Key\":\"Classification\"},{\"Values\":[\"Critical\",\"Important\"],\"Key\":\"Severity\"}],\"ApproveAfterDays\":7,\"ComplianceLevel\":\"Unspecified\"}]}")
  *             .build());
  * 
  *     }

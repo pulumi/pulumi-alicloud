@@ -215,6 +215,21 @@ public final class GetInstanceTypesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
+     * The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
+     * 
+     */
+    @Import(name="minimumEniPrivateIpAddressQuantity")
+    private @Nullable Integer minimumEniPrivateIpAddressQuantity;
+
+    /**
+     * @return The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
+     * 
+     */
+    public Optional<Integer> minimumEniPrivateIpAddressQuantity() {
+        return Optional.ofNullable(this.minimumEniPrivateIpAddressQuantity);
+    }
+
+    /**
      * Filter the results by network type. Valid values: `Classic` and `Vpc`.
      * 
      */
@@ -275,7 +290,7 @@ public final class GetInstanceTypesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`.
+     * Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`.
      * **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
      * 
      */
@@ -283,7 +298,7 @@ public final class GetInstanceTypesPlainArgs extends com.pulumi.resources.Invoke
     private @Nullable String systemDiskCategory;
 
     /**
-     * @return Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`.
+     * @return Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`.
      * **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
      * 
      */
@@ -307,6 +322,7 @@ public final class GetInstanceTypesPlainArgs extends com.pulumi.resources.Invoke
         this.kubernetesNodeRole = $.kubernetesNodeRole;
         this.memorySize = $.memorySize;
         this.minimumEniIpv6AddressQuantity = $.minimumEniIpv6AddressQuantity;
+        this.minimumEniPrivateIpAddressQuantity = $.minimumEniPrivateIpAddressQuantity;
         this.networkType = $.networkType;
         this.outputFile = $.outputFile;
         this.sortedBy = $.sortedBy;
@@ -477,6 +493,17 @@ public final class GetInstanceTypesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
+         * @param minimumEniPrivateIpAddressQuantity The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumEniPrivateIpAddressQuantity(@Nullable Integer minimumEniPrivateIpAddressQuantity) {
+            $.minimumEniPrivateIpAddressQuantity = minimumEniPrivateIpAddressQuantity;
+            return this;
+        }
+
+        /**
          * @param networkType Filter the results by network type. Valid values: `Classic` and `Vpc`.
          * 
          * @return builder
@@ -521,7 +548,7 @@ public final class GetInstanceTypesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param systemDiskCategory Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`.
+         * @param systemDiskCategory Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`.
          * **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
          * 
          * @return builder

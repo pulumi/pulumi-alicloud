@@ -29,17 +29,13 @@ namespace Pulumi.AliCloud.Edas
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.GetRegions.Invoke(new()
-    ///     {
-    ///         Current = true,
-    ///     });
-    /// 
-    ///     var defaultNamespace = new AliCloud.Edas.Namespace("default", new()
+    ///     var region = config.Get("region") ?? "cn-hangzhou";
+    ///     var name = config.Get("name") ?? "tfexample";
+    ///     var @default = new AliCloud.Edas.Namespace("default", new()
     ///     {
     ///         DebugEnable = false,
     ///         Description = name,
-    ///         NamespaceLogicalId = @default.Apply(@default =&gt; $"{@default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example"),
+    ///         NamespaceLogicalId = $"{region}:{name}",
     ///         NamespaceName = name,
     ///     });
     /// 

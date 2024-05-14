@@ -37,7 +37,6 @@ import (
 //			_, err := cms.NewNamespace(ctx, "example", &cms.NamespaceArgs{
 //				Namespace:     pulumi.String("tf-example"),
 //				Specification: pulumi.String("cms.s1.large"),
-//				Description:   pulumi.String("tf-example"),
 //			})
 //			if err != nil {
 //				return err

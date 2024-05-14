@@ -45,9 +45,9 @@ import (
 //			if param := cfg.Get("acceptingRegion"); param != "" {
 //				acceptingRegion = param
 //			}
-//			acceptUid := "xxxx"
-//			if param := cfg.Get("acceptUid"); param != "" {
-//				acceptUid = param
+//			anotherUid := "xxxx"
+//			if param := cfg.Get("anotherUid"); param != "" {
+//				anotherUid = param
 //			}
 //			local, err := vpc.NewNetwork(ctx, "local", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),

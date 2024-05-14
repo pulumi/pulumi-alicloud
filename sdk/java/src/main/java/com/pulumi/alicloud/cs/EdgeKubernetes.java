@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example-basic-edge");
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
@@ -108,9 +108,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultEdgeKubernetes = new EdgeKubernetes("defaultEdgeKubernetes", EdgeKubernetesArgs.builder()        
- *             .name(name)
+ *             .namePrefix(name)
  *             .workerVswitchIds(defaultSwitch.id())
  *             .workerInstanceTypes(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .version("1.26.3-aliyun.1")
  *             .workerNumber("1")
  *             .password("Test12345")
  *             .podCidr("10.99.0.0/16")
@@ -194,7 +195,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultEdgeKubernetes = new EdgeKubernetes("defaultEdgeKubernetes", EdgeKubernetesArgs.builder()        
- *             .name(name)
+ *             .namePrefix(name)
  *             .workerVswitchIds(defaultSwitch.id())
  *             .workerInstanceTypes(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .clusterSpec("ack.pro.small")

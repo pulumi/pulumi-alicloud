@@ -27,10 +27,13 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ess"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -43,6 +46,14 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myName := fmt.Sprintf("%v-%v", name, defaultInteger.Result)
 //			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
@@ -66,25 +77,23 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("172.16.0.0/16"),
-//			})
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
+//				CidrBlock: pulumi.StringRef("10.4.0.0/16"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
-//				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
-//			})
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				CidrBlock: pulumi.StringRef("10.4.0.0/24"),
+//				VpcId:     pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId:    pulumi.StringRef(_default.Zones[0].Id),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -105,13 +114,13 @@ import (
 //			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "default", &ess.ScalingGroupArgs{
 //				MinSize:          pulumi.Int(0),
 //				MaxSize:          pulumi.Int(2),
-//				ScalingGroupName: pulumi.String(name),
+//				ScalingGroupName: pulumi.String(myName),
 //				RemovalPolicies: pulumi.StringArray{
 //					pulumi.String("OldestInstance"),
 //					pulumi.String("NewestInstance"),
 //				},
 //				VswitchIds: pulumi.StringArray{
-//					defaultSwitch.ID(),
+//					pulumi.String(defaultGetSwitches.Ids[0]),
 //				},
 //			})
 //			if err != nil {
@@ -143,7 +152,7 @@ import (
 //					InternetMaxBandwidthOut: pulumi.Int(10),
 //					InstanceChargeType:      pulumi.String("PostPaid"),
 //					SystemDiskCategory:      pulumi.String("cloud_efficiency"),
-//					VswitchId:               defaultSwitch.ID(),
+//					VswitchId:               pulumi.String(defaultGetSwitches.Ids[0]),
 //					InstanceName:            pulumi.String(name),
 //				})
 //				if err != nil {

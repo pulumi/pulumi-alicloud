@@ -39,13 +39,6 @@ import * as utilities from "../utilities";
  *     childInstanceId: childAccountNetwork.id,
  *     cenOwnerId: yourAccount.then(yourAccount => yourAccount.id),
  * });
- * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("example", {
- *     instanceId: example.id,
- *     childInstanceId: childAccountInstanceGrant.childInstanceId,
- *     childInstanceType: "VPC",
- *     childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
- *     childInstanceOwnerId: childAccount.then(childAccount => childAccount.id),
- * });
  * ```
  *
  * ## Import

@@ -244,17 +244,17 @@ class AccessRule(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
+            name = "example_name"
         default = alicloud.dfs.AccessGroup("default",
-            description="example",
             network_type="VPC",
-            access_group_name=name)
+            access_group_name=name,
+            description=name)
         default_access_rule = alicloud.dfs.AccessRule("default",
-            description="example",
+            network_segment="192.0.2.0/24",
+            access_group_id=default.id,
+            description=name,
             rw_access_type="RDWR",
-            priority=1,
-            network_segment="192.168.81.1",
-            access_group_id=default.id)
+            priority=10)
         ```
 
         ## Import
@@ -297,17 +297,17 @@ class AccessRule(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
+            name = "example_name"
         default = alicloud.dfs.AccessGroup("default",
-            description="example",
             network_type="VPC",
-            access_group_name=name)
+            access_group_name=name,
+            description=name)
         default_access_rule = alicloud.dfs.AccessRule("default",
-            description="example",
+            network_segment="192.0.2.0/24",
+            access_group_id=default.id,
+            description=name,
             rw_access_type="RDWR",
-            priority=1,
-            network_segment="192.168.81.1",
-            access_group_id=default.id)
+            priority=10)
         ```
 
         ## Import

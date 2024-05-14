@@ -25,11 +25,20 @@ namespace Pulumi.AliCloud.Ess
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var myName = $"{name}-{defaultInteger.Result}";
+    /// 
     ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableDiskCategory = "cloud_efficiency",
@@ -50,24 +59,22 @@ namespace Pulumi.AliCloud.Ess
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "172.16.0.0/16",
+    ///         NameRegex = "^default-NODELETING$",
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VpcId = defaultNetwork.Id,
-    ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
-    ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         Name = name,
-    ///         VpcId = defaultNetwork.Id,
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///     });
     /// 
     ///     var defaultSecurityGroupRule = new AliCloud.Ecs.SecurityGroupRule("default", new()
@@ -86,7 +93,7 @@ namespace Pulumi.AliCloud.Ess
     ///     {
     ///         MinSize = 0,
     ///         MaxSize = 2,
-    ///         ScalingGroupName = name,
+    ///         ScalingGroupName = myName,
     ///         RemovalPolicies = new[]
     ///         {
     ///             "OldestInstance",
@@ -94,7 +101,7 @@ namespace Pulumi.AliCloud.Ess
     ///         },
     ///         VswitchIds = new[]
     ///         {
-    ///             defaultSwitch.Id,
+    ///             defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///         },
     ///     });
     /// 
@@ -125,7 +132,7 @@ namespace Pulumi.AliCloud.Ess
     ///             InternetMaxBandwidthOut = 10,
     ///             InstanceChargeType = "PostPaid",
     ///             SystemDiskCategory = "cloud_efficiency",
-    ///             VswitchId = defaultSwitch.Id,
+    ///             VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///             InstanceName = name,
     ///         }));
     ///     }

@@ -43,6 +43,8 @@ namespace Pulumi.AliCloud.Ecs
     ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         Owners = "system",
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
     ///     });
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
@@ -99,7 +101,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         Description = "terraform-example",
     ///         DiskIds = new[]
     ///         {
-    ///             defaultEcsDisk.Id,
+    ///             defaultDiskAttachment.DiskId,
     ///         },
     ///         SnapshotGroupName = "terraform-example",
     ///         InstanceId = defaultInstance.Id,

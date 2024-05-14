@@ -576,13 +576,13 @@ class Instance(pulumi.CustomResource):
         default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
             cidr_block="172.16.0.0/16")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0],
-            zone_id="cn-hangzhou-k")
+            zone_id="cn-hangzhou-h")
         default_instance = alicloud.kms.Instance("default",
             product_version="3",
             vpc_id=default.ids[0],
             zone_ids=[
-                "cn-hangzhou-k",
-                "cn-hangzhou-j",
+                "cn-hangzhou-h",
+                "cn-hangzhou-g",
             ],
             vswitch_ids=[default_get_switches.ids[0]],
             vpc_num=1,
@@ -644,13 +644,13 @@ class Instance(pulumi.CustomResource):
         default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
             cidr_block="172.16.0.0/16")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0],
-            zone_id="cn-hangzhou-k")
+            zone_id="cn-hangzhou-h")
         default_instance = alicloud.kms.Instance("default",
             product_version="3",
             vpc_id=default.ids[0],
             zone_ids=[
-                "cn-hangzhou-k",
-                "cn-hangzhou-j",
+                "cn-hangzhou-h",
+                "cn-hangzhou-g",
             ],
             vswitch_ids=[default_get_switches.ids[0]],
             vpc_num=1,

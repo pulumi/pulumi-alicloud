@@ -56,7 +56,9 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly autoRenewPeriod!: pulumi.Output<number | undefined>;
     /**
-     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+     *
+     * @deprecated Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      */
     public readonly cisEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -259,8 +261,12 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
+     * Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+     */
+    public readonly securityHardeningOs!: pulumi.Output<boolean | undefined>;
+    /**
      * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-     * > **NOTE:**  It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+     * > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
      */
     public readonly socEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -336,6 +342,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly unschedulable!: pulumi.Output<boolean | undefined>;
     /**
+     * Synchronously update node labels and taints.
+     */
+    public readonly updateNodes!: pulumi.Output<boolean | undefined>;
+    /**
      * Node custom data.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
@@ -407,6 +417,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["scalingPolicy"] = state ? state.scalingPolicy : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["securityHardeningOs"] = state ? state.securityHardeningOs : undefined;
             resourceInputs["socEnabled"] = state ? state.socEnabled : undefined;
             resourceInputs["spotInstancePools"] = state ? state.spotInstancePools : undefined;
             resourceInputs["spotInstanceRemedy"] = state ? state.spotInstanceRemedy : undefined;
@@ -426,6 +437,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["taints"] = state ? state.taints : undefined;
             resourceInputs["teeConfig"] = state ? state.teeConfig : undefined;
             resourceInputs["unschedulable"] = state ? state.unschedulable : undefined;
+            resourceInputs["updateNodes"] = state ? state.updateNodes : undefined;
             resourceInputs["userData"] = state ? state.userData : undefined;
             resourceInputs["vswitchIds"] = state ? state.vswitchIds : undefined;
         } else {
@@ -487,6 +499,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["scalingPolicy"] = args ? args.scalingPolicy : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["securityHardeningOs"] = args ? args.securityHardeningOs : undefined;
             resourceInputs["socEnabled"] = args ? args.socEnabled : undefined;
             resourceInputs["spotInstancePools"] = args ? args.spotInstancePools : undefined;
             resourceInputs["spotInstanceRemedy"] = args ? args.spotInstanceRemedy : undefined;
@@ -506,6 +519,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["taints"] = args ? args.taints : undefined;
             resourceInputs["teeConfig"] = args ? args.teeConfig : undefined;
             resourceInputs["unschedulable"] = args ? args.unschedulable : undefined;
+            resourceInputs["updateNodes"] = args ? args.updateNodes : undefined;
             resourceInputs["userData"] = args ? args.userData : undefined;
             resourceInputs["vswitchIds"] = args ? args.vswitchIds : undefined;
             resourceInputs["nodePoolId"] = undefined /*out*/;
@@ -531,7 +545,9 @@ export interface NodePoolState {
      */
     autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+     *
+     * @deprecated Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      */
     cisEnabled?: pulumi.Input<boolean>;
     /**
@@ -734,8 +750,12 @@ export interface NodePoolState {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+     */
+    securityHardeningOs?: pulumi.Input<boolean>;
+    /**
      * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-     * > **NOTE:**  It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+     * > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
      */
     socEnabled?: pulumi.Input<boolean>;
     /**
@@ -811,6 +831,10 @@ export interface NodePoolState {
      */
     unschedulable?: pulumi.Input<boolean>;
     /**
+     * Synchronously update node labels and taints.
+     */
+    updateNodes?: pulumi.Input<boolean>;
+    /**
      * Node custom data.
      */
     userData?: pulumi.Input<string>;
@@ -833,7 +857,9 @@ export interface NodePoolArgs {
      */
     autoRenewPeriod?: pulumi.Input<number>;
     /**
-     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+     *
+     * @deprecated Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
      */
     cisEnabled?: pulumi.Input<boolean>;
     /**
@@ -1028,8 +1054,12 @@ export interface NodePoolArgs {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+     */
+    securityHardeningOs?: pulumi.Input<boolean>;
+    /**
      * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-     * > **NOTE:**  It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+     * > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
      */
     socEnabled?: pulumi.Input<boolean>;
     /**
@@ -1104,6 +1134,10 @@ export interface NodePoolArgs {
      * Whether the node after expansion can be scheduled.
      */
     unschedulable?: pulumi.Input<boolean>;
+    /**
+     * Synchronously update node labels and taints.
+     */
+    updateNodes?: pulumi.Input<boolean>;
     /**
      * Node custom data.
      */

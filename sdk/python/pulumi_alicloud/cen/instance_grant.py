@@ -161,12 +161,6 @@ class InstanceGrant(pulumi.CustomResource):
             cen_id=example.id,
             child_instance_id=child_account_network.id,
             cen_owner_id=your_account.id)
-        example_instance_attachment = alicloud.cen.InstanceAttachment("example",
-            instance_id=example.id,
-            child_instance_id=child_account_instance_grant.child_instance_id,
-            child_instance_type="VPC",
-            child_instance_region_id=default.regions[0].id,
-            child_instance_owner_id=child_account.id)
         ```
 
         ## Import
@@ -221,12 +215,6 @@ class InstanceGrant(pulumi.CustomResource):
             cen_id=example.id,
             child_instance_id=child_account_network.id,
             cen_owner_id=your_account.id)
-        example_instance_attachment = alicloud.cen.InstanceAttachment("example",
-            instance_id=example.id,
-            child_instance_id=child_account_instance_grant.child_instance_id,
-            child_instance_type="VPC",
-            child_instance_region_id=default.regions[0].id,
-            child_instance_owner_id=child_account.id)
         ```
 
         ## Import

@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.Ecs
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -80,19 +81,25 @@ namespace Pulumi.AliCloud.Ecs
     ///         InternetMaxBandwidthOut = 10,
     ///     });
     /// 
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var defaultImage = new AliCloud.Ecs.Image("default", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
-    ///         ImageName = "terraform-example",
+    ///         ImageName = $"terraform-example-{defaultInteger.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
     ///     var config = new Config();
-    ///     var accountId = config.Get("accountId") ?? "123456789";
+    ///     var anotherUid = config.Get("anotherUid") ?? "123456789";
     ///     var defaultImageSharePermission = new AliCloud.Ecs.ImageSharePermission("default", new()
     ///     {
     ///         ImageId = defaultImage.Id,
-    ///         AccountId = accountId,
+    ///         AccountId = anotherUid,
     ///     });
     /// 
     /// });

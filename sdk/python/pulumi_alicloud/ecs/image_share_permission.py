@@ -113,6 +113,7 @@ class ImageSharePermission(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         default = alicloud.get_zones(available_resource_creation="Instance")
         default_get_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.sn1ne")
@@ -137,17 +138,20 @@ class ImageSharePermission(pulumi.CustomResource):
             instance_type=default_get_instance_types.ids[0],
             image_id=default_get_images.ids[0],
             internet_max_bandwidth_out=10)
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         default_image = alicloud.ecs.Image("default",
             instance_id=default_instance.id,
-            image_name="terraform-example",
+            image_name=f"terraform-example-{default_integer['result']}",
             description="terraform-example")
         config = pulumi.Config()
-        account_id = config.get("accountId")
-        if account_id is None:
-            account_id = "123456789"
+        another_uid = config.get("anotherUid")
+        if another_uid is None:
+            another_uid = "123456789"
         default_image_share_permission = alicloud.ecs.ImageSharePermission("default",
             image_id=default_image.id,
-            account_id=account_id)
+            account_id=another_uid)
         ```
 
         ## Attributes Reference0
@@ -191,6 +195,7 @@ class ImageSharePermission(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         default = alicloud.get_zones(available_resource_creation="Instance")
         default_get_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.sn1ne")
@@ -215,17 +220,20 @@ class ImageSharePermission(pulumi.CustomResource):
             instance_type=default_get_instance_types.ids[0],
             image_id=default_get_images.ids[0],
             internet_max_bandwidth_out=10)
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
         default_image = alicloud.ecs.Image("default",
             instance_id=default_instance.id,
-            image_name="terraform-example",
+            image_name=f"terraform-example-{default_integer['result']}",
             description="terraform-example")
         config = pulumi.Config()
-        account_id = config.get("accountId")
-        if account_id is None:
-            account_id = "123456789"
+        another_uid = config.get("anotherUid")
+        if another_uid is None:
+            another_uid = "123456789"
         default_image_share_permission = alicloud.ecs.ImageSharePermission("default",
             image_id=default_image.id,
-            account_id=account_id)
+            account_id=another_uid)
         ```
 
         ## Attributes Reference0

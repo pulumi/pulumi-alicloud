@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const defaultInstance = new alicloud.ots.Instance("default", {
  *     name: `${name}-${_default.result}`,
  *     description: name,
- *     networkTypeAcls: ["VPC"],
+ *     accessedBy: "Vpc",
  *     tags: {
  *         Created: "TF",
  *         For: "Building table",

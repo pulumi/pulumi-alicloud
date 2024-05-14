@@ -39,6 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ram.Policy;
  * import com.pulumi.alicloud.ram.PolicyArgs;
  * import java.util.List;
@@ -55,8 +57,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new RAM Policy.
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var policy = new Policy("policy", PolicyArgs.builder()        
- *             .policyName("policyName")
+ *             .policyName(String.format("tf-example-%s", default_.result()))
  *             .policyDocument("""
  *   {
  *     "Statement": [

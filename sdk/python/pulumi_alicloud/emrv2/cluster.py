@@ -40,7 +40,7 @@ class ClusterArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]] node_groups: Groups of node, You can specify MASTER as a group, CORE as a group (just like the above example). See `node_groups` below.
         :param pulumi.Input[str] release_version: EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
         :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
@@ -162,7 +162,7 @@ class ClusterArgs:
     @pulumi.getter(name="bootstrapScripts")
     def bootstrap_scripts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]]:
         """
-        The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
+        The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         """
         return pulumi.get(self, "bootstrap_scripts")
 
@@ -277,7 +277,7 @@ class _ClusterState:
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] applications: The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
@@ -350,7 +350,7 @@ class _ClusterState:
     @pulumi.getter(name="bootstrapScripts")
     def bootstrap_scripts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]]:
         """
-        The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
+        The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         """
         return pulumi.get(self, "bootstrap_scripts")
 
@@ -537,7 +537,6 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import json
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
@@ -610,7 +609,6 @@ class Cluster(pulumi.CustomResource):
                 ),
                 alicloud.emrv2.ClusterNodeGroupArgs(
                     spot_instance_remedy=False,
-                    deployment_set_strategy="CLUSTER",
                     node_group_type="CORE",
                     vswitch_ids=[default_switch.id],
                     node_count=2,
@@ -653,10 +651,6 @@ class Cluster(pulumi.CustomResource):
                 ram_role=default_role.name,
                 security_group_id=default_security_group.id,
             )],
-            log_collect_strategy=json.dumps({
-                "open": ["all"],
-                "close": [""],
-            }),
             resource_group_id=default.ids[0],
             cluster_name=name,
             payment_type="PayAsYouGo",
@@ -675,7 +669,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationConfigArgs']]]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] applications: The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapScriptArgs']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapScriptArgs']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
@@ -708,7 +702,6 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import json
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
@@ -781,7 +774,6 @@ class Cluster(pulumi.CustomResource):
                 ),
                 alicloud.emrv2.ClusterNodeGroupArgs(
                     spot_instance_remedy=False,
-                    deployment_set_strategy="CLUSTER",
                     node_group_type="CORE",
                     vswitch_ids=[default_switch.id],
                     node_count=2,
@@ -824,10 +816,6 @@ class Cluster(pulumi.CustomResource):
                 ram_role=default_role.name,
                 security_group_id=default_security_group.id,
             )],
-            log_collect_strategy=json.dumps({
-                "open": ["all"],
-                "close": [""],
-            }),
             resource_group_id=default.ids[0],
             cluster_name=name,
             payment_type="PayAsYouGo",
@@ -942,7 +930,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterApplicationConfigArgs']]]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] applications: The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapScriptArgs']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBootstrapScriptArgs']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
@@ -997,7 +985,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="bootstrapScripts")
     def bootstrap_scripts(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterBootstrapScript']]]:
         """
-        The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
+        The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         """
         return pulumi.get(self, "bootstrap_scripts")
 

@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.CloudConnect
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var cenUid = config.GetDouble("cenUid") ?? 123456789;
+    ///     var anotherUid = config.GetDouble("anotherUid") ?? 123456789;
     ///     // Method 2: Use the target cen account's access_key, secret_key
     ///     // provider "alicloud" {
     ///     //   region     = "cn-hangzhou"
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.CloudConnect
     ///     {
     ///         CcnId = @default.Id,
     ///         CenId = cen.Id,
-    ///         CenUid = cenUid,
+    ///         CenUid = anotherUid,
     ///     });
     /// 
     /// });

@@ -15,8 +15,20 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("gatewayEnabled")]
+        public Input<bool>? GatewayEnabled { get; set; }
+
+        [Input("gatewayLifecycle")]
+        public Input<int>? GatewayLifecycle { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("sidecarEnabled")]
+        public Input<bool>? SidecarEnabled { get; set; }
+
+        [Input("sidecarLifecycle")]
+        public Input<int>? SidecarLifecycle { get; set; }
 
         public ServiceMeshMeshConfigAccessLogArgs()
         {

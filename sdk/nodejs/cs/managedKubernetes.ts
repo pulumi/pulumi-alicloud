@@ -136,9 +136,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
     public readonly serviceAccountIssuer!: pulumi.Output<string | undefined>;
     public readonly serviceCidr!: pulumi.Output<string | undefined>;
     /**
-     * (Deprecated) The ID of load balancer.
-     *
-     * @deprecated Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+     * The ID of APIServer load balancer.
      */
     public /*out*/ readonly slbId!: pulumi.Output<string>;
     /**
@@ -341,9 +339,7 @@ export interface ManagedKubernetesState {
     serviceAccountIssuer?: pulumi.Input<string>;
     serviceCidr?: pulumi.Input<string>;
     /**
-     * (Deprecated) The ID of load balancer.
-     *
-     * @deprecated Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+     * The ID of APIServer load balancer.
      */
     slbId?: pulumi.Input<string>;
     /**

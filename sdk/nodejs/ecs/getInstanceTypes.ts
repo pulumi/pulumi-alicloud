@@ -90,6 +90,7 @@ export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.Invo
         "kubernetesNodeRole": args.kubernetesNodeRole,
         "memorySize": args.memorySize,
         "minimumEniIpv6AddressQuantity": args.minimumEniIpv6AddressQuantity,
+        "minimumEniPrivateIpAddressQuantity": args.minimumEniPrivateIpAddressQuantity,
         "networkType": args.networkType,
         "outputFile": args.outputFile,
         "sortedBy": args.sortedBy,
@@ -156,6 +157,10 @@ export interface GetInstanceTypesArgs {
      */
     minimumEniIpv6AddressQuantity?: number;
     /**
+     * The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
+     */
+    minimumEniPrivateIpAddressQuantity?: number;
+    /**
      * Filter the results by network type. Valid values: `Classic` and `Vpc`.
      */
     networkType?: string;
@@ -172,7 +177,7 @@ export interface GetInstanceTypesArgs {
      */
     spotStrategy?: string;
     /**
-     * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`. 
+     * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`, `cloudAuto`. 
      * **NOTE**: Its default value `cloudEfficiency` has been removed from the version v1.150.0.
      */
     systemDiskCategory?: string;
@@ -216,6 +221,7 @@ export interface GetInstanceTypesResult {
      */
     readonly memorySize?: number;
     readonly minimumEniIpv6AddressQuantity?: number;
+    readonly minimumEniPrivateIpAddressQuantity?: number;
     readonly networkType?: string;
     readonly outputFile?: string;
     readonly sortedBy?: string;
@@ -350,6 +356,10 @@ export interface GetInstanceTypesOutputArgs {
      */
     minimumEniIpv6AddressQuantity?: pulumi.Input<number>;
     /**
+     * The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
+     */
+    minimumEniPrivateIpAddressQuantity?: pulumi.Input<number>;
+    /**
      * Filter the results by network type. Valid values: `Classic` and `Vpc`.
      */
     networkType?: pulumi.Input<string>;
@@ -366,7 +376,7 @@ export interface GetInstanceTypesOutputArgs {
      */
     spotStrategy?: pulumi.Input<string>;
     /**
-     * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`. 
+     * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`, `cloudAuto`. 
      * **NOTE**: Its default value `cloudEfficiency` has been removed from the version v1.150.0.
      */
     systemDiskCategory?: pulumi.Input<string>;

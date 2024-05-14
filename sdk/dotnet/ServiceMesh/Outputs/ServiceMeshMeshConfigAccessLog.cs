@@ -14,16 +14,32 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshMeshConfigAccessLog
     {
         public readonly bool? Enabled;
+        public readonly bool? GatewayEnabled;
+        public readonly int? GatewayLifecycle;
         public readonly string? Project;
+        public readonly bool? SidecarEnabled;
+        public readonly int? SidecarLifecycle;
 
         [OutputConstructor]
         private ServiceMeshMeshConfigAccessLog(
             bool? enabled,
 
-            string? project)
+            bool? gatewayEnabled,
+
+            int? gatewayLifecycle,
+
+            string? project,
+
+            bool? sidecarEnabled,
+
+            int? sidecarLifecycle)
         {
             Enabled = enabled;
+            GatewayEnabled = gatewayEnabled;
+            GatewayLifecycle = gatewayLifecycle;
             Project = project;
+            SidecarEnabled = sidecarEnabled;
+            SidecarLifecycle = sidecarLifecycle;
         }
     }
 }

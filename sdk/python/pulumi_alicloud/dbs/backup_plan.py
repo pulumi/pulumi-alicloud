@@ -1307,7 +1307,7 @@ class BackupPlan(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd")
-        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_get_zones.zones[0].id,
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_get_zones.zones[1].id,
             engine="MySQL",
             engine_version="8.0",
             category="HighAvailability",
@@ -1315,9 +1315,9 @@ class BackupPlan(pulumi.CustomResource):
             instance_charge_type="PostPaid")
         default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
-            zone_id=default_get_zones.zones[0].id)
+            zone_id=default_get_zones.zones[1].id)
         vswitch_id = default_get_switches.ids[0]
-        zone_id = default_get_zones.ids[0]
+        zone_id = default_get_zones.ids[1]
         default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
             vpc_id=default_get_networks.ids[0])
@@ -1443,7 +1443,7 @@ class BackupPlan(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd")
-        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_get_zones.zones[0].id,
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_get_zones.zones[1].id,
             engine="MySQL",
             engine_version="8.0",
             category="HighAvailability",
@@ -1451,9 +1451,9 @@ class BackupPlan(pulumi.CustomResource):
             instance_charge_type="PostPaid")
         default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
-            zone_id=default_get_zones.zones[0].id)
+            zone_id=default_get_zones.zones[1].id)
         vswitch_id = default_get_switches.ids[0]
-        zone_id = default_get_zones.ids[0]
+        zone_id = default_get_zones.ids[1]
         default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
             vpc_id=default_get_networks.ids[0])

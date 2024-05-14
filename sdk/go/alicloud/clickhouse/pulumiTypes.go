@@ -139,7 +139,7 @@ type GetAccountsAccount struct {
 	DbClusterId string `pulumi:"dbClusterId"`
 	// The ID of the Account. Its value is same as Queue Name.
 	Id string `pulumi:"id"`
-	// The status of the resource.
+	// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
 	Status string `pulumi:"status"`
 }
 
@@ -165,7 +165,7 @@ type GetAccountsAccountArgs struct {
 	DbClusterId pulumi.StringInput `pulumi:"dbClusterId"`
 	// The ID of the Account. Its value is same as Queue Name.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The status of the resource.
+	// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -245,7 +245,7 @@ func (o GetAccountsAccountOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
 func (o GetAccountsAccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountsAccount) string { return v.Status }).(pulumi.StringOutput)
 }

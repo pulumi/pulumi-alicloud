@@ -102,10 +102,10 @@ import (
 //
 // ## Import
 //
-// CEN instance can be imported using the id, e.g.
+// CEN Transit Router Peer Attachment can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
+// $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <id>
 // ```
 type TransitRouterPeerAttachment struct {
 	pulumi.CustomResourceState
@@ -120,6 +120,10 @@ type TransitRouterPeerAttachment struct {
 	CenBandwidthPackageId pulumi.StringPtrOutput `pulumi:"cenBandwidthPackageId"`
 	// The ID of the CEN.
 	CenId pulumi.StringOutput `pulumi:"cenId"`
+	// The creation time of the resource.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+	DefaultLinkType pulumi.StringOutput `pulumi:"defaultLinkType"`
 	// Whether to perform pre-check for this request, including permission, instance status verification, etc.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The ID of the peer transit router.
@@ -132,7 +136,7 @@ type TransitRouterPeerAttachment struct {
 	RouteTableAssociationEnabled pulumi.BoolPtrOutput `pulumi:"routeTableAssociationEnabled"`
 	// Whether to propagation route table. System default is `false`.
 	RouteTablePropagationEnabled pulumi.BoolPtrOutput `pulumi:"routeTablePropagationEnabled"`
-	// The associating status of the network.
+	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription pulumi.StringPtrOutput `pulumi:"transitRouterAttachmentDescription"`
@@ -193,6 +197,10 @@ type transitRouterPeerAttachmentState struct {
 	CenBandwidthPackageId *string `pulumi:"cenBandwidthPackageId"`
 	// The ID of the CEN.
 	CenId *string `pulumi:"cenId"`
+	// The creation time of the resource.
+	CreateTime *string `pulumi:"createTime"`
+	// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+	DefaultLinkType *string `pulumi:"defaultLinkType"`
 	// Whether to perform pre-check for this request, including permission, instance status verification, etc.
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the peer transit router.
@@ -205,7 +213,7 @@ type transitRouterPeerAttachmentState struct {
 	RouteTableAssociationEnabled *bool `pulumi:"routeTableAssociationEnabled"`
 	// Whether to propagation route table. System default is `false`.
 	RouteTablePropagationEnabled *bool `pulumi:"routeTablePropagationEnabled"`
-	// The associating status of the network.
+	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
@@ -228,6 +236,10 @@ type TransitRouterPeerAttachmentState struct {
 	CenBandwidthPackageId pulumi.StringPtrInput
 	// The ID of the CEN.
 	CenId pulumi.StringPtrInput
+	// The creation time of the resource.
+	CreateTime pulumi.StringPtrInput
+	// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+	DefaultLinkType pulumi.StringPtrInput
 	// Whether to perform pre-check for this request, including permission, instance status verification, etc.
 	DryRun pulumi.BoolPtrInput
 	// The ID of the peer transit router.
@@ -240,7 +252,7 @@ type TransitRouterPeerAttachmentState struct {
 	RouteTableAssociationEnabled pulumi.BoolPtrInput
 	// Whether to propagation route table. System default is `false`.
 	RouteTablePropagationEnabled pulumi.BoolPtrInput
-	// The associating status of the network.
+	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
@@ -267,6 +279,8 @@ type transitRouterPeerAttachmentArgs struct {
 	CenBandwidthPackageId *string `pulumi:"cenBandwidthPackageId"`
 	// The ID of the CEN.
 	CenId string `pulumi:"cenId"`
+	// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+	DefaultLinkType *string `pulumi:"defaultLinkType"`
 	// Whether to perform pre-check for this request, including permission, instance status verification, etc.
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the peer transit router.
@@ -299,6 +313,8 @@ type TransitRouterPeerAttachmentArgs struct {
 	CenBandwidthPackageId pulumi.StringPtrInput
 	// The ID of the CEN.
 	CenId pulumi.StringInput
+	// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+	DefaultLinkType pulumi.StringPtrInput
 	// Whether to perform pre-check for this request, including permission, instance status verification, etc.
 	DryRun pulumi.BoolPtrInput
 	// The ID of the peer transit router.
@@ -431,6 +447,16 @@ func (o TransitRouterPeerAttachmentOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
 }
 
+// The creation time of the resource.
+func (o TransitRouterPeerAttachmentOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+func (o TransitRouterPeerAttachmentOutput) DefaultLinkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.DefaultLinkType }).(pulumi.StringOutput)
+}
+
 // Whether to perform pre-check for this request, including permission, instance status verification, etc.
 func (o TransitRouterPeerAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
@@ -461,7 +487,7 @@ func (o TransitRouterPeerAttachmentOutput) RouteTablePropagationEnabled() pulumi
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.BoolPtrOutput { return v.RouteTablePropagationEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The associating status of the network.
+// The status of the resource.
 func (o TransitRouterPeerAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterPeerAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

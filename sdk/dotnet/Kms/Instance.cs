@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Kms
     ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
     ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = "cn-hangzhou-k",
+    ///         ZoneId = "cn-hangzhou-h",
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.Kms.Instance("default", new()
@@ -48,8 +48,8 @@ namespace Pulumi.AliCloud.Kms
     ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
     ///         ZoneIds = new[]
     ///         {
-    ///             "cn-hangzhou-k",
-    ///             "cn-hangzhou-j",
+    ///             "cn-hangzhou-h",
+    ///             "cn-hangzhou-g",
     ///         },
     ///         VswitchIds = new[]
     ///         {

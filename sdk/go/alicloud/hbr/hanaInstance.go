@@ -29,8 +29,11 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -43,15 +46,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			exampleVault, err := hbr.NewVault(ctx, "example", &hbr.VaultArgs{
-//				VaultName: pulumi.String("terraform-example"),
+//				VaultName: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = hbr.NewHanaInstance(ctx, "example", &hbr.HanaInstanceArgs{
 //				AlertSetting:        pulumi.String("INHERITED"),
-//				HanaName:            pulumi.String("terraform-example"),
+//				HanaName:            pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
 //				Host:                pulumi.String("1.1.1.1"),
 //				InstanceNumber:      pulumi.Int(1),
 //				Password:            pulumi.String("YouPassword123"),

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ecs.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +18,14 @@ public final class EcsNetworkInterfaceAttachmentState extends com.pulumi.resourc
     public static final EcsNetworkInterfaceAttachmentState Empty = new EcsNetworkInterfaceAttachmentState();
 
     /**
-     * The instance id.
+     * The ID of the ECS instance.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The instance id.
+     * @return The ID of the ECS instance.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -32,14 +33,29 @@ public final class EcsNetworkInterfaceAttachmentState extends com.pulumi.resourc
     }
 
     /**
-     * The network interface id.
+     * The index of the network card.
+     * 
+     */
+    @Import(name="networkCardIndex")
+    private @Nullable Output<Integer> networkCardIndex;
+
+    /**
+     * @return The index of the network card.
+     * 
+     */
+    public Optional<Output<Integer>> networkCardIndex() {
+        return Optional.ofNullable(this.networkCardIndex);
+    }
+
+    /**
+     * The ID of the network interface.
      * 
      */
     @Import(name="networkInterfaceId")
     private @Nullable Output<String> networkInterfaceId;
 
     /**
-     * @return The network interface id.
+     * @return The ID of the network interface.
      * 
      */
     public Optional<Output<String>> networkInterfaceId() {
@@ -47,14 +63,14 @@ public final class EcsNetworkInterfaceAttachmentState extends com.pulumi.resourc
     }
 
     /**
-     * The trunk network instance id.
+     * The ID of the trunk network instance.
      * 
      */
     @Import(name="trunkNetworkInstanceId")
     private @Nullable Output<String> trunkNetworkInstanceId;
 
     /**
-     * @return The trunk network instance id.
+     * @return The ID of the trunk network instance.
      * 
      */
     public Optional<Output<String>> trunkNetworkInstanceId() {
@@ -80,6 +96,7 @@ public final class EcsNetworkInterfaceAttachmentState extends com.pulumi.resourc
 
     private EcsNetworkInterfaceAttachmentState(EcsNetworkInterfaceAttachmentState $) {
         this.instanceId = $.instanceId;
+        this.networkCardIndex = $.networkCardIndex;
         this.networkInterfaceId = $.networkInterfaceId;
         this.trunkNetworkInstanceId = $.trunkNetworkInstanceId;
         this.waitForNetworkConfigurationReady = $.waitForNetworkConfigurationReady;
@@ -104,7 +121,7 @@ public final class EcsNetworkInterfaceAttachmentState extends com.pulumi.resourc
         }
 
         /**
-         * @param instanceId The instance id.
+         * @param instanceId The ID of the ECS instance.
          * 
          * @return builder
          * 
@@ -115,7 +132,7 @@ public final class EcsNetworkInterfaceAttachmentState extends com.pulumi.resourc
         }
 
         /**
-         * @param instanceId The instance id.
+         * @param instanceId The ID of the ECS instance.
          * 
          * @return builder
          * 
@@ -125,7 +142,28 @@ public final class EcsNetworkInterfaceAttachmentState extends com.pulumi.resourc
         }
 
         /**
-         * @param networkInterfaceId The network interface id.
+         * @param networkCardIndex The index of the network card.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkCardIndex(@Nullable Output<Integer> networkCardIndex) {
+            $.networkCardIndex = networkCardIndex;
+            return this;
+        }
+
+        /**
+         * @param networkCardIndex The index of the network card.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkCardIndex(Integer networkCardIndex) {
+            return networkCardIndex(Output.of(networkCardIndex));
+        }
+
+        /**
+         * @param networkInterfaceId The ID of the network interface.
          * 
          * @return builder
          * 
@@ -136,7 +174,7 @@ public final class EcsNetworkInterfaceAttachmentState extends com.pulumi.resourc
         }
 
         /**
-         * @param networkInterfaceId The network interface id.
+         * @param networkInterfaceId The ID of the network interface.
          * 
          * @return builder
          * 
@@ -146,7 +184,7 @@ public final class EcsNetworkInterfaceAttachmentState extends com.pulumi.resourc
         }
 
         /**
-         * @param trunkNetworkInstanceId The trunk network instance id.
+         * @param trunkNetworkInstanceId The ID of the trunk network instance.
          * 
          * @return builder
          * 
@@ -157,7 +195,7 @@ public final class EcsNetworkInterfaceAttachmentState extends com.pulumi.resourc
         }
 
         /**
-         * @param trunkNetworkInstanceId The trunk network instance id.
+         * @param trunkNetworkInstanceId The ID of the trunk network instance.
          * 
          * @return builder
          * 

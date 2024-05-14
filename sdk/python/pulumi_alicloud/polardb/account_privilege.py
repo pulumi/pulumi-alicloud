@@ -175,7 +175,8 @@ class AccountPrivilege(pulumi.CustomResource):
 
         default = alicloud.polardb.get_node_classes(db_type="MySQL",
             db_version="8.0",
-            pay_type="PostPaid")
+            pay_type="PostPaid",
+            category="Normal")
         default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
@@ -240,7 +241,8 @@ class AccountPrivilege(pulumi.CustomResource):
 
         default = alicloud.polardb.get_node_classes(db_type="MySQL",
             db_version="8.0",
-            pay_type="PostPaid")
+            pay_type="PostPaid",
+            category="Normal")
         default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")

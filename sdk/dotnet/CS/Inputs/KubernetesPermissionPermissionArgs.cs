@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class KubernetesPermissionPermissionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
+        /// The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `""`.
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to perform a custom authorization. To perform a custom authorization, set `role_name` to a custom cluster role.
+        /// Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
         /// </summary>
         [Input("isCustom")]
         public Input<bool>? IsCustom { get; set; }

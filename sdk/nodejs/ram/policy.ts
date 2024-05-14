@@ -22,10 +22,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * // Create a new RAM Policy.
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const policy = new alicloud.ram.Policy("policy", {
- *     policyName: "policyName",
+ *     policyName: `tf-example-${_default.result}`,
  *     policyDocument: `  {
  *     "Statement": [
  *       {

@@ -19,16 +19,12 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "tf-example";
  * const example = alicloud.rds.getZones({
  *     engine: "MySQL",
- *     engineVersion: "5.7",
- *     category: "HighAvailability",
- *     dbInstanceStorageType: "local_ssd",
+ *     engineVersion: "5.6",
  * });
  * const exampleGetInstanceClasses = example.then(example => alicloud.rds.getInstanceClasses({
  *     zoneId: example.ids?.[0],
  *     engine: "MySQL",
- *     engineVersion: "5.7",
- *     category: "HighAvailability",
- *     dbInstanceStorageType: "local_ssd",
+ *     engineVersion: "5.6",
  * }));
  * const exampleNetwork = new alicloud.vpc.Network("example", {
  *     vpcName: name,
@@ -46,12 +42,11 @@ import * as utilities from "../utilities";
  * });
  * const exampleInstance = new alicloud.rds.Instance("example", {
  *     engine: "MySQL",
- *     engineVersion: "5.7",
+ *     engineVersion: "5.6",
  *     category: "HighAvailability",
- *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[1]?.instanceClass),
+ *     instanceStorage: 20,
  *     instanceChargeType: "Postpaid",
- *     dbInstanceStorageType: "local_ssd",
  *     instanceName: name,
  *     vswitchId: exampleSwitch.id,
  *     securityIps: [

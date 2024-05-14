@@ -216,6 +216,21 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
+     * 
+     */
+    @Import(name="minimumEniPrivateIpAddressQuantity")
+    private @Nullable Output<Integer> minimumEniPrivateIpAddressQuantity;
+
+    /**
+     * @return The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
+     * 
+     */
+    public Optional<Output<Integer>> minimumEniPrivateIpAddressQuantity() {
+        return Optional.ofNullable(this.minimumEniPrivateIpAddressQuantity);
+    }
+
+    /**
      * Filter the results by network type. Valid values: `Classic` and `Vpc`.
      * 
      */
@@ -276,7 +291,7 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`.
+     * Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`.
      * **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
      * 
      */
@@ -284,7 +299,7 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
     private @Nullable Output<String> systemDiskCategory;
 
     /**
-     * @return Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`.
+     * @return Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`.
      * **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
      * 
      */
@@ -308,6 +323,7 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         this.kubernetesNodeRole = $.kubernetesNodeRole;
         this.memorySize = $.memorySize;
         this.minimumEniIpv6AddressQuantity = $.minimumEniIpv6AddressQuantity;
+        this.minimumEniPrivateIpAddressQuantity = $.minimumEniPrivateIpAddressQuantity;
         this.networkType = $.networkType;
         this.outputFile = $.outputFile;
         this.sortedBy = $.sortedBy;
@@ -609,6 +625,27 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
+         * @param minimumEniPrivateIpAddressQuantity The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumEniPrivateIpAddressQuantity(@Nullable Output<Integer> minimumEniPrivateIpAddressQuantity) {
+            $.minimumEniPrivateIpAddressQuantity = minimumEniPrivateIpAddressQuantity;
+            return this;
+        }
+
+        /**
+         * @param minimumEniPrivateIpAddressQuantity The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minimumEniPrivateIpAddressQuantity(Integer minimumEniPrivateIpAddressQuantity) {
+            return minimumEniPrivateIpAddressQuantity(Output.of(minimumEniPrivateIpAddressQuantity));
+        }
+
+        /**
          * @param networkType Filter the results by network type. Valid values: `Classic` and `Vpc`.
          * 
          * @return builder
@@ -693,7 +730,7 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param systemDiskCategory Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`.
+         * @param systemDiskCategory Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`.
          * **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
          * 
          * @return builder
@@ -705,7 +742,7 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param systemDiskCategory Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`.
+         * @param systemDiskCategory Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`.
          * **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
          * 
          * @return builder

@@ -4,7 +4,9 @@
 package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,12 +14,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceMeshMeshConfigControlPlaneLog {
-    private @Nullable Boolean enabled;
+    private Boolean enabled;
+    private @Nullable Integer logTtlInDay;
     private @Nullable String project;
 
     private ServiceMeshMeshConfigControlPlaneLog() {}
-    public Optional<Boolean> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Boolean enabled() {
+        return this.enabled;
+    }
+    public Optional<Integer> logTtlInDay() {
+        return Optional.ofNullable(this.logTtlInDay);
     }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
@@ -32,19 +38,29 @@ public final class ServiceMeshMeshConfigControlPlaneLog {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean enabled;
+        private Boolean enabled;
+        private @Nullable Integer logTtlInDay;
         private @Nullable String project;
         public Builder() {}
         public Builder(ServiceMeshMeshConfigControlPlaneLog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.logTtlInDay = defaults.logTtlInDay;
     	      this.project = defaults.project;
         }
 
         @CustomType.Setter
-        public Builder enabled(@Nullable Boolean enabled) {
-
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("ServiceMeshMeshConfigControlPlaneLog", "enabled");
+            }
             this.enabled = enabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder logTtlInDay(@Nullable Integer logTtlInDay) {
+
+            this.logTtlInDay = logTtlInDay;
             return this;
         }
         @CustomType.Setter
@@ -56,6 +72,7 @@ public final class ServiceMeshMeshConfigControlPlaneLog {
         public ServiceMeshMeshConfigControlPlaneLog build() {
             final var _resultValue = new ServiceMeshMeshConfigControlPlaneLog();
             _resultValue.enabled = enabled;
+            _resultValue.logTtlInDay = logTtlInDay;
             _resultValue.project = project;
             return _resultValue;
         }

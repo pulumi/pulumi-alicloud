@@ -30,7 +30,9 @@ type NodePool struct {
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+	//
+	// Deprecated: Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
 	CisEnabled pulumi.BoolPtrOutput `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
@@ -137,8 +139,10 @@ type NodePool struct {
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+	SecurityHardeningOs pulumi.BoolPtrOutput `pulumi:"securityHardeningOs"`
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-	// > **NOTE:**  It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+	// > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
 	SocEnabled pulumi.BoolPtrOutput `pulumi:"socEnabled"`
 	// The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
 	SpotInstancePools pulumi.IntPtrOutput `pulumi:"spotInstancePools"`
@@ -176,6 +180,8 @@ type NodePool struct {
 	TeeConfig NodePoolTeeConfigOutput `pulumi:"teeConfig"`
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrOutput `pulumi:"unschedulable"`
+	// Synchronously update node labels and taints.
+	UpdateNodes pulumi.BoolPtrOutput `pulumi:"updateNodes"`
 	// Node custom data.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// The vswitches used by node pool workers.
@@ -236,7 +242,9 @@ type nodePoolState struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+	//
+	// Deprecated: Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
 	CisEnabled *bool `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId *string `pulumi:"clusterId"`
@@ -343,8 +351,10 @@ type nodePoolState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+	SecurityHardeningOs *bool `pulumi:"securityHardeningOs"`
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-	// > **NOTE:**  It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+	// > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
 	SocEnabled *bool `pulumi:"socEnabled"`
 	// The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
 	SpotInstancePools *int `pulumi:"spotInstancePools"`
@@ -382,6 +392,8 @@ type nodePoolState struct {
 	TeeConfig *NodePoolTeeConfig `pulumi:"teeConfig"`
 	// Whether the node after expansion can be scheduled.
 	Unschedulable *bool `pulumi:"unschedulable"`
+	// Synchronously update node labels and taints.
+	UpdateNodes *bool `pulumi:"updateNodes"`
 	// Node custom data.
 	UserData *string `pulumi:"userData"`
 	// The vswitches used by node pool workers.
@@ -393,7 +405,9 @@ type NodePoolState struct {
 	AutoRenew pulumi.BoolPtrInput
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+	//
+	// Deprecated: Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
 	CisEnabled pulumi.BoolPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringPtrInput
@@ -500,8 +514,10 @@ type NodePoolState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayInput
+	// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+	SecurityHardeningOs pulumi.BoolPtrInput
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-	// > **NOTE:**  It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+	// > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
 	SocEnabled pulumi.BoolPtrInput
 	// The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
 	SpotInstancePools pulumi.IntPtrInput
@@ -539,6 +555,8 @@ type NodePoolState struct {
 	TeeConfig NodePoolTeeConfigPtrInput
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrInput
+	// Synchronously update node labels and taints.
+	UpdateNodes pulumi.BoolPtrInput
 	// Node custom data.
 	UserData pulumi.StringPtrInput
 	// The vswitches used by node pool workers.
@@ -554,7 +572,9 @@ type nodePoolArgs struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+	//
+	// Deprecated: Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
 	CisEnabled *bool `pulumi:"cisEnabled"`
 	// The id of kubernetes cluster.
 	ClusterId string `pulumi:"clusterId"`
@@ -657,8 +677,10 @@ type nodePoolArgs struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+	SecurityHardeningOs *bool `pulumi:"securityHardeningOs"`
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-	// > **NOTE:**  It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+	// > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
 	SocEnabled *bool `pulumi:"socEnabled"`
 	// The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
 	SpotInstancePools *int `pulumi:"spotInstancePools"`
@@ -696,6 +718,8 @@ type nodePoolArgs struct {
 	TeeConfig *NodePoolTeeConfig `pulumi:"teeConfig"`
 	// Whether the node after expansion can be scheduled.
 	Unschedulable *bool `pulumi:"unschedulable"`
+	// Synchronously update node labels and taints.
+	UpdateNodes *bool `pulumi:"updateNodes"`
 	// Node custom data.
 	UserData *string `pulumi:"userData"`
 	// The vswitches used by node pool workers.
@@ -708,7 +732,9 @@ type NodePoolArgs struct {
 	AutoRenew pulumi.BoolPtrInput
 	// The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+	// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+	//
+	// Deprecated: Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
 	CisEnabled pulumi.BoolPtrInput
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringInput
@@ -811,8 +837,10 @@ type NodePoolArgs struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// Multiple security groups can be configured for a node pool. If both `securityGroupIds` and `securityGroupId` are configured, `securityGroupIds` takes effect. This field cannot be modified.
 	SecurityGroupIds pulumi.StringArrayInput
+	// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+	SecurityHardeningOs pulumi.BoolPtrInput
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-	// > **NOTE:**  It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+	// > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
 	SocEnabled pulumi.BoolPtrInput
 	// The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
 	SpotInstancePools pulumi.IntPtrInput
@@ -850,6 +878,8 @@ type NodePoolArgs struct {
 	TeeConfig NodePoolTeeConfigPtrInput
 	// Whether the node after expansion can be scheduled.
 	Unschedulable pulumi.BoolPtrInput
+	// Synchronously update node labels and taints.
+	UpdateNodes pulumi.BoolPtrInput
 	// Node custom data.
 	UserData pulumi.StringPtrInput
 	// The vswitches used by node pool workers.
@@ -953,7 +983,9 @@ func (o NodePoolOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.IntPtrOutput { return v.AutoRenewPeriod }).(pulumi.IntPtrOutput)
 }
 
-// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
+//
+// Deprecated: Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `securityHardeningOs` instead.
 func (o NodePoolOutput) CisEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.CisEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1204,8 +1236,13 @@ func (o NodePoolOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
+// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+func (o NodePoolOutput) SecurityHardeningOs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.SecurityHardeningOs }).(pulumi.BoolPtrOutput)
+}
+
 // Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-// > **NOTE:**  It is forbidden to set both `cisEnabled` and `socEnabled` to `true`at the same time.
+// > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
 func (o NodePoolOutput) SocEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.SocEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1298,6 +1335,11 @@ func (o NodePoolOutput) TeeConfig() NodePoolTeeConfigOutput {
 // Whether the node after expansion can be scheduled.
 func (o NodePoolOutput) Unschedulable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.Unschedulable }).(pulumi.BoolPtrOutput)
+}
+
+// Synchronously update node labels and taints.
+func (o NodePoolOutput) UpdateNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.UpdateNodes }).(pulumi.BoolPtrOutput)
 }
 
 // Node custom data.

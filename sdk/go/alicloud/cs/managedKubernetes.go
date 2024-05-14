@@ -96,9 +96,7 @@ type ManagedKubernetes struct {
 	SecurityGroupId      pulumi.StringOutput                 `pulumi:"securityGroupId"`
 	ServiceAccountIssuer pulumi.StringPtrOutput              `pulumi:"serviceAccountIssuer"`
 	ServiceCidr          pulumi.StringPtrOutput              `pulumi:"serviceCidr"`
-	// (Deprecated) The ID of load balancer.
-	//
-	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+	// The ID of APIServer load balancer.
 	SlbId pulumi.StringOutput `pulumi:"slbId"`
 	// The public ip of load balancer.
 	SlbInternet        pulumi.StringOutput  `pulumi:"slbInternet"`
@@ -191,9 +189,7 @@ type managedKubernetesState struct {
 	SecurityGroupId      *string                        `pulumi:"securityGroupId"`
 	ServiceAccountIssuer *string                        `pulumi:"serviceAccountIssuer"`
 	ServiceCidr          *string                        `pulumi:"serviceCidr"`
-	// (Deprecated) The ID of load balancer.
-	//
-	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+	// The ID of APIServer load balancer.
 	SlbId *string `pulumi:"slbId"`
 	// The public ip of load balancer.
 	SlbInternet        *string `pulumi:"slbInternet"`
@@ -254,9 +250,7 @@ type ManagedKubernetesState struct {
 	SecurityGroupId      pulumi.StringPtrInput
 	ServiceAccountIssuer pulumi.StringPtrInput
 	ServiceCidr          pulumi.StringPtrInput
-	// (Deprecated) The ID of load balancer.
-	//
-	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+	// The ID of APIServer load balancer.
 	SlbId pulumi.StringPtrInput
 	// The public ip of load balancer.
 	SlbInternet        pulumi.StringPtrInput
@@ -593,9 +587,7 @@ func (o ManagedKubernetesOutput) ServiceCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringPtrOutput { return v.ServiceCidr }).(pulumi.StringPtrOutput)
 }
 
-// (Deprecated) The ID of load balancer.
-//
-// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+// The ID of APIServer load balancer.
 func (o ManagedKubernetesOutput) SlbId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.SlbId }).(pulumi.StringOutput)
 }

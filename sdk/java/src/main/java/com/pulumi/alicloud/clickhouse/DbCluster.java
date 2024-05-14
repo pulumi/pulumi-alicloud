@@ -194,14 +194,14 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.dbClusterNetworkType;
     }
     /**
-     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
      * 
      */
     @Export(name="dbClusterVersion", refs={String.class}, tree="[0]")
     private Output<String> dbClusterVersion;
 
     /**
-     * @return The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
+     * @return The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `db_cluster_version` can be set to `22.8.5.29`.
      * 
      */
     public Output<String> dbClusterVersion() {
@@ -348,14 +348,14 @@ public class DbCluster extends com.pulumi.resources.CustomResource {
         return this.storageType;
     }
     /**
-     * The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
+     * The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
      * 
      */
     @Export(name="usedTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> usedTime;
 
     /**
-     * @return The used time of DBCluster. It is valid and required when payment_type is `Subscription`.
+     * @return The used time of DBCluster. It is valid and required when payment_type is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
      * 
      */
     public Output<Optional<String>> usedTime() {

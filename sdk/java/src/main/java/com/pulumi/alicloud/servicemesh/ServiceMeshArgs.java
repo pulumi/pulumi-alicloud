@@ -57,7 +57,8 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether to customize Prometheus. Value:
      * -&#39;true&#39;: custom Prometheus.
-     * -&#39;false&#39;: Do not customize Prometheus. Default value: &#39;false &#39;.
+     * -&#39;false&#39;: Do not customize Prometheus.
+     * Default value: &#39;false &#39;.
      * 
      */
     @Import(name="customizedPrometheus")
@@ -66,7 +67,8 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Whether to customize Prometheus. Value:
      * -&#39;true&#39;: custom Prometheus.
-     * -&#39;false&#39;: Do not customize Prometheus. Default value: &#39;false &#39;.
+     * -&#39;false&#39;: Do not customize Prometheus.
+     * Default value: &#39;false &#39;.
      * 
      */
     public Optional<Output<Boolean>> customizedPrometheus() {
@@ -74,14 +76,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+     * Grid instance version type (for example: the standard, the Pro version, etc.).
      * 
      */
     @Import(name="edition")
     private @Nullable Output<String> edition;
 
     /**
-     * @return Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+     * @return Grid instance version type (for example: the standard, the Pro version, etc.).
      * 
      */
     public Optional<Output<String>> edition() {
@@ -106,7 +108,8 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether to forcibly delete the ASM instance. Value:
      * -&#39;true&#39;: force deletion of ASM instance
-     * -&#39;false&#39;: no forced deletion of ASM instance. Default value: false.
+     * -&#39;false&#39;: no forced deletion of ASM instance
+     * Default value: false.
      * 
      */
     @Import(name="force")
@@ -115,7 +118,8 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Whether to forcibly delete the ASM instance. Value:
      * -&#39;true&#39;: force deletion of ASM instance
-     * -&#39;false&#39;: no forced deletion of ASM instance. Default value: false.
+     * -&#39;false&#39;: no forced deletion of ASM instance
+     * Default value: false.
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -318,7 +322,8 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param customizedPrometheus Whether to customize Prometheus. Value:
          * -&#39;true&#39;: custom Prometheus.
-         * -&#39;false&#39;: Do not customize Prometheus. Default value: &#39;false &#39;.
+         * -&#39;false&#39;: Do not customize Prometheus.
+         * Default value: &#39;false &#39;.
          * 
          * @return builder
          * 
@@ -331,7 +336,8 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param customizedPrometheus Whether to customize Prometheus. Value:
          * -&#39;true&#39;: custom Prometheus.
-         * -&#39;false&#39;: Do not customize Prometheus. Default value: &#39;false &#39;.
+         * -&#39;false&#39;: Do not customize Prometheus.
+         * Default value: &#39;false &#39;.
          * 
          * @return builder
          * 
@@ -341,7 +347,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edition Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+         * @param edition Grid instance version type (for example: the standard, the Pro version, etc.).
          * 
          * @return builder
          * 
@@ -352,7 +358,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edition Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+         * @param edition Grid instance version type (for example: the standard, the Pro version, etc.).
          * 
          * @return builder
          * 
@@ -385,7 +391,8 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param force Whether to forcibly delete the ASM instance. Value:
          * -&#39;true&#39;: force deletion of ASM instance
-         * -&#39;false&#39;: no forced deletion of ASM instance. Default value: false.
+         * -&#39;false&#39;: no forced deletion of ASM instance
+         * Default value: false.
          * 
          * @return builder
          * 
@@ -398,7 +405,8 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param force Whether to forcibly delete the ASM instance. Value:
          * -&#39;true&#39;: force deletion of ASM instance
-         * -&#39;false&#39;: no forced deletion of ASM instance. Default value: false.
+         * -&#39;false&#39;: no forced deletion of ASM instance
+         * Default value: false.
          * 
          * @return builder
          * 

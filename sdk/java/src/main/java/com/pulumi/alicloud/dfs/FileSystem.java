@@ -34,8 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.dfs.DfsFunctions;
  * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.dfs.FileSystem;
@@ -54,27 +52,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("terraform-example");
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
- *             .min(10000)
- *             .max(99999)
- *             .build());
- * 
+ *         final var name = config.get("name").orElse("tf-example");
  *         final var default = DfsFunctions.getZones();
  * 
- *         final var zoneId = default_.zones()[0].zoneId();
- * 
- *         final var storageType = default_.zones()[0].options()[0].storageType();
- * 
  *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()        
+ *             .storageType(default_.zones()[0].options()[0].storageType())
+ *             .zoneId(default_.zones()[0].zoneId())
  *             .protocolType("HDFS")
  *             .description(name)
- *             .fileSystemName(String.format("%s-%s", name,defaultInteger.result()))
- *             .spaceCapacity("1024")
+ *             .fileSystemName(name)
  *             .throughputMode("Provisioned")
+ *             .spaceCapacity("1024")
  *             .provisionedThroughputInMiBps("512")
- *             .storageType(storageType)
- *             .zoneId(zoneId)
  *             .build());
  * 
  *     }

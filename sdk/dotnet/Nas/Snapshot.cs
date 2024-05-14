@@ -43,7 +43,6 @@ namespace Pulumi.AliCloud.Nas
     ///         ProtocolType = "NFS",
     ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
     ///         StorageType = "standard",
-    ///         Description = name,
     ///         Capacity = 100,
     ///     });
     /// 

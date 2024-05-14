@@ -613,7 +613,7 @@ class SyntheticTask(pulumi.CustomResource):
                 is_open_trace=True,
                 trace_client_type=1,
             ),
-            resource_group_id=default.ids[1])
+            resource_group_id=default.ids[0])
         ```
 
         ## Import
@@ -833,7 +833,7 @@ class SyntheticTask(pulumi.CustomResource):
                 is_open_trace=True,
                 trace_client_type=1,
             ),
-            resource_group_id=default.ids[1])
+            resource_group_id=default.ids[0])
         ```
 
         ## Import

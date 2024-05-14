@@ -338,49 +338,40 @@ class MountPoint(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
+            name = "tf-example"
         default = alicloud.dfs.get_zones()
-        default_integer = random.index.Integer("default",
-            min=10000,
-            max=99999)
-        default_vpc = alicloud.vpc.Network("DefaultVPC",
-            cidr_block="172.16.0.0/12",
-            vpc_name=name)
-        default_v_switch = alicloud.vpc.Switch("DefaultVSwitch",
-            description="example",
-            vpc_id=default_vpc.id,
-            cidr_block="172.16.0.0/24",
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
             zone_id=default.zones[0].zone_id)
-        default_access_group = alicloud.dfs.AccessGroup("DefaultAccessGroup",
-            description="AccessGroup resource manager center example",
-            network_type="VPC",
-            access_group_name=f"{name}-{default_integer['result']}")
-        update_access_group = alicloud.dfs.AccessGroup("UpdateAccessGroup",
-            description="Second AccessGroup resource manager center example",
-            network_type="VPC",
-            access_group_name=f"{name}-update-{default_integer['result']}")
-        default_fs = alicloud.dfs.FileSystem("DefaultFs",
-            space_capacity=1024,
-            description="for mountpoint  example",
-            storage_type="STANDARD",
+        default_file_system = alicloud.dfs.FileSystem("default",
+            storage_type=default.zones[0].options[0].storage_type,
             zone_id=default.zones[0].zone_id,
             protocol_type="HDFS",
-            data_redundancy_type="LRS",
-            file_system_name=f"{name}-{default_integer['result']}")
+            description=name,
+            file_system_name=name,
+            throughput_mode="Provisioned",
+            space_capacity=1024,
+            provisioned_throughput_in_mi_bps=512)
+        default_access_group = alicloud.dfs.AccessGroup("default",
+            access_group_name=name,
+            description=name,
+            network_type="VPC")
         default_mount_point = alicloud.dfs.MountPoint("default",
-            vpc_id=default_vpc.id,
-            description="mountpoint example",
-            network_type="VPC",
-            vswitch_id=default_v_switch.id,
-            file_system_id=default_fs.id,
+            description=name,
+            vpc_id=default_network.id,
+            file_system_id=default_file_system.id,
             access_group_id=default_access_group.id,
-            status="Active")
+            network_type="VPC",
+            vswitch_id=default_switch.id)
         ```
 
         ## Import
@@ -422,49 +413,40 @@ class MountPoint(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
+            name = "tf-example"
         default = alicloud.dfs.get_zones()
-        default_integer = random.index.Integer("default",
-            min=10000,
-            max=99999)
-        default_vpc = alicloud.vpc.Network("DefaultVPC",
-            cidr_block="172.16.0.0/12",
-            vpc_name=name)
-        default_v_switch = alicloud.vpc.Switch("DefaultVSwitch",
-            description="example",
-            vpc_id=default_vpc.id,
-            cidr_block="172.16.0.0/24",
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="10.4.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
+            cidr_block="10.4.0.0/24",
+            vpc_id=default_network.id,
             zone_id=default.zones[0].zone_id)
-        default_access_group = alicloud.dfs.AccessGroup("DefaultAccessGroup",
-            description="AccessGroup resource manager center example",
-            network_type="VPC",
-            access_group_name=f"{name}-{default_integer['result']}")
-        update_access_group = alicloud.dfs.AccessGroup("UpdateAccessGroup",
-            description="Second AccessGroup resource manager center example",
-            network_type="VPC",
-            access_group_name=f"{name}-update-{default_integer['result']}")
-        default_fs = alicloud.dfs.FileSystem("DefaultFs",
-            space_capacity=1024,
-            description="for mountpoint  example",
-            storage_type="STANDARD",
+        default_file_system = alicloud.dfs.FileSystem("default",
+            storage_type=default.zones[0].options[0].storage_type,
             zone_id=default.zones[0].zone_id,
             protocol_type="HDFS",
-            data_redundancy_type="LRS",
-            file_system_name=f"{name}-{default_integer['result']}")
+            description=name,
+            file_system_name=name,
+            throughput_mode="Provisioned",
+            space_capacity=1024,
+            provisioned_throughput_in_mi_bps=512)
+        default_access_group = alicloud.dfs.AccessGroup("default",
+            access_group_name=name,
+            description=name,
+            network_type="VPC")
         default_mount_point = alicloud.dfs.MountPoint("default",
-            vpc_id=default_vpc.id,
-            description="mountpoint example",
-            network_type="VPC",
-            vswitch_id=default_v_switch.id,
-            file_system_id=default_fs.id,
+            description=name,
+            vpc_id=default_network.id,
+            file_system_id=default_file_system.id,
             access_group_id=default_access_group.id,
-            status="Active")
+            network_type="VPC",
+            vswitch_id=default_switch.id)
         ```
 
         ## Import

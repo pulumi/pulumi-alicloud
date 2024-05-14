@@ -23,18 +23,18 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const default = alicloud.getZones({
- *     availableResourceCreation: "Instance",
- * });
- * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: _default.zones?.[0]?.id,
- *     cpuCoreCount: 1,
- *     memorySize: 2,
- * }));
- * const defaultGetImages = alicloud.ecs.getImages({
+ * const default = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
  *     owners: "system",
  * });
+ * const defaultGetZones = alicloud.getZones({
+ *     availableResourceCreation: "Instance",
+ * });
+ * const defaultGetInstanceTypes = defaultGetZones.then(defaultGetZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultGetZones.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
@@ -43,16 +43,16 @@ import * as utilities from "../utilities";
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
  *     name: name,
  *     vpcId: defaultNetwork.id,
  * });
  * const defaultInstance = new alicloud.ecs.Instance("default", {
- *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
+ *     availabilityZone: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
  *     instanceName: name,
- *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     imageId: _default.then(_default => _default.images?.[0]?.id),
  *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *     securityGroups: [defaultSecurityGroup.id],
  *     vswitchId: defaultSwitch.id,
@@ -62,22 +62,16 @@ import * as utilities from "../utilities";
  *     name: name,
  *     project: "acs_ecs_dashboard",
  *     metric: "disk_writebytes",
- *     period: 900,
- *     contactGroups: [defaultAlarmContactGroup.alarmContactGroupName],
- *     effectiveInterval: "06:00-20:00",
- *     metricDimensions: pulumi.interpolate`  [
- *     {
- *       "instanceId": "${defaultInstance.id}",
- *       "device": "/dev/vda1"
- *     }
- *   ]
- * `,
+ *     metricDimensions: pulumi.interpolate`[{"instanceId":"${defaultInstance.id}","device":"/dev/vda1"}]`,
  *     escalationsCritical: {
  *         statistics: "Average",
  *         comparisonOperator: "<=",
  *         threshold: "35",
  *         times: 2,
  *     },
+ *     period: 900,
+ *     contactGroups: [defaultAlarmContactGroup.alarmContactGroupName],
+ *     effectiveInterval: "06:00-20:00",
  * });
  * ```
  *

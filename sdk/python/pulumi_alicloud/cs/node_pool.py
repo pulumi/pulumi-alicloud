@@ -65,6 +65,7 @@ class NodePoolArgs:
                  scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 security_hardening_os: Optional[pulumi.Input[bool]] = None,
                  soc_enabled: Optional[pulumi.Input[bool]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
@@ -84,6 +85,7 @@ class NodePoolArgs:
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]] = None,
                  tee_config: Optional[pulumi.Input['NodePoolTeeConfigArgs']] = None,
                  unschedulable: Optional[pulumi.Input[bool]] = None,
+                 update_nodes: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NodePool resource.
@@ -92,7 +94,7 @@ class NodePoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
         :param pulumi.Input[bool] auto_renew: Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
         :param pulumi.Input[int] auto_renew_period: The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
-        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         :param pulumi.Input[bool] compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
         :param pulumi.Input[str] cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]] data_disks: Configure the data disk of the node in the node pool. See `data_disks` below.
@@ -139,8 +141,9 @@ class NodePoolArgs:
         :param pulumi.Input[str] scaling_policy: Scaling group mode, default value: `release`. Valid values:
         :param pulumi.Input[str] security_group_id: The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        :param pulumi.Input[bool] security_hardening_os: Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
         :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-               > **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+               > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         :param pulumi.Input[int] spot_instance_pools: The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         :param pulumi.Input[bool] spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
@@ -159,6 +162,7 @@ class NodePoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input['NodePoolTeeConfigArgs'] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
         :param pulumi.Input[bool] unschedulable: Whether the node after expansion can be scheduled.
+        :param pulumi.Input[bool] update_nodes: Synchronously update node labels and taints.
         :param pulumi.Input[str] user_data: Node custom data.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -168,6 +172,9 @@ class NodePoolArgs:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if cis_enabled is not None:
+            warnings.warn("""Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""", DeprecationWarning)
+            pulumi.log.warn("""cis_enabled is deprecated: Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""")
         if cis_enabled is not None:
             pulumi.set(__self__, "cis_enabled", cis_enabled)
         if compensate_with_on_demand is not None:
@@ -268,6 +275,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if security_hardening_os is not None:
+            pulumi.set(__self__, "security_hardening_os", security_hardening_os)
         if soc_enabled is not None:
             pulumi.set(__self__, "soc_enabled", soc_enabled)
         if spot_instance_pools is not None:
@@ -306,6 +315,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "tee_config", tee_config)
         if unschedulable is not None:
             pulumi.set(__self__, "unschedulable", unschedulable)
+        if update_nodes is not None:
+            pulumi.set(__self__, "update_nodes", update_nodes)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
 
@@ -373,8 +384,11 @@ class NodePoolArgs:
     @pulumi.getter(name="cisEnabled")
     def cis_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         """
+        warnings.warn("""Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""", DeprecationWarning)
+        pulumi.log.warn("""cis_enabled is deprecated: Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""")
+
         return pulumi.get(self, "cis_enabled")
 
     @cis_enabled.setter
@@ -913,11 +927,23 @@ class NodePoolArgs:
         pulumi.set(self, "security_group_ids", value)
 
     @property
+    @pulumi.getter(name="securityHardeningOs")
+    def security_hardening_os(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+        """
+        return pulumi.get(self, "security_hardening_os")
+
+    @security_hardening_os.setter
+    def security_hardening_os(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "security_hardening_os", value)
+
+    @property
     @pulumi.getter(name="socEnabled")
     def soc_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-        > **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+        > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         """
         return pulumi.get(self, "soc_enabled")
 
@@ -1142,6 +1168,18 @@ class NodePoolArgs:
         pulumi.set(self, "unschedulable", value)
 
     @property
+    @pulumi.getter(name="updateNodes")
+    def update_nodes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Synchronously update node labels and taints.
+        """
+        return pulumi.get(self, "update_nodes")
+
+    @update_nodes.setter
+    def update_nodes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "update_nodes", value)
+
+    @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1207,6 +1245,7 @@ class _NodePoolState:
                  scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 security_hardening_os: Optional[pulumi.Input[bool]] = None,
                  soc_enabled: Optional[pulumi.Input[bool]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
@@ -1226,13 +1265,14 @@ class _NodePoolState:
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]] = None,
                  tee_config: Optional[pulumi.Input['NodePoolTeeConfigArgs']] = None,
                  unschedulable: Optional[pulumi.Input[bool]] = None,
+                 update_nodes: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering NodePool resources.
         :param pulumi.Input[bool] auto_renew: Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
         :param pulumi.Input[int] auto_renew_period: The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
-        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[bool] compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
         :param pulumi.Input[str] cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
@@ -1283,8 +1323,9 @@ class _NodePoolState:
         :param pulumi.Input[str] scaling_policy: Scaling group mode, default value: `release`. Valid values:
         :param pulumi.Input[str] security_group_id: The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        :param pulumi.Input[bool] security_hardening_os: Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
         :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-               > **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+               > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         :param pulumi.Input[int] spot_instance_pools: The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         :param pulumi.Input[bool] spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
@@ -1303,6 +1344,7 @@ class _NodePoolState:
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input['NodePoolTeeConfigArgs'] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
         :param pulumi.Input[bool] unschedulable: Whether the node after expansion can be scheduled.
+        :param pulumi.Input[bool] update_nodes: Synchronously update node labels and taints.
         :param pulumi.Input[str] user_data: Node custom data.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
         """
@@ -1310,6 +1352,9 @@ class _NodePoolState:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if auto_renew_period is not None:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+        if cis_enabled is not None:
+            warnings.warn("""Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""", DeprecationWarning)
+            pulumi.log.warn("""cis_enabled is deprecated: Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""")
         if cis_enabled is not None:
             pulumi.set(__self__, "cis_enabled", cis_enabled)
         if cluster_id is not None:
@@ -1418,6 +1463,8 @@ class _NodePoolState:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if security_hardening_os is not None:
+            pulumi.set(__self__, "security_hardening_os", security_hardening_os)
         if soc_enabled is not None:
             pulumi.set(__self__, "soc_enabled", soc_enabled)
         if spot_instance_pools is not None:
@@ -1456,6 +1503,8 @@ class _NodePoolState:
             pulumi.set(__self__, "tee_config", tee_config)
         if unschedulable is not None:
             pulumi.set(__self__, "unschedulable", unschedulable)
+        if update_nodes is not None:
+            pulumi.set(__self__, "update_nodes", update_nodes)
         if user_data is not None:
             pulumi.set(__self__, "user_data", user_data)
         if vswitch_ids is not None:
@@ -1489,8 +1538,11 @@ class _NodePoolState:
     @pulumi.getter(name="cisEnabled")
     def cis_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         """
+        warnings.warn("""Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""", DeprecationWarning)
+        pulumi.log.warn("""cis_enabled is deprecated: Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""")
+
         return pulumi.get(self, "cis_enabled")
 
     @cis_enabled.setter
@@ -2077,11 +2129,23 @@ class _NodePoolState:
         pulumi.set(self, "security_group_ids", value)
 
     @property
+    @pulumi.getter(name="securityHardeningOs")
+    def security_hardening_os(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+        """
+        return pulumi.get(self, "security_hardening_os")
+
+    @security_hardening_os.setter
+    def security_hardening_os(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "security_hardening_os", value)
+
+    @property
     @pulumi.getter(name="socEnabled")
     def soc_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-        > **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+        > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         """
         return pulumi.get(self, "soc_enabled")
 
@@ -2306,6 +2370,18 @@ class _NodePoolState:
         pulumi.set(self, "unschedulable", value)
 
     @property
+    @pulumi.getter(name="updateNodes")
+    def update_nodes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Synchronously update node labels and taints.
+        """
+        return pulumi.get(self, "update_nodes")
+
+    @update_nodes.setter
+    def update_nodes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "update_nodes", value)
+
+    @property
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2383,6 +2459,7 @@ class NodePool(pulumi.CustomResource):
                  scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 security_hardening_os: Optional[pulumi.Input[bool]] = None,
                  soc_enabled: Optional[pulumi.Input[bool]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
@@ -2402,6 +2479,7 @@ class NodePool(pulumi.CustomResource):
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]]] = None,
                  tee_config: Optional[pulumi.Input[pulumi.InputType['NodePoolTeeConfigArgs']]] = None,
                  unschedulable: Optional[pulumi.Input[bool]] = None,
+                 update_nodes: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -2422,7 +2500,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
         :param pulumi.Input[int] auto_renew_period: The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
-        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[bool] compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
         :param pulumi.Input[str] cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
@@ -2471,8 +2549,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_policy: Scaling group mode, default value: `release`. Valid values:
         :param pulumi.Input[str] security_group_id: The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        :param pulumi.Input[bool] security_hardening_os: Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
         :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-               > **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+               > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         :param pulumi.Input[int] spot_instance_pools: The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         :param pulumi.Input[bool] spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
@@ -2491,6 +2570,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input[pulumi.InputType['NodePoolTeeConfigArgs']] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
         :param pulumi.Input[bool] unschedulable: Whether the node after expansion can be scheduled.
+        :param pulumi.Input[bool] update_nodes: Synchronously update node labels and taints.
         :param pulumi.Input[str] user_data: Node custom data.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
         """
@@ -2576,6 +2656,7 @@ class NodePool(pulumi.CustomResource):
                  scaling_policy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 security_hardening_os: Optional[pulumi.Input[bool]] = None,
                  soc_enabled: Optional[pulumi.Input[bool]] = None,
                  spot_instance_pools: Optional[pulumi.Input[int]] = None,
                  spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
@@ -2595,6 +2676,7 @@ class NodePool(pulumi.CustomResource):
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]]] = None,
                  tee_config: Optional[pulumi.Input[pulumi.InputType['NodePoolTeeConfigArgs']]] = None,
                  unschedulable: Optional[pulumi.Input[bool]] = None,
+                 update_nodes: Optional[pulumi.Input[bool]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
                  vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -2658,6 +2740,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["scaling_policy"] = scaling_policy
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["security_group_ids"] = security_group_ids
+            __props__.__dict__["security_hardening_os"] = security_hardening_os
             __props__.__dict__["soc_enabled"] = soc_enabled
             __props__.__dict__["spot_instance_pools"] = spot_instance_pools
             __props__.__dict__["spot_instance_remedy"] = spot_instance_remedy
@@ -2677,6 +2760,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["taints"] = taints
             __props__.__dict__["tee_config"] = tee_config
             __props__.__dict__["unschedulable"] = unschedulable
+            __props__.__dict__["update_nodes"] = update_nodes
             __props__.__dict__["user_data"] = user_data
             if vswitch_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_ids'")
@@ -2745,6 +2829,7 @@ class NodePool(pulumi.CustomResource):
             scaling_policy: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            security_hardening_os: Optional[pulumi.Input[bool]] = None,
             soc_enabled: Optional[pulumi.Input[bool]] = None,
             spot_instance_pools: Optional[pulumi.Input[int]] = None,
             spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
@@ -2764,6 +2849,7 @@ class NodePool(pulumi.CustomResource):
             taints: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]]] = None,
             tee_config: Optional[pulumi.Input[pulumi.InputType['NodePoolTeeConfigArgs']]] = None,
             unschedulable: Optional[pulumi.Input[bool]] = None,
+            update_nodes: Optional[pulumi.Input[bool]] = None,
             user_data: Optional[pulumi.Input[str]] = None,
             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'NodePool':
         """
@@ -2775,7 +2861,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Whether to enable automatic renewal for nodes in the node pool takes effect only when `instance_charge_type` is set to `PrePaid`. Default value: `true`. Valid values:
         :param pulumi.Input[int] auto_renew_period: The automatic renewal period of nodes in the node pool takes effect only when you select Prepaid and Automatic Renewal, and is a required value. When `PeriodUnit = Month`, the value range is {1, 2, 3, 6, 12}. Default value: 1.
-        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        :param pulumi.Input[bool] cis_enabled: Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
         :param pulumi.Input[bool] compensate_with_on_demand: Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values: `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created. `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
         :param pulumi.Input[str] cpu_policy: Node CPU management policies. Default value: `none`. When the cluster version is 1.12.6 or later, the following two policies are supported:
@@ -2826,8 +2912,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] scaling_policy: Scaling group mode, default value: `release`. Valid values:
         :param pulumi.Input[str] security_group_id: The security group ID of the node pool. This field has been replaced by `security_group_ids`, please use the `security_group_ids` field instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
+        :param pulumi.Input[bool] security_hardening_os: Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
         :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-               > **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+               > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         :param pulumi.Input[int] spot_instance_pools: The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         :param pulumi.Input[bool] spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
@@ -2846,6 +2933,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolTaintArgs']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input[pulumi.InputType['NodePoolTeeConfigArgs']] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
         :param pulumi.Input[bool] unschedulable: Whether the node after expansion can be scheduled.
+        :param pulumi.Input[bool] update_nodes: Synchronously update node labels and taints.
         :param pulumi.Input[str] user_data: Node custom data.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
         """
@@ -2903,6 +2991,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["scaling_policy"] = scaling_policy
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
+        __props__.__dict__["security_hardening_os"] = security_hardening_os
         __props__.__dict__["soc_enabled"] = soc_enabled
         __props__.__dict__["spot_instance_pools"] = spot_instance_pools
         __props__.__dict__["spot_instance_remedy"] = spot_instance_remedy
@@ -2922,6 +3011,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["taints"] = taints
         __props__.__dict__["tee_config"] = tee_config
         __props__.__dict__["unschedulable"] = unschedulable
+        __props__.__dict__["update_nodes"] = update_nodes
         __props__.__dict__["user_data"] = user_data
         __props__.__dict__["vswitch_ids"] = vswitch_ids
         return NodePool(resource_name, opts=opts, __props__=__props__)
@@ -2946,8 +3036,11 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="cisEnabled")
     def cis_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         """
+        warnings.warn("""Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""", DeprecationWarning)
+        pulumi.log.warn("""cis_enabled is deprecated: Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.""")
+
         return pulumi.get(self, "cis_enabled")
 
     @property
@@ -3342,11 +3435,19 @@ class NodePool(pulumi.CustomResource):
         return pulumi.get(self, "security_group_ids")
 
     @property
+    @pulumi.getter(name="securityHardeningOs")
+    def security_hardening_os(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+        """
+        return pulumi.get(self, "security_hardening_os")
+
+    @property
     @pulumi.getter(name="socEnabled")
     def soc_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-        > **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+        > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         """
         return pulumi.get(self, "soc_enabled")
 
@@ -3493,6 +3594,14 @@ class NodePool(pulumi.CustomResource):
         Whether the node after expansion can be scheduled.
         """
         return pulumi.get(self, "unschedulable")
+
+    @property
+    @pulumi.getter(name="updateNodes")
+    def update_nodes(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Synchronously update node labels and taints.
+        """
+        return pulumi.get(self, "update_nodes")
 
     @property
     @pulumi.getter(name="userData")

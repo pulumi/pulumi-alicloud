@@ -58,7 +58,7 @@ import (
 //				InstanceAmount: pulumi.Int(1),
 //				Description:    pulumi.String("before"),
 //				ZoneIds: pulumi.StringArray{
-//					pulumi.String(defaultGetZones.Zones[0].Id),
+//					pulumi.String(defaultGetZones.Zones[2].Id),
 //				},
 //				PrivatePoolOptionsName:          pulumi.String("test_before"),
 //				Period:                          pulumi.Int(1),

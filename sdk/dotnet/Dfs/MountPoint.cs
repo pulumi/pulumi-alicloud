@@ -25,69 +25,54 @@ namespace Pulumi.AliCloud.Dfs
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = AliCloud.Dfs.GetZones.Invoke();
     /// 
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
-    ///         Min = 10000,
-    ///         Max = 99999,
-    ///     });
-    /// 
-    ///     var defaultVPC = new AliCloud.Vpc.Network("DefaultVPC", new()
-    ///     {
-    ///         CidrBlock = "172.16.0.0/12",
     ///         VpcName = name,
+    ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultVSwitch = new AliCloud.Vpc.Switch("DefaultVSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
-    ///         Description = "example",
-    ///         VpcId = defaultVPC.Id,
-    ///         CidrBlock = "172.16.0.0/24",
     ///         VswitchName = name,
+    ///         CidrBlock = "10.4.0.0/24",
+    ///         VpcId = defaultNetwork.Id,
     ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
     ///     });
     /// 
-    ///     var defaultAccessGroup = new AliCloud.Dfs.AccessGroup("DefaultAccessGroup", new()
+    ///     var defaultFileSystem = new AliCloud.Dfs.FileSystem("default", new()
     ///     {
-    ///         Description = "AccessGroup resource manager center example",
-    ///         NetworkType = "VPC",
-    ///         AccessGroupName = $"{name}-{defaultInteger.Result}",
-    ///     });
-    /// 
-    ///     var updateAccessGroup = new AliCloud.Dfs.AccessGroup("UpdateAccessGroup", new()
-    ///     {
-    ///         Description = "Second AccessGroup resource manager center example",
-    ///         NetworkType = "VPC",
-    ///         AccessGroupName = $"{name}-update-{defaultInteger.Result}",
-    ///     });
-    /// 
-    ///     var defaultFs = new AliCloud.Dfs.FileSystem("DefaultFs", new()
-    ///     {
-    ///         SpaceCapacity = 1024,
-    ///         Description = "for mountpoint  example",
-    ///         StorageType = "STANDARD",
+    ///         StorageType = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Options[0]?.StorageType)),
     ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
     ///         ProtocolType = "HDFS",
-    ///         DataRedundancyType = "LRS",
-    ///         FileSystemName = $"{name}-{defaultInteger.Result}",
+    ///         Description = name,
+    ///         FileSystemName = name,
+    ///         ThroughputMode = "Provisioned",
+    ///         SpaceCapacity = 1024,
+    ///         ProvisionedThroughputInMiBps = 512,
+    ///     });
+    /// 
+    ///     var defaultAccessGroup = new AliCloud.Dfs.AccessGroup("default", new()
+    ///     {
+    ///         AccessGroupName = name,
+    ///         Description = name,
+    ///         NetworkType = "VPC",
     ///     });
     /// 
     ///     var defaultMountPoint = new AliCloud.Dfs.MountPoint("default", new()
     ///     {
-    ///         VpcId = defaultVPC.Id,
-    ///         Description = "mountpoint example",
-    ///         NetworkType = "VPC",
-    ///         VswitchId = defaultVSwitch.Id,
-    ///         FileSystemId = defaultFs.Id,
+    ///         Description = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         FileSystemId = defaultFileSystem.Id,
     ///         AccessGroupId = defaultAccessGroup.Id,
-    ///         Status = "Active",
+    ///         NetworkType = "VPC",
+    ///         VswitchId = defaultSwitch.Id,
     ///     });
     /// 
     /// });

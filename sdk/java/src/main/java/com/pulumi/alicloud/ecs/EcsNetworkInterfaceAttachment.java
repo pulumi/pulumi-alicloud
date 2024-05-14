@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -20,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ECS Network Interface Attachment and how to use it, see [What is Network Interface Attachment](https://www.alibabacloud.com/help/en/doc-detail/58515.htm).
  * 
- * &gt; **NOTE:** Available since v1.123.1+.
+ * &gt; **NOTE:** Available since v1.123.1.
  * 
  * ## Example Usage
  * 
@@ -144,49 +145,63 @@ import javax.annotation.Nullable;
  * ECS Network Interface Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example eni-abcd1234:i-abcd1234
+ * $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example &lt;network_interface_id&gt;:&lt;instance_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment")
 public class EcsNetworkInterfaceAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * The instance id.
+     * The ID of the ECS instance.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return The instance id.
+     * @return The ID of the ECS instance.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * The network interface id.
+     * The index of the network card.
+     * 
+     */
+    @Export(name="networkCardIndex", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> networkCardIndex;
+
+    /**
+     * @return The index of the network card.
+     * 
+     */
+    public Output<Optional<Integer>> networkCardIndex() {
+        return Codegen.optional(this.networkCardIndex);
+    }
+    /**
+     * The ID of the network interface.
      * 
      */
     @Export(name="networkInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> networkInterfaceId;
 
     /**
-     * @return The network interface id.
+     * @return The ID of the network interface.
      * 
      */
     public Output<String> networkInterfaceId() {
         return this.networkInterfaceId;
     }
     /**
-     * The trunk network instance id.
+     * The ID of the trunk network instance.
      * 
      */
     @Export(name="trunkNetworkInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trunkNetworkInstanceId;
 
     /**
-     * @return The trunk network instance id.
+     * @return The ID of the trunk network instance.
      * 
      */
     public Output<Optional<String>> trunkNetworkInstanceId() {

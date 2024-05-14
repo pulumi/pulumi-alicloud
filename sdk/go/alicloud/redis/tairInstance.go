@@ -40,7 +40,7 @@ type TairInstance struct {
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+	// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
@@ -140,7 +140,7 @@ type tairInstanceState struct {
 	InstanceType *string `pulumi:"instanceType"`
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
 	Password *string `pulumi:"password"`
-	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+	// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
 	Period *int `pulumi:"period"`
@@ -189,7 +189,7 @@ type TairInstanceState struct {
 	InstanceType pulumi.StringPtrInput
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
 	Password pulumi.StringPtrInput
-	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+	// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringPtrInput
 	// The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
 	Period pulumi.IntPtrInput
@@ -240,7 +240,7 @@ type tairInstanceArgs struct {
 	InstanceType string `pulumi:"instanceType"`
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
 	Password *string `pulumi:"password"`
-	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+	// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
 	Period *int `pulumi:"period"`
@@ -286,7 +286,7 @@ type TairInstanceArgs struct {
 	InstanceType pulumi.StringInput
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =.
 	Password pulumi.StringPtrInput
-	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+	// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringPtrInput
 	// The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
 	Period pulumi.IntPtrInput
@@ -446,7 +446,7 @@ func (o TairInstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 func (o TairInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }

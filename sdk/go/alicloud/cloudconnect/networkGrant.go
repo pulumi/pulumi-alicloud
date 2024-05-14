@@ -43,9 +43,9 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			cenUid := float64(123456789)
-//			if param := cfg.GetFloat64("cenUid"); param != 0 {
-//				cenUid = param
+//			anotherUid := float64(123456789)
+//			if param := cfg.GetFloat64("anotherUid"); param != 0 {
+//				anotherUid = param
 //			}
 //			// Method 2: Use the target cen account's access_key, secret_key
 //			//
@@ -73,7 +73,7 @@ import (
 //			_, err = cloudconnect.NewNetworkGrant(ctx, "default", &cloudconnect.NetworkGrantArgs{
 //				CcnId:  _default.ID(),
 //				CenId:  cen.ID(),
-//				CenUid: pulumi.Float64(cenUid),
+//				CenUid: pulumi.Float64(anotherUid),
 //			})
 //			if err != nil {
 //				return err

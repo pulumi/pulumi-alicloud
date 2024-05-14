@@ -34,8 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.edas.Namespace;
  * import com.pulumi.alicloud.edas.NamespaceArgs;
  * import java.util.List;
@@ -52,15 +50,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
- *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
- *             .current(true)
- *             .build());
- * 
- *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+ *         final var region = config.get("region").orElse("cn-hangzhou");
+ *         final var name = config.get("name").orElse("tfexample");
+ *         var default_ = new Namespace("default", NamespaceArgs.builder()        
  *             .debugEnable(false)
  *             .description(name)
- *             .namespaceLogicalId(String.format("%s:example", default_.regions()[0].id()))
+ *             .namespaceLogicalId(String.format("%s:%s", region,name))
  *             .namespaceName(name)
  *             .build());
  * 

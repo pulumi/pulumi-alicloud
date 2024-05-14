@@ -29,18 +29,14 @@ namespace Pulumi.AliCloud.Rds
     ///     var example = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
     ///         Engine = "MySQL",
-    ///         EngineVersion = "5.7",
-    ///         Category = "HighAvailability",
-    ///         DbInstanceStorageType = "local_ssd",
+    ///         EngineVersion = "5.6",
     ///     });
     /// 
     ///     var exampleGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
     ///     {
     ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///         Engine = "MySQL",
-    ///         EngineVersion = "5.7",
-    ///         Category = "HighAvailability",
-    ///         DbInstanceStorageType = "local_ssd",
+    ///         EngineVersion = "5.6",
     ///     });
     /// 
     ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
@@ -66,12 +62,11 @@ namespace Pulumi.AliCloud.Rds
     ///     var exampleInstance = new AliCloud.Rds.Instance("example", new()
     ///     {
     ///         Engine = "MySQL",
-    ///         EngineVersion = "5.7",
+    ///         EngineVersion = "5.6",
     ///         Category = "HighAvailability",
-    ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceType = exampleGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[1]?.InstanceClass),
+    ///         InstanceStorage = 20,
     ///         InstanceChargeType = "Postpaid",
-    ///         DbInstanceStorageType = "local_ssd",
     ///         InstanceName = name,
     ///         VswitchId = exampleSwitch.Id,
     ///         SecurityIps = new[]

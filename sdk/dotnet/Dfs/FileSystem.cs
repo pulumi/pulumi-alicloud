@@ -25,34 +25,23 @@ namespace Pulumi.AliCloud.Dfs
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
-    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
-    ///     {
-    ///         Min = 10000,
-    ///         Max = 99999,
-    ///     });
-    /// 
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = AliCloud.Dfs.GetZones.Invoke();
-    /// 
-    ///     var zoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId));
-    /// 
-    ///     var storageType = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Options[0]?.StorageType));
     /// 
     ///     var defaultFileSystem = new AliCloud.Dfs.FileSystem("default", new()
     ///     {
+    ///         StorageType = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Options[0]?.StorageType)),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
     ///         ProtocolType = "HDFS",
     ///         Description = name,
-    ///         FileSystemName = $"{name}-{defaultInteger.Result}",
-    ///         SpaceCapacity = 1024,
+    ///         FileSystemName = name,
     ///         ThroughputMode = "Provisioned",
+    ///         SpaceCapacity = 1024,
     ///         ProvisionedThroughputInMiBps = 512,
-    ///         StorageType = storageType,
-    ///         ZoneId = zoneId,
     ///     });
     /// 
     /// });

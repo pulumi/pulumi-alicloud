@@ -64,17 +64,13 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-example");
  *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
  *             .engine("MySQL")
- *             .engineVersion("5.7")
- *             .category("HighAvailability")
- *             .dbInstanceStorageType("local_ssd")
+ *             .engineVersion("5.6")
  *             .build());
  * 
  *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.ids()[0]))
  *             .engine("MySQL")
- *             .engineVersion("5.7")
- *             .category("HighAvailability")
- *             .dbInstanceStorageType("local_ssd")
+ *             .engineVersion("5.6")
  *             .build());
  * 
  *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
@@ -96,12 +92,11 @@ import javax.annotation.Nullable;
  * 
  *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
  *             .engine("MySQL")
- *             .engineVersion("5.7")
+ *             .engineVersion("5.6")
  *             .category("HighAvailability")
- *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[1].instanceClass()))
+ *             .instanceStorage("20")
  *             .instanceChargeType("Postpaid")
- *             .dbInstanceStorageType("local_ssd")
  *             .instanceName(name)
  *             .vswitchId(exampleSwitch.id())
  *             .securityIps(            

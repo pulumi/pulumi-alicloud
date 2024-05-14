@@ -150,9 +150,9 @@ class NetworkGrant(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        cen_uid = config.get_float("cenUid")
-        if cen_uid is None:
-            cen_uid = 123456789
+        another_uid = config.get_float("anotherUid")
+        if another_uid is None:
+            another_uid = 123456789
         # Method 2: Use the target cen account's access_key, secret_key
         # provider "alicloud" {
         #   region     = "cn-hangzhou"
@@ -169,7 +169,7 @@ class NetworkGrant(pulumi.CustomResource):
         default_network_grant = alicloud.cloudconnect.NetworkGrant("default",
             ccn_id=default.id,
             cen_id=cen.id,
-            cen_uid=cen_uid)
+            cen_uid=another_uid)
         ```
 
         ## Import
@@ -213,9 +213,9 @@ class NetworkGrant(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        cen_uid = config.get_float("cenUid")
-        if cen_uid is None:
-            cen_uid = 123456789
+        another_uid = config.get_float("anotherUid")
+        if another_uid is None:
+            another_uid = 123456789
         # Method 2: Use the target cen account's access_key, secret_key
         # provider "alicloud" {
         #   region     = "cn-hangzhou"
@@ -232,7 +232,7 @@ class NetworkGrant(pulumi.CustomResource):
         default_network_grant = alicloud.cloudconnect.NetworkGrant("default",
             ccn_id=default.id,
             cen_id=cen.id,
-            cen_uid=cen_uid)
+            cen_uid=another_uid)
         ```
 
         ## Import

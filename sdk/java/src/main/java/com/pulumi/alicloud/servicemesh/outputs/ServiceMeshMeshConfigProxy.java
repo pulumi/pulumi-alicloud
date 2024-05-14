@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfigProxy {
     /**
-     * @return Trust cluster domain.
+     * @return Cluster domain name.
      * 
      */
     private @Nullable String clusterDomain;
@@ -23,7 +23,7 @@ public final class ServiceMeshMeshConfigProxy {
 
     private ServiceMeshMeshConfigProxy() {}
     /**
-     * @return Trust cluster domain.
+     * @return Cluster domain name.
      * 
      */
     public Optional<String> clusterDomain() {

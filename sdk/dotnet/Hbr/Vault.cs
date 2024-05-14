@@ -25,12 +25,19 @@ namespace Pulumi.AliCloud.Hbr
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var example = new AliCloud.Hbr.Vault("example", new()
     ///     {
-    ///         VaultName = "example_value",
+    ///         VaultName = $"example_value_{@default.Result}",
     ///     });
     /// 
     /// });

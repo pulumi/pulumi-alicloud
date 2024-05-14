@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         public readonly string? RequestCpu;
         public readonly string? RequestMemory;
         /// <summary>
-        /// Other configurations of automatically injected sidecar (in YAML format).
+        /// Other automatic injection Sidecar configuration (in YAML format).
         /// </summary>
         public readonly string? SidecarInjectorWebhookAsYaml;
 

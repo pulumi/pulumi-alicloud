@@ -429,27 +429,21 @@ class FileSystem(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
-        default_integer = random.index.Integer("default",
-            min=10000,
-            max=99999)
+            name = "tf-example"
         default = alicloud.dfs.get_zones()
-        zone_id = default.zones[0].zone_id
-        storage_type = default.zones[0].options[0].storage_type
         default_file_system = alicloud.dfs.FileSystem("default",
+            storage_type=default.zones[0].options[0].storage_type,
+            zone_id=default.zones[0].zone_id,
             protocol_type="HDFS",
             description=name,
-            file_system_name=f"{name}-{default_integer['result']}",
-            space_capacity=1024,
+            file_system_name=name,
             throughput_mode="Provisioned",
-            provisioned_throughput_in_mi_bps=512,
-            storage_type=storage_type,
-            zone_id=zone_id)
+            space_capacity=1024,
+            provisioned_throughput_in_mi_bps=512)
         ```
 
         ## Import
@@ -496,27 +490,21 @@ class FileSystem(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "terraform-example"
-        default_integer = random.index.Integer("default",
-            min=10000,
-            max=99999)
+            name = "tf-example"
         default = alicloud.dfs.get_zones()
-        zone_id = default.zones[0].zone_id
-        storage_type = default.zones[0].options[0].storage_type
         default_file_system = alicloud.dfs.FileSystem("default",
+            storage_type=default.zones[0].options[0].storage_type,
+            zone_id=default.zones[0].zone_id,
             protocol_type="HDFS",
             description=name,
-            file_system_name=f"{name}-{default_integer['result']}",
-            space_capacity=1024,
+            file_system_name=name,
             throughput_mode="Provisioned",
-            provisioned_throughput_in_mi_bps=512,
-            storage_type=storage_type,
-            zone_id=zone_id)
+            space_capacity=1024,
+            provisioned_throughput_in_mi_bps=512)
         ```
 
         ## Import

@@ -49,9 +49,7 @@ import (
 //			_, err = ots.NewInstance(ctx, "default", &ots.InstanceArgs{
 //				Name:        pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
 //				Description: pulumi.String(name),
-//				NetworkTypeAcls: pulumi.StringArray{
-//					pulumi.String("VPC"),
-//				},
+//				AccessedBy:  pulumi.String("Vpc"),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("Building table"),

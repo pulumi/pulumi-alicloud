@@ -95,6 +95,7 @@ type Instance struct {
 	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	// - general_essd: general essd.
 	DbInstanceStorageType pulumi.StringOutput `pulumi:"dbInstanceStorageType"`
 	// (Available since 1.197.0) The type of db instance.
 	DbInstanceType pulumi.StringOutput `pulumi:"dbInstanceType"`
@@ -445,6 +446,7 @@ type instanceState struct {
 	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	// - general_essd: general essd.
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
 	// (Available since 1.197.0) The type of db instance.
 	DbInstanceType *string `pulumi:"dbInstanceType"`
@@ -754,6 +756,7 @@ type InstanceState struct {
 	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	// - general_essd: general essd.
 	DbInstanceStorageType pulumi.StringPtrInput
 	// (Available since 1.197.0) The type of db instance.
 	DbInstanceType pulumi.StringPtrInput
@@ -1063,6 +1066,7 @@ type instanceArgs struct {
 	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	// - general_essd: general essd.
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
 	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
 	DbIsIgnoreCase *bool `pulumi:"dbIsIgnoreCase"`
@@ -1363,6 +1367,7 @@ type InstanceArgs struct {
 	// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 	// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+	// - general_essd: general essd.
 	DbInstanceStorageType pulumi.StringPtrInput
 	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
 	DbIsIgnoreCase pulumi.BoolPtrInput
@@ -1803,6 +1808,7 @@ func (o InstanceOutput) DbInstanceIpArrayName() pulumi.StringPtrOutput {
 // - cloud_essd: specifies to use enhanced SSDs (ESSDs).
 // - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
 // - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+// - general_essd: general essd.
 func (o InstanceOutput) DbInstanceStorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DbInstanceStorageType }).(pulumi.StringOutput)
 }

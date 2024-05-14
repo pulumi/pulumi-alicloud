@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
         /// </summary>
         public readonly string Status;
 

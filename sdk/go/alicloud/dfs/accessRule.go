@@ -36,24 +36,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraform-example"
+//			name := "example_name"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			_, err := dfs.NewAccessGroup(ctx, "default", &dfs.AccessGroupArgs{
-//				Description:     pulumi.String("example"),
 //				NetworkType:     pulumi.String("VPC"),
 //				AccessGroupName: pulumi.String(name),
+//				Description:     pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dfs.NewAccessRule(ctx, "default", &dfs.AccessRuleArgs{
-//				Description:    pulumi.String("example"),
-//				RwAccessType:   pulumi.String("RDWR"),
-//				Priority:       pulumi.Int(1),
-//				NetworkSegment: pulumi.String("192.168.81.1"),
+//				NetworkSegment: pulumi.String("192.0.2.0/24"),
 //				AccessGroupId:  _default.ID(),
+//				Description:    pulumi.String(name),
+//				RwAccessType:   pulumi.String("RDWR"),
+//				Priority:       pulumi.Int(10),
 //			})
 //			if err != nil {
 //				return err

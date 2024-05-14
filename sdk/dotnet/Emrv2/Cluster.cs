@@ -23,7 +23,6 @@ namespace Pulumi.AliCloud.Emrv2
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
-    /// using System.Text.Json;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// using Random = Pulumi.Random;
@@ -143,7 +142,6 @@ namespace Pulumi.AliCloud.Emrv2
     ///             new AliCloud.Emrv2.Inputs.ClusterNodeGroupArgs
     ///             {
     ///                 SpotInstanceRemedy = false,
-    ///                 DeploymentSetStrategy = "CLUSTER",
     ///                 NodeGroupType = "CORE",
     ///                 VswitchIds = new[]
     ///                 {
@@ -203,17 +201,6 @@ namespace Pulumi.AliCloud.Emrv2
     ///                 SecurityGroupId = defaultSecurityGroup.Id,
     ///             },
     ///         },
-    ///         LogCollectStrategy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///         {
-    ///             ["open"] = new[]
-    ///             {
-    ///                 "all",
-    ///             },
-    ///             ["close"] = new[]
-    ///             {
-    ///                 "",
-    ///             },
-    ///         }),
     ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///         ClusterName = name,
     ///         PaymentType = "PayAsYouGo",
@@ -247,7 +234,7 @@ namespace Pulumi.AliCloud.Emrv2
         public Output<ImmutableArray<string>> Applications { get; private set; } = null!;
 
         /// <summary>
-        /// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
+        /// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         /// </summary>
         [Output("bootstrapScripts")]
         public Output<ImmutableArray<Outputs.ClusterBootstrapScript>> BootstrapScripts { get; private set; } = null!;
@@ -398,7 +385,7 @@ namespace Pulumi.AliCloud.Emrv2
         private InputList<Inputs.ClusterBootstrapScriptArgs>? _bootstrapScripts;
 
         /// <summary>
-        /// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
+        /// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         /// </summary>
         public InputList<Inputs.ClusterBootstrapScriptArgs> BootstrapScripts
         {
@@ -532,7 +519,7 @@ namespace Pulumi.AliCloud.Emrv2
         private InputList<Inputs.ClusterBootstrapScriptGetArgs>? _bootstrapScripts;
 
         /// <summary>
-        /// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrap_scripts` below.
+        /// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         /// </summary>
         public InputList<Inputs.ClusterBootstrapScriptGetArgs> BootstrapScripts
         {
