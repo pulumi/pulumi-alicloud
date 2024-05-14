@@ -197,11 +197,11 @@ type ForwardingRule struct {
 
 	// The ID of the Global Accelerator instance.
 	AcceleratorId pulumi.StringOutput `pulumi:"acceleratorId"`
-	// Forwarding Policy ID.
+	// The ID of the Forwarding Rule.
 	ForwardingRuleId pulumi.StringOutput `pulumi:"forwardingRuleId"`
 	// Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
 	ForwardingRuleName pulumi.StringPtrOutput `pulumi:"forwardingRuleName"`
-	// Forwarding Policy Status.
+	// The status of the Forwarding Rule.
 	ForwardingRuleStatus pulumi.StringOutput `pulumi:"forwardingRuleStatus"`
 	// The ID of the listener.
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
@@ -257,11 +257,11 @@ func GetForwardingRule(ctx *pulumi.Context,
 type forwardingRuleState struct {
 	// The ID of the Global Accelerator instance.
 	AcceleratorId *string `pulumi:"acceleratorId"`
-	// Forwarding Policy ID.
+	// The ID of the Forwarding Rule.
 	ForwardingRuleId *string `pulumi:"forwardingRuleId"`
 	// Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
 	ForwardingRuleName *string `pulumi:"forwardingRuleName"`
-	// Forwarding Policy Status.
+	// The status of the Forwarding Rule.
 	ForwardingRuleStatus *string `pulumi:"forwardingRuleStatus"`
 	// The ID of the listener.
 	ListenerId *string `pulumi:"listenerId"`
@@ -276,11 +276,11 @@ type forwardingRuleState struct {
 type ForwardingRuleState struct {
 	// The ID of the Global Accelerator instance.
 	AcceleratorId pulumi.StringPtrInput
-	// Forwarding Policy ID.
+	// The ID of the Forwarding Rule.
 	ForwardingRuleId pulumi.StringPtrInput
 	// Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
 	ForwardingRuleName pulumi.StringPtrInput
-	// Forwarding Policy Status.
+	// The status of the Forwarding Rule.
 	ForwardingRuleStatus pulumi.StringPtrInput
 	// The ID of the listener.
 	ListenerId pulumi.StringPtrInput
@@ -419,7 +419,7 @@ func (o ForwardingRuleOutput) AcceleratorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.AcceleratorId }).(pulumi.StringOutput)
 }
 
-// Forwarding Policy ID.
+// The ID of the Forwarding Rule.
 func (o ForwardingRuleOutput) ForwardingRuleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.ForwardingRuleId }).(pulumi.StringOutput)
 }
@@ -429,7 +429,7 @@ func (o ForwardingRuleOutput) ForwardingRuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringPtrOutput { return v.ForwardingRuleName }).(pulumi.StringPtrOutput)
 }
 
-// Forwarding Policy Status.
+// The status of the Forwarding Rule.
 func (o ForwardingRuleOutput) ForwardingRuleStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.ForwardingRuleStatus }).(pulumi.StringOutput)
 }

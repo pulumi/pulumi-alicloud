@@ -36,6 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.eventbridge.EventBus;
  * import com.pulumi.alicloud.eventbridge.EventBusArgs;
  * import com.pulumi.alicloud.mns.Queue;
@@ -57,12 +59,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var example = new EventBus("example", EventBusArgs.builder()        
  *             .eventBusName(name)
  *             .build());
  * 
  *         var exampleQueue = new Queue("exampleQueue", QueueArgs.builder()        
- *             .name(name)
+ *             .name(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
  *         var exampleEventSource = new EventSource("exampleEventSource", EventSourceArgs.builder()        

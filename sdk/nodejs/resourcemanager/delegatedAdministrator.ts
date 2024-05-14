@@ -27,10 +27,10 @@ import * as utilities from "../utilities";
  *     min: 10000,
  *     max: 99999,
  * });
- * const example = new alicloud.resourcemanager.Folder("example", {folderName: `${name}-${_default.result}`});
+ * const example = alicloud.resourcemanager.getFolders({});
  * const exampleAccount = new alicloud.resourcemanager.Account("example", {
  *     displayName: `${displayName}-${_default.result}`,
- *     folderId: example.id,
+ *     folderId: example.then(example => example.ids?.[0]),
  * });
  * const exampleDelegatedAdministrator = new alicloud.resourcemanager.DelegatedAdministrator("example", {
  *     accountId: exampleAccount.id,

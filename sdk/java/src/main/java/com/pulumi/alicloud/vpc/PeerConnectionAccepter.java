@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         final var acceptingRegion = config.get("acceptingRegion").orElse("cn-beijing");
- *         final var acceptUid = config.get("acceptUid").orElse("xxxx");
+ *         final var anotherUid = config.get("anotherUid").orElse("xxxx");
  *         var local = new Network("local", NetworkArgs.builder()        
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")

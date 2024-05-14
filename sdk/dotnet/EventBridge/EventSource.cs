@@ -25,11 +25,18 @@ namespace Pulumi.AliCloud.EventBridge
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
     ///     var example = new AliCloud.EventBridge.EventBus("example", new()
     ///     {
     ///         EventBusName = name,
@@ -37,7 +44,7 @@ namespace Pulumi.AliCloud.EventBridge
     /// 
     ///     var exampleQueue = new AliCloud.Mns.Queue("example", new()
     ///     {
-    ///         Name = name,
+    ///         Name = $"{name}-{@default.Result}",
     ///     });
     /// 
     ///     var exampleEventSource = new AliCloud.EventBridge.EventSource("example", new()

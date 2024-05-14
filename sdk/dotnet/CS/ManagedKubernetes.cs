@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ServiceCidr { get; private set; } = null!;
 
         /// <summary>
-        /// (Deprecated) The ID of load balancer.
+        /// The ID of APIServer load balancer.
         /// </summary>
         [Output("slbId")]
         public Output<string> SlbId { get; private set; } = null!;
@@ -588,7 +588,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ServiceCidr { get; set; }
 
         /// <summary>
-        /// (Deprecated) The ID of load balancer.
+        /// The ID of APIServer load balancer.
         /// </summary>
         [Input("slbId")]
         public Input<string>? SlbId { get; set; }

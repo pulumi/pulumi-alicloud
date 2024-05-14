@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
+ *         final var type = config.get("type").orElse("Normal");
  *         final var default = ClickhouseFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
@@ -93,6 +94,7 @@ import javax.annotation.Nullable;
  *             .accountDescription("tf-example-description")
  *             .accountName("examplename")
  *             .accountPassword("Example1234")
+ *             .type(type)
  *             .build());
  * 
  *     }
@@ -239,28 +241,36 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The list of all databases. Separate databases with commas (,).
+     * The list of all databases. Separate databases with commas (,). Field &#39;total_databases&#39; has been deprecated from provider version 1.223.1.
+     * 
+     * @deprecated
+     * Field &#39;total_databases&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
      * 
      */
+    @Deprecated /* Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version. */
     @Export(name="totalDatabases", refs={String.class}, tree="[0]")
     private Output<String> totalDatabases;
 
     /**
-     * @return The list of all databases. Separate databases with commas (,).
+     * @return The list of all databases. Separate databases with commas (,). Field &#39;total_databases&#39; has been deprecated from provider version 1.223.1.
      * 
      */
     public Output<String> totalDatabases() {
         return this.totalDatabases;
     }
     /**
-     * The list of all dictionaries. Separate dictionaries with commas (,).
+     * The list of all dictionaries. Separate dictionaries with commas (,). Field &#39;total_dictionaries&#39; has been deprecated from provider version 1.223.1.
+     * 
+     * @deprecated
+     * Field &#39;total_dictionaries&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
      * 
      */
+    @Deprecated /* Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version. */
     @Export(name="totalDictionaries", refs={String.class}, tree="[0]")
     private Output<String> totalDictionaries;
 
     /**
-     * @return The list of all dictionaries. Separate dictionaries with commas (,).
+     * @return The list of all dictionaries. Separate dictionaries with commas (,). Field &#39;total_dictionaries&#39; has been deprecated from provider version 1.223.1.
      * 
      */
     public Output<String> totalDictionaries() {
@@ -271,14 +281,14 @@ public class Account extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
-    private Output<String> type;
+    private Output</* @Nullable */ String> type;
 
     /**
      * @return The type of the database account. Valid values: `Normal` or `Super`.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Output<Optional<String>> type() {
+        return Codegen.optional(this.type);
     }
 
     /**

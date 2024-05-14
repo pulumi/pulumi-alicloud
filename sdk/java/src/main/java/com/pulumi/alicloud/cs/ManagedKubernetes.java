@@ -339,18 +339,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceCidr);
     }
     /**
-     * (Deprecated) The ID of load balancer.
-     * 
-     * @deprecated
-     * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
+     * The ID of APIServer load balancer.
      * 
      */
-    @Deprecated /* Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it. */
     @Export(name="slbId", refs={String.class}, tree="[0]")
     private Output<String> slbId;
 
     /**
-     * @return (Deprecated) The ID of load balancer.
+     * @return The ID of APIServer load balancer.
      * 
      */
     public Output<String> slbId() {

@@ -12,8 +12,11 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
 
     public sealed class ServiceMeshMeshConfigControlPlaneLogArgs : global::Pulumi.ResourceArgs
     {
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
+
+        [Input("logTtlInDay")]
+        public Input<int>? LogTtlInDay { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

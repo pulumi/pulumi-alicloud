@@ -41,6 +41,10 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
+//			_type := "Normal"
+//			if param := cfg.Get("type"); param != "" {
+//				_type = param
+//			}
 //			_default, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
@@ -83,6 +87,7 @@ import (
 //				AccountDescription: pulumi.String("tf-example-description"),
 //				AccountName:        pulumi.String("examplename"),
 //				AccountPassword:    pulumi.String("Example1234"),
+//				Type:               pulumi.String(_type),
 //			})
 //			if err != nil {
 //				return err
@@ -121,12 +126,16 @@ type Account struct {
 	DmlAuthority pulumi.StringOutput `pulumi:"dmlAuthority"`
 	// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The list of all databases. Separate databases with commas (,).
+	// The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
+	//
+	// Deprecated: Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.
 	TotalDatabases pulumi.StringOutput `pulumi:"totalDatabases"`
-	// The list of all dictionaries. Separate dictionaries with commas (,).
+	// The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
+	//
+	// Deprecated: Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.
 	TotalDictionaries pulumi.StringOutput `pulumi:"totalDictionaries"`
 	// The type of the database account. Valid values: `Normal` or `Super`.
-	Type pulumi.StringOutput `pulumi:"type"`
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
 // NewAccount registers a new resource with the given unique name, arguments, and options.
@@ -186,9 +195,13 @@ type accountState struct {
 	DmlAuthority *string `pulumi:"dmlAuthority"`
 	// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
 	Status *string `pulumi:"status"`
-	// The list of all databases. Separate databases with commas (,).
+	// The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
+	//
+	// Deprecated: Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.
 	TotalDatabases *string `pulumi:"totalDatabases"`
-	// The list of all dictionaries. Separate dictionaries with commas (,).
+	// The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
+	//
+	// Deprecated: Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.
 	TotalDictionaries *string `pulumi:"totalDictionaries"`
 	// The type of the database account. Valid values: `Normal` or `Super`.
 	Type *string `pulumi:"type"`
@@ -213,9 +226,13 @@ type AccountState struct {
 	DmlAuthority pulumi.StringPtrInput
 	// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
 	Status pulumi.StringPtrInput
-	// The list of all databases. Separate databases with commas (,).
+	// The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
+	//
+	// Deprecated: Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.
 	TotalDatabases pulumi.StringPtrInput
-	// The list of all dictionaries. Separate dictionaries with commas (,).
+	// The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
+	//
+	// Deprecated: Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.
 	TotalDictionaries pulumi.StringPtrInput
 	// The type of the database account. Valid values: `Normal` or `Super`.
 	Type pulumi.StringPtrInput
@@ -242,10 +259,16 @@ type accountArgs struct {
 	DdlAuthority *bool `pulumi:"ddlAuthority"`
 	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
 	DmlAuthority *string `pulumi:"dmlAuthority"`
-	// The list of all databases. Separate databases with commas (,).
+	// The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
+	//
+	// Deprecated: Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.
 	TotalDatabases *string `pulumi:"totalDatabases"`
-	// The list of all dictionaries. Separate dictionaries with commas (,).
+	// The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
+	//
+	// Deprecated: Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.
 	TotalDictionaries *string `pulumi:"totalDictionaries"`
+	// The type of the database account. Valid values: `Normal` or `Super`.
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Account resource.
@@ -266,10 +289,16 @@ type AccountArgs struct {
 	DdlAuthority pulumi.BoolPtrInput
 	// Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
 	DmlAuthority pulumi.StringPtrInput
-	// The list of all databases. Separate databases with commas (,).
+	// The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
+	//
+	// Deprecated: Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.
 	TotalDatabases pulumi.StringPtrInput
-	// The list of all dictionaries. Separate dictionaries with commas (,).
+	// The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
+	//
+	// Deprecated: Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.
 	TotalDictionaries pulumi.StringPtrInput
+	// The type of the database account. Valid values: `Normal` or `Super`.
+	Type pulumi.StringPtrInput
 }
 
 func (AccountArgs) ElementType() reflect.Type {
@@ -404,19 +433,23 @@ func (o AccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The list of all databases. Separate databases with commas (,).
+// The list of all databases. Separate databases with commas (,). Field 'total_databases' has been deprecated from provider version 1.223.1.
+//
+// Deprecated: Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version.
 func (o AccountOutput) TotalDatabases() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.TotalDatabases }).(pulumi.StringOutput)
 }
 
-// The list of all dictionaries. Separate dictionaries with commas (,).
+// The list of all dictionaries. Separate dictionaries with commas (,). Field 'total_dictionaries' has been deprecated from provider version 1.223.1.
+//
+// Deprecated: Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version.
 func (o AccountOutput) TotalDictionaries() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.TotalDictionaries }).(pulumi.StringOutput)
 }
 
 // The type of the database account. Valid values: `Normal` or `Super`.
-func (o AccountOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+func (o AccountOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type AccountArrayOutput struct{ *pulumi.OutputState }

@@ -123,10 +123,10 @@ class DelegatedAdministrator(pulumi.CustomResource):
         default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
+        example = alicloud.resourcemanager.get_folders()
         example_account = alicloud.resourcemanager.Account("example",
             display_name=f"{display_name}-{default['result']}",
-            folder_id=example.id)
+            folder_id=example.ids[0])
         example_delegated_administrator = alicloud.resourcemanager.DelegatedAdministrator("example",
             account_id=example_account.id,
             service_principal="cloudfw.aliyuncs.com")
@@ -177,10 +177,10 @@ class DelegatedAdministrator(pulumi.CustomResource):
         default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
+        example = alicloud.resourcemanager.get_folders()
         example_account = alicloud.resourcemanager.Account("example",
             display_name=f"{display_name}-{default['result']}",
-            folder_id=example.id)
+            folder_id=example.ids[0])
         example_delegated_administrator = alicloud.resourcemanager.DelegatedAdministrator("example",
             account_id=example_account.id,
             service_principal="cloudfw.aliyuncs.com")

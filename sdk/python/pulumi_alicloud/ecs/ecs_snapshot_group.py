@@ -365,7 +365,9 @@ class EcsSnapshotGroup(pulumi.CustomResource):
             available_disk_category="cloud_essd")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             system_disk_category="cloud_essd")
-        default_get_images = alicloud.ecs.get_images(owners="system")
+        default_get_images = alicloud.ecs.get_images(owners="system",
+            name_regex="^ubuntu_18.*64",
+            most_recent=True)
         default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
@@ -396,7 +398,7 @@ class EcsSnapshotGroup(pulumi.CustomResource):
             instance_id=default_instance.id)
         default_ecs_snapshot_group = alicloud.ecs.EcsSnapshotGroup("default",
             description="terraform-example",
-            disk_ids=[default_ecs_disk.id],
+            disk_ids=[default_disk_attachment.disk_id],
             snapshot_group_name="terraform-example",
             instance_id=default_instance.id,
             instant_access=True,
@@ -452,7 +454,9 @@ class EcsSnapshotGroup(pulumi.CustomResource):
             available_disk_category="cloud_essd")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             system_disk_category="cloud_essd")
-        default_get_images = alicloud.ecs.get_images(owners="system")
+        default_get_images = alicloud.ecs.get_images(owners="system",
+            name_regex="^ubuntu_18.*64",
+            most_recent=True)
         default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
@@ -483,7 +487,7 @@ class EcsSnapshotGroup(pulumi.CustomResource):
             instance_id=default_instance.id)
         default_ecs_snapshot_group = alicloud.ecs.EcsSnapshotGroup("default",
             description="terraform-example",
-            disk_ids=[default_ecs_disk.id],
+            disk_ids=[default_disk_attachment.disk_id],
             snapshot_group_name="terraform-example",
             instance_id=default_instance.id,
             instant_access=True,

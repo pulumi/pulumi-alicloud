@@ -78,7 +78,7 @@ export class TairInstance extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+     * The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
@@ -259,7 +259,7 @@ export interface TairInstanceState {
      */
     password?: pulumi.Input<string>;
     /**
-     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+     * The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -353,7 +353,7 @@ export interface TairInstanceArgs {
      */
     password?: pulumi.Input<string>;
     /**
-     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+     * The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      */
     paymentType?: pulumi.Input<string>;
     /**

@@ -158,14 +158,14 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
-     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+     * The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+     * @return The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      * 
      */
     public Output<String> paymentType() {

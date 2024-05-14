@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var cenUid = config.get("cenUid").orElse(123456789);
+ *         final var anotherUid = config.get("anotherUid").orElse(123456789);
  *         // Method 2: Use the target cen account's access_key, secret_key
  *         // provider "alicloud" {
  *         //   region     = "cn-hangzhou"
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *         var defaultNetworkGrant = new NetworkGrant("defaultNetworkGrant", NetworkGrantArgs.builder()        
  *             .ccnId(default_.id())
  *             .cenId(cen.id())
- *             .cenUid(cenUid)
+ *             .cenUid(anotherUid)
  *             .build());
  * 
  *     }

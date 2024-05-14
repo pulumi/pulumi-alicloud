@@ -51,11 +51,17 @@ class GetAccountsResult:
     @property
     @pulumi.getter
     def accounts(self) -> Sequence['outputs.GetAccountsAccountResult']:
+        """
+        A list of Click House Accounts. Each element contains the following attributes:
+        """
         return pulumi.get(self, "accounts")
 
     @property
     @pulumi.getter(name="dbClusterId")
     def db_cluster_id(self) -> str:
+        """
+        The DBCluster id.
+        """
         return pulumi.get(self, "db_cluster_id")
 
     @property
@@ -79,6 +85,9 @@ class GetAccountsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Account names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -89,6 +98,9 @@ class GetAccountsResult:
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The status of the resource.
+        """
         return pulumi.get(self, "status")
 
 
@@ -117,7 +129,7 @@ def get_accounts(db_cluster_id: Optional[str] = None,
     """
     This data source provides the Click House Accounts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 
@@ -130,12 +142,24 @@ def get_accounts(db_cluster_id: Optional[str] = None,
     config = pulumi.Config()
     name = config.get("name")
     if name is None:
-        name = "testaccountname"
+        name = "oneaccountname"
     pwd = config.get("pwd")
     if pwd is None:
-        pwd = "Tf-testpwd"
+        pwd = "Tf-onepwd"
+    type = config.get("type")
+    if type is None:
+        type = "Normal"
+    default = alicloud.clickhouse.get_regions(current=True)
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="10.4.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name=name,
+        cidr_block="10.4.0.0/24",
+        vpc_id=default_network.id,
+        zone_id=default.regions[0].zone_ids[0].zone_id)
     default_db_cluster = alicloud.clickhouse.DbCluster("default",
-        db_cluster_version="20.3.10.75",
+        db_cluster_version="22.8.5.29",
         category="Basic",
         db_cluster_class="S8",
         db_cluster_network_type="vpc",
@@ -144,15 +168,17 @@ def get_accounts(db_cluster_id: Optional[str] = None,
         payment_type="PayAsYouGo",
         db_node_storage="500",
         storage_type="cloud_essd",
-        vswitch_id="your_vswitch_id")
+        vswitch_id=default_switch.id,
+        vpc_id=default_network.id)
     default_account = alicloud.clickhouse.Account("default",
         db_cluster_id=default_db_cluster.id,
         account_description="your_description",
         account_name=name,
-        account_password=pwd)
-    default = alicloud.clickhouse.get_accounts_output(ids=[default_account.id],
+        account_password=pwd,
+        type=type)
+    default_get_accounts = alicloud.clickhouse.get_accounts_output(ids=[default_account.id],
         db_cluster_id=default_db_cluster.id)
-    pulumi.export("accountId", default.ids[0])
+    pulumi.export("accountId", default_get_accounts.ids[0])
     ```
 
 
@@ -160,7 +186,7 @@ def get_accounts(db_cluster_id: Optional[str] = None,
     :param Sequence[str] ids: A list of Account IDs. Its element value is same as Account Name.
     :param str name_regex: A regex string to filter results by Account name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
     """
     __args__ = dict()
     __args__['dbClusterId'] = db_cluster_id
@@ -192,7 +218,7 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
     """
     This data source provides the Click House Accounts of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.134.0+.
+    > **NOTE:** Available since v1.134.0.
 
     ## Example Usage
 
@@ -205,12 +231,24 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
     config = pulumi.Config()
     name = config.get("name")
     if name is None:
-        name = "testaccountname"
+        name = "oneaccountname"
     pwd = config.get("pwd")
     if pwd is None:
-        pwd = "Tf-testpwd"
+        pwd = "Tf-onepwd"
+    type = config.get("type")
+    if type is None:
+        type = "Normal"
+    default = alicloud.clickhouse.get_regions(current=True)
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="10.4.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name=name,
+        cidr_block="10.4.0.0/24",
+        vpc_id=default_network.id,
+        zone_id=default.regions[0].zone_ids[0].zone_id)
     default_db_cluster = alicloud.clickhouse.DbCluster("default",
-        db_cluster_version="20.3.10.75",
+        db_cluster_version="22.8.5.29",
         category="Basic",
         db_cluster_class="S8",
         db_cluster_network_type="vpc",
@@ -219,15 +257,17 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
         payment_type="PayAsYouGo",
         db_node_storage="500",
         storage_type="cloud_essd",
-        vswitch_id="your_vswitch_id")
+        vswitch_id=default_switch.id,
+        vpc_id=default_network.id)
     default_account = alicloud.clickhouse.Account("default",
         db_cluster_id=default_db_cluster.id,
         account_description="your_description",
         account_name=name,
-        account_password=pwd)
-    default = alicloud.clickhouse.get_accounts_output(ids=[default_account.id],
+        account_password=pwd,
+        type=type)
+    default_get_accounts = alicloud.clickhouse.get_accounts_output(ids=[default_account.id],
         db_cluster_id=default_db_cluster.id)
-    pulumi.export("accountId", default.ids[0])
+    pulumi.export("accountId", default_get_accounts.ids[0])
     ```
 
 
@@ -235,6 +275,6 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
     :param Sequence[str] ids: A list of Account IDs. Its element value is same as Account Name.
     :param str name_regex: A regex string to filter results by Account name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
     """
     ...

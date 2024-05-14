@@ -160,15 +160,14 @@ class AccessGroup(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.dfs.AccessGroup("default",
-            description=name,
-            network_type="VPC",
-            access_group_name=name)
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_access_group = alicloud.dfs.AccessGroup("default",
+            access_group_name=f"tf-example-{default['result']}",
+            network_type="VPC")
         ```
 
         ## Import
@@ -205,15 +204,14 @@ class AccessGroup(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "terraform-example"
-        default = alicloud.dfs.AccessGroup("default",
-            description=name,
-            network_type="VPC",
-            access_group_name=name)
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_access_group = alicloud.dfs.AccessGroup("default",
+            access_group_name=f"tf-example-{default['result']}",
+            network_type="VPC")
         ```
 
         ## Import

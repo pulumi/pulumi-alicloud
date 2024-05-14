@@ -47,6 +47,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ecs.Image;
  * import com.pulumi.alicloud.ecs.ImageArgs;
  * import com.pulumi.alicloud.ecs.ImageSharePermission;
@@ -105,16 +107,21 @@ import javax.annotation.Nullable;
  *             .internetMaxBandwidthOut(10)
  *             .build());
  * 
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
  *             .instanceId(defaultInstance.id())
- *             .imageName("terraform-example")
+ *             .imageName(String.format("terraform-example-%s", defaultInteger.result()))
  *             .description("terraform-example")
  *             .build());
  * 
- *         final var accountId = config.get("accountId").orElse("123456789");
+ *         final var anotherUid = config.get("anotherUid").orElse("123456789");
  *         var defaultImageSharePermission = new ImageSharePermission("defaultImageSharePermission", ImageSharePermissionArgs.builder()        
  *             .imageId(defaultImage.id())
- *             .accountId(accountId)
+ *             .accountId(anotherUid)
  *             .build());
  * 
  *     }

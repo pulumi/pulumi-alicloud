@@ -17,14 +17,14 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
     public static final ServiceMeshLoadBalancerArgs Empty = new ServiceMeshLoadBalancerArgs();
 
     /**
-     * The IP address of a public network exposed API Server corresponding to the load balancing ID.
+     * The Instance ID of APIServer Load Balancer.
      * 
      */
     @Import(name="apiServerLoadbalancerId")
     private @Nullable Output<String> apiServerLoadbalancerId;
 
     /**
-     * @return The IP address of a public network exposed API Server corresponding to the load balancing ID.
+     * @return The Instance ID of APIServer Load Balancer.
      * 
      */
     public Optional<Output<String>> apiServerLoadbalancerId() {
@@ -62,14 +62,14 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
+     * The Instance ID of Pilot Load Balancer.
      * 
      */
     @Import(name="pilotPublicLoadbalancerId")
     private @Nullable Output<String> pilotPublicLoadbalancerId;
 
     /**
-     * @return The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
+     * @return The Instance ID of Pilot Load Balancer.
      * 
      */
     public Optional<Output<String>> pilotPublicLoadbalancerId() {
@@ -104,7 +104,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param apiServerLoadbalancerId The IP address of a public network exposed API Server corresponding to the load balancing ID.
+         * @param apiServerLoadbalancerId The Instance ID of APIServer Load Balancer.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param apiServerLoadbalancerId The IP address of a public network exposed API Server corresponding to the load balancing ID.
+         * @param apiServerLoadbalancerId The Instance ID of APIServer Load Balancer.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pilotPublicLoadbalancerId The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
+         * @param pilotPublicLoadbalancerId The Instance ID of Pilot Load Balancer.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pilotPublicLoadbalancerId The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
+         * @param pilotPublicLoadbalancerId The Instance ID of Pilot Load Balancer.
          * 
          * @return builder
          * 

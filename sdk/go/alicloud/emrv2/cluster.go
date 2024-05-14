@@ -27,7 +27,6 @@ import (
 //
 // import (
 //
-//	"encoding/json"
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
@@ -130,18 +129,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"open": []string{
-//					"all",
-//				},
-//				"close": []string{
-//					"",
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json0 := string(tmpJSON0)
 //			_, err = emrv2.NewCluster(ctx, "default", &emrv2.ClusterArgs{
 //				NodeGroups: emrv2.ClusterNodeGroupArray{
 //					&emrv2.ClusterNodeGroupArgs{
@@ -174,9 +161,8 @@ import (
 //						NodeGroupType: pulumi.String("MASTER"),
 //					},
 //					&emrv2.ClusterNodeGroupArgs{
-//						SpotInstanceRemedy:    pulumi.Bool(false),
-//						DeploymentSetStrategy: pulumi.String("CLUSTER"),
-//						NodeGroupType:         pulumi.String("CORE"),
+//						SpotInstanceRemedy: pulumi.Bool(false),
+//						NodeGroupType:      pulumi.String("CORE"),
 //						VswitchIds: pulumi.StringArray{
 //							defaultSwitch.ID(),
 //						},
@@ -226,11 +212,10 @@ import (
 //						SecurityGroupId:   defaultSecurityGroup.ID(),
 //					},
 //				},
-//				LogCollectStrategy: pulumi.String(json0),
-//				ResourceGroupId:    pulumi.String(_default.Ids[0]),
-//				ClusterName:        pulumi.String(name),
-//				PaymentType:        pulumi.String("PayAsYouGo"),
-//				ClusterType:        pulumi.String("DATAFLOW"),
+//				ResourceGroupId: pulumi.String(_default.Ids[0]),
+//				ClusterName:     pulumi.String(name),
+//				PaymentType:     pulumi.String("PayAsYouGo"),
+//				ClusterType:     pulumi.String("DATAFLOW"),
 //			})
 //			if err != nil {
 //				return err
@@ -255,7 +240,7 @@ type Cluster struct {
 	ApplicationConfigs ClusterApplicationConfigArrayOutput `pulumi:"applicationConfigs"`
 	// The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
 	Applications pulumi.StringArrayOutput `pulumi:"applications"`
-	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
+	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrapScripts` below.
 	BootstrapScripts ClusterBootstrapScriptArrayOutput `pulumi:"bootstrapScripts"`
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
@@ -335,7 +320,7 @@ type clusterState struct {
 	ApplicationConfigs []ClusterApplicationConfig `pulumi:"applicationConfigs"`
 	// The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
 	Applications []string `pulumi:"applications"`
-	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
+	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrapScripts` below.
 	BootstrapScripts []ClusterBootstrapScript `pulumi:"bootstrapScripts"`
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	ClusterName *string `pulumi:"clusterName"`
@@ -368,7 +353,7 @@ type ClusterState struct {
 	ApplicationConfigs ClusterApplicationConfigArrayInput
 	// The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
 	Applications pulumi.StringArrayInput
-	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
+	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrapScripts` below.
 	BootstrapScripts ClusterBootstrapScriptArrayInput
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	ClusterName pulumi.StringPtrInput
@@ -405,7 +390,7 @@ type clusterArgs struct {
 	ApplicationConfigs []ClusterApplicationConfig `pulumi:"applicationConfigs"`
 	// The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
 	Applications []string `pulumi:"applications"`
-	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
+	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrapScripts` below.
 	BootstrapScripts []ClusterBootstrapScript `pulumi:"bootstrapScripts"`
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	ClusterName string `pulumi:"clusterName"`
@@ -439,7 +424,7 @@ type ClusterArgs struct {
 	ApplicationConfigs ClusterApplicationConfigArrayInput
 	// The applications of EMR cluster to be installed, e.g. HADOOP-COMMON, HDFS, YARN, HIVE, SPARK2, SPARK3, ZOOKEEPER etc. You can find all valid applications in emr web console.
 	Applications pulumi.StringArrayInput
-	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
+	// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrapScripts` below.
 	BootstrapScripts ClusterBootstrapScriptArrayInput
 	// The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
 	ClusterName pulumi.StringInput
@@ -564,7 +549,7 @@ func (o ClusterOutput) Applications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.Applications }).(pulumi.StringArrayOutput)
 }
 
-// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster. See `bootstrapScripts` below.
+// The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrapScripts` below.
 func (o ClusterOutput) BootstrapScripts() ClusterBootstrapScriptArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterBootstrapScriptArrayOutput { return v.BootstrapScripts }).(ClusterBootstrapScriptArrayOutput)
 }

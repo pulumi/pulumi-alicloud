@@ -346,6 +346,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     * - general_essd: general essd.
      * 
      */
     @Export(name="dbInstanceStorageType", refs={String.class}, tree="[0]")
@@ -358,6 +359,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - cloud_essd: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
      * - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+     * - general_essd: general essd.
      * 
      */
     public Output<String> dbInstanceStorageType() {

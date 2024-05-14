@@ -489,8 +489,12 @@ class NasBackupPlan(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.hbr.Vault("default", vault_name="terraform-example2")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_vault = alicloud.hbr.Vault("default", vault_name=f"terraform-example-{default['result']}")
         default_file_system = alicloud.nas.FileSystem("default",
             protocol_type="NFS",
             storage_type="Performance",
@@ -501,7 +505,7 @@ class NasBackupPlan(pulumi.CustomResource):
             file_system_id=default_file_system.id,
             schedule="I|1602673264|PT2H",
             backup_type="COMPLETE",
-            vault_id=default.id,
+            vault_id=default_vault.id,
             retention="2",
             paths=["/"])
         ```
@@ -552,8 +556,12 @@ class NasBackupPlan(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
-        default = alicloud.hbr.Vault("default", vault_name="terraform-example2")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_vault = alicloud.hbr.Vault("default", vault_name=f"terraform-example-{default['result']}")
         default_file_system = alicloud.nas.FileSystem("default",
             protocol_type="NFS",
             storage_type="Performance",
@@ -564,7 +572,7 @@ class NasBackupPlan(pulumi.CustomResource):
             file_system_id=default_file_system.id,
             schedule="I|1602673264|PT2H",
             backup_type="COMPLETE",
-            vault_id=default.id,
+            vault_id=default_vault.id,
             retention="2",
             paths=["/"])
         ```

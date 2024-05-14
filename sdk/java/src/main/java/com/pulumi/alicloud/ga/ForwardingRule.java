@@ -210,14 +210,14 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
         return this.acceleratorId;
     }
     /**
-     * Forwarding Policy ID.
+     * The ID of the Forwarding Rule.
      * 
      */
     @Export(name="forwardingRuleId", refs={String.class}, tree="[0]")
     private Output<String> forwardingRuleId;
 
     /**
-     * @return Forwarding Policy ID.
+     * @return The ID of the Forwarding Rule.
      * 
      */
     public Output<String> forwardingRuleId() {
@@ -238,14 +238,14 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forwardingRuleName);
     }
     /**
-     * Forwarding Policy Status.
+     * The status of the Forwarding Rule.
      * 
      */
     @Export(name="forwardingRuleStatus", refs={String.class}, tree="[0]")
     private Output<String> forwardingRuleStatus;
 
     /**
-     * @return Forwarding Policy Status.
+     * @return The status of the Forwarding Rule.
      * 
      */
     public Output<String> forwardingRuleStatus() {

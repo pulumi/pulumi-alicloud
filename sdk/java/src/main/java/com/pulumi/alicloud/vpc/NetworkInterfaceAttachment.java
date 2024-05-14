@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -46,6 +47,12 @@ public class NetworkInterfaceAttachment extends com.pulumi.resources.CustomResou
      */
     public Output<String> instanceId() {
         return this.instanceId;
+    }
+    @Export(name="networkCardIndex", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> networkCardIndex;
+
+    public Output<Optional<Integer>> networkCardIndex() {
+        return Codegen.optional(this.networkCardIndex);
     }
     /**
      * The ENI ID to attach.

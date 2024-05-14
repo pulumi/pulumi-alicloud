@@ -16,6 +16,7 @@ class NetworkInterfaceAttachmentArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  network_interface_id: pulumi.Input[str],
+                 network_card_index: Optional[pulumi.Input[int]] = None,
                  trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
                  wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None):
         """
@@ -25,6 +26,8 @@ class NetworkInterfaceAttachmentArgs:
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "network_interface_id", network_interface_id)
+        if network_card_index is not None:
+            pulumi.set(__self__, "network_card_index", network_card_index)
         if trunk_network_instance_id is not None:
             pulumi.set(__self__, "trunk_network_instance_id", trunk_network_instance_id)
         if wait_for_network_configuration_ready is not None:
@@ -55,6 +58,15 @@ class NetworkInterfaceAttachmentArgs:
         pulumi.set(self, "network_interface_id", value)
 
     @property
+    @pulumi.getter(name="networkCardIndex")
+    def network_card_index(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "network_card_index")
+
+    @network_card_index.setter
+    def network_card_index(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "network_card_index", value)
+
+    @property
     @pulumi.getter(name="trunkNetworkInstanceId")
     def trunk_network_instance_id(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "trunk_network_instance_id")
@@ -77,6 +89,7 @@ class NetworkInterfaceAttachmentArgs:
 class _NetworkInterfaceAttachmentState:
     def __init__(__self__, *,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 network_card_index: Optional[pulumi.Input[int]] = None,
                  network_interface_id: Optional[pulumi.Input[str]] = None,
                  trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
                  wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None):
@@ -87,6 +100,8 @@ class _NetworkInterfaceAttachmentState:
         """
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if network_card_index is not None:
+            pulumi.set(__self__, "network_card_index", network_card_index)
         if network_interface_id is not None:
             pulumi.set(__self__, "network_interface_id", network_interface_id)
         if trunk_network_instance_id is not None:
@@ -105,6 +120,15 @@ class _NetworkInterfaceAttachmentState:
     @instance_id.setter
     def instance_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="networkCardIndex")
+    def network_card_index(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "network_card_index")
+
+    @network_card_index.setter
+    def network_card_index(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "network_card_index", value)
 
     @property
     @pulumi.getter(name="networkInterfaceId")
@@ -143,6 +167,7 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 network_card_index: Optional[pulumi.Input[int]] = None,
                  network_interface_id: Optional[pulumi.Input[str]] = None,
                  trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
                  wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None,
@@ -204,6 +229,7 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 network_card_index: Optional[pulumi.Input[int]] = None,
                  network_interface_id: Optional[pulumi.Input[str]] = None,
                  trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
                  wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None,
@@ -219,6 +245,7 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["network_card_index"] = network_card_index
             if network_interface_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_interface_id'")
             __props__.__dict__["network_interface_id"] = network_interface_id
@@ -235,6 +262,7 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
+            network_card_index: Optional[pulumi.Input[int]] = None,
             network_interface_id: Optional[pulumi.Input[str]] = None,
             trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
             wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None) -> 'NetworkInterfaceAttachment':
@@ -253,6 +281,7 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
         __props__ = _NetworkInterfaceAttachmentState.__new__(_NetworkInterfaceAttachmentState)
 
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["network_card_index"] = network_card_index
         __props__.__dict__["network_interface_id"] = network_interface_id
         __props__.__dict__["trunk_network_instance_id"] = trunk_network_instance_id
         __props__.__dict__["wait_for_network_configuration_ready"] = wait_for_network_configuration_ready
@@ -265,6 +294,11 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
         The instance ID to attach.
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="networkCardIndex")
+    def network_card_index(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "network_card_index")
 
     @property
     @pulumi.getter(name="networkInterfaceId")

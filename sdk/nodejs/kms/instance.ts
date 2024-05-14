@@ -29,14 +29,14 @@ import * as utilities from "../utilities";
  * });
  * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
  *     vpcId: _default.ids?.[0],
- *     zoneId: "cn-hangzhou-k",
+ *     zoneId: "cn-hangzhou-h",
  * }));
  * const defaultInstance = new alicloud.kms.Instance("default", {
  *     productVersion: "3",
  *     vpcId: _default.then(_default => _default.ids?.[0]),
  *     zoneIds: [
- *         "cn-hangzhou-k",
- *         "cn-hangzhou-j",
+ *         "cn-hangzhou-h",
+ *         "cn-hangzhou-g",
  *     ],
  *     vswitchIds: [defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0])],
  *     vpcNum: 1,

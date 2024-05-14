@@ -283,11 +283,16 @@ class Attachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        my_name = f"{name}-{default_integer['result']}"
         default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
@@ -296,17 +301,12 @@ class Attachment(pulumi.CustomResource):
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
-        default_network = alicloud.vpc.Network("default",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("default",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=name,
-            vpc_id=default_network.id)
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="10.4.0.0/16")
+        default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
+            vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_get_networks.ids[0])
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("default",
             type="ingress",
             ip_protocol="tcp",
@@ -319,12 +319,12 @@ class Attachment(pulumi.CustomResource):
         default_scaling_group = alicloud.ess.ScalingGroup("default",
             min_size=0,
             max_size=2,
-            scaling_group_name=name,
+            scaling_group_name=my_name,
             removal_policies=[
                 "OldestInstance",
                 "NewestInstance",
             ],
-            vswitch_ids=[default_switch.id])
+            vswitch_ids=[default_get_switches.ids[0]])
         default_scaling_configuration = alicloud.ess.ScalingConfiguration("default",
             scaling_group_id=default_scaling_group.id,
             image_id=default_get_images.images[0].id,
@@ -343,7 +343,7 @@ class Attachment(pulumi.CustomResource):
                 internet_max_bandwidth_out=10,
                 instance_charge_type="PostPaid",
                 system_disk_category="cloud_efficiency",
-                vswitch_id=default_switch.id,
+                vswitch_id=default_get_switches.ids[0],
                 instance_name=name))
         default_attachment = alicloud.ess.Attachment("default",
             scaling_group_id=default_scaling_group.id,
@@ -401,11 +401,16 @@ class Attachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        my_name = f"{name}-{default_integer['result']}"
         default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
@@ -414,17 +419,12 @@ class Attachment(pulumi.CustomResource):
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
-        default_network = alicloud.vpc.Network("default",
-            vpc_name=name,
-            cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("default",
-            vpc_id=default_network.id,
-            cidr_block="172.16.0.0/24",
-            zone_id=default.zones[0].id,
-            vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("default",
-            name=name,
-            vpc_id=default_network.id)
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$",
+            cidr_block="10.4.0.0/16")
+        default_get_switches = alicloud.vpc.get_switches(cidr_block="10.4.0.0/24",
+            vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_get_networks.ids[0])
         default_security_group_rule = alicloud.ecs.SecurityGroupRule("default",
             type="ingress",
             ip_protocol="tcp",
@@ -437,12 +437,12 @@ class Attachment(pulumi.CustomResource):
         default_scaling_group = alicloud.ess.ScalingGroup("default",
             min_size=0,
             max_size=2,
-            scaling_group_name=name,
+            scaling_group_name=my_name,
             removal_policies=[
                 "OldestInstance",
                 "NewestInstance",
             ],
-            vswitch_ids=[default_switch.id])
+            vswitch_ids=[default_get_switches.ids[0]])
         default_scaling_configuration = alicloud.ess.ScalingConfiguration("default",
             scaling_group_id=default_scaling_group.id,
             image_id=default_get_images.images[0].id,
@@ -461,7 +461,7 @@ class Attachment(pulumi.CustomResource):
                 internet_max_bandwidth_out=10,
                 instance_charge_type="PostPaid",
                 system_disk_category="cloud_efficiency",
-                vswitch_id=default_switch.id,
+                vswitch_id=default_get_switches.ids[0],
                 instance_name=name))
         default_attachment = alicloud.ess.Attachment("default",
             scaling_group_id=default_scaling_group.id,

@@ -350,59 +350,6 @@ class DbInstancePlan(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.189.0.
 
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.gpdb.get_zones()
-        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
-            zone_id=default.ids[0])
-        default_instance = alicloud.gpdb.Instance("default",
-            db_instance_category="HighAvailability",
-            db_instance_class="gpdb.group.segsdx1",
-            db_instance_mode="StorageElastic",
-            description=name,
-            engine="gpdb",
-            engine_version="6.0",
-            zone_id=default.ids[0],
-            instance_network_type="VPC",
-            instance_spec="2C16G",
-            master_node_num=1,
-            payment_type="PayAsYouGo",
-            private_ip_address="1.1.1.1",
-            seg_storage_type="cloud_essd",
-            seg_node_num=4,
-            storage_size=50,
-            vpc_id=default_get_networks.ids[0],
-            vswitch_id=default_get_switches.ids[0],
-            ip_whitelists=[alicloud.gpdb.InstanceIpWhitelistArgs(
-                security_ip_list="127.0.0.1",
-            )])
-        default_db_instance_plan = alicloud.gpdb.DbInstancePlan("default",
-            db_instance_plan_name=name,
-            plan_desc=name,
-            plan_type="PauseResume",
-            plan_schedule_type="Regular",
-            plan_configs=[alicloud.gpdb.DbInstancePlanPlanConfigArgs(
-                resume=alicloud.gpdb.DbInstancePlanPlanConfigResumeArgs(
-                    plan_cron_time="0 0 0 1/1 * ? ",
-                ),
-                pause=alicloud.gpdb.DbInstancePlanPlanConfigPauseArgs(
-                    plan_cron_time="0 0 10 1/1 * ? ",
-                ),
-            )],
-            db_instance_id=default_instance.id)
-        ```
-
         ## Import
 
         GPDB DB Instance Plan can be imported using the id, e.g.
@@ -435,59 +382,6 @@ class DbInstancePlan(pulumi.CustomResource):
         For information about AnalyticDB for PostgreSQL (GPDB) DB Instance Plan and how to use it, see [What is DB Instance Plan](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/developer-reference/api-gpdb-2016-05-03-createdbinstanceplan).
 
         > **NOTE:** Available since v1.189.0.
-
-        ## Example Usage
-
-        Basic Usage
-
-        ```python
-        import pulumi
-        import pulumi_alicloud as alicloud
-
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
-        default = alicloud.gpdb.get_zones()
-        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
-            zone_id=default.ids[0])
-        default_instance = alicloud.gpdb.Instance("default",
-            db_instance_category="HighAvailability",
-            db_instance_class="gpdb.group.segsdx1",
-            db_instance_mode="StorageElastic",
-            description=name,
-            engine="gpdb",
-            engine_version="6.0",
-            zone_id=default.ids[0],
-            instance_network_type="VPC",
-            instance_spec="2C16G",
-            master_node_num=1,
-            payment_type="PayAsYouGo",
-            private_ip_address="1.1.1.1",
-            seg_storage_type="cloud_essd",
-            seg_node_num=4,
-            storage_size=50,
-            vpc_id=default_get_networks.ids[0],
-            vswitch_id=default_get_switches.ids[0],
-            ip_whitelists=[alicloud.gpdb.InstanceIpWhitelistArgs(
-                security_ip_list="127.0.0.1",
-            )])
-        default_db_instance_plan = alicloud.gpdb.DbInstancePlan("default",
-            db_instance_plan_name=name,
-            plan_desc=name,
-            plan_type="PauseResume",
-            plan_schedule_type="Regular",
-            plan_configs=[alicloud.gpdb.DbInstancePlanPlanConfigArgs(
-                resume=alicloud.gpdb.DbInstancePlanPlanConfigResumeArgs(
-                    plan_cron_time="0 0 0 1/1 * ? ",
-                ),
-                pause=alicloud.gpdb.DbInstancePlanPlanConfigPauseArgs(
-                    plan_cron_time="0 0 10 1/1 * ? ",
-                ),
-            )],
-            db_instance_id=default_instance.id)
-        ```
 
         ## Import
 

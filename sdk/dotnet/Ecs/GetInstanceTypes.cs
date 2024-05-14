@@ -289,6 +289,12 @@ namespace Pulumi.AliCloud.Ecs
         public int? MinimumEniIpv6AddressQuantity { get; set; }
 
         /// <summary>
+        /// The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
+        /// </summary>
+        [Input("minimumEniPrivateIpAddressQuantity")]
+        public int? MinimumEniPrivateIpAddressQuantity { get; set; }
+
+        /// <summary>
         /// Filter the results by network type. Valid values: `Classic` and `Vpc`.
         /// </summary>
         [Input("networkType")]
@@ -313,7 +319,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? SpotStrategy { get; set; }
 
         /// <summary>
-        /// Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`. 
+        /// Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`. 
         /// **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
         /// </summary>
         [Input("systemDiskCategory")]
@@ -407,6 +413,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? MinimumEniIpv6AddressQuantity { get; set; }
 
         /// <summary>
+        /// The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
+        /// </summary>
+        [Input("minimumEniPrivateIpAddressQuantity")]
+        public Input<int>? MinimumEniPrivateIpAddressQuantity { get; set; }
+
+        /// <summary>
         /// Filter the results by network type. Valid values: `Classic` and `Vpc`.
         /// </summary>
         [Input("networkType")]
@@ -431,7 +443,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SpotStrategy { get; set; }
 
         /// <summary>
-        /// Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`. 
+        /// Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`. 
         /// **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
         /// </summary>
         [Input("systemDiskCategory")]
@@ -481,6 +493,7 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly double? MemorySize;
         public readonly int? MinimumEniIpv6AddressQuantity;
+        public readonly int? MinimumEniPrivateIpAddressQuantity;
         public readonly string? NetworkType;
         public readonly string? OutputFile;
         public readonly string? SortedBy;
@@ -521,6 +534,8 @@ namespace Pulumi.AliCloud.Ecs
 
             int? minimumEniIpv6AddressQuantity,
 
+            int? minimumEniPrivateIpAddressQuantity,
+
             string? networkType,
 
             string? outputFile,
@@ -547,6 +562,7 @@ namespace Pulumi.AliCloud.Ecs
             KubernetesNodeRole = kubernetesNodeRole;
             MemorySize = memorySize;
             MinimumEniIpv6AddressQuantity = minimumEniIpv6AddressQuantity;
+            MinimumEniPrivateIpAddressQuantity = minimumEniPrivateIpAddressQuantity;
             NetworkType = networkType;
             OutputFile = outputFile;
             SortedBy = sortedBy;

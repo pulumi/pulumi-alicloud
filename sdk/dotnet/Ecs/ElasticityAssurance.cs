@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         Description = "before",
     ///         ZoneIds = new[]
     ///         {
-    ///             defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///             defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[2]?.Id),
     ///         },
     ///         PrivatePoolOptionsName = "test_before",
     ///         Period = 1,

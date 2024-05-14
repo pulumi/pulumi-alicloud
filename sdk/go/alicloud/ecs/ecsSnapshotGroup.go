@@ -50,7 +50,9 @@ import (
 //				return err
 //			}
 //			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				Owners: pulumi.StringRef("system"),
+//				Owners:     pulumi.StringRef("system"),
+//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
+//				MostRecent: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -102,7 +104,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewDiskAttachment(ctx, "default", &ecs.DiskAttachmentArgs{
+//			defaultDiskAttachment, err := ecs.NewDiskAttachment(ctx, "default", &ecs.DiskAttachmentArgs{
 //				DiskId:     defaultEcsDisk.ID(),
 //				InstanceId: defaultInstance.ID(),
 //			})
@@ -112,7 +114,7 @@ import (
 //			_, err = ecs.NewEcsSnapshotGroup(ctx, "default", &ecs.EcsSnapshotGroupArgs{
 //				Description: pulumi.String("terraform-example"),
 //				DiskIds: pulumi.StringArray{
-//					defaultEcsDisk.ID(),
+//					defaultDiskAttachment.DiskId,
 //				},
 //				SnapshotGroupName:          pulumi.String("terraform-example"),
 //				InstanceId:                 defaultInstance.ID(),

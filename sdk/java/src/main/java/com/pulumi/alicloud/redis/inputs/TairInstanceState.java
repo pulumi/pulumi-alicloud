@@ -155,14 +155,14 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+     * The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+     * @return The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -600,7 +600,7 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+         * @param paymentType The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
          * 
          * @return builder
          * 
@@ -611,7 +611,7 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+         * @param paymentType The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
          * 
          * @return builder
          * 

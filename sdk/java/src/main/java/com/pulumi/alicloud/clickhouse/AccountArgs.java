@@ -138,33 +138,64 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of all databases. Separate databases with commas (,).
+     * The list of all databases. Separate databases with commas (,). Field &#39;total_databases&#39; has been deprecated from provider version 1.223.1.
+     * 
+     * @deprecated
+     * Field &#39;total_databases&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
      * 
      */
+    @Deprecated /* Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version. */
     @Import(name="totalDatabases")
     private @Nullable Output<String> totalDatabases;
 
     /**
-     * @return The list of all databases. Separate databases with commas (,).
+     * @return The list of all databases. Separate databases with commas (,). Field &#39;total_databases&#39; has been deprecated from provider version 1.223.1.
+     * 
+     * @deprecated
+     * Field &#39;total_databases&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
      * 
      */
+    @Deprecated /* Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version. */
     public Optional<Output<String>> totalDatabases() {
         return Optional.ofNullable(this.totalDatabases);
     }
 
     /**
-     * The list of all dictionaries. Separate dictionaries with commas (,).
+     * The list of all dictionaries. Separate dictionaries with commas (,). Field &#39;total_dictionaries&#39; has been deprecated from provider version 1.223.1.
+     * 
+     * @deprecated
+     * Field &#39;total_dictionaries&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
      * 
      */
+    @Deprecated /* Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version. */
     @Import(name="totalDictionaries")
     private @Nullable Output<String> totalDictionaries;
 
     /**
-     * @return The list of all dictionaries. Separate dictionaries with commas (,).
+     * @return The list of all dictionaries. Separate dictionaries with commas (,). Field &#39;total_dictionaries&#39; has been deprecated from provider version 1.223.1.
+     * 
+     * @deprecated
+     * Field &#39;total_dictionaries&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
      * 
      */
+    @Deprecated /* Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version. */
     public Optional<Output<String>> totalDictionaries() {
         return Optional.ofNullable(this.totalDictionaries);
+    }
+
+    /**
+     * The type of the database account. Valid values: `Normal` or `Super`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The type of the database account. Valid values: `Normal` or `Super`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private AccountArgs() {}
@@ -180,6 +211,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         this.dmlAuthority = $.dmlAuthority;
         this.totalDatabases = $.totalDatabases;
         this.totalDictionaries = $.totalDictionaries;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -369,45 +401,82 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param totalDatabases The list of all databases. Separate databases with commas (,).
+         * @param totalDatabases The list of all databases. Separate databases with commas (,). Field &#39;total_databases&#39; has been deprecated from provider version 1.223.1.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;total_databases&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
+         * 
          */
+        @Deprecated /* Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version. */
         public Builder totalDatabases(@Nullable Output<String> totalDatabases) {
             $.totalDatabases = totalDatabases;
             return this;
         }
 
         /**
-         * @param totalDatabases The list of all databases. Separate databases with commas (,).
+         * @param totalDatabases The list of all databases. Separate databases with commas (,). Field &#39;total_databases&#39; has been deprecated from provider version 1.223.1.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;total_databases&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
+         * 
          */
+        @Deprecated /* Field 'total_databases' has been deprecated from version 1.223.1 and it will be removed in the future version. */
         public Builder totalDatabases(String totalDatabases) {
             return totalDatabases(Output.of(totalDatabases));
         }
 
         /**
-         * @param totalDictionaries The list of all dictionaries. Separate dictionaries with commas (,).
+         * @param totalDictionaries The list of all dictionaries. Separate dictionaries with commas (,). Field &#39;total_dictionaries&#39; has been deprecated from provider version 1.223.1.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;total_dictionaries&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
+         * 
          */
+        @Deprecated /* Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version. */
         public Builder totalDictionaries(@Nullable Output<String> totalDictionaries) {
             $.totalDictionaries = totalDictionaries;
             return this;
         }
 
         /**
-         * @param totalDictionaries The list of all dictionaries. Separate dictionaries with commas (,).
+         * @param totalDictionaries The list of all dictionaries. Separate dictionaries with commas (,). Field &#39;total_dictionaries&#39; has been deprecated from provider version 1.223.1.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;total_dictionaries&#39; has been deprecated from version 1.223.1 and it will be removed in the future version.
+         * 
+         */
+        @Deprecated /* Field 'total_dictionaries' has been deprecated from version 1.223.1 and it will be removed in the future version. */
+        public Builder totalDictionaries(String totalDictionaries) {
+            return totalDictionaries(Output.of(totalDictionaries));
+        }
+
+        /**
+         * @param type The type of the database account. Valid values: `Normal` or `Super`.
          * 
          * @return builder
          * 
          */
-        public Builder totalDictionaries(String totalDictionaries) {
-            return totalDictionaries(Output.of(totalDictionaries));
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The type of the database account. Valid values: `Normal` or `Super`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public AccountArgs build() {

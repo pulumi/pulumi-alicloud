@@ -295,13 +295,17 @@ class EventSource(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
-        example_queue = alicloud.mns.Queue("example", name=name)
+        example_queue = alicloud.mns.Queue("example", name=f"{name}-{default['result']}")
         example_event_source = alicloud.eventbridge.EventSource("example",
             event_bus_name=example.event_bus_name,
             event_source_name=name,
@@ -363,13 +367,17 @@ class EventSource(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
-        example_queue = alicloud.mns.Queue("example", name=name)
+        example_queue = alicloud.mns.Queue("example", name=f"{name}-{default['result']}")
         example_event_source = alicloud.eventbridge.EventSource("example",
             event_bus_name=example.event_bus_name,
             event_source_name=name,

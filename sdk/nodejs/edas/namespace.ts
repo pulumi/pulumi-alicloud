@@ -20,14 +20,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const default = alicloud.getRegions({
- *     current: true,
- * });
- * const defaultNamespace = new alicloud.edas.Namespace("default", {
+ * const region = config.get("region") || "cn-hangzhou";
+ * const name = config.get("name") || "tfexample";
+ * const _default = new alicloud.edas.Namespace("default", {
  *     debugEnable: false,
  *     description: name,
- *     namespaceLogicalId: _default.then(_default => `${_default.regions?.[0]?.id}:example`),
+ *     namespaceLogicalId: `${region}:${name}`,
  *     namespaceName: name,
  * });
  * ```

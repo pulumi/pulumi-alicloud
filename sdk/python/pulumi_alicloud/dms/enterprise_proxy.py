@@ -189,7 +189,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd")
-        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_get_zones.zones[0].id,
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_get_zones.zones[1].id,
             engine="MySQL",
             engine_version="8.0",
             category="HighAvailability",
@@ -202,7 +202,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_get_zones.zones[0].id)
+            zone_id=default_get_zones.zones[1].id)
         default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
             vpc_id=default_network.id)
@@ -298,7 +298,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd")
-        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_get_zones.zones[0].id,
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_get_zones.zones[1].id,
             engine="MySQL",
             engine_version="8.0",
             category="HighAvailability",
@@ -311,7 +311,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_get_zones.zones[0].id)
+            zone_id=default_get_zones.zones[1].id)
         default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
             vpc_id=default_network.id)

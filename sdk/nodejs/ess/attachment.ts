@@ -18,9 +18,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const myName = `${name}-${defaultInteger.result}`;
  * const default = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
@@ -35,20 +41,16 @@ import * as utilities from "../utilities";
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     vpcName: name,
- *     cidrBlock: "172.16.0.0/16",
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
- *     vswitchName: name,
- * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
- *     name: name,
- *     vpcId: defaultNetwork.id,
- * });
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     cidrBlock: "10.4.0.0/24",
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.zones?.[0]?.id,
+ * }));
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0])});
  * const defaultSecurityGroupRule = new alicloud.ecs.SecurityGroupRule("default", {
  *     type: "ingress",
  *     ipProtocol: "tcp",
@@ -62,12 +64,12 @@ import * as utilities from "../utilities";
  * const defaultScalingGroup = new alicloud.ess.ScalingGroup("default", {
  *     minSize: 0,
  *     maxSize: 2,
- *     scalingGroupName: name,
+ *     scalingGroupName: myName,
  *     removalPolicies: [
  *         "OldestInstance",
  *         "NewestInstance",
  *     ],
- *     vswitchIds: [defaultSwitch.id],
+ *     vswitchIds: [defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0])],
  * });
  * const defaultScalingConfiguration = new alicloud.ess.ScalingConfiguration("default", {
  *     scalingGroupId: defaultScalingGroup.id,
@@ -88,7 +90,7 @@ import * as utilities from "../utilities";
  *         internetMaxBandwidthOut: 10,
  *         instanceChargeType: "PostPaid",
  *         systemDiskCategory: "cloud_efficiency",
- *         vswitchId: defaultSwitch.id,
+ *         vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *         instanceName: name,
  *     }));
  * }

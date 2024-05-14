@@ -6,6 +6,7 @@ package com.pulumi.alicloud.vpc.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,13 @@ public final class NetworkInterfaceAttachmentState extends com.pulumi.resources.
      */
     public Optional<Output<String>> instanceId() {
         return Optional.ofNullable(this.instanceId);
+    }
+
+    @Import(name="networkCardIndex")
+    private @Nullable Output<Integer> networkCardIndex;
+
+    public Optional<Output<Integer>> networkCardIndex() {
+        return Optional.ofNullable(this.networkCardIndex);
     }
 
     /**
@@ -64,6 +72,7 @@ public final class NetworkInterfaceAttachmentState extends com.pulumi.resources.
 
     private NetworkInterfaceAttachmentState(NetworkInterfaceAttachmentState $) {
         this.instanceId = $.instanceId;
+        this.networkCardIndex = $.networkCardIndex;
         this.networkInterfaceId = $.networkInterfaceId;
         this.trunkNetworkInstanceId = $.trunkNetworkInstanceId;
         this.waitForNetworkConfigurationReady = $.waitForNetworkConfigurationReady;
@@ -106,6 +115,15 @@ public final class NetworkInterfaceAttachmentState extends com.pulumi.resources.
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        public Builder networkCardIndex(@Nullable Output<Integer> networkCardIndex) {
+            $.networkCardIndex = networkCardIndex;
+            return this;
+        }
+
+        public Builder networkCardIndex(Integer networkCardIndex) {
+            return networkCardIndex(Output.of(networkCardIndex));
         }
 
         /**

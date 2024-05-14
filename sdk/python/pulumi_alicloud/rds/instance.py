@@ -174,6 +174,7 @@ class InstanceArgs:
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+               - general_essd: general essd.
         :param pulumi.Input[bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
         :param pulumi.Input[str] db_param_group_id: Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
         :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
@@ -758,6 +759,7 @@ class InstanceArgs:
         - cloud_essd: specifies to use enhanced SSDs (ESSDs).
         - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
         - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        - general_essd: general essd.
         """
         return pulumi.get(self, "db_instance_storage_type")
 
@@ -1643,6 +1645,7 @@ class _InstanceState:
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+               - general_essd: general essd.
         :param pulumi.Input[str] db_instance_type: (Available since 1.197.0) The type of db instance.
         :param pulumi.Input[bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
         :param pulumi.Input[str] db_param_group_id: Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
@@ -2224,6 +2227,7 @@ class _InstanceState:
         - cloud_essd: specifies to use enhanced SSDs (ESSDs).
         - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
         - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        - general_essd: general essd.
         """
         return pulumi.get(self, "db_instance_storage_type")
 
@@ -3222,6 +3226,7 @@ class Instance(pulumi.CustomResource):
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+               - general_essd: general essd.
         :param pulumi.Input[bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
         :param pulumi.Input[str] db_param_group_id: Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
         :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
@@ -3740,6 +3745,7 @@ class Instance(pulumi.CustomResource):
                - cloud_essd: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+               - general_essd: general essd.
         :param pulumi.Input[str] db_instance_type: (Available since 1.197.0) The type of db instance.
         :param pulumi.Input[bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
         :param pulumi.Input[str] db_param_group_id: Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
@@ -4173,6 +4179,7 @@ class Instance(pulumi.CustomResource):
         - cloud_essd: specifies to use enhanced SSDs (ESSDs).
         - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
         - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        - general_essd: general essd.
         """
         return pulumi.get(self, "db_instance_storage_type")
 

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// <summary>
         /// This data source provides the Click House Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -29,11 +29,31 @@ namespace Pulumi.AliCloud.ClickHouse
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "testaccountname";
-        ///     var pwd = config.Get("pwd") ?? "Tf-testpwd";
+        ///     var name = config.Get("name") ?? "oneaccountname";
+        ///     var pwd = config.Get("pwd") ?? "Tf-onepwd";
+        ///     var type = config.Get("type") ?? "Normal";
+        ///     var @default = AliCloud.ClickHouse.GetRegions.Invoke(new()
+        ///     {
+        ///         Current = true,
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "10.4.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         CidrBlock = "10.4.0.0/24",
+        ///         VpcId = defaultNetwork.Id,
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[0]?.ZoneId)),
+        ///     });
+        /// 
         ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("default", new()
         ///     {
-        ///         DbClusterVersion = "20.3.10.75",
+        ///         DbClusterVersion = "22.8.5.29",
         ///         Category = "Basic",
         ///         DbClusterClass = "S8",
         ///         DbClusterNetworkType = "vpc",
@@ -42,7 +62,8 @@ namespace Pulumi.AliCloud.ClickHouse
         ///         PaymentType = "PayAsYouGo",
         ///         DbNodeStorage = "500",
         ///         StorageType = "cloud_essd",
-        ///         VswitchId = "your_vswitch_id",
+        ///         VswitchId = defaultSwitch.Id,
+        ///         VpcId = defaultNetwork.Id,
         ///     });
         /// 
         ///     var defaultAccount = new AliCloud.ClickHouse.Account("default", new()
@@ -51,9 +72,10 @@ namespace Pulumi.AliCloud.ClickHouse
         ///         AccountDescription = "your_description",
         ///         AccountName = name,
         ///         AccountPassword = pwd,
+        ///         Type = type,
         ///     });
         /// 
-        ///     var @default = AliCloud.ClickHouse.GetAccounts.Invoke(new()
+        ///     var defaultGetAccounts = AliCloud.ClickHouse.GetAccounts.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -64,7 +86,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["accountId"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0])),
+        ///         ["accountId"] = defaultGetAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0]),
         ///     };
         /// });
         /// ```
@@ -75,7 +97,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// <summary>
         /// This data source provides the Click House Accounts of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.134.0+.
+        /// &gt; **NOTE:** Available since v1.134.0.
         /// 
         /// ## Example Usage
         /// 
@@ -90,11 +112,31 @@ namespace Pulumi.AliCloud.ClickHouse
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     var config = new Config();
-        ///     var name = config.Get("name") ?? "testaccountname";
-        ///     var pwd = config.Get("pwd") ?? "Tf-testpwd";
+        ///     var name = config.Get("name") ?? "oneaccountname";
+        ///     var pwd = config.Get("pwd") ?? "Tf-onepwd";
+        ///     var type = config.Get("type") ?? "Normal";
+        ///     var @default = AliCloud.ClickHouse.GetRegions.Invoke(new()
+        ///     {
+        ///         Current = true,
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "10.4.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         CidrBlock = "10.4.0.0/24",
+        ///         VpcId = defaultNetwork.Id,
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.ZoneIds[0]?.ZoneId)),
+        ///     });
+        /// 
         ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("default", new()
         ///     {
-        ///         DbClusterVersion = "20.3.10.75",
+        ///         DbClusterVersion = "22.8.5.29",
         ///         Category = "Basic",
         ///         DbClusterClass = "S8",
         ///         DbClusterNetworkType = "vpc",
@@ -103,7 +145,8 @@ namespace Pulumi.AliCloud.ClickHouse
         ///         PaymentType = "PayAsYouGo",
         ///         DbNodeStorage = "500",
         ///         StorageType = "cloud_essd",
-        ///         VswitchId = "your_vswitch_id",
+        ///         VswitchId = defaultSwitch.Id,
+        ///         VpcId = defaultNetwork.Id,
         ///     });
         /// 
         ///     var defaultAccount = new AliCloud.ClickHouse.Account("default", new()
@@ -112,9 +155,10 @@ namespace Pulumi.AliCloud.ClickHouse
         ///         AccountDescription = "your_description",
         ///         AccountName = name,
         ///         AccountPassword = pwd,
+        ///         Type = type,
         ///     });
         /// 
-        ///     var @default = AliCloud.ClickHouse.GetAccounts.Invoke(new()
+        ///     var defaultGetAccounts = AliCloud.ClickHouse.GetAccounts.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -125,7 +169,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["accountId"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0])),
+        ///         ["accountId"] = defaultGetAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0]),
         ///     };
         /// });
         /// ```
@@ -168,7 +212,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -212,7 +256,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -227,7 +271,13 @@ namespace Pulumi.AliCloud.ClickHouse
     [OutputType]
     public sealed class GetAccountsResult
     {
+        /// <summary>
+        /// A list of Click House Accounts. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountsAccountResult> Accounts;
+        /// <summary>
+        /// The DBCluster id.
+        /// </summary>
         public readonly string DbClusterId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -235,8 +285,14 @@ namespace Pulumi.AliCloud.ClickHouse
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Account names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The status of the resource.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

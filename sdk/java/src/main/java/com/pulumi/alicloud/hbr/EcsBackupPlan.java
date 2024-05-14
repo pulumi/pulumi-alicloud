@@ -49,6 +49,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.hbr.Vault;
  * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.hbr.EcsBackupPlan;
@@ -108,8 +110,13 @@ import javax.annotation.Nullable;
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var exampleVault = new Vault("exampleVault", VaultArgs.builder()        
- *             .vaultName("terraform-example")
+ *             .vaultName(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
  *         var exampleEcsBackupPlan = new EcsBackupPlan("exampleEcsBackupPlan", EcsBackupPlanArgs.builder()        

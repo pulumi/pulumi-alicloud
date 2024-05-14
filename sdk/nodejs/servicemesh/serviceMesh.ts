@@ -64,11 +64,12 @@ export class ServiceMesh extends pulumi.CustomResource {
     /**
      * Whether to customize Prometheus. Value:
      * -'true': custom Prometheus.
-     * -'false': Do not customize Prometheus. Default value: 'false '.
+     * -'false': Do not customize Prometheus.
+     * Default value: 'false '.
      */
     public readonly customizedPrometheus!: pulumi.Output<boolean | undefined>;
     /**
-     * Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+     * Grid instance version type (for example: the standard, the Pro version, etc.).
      */
     public readonly edition!: pulumi.Output<string>;
     /**
@@ -78,7 +79,8 @@ export class ServiceMesh extends pulumi.CustomResource {
     /**
      * Whether to forcibly delete the ASM instance. Value:
      * -'true': force deletion of ASM instance
-     * -'false': no forced deletion of ASM instance. Default value: false.
+     * -'false': no forced deletion of ASM instance
+     * Default value: false.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
@@ -187,11 +189,12 @@ export interface ServiceMeshState {
     /**
      * Whether to customize Prometheus. Value:
      * -'true': custom Prometheus.
-     * -'false': Do not customize Prometheus. Default value: 'false '.
+     * -'false': Do not customize Prometheus.
+     * Default value: 'false '.
      */
     customizedPrometheus?: pulumi.Input<boolean>;
     /**
-     * Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+     * Grid instance version type (for example: the standard, the Pro version, etc.).
      */
     edition?: pulumi.Input<string>;
     /**
@@ -201,7 +204,8 @@ export interface ServiceMeshState {
     /**
      * Whether to forcibly delete the ASM instance. Value:
      * -'true': force deletion of ASM instance
-     * -'false': no forced deletion of ASM instance. Default value: false.
+     * -'false': no forced deletion of ASM instance
+     * Default value: false.
      */
     force?: pulumi.Input<boolean>;
     /**
@@ -253,11 +257,12 @@ export interface ServiceMeshArgs {
     /**
      * Whether to customize Prometheus. Value:
      * -'true': custom Prometheus.
-     * -'false': Do not customize Prometheus. Default value: 'false '.
+     * -'false': Do not customize Prometheus.
+     * Default value: 'false '.
      */
     customizedPrometheus?: pulumi.Input<boolean>;
     /**
-     * Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+     * Grid instance version type (for example: the standard, the Pro version, etc.).
      */
     edition?: pulumi.Input<string>;
     /**
@@ -267,7 +272,8 @@ export interface ServiceMeshArgs {
     /**
      * Whether to forcibly delete the ASM instance. Value:
      * -'true': force deletion of ASM instance
-     * -'false': no forced deletion of ASM instance. Default value: false.
+     * -'false': no forced deletion of ASM instance
+     * Default value: false.
      */
     force?: pulumi.Input<boolean>;
     /**

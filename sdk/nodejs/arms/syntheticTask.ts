@@ -192,7 +192,7 @@ import * as utilities from "../utilities";
  *         isOpenTrace: true,
  *         traceClientType: 1,
  *     },
- *     resourceGroupId: _default.then(_default => _default.ids?.[1]),
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
  * });
  * ```
  *

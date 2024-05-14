@@ -614,6 +614,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         example = alicloud.get_zones(available_resource_creation="Instance")
         example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example.zones[0].id,
@@ -640,7 +641,10 @@ class EcsBackupPlan(pulumi.CustomResource):
             instance_name="terraform-example",
             internet_charge_type="PayByBandwidth",
             vswitch_id=example_switch.id)
-        example_vault = alicloud.hbr.Vault("example", vault_name="terraform-example")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        example_vault = alicloud.hbr.Vault("example", vault_name=f"terraform-example-{default['result']}")
         example_ecs_backup_plan = alicloud.hbr.EcsBackupPlan("example",
             ecs_backup_plan_name="terraform-example",
             instance_id=example_instance.id,
@@ -723,6 +727,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         example = alicloud.get_zones(available_resource_creation="Instance")
         example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example.zones[0].id,
@@ -749,7 +754,10 @@ class EcsBackupPlan(pulumi.CustomResource):
             instance_name="terraform-example",
             internet_charge_type="PayByBandwidth",
             vswitch_id=example_switch.id)
-        example_vault = alicloud.hbr.Vault("example", vault_name="terraform-example")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        example_vault = alicloud.hbr.Vault("example", vault_name=f"terraform-example-{default['result']}")
         example_ecs_backup_plan = alicloud.hbr.EcsBackupPlan("example",
             ecs_backup_plan_name="terraform-example",
             instance_id=example_instance.id,

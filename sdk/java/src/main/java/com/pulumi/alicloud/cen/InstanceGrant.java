@@ -40,8 +40,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.cen.InstanceGrant;
  * import com.pulumi.alicloud.cen.InstanceGrantArgs;
- * import com.pulumi.alicloud.cen.InstanceAttachment;
- * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -79,14 +77,6 @@ import javax.annotation.Nullable;
  *             .cenId(example.id())
  *             .childInstanceId(childAccountNetwork.id())
  *             .cenOwnerId(yourAccount.applyValue(getAccountResult -> getAccountResult.id()))
- *             .build());
- * 
- *         var exampleInstanceAttachment = new InstanceAttachment("exampleInstanceAttachment", InstanceAttachmentArgs.builder()        
- *             .instanceId(example.id())
- *             .childInstanceId(childAccountInstanceGrant.childInstanceId())
- *             .childInstanceType("VPC")
- *             .childInstanceRegionId(default_.regions()[0].id())
- *             .childInstanceOwnerId(childAccount.applyValue(getAccountResult -> getAccountResult.id()))
  *             .build());
  * 
  *     }

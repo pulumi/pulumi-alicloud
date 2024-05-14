@@ -25,12 +25,19 @@ namespace Pulumi.AliCloud.Hbr
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Hbr.Vault("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         VaultName = "terraform-example2",
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultVault = new AliCloud.Hbr.Vault("default", new()
+    ///     {
+    ///         VaultName = $"terraform-example-{@default.Result}",
     ///     });
     /// 
     ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("default", new()
@@ -47,7 +54,7 @@ namespace Pulumi.AliCloud.Hbr
     ///         FileSystemId = defaultFileSystem.Id,
     ///         Schedule = "I|1602673264|PT2H",
     ///         BackupType = "COMPLETE",
-    ///         VaultId = @default.Id,
+    ///         VaultId = defaultVault.Id,
     ///         Retention = "2",
     ///         Paths = new[]
     ///         {

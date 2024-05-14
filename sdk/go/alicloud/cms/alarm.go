@@ -45,23 +45,23 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("Instance"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
+//				AvailabilityZone: pulumi.StringRef(defaultGetZones.Zones[0].Id),
 //				CpuCoreCount:     pulumi.IntRef(1),
 //				MemorySize:       pulumi.Float64Ref(2),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
-//				Owners:    pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -77,7 +77,7 @@ import (
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
@@ -90,9 +90,9 @@ import (
 //				return err
 //			}
 //			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
+//				AvailabilityZone: pulumi.String(defaultGetZones.Zones[0].Id),
 //				InstanceName:     pulumi.String(name),
-//				ImageId:          pulumi.String(defaultGetImages.Images[0].Id),
+//				ImageId:          pulumi.String(_default.Images[0].Id),
 //				InstanceType:     pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
@@ -112,21 +112,8 @@ import (
 //				Name:    pulumi.String(name),
 //				Project: pulumi.String("acs_ecs_dashboard"),
 //				Metric:  pulumi.String("disk_writebytes"),
-//				Period:  pulumi.Int(900),
-//				ContactGroups: pulumi.StringArray{
-//					defaultAlarmContactGroup.AlarmContactGroupName,
-//				},
-//				EffectiveInterval: pulumi.String("06:00-20:00"),
 //				MetricDimensions: defaultInstance.ID().ApplyT(func(id string) (string, error) {
-//					return fmt.Sprintf(`  [
-//	    {
-//	      "instanceId": "%v",
-//	      "device": "/dev/vda1"
-//	    }
-//	  ]
-//
-// `, id), nil
-//
+//					return fmt.Sprintf("[{\"instanceId\":\"%v\",\"device\":\"/dev/vda1\"}]", id), nil
 //				}).(pulumi.StringOutput),
 //				EscalationsCritical: &cms.AlarmEscalationsCriticalArgs{
 //					Statistics:         pulumi.String("Average"),
@@ -134,6 +121,11 @@ import (
 //					Threshold:          pulumi.String("35"),
 //					Times:              pulumi.Int(2),
 //				},
+//				Period: pulumi.Int(900),
+//				ContactGroups: pulumi.StringArray{
+//					defaultAlarmContactGroup.AlarmContactGroupName,
+//				},
+//				EffectiveInterval: pulumi.String("06:00-20:00"),
 //			})
 //			if err != nil {
 //				return err

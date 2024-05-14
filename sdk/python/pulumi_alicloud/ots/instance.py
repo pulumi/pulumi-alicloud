@@ -324,7 +324,7 @@ class Instance(pulumi.CustomResource):
         default_instance = alicloud.ots.Instance("default",
             name=f"{name}-{default['result']}",
             description=name,
-            network_type_acls=["VPC"],
+            accessed_by="Vpc",
             tags={
                 "Created": "TF",
                 "For": "Building table",
@@ -380,7 +380,7 @@ class Instance(pulumi.CustomResource):
         default_instance = alicloud.ots.Instance("default",
             name=f"{name}-{default['result']}",
             description=name,
-            network_type_acls=["VPC"],
+            accessed_by="Vpc",
             tags={
                 "Created": "TF",
                 "For": "Building table",

@@ -35,14 +35,14 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Forwarding Policy ID.
+     * The ID of the Forwarding Rule.
      * 
      */
     @Import(name="forwardingRuleId")
     private @Nullable Output<String> forwardingRuleId;
 
     /**
-     * @return Forwarding Policy ID.
+     * @return The ID of the Forwarding Rule.
      * 
      */
     public Optional<Output<String>> forwardingRuleId() {
@@ -65,14 +65,14 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Forwarding Policy Status.
+     * The status of the Forwarding Rule.
      * 
      */
     @Import(name="forwardingRuleStatus")
     private @Nullable Output<String> forwardingRuleStatus;
 
     /**
-     * @return Forwarding Policy Status.
+     * @return The status of the Forwarding Rule.
      * 
      */
     public Optional<Output<String>> forwardingRuleStatus() {
@@ -192,7 +192,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param forwardingRuleId Forwarding Policy ID.
+         * @param forwardingRuleId The ID of the Forwarding Rule.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param forwardingRuleId Forwarding Policy ID.
+         * @param forwardingRuleId The ID of the Forwarding Rule.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param forwardingRuleStatus Forwarding Policy Status.
+         * @param forwardingRuleStatus The status of the Forwarding Rule.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param forwardingRuleStatus Forwarding Policy Status.
+         * @param forwardingRuleStatus The status of the Forwarding Rule.
          * 
          * @return builder
          * 

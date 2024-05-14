@@ -39,98 +39,140 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			slbRuleName := "terraform-example"
-//			if param := cfg.Get("slbRuleName"); param != "" {
-//				slbRuleName = param
-//			}
-//			rule, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ruleNetwork, err := vpc.NewNetwork(ctx, "rule", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(slbRuleName),
-//				CidrBlock: pulumi.String("172.16.0.0/16"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ruleSwitch, err := vpc.NewSwitch(ctx, "rule", &vpc.SwitchArgs{
-//				VpcId:       ruleNetwork.ID(),
-//				CidrBlock:   pulumi.String("172.16.0.0/16"),
-//				ZoneId:      pulumi.String(rule.Zones[0].Id),
-//				VswitchName: pulumi.String(slbRuleName),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ruleApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "rule", &slb.ApplicationLoadBalancerArgs{
-//				LoadBalancerName:   pulumi.String(slbRuleName),
-//				VswitchId:          ruleSwitch.ID(),
-//				InstanceChargeType: pulumi.String("PayByCLCU"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ruleListener, err := slb.NewListener(ctx, "rule", &slb.ListenerArgs{
-//				LoadBalancerId:         ruleApplicationLoadBalancer.ID(),
-//				BackendPort:            pulumi.Int(22),
-//				FrontendPort:           pulumi.Int(22),
-//				Protocol:               pulumi.String("http"),
-//				Bandwidth:              pulumi.Int(5),
-//				HealthCheckConnectPort: pulumi.Int(20),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			ruleServerGroup, err := slb.NewServerGroup(ctx, "rule", &slb.ServerGroupArgs{
-//				LoadBalancerId: ruleApplicationLoadBalancer.ID(),
-//				Name:           pulumi.String(slbRuleName),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = slb.NewRule(ctx, "rule", &slb.RuleArgs{
-//				LoadBalancerId:         ruleApplicationLoadBalancer.ID(),
-//				FrontendPort:           ruleListener.FrontendPort,
-//				Name:                   pulumi.String(slbRuleName),
-//				Domain:                 pulumi.String("*.aliyun.com"),
-//				Url:                    pulumi.String("/image"),
-//				ServerGroupId:          ruleServerGroup.ID(),
-//				Cookie:                 pulumi.String("23ffsa"),
-//				CookieTimeout:          pulumi.Int(100),
-//				HealthCheckHttpCode:    pulumi.String("http_2xx"),
-//				HealthCheckInterval:    pulumi.Int(10),
-//				HealthCheckUri:         pulumi.String("/test"),
-//				HealthCheckConnectPort: pulumi.Int(80),
-//				HealthCheckTimeout:     pulumi.Int(30),
-//				HealthyThreshold:       pulumi.Int(3),
-//				UnhealthyThreshold:     pulumi.Int(5),
-//				StickySession:          pulumi.String("on"),
-//				StickySessionType:      pulumi.String("server"),
-//				ListenerSync:           pulumi.String("off"),
-//				Scheduler:              pulumi.String("rr"),
-//				HealthCheckDomain:      pulumi.String("test"),
-//				HealthCheck:            pulumi.String("on"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// slbRuleName := "terraform-example";
+// if param := cfg.Get("slbRuleName"); param != ""{
+// slbRuleName = param
+// }
+// rule, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ruleGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(rule.Zones[0].Id),
+// CpuCoreCount: pulumi.IntRef(1),
+// MemorySize: pulumi.Float64Ref(2),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ruleGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// NameRegex: pulumi.StringRef("^ubuntu_18.*64"),
+// MostRecent: pulumi.BoolRef(true),
+// Owners: pulumi.StringRef("system"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ruleNetwork, err := vpc.NewNetwork(ctx, "rule", &vpc.NetworkArgs{
+// VpcName: pulumi.String(slbRuleName),
+// CidrBlock: pulumi.String("172.16.0.0/16"),
+// })
+// if err != nil {
+// return err
+// }
+// ruleSwitch, err := vpc.NewSwitch(ctx, "rule", &vpc.SwitchArgs{
+// VpcId: ruleNetwork.ID(),
+// CidrBlock: pulumi.String("172.16.0.0/16"),
+// ZoneId: pulumi.String(rule.Zones[0].Id),
+// VswitchName: pulumi.String(slbRuleName),
+// })
+// if err != nil {
+// return err
+// }
+// ruleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "rule", &ecs.SecurityGroupArgs{
+// Name: pulumi.String(slbRuleName),
+// VpcId: ruleNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
+// _, err = ecs.NewInstance(ctx, "rule", &ecs.InstanceArgs{
+// ImageId: pulumi.String(ruleGetImages.Images[0].Id),
+// InstanceType: pulumi.String(ruleGetInstanceTypes.InstanceTypes[0].Id),
+// SecurityGroups: splat0,
+// InternetChargeType: pulumi.String("PayByTraffic"),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// AvailabilityZone: pulumi.String(rule.Zones[0].Id),
+// InstanceChargeType: pulumi.String("PostPaid"),
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// VswitchId: ruleSwitch.ID(),
+// InstanceName: pulumi.String(slbRuleName),
+// })
+// if err != nil {
+// return err
+// }
+// ruleApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "rule", &slb.ApplicationLoadBalancerArgs{
+// LoadBalancerName: pulumi.String(slbRuleName),
+// VswitchId: ruleSwitch.ID(),
+// InstanceChargeType: pulumi.String("PayByCLCU"),
+// })
+// if err != nil {
+// return err
+// }
+// ruleListener, err := slb.NewListener(ctx, "rule", &slb.ListenerArgs{
+// LoadBalancerId: ruleApplicationLoadBalancer.ID(),
+// BackendPort: pulumi.Int(22),
+// FrontendPort: pulumi.Int(22),
+// Protocol: pulumi.String("http"),
+// Bandwidth: pulumi.Int(5),
+// HealthCheckConnectPort: pulumi.Int(20),
+// })
+// if err != nil {
+// return err
+// }
+// ruleServerGroup, err := slb.NewServerGroup(ctx, "rule", &slb.ServerGroupArgs{
+// LoadBalancerId: ruleApplicationLoadBalancer.ID(),
+// Name: pulumi.String(slbRuleName),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = slb.NewRule(ctx, "rule", &slb.RuleArgs{
+// LoadBalancerId: ruleApplicationLoadBalancer.ID(),
+// FrontendPort: ruleListener.FrontendPort,
+// Name: pulumi.String(slbRuleName),
+// Domain: pulumi.String("*.aliyun.com"),
+// Url: pulumi.String("/image"),
+// ServerGroupId: ruleServerGroup.ID(),
+// Cookie: pulumi.String("23ffsa"),
+// CookieTimeout: pulumi.Int(100),
+// HealthCheckHttpCode: pulumi.String("http_2xx"),
+// HealthCheckInterval: pulumi.Int(10),
+// HealthCheckUri: pulumi.String("/test"),
+// HealthCheckConnectPort: pulumi.Int(80),
+// HealthCheckTimeout: pulumi.Int(30),
+// HealthyThreshold: pulumi.Int(3),
+// UnhealthyThreshold: pulumi.Int(5),
+// StickySession: pulumi.String("on"),
+// StickySessionType: pulumi.String("server"),
+// ListenerSync: pulumi.String("off"),
+// Scheduler: pulumi.String("rr"),
+// HealthCheckDomain: pulumi.String("test"),
+// HealthCheck: pulumi.String("on"),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import

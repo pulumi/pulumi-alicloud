@@ -63,7 +63,7 @@ import (
 //				return err
 //			}
 //			defaultGetInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
-//				ZoneId:                pulumi.StringRef(defaultGetZones.Zones[0].Id),
+//				ZoneId:                pulumi.StringRef(defaultGetZones.Zones[1].Id),
 //				Engine:                pulumi.StringRef("MySQL"),
 //				EngineVersion:         pulumi.StringRef("8.0"),
 //				Category:              pulumi.StringRef("HighAvailability"),
@@ -81,13 +81,13 @@ import (
 //			}
 //			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
 //				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultGetZones.Zones[0].Id),
+//				ZoneId: pulumi.StringRef(defaultGetZones.Zones[1].Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			vswitchId := defaultGetSwitches.Ids[0]
-//			_ := defaultGetZones.Ids[0]
+//			_ := defaultGetZones.Ids[1]
 //			_, err = ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
 //				VpcId: pulumi.String(defaultGetNetworks.Ids[0]),

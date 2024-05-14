@@ -54,15 +54,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			example, err := resourcemanager.NewFolder(ctx, "example", &resourcemanager.FolderArgs{
-//				FolderName: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
-//			})
+//			example, err := resourcemanager.GetFolders(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			exampleAccount, err := resourcemanager.NewAccount(ctx, "example", &resourcemanager.AccountArgs{
 //				DisplayName: pulumi.String(fmt.Sprintf("%v-%v", displayName, _default.Result)),
-//				FolderId:    example.ID(),
+//				FolderId:    pulumi.String(example.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

@@ -29,9 +29,12 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -95,22 +98,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			defaultImage, err := ecs.NewImage(ctx, "default", &ecs.ImageArgs{
 //				InstanceId:  defaultInstance.ID(),
-//				ImageName:   pulumi.String("terraform-example"),
+//				ImageName:   pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			cfg := config.New(ctx, "")
-//			accountId := "123456789"
-//			if param := cfg.Get("accountId"); param != "" {
-//				accountId = param
+//			anotherUid := "123456789"
+//			if param := cfg.Get("anotherUid"); param != "" {
+//				anotherUid = param
 //			}
 //			_, err = ecs.NewImageSharePermission(ctx, "default", &ecs.ImageSharePermissionArgs{
 //				ImageId:   defaultImage.ID(),
-//				AccountId: pulumi.String(accountId),
+//				AccountId: pulumi.String(anotherUid),
 //			})
 //			if err != nil {
 //				return err

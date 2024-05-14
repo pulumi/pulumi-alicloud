@@ -58,10 +58,10 @@ class ServiceMeshLoadBalancerArgs:
                  pilot_public_eip: Optional[pulumi.Input[bool]] = None,
                  pilot_public_loadbalancer_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] api_server_loadbalancer_id: The IP address of a public network exposed API Server corresponding to the load balancing ID.
+        :param pulumi.Input[str] api_server_loadbalancer_id: The Instance ID of APIServer Load Balancer.
         :param pulumi.Input[bool] api_server_public_eip: Indicates whether to use the IP address of a public network exposed API Server.
         :param pulumi.Input[bool] pilot_public_eip: Indicates whether to use the IP address of a public network exposure Istio Pilot.
-        :param pulumi.Input[str] pilot_public_loadbalancer_id: The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
+        :param pulumi.Input[str] pilot_public_loadbalancer_id: The Instance ID of Pilot Load Balancer.
         """
         if api_server_loadbalancer_id is not None:
             pulumi.set(__self__, "api_server_loadbalancer_id", api_server_loadbalancer_id)
@@ -76,7 +76,7 @@ class ServiceMeshLoadBalancerArgs:
     @pulumi.getter(name="apiServerLoadbalancerId")
     def api_server_loadbalancer_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP address of a public network exposed API Server corresponding to the load balancing ID.
+        The Instance ID of APIServer Load Balancer.
         """
         return pulumi.get(self, "api_server_loadbalancer_id")
 
@@ -112,7 +112,7 @@ class ServiceMeshLoadBalancerArgs:
     @pulumi.getter(name="pilotPublicLoadbalancerId")
     def pilot_public_loadbalancer_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
+        The Instance ID of Pilot Load Balancer.
         """
         return pulumi.get(self, "pilot_public_loadbalancer_id")
 
@@ -372,11 +372,23 @@ class ServiceMeshMeshConfigArgs:
 class ServiceMeshMeshConfigAccessLogArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 gateway_enabled: Optional[pulumi.Input[bool]] = None,
+                 gateway_lifecycle: Optional[pulumi.Input[int]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 sidecar_enabled: Optional[pulumi.Input[bool]] = None,
+                 sidecar_lifecycle: Optional[pulumi.Input[int]] = None):
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if gateway_enabled is not None:
+            pulumi.set(__self__, "gateway_enabled", gateway_enabled)
+        if gateway_lifecycle is not None:
+            pulumi.set(__self__, "gateway_lifecycle", gateway_lifecycle)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if sidecar_enabled is not None:
+            pulumi.set(__self__, "sidecar_enabled", sidecar_enabled)
+        if sidecar_lifecycle is not None:
+            pulumi.set(__self__, "sidecar_lifecycle", sidecar_lifecycle)
 
     @property
     @pulumi.getter
@@ -388,6 +400,24 @@ class ServiceMeshMeshConfigAccessLogArgs:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter(name="gatewayEnabled")
+    def gateway_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "gateway_enabled")
+
+    @gateway_enabled.setter
+    def gateway_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "gateway_enabled", value)
+
+    @property
+    @pulumi.getter(name="gatewayLifecycle")
+    def gateway_lifecycle(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "gateway_lifecycle")
+
+    @gateway_lifecycle.setter
+    def gateway_lifecycle(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "gateway_lifecycle", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -395,6 +425,24 @@ class ServiceMeshMeshConfigAccessLogArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="sidecarEnabled")
+    def sidecar_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "sidecar_enabled")
+
+    @sidecar_enabled.setter
+    def sidecar_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sidecar_enabled", value)
+
+    @property
+    @pulumi.getter(name="sidecarLifecycle")
+    def sidecar_lifecycle(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "sidecar_lifecycle")
+
+    @sidecar_lifecycle.setter
+    def sidecar_lifecycle(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "sidecar_lifecycle", value)
 
 
 @pulumi.input_type
@@ -429,21 +477,32 @@ class ServiceMeshMeshConfigAuditArgs:
 @pulumi.input_type
 class ServiceMeshMeshConfigControlPlaneLogArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[bool]] = None,
+                 enabled: pulumi.Input[bool],
+                 log_ttl_in_day: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None):
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "enabled", enabled)
+        if log_ttl_in_day is not None:
+            pulumi.set(__self__, "log_ttl_in_day", log_ttl_in_day)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
+    def enabled(self) -> pulumi.Input[bool]:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
+    def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="logTtlInDay")
+    def log_ttl_in_day(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "log_ttl_in_day")
+
+    @log_ttl_in_day.setter
+    def log_ttl_in_day(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "log_ttl_in_day", value)
 
     @property
     @pulumi.getter
@@ -461,7 +520,7 @@ class ServiceMeshMeshConfigKialiArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] url: Grid topology service address.
+        :param pulumi.Input[str] url: Kiali service address.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -481,7 +540,7 @@ class ServiceMeshMeshConfigKialiArgs:
     @pulumi.getter
     def url(self) -> Optional[pulumi.Input[str]]:
         """
-        Grid topology service address.
+        Kiali service address.
         """
         return pulumi.get(self, "url")
 
@@ -644,7 +703,7 @@ class ServiceMeshMeshConfigProxyArgs:
                  request_cpu: Optional[pulumi.Input[str]] = None,
                  request_memory: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] cluster_domain: Trust cluster domain.
+        :param pulumi.Input[str] cluster_domain: Cluster domain name.
         """
         if cluster_domain is not None:
             pulumi.set(__self__, "cluster_domain", cluster_domain)
@@ -661,7 +720,7 @@ class ServiceMeshMeshConfigProxyArgs:
     @pulumi.getter(name="clusterDomain")
     def cluster_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        Trust cluster domain.
+        Cluster domain name.
         """
         return pulumi.get(self, "cluster_domain")
 
@@ -718,7 +777,7 @@ class ServiceMeshMeshConfigSidecarInjectorArgs:
                  request_memory: Optional[pulumi.Input[str]] = None,
                  sidecar_injector_webhook_as_yaml: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] sidecar_injector_webhook_as_yaml: Other configurations of automatically injected sidecar (in YAML format).
+        :param pulumi.Input[str] sidecar_injector_webhook_as_yaml: Other automatic injection Sidecar configuration (in YAML format).
         """
         if auto_injection_policy_enabled is not None:
             pulumi.set(__self__, "auto_injection_policy_enabled", auto_injection_policy_enabled)
@@ -804,7 +863,7 @@ class ServiceMeshMeshConfigSidecarInjectorArgs:
     @pulumi.getter(name="sidecarInjectorWebhookAsYaml")
     def sidecar_injector_webhook_as_yaml(self) -> Optional[pulumi.Input[str]]:
         """
-        Other configurations of automatically injected sidecar (in YAML format).
+        Other automatic injection Sidecar configuration (in YAML format).
         """
         return pulumi.get(self, "sidecar_injector_webhook_as_yaml")
 

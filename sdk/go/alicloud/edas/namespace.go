@@ -29,7 +29,6 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/edas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -39,20 +38,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			region := "cn-hangzhou"
+//			if param := cfg.Get("region"); param != "" {
+//				region = param
+//			}
+//			name := "tfexample"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
-//				Current: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = edas.NewNamespace(ctx, "default", &edas.NamespaceArgs{
+//			_, err := edas.NewNamespace(ctx, "default", &edas.NamespaceArgs{
 //				DebugEnable:        pulumi.Bool(false),
 //				Description:        pulumi.String(name),
-//				NamespaceLogicalId: pulumi.String(fmt.Sprintf("%v:example", _default.Regions[0].Id)),
+//				NamespaceLogicalId: pulumi.String(fmt.Sprintf("%v:%v", region, name)),
 //				NamespaceName:      pulumi.String(name),
 //			})
 //			if err != nil {

@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *         var defaultElasticityAssurance = new ElasticityAssurance("defaultElasticityAssurance", ElasticityAssuranceArgs.builder()        
  *             .instanceAmount(1)
  *             .description("before")
- *             .zoneIds(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .zoneIds(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[2].id()))
  *             .privatePoolOptionsName("test_before")
  *             .period(1)
  *             .privatePoolOptionsMatchCriteria("Open")

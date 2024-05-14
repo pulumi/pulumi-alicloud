@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     payType: "PostPaid",
+ *     category: "Normal",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",

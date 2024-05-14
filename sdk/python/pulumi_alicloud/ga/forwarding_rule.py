@@ -127,9 +127,9 @@ class _ForwardingRuleState:
         """
         Input properties used for looking up and filtering ForwardingRule resources.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance.
-        :param pulumi.Input[str] forwarding_rule_id: Forwarding Policy ID.
+        :param pulumi.Input[str] forwarding_rule_id: The ID of the Forwarding Rule.
         :param pulumi.Input[str] forwarding_rule_name: Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
-        :param pulumi.Input[str] forwarding_rule_status: Forwarding Policy Status.
+        :param pulumi.Input[str] forwarding_rule_status: The status of the Forwarding Rule.
         :param pulumi.Input[str] listener_id: The ID of the listener.
         :param pulumi.Input[int] priority: Forwarding policy priority.
         :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]] rule_actions: Forward action. See `rule_actions` below.
@@ -168,7 +168,7 @@ class _ForwardingRuleState:
     @pulumi.getter(name="forwardingRuleId")
     def forwarding_rule_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Forwarding Policy ID.
+        The ID of the Forwarding Rule.
         """
         return pulumi.get(self, "forwarding_rule_id")
 
@@ -192,7 +192,7 @@ class _ForwardingRuleState:
     @pulumi.getter(name="forwardingRuleStatus")
     def forwarding_rule_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Forwarding Policy Status.
+        The status of the Forwarding Rule.
         """
         return pulumi.get(self, "forwarding_rule_status")
 
@@ -584,9 +584,9 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance.
-        :param pulumi.Input[str] forwarding_rule_id: Forwarding Policy ID.
+        :param pulumi.Input[str] forwarding_rule_id: The ID of the Forwarding Rule.
         :param pulumi.Input[str] forwarding_rule_name: Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
-        :param pulumi.Input[str] forwarding_rule_status: Forwarding Policy Status.
+        :param pulumi.Input[str] forwarding_rule_status: The status of the Forwarding Rule.
         :param pulumi.Input[str] listener_id: The ID of the listener.
         :param pulumi.Input[int] priority: Forwarding policy priority.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleRuleActionArgs']]]] rule_actions: Forward action. See `rule_actions` below.
@@ -618,7 +618,7 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="forwardingRuleId")
     def forwarding_rule_id(self) -> pulumi.Output[str]:
         """
-        Forwarding Policy ID.
+        The ID of the Forwarding Rule.
         """
         return pulumi.get(self, "forwarding_rule_id")
 
@@ -634,7 +634,7 @@ class ForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="forwardingRuleStatus")
     def forwarding_rule_status(self) -> pulumi.Output[str]:
         """
-        Forwarding Policy Status.
+        The status of the Forwarding Rule.
         """
         return pulumi.get(self, "forwarding_rule_status")
 

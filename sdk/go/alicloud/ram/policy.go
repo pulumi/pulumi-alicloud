@@ -28,7 +28,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -36,8 +39,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new RAM Policy.
-//			_, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
-//				PolicyName: pulumi.String("policyName"),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+//				PolicyName: pulumi.String(fmt.Sprintf("tf-example-%v", _default.Result)),
 //				PolicyDocument: pulumi.String(`  {
 //	    "Statement": [
 //	      {

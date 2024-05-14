@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .engine("MySQL")
  *             .engineVersion("5.6")
- *             .instanceType(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceType(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[1].instanceClass()))
  *             .instanceStorage("10")
  *             .vswitchId(defaultSwitch.id())
  *             .instanceName(name)

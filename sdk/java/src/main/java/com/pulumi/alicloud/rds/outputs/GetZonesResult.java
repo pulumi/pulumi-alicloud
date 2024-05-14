@@ -16,7 +16,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZonesResult {
     private @Nullable String category;
-    private @Nullable String dbInstanceClass;
     private @Nullable String dbInstanceStorageType;
     private @Nullable String engine;
     private @Nullable String engineVersion;
@@ -31,6 +30,12 @@ public final class GetZonesResult {
      */
     private List<String> ids;
     private @Nullable String instanceChargeType;
+    /**
+     * @deprecated
+     * It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+     * 
+     */
+    @Deprecated /* It has been deprecated from version 1.137.0 and using `multi_zone` instead. */
     private @Nullable Boolean multi;
     private @Nullable Boolean multiZone;
     private @Nullable String outputFile;
@@ -43,9 +48,6 @@ public final class GetZonesResult {
     private GetZonesResult() {}
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
-    }
-    public Optional<String> dbInstanceClass() {
-        return Optional.ofNullable(this.dbInstanceClass);
     }
     public Optional<String> dbInstanceStorageType() {
         return Optional.ofNullable(this.dbInstanceStorageType);
@@ -73,6 +75,12 @@ public final class GetZonesResult {
     public Optional<String> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
+    /**
+     * @deprecated
+     * It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+     * 
+     */
+    @Deprecated /* It has been deprecated from version 1.137.0 and using `multi_zone` instead. */
     public Optional<Boolean> multi() {
         return Optional.ofNullable(this.multi);
     }
@@ -100,7 +108,6 @@ public final class GetZonesResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String category;
-        private @Nullable String dbInstanceClass;
         private @Nullable String dbInstanceStorageType;
         private @Nullable String engine;
         private @Nullable String engineVersion;
@@ -115,7 +122,6 @@ public final class GetZonesResult {
         public Builder(GetZonesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.category = defaults.category;
-    	      this.dbInstanceClass = defaults.dbInstanceClass;
     	      this.dbInstanceStorageType = defaults.dbInstanceStorageType;
     	      this.engine = defaults.engine;
     	      this.engineVersion = defaults.engineVersion;
@@ -132,12 +138,6 @@ public final class GetZonesResult {
         public Builder category(@Nullable String category) {
 
             this.category = category;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder dbInstanceClass(@Nullable String dbInstanceClass) {
-
-            this.dbInstanceClass = dbInstanceClass;
             return this;
         }
         @CustomType.Setter
@@ -215,7 +215,6 @@ public final class GetZonesResult {
         public GetZonesResult build() {
             final var _resultValue = new GetZonesResult();
             _resultValue.category = category;
-            _resultValue.dbInstanceClass = dbInstanceClass;
             _resultValue.dbInstanceStorageType = dbInstanceStorageType;
             _resultValue.engine = engine;
             _resultValue.engineVersion = engineVersion;

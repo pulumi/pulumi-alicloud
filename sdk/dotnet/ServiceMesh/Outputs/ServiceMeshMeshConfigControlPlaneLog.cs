@@ -13,16 +13,20 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     [OutputType]
     public sealed class ServiceMeshMeshConfigControlPlaneLog
     {
-        public readonly bool? Enabled;
+        public readonly bool Enabled;
+        public readonly int? LogTtlInDay;
         public readonly string? Project;
 
         [OutputConstructor]
         private ServiceMeshMeshConfigControlPlaneLog(
-            bool? enabled,
+            bool enabled,
+
+            int? logTtlInDay,
 
             string? project)
         {
             Enabled = enabled;
+            LogTtlInDay = logTtlInDay;
             Project = project;
         }
     }

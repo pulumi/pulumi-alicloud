@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<string>? RequestMemory { get; set; }
 
         /// <summary>
-        /// Other configurations of automatically injected sidecar (in YAML format).
+        /// Other automatic injection Sidecar configuration (in YAML format).
         /// </summary>
         [Input("sidecarInjectorWebhookAsYaml")]
         public Input<string>? SidecarInjectorWebhookAsYaml { get; set; }

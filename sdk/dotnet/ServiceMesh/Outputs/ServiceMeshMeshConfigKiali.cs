@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     {
         public readonly bool? Enabled;
         /// <summary>
-        /// Grid topology service address.
+        /// Kiali service address.
         /// </summary>
         public readonly string? Url;
 

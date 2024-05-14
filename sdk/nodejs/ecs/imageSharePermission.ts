@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const default = alicloud.getZones({
  *     availableResourceCreation: "Instance",
@@ -54,16 +55,20 @@ import * as utilities from "../utilities";
  *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.ids?.[0]),
  *     internetMaxBandwidthOut: 10,
  * });
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
  * const defaultImage = new alicloud.ecs.Image("default", {
  *     instanceId: defaultInstance.id,
- *     imageName: "terraform-example",
+ *     imageName: `terraform-example-${defaultInteger.result}`,
  *     description: "terraform-example",
  * });
  * const config = new pulumi.Config();
- * const accountId = config.get("accountId") || "123456789";
+ * const anotherUid = config.get("anotherUid") || "123456789";
  * const defaultImageSharePermission = new alicloud.ecs.ImageSharePermission("default", {
  *     imageId: defaultImage.id,
- *     accountId: accountId,
+ *     accountId: anotherUid,
  * });
  * ```
  *

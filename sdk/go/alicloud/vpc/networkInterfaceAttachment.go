@@ -29,7 +29,8 @@ type NetworkInterfaceAttachment struct {
 	pulumi.CustomResourceState
 
 	// The instance ID to attach.
-	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	InstanceId       pulumi.StringOutput `pulumi:"instanceId"`
+	NetworkCardIndex pulumi.IntPtrOutput `pulumi:"networkCardIndex"`
 	// The ENI ID to attach.
 	NetworkInterfaceId               pulumi.StringOutput    `pulumi:"networkInterfaceId"`
 	TrunkNetworkInstanceId           pulumi.StringPtrOutput `pulumi:"trunkNetworkInstanceId"`
@@ -73,7 +74,8 @@ func GetNetworkInterfaceAttachment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering NetworkInterfaceAttachment resources.
 type networkInterfaceAttachmentState struct {
 	// The instance ID to attach.
-	InstanceId *string `pulumi:"instanceId"`
+	InstanceId       *string `pulumi:"instanceId"`
+	NetworkCardIndex *int    `pulumi:"networkCardIndex"`
 	// The ENI ID to attach.
 	NetworkInterfaceId               *string `pulumi:"networkInterfaceId"`
 	TrunkNetworkInstanceId           *string `pulumi:"trunkNetworkInstanceId"`
@@ -82,7 +84,8 @@ type networkInterfaceAttachmentState struct {
 
 type NetworkInterfaceAttachmentState struct {
 	// The instance ID to attach.
-	InstanceId pulumi.StringPtrInput
+	InstanceId       pulumi.StringPtrInput
+	NetworkCardIndex pulumi.IntPtrInput
 	// The ENI ID to attach.
 	NetworkInterfaceId               pulumi.StringPtrInput
 	TrunkNetworkInstanceId           pulumi.StringPtrInput
@@ -95,7 +98,8 @@ func (NetworkInterfaceAttachmentState) ElementType() reflect.Type {
 
 type networkInterfaceAttachmentArgs struct {
 	// The instance ID to attach.
-	InstanceId string `pulumi:"instanceId"`
+	InstanceId       string `pulumi:"instanceId"`
+	NetworkCardIndex *int   `pulumi:"networkCardIndex"`
 	// The ENI ID to attach.
 	NetworkInterfaceId               string  `pulumi:"networkInterfaceId"`
 	TrunkNetworkInstanceId           *string `pulumi:"trunkNetworkInstanceId"`
@@ -105,7 +109,8 @@ type networkInterfaceAttachmentArgs struct {
 // The set of arguments for constructing a NetworkInterfaceAttachment resource.
 type NetworkInterfaceAttachmentArgs struct {
 	// The instance ID to attach.
-	InstanceId pulumi.StringInput
+	InstanceId       pulumi.StringInput
+	NetworkCardIndex pulumi.IntPtrInput
 	// The ENI ID to attach.
 	NetworkInterfaceId               pulumi.StringInput
 	TrunkNetworkInstanceId           pulumi.StringPtrInput
@@ -202,6 +207,10 @@ func (o NetworkInterfaceAttachmentOutput) ToNetworkInterfaceAttachmentOutputWith
 // The instance ID to attach.
 func (o NetworkInterfaceAttachmentOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkInterfaceAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+func (o NetworkInterfaceAttachmentOutput) NetworkCardIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkInterfaceAttachment) pulumi.IntPtrOutput { return v.NetworkCardIndex }).(pulumi.IntPtrOutput)
 }
 
 // The ENI ID to attach.

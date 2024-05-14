@@ -113,7 +113,7 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly dbClusterNetworkType!: pulumi.Output<string>;
     /**
-     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      */
     public readonly dbClusterVersion!: pulumi.Output<string>;
     /**
@@ -157,7 +157,7 @@ export class DbCluster extends pulumi.CustomResource {
      */
     public readonly storageType!: pulumi.Output<string>;
     /**
-     * The used time of DBCluster. It is valid and required when paymentType is `Subscription`.
+     * The used time of DBCluster. It is valid and required when paymentType is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
      */
     public readonly usedTime!: pulumi.Output<string | undefined>;
     /**
@@ -291,7 +291,7 @@ export interface DbClusterState {
      */
     dbClusterNetworkType?: pulumi.Input<string>;
     /**
-     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      */
     dbClusterVersion?: pulumi.Input<string>;
     /**
@@ -335,7 +335,7 @@ export interface DbClusterState {
      */
     storageType?: pulumi.Input<string>;
     /**
-     * The used time of DBCluster. It is valid and required when paymentType is `Subscription`.
+     * The used time of DBCluster. It is valid and required when paymentType is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
      */
     usedTime?: pulumi.Input<string>;
     /**
@@ -379,7 +379,7 @@ export interface DbClusterArgs {
      */
     dbClusterNetworkType: pulumi.Input<string>;
     /**
-     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
+     * The DBCluster version. Valid values: `20.3.10.75`, `20.8.7.15`, `21.8.10.19`, `22.8.5.29`, `23.8`. **NOTE:** `19.15.2.2` is no longer supported. From version 1.191.0, `dbClusterVersion` can be set to `22.8.5.29`.
      */
     dbClusterVersion: pulumi.Input<string>;
     /**
@@ -419,7 +419,7 @@ export interface DbClusterArgs {
      */
     storageType: pulumi.Input<string>;
     /**
-     * The used time of DBCluster. It is valid and required when paymentType is `Subscription`.
+     * The used time of DBCluster. It is valid and required when paymentType is `Subscription`. item choices: [1-9] when period is `Month`, [1-3] when period is `Year`.
      */
     usedTime?: pulumi.Input<string>;
     /**

@@ -53,7 +53,6 @@ import (
 //				ProtocolType:   pulumi.String("NFS"),
 //				ZoneId:         pulumi.String(_default.Zones[0].ZoneId),
 //				StorageType:    pulumi.String("standard"),
-//				Description:    pulumi.String(name),
 //				Capacity:       pulumi.Int(100),
 //			})
 //			if err != nil {

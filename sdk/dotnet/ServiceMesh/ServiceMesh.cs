@@ -48,13 +48,14 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// <summary>
         /// Whether to customize Prometheus. Value:
         /// -'true': custom Prometheus.
-        /// -'false': Do not customize Prometheus. Default value: 'false '.
+        /// -'false': Do not customize Prometheus.
+        /// Default value: 'false '.
         /// </summary>
         [Output("customizedPrometheus")]
         public Output<bool?> CustomizedPrometheus { get; private set; } = null!;
 
         /// <summary>
-        /// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+        /// Grid instance version type (for example: the standard, the Pro version, etc.).
         /// </summary>
         [Output("edition")]
         public Output<string> Edition { get; private set; } = null!;
@@ -68,7 +69,8 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// <summary>
         /// Whether to forcibly delete the ASM instance. Value:
         /// -'true': force deletion of ASM instance
-        /// -'false': no forced deletion of ASM instance. Default value: false.
+        /// -'false': no forced deletion of ASM instance
+        /// Default value: false.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
@@ -188,13 +190,14 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// <summary>
         /// Whether to customize Prometheus. Value:
         /// -'true': custom Prometheus.
-        /// -'false': Do not customize Prometheus. Default value: 'false '.
+        /// -'false': Do not customize Prometheus.
+        /// Default value: 'false '.
         /// </summary>
         [Input("customizedPrometheus")]
         public Input<bool>? CustomizedPrometheus { get; set; }
 
         /// <summary>
-        /// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+        /// Grid instance version type (for example: the standard, the Pro version, etc.).
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
@@ -208,7 +211,8 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// <summary>
         /// Whether to forcibly delete the ASM instance. Value:
         /// -'true': force deletion of ASM instance
-        /// -'false': no forced deletion of ASM instance. Default value: false.
+        /// -'false': no forced deletion of ASM instance
+        /// Default value: false.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -296,13 +300,14 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// <summary>
         /// Whether to customize Prometheus. Value:
         /// -'true': custom Prometheus.
-        /// -'false': Do not customize Prometheus. Default value: 'false '.
+        /// -'false': Do not customize Prometheus.
+        /// Default value: 'false '.
         /// </summary>
         [Input("customizedPrometheus")]
         public Input<bool>? CustomizedPrometheus { get; set; }
 
         /// <summary>
-        /// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+        /// Grid instance version type (for example: the standard, the Pro version, etc.).
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }
@@ -316,7 +321,8 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// <summary>
         /// Whether to forcibly delete the ASM instance. Value:
         /// -'true': force deletion of ASM instance
-        /// -'false': no forced deletion of ASM instance. Default value: false.
+        /// -'false': no forced deletion of ASM instance
+        /// Default value: false.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }

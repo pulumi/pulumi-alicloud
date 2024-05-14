@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+        /// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -268,7 +268,7 @@ namespace Pulumi.AliCloud.Redis
         }
 
         /// <summary>
-        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+        /// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -424,7 +424,7 @@ namespace Pulumi.AliCloud.Redis
         }
 
         /// <summary>
-        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
+        /// The billing method of the instance. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }

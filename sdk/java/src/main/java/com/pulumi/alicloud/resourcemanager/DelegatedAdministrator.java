@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.random.integer;
  * import com.pulumi.random.IntegerArgs;
- * import com.pulumi.alicloud.resourcemanager.Folder;
- * import com.pulumi.alicloud.resourcemanager.FolderArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
  * import com.pulumi.alicloud.resourcemanager.Account;
  * import com.pulumi.alicloud.resourcemanager.AccountArgs;
  * import com.pulumi.alicloud.resourcemanager.DelegatedAdministrator;
@@ -61,13 +61,11 @@ import javax.annotation.Nullable;
  *             .max(99999)
  *             .build());
  * 
- *         var example = new Folder("example", FolderArgs.builder()        
- *             .folderName(String.format("%s-%s", name,default_.result()))
- *             .build());
+ *         final var example = ResourcemanagerFunctions.getFolders();
  * 
  *         var exampleAccount = new Account("exampleAccount", AccountArgs.builder()        
  *             .displayName(String.format("%s-%s", displayName,default_.result()))
- *             .folderId(example.id())
+ *             .folderId(example.applyValue(getFoldersResult -> getFoldersResult.ids()[0]))
  *             .build());
  * 
  *         var exampleDelegatedAdministrator = new DelegatedAdministrator("exampleDelegatedAdministrator", DelegatedAdministratorArgs.builder()        

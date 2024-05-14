@@ -233,7 +233,7 @@ import javax.annotation.Nullable;
  *                 .isOpenTrace("true")
  *                 .traceClientType("1")
  *                 .build())
- *             .resourceGroupId(default_.ids()[1])
+ *             .resourceGroupId(default_.ids()[0])
  *             .build());
  * 
  *     }

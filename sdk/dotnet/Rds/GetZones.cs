@@ -14,7 +14,29 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
-        /// &gt; **NOTE:** Available in v1.73.0+.
+        /// &gt; **NOTE:** Available since v1.73.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Rds.GetZones.Invoke(new()
+        ///     {
+        ///         Engine = "MySQL",
+        ///         EngineVersion = "8.0",
+        ///         InstanceChargeType = "PostPaid",
+        ///         Category = "Basic",
+        ///         DbInstanceStorageType = "cloud_essd",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:rds/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
@@ -22,7 +44,29 @@ namespace Pulumi.AliCloud.Rds
         /// <summary>
         /// This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
-        /// &gt; **NOTE:** Available in v1.73.0+.
+        /// &gt; **NOTE:** Available since v1.73.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AliCloud.Rds.GetZones.Invoke(new()
+        ///     {
+        ///         Engine = "MySQL",
+        ///         EngineVersion = "8.0",
+        ///         InstanceChargeType = "PostPaid",
+        ///         Category = "Basic",
+        ///         DbInstanceStorageType = "cloud_essd",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:rds/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
@@ -36,9 +80,6 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
-
-        [Input("dbInstanceClass")]
-        public string? DbInstanceClass { get; set; }
 
         /// <summary>
         /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
@@ -96,9 +137,6 @@ namespace Pulumi.AliCloud.Rds
         [Input("category")]
         public Input<string>? Category { get; set; }
 
-        [Input("dbInstanceClass")]
-        public Input<string>? DbInstanceClass { get; set; }
-
         /// <summary>
         /// The DB instance storage space required by the user. Valid values: "cloud_ssd", "local_ssd", "cloud_essd", "cloud_essd2", "cloud_essd3".
         /// </summary>
@@ -152,7 +190,6 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetZonesResult
     {
         public readonly string? Category;
-        public readonly string? DbInstanceClass;
         public readonly string? DbInstanceStorageType;
         public readonly string? Engine;
         public readonly string? EngineVersion;
@@ -177,8 +214,6 @@ namespace Pulumi.AliCloud.Rds
         private GetZonesResult(
             string? category,
 
-            string? dbInstanceClass,
-
             string? dbInstanceStorageType,
 
             string? engine,
@@ -200,7 +235,6 @@ namespace Pulumi.AliCloud.Rds
             ImmutableArray<Outputs.GetZonesZoneResult> zones)
         {
             Category = category;
-            DbInstanceClass = dbInstanceClass;
             DbInstanceStorageType = dbInstanceStorageType;
             Engine = engine;
             EngineVersion = engineVersion;

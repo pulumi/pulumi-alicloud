@@ -27,8 +27,11 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eventbridge"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mns"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -41,6 +44,13 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			example, err := eventbridge.NewEventBus(ctx, "example", &eventbridge.EventBusArgs{
 //				EventBusName: pulumi.String(name),
 //			})
@@ -48,7 +58,7 @@ import (
 //				return err
 //			}
 //			exampleQueue, err := mns.NewQueue(ctx, "example", &mns.QueueArgs{
-//				Name: pulumi.String(name),
+//				Name: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
 //			})
 //			if err != nil {
 //				return err

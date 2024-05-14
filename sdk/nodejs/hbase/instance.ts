@@ -35,11 +35,11 @@ import * as utilities from "../utilities";
  * });
  * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
  *     vpcId: defaultGetNetworks.ids?.[0],
- *     zoneId: _default.zones?.[0]?.id,
+ *     zoneId: _default.zones?.[1]?.id,
  * }));
  * const defaultInstance = new alicloud.hbase.Instance("default", {
  *     name: name,
- *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[1]?.id),
  *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
  *     engine: "hbaseue",

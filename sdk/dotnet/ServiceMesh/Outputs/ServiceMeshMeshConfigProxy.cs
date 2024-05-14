@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshMeshConfigProxy
     {
         /// <summary>
-        /// Trust cluster domain.
+        /// Cluster domain name.
         /// </summary>
         public readonly string? ClusterDomain;
         public readonly string? LimitCpu;

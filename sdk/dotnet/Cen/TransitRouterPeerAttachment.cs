@@ -77,10 +77,10 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// CEN instance can be imported using the id, e.g.
+    /// CEN Transit Router Peer Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
+    /// $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment")]
@@ -115,6 +115,18 @@ namespace Pulumi.AliCloud.Cen
         /// </summary>
         [Output("cenId")]
         public Output<string> CenId { get; private set; } = null!;
+
+        /// <summary>
+        /// The creation time of the resource.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+        /// </summary>
+        [Output("defaultLinkType")]
+        public Output<string> DefaultLinkType { get; private set; } = null!;
 
         /// <summary>
         /// Whether to perform pre-check for this request, including permission, instance status verification, etc.
@@ -153,7 +165,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<bool?> RouteTablePropagationEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The associating status of the network.
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -259,6 +271,12 @@ namespace Pulumi.AliCloud.Cen
         public Input<string> CenId { get; set; } = null!;
 
         /// <summary>
+        /// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+        /// </summary>
+        [Input("defaultLinkType")]
+        public Input<string>? DefaultLinkType { get; set; }
+
+        /// <summary>
         /// Whether to perform pre-check for this request, including permission, instance status verification, etc.
         /// </summary>
         [Input("dryRun")]
@@ -351,6 +369,18 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? CenId { get; set; }
 
         /// <summary>
+        /// The creation time of the resource.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// DefaultLinkType. Valid values: `Platinum` and `Gold`.
+        /// </summary>
+        [Input("defaultLinkType")]
+        public Input<string>? DefaultLinkType { get; set; }
+
+        /// <summary>
         /// Whether to perform pre-check for this request, including permission, instance status verification, etc.
         /// </summary>
         [Input("dryRun")]
@@ -387,7 +417,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
 
         /// <summary>
-        /// The associating status of the network.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

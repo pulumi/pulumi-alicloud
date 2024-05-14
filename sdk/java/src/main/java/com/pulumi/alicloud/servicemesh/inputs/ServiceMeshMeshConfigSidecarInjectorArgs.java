@@ -67,14 +67,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * Other configurations of automatically injected sidecar (in YAML format).
+     * Other automatic injection Sidecar configuration (in YAML format).
      * 
      */
     @Import(name="sidecarInjectorWebhookAsYaml")
     private @Nullable Output<String> sidecarInjectorWebhookAsYaml;
 
     /**
-     * @return Other configurations of automatically injected sidecar (in YAML format).
+     * @return Other automatic injection Sidecar configuration (in YAML format).
      * 
      */
     public Optional<Output<String>> sidecarInjectorWebhookAsYaml() {
@@ -176,7 +176,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param sidecarInjectorWebhookAsYaml Other configurations of automatically injected sidecar (in YAML format).
+         * @param sidecarInjectorWebhookAsYaml Other automatic injection Sidecar configuration (in YAML format).
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param sidecarInjectorWebhookAsYaml Other configurations of automatically injected sidecar (in YAML format).
+         * @param sidecarInjectorWebhookAsYaml Other automatic injection Sidecar configuration (in YAML format).
          * 
          * @return builder
          * 

@@ -162,7 +162,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly acceleratorId!: pulumi.Output<string>;
     /**
-     * Forwarding Policy ID.
+     * The ID of the Forwarding Rule.
      */
     public /*out*/ readonly forwardingRuleId!: pulumi.Output<string>;
     /**
@@ -170,7 +170,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly forwardingRuleName!: pulumi.Output<string | undefined>;
     /**
-     * Forwarding Policy Status.
+     * The status of the Forwarding Rule.
      */
     public /*out*/ readonly forwardingRuleStatus!: pulumi.Output<string>;
     /**
@@ -248,7 +248,7 @@ export interface ForwardingRuleState {
      */
     acceleratorId?: pulumi.Input<string>;
     /**
-     * Forwarding Policy ID.
+     * The ID of the Forwarding Rule.
      */
     forwardingRuleId?: pulumi.Input<string>;
     /**
@@ -256,7 +256,7 @@ export interface ForwardingRuleState {
      */
     forwardingRuleName?: pulumi.Input<string>;
     /**
-     * Forwarding Policy Status.
+     * The status of the Forwarding Rule.
      */
     forwardingRuleStatus?: pulumi.Input<string>;
     /**

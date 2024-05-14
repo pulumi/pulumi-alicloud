@@ -42,14 +42,13 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
-//			})
+//			_default, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("default-NODELETING"),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			defaultGetRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -57,8 +56,8 @@ import (
 //			}
 //			_, err = expressconnect.NewRouterInterface(ctx, "default", &expressconnect.RouterInterfaceArgs{
 //				Description:         pulumi.String(name),
-//				OppositeRegionId:    pulumi.String(_default.Regions[0].Id),
-//				RouterId:            defaultNetwork.RouterId,
+//				OppositeRegionId:    pulumi.String(defaultGetRegions.Regions[0].Id),
+//				RouterId:            pulumi.String(_default.Vpcs[0].RouterId),
 //				Role:                pulumi.String("InitiatingSide"),
 //				RouterType:          pulumi.String("VRouter"),
 //				PaymentType:         pulumi.String("PayAsYouGo"),

@@ -36,12 +36,14 @@ class ServiceMeshArgs:
         :param pulumi.Input[str] cluster_spec: Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
         :param pulumi.Input[bool] customized_prometheus: Whether to customize Prometheus. Value:
                -'true': custom Prometheus.
-               -'false': Do not customize Prometheus. Default value: 'false '.
-        :param pulumi.Input[str] edition: Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+               -'false': Do not customize Prometheus.
+               Default value: 'false '.
+        :param pulumi.Input[str] edition: Grid instance version type (for example: the standard, the Pro version, etc.).
         :param pulumi.Input['ServiceMeshExtraConfigurationArgs'] extra_configuration: Data plane KubeAPI access capability. See `extra_configuration` below.
         :param pulumi.Input[bool] force: Whether to forcibly delete the ASM instance. Value:
                -'true': force deletion of ASM instance
-               -'false': no forced deletion of ASM instance. Default value: false.
+               -'false': no forced deletion of ASM instance
+               Default value: false.
         :param pulumi.Input['ServiceMeshLoadBalancerArgs'] load_balancer: Load balancing information. See `load_balancer` below.
         :param pulumi.Input['ServiceMeshMeshConfigArgs'] mesh_config: Service grid configuration information. See `mesh_config` below.
         :param pulumi.Input[str] prometheus_url: The Prometheus service address (in non-custom cases, use the ARMS address format).
@@ -117,7 +119,8 @@ class ServiceMeshArgs:
         """
         Whether to customize Prometheus. Value:
         -'true': custom Prometheus.
-        -'false': Do not customize Prometheus. Default value: 'false '.
+        -'false': Do not customize Prometheus.
+        Default value: 'false '.
         """
         return pulumi.get(self, "customized_prometheus")
 
@@ -129,7 +132,7 @@ class ServiceMeshArgs:
     @pulumi.getter
     def edition(self) -> Optional[pulumi.Input[str]]:
         """
-        Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+        Grid instance version type (for example: the standard, the Pro version, etc.).
         """
         return pulumi.get(self, "edition")
 
@@ -155,7 +158,8 @@ class ServiceMeshArgs:
         """
         Whether to forcibly delete the ASM instance. Value:
         -'true': force deletion of ASM instance
-        -'false': no forced deletion of ASM instance. Default value: false.
+        -'false': no forced deletion of ASM instance
+        Default value: false.
         """
         return pulumi.get(self, "force")
 
@@ -261,12 +265,14 @@ class _ServiceMeshState:
         :param pulumi.Input[str] create_time: Service grid creation time.
         :param pulumi.Input[bool] customized_prometheus: Whether to customize Prometheus. Value:
                -'true': custom Prometheus.
-               -'false': Do not customize Prometheus. Default value: 'false '.
-        :param pulumi.Input[str] edition: Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+               -'false': Do not customize Prometheus.
+               Default value: 'false '.
+        :param pulumi.Input[str] edition: Grid instance version type (for example: the standard, the Pro version, etc.).
         :param pulumi.Input['ServiceMeshExtraConfigurationArgs'] extra_configuration: Data plane KubeAPI access capability. See `extra_configuration` below.
         :param pulumi.Input[bool] force: Whether to forcibly delete the ASM instance. Value:
                -'true': force deletion of ASM instance
-               -'false': no forced deletion of ASM instance. Default value: false.
+               -'false': no forced deletion of ASM instance
+               Default value: false.
         :param pulumi.Input['ServiceMeshLoadBalancerArgs'] load_balancer: Load balancing information. See `load_balancer` below.
         :param pulumi.Input['ServiceMeshMeshConfigArgs'] mesh_config: Service grid configuration information. See `mesh_config` below.
         :param pulumi.Input['ServiceMeshNetworkArgs'] network: Service grid network configuration information. See `network` below.
@@ -349,7 +355,8 @@ class _ServiceMeshState:
         """
         Whether to customize Prometheus. Value:
         -'true': custom Prometheus.
-        -'false': Do not customize Prometheus. Default value: 'false '.
+        -'false': Do not customize Prometheus.
+        Default value: 'false '.
         """
         return pulumi.get(self, "customized_prometheus")
 
@@ -361,7 +368,7 @@ class _ServiceMeshState:
     @pulumi.getter
     def edition(self) -> Optional[pulumi.Input[str]]:
         """
-        Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+        Grid instance version type (for example: the standard, the Pro version, etc.).
         """
         return pulumi.get(self, "edition")
 
@@ -387,7 +394,8 @@ class _ServiceMeshState:
         """
         Whether to forcibly delete the ASM instance. Value:
         -'true': force deletion of ASM instance
-        -'false': no forced deletion of ASM instance. Default value: false.
+        -'false': no forced deletion of ASM instance
+        Default value: false.
         """
         return pulumi.get(self, "force")
 
@@ -532,12 +540,14 @@ class ServiceMesh(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_spec: Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
         :param pulumi.Input[bool] customized_prometheus: Whether to customize Prometheus. Value:
                -'true': custom Prometheus.
-               -'false': Do not customize Prometheus. Default value: 'false '.
-        :param pulumi.Input[str] edition: Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+               -'false': Do not customize Prometheus.
+               Default value: 'false '.
+        :param pulumi.Input[str] edition: Grid instance version type (for example: the standard, the Pro version, etc.).
         :param pulumi.Input[pulumi.InputType['ServiceMeshExtraConfigurationArgs']] extra_configuration: Data plane KubeAPI access capability. See `extra_configuration` below.
         :param pulumi.Input[bool] force: Whether to forcibly delete the ASM instance. Value:
                -'true': force deletion of ASM instance
-               -'false': no forced deletion of ASM instance. Default value: false.
+               -'false': no forced deletion of ASM instance
+               Default value: false.
         :param pulumi.Input[pulumi.InputType['ServiceMeshLoadBalancerArgs']] load_balancer: Load balancing information. See `load_balancer` below.
         :param pulumi.Input[pulumi.InputType['ServiceMeshMeshConfigArgs']] mesh_config: Service grid configuration information. See `mesh_config` below.
         :param pulumi.Input[pulumi.InputType['ServiceMeshNetworkArgs']] network: Service grid network configuration information. See `network` below.
@@ -658,12 +668,14 @@ class ServiceMesh(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Service grid creation time.
         :param pulumi.Input[bool] customized_prometheus: Whether to customize Prometheus. Value:
                -'true': custom Prometheus.
-               -'false': Do not customize Prometheus. Default value: 'false '.
-        :param pulumi.Input[str] edition: Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+               -'false': Do not customize Prometheus.
+               Default value: 'false '.
+        :param pulumi.Input[str] edition: Grid instance version type (for example: the standard, the Pro version, etc.).
         :param pulumi.Input[pulumi.InputType['ServiceMeshExtraConfigurationArgs']] extra_configuration: Data plane KubeAPI access capability. See `extra_configuration` below.
         :param pulumi.Input[bool] force: Whether to forcibly delete the ASM instance. Value:
                -'true': force deletion of ASM instance
-               -'false': no forced deletion of ASM instance. Default value: false.
+               -'false': no forced deletion of ASM instance
+               Default value: false.
         :param pulumi.Input[pulumi.InputType['ServiceMeshLoadBalancerArgs']] load_balancer: Load balancing information. See `load_balancer` below.
         :param pulumi.Input[pulumi.InputType['ServiceMeshMeshConfigArgs']] mesh_config: Service grid configuration information. See `mesh_config` below.
         :param pulumi.Input[pulumi.InputType['ServiceMeshNetworkArgs']] network: Service grid network configuration information. See `network` below.
@@ -724,7 +736,8 @@ class ServiceMesh(pulumi.CustomResource):
         """
         Whether to customize Prometheus. Value:
         -'true': custom Prometheus.
-        -'false': Do not customize Prometheus. Default value: 'false '.
+        -'false': Do not customize Prometheus.
+        Default value: 'false '.
         """
         return pulumi.get(self, "customized_prometheus")
 
@@ -732,7 +745,7 @@ class ServiceMesh(pulumi.CustomResource):
     @pulumi.getter
     def edition(self) -> pulumi.Output[str]:
         """
-        Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+        Grid instance version type (for example: the standard, the Pro version, etc.).
         """
         return pulumi.get(self, "edition")
 
@@ -750,7 +763,8 @@ class ServiceMesh(pulumi.CustomResource):
         """
         Whether to forcibly delete the ASM instance. Value:
         -'true': force deletion of ASM instance
-        -'false': no forced deletion of ASM instance. Default value: false.
+        -'false': no forced deletion of ASM instance
+        Default value: false.
         """
         return pulumi.get(self, "force")
 

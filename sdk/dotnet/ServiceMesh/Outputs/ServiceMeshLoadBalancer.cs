@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshLoadBalancer
     {
         /// <summary>
-        /// The IP address of a public network exposed API Server corresponding to the load balancing ID.
+        /// The Instance ID of APIServer Load Balancer.
         /// </summary>
         public readonly string? ApiServerLoadbalancerId;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly bool? PilotPublicEip;
         /// <summary>
-        /// The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
+        /// The Instance ID of Pilot Load Balancer.
         /// </summary>
         public readonly string? PilotPublicLoadbalancerId;
 

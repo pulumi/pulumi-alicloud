@@ -187,14 +187,16 @@ class Namespace(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        default = alicloud.get_regions(current=True)
-        default_namespace = alicloud.edas.Namespace("default",
+            name = "tfexample"
+        default = alicloud.edas.Namespace("default",
             debug_enable=False,
             description=name,
-            namespace_logical_id=f"{default.regions[0].id}:example",
+            namespace_logical_id=f"{region}:{name}",
             namespace_name=name)
         ```
 
@@ -237,14 +239,16 @@ class Namespace(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         config = pulumi.Config()
+        region = config.get("region")
+        if region is None:
+            region = "cn-hangzhou"
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        default = alicloud.get_regions(current=True)
-        default_namespace = alicloud.edas.Namespace("default",
+            name = "tfexample"
+        default = alicloud.edas.Namespace("default",
             debug_enable=False,
             description=name,
-            namespace_logical_id=f"{default.regions[0].id}:example",
+            namespace_logical_id=f"{region}:{name}",
             namespace_name=name)
         ```
 

@@ -40,6 +40,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
  * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.hbr.Vault;
  * import com.pulumi.alicloud.hbr.VaultArgs;
  * import com.pulumi.alicloud.hbr.HanaInstance;
@@ -61,13 +63,18 @@ import javax.annotation.Nullable;
  *             .status("OK")
  *             .build());
  * 
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
  *         var exampleVault = new Vault("exampleVault", VaultArgs.builder()        
- *             .vaultName("terraform-example")
+ *             .vaultName(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
  *         var exampleHanaInstance = new HanaInstance("exampleHanaInstance", HanaInstanceArgs.builder()        
  *             .alertSetting("INHERITED")
- *             .hanaName("terraform-example")
+ *             .hanaName(String.format("terraform-example-%s", default_.result()))
  *             .host("1.1.1.1")
  *             .instanceNumber(1)
  *             .password("YouPassword123")

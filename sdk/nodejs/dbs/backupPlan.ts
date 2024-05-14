@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     dbInstanceStorageType: "cloud_essd",
  * });
  * const defaultGetInstanceClasses = defaultGetZones.then(defaultGetZones => alicloud.rds.getInstanceClasses({
- *     zoneId: defaultGetZones.zones?.[0]?.id,
+ *     zoneId: defaultGetZones.zones?.[1]?.id,
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     category: "HighAvailability",
@@ -44,10 +44,10 @@ import * as utilities from "../utilities";
  * });
  * const defaultGetSwitches = Promise.all([defaultGetNetworks, defaultGetZones]).then(([defaultGetNetworks, defaultGetZones]) => alicloud.vpc.getSwitches({
  *     vpcId: defaultGetNetworks.ids?.[0],
- *     zoneId: defaultGetZones.zones?.[0]?.id,
+ *     zoneId: defaultGetZones.zones?.[1]?.id,
  * }));
  * const vswitchId = defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]);
- * const zoneId = defaultGetZones.then(defaultGetZones => defaultGetZones.ids?.[0]);
+ * const zoneId = defaultGetZones.then(defaultGetZones => defaultGetZones.ids?.[1]);
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
  *     name: name,
  *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),

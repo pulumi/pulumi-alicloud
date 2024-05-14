@@ -36,13 +36,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "tfexample"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			_, err := resourcemanager.NewResourceGroup(ctx, "example", &resourcemanager.ResourceGroupArgs{
-//				DisplayName:       pulumi.String(name),
 //				ResourceGroupName: pulumi.String(name),
+//				DisplayName:       pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

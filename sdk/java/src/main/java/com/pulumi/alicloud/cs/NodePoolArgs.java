@@ -62,16 +62,24 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+     * 
+     * @deprecated
+     * Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
      * 
      */
+    @Deprecated /* Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead. */
     @Import(name="cisEnabled")
     private @Nullable Output<Boolean> cisEnabled;
 
     /**
-     * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+     * @return Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+     * 
+     * @deprecated
+     * Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
      * 
      */
+    @Deprecated /* Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead. */
     public Optional<Output<Boolean>> cisEnabled() {
         return Optional.ofNullable(this.cisEnabled);
     }
@@ -790,8 +798,23 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+     * 
+     */
+    @Import(name="securityHardeningOs")
+    private @Nullable Output<Boolean> securityHardeningOs;
+
+    /**
+     * @return Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+     * 
+     */
+    public Optional<Output<Boolean>> securityHardeningOs() {
+        return Optional.ofNullable(this.securityHardeningOs);
+    }
+
+    /**
      * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-     * &gt; **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+     * &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
      * 
      */
     @Import(name="socEnabled")
@@ -799,7 +822,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-     * &gt; **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+     * &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
      * 
      */
     public Optional<Output<Boolean>> socEnabled() {
@@ -1077,6 +1100,21 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Synchronously update node labels and taints.
+     * 
+     */
+    @Import(name="updateNodes")
+    private @Nullable Output<Boolean> updateNodes;
+
+    /**
+     * @return Synchronously update node labels and taints.
+     * 
+     */
+    public Optional<Output<Boolean>> updateNodes() {
+        return Optional.ofNullable(this.updateNodes);
+    }
+
+    /**
      * Node custom data.
      * 
      */
@@ -1157,6 +1195,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.scalingPolicy = $.scalingPolicy;
         this.securityGroupId = $.securityGroupId;
         this.securityGroupIds = $.securityGroupIds;
+        this.securityHardeningOs = $.securityHardeningOs;
         this.socEnabled = $.socEnabled;
         this.spotInstancePools = $.spotInstancePools;
         this.spotInstanceRemedy = $.spotInstanceRemedy;
@@ -1176,6 +1215,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.taints = $.taints;
         this.teeConfig = $.teeConfig;
         this.unschedulable = $.unschedulable;
+        this.updateNodes = $.updateNodes;
         this.userData = $.userData;
         this.vswitchIds = $.vswitchIds;
     }
@@ -1241,22 +1281,30 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cisEnabled Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+         * @param cisEnabled Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+         * 
          */
+        @Deprecated /* Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead. */
         public Builder cisEnabled(@Nullable Output<Boolean> cisEnabled) {
             $.cisEnabled = cisEnabled;
             return this;
         }
 
         /**
-         * @param cisEnabled Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+         * @param cisEnabled Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;cis_enabled&#39; has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
+         * 
          */
+        @Deprecated /* Field 'cis_enabled' has been deprecated from provider version 1.223.1. Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead. */
         public Builder cisEnabled(Boolean cisEnabled) {
             return cisEnabled(Output.of(cisEnabled));
         }
@@ -2305,8 +2353,29 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param securityHardeningOs Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityHardeningOs(@Nullable Output<Boolean> securityHardeningOs) {
+            $.securityHardeningOs = securityHardeningOs;
+            return this;
+        }
+
+        /**
+         * @param securityHardeningOs Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityHardeningOs(Boolean securityHardeningOs) {
+            return securityHardeningOs(Output.of(securityHardeningOs));
+        }
+
+        /**
          * @param socEnabled Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-         * &gt; **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+         * &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
          * 
          * @return builder
          * 
@@ -2318,7 +2387,7 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param socEnabled Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-         * &gt; **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+         * &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
          * 
          * @return builder
          * 
@@ -2733,6 +2802,27 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder unschedulable(Boolean unschedulable) {
             return unschedulable(Output.of(unschedulable));
+        }
+
+        /**
+         * @param updateNodes Synchronously update node labels and taints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateNodes(@Nullable Output<Boolean> updateNodes) {
+            $.updateNodes = updateNodes;
+            return this;
+        }
+
+        /**
+         * @param updateNodes Synchronously update node labels and taints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateNodes(Boolean updateNodes) {
+            return updateNodes(Output.of(updateNodes));
         }
 
         /**

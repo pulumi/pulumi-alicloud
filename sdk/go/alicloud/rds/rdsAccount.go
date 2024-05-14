@@ -74,7 +74,7 @@ import (
 //			defaultInstance, err := rds.NewInstance(ctx, "default", &rds.InstanceArgs{
 //				Engine:          pulumi.String("MySQL"),
 //				EngineVersion:   pulumi.String("5.6"),
-//				InstanceType:    pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceType:    pulumi.String(defaultGetInstanceClasses.InstanceClasses[1].InstanceClass),
 //				InstanceStorage: pulumi.Int(10),
 //				VswitchId:       defaultSwitch.ID(),
 //				InstanceName:    pulumi.String(name),

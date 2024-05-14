@@ -51,7 +51,6 @@ import javax.annotation.Nullable;
  *         var example = new Namespace("example", NamespaceArgs.builder()        
  *             .namespace("tf-example")
  *             .specification("cms.s1.large")
- *             .description("tf-example")
  *             .build());
  * 
  *     }

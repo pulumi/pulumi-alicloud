@@ -29,11 +29,11 @@ namespace Pulumi.AliCloud.ResourceManager
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "tfexample";
     ///     var example = new AliCloud.ResourceManager.ResourceGroup("example", new()
     ///     {
-    ///         DisplayName = name,
     ///         ResourceGroupName = name,
+    ///         DisplayName = name,
     ///     });
     /// 
     /// });

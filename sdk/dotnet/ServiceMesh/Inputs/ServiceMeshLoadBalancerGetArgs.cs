@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
     public sealed class ServiceMeshLoadBalancerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP address of a public network exposed API Server corresponding to the load balancing ID.
+        /// The Instance ID of APIServer Load Balancer.
         /// </summary>
         [Input("apiServerLoadbalancerId")]
         public Input<string>? ApiServerLoadbalancerId { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<bool>? PilotPublicEip { get; set; }
 
         /// <summary>
-        /// The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
+        /// The Instance ID of Pilot Load Balancer.
         /// </summary>
         [Input("pilotPublicLoadbalancerId")]
         public Input<string>? PilotPublicLoadbalancerId { get; set; }

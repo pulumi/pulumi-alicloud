@@ -5,6 +5,7 @@ package com.pulumi.alicloud.servicemesh.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,14 +14,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfigAccessLog {
     private @Nullable Boolean enabled;
+    private @Nullable Boolean gatewayEnabled;
+    private @Nullable Integer gatewayLifecycle;
     private @Nullable String project;
+    private @Nullable Boolean sidecarEnabled;
+    private @Nullable Integer sidecarLifecycle;
 
     private ServiceMeshMeshConfigAccessLog() {}
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    public Optional<Boolean> gatewayEnabled() {
+        return Optional.ofNullable(this.gatewayEnabled);
+    }
+    public Optional<Integer> gatewayLifecycle() {
+        return Optional.ofNullable(this.gatewayLifecycle);
+    }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
+    }
+    public Optional<Boolean> sidecarEnabled() {
+        return Optional.ofNullable(this.sidecarEnabled);
+    }
+    public Optional<Integer> sidecarLifecycle() {
+        return Optional.ofNullable(this.sidecarLifecycle);
     }
 
     public static Builder builder() {
@@ -33,12 +50,20 @@ public final class ServiceMeshMeshConfigAccessLog {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enabled;
+        private @Nullable Boolean gatewayEnabled;
+        private @Nullable Integer gatewayLifecycle;
         private @Nullable String project;
+        private @Nullable Boolean sidecarEnabled;
+        private @Nullable Integer sidecarLifecycle;
         public Builder() {}
         public Builder(ServiceMeshMeshConfigAccessLog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.gatewayEnabled = defaults.gatewayEnabled;
+    	      this.gatewayLifecycle = defaults.gatewayLifecycle;
     	      this.project = defaults.project;
+    	      this.sidecarEnabled = defaults.sidecarEnabled;
+    	      this.sidecarLifecycle = defaults.sidecarLifecycle;
         }
 
         @CustomType.Setter
@@ -48,15 +73,43 @@ public final class ServiceMeshMeshConfigAccessLog {
             return this;
         }
         @CustomType.Setter
+        public Builder gatewayEnabled(@Nullable Boolean gatewayEnabled) {
+
+            this.gatewayEnabled = gatewayEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gatewayLifecycle(@Nullable Integer gatewayLifecycle) {
+
+            this.gatewayLifecycle = gatewayLifecycle;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
             return this;
         }
+        @CustomType.Setter
+        public Builder sidecarEnabled(@Nullable Boolean sidecarEnabled) {
+
+            this.sidecarEnabled = sidecarEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sidecarLifecycle(@Nullable Integer sidecarLifecycle) {
+
+            this.sidecarLifecycle = sidecarLifecycle;
+            return this;
+        }
         public ServiceMeshMeshConfigAccessLog build() {
             final var _resultValue = new ServiceMeshMeshConfigAccessLog();
             _resultValue.enabled = enabled;
+            _resultValue.gatewayEnabled = gatewayEnabled;
+            _resultValue.gatewayLifecycle = gatewayLifecycle;
             _resultValue.project = project;
+            _resultValue.sidecarEnabled = sidecarEnabled;
+            _resultValue.sidecarLifecycle = sidecarLifecycle;
             return _resultValue;
         }
     }

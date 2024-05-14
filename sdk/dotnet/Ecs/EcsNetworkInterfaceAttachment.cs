@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Network Interface Attachment and how to use it, see [What is Network Interface Attachment](https://www.alibabacloud.com/help/en/doc-detail/58515.htm).
     /// 
-    /// &gt; **NOTE:** Available since v1.123.1+.
+    /// &gt; **NOTE:** Available since v1.123.1.
     /// 
     /// ## Example Usage
     /// 
@@ -120,26 +120,32 @@ namespace Pulumi.AliCloud.Ecs
     /// ECS Network Interface Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example eni-abcd1234:i-abcd1234
+    /// $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example &lt;network_interface_id&gt;:&lt;instance_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment")]
     public partial class EcsNetworkInterfaceAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The instance id.
+        /// The ID of the ECS instance.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The network interface id.
+        /// The index of the network card.
+        /// </summary>
+        [Output("networkCardIndex")]
+        public Output<int?> NetworkCardIndex { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the network interface.
         /// </summary>
         [Output("networkInterfaceId")]
         public Output<string> NetworkInterfaceId { get; private set; } = null!;
 
         /// <summary>
-        /// The trunk network instance id.
+        /// The ID of the trunk network instance.
         /// </summary>
         [Output("trunkNetworkInstanceId")]
         public Output<string?> TrunkNetworkInstanceId { get; private set; } = null!;
@@ -197,19 +203,25 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsNetworkInterfaceAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The instance id.
+        /// The ID of the ECS instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The network interface id.
+        /// The index of the network card.
+        /// </summary>
+        [Input("networkCardIndex")]
+        public Input<int>? NetworkCardIndex { get; set; }
+
+        /// <summary>
+        /// The ID of the network interface.
         /// </summary>
         [Input("networkInterfaceId", required: true)]
         public Input<string> NetworkInterfaceId { get; set; } = null!;
 
         /// <summary>
-        /// The trunk network instance id.
+        /// The ID of the trunk network instance.
         /// </summary>
         [Input("trunkNetworkInstanceId")]
         public Input<string>? TrunkNetworkInstanceId { get; set; }
@@ -229,19 +241,25 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsNetworkInterfaceAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The instance id.
+        /// The ID of the ECS instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The network interface id.
+        /// The index of the network card.
+        /// </summary>
+        [Input("networkCardIndex")]
+        public Input<int>? NetworkCardIndex { get; set; }
+
+        /// <summary>
+        /// The ID of the network interface.
         /// </summary>
         [Input("networkInterfaceId")]
         public Input<string>? NetworkInterfaceId { get; set; }
 
         /// <summary>
-        /// The trunk network instance id.
+        /// The ID of the trunk network instance.
         /// </summary>
         [Input("trunkNetworkInstanceId")]
         public Input<string>? TrunkNetworkInstanceId { get; set; }

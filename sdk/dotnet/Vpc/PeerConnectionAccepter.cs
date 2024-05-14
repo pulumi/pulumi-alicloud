@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Vpc
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var acceptingRegion = config.Get("acceptingRegion") ?? "cn-beijing";
-    ///     var acceptUid = config.Get("acceptUid") ?? "xxxx";
+    ///     var anotherUid = config.Get("anotherUid") ?? "xxxx";
     ///     var local = new AliCloud.Vpc.Network("local", new()
     ///     {
     ///         VpcName = name,

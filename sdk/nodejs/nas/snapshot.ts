@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  *     protocolType: "NFS",
  *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneId),
  *     storageType: "standard",
- *     description: name,
  *     capacity: 100,
  * });
  * const defaultSnapshot = new alicloud.nas.Snapshot("default", {

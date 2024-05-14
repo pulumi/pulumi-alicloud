@@ -27,11 +27,8 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -40,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraform-example"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -48,66 +45,50 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-//				Min: 10000,
-//				Max: 99999,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultVPC, err := vpc.NewNetwork(ctx, "DefaultVPC", &vpc.NetworkArgs{
-//				CidrBlock: pulumi.String("172.16.0.0/12"),
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultVSwitch, err := vpc.NewSwitch(ctx, "DefaultVSwitch", &vpc.SwitchArgs{
-//				Description: pulumi.String("example"),
-//				VpcId:       defaultVPC.ID(),
-//				CidrBlock:   pulumi.String("172.16.0.0/24"),
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
+//				CidrBlock:   pulumi.String("10.4.0.0/24"),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(_default.Zones[0].ZoneId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultAccessGroup, err := dfs.NewAccessGroup(ctx, "DefaultAccessGroup", &dfs.AccessGroupArgs{
-//				Description:     pulumi.String("AccessGroup resource manager center example"),
-//				NetworkType:     pulumi.String("VPC"),
-//				AccessGroupName: pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
+//			defaultFileSystem, err := dfs.NewFileSystem(ctx, "default", &dfs.FileSystemArgs{
+//				StorageType:                  pulumi.String(_default.Zones[0].Options[0].StorageType),
+//				ZoneId:                       pulumi.String(_default.Zones[0].ZoneId),
+//				ProtocolType:                 pulumi.String("HDFS"),
+//				Description:                  pulumi.String(name),
+//				FileSystemName:               pulumi.String(name),
+//				ThroughputMode:               pulumi.String("Provisioned"),
+//				SpaceCapacity:                pulumi.Int(1024),
+//				ProvisionedThroughputInMiBps: pulumi.Int(512),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dfs.NewAccessGroup(ctx, "UpdateAccessGroup", &dfs.AccessGroupArgs{
-//				Description:     pulumi.String("Second AccessGroup resource manager center example"),
+//			defaultAccessGroup, err := dfs.NewAccessGroup(ctx, "default", &dfs.AccessGroupArgs{
+//				AccessGroupName: pulumi.String(name),
+//				Description:     pulumi.String(name),
 //				NetworkType:     pulumi.String("VPC"),
-//				AccessGroupName: pulumi.String(fmt.Sprintf("%v-update-%v", name, defaultInteger.Result)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultFs, err := dfs.NewFileSystem(ctx, "DefaultFs", &dfs.FileSystemArgs{
-//				SpaceCapacity:      pulumi.Int(1024),
-//				Description:        pulumi.String("for mountpoint  example"),
-//				StorageType:        pulumi.String("STANDARD"),
-//				ZoneId:             pulumi.String(_default.Zones[0].ZoneId),
-//				ProtocolType:       pulumi.String("HDFS"),
-//				DataRedundancyType: pulumi.String("LRS"),
-//				FileSystemName:     pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dfs.NewMountPoint(ctx, "default", &dfs.MountPointArgs{
-//				VpcId:         defaultVPC.ID(),
-//				Description:   pulumi.String("mountpoint example"),
-//				NetworkType:   pulumi.String("VPC"),
-//				VswitchId:     defaultVSwitch.ID(),
-//				FileSystemId:  defaultFs.ID(),
+//				Description:   pulumi.String(name),
+//				VpcId:         defaultNetwork.ID(),
+//				FileSystemId:  defaultFileSystem.ID(),
 //				AccessGroupId: defaultAccessGroup.ID(),
-//				Status:        pulumi.String("Active"),
+//				NetworkType:   pulumi.String("VPC"),
+//				VswitchId:     defaultSwitch.ID(),
 //			})
 //			if err != nil {
 //				return err

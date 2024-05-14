@@ -16,7 +16,7 @@ import (
 //
 // For information about ECS Network Interface Attachment and how to use it, see [What is Network Interface Attachment](https://www.alibabacloud.com/help/en/doc-detail/58515.htm).
 //
-// > **NOTE:** Available since v1.123.1+.
+// > **NOTE:** Available since v1.123.1.
 //
 // ## Example Usage
 //
@@ -143,16 +143,18 @@ import (
 // ECS Network Interface Attachment can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example eni-abcd1234:i-abcd1234
+// $ pulumi import alicloud:ecs/ecsNetworkInterfaceAttachment:EcsNetworkInterfaceAttachment example <network_interface_id>:<instance_id>
 // ```
 type EcsNetworkInterfaceAttachment struct {
 	pulumi.CustomResourceState
 
-	// The instance id.
+	// The ID of the ECS instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The network interface id.
+	// The index of the network card.
+	NetworkCardIndex pulumi.IntPtrOutput `pulumi:"networkCardIndex"`
+	// The ID of the network interface.
 	NetworkInterfaceId pulumi.StringOutput `pulumi:"networkInterfaceId"`
-	// The trunk network instance id.
+	// The ID of the trunk network instance.
 	TrunkNetworkInstanceId pulumi.StringPtrOutput `pulumi:"trunkNetworkInstanceId"`
 	// The wait for network configuration ready.
 	WaitForNetworkConfigurationReady pulumi.BoolPtrOutput `pulumi:"waitForNetworkConfigurationReady"`
@@ -194,22 +196,26 @@ func GetEcsNetworkInterfaceAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcsNetworkInterfaceAttachment resources.
 type ecsNetworkInterfaceAttachmentState struct {
-	// The instance id.
+	// The ID of the ECS instance.
 	InstanceId *string `pulumi:"instanceId"`
-	// The network interface id.
+	// The index of the network card.
+	NetworkCardIndex *int `pulumi:"networkCardIndex"`
+	// The ID of the network interface.
 	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
-	// The trunk network instance id.
+	// The ID of the trunk network instance.
 	TrunkNetworkInstanceId *string `pulumi:"trunkNetworkInstanceId"`
 	// The wait for network configuration ready.
 	WaitForNetworkConfigurationReady *bool `pulumi:"waitForNetworkConfigurationReady"`
 }
 
 type EcsNetworkInterfaceAttachmentState struct {
-	// The instance id.
+	// The ID of the ECS instance.
 	InstanceId pulumi.StringPtrInput
-	// The network interface id.
+	// The index of the network card.
+	NetworkCardIndex pulumi.IntPtrInput
+	// The ID of the network interface.
 	NetworkInterfaceId pulumi.StringPtrInput
-	// The trunk network instance id.
+	// The ID of the trunk network instance.
 	TrunkNetworkInstanceId pulumi.StringPtrInput
 	// The wait for network configuration ready.
 	WaitForNetworkConfigurationReady pulumi.BoolPtrInput
@@ -220,11 +226,13 @@ func (EcsNetworkInterfaceAttachmentState) ElementType() reflect.Type {
 }
 
 type ecsNetworkInterfaceAttachmentArgs struct {
-	// The instance id.
+	// The ID of the ECS instance.
 	InstanceId string `pulumi:"instanceId"`
-	// The network interface id.
+	// The index of the network card.
+	NetworkCardIndex *int `pulumi:"networkCardIndex"`
+	// The ID of the network interface.
 	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
-	// The trunk network instance id.
+	// The ID of the trunk network instance.
 	TrunkNetworkInstanceId *string `pulumi:"trunkNetworkInstanceId"`
 	// The wait for network configuration ready.
 	WaitForNetworkConfigurationReady *bool `pulumi:"waitForNetworkConfigurationReady"`
@@ -232,11 +240,13 @@ type ecsNetworkInterfaceAttachmentArgs struct {
 
 // The set of arguments for constructing a EcsNetworkInterfaceAttachment resource.
 type EcsNetworkInterfaceAttachmentArgs struct {
-	// The instance id.
+	// The ID of the ECS instance.
 	InstanceId pulumi.StringInput
-	// The network interface id.
+	// The index of the network card.
+	NetworkCardIndex pulumi.IntPtrInput
+	// The ID of the network interface.
 	NetworkInterfaceId pulumi.StringInput
-	// The trunk network instance id.
+	// The ID of the trunk network instance.
 	TrunkNetworkInstanceId pulumi.StringPtrInput
 	// The wait for network configuration ready.
 	WaitForNetworkConfigurationReady pulumi.BoolPtrInput
@@ -329,17 +339,22 @@ func (o EcsNetworkInterfaceAttachmentOutput) ToEcsNetworkInterfaceAttachmentOutp
 	return o
 }
 
-// The instance id.
+// The ID of the ECS instance.
 func (o EcsNetworkInterfaceAttachmentOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsNetworkInterfaceAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The network interface id.
+// The index of the network card.
+func (o EcsNetworkInterfaceAttachmentOutput) NetworkCardIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EcsNetworkInterfaceAttachment) pulumi.IntPtrOutput { return v.NetworkCardIndex }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the network interface.
 func (o EcsNetworkInterfaceAttachmentOutput) NetworkInterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsNetworkInterfaceAttachment) pulumi.StringOutput { return v.NetworkInterfaceId }).(pulumi.StringOutput)
 }
 
-// The trunk network instance id.
+// The ID of the trunk network instance.
 func (o EcsNetworkInterfaceAttachmentOutput) TrunkNetworkInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsNetworkInterfaceAttachment) pulumi.StringPtrOutput { return v.TrunkNetworkInstanceId }).(pulumi.StringPtrOutput)
 }

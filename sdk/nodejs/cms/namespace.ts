@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * const example = new alicloud.cms.Namespace("example", {
  *     namespace: "tf-example",
  *     specification: "cms.s1.large",
- *     description: "tf-example",
  * });
  * ```
  *

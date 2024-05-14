@@ -18,14 +18,14 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
     public static final KubernetesPermissionPermissionArgs Empty = new KubernetesPermissionPermissionArgs();
 
     /**
-     * The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
+     * The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
      * 
      */
     @Import(name="cluster", required=true)
     private Output<String> cluster;
 
     /**
-     * @return The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
+     * @return The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
      * 
      */
     public Output<String> cluster() {
@@ -33,14 +33,14 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
     }
 
     /**
-     * Specifies whether to perform a custom authorization. To perform a custom authorization, set `role_name` to a custom cluster role.
+     * Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
      * 
      */
     @Import(name="isCustom")
     private @Nullable Output<Boolean> isCustom;
 
     /**
-     * @return Specifies whether to perform a custom authorization. To perform a custom authorization, set `role_name` to a custom cluster role.
+     * @return Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
      * 
      */
     public Optional<Output<Boolean>> isCustom() {
@@ -137,7 +137,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cluster The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
+         * @param cluster The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param cluster The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `role_type` must be null.
+         * @param cluster The ID of the cluster that you want to manage, When `role_type` value is `all-clusters`, the value of `cluster` must be `&#34;&#34;`.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param isCustom Specifies whether to perform a custom authorization. To perform a custom authorization, set `role_name` to a custom cluster role.
+         * @param isCustom Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class KubernetesPermissionPermissionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param isCustom Specifies whether to perform a custom authorization. To perform a custom authorization, set `role_name` to a custom cluster role.
+         * @param isCustom Specifies whether to perform a custom authorization. To perform a custom authorization, the value of `is_custom` must be `true`, and set `role_name` to a custom cluster role.
          * 
          * @return builder
          * 

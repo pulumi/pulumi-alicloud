@@ -36,15 +36,17 @@ type ServiceMesh struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether to customize Prometheus. Value:
 	// -'true': custom Prometheus.
-	// -'false': Do not customize Prometheus. Default value: 'false '.
+	// -'false': Do not customize Prometheus.
+	// Default value: 'false '.
 	CustomizedPrometheus pulumi.BoolPtrOutput `pulumi:"customizedPrometheus"`
-	// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+	// Grid instance version type (for example: the standard, the Pro version, etc.).
 	Edition pulumi.StringOutput `pulumi:"edition"`
 	// Data plane KubeAPI access capability. See `extraConfiguration` below.
 	ExtraConfiguration ServiceMeshExtraConfigurationOutput `pulumi:"extraConfiguration"`
 	// Whether to forcibly delete the ASM instance. Value:
 	// -'true': force deletion of ASM instance
-	// -'false': no forced deletion of ASM instance. Default value: false.
+	// -'false': no forced deletion of ASM instance
+	// Default value: false.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// Load balancing information. See `loadBalancer` below.
 	LoadBalancer ServiceMeshLoadBalancerOutput `pulumi:"loadBalancer"`
@@ -105,15 +107,17 @@ type serviceMeshState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Whether to customize Prometheus. Value:
 	// -'true': custom Prometheus.
-	// -'false': Do not customize Prometheus. Default value: 'false '.
+	// -'false': Do not customize Prometheus.
+	// Default value: 'false '.
 	CustomizedPrometheus *bool `pulumi:"customizedPrometheus"`
-	// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+	// Grid instance version type (for example: the standard, the Pro version, etc.).
 	Edition *string `pulumi:"edition"`
 	// Data plane KubeAPI access capability. See `extraConfiguration` below.
 	ExtraConfiguration *ServiceMeshExtraConfiguration `pulumi:"extraConfiguration"`
 	// Whether to forcibly delete the ASM instance. Value:
 	// -'true': force deletion of ASM instance
-	// -'false': no forced deletion of ASM instance. Default value: false.
+	// -'false': no forced deletion of ASM instance
+	// Default value: false.
 	Force *bool `pulumi:"force"`
 	// Load balancing information. See `loadBalancer` below.
 	LoadBalancer *ServiceMeshLoadBalancer `pulumi:"loadBalancer"`
@@ -142,15 +146,17 @@ type ServiceMeshState struct {
 	CreateTime pulumi.StringPtrInput
 	// Whether to customize Prometheus. Value:
 	// -'true': custom Prometheus.
-	// -'false': Do not customize Prometheus. Default value: 'false '.
+	// -'false': Do not customize Prometheus.
+	// Default value: 'false '.
 	CustomizedPrometheus pulumi.BoolPtrInput
-	// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+	// Grid instance version type (for example: the standard, the Pro version, etc.).
 	Edition pulumi.StringPtrInput
 	// Data plane KubeAPI access capability. See `extraConfiguration` below.
 	ExtraConfiguration ServiceMeshExtraConfigurationPtrInput
 	// Whether to forcibly delete the ASM instance. Value:
 	// -'true': force deletion of ASM instance
-	// -'false': no forced deletion of ASM instance. Default value: false.
+	// -'false': no forced deletion of ASM instance
+	// Default value: false.
 	Force pulumi.BoolPtrInput
 	// Load balancing information. See `loadBalancer` below.
 	LoadBalancer ServiceMeshLoadBalancerPtrInput
@@ -181,15 +187,17 @@ type serviceMeshArgs struct {
 	ClusterSpec *string `pulumi:"clusterSpec"`
 	// Whether to customize Prometheus. Value:
 	// -'true': custom Prometheus.
-	// -'false': Do not customize Prometheus. Default value: 'false '.
+	// -'false': Do not customize Prometheus.
+	// Default value: 'false '.
 	CustomizedPrometheus *bool `pulumi:"customizedPrometheus"`
-	// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+	// Grid instance version type (for example: the standard, the Pro version, etc.).
 	Edition *string `pulumi:"edition"`
 	// Data plane KubeAPI access capability. See `extraConfiguration` below.
 	ExtraConfiguration *ServiceMeshExtraConfiguration `pulumi:"extraConfiguration"`
 	// Whether to forcibly delete the ASM instance. Value:
 	// -'true': force deletion of ASM instance
-	// -'false': no forced deletion of ASM instance. Default value: false.
+	// -'false': no forced deletion of ASM instance
+	// Default value: false.
 	Force *bool `pulumi:"force"`
 	// Load balancing information. See `loadBalancer` below.
 	LoadBalancer *ServiceMeshLoadBalancer `pulumi:"loadBalancer"`
@@ -215,15 +223,17 @@ type ServiceMeshArgs struct {
 	ClusterSpec pulumi.StringPtrInput
 	// Whether to customize Prometheus. Value:
 	// -'true': custom Prometheus.
-	// -'false': Do not customize Prometheus. Default value: 'false '.
+	// -'false': Do not customize Prometheus.
+	// Default value: 'false '.
 	CustomizedPrometheus pulumi.BoolPtrInput
-	// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+	// Grid instance version type (for example: the standard, the Pro version, etc.).
 	Edition pulumi.StringPtrInput
 	// Data plane KubeAPI access capability. See `extraConfiguration` below.
 	ExtraConfiguration ServiceMeshExtraConfigurationPtrInput
 	// Whether to forcibly delete the ASM instance. Value:
 	// -'true': force deletion of ASM instance
-	// -'false': no forced deletion of ASM instance. Default value: false.
+	// -'false': no forced deletion of ASM instance
+	// Default value: false.
 	Force pulumi.BoolPtrInput
 	// Load balancing information. See `loadBalancer` below.
 	LoadBalancer ServiceMeshLoadBalancerPtrInput
@@ -345,12 +355,13 @@ func (o ServiceMeshOutput) CreateTime() pulumi.StringOutput {
 
 // Whether to customize Prometheus. Value:
 // -'true': custom Prometheus.
-// -'false': Do not customize Prometheus. Default value: 'false '.
+// -'false': Do not customize Prometheus.
+// Default value: 'false '.
 func (o ServiceMeshOutput) CustomizedPrometheus() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMesh) pulumi.BoolPtrOutput { return v.CustomizedPrometheus }).(pulumi.BoolPtrOutput)
 }
 
-// Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+// Grid instance version type (for example: the standard, the Pro version, etc.).
 func (o ServiceMeshOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceMesh) pulumi.StringOutput { return v.Edition }).(pulumi.StringOutput)
 }
@@ -362,7 +373,8 @@ func (o ServiceMeshOutput) ExtraConfiguration() ServiceMeshExtraConfigurationOut
 
 // Whether to forcibly delete the ASM instance. Value:
 // -'true': force deletion of ASM instance
-// -'false': no forced deletion of ASM instance. Default value: false.
+// -'false': no forced deletion of ASM instance
+// Default value: false.
 func (o ServiceMeshOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMesh) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }

@@ -163,6 +163,7 @@ namespace Pulumi.AliCloud.Rds
         /// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
         /// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
         /// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        /// - general_essd: general essd.
         /// </summary>
         [Output("dbInstanceStorageType")]
         public Output<string> DbInstanceStorageType { get; private set; } = null!;
@@ -822,6 +823,7 @@ namespace Pulumi.AliCloud.Rds
         /// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
         /// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
         /// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        /// - general_essd: general essd.
         /// </summary>
         [Input("dbInstanceStorageType")]
         public Input<string>? DbInstanceStorageType { get; set; }
@@ -1473,6 +1475,7 @@ namespace Pulumi.AliCloud.Rds
         /// - cloud_essd: specifies to use enhanced SSDs (ESSDs).
         /// - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
         /// - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
+        /// - general_essd: general essd.
         /// </summary>
         [Input("dbInstanceStorageType")]
         public Input<string>? DbInstanceStorageType { get; set; }

@@ -329,24 +329,16 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * (Deprecated) The ID of load balancer.
-     * 
-     * @deprecated
-     * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
+     * The ID of APIServer load balancer.
      * 
      */
-    @Deprecated /* Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it. */
     @Import(name="slbId")
     private @Nullable Output<String> slbId;
 
     /**
-     * @return (Deprecated) The ID of load balancer.
-     * 
-     * @deprecated
-     * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
+     * @return The ID of APIServer load balancer.
      * 
      */
-    @Deprecated /* Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it. */
     public Optional<Output<String>> slbId() {
         return Optional.ofNullable(this.slbId);
     }
@@ -946,30 +938,22 @@ public final class ManagedKubernetesState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param slbId (Deprecated) The ID of load balancer.
+         * @param slbId The ID of APIServer load balancer.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
-         * 
          */
-        @Deprecated /* Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it. */
         public Builder slbId(@Nullable Output<String> slbId) {
             $.slbId = slbId;
             return this;
         }
 
         /**
-         * @param slbId (Deprecated) The ID of load balancer.
+         * @param slbId The ID of APIServer load balancer.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
-         * 
          */
-        @Deprecated /* Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it. */
         public Builder slbId(String slbId) {
             return slbId(Output.of(slbId));
         }

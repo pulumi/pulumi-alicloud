@@ -244,7 +244,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly podCidr!: pulumi.Output<string | undefined>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswitchIds` or `masterVswitchIds` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones.
      */
     public readonly podVswitchIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -277,9 +277,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly serviceCidr!: pulumi.Output<string | undefined>;
     /**
-     * (Deprecated) The ID of load balancer.
-     *
-     * @deprecated Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+     * The ID of APIServer load balancer.
      */
     public /*out*/ readonly slbId!: pulumi.Output<string>;
     /**
@@ -289,8 +287,8 @@ export class Kubernetes extends pulumi.CustomResource {
     /**
      * Whether to create internet load balancer for API Server. Default to true.
      *
-     * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
+     * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+     * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
      *
      * *Master params*
      */
@@ -642,7 +640,7 @@ export interface KubernetesState {
      */
     podCidr?: pulumi.Input<string>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswitchIds` or `masterVswitchIds` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones.
      */
     podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -675,9 +673,7 @@ export interface KubernetesState {
      */
     serviceCidr?: pulumi.Input<string>;
     /**
-     * (Deprecated) The ID of load balancer.
-     *
-     * @deprecated Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
+     * The ID of APIServer load balancer.
      */
     slbId?: pulumi.Input<string>;
     /**
@@ -687,8 +683,8 @@ export interface KubernetesState {
     /**
      * Whether to create internet load balancer for API Server. Default to true.
      *
-     * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
+     * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+     * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
      *
      * *Master params*
      */
@@ -878,7 +874,7 @@ export interface KubernetesArgs {
      */
     podCidr?: pulumi.Input<string>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `podVswitchIds` can not equal to `workerVswitchIds` or `masterVswitchIds` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones.
      */
     podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -913,8 +909,8 @@ export interface KubernetesArgs {
     /**
      * Whether to create internet load balancer for API Server. Default to true.
      *
-     * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `podVswitchIds` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
+     * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
+     * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
      *
      * *Master params*
      */

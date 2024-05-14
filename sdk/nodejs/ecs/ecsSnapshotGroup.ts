@@ -29,6 +29,8 @@ import * as utilities from "../utilities";
  * }));
  * const defaultGetImages = alicloud.ecs.getImages({
  *     owners: "system",
+ *     nameRegex: "^ubuntu_18.*64",
+ *     mostRecent: true,
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",
@@ -66,7 +68,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultEcsSnapshotGroup = new alicloud.ecs.EcsSnapshotGroup("default", {
  *     description: "terraform-example",
- *     diskIds: [defaultEcsDisk.id],
+ *     diskIds: [defaultDiskAttachment.diskId],
  *     snapshotGroupName: "terraform-example",
  *     instanceId: defaultInstance.id,
  *     instantAccess: true,

@@ -50,7 +50,7 @@ import (
 //			}
 //			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
 //				VpcId:  pulumi.StringRef(_default.Ids[0]),
-//				ZoneId: pulumi.StringRef("cn-hangzhou-k"),
+//				ZoneId: pulumi.StringRef("cn-hangzhou-h"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -59,8 +59,8 @@ import (
 //				ProductVersion: pulumi.String("3"),
 //				VpcId:          pulumi.String(_default.Ids[0]),
 //				ZoneIds: pulumi.StringArray{
-//					pulumi.String("cn-hangzhou-k"),
-//					pulumi.String("cn-hangzhou-j"),
+//					pulumi.String("cn-hangzhou-h"),
+//					pulumi.String("cn-hangzhou-g"),
 //				},
 //				VswitchIds: pulumi.StringArray{
 //					pulumi.String(defaultGetSwitches.Ids[0]),

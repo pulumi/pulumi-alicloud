@@ -932,10 +932,10 @@ class Instance(pulumi.CustomResource):
         default = alicloud.hbase.get_zones()
         default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
-            zone_id=default.zones[0].id)
+            zone_id=default.zones[1].id)
         default_instance = alicloud.hbase.Instance("default",
             name=name,
-            zone_id=default.zones[0].id,
+            zone_id=default.zones[1].id,
             vswitch_id=default_get_switches.ids[0],
             vpc_id=default_get_networks.ids[0],
             engine="hbaseue",
@@ -1024,10 +1024,10 @@ class Instance(pulumi.CustomResource):
         default = alicloud.hbase.get_zones()
         default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
-            zone_id=default.zones[0].id)
+            zone_id=default.zones[1].id)
         default_instance = alicloud.hbase.Instance("default",
             name=name,
-            zone_id=default.zones[0].id,
+            zone_id=default.zones[1].id,
             vswitch_id=default_get_switches.ids[0],
             vpc_id=default_get_networks.ids[0],
             engine="hbaseue",

@@ -27,8 +27,6 @@ import (
 //
 // import (
 //
-//	"encoding/json"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -42,45 +40,10 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"PatchRules": []map[string]interface{}{
-//					map[string]interface{}{
-//						"EnableNonSecurity": true,
-//						"PatchFilterGroup": []map[string]interface{}{
-//							map[string]interface{}{
-//								"Values": []string{
-//									"*",
-//								},
-//								"Key": "Product",
-//							},
-//							map[string]interface{}{
-//								"Values": []string{
-//									"Security",
-//									"Bugfix",
-//								},
-//								"Key": "Classification",
-//							},
-//							map[string]interface{}{
-//								"Values": []string{
-//									"Critical",
-//									"Important",
-//								},
-//								"Key": "Severity",
-//							},
-//						},
-//						"ApproveAfterDays": 7,
-//						"ComplianceLevel":  "Unspecified",
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json0 := string(tmpJSON0)
-//			_, err = oos.NewPatchBaseline(ctx, "default", &oos.PatchBaselineArgs{
+//			_, err := oos.NewPatchBaseline(ctx, "default", &oos.PatchBaselineArgs{
 //				PatchBaselineName: pulumi.String(name),
 //				OperationSystem:   pulumi.String("Windows"),
-//				ApprovalRules:     pulumi.String(json0),
+//				ApprovalRules:     pulumi.String("{\"PatchRules\":[{\"EnableNonSecurity\":true,\"PatchFilterGroup\":[{\"Values\":[\"*\"],\"Key\":\"Product\"},{\"Values\":[\"Security\",\"Bugfix\"],\"Key\":\"Classification\"},{\"Values\":[\"Critical\",\"Important\"],\"Key\":\"Severity\"}],\"ApproveAfterDays\":7,\"ComplianceLevel\":\"Unspecified\"}]}"),
 //			})
 //			if err != nil {
 //				return err

@@ -23,7 +23,6 @@ namespace Pulumi.AliCloud.Oos
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
-    /// using System.Text.Json;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// 
@@ -35,47 +34,7 @@ namespace Pulumi.AliCloud.Oos
     ///     {
     ///         PatchBaselineName = name,
     ///         OperationSystem = "Windows",
-    ///         ApprovalRules = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///         {
-    ///             ["PatchRules"] = new[]
-    ///             {
-    ///                 new Dictionary&lt;string, object?&gt;
-    ///                 {
-    ///                     ["EnableNonSecurity"] = true,
-    ///                     ["PatchFilterGroup"] = new[]
-    ///                     {
-    ///                         new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             ["Values"] = new[]
-    ///                             {
-    ///                                 "*",
-    ///                             },
-    ///                             ["Key"] = "Product",
-    ///                         },
-    ///                         new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             ["Values"] = new[]
-    ///                             {
-    ///                                 "Security",
-    ///                                 "Bugfix",
-    ///                             },
-    ///                             ["Key"] = "Classification",
-    ///                         },
-    ///                         new Dictionary&lt;string, object?&gt;
-    ///                         {
-    ///                             ["Values"] = new[]
-    ///                             {
-    ///                                 "Critical",
-    ///                                 "Important",
-    ///                             },
-    ///                             ["Key"] = "Severity",
-    ///                         },
-    ///                     },
-    ///                     ["ApproveAfterDays"] = 7,
-    ///                     ["ComplianceLevel"] = "Unspecified",
-    ///                 },
-    ///             },
-    ///         }),
+    ///         ApprovalRules = "{\"PatchRules\":[{\"EnableNonSecurity\":true,\"PatchFilterGroup\":[{\"Values\":[\"*\"],\"Key\":\"Product\"},{\"Values\":[\"Security\",\"Bugfix\"],\"Key\":\"Classification\"},{\"Values\":[\"Critical\",\"Important\"],\"Key\":\"Severity\"}],\"ApproveAfterDays\":7,\"ComplianceLevel\":\"Unspecified\"}]}",
     ///     });
     /// 
     /// });

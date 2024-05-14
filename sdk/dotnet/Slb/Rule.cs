@@ -43,7 +43,22 @@ namespace Pulumi.AliCloud.Slb
     ///     var slbRuleName = config.Get("slbRuleName") ?? "terraform-example";
     ///     var rule = AliCloud.GetZones.Invoke(new()
     ///     {
+    ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var ruleGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = rule.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 1,
+    ///         MemorySize = 2,
+    ///     });
+    /// 
+    ///     var ruleGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_18.*64",
+    ///         MostRecent = true,
+    ///         Owners = "system",
     ///     });
     /// 
     ///     var ruleNetwork = new AliCloud.Vpc.Network("rule", new()
@@ -58,6 +73,29 @@ namespace Pulumi.AliCloud.Slb
     ///         CidrBlock = "172.16.0.0/16",
     ///         ZoneId = rule.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = slbRuleName,
+    ///     });
+    /// 
+    ///     var ruleSecurityGroup = new AliCloud.Ecs.SecurityGroup("rule", new()
+    ///     {
+    ///         Name = slbRuleName,
+    ///         VpcId = ruleNetwork.Id,
+    ///     });
+    /// 
+    ///     var ruleInstance = new AliCloud.Ecs.Instance("rule", new()
+    ///     {
+    ///         ImageId = ruleGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = ruleGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             ruleSecurityGroup,
+    ///         }.Select(__item =&gt; __item.Id).ToList(),
+    ///         InternetChargeType = "PayByTraffic",
+    ///         InternetMaxBandwidthOut = 10,
+    ///         AvailabilityZone = rule.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         InstanceChargeType = "PostPaid",
+    ///         SystemDiskCategory = "cloud_efficiency",
+    ///         VswitchId = ruleSwitch.Id,
+    ///         InstanceName = slbRuleName,
     ///     });
     /// 
     ///     var ruleApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("rule", new()

@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.CS
         public Output<int?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         /// </summary>
         [Output("cisEnabled")]
         public Output<bool?> CisEnabled { get; private set; } = null!;
@@ -329,8 +329,14 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
+        /// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+        /// </summary>
+        [Output("securityHardeningOs")]
+        public Output<bool?> SecurityHardeningOs { get; private set; } = null!;
+
+        /// <summary>
         /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-        /// &gt; **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+        /// &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         /// </summary>
         [Output("socEnabled")]
         public Output<bool?> SocEnabled { get; private set; } = null!;
@@ -444,6 +450,12 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> Unschedulable { get; private set; } = null!;
 
         /// <summary>
+        /// Synchronously update node labels and taints.
+        /// </summary>
+        [Output("updateNodes")]
+        public Output<bool?> UpdateNodes { get; private set; } = null!;
+
+        /// <summary>
         /// Node custom data.
         /// </summary>
         [Output("userData")]
@@ -519,7 +531,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         /// </summary>
         [Input("cisEnabled")]
         public Input<bool>? CisEnabled { get; set; }
@@ -860,8 +872,14 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+        /// </summary>
+        [Input("securityHardeningOs")]
+        public Input<bool>? SecurityHardeningOs { get; set; }
+
+        /// <summary>
         /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-        /// &gt; **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+        /// &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         /// </summary>
         [Input("socEnabled")]
         public Input<bool>? SocEnabled { get; set; }
@@ -999,6 +1017,12 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? Unschedulable { get; set; }
 
         /// <summary>
+        /// Synchronously update node labels and taints.
+        /// </summary>
+        [Input("updateNodes")]
+        public Input<bool>? UpdateNodes { get; set; }
+
+        /// <summary>
         /// Node custom data.
         /// </summary>
         [Input("userData")]
@@ -1037,7 +1061,7 @@ namespace Pulumi.AliCloud.CS
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
+        /// Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. Use `security_hardening_os` instead.
         /// </summary>
         [Input("cisEnabled")]
         public Input<bool>? CisEnabled { get; set; }
@@ -1390,8 +1414,14 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
+        /// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
+        /// </summary>
+        [Input("securityHardeningOs")]
+        public Input<bool>? SecurityHardeningOs { get; set; }
+
+        /// <summary>
         /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
-        /// &gt; **NOTE:**  It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
+        /// &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         /// </summary>
         [Input("socEnabled")]
         public Input<bool>? SocEnabled { get; set; }
@@ -1527,6 +1557,12 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("unschedulable")]
         public Input<bool>? Unschedulable { get; set; }
+
+        /// <summary>
+        /// Synchronously update node labels and taints.
+        /// </summary>
+        [Input("updateNodes")]
+        public Input<bool>? UpdateNodes { get; set; }
 
         /// <summary>
         /// Node custom data.

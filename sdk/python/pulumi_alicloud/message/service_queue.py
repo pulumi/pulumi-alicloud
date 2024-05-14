@@ -277,13 +277,17 @@ class ServiceQueue(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         queue = alicloud.message.ServiceQueue("queue",
-            queue_name=name,
+            queue_name=f"{name}-{default['result']}",
             delay_seconds=60478,
             maximum_message_size=12357,
             message_retention_period=256000,
@@ -330,13 +334,17 @@ class ServiceQueue(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         queue = alicloud.message.ServiceQueue("queue",
-            queue_name=name,
+            queue_name=f"{name}-{default['result']}",
             delay_seconds=60478,
             maximum_message_size=12357,
             message_retention_period=256000,

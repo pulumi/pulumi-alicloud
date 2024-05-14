@@ -244,10 +244,10 @@ class ResourceGroup(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "tfexample"
         example = alicloud.resourcemanager.ResourceGroup("example",
-            display_name=name,
-            resource_group_name=name)
+            resource_group_name=name,
+            display_name=name)
         ```
 
         ## Import
@@ -289,10 +289,10 @@ class ResourceGroup(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "tfexample"
         example = alicloud.resourcemanager.ResourceGroup("example",
-            display_name=name,
-            resource_group_name=name)
+            resource_group_name=name,
+            display_name=name)
         ```
 
         ## Import

@@ -18,13 +18,15 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const _default = new alicloud.dfs.AccessGroup("default", {
- *     description: name,
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultAccessGroup = new alicloud.dfs.AccessGroup("default", {
+ *     accessGroupName: `tf-example-${_default.result}`,
  *     networkType: "VPC",
- *     accessGroupName: name,
  * });
  * ```
  *

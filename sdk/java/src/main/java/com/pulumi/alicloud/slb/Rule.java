@@ -48,10 +48,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
  * import com.pulumi.alicloud.slb.ApplicationLoadBalancer;
  * import com.pulumi.alicloud.slb.ApplicationLoadBalancerArgs;
  * import com.pulumi.alicloud.slb.Listener;
@@ -76,7 +83,20 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var slbRuleName = config.get("slbRuleName").orElse("terraform-example");
  *         final var rule = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory("cloud_efficiency")
  *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var ruleGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(rule.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .cpuCoreCount(1)
+ *             .memorySize(2)
+ *             .build());
+ * 
+ *         final var ruleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .nameRegex("^ubuntu_18.*64")
+ *             .mostRecent(true)
+ *             .owners("system")
  *             .build());
  * 
  *         var ruleNetwork = new Network("ruleNetwork", NetworkArgs.builder()        
@@ -89,6 +109,24 @@ import javax.annotation.Nullable;
  *             .cidrBlock("172.16.0.0/16")
  *             .zoneId(rule.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(slbRuleName)
+ *             .build());
+ * 
+ *         var ruleSecurityGroup = new SecurityGroup("ruleSecurityGroup", SecurityGroupArgs.builder()        
+ *             .name(slbRuleName)
+ *             .vpcId(ruleNetwork.id())
+ *             .build());
+ * 
+ *         var ruleInstance = new Instance("ruleInstance", InstanceArgs.builder()        
+ *             .imageId(ruleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(ruleGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .securityGroups(ruleSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+ *             .internetChargeType("PayByTraffic")
+ *             .internetMaxBandwidthOut("10")
+ *             .availabilityZone(rule.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .instanceChargeType("PostPaid")
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .vswitchId(ruleSwitch.id())
+ *             .instanceName(slbRuleName)
  *             .build());
  * 
  *         var ruleApplicationLoadBalancer = new ApplicationLoadBalancer("ruleApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        

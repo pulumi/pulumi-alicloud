@@ -27,10 +27,7 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -39,32 +36,23 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraform-example"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
-//			}
-//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
-//				Min: 10000,
-//				Max: 99999,
-//			})
-//			if err != nil {
-//				return err
 //			}
 //			_default, err := dfs.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			zoneId := _default.Zones[0].ZoneId
-//			storageType := _default.Zones[0].Options[0].StorageType
 //			_, err = dfs.NewFileSystem(ctx, "default", &dfs.FileSystemArgs{
+//				StorageType:                  pulumi.String(_default.Zones[0].Options[0].StorageType),
+//				ZoneId:                       pulumi.String(_default.Zones[0].ZoneId),
 //				ProtocolType:                 pulumi.String("HDFS"),
 //				Description:                  pulumi.String(name),
-//				FileSystemName:               pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
-//				SpaceCapacity:                pulumi.Int(1024),
+//				FileSystemName:               pulumi.String(name),
 //				ThroughputMode:               pulumi.String("Provisioned"),
+//				SpaceCapacity:                pulumi.Int(1024),
 //				ProvisionedThroughputInMiBps: pulumi.Int(512),
-//				StorageType:                  pulumi.String(storageType),
-//				ZoneId:                       pulumi.String(zoneId),
 //			})
 //			if err != nil {
 //				return err

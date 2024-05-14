@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
  *             .dbType("MySQL")
  *             .dbVersion("8.0")
  *             .payType("PostPaid")
+ *             .category("Normal")
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        

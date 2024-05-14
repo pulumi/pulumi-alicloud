@@ -9,7 +9,22 @@ import * as utilities from "../utilities";
 /**
  * This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
- * > **NOTE:** Available in v1.73.0+.
+ * > **NOTE:** Available since v1.73.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
@@ -17,7 +32,6 @@ export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Prom
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("alicloud:rds/getZones:getZones", {
         "category": args.category,
-        "dbInstanceClass": args.dbInstanceClass,
         "dbInstanceStorageType": args.dbInstanceStorageType,
         "engine": args.engine,
         "engineVersion": args.engineVersion,
@@ -36,7 +50,6 @@ export interface GetZonesArgs {
      * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`, `serverlessStandard`, `serverlessHa`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      */
     category?: string;
-    dbInstanceClass?: string;
     /**
      * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
      */
@@ -55,6 +68,8 @@ export interface GetZonesArgs {
     instanceChargeType?: string;
     /**
      * It has been deprecated from version 1.137.0 and using `multiZone` instead.
+     *
+     * @deprecated It has been deprecated from version 1.137.0 and using `multiZone` instead.
      */
     multi?: boolean;
     /**
@@ -72,7 +87,6 @@ export interface GetZonesArgs {
  */
 export interface GetZonesResult {
     readonly category?: string;
-    readonly dbInstanceClass?: string;
     readonly dbInstanceStorageType?: string;
     readonly engine?: string;
     readonly engineVersion?: string;
@@ -85,6 +99,9 @@ export interface GetZonesResult {
      */
     readonly ids: string[];
     readonly instanceChargeType?: string;
+    /**
+     * @deprecated It has been deprecated from version 1.137.0 and using `multiZone` instead.
+     */
     readonly multi?: boolean;
     readonly multiZone?: boolean;
     readonly outputFile?: string;
@@ -96,7 +113,22 @@ export interface GetZonesResult {
 /**
  * This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
- * > **NOTE:** Available in v1.73.0+.
+ * > **NOTE:** Available since v1.73.0.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const example = alicloud.rds.getZones({
+ *     engine: "MySQL",
+ *     engineVersion: "8.0",
+ *     instanceChargeType: "PostPaid",
+ *     category: "Basic",
+ *     dbInstanceStorageType: "cloud_essd",
+ * });
+ * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
     return pulumi.output(args).apply((a: any) => getZones(a, opts))
@@ -110,7 +142,6 @@ export interface GetZonesOutputArgs {
      * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`, `serverlessStandard`, `serverlessHa`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      */
     category?: pulumi.Input<string>;
-    dbInstanceClass?: pulumi.Input<string>;
     /**
      * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3".
      */
@@ -129,6 +160,8 @@ export interface GetZonesOutputArgs {
     instanceChargeType?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.137.0 and using `multiZone` instead.
+     *
+     * @deprecated It has been deprecated from version 1.137.0 and using `multiZone` instead.
      */
     multi?: pulumi.Input<boolean>;
     /**

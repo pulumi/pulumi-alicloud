@@ -139,6 +139,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         # Create a RAM Role Policy attachment.
         role = alicloud.ram.Role("role",
@@ -160,9 +161,12 @@ class RolePolicyAttachment(pulumi.CustomResource):
             }
         \"\"\",
             description="this is a role test.")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         policy = alicloud.ram.Policy("policy",
-            name="policyName",
-            document=\"\"\"  {
+            policy_name=f"tf-example-{default['result']}",
+            policy_document=\"\"\"  {
             "Statement": [
               {
                 "Action": [
@@ -181,7 +185,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
         \"\"\",
             description="this is a policy test")
         attach = alicloud.ram.RolePolicyAttachment("attach",
-            policy_name=policy.name,
+            policy_name=policy.policy_name,
             policy_type=policy.type,
             role_name=role.name)
         ```
@@ -216,6 +220,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         # Create a RAM Role Policy attachment.
         role = alicloud.ram.Role("role",
@@ -237,9 +242,12 @@ class RolePolicyAttachment(pulumi.CustomResource):
             }
         \"\"\",
             description="this is a role test.")
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
         policy = alicloud.ram.Policy("policy",
-            name="policyName",
-            document=\"\"\"  {
+            policy_name=f"tf-example-{default['result']}",
+            policy_document=\"\"\"  {
             "Statement": [
               {
                 "Action": [
@@ -258,7 +266,7 @@ class RolePolicyAttachment(pulumi.CustomResource):
         \"\"\",
             description="this is a policy test")
         attach = alicloud.ram.RolePolicyAttachment("attach",
-            policy_name=policy.name,
+            policy_name=policy.policy_name,
             policy_type=policy.type,
             role_name=role.name)
         ```

@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Grid topology service address.
+        /// Kiali service address.
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example-basic-edge";
+ * const name = config.get("name") || "tf-example";
  * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
@@ -56,9 +56,10 @@ import * as utilities from "../utilities";
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
  * const defaultEdgeKubernetes = new alicloud.cs.EdgeKubernetes("default", {
- *     name: name,
+ *     namePrefix: name,
  *     workerVswitchIds: [defaultSwitch.id],
  *     workerInstanceTypes: [defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id)],
+ *     version: "1.26.3-aliyun.1",
  *     workerNumber: 1,
  *     password: "Test12345",
  *     podCidr: "10.99.0.0/16",
@@ -105,7 +106,7 @@ import * as utilities from "../utilities";
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
  * const defaultEdgeKubernetes = new alicloud.cs.EdgeKubernetes("default", {
- *     name: name,
+ *     namePrefix: name,
  *     workerVswitchIds: [defaultSwitch.id],
  *     workerInstanceTypes: [defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id)],
  *     clusterSpec: "ack.pro.small",

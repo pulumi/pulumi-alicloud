@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  * const defaultInstance = new alicloud.rds.Instance("default", {
  *     engine: "MySQL",
  *     engineVersion: "5.6",
- *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[1]?.instanceClass),
  *     instanceStorage: 10,
  *     vswitchId: defaultSwitch.id,
  *     instanceName: name,

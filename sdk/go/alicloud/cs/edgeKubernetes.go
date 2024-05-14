@@ -52,7 +52,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example-basic-edge"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -88,13 +88,14 @@ import (
 //				return err
 //			}
 //			_, err = cs.NewEdgeKubernetes(ctx, "default", &cs.EdgeKubernetesArgs{
-//				Name: pulumi.String(name),
+//				NamePrefix: pulumi.String(name),
 //				WorkerVswitchIds: pulumi.StringArray{
 //					defaultSwitch.ID(),
 //				},
 //				WorkerInstanceTypes: pulumi.StringArray{
 //					pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				},
+//				Version:                   pulumi.String("1.26.3-aliyun.1"),
 //				WorkerNumber:              pulumi.Int(1),
 //				Password:                  pulumi.String("Test12345"),
 //				PodCidr:                   pulumi.String("10.99.0.0/16"),
@@ -177,7 +178,7 @@ import (
 //				return err
 //			}
 //			_, err = cs.NewEdgeKubernetes(ctx, "default", &cs.EdgeKubernetesArgs{
-//				Name: pulumi.String(name),
+//				NamePrefix: pulumi.String(name),
 //				WorkerVswitchIds: pulumi.StringArray{
 //					defaultSwitch.ID(),
 //				},

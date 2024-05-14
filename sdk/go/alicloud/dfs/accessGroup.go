@@ -27,23 +27,26 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/dfs"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
 //			}
-//			_, err := dfs.NewAccessGroup(ctx, "default", &dfs.AccessGroupArgs{
-//				Description:     pulumi.String(name),
+//			_, err = dfs.NewAccessGroup(ctx, "default", &dfs.AccessGroupArgs{
+//				AccessGroupName: pulumi.String(fmt.Sprintf("tf-example-%v", _default.Result)),
 //				NetworkType:     pulumi.String("VPC"),
-//				AccessGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err

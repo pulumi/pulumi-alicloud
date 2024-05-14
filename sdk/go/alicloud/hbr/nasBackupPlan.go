@@ -27,16 +27,26 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := hbr.NewVault(ctx, "default", &hbr.VaultArgs{
-//				VaultName: pulumi.String("terraform-example2"),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultVault, err := hbr.NewVault(ctx, "default", &hbr.VaultArgs{
+//				VaultName: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
 //			})
 //			if err != nil {
 //				return err
@@ -55,7 +65,7 @@ import (
 //				FileSystemId:      defaultFileSystem.ID(),
 //				Schedule:          pulumi.String("I|1602673264|PT2H"),
 //				BackupType:        pulumi.String("COMPLETE"),
-//				VaultId:           _default.ID(),
+//				VaultId:           defaultVault.ID(),
 //				Retention:         pulumi.String("2"),
 //				Paths: pulumi.StringArray{
 //					pulumi.String("/"),

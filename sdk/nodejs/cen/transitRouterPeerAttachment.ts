@@ -51,10 +51,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * CEN instance can be imported using the id, e.g.
+ * CEN Transit Router Peer Attachment can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example tr-********:tr-attach-*******
+ * $ pulumi import alicloud:cen/transitRouterPeerAttachment:TransitRouterPeerAttachment example <id>
  * ```
  */
 export class TransitRouterPeerAttachment extends pulumi.CustomResource {
@@ -106,6 +106,14 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
      */
     public readonly cenId!: pulumi.Output<string>;
     /**
+     * The creation time of the resource.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * DefaultLinkType. Valid values: `Platinum` and `Gold`.
+     */
+    public readonly defaultLinkType!: pulumi.Output<string>;
+    /**
      * Whether to perform pre-check for this request, including permission, instance status verification, etc.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
@@ -130,7 +138,7 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
      */
     public readonly routeTablePropagationEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The associating status of the network.
+     * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -168,6 +176,8 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
             resourceInputs["bandwidthType"] = state ? state.bandwidthType : undefined;
             resourceInputs["cenBandwidthPackageId"] = state ? state.cenBandwidthPackageId : undefined;
             resourceInputs["cenId"] = state ? state.cenId : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["defaultLinkType"] = state ? state.defaultLinkType : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["peerTransitRouterId"] = state ? state.peerTransitRouterId : undefined;
             resourceInputs["peerTransitRouterRegionId"] = state ? state.peerTransitRouterRegionId : undefined;
@@ -195,6 +205,7 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
             resourceInputs["bandwidthType"] = args ? args.bandwidthType : undefined;
             resourceInputs["cenBandwidthPackageId"] = args ? args.cenBandwidthPackageId : undefined;
             resourceInputs["cenId"] = args ? args.cenId : undefined;
+            resourceInputs["defaultLinkType"] = args ? args.defaultLinkType : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["peerTransitRouterId"] = args ? args.peerTransitRouterId : undefined;
             resourceInputs["peerTransitRouterRegionId"] = args ? args.peerTransitRouterRegionId : undefined;
@@ -204,6 +215,7 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
             resourceInputs["transitRouterAttachmentDescription"] = args ? args.transitRouterAttachmentDescription : undefined;
             resourceInputs["transitRouterAttachmentName"] = args ? args.transitRouterAttachmentName : undefined;
             resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["transitRouterAttachmentId"] = undefined /*out*/;
         }
@@ -237,6 +249,14 @@ export interface TransitRouterPeerAttachmentState {
      */
     cenId?: pulumi.Input<string>;
     /**
+     * The creation time of the resource.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * DefaultLinkType. Valid values: `Platinum` and `Gold`.
+     */
+    defaultLinkType?: pulumi.Input<string>;
+    /**
      * Whether to perform pre-check for this request, including permission, instance status verification, etc.
      */
     dryRun?: pulumi.Input<boolean>;
@@ -261,7 +281,7 @@ export interface TransitRouterPeerAttachmentState {
      */
     routeTablePropagationEnabled?: pulumi.Input<boolean>;
     /**
-     * The associating status of the network.
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
     /**
@@ -306,6 +326,10 @@ export interface TransitRouterPeerAttachmentArgs {
      * The ID of the CEN.
      */
     cenId: pulumi.Input<string>;
+    /**
+     * DefaultLinkType. Valid values: `Platinum` and `Gold`.
+     */
+    defaultLinkType?: pulumi.Input<string>;
     /**
      * Whether to perform pre-check for this request, including permission, instance status verification, etc.
      */

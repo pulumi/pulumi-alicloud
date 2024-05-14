@@ -2441,7 +2441,46 @@ public final class RdsFunctions {
     /**
      * This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.73.0+.
+     * &gt; **NOTE:** Available since v1.73.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+     *             .engine("MySQL")
+     *             .engineVersion("8.0")
+     *             .instanceChargeType("PostPaid")
+     *             .category("Basic")
+     *             .dbInstanceStorageType("cloud_essd")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones() {
@@ -2450,7 +2489,46 @@ public final class RdsFunctions {
     /**
      * This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.73.0+.
+     * &gt; **NOTE:** Available since v1.73.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+     *             .engine("MySQL")
+     *             .engineVersion("8.0")
+     *             .instanceChargeType("PostPaid")
+     *             .category("Basic")
+     *             .dbInstanceStorageType("cloud_essd")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -2459,7 +2537,46 @@ public final class RdsFunctions {
     /**
      * This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.73.0+.
+     * &gt; **NOTE:** Available since v1.73.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+     *             .engine("MySQL")
+     *             .engineVersion("8.0")
+     *             .instanceChargeType("PostPaid")
+     *             .category("Basic")
+     *             .dbInstanceStorageType("cloud_essd")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -2468,7 +2585,46 @@ public final class RdsFunctions {
     /**
      * This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.73.0+.
+     * &gt; **NOTE:** Available since v1.73.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+     *             .engine("MySQL")
+     *             .engineVersion("8.0")
+     *             .instanceChargeType("PostPaid")
+     *             .category("Basic")
+     *             .dbInstanceStorageType("cloud_essd")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -2477,7 +2633,46 @@ public final class RdsFunctions {
     /**
      * This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.73.0+.
+     * &gt; **NOTE:** Available since v1.73.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+     *             .engine("MySQL")
+     *             .engineVersion("8.0")
+     *             .instanceChargeType("PostPaid")
+     *             .category("Basic")
+     *             .dbInstanceStorageType("cloud_essd")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -2486,7 +2681,46 @@ public final class RdsFunctions {
     /**
      * This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
-     * &gt; **NOTE:** Available in v1.73.0+.
+     * &gt; **NOTE:** Available since v1.73.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.rds.RdsFunctions;
+     * import com.pulumi.alicloud.rds.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
+     *             .engine("MySQL")
+     *             .engineVersion("8.0")
+     *             .instanceChargeType("PostPaid")
+     *             .category("Basic")
+     *             .dbInstanceStorageType("cloud_essd")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

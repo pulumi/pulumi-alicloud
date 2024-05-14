@@ -22,10 +22,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "tfexample";
  * const example = new alicloud.resourcemanager.ResourceGroup("example", {
- *     displayName: name,
  *     resourceGroupName: name,
+ *     displayName: name,
  * });
  * ```
  *
