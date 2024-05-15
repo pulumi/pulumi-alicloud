@@ -219,6 +219,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The operating system image type and the `platform` parameter can be selected from the following values:
+     * - `AliyunLinux` : Alinux2 image.
+     * - `AliyunLinux3` : Alinux3 image.
+     * - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+     * - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+     * - `CentOS` : CentOS image.
+     * - `Windows` : Windows image.
+     * - `WindowsCore` : WindowsCore image.
+     * - `ContainerOS` : container-optimized image.
      * 
      */
     @Export(name="imageType", refs={String.class}, tree="[0]")
@@ -226,6 +234,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The operating system image type and the `platform` parameter can be selected from the following values:
+     * - `AliyunLinux` : Alinux2 image.
+     * - `AliyunLinux3` : Alinux3 image.
+     * - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+     * - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+     * - `CentOS` : CentOS image.
+     * - `Windows` : Windows image.
+     * - `WindowsCore` : WindowsCore image.
+     * - `ContainerOS` : container-optimized image.
      * 
      */
     public Output<String> imageType() {
@@ -845,6 +861,9 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The preemptible instance type. Value:
+     * - `NoSpot` : Non-preemptible instance.
+     * - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+     * - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
      * 
      */
     @Export(name="spotStrategy", refs={String.class}, tree="[0]")
@@ -852,6 +871,9 @@ public class NodePool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The preemptible instance type. Value:
+     * - `NoSpot` : Non-preemptible instance.
+     * - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+     * - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
      * 
      */
     public Output<String> spotStrategy() {
@@ -943,6 +965,10 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     }
     /**
      * The system disk performance of the node takes effect only for the ESSD disk.
+     * - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+     * - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+     * - `PL2`: highest random read/write IOPS 100000 for a single disk.
+     * - `PL3`: maximum random read/write IOPS 1 million for a single disk.
      * 
      */
     @Export(name="systemDiskPerformanceLevel", refs={String.class}, tree="[0]")
@@ -950,6 +976,10 @@ public class NodePool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The system disk performance of the node takes effect only for the ESSD disk.
+     * - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+     * - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+     * - `PL2`: highest random read/write IOPS 100000 for a single disk.
+     * - `PL3`: maximum random read/write IOPS 1 million for a single disk.
      * 
      */
     public Output<Optional<String>> systemDiskPerformanceLevel() {

@@ -298,6 +298,10 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The protocol that is used to connect to the targets for health checks. Valid values:
+     * - `TCP` or `tcp`: TCP protocol.
+     * - `HTTP` or `http`: HTTP protocol.
+     * - `HTTPS` or `https`: HTTPS protocol.
+     * &gt; **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      * 
      */
     @Export(name="healthCheckProtocol", refs={String.class}, tree="[0]")
@@ -305,6 +309,10 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The protocol that is used to connect to the targets for health checks. Valid values:
+     * - `TCP` or `tcp`: TCP protocol.
+     * - `HTTP` or `http`: HTTP protocol.
+     * - `HTTPS` or `https`: HTTPS protocol.
+     * &gt; **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      * 
      */
     public Output<Optional<String>> healthCheckProtocol() {

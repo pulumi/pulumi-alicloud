@@ -139,6 +139,8 @@ public class VpcEndpointLinkedVpc extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the module that you want to access. Valid Values:
+     * - `Registry`: the image repository.
+     * - `Chart`: a Helm chart.
      * 
      */
     @Export(name="moduleName", refs={String.class}, tree="[0]")
@@ -146,6 +148,8 @@ public class VpcEndpointLinkedVpc extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the module that you want to access. Valid Values:
+     * - `Registry`: the image repository.
+     * - `Chart`: a Helm chart.
      * 
      */
     public Output<String> moduleName() {

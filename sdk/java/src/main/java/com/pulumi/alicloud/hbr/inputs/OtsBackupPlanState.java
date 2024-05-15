@@ -172,6 +172,7 @@ public final class OtsBackupPlanState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * - `startTime` Backup start time, UNIX time seconds.
      * 
      * @deprecated
      * Field &#39;schedule&#39; has been deprecated from version 1.163.0. Use &#39;rules&#39; instead.
@@ -183,6 +184,7 @@ public final class OtsBackupPlanState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * - `startTime` Backup start time, UNIX time seconds.
      * 
      * @deprecated
      * Field &#39;schedule&#39; has been deprecated from version 1.163.0. Use &#39;rules&#39; instead.
@@ -475,6 +477,7 @@ public final class OtsBackupPlanState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param schedule Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+         * - `startTime` Backup start time, UNIX time seconds.
          * 
          * @return builder
          * 
@@ -490,6 +493,7 @@ public final class OtsBackupPlanState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param schedule Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+         * - `startTime` Backup start time, UNIX time seconds.
          * 
          * @return builder
          * 

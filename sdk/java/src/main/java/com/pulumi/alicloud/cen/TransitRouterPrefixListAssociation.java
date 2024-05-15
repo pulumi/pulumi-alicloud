@@ -122,6 +122,10 @@ public class TransitRouterPrefixListAssociation extends com.pulumi.resources.Cus
     }
     /**
      * The type of the next hop. Valid values:
+     * - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+     * - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+     * - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+     * - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
      * 
      */
     @Export(name="nextHopType", refs={String.class}, tree="[0]")
@@ -129,6 +133,10 @@ public class TransitRouterPrefixListAssociation extends com.pulumi.resources.Cus
 
     /**
      * @return The type of the next hop. Valid values:
+     * - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+     * - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+     * - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+     * - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
      * 
      */
     public Output<String> nextHopType() {

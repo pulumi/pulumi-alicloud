@@ -104,6 +104,12 @@ public final class GetImagesImage {
     private String state;
     /**
      * @return The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+     * * `Creating`: The image is being created.
+     * * `Waiting`: The image is waiting to be processed.
+     * * `Available`: The image is available.
+     * * `UnAvailable`: The image is unavailable.
+     * * `CreateFailed`: The image failed to be created.
+     * * `Deprecated`: The image is discontinued.
      * 
      */
     private String status;
@@ -248,6 +254,12 @@ public final class GetImagesImage {
     }
     /**
      * @return The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+     * * `Creating`: The image is being created.
+     * * `Waiting`: The image is waiting to be processed.
+     * * `Available`: The image is available.
+     * * `UnAvailable`: The image is unavailable.
+     * * `CreateFailed`: The image failed to be created.
+     * * `Deprecated`: The image is discontinued.
      * 
      */
     public String status() {

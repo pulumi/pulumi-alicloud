@@ -1069,8 +1069,16 @@ func (o EventRuleContactParameterArrayOutput) Index(i pulumi.IntInput) EventRule
 
 type EventRuleEventPattern struct {
 	// The type of the event-triggered alert rule. Valid values:
+	// - `StatusNotification`: fault notifications.
+	// - `Exception`: exceptions.
+	// - `Maintenance`: O&M.
+	// - `*`: all types.
 	EventTypeLists []string `pulumi:"eventTypeLists"`
 	// The level of the event-triggered alert rule. Valid values:
+	// - `CRITICAL`: critical.
+	// - `WARN`: warning.
+	// - `INFO`: information.
+	// - `*`: all types.
 	LevelLists []string `pulumi:"levelLists"`
 	// The name of the event-triggered alert rule.
 	NameLists []string `pulumi:"nameLists"`
@@ -1093,8 +1101,16 @@ type EventRuleEventPatternInput interface {
 
 type EventRuleEventPatternArgs struct {
 	// The type of the event-triggered alert rule. Valid values:
+	// - `StatusNotification`: fault notifications.
+	// - `Exception`: exceptions.
+	// - `Maintenance`: O&M.
+	// - `*`: all types.
 	EventTypeLists pulumi.StringArrayInput `pulumi:"eventTypeLists"`
 	// The level of the event-triggered alert rule. Valid values:
+	// - `CRITICAL`: critical.
+	// - `WARN`: warning.
+	// - `INFO`: information.
+	// - `*`: all types.
 	LevelLists pulumi.StringArrayInput `pulumi:"levelLists"`
 	// The name of the event-triggered alert rule.
 	NameLists pulumi.StringArrayInput `pulumi:"nameLists"`
@@ -1182,11 +1198,19 @@ func (o EventRuleEventPatternOutput) ToEventRuleEventPatternPtrOutputWithContext
 }
 
 // The type of the event-triggered alert rule. Valid values:
+// - `StatusNotification`: fault notifications.
+// - `Exception`: exceptions.
+// - `Maintenance`: O&M.
+// - `*`: all types.
 func (o EventRuleEventPatternOutput) EventTypeLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EventRuleEventPattern) []string { return v.EventTypeLists }).(pulumi.StringArrayOutput)
 }
 
 // The level of the event-triggered alert rule. Valid values:
+// - `CRITICAL`: critical.
+// - `WARN`: warning.
+// - `INFO`: information.
+// - `*`: all types.
 func (o EventRuleEventPatternOutput) LevelLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EventRuleEventPattern) []string { return v.LevelLists }).(pulumi.StringArrayOutput)
 }
@@ -1231,6 +1255,10 @@ func (o EventRuleEventPatternPtrOutput) Elem() EventRuleEventPatternOutput {
 }
 
 // The type of the event-triggered alert rule. Valid values:
+// - `StatusNotification`: fault notifications.
+// - `Exception`: exceptions.
+// - `Maintenance`: O&M.
+// - `*`: all types.
 func (o EventRuleEventPatternPtrOutput) EventTypeLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EventRuleEventPattern) []string {
 		if v == nil {
@@ -1241,6 +1269,10 @@ func (o EventRuleEventPatternPtrOutput) EventTypeLists() pulumi.StringArrayOutpu
 }
 
 // The level of the event-triggered alert rule. Valid values:
+// - `CRITICAL`: critical.
+// - `WARN`: warning.
+// - `INFO`: information.
+// - `*`: all types.
 func (o EventRuleEventPatternPtrOutput) LevelLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EventRuleEventPattern) []string {
 		if v == nil {
@@ -5142,6 +5174,7 @@ type GetAlarmContactsContact struct {
 	// The status of the email address.
 	ChannelsStateMail string `pulumi:"channelsStateMail"`
 	// The status of the phone number.
+	// * `Lang` - The language type of the alarm.
 	ChannelsStatusSms string `pulumi:"channelsStatusSms"`
 	// The alert groups to which the alarm contact is added.
 	ContactGroups []string `pulumi:"contactGroups"`
@@ -5181,6 +5214,7 @@ type GetAlarmContactsContactArgs struct {
 	// The status of the email address.
 	ChannelsStateMail pulumi.StringInput `pulumi:"channelsStateMail"`
 	// The status of the phone number.
+	// * `Lang` - The language type of the alarm.
 	ChannelsStatusSms pulumi.StringInput `pulumi:"channelsStatusSms"`
 	// The alert groups to which the alarm contact is added.
 	ContactGroups pulumi.StringArrayInput `pulumi:"contactGroups"`
@@ -5283,6 +5317,7 @@ func (o GetAlarmContactsContactOutput) ChannelsStateMail() pulumi.StringOutput {
 }
 
 // The status of the phone number.
+// * `Lang` - The language type of the alarm.
 func (o GetAlarmContactsContactOutput) ChannelsStatusSms() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.ChannelsStatusSms }).(pulumi.StringOutput)
 }

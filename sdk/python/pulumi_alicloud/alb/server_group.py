@@ -36,6 +36,9 @@ class ServerGroupArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] scheduler: The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
         :param pulumi.Input[str] server_group_type: The type of the server group. Default value: `Instance`. Valid values:
+               - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+               - `Ip`: allows you to add servers by specifying IP addresses.
+               - `Fc`: allows you to add servers by specifying functions of Function Compute.
         :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: The backend servers. See `servers` below.
         :param pulumi.Input['ServerGroupStickySessionConfigArgs'] sticky_session_config: The configuration of session persistence. See `sticky_session_config` below.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -139,6 +142,9 @@ class ServerGroupArgs:
     def server_group_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the server group. Default value: `Instance`. Valid values:
+        - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+        - `Ip`: allows you to add servers by specifying IP addresses.
+        - `Fc`: allows you to add servers by specifying functions of Function Compute.
         """
         return pulumi.get(self, "server_group_type")
 
@@ -219,6 +225,9 @@ class _ServerGroupState:
         :param pulumi.Input[str] scheduler: The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
         :param pulumi.Input[str] server_group_name: The name of the server group.
         :param pulumi.Input[str] server_group_type: The type of the server group. Default value: `Instance`. Valid values:
+               - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+               - `Ip`: allows you to add servers by specifying IP addresses.
+               - `Fc`: allows you to add servers by specifying functions of Function Compute.
         :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: The backend servers. See `servers` below.
         :param pulumi.Input[str] status: The status of the backend server.
         :param pulumi.Input['ServerGroupStickySessionConfigArgs'] sticky_session_config: The configuration of session persistence. See `sticky_session_config` below.
@@ -327,6 +336,9 @@ class _ServerGroupState:
     def server_group_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the server group. Default value: `Instance`. Valid values:
+        - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+        - `Ip`: allows you to add servers by specifying IP addresses.
+        - `Fc`: allows you to add servers by specifying functions of Function Compute.
         """
         return pulumi.get(self, "server_group_type")
 
@@ -515,6 +527,9 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] scheduler: The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
         :param pulumi.Input[str] server_group_name: The name of the server group.
         :param pulumi.Input[str] server_group_type: The type of the server group. Default value: `Instance`. Valid values:
+               - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+               - `Ip`: allows you to add servers by specifying IP addresses.
+               - `Fc`: allows you to add servers by specifying functions of Function Compute.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]] servers: The backend servers. See `servers` below.
         :param pulumi.Input[pulumi.InputType['ServerGroupStickySessionConfigArgs']] sticky_session_config: The configuration of session persistence. See `sticky_session_config` below.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -707,6 +722,9 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] scheduler: The scheduling algorithm. Valid values: ` Sch`, ` Wlc`, `Wrr`. **NOTE:** This parameter takes effect when the `server_group_type` parameter is set to `Instance` or `Ip`.
         :param pulumi.Input[str] server_group_name: The name of the server group.
         :param pulumi.Input[str] server_group_type: The type of the server group. Default value: `Instance`. Valid values:
+               - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+               - `Ip`: allows you to add servers by specifying IP addresses.
+               - `Fc`: allows you to add servers by specifying functions of Function Compute.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServerGroupServerArgs']]]] servers: The backend servers. See `servers` below.
         :param pulumi.Input[str] status: The status of the backend server.
         :param pulumi.Input[pulumi.InputType['ServerGroupStickySessionConfigArgs']] sticky_session_config: The configuration of session persistence. See `sticky_session_config` below.
@@ -784,6 +802,9 @@ class ServerGroup(pulumi.CustomResource):
     def server_group_type(self) -> pulumi.Output[str]:
         """
         The type of the server group. Default value: `Instance`. Valid values:
+        - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+        - `Ip`: allows you to add servers by specifying IP addresses.
+        - `Fc`: allows you to add servers by specifying functions of Function Compute.
         """
         return pulumi.get(self, "server_group_type")
 

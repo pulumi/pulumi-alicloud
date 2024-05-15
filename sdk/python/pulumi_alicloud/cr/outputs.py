@@ -1195,6 +1195,8 @@ class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcResult(dict):
         :param str instance_id: The ID of the instance.
         :param str ip: IP address.
         :param str module_name: The name of the module that you want to access. Valid Values:
+               - `Registry`: the image repository.
+               - `Chart`: a Helm chart.
         :param str status: The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
         :param str vpc_id: The ID of the VPC.
         :param str vswitch_id: The ID of the vSwitch.
@@ -1245,6 +1247,8 @@ class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcResult(dict):
     def module_name(self) -> str:
         """
         The name of the module that you want to access. Valid Values:
+        - `Registry`: the image repository.
+        - `Chart`: a Helm chart.
         """
         return pulumi.get(self, "module_name")
 

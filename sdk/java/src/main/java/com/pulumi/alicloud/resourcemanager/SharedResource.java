@@ -130,6 +130,11 @@ public class SharedResource extends com.pulumi.resources.CustomResource {
     }
     /**
      * The resource type of should shared. Valid values:
+     * - `VSwitch`.
+     * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+     * - The following types are added after v1.192.0: `PrefixList` and `Image`.
+     * - The following types are added after v1.194.1: `PublicIpAddressPool`.
+     * - The following types are added after v1.208.0: `KMSInstance`.
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
@@ -137,6 +142,11 @@ public class SharedResource extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The resource type of should shared. Valid values:
+     * - `VSwitch`.
+     * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+     * - The following types are added after v1.192.0: `PrefixList` and `Image`.
+     * - The following types are added after v1.194.1: `PublicIpAddressPool`.
+     * - The following types are added after v1.208.0: `KMSInstance`.
      * 
      */
     public Output<String> resourceType() {

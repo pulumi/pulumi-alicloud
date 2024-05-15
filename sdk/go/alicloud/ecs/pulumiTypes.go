@@ -1755,6 +1755,11 @@ type InstanceDataDisk struct {
 	// The name of the data disk.
 	Name *string `pulumi:"name"`
 	// The performance level of the ESSD used as data disk:
+	// - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+	//   Default to `PL1`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The size of the data disk.
 	// - cloud：[5, 2000]
@@ -1796,6 +1801,11 @@ type InstanceDataDiskArgs struct {
 	// The name of the data disk.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The performance level of the ESSD used as data disk:
+	// - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+	//   Default to `PL1`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
 	// The size of the data disk.
 	// - cloud：[5, 2000]
@@ -1900,6 +1910,11 @@ func (o InstanceDataDiskOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The performance level of the ESSD used as data disk:
+//   - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+//   - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+//   - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+//   - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+//     Default to `PL1`.
 func (o InstanceDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
@@ -12077,6 +12092,12 @@ type GetImagesImage struct {
 	Size  int    `pulumi:"size"`
 	State string `pulumi:"state"`
 	// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+	// * `Creating`: The image is being created.
+	// * `Waiting`: The image is waiting to be processed.
+	// * `Available`: The image is available.
+	// * `UnAvailable`: The image is unavailable.
+	// * `CreateFailed`: The image failed to be created.
+	// * `Deprecated`: The image is discontinued.
 	Status string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -12134,6 +12155,12 @@ type GetImagesImageArgs struct {
 	Size  pulumi.IntInput    `pulumi:"size"`
 	State pulumi.StringInput `pulumi:"state"`
 	// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+	// * `Creating`: The image is being created.
+	// * `Waiting`: The image is waiting to be processed.
+	// * `Available`: The image is available.
+	// * `UnAvailable`: The image is unavailable.
+	// * `CreateFailed`: The image failed to be created.
+	// * `Deprecated`: The image is discontinued.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`
@@ -12293,6 +12320,12 @@ func (o GetImagesImageOutput) State() pulumi.StringOutput {
 }
 
 // The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+// * `Creating`: The image is being created.
+// * `Waiting`: The image is waiting to be processed.
+// * `Available`: The image is available.
+// * `UnAvailable`: The image is unavailable.
+// * `CreateFailed`: The image failed to be created.
+// * `Deprecated`: The image is discontinued.
 func (o GetImagesImageOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Status }).(pulumi.StringOutput)
 }

@@ -48,6 +48,9 @@ public final class CustomRoutingEndpointArgs extends com.pulumi.resources.Resour
 
     /**
      * The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+     * - `DenyAll`: denies all traffic to the endpoint.
+     * - `AllowAll`: allows all traffic to the endpoint.
+     * - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
      * 
      */
     @Import(name="trafficToEndpointPolicy")
@@ -55,6 +58,9 @@ public final class CustomRoutingEndpointArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+     * - `DenyAll`: denies all traffic to the endpoint.
+     * - `AllowAll`: allows all traffic to the endpoint.
+     * - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
      * 
      */
     public Optional<Output<String>> trafficToEndpointPolicy() {
@@ -147,6 +153,9 @@ public final class CustomRoutingEndpointArgs extends com.pulumi.resources.Resour
 
         /**
          * @param trafficToEndpointPolicy The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+         * - `DenyAll`: denies all traffic to the endpoint.
+         * - `AllowAll`: allows all traffic to the endpoint.
+         * - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
          * 
          * @return builder
          * 
@@ -158,6 +167,9 @@ public final class CustomRoutingEndpointArgs extends com.pulumi.resources.Resour
 
         /**
          * @param trafficToEndpointPolicy The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+         * - `DenyAll`: denies all traffic to the endpoint.
+         * - `AllowAll`: allows all traffic to the endpoint.
+         * - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
          * 
          * @return builder
          * 

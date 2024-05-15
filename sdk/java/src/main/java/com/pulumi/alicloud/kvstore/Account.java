@@ -159,6 +159,8 @@ public class Account extends com.pulumi.resources.CustomResource {
     }
     /**
      * The privilege of account access database. Default value: `RoleReadWrite`
+     * - `RoleReadOnly`: This value is only for Redis and Memcache
+     * - `RoleReadWrite`: This value is only for Redis and Memcache
      * 
      */
     @Export(name="accountPrivilege", refs={String.class}, tree="[0]")
@@ -166,6 +168,8 @@ public class Account extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The privilege of account access database. Default value: `RoleReadWrite`
+     * - `RoleReadOnly`: This value is only for Redis and Memcache
+     * - `RoleReadWrite`: This value is only for Redis and Memcache
      * 
      */
     public Output<Optional<String>> accountPrivilege() {

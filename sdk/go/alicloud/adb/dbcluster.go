@@ -51,6 +51,8 @@ type DBCluster struct {
 	// The elastic io resource.
 	ElasticIoResource pulumi.IntOutput `pulumi:"elasticIoResource"`
 	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+	// - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+	// - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
 	ElasticIoResourceSize pulumi.StringOutput `pulumi:"elasticIoResourceSize"`
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId pulumi.StringPtrOutput `pulumi:"kmsId"`
@@ -158,6 +160,8 @@ type dbclusterState struct {
 	// The elastic io resource.
 	ElasticIoResource *int `pulumi:"elasticIoResource"`
 	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+	// - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+	// - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
 	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId *string `pulumi:"kmsId"`
@@ -230,6 +234,8 @@ type DBClusterState struct {
 	// The elastic io resource.
 	ElasticIoResource pulumi.IntPtrInput
 	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+	// - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+	// - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
 	ElasticIoResourceSize pulumi.StringPtrInput
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId pulumi.StringPtrInput
@@ -304,6 +310,8 @@ type dbclusterArgs struct {
 	// The elastic io resource.
 	ElasticIoResource *int `pulumi:"elasticIoResource"`
 	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+	// - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+	// - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
 	ElasticIoResourceSize *string `pulumi:"elasticIoResourceSize"`
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId *string `pulumi:"kmsId"`
@@ -371,6 +379,8 @@ type DBClusterArgs struct {
 	// The elastic io resource.
 	ElasticIoResource pulumi.IntPtrInput
 	// The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+	// - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+	// - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
 	ElasticIoResourceSize pulumi.StringPtrInput
 	// The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
 	KmsId pulumi.StringPtrInput
@@ -564,6 +574,8 @@ func (o DBClusterOutput) ElasticIoResource() pulumi.IntOutput {
 }
 
 // The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
+// - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
+// - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
 func (o DBClusterOutput) ElasticIoResourceSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.ElasticIoResourceSize }).(pulumi.StringOutput)
 }

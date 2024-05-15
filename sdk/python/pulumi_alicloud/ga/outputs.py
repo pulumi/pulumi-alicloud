@@ -191,6 +191,12 @@ class EndpointGroupEndpointConfiguration(dict):
         """
         :param str endpoint: The IP address or domain name of Endpoint N in the endpoint group.
         :param str type: The type of Endpoint N in the endpoint group. Valid values:
+               - `Domain`: a custom domain name.
+               - `Ip`: a custom IP address.
+               - `PublicIp`: an Alibaba Cloud public IP address.
+               - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
+               - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+               > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
         :param int weight: The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
                > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
         :param bool enable_clientip_preservation: Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
@@ -217,6 +223,12 @@ class EndpointGroupEndpointConfiguration(dict):
     def type(self) -> str:
         """
         The type of Endpoint N in the endpoint group. Valid values:
+        - `Domain`: a custom domain name.
+        - `Ip`: a custom IP address.
+        - `PublicIp`: an Alibaba Cloud public IP address.
+        - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
+        - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+        > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
         """
         return pulumi.get(self, "type")
 

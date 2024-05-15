@@ -80,6 +80,8 @@ public final class DataFlowArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+     * - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+     * - `SSL`: Protects access through SSL certificates.
      * 
      */
     @Import(name="sourceSecurityType")
@@ -87,6 +89,8 @@ public final class DataFlowArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+     * - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+     * - `SSL`: Protects access through SSL certificates.
      * 
      */
     public Optional<Output<String>> sourceSecurityType() {
@@ -261,6 +265,8 @@ public final class DataFlowArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sourceSecurityType The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+         * - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+         * - `SSL`: Protects access through SSL certificates.
          * 
          * @return builder
          * 
@@ -272,6 +278,8 @@ public final class DataFlowArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sourceSecurityType The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+         * - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+         * - `SSL`: Protects access through SSL certificates.
          * 
          * @return builder
          * 

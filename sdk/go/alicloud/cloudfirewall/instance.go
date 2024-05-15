@@ -128,6 +128,10 @@ type Instance struct {
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit pulumi.StringPtrOutput `pulumi:"renewalDurationUnit"`
 	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+	// - `AutoRenewal`: Auto renewal.
+	// - `ManualRenewal`: Manual renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	//   **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
 	Spec pulumi.StringPtrOutput `pulumi:"spec"`
@@ -208,6 +212,10 @@ type instanceState struct {
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
 	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+	// - `AutoRenewal`: Auto renewal.
+	// - `ManualRenewal`: Manual renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	//   **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
 	Spec *string `pulumi:"spec"`
@@ -256,6 +264,10 @@ type InstanceState struct {
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit pulumi.StringPtrInput
 	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+	// - `AutoRenewal`: Auto renewal.
+	// - `ManualRenewal`: Manual renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	//   **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
 	RenewalStatus pulumi.StringPtrInput
 	// Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
 	Spec pulumi.StringPtrInput
@@ -302,6 +314,10 @@ type instanceArgs struct {
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
 	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+	// - `AutoRenewal`: Auto renewal.
+	// - `ManualRenewal`: Manual renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	//   **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
 	Spec *string `pulumi:"spec"`
@@ -343,6 +359,10 @@ type InstanceArgs struct {
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit pulumi.StringPtrInput
 	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+	// - `AutoRenewal`: Auto renewal.
+	// - `ManualRenewal`: Manual renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+	//   **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
 	RenewalStatus pulumi.StringPtrInput
 	// Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
 	Spec pulumi.StringPtrInput
@@ -529,6 +549,10 @@ func (o InstanceOutput) RenewalDurationUnit() pulumi.StringPtrOutput {
 }
 
 // Whether to renew an instance automatically or not. Default to "ManualRenewal".
+//   - `AutoRenewal`: Auto renewal.
+//   - `ManualRenewal`: Manual renewal.
+//   - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+//     **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
 func (o InstanceOutput) RenewalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
 }

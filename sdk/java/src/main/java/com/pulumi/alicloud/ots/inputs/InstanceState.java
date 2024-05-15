@@ -20,6 +20,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The network limitation of accessing instance. Valid values:
+     * * `Any` - Allow all network to access the instance.
+     * * `Vpc` - Only can the attached VPC allow to access the instance.
+     * * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+     * 
+     * Default to &#34;Any&#34;.
      * 
      */
     @Import(name="accessedBy")
@@ -27,6 +32,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The network limitation of accessing instance. Valid values:
+     * * `Any` - Allow all network to access the instance.
+     * * `Vpc` - Only can the attached VPC allow to access the instance.
+     * * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+     * 
+     * Default to &#34;Any&#34;.
      * 
      */
     public Optional<Output<String>> accessedBy() {
@@ -80,6 +90,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The set of request sources that are allowed access. Valid optional values:
+     * * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+     * 
+     * Default to [&#34;TRUST_PROXY&#34;].
      * 
      */
     @Import(name="networkSourceAcls")
@@ -87,6 +100,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The set of request sources that are allowed access. Valid optional values:
+     * * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+     * 
+     * Default to [&#34;TRUST_PROXY&#34;].
      * 
      */
     public Optional<Output<List<String>>> networkSourceAcls() {
@@ -95,6 +111,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The set of network types that are allowed access. Valid optional values:
+     * * `CLASSIC` - Classic network.
+     * * `VPC` - VPC network.
+     * * `INTERNET` - Public internet.
+     * 
+     * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;].
      * 
      */
     @Import(name="networkTypeAcls")
@@ -102,6 +123,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The set of network types that are allowed access. Valid optional values:
+     * * `CLASSIC` - Classic network.
+     * * `VPC` - VPC network.
+     * * `INTERNET` - Public internet.
+     * 
+     * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;].
      * 
      */
     public Optional<Output<List<String>>> networkTypeAcls() {
@@ -173,6 +199,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param accessedBy The network limitation of accessing instance. Valid values:
+         * * `Any` - Allow all network to access the instance.
+         * * `Vpc` - Only can the attached VPC allow to access the instance.
+         * * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+         * 
+         * Default to &#34;Any&#34;.
          * 
          * @return builder
          * 
@@ -184,6 +215,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param accessedBy The network limitation of accessing instance. Valid values:
+         * * `Any` - Allow all network to access the instance.
+         * * `Vpc` - Only can the attached VPC allow to access the instance.
+         * * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+         * 
+         * Default to &#34;Any&#34;.
          * 
          * @return builder
          * 
@@ -257,6 +293,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkSourceAcls The set of request sources that are allowed access. Valid optional values:
+         * * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+         * 
+         * Default to [&#34;TRUST_PROXY&#34;].
          * 
          * @return builder
          * 
@@ -268,6 +307,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkSourceAcls The set of request sources that are allowed access. Valid optional values:
+         * * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+         * 
+         * Default to [&#34;TRUST_PROXY&#34;].
          * 
          * @return builder
          * 
@@ -278,6 +320,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkSourceAcls The set of request sources that are allowed access. Valid optional values:
+         * * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+         * 
+         * Default to [&#34;TRUST_PROXY&#34;].
          * 
          * @return builder
          * 
@@ -288,6 +333,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkTypeAcls The set of network types that are allowed access. Valid optional values:
+         * * `CLASSIC` - Classic network.
+         * * `VPC` - VPC network.
+         * * `INTERNET` - Public internet.
+         * 
+         * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;].
          * 
          * @return builder
          * 
@@ -299,6 +349,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkTypeAcls The set of network types that are allowed access. Valid optional values:
+         * * `CLASSIC` - Classic network.
+         * * `VPC` - VPC network.
+         * * `INTERNET` - Public internet.
+         * 
+         * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;].
          * 
          * @return builder
          * 
@@ -309,6 +364,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkTypeAcls The set of network types that are allowed access. Valid optional values:
+         * * `CLASSIC` - Classic network.
+         * * `VPC` - VPC network.
+         * * `INTERNET` - Public internet.
+         * 
+         * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;].
          * 
          * @return builder
          * 

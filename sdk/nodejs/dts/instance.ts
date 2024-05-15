@@ -214,6 +214,9 @@ export class Instance extends pulumi.CustomResource {
     public readonly syncArchitecture!: pulumi.Output<string | undefined>;
     /**
      * The synchronization direction. Default value: `Forward`. Valid values:
+     * - `Forward`: Data is synchronized from the source database to the destination database.
+     * - `Reverse`: Data is synchronized from the destination database to the source database.
+     * - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
      */
     public readonly synchronizationDirection!: pulumi.Output<string | undefined>;
     /**
@@ -452,6 +455,9 @@ export interface InstanceState {
     syncArchitecture?: pulumi.Input<string>;
     /**
      * The synchronization direction. Default value: `Forward`. Valid values:
+     * - `Forward`: Data is synchronized from the source database to the destination database.
+     * - `Reverse`: Data is synchronized from the destination database to the source database.
+     * - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
      */
     synchronizationDirection?: pulumi.Input<string>;
     /**
@@ -606,6 +612,9 @@ export interface InstanceArgs {
     syncArchitecture?: pulumi.Input<string>;
     /**
      * The synchronization direction. Default value: `Forward`. Valid values:
+     * - `Forward`: Data is synchronized from the source database to the destination database.
+     * - `Reverse`: Data is synchronized from the destination database to the source database.
+     * - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
      */
     synchronizationDirection?: pulumi.Input<string>;
     /**

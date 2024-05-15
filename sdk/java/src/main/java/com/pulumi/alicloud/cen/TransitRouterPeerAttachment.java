@@ -143,6 +143,8 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
     }
     /**
      * The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+     * * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+     * * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
      * 
      */
     @Export(name="bandwidthType", refs={String.class}, tree="[0]")
@@ -150,6 +152,8 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
 
     /**
      * @return The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+     * * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+     * * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
      * 
      */
     public Output<String> bandwidthType() {

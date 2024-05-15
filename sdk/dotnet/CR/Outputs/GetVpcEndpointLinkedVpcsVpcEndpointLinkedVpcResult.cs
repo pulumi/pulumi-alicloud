@@ -31,6 +31,8 @@ namespace Pulumi.AliCloud.CR.Outputs
         public readonly string Ip;
         /// <summary>
         /// The name of the module that you want to access. Valid Values:
+        /// - `Registry`: the image repository.
+        /// - `Chart`: a Helm chart.
         /// </summary>
         public readonly string ModuleName;
         /// <summary>

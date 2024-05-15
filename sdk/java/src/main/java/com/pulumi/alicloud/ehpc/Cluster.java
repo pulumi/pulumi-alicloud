@@ -316,6 +316,9 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
+     * - `NoSpot`: The compute nodes are pay-as-you-go instances.
+     * - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
+     * - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
      * 
      */
     @Export(name="computeSpotStrategy", refs={String.class}, tree="[0]")
@@ -323,6 +326,9 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
+     * - `NoSpot`: The compute nodes are pay-as-you-go instances.
+     * - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
+     * - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
      * 
      */
     public Output<Optional<String>> computeSpotStrategy() {
@@ -330,6 +336,9 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
+     * - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
+     * - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
+     * - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
      * 
      */
     @Export(name="deployMode", refs={String.class}, tree="[0]")
@@ -337,6 +346,9 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
+     * - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
+     * - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
+     * - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
      * 
      */
     public Output<String> deployMode() {
@@ -808,6 +820,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
+     * * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+     * * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+     * * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+     * * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
      * 
      */
     @Export(name="systemDiskLevel", refs={String.class}, tree="[0]")
@@ -815,6 +831,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
+     * * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+     * * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+     * * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+     * * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
      * 
      */
     public Output<Optional<String>> systemDiskLevel() {

@@ -152,6 +152,9 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specify the new create a host of source. Valid values:
+     * * `Local`: localhost
+     * * `Ecs`:ECS instance
+     * * `Rds`:RDS exclusive cluster host.
      * 
      */
     @Import(name="source")
@@ -159,6 +162,9 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specify the new create a host of source. Valid values:
+     * * `Local`: localhost
+     * * `Ecs`:ECS instance
+     * * `Rds`:RDS exclusive cluster host.
      * 
      */
     public Optional<Output<String>> source() {
@@ -405,6 +411,9 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param source Specify the new create a host of source. Valid values:
+         * * `Local`: localhost
+         * * `Ecs`:ECS instance
+         * * `Rds`:RDS exclusive cluster host.
          * 
          * @return builder
          * 
@@ -416,6 +425,9 @@ public final class HostState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param source Specify the new create a host of source. Valid values:
+         * * `Local`: localhost
+         * * `Ecs`:ECS instance
+         * * `Rds`:RDS exclusive cluster host.
          * 
          * @return builder
          * 

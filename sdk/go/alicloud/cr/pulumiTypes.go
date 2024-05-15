@@ -2783,6 +2783,8 @@ type GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc struct {
 	// IP address.
 	Ip string `pulumi:"ip"`
 	// The name of the module that you want to access. Valid Values:
+	// - `Registry`: the image repository.
+	// - `Chart`: a Helm chart.
 	ModuleName string `pulumi:"moduleName"`
 	// The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
 	Status string `pulumi:"status"`
@@ -2813,6 +2815,8 @@ type GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcArgs struct {
 	// IP address.
 	Ip pulumi.StringInput `pulumi:"ip"`
 	// The name of the module that you want to access. Valid Values:
+	// - `Registry`: the image repository.
+	// - `Chart`: a Helm chart.
 	ModuleName pulumi.StringInput `pulumi:"moduleName"`
 	// The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
 	Status pulumi.StringInput `pulumi:"status"`
@@ -2894,6 +2898,8 @@ func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) Ip() pulumi.StringOu
 }
 
 // The name of the module that you want to access. Valid Values:
+// - `Registry`: the image repository.
+// - `Chart`: a Helm chart.
 func (o GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcOutput) ModuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc) string { return v.ModuleName }).(pulumi.StringOutput)
 }

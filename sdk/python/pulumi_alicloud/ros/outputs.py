@@ -722,7 +722,12 @@ class GetStackInstancesInstanceResult(dict):
         :param str stack_id: The ID of the stack corresponding to the stack instance.
         :param str stack_instance_account_id: The account to which the stack instance belongs.
         :param str stack_instance_region_id: The region of the stack instance.
-        :param str status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+        :param str status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+               * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+               * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+               * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+               * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+               * The create or update operation is not complete.
         :param str status_reason: The reason why the stack is in its current state.
         """
         pulumi.set(__self__, "id", id)
@@ -795,7 +800,12 @@ class GetStackInstancesInstanceResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+        * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+        * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+        * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+        * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+        * The create or update operation is not complete.
         """
         return pulumi.get(self, "status")
 

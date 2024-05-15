@@ -83,6 +83,8 @@ type Aggregator struct {
 	// The name of aggregator.
 	AggregatorName pulumi.StringOutput `pulumi:"aggregatorName"`
 	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+	// * `CUSTOM` - The custom account group.
+	// * `RD` - The global account group.
 	AggregatorType pulumi.StringOutput `pulumi:"aggregatorType"`
 	// The description of aggregator.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -131,6 +133,8 @@ type aggregatorState struct {
 	// The name of aggregator.
 	AggregatorName *string `pulumi:"aggregatorName"`
 	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+	// * `CUSTOM` - The custom account group.
+	// * `RD` - The global account group.
 	AggregatorType *string `pulumi:"aggregatorType"`
 	// The description of aggregator.
 	Description *string `pulumi:"description"`
@@ -144,6 +148,8 @@ type AggregatorState struct {
 	// The name of aggregator.
 	AggregatorName pulumi.StringPtrInput
 	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+	// * `CUSTOM` - The custom account group.
+	// * `RD` - The global account group.
 	AggregatorType pulumi.StringPtrInput
 	// The description of aggregator.
 	Description pulumi.StringPtrInput
@@ -161,6 +167,8 @@ type aggregatorArgs struct {
 	// The name of aggregator.
 	AggregatorName string `pulumi:"aggregatorName"`
 	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+	// * `CUSTOM` - The custom account group.
+	// * `RD` - The global account group.
 	AggregatorType *string `pulumi:"aggregatorType"`
 	// The description of aggregator.
 	Description string `pulumi:"description"`
@@ -173,6 +181,8 @@ type AggregatorArgs struct {
 	// The name of aggregator.
 	AggregatorName pulumi.StringInput
 	// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+	// * `CUSTOM` - The custom account group.
+	// * `RD` - The global account group.
 	AggregatorType pulumi.StringPtrInput
 	// The description of aggregator.
 	Description pulumi.StringInput
@@ -276,6 +286,8 @@ func (o AggregatorOutput) AggregatorName() pulumi.StringOutput {
 }
 
 // The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+// * `CUSTOM` - The custom account group.
+// * `RD` - The global account group.
 func (o AggregatorOutput) AggregatorType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Aggregator) pulumi.StringOutput { return v.AggregatorType }).(pulumi.StringOutput)
 }

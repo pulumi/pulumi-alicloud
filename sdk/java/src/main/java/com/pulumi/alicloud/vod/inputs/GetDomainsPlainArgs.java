@@ -94,6 +94,8 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * A mapping of tags to assign to the resource.
+     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
     @Import(name="tags")
@@ -101,6 +103,8 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return A mapping of tags to assign to the resource.
+     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
     public Optional<Map<String,Object>> tags() {
@@ -203,6 +207,8 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param tags A mapping of tags to assign to the resource.
+         * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+         * * `Value`: It can be up to 128 characters in length. It can be a null string.
          * 
          * @return builder
          * 

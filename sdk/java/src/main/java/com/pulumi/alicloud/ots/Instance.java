@@ -86,6 +86,11 @@ import javax.annotation.Nullable;
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The network limitation of accessing instance. Valid values:
+     * * `Any` - Allow all network to access the instance.
+     * * `Vpc` - Only can the attached VPC allow to access the instance.
+     * * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+     * 
+     * Default to &#34;Any&#34;.
      * 
      */
     @Export(name="accessedBy", refs={String.class}, tree="[0]")
@@ -93,6 +98,11 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The network limitation of accessing instance. Valid values:
+     * * `Any` - Allow all network to access the instance.
+     * * `Vpc` - Only can the attached VPC allow to access the instance.
+     * * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+     * 
+     * Default to &#34;Any&#34;.
      * 
      */
     public Output<String> accessedBy() {
@@ -142,6 +152,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The set of request sources that are allowed access. Valid optional values:
+     * * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+     * 
+     * Default to [&#34;TRUST_PROXY&#34;].
      * 
      */
     @Export(name="networkSourceAcls", refs={List.class,String.class}, tree="[0,1]")
@@ -149,6 +162,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The set of request sources that are allowed access. Valid optional values:
+     * * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+     * 
+     * Default to [&#34;TRUST_PROXY&#34;].
      * 
      */
     public Output<List<String>> networkSourceAcls() {
@@ -156,6 +172,11 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The set of network types that are allowed access. Valid optional values:
+     * * `CLASSIC` - Classic network.
+     * * `VPC` - VPC network.
+     * * `INTERNET` - Public internet.
+     * 
+     * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;].
      * 
      */
     @Export(name="networkTypeAcls", refs={List.class,String.class}, tree="[0,1]")
@@ -163,6 +184,11 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The set of network types that are allowed access. Valid optional values:
+     * * `CLASSIC` - Classic network.
+     * * `VPC` - VPC network.
+     * * `INTERNET` - Public internet.
+     * 
+     * Default to [&#34;VPC&#34;, &#34;CLASSIC&#34;].
      * 
      */
     public Output<List<String>> networkTypeAcls() {

@@ -114,6 +114,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the server group. Default value: `Instance`. Valid values:
+     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * - `Ip`: allows you to add servers by specifying IP addresses.
+     * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      * 
      */
     @Import(name="serverGroupType")
@@ -121,6 +124,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the server group. Default value: `Instance`. Valid values:
+     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * - `Ip`: allows you to add servers by specifying IP addresses.
+     * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      * 
      */
     public Optional<Output<String>> serverGroupType() {
@@ -365,6 +371,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverGroupType The type of the server group. Default value: `Instance`. Valid values:
+         * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+         * - `Ip`: allows you to add servers by specifying IP addresses.
+         * - `Fc`: allows you to add servers by specifying functions of Function Compute.
          * 
          * @return builder
          * 
@@ -376,6 +385,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serverGroupType The type of the server group. Default value: `Instance`. Valid values:
+         * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+         * - `Ip`: allows you to add servers by specifying IP addresses.
+         * - `Fc`: allows you to add servers by specifying functions of Function Compute.
          * 
          * @return builder
          * 

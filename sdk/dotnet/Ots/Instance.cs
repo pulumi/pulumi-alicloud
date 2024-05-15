@@ -62,6 +62,11 @@ namespace Pulumi.AliCloud.Ots
     {
         /// <summary>
         /// The network limitation of accessing instance. Valid values:
+        /// * `Any` - Allow all network to access the instance.
+        /// * `Vpc` - Only can the attached VPC allow to access the instance.
+        /// * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+        /// 
+        /// Default to "Any".
         /// </summary>
         [Output("accessedBy")]
         public Output<string> AccessedBy { get; private set; } = null!;
@@ -86,12 +91,20 @@ namespace Pulumi.AliCloud.Ots
 
         /// <summary>
         /// The set of request sources that are allowed access. Valid optional values:
+        /// * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+        /// 
+        /// Default to ["TRUST_PROXY"].
         /// </summary>
         [Output("networkSourceAcls")]
         public Output<ImmutableArray<string>> NetworkSourceAcls { get; private set; } = null!;
 
         /// <summary>
         /// The set of network types that are allowed access. Valid optional values:
+        /// * `CLASSIC` - Classic network.
+        /// * `VPC` - VPC network.
+        /// * `INTERNET` - Public internet.
+        /// 
+        /// Default to ["VPC", "CLASSIC"].
         /// </summary>
         [Output("networkTypeAcls")]
         public Output<ImmutableArray<string>> NetworkTypeAcls { get; private set; } = null!;
@@ -157,6 +170,11 @@ namespace Pulumi.AliCloud.Ots
     {
         /// <summary>
         /// The network limitation of accessing instance. Valid values:
+        /// * `Any` - Allow all network to access the instance.
+        /// * `Vpc` - Only can the attached VPC allow to access the instance.
+        /// * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+        /// 
+        /// Default to "Any".
         /// </summary>
         [Input("accessedBy")]
         public Input<string>? AccessedBy { get; set; }
@@ -184,6 +202,9 @@ namespace Pulumi.AliCloud.Ots
 
         /// <summary>
         /// The set of request sources that are allowed access. Valid optional values:
+        /// * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+        /// 
+        /// Default to ["TRUST_PROXY"].
         /// </summary>
         public InputList<string> NetworkSourceAcls
         {
@@ -196,6 +217,11 @@ namespace Pulumi.AliCloud.Ots
 
         /// <summary>
         /// The set of network types that are allowed access. Valid optional values:
+        /// * `CLASSIC` - Classic network.
+        /// * `VPC` - VPC network.
+        /// * `INTERNET` - Public internet.
+        /// 
+        /// Default to ["VPC", "CLASSIC"].
         /// </summary>
         public InputList<string> NetworkTypeAcls
         {
@@ -232,6 +258,11 @@ namespace Pulumi.AliCloud.Ots
     {
         /// <summary>
         /// The network limitation of accessing instance. Valid values:
+        /// * `Any` - Allow all network to access the instance.
+        /// * `Vpc` - Only can the attached VPC allow to access the instance.
+        /// * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+        /// 
+        /// Default to "Any".
         /// </summary>
         [Input("accessedBy")]
         public Input<string>? AccessedBy { get; set; }
@@ -259,6 +290,9 @@ namespace Pulumi.AliCloud.Ots
 
         /// <summary>
         /// The set of request sources that are allowed access. Valid optional values:
+        /// * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+        /// 
+        /// Default to ["TRUST_PROXY"].
         /// </summary>
         public InputList<string> NetworkSourceAcls
         {
@@ -271,6 +305,11 @@ namespace Pulumi.AliCloud.Ots
 
         /// <summary>
         /// The set of network types that are allowed access. Valid optional values:
+        /// * `CLASSIC` - Classic network.
+        /// * `VPC` - VPC network.
+        /// * `INTERNET` - Public internet.
+        /// 
+        /// Default to ["VPC", "CLASSIC"].
         /// </summary>
         public InputList<string> NetworkTypeAcls
         {

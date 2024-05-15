@@ -179,6 +179,10 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The protocol that is used to connect to the targets for health checks. Valid values:
+     * - `TCP` or `tcp`: TCP protocol.
+     * - `HTTP` or `http`: HTTP protocol.
+     * - `HTTPS` or `https`: HTTPS protocol.
+     * &gt; **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      * 
      */
     @Import(name="healthCheckProtocol")
@@ -186,6 +190,10 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The protocol that is used to connect to the targets for health checks. Valid values:
+     * - `TCP` or `tcp`: TCP protocol.
+     * - `HTTP` or `http`: HTTP protocol.
+     * - `HTTPS` or `https`: HTTPS protocol.
+     * &gt; **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      * 
      */
     public Optional<Output<String>> healthCheckProtocol() {
@@ -550,6 +558,10 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param healthCheckProtocol The protocol that is used to connect to the targets for health checks. Valid values:
+         * - `TCP` or `tcp`: TCP protocol.
+         * - `HTTP` or `http`: HTTP protocol.
+         * - `HTTPS` or `https`: HTTPS protocol.
+         * &gt; **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
          * 
          * @return builder
          * 
@@ -561,6 +573,10 @@ public final class EndpointGroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param healthCheckProtocol The protocol that is used to connect to the targets for health checks. Valid values:
+         * - `TCP` or `tcp`: TCP protocol.
+         * - `HTTP` or `http`: HTTP protocol.
+         * - `HTTPS` or `https`: HTTPS protocol.
+         * &gt; **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
          * 
          * @return builder
          * 

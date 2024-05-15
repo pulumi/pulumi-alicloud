@@ -171,6 +171,8 @@ export class LoadBalancer extends pulumi.CustomResource {
     public readonly modificationProtectionReason!: pulumi.Output<string>;
     /**
      * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
      */
     public readonly modificationProtectionStatus!: pulumi.Output<string>;
     /**
@@ -346,6 +348,8 @@ export interface LoadBalancerState {
     modificationProtectionReason?: pulumi.Input<string>;
     /**
      * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
      */
     modificationProtectionStatus?: pulumi.Input<string>;
     /**
@@ -436,6 +440,8 @@ export interface LoadBalancerArgs {
     modificationProtectionReason?: pulumi.Input<string>;
     /**
      * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
      */
     modificationProtectionStatus?: pulumi.Input<string>;
     /**

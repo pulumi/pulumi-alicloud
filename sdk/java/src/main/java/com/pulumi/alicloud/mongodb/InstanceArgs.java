@@ -360,6 +360,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
      * 
      */
     @Import(name="orderType")
@@ -367,6 +370,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
      * 
      */
     public Optional<Output<String>> orderType() {
@@ -510,6 +516,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
+     * - `Standard`: standard backup.
+     * - ` Flash  `: single-digit second backup.
      * 
      */
     @Import(name="snapshotBackupType")
@@ -517,6 +525,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The snapshot backup type. Default value: `Standard`. Valid values:
+     * - `Standard`: standard backup.
+     * - ` Flash  `: single-digit second backup.
      * 
      */
     public Optional<Output<String>> snapshotBackupType() {
@@ -525,6 +535,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
      * 
      */
     @Import(name="sslAction")
@@ -532,6 +545,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
      * 
      */
     public Optional<Output<String>> sslAction() {
@@ -1191,6 +1207,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param orderType The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+         * - `UPGRADE`: The specifications are upgraded.
+         * - `DOWNGRADE`: The specifications are downgraded.
+         *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
          * 
          * @return builder
          * 
@@ -1202,6 +1221,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param orderType The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+         * - `UPGRADE`: The specifications are upgraded.
+         * - `DOWNGRADE`: The specifications are downgraded.
+         *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
          * 
          * @return builder
          * 
@@ -1421,6 +1443,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param snapshotBackupType The snapshot backup type. Default value: `Standard`. Valid values:
+         * - `Standard`: standard backup.
+         * - ` Flash  `: single-digit second backup.
          * 
          * @return builder
          * 
@@ -1432,6 +1456,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param snapshotBackupType The snapshot backup type. Default value: `Standard`. Valid values:
+         * - `Standard`: standard backup.
+         * - ` Flash  `: single-digit second backup.
          * 
          * @return builder
          * 
@@ -1442,6 +1468,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sslAction Actions performed on SSL functions. Valid values:
+         * - `Open`: turn on SSL encryption.
+         * - `Close`: turn off SSL encryption.
+         * - `Update`: update SSL certificate.
          * 
          * @return builder
          * 
@@ -1453,6 +1482,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sslAction Actions performed on SSL functions. Valid values:
+         * - `Open`: turn on SSL encryption.
+         * - `Close`: turn off SSL encryption.
+         * - `Update`: update SSL certificate.
          * 
          * @return builder
          * 

@@ -143,6 +143,8 @@ namespace Pulumi.AliCloud.Vod
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+        /// * `Value`: It can be up to 128 characters in length. It can be a null string.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
@@ -240,6 +242,8 @@ namespace Pulumi.AliCloud.Vod
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+        /// * `Value`: It can be up to 128 characters in length. It can be a null string.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -344,6 +348,8 @@ namespace Pulumi.AliCloud.Vod
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+        /// * `Value`: It can be up to 128 characters in length. It can be a null string.
         /// </summary>
         public InputMap<object> Tags
         {

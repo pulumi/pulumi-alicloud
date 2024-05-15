@@ -107,6 +107,8 @@ public class HAVip extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the instance with which the HAVIP is associated. Valid values:
+     * - `EcsInstance`: an ECS instance.
+     * - `NetworkInterface`: an ENI.
      * 
      */
     @Export(name="associatedInstanceType", refs={String.class}, tree="[0]")
@@ -114,6 +116,8 @@ public class HAVip extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the instance with which the HAVIP is associated. Valid values:
+     * - `EcsInstance`: an ECS instance.
+     * - `NetworkInterface`: an ENI.
      * 
      */
     public Output<String> associatedInstanceType() {

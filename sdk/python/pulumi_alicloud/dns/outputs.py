@@ -208,6 +208,8 @@ class AddressPoolAddress(dict):
         """
         :param str address: The address that you want to add to the address pool.
         :param str attribute_info: The source region of the address. expressed as a JSON string. The structure is as follows:
+               * `LineCodes`: List of home lineCodes.
+               * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
         :param str mode: The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
         :param int lba_weight: The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
         :param str remark: The description of the address.
@@ -233,6 +235,8 @@ class AddressPoolAddress(dict):
     def attribute_info(self) -> str:
         """
         The source region of the address. expressed as a JSON string. The structure is as follows:
+        * `LineCodes`: List of home lineCodes.
+        * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
         """
         return pulumi.get(self, "attribute_info")
 
@@ -343,6 +347,12 @@ class GtmInstanceAlertConfig(dict):
         :param bool dingtalk_notice: Whether to configure DingTalk notifications. Valid values: `true`, `false`.
         :param bool email_notice: Whether to configure mail notification. Valid values: `true`, `false`.
         :param str notice_type: The Alarm Event Type.
+               - `ADDR_ALERT`: Address not available.
+               - `ADDR_RESUME`: Address Recovery available.
+               - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+               - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+               - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+               - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
         :param bool sms_notice: Whether to configure SMS notification. Valid values: `true`, `false`.
         """
         if dingtalk_notice is not None:
@@ -375,6 +385,12 @@ class GtmInstanceAlertConfig(dict):
     def notice_type(self) -> Optional[str]:
         """
         The Alarm Event Type.
+        - `ADDR_ALERT`: Address not available.
+        - `ADDR_RESUME`: Address Recovery available.
+        - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+        - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+        - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+        - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
         """
         return pulumi.get(self, "notice_type")
 

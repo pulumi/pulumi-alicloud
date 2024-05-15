@@ -64,6 +64,8 @@ type GetVpcEndpointLinkedVpcsArgs struct {
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The name of the module that you want to access. Valid Values:
+	// - `Registry`: the image repository.
+	// - `Chart`: a Helm chart.
 	ModuleName string `pulumi:"moduleName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -107,6 +109,8 @@ type GetVpcEndpointLinkedVpcsOutputArgs struct {
 	// The ID of the instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The name of the module that you want to access. Valid Values:
+	// - `Registry`: the image repository.
+	// - `Chart`: a Helm chart.
 	ModuleName pulumi.StringInput `pulumi:"moduleName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

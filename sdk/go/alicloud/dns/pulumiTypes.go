@@ -326,6 +326,8 @@ type AddressPoolAddress struct {
 	// The address that you want to add to the address pool.
 	Address string `pulumi:"address"`
 	// The source region of the address. expressed as a JSON string. The structure is as follows:
+	// * `LineCodes`: List of home lineCodes.
+	// * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
 	AttributeInfo string `pulumi:"attributeInfo"`
 	// The weight of the address. **NOTE:** The attribute is valid when the attribute `lbaStrategy` is `RATIO`.
 	LbaWeight *int `pulumi:"lbaWeight"`
@@ -350,6 +352,8 @@ type AddressPoolAddressArgs struct {
 	// The address that you want to add to the address pool.
 	Address pulumi.StringInput `pulumi:"address"`
 	// The source region of the address. expressed as a JSON string. The structure is as follows:
+	// * `LineCodes`: List of home lineCodes.
+	// * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
 	AttributeInfo pulumi.StringInput `pulumi:"attributeInfo"`
 	// The weight of the address. **NOTE:** The attribute is valid when the attribute `lbaStrategy` is `RATIO`.
 	LbaWeight pulumi.IntPtrInput `pulumi:"lbaWeight"`
@@ -416,6 +420,8 @@ func (o AddressPoolAddressOutput) Address() pulumi.StringOutput {
 }
 
 // The source region of the address. expressed as a JSON string. The structure is as follows:
+// * `LineCodes`: List of home lineCodes.
+// * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
 func (o AddressPoolAddressOutput) AttributeInfo() pulumi.StringOutput {
 	return o.ApplyT(func(v AddressPoolAddress) string { return v.AttributeInfo }).(pulumi.StringOutput)
 }
@@ -567,6 +573,12 @@ type GtmInstanceAlertConfig struct {
 	// Whether to configure mail notification. Valid values: `true`, `false`.
 	EmailNotice *bool `pulumi:"emailNotice"`
 	// The Alarm Event Type.
+	// - `ADDR_ALERT`: Address not available.
+	// - `ADDR_RESUME`: Address Recovery available.
+	// - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+	// - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+	// - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+	// - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
 	NoticeType *string `pulumi:"noticeType"`
 	// Whether to configure SMS notification. Valid values: `true`, `false`.
 	SmsNotice *bool `pulumi:"smsNotice"`
@@ -589,6 +601,12 @@ type GtmInstanceAlertConfigArgs struct {
 	// Whether to configure mail notification. Valid values: `true`, `false`.
 	EmailNotice pulumi.BoolPtrInput `pulumi:"emailNotice"`
 	// The Alarm Event Type.
+	// - `ADDR_ALERT`: Address not available.
+	// - `ADDR_RESUME`: Address Recovery available.
+	// - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+	// - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+	// - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+	// - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
 	NoticeType pulumi.StringPtrInput `pulumi:"noticeType"`
 	// Whether to configure SMS notification. Valid values: `true`, `false`.
 	SmsNotice pulumi.BoolPtrInput `pulumi:"smsNotice"`
@@ -656,6 +674,12 @@ func (o GtmInstanceAlertConfigOutput) EmailNotice() pulumi.BoolPtrOutput {
 }
 
 // The Alarm Event Type.
+// - `ADDR_ALERT`: Address not available.
+// - `ADDR_RESUME`: Address Recovery available.
+// - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+// - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+// - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+// - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
 func (o GtmInstanceAlertConfigOutput) NoticeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GtmInstanceAlertConfig) *string { return v.NoticeType }).(pulumi.StringPtrOutput)
 }

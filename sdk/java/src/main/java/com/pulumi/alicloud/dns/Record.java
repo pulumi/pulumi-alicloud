@@ -137,6 +137,7 @@ public class Record extends com.pulumi.resources.CustomResource {
     }
     /**
      * The record status. `Enable` or `Disable`.
+     * * `Locked` - The record locked state. `true` or `false`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -144,6 +145,7 @@ public class Record extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The record status. `Enable` or `Disable`.
+     * * `Locked` - The record locked state. `true` or `false`.
      * 
      */
     public Output<String> status() {

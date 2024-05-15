@@ -38,6 +38,11 @@ namespace Pulumi.AliCloud.Alb.Outputs
         public readonly string? ServerIp;
         /// <summary>
         /// The type of the server. The type of the server. Valid values:
+        /// - `Ecs`: an ECS instance.
+        /// - `Eni`: an ENI.
+        /// - `Eci`: an elastic container instance.
+        /// - `Ip`(Available since v1.194.0): an IP address.
+        /// - `Fc`(Available since v1.194.0): a function.
         /// </summary>
         public readonly string ServerType;
         /// <summary>

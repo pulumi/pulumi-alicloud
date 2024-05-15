@@ -23,6 +23,9 @@ public final class AclAclEntry {
     private @Nullable String entry;
     /**
      * @return The status of the ACL entry. Valid values:
+     * - `Adding`: The ACL entry is being added.
+     * - `Available`: The ACL entry is added and available.
+     * - `Removing`: The ACL entry is being removed.
      * 
      */
     private @Nullable String status;
@@ -44,6 +47,9 @@ public final class AclAclEntry {
     }
     /**
      * @return The status of the ACL entry. Valid values:
+     * - `Adding`: The ACL entry is being added.
+     * - `Available`: The ACL entry is added and available.
+     * - `Removing`: The ACL entry is being removed.
      * 
      */
     public Optional<String> status() {

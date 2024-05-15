@@ -69,6 +69,8 @@ export class Vault extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+     * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+     * - `KMS`: Use Alibaba Cloud Kms to encryption.
      */
     public readonly encryptType!: pulumi.Output<string>;
     /**
@@ -140,6 +142,8 @@ export interface VaultState {
     description?: pulumi.Input<string>;
     /**
      * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+     * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+     * - `KMS`: Use Alibaba Cloud Kms to encryption.
      */
     encryptType?: pulumi.Input<string>;
     /**
@@ -174,6 +178,8 @@ export interface VaultArgs {
     description?: pulumi.Input<string>;
     /**
      * Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+     * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+     * - `KMS`: Use Alibaba Cloud Kms to encryption.
      */
     encryptType?: pulumi.Input<string>;
     /**

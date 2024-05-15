@@ -135,6 +135,8 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
     }
     /**
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+     * - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+     * - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
      * 
      */
     @Export(name="notifyStrategy", refs={String.class}, tree="[0]")
@@ -142,6 +144,8 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+     * - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+     * - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
      * 
      */
     public Output<String> notifyStrategy() {

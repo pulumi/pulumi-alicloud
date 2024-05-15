@@ -84,6 +84,10 @@ export class TransitRouterPrefixListAssociation extends pulumi.CustomResource {
     public readonly nextHop!: pulumi.Output<string>;
     /**
      * The type of the next hop. Valid values:
+     * - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+     * - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+     * - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+     * - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
      */
     public readonly nextHopType!: pulumi.Output<string>;
     /**
@@ -164,6 +168,10 @@ export interface TransitRouterPrefixListAssociationState {
     nextHop?: pulumi.Input<string>;
     /**
      * The type of the next hop. Valid values:
+     * - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+     * - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+     * - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+     * - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
      */
     nextHopType?: pulumi.Input<string>;
     /**
@@ -198,6 +206,10 @@ export interface TransitRouterPrefixListAssociationArgs {
     nextHop: pulumi.Input<string>;
     /**
      * The type of the next hop. Valid values:
+     * - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+     * - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+     * - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+     * - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
      */
     nextHopType?: pulumi.Input<string>;
     /**

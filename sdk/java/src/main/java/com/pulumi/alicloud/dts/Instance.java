@@ -492,6 +492,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The synchronization direction. Default value: `Forward`. Valid values:
+     * - `Forward`: Data is synchronized from the source database to the destination database.
+     * - `Reverse`: Data is synchronized from the destination database to the source database.
+     * - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
      * 
      */
     @Export(name="synchronizationDirection", refs={String.class}, tree="[0]")
@@ -499,6 +502,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The synchronization direction. Default value: `Forward`. Valid values:
+     * - `Forward`: Data is synchronized from the source database to the destination database.
+     * - `Reverse`: Data is synchronized from the destination database to the source database.
+     * - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
      * 
      */
     public Output<Optional<String>> synchronizationDirection() {

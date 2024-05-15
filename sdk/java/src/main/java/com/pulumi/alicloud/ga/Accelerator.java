@@ -119,6 +119,8 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
     }
     /**
      * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed based on data transfer.
      * 
      */
     @Export(name="bandwidthBillingType", refs={String.class}, tree="[0]")
@@ -126,6 +128,8 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed based on data transfer.
      * 
      */
     public Output<String> bandwidthBillingType() {
@@ -207,6 +211,8 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
     }
     /**
      * The billing cycle of the GA instance. Default value: `Month`. Valid values:
+     * - `Month`: billed on a monthly basis.
+     * - `Year`: billed on an annual basis.
      * 
      */
     @Export(name="pricingCycle", refs={String.class}, tree="[0]")
@@ -214,6 +220,8 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The billing cycle of the GA instance. Default value: `Month`. Valid values:
+     * - `Month`: billed on a monthly basis.
+     * - `Year`: billed on an annual basis.
      * 
      */
     public Output<Optional<String>> pricingCycle() {
@@ -235,6 +243,9 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * 
      */
     @Export(name="renewalStatus", refs={String.class}, tree="[0]")
@@ -242,6 +253,9 @@ public class Accelerator extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * 
      */
     public Output<String> renewalStatus() {

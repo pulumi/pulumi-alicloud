@@ -64,6 +64,10 @@ type GetTransitRouterRouteTableAssociationsArgs struct {
 	// The ID of the next hop.
 	TransitRouterAttachmentResourceId *string `pulumi:"transitRouterAttachmentResourceId"`
 	// The type of next hop. Valid values:
+	// * `VPC`: virtual private cloud (VPC)
+	// * `VBR`: virtual border router (VBR)
+	// * `TR`: transit router
+	// * `VPN`: VPN attachment
 	TransitRouterAttachmentResourceType *string `pulumi:"transitRouterAttachmentResourceType"`
 	// The ID of the route table of the Enterprise Edition transit router.
 	TransitRouterRouteTableId *string `pulumi:"transitRouterRouteTableId"`
@@ -114,6 +118,10 @@ type GetTransitRouterRouteTableAssociationsOutputArgs struct {
 	// The ID of the next hop.
 	TransitRouterAttachmentResourceId pulumi.StringPtrInput `pulumi:"transitRouterAttachmentResourceId"`
 	// The type of next hop. Valid values:
+	// * `VPC`: virtual private cloud (VPC)
+	// * `VBR`: virtual border router (VBR)
+	// * `TR`: transit router
+	// * `VPN`: VPN attachment
 	TransitRouterAttachmentResourceType pulumi.StringPtrInput `pulumi:"transitRouterAttachmentResourceType"`
 	// The ID of the route table of the Enterprise Edition transit router.
 	TransitRouterRouteTableId pulumi.StringPtrInput `pulumi:"transitRouterRouteTableId"`

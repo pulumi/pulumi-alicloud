@@ -89,6 +89,9 @@ public class Key extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
+     * - `Enabled`
+     * - `Disabled`
+     *   **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
      * 
      */
     @Export(name="automaticRotation", refs={String.class}, tree="[0]")
@@ -96,6 +99,9 @@ public class Key extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
+     * - `Enabled`
+     * - `Disabled`
+     *   **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
      * 
      */
     public Output<String> automaticRotation() {
@@ -305,6 +311,11 @@ public class Key extends com.pulumi.resources.CustomResource {
     }
     /**
      * The source of key material. Default value: `Aliyun_KMS`. Valid values:
+     * - `Aliyun_KMS`
+     * - `EXTERNAL`
+     *   **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
+     *   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
+     *   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
      * 
      */
     @Export(name="origin", refs={String.class}, tree="[0]")
@@ -312,6 +323,11 @@ public class Key extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The source of key material. Default value: `Aliyun_KMS`. Valid values:
+     * - `Aliyun_KMS`
+     * - `EXTERNAL`
+     *   **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
+     *   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
+     *   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
      * 
      */
     public Output<String> origin() {
@@ -353,6 +369,11 @@ public class Key extends com.pulumi.resources.CustomResource {
     }
     /**
      * The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
+     * - `SOFTWARE`
+     * - `HSM`
+     *   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
+     *   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
+     *   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
      * 
      */
     @Export(name="protectionLevel", refs={String.class}, tree="[0]")
@@ -360,6 +381,11 @@ public class Key extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
+     * - `SOFTWARE`
+     * - `HSM`
+     *   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
+     *   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
+     *   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
      * 
      */
     public Output<Optional<String>> protectionLevel() {
@@ -393,6 +419,9 @@ public class Key extends com.pulumi.resources.CustomResource {
     }
     /**
      * The status of CMK. Default value: `Enabled`. Valid Values:
+     * - `Disabled`
+     * - `Enabled`
+     * - `PendingDeletion`
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -400,6 +429,9 @@ public class Key extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The status of CMK. Default value: `Enabled`. Valid Values:
+     * - `Disabled`
+     * - `Enabled`
+     * - `PendingDeletion`
      * 
      */
     public Output<String> status() {

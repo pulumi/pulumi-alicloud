@@ -170,6 +170,7 @@ export class OtsBackupPlan extends pulumi.CustomResource {
     public readonly rules!: pulumi.Output<outputs.hbr.OtsBackupPlanRule[] | undefined>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * - `startTime` Backup start time, UNIX time seconds.
      *
      * @deprecated Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
      */
@@ -279,6 +280,7 @@ export interface OtsBackupPlanState {
     rules?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanRule>[]>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * - `startTime` Backup start time, UNIX time seconds.
      *
      * @deprecated Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
      */
@@ -335,6 +337,7 @@ export interface OtsBackupPlanArgs {
     rules?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanRule>[]>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * - `startTime` Backup start time, UNIX time seconds.
      *
      * @deprecated Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
      */

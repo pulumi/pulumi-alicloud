@@ -147,7 +147,10 @@ namespace Pulumi.AliCloud.BastionHost
         public Output<string> OsType { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the new create a host of source. Valid values:
+        /// Specify the new create a host of source. Valid values: 
+        /// * `Local`: localhost
+        /// * `Ecs`:ECS instance
+        /// * `Rds`:RDS exclusive cluster host.
         /// </summary>
         [Output("source")]
         public Output<string> Source { get; private set; } = null!;
@@ -253,7 +256,10 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string> OsType { get; set; } = null!;
 
         /// <summary>
-        /// Specify the new create a host of source. Valid values:
+        /// Specify the new create a host of source. Valid values: 
+        /// * `Local`: localhost
+        /// * `Ecs`:ECS instance
+        /// * `Rds`:RDS exclusive cluster host.
         /// </summary>
         [Input("source", required: true)]
         public Input<string> Source { get; set; } = null!;
@@ -327,7 +333,10 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? OsType { get; set; }
 
         /// <summary>
-        /// Specify the new create a host of source. Valid values:
+        /// Specify the new create a host of source. Valid values: 
+        /// * `Local`: localhost
+        /// * `Ecs`:ECS instance
+        /// * `Rds`:RDS exclusive cluster host.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }

@@ -30,7 +30,9 @@ class AccountArgs:
                * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
         :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
+        :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite` 
+               - `RoleReadOnly`: This value is only for Redis and Memcache
+               - `RoleReadWrite`: This value is only for Redis and Memcache
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
                Default to Normal.
@@ -96,7 +98,9 @@ class AccountArgs:
     @pulumi.getter(name="accountPrivilege")
     def account_privilege(self) -> Optional[pulumi.Input[str]]:
         """
-        The privilege of account access database. Default value: `RoleReadWrite`
+        The privilege of account access database. Default value: `RoleReadWrite` 
+        - `RoleReadOnly`: This value is only for Redis and Memcache
+        - `RoleReadWrite`: This value is only for Redis and Memcache
         """
         return pulumi.get(self, "account_privilege")
 
@@ -174,7 +178,9 @@ class _AccountState:
                * The name can be up to 100 characters in length.
                * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
         :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
+        :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite` 
+               - `RoleReadOnly`: This value is only for Redis and Memcache
+               - `RoleReadWrite`: This value is only for Redis and Memcache
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
                Default to Normal.
@@ -234,7 +240,9 @@ class _AccountState:
     @pulumi.getter(name="accountPrivilege")
     def account_privilege(self) -> Optional[pulumi.Input[str]]:
         """
-        The privilege of account access database. Default value: `RoleReadWrite`
+        The privilege of account access database. Default value: `RoleReadWrite` 
+        - `RoleReadOnly`: This value is only for Redis and Memcache
+        - `RoleReadWrite`: This value is only for Redis and Memcache
         """
         return pulumi.get(self, "account_privilege")
 
@@ -398,7 +406,9 @@ class Account(pulumi.CustomResource):
                * The name can be up to 100 characters in length.
                * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
         :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
+        :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite` 
+               - `RoleReadOnly`: This value is only for Redis and Memcache
+               - `RoleReadWrite`: This value is only for Redis and Memcache
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
                Default to Normal.
@@ -551,7 +561,9 @@ class Account(pulumi.CustomResource):
                * The name can be up to 100 characters in length.
                * The name cannot be one of the reserved words in the [Reserved words for Redis account names](https://www.alibabacloud.com/help/zh/doc-detail/92665.htm) section.
         :param pulumi.Input[str] account_password: The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `account_password` and `kms_encrypted_password` fields.
-        :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
+        :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite` 
+               - `RoleReadOnly`: This value is only for Redis and Memcache
+               - `RoleReadWrite`: This value is only for Redis and Memcache
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
                Default to Normal.
@@ -599,7 +611,9 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="accountPrivilege")
     def account_privilege(self) -> pulumi.Output[Optional[str]]:
         """
-        The privilege of account access database. Default value: `RoleReadWrite`
+        The privilege of account access database. Default value: `RoleReadWrite` 
+        - `RoleReadOnly`: This value is only for Redis and Memcache
+        - `RoleReadWrite`: This value is only for Redis and Memcache
         """
         return pulumi.get(self, "account_privilege")
 

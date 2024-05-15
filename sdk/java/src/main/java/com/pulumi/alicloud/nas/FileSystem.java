@@ -295,6 +295,8 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
     /**
      * The storage type of the file System.
      * * Valid values:
+     * * `Performance` (Available when the `file_system_type` is `standard`)
+     * * `Capacity` (Available when the `file_system_type` is `standard`)
      * 
      */
     @Export(name="storageType", refs={String.class}, tree="[0]")
@@ -303,6 +305,8 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
     /**
      * @return The storage type of the file System.
      * * Valid values:
+     * * `Performance` (Available when the `file_system_type` is `standard`)
+     * * `Capacity` (Available when the `file_system_type` is `standard`)
      * 
      */
     public Output<String> storageType() {

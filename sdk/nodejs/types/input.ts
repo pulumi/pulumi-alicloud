@@ -636,6 +636,9 @@ export namespace alb {
         entry?: pulumi.Input<string>;
         /**
          * The status of the ACL entry. Valid values:
+         * - `Adding`: The ACL entry is being added.
+         * - `Available`: The ACL entry is added and available.
+         * - `Removing`: The ACL entry is being removed.
          */
         status?: pulumi.Input<string>;
     }
@@ -1007,6 +1010,15 @@ export namespace alb {
         sourceIpConfig?: pulumi.Input<inputs.alb.RuleRuleConditionSourceIpConfig>;
         /**
          * The type of the forwarding rule. Valid values:
+         * - `Host`: Requests are forwarded based on hosts.
+         * - `Path`: Requests are forwarded based on the path.
+         * - `Header`: Requests are forwarded based on the HTTP header field.
+         * - `QueryString`: Requests are forwarded based on the query string.
+         * - `Method`: Request are forwarded based on the request method.
+         * - `Cookie`: Requests are forwarded based on the cookie.
+         * - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+         * - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+         * - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
          */
         type: pulumi.Input<string>;
     }
@@ -1138,6 +1150,11 @@ export namespace alb {
         serverIp?: pulumi.Input<string>;
         /**
          * The type of the server. The type of the server. Valid values:
+         * - `Ecs`: an ECS instance.
+         * - `Eni`: an ENI.
+         * - `Eci`: an elastic container instance.
+         * - `Ip`(Available since v1.194.0): an IP address.
+         * - `Fc`(Available since v1.194.0): a function.
          */
         serverType: pulumi.Input<string>;
         /**
@@ -2503,10 +2520,18 @@ export namespace cms {
     export interface EventRuleEventPattern {
         /**
          * The type of the event-triggered alert rule. Valid values:
+         * - `StatusNotification`: fault notifications.
+         * - `Exception`: exceptions.
+         * - `Maintenance`: O&M.
+         * - `*`: all types.
          */
         eventTypeLists?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The level of the event-triggered alert rule. Valid values:
+         * - `CRITICAL`: critical.
+         * - `WARN`: warning.
+         * - `INFO`: information.
+         * - `*`: all types.
          */
         levelLists?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -4412,6 +4437,8 @@ export namespace dns {
         address: pulumi.Input<string>;
         /**
          * The source region of the address. expressed as a JSON string. The structure is as follows:
+         * * `LineCodes`: List of home lineCodes.
+         * * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
          */
         attributeInfo: pulumi.Input<string>;
         /**
@@ -4450,6 +4477,12 @@ export namespace dns {
         emailNotice?: pulumi.Input<boolean>;
         /**
          * The Alarm Event Type.
+         * - `ADDR_ALERT`: Address not available.
+         * - `ADDR_RESUME`: Address Recovery available.
+         * - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+         * - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+         * - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+         * - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
          */
         noticeType?: pulumi.Input<string>;
         /**
@@ -5291,6 +5324,11 @@ export namespace ecs {
         name?: pulumi.Input<string>;
         /**
          * The performance level of the ESSD used as data disk:
+         * - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+         * - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+         * - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+         * - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+         * Default to `PL1`.
          */
         performanceLevel?: pulumi.Input<string>;
         /**
@@ -6602,6 +6640,8 @@ export namespace eventbridge {
         paramLists: pulumi.Input<pulumi.Input<inputs.eventbridge.RuleTargetParamList>[]>;
         /**
          * The retry policy that is used to push the event. Valid values:
+         * - `BACKOFF_RETRY`: Backoff retry. The request can be retried up to three times. The interval between two consecutive retries is a random value between 10 and 20 seconds.
+         * - `EXPONENTIAL_DECAY_RETRY`: Exponential decay retry. The request can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds, including a maximum of one hundred and sixty-seven 512 seconds in total.
          */
         pushRetryStrategy?: pulumi.Input<string>;
         /**
@@ -6966,6 +7006,12 @@ export namespace ga {
         endpoint: pulumi.Input<string>;
         /**
          * The type of Endpoint N in the endpoint group. Valid values:
+         * - `Domain`: a custom domain name.
+         * - `Ip`: a custom IP address.
+         * - `PublicIp`: an Alibaba Cloud public IP address.
+         * - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
+         * - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+         * > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
          */
         type: pulumi.Input<string>;
         /**
@@ -7246,6 +7292,7 @@ export namespace hbr {
         ruleName?: pulumi.Input<string>;
         /**
          * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+         * - `startTime` Backup start time, UNIX time seconds.
          */
         schedule?: pulumi.Input<string>;
     }

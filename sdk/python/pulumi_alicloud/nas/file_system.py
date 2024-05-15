@@ -34,6 +34,8 @@ class FileSystemArgs:
                `cpfs` (Available when the `file_system_type` is `cpfs`).
         :param pulumi.Input[str] storage_type: The storage type of the file System. 
                * Valid values:
+               * `Performance` (Available when the `file_system_type` is `standard`)
+               * `Capacity` (Available when the `file_system_type` is `standard`)
         :param pulumi.Input[int] capacity: The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
                Unit: gib; **Note**: The minimum value is 100.
         :param pulumi.Input[str] description: The File System description.
@@ -93,6 +95,8 @@ class FileSystemArgs:
         """
         The storage type of the file System. 
         * Valid values:
+        * `Performance` (Available when the `file_system_type` is `standard`)
+        * `Capacity` (Available when the `file_system_type` is `standard`)
         """
         return pulumi.get(self, "storage_type")
 
@@ -249,6 +253,8 @@ class _FileSystemState:
                `cpfs` (Available when the `file_system_type` is `cpfs`).
         :param pulumi.Input[str] storage_type: The storage type of the file System. 
                * Valid values:
+               * `Performance` (Available when the `file_system_type` is `standard`)
+               * `Capacity` (Available when the `file_system_type` is `standard`)
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
         :param pulumi.Input[str] vswitch_id: The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
@@ -365,6 +371,8 @@ class _FileSystemState:
         """
         The storage type of the file System. 
         * Valid values:
+        * `Performance` (Available when the `file_system_type` is `standard`)
+        * `Capacity` (Available when the `file_system_type` is `standard`)
         """
         return pulumi.get(self, "storage_type")
 
@@ -528,6 +536,8 @@ class FileSystem(pulumi.CustomResource):
                `cpfs` (Available when the `file_system_type` is `cpfs`).
         :param pulumi.Input[str] storage_type: The storage type of the file System. 
                * Valid values:
+               * `Performance` (Available when the `file_system_type` is `standard`)
+               * `Capacity` (Available when the `file_system_type` is `standard`)
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
         :param pulumi.Input[str] vswitch_id: The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
@@ -705,6 +715,8 @@ class FileSystem(pulumi.CustomResource):
                `cpfs` (Available when the `file_system_type` is `cpfs`).
         :param pulumi.Input[str] storage_type: The storage type of the file System. 
                * Valid values:
+               * `Performance` (Available when the `file_system_type` is `standard`)
+               * `Capacity` (Available when the `file_system_type` is `standard`)
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
         :param pulumi.Input[str] vswitch_id: The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
@@ -791,6 +803,8 @@ class FileSystem(pulumi.CustomResource):
         """
         The storage type of the file System. 
         * Valid values:
+        * `Performance` (Available when the `file_system_type` is `standard`)
+        * `Capacity` (Available when the `file_system_type` is `standard`)
         """
         return pulumi.get(self, "storage_type")
 

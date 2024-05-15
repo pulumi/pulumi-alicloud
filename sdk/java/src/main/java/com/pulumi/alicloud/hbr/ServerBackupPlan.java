@@ -251,6 +251,7 @@ public class ServerBackupPlan extends com.pulumi.resources.CustomResource {
     }
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`
+     * * `startTime` Backup start time, UNIX time, in seconds.
      * 
      */
     @Export(name="schedule", refs={String.class}, tree="[0]")
@@ -258,6 +259,7 @@ public class ServerBackupPlan extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Backup strategy. Optional format: `I|{startTime}|{interval}`
+     * * `startTime` Backup start time, UNIX time, in seconds.
      * 
      */
     public Output<String> schedule() {

@@ -51,6 +51,7 @@ public final class GetOtsBackupPlansPlan {
     private String retention;
     /**
      * @return The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+     * * `startTime` Backup start time, UNIX time seconds.
      * 
      */
     private String schedule;
@@ -126,6 +127,7 @@ public final class GetOtsBackupPlansPlan {
     }
     /**
      * @return The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+     * * `startTime` Backup start time, UNIX time seconds.
      * 
      */
     public String schedule() {

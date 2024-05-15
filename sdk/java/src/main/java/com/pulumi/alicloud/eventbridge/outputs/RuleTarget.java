@@ -32,6 +32,8 @@ public final class RuleTarget {
     private List<RuleTargetParamList> paramLists;
     /**
      * @return The retry policy that is used to push the event. Valid values:
+     * - `BACKOFF_RETRY`: Backoff retry. The request can be retried up to three times. The interval between two consecutive retries is a random value between 10 and 20 seconds.
+     * - `EXPONENTIAL_DECAY_RETRY`: Exponential decay retry. The request can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds, including a maximum of one hundred and sixty-seven 512 seconds in total.
      * 
      */
     private @Nullable String pushRetryStrategy;
@@ -71,6 +73,8 @@ public final class RuleTarget {
     }
     /**
      * @return The retry policy that is used to push the event. Valid values:
+     * - `BACKOFF_RETRY`: Backoff retry. The request can be retried up to three times. The interval between two consecutive retries is a random value between 10 and 20 seconds.
+     * - `EXPONENTIAL_DECAY_RETRY`: Exponential decay retry. The request can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds, including a maximum of one hundred and sixty-seven 512 seconds in total.
      * 
      */
     public Optional<String> pushRetryStrategy() {

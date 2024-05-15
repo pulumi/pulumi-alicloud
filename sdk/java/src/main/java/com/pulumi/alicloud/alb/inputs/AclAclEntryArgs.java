@@ -47,6 +47,9 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The status of the ACL entry. Valid values:
+     * - `Adding`: The ACL entry is being added.
+     * - `Available`: The ACL entry is added and available.
+     * - `Removing`: The ACL entry is being removed.
      * 
      */
     @Import(name="status")
@@ -54,6 +57,9 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The status of the ACL entry. Valid values:
+     * - `Adding`: The ACL entry is being added.
+     * - `Available`: The ACL entry is added and available.
+     * - `Removing`: The ACL entry is being removed.
      * 
      */
     public Optional<Output<String>> status() {
@@ -130,6 +136,9 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status The status of the ACL entry. Valid values:
+         * - `Adding`: The ACL entry is being added.
+         * - `Available`: The ACL entry is added and available.
+         * - `Removing`: The ACL entry is being removed.
          * 
          * @return builder
          * 
@@ -141,6 +150,9 @@ public final class AclAclEntryArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status The status of the ACL entry. Valid values:
+         * - `Adding`: The ACL entry is being added.
+         * - `Available`: The ACL entry is added and available.
+         * - `Removing`: The ACL entry is being removed.
          * 
          * @return builder
          * 

@@ -47,6 +47,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         public readonly string ChannelsStateMail;
         /// <summary>
         /// The status of the phone number.
+        /// * `Lang` - The language type of the alarm.
         /// </summary>
         public readonly string ChannelsStatusSms;
         /// <summary>

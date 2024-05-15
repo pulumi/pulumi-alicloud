@@ -264,6 +264,7 @@ public class NasBackupPlan extends com.pulumi.resources.CustomResource {
     }
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * * `startTime` Backup start time, UNIX time seconds.
      * 
      */
     @Export(name="schedule", refs={String.class}, tree="[0]")
@@ -271,6 +272,7 @@ public class NasBackupPlan extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * * `startTime` Backup start time, UNIX time seconds.
      * 
      */
     public Output<String> schedule() {

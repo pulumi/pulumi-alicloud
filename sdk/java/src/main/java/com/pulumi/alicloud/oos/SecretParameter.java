@@ -95,6 +95,10 @@ import javax.annotation.Nullable;
 public class SecretParameter extends com.pulumi.resources.CustomResource {
     /**
      * The constraints of the encryption parameter. By default, this parameter is null. Valid values:
+     * * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
+     * * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
+     * * `MinLength`: The minimum length of the encryption parameter.
+     * * `MaxLength`: The maximum length of the encryption parameter.
      * 
      */
     @Export(name="constraints", refs={String.class}, tree="[0]")
@@ -102,6 +106,10 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The constraints of the encryption parameter. By default, this parameter is null. Valid values:
+     * * `AllowedValues`: The value that is allowed for the encryption parameter. It must be an array string.
+     * * `AllowedPattern`: The pattern that is allowed for the encryption parameter. It must be a regular expression.
+     * * `MinLength`: The minimum length of the encryption parameter.
+     * * `MaxLength`: The maximum length of the encryption parameter.
      * 
      */
     public Output<Optional<String>> constraints() {

@@ -137,6 +137,8 @@ public class Listener extends com.pulumi.resources.CustomResource {
     }
     /**
      * The clientAffinity of the listener. Default value: `NONE`. Valid values:
+     * - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+     * - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
      * 
      */
     @Export(name="clientAffinity", refs={String.class}, tree="[0]")
@@ -144,6 +146,8 @@ public class Listener extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The clientAffinity of the listener. Default value: `NONE`. Valid values:
+     * - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+     * - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
      * 
      */
     public Output<Optional<String>> clientAffinity() {
@@ -195,6 +199,8 @@ public class Listener extends com.pulumi.resources.CustomResource {
     }
     /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
+     * - `Standard`: intelligent routing.
+     * - `CustomRouting`: custom routing.
      * 
      */
     @Export(name="listenerType", refs={String.class}, tree="[0]")
@@ -202,6 +208,8 @@ public class Listener extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The routing type of the listener. Default Value: `Standard`. Valid values:
+     * - `Standard`: intelligent routing.
+     * - `CustomRouting`: custom routing.
      * 
      */
     public Output<Optional<String>> listenerType() {

@@ -95,6 +95,9 @@ export class HanaBackupPlan extends pulumi.CustomResource {
     public readonly backupPrefix!: pulumi.Output<string | undefined>;
     /**
      * The backup type. Valid values:
+     * - `COMPLETE`: full backup.
+     * - `INCREMENTAL`: incremental backup.
+     * - `DIFFERENTIAL`: differential backup.
      */
     public readonly backupType!: pulumi.Output<string>;
     /**
@@ -199,6 +202,9 @@ export interface HanaBackupPlanState {
     backupPrefix?: pulumi.Input<string>;
     /**
      * The backup type. Valid values:
+     * - `COMPLETE`: full backup.
+     * - `INCREMENTAL`: incremental backup.
+     * - `DIFFERENTIAL`: differential backup.
      */
     backupType?: pulumi.Input<string>;
     /**
@@ -245,6 +251,9 @@ export interface HanaBackupPlanArgs {
     backupPrefix?: pulumi.Input<string>;
     /**
      * The backup type. Valid values:
+     * - `COMPLETE`: full backup.
+     * - `INCREMENTAL`: incremental backup.
+     * - `DIFFERENTIAL`: differential backup.
      */
     backupType: pulumi.Input<string>;
     /**

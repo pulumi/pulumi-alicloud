@@ -17,6 +17,10 @@ namespace Pulumi.AliCloud.Cms.Inputs
 
         /// <summary>
         /// The type of the event-triggered alert rule. Valid values:
+        /// - `StatusNotification`: fault notifications.
+        /// - `Exception`: exceptions.
+        /// - `Maintenance`: O&amp;M.
+        /// - `*`: all types.
         /// </summary>
         public InputList<string> EventTypeLists
         {
@@ -29,6 +33,10 @@ namespace Pulumi.AliCloud.Cms.Inputs
 
         /// <summary>
         /// The level of the event-triggered alert rule. Valid values:
+        /// - `CRITICAL`: critical.
+        /// - `WARN`: warning.
+        /// - `INFO`: information.
+        /// - `*`: all types.
         /// </summary>
         public InputList<string> LevelLists
         {

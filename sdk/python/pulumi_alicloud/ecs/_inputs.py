@@ -1015,6 +1015,11 @@ class InstanceDataDiskArgs:
         :param pulumi.Input[str] kms_key_id: The KMS key ID corresponding to the Nth data disk.
         :param pulumi.Input[str] name: The name of the data disk.
         :param pulumi.Input[str] performance_level: The performance level of the ESSD used as data disk:
+               - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+               - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+               - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+               - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+               Default to `PL1`.
         :param pulumi.Input[str] snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
         pulumi.set(__self__, "size", size)
@@ -1157,6 +1162,11 @@ class InstanceDataDiskArgs:
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
         The performance level of the ESSD used as data disk:
+        - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+        - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+        - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+        - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+        Default to `PL1`.
         """
         return pulumi.get(self, "performance_level")
 

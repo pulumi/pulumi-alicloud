@@ -191,6 +191,16 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
     }
     /**
      * The next hop type. Available values:
+     * - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+     * - `RouterInterface`: a router interface.
+     * - `VpnGateway`: a VPN Gateway.
+     * - `HaVip`: a high-availability virtual IP address (HAVIP).
+     * - `NetworkInterface`: an elastic network interface (ENI).
+     * - `NatGateway`: a Nat Gateway.
+     * - `IPv6Gateway`: an IPv6 gateway.
+     * - `Attachment`: a transit router.
+     * - `VpcPeer`: a VPC Peering Connection.
+     * - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
      * 
      */
     @Export(name="nexthopType", refs={String.class}, tree="[0]")
@@ -198,6 +208,16 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The next hop type. Available values:
+     * - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+     * - `RouterInterface`: a router interface.
+     * - `VpnGateway`: a VPN Gateway.
+     * - `HaVip`: a high-availability virtual IP address (HAVIP).
+     * - `NetworkInterface`: an elastic network interface (ENI).
+     * - `NatGateway`: a Nat Gateway.
+     * - `IPv6Gateway`: an IPv6 gateway.
+     * - `Attachment`: a transit router.
+     * - `VpcPeer`: a VPC Peering Connection.
+     * - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
      * 
      */
     public Output<Optional<String>> nexthopType() {

@@ -305,6 +305,9 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
      * 
      */
     @Export(name="orderType", refs={String.class}, tree="[0]")
@@ -312,6 +315,9 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
      * 
      */
     public Output<Optional<String>> orderType() {

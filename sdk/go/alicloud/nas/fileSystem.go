@@ -179,6 +179,8 @@ type FileSystem struct {
 	ProtocolType pulumi.StringOutput `pulumi:"protocolType"`
 	// The storage type of the file System.
 	// * Valid values:
+	// * `Performance` (Available when the `fileSystemType` is `standard`)
+	// * `Capacity` (Available when the `fileSystemType` is `standard`)
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -250,6 +252,8 @@ type fileSystemState struct {
 	ProtocolType *string `pulumi:"protocolType"`
 	// The storage type of the file System.
 	// * Valid values:
+	// * `Performance` (Available when the `fileSystemType` is `standard`)
+	// * `Capacity` (Available when the `fileSystemType` is `standard`)
 	StorageType *string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -286,6 +290,8 @@ type FileSystemState struct {
 	ProtocolType pulumi.StringPtrInput
 	// The storage type of the file System.
 	// * Valid values:
+	// * `Performance` (Available when the `fileSystemType` is `standard`)
+	// * `Capacity` (Available when the `fileSystemType` is `standard`)
 	StorageType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -326,6 +332,8 @@ type fileSystemArgs struct {
 	ProtocolType string `pulumi:"protocolType"`
 	// The storage type of the file System.
 	// * Valid values:
+	// * `Performance` (Available when the `fileSystemType` is `standard`)
+	// * `Capacity` (Available when the `fileSystemType` is `standard`)
 	StorageType string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -363,6 +371,8 @@ type FileSystemArgs struct {
 	ProtocolType pulumi.StringInput
 	// The storage type of the file System.
 	// * Valid values:
+	// * `Performance` (Available when the `fileSystemType` is `standard`)
+	// * `Capacity` (Available when the `fileSystemType` is `standard`)
 	StorageType pulumi.StringInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -503,6 +513,8 @@ func (o FileSystemOutput) ProtocolType() pulumi.StringOutput {
 
 // The storage type of the file System.
 // * Valid values:
+// * `Performance` (Available when the `fileSystemType` is `standard`)
+// * `Capacity` (Available when the `fileSystemType` is `standard`)
 func (o FileSystemOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
 }

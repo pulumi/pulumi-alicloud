@@ -64,6 +64,8 @@ type Accelerator struct {
 	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	// - `BandwidthPackage`: billed based on bandwidth plans.
+	// - `CDT`: billed based on data transfer.
 	BandwidthBillingType pulumi.StringOutput `pulumi:"bandwidthBillingType"`
 	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
 	CrossBorderMode pulumi.StringOutput `pulumi:"crossBorderMode"`
@@ -78,10 +80,15 @@ type Accelerator struct {
 	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
+	// - `Month`: billed on a monthly basis.
+	// - `Year`: billed on an annual basis.
 	PricingCycle pulumi.StringPtrOutput `pulumi:"pricingCycle"`
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo pulumi.StringPtrOutput `pulumi:"promotionOptionNo"`
 	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec pulumi.StringPtrOutput `pulumi:"spec"`
@@ -128,6 +135,8 @@ type acceleratorState struct {
 	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	// - `BandwidthPackage`: billed based on bandwidth plans.
+	// - `CDT`: billed based on data transfer.
 	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
 	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
 	CrossBorderMode *string `pulumi:"crossBorderMode"`
@@ -142,10 +151,15 @@ type acceleratorState struct {
 	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
+	// - `Month`: billed on a monthly basis.
+	// - `Year`: billed on an annual basis.
 	PricingCycle *string `pulumi:"pricingCycle"`
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo *string `pulumi:"promotionOptionNo"`
 	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec *string `pulumi:"spec"`
@@ -163,6 +177,8 @@ type AcceleratorState struct {
 	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon pulumi.BoolPtrInput
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	// - `BandwidthPackage`: billed based on bandwidth plans.
+	// - `CDT`: billed based on data transfer.
 	BandwidthBillingType pulumi.StringPtrInput
 	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
 	CrossBorderMode pulumi.StringPtrInput
@@ -177,10 +193,15 @@ type AcceleratorState struct {
 	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringPtrInput
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
+	// - `Month`: billed on a monthly basis.
+	// - `Year`: billed on an annual basis.
 	PricingCycle pulumi.StringPtrInput
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo pulumi.StringPtrInput
 	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrInput
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec pulumi.StringPtrInput
@@ -202,6 +223,8 @@ type acceleratorArgs struct {
 	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	// - `BandwidthPackage`: billed based on bandwidth plans.
+	// - `CDT`: billed based on data transfer.
 	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
 	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
 	CrossBorderMode *string `pulumi:"crossBorderMode"`
@@ -216,10 +239,15 @@ type acceleratorArgs struct {
 	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
+	// - `Month`: billed on a monthly basis.
+	// - `Year`: billed on an annual basis.
 	PricingCycle *string `pulumi:"pricingCycle"`
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo *string `pulumi:"promotionOptionNo"`
 	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec *string `pulumi:"spec"`
@@ -236,6 +264,8 @@ type AcceleratorArgs struct {
 	// Use coupons to pay bills automatically. Default value: `false`. Valid values:
 	AutoUseCoupon pulumi.BoolPtrInput
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	// - `BandwidthPackage`: billed based on bandwidth plans.
+	// - `CDT`: billed based on data transfer.
 	BandwidthBillingType pulumi.StringPtrInput
 	// The type of cross-border acceleration. Default value: `bgpPro`. Valid values: `bgpPro`, `private`. **NOTE:** `crossBorderMode` is valid only when `crossBorderStatus` is set to `true`.
 	CrossBorderMode pulumi.StringPtrInput
@@ -250,10 +280,15 @@ type AcceleratorArgs struct {
 	// The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringPtrInput
 	// The billing cycle of the GA instance. Default value: `Month`. Valid values:
+	// - `Month`: billed on a monthly basis.
+	// - `Year`: billed on an annual basis.
 	PricingCycle pulumi.StringPtrInput
 	// The code of the coupon. **NOTE:** The `promotionOptionNo` takes effect only for accounts registered on the international site (alibabacloud.com).
 	PromotionOptionNo pulumi.StringPtrInput
 	// Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+	// - `AutoRenewal`: Enable auto renewal.
+	// - `Normal`: Disable auto renewal.
+	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	RenewalStatus pulumi.StringPtrInput
 	// The instance type of the GA instance. Specification of global acceleration instance. Valid values:
 	Spec pulumi.StringPtrInput
@@ -364,6 +399,8 @@ func (o AcceleratorOutput) AutoUseCoupon() pulumi.BoolPtrOutput {
 }
 
 // The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+// - `BandwidthPackage`: billed based on bandwidth plans.
+// - `CDT`: billed based on data transfer.
 func (o AcceleratorOutput) BandwidthBillingType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.BandwidthBillingType }).(pulumi.StringOutput)
 }
@@ -396,6 +433,8 @@ func (o AcceleratorOutput) PaymentType() pulumi.StringOutput {
 }
 
 // The billing cycle of the GA instance. Default value: `Month`. Valid values:
+// - `Month`: billed on a monthly basis.
+// - `Year`: billed on an annual basis.
 func (o AcceleratorOutput) PricingCycle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringPtrOutput { return v.PricingCycle }).(pulumi.StringPtrOutput)
 }
@@ -406,6 +445,9 @@ func (o AcceleratorOutput) PromotionOptionNo() pulumi.StringPtrOutput {
 }
 
 // Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+// - `AutoRenewal`: Enable auto renewal.
+// - `Normal`: Disable auto renewal.
+// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 func (o AcceleratorOutput) RenewalStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Accelerator) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
 }

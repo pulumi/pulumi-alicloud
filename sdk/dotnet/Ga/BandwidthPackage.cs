@@ -141,6 +141,9 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Whether to renew a bandwidth packet. automatically or not. Valid values:
+        /// - `AutoRenewal`: Enable auto renewal.
+        /// - `Normal`: Disable auto renewal.
+        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Output("renewalStatus")]
         public Output<string> RenewalStatus { get; private set; } = null!;
@@ -296,6 +299,9 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Whether to renew a bandwidth packet. automatically or not. Valid values:
+        /// - `AutoRenewal`: Enable auto renewal.
+        /// - `Normal`: Disable auto renewal.
+        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -413,6 +419,9 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// Whether to renew a bandwidth packet. automatically or not. Valid values:
+        /// - `AutoRenewal`: Enable auto renewal.
+        /// - `Normal`: Disable auto renewal.
+        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }

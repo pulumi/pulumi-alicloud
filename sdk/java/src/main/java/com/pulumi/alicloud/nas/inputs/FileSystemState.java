@@ -131,6 +131,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     /**
      * The storage type of the file System.
      * * Valid values:
+     * * `Performance` (Available when the `file_system_type` is `standard`)
+     * * `Capacity` (Available when the `file_system_type` is `standard`)
      * 
      */
     @Import(name="storageType")
@@ -139,6 +141,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The storage type of the file System.
      * * Valid values:
+     * * `Performance` (Available when the `file_system_type` is `standard`)
+     * * `Capacity` (Available when the `file_system_type` is `standard`)
      * 
      */
     public Optional<Output<String>> storageType() {
@@ -388,6 +392,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param storageType The storage type of the file System.
          * * Valid values:
+         * * `Performance` (Available when the `file_system_type` is `standard`)
+         * * `Capacity` (Available when the `file_system_type` is `standard`)
          * 
          * @return builder
          * 
@@ -400,6 +406,8 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param storageType The storage type of the file System.
          * * Valid values:
+         * * `Performance` (Available when the `file_system_type` is `standard`)
+         * * `Capacity` (Available when the `file_system_type` is `standard`)
          * 
          * @return builder
          * 

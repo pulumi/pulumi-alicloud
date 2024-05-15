@@ -115,7 +115,10 @@ export class Disk extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly paymentType!: pulumi.Output<string>;
     /**
-     * Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+     * Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      */
     public readonly performanceLevel!: pulumi.Output<string>;
     /**
@@ -266,7 +269,10 @@ export interface DiskState {
     name?: pulumi.Input<string>;
     paymentType?: pulumi.Input<string>;
     /**
-     * Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+     * Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      */
     performanceLevel?: pulumi.Input<string>;
     /**
@@ -347,7 +353,10 @@ export interface DiskArgs {
     name?: pulumi.Input<string>;
     paymentType?: pulumi.Input<string>;
     /**
-     * Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+     * Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:                                                       
+     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      */
     performanceLevel?: pulumi.Input<string>;
     /**

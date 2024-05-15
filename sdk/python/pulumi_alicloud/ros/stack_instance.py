@@ -31,6 +31,10 @@ class StackInstanceArgs:
         :param pulumi.Input[str] stack_instance_region_id: The region of the stack instance.
         :param pulumi.Input[str] operation_description: The operation description.
         :param pulumi.Input[str] operation_preferences: The operation preferences. The operation settings. The following fields are supported:
+               * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
+               * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
+               * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
+               * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
         :param pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
         :param pulumi.Input[bool] retain_stacks: Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         :param pulumi.Input[str] timeout_in_minutes: The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
@@ -102,6 +106,10 @@ class StackInstanceArgs:
     def operation_preferences(self) -> Optional[pulumi.Input[str]]:
         """
         The operation preferences. The operation settings. The following fields are supported:
+        * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
+        * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
+        * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
+        * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
         """
         return pulumi.get(self, "operation_preferences")
 
@@ -162,12 +170,21 @@ class _StackInstanceState:
         Input properties used for looking up and filtering StackInstance resources.
         :param pulumi.Input[str] operation_description: The operation description.
         :param pulumi.Input[str] operation_preferences: The operation preferences. The operation settings. The following fields are supported:
+               * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
+               * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
+               * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
+               * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
         :param pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
         :param pulumi.Input[bool] retain_stacks: Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         :param pulumi.Input[str] stack_group_name: The name of the stack group.
         :param pulumi.Input[str] stack_instance_account_id: The account to which the stack instance belongs.
         :param pulumi.Input[str] stack_instance_region_id: The region of the stack instance.
-        :param pulumi.Input[str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+        :param pulumi.Input[str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+               * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+               * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+               * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+               * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+               * The create or update operation is not complete.
         :param pulumi.Input[str] timeout_in_minutes: The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
         """
         if operation_description is not None:
@@ -206,6 +223,10 @@ class _StackInstanceState:
     def operation_preferences(self) -> Optional[pulumi.Input[str]]:
         """
         The operation preferences. The operation settings. The following fields are supported:
+        * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
+        * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
+        * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
+        * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
         """
         return pulumi.get(self, "operation_preferences")
 
@@ -277,7 +298,12 @@ class _StackInstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+        * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+        * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+        * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+        * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+        * The create or update operation is not complete.
         """
         return pulumi.get(self, "status")
 
@@ -373,6 +399,10 @@ class StackInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] operation_description: The operation description.
         :param pulumi.Input[str] operation_preferences: The operation preferences. The operation settings. The following fields are supported:
+               * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
+               * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
+               * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
+               * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackInstanceParameterOverrideArgs']]]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
         :param pulumi.Input[bool] retain_stacks: Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         :param pulumi.Input[str] stack_group_name: The name of the stack group.
@@ -520,12 +550,21 @@ class StackInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] operation_description: The operation description.
         :param pulumi.Input[str] operation_preferences: The operation preferences. The operation settings. The following fields are supported:
+               * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
+               * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
+               * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
+               * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StackInstanceParameterOverrideArgs']]]] parameter_overrides: ParameterOverrides. See the following `Block parameter_overrides`.
         :param pulumi.Input[bool] retain_stacks: Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         :param pulumi.Input[str] stack_group_name: The name of the stack group.
         :param pulumi.Input[str] stack_instance_account_id: The account to which the stack instance belongs.
         :param pulumi.Input[str] stack_instance_region_id: The region of the stack instance.
-        :param pulumi.Input[str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+        :param pulumi.Input[str] status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+               * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+               * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+               * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+               * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+               * The create or update operation is not complete.
         :param pulumi.Input[str] timeout_in_minutes: The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -556,6 +595,10 @@ class StackInstance(pulumi.CustomResource):
     def operation_preferences(self) -> pulumi.Output[Optional[str]]:
         """
         The operation preferences. The operation settings. The following fields are supported:
+        * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
+        * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
+        * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
+        * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
         """
         return pulumi.get(self, "operation_preferences")
 
@@ -603,7 +646,12 @@ class StackInstance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+        The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+        * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+        * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+        * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+        * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+        * The create or update operation is not complete.
         """
         return pulumi.get(self, "status")
 

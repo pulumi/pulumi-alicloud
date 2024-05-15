@@ -75,6 +75,11 @@ type Instance struct {
 	pulumi.CustomResourceState
 
 	// The network limitation of accessing instance. Valid values:
+	// * `Any` - Allow all network to access the instance.
+	// * `Vpc` - Only can the attached VPC allow to access the instance.
+	// * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+	//
+	// Default to "Any".
 	AccessedBy pulumi.StringOutput `pulumi:"accessedBy"`
 	// The description of the instance. Currently, it does not support modifying.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -83,8 +88,16 @@ type Instance struct {
 	// The name of the instance.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The set of request sources that are allowed access. Valid optional values:
+	// * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+	//
+	// Default to ["TRUST_PROXY"].
 	NetworkSourceAcls pulumi.StringArrayOutput `pulumi:"networkSourceAcls"`
 	// The set of network types that are allowed access. Valid optional values:
+	// * `CLASSIC` - Classic network.
+	// * `VPC` - VPC network.
+	// * `INTERNET` - Public internet.
+	//
+	// Default to ["VPC", "CLASSIC"].
 	NetworkTypeAcls pulumi.StringArrayOutput `pulumi:"networkTypeAcls"`
 	// The resource group the instance belongs to.
 	// Default to Alibaba Cloud default resource group.
@@ -124,6 +137,11 @@ func GetInstance(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
 	// The network limitation of accessing instance. Valid values:
+	// * `Any` - Allow all network to access the instance.
+	// * `Vpc` - Only can the attached VPC allow to access the instance.
+	// * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+	//
+	// Default to "Any".
 	AccessedBy *string `pulumi:"accessedBy"`
 	// The description of the instance. Currently, it does not support modifying.
 	Description *string `pulumi:"description"`
@@ -132,8 +150,16 @@ type instanceState struct {
 	// The name of the instance.
 	Name *string `pulumi:"name"`
 	// The set of request sources that are allowed access. Valid optional values:
+	// * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+	//
+	// Default to ["TRUST_PROXY"].
 	NetworkSourceAcls []string `pulumi:"networkSourceAcls"`
 	// The set of network types that are allowed access. Valid optional values:
+	// * `CLASSIC` - Classic network.
+	// * `VPC` - VPC network.
+	// * `INTERNET` - Public internet.
+	//
+	// Default to ["VPC", "CLASSIC"].
 	NetworkTypeAcls []string `pulumi:"networkTypeAcls"`
 	// The resource group the instance belongs to.
 	// Default to Alibaba Cloud default resource group.
@@ -144,6 +170,11 @@ type instanceState struct {
 
 type InstanceState struct {
 	// The network limitation of accessing instance. Valid values:
+	// * `Any` - Allow all network to access the instance.
+	// * `Vpc` - Only can the attached VPC allow to access the instance.
+	// * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+	//
+	// Default to "Any".
 	AccessedBy pulumi.StringPtrInput
 	// The description of the instance. Currently, it does not support modifying.
 	Description pulumi.StringPtrInput
@@ -152,8 +183,16 @@ type InstanceState struct {
 	// The name of the instance.
 	Name pulumi.StringPtrInput
 	// The set of request sources that are allowed access. Valid optional values:
+	// * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+	//
+	// Default to ["TRUST_PROXY"].
 	NetworkSourceAcls pulumi.StringArrayInput
 	// The set of network types that are allowed access. Valid optional values:
+	// * `CLASSIC` - Classic network.
+	// * `VPC` - VPC network.
+	// * `INTERNET` - Public internet.
+	//
+	// Default to ["VPC", "CLASSIC"].
 	NetworkTypeAcls pulumi.StringArrayInput
 	// The resource group the instance belongs to.
 	// Default to Alibaba Cloud default resource group.
@@ -168,6 +207,11 @@ func (InstanceState) ElementType() reflect.Type {
 
 type instanceArgs struct {
 	// The network limitation of accessing instance. Valid values:
+	// * `Any` - Allow all network to access the instance.
+	// * `Vpc` - Only can the attached VPC allow to access the instance.
+	// * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+	//
+	// Default to "Any".
 	AccessedBy *string `pulumi:"accessedBy"`
 	// The description of the instance. Currently, it does not support modifying.
 	Description *string `pulumi:"description"`
@@ -176,8 +220,16 @@ type instanceArgs struct {
 	// The name of the instance.
 	Name *string `pulumi:"name"`
 	// The set of request sources that are allowed access. Valid optional values:
+	// * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+	//
+	// Default to ["TRUST_PROXY"].
 	NetworkSourceAcls []string `pulumi:"networkSourceAcls"`
 	// The set of network types that are allowed access. Valid optional values:
+	// * `CLASSIC` - Classic network.
+	// * `VPC` - VPC network.
+	// * `INTERNET` - Public internet.
+	//
+	// Default to ["VPC", "CLASSIC"].
 	NetworkTypeAcls []string `pulumi:"networkTypeAcls"`
 	// The resource group the instance belongs to.
 	// Default to Alibaba Cloud default resource group.
@@ -189,6 +241,11 @@ type instanceArgs struct {
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
 	// The network limitation of accessing instance. Valid values:
+	// * `Any` - Allow all network to access the instance.
+	// * `Vpc` - Only can the attached VPC allow to access the instance.
+	// * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+	//
+	// Default to "Any".
 	AccessedBy pulumi.StringPtrInput
 	// The description of the instance. Currently, it does not support modifying.
 	Description pulumi.StringPtrInput
@@ -197,8 +254,16 @@ type InstanceArgs struct {
 	// The name of the instance.
 	Name pulumi.StringPtrInput
 	// The set of request sources that are allowed access. Valid optional values:
+	// * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+	//
+	// Default to ["TRUST_PROXY"].
 	NetworkSourceAcls pulumi.StringArrayInput
 	// The set of network types that are allowed access. Valid optional values:
+	// * `CLASSIC` - Classic network.
+	// * `VPC` - VPC network.
+	// * `INTERNET` - Public internet.
+	//
+	// Default to ["VPC", "CLASSIC"].
 	NetworkTypeAcls pulumi.StringArrayInput
 	// The resource group the instance belongs to.
 	// Default to Alibaba Cloud default resource group.
@@ -295,6 +360,11 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 }
 
 // The network limitation of accessing instance. Valid values:
+// * `Any` - Allow all network to access the instance.
+// * `Vpc` - Only can the attached VPC allow to access the instance.
+// * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+//
+// Default to "Any".
 func (o InstanceOutput) AccessedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AccessedBy }).(pulumi.StringOutput)
 }
@@ -315,11 +385,19 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 }
 
 // The set of request sources that are allowed access. Valid optional values:
+// * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+//
+// Default to ["TRUST_PROXY"].
 func (o InstanceOutput) NetworkSourceAcls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.NetworkSourceAcls }).(pulumi.StringArrayOutput)
 }
 
 // The set of network types that are allowed access. Valid optional values:
+// * `CLASSIC` - Classic network.
+// * `VPC` - VPC network.
+// * `INTERNET` - Public internet.
+//
+// Default to ["VPC", "CLASSIC"].
 func (o InstanceOutput) NetworkTypeAcls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.NetworkTypeAcls }).(pulumi.StringArrayOutput)
 }

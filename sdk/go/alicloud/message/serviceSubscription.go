@@ -86,6 +86,8 @@ type ServiceSubscription struct {
 	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
 	NotifyContentFormat pulumi.StringOutput `pulumi:"notifyContentFormat"`
 	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+	// - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+	// - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
 	NotifyStrategy pulumi.StringOutput `pulumi:"notifyStrategy"`
 	// The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
 	PushType pulumi.StringOutput `pulumi:"pushType"`
@@ -147,6 +149,8 @@ type serviceSubscriptionState struct {
 	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
 	NotifyContentFormat *string `pulumi:"notifyContentFormat"`
 	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+	// - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+	// - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
 	NotifyStrategy *string `pulumi:"notifyStrategy"`
 	// The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
 	PushType *string `pulumi:"pushType"`
@@ -167,6 +171,8 @@ type ServiceSubscriptionState struct {
 	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
 	NotifyContentFormat pulumi.StringPtrInput
 	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+	// - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+	// - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
 	NotifyStrategy pulumi.StringPtrInput
 	// The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
 	PushType pulumi.StringPtrInput
@@ -191,6 +197,8 @@ type serviceSubscriptionArgs struct {
 	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
 	NotifyContentFormat *string `pulumi:"notifyContentFormat"`
 	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+	// - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+	// - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
 	NotifyStrategy *string `pulumi:"notifyStrategy"`
 	// The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
 	PushType string `pulumi:"pushType"`
@@ -212,6 +220,8 @@ type ServiceSubscriptionArgs struct {
 	// The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
 	NotifyContentFormat pulumi.StringPtrInput
 	// The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+	// - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+	// - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
 	NotifyStrategy pulumi.StringPtrInput
 	// The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
 	PushType pulumi.StringInput
@@ -327,6 +337,8 @@ func (o ServiceSubscriptionOutput) NotifyContentFormat() pulumi.StringOutput {
 }
 
 // The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+// - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+// - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
 func (o ServiceSubscriptionOutput) NotifyStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceSubscription) pulumi.StringOutput { return v.NotifyStrategy }).(pulumi.StringOutput)
 }

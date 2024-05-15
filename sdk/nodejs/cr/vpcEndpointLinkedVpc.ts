@@ -97,6 +97,8 @@ export class VpcEndpointLinkedVpc extends pulumi.CustomResource {
     public readonly instanceId!: pulumi.Output<string>;
     /**
      * The name of the module that you want to access. Valid Values:
+     * - `Registry`: the image repository.
+     * - `Chart`: a Helm chart.
      */
     public readonly moduleName!: pulumi.Output<string>;
     /**
@@ -171,6 +173,8 @@ export interface VpcEndpointLinkedVpcState {
     instanceId?: pulumi.Input<string>;
     /**
      * The name of the module that you want to access. Valid Values:
+     * - `Registry`: the image repository.
+     * - `Chart`: a Helm chart.
      */
     moduleName?: pulumi.Input<string>;
     /**
@@ -201,6 +205,8 @@ export interface VpcEndpointLinkedVpcArgs {
     instanceId: pulumi.Input<string>;
     /**
      * The name of the module that you want to access. Valid Values:
+     * - `Registry`: the image repository.
+     * - `Chart`: a Helm chart.
      */
     moduleName: pulumi.Input<string>;
     /**

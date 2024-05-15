@@ -260,6 +260,9 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the server group. Default value: `Instance`. Valid values:
+     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * - `Ip`: allows you to add servers by specifying IP addresses.
+     * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      * 
      */
     @Export(name="serverGroupType", refs={String.class}, tree="[0]")
@@ -267,6 +270,9 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the server group. Default value: `Instance`. Valid values:
+     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * - `Ip`: allows you to add servers by specifying IP addresses.
+     * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      * 
      */
     public Output<String> serverGroupType() {
