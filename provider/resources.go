@@ -492,7 +492,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_cddc_dedicated_host":         {Tok: resource(cddcMod, "DedicatedHost")},
 			"alicloud_cddc_dedicated_host_account": {Tok: resource(cddcMod, "DedicatedHostAccount")},
 
-			//CDN
+			// CDN
 			"alicloud_cdn_domain": {
 				Tok: resource(cdnMod, "Domain"),
 				Docs: &tfbridge.DocInfo{
@@ -1000,7 +1000,8 @@ func Provider() tfbridge.ProviderInfo {
 					"domain": {
 						CSharpName: "AcceleratedDomain",
 					},
-				}},
+				},
+			},
 
 			// Gpdb
 			"alicloud_gpdb_connection":       {Tok: resource(gpdbMod, "Connection")},
@@ -2339,7 +2340,7 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_ons_topics":    {Tok: dataSource(rocketMqMod, "getTopics")},
 			"alicloud_ons_service":   {Tok: dataSource(rocketMqMod, "getService")},
 
-			//Ros
+			// Ros
 			"alicloud_ros_change_sets":        {Tok: dataSource(rosMod, "getChangeSets")},
 			"alicloud_ros_stack_groups":       {Tok: dataSource(rosMod, "getStackGroups")},
 			"alicloud_ros_stacks":             {Tok: dataSource(rosMod, "getStacks")},
@@ -2537,8 +2538,10 @@ func Provider() tfbridge.ProviderInfo {
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
 			},
+			RespectSchemaVersion: true,
 		},
 		Python: &tfbridge.PythonInfo{
+			RespectSchemaVersion: true,
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
@@ -2552,9 +2555,11 @@ func Provider() tfbridge.ProviderInfo {
 				alicloudPkg,
 			),
 			GenerateResourceContainerTypes: true,
+			RespectSchemaVersion:           true,
 		},
 
 		CSharp: &tfbridge.CSharpInfo{
+			RespectSchemaVersion: true,
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
