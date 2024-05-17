@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .protectionLevel("REDUCED")
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()        
+ *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
  *             .cenId(default_.id())
  *             .build());
  * 
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
- *         var defaultVirtualBorderRouter = new VirtualBorderRouter("defaultVirtualBorderRouter", VirtualBorderRouterArgs.builder()        
+ *         var defaultVirtualBorderRouter = new VirtualBorderRouter("defaultVirtualBorderRouter", VirtualBorderRouterArgs.builder()
  *             .localGatewayIp("10.0.0.1")
  *             .peerGatewayIp("10.0.0.2")
  *             .peeringSubnetMask("255.255.255.252")
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *             .detectMultiplier(10)
  *             .build());
  * 
- *         var defaultTransitRouterVbrAttachment = new TransitRouterVbrAttachment("defaultTransitRouterVbrAttachment", TransitRouterVbrAttachmentArgs.builder()        
+ *         var defaultTransitRouterVbrAttachment = new TransitRouterVbrAttachment("defaultTransitRouterVbrAttachment", TransitRouterVbrAttachmentArgs.builder()
  *             .transitRouterId(defaultTransitRouter.transitRouterId())
  *             .transitRouterAttachmentName("example")
  *             .transitRouterAttachmentDescription("example")

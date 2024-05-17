@@ -55,19 +55,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+ *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
  *             .cidrBlock("172.16.0.0/12")
  *             .enableAdminAccess(false)
  *             .desktopAccessType("Internet")
  *             .officeSiteName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var example = new NasFileSystem("example", NasFileSystemArgs.builder()        
+ *         var example = new NasFileSystem("example", NasFileSystemArgs.builder()
  *             .nasFileSystemName(name)
  *             .officeSiteId(defaultSimpleOfficeSite.id())
  *             .description(name)

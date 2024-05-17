@@ -182,6 +182,10 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        /// - `AutoRenewal`: Auto renewal.
+        /// - `ManualRenewal`: Manual renewal.
+        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        /// **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         /// </summary>
         [Output("renewalStatus")]
         public Output<string> RenewalStatus { get; private set; } = null!;
@@ -337,6 +341,10 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        /// - `AutoRenewal`: Auto renewal.
+        /// - `ManualRenewal`: Manual renewal.
+        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        /// **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -466,6 +474,10 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        /// - `AutoRenewal`: Auto renewal.
+        /// - `ManualRenewal`: Manual renewal.
+        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        /// **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }

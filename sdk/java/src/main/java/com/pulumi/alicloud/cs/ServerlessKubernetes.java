@@ -81,19 +81,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.1.0.0/21")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("10.1.1.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var serverless = new ServerlessKubernetes("serverless", ServerlessKubernetesArgs.builder()        
+ *         var serverless = new ServerlessKubernetes("serverless", ServerlessKubernetesArgs.builder()
  *             .namePrefix(name)
  *             .clusterSpec("ack.pro.small")
  *             .vpcId(defaultNetwork.id())

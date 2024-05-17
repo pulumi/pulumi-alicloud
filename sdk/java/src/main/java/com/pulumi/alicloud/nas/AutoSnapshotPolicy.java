@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AutoSnapshotPolicy("example", AutoSnapshotPolicyArgs.builder()        
+ *         var example = new AutoSnapshotPolicy("example", AutoSnapshotPolicyArgs.builder()
  *             .autoSnapshotPolicyName("example_value")
  *             .repeatWeekdays(            
  *                 "3",

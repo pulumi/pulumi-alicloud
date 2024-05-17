@@ -3276,7 +3276,7 @@ public final class GaFunctions {
      *             .build());
      * 
      *         for (var i = 0; i < default_.accelerators().length() > 0 ? 0 : 1; i++) {
-     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()            
+     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
      *                 .spec("1")
@@ -3341,7 +3341,7 @@ public final class GaFunctions {
      *             .build());
      * 
      *         for (var i = 0; i < default_.accelerators().length() > 0 ? 0 : 1; i++) {
-     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()            
+     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
      *                 .spec("1")
@@ -3406,7 +3406,7 @@ public final class GaFunctions {
      *             .build());
      * 
      *         for (var i = 0; i < default_.accelerators().length() > 0 ? 0 : 1; i++) {
-     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()            
+     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
      *                 .spec("1")
@@ -3471,7 +3471,7 @@ public final class GaFunctions {
      *             .build());
      * 
      *         for (var i = 0; i < default_.accelerators().length() > 0 ? 0 : 1; i++) {
-     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()            
+     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
      *                 .spec("1")
@@ -3536,7 +3536,7 @@ public final class GaFunctions {
      *             .build());
      * 
      *         for (var i = 0; i < default_.accelerators().length() > 0 ? 0 : 1; i++) {
-     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()            
+     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
      *                 .spec("1")
@@ -3601,7 +3601,7 @@ public final class GaFunctions {
      *             .build());
      * 
      *         for (var i = 0; i < default_.accelerators().length() > 0 ? 0 : 1; i++) {
-     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()            
+     *             new Accelerator("defaultAccelerator-" + i, AcceleratorArgs.builder()
      *                 .duration(1)
      *                 .autoUseCoupon(true)
      *                 .spec("1")
@@ -3868,7 +3868,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
+     *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
      *             .bandwidth(100)
      *             .type("Basic")
      *             .bandwidthType("Basic")
@@ -3880,12 +3880,12 @@ public final class GaFunctions {
      *             .autoUseCoupon(true)
      *             .build());
      * 
-     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
      *             .acceleratorId(default_.ids()[0])
      *             .bandwidthPackageId(defaultBandwidthPackage.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
      *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
      *             .clientAffinity("SOURCE_IP")
      *             .protocol("UDP")
@@ -3896,13 +3896,13 @@ public final class GaFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()
      *             .bandwidth("10")
      *             .internetChargeType("PayByBandwidth")
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()        
+     *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()
      *             .acceleratorId(defaultListener.acceleratorId())
      *             .listenerId(defaultListener.id())
      *             .description(name)
@@ -3994,7 +3994,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
+     *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
      *             .bandwidth(100)
      *             .type("Basic")
      *             .bandwidthType("Basic")
@@ -4006,12 +4006,12 @@ public final class GaFunctions {
      *             .autoUseCoupon(true)
      *             .build());
      * 
-     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
      *             .acceleratorId(default_.ids()[0])
      *             .bandwidthPackageId(defaultBandwidthPackage.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
      *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
      *             .clientAffinity("SOURCE_IP")
      *             .protocol("UDP")
@@ -4022,13 +4022,13 @@ public final class GaFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()
      *             .bandwidth("10")
      *             .internetChargeType("PayByBandwidth")
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()        
+     *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()
      *             .acceleratorId(defaultListener.acceleratorId())
      *             .listenerId(defaultListener.id())
      *             .description(name)
@@ -4120,7 +4120,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
+     *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
      *             .bandwidth(100)
      *             .type("Basic")
      *             .bandwidthType("Basic")
@@ -4132,12 +4132,12 @@ public final class GaFunctions {
      *             .autoUseCoupon(true)
      *             .build());
      * 
-     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
      *             .acceleratorId(default_.ids()[0])
      *             .bandwidthPackageId(defaultBandwidthPackage.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
      *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
      *             .clientAffinity("SOURCE_IP")
      *             .protocol("UDP")
@@ -4148,13 +4148,13 @@ public final class GaFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()
      *             .bandwidth("10")
      *             .internetChargeType("PayByBandwidth")
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()        
+     *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()
      *             .acceleratorId(defaultListener.acceleratorId())
      *             .listenerId(defaultListener.id())
      *             .description(name)
@@ -4246,7 +4246,7 @@ public final class GaFunctions {
      *             .status("active")
      *             .build());
      * 
-     *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
+     *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
      *             .bandwidth(100)
      *             .type("Basic")
      *             .bandwidthType("Basic")
@@ -4258,12 +4258,12 @@ public final class GaFunctions {
      *             .autoUseCoupon(true)
      *             .build());
      * 
-     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+     *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
      *             .acceleratorId(default_.ids()[0])
      *             .bandwidthPackageId(defaultBandwidthPackage.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
      *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
      *             .clientAffinity("SOURCE_IP")
      *             .protocol("UDP")
@@ -4274,13 +4274,13 @@ public final class GaFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()
      *             .bandwidth("10")
      *             .internetChargeType("PayByBandwidth")
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()        
+     *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()
      *             .acceleratorId(defaultListener.acceleratorId())
      *             .listenerId(defaultListener.id())
      *             .description(name)

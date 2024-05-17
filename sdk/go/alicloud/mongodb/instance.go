@@ -155,6 +155,9 @@ type Instance struct {
 	// The network type of the instance. Valid values:`Classic`, `VPC`.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+	// - `UPGRADE`: The specifications are upgraded.
+	// - `DOWNGRADE`: The specifications are downgraded.
+	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType pulumi.StringPtrOutput `pulumi:"orderType"`
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
@@ -181,8 +184,13 @@ type Instance struct {
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists pulumi.StringArrayOutput `pulumi:"securityIpLists"`
 	// The snapshot backup type. Default value: `Standard`. Valid values:
+	// - `Standard`: standard backup.
+	// - ` Flash  `: single-digit second backup.
 	SnapshotBackupType pulumi.StringOutput `pulumi:"snapshotBackupType"`
 	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
 	SslAction pulumi.StringPtrOutput `pulumi:"sslAction"`
 	// Status of the SSL feature.
 	SslStatus pulumi.StringOutput `pulumi:"sslStatus"`
@@ -298,6 +306,9 @@ type instanceState struct {
 	// The network type of the instance. Valid values:`Classic`, `VPC`.
 	NetworkType *string `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+	// - `UPGRADE`: The specifications are upgraded.
+	// - `DOWNGRADE`: The specifications are downgraded.
+	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType *string `pulumi:"orderType"`
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters []InstanceParameter `pulumi:"parameters"`
@@ -324,8 +335,13 @@ type instanceState struct {
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	// The snapshot backup type. Default value: `Standard`. Valid values:
+	// - `Standard`: standard backup.
+	// - ` Flash  `: single-digit second backup.
 	SnapshotBackupType *string `pulumi:"snapshotBackupType"`
 	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
 	SslAction *string `pulumi:"sslAction"`
 	// Status of the SSL feature.
 	SslStatus *string `pulumi:"sslStatus"`
@@ -396,6 +412,9 @@ type InstanceState struct {
 	// The network type of the instance. Valid values:`Classic`, `VPC`.
 	NetworkType pulumi.StringPtrInput
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+	// - `UPGRADE`: The specifications are upgraded.
+	// - `DOWNGRADE`: The specifications are downgraded.
+	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType pulumi.StringPtrInput
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters InstanceParameterArrayInput
@@ -422,8 +441,13 @@ type InstanceState struct {
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists pulumi.StringArrayInput
 	// The snapshot backup type. Default value: `Standard`. Valid values:
+	// - `Standard`: standard backup.
+	// - ` Flash  `: single-digit second backup.
 	SnapshotBackupType pulumi.StringPtrInput
 	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
 	SslAction pulumi.StringPtrInput
 	// Status of the SSL feature.
 	SslStatus pulumi.StringPtrInput
@@ -498,6 +522,9 @@ type instanceArgs struct {
 	// The network type of the instance. Valid values:`Classic`, `VPC`.
 	NetworkType *string `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+	// - `UPGRADE`: The specifications are upgraded.
+	// - `DOWNGRADE`: The specifications are downgraded.
+	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType *string `pulumi:"orderType"`
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters []InstanceParameter `pulumi:"parameters"`
@@ -518,8 +545,13 @@ type instanceArgs struct {
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists []string `pulumi:"securityIpLists"`
 	// The snapshot backup type. Default value: `Standard`. Valid values:
+	// - `Standard`: standard backup.
+	// - ` Flash  `: single-digit second backup.
 	SnapshotBackupType *string `pulumi:"snapshotBackupType"`
 	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
 	SslAction *string `pulumi:"sslAction"`
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine *string `pulumi:"storageEngine"`
@@ -589,6 +621,9 @@ type InstanceArgs struct {
 	// The network type of the instance. Valid values:`Classic`, `VPC`.
 	NetworkType pulumi.StringPtrInput
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+	// - `UPGRADE`: The specifications are upgraded.
+	// - `DOWNGRADE`: The specifications are downgraded.
+	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType pulumi.StringPtrInput
 	// Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
 	Parameters InstanceParameterArrayInput
@@ -609,8 +644,13 @@ type InstanceArgs struct {
 	// List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
 	SecurityIpLists pulumi.StringArrayInput
 	// The snapshot backup type. Default value: `Standard`. Valid values:
+	// - `Standard`: standard backup.
+	// - ` Flash  `: single-digit second backup.
 	SnapshotBackupType pulumi.StringPtrInput
 	// Actions performed on SSL functions. Valid values:
+	// - `Open`: turn on SSL encryption.
+	// - `Close`: turn off SSL encryption.
+	// - `Update`: update SSL certificate.
 	SslAction pulumi.StringPtrInput
 	// The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
 	StorageEngine pulumi.StringPtrInput
@@ -831,6 +871,9 @@ func (o InstanceOutput) NetworkType() pulumi.StringOutput {
 }
 
 // The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+//   - `UPGRADE`: The specifications are upgraded.
+//   - `DOWNGRADE`: The specifications are downgraded.
+//     **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 func (o InstanceOutput) OrderType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.OrderType }).(pulumi.StringPtrOutput)
 }
@@ -896,11 +939,16 @@ func (o InstanceOutput) SecurityIpLists() pulumi.StringArrayOutput {
 }
 
 // The snapshot backup type. Default value: `Standard`. Valid values:
+// - `Standard`: standard backup.
+// - ` Flash  `: single-digit second backup.
 func (o InstanceOutput) SnapshotBackupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SnapshotBackupType }).(pulumi.StringOutput)
 }
 
 // Actions performed on SSL functions. Valid values:
+// - `Open`: turn on SSL encryption.
+// - `Close`: turn off SSL encryption.
+// - `Update`: update SSL certificate.
 func (o InstanceOutput) SslAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SslAction }).(pulumi.StringPtrOutput)
 }

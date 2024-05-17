@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a RAM Role Policy attachment.
- *         var role = new Role("role", RoleArgs.builder()        
+ *         var role = new Role("role", RoleArgs.builder()
  *             .name("roleName")
  *             .document("""
  *     {
@@ -72,12 +72,12 @@ import javax.annotation.Nullable;
  *             .description("this is a role test.")
  *             .build());
  * 
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var policy = new Policy("policy", PolicyArgs.builder()        
+ *         var policy = new Policy("policy", PolicyArgs.builder()
  *             .policyName(String.format("tf-example-%s", default_.result()))
  *             .policyDocument("""
  *   {
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .description("this is a policy test")
  *             .build());
  * 
- *         var attach = new RolePolicyAttachment("attach", RolePolicyAttachmentArgs.builder()        
+ *         var attach = new RolePolicyAttachment("attach", RolePolicyAttachmentArgs.builder()
  *             .policyName(policy.policyName())
  *             .policyType(policy.type())
  *             .roleName(role.name())

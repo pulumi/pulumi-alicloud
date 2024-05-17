@@ -116,6 +116,7 @@ type OtsBackupPlanRule struct {
 	Retention *string `pulumi:"retention"`
 	RuleName  *string `pulumi:"ruleName"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// - `startTime` Backup start time, UNIX time seconds.
 	Schedule *string `pulumi:"schedule"`
 }
 
@@ -139,6 +140,7 @@ type OtsBackupPlanRuleArgs struct {
 	Retention pulumi.StringPtrInput `pulumi:"retention"`
 	RuleName  pulumi.StringPtrInput `pulumi:"ruleName"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// - `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
 }
 
@@ -213,6 +215,7 @@ func (o OtsBackupPlanRuleOutput) RuleName() pulumi.StringPtrOutput {
 }
 
 // Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+// - `startTime` Backup start time, UNIX time seconds.
 func (o OtsBackupPlanRuleOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OtsBackupPlanRule) *string { return v.Schedule }).(pulumi.StringPtrOutput)
 }
@@ -1713,6 +1716,8 @@ type GetEcsBackupClientsClient struct {
 	// The data plane access point type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
 	DataNetworkType string `pulumi:"dataNetworkType"`
 	// The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
+	// * `USE_CONTROL_PROXY` (Default, the same with control plane)
+	// * `CUSTOM` (Custom configuration items for the HTTP protocol).
 	DataProxySetting string `pulumi:"dataProxySetting"`
 	// The first ID of the resource.
 	EcsBackupClientId string `pulumi:"ecsBackupClientId"`
@@ -1779,6 +1784,8 @@ type GetEcsBackupClientsClientArgs struct {
 	// The data plane access point type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
 	DataNetworkType pulumi.StringInput `pulumi:"dataNetworkType"`
 	// The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
+	// * `USE_CONTROL_PROXY` (Default, the same with control plane)
+	// * `CUSTOM` (Custom configuration items for the HTTP protocol).
 	DataProxySetting pulumi.StringInput `pulumi:"dataProxySetting"`
 	// The first ID of the resource.
 	EcsBackupClientId pulumi.StringInput `pulumi:"ecsBackupClientId"`
@@ -1902,6 +1909,8 @@ func (o GetEcsBackupClientsClientOutput) DataNetworkType() pulumi.StringOutput {
 }
 
 // The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
+// * `USE_CONTROL_PROXY` (Default, the same with control plane)
+// * `CUSTOM` (Custom configuration items for the HTTP protocol).
 func (o GetEcsBackupClientsClientOutput) DataProxySetting() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.DataProxySetting }).(pulumi.StringOutput)
 }
@@ -2049,6 +2058,7 @@ type GetEcsBackupPlansPlan struct {
 	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule string `pulumi:"schedule"`
 	// The type of backup source.
 	SourceType string `pulumi:"sourceType"`
@@ -2099,6 +2109,7 @@ type GetEcsBackupPlansPlanArgs struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringInput `pulumi:"schedule"`
 	// The type of backup source.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
@@ -2230,6 +2241,7 @@ func (o GetEcsBackupPlansPlanOutput) Retention() pulumi.StringOutput {
 }
 
 // Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+// * `startTime` Backup start time, UNIX time seconds.
 func (o GetEcsBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
 }
@@ -2910,6 +2922,7 @@ type GetNasBackupPlansPlan struct {
 	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule string `pulumi:"schedule"`
 	// The update time of the backup plan. UNIX time in seconds.
 	UpdatedTime string `pulumi:"updatedTime"`
@@ -2952,6 +2965,7 @@ type GetNasBackupPlansPlanArgs struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringInput `pulumi:"schedule"`
 	// The update time of the backup plan. UNIX time in seconds.
 	UpdatedTime pulumi.StringInput `pulumi:"updatedTime"`
@@ -3066,6 +3080,7 @@ func (o GetNasBackupPlansPlanOutput) Retention() pulumi.StringOutput {
 }
 
 // Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+// * `startTime` Backup start time, UNIX time seconds.
 func (o GetNasBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
 }
@@ -3120,6 +3135,7 @@ type GetOssBackupPlansPlan struct {
 	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
 	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule string `pulumi:"schedule"`
 	// The update time of the backup plan. UNIX time in seconds.
 	UpdatedTime string `pulumi:"updatedTime"`
@@ -3158,6 +3174,7 @@ type GetOssBackupPlansPlanArgs struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput `pulumi:"retention"`
 	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringInput `pulumi:"schedule"`
 	// The update time of the backup plan. UNIX time in seconds.
 	UpdatedTime pulumi.StringInput `pulumi:"updatedTime"`
@@ -3262,6 +3279,7 @@ func (o GetOssBackupPlansPlanOutput) Retention() pulumi.StringOutput {
 }
 
 // Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+// * `startTime` Backup start time, UNIX time seconds.
 func (o GetOssBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
 }
@@ -3313,6 +3331,7 @@ type GetOtsBackupPlansPlan struct {
 	// The Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
 	// The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule string `pulumi:"schedule"`
 	// The type of the data source.
 	SourceType string `pulumi:"sourceType"`
@@ -3351,6 +3370,7 @@ type GetOtsBackupPlansPlanArgs struct {
 	// The Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput `pulumi:"retention"`
 	// The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringInput `pulumi:"schedule"`
 	// The type of the data source.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
@@ -3452,6 +3472,7 @@ func (o GetOtsBackupPlansPlanOutput) Retention() pulumi.StringOutput {
 }
 
 // The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+// * `startTime` Backup start time, UNIX time seconds.
 func (o GetOtsBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOtsBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
 }
@@ -5091,6 +5112,12 @@ type GetVaultsVault struct {
 	// The time of the last remote backup synchronization.
 	LatestReplicationTime string `pulumi:"latestReplicationTime"`
 	// Billing model, possible values:
+	// * `FREE` is not billed
+	// * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
+	// * `V2` new version of metering mode
+	// * `AEGIS` Billing method for cloud security use
+	// * `UNI_BACKUP` the backup of deduplication database
+	// * `ARCHIVE` archive library.
 	PaymentType string `pulumi:"paymentType"`
 	// Whether it is a remote backup warehouse. It's a boolean value.
 	Replication bool `pulumi:"replication"`
@@ -5154,6 +5181,12 @@ type GetVaultsVaultArgs struct {
 	// The time of the last remote backup synchronization.
 	LatestReplicationTime pulumi.StringInput `pulumi:"latestReplicationTime"`
 	// Billing model, possible values:
+	// * `FREE` is not billed
+	// * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
+	// * `V2` new version of metering mode
+	// * `AEGIS` Billing method for cloud security use
+	// * `UNI_BACKUP` the backup of deduplication database
+	// * `ARCHIVE` archive library.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// Whether it is a remote backup warehouse. It's a boolean value.
 	Replication pulumi.BoolInput `pulumi:"replication"`
@@ -5286,6 +5319,12 @@ func (o GetVaultsVaultOutput) LatestReplicationTime() pulumi.StringOutput {
 }
 
 // Billing model, possible values:
+// * `FREE` is not billed
+// * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
+// * `V2` new version of metering mode
+// * `AEGIS` Billing method for cloud security use
+// * `UNI_BACKUP` the backup of deduplication database
+// * `ARCHIVE` archive library.
 func (o GetVaultsVaultOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.PaymentType }).(pulumi.StringOutput)
 }

@@ -35,6 +35,8 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the instance with which the HAVIP is associated. Valid values:
+     * - `EcsInstance`: an ECS instance.
+     * - `NetworkInterface`: an ENI.
      * 
      */
     @Import(name="associatedInstanceType")
@@ -42,6 +44,8 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the instance with which the HAVIP is associated. Valid values:
+     * - `EcsInstance`: an ECS instance.
+     * - `NetworkInterface`: an ENI.
      * 
      */
     public Optional<Output<String>> associatedInstanceType() {
@@ -322,6 +326,8 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param associatedInstanceType The type of the instance with which the HAVIP is associated. Valid values:
+         * - `EcsInstance`: an ECS instance.
+         * - `NetworkInterface`: an ENI.
          * 
          * @return builder
          * 
@@ -333,6 +339,8 @@ public final class HAVipState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param associatedInstanceType The type of the instance with which the HAVIP is associated. Valid values:
+         * - `EcsInstance`: an ECS instance.
+         * - `NetworkInterface`: an ENI.
          * 
          * @return builder
          * 

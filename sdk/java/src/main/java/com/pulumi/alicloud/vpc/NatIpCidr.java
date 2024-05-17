@@ -61,19 +61,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName("terraform-example")
  *             .build());
  * 
- *         var exampleNatGateway = new NatGateway("exampleNatGateway", NatGatewayArgs.builder()        
+ *         var exampleNatGateway = new NatGateway("exampleNatGateway", NatGatewayArgs.builder()
  *             .vpcId(exampleNetwork.id())
  *             .internetChargeType("PayByLcu")
  *             .natGatewayName("terraform-example")
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .networkType("intranet")
  *             .build());
  * 
- *         var exampleNatIpCidr = new NatIpCidr("exampleNatIpCidr", NatIpCidrArgs.builder()        
+ *         var exampleNatIpCidr = new NatIpCidr("exampleNatIpCidr", NatIpCidrArgs.builder()
  *             .natGatewayId(exampleNatGateway.id())
  *             .natIpCidrName("terraform-example")
  *             .natIpCidr("192.168.0.0/16")

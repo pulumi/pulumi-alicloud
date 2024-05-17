@@ -127,7 +127,10 @@ export class Host extends pulumi.CustomResource {
      */
     public readonly osType!: pulumi.Output<string>;
     /**
-     * Specify the new create a host of source. Valid values:
+     * Specify the new create a host of source. Valid values: 
+     * * `Local`: localhost
+     * * `Ecs`:ECS instance
+     * * `Rds`:RDS exclusive cluster host.
      */
     public readonly source!: pulumi.Output<string>;
     /**
@@ -234,7 +237,10 @@ export interface HostState {
      */
     osType?: pulumi.Input<string>;
     /**
-     * Specify the new create a host of source. Valid values:
+     * Specify the new create a host of source. Valid values: 
+     * * `Local`: localhost
+     * * `Ecs`:ECS instance
+     * * `Rds`:RDS exclusive cluster host.
      */
     source?: pulumi.Input<string>;
     /**
@@ -280,7 +286,10 @@ export interface HostArgs {
      */
     osType: pulumi.Input<string>;
     /**
-     * Specify the new create a host of source. Valid values:
+     * Specify the new create a host of source. Valid values: 
+     * * `Local`: localhost
+     * * `Ecs`:ECS instance
+     * * `Rds`:RDS exclusive cluster host.
      */
     source: pulumi.Input<string>;
     /**

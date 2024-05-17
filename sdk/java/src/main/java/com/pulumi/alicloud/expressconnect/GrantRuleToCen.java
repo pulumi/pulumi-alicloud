@@ -63,12 +63,12 @@ import javax.annotation.Nullable;
  *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
- *         var vlanId = new Integer("vlanId", IntegerArgs.builder()        
+ *         var vlanId = new Integer("vlanId", IntegerArgs.builder()
  *             .max(2999)
  *             .min(1)
  *             .build());
  * 
- *         var exampleVirtualBorderRouter = new VirtualBorderRouter("exampleVirtualBorderRouter", VirtualBorderRouterArgs.builder()        
+ *         var exampleVirtualBorderRouter = new VirtualBorderRouter("exampleVirtualBorderRouter", VirtualBorderRouterArgs.builder()
  *             .localGatewayIp("10.0.0.1")
  *             .peerGatewayIp("10.0.0.2")
  *             .peeringSubnetMask("255.255.255.252")
@@ -80,13 +80,13 @@ import javax.annotation.Nullable;
  *             .detectMultiplier(10)
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .build());
  * 
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var exampleGrantRuleToCen = new GrantRuleToCen("exampleGrantRuleToCen", GrantRuleToCenArgs.builder()        
+ *         var exampleGrantRuleToCen = new GrantRuleToCen("exampleGrantRuleToCen", GrantRuleToCenArgs.builder()
  *             .cenId(exampleInstance.id())
  *             .cenOwnerId(default_.id())
  *             .instanceId(exampleVirtualBorderRouter.id())

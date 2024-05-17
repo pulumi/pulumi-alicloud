@@ -60,14 +60,14 @@ import javax.annotation.Nullable;
  *             .status("OK")
  *             .build());
  * 
- *         var defaultPublicIpAddressPool = new PublicIpAddressPool("defaultPublicIpAddressPool", PublicIpAddressPoolArgs.builder()        
+ *         var defaultPublicIpAddressPool = new PublicIpAddressPool("defaultPublicIpAddressPool", PublicIpAddressPoolArgs.builder()
  *             .description(name)
  *             .publicIpAddressPoolName(name)
  *             .isp("BGP")
  *             .resourceGroupId(default_.ids()[0])
  *             .build());
  * 
- *         var defaultPublicIpAddressPoolCidrBlock = new PublicIpAddressPoolCidrBlock("defaultPublicIpAddressPoolCidrBlock", PublicIpAddressPoolCidrBlockArgs.builder()        
+ *         var defaultPublicIpAddressPoolCidrBlock = new PublicIpAddressPoolCidrBlock("defaultPublicIpAddressPoolCidrBlock", PublicIpAddressPoolCidrBlockArgs.builder()
  *             .publicIpAddressPoolId(defaultPublicIpAddressPool.id())
  *             .cidrBlock("47.118.126.0/25")
  *             .build());

@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Qos("default", QosArgs.builder()        
+ *         var default_ = new Qos("default", QosArgs.builder()
  *             .name("terraform-example")
  *             .build());
  * 

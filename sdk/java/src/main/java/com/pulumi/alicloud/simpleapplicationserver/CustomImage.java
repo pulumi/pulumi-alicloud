@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetServerPlans = SimpleapplicationserverFunctions.getServerPlans();
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .planId(defaultGetServerPlans.applyValue(getServerPlansResult -> getServerPlansResult.plans()[0].id()))
  *             .instanceName(name)
@@ -75,12 +75,12 @@ import javax.annotation.Nullable;
  *             .instanceId(defaultInstance.id())
  *             .build());
  * 
- *         var defaultSnapshot = new Snapshot("defaultSnapshot", SnapshotArgs.builder()        
+ *         var defaultSnapshot = new Snapshot("defaultSnapshot", SnapshotArgs.builder()
  *             .diskId(defaultGetServerDisks.applyValue(getServerDisksResult -> getServerDisksResult).applyValue(defaultGetServerDisks -> defaultGetServerDisks.applyValue(getServerDisksResult -> getServerDisksResult.ids()[0])))
  *             .snapshotName(name)
  *             .build());
  * 
- *         var defaultCustomImage = new CustomImage("defaultCustomImage", CustomImageArgs.builder()        
+ *         var defaultCustomImage = new CustomImage("defaultCustomImage", CustomImageArgs.builder()
  *             .customImageName(name)
  *             .instanceId(defaultInstance.id())
  *             .systemSnapshotId(defaultSnapshot.id())

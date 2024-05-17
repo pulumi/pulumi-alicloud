@@ -50,17 +50,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new EcsKeyPair("example", EcsKeyPairArgs.builder()        
+ *         var example = new EcsKeyPair("example", EcsKeyPairArgs.builder()
  *             .keyPairName("key_pair_name")
  *             .build());
  * 
  *         // Using name prefix to build key pair
- *         var prefix = new EcsKeyPair("prefix", EcsKeyPairArgs.builder()        
+ *         var prefix = new EcsKeyPair("prefix", EcsKeyPairArgs.builder()
  *             .keyNamePrefix("terraform-test-key-pair-prefix")
  *             .build());
  * 
  *         // Import an existing public key to build a alicloud key pair
- *         var publickey = new EcsKeyPair("publickey", EcsKeyPairArgs.builder()        
+ *         var publickey = new EcsKeyPair("publickey", EcsKeyPairArgs.builder()
  *             .keyPairName("my_public_key")
  *             .publicKey("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
  *             .build());

@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var example = new Accelerator("example", AcceleratorArgs.builder()        
+ *         var example = new Accelerator("example", AcceleratorArgs.builder()
  *             .duration(3)
  *             .spec("2")
  *             .acceleratorName(name)
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *             .renewalStatus("AutoRenewal")
  *             .build());
  * 
- *         var exampleBandwidthPackage = new BandwidthPackage("exampleBandwidthPackage", BandwidthPackageArgs.builder()        
+ *         var exampleBandwidthPackage = new BandwidthPackage("exampleBandwidthPackage", BandwidthPackageArgs.builder()
  *             .type("Basic")
  *             .bandwidth(20)
  *             .bandwidthType("Basic")
@@ -102,12 +102,12 @@ import javax.annotation.Nullable;
  *             .description(name)
  *             .build());
  * 
- *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment("exampleBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+ *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment("exampleBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
  *             .acceleratorId(example.id())
  *             .bandwidthPackageId(exampleBandwidthPackage.id())
  *             .build());
  * 
- *         var exampleListener = new Listener("exampleListener", ListenerArgs.builder()        
+ *         var exampleListener = new Listener("exampleListener", ListenerArgs.builder()
  *             .acceleratorId(exampleBandwidthPackageAttachment.acceleratorId())
  *             .clientAffinity("SOURCE_IP")
  *             .description(name)
@@ -120,12 +120,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleEipAddress = new EipAddress("exampleEipAddress", EipAddressArgs.builder()        
+ *         var exampleEipAddress = new EipAddress("exampleEipAddress", EipAddressArgs.builder()
  *             .bandwidth("10")
  *             .internetChargeType("PayByBandwidth")
  *             .build());
  * 
- *         var virtual = new EndpointGroup("virtual", EndpointGroupArgs.builder()        
+ *         var virtual = new EndpointGroup("virtual", EndpointGroupArgs.builder()
  *             .acceleratorId(example.id())
  *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
  *                 .endpoint(exampleEipAddress.ipAddress())
@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleForwardingRule = new ForwardingRule("exampleForwardingRule", ForwardingRuleArgs.builder()        
+ *         var exampleForwardingRule = new ForwardingRule("exampleForwardingRule", ForwardingRuleArgs.builder()
  *             .acceleratorId(example.id())
  *             .listenerId(exampleListener.id())
  *             .ruleConditions(            

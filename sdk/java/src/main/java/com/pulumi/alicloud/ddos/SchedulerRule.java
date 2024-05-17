@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var example = new SchedulerRule("example", SchedulerRuleArgs.builder()        
+ *         var example = new SchedulerRule("example", SchedulerRuleArgs.builder()
  *             .ruleName(name)
  *             .ruleType(3)
  *             .rules(            

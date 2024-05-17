@@ -55,13 +55,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
  *         // Create a new Domain config.
- *         var domain = new DomainNew("domain", DomainNewArgs.builder()        
+ *         var domain = new DomainNew("domain", DomainNewArgs.builder()
  *             .domainName(String.format("mycdndomain-%s.alicloud-provider.cn", default_.result()))
  *             .cdnType("web")
  *             .scope("overseas")
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var config = new DomainConfig("config", DomainConfigArgs.builder()        
+ *         var config = new DomainConfig("config", DomainConfigArgs.builder()
  *             .domainName(domain.domainName())
  *             .functionName("ip_allow_list_set")
  *             .functionArgs(DomainConfigFunctionArgArgs.builder()

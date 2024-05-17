@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexamplename");
- *         var default_ = new User("default", UserArgs.builder()        
+ *         var default_ = new User("default", UserArgs.builder()
  *             .name(name)
  *             .displayName(name)
  *             .mobile("86-18688888888")
@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .comments("example")
  *             .build());
  * 
- *         var defaultEnterpriseUser = new EnterpriseUser("defaultEnterpriseUser", EnterpriseUserArgs.builder()        
+ *         var defaultEnterpriseUser = new EnterpriseUser("defaultEnterpriseUser", EnterpriseUserArgs.builder()
  *             .uid(default_.id())
  *             .userName(name)
  *             .roleNames("DBA")

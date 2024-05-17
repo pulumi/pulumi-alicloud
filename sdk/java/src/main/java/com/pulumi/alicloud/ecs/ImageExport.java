@@ -82,24 +82,24 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name("terraform-example")
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .instanceName("terraform-example")
  *             .securityGroups(defaultSecurityGroup.id())
@@ -109,22 +109,22 @@ import javax.annotation.Nullable;
  *             .internetMaxBandwidthOut(10)
  *             .build());
  * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
+ *         var defaultImage = new Image("defaultImage", ImageArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .imageName(String.format("terraform-example-%s", defaultInteger.result()))
  *             .description("terraform-example")
  *             .build());
  * 
- *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(String.format("example-value-%s", defaultInteger.result()))
  *             .build());
  * 
- *         var defaultImageExport = new ImageExport("defaultImageExport", ImageExportArgs.builder()        
+ *         var defaultImageExport = new ImageExport("defaultImageExport", ImageExportArgs.builder()
  *             .imageId(defaultImage.id())
  *             .ossBucket(defaultBucket.id())
  *             .ossPrefix("ecsExport")

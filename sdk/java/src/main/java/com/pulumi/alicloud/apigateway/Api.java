@@ -57,12 +57,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Group("example", GroupArgs.builder()        
+ *         var example = new Group("example", GroupArgs.builder()
  *             .name("tf-example")
  *             .description("tf-example")
  *             .build());
  * 
- *         var exampleApi = new Api("exampleApi", ApiArgs.builder()        
+ *         var exampleApi = new Api("exampleApi", ApiArgs.builder()
  *             .groupId(example.id())
  *             .name("tf-example")
  *             .description("tf-example")

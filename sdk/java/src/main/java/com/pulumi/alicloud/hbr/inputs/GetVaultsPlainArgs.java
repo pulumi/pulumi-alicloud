@@ -77,6 +77,8 @@ public final class GetVaultsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * - `STANDARD` - used in OSS, NAS and ECS File backup.
+     * - `OTS_BACKUP` -  used in OTS backup.
      * 
      */
     @Import(name="vaultType")
@@ -84,6 +86,8 @@ public final class GetVaultsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * - `STANDARD` - used in OSS, NAS and ECS File backup.
+     * - `OTS_BACKUP` -  used in OTS backup.
      * 
      */
     public Optional<String> vaultType() {
@@ -174,6 +178,8 @@ public final class GetVaultsPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param vaultType VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
+         * - `STANDARD` - used in OSS, NAS and ECS File backup.
+         * - `OTS_BACKUP` -  used in OTS backup.
          * 
          * @return builder
          * 

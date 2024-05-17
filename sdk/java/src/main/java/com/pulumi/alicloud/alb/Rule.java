@@ -41,6 +41,8 @@ import javax.annotation.Nullable;
 public class Rule extends com.pulumi.resources.CustomResource {
     /**
      * The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+     * - `Request`: The forwarding rule is applied to the client requests received by ALB.
+     * - `Response`: The forwarding rule is applied to the responses returned by backend servers.
      * 
      */
     @Export(name="direction", refs={String.class}, tree="[0]")
@@ -48,6 +50,8 @@ public class Rule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+     * - `Request`: The forwarding rule is applied to the client requests received by ALB.
+     * - `Response`: The forwarding rule is applied to the responses returned by backend servers.
      * 
      */
     public Output<String> direction() {

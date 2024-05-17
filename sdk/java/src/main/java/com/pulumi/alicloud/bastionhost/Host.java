@@ -74,11 +74,11 @@ import javax.annotation.Nullable;
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .description(name)
  *             .licenseCode("bhah_ent_50_asset")
  *             .planCode("cloudbastion")
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .securityGroupIds(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var defaultHost = new Host("defaultHost", HostArgs.builder()        
+ *         var defaultHost = new Host("defaultHost", HostArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .hostName(name)
  *             .activeAddressType("Private")
@@ -243,6 +243,9 @@ public class Host extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specify the new create a host of source. Valid values:
+     * * `Local`: localhost
+     * * `Ecs`:ECS instance
+     * * `Rds`:RDS exclusive cluster host.
      * 
      */
     @Export(name="source", refs={String.class}, tree="[0]")
@@ -250,6 +253,9 @@ public class Host extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specify the new create a host of source. Valid values:
+     * * `Local`: localhost
+     * * `Ecs`:ECS instance
+     * * `Rds`:RDS exclusive cluster host.
      * 
      */
     public Output<String> source() {

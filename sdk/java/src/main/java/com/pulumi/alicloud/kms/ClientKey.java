@@ -53,13 +53,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var aAP0 = new ApplicationAccessPoint("AAP0", ApplicationAccessPointArgs.builder()        
+ *         var aAP0 = new ApplicationAccessPoint("AAP0", ApplicationAccessPointArgs.builder()
  *             .policies("aa")
  *             .description("aa")
  *             .applicationAccessPointName(name)
  *             .build());
  * 
- *         var default_ = new ClientKey("default", ClientKeyArgs.builder()        
+ *         var default_ = new ClientKey("default", ClientKeyArgs.builder()
  *             .aapName(AAP0.applicationAccessPointName())
  *             .password("YouPassword123!")
  *             .notBefore("2023-09-01T14:11:22Z")

@@ -59,13 +59,13 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(name)
  *             .acl("public-read")
  *             .tags(Map.of("For", "example"))
  *             .build());
  * 
- *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+ *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
  *             .description("If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.")
  *             .sourceOwner("ALIYUN")
  *             .sourceIdentifier("oss-bucket-public-read-prohibited")
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .ruleName("oss-bucket-public-read-prohibited")
  *             .build());
  * 
- *         var defaultRemediation = new Remediation("defaultRemediation", RemediationArgs.builder()        
+ *         var defaultRemediation = new Remediation("defaultRemediation", RemediationArgs.builder()
  *             .configRuleId(defaultRule.configRuleId())
  *             .remediationTemplateId("ACS-OSS-PutBucketAcl")
  *             .remediationSourceType("ALIYUN")

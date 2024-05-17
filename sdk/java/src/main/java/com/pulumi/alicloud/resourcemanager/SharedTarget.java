@@ -55,11 +55,11 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tfexample");
  *         final var default = ResourcemanagerFunctions.getAccounts();
  * 
- *         var example = new ResourceShare("example", ResourceShareArgs.builder()        
+ *         var example = new ResourceShare("example", ResourceShareArgs.builder()
  *             .resourceShareName(name)
  *             .build());
  * 
- *         var exampleSharedTarget = new SharedTarget("exampleSharedTarget", SharedTargetArgs.builder()        
+ *         var exampleSharedTarget = new SharedTarget("exampleSharedTarget", SharedTargetArgs.builder()
  *             .resourceShareId(example.id())
  *             .targetId(default_.ids()[0])
  *             .build());

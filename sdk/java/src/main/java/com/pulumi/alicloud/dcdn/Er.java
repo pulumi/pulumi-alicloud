@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new Er("default", ErArgs.builder()        
+ *         var default_ = new Er("default", ErArgs.builder()
  *             .erName(name)
  *             .description(name)
  *             .envConf(ErEnvConfArgs.builder()

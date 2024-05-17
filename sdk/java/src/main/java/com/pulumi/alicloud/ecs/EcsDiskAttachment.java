@@ -75,18 +75,18 @@ import javax.annotation.Nullable;
  *             .instanceTypeFamily("ecs.sn1ne")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("10.4.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name("tf-example")
  *             .description("New security group")
  *             .vpcId(defaultNetwork.id())
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .instanceName(name)
  *             .hostName(name)
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()        
+ *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
  *             .zoneId(disk.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .category("cloud_efficiency")
  *             .deleteAutoSnapshot("true")
@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var defaultEcsDiskAttachment = new EcsDiskAttachment("defaultEcsDiskAttachment", EcsDiskAttachmentArgs.builder()        
+ *         var defaultEcsDiskAttachment = new EcsDiskAttachment("defaultEcsDiskAttachment", EcsDiskAttachmentArgs.builder()
  *             .diskId(defaultEcsDisk.id())
  *             .instanceId(defaultInstance.id())
  *             .build());

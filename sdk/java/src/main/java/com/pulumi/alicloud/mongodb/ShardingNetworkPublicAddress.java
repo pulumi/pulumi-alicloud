@@ -69,19 +69,19 @@ import javax.annotation.Nullable;
  * 
  *         final var zoneId = default_.zones()[index].id();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var defaultShardingInstance = new ShardingInstance("defaultShardingInstance", ShardingInstanceArgs.builder()        
+ *         var defaultShardingInstance = new ShardingInstance("defaultShardingInstance", ShardingInstanceArgs.builder()
  *             .zoneId(zoneId)
  *             .vswitchId(defaultSwitch.id())
  *             .engineVersion("4.2")
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var example = new ShardingNetworkPublicAddress("example", ShardingNetworkPublicAddressArgs.builder()        
+ *         var example = new ShardingNetworkPublicAddress("example", ShardingNetworkPublicAddressArgs.builder()
  *             .dbInstanceId(defaultShardingInstance.id())
  *             .nodeId(defaultShardingInstance.mongoLists().applyValue(mongoLists -> mongoLists[0].nodeId()))
  *             .build());

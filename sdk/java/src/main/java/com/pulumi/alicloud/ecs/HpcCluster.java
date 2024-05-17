@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new HpcCluster("example", HpcClusterArgs.builder()        
+ *         var example = new HpcCluster("example", HpcClusterArgs.builder()
  *             .name("tf-testAcc")
  *             .description("For Terraform Test")
  *             .build());

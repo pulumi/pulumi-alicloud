@@ -1081,6 +1081,11 @@ class InstanceDataDisk(dict):
         :param str kms_key_id: The KMS key ID corresponding to the Nth data disk.
         :param str name: The name of the data disk.
         :param str performance_level: The performance level of the ESSD used as data disk:
+               - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+               - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+               - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+               - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+               Default to `PL1`.
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
         pulumi.set(__self__, "size", size)
@@ -1187,6 +1192,11 @@ class InstanceDataDisk(dict):
     def performance_level(self) -> Optional[str]:
         """
         The performance level of the ESSD used as data disk:
+        - `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+        - `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+        - `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+        - `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
+        Default to `PL1`.
         """
         return pulumi.get(self, "performance_level")
 
@@ -7787,7 +7797,13 @@ class GetImagesImageResult(dict):
         :param str product_code: Product code of the image on the image market.
         :param str progress: Progress of image creation, presented in percentages.
         :param int size: Size of the created disk.
-        :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+        :param str status: The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+               * `Creating`: The image is being created.
+               * `Waiting`: The image is waiting to be processed.
+               * `Available`: The image is available.
+               * `UnAvailable`: The image is unavailable.
+               * `CreateFailed`: The image failed to be created.
+               * `Deprecated`: The image is discontinued.
         :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
@@ -7974,7 +7990,13 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+        The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+        * `Creating`: The image is being created.
+        * `Waiting`: The image is waiting to be processed.
+        * `Available`: The image is available.
+        * `UnAvailable`: The image is unavailable.
+        * `CreateFailed`: The image failed to be created.
+        * `Deprecated`: The image is discontinued.
         """
         return pulumi.get(self, "status")
 

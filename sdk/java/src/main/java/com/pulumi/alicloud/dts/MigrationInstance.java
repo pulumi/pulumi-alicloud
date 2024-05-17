@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultMigrationInstance = new MigrationInstance("defaultMigrationInstance", MigrationInstanceArgs.builder()        
+ *         var defaultMigrationInstance = new MigrationInstance("defaultMigrationInstance", MigrationInstanceArgs.builder()
  *             .paymentType("PayAsYouGo")
  *             .sourceEndpointEngineName("MySQL")
  *             .sourceEndpointRegion(default_.regions()[0].id())

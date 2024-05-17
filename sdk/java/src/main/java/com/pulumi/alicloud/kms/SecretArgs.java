@@ -188,6 +188,10 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of the secret. Valid values:
+     * - `Generic`: specifies a generic secret.
+     * - `Rds`: specifies a managed ApsaraDB RDS secret.
+     * - `RAMCredentials`: indicates a managed RAM secret.
+     * - `ECS`: specifies a managed ECS secret.
      * 
      */
     @Import(name="secretType")
@@ -195,6 +199,10 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the secret. Valid values:
+     * - `Generic`: specifies a generic secret.
+     * - `Rds`: specifies a managed ApsaraDB RDS secret.
+     * - `RAMCredentials`: indicates a managed RAM secret.
+     * - `ECS`: specifies a managed ECS secret.
      * 
      */
     public Optional<Output<String>> secretType() {
@@ -517,6 +525,10 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secretType The type of the secret. Valid values:
+         * - `Generic`: specifies a generic secret.
+         * - `Rds`: specifies a managed ApsaraDB RDS secret.
+         * - `RAMCredentials`: indicates a managed RAM secret.
+         * - `ECS`: specifies a managed ECS secret.
          * 
          * @return builder
          * 
@@ -528,6 +540,10 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param secretType The type of the secret. Valid values:
+         * - `Generic`: specifies a generic secret.
+         * - `Rds`: specifies a managed ApsaraDB RDS secret.
+         * - `RAMCredentials`: indicates a managed RAM secret.
+         * - `ECS`: specifies a managed ECS secret.
          * 
          * @return builder
          * 

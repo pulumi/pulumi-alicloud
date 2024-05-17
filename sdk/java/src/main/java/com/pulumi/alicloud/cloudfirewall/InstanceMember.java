@@ -55,16 +55,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("AliyunTerraform");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
+ *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()
  *             .displayName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var defaultInstanceMember = new InstanceMember("defaultInstanceMember", InstanceMemberArgs.builder()        
+ *         var defaultInstanceMember = new InstanceMember("defaultInstanceMember", InstanceMemberArgs.builder()
  *             .memberDesc(String.format("%s-%s", name,default_.result()))
  *             .memberUid(defaultAccount.id())
  *             .build());

@@ -63,19 +63,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()        
+ *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *             .instanceName(name)
  *             .build());
  * 
- *         var defaultVpcEndpointLinkedVpc = new VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc", VpcEndpointLinkedVpcArgs.builder()        
+ *         var defaultVpcEndpointLinkedVpc = new VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc", VpcEndpointLinkedVpcArgs.builder()
  *             .instanceId(defaultRegistryEnterpriseInstance.id())
  *             .vpcId(defaultNetwork.id())
  *             .vswitchId(defaultSwitch.id())
@@ -139,6 +139,8 @@ public class VpcEndpointLinkedVpc extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the module that you want to access. Valid Values:
+     * - `Registry`: the image repository.
+     * - `Chart`: a Helm chart.
      * 
      */
     @Export(name="moduleName", refs={String.class}, tree="[0]")
@@ -146,6 +148,8 @@ public class VpcEndpointLinkedVpc extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the module that you want to access. Valid Values:
+     * - `Registry`: the image repository.
+     * - `Chart`: a Helm chart.
      * 
      */
     public Output<String> moduleName() {

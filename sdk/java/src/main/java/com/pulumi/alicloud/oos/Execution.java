@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Template("default", TemplateArgs.builder()        
+ *         var default_ = new Template("default", TemplateArgs.builder()
  *             .content("""
  *   {
  *     "FormatVersion": "OOS-2019-06-01",
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var example = new Execution("example", ExecutionArgs.builder()        
+ *         var example = new Execution("example", ExecutionArgs.builder()
  *             .templateName(default_.templateName())
  *             .description("From TF Test")
  *             .parameters("""

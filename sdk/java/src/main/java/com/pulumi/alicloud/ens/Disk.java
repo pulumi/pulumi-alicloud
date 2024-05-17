@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Disk("default", DiskArgs.builder()        
+ *         var default_ = new Disk("default", DiskArgs.builder()
  *             .category("cloud_ssd")
  *             .size("20")
  *             .paymentType("PayAsYouGo")

@@ -129,6 +129,16 @@ export class RouteEntry extends pulumi.CustomResource {
     public readonly nexthopId!: pulumi.Output<string | undefined>;
     /**
      * The next hop type. Available values:
+     * - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+     * - `RouterInterface`: a router interface.
+     * - `VpnGateway`: a VPN Gateway.
+     * - `HaVip`: a high-availability virtual IP address (HAVIP).
+     * - `NetworkInterface`: an elastic network interface (ENI).
+     * - `NatGateway`: a Nat Gateway.
+     * - `IPv6Gateway`: an IPv6 gateway.
+     * - `Attachment`: a transit router.
+     * - `VpcPeer`: a VPC Peering Connection.
+     * - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
      */
     public readonly nexthopType!: pulumi.Output<string | undefined>;
     /**
@@ -196,6 +206,16 @@ export interface RouteEntryState {
     nexthopId?: pulumi.Input<string>;
     /**
      * The next hop type. Available values:
+     * - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+     * - `RouterInterface`: a router interface.
+     * - `VpnGateway`: a VPN Gateway.
+     * - `HaVip`: a high-availability virtual IP address (HAVIP).
+     * - `NetworkInterface`: an elastic network interface (ENI).
+     * - `NatGateway`: a Nat Gateway.
+     * - `IPv6Gateway`: an IPv6 gateway.
+     * - `Attachment`: a transit router.
+     * - `VpcPeer`: a VPC Peering Connection.
+     * - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
      */
     nexthopType?: pulumi.Input<string>;
     /**
@@ -228,6 +248,16 @@ export interface RouteEntryArgs {
     nexthopId?: pulumi.Input<string>;
     /**
      * The next hop type. Available values:
+     * - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+     * - `RouterInterface`: a router interface.
+     * - `VpnGateway`: a VPN Gateway.
+     * - `HaVip`: a high-availability virtual IP address (HAVIP).
+     * - `NetworkInterface`: an elastic network interface (ENI).
+     * - `NatGateway`: a Nat Gateway.
+     * - `IPv6Gateway`: an IPv6 gateway.
+     * - `Attachment`: a transit router.
+     * - `VpcPeer`: a VPC Peering Connection.
+     * - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
      */
     nexthopType?: pulumi.Input<string>;
     /**

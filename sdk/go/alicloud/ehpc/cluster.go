@@ -161,8 +161,14 @@ type Cluster struct {
 	// The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
 	ComputeSpotPriceLimit pulumi.StringPtrOutput `pulumi:"computeSpotPriceLimit"`
 	// The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
+	// - `NoSpot`: The compute nodes are pay-as-you-go instances.
+	// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
+	// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
 	ComputeSpotStrategy pulumi.StringPtrOutput `pulumi:"computeSpotStrategy"`
 	// The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
+	// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
+	// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
+	// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
 	DeployMode pulumi.StringOutput `pulumi:"deployMode"`
 	// The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -237,6 +243,10 @@ type Cluster struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
+	// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 	SystemDiskLevel pulumi.StringPtrOutput `pulumi:"systemDiskLevel"`
 	// The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
@@ -349,8 +359,14 @@ type clusterState struct {
 	// The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
 	ComputeSpotPriceLimit *string `pulumi:"computeSpotPriceLimit"`
 	// The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
+	// - `NoSpot`: The compute nodes are pay-as-you-go instances.
+	// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
+	// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
 	ComputeSpotStrategy *string `pulumi:"computeSpotStrategy"`
 	// The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
+	// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
+	// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
+	// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
 	DeployMode *string `pulumi:"deployMode"`
 	// The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
@@ -425,6 +441,10 @@ type clusterState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
+	// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 	SystemDiskLevel *string `pulumi:"systemDiskLevel"`
 	// The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
@@ -480,8 +500,14 @@ type ClusterState struct {
 	// The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
 	ComputeSpotPriceLimit pulumi.StringPtrInput
 	// The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
+	// - `NoSpot`: The compute nodes are pay-as-you-go instances.
+	// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
+	// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
 	ComputeSpotStrategy pulumi.StringPtrInput
 	// The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
+	// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
+	// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
+	// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
 	DeployMode pulumi.StringPtrInput
 	// The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
@@ -556,6 +582,10 @@ type ClusterState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
+	// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 	SystemDiskLevel pulumi.StringPtrInput
 	// The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
 	SystemDiskSize pulumi.IntPtrInput
@@ -615,8 +645,14 @@ type clusterArgs struct {
 	// The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
 	ComputeSpotPriceLimit *string `pulumi:"computeSpotPriceLimit"`
 	// The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
+	// - `NoSpot`: The compute nodes are pay-as-you-go instances.
+	// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
+	// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
 	ComputeSpotStrategy *string `pulumi:"computeSpotStrategy"`
 	// The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
+	// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
+	// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
+	// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
 	DeployMode *string `pulumi:"deployMode"`
 	// The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
@@ -689,6 +725,10 @@ type clusterArgs struct {
 	// If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
 	SecurityGroupName *string `pulumi:"securityGroupName"`
 	// The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
+	// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 	SystemDiskLevel *string `pulumi:"systemDiskLevel"`
 	// The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
@@ -745,8 +785,14 @@ type ClusterArgs struct {
 	// The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
 	ComputeSpotPriceLimit pulumi.StringPtrInput
 	// The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
+	// - `NoSpot`: The compute nodes are pay-as-you-go instances.
+	// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
+	// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
 	ComputeSpotStrategy pulumi.StringPtrInput
 	// The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
+	// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
+	// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
+	// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
 	DeployMode pulumi.StringPtrInput
 	// The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
@@ -819,6 +865,10 @@ type ClusterArgs struct {
 	// If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
 	SecurityGroupName pulumi.StringPtrInput
 	// The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
+	// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 	SystemDiskLevel pulumi.StringPtrInput
 	// The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
 	SystemDiskSize pulumi.IntPtrInput
@@ -996,11 +1046,17 @@ func (o ClusterOutput) ComputeSpotPriceLimit() pulumi.StringPtrOutput {
 }
 
 // The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
+// - `NoSpot`: The compute nodes are pay-as-you-go instances.
+// - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
+// - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
 func (o ClusterOutput) ComputeSpotStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ComputeSpotStrategy }).(pulumi.StringPtrOutput)
 }
 
 // The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
+// - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
+// - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
+// - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
 func (o ClusterOutput) DeployMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DeployMode }).(pulumi.StringOutput)
 }
@@ -1174,6 +1230,10 @@ func (o ClusterOutput) Status() pulumi.StringOutput {
 }
 
 // The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
+// * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
+// * `PL1`: A single ESSD can deliver up to 50,000 random read/write IOPS.
+// * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
+// * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 func (o ClusterOutput) SystemDiskLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.SystemDiskLevel }).(pulumi.StringPtrOutput)
 }

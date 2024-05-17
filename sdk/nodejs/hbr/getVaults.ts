@@ -60,6 +60,8 @@ export interface GetVaultsArgs {
     status?: string;
     /**
      * VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * - `STANDARD` - used in OSS, NAS and ECS File backup.
+     * - `OTS_BACKUP` -  used in OTS backup.
      */
     vaultType?: string;
 }
@@ -125,6 +127,8 @@ export interface GetVaultsOutputArgs {
     status?: pulumi.Input<string>;
     /**
      * VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * - `STANDARD` - used in OSS, NAS and ECS File backup.
+     * - `OTS_BACKUP` -  used in OTS backup.
      */
     vaultType?: pulumi.Input<string>;
 }

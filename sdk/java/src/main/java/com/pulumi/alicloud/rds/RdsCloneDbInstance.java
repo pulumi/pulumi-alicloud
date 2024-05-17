@@ -82,19 +82,19 @@ import javax.annotation.Nullable;
  *             .instanceChargeType("PostPaid")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName("terraform-example")
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .engine("PostgreSQL")
  *             .engineVersion("13.0")
  *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
@@ -105,12 +105,12 @@ import javax.annotation.Nullable;
  *             .monitoringPeriod("60")
  *             .build());
  * 
- *         var exampleRdsBackup = new RdsBackup("exampleRdsBackup", RdsBackupArgs.builder()        
+ *         var exampleRdsBackup = new RdsBackup("exampleRdsBackup", RdsBackupArgs.builder()
  *             .dbInstanceId(exampleInstance.id())
  *             .removeFromState("true")
  *             .build());
  * 
- *         var exampleRdsCloneDbInstance = new RdsCloneDbInstance("exampleRdsCloneDbInstance", RdsCloneDbInstanceArgs.builder()        
+ *         var exampleRdsCloneDbInstance = new RdsCloneDbInstance("exampleRdsCloneDbInstance", RdsCloneDbInstanceArgs.builder()
  *             .sourceDbInstanceId(exampleInstance.id())
  *             .dbInstanceStorageType("cloud_essd")
  *             .paymentType("PayAsYouGo")

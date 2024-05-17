@@ -83,6 +83,8 @@ namespace Pulumi.AliCloud.BastionHost
 
         /// <summary>
         /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        /// - `M`: months.
+        /// - `Y`: years.
         /// </summary>
         [Output("renewalPeriodUnit")]
         public Output<string> RenewalPeriodUnit { get; private set; } = null!;
@@ -251,6 +253,8 @@ namespace Pulumi.AliCloud.BastionHost
 
         /// <summary>
         /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        /// - `M`: months.
+        /// - `Y`: years.
         /// </summary>
         [Input("renewalPeriodUnit")]
         public Input<string>? RenewalPeriodUnit { get; set; }
@@ -393,6 +397,8 @@ namespace Pulumi.AliCloud.BastionHost
 
         /// <summary>
         /// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewal_period_unit` is required under the condition that `renewal_status` is `AutoRenewal`.
+        /// - `M`: months.
+        /// - `Y`: years.
         /// </summary>
         [Input("renewalPeriodUnit")]
         public Input<string>? RenewalPeriodUnit { get; set; }

@@ -150,6 +150,8 @@ export class FileSystem extends pulumi.CustomResource {
     /**
      * The storage type of the file System. 
      * * Valid values:
+     * * `Performance` (Available when the `fileSystemType` is `standard`)
+     * * `Capacity` (Available when the `fileSystemType` is `standard`)
      */
     public readonly storageType!: pulumi.Output<string>;
     /**
@@ -259,6 +261,8 @@ export interface FileSystemState {
     /**
      * The storage type of the file System. 
      * * Valid values:
+     * * `Performance` (Available when the `fileSystemType` is `standard`)
+     * * `Capacity` (Available when the `fileSystemType` is `standard`)
      */
     storageType?: pulumi.Input<string>;
     /**
@@ -320,6 +324,8 @@ export interface FileSystemArgs {
     /**
      * The storage type of the file System. 
      * * Valid values:
+     * * `Performance` (Available when the `fileSystemType` is `standard`)
+     * * `Capacity` (Available when the `fileSystemType` is `standard`)
      */
     storageType: pulumi.Input<string>;
     /**

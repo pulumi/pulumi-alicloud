@@ -60,17 +60,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project("example", ProjectArgs.builder()        
+ *         var example = new Project("example", ProjectArgs.builder()
  *             .name(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
  *             .project(example.name())
  *             .name("example-store")
  *             .retentionPeriod(3650)
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var example2 = new Store("example2", StoreArgs.builder()        
+ *         var example2 = new Store("example2", StoreArgs.builder()
  *             .project(example.name())
  *             .name("example-store2")
  *             .retentionPeriod(3650)
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var example3 = new Store("example3", StoreArgs.builder()        
+ *         var example3 = new Store("example3", StoreArgs.builder()
  *             .project(example.name())
  *             .name("example-store3")
  *             .retentionPeriod(3650)
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var exampleEtl = new Etl("exampleEtl", EtlArgs.builder()        
+ *         var exampleEtl = new Etl("exampleEtl", EtlArgs.builder()
  *             .etlName("terraform-example")
  *             .project(example.name())
  *             .displayName("terraform-example")

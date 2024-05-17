@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-hangzhou");
  *         final var name = config.get("name").orElse("tf-example");
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
@@ -94,30 +94,30 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+ *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
  *             .namespaceId(String.format("%s:example%s", default_.regions()[0].id(),defaultInteger.result()))
  *             .namespaceName(name)
  *             .namespaceDescription(name)
  *             .enableMicroRegistration(false)
  *             .build());
  * 
- *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+ *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
  *             .appDescription(name)
  *             .appName(String.format("%s-%s", name,defaultInteger.result()))
  *             .namespaceId(defaultNamespace.id())

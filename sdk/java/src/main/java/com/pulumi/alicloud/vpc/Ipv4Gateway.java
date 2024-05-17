@@ -57,22 +57,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-testacc-example");
- *         var default_ = new ResourceGroup("default", ResourceGroupArgs.builder()        
+ *         var default_ = new ResourceGroup("default", ResourceGroupArgs.builder()
  *             .displayName("tf-testAcc-rg665")
  *             .resourceGroupName(name)
  *             .build());
  * 
- *         var modify = new ResourceGroup("modify", ResourceGroupArgs.builder()        
+ *         var modify = new ResourceGroup("modify", ResourceGroupArgs.builder()
  *             .displayName("tf-testAcc-rg298")
  *             .resourceGroupName(String.format("%s1", name))
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(String.format("%s2", name))
  *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var defaultIpv4Gateway = new Ipv4Gateway("defaultIpv4Gateway", Ipv4GatewayArgs.builder()        
+ *         var defaultIpv4Gateway = new Ipv4Gateway("defaultIpv4Gateway", Ipv4GatewayArgs.builder()
  *             .ipv4GatewayName(name)
  *             .ipv4GatewayDescription("tf-testAcc-Ipv4Gateway")
  *             .resourceGroupId(default_.id())

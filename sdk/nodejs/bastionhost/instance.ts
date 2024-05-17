@@ -85,6 +85,8 @@ export class Instance extends pulumi.CustomResource {
     public readonly renewPeriod!: pulumi.Output<number | undefined>;
     /**
      * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+     * - `M`: months.
+     * - `Y`: years.
      */
     public readonly renewalPeriodUnit!: pulumi.Output<string>;
     /**
@@ -237,6 +239,8 @@ export interface InstanceState {
     renewPeriod?: pulumi.Input<number>;
     /**
      * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+     * - `M`: months.
+     * - `Y`: years.
      */
     renewalPeriodUnit?: pulumi.Input<string>;
     /**
@@ -314,6 +318,8 @@ export interface InstanceArgs {
     renewPeriod?: pulumi.Input<number>;
     /**
      * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+     * - `M`: months.
+     * - `Y`: years.
      */
     renewalPeriodUnit?: pulumi.Input<string>;
     /**

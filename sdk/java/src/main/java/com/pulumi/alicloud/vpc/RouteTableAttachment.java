@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var foo = new Network("foo", NetworkArgs.builder()        
+ *         var foo = new Network("foo", NetworkArgs.builder()
  *             .cidrBlock("172.16.0.0/12")
  *             .name(name)
  *             .build());
@@ -66,20 +66,20 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
+ *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()
  *             .vpcId(foo.id())
  *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(default_.zones()[0].id())
  *             .name(name)
  *             .build());
  * 
- *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()        
+ *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()
  *             .vpcId(foo.id())
  *             .routeTableName(name)
  *             .description("route_table_attachment")
  *             .build());
  * 
- *         var fooRouteTableAttachment = new RouteTableAttachment("fooRouteTableAttachment", RouteTableAttachmentArgs.builder()        
+ *         var fooRouteTableAttachment = new RouteTableAttachment("fooRouteTableAttachment", RouteTableAttachmentArgs.builder()
  *             .vswitchId(fooSwitch.id())
  *             .routeTableId(fooRouteTable.id())
  *             .build());

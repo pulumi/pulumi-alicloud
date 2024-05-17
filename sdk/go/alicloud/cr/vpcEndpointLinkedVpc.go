@@ -106,6 +106,8 @@ type VpcEndpointLinkedVpc struct {
 	// The ID of the instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The name of the module that you want to access. Valid Values:
+	// - `Registry`: the image repository.
+	// - `Chart`: a Helm chart.
 	ModuleName pulumi.StringOutput `pulumi:"moduleName"`
 	// The status of the Vpc Endpoint Linked Vpc.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -162,6 +164,8 @@ type vpcEndpointLinkedVpcState struct {
 	// The ID of the instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// The name of the module that you want to access. Valid Values:
+	// - `Registry`: the image repository.
+	// - `Chart`: a Helm chart.
 	ModuleName *string `pulumi:"moduleName"`
 	// The status of the Vpc Endpoint Linked Vpc.
 	Status *string `pulumi:"status"`
@@ -177,6 +181,8 @@ type VpcEndpointLinkedVpcState struct {
 	// The ID of the instance.
 	InstanceId pulumi.StringPtrInput
 	// The name of the module that you want to access. Valid Values:
+	// - `Registry`: the image repository.
+	// - `Chart`: a Helm chart.
 	ModuleName pulumi.StringPtrInput
 	// The status of the Vpc Endpoint Linked Vpc.
 	Status pulumi.StringPtrInput
@@ -196,6 +202,8 @@ type vpcEndpointLinkedVpcArgs struct {
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The name of the module that you want to access. Valid Values:
+	// - `Registry`: the image repository.
+	// - `Chart`: a Helm chart.
 	ModuleName string `pulumi:"moduleName"`
 	// The ID of the VPC.
 	VpcId string `pulumi:"vpcId"`
@@ -210,6 +218,8 @@ type VpcEndpointLinkedVpcArgs struct {
 	// The ID of the instance.
 	InstanceId pulumi.StringInput
 	// The name of the module that you want to access. Valid Values:
+	// - `Registry`: the image repository.
+	// - `Chart`: a Helm chart.
 	ModuleName pulumi.StringInput
 	// The ID of the VPC.
 	VpcId pulumi.StringInput
@@ -315,6 +325,8 @@ func (o VpcEndpointLinkedVpcOutput) InstanceId() pulumi.StringOutput {
 }
 
 // The name of the module that you want to access. Valid Values:
+// - `Registry`: the image repository.
+// - `Chart`: a Helm chart.
 func (o VpcEndpointLinkedVpcOutput) ModuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointLinkedVpc) pulumi.StringOutput { return v.ModuleName }).(pulumi.StringOutput)
 }

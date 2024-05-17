@@ -39,6 +39,8 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         public readonly string DataNetworkType;
         /// <summary>
         /// The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
+        /// * `USE_CONTROL_PROXY` (Default, the same with control plane)
+        /// * `CUSTOM` (Custom configuration items for the HTTP protocol).
         /// </summary>
         public readonly string DataProxySetting;
         /// <summary>

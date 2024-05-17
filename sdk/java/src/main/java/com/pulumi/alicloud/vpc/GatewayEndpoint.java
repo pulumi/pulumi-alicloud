@@ -57,16 +57,16 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var domain = config.get("domain").orElse("com.aliyun.cn-hangzhou.oss");
- *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()        
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
  *             .description("tf-example")
  *             .build());
  * 
- *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()        
+ *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()
  *             .displayName("tf-example-497")
  *             .resourceGroupName(name)
  *             .build());
  * 
- *         var default_ = new GatewayEndpoint("default", GatewayEndpointArgs.builder()        
+ *         var default_ = new GatewayEndpoint("default", GatewayEndpointArgs.builder()
  *             .gatewayEndpointDescrption("test-gateway-endpoint")
  *             .gatewayEndpointName(name)
  *             .vpcId(defaultVpc.id())

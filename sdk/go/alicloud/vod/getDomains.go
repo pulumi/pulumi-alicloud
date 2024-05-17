@@ -89,6 +89,8 @@ type GetDomainsArgs struct {
 	// The status of the domain name. The value of this parameter is used as a condition to filter domain names.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
+	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+	// * `Value`: It can be up to 128 characters in length. It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -132,6 +134,8 @@ type GetDomainsOutputArgs struct {
 	// The status of the domain name. The value of this parameter is used as a condition to filter domain names.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
+	// * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+	// * `Value`: It can be up to 128 characters in length. It can be a null string.
 	Tags pulumi.MapInput `pulumi:"tags"`
 }
 

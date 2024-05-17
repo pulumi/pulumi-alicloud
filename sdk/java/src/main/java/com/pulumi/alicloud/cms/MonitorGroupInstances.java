@@ -58,12 +58,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var defaultMonitorGroup = new MonitorGroup("defaultMonitorGroup", MonitorGroupArgs.builder()        
+ *         var defaultMonitorGroup = new MonitorGroup("defaultMonitorGroup", MonitorGroupArgs.builder()
  *             .monitorGroupName(name)
  *             .build());
  * 
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var example = new MonitorGroupInstances("example", MonitorGroupInstancesArgs.builder()        
+ *         var example = new MonitorGroupInstances("example", MonitorGroupInstancesArgs.builder()
  *             .groupId(defaultMonitorGroup.id())
  *             .instances(MonitorGroupInstancesInstanceArgs.builder()
  *                 .instanceId(defaultNetwork.id())

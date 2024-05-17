@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+ *         var example = new StorageBundle("example", StorageBundleArgs.builder()
  *             .storageBundleName("example_value")
  *             .build());
  * 

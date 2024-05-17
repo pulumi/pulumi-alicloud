@@ -83,6 +83,8 @@ type HAVip struct {
 	// The elastic IP address (EIP) associated with the HAVIP.
 	AssociatedEipAddresses pulumi.StringArrayOutput `pulumi:"associatedEipAddresses"`
 	// The type of the instance with which the HAVIP is associated. Valid values:
+	// - `EcsInstance`: an ECS instance.
+	// - `NetworkInterface`: an ENI.
 	AssociatedInstanceType pulumi.StringOutput `pulumi:"associatedInstanceType"`
 	// The ID of the instance with which the HAVIP is associated.
 	AssociatedInstances pulumi.StringArrayOutput `pulumi:"associatedInstances"`
@@ -150,6 +152,8 @@ type havipState struct {
 	// The elastic IP address (EIP) associated with the HAVIP.
 	AssociatedEipAddresses []string `pulumi:"associatedEipAddresses"`
 	// The type of the instance with which the HAVIP is associated. Valid values:
+	// - `EcsInstance`: an ECS instance.
+	// - `NetworkInterface`: an ENI.
 	AssociatedInstanceType *string `pulumi:"associatedInstanceType"`
 	// The ID of the instance with which the HAVIP is associated.
 	AssociatedInstances []string `pulumi:"associatedInstances"`
@@ -185,6 +189,8 @@ type HAVipState struct {
 	// The elastic IP address (EIP) associated with the HAVIP.
 	AssociatedEipAddresses pulumi.StringArrayInput
 	// The type of the instance with which the HAVIP is associated. Valid values:
+	// - `EcsInstance`: an ECS instance.
+	// - `NetworkInterface`: an ENI.
 	AssociatedInstanceType pulumi.StringPtrInput
 	// The ID of the instance with which the HAVIP is associated.
 	AssociatedInstances pulumi.StringArrayInput
@@ -352,6 +358,8 @@ func (o HAVipOutput) AssociatedEipAddresses() pulumi.StringArrayOutput {
 }
 
 // The type of the instance with which the HAVIP is associated. Valid values:
+// - `EcsInstance`: an ECS instance.
+// - `NetworkInterface`: an ENI.
 func (o HAVipOutput) AssociatedInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVip) pulumi.StringOutput { return v.AssociatedInstanceType }).(pulumi.StringOutput)
 }

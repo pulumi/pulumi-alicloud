@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var queue = new ServiceQueue("queue", ServiceQueueArgs.builder()        
+ *         var queue = new ServiceQueue("queue", ServiceQueueArgs.builder()
  *             .queueName(String.format("%s-%s", name,default_.result()))
  *             .delaySeconds(60478)
  *             .maximumMessageSize(12357)

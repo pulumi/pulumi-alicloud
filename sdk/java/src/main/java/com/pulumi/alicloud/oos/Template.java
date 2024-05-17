@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Template("example", TemplateArgs.builder()        
+ *         var example = new Template("example", TemplateArgs.builder()
  *             .content("""
  *   {
  *     "FormatVersion": "OOS-2019-06-01",

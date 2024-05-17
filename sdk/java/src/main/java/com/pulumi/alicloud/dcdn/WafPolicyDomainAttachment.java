@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var domainName = config.get("domainName").orElse("tf-example.com");
  *         final var name = config.get("name").orElse("tf_example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new Domain("example", DomainArgs.builder()        
+ *         var example = new Domain("example", DomainArgs.builder()
  *             .domainName(String.format("%s-%s", domainName,default_.result()))
  *             .scope("overseas")
  *             .sources(DomainSourceArgs.builder()
@@ -76,19 +76,19 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleWafDomain = new WafDomain("exampleWafDomain", WafDomainArgs.builder()        
+ *         var exampleWafDomain = new WafDomain("exampleWafDomain", WafDomainArgs.builder()
  *             .domainName(example.domainName())
  *             .clientIpTag("X-Forwarded-For")
  *             .build());
  * 
- *         var exampleWafPolicy = new WafPolicy("exampleWafPolicy", WafPolicyArgs.builder()        
+ *         var exampleWafPolicy = new WafPolicy("exampleWafPolicy", WafPolicyArgs.builder()
  *             .defenseScene("waf_group")
  *             .policyName(String.format("%s_%s", name,default_.result()))
  *             .policyType("custom")
  *             .status("on")
  *             .build());
  * 
- *         var exampleWafPolicyDomainAttachment = new WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment", WafPolicyDomainAttachmentArgs.builder()        
+ *         var exampleWafPolicyDomainAttachment = new WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment", WafPolicyDomainAttachmentArgs.builder()
  *             .domainName(exampleWafDomain.domainName())
  *             .policyId(exampleWafPolicy.id())
  *             .build());

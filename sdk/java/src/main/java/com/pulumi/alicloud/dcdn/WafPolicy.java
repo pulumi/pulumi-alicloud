@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new WafPolicy("example", WafPolicyArgs.builder()        
+ *         var example = new WafPolicy("example", WafPolicyArgs.builder()
  *             .defenseScene("waf_group")
  *             .policyName(String.format("%s_%s", name,default_.result()))
  *             .policyType("custom")

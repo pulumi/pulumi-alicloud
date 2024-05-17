@@ -60,17 +60,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default3iXhoa = new ResourceGroup("default3iXhoa", ResourceGroupArgs.builder()        
+ *         var default3iXhoa = new ResourceGroup("default3iXhoa", ResourceGroupArgs.builder()
  *             .displayName("testname03")
  *             .resourceGroupName(name)
  *             .build());
  * 
- *         var defaultdNz2qk = new ResourceGroup("defaultdNz2qk", ResourceGroupArgs.builder()        
+ *         var defaultdNz2qk = new ResourceGroup("defaultdNz2qk", ResourceGroupArgs.builder()
  *             .displayName("testname04")
  *             .resourceGroupName(String.format("%s1", name))
  *             .build());
  * 
- *         var default_ = new TrafficMirrorFilter("default", TrafficMirrorFilterArgs.builder()        
+ *         var default_ = new TrafficMirrorFilter("default", TrafficMirrorFilterArgs.builder()
  *             .trafficMirrorFilterDescription("test")
  *             .trafficMirrorFilterName(name)
  *             .resourceGroupId(default3iXhoa.id())

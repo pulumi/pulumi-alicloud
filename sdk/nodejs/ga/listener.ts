@@ -94,6 +94,8 @@ export class Listener extends pulumi.CustomResource {
     public readonly certificates!: pulumi.Output<outputs.ga.ListenerCertificate[] | undefined>;
     /**
      * The clientAffinity of the listener. Default value: `NONE`. Valid values:
+     * - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+     * - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
      */
     public readonly clientAffinity!: pulumi.Output<string | undefined>;
     /**
@@ -111,6 +113,8 @@ export class Listener extends pulumi.CustomResource {
     public readonly httpVersion!: pulumi.Output<string>;
     /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
+     * - `Standard`: intelligent routing.
+     * - `CustomRouting`: custom routing.
      */
     public readonly listenerType!: pulumi.Output<string | undefined>;
     /**
@@ -207,6 +211,8 @@ export interface ListenerState {
     certificates?: pulumi.Input<pulumi.Input<inputs.ga.ListenerCertificate>[]>;
     /**
      * The clientAffinity of the listener. Default value: `NONE`. Valid values:
+     * - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+     * - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
      */
     clientAffinity?: pulumi.Input<string>;
     /**
@@ -224,6 +230,8 @@ export interface ListenerState {
     httpVersion?: pulumi.Input<string>;
     /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
+     * - `Standard`: intelligent routing.
+     * - `CustomRouting`: custom routing.
      */
     listenerType?: pulumi.Input<string>;
     /**
@@ -268,6 +276,8 @@ export interface ListenerArgs {
     certificates?: pulumi.Input<pulumi.Input<inputs.ga.ListenerCertificate>[]>;
     /**
      * The clientAffinity of the listener. Default value: `NONE`. Valid values:
+     * - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+     * - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
      */
     clientAffinity?: pulumi.Input<string>;
     /**
@@ -285,6 +295,8 @@ export interface ListenerArgs {
     httpVersion?: pulumi.Input<string>;
     /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
+     * - `Standard`: intelligent routing.
+     * - `CustomRouting`: custom routing.
      */
     listenerType?: pulumi.Input<string>;
     /**

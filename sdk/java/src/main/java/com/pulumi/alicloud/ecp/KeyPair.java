@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new KeyPair("example", KeyPairArgs.builder()        
+ *         var example = new KeyPair("example", KeyPairArgs.builder()
  *             .keyPairName("my-KeyPair")
  *             .publicKeyBody("ssh-rsa AAAAxxxxxxxxxxtyuudsfsg")
  *             .build());

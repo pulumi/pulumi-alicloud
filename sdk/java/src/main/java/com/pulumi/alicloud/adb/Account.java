@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * 
  *         final var vswitchId = defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]);
  * 
- *         var cluster = new DBCluster("cluster", DBClusterArgs.builder()        
+ *         var cluster = new DBCluster("cluster", DBClusterArgs.builder()
  *             .dbClusterCategory("MixedStorage")
  *             .mode("flexible")
  *             .computeResource("8Core32GB")
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *             .description(name)
  *             .build());
  * 
- *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
+ *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()
  *             .dbClusterId(cluster.id())
  *             .accountName(name)
  *             .accountPassword("tf_example123")

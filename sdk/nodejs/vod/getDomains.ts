@@ -82,6 +82,8 @@ export interface GetDomainsArgs {
     status?: string;
     /**
      * A mapping of tags to assign to the resource.
+     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
     tags?: {[key: string]: any};
 }
@@ -169,6 +171,8 @@ export interface GetDomainsOutputArgs {
     status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
+     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -111,6 +111,8 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
+        /// - `STANDARD` - used in OSS, NAS and ECS File backup.
+        /// - `OTS_BACKUP` -  used in OTS backup.
         /// </summary>
         [Input("vaultType")]
         public string? VaultType { get; set; }
@@ -155,6 +157,8 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
+        /// - `STANDARD` - used in OSS, NAS and ECS File backup.
+        /// - `OTS_BACKUP` -  used in OTS backup.
         /// </summary>
         [Input("vaultType")]
         public Input<string>? VaultType { get; set; }

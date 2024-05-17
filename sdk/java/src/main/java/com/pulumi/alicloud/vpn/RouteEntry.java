@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
- *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
  *             .name("terraform-example")
  *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .bandwidth(10)
@@ -79,12 +79,12 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
  *             .build());
  * 
- *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()        
+ *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
  *             .name(name)
  *             .ipAddress("192.168.1.1")
  *             .build());
  * 
- *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()        
+ *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()
  *             .name(name)
  *             .customerGatewayId(defaultCustomerGateway.id())
  *             .vpnGatewayId(defaultGateway.id())
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *             .remoteSubnets("192.168.3.0/24")
  *             .build());
  * 
- *         var defaultRouteEntry = new RouteEntry("defaultRouteEntry", RouteEntryArgs.builder()        
+ *         var defaultRouteEntry = new RouteEntry("defaultRouteEntry", RouteEntryArgs.builder()
  *             .vpnGatewayId(defaultGateway.id())
  *             .routeDest("10.0.0.0/24")
  *             .nextHop(defaultConnection.id())

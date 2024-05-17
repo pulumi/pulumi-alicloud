@@ -95,19 +95,19 @@ import javax.annotation.Nullable;
  *             .kubernetesNodeRole("Master")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultEdgeKubernetes = new EdgeKubernetes("defaultEdgeKubernetes", EdgeKubernetesArgs.builder()        
+ *         var defaultEdgeKubernetes = new EdgeKubernetes("defaultEdgeKubernetes", EdgeKubernetesArgs.builder()
  *             .namePrefix(name)
  *             .workerVswitchIds(defaultSwitch.id())
  *             .workerInstanceTypes(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
@@ -182,19 +182,19 @@ import javax.annotation.Nullable;
  *             .kubernetesNodeRole("Master")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultEdgeKubernetes = new EdgeKubernetes("defaultEdgeKubernetes", EdgeKubernetesArgs.builder()        
+ *         var defaultEdgeKubernetes = new EdgeKubernetes("defaultEdgeKubernetes", EdgeKubernetesArgs.builder()
  *             .namePrefix(name)
  *             .workerVswitchIds(defaultSwitch.id())
  *             .workerInstanceTypes(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))

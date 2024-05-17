@@ -123,10 +123,17 @@ type ServerGroup struct {
 	// The ID of the resource group to which the security group belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The routing algorithm. Valid values:
+	// - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+	// - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+	// - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+	// - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
 	Scheduler pulumi.StringOutput `pulumi:"scheduler"`
 	// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	ServerGroupName pulumi.StringOutput `pulumi:"serverGroupName"`
 	// The type of the server group. Valid values:
+	// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+	// - `Ip`: allows you to specify IP addresses.
 	ServerGroupType pulumi.StringOutput `pulumi:"serverGroupType"`
 	// Server group status. Value:
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -195,10 +202,17 @@ type serverGroupState struct {
 	// The ID of the resource group to which the security group belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The routing algorithm. Valid values:
+	// - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+	// - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+	// - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+	// - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
 	Scheduler *string `pulumi:"scheduler"`
 	// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	ServerGroupName *string `pulumi:"serverGroupName"`
 	// The type of the server group. Valid values:
+	// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+	// - `Ip`: allows you to specify IP addresses.
 	ServerGroupType *string `pulumi:"serverGroupType"`
 	// Server group status. Value:
 	Status *string `pulumi:"status"`
@@ -232,10 +246,17 @@ type ServerGroupState struct {
 	// The ID of the resource group to which the security group belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The routing algorithm. Valid values:
+	// - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+	// - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+	// - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+	// - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
 	Scheduler pulumi.StringPtrInput
 	// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	ServerGroupName pulumi.StringPtrInput
 	// The type of the server group. Valid values:
+	// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+	// - `Ip`: allows you to specify IP addresses.
 	ServerGroupType pulumi.StringPtrInput
 	// Server group status. Value:
 	Status pulumi.StringPtrInput
@@ -273,10 +294,17 @@ type serverGroupArgs struct {
 	// The ID of the resource group to which the security group belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The routing algorithm. Valid values:
+	// - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+	// - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+	// - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+	// - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
 	Scheduler *string `pulumi:"scheduler"`
 	// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	ServerGroupName string `pulumi:"serverGroupName"`
 	// The type of the server group. Valid values:
+	// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+	// - `Ip`: allows you to specify IP addresses.
 	ServerGroupType *string `pulumi:"serverGroupType"`
 	// Label.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -309,10 +337,17 @@ type ServerGroupArgs struct {
 	// The ID of the resource group to which the security group belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The routing algorithm. Valid values:
+	// - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+	// - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+	// - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+	// - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
 	Scheduler pulumi.StringPtrInput
 	// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	ServerGroupName pulumi.StringInput
 	// The type of the server group. Valid values:
+	// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+	// - `Ip`: allows you to specify IP addresses.
 	ServerGroupType pulumi.StringPtrInput
 	// Label.
 	Tags pulumi.MapInput
@@ -457,6 +492,11 @@ func (o ServerGroupOutput) ResourceGroupId() pulumi.StringOutput {
 }
 
 // The routing algorithm. Valid values:
+// - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+// - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+// - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+// - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+// - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
 func (o ServerGroupOutput) Scheduler() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.Scheduler }).(pulumi.StringOutput)
 }
@@ -467,6 +507,8 @@ func (o ServerGroupOutput) ServerGroupName() pulumi.StringOutput {
 }
 
 // The type of the server group. Valid values:
+// - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+// - `Ip`: allows you to specify IP addresses.
 func (o ServerGroupOutput) ServerGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.ServerGroupType }).(pulumi.StringOutput)
 }

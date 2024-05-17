@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .zoneId("cn-hangzhou-h")
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .productVersion("3")
  *             .vpcId(default_.ids()[0])
  *             .zoneIds(            

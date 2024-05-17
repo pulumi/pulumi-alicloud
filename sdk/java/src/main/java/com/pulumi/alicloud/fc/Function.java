@@ -71,21 +71,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
  *             .projectName(String.format("example-value-%s", default_.result()))
  *             .build());
  * 
- *         var defaultStore = new Store("defaultStore", StoreArgs.builder()        
+ *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
  *             .projectName(defaultProject.name())
  *             .logstoreName("example-value")
  *             .build());
  * 
- *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(String.format("fcservicerole-%s", default_.result()))
  *             .document("""
  *   {
@@ -107,13 +107,13 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
  *             .roleName(defaultRole.name())
  *             .policyName("AliyunLogFullAccess")
  *             .policyType("System")
  *             .build());
  * 
- *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()
  *             .name(String.format("example-value-%s", default_.result()))
  *             .description("example-value")
  *             .role(defaultRole.arn())
@@ -125,12 +125,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
- *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
  *             .bucket(defaultBucket.id())
  *             .key("index.py")
  *             .content("""
@@ -141,7 +141,7 @@ import javax.annotation.Nullable;
  * return 'hello world'            """)
  *             .build());
  * 
- *         var foo = new Function("foo", FunctionArgs.builder()        
+ *         var foo = new Function("foo", FunctionArgs.builder()
  *             .service(defaultService.name())
  *             .name("terraform-example")
  *             .description("example")

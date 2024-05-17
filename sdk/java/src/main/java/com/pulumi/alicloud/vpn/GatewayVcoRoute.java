@@ -65,11 +65,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()        
+ *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
  *             .cenId(defaultInstance.id())
  *             .transitRouterDescription("desd")
  *             .transitRouterName(name)
@@ -77,14 +77,14 @@ import javax.annotation.Nullable;
  * 
  *         final var default = CenFunctions.getTransitRouterAvailableResources();
  * 
- *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()        
+ *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
  *             .name(name)
  *             .ipAddress("42.104.22.210")
  *             .asn("45014")
  *             .description("testAccVpnConnectionDesc")
  *             .build());
  * 
- *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment("defaultGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()        
+ *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment("defaultGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()
  *             .customerGatewayId(defaultCustomerGateway.id())
  *             .networkType("public")
  *             .localSubnet("0.0.0.0/0")
@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  *             .vpnAttachmentName(name)
  *             .build());
  * 
- *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()        
+ *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
  *             .autoPublishRouteEnabled(false)
  *             .transitRouterAttachmentDescription(name)
  *             .transitRouterAttachmentName(name)
@@ -138,7 +138,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultGatewayVcoRoute = new GatewayVcoRoute("defaultGatewayVcoRoute", GatewayVcoRouteArgs.builder()        
+ *         var defaultGatewayVcoRoute = new GatewayVcoRoute("defaultGatewayVcoRoute", GatewayVcoRouteArgs.builder()
  *             .routeDest("192.168.12.0/24")
  *             .nextHop(defaultTransitRouterVpnAttachment.vpnId())
  *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())

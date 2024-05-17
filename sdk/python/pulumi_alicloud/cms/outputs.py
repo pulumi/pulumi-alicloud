@@ -594,7 +594,15 @@ class EventRuleEventPattern(dict):
         """
         :param str product: The type of the cloud service.
         :param Sequence[str] event_type_lists: The type of the event-triggered alert rule. Valid values:
+               - `StatusNotification`: fault notifications.
+               - `Exception`: exceptions.
+               - `Maintenance`: O&M.
+               - `*`: all types.
         :param Sequence[str] level_lists: The level of the event-triggered alert rule. Valid values:
+               - `CRITICAL`: critical.
+               - `WARN`: warning.
+               - `INFO`: information.
+               - `*`: all types.
         :param Sequence[str] name_lists: The name of the event-triggered alert rule.
         :param str sql_filter: The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
         """
@@ -621,6 +629,10 @@ class EventRuleEventPattern(dict):
     def event_type_lists(self) -> Optional[Sequence[str]]:
         """
         The type of the event-triggered alert rule. Valid values:
+        - `StatusNotification`: fault notifications.
+        - `Exception`: exceptions.
+        - `Maintenance`: O&M.
+        - `*`: all types.
         """
         return pulumi.get(self, "event_type_lists")
 
@@ -629,6 +641,10 @@ class EventRuleEventPattern(dict):
     def level_lists(self) -> Optional[Sequence[str]]:
         """
         The level of the event-triggered alert rule. Valid values:
+        - `CRITICAL`: critical.
+        - `WARN`: warning.
+        - `INFO`: information.
+        - `*`: all types.
         """
         return pulumi.get(self, "level_lists")
 
@@ -2265,6 +2281,7 @@ class GetAlarmContactsContactResult(dict):
         :param str channels_state_ding_web_hook: Indicates whether the DingTalk chatbot is normal.
         :param str channels_state_mail: The status of the email address.
         :param str channels_status_sms: The status of the phone number.
+               * `Lang` - The language type of the alarm.
         :param Sequence[str] contact_groups: The alert groups to which the alarm contact is added.
         :param str describe: The description of the alarm contact.
         :param str id: The ID of the alarm contact.
@@ -2352,6 +2369,7 @@ class GetAlarmContactsContactResult(dict):
     def channels_status_sms(self) -> str:
         """
         The status of the phone number.
+        * `Lang` - The language type of the alarm.
         """
         return pulumi.get(self, "channels_status_sms")
 

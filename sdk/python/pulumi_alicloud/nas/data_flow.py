@@ -34,6 +34,8 @@ class DataFlowArgs:
         :param pulumi.Input[str] description: The Description of the data flow. Restrictions:
         :param pulumi.Input[bool] dry_run: The dry run.
         :param pulumi.Input[str] source_security_type: The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+               - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+               - `SSL`: Protects access through SSL certificates.
         :param pulumi.Input[str] status: The status of the Data flow. Valid values: `Running`, `Stopped`.
         """
         pulumi.set(__self__, "file_system_id", file_system_id)
@@ -129,6 +131,8 @@ class DataFlowArgs:
     def source_security_type(self) -> Optional[pulumi.Input[str]]:
         """
         The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+        - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+        - `SSL`: Protects access through SSL certificates.
         """
         return pulumi.get(self, "source_security_type")
 
@@ -169,6 +173,8 @@ class _DataFlowState:
         :param pulumi.Input[str] file_system_id: The ID of the file system.
         :param pulumi.Input[str] fset_id: The ID of the Fileset.
         :param pulumi.Input[str] source_security_type: The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+               - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+               - `SSL`: Protects access through SSL certificates.
         :param pulumi.Input[str] source_storage: The access path of the source store. Format: `<storage type>://<path>`. Among them:
                - storage type: currently only OSS is supported.
                - path: the bucket name of OSS.
@@ -260,6 +266,8 @@ class _DataFlowState:
     def source_security_type(self) -> Optional[pulumi.Input[str]]:
         """
         The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+        - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+        - `SSL`: Protects access through SSL certificates.
         """
         return pulumi.get(self, "source_security_type")
 
@@ -343,6 +351,8 @@ class DataFlow(pulumi.CustomResource):
         :param pulumi.Input[str] file_system_id: The ID of the file system.
         :param pulumi.Input[str] fset_id: The ID of the Fileset.
         :param pulumi.Input[str] source_security_type: The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+               - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+               - `SSL`: Protects access through SSL certificates.
         :param pulumi.Input[str] source_storage: The access path of the source store. Format: `<storage type>://<path>`. Among them:
                - storage type: currently only OSS is supported.
                - path: the bucket name of OSS.
@@ -452,6 +462,8 @@ class DataFlow(pulumi.CustomResource):
         :param pulumi.Input[str] file_system_id: The ID of the file system.
         :param pulumi.Input[str] fset_id: The ID of the Fileset.
         :param pulumi.Input[str] source_security_type: The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+               - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+               - `SSL`: Protects access through SSL certificates.
         :param pulumi.Input[str] source_storage: The access path of the source store. Format: `<storage type>://<path>`. Among them:
                - storage type: currently only OSS is supported.
                - path: the bucket name of OSS.
@@ -519,6 +531,8 @@ class DataFlow(pulumi.CustomResource):
     def source_security_type(self) -> pulumi.Output[str]:
         """
         The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+        - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+        - `SSL`: Protects access through SSL certificates.
         """
         return pulumi.get(self, "source_security_type")
 

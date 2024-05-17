@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var oidcProviderName = config.get("oidcProviderName").orElse("amp-resource-example-oidc-provider");
- *         var default_ = new OidcProvider("default", OidcProviderArgs.builder()        
+ *         var default_ = new OidcProvider("default", OidcProviderArgs.builder()
  *             .description(oidcProviderName)
  *             .issuerUrl("https://oauth.aliyun.com")
  *             .fingerprints("902ef2deeb3c5b13ea4c3d5193629309e231ae55")

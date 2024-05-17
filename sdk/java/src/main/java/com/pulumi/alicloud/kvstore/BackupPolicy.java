@@ -59,19 +59,19 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("kvstorebackuppolicyvpc");
  *         final var default = KvstoreFunctions.getZones();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .dbInstanceName(name)
  *             .vswitchId(defaultSwitch.id())
  *             .zoneId(default_.zones()[0].id())
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var defaultBackupPolicy = new BackupPolicy("defaultBackupPolicy", BackupPolicyArgs.builder()        
+ *         var defaultBackupPolicy = new BackupPolicy("defaultBackupPolicy", BackupPolicyArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .backupPeriods(            
  *                 "Tuesday",

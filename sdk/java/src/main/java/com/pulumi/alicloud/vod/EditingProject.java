@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var example = new EditingProject("example", EditingProjectArgs.builder()        
+ *         var example = new EditingProject("example", EditingProjectArgs.builder()
  *             .editingProjectName(name)
  *             .title(name)
  *             .timeline("""

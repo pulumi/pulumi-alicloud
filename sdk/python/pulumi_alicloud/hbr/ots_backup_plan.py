@@ -41,6 +41,7 @@ class OtsBackupPlanArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanOtsDetailArgs']]] ots_details: The details about the Table store instance. See the following `Block ots_detail`. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]] rules: The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               - `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         pulumi.set(__self__, "backup_type", backup_type)
@@ -193,6 +194,7 @@ class OtsBackupPlanArgs:
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        - `startTime` Backup start time, UNIX time seconds.
         """
         warnings.warn("""Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""", DeprecationWarning)
         pulumi.log.warn("""schedule is deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""")
@@ -244,6 +246,7 @@ class _OtsBackupPlanState:
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[Sequence[pulumi.Input['OtsBackupPlanRuleArgs']]] rules: The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               - `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         if backup_type is not None:
@@ -399,6 +402,7 @@ class _OtsBackupPlanState:
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        - `startTime` Backup start time, UNIX time seconds.
         """
         warnings.warn("""Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""", DeprecationWarning)
         pulumi.log.warn("""schedule is deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""")
@@ -541,6 +545,7 @@ class OtsBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanRuleArgs']]]] rules: The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               - `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         ...
@@ -731,6 +736,7 @@ class OtsBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OtsBackupPlanRuleArgs']]]] rules: The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               - `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -836,6 +842,7 @@ class OtsBackupPlan(pulumi.CustomResource):
     def schedule(self) -> pulumi.Output[Optional[str]]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        - `startTime` Backup start time, UNIX time seconds.
         """
         warnings.warn("""Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""", DeprecationWarning)
         pulumi.log.warn("""schedule is deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.""")

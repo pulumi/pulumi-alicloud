@@ -71,17 +71,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project("example", ProjectArgs.builder()        
+ *         var example = new Project("example", ProjectArgs.builder()
  *             .name(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
  *             .project(example.name())
  *             .name("example-store")
  *             .retentionPeriod(3650)
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var exampleAlert = new Alert("exampleAlert", AlertArgs.builder()        
+ *         var exampleAlert = new Alert("exampleAlert", AlertArgs.builder()
  *             .projectName(example.name())
  *             .alertName("example-alert")
  *             .alertDisplayname("example-alert")
@@ -179,17 +179,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project("example", ProjectArgs.builder()        
+ *         var example = new Project("example", ProjectArgs.builder()
  *             .name(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
  *             .project(example.name())
  *             .name("example-store")
  *             .retentionPeriod(3650)
@@ -199,7 +199,7 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var example_2 = new Alert("example-2", AlertArgs.builder()        
+ *         var example_2 = new Alert("example-2", AlertArgs.builder()
  *             .version("2.0")
  *             .type("default")
  *             .projectName(example.name())
@@ -335,17 +335,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project("example", ProjectArgs.builder()        
+ *         var example = new Project("example", ProjectArgs.builder()
  *             .name(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
  *             .project(example.name())
  *             .name("example-store")
  *             .retentionPeriod(3650)
@@ -355,7 +355,7 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var example_3 = new Alert("example-3", AlertArgs.builder()        
+ *         var example_3 = new Alert("example-3", AlertArgs.builder()
  *             .version("2.0")
  *             .type("tpl")
  *             .projectName(example.name())

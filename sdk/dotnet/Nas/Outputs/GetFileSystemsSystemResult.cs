@@ -63,6 +63,8 @@ namespace Pulumi.AliCloud.Nas.Outputs
         /// <summary>
         /// The storage type of the file system.
         /// * Valid values:
+        /// * `Performance` (Available when the `file_system_type` is `standard`)
+        /// * `Capacity` (Available when the `file_system_type` is `standard`)
         /// </summary>
         public readonly string StorageType;
         /// <summary>

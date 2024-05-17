@@ -75,30 +75,30 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(exampleNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var exampleHAVip = new HAVip("exampleHAVip", HAVipArgs.builder()        
+ *         var exampleHAVip = new HAVip("exampleHAVip", HAVipArgs.builder()
  *             .vswitchId(exampleSwitch.id())
  *             .description(name)
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .description(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .vswitchId(exampleSwitch.id())
  *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *             .userData("echo 'net.ipv4.ip_forward=1'>> /etc/sysctl.conf")
  *             .build());
  * 
- *         var exampleHAVipAttachment = new HAVipAttachment("exampleHAVipAttachment", HAVipAttachmentArgs.builder()        
+ *         var exampleHAVipAttachment = new HAVipAttachment("exampleHAVipAttachment", HAVipAttachmentArgs.builder()
  *             .havipId(exampleHAVip.id())
  *             .instanceId(exampleInstance.id())
  *             .build());

@@ -76,7 +76,9 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetImagesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
+        /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+        /// * `CreateEcs`: instance creation.
+        /// * `ChangeOS`: replacement of the system disk or operating system.
         /// </summary>
         [Input("actionType")]
         public string? ActionType { get; set; }
@@ -180,7 +182,13 @@ namespace Pulumi.AliCloud.Ecs
         public string? SnapshotId { get; set; }
 
         /// <summary>
-        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+        /// * `Creating`: The image is being created.
+        /// * `Waiting`: The image is waiting to be processed.
+        /// * `Available`: The image is available.
+        /// * `UnAvailable`: The image is unavailable.
+        /// * `CreateFailed`: The image failed to be created.
+        /// * `Deprecated`: The image is discontinued.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -212,7 +220,9 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetImagesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
+        /// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+        /// * `CreateEcs`: instance creation.
+        /// * `ChangeOS`: replacement of the system disk or operating system.
         /// </summary>
         [Input("actionType")]
         public Input<string>? ActionType { get; set; }
@@ -316,7 +326,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+        /// * `Creating`: The image is being created.
+        /// * `Waiting`: The image is waiting to be processed.
+        /// * `Available`: The image is available.
+        /// * `UnAvailable`: The image is unavailable.
+        /// * `CreateFailed`: The image failed to be created.
+        /// * `Deprecated`: The image is discontinued.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -64,6 +64,8 @@ type Instance struct {
 	// Specifies whether to precheck the request. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// - `Immediately` (Default): The configurations are immediately changed.
+	// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog pulumi.IntPtrOutput `pulumi:"enableBackupLog"`
@@ -255,6 +257,8 @@ type instanceState struct {
 	// Specifies whether to precheck the request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
 	// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// - `Immediately` (Default): The configurations are immediately changed.
+	// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
@@ -410,6 +414,8 @@ type InstanceState struct {
 	// Specifies whether to precheck the request. Valid values:
 	DryRun pulumi.BoolPtrInput
 	// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// - `Immediately` (Default): The configurations are immediately changed.
+	// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
 	EffectiveTime pulumi.StringPtrInput
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog pulumi.IntPtrInput
@@ -561,6 +567,8 @@ type instanceArgs struct {
 	// Specifies whether to precheck the request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
 	// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// - `Immediately` (Default): The configurations are immediately changed.
+	// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
@@ -703,6 +711,8 @@ type InstanceArgs struct {
 	// Specifies whether to precheck the request. Valid values:
 	DryRun pulumi.BoolPtrInput
 	// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+	// - `Immediately` (Default): The configurations are immediately changed.
+	// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
 	EffectiveTime pulumi.StringPtrInput
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog pulumi.IntPtrInput
@@ -992,6 +1002,8 @@ func (o InstanceOutput) DryRun() pulumi.BoolPtrOutput {
 }
 
 // The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+// - `Immediately` (Default): The configurations are immediately changed.
+// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
 func (o InstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
 }

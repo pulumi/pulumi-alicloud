@@ -141,6 +141,16 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The next hop type. Available values:
+        /// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+        /// - `RouterInterface`: a router interface.
+        /// - `VpnGateway`: a VPN Gateway.
+        /// - `HaVip`: a high-availability virtual IP address (HAVIP).
+        /// - `NetworkInterface`: an elastic network interface (ENI).
+        /// - `NatGateway`: a Nat Gateway.
+        /// - `IPv6Gateway`: an IPv6 gateway.
+        /// - `Attachment`: a transit router.
+        /// - `VpcPeer`: a VPC Peering Connection.
+        /// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
         /// </summary>
         [Output("nexthopType")]
         public Output<string?> NexthopType { get; private set; } = null!;
@@ -223,6 +233,16 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The next hop type. Available values:
+        /// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+        /// - `RouterInterface`: a router interface.
+        /// - `VpnGateway`: a VPN Gateway.
+        /// - `HaVip`: a high-availability virtual IP address (HAVIP).
+        /// - `NetworkInterface`: an elastic network interface (ENI).
+        /// - `NatGateway`: a Nat Gateway.
+        /// - `IPv6Gateway`: an IPv6 gateway.
+        /// - `Attachment`: a transit router.
+        /// - `VpcPeer`: a VPC Peering Connection.
+        /// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
         /// </summary>
         [Input("nexthopType")]
         public Input<string>? NexthopType { get; set; }
@@ -267,6 +287,16 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The next hop type. Available values:
+        /// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+        /// - `RouterInterface`: a router interface.
+        /// - `VpnGateway`: a VPN Gateway.
+        /// - `HaVip`: a high-availability virtual IP address (HAVIP).
+        /// - `NetworkInterface`: an elastic network interface (ENI).
+        /// - `NatGateway`: a Nat Gateway.
+        /// - `IPv6Gateway`: an IPv6 gateway.
+        /// - `Attachment`: a transit router.
+        /// - `VpcPeer`: a VPC Peering Connection.
+        /// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
         /// </summary>
         [Input("nexthopType")]
         public Input<string>? NexthopType { get; set; }

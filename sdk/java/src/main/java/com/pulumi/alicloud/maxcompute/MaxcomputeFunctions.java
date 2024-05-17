@@ -51,7 +51,7 @@ public final class MaxcomputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_testaccmp");
-     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
      *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
@@ -108,7 +108,7 @@ public final class MaxcomputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_testaccmp");
-     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
      *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
@@ -165,7 +165,7 @@ public final class MaxcomputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_testaccmp");
-     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
      *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
@@ -222,7 +222,7 @@ public final class MaxcomputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_testaccmp");
-     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
      *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
@@ -279,7 +279,7 @@ public final class MaxcomputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_testaccmp");
-     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
      *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)
@@ -336,7 +336,7 @@ public final class MaxcomputeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_testaccmp");
-     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
      *             .defaultQuota("默认后付费Quota")
      *             .projectName(name)
      *             .comment(name)

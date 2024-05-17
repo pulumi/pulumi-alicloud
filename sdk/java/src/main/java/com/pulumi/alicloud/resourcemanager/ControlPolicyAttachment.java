@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new ControlPolicy("example", ControlPolicyArgs.builder()        
+ *         var example = new ControlPolicy("example", ControlPolicyArgs.builder()
  *             .controlPolicyName(name)
  *             .description(name)
  *             .effectScope("RAM")
@@ -83,11 +83,11 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var exampleFolder = new Folder("exampleFolder", FolderArgs.builder()        
+ *         var exampleFolder = new Folder("exampleFolder", FolderArgs.builder()
  *             .folderName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var exampleControlPolicyAttachment = new ControlPolicyAttachment("exampleControlPolicyAttachment", ControlPolicyAttachmentArgs.builder()        
+ *         var exampleControlPolicyAttachment = new ControlPolicyAttachment("exampleControlPolicyAttachment", ControlPolicyAttachmentArgs.builder()
  *             .policyId(example.id())
  *             .targetId(exampleFolder.id())
  *             .build());

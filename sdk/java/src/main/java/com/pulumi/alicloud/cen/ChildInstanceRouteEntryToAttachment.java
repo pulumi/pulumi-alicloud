@@ -72,36 +72,36 @@ import javax.annotation.Nullable;
  * 
  *         final var slaveZone = default_.resources()[0].slaveZones()[1];
  * 
- *         var example = new Network("example", NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var exampleMaster = new Switch("exampleMaster", SwitchArgs.builder()        
+ *         var exampleMaster = new Switch("exampleMaster", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("192.168.1.0/24")
  *             .vpcId(example.id())
  *             .zoneId(masterZone)
  *             .build());
  * 
- *         var exampleSlave = new Switch("exampleSlave", SwitchArgs.builder()        
+ *         var exampleSlave = new Switch("exampleSlave", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("192.168.2.0/24")
  *             .vpcId(example.id())
  *             .zoneId(slaveZone)
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .protectionLevel("REDUCED")
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()
  *             .transitRouterName(name)
  *             .cenId(exampleInstance.id())
  *             .build());
  * 
- *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()        
+ *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
  *             .cenId(exampleInstance.id())
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .vpcId(example.id())
@@ -118,13 +118,13 @@ import javax.annotation.Nullable;
  *             .transitRouterAttachmentDescription(name)
  *             .build());
  * 
- *         var exampleRouteTable = new RouteTable("exampleRouteTable", RouteTableArgs.builder()        
+ *         var exampleRouteTable = new RouteTable("exampleRouteTable", RouteTableArgs.builder()
  *             .vpcId(example.id())
  *             .routeTableName(name)
  *             .description(name)
  *             .build());
  * 
- *         var exampleChildInstanceRouteEntryToAttachment = new ChildInstanceRouteEntryToAttachment("exampleChildInstanceRouteEntryToAttachment", ChildInstanceRouteEntryToAttachmentArgs.builder()        
+ *         var exampleChildInstanceRouteEntryToAttachment = new ChildInstanceRouteEntryToAttachment("exampleChildInstanceRouteEntryToAttachment", ChildInstanceRouteEntryToAttachmentArgs.builder()
  *             .transitRouterAttachmentId(exampleTransitRouterVpcAttachment.transitRouterAttachmentId())
  *             .cenId(exampleInstance.id())
  *             .destinationCidrBlock("10.0.0.0/24")

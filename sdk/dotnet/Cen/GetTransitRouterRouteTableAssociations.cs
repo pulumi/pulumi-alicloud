@@ -113,6 +113,10 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The type of next hop. Valid values:
+        /// * `VPC`: virtual private cloud (VPC)
+        /// * `VBR`: virtual border router (VBR)
+        /// * `TR`: transit router
+        /// * `VPN`: VPN attachment
         /// </summary>
         [Input("transitRouterAttachmentResourceType")]
         public string? TransitRouterAttachmentResourceType { get; set; }
@@ -169,6 +173,10 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The type of next hop. Valid values:
+        /// * `VPC`: virtual private cloud (VPC)
+        /// * `VBR`: virtual border router (VBR)
+        /// * `TR`: transit router
+        /// * `VPN`: VPN attachment
         /// </summary>
         [Input("transitRouterAttachmentResourceType")]
         public Input<string>? TransitRouterAttachmentResourceType { get; set; }

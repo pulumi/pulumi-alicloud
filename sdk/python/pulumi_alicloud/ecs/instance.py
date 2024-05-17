@@ -151,6 +151,9 @@ class InstanceArgs:
                
                > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] maintenance_action: The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+               * `Stop` : stops the instance.
+               * `AutoRecover` : automatically recovers the instance.
+               * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         :param pulumi.Input[bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input['InstanceMaintenanceTimeArgs'] maintenance_time: The time of maintenance. See `maintenance_time` below.
         :param pulumi.Input['InstanceNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
@@ -164,6 +167,9 @@ class InstanceArgs:
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
@@ -182,6 +188,8 @@ class InstanceArgs:
                Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+               * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
+               * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since 1.184.0+.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -795,6 +803,9 @@ class InstanceArgs:
     def maintenance_action(self) -> Optional[pulumi.Input[str]]:
         """
         The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        * `Stop` : stops the instance.
+        * `AutoRecover` : automatically recovers the instance.
+        * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         """
         return pulumi.get(self, "maintenance_action")
 
@@ -907,6 +918,9 @@ class InstanceArgs:
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
         Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -1046,6 +1060,8 @@ class InstanceArgs:
     def stopped_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
+        * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         """
         return pulumi.get(self, "stopped_mode")
 
@@ -1378,6 +1394,9 @@ class _InstanceState:
                
                > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] maintenance_action: The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+               * `Stop` : stops the instance.
+               * `AutoRecover` : automatically recovers the instance.
+               * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         :param pulumi.Input[bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input['InstanceMaintenanceTimeArgs'] maintenance_time: The time of maintenance. See `maintenance_time` below.
         :param pulumi.Input[int] memory: The memory size of the instance. Unit: MiB.
@@ -1397,6 +1416,9 @@ class _InstanceState:
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] public_ip: The instance public ip.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
@@ -1415,6 +1437,8 @@ class _InstanceState:
                Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+               * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
+               * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since 1.184.0+.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -2071,6 +2095,9 @@ class _InstanceState:
     def maintenance_action(self) -> Optional[pulumi.Input[str]]:
         """
         The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        * `Stop` : stops the instance.
+        * `AutoRecover` : automatically recovers the instance.
+        * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         """
         return pulumi.get(self, "maintenance_action")
 
@@ -2255,6 +2282,9 @@ class _InstanceState:
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
         Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -2394,6 +2424,8 @@ class _InstanceState:
     def stopped_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
+        * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         """
         return pulumi.get(self, "stopped_mode")
 
@@ -2801,6 +2833,9 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] maintenance_action: The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+               * `Stop` : stops the instance.
+               * `AutoRecover` : automatically recovers the instance.
+               * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         :param pulumi.Input[bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input[pulumi.InputType['InstanceMaintenanceTimeArgs']] maintenance_time: The time of maintenance. See `maintenance_time` below.
         :param pulumi.Input[pulumi.InputType['InstanceNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
@@ -2814,6 +2849,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
@@ -2832,6 +2870,8 @@ class Instance(pulumi.CustomResource):
                Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+               * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
+               * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since 1.184.0+.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -3265,6 +3305,9 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] maintenance_action: The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+               * `Stop` : stops the instance.
+               * `AutoRecover` : automatically recovers the instance.
+               * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         :param pulumi.Input[bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input[pulumi.InputType['InstanceMaintenanceTimeArgs']] maintenance_time: The time of maintenance. See `maintenance_time` below.
         :param pulumi.Input[int] memory: The memory size of the instance. Unit: MiB.
@@ -3284,6 +3327,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] public_ip: The instance public ip.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+               - `AutoRenewal`: Enable auto renewal.
+               - `Normal`: Disable auto renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the instance belongs.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[int] secondary_private_ip_address_count: The number of private IP addresses to be automatically assigned from within the CIDR block of the vswitch. **NOTE:** To assign secondary private IP addresses, you must specify `secondary_private_ips` or `secondary_private_ip_address_count` but not both.
@@ -3302,6 +3348,8 @@ class Instance(pulumi.CustomResource):
                Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+               * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
+               * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: Valid values are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`, `cloud_auto`, `cloud_essd_entry`. only is used to some none I/O optimized instance. Valid values `cloud_auto` Available since 1.184.0+.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
@@ -3735,6 +3783,9 @@ class Instance(pulumi.CustomResource):
     def maintenance_action(self) -> pulumi.Output[str]:
         """
         The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        * `Stop` : stops the instance.
+        * `AutoRecover` : automatically recovers the instance.
+        * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         """
         return pulumi.get(self, "maintenance_action")
 
@@ -3859,6 +3910,9 @@ class Instance(pulumi.CustomResource):
     def renewal_status(self) -> pulumi.Output[Optional[str]]:
         """
         Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+        - `AutoRenewal`: Enable auto renewal.
+        - `Normal`: Disable auto renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -3954,6 +4008,8 @@ class Instance(pulumi.CustomResource):
     def stopped_mode(self) -> pulumi.Output[str]:
         """
         The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
+        * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         """
         return pulumi.get(self, "stopped_mode")
 

@@ -82,6 +82,8 @@ export class EcsDeploymentSet extends pulumi.CustomResource {
     public readonly granularity!: pulumi.Output<string | undefined>;
     /**
      * The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+     * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+     * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
      */
     public readonly onUnableToRedeployFailedInstance!: pulumi.Output<string | undefined>;
     /**
@@ -144,6 +146,8 @@ export interface EcsDeploymentSetState {
     granularity?: pulumi.Input<string>;
     /**
      * The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+     * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+     * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
      */
     onUnableToRedeployFailedInstance?: pulumi.Input<string>;
     /**
@@ -174,6 +178,8 @@ export interface EcsDeploymentSetArgs {
     granularity?: pulumi.Input<string>;
     /**
      * The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+     * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+     * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
      */
     onUnableToRedeployFailedInstance?: pulumi.Input<string>;
     /**

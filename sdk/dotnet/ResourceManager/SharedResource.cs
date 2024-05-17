@@ -89,6 +89,11 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// The resource type of should shared. Valid values:
+        /// - `VSwitch`.
+        /// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        /// - The following types are added after v1.192.0: `PrefixList` and `Image`.
+        /// - The following types are added after v1.194.1: `PublicIpAddressPool`.
+        /// - The following types are added after v1.208.0: `KMSInstance`.
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
@@ -159,6 +164,11 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// The resource type of should shared. Valid values:
+        /// - `VSwitch`.
+        /// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        /// - The following types are added after v1.192.0: `PrefixList` and `Image`.
+        /// - The following types are added after v1.194.1: `PublicIpAddressPool`.
+        /// - The following types are added after v1.208.0: `KMSInstance`.
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
@@ -185,6 +195,11 @@ namespace Pulumi.AliCloud.ResourceManager
 
         /// <summary>
         /// The resource type of should shared. Valid values:
+        /// - `VSwitch`.
+        /// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+        /// - The following types are added after v1.192.0: `PrefixList` and `Image`.
+        /// - The following types are added after v1.194.1: `PublicIpAddressPool`.
+        /// - The following types are added after v1.208.0: `KMSInstance`.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }

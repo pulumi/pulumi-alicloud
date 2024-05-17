@@ -40,6 +40,8 @@ class NatGatewayArgs:
         :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         :param pulumi.Input[bool] dry_run: Specifies whether to only precheck this request. Default value: `false`.
         :param pulumi.Input[str] eip_bind_mode: The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+               - `MULTI_BINDED`: Multi EIP network card visible mode.
+               - `NAT`: EIP normal mode, compatible with IPv4 gateway.
         :param pulumi.Input[bool] force: Specifies whether to forcefully delete the NAT gateway.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
@@ -143,6 +145,8 @@ class NatGatewayArgs:
     def eip_bind_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        - `MULTI_BINDED`: Multi EIP network card visible mode.
+        - `NAT`: EIP normal mode, compatible with IPv4 gateway.
         """
         return pulumi.get(self, "eip_bind_mode")
 
@@ -327,6 +331,8 @@ class _NatGatewayState:
         :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         :param pulumi.Input[bool] dry_run: Specifies whether to only precheck this request. Default value: `false`.
         :param pulumi.Input[str] eip_bind_mode: The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+               - `MULTI_BINDED`: Multi EIP network card visible mode.
+               - `NAT`: EIP normal mode, compatible with IPv4 gateway.
         :param pulumi.Input[bool] force: Specifies whether to forcefully delete the NAT gateway.
         :param pulumi.Input[str] forward_table_ids: The nat gateway will auto create a forward item.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
@@ -429,6 +435,8 @@ class _NatGatewayState:
     def eip_bind_mode(self) -> Optional[pulumi.Input[str]]:
         """
         The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        - `MULTI_BINDED`: Multi EIP network card visible mode.
+        - `NAT`: EIP normal mode, compatible with IPv4 gateway.
         """
         return pulumi.get(self, "eip_bind_mode")
 
@@ -670,6 +678,8 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         :param pulumi.Input[bool] dry_run: Specifies whether to only precheck this request. Default value: `false`.
         :param pulumi.Input[str] eip_bind_mode: The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+               - `MULTI_BINDED`: Multi EIP network card visible mode.
+               - `NAT`: EIP normal mode, compatible with IPv4 gateway.
         :param pulumi.Input[bool] force: Specifies whether to forcefully delete the NAT gateway.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
         :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
@@ -806,6 +816,8 @@ class NatGateway(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
         :param pulumi.Input[bool] dry_run: Specifies whether to only precheck this request. Default value: `false`.
         :param pulumi.Input[str] eip_bind_mode: The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+               - `MULTI_BINDED`: Multi EIP network card visible mode.
+               - `NAT`: EIP normal mode, compatible with IPv4 gateway.
         :param pulumi.Input[bool] force: Specifies whether to forcefully delete the NAT gateway.
         :param pulumi.Input[str] forward_table_ids: The nat gateway will auto create a forward item.
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
@@ -881,6 +893,8 @@ class NatGateway(pulumi.CustomResource):
     def eip_bind_mode(self) -> pulumi.Output[str]:
         """
         The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+        - `MULTI_BINDED`: Multi EIP network card visible mode.
+        - `NAT`: EIP normal mode, compatible with IPv4 gateway.
         """
         return pulumi.get(self, "eip_bind_mode")
 

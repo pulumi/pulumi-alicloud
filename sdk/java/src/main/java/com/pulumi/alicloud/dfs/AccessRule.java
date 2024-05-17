@@ -53,13 +53,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("example_name");
- *         var default_ = new AccessGroup("default", AccessGroupArgs.builder()        
+ *         var default_ = new AccessGroup("default", AccessGroupArgs.builder()
  *             .networkType("VPC")
  *             .accessGroupName(name)
  *             .description(name)
  *             .build());
  * 
- *         var defaultAccessRule = new AccessRule("defaultAccessRule", AccessRuleArgs.builder()        
+ *         var defaultAccessRule = new AccessRule("defaultAccessRule", AccessRuleArgs.builder()
  *             .networkSegment("192.0.2.0/24")
  *             .accessGroupId(default_.id())
  *             .description(name)

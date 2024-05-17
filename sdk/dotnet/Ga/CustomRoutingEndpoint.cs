@@ -155,6 +155,9 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+        /// - `DenyAll`: denies all traffic to the endpoint.
+        /// - `AllowAll`: allows all traffic to the endpoint.
+        /// - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
         /// </summary>
         [Output("trafficToEndpointPolicy")]
         public Output<string> TrafficToEndpointPolicy { get; private set; } = null!;
@@ -225,6 +228,9 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+        /// - `DenyAll`: denies all traffic to the endpoint.
+        /// - `AllowAll`: allows all traffic to the endpoint.
+        /// - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
         /// </summary>
         [Input("trafficToEndpointPolicy")]
         public Input<string>? TrafficToEndpointPolicy { get; set; }
@@ -281,6 +287,9 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+        /// - `DenyAll`: denies all traffic to the endpoint.
+        /// - `AllowAll`: allows all traffic to the endpoint.
+        /// - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
         /// </summary>
         [Input("trafficToEndpointPolicy")]
         public Input<string>? TrafficToEndpointPolicy { get; set; }

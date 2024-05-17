@@ -76,26 +76,26 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
  *             .projectName(String.format("example-value-%s", defaultInteger.result()))
  *             .build());
  * 
- *         var defaultStore = new Store("defaultStore", StoreArgs.builder()        
+ *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
  *             .projectName(defaultProject.name())
  *             .logstoreName("example-value")
  *             .build());
  * 
- *         var sourceStore = new Store("sourceStore", StoreArgs.builder()        
+ *         var sourceStore = new Store("sourceStore", StoreArgs.builder()
  *             .projectName(defaultProject.name())
  *             .logstoreName("example-source-store")
  *             .build());
  * 
- *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(String.format("fcservicerole-%s", defaultInteger.result()))
  *             .document("""
  *   {
@@ -117,13 +117,13 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
  *             .roleName(defaultRole.name())
  *             .policyName("AliyunLogFullAccess")
  *             .policyType("System")
  *             .build());
  * 
- *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()
  *             .name(String.format("example-value-%s", defaultInteger.result()))
  *             .description("example-value")
  *             .role(defaultRole.arn())
@@ -135,12 +135,12 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
- *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
  *             .bucket(defaultBucket.id())
  *             .key("index.py")
  *             .content("""
@@ -151,7 +151,7 @@ import javax.annotation.Nullable;
  * return 'hello world'            """)
  *             .build());
  * 
- *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()        
+ *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()
  *             .service(defaultService.name())
  *             .name("terraform-example")
  *             .description("example")
@@ -162,7 +162,7 @@ import javax.annotation.Nullable;
  *             .handler("hello.handler")
  *             .build());
  * 
- *         var defaultTrigger = new Trigger("defaultTrigger", TriggerArgs.builder()        
+ *         var defaultTrigger = new Trigger("defaultTrigger", TriggerArgs.builder()
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
  *             .name("terraform-example")
@@ -254,16 +254,16 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
+ *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()
  *             .name(String.format("example-value-%s", defaultInteger.result()))
  *             .build());
  * 
- *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(String.format("fcservicerole-%s", defaultInteger.result()))
  *             .document("""
  *   {
@@ -285,24 +285,24 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
  *             .roleName(defaultRole.name())
  *             .policyName("AliyunMNSNotificationRolePolicy")
  *             .policyType("System")
  *             .build());
  * 
- *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()
  *             .name(String.format("example-value-%s", defaultInteger.result()))
  *             .description("example-value")
  *             .internetAccess(false)
  *             .build());
  * 
- *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
- *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
  *             .bucket(defaultBucket.id())
  *             .key("index.py")
  *             .content("""
@@ -313,7 +313,7 @@ import javax.annotation.Nullable;
  * return 'hello world'            """)
  *             .build());
  * 
- *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()        
+ *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()
  *             .service(defaultService.name())
  *             .name(String.format("terraform-example-%s", defaultInteger.result()))
  *             .description("example")
@@ -324,7 +324,7 @@ import javax.annotation.Nullable;
  *             .handler("hello.handler")
  *             .build());
  * 
- *         var defaultTrigger = new Trigger("defaultTrigger", TriggerArgs.builder()        
+ *         var defaultTrigger = new Trigger("defaultTrigger", TriggerArgs.builder()
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
  *             .name("terraform-example")
@@ -393,12 +393,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()        
+ *         var defaultDomainNew = new DomainNew("defaultDomainNew", DomainNewArgs.builder()
  *             .domainName(String.format("example%s.tf.com", defaultInteger.result()))
  *             .cdnType("web")
  *             .scope("overseas")
@@ -411,13 +411,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()
  *             .name(String.format("example-value-%s", defaultInteger.result()))
  *             .description("example-value")
  *             .internetAccess(false)
  *             .build());
  * 
- *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(String.format("fcservicerole-%s", defaultInteger.result()))
  *             .document("""
  *     {
@@ -439,7 +439,7 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+ *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
  *             .policyName(String.format("fcservicepolicy-%s", defaultInteger.result()))
  *             .policyDocument(Output.tuple(defaultService.name(), defaultService.name()).applyValue(values -> {
  *                 var defaultServiceName = values.t1;
@@ -466,18 +466,18 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
  *             .roleName(defaultRole.name())
  *             .policyName(defaultPolicy.name())
  *             .policyType("Custom")
  *             .build());
  * 
- *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
- *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
  *             .bucket(defaultBucket.id())
  *             .key("index.py")
  *             .content("""
@@ -488,7 +488,7 @@ import javax.annotation.Nullable;
  * return 'hello world'            """)
  *             .build());
  * 
- *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()        
+ *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()
  *             .service(defaultService.name())
  *             .name(String.format("terraform-example-%s", defaultInteger.result()))
  *             .description("example")
@@ -499,7 +499,7 @@ import javax.annotation.Nullable;
  *             .handler("hello.handler")
  *             .build());
  * 
- *         var defaultTrigger = new Trigger("defaultTrigger", TriggerArgs.builder()        
+ *         var defaultTrigger = new Trigger("defaultTrigger", TriggerArgs.builder()
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
  *             .name("terraform-example")
@@ -580,27 +580,27 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var serviceLinkedRole = new ServiceLinkedRole("serviceLinkedRole", ServiceLinkedRoleArgs.builder()        
+ *         var serviceLinkedRole = new ServiceLinkedRole("serviceLinkedRole", ServiceLinkedRoleArgs.builder()
  *             .productName("AliyunServiceRoleForEventBridgeSendToFC")
  *             .build());
  * 
- *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()
  *             .name(String.format("example-value-%s", defaultInteger.result()))
  *             .description("example-value")
  *             .internetAccess(false)
  *             .build());
  * 
- *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
- *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
  *             .bucket(defaultBucket.id())
  *             .key("index.py")
  *             .content("""
@@ -611,7 +611,7 @@ import javax.annotation.Nullable;
  * return 'hello world'            """)
  *             .build());
  * 
- *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()        
+ *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()
  *             .service(defaultService.name())
  *             .name("terraform-example")
  *             .description("example")
@@ -622,7 +622,7 @@ import javax.annotation.Nullable;
  *             .handler("hello.handler")
  *             .build());
  * 
- *         var ossTrigger = new Trigger("ossTrigger", TriggerArgs.builder()        
+ *         var ossTrigger = new Trigger("ossTrigger", TriggerArgs.builder()
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
  *             .name("terraform-example-oss")
@@ -646,7 +646,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var mnsTrigger = new Trigger("mnsTrigger", TriggerArgs.builder()        
+ *         var mnsTrigger = new Trigger("mnsTrigger", TriggerArgs.builder()
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
  *             .name("terraform-example-mns")
@@ -670,25 +670,25 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .instanceName(String.format("terraform-example-%s", defaultInteger.result()))
  *             .remark("terraform-example")
  *             .build());
  * 
- *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()        
+ *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()
  *             .groupName("GID-example")
  *             .instanceId(defaultInstance.id())
  *             .remark("terraform-example")
  *             .build());
  * 
- *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
+ *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()
  *             .topicName("mytopic")
  *             .instanceId(defaultInstance.id())
  *             .messageType(0)
  *             .remark("terraform-example")
  *             .build());
  * 
- *         var rocketmqTrigger = new Trigger("rocketmqTrigger", TriggerArgs.builder()        
+ *         var rocketmqTrigger = new Trigger("rocketmqTrigger", TriggerArgs.builder()
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
  *             .name("terraform-example-rocketmq")
@@ -721,7 +721,7 @@ import javax.annotation.Nullable;
  *             }))
  *             .build());
  * 
- *         var defaultInstance2 = new Instance("defaultInstance2", InstanceArgs.builder()        
+ *         var defaultInstance2 = new Instance("defaultInstance2", InstanceArgs.builder()
  *             .instanceName(String.format("terraform-example-%s", defaultInteger.result()))
  *             .instanceType("professional")
  *             .maxTps(1000)
@@ -732,18 +732,18 @@ import javax.annotation.Nullable;
  *             .period(1)
  *             .build());
  * 
- *         var defaultVirtualHost = new VirtualHost("defaultVirtualHost", VirtualHostArgs.builder()        
+ *         var defaultVirtualHost = new VirtualHost("defaultVirtualHost", VirtualHostArgs.builder()
  *             .instanceId(defaultInstance2.id())
  *             .virtualHostName("example-VirtualHost")
  *             .build());
  * 
- *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()        
+ *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()
  *             .instanceId(defaultVirtualHost.instanceId())
  *             .queueName("example-queue")
  *             .virtualHostName(defaultVirtualHost.virtualHostName())
  *             .build());
  * 
- *         var rabbitmqTrigger = new Trigger("rabbitmqTrigger", TriggerArgs.builder()        
+ *         var rabbitmqTrigger = new Trigger("rabbitmqTrigger", TriggerArgs.builder()
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
  *             .name("terraform-example-rabbitmq")

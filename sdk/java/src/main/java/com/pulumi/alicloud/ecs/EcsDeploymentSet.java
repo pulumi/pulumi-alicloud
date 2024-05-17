@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EcsDeploymentSet("default", EcsDeploymentSetArgs.builder()        
+ *         var default_ = new EcsDeploymentSet("default", EcsDeploymentSetArgs.builder()
  *             .strategy("Availability")
  *             .domain("Default")
  *             .granularity("Host")
@@ -131,6 +131,8 @@ public class EcsDeploymentSet extends com.pulumi.resources.CustomResource {
     }
     /**
      * The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+     * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+     * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
      * 
      */
     @Export(name="onUnableToRedeployFailedInstance", refs={String.class}, tree="[0]")
@@ -138,6 +140,8 @@ public class EcsDeploymentSet extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+     * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+     * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
      * 
      */
     public Output<Optional<String>> onUnableToRedeployFailedInstance() {

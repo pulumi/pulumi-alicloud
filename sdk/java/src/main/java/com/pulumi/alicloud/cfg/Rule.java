@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .status("OK")
  *             .build());
  * 
- *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+ *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
  *             .description("If the resource matches one of the specified tag key-value pairs, the configuration is considered compliant.")
  *             .sourceOwner("ALIYUN")
  *             .sourceIdentifier("contains-tag")

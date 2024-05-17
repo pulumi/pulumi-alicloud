@@ -75,11 +75,11 @@ import javax.annotation.Nullable;
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .description(name)
  *             .licenseCode("bhah_ent_50_asset")
  *             .planCode("cloudbastion")
@@ -90,12 +90,12 @@ import javax.annotation.Nullable;
  *             .securityGroupIds(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var defaultUserGroup = new UserGroup("defaultUserGroup", UserGroupArgs.builder()        
+ *         var defaultUserGroup = new UserGroup("defaultUserGroup", UserGroupArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .userGroupName(name)
  *             .build());
  * 
- *         var localUser = new User("localUser", UserArgs.builder()        
+ *         var localUser = new User("localUser", UserArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .mobileCountryCode("CN")
  *             .mobile("13312345678")
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  *             .userName(String.format("%s_local_user", name))
  *             .build());
  * 
- *         var defaultUserAttachment = new UserAttachment("defaultUserAttachment", UserAttachmentArgs.builder()        
+ *         var defaultUserAttachment = new UserAttachment("defaultUserAttachment", UserAttachmentArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .userGroupId(defaultUserGroup.userGroupId())
  *             .userId(localUser.userId())

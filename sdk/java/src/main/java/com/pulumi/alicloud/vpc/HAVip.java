@@ -57,19 +57,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var example = new Network("example", NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(example.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var exampleHAVip = new HAVip("exampleHAVip", HAVipArgs.builder()        
+ *         var exampleHAVip = new HAVip("exampleHAVip", HAVipArgs.builder()
  *             .vswitchId(exampleSwitch.id())
  *             .description(name)
  *             .build());
@@ -107,6 +107,8 @@ public class HAVip extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the instance with which the HAVIP is associated. Valid values:
+     * - `EcsInstance`: an ECS instance.
+     * - `NetworkInterface`: an ENI.
      * 
      */
     @Export(name="associatedInstanceType", refs={String.class}, tree="[0]")
@@ -114,6 +116,8 @@ public class HAVip extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the instance with which the HAVIP is associated. Valid values:
+     * - `EcsInstance`: an ECS instance.
+     * - `NetworkInterface`: an ENI.
      * 
      */
     public Output<String> associatedInstanceType() {

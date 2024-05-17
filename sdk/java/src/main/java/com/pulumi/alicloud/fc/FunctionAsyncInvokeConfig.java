@@ -83,12 +83,12 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(String.format("examplerole%s", defaultInteger.result()))
  *             .document("""
  * 	{
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+ *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
  *             .policyName(String.format("examplepolicy%s", defaultInteger.result()))
  *             .policyDocument("""
  * 	{
@@ -126,25 +126,25 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()        
+ *         var defaultRolePolicyAttachment = new RolePolicyAttachment("defaultRolePolicyAttachment", RolePolicyAttachmentArgs.builder()
  *             .roleName(defaultRole.name())
  *             .policyName(defaultPolicy.name())
  *             .policyType("Custom")
  *             .build());
  * 
- *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()
  *             .name(String.format("example-value-%s", defaultInteger.result()))
  *             .description("example-value")
  *             .role(defaultRole.arn())
  *             .internetAccess(false)
  *             .build());
  * 
- *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
- *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
  *             .bucket(defaultBucket.id())
  *             .key("index.py")
  *             .content("""
@@ -155,7 +155,7 @@ import javax.annotation.Nullable;
  * return 'hello world'            """)
  *             .build());
  * 
- *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()        
+ *         var defaultFunction = new Function("defaultFunction", FunctionArgs.builder()
  *             .service(defaultService.name())
  *             .name(String.format("terraform-example-%s", defaultInteger.result()))
  *             .description("example")
@@ -166,15 +166,15 @@ import javax.annotation.Nullable;
  *             .handler("hello.handler")
  *             .build());
  * 
- *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()        
+ *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()
  *             .name(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
- *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
+ *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()
  *             .name(String.format("terraform-example-%s", defaultInteger.result()))
  *             .build());
  * 
- *         var defaultFunctionAsyncInvokeConfig = new FunctionAsyncInvokeConfig("defaultFunctionAsyncInvokeConfig", FunctionAsyncInvokeConfigArgs.builder()        
+ *         var defaultFunctionAsyncInvokeConfig = new FunctionAsyncInvokeConfig("defaultFunctionAsyncInvokeConfig", FunctionAsyncInvokeConfigArgs.builder()
  *             .serviceName(defaultService.name())
  *             .functionName(defaultFunction.name())
  *             .destinationConfig(FunctionAsyncInvokeConfigDestinationConfigArgs.builder()

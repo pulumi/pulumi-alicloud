@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Group("default", GroupArgs.builder()        
+ *         var default_ = new Group("default", GroupArgs.builder()
  *             .name("tf_example")
  *             .description("tf_example")
  *             .build());

@@ -49,6 +49,8 @@ public final class AggregatorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+     * * `CUSTOM` - The custom account group.
+     * * `RD` - The global account group.
      * 
      */
     @Import(name="aggregatorType")
@@ -56,6 +58,8 @@ public final class AggregatorState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+     * * `CUSTOM` - The custom account group.
+     * * `RD` - The global account group.
      * 
      */
     public Optional<Output<String>> aggregatorType() {
@@ -174,6 +178,8 @@ public final class AggregatorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param aggregatorType The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+         * * `CUSTOM` - The custom account group.
+         * * `RD` - The global account group.
          * 
          * @return builder
          * 
@@ -185,6 +191,8 @@ public final class AggregatorState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param aggregatorType The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+         * * `CUSTOM` - The custom account group.
+         * * `RD` - The global account group.
          * 
          * @return builder
          * 

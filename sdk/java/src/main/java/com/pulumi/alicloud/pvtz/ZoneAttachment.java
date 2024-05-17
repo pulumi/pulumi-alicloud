@@ -48,21 +48,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var zone = new Zone("zone", ZoneArgs.builder()        
+ *         var zone = new Zone("zone", ZoneArgs.builder()
  *             .zoneName("foo.example.com")
  *             .build());
  * 
- *         var first = new Network("first", NetworkArgs.builder()        
+ *         var first = new Network("first", NetworkArgs.builder()
  *             .vpcName("the-first-vpc")
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var second = new Network("second", NetworkArgs.builder()        
+ *         var second = new Network("second", NetworkArgs.builder()
  *             .vpcName("the-second-vpc")
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var zone_attachment = new ZoneAttachment("zone-attachment", ZoneAttachmentArgs.builder()        
+ *         var zone_attachment = new ZoneAttachment("zone-attachment", ZoneAttachmentArgs.builder()
  *             .zoneId(zone.id())
  *             .vpcIds(            
  *                 first.id(),
@@ -105,21 +105,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var zone = new Zone("zone", ZoneArgs.builder()        
+ *         var zone = new Zone("zone", ZoneArgs.builder()
  *             .zoneName("foo.example.com")
  *             .build());
  * 
- *         var first = new Network("first", NetworkArgs.builder()        
+ *         var first = new Network("first", NetworkArgs.builder()
  *             .vpcName("the-first-vpc")
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var second = new Network("second", NetworkArgs.builder()        
+ *         var second = new Network("second", NetworkArgs.builder()
  *             .vpcName("the-second-vpc")
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var zone_attachment = new ZoneAttachment("zone-attachment", ZoneAttachmentArgs.builder()        
+ *         var zone_attachment = new ZoneAttachment("zone-attachment", ZoneAttachmentArgs.builder()
  *             .zoneId(zone.id())
  *             .vpcs(            
  *                 ZoneAttachmentVpcArgs.builder()
@@ -166,26 +166,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var zone = new Zone("zone", ZoneArgs.builder()        
+ *         var zone = new Zone("zone", ZoneArgs.builder()
  *             .zoneName("foo.example.com")
  *             .build());
  * 
- *         var first = new Network("first", NetworkArgs.builder()        
+ *         var first = new Network("first", NetworkArgs.builder()
  *             .vpcName("the-first-vpc")
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var second = new Network("second", NetworkArgs.builder()        
+ *         var second = new Network("second", NetworkArgs.builder()
  *             .vpcName("the-second-vpc")
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var third = new Network("third", NetworkArgs.builder()        
+ *         var third = new Network("third", NetworkArgs.builder()
  *             .vpcName("the-third-vpc")
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var zone_attachment = new ZoneAttachment("zone-attachment", ZoneAttachmentArgs.builder()        
+ *         var zone_attachment = new ZoneAttachment("zone-attachment", ZoneAttachmentArgs.builder()
  *             .zoneId(zone.id())
  *             .vpcs(            
  *                 ZoneAttachmentVpcArgs.builder()

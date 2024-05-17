@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -101,24 +101,24 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(myName)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(myName)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(myName)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()        
+ *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
  *             .minSize("0")
  *             .maxSize("2")
  *             .scalingGroupName(myName)
@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  *             .vswitchIds(defaultSwitch.id())
  *             .build());
  * 
- *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()        
+ *         var defaultScalingConfiguration = new ScalingConfiguration("defaultScalingConfiguration", ScalingConfigurationArgs.builder()
  *             .scalingGroupId(defaultScalingGroup.id())
  *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
  *             .enable(true)
  *             .build());
  * 
- *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
+ *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
  *             .serverGroupName(myName)
  *             .vpcId(defaultNetwork.id())
  *             .healthCheckConfig(ServerGroupHealthCheckConfigArgs.builder()
@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultAlbServerGroupAttachment = new AlbServerGroupAttachment("defaultAlbServerGroupAttachment", AlbServerGroupAttachmentArgs.builder()        
+ *         var defaultAlbServerGroupAttachment = new AlbServerGroupAttachment("defaultAlbServerGroupAttachment", AlbServerGroupAttachmentArgs.builder()
  *             .scalingGroupId(defaultScalingConfiguration.scalingGroupId())
  *             .albServerGroupId(defaultServerGroup.id())
  *             .port(9000)

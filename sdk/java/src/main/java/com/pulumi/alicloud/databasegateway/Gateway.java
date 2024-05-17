@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Gateway("example", GatewayArgs.builder()        
+ *         var example = new Gateway("example", GatewayArgs.builder()
  *             .gatewayName("example_value")
  *             .build());
  * 

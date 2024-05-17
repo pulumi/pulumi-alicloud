@@ -84,6 +84,8 @@ export class Aggregator extends pulumi.CustomResource {
     public readonly aggregatorName!: pulumi.Output<string>;
     /**
      * The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+     * * `CUSTOM` - The custom account group.
+     * * `RD` - The global account group.
      */
     public readonly aggregatorType!: pulumi.Output<string>;
     /**
@@ -146,6 +148,8 @@ export interface AggregatorState {
     aggregatorName?: pulumi.Input<string>;
     /**
      * The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+     * * `CUSTOM` - The custom account group.
+     * * `RD` - The global account group.
      */
     aggregatorType?: pulumi.Input<string>;
     /**
@@ -172,6 +176,8 @@ export interface AggregatorArgs {
     aggregatorName: pulumi.Input<string>;
     /**
      * The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+     * * `CUSTOM` - The custom account group.
+     * * `RD` - The global account group.
      */
     aggregatorType?: pulumi.Input<string>;
     /**

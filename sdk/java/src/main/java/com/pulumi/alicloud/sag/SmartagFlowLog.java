@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new SmartagFlowLog("example", SmartagFlowLogArgs.builder()        
+ *         var example = new SmartagFlowLog("example", SmartagFlowLogArgs.builder()
  *             .netflowServerIp("192.168.0.2")
  *             .netflowServerPort(9995)
  *             .netflowVersion("V9")

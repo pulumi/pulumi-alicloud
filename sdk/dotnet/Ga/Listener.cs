@@ -93,6 +93,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The clientAffinity of the listener. Default value: `NONE`. Valid values:
+        /// - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+        /// - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
         /// </summary>
         [Output("clientAffinity")]
         public Output<string?> ClientAffinity { get; private set; } = null!;
@@ -118,6 +120,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The routing type of the listener. Default Value: `Standard`. Valid values:
+        /// - `Standard`: intelligent routing.
+        /// - `CustomRouting`: custom routing.
         /// </summary>
         [Output("listenerType")]
         public Output<string?> ListenerType { get; private set; } = null!;
@@ -226,6 +230,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The clientAffinity of the listener. Default value: `NONE`. Valid values:
+        /// - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+        /// - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
         /// </summary>
         [Input("clientAffinity")]
         public Input<string>? ClientAffinity { get; set; }
@@ -251,6 +257,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The routing type of the listener. Default Value: `Standard`. Valid values:
+        /// - `Standard`: intelligent routing.
+        /// - `CustomRouting`: custom routing.
         /// </summary>
         [Input("listenerType")]
         public Input<string>? ListenerType { get; set; }
@@ -321,6 +329,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The clientAffinity of the listener. Default value: `NONE`. Valid values:
+        /// - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+        /// - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
         /// </summary>
         [Input("clientAffinity")]
         public Input<string>? ClientAffinity { get; set; }
@@ -346,6 +356,8 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The routing type of the listener. Default Value: `Standard`. Valid values:
+        /// - `Standard`: intelligent routing.
+        /// - `CustomRouting`: custom routing.
         /// </summary>
         [Input("listenerType")]
         public Input<string>? ListenerType { get; set; }

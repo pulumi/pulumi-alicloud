@@ -53,14 +53,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new EipAddress("default", EipAddressArgs.builder()        
+ *         var default_ = new EipAddress("default", EipAddressArgs.builder()
  *             .addressName(name)
  *             .isp("BGP")
  *             .internetChargeType("PayByBandwidth")
  *             .paymentType("PayAsYouGo")
  *             .build());
  * 
- *         var defaultBasicDefenseThreshold = new BasicDefenseThreshold("defaultBasicDefenseThreshold", BasicDefenseThresholdArgs.builder()        
+ *         var defaultBasicDefenseThreshold = new BasicDefenseThreshold("defaultBasicDefenseThreshold", BasicDefenseThresholdArgs.builder()
  *             .instanceId(default_.id())
  *             .ddosType("defense")
  *             .instanceType("eip")

@@ -60,13 +60,13 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultVpd = new Vpd("defaultVpd", VpdArgs.builder()        
+ *         var defaultVpd = new Vpd("defaultVpd", VpdArgs.builder()
  *             .cidr("10.0.0.0/8")
  *             .vpdName(name)
  *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.groups()[0].id()))
  *             .build());
  * 
- *         var defaultSubnet = new Subnet("defaultSubnet", SubnetArgs.builder()        
+ *         var defaultSubnet = new Subnet("defaultSubnet", SubnetArgs.builder()
  *             .subnetName(name)
  *             .zoneId(default_.zones()[0].id())
  *             .cidr("10.0.0.0/16")

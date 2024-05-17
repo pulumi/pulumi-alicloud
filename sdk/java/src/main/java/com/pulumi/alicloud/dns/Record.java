@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Domain record
- *         var record = new Record("record", RecordArgs.builder()        
+ *         var record = new Record("record", RecordArgs.builder()
  *             .name("domainname")
  *             .hostRecord("{@literal @}")
  *             .type("A")
@@ -137,6 +137,7 @@ public class Record extends com.pulumi.resources.CustomResource {
     }
     /**
      * The record status. `Enable` or `Disable`.
+     * * `Locked` - The record locked state. `true` or `false`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
@@ -144,6 +145,7 @@ public class Record extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The record status. `Enable` or `Disable`.
+     * * `Locked` - The record locked state. `true` or `false`.
      * 
      */
     public Output<String> status() {

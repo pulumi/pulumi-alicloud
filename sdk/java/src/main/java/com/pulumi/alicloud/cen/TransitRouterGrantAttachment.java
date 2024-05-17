@@ -54,17 +54,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var example = new Network("example", NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()
  *             .vpcName("tf_example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .cenInstanceName("tf_example")
  *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleTransitRouterGrantAttachment = new TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment", TransitRouterGrantAttachmentArgs.builder()        
+ *         var exampleTransitRouterGrantAttachment = new TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment", TransitRouterGrantAttachmentArgs.builder()
  *             .cenId(exampleInstance.id())
  *             .cenOwnerId(default_.id())
  *             .instanceId(example.id())

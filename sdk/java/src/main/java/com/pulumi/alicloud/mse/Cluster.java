@@ -88,6 +88,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+     * - `MSE_SC_1_2_60_c`: 1C2G
+     * - `MSE_SC_2_4_60_c`: 2C4G
+     * - `MSE_SC_4_8_60_c`: 4C8G
+     * - `MSE_SC_8_16_60_c`: 8C16G
      * 
      */
     @Export(name="clusterSpecification", refs={String.class}, tree="[0]")
@@ -95,6 +99,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+     * - `MSE_SC_1_2_60_c`: 1C2G
+     * - `MSE_SC_2_4_60_c`: 2C4G
+     * - `MSE_SC_4_8_60_c`: 4C8G
+     * - `MSE_SC_8_16_60_c`: 8C16G
      * 
      */
     public Output<String> clusterSpecification() {

@@ -65,19 +65,19 @@ import javax.annotation.Nullable;
  * 
  *         final var zoneId = default_.zones()[index].id();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .engineVersion("4.2")
  *             .dbInstanceClass("dds.mongo.mid")
  *             .dbInstanceStorage(10)
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var defaultAuditPolicy = new AuditPolicy("defaultAuditPolicy", AuditPolicyArgs.builder()        
+ *         var defaultAuditPolicy = new AuditPolicy("defaultAuditPolicy", AuditPolicyArgs.builder()
  *             .dbInstanceId(defaultInstance.id())
  *             .auditStatus("disabled")
  *             .build());

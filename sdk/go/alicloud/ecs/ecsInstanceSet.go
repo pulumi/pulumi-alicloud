@@ -185,12 +185,17 @@ type EcsInstanceSet struct {
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// The security enhancement strategy.
+	// - `Active`: Enable security enhancement strategy, it only works on system images.
+	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit pulumi.Float64Output `pulumi:"spotPriceLimit"`
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+	// - `NoSpot`: A regular Pay-As-You-Go instance.
+	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
+	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringOutput `pulumi:"spotStrategy"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskAutoSnapshotPolicyId"`
@@ -327,12 +332,17 @@ type ecsInstanceSetState struct {
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The security enhancement strategy.
+	// - `Active`: Enable security enhancement strategy, it only works on system images.
+	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+	// - `NoSpot`: A regular Pay-As-You-Go instance.
+	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
+	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
@@ -424,12 +434,17 @@ type EcsInstanceSetState struct {
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The security enhancement strategy.
+	// - `Active`: Enable security enhancement strategy, it only works on system images.
+	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// A list of security group ids to associate with.
 	SecurityGroupIds pulumi.StringArrayInput
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+	// - `NoSpot`: A regular Pay-As-You-Go instance.
+	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
+	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
@@ -523,12 +538,17 @@ type ecsInstanceSetArgs struct {
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The security enhancement strategy.
+	// - `Active`: Enable security enhancement strategy, it only works on system images.
+	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// A list of security group ids to associate with.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit *float64 `pulumi:"spotPriceLimit"`
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+	// - `NoSpot`: A regular Pay-As-You-Go instance.
+	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
+	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId *string `pulumi:"systemDiskAutoSnapshotPolicyId"`
@@ -619,12 +639,17 @@ type EcsInstanceSetArgs struct {
 	// The ID of resource group which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The security enhancement strategy.
+	// - `Active`: Enable security enhancement strategy, it only works on system images.
+	// - `Deactive`: Disable security enhancement strategy, it works on all images.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// A list of security group ids to associate with.
 	SecurityGroupIds pulumi.StringArrayInput
 	// The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
 	SpotPriceLimit pulumi.Float64PtrInput
 	// The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+	// - `NoSpot`: A regular Pay-As-You-Go instance.
+	// - `SpotWithPriceLimit`: A price threshold for a spot instance.
+	// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
 	SpotStrategy pulumi.StringPtrInput
 	// The ID of the automatic snapshot policy applied to the system disk.
 	SystemDiskAutoSnapshotPolicyId pulumi.StringPtrInput
@@ -895,6 +920,8 @@ func (o EcsInstanceSetOutput) ResourceGroupId() pulumi.StringPtrOutput {
 }
 
 // The security enhancement strategy.
+// - `Active`: Enable security enhancement strategy, it only works on system images.
+// - `Deactive`: Disable security enhancement strategy, it works on all images.
 func (o EcsInstanceSetOutput) SecurityEnhancementStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringPtrOutput { return v.SecurityEnhancementStrategy }).(pulumi.StringPtrOutput)
 }
@@ -910,6 +937,9 @@ func (o EcsInstanceSetOutput) SpotPriceLimit() pulumi.Float64Output {
 }
 
 // The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+// - `NoSpot`: A regular Pay-As-You-Go instance.
+// - `SpotWithPriceLimit`: A price threshold for a spot instance.
+// - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
 func (o EcsInstanceSetOutput) SpotStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsInstanceSet) pulumi.StringOutput { return v.SpotStrategy }).(pulumi.StringOutput)
 }

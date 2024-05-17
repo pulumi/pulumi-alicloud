@@ -44,6 +44,8 @@ export function getAccelerators(args?: GetAcceleratorsArgs, opts?: pulumi.Invoke
 export interface GetAcceleratorsArgs {
     /**
      * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed based on data transfer.
      */
     bandwidthBillingType?: string;
     /**
@@ -118,6 +120,8 @@ export function getAcceleratorsOutput(args?: GetAcceleratorsOutputArgs, opts?: p
 export interface GetAcceleratorsOutputArgs {
     /**
      * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed based on data transfer.
      */
     bandwidthBillingType?: pulumi.Input<string>;
     /**

@@ -59,17 +59,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project("example", ProjectArgs.builder()        
+ *         var example = new Project("example", ProjectArgs.builder()
  *             .name(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
  *             .project(example.name())
  *             .name("example-store")
  *             .retentionPeriod(3650)
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var exampleLogTailConfig = new LogTailConfig("exampleLogTailConfig", LogTailConfigArgs.builder()        
+ *         var exampleLogTailConfig = new LogTailConfig("exampleLogTailConfig", LogTailConfigArgs.builder()
  *             .project(example.name())
  *             .logstore(exampleStore.name())
  *             .inputType("file")
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var exampleMachineGroup = new MachineGroup("exampleMachineGroup", MachineGroupArgs.builder()        
+ *         var exampleMachineGroup = new MachineGroup("exampleMachineGroup", MachineGroupArgs.builder()
  *             .project(example.name())
  *             .name("terraform-example")
  *             .identifyType("ip")
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *                 "10.0.0.2")
  *             .build());
  * 
- *         var exampleLogTailAttachment = new LogTailAttachment("exampleLogTailAttachment", LogTailAttachmentArgs.builder()        
+ *         var exampleLogTailAttachment = new LogTailAttachment("exampleLogTailAttachment", LogTailAttachmentArgs.builder()
  *             .project(example.name())
  *             .logtailConfigName(exampleLogTailConfig.name())
  *             .machineGroupName(exampleMachineGroup.name())

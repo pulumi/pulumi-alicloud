@@ -103,6 +103,7 @@ class OtsBackupPlanRule(dict):
         :param bool disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         :param str retention: Backup retention days, the minimum is 1.
         :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               - `startTime` Backup start time, UNIX time seconds.
         """
         if backup_type is not None:
             pulumi.set(__self__, "backup_type", backup_type)
@@ -149,6 +150,7 @@ class OtsBackupPlanRule(dict):
     def schedule(self) -> Optional[str]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        - `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -1057,6 +1059,8 @@ class GetEcsBackupClientsClientResult(dict):
         :param str create_time: The creation time of client. Unix time in seconds.
         :param str data_network_type: The data plane access point type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
         :param str data_proxy_setting: The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
+               * `USE_CONTROL_PROXY` (Default, the same with control plane)
+               * `CUSTOM` (Custom configuration items for the HTTP protocol).
         :param str ecs_backup_client_id: The first ID of the resource.
         :param str hostname: The hostname of ECS instance.
         :param str id: The ID of the Ecs Backup Client.
@@ -1157,6 +1161,8 @@ class GetEcsBackupClientsClientResult(dict):
     def data_proxy_setting(self) -> str:
         """
         The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
+        * `USE_CONTROL_PROXY` (Default, the same with control plane)
+        * `CUSTOM` (Custom configuration items for the HTTP protocol).
         """
         return pulumi.get(self, "data_proxy_setting")
 
@@ -1349,6 +1355,7 @@ class GetEcsBackupPlansPlanResult(dict):
         :param Sequence[str] paths: Backup path. e.g. `["/home", "/var"]`
         :param str retention: Backup retention days, the minimum is 1.
         :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param str source_type: The type of backup source.
         :param str speed_limit: Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         :param str updated_time: The update time of the backup plan. UNIX time in seconds.
@@ -1485,6 +1492,7 @@ class GetEcsBackupPlansPlanResult(dict):
     def schedule(self) -> str:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -1997,6 +2005,7 @@ class GetNasBackupPlansPlanResult(dict):
         :param Sequence[str] paths: List of backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
         :param str retention: Backup retention days, the minimum is 1.
         :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param str updated_time: The update time of the backup plan. UNIX time in seconds.
         :param str vault_id: The ID of backup vault.
         """
@@ -2108,6 +2117,7 @@ class GetNasBackupPlansPlanResult(dict):
     def schedule(self) -> str:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -2154,6 +2164,7 @@ class GetOssBackupPlansPlanResult(dict):
         :param str prefix: Backup prefix.
         :param str retention: Backup retention days, the minimum is 1.
         :param str schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param str updated_time: The update time of the backup plan. UNIX time in seconds.
         :param str vault_id: The ID of backup vault.
         """
@@ -2247,6 +2258,7 @@ class GetOssBackupPlansPlanResult(dict):
     def schedule(self) -> str:
         """
         Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -2291,6 +2303,7 @@ class GetOtsBackupPlansPlanResult(dict):
         :param str ots_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param str retention: The Backup retention days, the minimum is 1.
         :param str schedule: The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param str source_type: The type of the data source.
         :param str updated_time: The update time of the backup plan. UNIX time in seconds.
                *ots_detail - The details about the Tablestore instance.
@@ -2375,6 +2388,7 @@ class GetOtsBackupPlansPlanResult(dict):
     def schedule(self) -> str:
         """
         The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -3557,6 +3571,12 @@ class GetVaultsVaultResult(dict):
         :param str index_update_time: Index update time.
         :param str latest_replication_time: The time of the last remote backup synchronization.
         :param str payment_type: Billing model, possible values:
+               * `FREE` is not billed
+               * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
+               * `V2` new version of metering mode
+               * `AEGIS` Billing method for cloud security use
+               * `UNI_BACKUP` the backup of deduplication database
+               * `ARCHIVE` archive library.
         :param bool replication: Whether it is a remote backup warehouse. It's a boolean value.
         :param str replication_source_region_id: The region ID to which the remote backup Vault belongs.
         :param str replication_source_vault_id: The source vault ID of the remote backup Vault.
@@ -3682,6 +3702,12 @@ class GetVaultsVaultResult(dict):
     def payment_type(self) -> str:
         """
         Billing model, possible values:
+        * `FREE` is not billed
+        * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
+        * `V2` new version of metering mode
+        * `AEGIS` Billing method for cloud security use
+        * `UNI_BACKUP` the backup of deduplication database
+        * `ARCHIVE` archive library.
         """
         return pulumi.get(self, "payment_type")
 

@@ -26,6 +26,8 @@ class AggregatorArgs:
         :param pulumi.Input[str] description: The description of aggregator.
         :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+               * `CUSTOM` - The custom account group.
+               * `RD` - The global account group.
         """
         pulumi.set(__self__, "aggregator_name", aggregator_name)
         pulumi.set(__self__, "description", description)
@@ -75,6 +77,8 @@ class AggregatorArgs:
     def aggregator_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+        * `CUSTOM` - The custom account group.
+        * `RD` - The global account group.
         """
         return pulumi.get(self, "aggregator_type")
 
@@ -96,6 +100,8 @@ class _AggregatorState:
         :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         :param pulumi.Input[str] aggregator_name: The name of aggregator.
         :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+               * `CUSTOM` - The custom account group.
+               * `RD` - The global account group.
         :param pulumi.Input[str] description: The description of aggregator.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
         """
@@ -139,6 +145,8 @@ class _AggregatorState:
     def aggregator_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+        * `CUSTOM` - The custom account group.
+        * `RD` - The global account group.
         """
         return pulumi.get(self, "aggregator_type")
 
@@ -225,6 +233,8 @@ class Aggregator(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregatorAggregatorAccountArgs']]]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         :param pulumi.Input[str] aggregator_name: The name of aggregator.
         :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+               * `CUSTOM` - The custom account group.
+               * `RD` - The global account group.
         :param pulumi.Input[str] description: The description of aggregator.
         """
         ...
@@ -334,6 +344,8 @@ class Aggregator(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AggregatorAggregatorAccountArgs']]]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         :param pulumi.Input[str] aggregator_name: The name of aggregator.
         :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+               * `CUSTOM` - The custom account group.
+               * `RD` - The global account group.
         :param pulumi.Input[str] description: The description of aggregator.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
         """
@@ -369,6 +381,8 @@ class Aggregator(pulumi.CustomResource):
     def aggregator_type(self) -> pulumi.Output[str]:
         """
         The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+        * `CUSTOM` - The custom account group.
+        * `RD` - The global account group.
         """
         return pulumi.get(self, "aggregator_type")
 

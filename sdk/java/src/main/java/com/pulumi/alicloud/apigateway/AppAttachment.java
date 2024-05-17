@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform_example");
- *         var example = new Group("example", GroupArgs.builder()        
+ *         var example = new Group("example", GroupArgs.builder()
  *             .name(name)
  *             .description(name)
  *             .build());
  * 
- *         var exampleApi = new Api("exampleApi", ApiArgs.builder()        
+ *         var exampleApi = new Api("exampleApi", ApiArgs.builder()
  *             .groupId(example.id())
  *             .name(name)
  *             .description(name)
@@ -90,12 +90,12 @@ import javax.annotation.Nullable;
  *                 "TEST")
  *             .build());
  * 
- *         var exampleApp = new App("exampleApp", AppArgs.builder()        
+ *         var exampleApp = new App("exampleApp", AppArgs.builder()
  *             .name(name)
  *             .description(name)
  *             .build());
  * 
- *         var exampleAppAttachment = new AppAttachment("exampleAppAttachment", AppAttachmentArgs.builder()        
+ *         var exampleAppAttachment = new AppAttachment("exampleAppAttachment", AppAttachmentArgs.builder()
  *             .apiId(exampleApi.apiId())
  *             .groupId(example.id())
  *             .appId(exampleApp.id())

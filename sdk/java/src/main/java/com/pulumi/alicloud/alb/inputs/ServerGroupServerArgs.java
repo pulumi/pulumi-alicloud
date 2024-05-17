@@ -101,6 +101,11 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The type of the server. The type of the server. Valid values:
+     * - `Ecs`: an ECS instance.
+     * - `Eni`: an ENI.
+     * - `Eci`: an elastic container instance.
+     * - `Ip`(Available since v1.194.0): an IP address.
+     * - `Fc`(Available since v1.194.0): a function.
      * 
      */
     @Import(name="serverType", required=true)
@@ -108,6 +113,11 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The type of the server. The type of the server. Valid values:
+     * - `Ecs`: an ECS instance.
+     * - `Eni`: an ENI.
+     * - `Eci`: an elastic container instance.
+     * - `Ip`(Available since v1.194.0): an IP address.
+     * - `Fc`(Available since v1.194.0): a function.
      * 
      */
     public Output<String> serverType() {
@@ -288,6 +298,11 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param serverType The type of the server. The type of the server. Valid values:
+         * - `Ecs`: an ECS instance.
+         * - `Eni`: an ENI.
+         * - `Eci`: an elastic container instance.
+         * - `Ip`(Available since v1.194.0): an IP address.
+         * - `Fc`(Available since v1.194.0): a function.
          * 
          * @return builder
          * 
@@ -299,6 +314,11 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param serverType The type of the server. The type of the server. Valid values:
+         * - `Ecs`: an ECS instance.
+         * - `Eni`: an ENI.
+         * - `Eci`: an elastic container instance.
+         * - `Ip`(Available since v1.194.0): an IP address.
+         * - `Fc`(Available since v1.194.0): a function.
          * 
          * @return builder
          * 

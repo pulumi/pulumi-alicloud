@@ -384,7 +384,7 @@ public final class HbaseFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = HbaseFunctions.getZones();
      * 
-     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -432,7 +432,7 @@ public final class HbaseFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = HbaseFunctions.getZones();
      * 
-     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -480,7 +480,7 @@ public final class HbaseFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = HbaseFunctions.getZones();
      * 
-     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -528,7 +528,7 @@ public final class HbaseFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = HbaseFunctions.getZones();
      * 
-     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -576,7 +576,7 @@ public final class HbaseFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = HbaseFunctions.getZones();
      * 
-     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -624,7 +624,7 @@ public final class HbaseFunctions {
      *     public static void stack(Context ctx) {
      *         final var zonesIds = HbaseFunctions.getZones();
      * 
-     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
+     *         var hbase = new Instance("hbase", InstanceArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 

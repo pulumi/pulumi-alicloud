@@ -36,6 +36,10 @@ class ClusterArgs:
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+               - `MSE_SC_1_2_60_c`: 1C2G
+               - `MSE_SC_2_4_60_c`: 2C4G
+               - `MSE_SC_4_8_60_c`: 4C8G
+               - `MSE_SC_8_16_60_c`: 8C16G
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         :param pulumi.Input[int] instance_count: The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
@@ -93,6 +97,10 @@ class ClusterArgs:
     def cluster_specification(self) -> pulumi.Input[str]:
         """
         The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        - `MSE_SC_1_2_60_c`: 1C2G
+        - `MSE_SC_2_4_60_c`: 2C4G
+        - `MSE_SC_4_8_60_c`: 4C8G
+        - `MSE_SC_8_16_60_c`: 8C16G
         """
         return pulumi.get(self, "cluster_specification")
 
@@ -349,6 +357,10 @@ class _ClusterState:
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] cluster_id: (Available in v1.162.0+) The id of Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+               - `MSE_SC_1_2_60_c`: 1C2G
+               - `MSE_SC_2_4_60_c`: 2C4G
+               - `MSE_SC_4_8_60_c`: 4C8G
+               - `MSE_SC_8_16_60_c`: 8C16G
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
@@ -465,6 +477,10 @@ class _ClusterState:
     def cluster_specification(self) -> Optional[pulumi.Input[str]]:
         """
         The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        - `MSE_SC_1_2_60_c`: 1C2G
+        - `MSE_SC_2_4_60_c`: 2C4G
+        - `MSE_SC_4_8_60_c`: 4C8G
+        - `MSE_SC_8_16_60_c`: 8C16G
         """
         return pulumi.get(self, "cluster_specification")
 
@@ -716,6 +732,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+               - `MSE_SC_1_2_60_c`: 1C2G
+               - `MSE_SC_2_4_60_c`: 2C4G
+               - `MSE_SC_4_8_60_c`: 4C8G
+               - `MSE_SC_8_16_60_c`: 8C16G
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
@@ -869,6 +889,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
         :param pulumi.Input[str] cluster_id: (Available in v1.162.0+) The id of Cluster.
         :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+               - `MSE_SC_1_2_60_c`: 1C2G
+               - `MSE_SC_2_4_60_c`: 2C4G
+               - `MSE_SC_4_8_60_c`: 4C8G
+               - `MSE_SC_8_16_60_c`: 8C16G
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
@@ -952,6 +976,10 @@ class Cluster(pulumi.CustomResource):
     def cluster_specification(self) -> pulumi.Output[str]:
         """
         The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        - `MSE_SC_1_2_60_c`: 1C2G
+        - `MSE_SC_2_4_60_c`: 2C4G
+        - `MSE_SC_4_8_60_c`: 4C8G
+        - `MSE_SC_8_16_60_c`: 8C16G
         """
         return pulumi.get(self, "cluster_specification")
 

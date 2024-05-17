@@ -62,19 +62,19 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = DfsFunctions.getZones();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].zoneId())
  *             .build());
  * 
- *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()        
+ *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
  *             .storageType(default_.zones()[0].options()[0].storageType())
  *             .zoneId(default_.zones()[0].zoneId())
  *             .protocolType("HDFS")
@@ -85,13 +85,13 @@ import javax.annotation.Nullable;
  *             .provisionedThroughputInMiBps("512")
  *             .build());
  * 
- *         var defaultAccessGroup = new AccessGroup("defaultAccessGroup", AccessGroupArgs.builder()        
+ *         var defaultAccessGroup = new AccessGroup("defaultAccessGroup", AccessGroupArgs.builder()
  *             .accessGroupName(name)
  *             .description(name)
  *             .networkType("VPC")
  *             .build());
  * 
- *         var defaultMountPoint = new MountPoint("defaultMountPoint", MountPointArgs.builder()        
+ *         var defaultMountPoint = new MountPoint("defaultMountPoint", MountPointArgs.builder()
  *             .description(name)
  *             .vpcId(defaultNetwork.id())
  *             .fileSystemId(defaultFileSystem.id())

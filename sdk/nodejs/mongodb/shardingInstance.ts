@@ -159,6 +159,9 @@ export class ShardingInstance extends pulumi.CustomResource {
     public readonly networkType!: pulumi.Output<string>;
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     * **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
     public readonly orderType!: pulumi.Output<string | undefined>;
     /**
@@ -353,6 +356,9 @@ export interface ShardingInstanceState {
     networkType?: pulumi.Input<string>;
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     * **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
     orderType?: pulumi.Input<string>;
     /**
@@ -464,6 +470,9 @@ export interface ShardingInstanceArgs {
     networkType?: pulumi.Input<string>;
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     * **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
     orderType?: pulumi.Input<string>;
     /**

@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Product("example", ProductArgs.builder()        
+ *         var example = new Product("example", ProductArgs.builder()
  *             .productName("example_value")
  *             .build());
  * 

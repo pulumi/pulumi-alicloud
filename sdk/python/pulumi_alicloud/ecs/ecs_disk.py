@@ -55,7 +55,10 @@ class EcsDiskArgs:
         :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
-        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
         :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
@@ -306,7 +309,10 @@ class EcsDiskArgs:
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+        Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+        * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         """
         return pulumi.get(self, "performance_level")
 
@@ -456,7 +462,10 @@ class _EcsDiskState:
         :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
-        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
         :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
@@ -710,7 +719,10 @@ class _EcsDiskState:
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+        Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+        * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         """
         return pulumi.get(self, "performance_level")
 
@@ -883,7 +895,10 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
-        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
         :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
@@ -1038,7 +1053,10 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] kms_key_id: The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
-        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+        :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
         :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
@@ -1206,7 +1224,10 @@ class EcsDisk(pulumi.CustomResource):
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> pulumi.Output[str]:
         """
-        Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+        Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+        * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         """
         return pulumi.get(self, "performance_level")
 

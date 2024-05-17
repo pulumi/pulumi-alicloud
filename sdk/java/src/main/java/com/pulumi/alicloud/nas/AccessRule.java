@@ -51,13 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new AccessGroup("foo", AccessGroupArgs.builder()        
+ *         var foo = new AccessGroup("foo", AccessGroupArgs.builder()
  *             .accessGroupName("tf-NasConfigName")
  *             .accessGroupType("Vpc")
  *             .description("tf-testAccNasConfig")
  *             .build());
  * 
- *         var fooAccessRule = new AccessRule("fooAccessRule", AccessRuleArgs.builder()        
+ *         var fooAccessRule = new AccessRule("fooAccessRule", AccessRuleArgs.builder()
  *             .accessGroupName(foo.accessGroupName())
  *             .sourceCidrIp("168.1.1.0/16")
  *             .rwAccessType("RDWR")

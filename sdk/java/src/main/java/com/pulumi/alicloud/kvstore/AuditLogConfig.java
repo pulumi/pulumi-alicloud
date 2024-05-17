@@ -66,19 +66,19 @@ import javax.annotation.Nullable;
  *             .status("OK")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .dbInstanceName(name)
  *             .vswitchId(defaultSwitch.id())
  *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var example = new AuditLogConfig("example", AuditLogConfigArgs.builder()        
+ *         var example = new AuditLogConfig("example", AuditLogConfigArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .dbAudit(true)
  *             .retention(1)

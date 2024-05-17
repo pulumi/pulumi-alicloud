@@ -54,13 +54,13 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+ *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
  *             .description(name)
  *             .namespace(name)
  *             .specification("cms.s1.large")
  *             .build());
  * 
- *         var defaultHybridMonitorFcTask = new HybridMonitorFcTask("defaultHybridMonitorFcTask", HybridMonitorFcTaskArgs.builder()        
+ *         var defaultHybridMonitorFcTask = new HybridMonitorFcTask("defaultHybridMonitorFcTask", HybridMonitorFcTaskArgs.builder()
  *             .namespace(defaultNamespace.id())
  *             .yarmConfig("""
  * products:

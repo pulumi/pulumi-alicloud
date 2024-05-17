@@ -95,24 +95,24 @@ import javax.annotation.Nullable;
  *             .dbInstanceStorageType("cloud_essd")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(exampleGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(name)
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .engine("MySQL")
  *             .engineVersion("8.0")
  *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
@@ -125,25 +125,25 @@ import javax.annotation.Nullable;
  *             .securityGroupIds(exampleSecurityGroup.id())
  *             .build());
  * 
- *         var exampleRdsAccount = new RdsAccount("exampleRdsAccount", RdsAccountArgs.builder()        
+ *         var exampleRdsAccount = new RdsAccount("exampleRdsAccount", RdsAccountArgs.builder()
  *             .dbInstanceId(exampleInstance.id())
  *             .accountName("test_mysql")
  *             .accountPassword("N1cetest")
  *             .build());
  * 
- *         var exampleDatabase = new Database("exampleDatabase", DatabaseArgs.builder()        
+ *         var exampleDatabase = new Database("exampleDatabase", DatabaseArgs.builder()
  *             .instanceId(exampleInstance.id())
  *             .name(name)
  *             .build());
  * 
- *         var exampleAccountPrivilege = new AccountPrivilege("exampleAccountPrivilege", AccountPrivilegeArgs.builder()        
+ *         var exampleAccountPrivilege = new AccountPrivilege("exampleAccountPrivilege", AccountPrivilegeArgs.builder()
  *             .instanceId(exampleInstance.id())
  *             .accountName(exampleRdsAccount.name())
  *             .privilege("ReadWrite")
  *             .dbNames(exampleDatabase.name())
  *             .build());
  * 
- *         var exampleSubscriptionJob = new SubscriptionJob("exampleSubscriptionJob", SubscriptionJobArgs.builder()        
+ *         var exampleSubscriptionJob = new SubscriptionJob("exampleSubscriptionJob", SubscriptionJobArgs.builder()
  *             .dtsJobName(name)
  *             .paymentType("PayAsYouGo")
  *             .sourceEndpointEngineName("MySQL")

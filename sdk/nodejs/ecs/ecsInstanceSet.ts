@@ -228,6 +228,8 @@ export class EcsInstanceSet extends pulumi.CustomResource {
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
      * The security enhancement strategy.
+     * - `Active`: Enable security enhancement strategy, it only works on system images.
+     * - `Deactive`: Disable security enhancement strategy, it works on all images.
      */
     public readonly securityEnhancementStrategy!: pulumi.Output<string | undefined>;
     /**
@@ -240,6 +242,9 @@ export class EcsInstanceSet extends pulumi.CustomResource {
     public readonly spotPriceLimit!: pulumi.Output<number>;
     /**
      * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+     * - `NoSpot`: A regular Pay-As-You-Go instance.
+     * - `SpotWithPriceLimit`: A price threshold for a spot instance.
+     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
      */
     public readonly spotStrategy!: pulumi.Output<string>;
     /**
@@ -539,6 +544,8 @@ export interface EcsInstanceSetState {
     resourceGroupId?: pulumi.Input<string>;
     /**
      * The security enhancement strategy.
+     * - `Active`: Enable security enhancement strategy, it only works on system images.
+     * - `Deactive`: Disable security enhancement strategy, it works on all images.
      */
     securityEnhancementStrategy?: pulumi.Input<string>;
     /**
@@ -551,6 +558,9 @@ export interface EcsInstanceSetState {
     spotPriceLimit?: pulumi.Input<number>;
     /**
      * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+     * - `NoSpot`: A regular Pay-As-You-Go instance.
+     * - `SpotWithPriceLimit`: A price threshold for a spot instance.
+     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
      */
     spotStrategy?: pulumi.Input<string>;
     /**
@@ -725,6 +735,8 @@ export interface EcsInstanceSetArgs {
     resourceGroupId?: pulumi.Input<string>;
     /**
      * The security enhancement strategy.
+     * - `Active`: Enable security enhancement strategy, it only works on system images.
+     * - `Deactive`: Disable security enhancement strategy, it works on all images.
      */
     securityEnhancementStrategy?: pulumi.Input<string>;
     /**
@@ -737,6 +749,9 @@ export interface EcsInstanceSetArgs {
     spotPriceLimit?: pulumi.Input<number>;
     /**
      * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instanceChargeType` is 'PostPaid'.
+     * - `NoSpot`: A regular Pay-As-You-Go instance.
+     * - `SpotWithPriceLimit`: A price threshold for a spot instance.
+     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
      */
     spotStrategy?: pulumi.Input<string>;
     /**

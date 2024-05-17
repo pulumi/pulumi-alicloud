@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .status("OK")
  *             .build());
  * 
- *         var defaultCapacityReservation = new CapacityReservation("defaultCapacityReservation", CapacityReservationArgs.builder()        
+ *         var defaultCapacityReservation = new CapacityReservation("defaultCapacityReservation", CapacityReservationArgs.builder()
  *             .description("terraform-example")
  *             .platform("linux")
  *             .capacityReservationName("terraform-example")

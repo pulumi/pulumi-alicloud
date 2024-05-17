@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new AccessGroup("foo", AccessGroupArgs.builder()        
+ *         var foo = new AccessGroup("foo", AccessGroupArgs.builder()
  *             .accessGroupName("terraform-example")
  *             .accessGroupType("Vpc")
  *             .description("terraform-example")

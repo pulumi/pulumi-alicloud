@@ -51,7 +51,7 @@ public final class DataworksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Folder("default", FolderArgs.builder()        
+     *         var default_ = new Folder("default", FolderArgs.builder()
      *             .projectId("xxxx")
      *             .folderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
@@ -107,7 +107,7 @@ public final class DataworksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Folder("default", FolderArgs.builder()        
+     *         var default_ = new Folder("default", FolderArgs.builder()
      *             .projectId("xxxx")
      *             .folderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
@@ -163,7 +163,7 @@ public final class DataworksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Folder("default", FolderArgs.builder()        
+     *         var default_ = new Folder("default", FolderArgs.builder()
      *             .projectId("xxxx")
      *             .folderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());
@@ -219,7 +219,7 @@ public final class DataworksFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Folder("default", FolderArgs.builder()        
+     *         var default_ = new Folder("default", FolderArgs.builder()
      *             .projectId("xxxx")
      *             .folderPath("Business Flow/tfTestAcc/folderDi")
      *             .build());

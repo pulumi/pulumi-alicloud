@@ -3644,11 +3644,11 @@ public final class ResourcemanagerFunctions {
      *         final var name = config.get("name").orElse("tf-example");
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()        
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
      *             .resourceShareName(name)
      *             .build());
      * 
-     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()        
+     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()
      *             .resourceShareId(defaultResourceShare.id())
      *             .targetId(default_.ids()[0])
      *             .build());
@@ -3714,11 +3714,11 @@ public final class ResourcemanagerFunctions {
      *         final var name = config.get("name").orElse("tf-example");
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()        
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
      *             .resourceShareName(name)
      *             .build());
      * 
-     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()        
+     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()
      *             .resourceShareId(defaultResourceShare.id())
      *             .targetId(default_.ids()[0])
      *             .build());
@@ -3784,11 +3784,11 @@ public final class ResourcemanagerFunctions {
      *         final var name = config.get("name").orElse("tf-example");
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()        
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
      *             .resourceShareName(name)
      *             .build());
      * 
-     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()        
+     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()
      *             .resourceShareId(defaultResourceShare.id())
      *             .targetId(default_.ids()[0])
      *             .build());
@@ -3854,11 +3854,11 @@ public final class ResourcemanagerFunctions {
      *         final var name = config.get("name").orElse("tf-example");
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()        
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
      *             .resourceShareName(name)
      *             .build());
      * 
-     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()        
+     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()
      *             .resourceShareId(defaultResourceShare.id())
      *             .targetId(default_.ids()[0])
      *             .build());
@@ -3924,11 +3924,11 @@ public final class ResourcemanagerFunctions {
      *         final var name = config.get("name").orElse("tf-example");
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()        
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
      *             .resourceShareName(name)
      *             .build());
      * 
-     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()        
+     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()
      *             .resourceShareId(defaultResourceShare.id())
      *             .targetId(default_.ids()[0])
      *             .build());
@@ -3994,11 +3994,11 @@ public final class ResourcemanagerFunctions {
      *         final var name = config.get("name").orElse("tf-example");
      *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
-     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()        
+     *         var defaultResourceShare = new ResourceShare("defaultResourceShare", ResourceShareArgs.builder()
      *             .resourceShareName(name)
      *             .build());
      * 
-     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()        
+     *         var defaultSharedTarget = new SharedTarget("defaultSharedTarget", SharedTargetArgs.builder()
      *             .resourceShareId(defaultResourceShare.id())
      *             .targetId(default_.ids()[0])
      *             .build());

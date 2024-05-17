@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf_example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+ *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
  *             .aclName(name)
  *             .resourceGroupId(default_.groups()[0].id())
  *             .build());
  * 
- *         var defaultAclEntryAttachment = new AclEntryAttachment("defaultAclEntryAttachment", AclEntryAttachmentArgs.builder()        
+ *         var defaultAclEntryAttachment = new AclEntryAttachment("defaultAclEntryAttachment", AclEntryAttachmentArgs.builder()
  *             .aclId(defaultAcl.id())
  *             .entry("168.10.10.0/24")
  *             .description(name)

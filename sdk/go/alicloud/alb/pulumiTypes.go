@@ -125,6 +125,9 @@ type AclAclEntry struct {
 	// The IP address for the ACL entry.
 	Entry *string `pulumi:"entry"`
 	// The status of the ACL entry. Valid values:
+	// - `Adding`: The ACL entry is being added.
+	// - `Available`: The ACL entry is added and available.
+	// - `Removing`: The ACL entry is being removed.
 	Status *string `pulumi:"status"`
 }
 
@@ -145,6 +148,9 @@ type AclAclEntryArgs struct {
 	// The IP address for the ACL entry.
 	Entry pulumi.StringPtrInput `pulumi:"entry"`
 	// The status of the ACL entry. Valid values:
+	// - `Adding`: The ACL entry is being added.
+	// - `Available`: The ACL entry is added and available.
+	// - `Removing`: The ACL entry is being removed.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -210,6 +216,9 @@ func (o AclAclEntryOutput) Entry() pulumi.StringPtrOutput {
 }
 
 // The status of the ACL entry. Valid values:
+// - `Adding`: The ACL entry is being added.
+// - `Available`: The ACL entry is added and available.
+// - `Removing`: The ACL entry is being removed.
 func (o AclAclEntryOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclAclEntry) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -4520,6 +4529,15 @@ type RuleRuleCondition struct {
 	// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
 	SourceIpConfig *RuleRuleConditionSourceIpConfig `pulumi:"sourceIpConfig"`
 	// The type of the forwarding rule. Valid values:
+	// - `Host`: Requests are forwarded based on hosts.
+	// - `Path`: Requests are forwarded based on the path.
+	// - `Header`: Requests are forwarded based on the HTTP header field.
+	// - `QueryString`: Requests are forwarded based on the query string.
+	// - `Method`: Request are forwarded based on the request method.
+	// - `Cookie`: Requests are forwarded based on the cookie.
+	// - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+	// - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+	// - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
 	Type string `pulumi:"type"`
 }
 
@@ -4554,6 +4572,15 @@ type RuleRuleConditionArgs struct {
 	// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
 	SourceIpConfig RuleRuleConditionSourceIpConfigPtrInput `pulumi:"sourceIpConfig"`
 	// The type of the forwarding rule. Valid values:
+	// - `Host`: Requests are forwarded based on hosts.
+	// - `Path`: Requests are forwarded based on the path.
+	// - `Header`: Requests are forwarded based on the HTTP header field.
+	// - `QueryString`: Requests are forwarded based on the query string.
+	// - `Method`: Request are forwarded based on the request method.
+	// - `Cookie`: Requests are forwarded based on the cookie.
+	// - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+	// - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+	// - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4656,6 +4683,15 @@ func (o RuleRuleConditionOutput) SourceIpConfig() RuleRuleConditionSourceIpConfi
 }
 
 // The type of the forwarding rule. Valid values:
+// - `Host`: Requests are forwarded based on hosts.
+// - `Path`: Requests are forwarded based on the path.
+// - `Header`: Requests are forwarded based on the HTTP header field.
+// - `QueryString`: Requests are forwarded based on the query string.
+// - `Method`: Request are forwarded based on the request method.
+// - `Cookie`: Requests are forwarded based on the cookie.
+// - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+// - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+// - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
 func (o RuleRuleConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleRuleCondition) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -6476,6 +6512,11 @@ type ServerGroupServer struct {
 	// The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `serverGroupType` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `serverGroupType` is set to `Ip`, the value of this property is the same as the `serverId` value.
 	ServerIp *string `pulumi:"serverIp"`
 	// The type of the server. The type of the server. Valid values:
+	// - `Ecs`: an ECS instance.
+	// - `Eni`: an ENI.
+	// - `Eci`: an elastic container instance.
+	// - `Ip`(Available since v1.194.0): an IP address.
+	// - `Fc`(Available since v1.194.0): a function.
 	ServerType string `pulumi:"serverType"`
 	// The status of the backend server.
 	Status *string `pulumi:"status"`
@@ -6509,6 +6550,11 @@ type ServerGroupServerArgs struct {
 	// The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `serverGroupType` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `serverGroupType` is set to `Ip`, the value of this property is the same as the `serverId` value.
 	ServerIp pulumi.StringPtrInput `pulumi:"serverIp"`
 	// The type of the server. The type of the server. Valid values:
+	// - `Ecs`: an ECS instance.
+	// - `Eni`: an ENI.
+	// - `Eci`: an elastic container instance.
+	// - `Ip`(Available since v1.194.0): an IP address.
+	// - `Fc`(Available since v1.194.0): a function.
 	ServerType pulumi.StringInput `pulumi:"serverType"`
 	// The status of the backend server.
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -6596,6 +6642,11 @@ func (o ServerGroupServerOutput) ServerIp() pulumi.StringPtrOutput {
 }
 
 // The type of the server. The type of the server. Valid values:
+// - `Ecs`: an ECS instance.
+// - `Eni`: an ENI.
+// - `Eci`: an elastic container instance.
+// - `Ip`(Available since v1.194.0): an IP address.
+// - `Fc`(Available since v1.194.0): a function.
 func (o ServerGroupServerOutput) ServerType() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerGroupServer) string { return v.ServerType }).(pulumi.StringOutput)
 }

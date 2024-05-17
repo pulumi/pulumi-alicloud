@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Certificate("default", CertificateArgs.builder()        
+ *         var default_ = new Certificate("default", CertificateArgs.builder()
  *             .certificateName("your_certificate_name")
  *             .instanceId("your_instance_id")
  *             .domain("your_domain_name")
@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .certificate("your_certificate")
  *             .build());
  * 
- *         var default2 = new Certificate("default2", CertificateArgs.builder()        
+ *         var default2 = new Certificate("default2", CertificateArgs.builder()
  *             .instanceId("your_instance_id")
  *             .domain("your_domain_name")
  *             .certificateId("your_certificate_id")

@@ -60,32 +60,32 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf_example");
  *         final var region = config.get("region").orElse("cn-hangzhou");
  *         final var peerRegion = config.get("peerRegion").orElse("cn-beijing");
- *         var example = new Instance("example", InstanceArgs.builder()        
+ *         var example = new Instance("example", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .protectionLevel("REDUCED")
  *             .build());
  * 
- *         var exampleBandwidthPackage = new BandwidthPackage("exampleBandwidthPackage", BandwidthPackageArgs.builder()        
+ *         var exampleBandwidthPackage = new BandwidthPackage("exampleBandwidthPackage", BandwidthPackageArgs.builder()
  *             .bandwidth(5)
  *             .cenBandwidthPackageName("tf_example")
  *             .geographicRegionAId("China")
  *             .geographicRegionBId("China")
  *             .build());
  * 
- *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment("exampleBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+ *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment("exampleBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
  *             .instanceId(example.id())
  *             .bandwidthPackageId(exampleBandwidthPackage.id())
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()
  *             .cenId(exampleBandwidthPackageAttachment.instanceId())
  *             .build());
  * 
- *         var peer = new TransitRouter("peer", TransitRouterArgs.builder()        
+ *         var peer = new TransitRouter("peer", TransitRouterArgs.builder()
  *             .cenId(exampleTransitRouter.cenId())
  *             .build());
  * 
- *         var exampleTransitRouterPeerAttachment = new TransitRouterPeerAttachment("exampleTransitRouterPeerAttachment", TransitRouterPeerAttachmentArgs.builder()        
+ *         var exampleTransitRouterPeerAttachment = new TransitRouterPeerAttachment("exampleTransitRouterPeerAttachment", TransitRouterPeerAttachmentArgs.builder()
  *             .cenId(example.id())
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .peerTransitRouterRegionId(peerRegion)
@@ -143,6 +143,8 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
     }
     /**
      * The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+     * * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+     * * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
      * 
      */
     @Export(name="bandwidthType", refs={String.class}, tree="[0]")
@@ -150,6 +152,8 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
 
     /**
      * @return The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+     * * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+     * * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
      * 
      */
     public Output<String> bandwidthType() {

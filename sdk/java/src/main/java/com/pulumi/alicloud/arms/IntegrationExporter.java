@@ -66,26 +66,26 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[default_.zones().length() - 1].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+ *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
  *             .clusterType("ecs")
  *             .grafanaInstanceId("free")
  *             .vpcId(defaultNetwork.id())
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var defaultIntegrationExporter = new IntegrationExporter("defaultIntegrationExporter", IntegrationExporterArgs.builder()        
+ *         var defaultIntegrationExporter = new IntegrationExporter("defaultIntegrationExporter", IntegrationExporterArgs.builder()
  *             .clusterId(defaultPrometheus.id())
  *             .integrationType("kafka")
  *             .param("{\"tls_insecure-skip-tls-verify\":\"none=tls.insecure-skip-tls-verify\",\"tls_enabled\":\"none=tls.enabled\",\"sasl_mechanism\":\"\",\"name\":\"kafka1\",\"sasl_enabled\":\"none=sasl.enabled\",\"ip_ports\":\"abc:888\",\"scrape_interval\":30,\"version\":\"0.10.1.0\"}")

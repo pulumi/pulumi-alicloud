@@ -63,12 +63,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var bucket_acl = new Bucket("bucket-acl", BucketArgs.builder()        
+ *         var bucket_acl = new Bucket("bucket-acl", BucketArgs.builder()
  *             .bucket(String.format("example-value-%s", default_.result()))
  *             .acl("private")
  *             .build());
@@ -107,12 +107,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var bucket_website = new Bucket("bucket-website", BucketArgs.builder()        
+ *         var bucket_website = new Bucket("bucket-website", BucketArgs.builder()
  *             .bucket(String.format("example-value-%s", default_.result()))
  *             .website(BucketWebsiteArgs.builder()
  *                 .indexDocument("index.html")
@@ -154,17 +154,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var bucket_target = new Bucket("bucket-target", BucketArgs.builder()        
+ *         var bucket_target = new Bucket("bucket-target", BucketArgs.builder()
  *             .bucket(String.format("example-value-%s", default_.result()))
  *             .acl("public-read")
  *             .build());
  * 
- *         var bucket_logging = new Bucket("bucket-logging", BucketArgs.builder()        
+ *         var bucket_logging = new Bucket("bucket-logging", BucketArgs.builder()
  *             .bucket(String.format("example-logging-%s", default_.result()))
  *             .logging(BucketLoggingArgs.builder()
  *                 .targetBucket(bucket_target.id())
@@ -206,12 +206,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var bucket_referer = new Bucket("bucket-referer", BucketArgs.builder()        
+ *         var bucket_referer = new Bucket("bucket-referer", BucketArgs.builder()
  *             .bucket(String.format("example-value-%s", default_.result()))
  *             .acl("private")
  *             .refererConfig(BucketRefererConfigArgs.builder()

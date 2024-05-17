@@ -81,6 +81,7 @@ export class Record extends pulumi.CustomResource {
     public readonly routing!: pulumi.Output<string | undefined>;
     /**
      * The record status. `Enable` or `Disable`.
+     * * `Locked` - The record locked state. `true` or `false`.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -167,6 +168,7 @@ export interface RecordState {
     routing?: pulumi.Input<string>;
     /**
      * The record status. `Enable` or `Disable`.
+     * * `Locked` - The record locked state. `true` or `false`.
      */
     status?: pulumi.Input<string>;
     /**

@@ -298,6 +298,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * - `Immediately` (Default): The configurations are immediately changed.
+     * - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
      * 
      */
     @Export(name="effectiveTime", refs={String.class}, tree="[0]")
@@ -305,6 +307,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * - `Immediately` (Default): The configurations are immediately changed.
+     * - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
      * 
      */
     public Output<Optional<String>> effectiveTime() {

@@ -146,6 +146,7 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        /// * `startTime` Backup start time, UNIX time seconds.
         /// </summary>
         [Output("schedule")]
         public Output<string> Schedule { get; private set; } = null!;
@@ -278,6 +279,7 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        /// * `startTime` Backup start time, UNIX time seconds.
         /// </summary>
         [Input("schedule", required: true)]
         public Input<string> Schedule { get; set; } = null!;
@@ -372,6 +374,7 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        /// * `startTime` Backup start time, UNIX time seconds.
         /// </summary>
         [Input("schedule")]
         public Input<string>? Schedule { get; set; }

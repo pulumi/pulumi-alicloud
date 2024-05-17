@@ -87,6 +87,14 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// Bandwidth specification.-If an IPsec connection is bound to a VPN gateway instance, this parameter indicates the Bandwidth specification of the VPN gateway instance.-If an IPsec connection is bound to a forwarding router, this parameter indicates the bandwidth that you expect the IPsec connection to support.Different bandwidth specifications may affect the zone information that is found. Value:
+        /// - `5M`
+        /// - `10M`
+        /// - `20M`
+        /// - `50M`
+        /// - `100M`
+        /// - `200M`
+        /// - `500M`
+        /// - `1000M`
         /// </summary>
         [Input("spec", required: true)]
         public string Spec { get; set; } = null!;
@@ -119,6 +127,14 @@ namespace Pulumi.AliCloud.Vpn
 
         /// <summary>
         /// Bandwidth specification.-If an IPsec connection is bound to a VPN gateway instance, this parameter indicates the Bandwidth specification of the VPN gateway instance.-If an IPsec connection is bound to a forwarding router, this parameter indicates the bandwidth that you expect the IPsec connection to support.Different bandwidth specifications may affect the zone information that is found. Value:
+        /// - `5M`
+        /// - `10M`
+        /// - `20M`
+        /// - `50M`
+        /// - `100M`
+        /// - `200M`
+        /// - `500M`
+        /// - `1000M`
         /// </summary>
         [Input("spec", required: true)]
         public Input<string> Spec { get; set; } = null!;

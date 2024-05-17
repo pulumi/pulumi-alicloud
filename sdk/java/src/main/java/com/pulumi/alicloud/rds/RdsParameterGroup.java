@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         var default_ = new RdsParameterGroup("default", RdsParameterGroupArgs.builder()        
+ *         var default_ = new RdsParameterGroup("default", RdsParameterGroupArgs.builder()
  *             .engine("mysql")
  *             .engineVersion("5.7")
  *             .paramDetails(            

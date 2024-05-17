@@ -69,13 +69,13 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .enableIpv6("true")
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var vsw = new Switch("vsw", SwitchArgs.builder()        
+ *         var vsw = new Switch("vsw", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/21")
  *             .availabilityZone(default_.zones()[0].id())
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .ipv6CidrBlockMask("22")
  *             .build());
  * 
- *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+ *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
  *             .name(name)
  *             .description("foo")
  *             .vpcId(defaultNetwork.id())
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var vpcInstance = new Instance("vpcInstance", InstanceArgs.builder()        
+ *         var vpcInstance = new Instance("vpcInstance", InstanceArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .ipv6AddressCount(1)
  *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *             .securityGroups(group.stream().map(element -> element.id()).collect(toList()))
  *             .build());
  * 
- *         var example = new Ipv6Gateway("example", Ipv6GatewayArgs.builder()        
+ *         var example = new Ipv6Gateway("example", Ipv6GatewayArgs.builder()
  *             .ipv6GatewayName("example_value")
  *             .vpcId(defaultNetwork.id())
  *             .build());
@@ -124,7 +124,7 @@ import javax.annotation.Nullable;
  *             .status("Available")
  *             .build());
  * 
- *         var exampleIpv6InternetBandwidth = new Ipv6InternetBandwidth("exampleIpv6InternetBandwidth", Ipv6InternetBandwidthArgs.builder()        
+ *         var exampleIpv6InternetBandwidth = new Ipv6InternetBandwidth("exampleIpv6InternetBandwidth", Ipv6InternetBandwidthArgs.builder()
  *             .ipv6AddressId(defaultGetIpv6Addresses.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult).applyValue(defaultGetIpv6Addresses -> defaultGetIpv6Addresses.applyValue(getIpv6AddressesResult -> getIpv6AddressesResult.addresses()[0].id())))
  *             .ipv6GatewayId(example.ipv6GatewayId())
  *             .internetChargeType("PayByBandwidth")

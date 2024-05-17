@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Flow("example", FlowArgs.builder()        
+ *         var example = new Flow("example", FlowArgs.builder()
  *             .definition("""
  *   version: v1beta1
  *   type: flow
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .type("FDL")
  *             .build());
  * 
- *         var exampleSchedule = new Schedule("exampleSchedule", ScheduleArgs.builder()        
+ *         var exampleSchedule = new Schedule("exampleSchedule", ScheduleArgs.builder()
  *             .cronExpression("30 9 * * * *")
  *             .description("tf-exampleFnFSchedule983041")
  *             .enable("true")
