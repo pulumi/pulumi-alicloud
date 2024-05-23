@@ -142,6 +142,9 @@ type ShardingInstance struct {
 	// The network type of the instance. Valid values:`Classic` or `VPC`.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+	// - `UPGRADE`: The specifications are upgraded.
+	// - `DOWNGRADE`: The specifications are downgraded.
+	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType pulumi.StringPtrOutput `pulumi:"orderType"`
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntOutput `pulumi:"period"`
@@ -243,6 +246,9 @@ type shardingInstanceState struct {
 	// The network type of the instance. Valid values:`Classic` or `VPC`.
 	NetworkType *string `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+	// - `UPGRADE`: The specifications are upgraded.
+	// - `DOWNGRADE`: The specifications are downgraded.
+	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType *string `pulumi:"orderType"`
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period *int `pulumi:"period"`
@@ -299,6 +305,9 @@ type ShardingInstanceState struct {
 	// The network type of the instance. Valid values:`Classic` or `VPC`.
 	NetworkType pulumi.StringPtrInput
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+	// - `UPGRADE`: The specifications are upgraded.
+	// - `DOWNGRADE`: The specifications are downgraded.
+	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType pulumi.StringPtrInput
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntPtrInput
@@ -359,6 +368,9 @@ type shardingInstanceArgs struct {
 	// The network type of the instance. Valid values:`Classic` or `VPC`.
 	NetworkType *string `pulumi:"networkType"`
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+	// - `UPGRADE`: The specifications are upgraded.
+	// - `DOWNGRADE`: The specifications are downgraded.
+	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType *string `pulumi:"orderType"`
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period *int `pulumi:"period"`
@@ -414,6 +426,9 @@ type ShardingInstanceArgs struct {
 	// The network type of the instance. Valid values:`Classic` or `VPC`.
 	NetworkType pulumi.StringPtrInput
 	// The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+	// - `UPGRADE`: The specifications are upgraded.
+	// - `DOWNGRADE`: The specifications are downgraded.
+	//   **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 	OrderType pulumi.StringPtrInput
 	// The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
 	Period pulumi.IntPtrInput
@@ -590,6 +605,9 @@ func (o ShardingInstanceOutput) NetworkType() pulumi.StringOutput {
 }
 
 // The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+//   - `UPGRADE`: The specifications are upgraded.
+//   - `DOWNGRADE`: The specifications are downgraded.
+//     **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
 func (o ShardingInstanceOutput) OrderType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringPtrOutput { return v.OrderType }).(pulumi.StringPtrOutput)
 }

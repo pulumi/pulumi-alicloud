@@ -87,7 +87,7 @@ export function getTrafficMirrorSessions(args?: GetTrafficMirrorSessionsArgs, op
  */
 export interface GetTrafficMirrorSessionsArgs {
     /**
-     * Indicates whether traffic mirror sessions are enabled. default to `false`.
+     * Specifies whether to enable traffic mirror sessions. default to `false`.
      */
     enabled?: boolean;
     /**
@@ -103,7 +103,7 @@ export interface GetTrafficMirrorSessionsArgs {
      */
     outputFile?: string;
     /**
-     * The priority of the traffic mirror session. A smaller value indicates a higher priority.
+     * The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      */
     priority?: number;
     /**
@@ -115,7 +115,7 @@ export interface GetTrafficMirrorSessionsArgs {
      */
     trafficMirrorFilterId?: string;
     /**
-     * The name of the traffic mirror session.
+     * The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
      */
     trafficMirrorSessionName?: string;
     /**
@@ -216,7 +216,7 @@ export function getTrafficMirrorSessionsOutput(args?: GetTrafficMirrorSessionsOu
  */
 export interface GetTrafficMirrorSessionsOutputArgs {
     /**
-     * Indicates whether traffic mirror sessions are enabled. default to `false`.
+     * Specifies whether to enable traffic mirror sessions. default to `false`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -232,7 +232,7 @@ export interface GetTrafficMirrorSessionsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The priority of the traffic mirror session. A smaller value indicates a higher priority.
+     * The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      */
     priority?: pulumi.Input<number>;
     /**
@@ -244,7 +244,7 @@ export interface GetTrafficMirrorSessionsOutputArgs {
      */
     trafficMirrorFilterId?: pulumi.Input<string>;
     /**
-     * The name of the traffic mirror session.
+     * The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
      */
     trafficMirrorSessionName?: pulumi.Input<string>;
     /**

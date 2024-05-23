@@ -67,12 +67,9 @@ export interface GetSecurityPoliciesArgs {
      */
     securityPolicyNames?: string[];
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Available`, `Configuring`.
      */
     status?: string;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     tags?: {[key: string]: any};
 }
 
@@ -144,11 +141,8 @@ export interface GetSecurityPoliciesOutputArgs {
      */
     securityPolicyNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Available`, `Configuring`.
      */
     status?: pulumi.Input<string>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -55,11 +55,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var defaulteVpc = new Network("defaulteVpc", NetworkArgs.builder()        
+ *         var defaulteVpc = new Network("defaulteVpc", NetworkArgs.builder()
  *             .description("test")
  *             .build());
  * 
- *         var defaultGE = new GatewayEndpoint("defaultGE", GatewayEndpointArgs.builder()        
+ *         var defaultGE = new GatewayEndpoint("defaultGE", GatewayEndpointArgs.builder()
  *             .serviceName("com.aliyun.cn-hangzhou.oss")
  *             .policyDocument("""
  *         {
@@ -77,12 +77,12 @@ import javax.annotation.Nullable;
  *             .gatewayEndpointName(String.format("%s1", name))
  *             .build());
  * 
- *         var defaultRT = new RouteTable("defaultRT", RouteTableArgs.builder()        
+ *         var defaultRT = new RouteTable("defaultRT", RouteTableArgs.builder()
  *             .vpcId(defaulteVpc.id())
  *             .routeTableName(String.format("%s2", name))
  *             .build());
  * 
- *         var default_ = new GatewayEndpointRouteTableAttachment("default", GatewayEndpointRouteTableAttachmentArgs.builder()        
+ *         var default_ = new GatewayEndpointRouteTableAttachment("default", GatewayEndpointRouteTableAttachmentArgs.builder()
  *             .gatewayEndpointId(defaultGE.id())
  *             .routeTableId(defaultRT.id())
  *             .build());

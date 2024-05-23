@@ -55,14 +55,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Disk("default", DiskArgs.builder()        
+ *         var default_ = new Disk("default", DiskArgs.builder()
  *             .size("20")
  *             .ensRegionId("cn-chenzhou-telecom_unicom_cmcc")
  *             .paymentType("PayAsYouGo")
  *             .category("cloud_efficiency")
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .systemDisk(InstanceSystemDiskArgs.builder()
  *                 .size("20")
  *                 .build())
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .period("1")
  *             .build());
  * 
- *         var defaultDiskInstanceAttachment = new DiskInstanceAttachment("defaultDiskInstanceAttachment", DiskInstanceAttachmentArgs.builder()        
+ *         var defaultDiskInstanceAttachment = new DiskInstanceAttachment("defaultDiskInstanceAttachment", DiskInstanceAttachmentArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .deleteWithInstance("false")
  *             .diskId(default_.id())

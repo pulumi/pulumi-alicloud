@@ -59,6 +59,10 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly clusterId!: pulumi.Output<string>;
     /**
      * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+     * - `MSE_SC_1_2_60_c`: 1C2G
+     * - `MSE_SC_2_4_60_c`: 2C4G
+     * - `MSE_SC_4_8_60_c`: 4C8G
+     * - `MSE_SC_8_16_60_c`: 8C16G
      */
     public readonly clusterSpecification!: pulumi.Output<string>;
     /**
@@ -235,6 +239,10 @@ export interface ClusterState {
     clusterId?: pulumi.Input<string>;
     /**
      * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+     * - `MSE_SC_1_2_60_c`: 1C2G
+     * - `MSE_SC_2_4_60_c`: 2C4G
+     * - `MSE_SC_4_8_60_c`: 4C8G
+     * - `MSE_SC_8_16_60_c`: 8C16G
      */
     clusterSpecification?: pulumi.Input<string>;
     /**
@@ -321,6 +329,10 @@ export interface ClusterArgs {
     clusterAliasName?: pulumi.Input<string>;
     /**
      * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+     * - `MSE_SC_1_2_60_c`: 1C2G
+     * - `MSE_SC_2_4_60_c`: 2C4G
+     * - `MSE_SC_4_8_60_c`: 4C8G
+     * - `MSE_SC_8_16_60_c`: 8C16G
      */
     clusterSpecification: pulumi.Input<string>;
     /**

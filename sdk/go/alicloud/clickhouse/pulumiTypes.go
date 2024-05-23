@@ -418,8 +418,7 @@ type GetDbClustersCluster struct {
 	// The ID of the business process flow.
 	Bid string `pulumi:"bid"`
 	// Instance family values include: Basic: Basic edition; HighAvailability: high availability edition.
-	Category string `pulumi:"category"`
-	// The Commodity Code of the DBCluster.
+	Category      string `pulumi:"category"`
 	CommodityCode string `pulumi:"commodityCode"`
 	// Connection string.
 	ConnectionString string `pulumi:"connectionString"`
@@ -509,8 +508,7 @@ type GetDbClustersClusterArgs struct {
 	// The ID of the business process flow.
 	Bid pulumi.StringInput `pulumi:"bid"`
 	// Instance family values include: Basic: Basic edition; HighAvailability: high availability edition.
-	Category pulumi.StringInput `pulumi:"category"`
-	// The Commodity Code of the DBCluster.
+	Category      pulumi.StringInput `pulumi:"category"`
 	CommodityCode pulumi.StringInput `pulumi:"commodityCode"`
 	// Connection string.
 	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
@@ -649,7 +647,6 @@ func (o GetDbClustersClusterOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersCluster) string { return v.Category }).(pulumi.StringOutput)
 }
 
-// The Commodity Code of the DBCluster.
 func (o GetDbClustersClusterOutput) CommodityCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersCluster) string { return v.CommodityCode }).(pulumi.StringOutput)
 }
@@ -851,9 +848,12 @@ func (o GetDbClustersClusterArrayOutput) Index(i pulumi.IntInput) GetDbClustersC
 }
 
 type GetDbClustersClusterDbClusterAccessWhiteList struct {
+	// Field `dbClusterIpArrayAttribute` has been removed from provider.
 	DbClusterIpArrayAttribute string `pulumi:"dbClusterIpArrayAttribute"`
-	DbClusterIpArrayName      string `pulumi:"dbClusterIpArrayName"`
-	SecurityIpList            string `pulumi:"securityIpList"`
+	// Whitelist group name.
+	DbClusterIpArrayName string `pulumi:"dbClusterIpArrayName"`
+	// The IP address list under the whitelist group.
+	SecurityIpList string `pulumi:"securityIpList"`
 }
 
 // GetDbClustersClusterDbClusterAccessWhiteListInput is an input type that accepts GetDbClustersClusterDbClusterAccessWhiteListArgs and GetDbClustersClusterDbClusterAccessWhiteListOutput values.
@@ -868,9 +868,12 @@ type GetDbClustersClusterDbClusterAccessWhiteListInput interface {
 }
 
 type GetDbClustersClusterDbClusterAccessWhiteListArgs struct {
+	// Field `dbClusterIpArrayAttribute` has been removed from provider.
 	DbClusterIpArrayAttribute pulumi.StringInput `pulumi:"dbClusterIpArrayAttribute"`
-	DbClusterIpArrayName      pulumi.StringInput `pulumi:"dbClusterIpArrayName"`
-	SecurityIpList            pulumi.StringInput `pulumi:"securityIpList"`
+	// Whitelist group name.
+	DbClusterIpArrayName pulumi.StringInput `pulumi:"dbClusterIpArrayName"`
+	// The IP address list under the whitelist group.
+	SecurityIpList pulumi.StringInput `pulumi:"securityIpList"`
 }
 
 func (GetDbClustersClusterDbClusterAccessWhiteListArgs) ElementType() reflect.Type {
@@ -924,14 +927,17 @@ func (o GetDbClustersClusterDbClusterAccessWhiteListOutput) ToGetDbClustersClust
 	return o
 }
 
+// Field `dbClusterIpArrayAttribute` has been removed from provider.
 func (o GetDbClustersClusterDbClusterAccessWhiteListOutput) DbClusterIpArrayAttribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersClusterDbClusterAccessWhiteList) string { return v.DbClusterIpArrayAttribute }).(pulumi.StringOutput)
 }
 
+// Whitelist group name.
 func (o GetDbClustersClusterDbClusterAccessWhiteListOutput) DbClusterIpArrayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersClusterDbClusterAccessWhiteList) string { return v.DbClusterIpArrayName }).(pulumi.StringOutput)
 }
 
+// The IP address list under the whitelist group.
 func (o GetDbClustersClusterDbClusterAccessWhiteListOutput) SecurityIpList() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersClusterDbClusterAccessWhiteList) string { return v.SecurityIpList }).(pulumi.StringOutput)
 }
@@ -957,8 +963,10 @@ func (o GetDbClustersClusterDbClusterAccessWhiteListArrayOutput) Index(i pulumi.
 }
 
 type GetDbClustersClusterScaleOutStatus struct {
+	// Process.
 	Progress string `pulumi:"progress"`
-	Ratio    string `pulumi:"ratio"`
+	// Efficiency.
+	Ratio string `pulumi:"ratio"`
 }
 
 // GetDbClustersClusterScaleOutStatusInput is an input type that accepts GetDbClustersClusterScaleOutStatusArgs and GetDbClustersClusterScaleOutStatusOutput values.
@@ -973,8 +981,10 @@ type GetDbClustersClusterScaleOutStatusInput interface {
 }
 
 type GetDbClustersClusterScaleOutStatusArgs struct {
+	// Process.
 	Progress pulumi.StringInput `pulumi:"progress"`
-	Ratio    pulumi.StringInput `pulumi:"ratio"`
+	// Efficiency.
+	Ratio pulumi.StringInput `pulumi:"ratio"`
 }
 
 func (GetDbClustersClusterScaleOutStatusArgs) ElementType() reflect.Type {
@@ -1028,10 +1038,12 @@ func (o GetDbClustersClusterScaleOutStatusOutput) ToGetDbClustersClusterScaleOut
 	return o
 }
 
+// Process.
 func (o GetDbClustersClusterScaleOutStatusOutput) Progress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersClusterScaleOutStatus) string { return v.Progress }).(pulumi.StringOutput)
 }
 
+// Efficiency.
 func (o GetDbClustersClusterScaleOutStatusOutput) Ratio() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDbClustersClusterScaleOutStatus) string { return v.Ratio }).(pulumi.StringOutput)
 }
@@ -1163,8 +1175,10 @@ func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOu
 }
 
 type GetRegionsRegionZoneId struct {
-	VpcEnabled bool   `pulumi:"vpcEnabled"`
-	ZoneId     string `pulumi:"zoneId"`
+	// Whether to support vpc network.
+	VpcEnabled bool `pulumi:"vpcEnabled"`
+	// The zone ID.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // GetRegionsRegionZoneIdInput is an input type that accepts GetRegionsRegionZoneIdArgs and GetRegionsRegionZoneIdOutput values.
@@ -1179,8 +1193,10 @@ type GetRegionsRegionZoneIdInput interface {
 }
 
 type GetRegionsRegionZoneIdArgs struct {
-	VpcEnabled pulumi.BoolInput   `pulumi:"vpcEnabled"`
-	ZoneId     pulumi.StringInput `pulumi:"zoneId"`
+	// Whether to support vpc network.
+	VpcEnabled pulumi.BoolInput `pulumi:"vpcEnabled"`
+	// The zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (GetRegionsRegionZoneIdArgs) ElementType() reflect.Type {
@@ -1234,10 +1250,12 @@ func (o GetRegionsRegionZoneIdOutput) ToGetRegionsRegionZoneIdOutputWithContext(
 	return o
 }
 
+// Whether to support vpc network.
 func (o GetRegionsRegionZoneIdOutput) VpcEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRegionsRegionZoneId) bool { return v.VpcEnabled }).(pulumi.BoolOutput)
 }
 
+// The zone ID.
 func (o GetRegionsRegionZoneIdOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsRegionZoneId) string { return v.ZoneId }).(pulumi.StringOutput)
 }

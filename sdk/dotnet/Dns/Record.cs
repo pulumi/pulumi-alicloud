@@ -78,6 +78,7 @@ namespace Pulumi.AliCloud.Dns
 
         /// <summary>
         /// The record status. `Enable` or `Disable`.
+        /// * `Locked` - The record locked state. `true` or `false`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -225,6 +226,7 @@ namespace Pulumi.AliCloud.Dns
 
         /// <summary>
         /// The record status. `Enable` or `Disable`.
+        /// * `Locked` - The record locked state. `true` or `false`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

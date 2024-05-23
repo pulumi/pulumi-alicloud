@@ -66,15 +66,15 @@ export interface GetVirtualNodesArgs {
      */
     outputFile?: string;
     /**
-     * The resource group ID.
+     * The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
      */
     resourceGroupId?: string;
     /**
-     * The security group ID.
+     * VNode itself and by VNode created (ECI) the security group used by.
      */
     securityGroupId?: string;
     /**
-     * The Status of the virtual node.
+     * The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
      */
     status?: string;
     /**
@@ -85,9 +85,6 @@ export interface GetVirtualNodesArgs {
      * The name of the virtual node.
      */
     virtualNodeName?: string;
-    /**
-     * The vswitch id.
-     */
     vswitchId?: string;
 }
 
@@ -158,15 +155,15 @@ export interface GetVirtualNodesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The resource group ID.
+     * The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The security group ID.
+     * VNode itself and by VNode created (ECI) the security group used by.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * The Status of the virtual node.
+     * The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
      */
     status?: pulumi.Input<string>;
     /**
@@ -177,8 +174,5 @@ export interface GetVirtualNodesOutputArgs {
      * The name of the virtual node.
      */
     virtualNodeName?: pulumi.Input<string>;
-    /**
-     * The vswitch id.
-     */
     vswitchId?: pulumi.Input<string>;
 }

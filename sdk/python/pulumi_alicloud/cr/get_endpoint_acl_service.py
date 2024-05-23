@@ -116,7 +116,7 @@ def get_endpoint_acl_service(enable: Optional[bool] = None,
     ```
 
 
-    :param bool enable: Whether to enable Acl Service.  Valid values: `true` and `false`.
+    :param bool enable: Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
     :param str endpoint_type: The type of endpoint. Valid values: `internet`.
     :param str instance_id: The ID of the CR Instance.
     :param str module_name: The ModuleName. Valid values: `Registry`.
@@ -170,7 +170,7 @@ def get_endpoint_acl_service_output(enable: Optional[pulumi.Input[bool]] = None,
     ```
 
 
-    :param bool enable: Whether to enable Acl Service.  Valid values: `true` and `false`.
+    :param bool enable: Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
     :param str endpoint_type: The type of endpoint. Valid values: `internet`.
     :param str instance_id: The ID of the CR Instance.
     :param str module_name: The ModuleName. Valid values: `Registry`.

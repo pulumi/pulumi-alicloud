@@ -18,14 +18,14 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
     public static final GetLoadBalancersPlainArgs Empty = new GetLoadBalancersPlainArgs();
 
     /**
-     * The IP version.
+     * The IP version. Valid values: `ipv4`, `DualStack`.
      * 
      */
     @Import(name="addressIpVersion")
     private @Nullable String addressIpVersion;
 
     /**
-     * @return The IP version.
+     * @return The IP version. Valid values: `ipv4`, `DualStack`.
      * 
      */
     public Optional<String> addressIpVersion() {
@@ -33,14 +33,14 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The type of IPv4 address used by the NLB instance.
+     * The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
      * 
      */
     @Import(name="addressType")
     private @Nullable String addressType;
 
     /**
-     * @return The type of IPv4 address used by the NLB instance.
+     * @return The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
      * 
      */
     public Optional<String> addressType() {
@@ -78,14 +78,14 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The type of IPv6 address used by the NLB instance.
+     * The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
      * 
      */
     @Import(name="ipv6AddressType")
     private @Nullable String ipv6AddressType;
 
     /**
-     * @return The type of IPv6 address used by the NLB instance.
+     * @return The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
      * 
      */
     public Optional<String> ipv6AddressType() {
@@ -93,14 +93,14 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The business status of the NLB instance.
+     * The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
      * 
      */
     @Import(name="loadBalancerBusinessStatus")
     private @Nullable String loadBalancerBusinessStatus;
 
     /**
-     * @return The business status of the NLB instance.
+     * @return The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
      * 
      */
     public Optional<String> loadBalancerBusinessStatus() {
@@ -168,31 +168,23 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The status of the NLB instance.
+     * The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the NLB instance.
+     * @return The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * The tag of the resource.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
-    /**
-     * @return The tag of the resource.
-     * 
-     */
     public Optional<Map<String,Object>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -265,7 +257,7 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param addressIpVersion The IP version.
+         * @param addressIpVersion The IP version. Valid values: `ipv4`, `DualStack`.
          * 
          * @return builder
          * 
@@ -276,7 +268,7 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param addressType The type of IPv4 address used by the NLB instance.
+         * @param addressType The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
          * 
          * @return builder
          * 
@@ -319,7 +311,7 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param ipv6AddressType The type of IPv6 address used by the NLB instance.
+         * @param ipv6AddressType The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
          * 
          * @return builder
          * 
@@ -330,7 +322,7 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param loadBalancerBusinessStatus The business status of the NLB instance.
+         * @param loadBalancerBusinessStatus The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
          * 
          * @return builder
          * 
@@ -395,7 +387,7 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param status The status of the NLB instance.
+         * @param status The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
          * 
          * @return builder
          * 
@@ -405,12 +397,6 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
-        /**
-         * @param tags The tag of the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Map<String,Object> tags) {
             $.tags = tags;
             return this;

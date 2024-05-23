@@ -75,19 +75,19 @@ import javax.annotation.Nullable;
  * 
  *         final var regions = RdsFunctions.getCrossRegions();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.ids()[0])
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .engine("MySQL")
  *             .engineVersion("8.0")
  *             .instanceType(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *             .dbInstanceStorageType("local_ssd")
  *             .build());
  * 
- *         var defaultRdsInstanceCrossBackupPolicy = new RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy", RdsInstanceCrossBackupPolicyArgs.builder()        
+ *         var defaultRdsInstanceCrossBackupPolicy = new RdsInstanceCrossBackupPolicy("defaultRdsInstanceCrossBackupPolicy", RdsInstanceCrossBackupPolicyArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .crossBackupRegion(regions.applyValue(getCrossRegionsResult -> getCrossRegionsResult.ids()[0]))
  *             .build());

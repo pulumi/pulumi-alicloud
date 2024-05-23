@@ -68,19 +68,19 @@ type GetRestoreJobsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The list of restore job IDs.
 	RestoreIds []string `pulumi:"restoreIds"`
-	// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	// The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
 	RestoreType string `pulumi:"restoreType"`
 	// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
 	SourceTypes []string `pulumi:"sourceTypes"`
-	// The status of restore job.
+	// The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
 	Status *string `pulumi:"status"`
-	// The name of target ofo OSS bucket.
+	// The name of target OSS bucket.
 	TargetBuckets []string `pulumi:"targetBuckets"`
-	// The ID of destination file system.
+	// Valid while sourceType equals `NAS`. The list of destination File System IDs.
 	TargetFileSystemIds []string `pulumi:"targetFileSystemIds"`
 	// The ID of target ECS instance.
 	TargetInstanceIds []string `pulumi:"targetInstanceIds"`
-	// The ID of backup vault.
+	// The list of backup vault IDs.
 	VaultIds []string `pulumi:"vaultIds"`
 }
 
@@ -120,19 +120,19 @@ type GetRestoreJobsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The list of restore job IDs.
 	RestoreIds pulumi.StringArrayInput `pulumi:"restoreIds"`
-	// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+	// The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
 	RestoreType pulumi.StringInput `pulumi:"restoreType"`
 	// The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
 	SourceTypes pulumi.StringArrayInput `pulumi:"sourceTypes"`
-	// The status of restore job.
+	// The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The name of target ofo OSS bucket.
+	// The name of target OSS bucket.
 	TargetBuckets pulumi.StringArrayInput `pulumi:"targetBuckets"`
-	// The ID of destination file system.
+	// Valid while sourceType equals `NAS`. The list of destination File System IDs.
 	TargetFileSystemIds pulumi.StringArrayInput `pulumi:"targetFileSystemIds"`
 	// The ID of target ECS instance.
 	TargetInstanceIds pulumi.StringArrayInput `pulumi:"targetInstanceIds"`
-	// The ID of backup vault.
+	// The list of backup vault IDs.
 	VaultIds pulumi.StringArrayInput `pulumi:"vaultIds"`
 }
 

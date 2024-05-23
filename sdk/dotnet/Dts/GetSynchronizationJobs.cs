@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Dts
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+        /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. `Downgrade`, `Failed`, `Finished`, `InitializeFailed`, `Locked`, `Modifying`, `NotConfigured`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Upgrade`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. You can stop the task by specifying `Suspending` and start the task by specifying `Synchronizing`.
+        /// The status of the resource. Valid values: `Synchronizing`, `Suspending`. `Downgrade`, `Failed`, `Finished`, `InitializeFailed`, `Locked`, `Modifying`, `NotConfigured`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Upgrade`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -122,7 +122,7 @@ def get_dedicated_host_groups(engine: Optional[str] = None,
     ```
 
 
-    :param str engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+    :param str engine: Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
     :param Sequence[str] ids: A list of Dedicated Host Group IDs.
     :param str name_regex: A regex string to filter results by Dedicated Host Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -169,7 +169,7 @@ def get_dedicated_host_groups_output(engine: Optional[pulumi.Input[Optional[str]
     ```
 
 
-    :param str engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+    :param str engine: Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
     :param Sequence[str] ids: A list of Dedicated Host Group IDs.
     :param str name_regex: A regex string to filter results by Dedicated Host Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

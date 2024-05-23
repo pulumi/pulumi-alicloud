@@ -125,7 +125,7 @@ def get_delegated_administrators(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Delegated Administrator IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str service_principal: The identity of the trusted service.
+    :param str service_principal: The identification of the trusted service.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -173,6 +173,6 @@ def get_delegated_administrators_output(ids: Optional[pulumi.Input[Optional[Sequ
 
     :param Sequence[str] ids: A list of Delegated Administrator IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str service_principal: The identity of the trusted service.
+    :param str service_principal: The identification of the trusted service.
     """
     ...

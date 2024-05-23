@@ -64,16 +64,16 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var default_ = new Project("default", ProjectArgs.builder()        
+ *         var default_ = new Project("default", ProjectArgs.builder()
  *             .name(name)
  *             .build());
  * 
- *         var defaultStore = new Store("defaultStore", StoreArgs.builder()        
+ *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
  *             .name(name)
  *             .project(default_.name())
  *             .build());
  * 
- *         var defaultDelivery = new Delivery("defaultDelivery", DeliveryArgs.builder()        
+ *         var defaultDelivery = new Delivery("defaultDelivery", DeliveryArgs.builder()
  *             .configurationItemChangeNotification(true)
  *             .nonCompliantNotification(true)
  *             .deliveryChannelName(name)

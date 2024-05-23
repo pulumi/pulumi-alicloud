@@ -23,7 +23,7 @@ public final class GetAddressPoolsPool {
      */
     private String addressPoolName;
     /**
-     * @return The address that you want to add to the address pool.
+     * @return The address lists of the Address Pool.
      * 
      */
     private List<GetAddressPoolsPoolAddress> addresses;
@@ -94,7 +94,7 @@ public final class GetAddressPoolsPool {
         return this.addressPoolName;
     }
     /**
-     * @return The address that you want to add to the address pool.
+     * @return The address lists of the Address Pool.
      * 
      */
     public List<GetAddressPoolsPoolAddress> addresses() {

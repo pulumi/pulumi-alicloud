@@ -66,7 +66,7 @@ func GetPublicIpAddressPools(ctx *pulumi.Context, args *GetPublicIpAddressPoolsA
 type GetPublicIpAddressPoolsArgs struct {
 	// A list of Vpc Public Ip Address Pool IDs.
 	Ids []string `pulumi:"ids"`
-	// The Internet service provider.
+	// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
 	Isp *string `pulumi:"isp"`
 	// A regex string to filter results by Vpc Public Ip Address Pool name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -74,9 +74,9 @@ type GetPublicIpAddressPoolsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The IDs of the Vpc Public IP address pools.
 	PublicIpAddressPoolIds []string `pulumi:"publicIpAddressPoolIds"`
-	// The name of the Vpc Public Ip Address Pool.
+	// The name of the VPC Public IP address pool.
 	PublicIpAddressPoolName *string `pulumi:"publicIpAddressPoolName"`
-	// The status of the Vpc Public Ip Address Pool.
+	// The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
 	Status *string `pulumi:"status"`
 }
 
@@ -112,7 +112,7 @@ func GetPublicIpAddressPoolsOutput(ctx *pulumi.Context, args GetPublicIpAddressP
 type GetPublicIpAddressPoolsOutputArgs struct {
 	// A list of Vpc Public Ip Address Pool IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The Internet service provider.
+	// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
 	Isp pulumi.StringPtrInput `pulumi:"isp"`
 	// A regex string to filter results by Vpc Public Ip Address Pool name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
@@ -120,9 +120,9 @@ type GetPublicIpAddressPoolsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The IDs of the Vpc Public IP address pools.
 	PublicIpAddressPoolIds pulumi.StringArrayInput `pulumi:"publicIpAddressPoolIds"`
-	// The name of the Vpc Public Ip Address Pool.
+	// The name of the VPC Public IP address pool.
 	PublicIpAddressPoolName pulumi.StringPtrInput `pulumi:"publicIpAddressPoolName"`
-	// The status of the Vpc Public Ip Address Pool.
+	// The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

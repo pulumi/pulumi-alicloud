@@ -506,7 +506,15 @@ class EventRuleEventPatternArgs:
         """
         :param pulumi.Input[str] product: The type of the cloud service.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_type_lists: The type of the event-triggered alert rule. Valid values:
+               - `StatusNotification`: fault notifications.
+               - `Exception`: exceptions.
+               - `Maintenance`: O&M.
+               - `*`: all types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] level_lists: The level of the event-triggered alert rule. Valid values:
+               - `CRITICAL`: critical.
+               - `WARN`: warning.
+               - `INFO`: information.
+               - `*`: all types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] name_lists: The name of the event-triggered alert rule.
         :param pulumi.Input[str] sql_filter: The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
         """
@@ -537,6 +545,10 @@ class EventRuleEventPatternArgs:
     def event_type_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The type of the event-triggered alert rule. Valid values:
+        - `StatusNotification`: fault notifications.
+        - `Exception`: exceptions.
+        - `Maintenance`: O&M.
+        - `*`: all types.
         """
         return pulumi.get(self, "event_type_lists")
 
@@ -549,6 +561,10 @@ class EventRuleEventPatternArgs:
     def level_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         The level of the event-triggered alert rule. Valid values:
+        - `CRITICAL`: critical.
+        - `WARN`: warning.
+        - `INFO`: information.
+        - `*`: all types.
         """
         return pulumi.get(self, "level_lists")
 

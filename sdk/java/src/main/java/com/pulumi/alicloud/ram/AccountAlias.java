@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexample");
- *         var alias = new AccountAlias("alias", AccountAliasArgs.builder()        
+ *         var alias = new AccountAlias("alias", AccountAliasArgs.builder()
  *             .accountAlias(name)
  *             .build());
  * 

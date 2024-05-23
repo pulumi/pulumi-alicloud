@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityPolicy("default", SecurityPolicyArgs.builder()        
+ *         var default_ = new SecurityPolicy("default", SecurityPolicyArgs.builder()
  *             .securityPolicyName("tf_example")
  *             .tlsVersions("TLSv1.0")
  *             .ciphers(            

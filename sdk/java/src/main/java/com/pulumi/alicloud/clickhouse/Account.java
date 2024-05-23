@@ -64,19 +64,19 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.regions()[0].zoneIds()[0].zoneId())
  *             .build());
  * 
- *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()        
+ *         var defaultDbCluster = new DbCluster("defaultDbCluster", DbClusterArgs.builder()
  *             .dbClusterVersion("22.8.5.29")
  *             .category("Basic")
  *             .dbClusterClass("S8")
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
+ *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()
  *             .dbClusterId(defaultDbCluster.id())
  *             .accountDescription("tf-example-description")
  *             .accountName("examplename")

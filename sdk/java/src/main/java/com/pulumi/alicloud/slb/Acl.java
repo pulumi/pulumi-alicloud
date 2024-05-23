@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var acl = new Acl("acl", AclArgs.builder()        
+ *         var acl = new Acl("acl", AclArgs.builder()
  *             .name("terraformslbaclconfig")
  *             .ipVersion("ipv4")
  *             .build());

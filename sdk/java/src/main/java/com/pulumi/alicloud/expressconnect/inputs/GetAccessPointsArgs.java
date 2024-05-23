@@ -62,14 +62,14 @@ public final class GetAccessPointsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Physical Connection to Which the Access Point State.
+     * The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The Physical Connection to Which the Access Point State.
+     * @return The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -177,7 +177,7 @@ public final class GetAccessPointsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The Physical Connection to Which the Access Point State.
+         * @param status The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GetAccessPointsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The Physical Connection to Which the Access Point State.
+         * @param status The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
          * 
          * @return builder
          * 

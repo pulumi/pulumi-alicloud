@@ -116,6 +116,10 @@ export class Secret extends pulumi.CustomResource {
     public readonly secretName!: pulumi.Output<string>;
     /**
      * The type of the secret. Valid values:
+     * - `Generic`: specifies a generic secret.
+     * - `Rds`: specifies a managed ApsaraDB RDS secret.
+     * - `RAMCredentials`: indicates a managed RAM secret.
+     * - `ECS`: specifies a managed ECS secret.
      */
     public readonly secretType!: pulumi.Output<string>;
     /**
@@ -255,6 +259,10 @@ export interface SecretState {
     secretName?: pulumi.Input<string>;
     /**
      * The type of the secret. Valid values:
+     * - `Generic`: specifies a generic secret.
+     * - `Rds`: specifies a managed ApsaraDB RDS secret.
+     * - `RAMCredentials`: indicates a managed RAM secret.
+     * - `ECS`: specifies a managed ECS secret.
      */
     secretType?: pulumi.Input<string>;
     /**
@@ -321,6 +329,10 @@ export interface SecretArgs {
     secretName: pulumi.Input<string>;
     /**
      * The type of the secret. Valid values:
+     * - `Generic`: specifies a generic secret.
+     * - `Rds`: specifies a managed ApsaraDB RDS secret.
+     * - `RAMCredentials`: indicates a managed RAM secret.
+     * - `ECS`: specifies a managed ECS secret.
      */
     secretType?: pulumi.Input<string>;
     /**

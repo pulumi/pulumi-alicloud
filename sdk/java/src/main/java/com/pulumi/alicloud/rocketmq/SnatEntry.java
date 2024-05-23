@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var sagId = config.get("sagId").orElse("sag-9bifk***");
- *         var default_ = new SnatEntry("default", SnatEntryArgs.builder()        
+ *         var default_ = new SnatEntry("default", SnatEntryArgs.builder()
  *             .sagId(sagId)
  *             .cidrBlock("192.168.7.0/24")
  *             .snatIp("192.0.0.2")

@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var example = new DbInstance("example", DbInstanceArgs.builder()        
+ *         var example = new DbInstance("example", DbInstanceArgs.builder()
  *             .dbNodeClass("gdb.r.2xlarge")
  *             .dbInstanceNetworkType("vpc")
  *             .dbVersion("1.0")

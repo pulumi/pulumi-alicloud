@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var domain = config.get("domain").orElse("terraform-example.com");
- *         var example = new DhcpOptionsSet("example", DhcpOptionsSetArgs.builder()        
+ *         var example = new DhcpOptionsSet("example", DhcpOptionsSetArgs.builder()
  *             .dhcpOptionsSetName(name)
  *             .dhcpOptionsSetDescription(name)
  *             .domainName(domain)

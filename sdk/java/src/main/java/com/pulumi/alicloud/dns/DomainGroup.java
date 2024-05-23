@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new DomainGroup("default", DomainGroupArgs.builder()        
+ *         var default_ = new DomainGroup("default", DomainGroupArgs.builder()
  *             .domainGroupName("tf-example")
  *             .build());
  * 

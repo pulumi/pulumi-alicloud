@@ -31,6 +31,10 @@ type Cluster struct {
 	// (Available in v1.162.0+) The id of Cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+	// - `MSE_SC_1_2_60_c`: 1C2G
+	// - `MSE_SC_2_4_60_c`: 2C4G
+	// - `MSE_SC_4_8_60_c`: 4C8G
+	// - `MSE_SC_8_16_60_c`: 8C16G
 	ClusterSpecification pulumi.StringOutput `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
@@ -125,6 +129,10 @@ type clusterState struct {
 	// (Available in v1.162.0+) The id of Cluster.
 	ClusterId *string `pulumi:"clusterId"`
 	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+	// - `MSE_SC_1_2_60_c`: 1C2G
+	// - `MSE_SC_2_4_60_c`: 2C4G
+	// - `MSE_SC_4_8_60_c`: 4C8G
+	// - `MSE_SC_8_16_60_c`: 8C16G
 	ClusterSpecification *string `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType *string `pulumi:"clusterType"`
@@ -172,6 +180,10 @@ type ClusterState struct {
 	// (Available in v1.162.0+) The id of Cluster.
 	ClusterId pulumi.StringPtrInput
 	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+	// - `MSE_SC_1_2_60_c`: 1C2G
+	// - `MSE_SC_2_4_60_c`: 2C4G
+	// - `MSE_SC_4_8_60_c`: 4C8G
+	// - `MSE_SC_8_16_60_c`: 8C16G
 	ClusterSpecification pulumi.StringPtrInput
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringPtrInput
@@ -219,6 +231,10 @@ type clusterArgs struct {
 	// The alias of MSE Cluster.
 	ClusterAliasName *string `pulumi:"clusterAliasName"`
 	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+	// - `MSE_SC_1_2_60_c`: 1C2G
+	// - `MSE_SC_2_4_60_c`: 2C4G
+	// - `MSE_SC_4_8_60_c`: 4C8G
+	// - `MSE_SC_8_16_60_c`: 8C16G
 	ClusterSpecification string `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType string `pulumi:"clusterType"`
@@ -261,6 +277,10 @@ type ClusterArgs struct {
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrInput
 	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+	// - `MSE_SC_1_2_60_c`: 1C2G
+	// - `MSE_SC_2_4_60_c`: 2C4G
+	// - `MSE_SC_4_8_60_c`: 4C8G
+	// - `MSE_SC_8_16_60_c`: 8C16G
 	ClusterSpecification pulumi.StringInput
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringInput
@@ -404,6 +424,10 @@ func (o ClusterOutput) ClusterId() pulumi.StringOutput {
 }
 
 // The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+// - `MSE_SC_1_2_60_c`: 1C2G
+// - `MSE_SC_2_4_60_c`: 2C4G
+// - `MSE_SC_4_8_60_c`: 4C8G
+// - `MSE_SC_8_16_60_c`: 8C16G
 func (o ClusterOutput) ClusterSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterSpecification }).(pulumi.StringOutput)
 }

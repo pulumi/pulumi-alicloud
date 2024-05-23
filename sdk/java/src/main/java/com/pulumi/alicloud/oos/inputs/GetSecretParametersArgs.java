@@ -95,14 +95,14 @@ public final class GetSecretParametersArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The name of the encryption parameter.
+     * The name of the secret parameter.
      * 
      */
     @Import(name="secretParameterName")
     private @Nullable Output<String> secretParameterName;
 
     /**
-     * @return The name of the encryption parameter.
+     * @return The name of the secret parameter.
      * 
      */
     public Optional<Output<String>> secretParameterName() {
@@ -124,14 +124,14 @@ public final class GetSecretParametersArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -286,7 +286,7 @@ public final class GetSecretParametersArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param secretParameterName The name of the encryption parameter.
+         * @param secretParameterName The name of the secret parameter.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class GetSecretParametersArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param secretParameterName The name of the encryption parameter.
+         * @param secretParameterName The name of the secret parameter.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class GetSecretParametersArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class GetSecretParametersArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 

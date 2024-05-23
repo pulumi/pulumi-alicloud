@@ -176,6 +176,7 @@ type OtsBackupPlan struct {
 	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules OtsBackupPlanRuleArrayOutput `pulumi:"rules"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// - `startTime` Backup start time, UNIX time seconds.
 	//
 	// Deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
@@ -243,6 +244,7 @@ type otsBackupPlanState struct {
 	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules []OtsBackupPlanRule `pulumi:"rules"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// - `startTime` Backup start time, UNIX time seconds.
 	//
 	// Deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
 	Schedule *string `pulumi:"schedule"`
@@ -272,6 +274,7 @@ type OtsBackupPlanState struct {
 	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules OtsBackupPlanRuleArrayInput
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// - `startTime` Backup start time, UNIX time seconds.
 	//
 	// Deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
 	Schedule pulumi.StringPtrInput
@@ -305,6 +308,7 @@ type otsBackupPlanArgs struct {
 	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules []OtsBackupPlanRule `pulumi:"rules"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// - `startTime` Backup start time, UNIX time seconds.
 	//
 	// Deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
 	Schedule *string `pulumi:"schedule"`
@@ -335,6 +339,7 @@ type OtsBackupPlanArgs struct {
 	// The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Rules OtsBackupPlanRuleArrayInput
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// - `startTime` Backup start time, UNIX time seconds.
 	//
 	// Deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
 	Schedule pulumi.StringPtrInput
@@ -480,6 +485,7 @@ func (o OtsBackupPlanOutput) Rules() OtsBackupPlanRuleArrayOutput {
 }
 
 // Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+// - `startTime` Backup start time, UNIX time seconds.
 //
 // Deprecated: Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
 func (o OtsBackupPlanOutput) Schedule() pulumi.StringPtrOutput {

@@ -166,12 +166,12 @@ def get_ipv6_egress_rules(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Ipv6 Egress Rule IDs.
-    :param str instance_id: The ID of the instance to which the egress-only rule is applied.
+    :param str instance_id: The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
     :param str ipv6_egress_rule_name: The name of the resource.
     :param str ipv6_gateway_id: The ID of the IPv6 gateway.
     :param str name_regex: A regex string to filter results by Ipv6 Egress Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+    :param str status: The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -238,11 +238,11 @@ def get_ipv6_egress_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
 
     :param Sequence[str] ids: A list of Ipv6 Egress Rule IDs.
-    :param str instance_id: The ID of the instance to which the egress-only rule is applied.
+    :param str instance_id: The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
     :param str ipv6_egress_rule_name: The name of the resource.
     :param str ipv6_gateway_id: The ID of the IPv6 gateway.
     :param str name_regex: A regex string to filter results by Ipv6 Egress Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+    :param str status: The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
     """
     ...

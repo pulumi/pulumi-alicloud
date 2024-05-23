@@ -127,7 +127,7 @@ def get_app_templates(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of App Template IDs.
     :param str name_regex: A regex string to filter results by App Template name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: Application template usage status.
+    :param str status: Application template usage status. Valid values: ["attached", "unattached"].
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -176,6 +176,6 @@ def get_app_templates_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param Sequence[str] ids: A list of App Template IDs.
     :param str name_regex: A regex string to filter results by App Template name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: Application template usage status.
+    :param str status: Application template usage status. Valid values: ["attached", "unattached"].
     """
     ...

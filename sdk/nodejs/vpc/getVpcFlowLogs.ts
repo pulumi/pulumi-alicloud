@@ -82,15 +82,15 @@ export interface GetVpcFlowLogsArgs {
      */
     resourceId?: string;
     /**
-     * The resource type.
+     * The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
      */
     resourceType?: string;
     /**
-     * The status of flow log.
+     * The status of  flow log. Valid values: `Active`, `Inactive`.
      */
     status?: string;
     /**
-     * The traffic type.
+     * The traffic type. Valid values: `All`, `Allow`, `Drop`.
      */
     trafficType?: string;
 }
@@ -178,15 +178,15 @@ export interface GetVpcFlowLogsOutputArgs {
      */
     resourceId?: pulumi.Input<string>;
     /**
-     * The resource type.
+     * The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
      */
     resourceType?: pulumi.Input<string>;
     /**
-     * The status of flow log.
+     * The status of  flow log. Valid values: `Active`, `Inactive`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The traffic type.
+     * The traffic type. Valid values: `All`, `Allow`, `Drop`.
      */
     trafficType?: pulumi.Input<string>;
 }

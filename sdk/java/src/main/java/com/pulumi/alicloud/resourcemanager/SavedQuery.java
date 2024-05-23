@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new SavedQuery("default", SavedQueryArgs.builder()        
+ *         var default_ = new SavedQuery("default", SavedQueryArgs.builder()
  *             .description(name)
  *             .expression("select * from resources limit 1;")
  *             .savedQueryName(name)

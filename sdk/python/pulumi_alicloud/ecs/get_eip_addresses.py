@@ -278,22 +278,22 @@ def get_eip_addresses(address_name: Optional[str] = None,
     ```
 
 
-    :param str address_name: The name of the EIP.
+    :param str address_name: The eip name.
     :param str associated_instance_id: The associated instance id.
     :param str associated_instance_type: The associated instance type.
     :param bool dry_run: The dry run.
     :param bool enable_details: Default to `true`. Set it to `false` can hide the `tags` to output.
     :param Sequence[str] ids: A list of Address IDs.
     :param bool include_reservation_data: The include reservation data. Valid values: `BGP` and `BGP_PRO`.
-    :param str ip_address: The IP address of the EIP.
-    :param str isp: The Internet service provider (ISP).
+    :param str ip_address: The eip address.
+    :param str isp: The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
     :param str lock_reason: The lock reason.
     :param str name_regex: A regex string to filter results by Address name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str payment_type: The billing method of the EIP.
+    :param str payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
     :param str resource_group_id: The ID of the resource group.
-    :param str segment_instance_id: The IDs of the contiguous EIPs.
-    :param str status: The status of the EIP.
+    :param str segment_instance_id: The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+    :param str status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
@@ -382,22 +382,22 @@ def get_eip_addresses_output(address_name: Optional[pulumi.Input[Optional[str]]]
     ```
 
 
-    :param str address_name: The name of the EIP.
+    :param str address_name: The eip name.
     :param str associated_instance_id: The associated instance id.
     :param str associated_instance_type: The associated instance type.
     :param bool dry_run: The dry run.
     :param bool enable_details: Default to `true`. Set it to `false` can hide the `tags` to output.
     :param Sequence[str] ids: A list of Address IDs.
     :param bool include_reservation_data: The include reservation data. Valid values: `BGP` and `BGP_PRO`.
-    :param str ip_address: The IP address of the EIP.
-    :param str isp: The Internet service provider (ISP).
+    :param str ip_address: The eip address.
+    :param str isp: The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
     :param str lock_reason: The lock reason.
     :param str name_regex: A regex string to filter results by Address name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str payment_type: The billing method of the EIP.
+    :param str payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
     :param str resource_group_id: The ID of the resource group.
-    :param str segment_instance_id: The IDs of the contiguous EIPs.
-    :param str status: The status of the EIP.
+    :param str segment_instance_id: The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
+    :param str status: The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     ...

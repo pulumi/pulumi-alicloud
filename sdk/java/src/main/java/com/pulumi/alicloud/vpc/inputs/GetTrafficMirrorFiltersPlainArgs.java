@@ -76,14 +76,14 @@ public final class GetTrafficMirrorFiltersPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The name of the filter.
+     * The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="trafficMirrorFilterName")
     private @Nullable String trafficMirrorFilterName;
 
     /**
-     * @return The name of the filter.
+     * @return The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<String> trafficMirrorFilterName() {
@@ -173,7 +173,7 @@ public final class GetTrafficMirrorFiltersPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param trafficMirrorFilterName The name of the filter.
+         * @param trafficMirrorFilterName The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 

@@ -20,6 +20,8 @@ namespace Pulumi.AliCloud.Ecs.Inputs
 
         /// <summary>
         /// The communication mode of the ENI. Default value: `Standard`. Valid values:
+        /// - `Standard`: Uses the TCP communication mode.
+        /// - `HighPerformance`: Uses the remote direct memory access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
         /// </summary>
         [Input("networkInterfaceTrafficMode")]
         public Input<string>? NetworkInterfaceTrafficMode { get; set; }

@@ -70,7 +70,7 @@ type GetInstancesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The query str, which can use `instanceName` keyword for fuzzy search.
 	QueryStr *string `pulumi:"queryStr"`
-	// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+	// Instance status, Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
 	Status *string `pulumi:"status"`
 	// The support engine. Valid values: `1` to `7`.
 	SupportEngine *int `pulumi:"supportEngine"`
@@ -116,7 +116,7 @@ type GetInstancesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The query str, which can use `instanceName` keyword for fuzzy search.
 	QueryStr pulumi.StringPtrInput `pulumi:"queryStr"`
-	// The status of Instance, enumerative: Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
+	// Instance status, Valid values: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`, `INSTANCE_LEVEL_MODIFY`, `NET_MODIFYING`, `RESIZING`, `RESTARTING`, `MINOR_VERSION_TRANSING`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The support engine. Valid values: `1` to `7`.
 	SupportEngine pulumi.IntPtrInput `pulumi:"supportEngine"`

@@ -739,7 +739,7 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()        
+     *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()
      *             .contactName("example_value")
      *             .position("CEO")
      *             .email("123{@literal @}163.com")
@@ -793,7 +793,7 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()        
+     *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()
      *             .contactName("example_value")
      *             .position("CEO")
      *             .email("123{@literal @}163.com")
@@ -847,7 +847,7 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()        
+     *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()
      *             .contactName("example_value")
      *             .position("CEO")
      *             .email("123{@literal @}163.com")
@@ -901,7 +901,7 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()        
+     *         var defaultMscSubContract = new MscSubContract("defaultMscSubContract", MscSubContractArgs.builder()
      *             .contactName("example_value")
      *             .position("CEO")
      *             .email("123{@literal @}163.com")

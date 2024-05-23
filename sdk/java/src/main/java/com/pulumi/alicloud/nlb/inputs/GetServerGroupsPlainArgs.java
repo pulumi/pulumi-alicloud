@@ -93,14 +93,14 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The type of the server group.
+     * The type of the server group. Valid values: `Instance`, `Ip`.
      * 
      */
     @Import(name="serverGroupType")
     private @Nullable String serverGroupType;
 
     /**
-     * @return The type of the server group.
+     * @return The type of the server group. Valid values: `Instance`, `Ip`.
      * 
      */
     public Optional<String> serverGroupType() {
@@ -108,31 +108,23 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The status of the server group.
+     * The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the server group.
+     * @return The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * A mapping of tags to assign to the resource.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
-    /**
-     * @return A mapping of tags to assign to the resource.
-     * 
-     */
     public Optional<Map<String,Object>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -244,7 +236,7 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param serverGroupType The type of the server group.
+         * @param serverGroupType The type of the server group. Valid values: `Instance`, `Ip`.
          * 
          * @return builder
          * 
@@ -255,7 +247,7 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the server group.
+         * @param status The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
          * 
          * @return builder
          * 
@@ -265,12 +257,6 @@ public final class GetServerGroupsPlainArgs extends com.pulumi.resources.InvokeA
             return this;
         }
 
-        /**
-         * @param tags A mapping of tags to assign to the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Map<String,Object> tags) {
             $.tags = tags;
             return this;

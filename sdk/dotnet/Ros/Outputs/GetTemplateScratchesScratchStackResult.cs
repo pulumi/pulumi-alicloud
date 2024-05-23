@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Ros.Outputs
     [OutputType]
     public sealed class GetTemplateScratchesScratchStackResult
     {
+        /// <summary>
+        /// The ID of the Resource stack.
+        /// </summary>
         public readonly string StackId;
 
         [OutputConstructor]

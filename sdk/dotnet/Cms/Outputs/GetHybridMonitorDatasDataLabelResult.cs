@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Cms.Outputs
     [OutputType]
     public sealed class GetHybridMonitorDatasDataLabelResult
     {
+        /// <summary>
+        /// Label key.
+        /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// Label value.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

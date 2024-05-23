@@ -49,13 +49,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Accelerator("default", AcceleratorArgs.builder()        
+ *         var default_ = new Accelerator("default", AcceleratorArgs.builder()
  *             .duration(1)
  *             .autoUseCoupon(true)
  *             .spec("1")
  *             .build());
  * 
- *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+ *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
  *             .domain("changes.com.cn")
  *             .acceleratorId(default_.id())
  *             .build());

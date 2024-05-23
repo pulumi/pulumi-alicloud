@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var example = new FcTrigger("example", FcTriggerArgs.builder()        
+ *         var example = new FcTrigger("example", FcTriggerArgs.builder()
  *             .eventMetaName("LogFileCreated")
  *             .eventMetaVersion("1.0.0")
  *             .notes("example_value")

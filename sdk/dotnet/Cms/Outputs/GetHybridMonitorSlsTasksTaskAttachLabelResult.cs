@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Cms.Outputs
     [OutputType]
     public sealed class GetHybridMonitorSlsTasksTaskAttachLabelResult
     {
+        /// <summary>
+        /// The key of the tag.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The value of the tag.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

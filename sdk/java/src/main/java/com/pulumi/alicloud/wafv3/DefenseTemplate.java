@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = Wafv3Functions.getInstances();
  * 
- *         var defaultDefenseTemplate = new DefenseTemplate("defaultDefenseTemplate", DefenseTemplateArgs.builder()        
+ *         var defaultDefenseTemplate = new DefenseTemplate("defaultDefenseTemplate", DefenseTemplateArgs.builder()
  *             .status("1")
  *             .instanceId(default_.ids()[0])
  *             .defenseTemplateName(name)

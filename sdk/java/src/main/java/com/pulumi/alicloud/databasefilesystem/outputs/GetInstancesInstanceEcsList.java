@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstanceEcsList {
+    /**
+     * @return The ID of the ECS instance.
+     * 
+     */
     private String ecsId;
 
     private GetInstancesInstanceEcsList() {}
+    /**
+     * @return The ID of the ECS instance.
+     * 
+     */
     public String ecsId() {
         return this.ecsId;
     }

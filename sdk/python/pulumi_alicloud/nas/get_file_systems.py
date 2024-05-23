@@ -155,6 +155,8 @@ def get_file_systems(description_regex: Optional[str] = None,
            `SMB` (Available when the `file_system_type` is `standard`).
     :param str storage_type: The storage type of the file system.
            * Valid values:
+           * `Performance` (Available when the `file_system_type` is `standard`)
+           * `Capacity` (Available when the `file_system_type` is `standard`)
     """
     __args__ = dict()
     __args__['descriptionRegex'] = description_regex
@@ -209,5 +211,7 @@ def get_file_systems_output(description_regex: Optional[pulumi.Input[Optional[st
            `SMB` (Available when the `file_system_type` is `standard`).
     :param str storage_type: The storage type of the file system.
            * Valid values:
+           * `Performance` (Available when the `file_system_type` is `standard`)
+           * `Capacity` (Available when the `file_system_type` is `standard`)
     """
     ...

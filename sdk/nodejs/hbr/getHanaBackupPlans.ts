@@ -48,9 +48,6 @@ export function getHanaBackupPlans(args: GetHanaBackupPlansArgs, opts?: pulumi.I
  * A collection of arguments for invoking getHanaBackupPlans.
  */
 export interface GetHanaBackupPlansArgs {
-    /**
-     * The ID of the SAP HANA instance.
-     */
     clusterId: string;
     /**
      * The name of the database.
@@ -71,7 +68,7 @@ export interface GetHanaBackupPlansArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * The ID of the backup vault.
+     * The id of the vault.
      */
     vaultId?: string;
 }
@@ -126,9 +123,6 @@ export function getHanaBackupPlansOutput(args: GetHanaBackupPlansOutputArgs, opt
  * A collection of arguments for invoking getHanaBackupPlans.
  */
 export interface GetHanaBackupPlansOutputArgs {
-    /**
-     * The ID of the SAP HANA instance.
-     */
     clusterId: pulumi.Input<string>;
     /**
      * The name of the database.
@@ -149,7 +143,7 @@ export interface GetHanaBackupPlansOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * The ID of the backup vault.
+     * The id of the vault.
      */
     vaultId?: pulumi.Input<string>;
 }

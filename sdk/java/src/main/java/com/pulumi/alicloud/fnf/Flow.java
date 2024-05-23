@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Role("default", RoleArgs.builder()        
+ *         var default_ = new Role("default", RoleArgs.builder()
  *             .name("tf-example-fnfflow")
  *             .document("""
  *   {
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var example = new Flow("example", FlowArgs.builder()        
+ *         var example = new Flow("example", FlowArgs.builder()
  *             .definition("""
  *   version: v1beta1
  *   type: flow

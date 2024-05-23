@@ -62,7 +62,7 @@ export interface GetDataFlowsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the Data flow.
+     * The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
      */
     status?: string;
 }
@@ -130,7 +130,7 @@ export interface GetDataFlowsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the Data flow.
+     * The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
      */
     status?: pulumi.Input<string>;
 }

@@ -126,44 +126,36 @@ public final class GetContainerGroupsArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The status of container.
+     * The status list. For more information, see the description of ContainerGroup arrays.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of container.
+     * @return The status list. For more information, see the description of ContainerGroup arrays.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
-    /**
-     * @return The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
     /**
-     * The vswitch id.
+     * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The vswitch id.
+     * @return The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -178,14 +170,14 @@ public final class GetContainerGroupsArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+     * The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+     * @return The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -385,7 +377,7 @@ public final class GetContainerGroupsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param status The status of container.
+         * @param status The status list. For more information, see the description of ContainerGroup arrays.
          * 
          * @return builder
          * 
@@ -396,7 +388,7 @@ public final class GetContainerGroupsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param status The status of container.
+         * @param status The status list. For more information, see the description of ContainerGroup arrays.
          * 
          * @return builder
          * 
@@ -405,29 +397,17 @@ public final class GetContainerGroupsArgs extends com.pulumi.resources.InvokeArg
             return status(Output.of(status));
         }
 
-        /**
-         * @param tags The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Output<Map<String,Object>> tags) {
             $.tags = tags;
             return this;
         }
 
-        /**
-         * @param tags The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
         }
 
         /**
-         * @param vswitchId The vswitch id.
+         * @param vswitchId The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
          * 
          * @return builder
          * 
@@ -438,7 +418,7 @@ public final class GetContainerGroupsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param vswitchId The vswitch id.
+         * @param vswitchId The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
          * 
          * @return builder
          * 
@@ -457,7 +437,7 @@ public final class GetContainerGroupsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param zoneId The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+         * @param zoneId The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
          * 
          * @return builder
          * 
@@ -468,7 +448,7 @@ public final class GetContainerGroupsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param zoneId The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+         * @param zoneId The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
          * 
          * @return builder
          * 

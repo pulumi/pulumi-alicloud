@@ -55,14 +55,14 @@ public final class GetBaseInstancesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * OceanBase cluster name.
+     * OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
      * 
      */
     @Import(name="instanceName")
     private @Nullable String instanceName;
 
     /**
-     * @return OceanBase cluster name.
+     * @return OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
      * 
      */
     public Optional<String> instanceName() {
@@ -144,14 +144,14 @@ public final class GetBaseInstancesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The status of the resource.
+     * The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
      * 
      */
     public Optional<String> status() {
@@ -230,7 +230,7 @@ public final class GetBaseInstancesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param instanceName OceanBase cluster name.
+         * @param instanceName OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class GetBaseInstancesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
          * 
          * @return builder
          * 

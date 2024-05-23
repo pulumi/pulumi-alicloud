@@ -70,12 +70,11 @@ type GetServerGroupsArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The names of the server groups to be queried.
 	ServerGroupNames []string `pulumi:"serverGroupNames"`
-	// The type of the server group.
+	// The type of the server group. Valid values: `Instance`, `Ip`.
 	ServerGroupType *string `pulumi:"serverGroupType"`
-	// The status of the server group.
-	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	// The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
+	Status *string                `pulumi:"status"`
+	Tags   map[string]interface{} `pulumi:"tags"`
 }
 
 // A collection of values returned by getServerGroups.
@@ -119,12 +118,11 @@ type GetServerGroupsOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The names of the server groups to be queried.
 	ServerGroupNames pulumi.StringArrayInput `pulumi:"serverGroupNames"`
-	// The type of the server group.
+	// The type of the server group. Valid values: `Instance`, `Ip`.
 	ServerGroupType pulumi.StringPtrInput `pulumi:"serverGroupType"`
-	// The status of the server group.
+	// The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags   pulumi.MapInput       `pulumi:"tags"`
 }
 
 func (GetServerGroupsOutputArgs) ElementType() reflect.Type {

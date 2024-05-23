@@ -80,24 +80,24 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var name = config.get("name").orElse("ecsInstanceVPCExample");
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()        
+ *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()
  *             .type("ingress")
  *             .ipProtocol("tcp")
  *             .nicType("intranet")
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *             .cidrIp("172.16.0.0/24")
  *             .build());
  * 
- *         var foo = new Instance("foo", InstanceArgs.builder()        
+ *         var foo = new Instance("foo", InstanceArgs.builder()
  *             .vswitchId(defaultSwitch.id())
  *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *             .instanceName(name)
  *             .build());
  * 
- *         var role = new Role("role", RoleArgs.builder()        
+ *         var role = new Role("role", RoleArgs.builder()
  *             .name("terraform-example")
  *             .document("""
  *   {
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var attach = new RoleAttachment("attach", RoleAttachmentArgs.builder()        
+ *         var attach = new RoleAttachment("attach", RoleAttachmentArgs.builder()
  *             .roleName(role.name())
  *             .instanceIds(foo.stream().map(element -> element.id()).collect(toList()))
  *             .build());

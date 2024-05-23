@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-hangzhou");
  *         final var name = config.get("name").orElse("tfexample");
- *         var default_ = new Namespace("default", NamespaceArgs.builder()        
+ *         var default_ = new Namespace("default", NamespaceArgs.builder()
  *             .debugEnable(false)
  *             .description(name)
  *             .namespaceLogicalId(String.format("%s:%s", region,name))

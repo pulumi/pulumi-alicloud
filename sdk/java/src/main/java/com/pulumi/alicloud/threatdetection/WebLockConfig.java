@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *             .machineTypes("ecs")
  *             .build());
  * 
- *         var defaultWebLockConfig = new WebLockConfig("defaultWebLockConfig", WebLockConfigArgs.builder()        
+ *         var defaultWebLockConfig = new WebLockConfig("defaultWebLockConfig", WebLockConfigArgs.builder()
  *             .inclusiveFileType("php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg")
  *             .uuid(default_.ids()[0])
  *             .mode("whitelist")

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Log.Inputs
     public sealed class StoreIndexFieldSearchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The alias of one field.
+        /// The alias of one field
         /// </summary>
         [Input("alias")]
         public Input<string>? Alias { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Log.Inputs
         }
 
         /// <summary>
-        /// When using the json_keys field, this field is required.
+        /// The field name, which is unique in the same log store.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Log.Inputs
         public Input<string>? Token { get; set; }
 
         /// <summary>
-        /// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+        /// The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

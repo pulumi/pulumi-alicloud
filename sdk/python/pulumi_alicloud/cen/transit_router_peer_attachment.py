@@ -37,6 +37,8 @@ class TransitRouterPeerAttachmentArgs:
         :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled. The system default value is `false`.
         :param pulumi.Input[int] bandwidth: The bandwidth of the bandwidth package.
         :param pulumi.Input[str] bandwidth_type: The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+               * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+               * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
         :param pulumi.Input[str] cen_bandwidth_package_id: The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
         :param pulumi.Input[str] default_link_type: DefaultLinkType. Valid values: `Platinum` and `Gold`.
         :param pulumi.Input[bool] dry_run: Whether to perform pre-check for this request, including permission, instance status verification, etc.
@@ -140,6 +142,8 @@ class TransitRouterPeerAttachmentArgs:
     def bandwidth_type(self) -> Optional[pulumi.Input[str]]:
         """
         The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+        * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+        * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
         """
         return pulumi.get(self, "bandwidth_type")
 
@@ -282,6 +286,8 @@ class _TransitRouterPeerAttachmentState:
         :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled. The system default value is `false`.
         :param pulumi.Input[int] bandwidth: The bandwidth of the bandwidth package.
         :param pulumi.Input[str] bandwidth_type: The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+               * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+               * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
         :param pulumi.Input[str] cen_bandwidth_package_id: The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[str] create_time: The creation time of the resource.
@@ -364,6 +370,8 @@ class _TransitRouterPeerAttachmentState:
     def bandwidth_type(self) -> Optional[pulumi.Input[str]]:
         """
         The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+        * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+        * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
         """
         return pulumi.get(self, "bandwidth_type")
 
@@ -633,6 +641,8 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled. The system default value is `false`.
         :param pulumi.Input[int] bandwidth: The bandwidth of the bandwidth package.
         :param pulumi.Input[str] bandwidth_type: The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+               * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+               * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
         :param pulumi.Input[str] cen_bandwidth_package_id: The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[str] default_link_type: DefaultLinkType. Valid values: `Platinum` and `Gold`.
@@ -808,6 +818,8 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled. The system default value is `false`.
         :param pulumi.Input[int] bandwidth: The bandwidth of the bandwidth package.
         :param pulumi.Input[str] bandwidth_type: The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+               * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+               * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
         :param pulumi.Input[str] cen_bandwidth_package_id: The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[str] create_time: The creation time of the resource.
@@ -869,6 +881,8 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
     def bandwidth_type(self) -> pulumi.Output[str]:
         """
         The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+        * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+        * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
         """
         return pulumi.get(self, "bandwidth_type")
 

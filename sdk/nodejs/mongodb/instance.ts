@@ -192,6 +192,9 @@ export class Instance extends pulumi.CustomResource {
     public readonly networkType!: pulumi.Output<string>;
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     * **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
     public readonly orderType!: pulumi.Output<string | undefined>;
     /**
@@ -244,10 +247,15 @@ export class Instance extends pulumi.CustomResource {
     public readonly securityIpLists!: pulumi.Output<string[]>;
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
+     * - `Standard`: standard backup.
+     * - `Flash `: single-digit second backup.
      */
     public readonly snapshotBackupType!: pulumi.Output<string>;
     /**
      * Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
      */
     public readonly sslAction!: pulumi.Output<string | undefined>;
     /**
@@ -504,6 +512,9 @@ export interface InstanceState {
     networkType?: pulumi.Input<string>;
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     * **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
     orderType?: pulumi.Input<string>;
     /**
@@ -556,10 +567,15 @@ export interface InstanceState {
     securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
+     * - `Standard`: standard backup.
+     * - `Flash `: single-digit second backup.
      */
     snapshotBackupType?: pulumi.Input<string>;
     /**
      * Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
      */
     sslAction?: pulumi.Input<string>;
     /**
@@ -695,6 +711,9 @@ export interface InstanceArgs {
     networkType?: pulumi.Input<string>;
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     * **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
     orderType?: pulumi.Input<string>;
     /**
@@ -735,10 +754,15 @@ export interface InstanceArgs {
     securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
+     * - `Standard`: standard backup.
+     * - `Flash `: single-digit second backup.
      */
     snapshotBackupType?: pulumi.Input<string>;
     /**
      * Actions performed on SSL functions. Valid values:
+     * - `Open`: turn on SSL encryption.
+     * - `Close`: turn off SSL encryption.
+     * - `Update`: update SSL certificate.
      */
     sslAction?: pulumi.Input<string>;
     /**

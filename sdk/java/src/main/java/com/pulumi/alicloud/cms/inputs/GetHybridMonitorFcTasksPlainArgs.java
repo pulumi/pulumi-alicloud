@@ -32,14 +32,14 @@ public final class GetHybridMonitorFcTasksPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The index warehouse where the host belongs.
+     * The name of the namespace.
      * 
      */
     @Import(name="namespace")
     private @Nullable String namespace;
 
     /**
-     * @return The index warehouse where the host belongs.
+     * @return The name of the namespace.
      * 
      */
     public Optional<String> namespace() {
@@ -125,7 +125,7 @@ public final class GetHybridMonitorFcTasksPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param namespace The index warehouse where the host belongs.
+         * @param namespace The name of the namespace.
          * 
          * @return builder
          * 

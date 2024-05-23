@@ -155,12 +155,14 @@ def get_ecs_image_components(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Image Component IDs.
-    :param str image_component_name: The name of the image component.
+    :param str image_component_name: The name of the component.
     :param str name_regex: A regex string to filter results by Image Component name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str owner: The type of the image component.
+    :param str owner: Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+           - SELF: The custom image component you created.
+           - ALIYUN: System components provided by Alibaba Cloud.
     :param str resource_group_id: The ID of the resource group.
-    :param Mapping[str, Any] tags: List of label key-value pairs.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -216,11 +218,13 @@ def get_ecs_image_components_output(ids: Optional[pulumi.Input[Optional[Sequence
 
 
     :param Sequence[str] ids: A list of Image Component IDs.
-    :param str image_component_name: The name of the image component.
+    :param str image_component_name: The name of the component.
     :param str name_regex: A regex string to filter results by Image Component name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str owner: The type of the image component.
+    :param str owner: Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+           - SELF: The custom image component you created.
+           - ALIYUN: System components provided by Alibaba Cloud.
     :param str resource_group_id: The ID of the resource group.
-    :param Mapping[str, Any] tags: List of label key-value pairs.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     ...

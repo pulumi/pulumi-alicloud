@@ -94,31 +94,23 @@ public final class GetSecurityPoliciesArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Available`, `Configuring`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Available`, `Configuring`.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * A mapping of tags to assign to the resource.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
-    /**
-     * @return A mapping of tags to assign to the resource.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -279,7 +271,7 @@ public final class GetSecurityPoliciesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `Available`, `Configuring`.
          * 
          * @return builder
          * 
@@ -290,7 +282,7 @@ public final class GetSecurityPoliciesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `Available`, `Configuring`.
          * 
          * @return builder
          * 
@@ -299,23 +291,11 @@ public final class GetSecurityPoliciesArgs extends com.pulumi.resources.InvokeAr
             return status(Output.of(status));
         }
 
-        /**
-         * @param tags A mapping of tags to assign to the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Output<Map<String,Object>> tags) {
             $.tags = tags;
             return this;
         }
 
-        /**
-         * @param tags A mapping of tags to assign to the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
         }

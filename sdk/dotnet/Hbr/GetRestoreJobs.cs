@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        /// The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
         /// </summary>
         [Input("restoreType", required: true)]
         public string RestoreType { get; set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// The status of restore job.
+        /// The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<string>? _targetBuckets;
 
         /// <summary>
-        /// The name of target ofo OSS bucket.
+        /// The name of target OSS bucket.
         /// </summary>
         public List<string> TargetBuckets
         {
@@ -155,7 +155,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<string>? _targetFileSystemIds;
 
         /// <summary>
-        /// The ID of destination file system.
+        /// Valid while source_type equals `NAS`. The list of destination File System IDs.
         /// </summary>
         public List<string> TargetFileSystemIds
         {
@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.Hbr
         private List<string>? _vaultIds;
 
         /// <summary>
-        /// The ID of backup vault.
+        /// The list of backup vault IDs.
         /// </summary>
         public List<string> VaultIds
         {
@@ -214,7 +214,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+        /// The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
         /// </summary>
         [Input("restoreType", required: true)]
         public Input<string> RestoreType { get; set; } = null!;
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// The status of restore job.
+        /// The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -241,7 +241,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<string>? _targetBuckets;
 
         /// <summary>
-        /// The name of target ofo OSS bucket.
+        /// The name of target OSS bucket.
         /// </summary>
         public InputList<string> TargetBuckets
         {
@@ -253,7 +253,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<string>? _targetFileSystemIds;
 
         /// <summary>
-        /// The ID of destination file system.
+        /// Valid while source_type equals `NAS`. The list of destination File System IDs.
         /// </summary>
         public InputList<string> TargetFileSystemIds
         {
@@ -277,7 +277,7 @@ namespace Pulumi.AliCloud.Hbr
         private InputList<string>? _vaultIds;
 
         /// <summary>
-        /// The ID of backup vault.
+        /// The list of backup vault IDs.
         /// </summary>
         public InputList<string> VaultIds
         {

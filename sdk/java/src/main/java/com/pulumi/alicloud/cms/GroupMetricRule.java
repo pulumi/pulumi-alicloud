@@ -61,17 +61,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
+ *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()
  *             .alarmContactGroupName(name)
  *             .describe(name)
  *             .build());
  * 
- *         var defaultMonitorGroup = new MonitorGroup("defaultMonitorGroup", MonitorGroupArgs.builder()        
+ *         var defaultMonitorGroup = new MonitorGroup("defaultMonitorGroup", MonitorGroupArgs.builder()
  *             .monitorGroupName(name)
  *             .contactGroups(default_.id())
  *             .build());
  * 
- *         var this_ = new GroupMetricRule("this", GroupMetricRuleArgs.builder()        
+ *         var this_ = new GroupMetricRule("this", GroupMetricRuleArgs.builder()
  *             .groupId(defaultMonitorGroup.id())
  *             .groupMetricRuleName(name)
  *             .category("ecs")

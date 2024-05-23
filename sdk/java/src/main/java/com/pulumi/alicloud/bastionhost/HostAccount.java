@@ -77,11 +77,11 @@ import javax.annotation.Nullable;
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .description(name)
  *             .licenseCode("bhah_ent_50_asset")
  *             .planCode("cloudbastion")
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *             .securityGroupIds(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var defaultHost = new Host("defaultHost", HostArgs.builder()        
+ *         var defaultHost = new Host("defaultHost", HostArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .hostName(name)
  *             .activeAddressType("Private")
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *             .source("Local")
  *             .build());
  * 
- *         var defaultHostAccount = new HostAccount("defaultHostAccount", HostAccountArgs.builder()        
+ *         var defaultHostAccount = new HostAccount("defaultHostAccount", HostAccountArgs.builder()
  *             .hostAccountName(name)
  *             .hostId(defaultHost.hostId())
  *             .instanceId(defaultHost.instanceId())

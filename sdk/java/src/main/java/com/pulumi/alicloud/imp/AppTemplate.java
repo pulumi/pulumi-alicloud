@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AppTemplate("example", AppTemplateArgs.builder()        
+ *         var example = new AppTemplate("example", AppTemplateArgs.builder()
  *             .appTemplateName("example_value")
  *             .componentLists(            
  *                 "component.live",

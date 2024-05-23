@@ -64,7 +64,7 @@ export interface GetDomainsArgs {
      */
     resourceGroupId?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: "checkFailed", "checking", "configureFailed", "configuring", "offline", "online".
      */
     status?: string;
 }
@@ -134,7 +134,7 @@ export interface GetDomainsOutputArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: "checkFailed", "checking", "configureFailed", "configuring", "offline", "online".
      */
     status?: pulumi.Input<string>;
 }

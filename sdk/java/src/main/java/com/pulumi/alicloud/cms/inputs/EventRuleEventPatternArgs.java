@@ -19,6 +19,10 @@ public final class EventRuleEventPatternArgs extends com.pulumi.resources.Resour
 
     /**
      * The type of the event-triggered alert rule. Valid values:
+     * - `StatusNotification`: fault notifications.
+     * - `Exception`: exceptions.
+     * - `Maintenance`: O&amp;M.
+     * - `*`: all types.
      * 
      */
     @Import(name="eventTypeLists")
@@ -26,6 +30,10 @@ public final class EventRuleEventPatternArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The type of the event-triggered alert rule. Valid values:
+     * - `StatusNotification`: fault notifications.
+     * - `Exception`: exceptions.
+     * - `Maintenance`: O&amp;M.
+     * - `*`: all types.
      * 
      */
     public Optional<Output<List<String>>> eventTypeLists() {
@@ -34,6 +42,10 @@ public final class EventRuleEventPatternArgs extends com.pulumi.resources.Resour
 
     /**
      * The level of the event-triggered alert rule. Valid values:
+     * - `CRITICAL`: critical.
+     * - `WARN`: warning.
+     * - `INFO`: information.
+     * - `*`: all types.
      * 
      */
     @Import(name="levelLists")
@@ -41,6 +53,10 @@ public final class EventRuleEventPatternArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The level of the event-triggered alert rule. Valid values:
+     * - `CRITICAL`: critical.
+     * - `WARN`: warning.
+     * - `INFO`: information.
+     * - `*`: all types.
      * 
      */
     public Optional<Output<List<String>>> levelLists() {
@@ -122,6 +138,10 @@ public final class EventRuleEventPatternArgs extends com.pulumi.resources.Resour
 
         /**
          * @param eventTypeLists The type of the event-triggered alert rule. Valid values:
+         * - `StatusNotification`: fault notifications.
+         * - `Exception`: exceptions.
+         * - `Maintenance`: O&amp;M.
+         * - `*`: all types.
          * 
          * @return builder
          * 
@@ -133,6 +153,10 @@ public final class EventRuleEventPatternArgs extends com.pulumi.resources.Resour
 
         /**
          * @param eventTypeLists The type of the event-triggered alert rule. Valid values:
+         * - `StatusNotification`: fault notifications.
+         * - `Exception`: exceptions.
+         * - `Maintenance`: O&amp;M.
+         * - `*`: all types.
          * 
          * @return builder
          * 
@@ -143,6 +167,10 @@ public final class EventRuleEventPatternArgs extends com.pulumi.resources.Resour
 
         /**
          * @param eventTypeLists The type of the event-triggered alert rule. Valid values:
+         * - `StatusNotification`: fault notifications.
+         * - `Exception`: exceptions.
+         * - `Maintenance`: O&amp;M.
+         * - `*`: all types.
          * 
          * @return builder
          * 
@@ -153,6 +181,10 @@ public final class EventRuleEventPatternArgs extends com.pulumi.resources.Resour
 
         /**
          * @param levelLists The level of the event-triggered alert rule. Valid values:
+         * - `CRITICAL`: critical.
+         * - `WARN`: warning.
+         * - `INFO`: information.
+         * - `*`: all types.
          * 
          * @return builder
          * 
@@ -164,6 +196,10 @@ public final class EventRuleEventPatternArgs extends com.pulumi.resources.Resour
 
         /**
          * @param levelLists The level of the event-triggered alert rule. Valid values:
+         * - `CRITICAL`: critical.
+         * - `WARN`: warning.
+         * - `INFO`: information.
+         * - `*`: all types.
          * 
          * @return builder
          * 
@@ -174,6 +210,10 @@ public final class EventRuleEventPatternArgs extends com.pulumi.resources.Resour
 
         /**
          * @param levelLists The level of the event-triggered alert rule. Valid values:
+         * - `CRITICAL`: critical.
+         * - `WARN`: warning.
+         * - `INFO`: information.
+         * - `*`: all types.
          * 
          * @return builder
          * 

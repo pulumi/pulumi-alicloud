@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var dns = new DomainAttachment("dns", DomainAttachmentArgs.builder()        
+ *         var dns = new DomainAttachment("dns", DomainAttachmentArgs.builder()
  *             .instanceId("dns-cn-mp91lyq9xxxx")
  *             .domainNames(            
  *                 "test111.abc",

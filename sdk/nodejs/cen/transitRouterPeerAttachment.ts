@@ -95,6 +95,8 @@ export class TransitRouterPeerAttachment extends pulumi.CustomResource {
     public readonly bandwidth!: pulumi.Output<number | undefined>;
     /**
      * The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+     * * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+     * * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
      */
     public readonly bandwidthType!: pulumi.Output<string>;
     /**
@@ -238,6 +240,8 @@ export interface TransitRouterPeerAttachmentState {
     bandwidth?: pulumi.Input<number>;
     /**
      * The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+     * * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+     * * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
      */
     bandwidthType?: pulumi.Input<string>;
     /**
@@ -316,6 +320,8 @@ export interface TransitRouterPeerAttachmentArgs {
     bandwidth?: pulumi.Input<number>;
     /**
      * The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+     * * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+     * * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
      */
     bandwidthType?: pulumi.Input<string>;
     /**

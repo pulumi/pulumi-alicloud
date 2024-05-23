@@ -69,19 +69,19 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
  *         // Create a new ECS instance for VPC
- *         var vpc = new Network("vpc", NetworkArgs.builder()        
+ *         var vpc = new Network("vpc", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
  *         // Create a new ECS instance for a VPC
- *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+ *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
  *             .name(name)
  *             .description("foo")
  *             .vpcId(vpc.id())
  *             .build());
  * 
- *         var key = new Key("key", KeyArgs.builder()        
+ *         var key = new Key("key", KeyArgs.builder()
  *             .description("Hello KMS")
  *             .pendingWindowInDays("7")
  *             .status("Enabled")
@@ -92,14 +92,14 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+ *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
  *             .vpcId(vpc.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var instance = new Instance("instance", InstanceArgs.builder()        
+ *         var instance = new Instance("instance", InstanceArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .securityGroups(group.stream().map(element -> element.id()).collect(toList()))
  *             .instanceType("ecs.n4.large")
@@ -720,6 +720,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+     * * `Stop` : stops the instance.
+     * * `AutoRecover` : automatically recovers the instance.
+     * * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
      * 
      */
     @Export(name="maintenanceAction", refs={String.class}, tree="[0]")
@@ -727,6 +730,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+     * * `Stop` : stops the instance.
+     * * `AutoRecover` : automatically recovers the instance.
+     * * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
      * 
      */
     public Output<String> maintenanceAction() {
@@ -938,6 +944,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * 
      */
     @Export(name="renewalStatus", refs={String.class}, tree="[0]")
@@ -945,6 +954,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to &#34;Normal&#34;. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * 
      */
     public Output<Optional<String>> renewalStatus() {
@@ -1106,6 +1118,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see &#34;Enable the economical mode&#34; in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+     * * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
+     * * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
      * 
      */
     @Export(name="stoppedMode", refs={String.class}, tree="[0]")
@@ -1113,6 +1127,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see &#34;Enable the economical mode&#34; in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+     * * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
+     * * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
      * 
      */
     public Output<String> stoppedMode() {

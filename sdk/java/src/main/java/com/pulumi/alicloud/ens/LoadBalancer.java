@@ -54,14 +54,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var network = new Network("network", NetworkArgs.builder()        
+ *         var network = new Network("network", NetworkArgs.builder()
  *             .networkName(name)
  *             .description(name)
  *             .cidrBlock("192.168.2.0/24")
  *             .ensRegionId("cn-chenzhou-telecom_unicom_cmcc")
  *             .build());
  * 
- *         var switch_ = new Vswitch("switch", VswitchArgs.builder()        
+ *         var switch_ = new Vswitch("switch", VswitchArgs.builder()
  *             .description(name)
  *             .cidrBlock("192.168.2.0/24")
  *             .vswitchName(name)
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .networkId(network.id())
  *             .build());
  * 
- *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()        
+ *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
  *             .loadBalancerName(name)
  *             .paymentType("PayAsYouGo")
  *             .ensRegionId("cn-chenzhou-telecom_unicom_cmcc")

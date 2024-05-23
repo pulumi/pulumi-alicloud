@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Cms.Outputs
     [OutputType]
     public sealed class GetHybridMonitorSlsTasksTaskMatchExpressResult
     {
+        /// <summary>
+        /// The method that is used to match the instance name.
+        /// </summary>
         public readonly string Function;
+        /// <summary>
+        /// The name of the instance.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The keyword that corresponds to the instance name.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

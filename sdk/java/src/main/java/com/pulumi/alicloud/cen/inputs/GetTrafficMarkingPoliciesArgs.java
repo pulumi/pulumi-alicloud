@@ -17,17 +17,9 @@ public final class GetTrafficMarkingPoliciesArgs extends com.pulumi.resources.In
 
     public static final GetTrafficMarkingPoliciesArgs Empty = new GetTrafficMarkingPoliciesArgs();
 
-    /**
-     * The description of the Traffic Marking Policy.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return The description of the Traffic Marking Policy.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -78,14 +70,14 @@ public final class GetTrafficMarkingPoliciesArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -136,23 +128,11 @@ public final class GetTrafficMarkingPoliciesArgs extends com.pulumi.resources.In
             $ = new GetTrafficMarkingPoliciesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param description The description of the Traffic Marking Policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description The description of the Traffic Marking Policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
@@ -231,7 +211,7 @@ public final class GetTrafficMarkingPoliciesArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
          * 
          * @return builder
          * 
@@ -242,7 +222,7 @@ public final class GetTrafficMarkingPoliciesArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
          * 
          * @return builder
          * 

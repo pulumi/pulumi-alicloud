@@ -22,36 +22,116 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
         /// The version number of the client used by the cluster.
         /// </summary>
         public readonly string ClientVersion;
+        /// <summary>
+        /// The id of E-HPC Cluster.
+        /// </summary>
         public readonly string ClusterId;
+        /// <summary>
+        /// The name of E-HPC cluster.
+        /// </summary>
         public readonly string ClusterName;
+        /// <summary>
+        /// The number of compute nodes in the cluster.
+        /// </summary>
         public readonly int ComputeCount;
+        /// <summary>
+        /// Cluster compute node specifications.
+        /// </summary>
         public readonly string ComputeInstanceType;
+        /// <summary>
+        /// The creation time of the resource.
+        /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// Cluster deployment mode. Possible values:
+        /// - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
+        /// - Advanced:HA mode deployment.
+        /// - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
+        /// - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
+        /// - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
+        /// </summary>
         public readonly string DeployMode;
+        /// <summary>
+        /// The description of E-HPC cluster.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Whether to turn on high availability. &gt; If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
+        /// </summary>
         public readonly bool HaEnable;
+        /// <summary>
+        /// The ID of the Cluster.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of the Image.
+        /// </summary>
         public readonly string ImageId;
+        /// <summary>
+        /// The type of the image.
+        /// </summary>
         public readonly string ImageOwnerAlias;
+        /// <summary>
+        /// The number of cluster login nodes. Only configuration 1 is supported.
+        /// </summary>
         public readonly int LoginCount;
+        /// <summary>
+        /// Cluster login node specifications.
+        /// </summary>
         public readonly string LoginInstanceType;
         public readonly int ManagerCount;
+        /// <summary>
+        /// The instance type of manager nodes.
+        /// </summary>
         public readonly string ManagerInstanceType;
+        /// <summary>
+        /// The image tag of the operating system.
+        /// </summary>
         public readonly string OsTag;
         public readonly ImmutableArray<Outputs.GetClustersClusterPostInstallScriptResult> PostInstallScripts;
+        /// <summary>
+        /// Mount the remote directory of the shared storage.
+        /// </summary>
         public readonly string RemoteDirectory;
+        /// <summary>
+        /// The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
+        /// </summary>
         public readonly string SccClusterId;
+        /// <summary>
+        /// Dispatch server type.
+        /// </summary>
         public readonly string SchedulerType;
+        /// <summary>
+        /// The ID of the security group.
+        /// </summary>
         public readonly string SecurityGroupId;
         /// <summary>
-        /// The status of the resource. Valid values:
+        /// The status of the resource.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
+        /// </summary>
         public readonly string VolumeId;
+        /// <summary>
+        /// The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
+        /// </summary>
         public readonly string VolumeMountpoint;
+        /// <summary>
+        /// The type of the protocol that is used by the file system.
+        /// </summary>
         public readonly string VolumeProtocol;
+        /// <summary>
+        /// The type of the network shared storage. Valid value: NAS.
+        /// </summary>
         public readonly string VolumeType;
+        /// <summary>
+        /// The ID of the VPC network.
+        /// </summary>
         public readonly string VpcId;
+        /// <summary>
+        /// The vswitch id.
+        /// </summary>
         public readonly string VswitchId;
         public readonly string ZoneId;
 

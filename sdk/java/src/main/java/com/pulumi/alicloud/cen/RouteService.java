@@ -62,24 +62,24 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var example = new Network("example", NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()
  *             .vpcName("tf_example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .cenInstanceName("tf_example")
  *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleInstanceAttachment = new InstanceAttachment("exampleInstanceAttachment", InstanceAttachmentArgs.builder()        
+ *         var exampleInstanceAttachment = new InstanceAttachment("exampleInstanceAttachment", InstanceAttachmentArgs.builder()
  *             .instanceId(exampleInstance.id())
  *             .childInstanceId(example.id())
  *             .childInstanceType("VPC")
  *             .childInstanceRegionId(default_.regions()[0].id())
  *             .build());
  * 
- *         var exampleRouteService = new RouteService("exampleRouteService", RouteServiceArgs.builder()        
+ *         var exampleRouteService = new RouteService("exampleRouteService", RouteServiceArgs.builder()
  *             .accessRegionId(default_.regions()[0].id())
  *             .hostRegionId(default_.regions()[0].id())
  *             .hostVpcId(example.id())

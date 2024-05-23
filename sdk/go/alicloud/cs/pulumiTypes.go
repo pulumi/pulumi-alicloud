@@ -1964,6 +1964,10 @@ type KubernetesDeleteOption struct {
 	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
 	DeleteMode *string `pulumi:"deleteMode"`
 	// The type of resources that are created by cluster. Valid values:
+	// - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+	// - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+	// - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+	// - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
 	ResourceType *string `pulumi:"resourceType"`
 }
 
@@ -1982,6 +1986,10 @@ type KubernetesDeleteOptionArgs struct {
 	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
 	DeleteMode pulumi.StringPtrInput `pulumi:"deleteMode"`
 	// The type of resources that are created by cluster. Valid values:
+	// - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+	// - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+	// - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+	// - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 }
 
@@ -2042,6 +2050,10 @@ func (o KubernetesDeleteOptionOutput) DeleteMode() pulumi.StringPtrOutput {
 }
 
 // The type of resources that are created by cluster. Valid values:
+// - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+// - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+// - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+// - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
 func (o KubernetesDeleteOptionOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesDeleteOption) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
@@ -3014,6 +3026,10 @@ type ManagedKubernetesDeleteOption struct {
 	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
 	DeleteMode *string `pulumi:"deleteMode"`
 	// The type of resources that are created by cluster. Valid values:
+	// - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+	// - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+	// - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+	// - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
 	ResourceType *string `pulumi:"resourceType"`
 }
 
@@ -3032,6 +3048,10 @@ type ManagedKubernetesDeleteOptionArgs struct {
 	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
 	DeleteMode pulumi.StringPtrInput `pulumi:"deleteMode"`
 	// The type of resources that are created by cluster. Valid values:
+	// - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+	// - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+	// - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+	// - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 }
 
@@ -3092,6 +3112,10 @@ func (o ManagedKubernetesDeleteOptionOutput) DeleteMode() pulumi.StringPtrOutput
 }
 
 // The type of resources that are created by cluster. Valid values:
+// - `SLB`: SLB resources created through the service, default behavior is to delete, option to retain is available.
+// - `ALB`: ALB resources created by the ALB Ingress Controller, default behavior is to retain, option to delete is available.
+// - `SLS_Data`: SLS Project used by the cluster logging feature, default behavior is to retain, option to delete is available.
+// - `SLS_ControlPlane`: SLS Project used for the managed cluster control plane logs, default behavior is to retain, option to delete is available.
 func (o ManagedKubernetesDeleteOptionOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesDeleteOption) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }

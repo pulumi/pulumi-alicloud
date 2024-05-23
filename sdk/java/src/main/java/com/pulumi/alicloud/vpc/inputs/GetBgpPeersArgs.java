@@ -17,14 +17,14 @@ public final class GetBgpPeersArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetBgpPeersArgs Empty = new GetBgpPeersArgs();
 
     /**
-     * The ID of the BGP group.
+     * The ID of the BGP group to which the BGP peer that you want to query belongs.
      * 
      */
     @Import(name="bgpGroupId")
     private @Nullable Output<String> bgpGroupId;
 
     /**
-     * @return The ID of the BGP group.
+     * @return The ID of the BGP group to which the BGP peer that you want to query belongs.
      * 
      */
     public Optional<Output<String>> bgpGroupId() {
@@ -62,14 +62,14 @@ public final class GetBgpPeersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of the router.
+     * The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
      * 
      */
     @Import(name="routerId")
     private @Nullable Output<String> routerId;
 
     /**
-     * @return The ID of the router.
+     * @return The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
      * 
      */
     public Optional<Output<String>> routerId() {
@@ -77,14 +77,14 @@ public final class GetBgpPeersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the BGP peer.
+     * The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the BGP peer.
+     * @return The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -120,7 +120,7 @@ public final class GetBgpPeersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param bgpGroupId The ID of the BGP group.
+         * @param bgpGroupId The ID of the BGP group to which the BGP peer that you want to query belongs.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetBgpPeersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param bgpGroupId The ID of the BGP group.
+         * @param bgpGroupId The ID of the BGP group to which the BGP peer that you want to query belongs.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class GetBgpPeersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param routerId The ID of the router.
+         * @param routerId The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class GetBgpPeersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param routerId The ID of the router.
+         * @param routerId The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class GetBgpPeersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the BGP peer.
+         * @param status The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class GetBgpPeersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the BGP peer.
+         * @param status The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
          * 
          * @return builder
          * 

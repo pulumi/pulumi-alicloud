@@ -174,7 +174,7 @@ export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetClustersArgs {
     /**
-     * The name of the associated cluster.
+     * The cluster name.
      */
     clusterName?: string;
     /**
@@ -182,7 +182,7 @@ export interface GetClustersArgs {
      */
     clusterTypeLists?: string[];
     /**
-     * How to create a cluster.
+     * How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
      */
     createType?: string;
     /**
@@ -190,7 +190,7 @@ export interface GetClustersArgs {
      */
     defaultStatus?: boolean;
     /**
-     * The hosting type of the cluster.
+     * The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
      */
     depositType?: string;
     /**
@@ -206,7 +206,7 @@ export interface GetClustersArgs {
      */
     isDesc?: boolean;
     /**
-     * The host type of the cluster. The default is ECS.
+     * The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
      */
     machineType?: string;
     /**
@@ -409,7 +409,7 @@ export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.In
  */
 export interface GetClustersOutputArgs {
     /**
-     * The name of the associated cluster.
+     * The cluster name.
      */
     clusterName?: pulumi.Input<string>;
     /**
@@ -417,7 +417,7 @@ export interface GetClustersOutputArgs {
      */
     clusterTypeLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * How to create a cluster.
+     * How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
      */
     createType?: pulumi.Input<string>;
     /**
@@ -425,7 +425,7 @@ export interface GetClustersOutputArgs {
      */
     defaultStatus?: pulumi.Input<boolean>;
     /**
-     * The hosting type of the cluster.
+     * The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
      */
     depositType?: pulumi.Input<string>;
     /**
@@ -441,7 +441,7 @@ export interface GetClustersOutputArgs {
      */
     isDesc?: pulumi.Input<boolean>;
     /**
-     * The host type of the cluster. The default is ECS.
+     * The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
      */
     machineType?: pulumi.Input<string>;
     /**

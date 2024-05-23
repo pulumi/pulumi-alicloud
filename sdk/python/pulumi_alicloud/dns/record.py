@@ -147,6 +147,7 @@ class _RecordState:
         :param pulumi.Input[int] priority: The priority of domain record. Valid values are `[1-10]`. When the `type` is `MX`, this parameter is required.
         :param pulumi.Input[str] routing: The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/what-is-alibaba-cloud-dns) or using dns_get_resolution_lines in data source to get the value.
         :param pulumi.Input[str] status: The record status. `Enable` or `Disable`.
+               * `Locked` - The record locked state. `true` or `false`.
         :param pulumi.Input[int] ttl: The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
         :param pulumi.Input[str] type: The type of domain record. Valid values are `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
         :param pulumi.Input[str] value: The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
@@ -232,6 +233,7 @@ class _RecordState:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         The record status. `Enable` or `Disable`.
+        * `Locked` - The record locked state. `true` or `false`.
         """
         return pulumi.get(self, "status")
 
@@ -440,6 +442,7 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[int] priority: The priority of domain record. Valid values are `[1-10]`. When the `type` is `MX`, this parameter is required.
         :param pulumi.Input[str] routing: The resolution line of domain record. Valid values are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/what-is-alibaba-cloud-dns) or using dns_get_resolution_lines in data source to get the value.
         :param pulumi.Input[str] status: The record status. `Enable` or `Disable`.
+               * `Locked` - The record locked state. `true` or `false`.
         :param pulumi.Input[int] ttl: The effective time of domain record. Its scope depends on the edition of the cloud resolution. Free is `[600, 86400]`, Basic is `[120, 86400]`, Standard is `[60, 86400]`, Ultimate is `[10, 86400]`, Exclusive is `[1, 86400]`. Default value is `600`.
         :param pulumi.Input[str] type: The type of domain record. Valid values are `A`,`NS`,`MX`,`TXT`,`CNAME`,`SRV`,`AAAA`,`CAA`, `REDIRECT_URL` and `FORWORD_URL`.
         :param pulumi.Input[str] value: The value of domain record, When the `type` is `MX`,`NS`,`CNAME`,`SRV`, the server will treat the `value` as a fully qualified domain name, so it's no need to add a `.` at the end.
@@ -501,6 +504,7 @@ class Record(pulumi.CustomResource):
     def status(self) -> pulumi.Output[str]:
         """
         The record status. `Enable` or `Disable`.
+        * `Locked` - The record locked state. `true` or `false`.
         """
         return pulumi.get(self, "status")
 

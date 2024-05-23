@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string DeploymentSetId;
         /// <summary>
-        /// System disk description.
+        /// The Description of Template.
         /// </summary>
         public readonly string Description;
         /// <summary>

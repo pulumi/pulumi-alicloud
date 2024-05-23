@@ -168,8 +168,8 @@ def get_network_acls(ids: Optional[Sequence[str]] = None,
     :param str network_acl_name: The name of the network ACL.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_id: The ID of the associated resource.
-    :param str resource_type: The type of the associated resource.
-    :param str status: The state of the network ACL.
+    :param str resource_type: The type of the associated resource. Valid values `VSwitch`. `resource_type` and `resource_id` need to be specified at the same time to take effect.
+    :param str status: The state of the network ACL. Valid values: `Available` and `Modifying`.
     :param str vpc_id: The ID of the associated VPC.
     """
     __args__ = dict()
@@ -232,8 +232,8 @@ def get_network_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     :param str network_acl_name: The name of the network ACL.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_id: The ID of the associated resource.
-    :param str resource_type: The type of the associated resource.
-    :param str status: The state of the network ACL.
+    :param str resource_type: The type of the associated resource. Valid values `VSwitch`. `resource_type` and `resource_id` need to be specified at the same time to take effect.
+    :param str status: The state of the network ACL. Valid values: `Available` and `Modifying`.
     :param str vpc_id: The ID of the associated VPC.
     """
     ...

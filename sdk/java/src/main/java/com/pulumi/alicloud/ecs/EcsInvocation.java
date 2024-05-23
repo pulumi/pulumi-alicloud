@@ -86,24 +86,24 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()        
+ *         var defaultSecurityGroupRule = new SecurityGroupRule("defaultSecurityGroupRule", SecurityGroupRuleArgs.builder()
  *             .type("ingress")
  *             .ipProtocol("tcp")
  *             .nicType("intranet")
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *             .cidrIp("172.16.0.0/24")
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .vswitchId(defaultSwitch.id())
  *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *             .instanceName(name)
  *             .build());
  * 
- *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+ *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()
  *             .name(name)
  *             .commandContent("ZWNobyBoZWxsbyx7e25hbWV9fQ==")
  *             .description("For Terraform Test")
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *             .enableParameter(true)
  *             .build());
  * 
- *         var defaultEcsInvocation = new EcsInvocation("defaultEcsInvocation", EcsInvocationArgs.builder()        
+ *         var defaultEcsInvocation = new EcsInvocation("defaultEcsInvocation", EcsInvocationArgs.builder()
  *             .commandId(defaultCommand.id())
  *             .instanceIds(defaultInstance.id())
  *             .build());

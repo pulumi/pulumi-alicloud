@@ -70,25 +70,25 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultAccelerator = new Accelerator("defaultAccelerator", AcceleratorArgs.builder()        
+ *         var defaultAccelerator = new Accelerator("defaultAccelerator", AcceleratorArgs.builder()
  *             .duration(1)
  *             .autoUseCoupon(true)
  *             .spec("1")
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
  *             .bandwidth(100)
  *             .type("Basic")
  *             .bandwidthType("Basic")
@@ -97,12 +97,12 @@ import javax.annotation.Nullable;
  *             .ratio(30)
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
  *             .acceleratorId(defaultAccelerator.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+ *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
  *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
  *             .listenerType("CustomRouting")
  *             .portRanges(ListenerPortRangeArgs.builder()
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultCustomRoutingEndpointGroup = new CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup", CustomRoutingEndpointGroupArgs.builder()        
+ *         var defaultCustomRoutingEndpointGroup = new CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup", CustomRoutingEndpointGroupArgs.builder()
  *             .acceleratorId(defaultListener.acceleratorId())
  *             .listenerId(defaultListener.id())
  *             .endpointGroupRegion(region)
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *             .description("terraform-example")
  *             .build());
  * 
- *         var defaultCustomRoutingEndpoint = new CustomRoutingEndpoint("defaultCustomRoutingEndpoint", CustomRoutingEndpointArgs.builder()        
+ *         var defaultCustomRoutingEndpoint = new CustomRoutingEndpoint("defaultCustomRoutingEndpoint", CustomRoutingEndpointArgs.builder()
  *             .endpointGroupId(defaultCustomRoutingEndpointGroup.id())
  *             .endpoint(defaultSwitch.id())
  *             .type("PrivateSubNet")
@@ -229,6 +229,9 @@ public class CustomRoutingEndpoint extends com.pulumi.resources.CustomResource {
     }
     /**
      * The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+     * - `DenyAll`: denies all traffic to the endpoint.
+     * - `AllowAll`: allows all traffic to the endpoint.
+     * - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
      * 
      */
     @Export(name="trafficToEndpointPolicy", refs={String.class}, tree="[0]")
@@ -236,6 +239,9 @@ public class CustomRoutingEndpoint extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+     * - `DenyAll`: denies all traffic to the endpoint.
+     * - `AllowAll`: allows all traffic to the endpoint.
+     * - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
      * 
      */
     public Output<String> trafficToEndpointPolicy() {

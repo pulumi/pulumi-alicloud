@@ -148,7 +148,7 @@ def get_control_policies(enable_details: Optional[bool] = None,
     :param str language: The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`.
     :param str name_regex: A regex string to filter results by Control Policy name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str policy_type: The type of policy.
+    :param str policy_type: The policy type of control policy. Valid values `System` and `Custom`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -204,6 +204,6 @@ def get_control_policies_output(enable_details: Optional[pulumi.Input[Optional[b
     :param str language: The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`.
     :param str name_regex: A regex string to filter results by Control Policy name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str policy_type: The type of policy.
+    :param str policy_type: The policy type of control policy. Valid values `System` and `Custom`.
     """
     ...

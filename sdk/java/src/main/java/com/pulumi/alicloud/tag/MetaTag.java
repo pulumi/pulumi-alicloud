@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new MetaTag("example", MetaTagArgs.builder()        
+ *         var example = new MetaTag("example", MetaTagArgs.builder()
  *             .key("Name1")
  *             .values("Desc2")
  *             .build());

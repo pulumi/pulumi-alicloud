@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Folder("example", FolderArgs.builder()        
+ *         var example = new Folder("example", FolderArgs.builder()
  *             .projectId("320687")
  *             .folderPath("Business Flow/tfTestAcc/folderDi/tftest1")
  *             .build());

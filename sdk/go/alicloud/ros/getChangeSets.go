@@ -71,7 +71,7 @@ type GetChangeSetsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
 	StackId string `pulumi:"stackId"`
-	// The status of the change set.
+	// The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
 	Status *string `pulumi:"status"`
 }
 
@@ -117,7 +117,7 @@ type GetChangeSetsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
 	StackId pulumi.StringInput `pulumi:"stackId"`
-	// The status of the change set.
+	// The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

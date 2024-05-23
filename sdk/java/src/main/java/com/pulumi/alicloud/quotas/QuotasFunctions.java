@@ -360,7 +360,7 @@ public final class QuotasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()        
+     *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()
      *             .productCode("vpc")
      *             .noticeType("3")
      *             .effectiveTime("2023-05-22T16:00:00Z")
@@ -424,7 +424,7 @@ public final class QuotasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()        
+     *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()
      *             .productCode("vpc")
      *             .noticeType("3")
      *             .effectiveTime("2023-05-22T16:00:00Z")
@@ -488,7 +488,7 @@ public final class QuotasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()        
+     *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()
      *             .productCode("vpc")
      *             .noticeType("3")
      *             .effectiveTime("2023-05-22T16:00:00Z")
@@ -552,7 +552,7 @@ public final class QuotasFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()        
+     *         var defaultQuotaApplication = new QuotaApplication("defaultQuotaApplication", QuotaApplicationArgs.builder()
      *             .productCode("vpc")
      *             .noticeType("3")
      *             .effectiveTime("2023-05-22T16:00:00Z")
@@ -813,7 +813,7 @@ public final class QuotasFunctions {
      *             .status("CreateSuccess")
      *             .build());
      * 
-     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()        
+     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()
      *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
      *             .productCode("vpc")
      *             .quotaCategory("FlowControl")
@@ -894,7 +894,7 @@ public final class QuotasFunctions {
      *             .status("CreateSuccess")
      *             .build());
      * 
-     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()        
+     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()
      *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
      *             .productCode("vpc")
      *             .quotaCategory("FlowControl")
@@ -975,7 +975,7 @@ public final class QuotasFunctions {
      *             .status("CreateSuccess")
      *             .build());
      * 
-     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()        
+     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()
      *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
      *             .productCode("vpc")
      *             .quotaCategory("FlowControl")
@@ -1056,7 +1056,7 @@ public final class QuotasFunctions {
      *             .status("CreateSuccess")
      *             .build());
      * 
-     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()        
+     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()
      *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
      *             .productCode("vpc")
      *             .quotaCategory("FlowControl")
@@ -1137,7 +1137,7 @@ public final class QuotasFunctions {
      *             .status("CreateSuccess")
      *             .build());
      * 
-     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()        
+     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()
      *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
      *             .productCode("vpc")
      *             .quotaCategory("FlowControl")
@@ -1218,7 +1218,7 @@ public final class QuotasFunctions {
      *             .status("CreateSuccess")
      *             .build());
      * 
-     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()        
+     *         var defaultTemplateApplications = new TemplateApplications("defaultTemplateApplications", TemplateApplicationsArgs.builder()
      *             .quotaActionCode("vpc_whitelist/ha_vip_whitelist")
      *             .productCode("vpc")
      *             .quotaCategory("FlowControl")

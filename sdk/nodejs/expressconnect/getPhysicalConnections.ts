@@ -63,7 +63,7 @@ export interface GetPhysicalConnectionsArgs {
      */
     outputFile?: string;
     /**
-     * Resources on Behalf of a State of the Resource Attribute Field.
+     * Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
      */
     status?: string;
 }
@@ -132,7 +132,7 @@ export interface GetPhysicalConnectionsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Resources on Behalf of a State of the Resource Attribute Field.
+     * Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
      */
     status?: pulumi.Input<string>;
 }

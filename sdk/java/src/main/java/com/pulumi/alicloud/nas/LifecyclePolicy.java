@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new FileSystem("example", FileSystemArgs.builder()        
+ *         var example = new FileSystem("example", FileSystemArgs.builder()
  *             .protocolType("NFS")
  *             .storageType("Capacity")
  *             .build());
  * 
- *         var exampleLifecyclePolicy = new LifecyclePolicy("exampleLifecyclePolicy", LifecyclePolicyArgs.builder()        
+ *         var exampleLifecyclePolicy = new LifecyclePolicy("exampleLifecyclePolicy", LifecyclePolicyArgs.builder()
  *             .fileSystemId(example.id())
  *             .lifecyclePolicyName("terraform-example")
  *             .lifecycleRuleName("DEFAULT_ATIME_14")

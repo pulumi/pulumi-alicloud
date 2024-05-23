@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClustersClusterAccessInfoZkLink {
-    /**
-     * @return The access link address of ZooKeeper.
-     * 
-     */
     private String link;
-    /**
-     * @return The port of ZooKeeper.
-     * 
-     */
     private String port;
 
     private GetClustersClusterAccessInfoZkLink() {}
-    /**
-     * @return The access link address of ZooKeeper.
-     * 
-     */
     public String link() {
         return this.link;
     }
-    /**
-     * @return The port of ZooKeeper.
-     * 
-     */
     public String port() {
         return this.port;
     }

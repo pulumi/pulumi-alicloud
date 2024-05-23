@@ -78,7 +78,7 @@ type GetDbInstancePlansArgs struct {
 	PlanScheduleType *string `pulumi:"planScheduleType"`
 	// The type of the Plan. Valid values: `PauseResume`, `Resize`.
 	PlanType *string `pulumi:"planType"`
-	// The Status of the Plan.
+	// Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
 	Status *string `pulumi:"status"`
 }
 
@@ -124,7 +124,7 @@ type GetDbInstancePlansOutputArgs struct {
 	PlanScheduleType pulumi.StringPtrInput `pulumi:"planScheduleType"`
 	// The type of the Plan. Valid values: `PauseResume`, `Resize`.
 	PlanType pulumi.StringPtrInput `pulumi:"planType"`
-	// The Status of the Plan.
+	// Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

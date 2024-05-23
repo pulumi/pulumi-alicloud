@@ -46,7 +46,7 @@ export interface GetDdosCooDomainResourcesArgs {
      */
     ids?: string[];
     /**
-     * A list ID of instance that you want to associate.
+     * A ID list of Ddoscoo instance.
      */
     instanceIds?: string[];
     /**
@@ -105,7 +105,7 @@ export interface GetDdosCooDomainResourcesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list ID of instance that you want to associate.
+     * A ID list of Ddoscoo instance.
      */
     instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**

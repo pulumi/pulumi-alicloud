@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new SecurityPreference("example", SecurityPreferenceArgs.builder()        
+ *         var example = new SecurityPreference("example", SecurityPreferenceArgs.builder()
  *             .enableSaveMfaTicket(false)
  *             .allowUserToChangePassword(true)
  *             .build());

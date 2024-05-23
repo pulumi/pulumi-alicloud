@@ -66,34 +66,34 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf_example");
  *         final var defaultRegion = config.get("defaultRegion").orElse("cn-hangzhou");
  *         final var peerRegion = config.get("peerRegion").orElse("cn-beijing");
- *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .protectionLevel("REDUCED")
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
  *             .bandwidth(5)
  *             .cenBandwidthPackageName("tf_example")
  *             .geographicRegionAId("China")
  *             .geographicRegionBId("China")
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
  *             .instanceId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()        
+ *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
  *             .cenId(default_.id())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var peer = new TransitRouter("peer", TransitRouterArgs.builder()        
+ *         var peer = new TransitRouter("peer", TransitRouterArgs.builder()
  *             .cenId(defaultTransitRouter.cenId())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", TransitRouterPeerAttachmentArgs.builder()        
+ *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", TransitRouterPeerAttachmentArgs.builder()
  *             .cenId(default_.id())
  *             .transitRouterId(defaultTransitRouter.transitRouterId())
  *             .peerTransitRouterRegionId(peerRegion)
@@ -104,14 +104,14 @@ import javax.annotation.Nullable;
  *             .transitRouterAttachmentName(name)
  *             .build());
  * 
- *         var defaultInterRegionTrafficQosPolicy = new InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy", InterRegionTrafficQosPolicyArgs.builder()        
+ *         var defaultInterRegionTrafficQosPolicy = new InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy", InterRegionTrafficQosPolicyArgs.builder()
  *             .transitRouterId(defaultTransitRouter.transitRouterId())
  *             .transitRouterAttachmentId(defaultTransitRouterPeerAttachment.transitRouterAttachmentId())
  *             .interRegionTrafficQosPolicyName(name)
  *             .interRegionTrafficQosPolicyDescription(name)
  *             .build());
  * 
- *         var defaultInterRegionTrafficQosQueue = new InterRegionTrafficQosQueue("defaultInterRegionTrafficQosQueue", InterRegionTrafficQosQueueArgs.builder()        
+ *         var defaultInterRegionTrafficQosQueue = new InterRegionTrafficQosQueue("defaultInterRegionTrafficQosQueue", InterRegionTrafficQosQueueArgs.builder()
  *             .remainBandwidthPercent(20)
  *             .trafficQosPolicyId(defaultInterRegionTrafficQosPolicy.id())
  *             .dscps(            

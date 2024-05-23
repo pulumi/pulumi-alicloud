@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AlarmContactGroup("example", AlarmContactGroupArgs.builder()        
+ *         var example = new AlarmContactGroup("example", AlarmContactGroupArgs.builder()
  *             .alarmContactGroupName("tf-example")
  *             .build());
  * 

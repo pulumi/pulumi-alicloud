@@ -55,7 +55,7 @@ func GetDedicatedHostGroups(ctx *pulumi.Context, args *GetDedicatedHostGroupsArg
 
 // A collection of arguments for invoking getDedicatedHostGroups.
 type GetDedicatedHostGroupsArgs struct {
-	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+	// Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
 	Engine *string `pulumi:"engine"`
 	// A list of Dedicated Host Group IDs.
 	Ids []string `pulumi:"ids"`
@@ -92,7 +92,7 @@ func GetDedicatedHostGroupsOutput(ctx *pulumi.Context, args GetDedicatedHostGrou
 
 // A collection of arguments for invoking getDedicatedHostGroups.
 type GetDedicatedHostGroupsOutputArgs struct {
-	// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+	// Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// A list of Dedicated Host Group IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

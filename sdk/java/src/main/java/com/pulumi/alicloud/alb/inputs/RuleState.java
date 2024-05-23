@@ -22,6 +22,8 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+     * - `Request`: The forwarding rule is applied to the client requests received by ALB.
+     * - `Response`: The forwarding rule is applied to the responses returned by backend servers.
      * 
      */
     @Import(name="direction")
@@ -29,6 +31,8 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+     * - `Request`: The forwarding rule is applied to the client requests received by ALB.
+     * - `Response`: The forwarding rule is applied to the responses returned by backend servers.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -173,6 +177,8 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param direction The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+         * - `Request`: The forwarding rule is applied to the client requests received by ALB.
+         * - `Response`: The forwarding rule is applied to the responses returned by backend servers.
          * 
          * @return builder
          * 
@@ -184,6 +190,8 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param direction The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+         * - `Request`: The forwarding rule is applied to the client requests received by ALB.
+         * - `Response`: The forwarding rule is applied to the responses returned by backend servers.
          * 
          * @return builder
          * 

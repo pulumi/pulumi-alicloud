@@ -80,7 +80,7 @@ export interface GetUsersArgs {
      */
     outputFile?: string;
     /**
-     * Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+     * Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
      */
     source?: string;
     /**
@@ -88,7 +88,7 @@ export interface GetUsersArgs {
      */
     sourceUserId?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Frozen`, `Normal`.
      */
     status?: string;
     /**
@@ -179,7 +179,7 @@ export interface GetUsersOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+     * Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
      */
     source?: pulumi.Input<string>;
     /**
@@ -187,7 +187,7 @@ export interface GetUsersOutputArgs {
      */
     sourceUserId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Frozen`, `Normal`.
      */
     status?: pulumi.Input<string>;
     /**

@@ -62,14 +62,14 @@ public final class GetTrafficMirrorFilterEgressRulesPlainArgs extends com.pulumi
     }
 
     /**
-     * The ID of the filter associated with the outbound rule.
+     * The ID of the Traffic Mirror Filter.
      * 
      */
     @Import(name="trafficMirrorFilterId", required=true)
     private String trafficMirrorFilterId;
 
     /**
-     * @return The ID of the filter associated with the outbound rule.
+     * @return The ID of the Traffic Mirror Filter.
      * 
      */
     public String trafficMirrorFilterId() {
@@ -147,7 +147,7 @@ public final class GetTrafficMirrorFilterEgressRulesPlainArgs extends com.pulumi
         }
 
         /**
-         * @param trafficMirrorFilterId The ID of the filter associated with the outbound rule.
+         * @param trafficMirrorFilterId The ID of the Traffic Mirror Filter.
          * 
          * @return builder
          * 

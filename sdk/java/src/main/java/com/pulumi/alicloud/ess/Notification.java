@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -77,19 +77,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(myName)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(myName)
  *             .build());
  * 
- *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()        
+ *         var defaultScalingGroup = new ScalingGroup("defaultScalingGroup", ScalingGroupArgs.builder()
  *             .minSize(1)
  *             .maxSize(1)
  *             .scalingGroupName(myName)
@@ -99,11 +99,11 @@ import javax.annotation.Nullable;
  *             .vswitchIds(defaultSwitch.id())
  *             .build());
  * 
- *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()        
+ *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()
  *             .name(myName)
  *             .build());
  * 
- *         var defaultNotification = new Notification("defaultNotification", NotificationArgs.builder()        
+ *         var defaultNotification = new Notification("defaultNotification", NotificationArgs.builder()
  *             .scalingGroupId(defaultScalingGroup.id())
  *             .notificationTypes(            
  *                 "AUTOSCALING:SCALE_OUT_SUCCESS",

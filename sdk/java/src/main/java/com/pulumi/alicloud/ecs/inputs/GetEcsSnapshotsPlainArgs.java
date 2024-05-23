@@ -19,14 +19,14 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
     public static final GetEcsSnapshotsPlainArgs Empty = new GetEcsSnapshotsPlainArgs();
 
     /**
-     * The category of the snapshot.
+     * The category of the snapshot. Valid Values: `flash` and `standard`.
      * 
      */
     @Import(name="category")
     private @Nullable String category;
 
     /**
-     * @return The category of the snapshot.
+     * @return The category of the snapshot. Valid Values: `flash` and `standard`.
      * 
      */
     public Optional<String> category() {
@@ -49,14 +49,14 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Whether the snapshot is encrypted.
+     * Specifies whether the snapshot is encrypted.
      * 
      */
     @Import(name="encrypted")
     private @Nullable Boolean encrypted;
 
     /**
-     * @return Whether the snapshot is encrypted.
+     * @return Specifies whether the snapshot is encrypted.
      * 
      */
     public Optional<Boolean> encrypted() {
@@ -154,14 +154,14 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Snapshot Display Name.
+     * The name of the snapshot.
      * 
      */
     @Import(name="snapshotName")
     private @Nullable String snapshotName;
 
     /**
-     * @return Snapshot Display Name.
+     * @return The name of the snapshot.
      * 
      */
     public Optional<String> snapshotName() {
@@ -169,14 +169,14 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Snapshot creation type.
+     * The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
      * 
      */
     @Import(name="snapshotType")
     private @Nullable String snapshotType;
 
     /**
-     * @return Snapshot creation type.
+     * @return The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
      * 
      */
     public Optional<String> snapshotType() {
@@ -184,14 +184,14 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Source disk attributes.
+     * The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
      * 
      */
     @Import(name="sourceDiskType")
     private @Nullable String sourceDiskType;
 
     /**
-     * @return Source disk attributes.
+     * @return The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
      * 
      */
     public Optional<String> sourceDiskType() {
@@ -199,14 +199,14 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The status of the snapshot.
+     * The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the snapshot.
+     * @return The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
      * 
      */
     public Optional<String> status() {
@@ -214,14 +214,14 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The tags.
+     * A mapping of tags to assign to the snapshot.
      * 
      */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
     /**
-     * @return The tags.
+     * @return A mapping of tags to assign to the snapshot.
      * 
      */
     public Optional<Map<String,Object>> tags() {
@@ -236,14 +236,14 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * A resource type that has a reference relationship.
+     * A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
      * 
      */
     @Import(name="usage")
     private @Nullable String usage;
 
     /**
-     * @return A resource type that has a reference relationship.
+     * @return A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
      * 
      */
     public Optional<String> usage() {
@@ -290,7 +290,7 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param category The category of the snapshot.
+         * @param category The category of the snapshot. Valid Values: `flash` and `standard`.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param encrypted Whether the snapshot is encrypted.
+         * @param encrypted Specifies whether the snapshot is encrypted.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param snapshotName Snapshot Display Name.
+         * @param snapshotName The name of the snapshot.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param snapshotType Snapshot creation type.
+         * @param snapshotType The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param sourceDiskType Source disk attributes.
+         * @param sourceDiskType The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the snapshot.
+         * @param status The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
          * 
          * @return builder
          * 
@@ -443,7 +443,7 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param tags The tags.
+         * @param tags A mapping of tags to assign to the snapshot.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class GetEcsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param usage A resource type that has a reference relationship.
+         * @param usage A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
          * 
          * @return builder
          * 

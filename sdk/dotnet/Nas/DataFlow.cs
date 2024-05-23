@@ -59,6 +59,8 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+        /// - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+        /// - `SSL`: Protects access through SSL certificates.
         /// </summary>
         [Output("sourceSecurityType")]
         public Output<string> SourceSecurityType { get; private set; } = null!;
@@ -156,6 +158,8 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+        /// - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+        /// - `SSL`: Protects access through SSL certificates.
         /// </summary>
         [Input("sourceSecurityType")]
         public Input<string>? SourceSecurityType { get; set; }
@@ -221,6 +225,8 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
+        /// - `NONE` (default): Indicates that the source storage does not need to be accessed through security protection.
+        /// - `SSL`: Protects access through SSL certificates.
         /// </summary>
         [Input("sourceSecurityType")]
         public Input<string>? SourceSecurityType { get; set; }

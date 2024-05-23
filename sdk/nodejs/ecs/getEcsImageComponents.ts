@@ -53,7 +53,7 @@ export interface GetEcsImageComponentsArgs {
      */
     ids?: string[];
     /**
-     * The name of the image component.
+     * The name of the component.
      */
     imageComponentName?: string;
     /**
@@ -65,7 +65,9 @@ export interface GetEcsImageComponentsArgs {
      */
     outputFile?: string;
     /**
-     * The type of the image component.
+     * Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+     * - SELF: The custom image component you created.
+     * - ALIYUN: System components provided by Alibaba Cloud.
      */
     owner?: string;
     /**
@@ -73,7 +75,7 @@ export interface GetEcsImageComponentsArgs {
      */
     resourceGroupId?: string;
     /**
-     * List of label key-value pairs.
+     * A mapping of tags to assign to the resource.
      */
     tags?: {[key: string]: any};
 }
@@ -132,7 +134,7 @@ export interface GetEcsImageComponentsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the image component.
+     * The name of the component.
      */
     imageComponentName?: pulumi.Input<string>;
     /**
@@ -144,7 +146,9 @@ export interface GetEcsImageComponentsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The type of the image component.
+     * Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
+     * - SELF: The custom image component you created.
+     * - ALIYUN: System components provided by Alibaba Cloud.
      */
     owner?: pulumi.Input<string>;
     /**
@@ -152,7 +156,7 @@ export interface GetEcsImageComponentsOutputArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * List of label key-value pairs.
+     * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

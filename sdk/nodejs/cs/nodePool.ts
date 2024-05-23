@@ -99,6 +99,14 @@ export class NodePool extends pulumi.CustomResource {
     public readonly imageId!: pulumi.Output<string>;
     /**
      * The operating system image type and the `platform` parameter can be selected from the following values:
+     * - `AliyunLinux` : Alinux2 image.
+     * - `AliyunLinux3` : Alinux3 image.
+     * - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+     * - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+     * - `CentOS` : CentOS image.
+     * - `Windows` : Windows image.
+     * - `WindowsCore` : WindowsCore image.
+     * - `ContainerOS` : container-optimized image.
      */
     public readonly imageType!: pulumi.Output<string>;
     /**
@@ -283,6 +291,9 @@ export class NodePool extends pulumi.CustomResource {
     public readonly spotPriceLimits!: pulumi.Output<outputs.cs.NodePoolSpotPriceLimit[] | undefined>;
     /**
      * The preemptible instance type. Value:
+     * - `NoSpot` : Non-preemptible instance.
+     * - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+     * - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
      */
     public readonly spotStrategy!: pulumi.Output<string>;
     /**
@@ -311,6 +322,10 @@ export class NodePool extends pulumi.CustomResource {
     public readonly systemDiskKmsKey!: pulumi.Output<string | undefined>;
     /**
      * The system disk performance of the node takes effect only for the ESSD disk.
+     * - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+     * - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+     * - `PL2`: highest random read/write IOPS 100000 for a single disk.
+     * - `PL3`: maximum random read/write IOPS 1 million for a single disk.
      */
     public readonly systemDiskPerformanceLevel!: pulumi.Output<string | undefined>;
     /**
@@ -588,6 +603,14 @@ export interface NodePoolState {
     imageId?: pulumi.Input<string>;
     /**
      * The operating system image type and the `platform` parameter can be selected from the following values:
+     * - `AliyunLinux` : Alinux2 image.
+     * - `AliyunLinux3` : Alinux3 image.
+     * - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+     * - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+     * - `CentOS` : CentOS image.
+     * - `Windows` : Windows image.
+     * - `WindowsCore` : WindowsCore image.
+     * - `ContainerOS` : container-optimized image.
      */
     imageType?: pulumi.Input<string>;
     /**
@@ -772,6 +795,9 @@ export interface NodePoolState {
     spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolSpotPriceLimit>[]>;
     /**
      * The preemptible instance type. Value:
+     * - `NoSpot` : Non-preemptible instance.
+     * - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+     * - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
      */
     spotStrategy?: pulumi.Input<string>;
     /**
@@ -800,6 +826,10 @@ export interface NodePoolState {
     systemDiskKmsKey?: pulumi.Input<string>;
     /**
      * The system disk performance of the node takes effect only for the ESSD disk.
+     * - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+     * - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+     * - `PL2`: highest random read/write IOPS 100000 for a single disk.
+     * - `PL3`: maximum random read/write IOPS 1 million for a single disk.
      */
     systemDiskPerformanceLevel?: pulumi.Input<string>;
     /**
@@ -900,6 +930,14 @@ export interface NodePoolArgs {
     imageId?: pulumi.Input<string>;
     /**
      * The operating system image type and the `platform` parameter can be selected from the following values:
+     * - `AliyunLinux` : Alinux2 image.
+     * - `AliyunLinux3` : Alinux3 image.
+     * - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+     * - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+     * - `CentOS` : CentOS image.
+     * - `Windows` : Windows image.
+     * - `WindowsCore` : WindowsCore image.
+     * - `ContainerOS` : container-optimized image.
      */
     imageType?: pulumi.Input<string>;
     /**
@@ -1076,6 +1114,9 @@ export interface NodePoolArgs {
     spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.cs.NodePoolSpotPriceLimit>[]>;
     /**
      * The preemptible instance type. Value:
+     * - `NoSpot` : Non-preemptible instance.
+     * - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+     * - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
      */
     spotStrategy?: pulumi.Input<string>;
     /**
@@ -1104,6 +1145,10 @@ export interface NodePoolArgs {
     systemDiskKmsKey?: pulumi.Input<string>;
     /**
      * The system disk performance of the node takes effect only for the ESSD disk.
+     * - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+     * - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+     * - `PL2`: highest random read/write IOPS 100000 for a single disk.
+     * - `PL3`: maximum random read/write IOPS 1 million for a single disk.
      */
     systemDiskPerformanceLevel?: pulumi.Input<string>;
     /**

@@ -1119,14 +1119,14 @@ class StoreIndexFieldSearchArgs:
                  token: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: When using the json_keys field, this field is required.
-        :param pulumi.Input[str] alias: The alias of one field.
+        :param pulumi.Input[str] name: The field name, which is unique in the same log store.
+        :param pulumi.Input[str] alias: The alias of one field
         :param pulumi.Input[bool] case_sensitive: Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
         :param pulumi.Input[bool] enable_analytics: Whether to enable field analytics. Default to true.
         :param pulumi.Input[bool] include_chinese: Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
         :param pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]] json_keys: Use nested index when type is json
         :param pulumi.Input[str] token: The string of several split words, like "\\r", "#". It is valid when "type" is "text" or "json".
-        :param pulumi.Input[str] type: The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+        :param pulumi.Input[str] type: The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
         """
         pulumi.set(__self__, "name", name)
         if alias is not None:
@@ -1148,7 +1148,7 @@ class StoreIndexFieldSearchArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        When using the json_keys field, this field is required.
+        The field name, which is unique in the same log store.
         """
         return pulumi.get(self, "name")
 
@@ -1160,7 +1160,7 @@ class StoreIndexFieldSearchArgs:
     @pulumi.getter
     def alias(self) -> Optional[pulumi.Input[str]]:
         """
-        The alias of one field.
+        The alias of one field
         """
         return pulumi.get(self, "alias")
 
@@ -1232,7 +1232,7 @@ class StoreIndexFieldSearchArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+        The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
         """
         return pulumi.get(self, "type")
 
@@ -1248,6 +1248,14 @@ class StoreIndexFieldSearchJsonKeyArgs:
                  alias: Optional[pulumi.Input[str]] = None,
                  doc_value: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: When using the json_keys field, this field is required.
+        :param pulumi.Input[str] alias: The alias of one field.
+        :param pulumi.Input[bool] doc_value: Whether to enable statistics. default to true.
+               
+               > **Note:** At least one of the "full_text" and "field_search" should be specified.
+        :param pulumi.Input[str] type: The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+        """
         pulumi.set(__self__, "name", name)
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
@@ -1259,6 +1267,9 @@ class StoreIndexFieldSearchJsonKeyArgs:
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
+        """
+        When using the json_keys field, this field is required.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1268,6 +1279,9 @@ class StoreIndexFieldSearchJsonKeyArgs:
     @property
     @pulumi.getter
     def alias(self) -> Optional[pulumi.Input[str]]:
+        """
+        The alias of one field.
+        """
         return pulumi.get(self, "alias")
 
     @alias.setter
@@ -1277,6 +1291,11 @@ class StoreIndexFieldSearchJsonKeyArgs:
     @property
     @pulumi.getter(name="docValue")
     def doc_value(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable statistics. default to true.
+
+        > **Note:** At least one of the "full_text" and "field_search" should be specified.
+        """
         return pulumi.get(self, "doc_value")
 
     @doc_value.setter
@@ -1286,6 +1305,9 @@ class StoreIndexFieldSearchJsonKeyArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+        """
         return pulumi.get(self, "type")
 
     @type.setter

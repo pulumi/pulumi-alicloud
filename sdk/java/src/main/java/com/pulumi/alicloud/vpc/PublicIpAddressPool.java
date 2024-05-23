@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .status("OK")
  *             .build());
  * 
- *         var defaultPublicIpAddressPool = new PublicIpAddressPool("defaultPublicIpAddressPool", PublicIpAddressPoolArgs.builder()        
+ *         var defaultPublicIpAddressPool = new PublicIpAddressPool("defaultPublicIpAddressPool", PublicIpAddressPoolArgs.builder()
  *             .description(name)
  *             .publicIpAddressPoolName(name)
  *             .isp("BGP")

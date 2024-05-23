@@ -69,6 +69,8 @@ type Vault struct {
 	// The description of Vault. Defaults to an empty string.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+	// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+	// - `KMS`: Use Alibaba Cloud Kms to encryption.
 	EncryptType pulumi.StringOutput `pulumi:"encryptType"`
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
@@ -118,6 +120,8 @@ type vaultState struct {
 	// The description of Vault. Defaults to an empty string.
 	Description *string `pulumi:"description"`
 	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+	// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+	// - `KMS`: Use Alibaba Cloud Kms to encryption.
 	EncryptType *string `pulumi:"encryptType"`
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
@@ -135,6 +139,8 @@ type VaultState struct {
 	// The description of Vault. Defaults to an empty string.
 	Description pulumi.StringPtrInput
 	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+	// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+	// - `KMS`: Use Alibaba Cloud Kms to encryption.
 	EncryptType pulumi.StringPtrInput
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId pulumi.StringPtrInput
@@ -156,6 +162,8 @@ type vaultArgs struct {
 	// The description of Vault. Defaults to an empty string.
 	Description *string `pulumi:"description"`
 	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+	// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+	// - `KMS`: Use Alibaba Cloud Kms to encryption.
 	EncryptType *string `pulumi:"encryptType"`
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
@@ -172,6 +180,8 @@ type VaultArgs struct {
 	// The description of Vault. Defaults to an empty string.
 	Description pulumi.StringPtrInput
 	// Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+	// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+	// - `KMS`: Use Alibaba Cloud Kms to encryption.
 	EncryptType pulumi.StringPtrInput
 	// The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encryptType is `KMS`.
 	KmsKeyId pulumi.StringPtrInput
@@ -276,6 +286,8 @@ func (o VaultOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Source Encryption Type，It is valid only when vaultType is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+// - `KMS`: Use Alibaba Cloud Kms to encryption.
 func (o VaultOutput) EncryptType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vault) pulumi.StringOutput { return v.EncryptType }).(pulumi.StringOutput)
 }

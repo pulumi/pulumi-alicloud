@@ -76,14 +76,14 @@ public final class GetPeerConnectionsPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
      * 
      */
     public Optional<String> status() {
@@ -189,7 +189,7 @@ public final class GetPeerConnectionsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
          * 
          * @return builder
          * 

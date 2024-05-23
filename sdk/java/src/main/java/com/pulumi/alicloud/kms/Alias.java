@@ -47,11 +47,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Key("this", KeyArgs.builder()        
+ *         var this_ = new Key("this", KeyArgs.builder()
  *             .pendingWindowInDays(7)
  *             .build());
  * 
- *         var thisAlias = new Alias("thisAlias", AliasArgs.builder()        
+ *         var thisAlias = new Alias("thisAlias", AliasArgs.builder()
  *             .aliasName("alias/example_kms_alias")
  *             .keyId(this_.id())
  *             .build());

@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("networkInterfaceName");
- *         var vpc = new Network("vpc", NetworkArgs.builder()        
+ *         var vpc = new Network("vpc", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("192.168.0.0/24")
  *             .build());
@@ -71,19 +71,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+ *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
  *             .name(name)
  *             .cidrBlock("192.168.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vpcId(vpc.id())
  *             .build());
  * 
- *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+ *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(vpc.id())
  *             .build());
  * 
- *         var defaultNetworkInterface = new NetworkInterface("defaultNetworkInterface", NetworkInterfaceArgs.builder()        
+ *         var defaultNetworkInterface = new NetworkInterface("defaultNetworkInterface", NetworkInterfaceArgs.builder()
  *             .networkInterfaceName(name)
  *             .vswitchId(vswitch.id())
  *             .securityGroupIds(group.id())

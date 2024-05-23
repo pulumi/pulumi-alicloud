@@ -107,14 +107,14 @@ public final class GetDbInstancePlansPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The Status of the Plan.
+     * Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The Status of the Plan.
+     * @return Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
      * 
      */
     public Optional<String> status() {
@@ -228,7 +228,7 @@ public final class GetDbInstancePlansPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param status The Status of the Plan.
+         * @param status Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
          * 
          * @return builder
          * 

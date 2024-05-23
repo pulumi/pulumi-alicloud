@@ -173,6 +173,8 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// The storage type of the file System. 
         /// * Valid values:
+        /// * `Performance` (Available when the `file_system_type` is `standard`)
+        /// * `Capacity` (Available when the `file_system_type` is `standard`)
         /// </summary>
         [Output("storageType")]
         public Output<string> StorageType { get; private set; } = null!;
@@ -296,6 +298,8 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// The storage type of the file System. 
         /// * Valid values:
+        /// * `Performance` (Available when the `file_system_type` is `standard`)
+        /// * `Capacity` (Available when the `file_system_type` is `standard`)
         /// </summary>
         [Input("storageType", required: true)]
         public Input<string> StorageType { get; set; } = null!;
@@ -387,6 +391,8 @@ namespace Pulumi.AliCloud.Nas
         /// <summary>
         /// The storage type of the file System. 
         /// * Valid values:
+        /// * `Performance` (Available when the `file_system_type` is `standard`)
+        /// * `Capacity` (Available when the `file_system_type` is `standard`)
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }

@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultRouterInterface = new RouterInterface("defaultRouterInterface", RouterInterfaceArgs.builder()        
+ *         var defaultRouterInterface = new RouterInterface("defaultRouterInterface", RouterInterfaceArgs.builder()
  *             .description(name)
  *             .oppositeRegionId(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()))
  *             .routerId(default_.vpcs()[0].routerId())

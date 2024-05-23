@@ -61,17 +61,17 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-hangzhou");
  *         final var name = config.get("name").orElse("alicloudRouterInterfaceConnectionBasic");
- *         var foo = new Network("foo", NetworkArgs.builder()        
+ *         var foo = new Network("foo", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var bar = new Network("bar", NetworkArgs.builder()        
+ *         var bar = new Network("bar", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var initiate = new RouterInterface("initiate", RouterInterfaceArgs.builder()        
+ *         var initiate = new RouterInterface("initiate", RouterInterfaceArgs.builder()
  *             .oppositeRegion(region)
  *             .routerType("VRouter")
  *             .routerId(foo.routerId())
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *             .instanceChargeType("PostPaid")
  *             .build());
  * 
- *         var opposite = new RouterInterface("opposite", RouterInterfaceArgs.builder()        
+ *         var opposite = new RouterInterface("opposite", RouterInterfaceArgs.builder()
  *             .oppositeRegion(region)
  *             .routerType("VRouter")
  *             .routerId(bar.routerId())
@@ -92,13 +92,13 @@ import javax.annotation.Nullable;
  *             .description(String.format("%s-opposite", name))
  *             .build());
  * 
- *         var barRouterInterfaceConnection = new RouterInterfaceConnection("barRouterInterfaceConnection", RouterInterfaceConnectionArgs.builder()        
+ *         var barRouterInterfaceConnection = new RouterInterfaceConnection("barRouterInterfaceConnection", RouterInterfaceConnectionArgs.builder()
  *             .interfaceId(opposite.id())
  *             .oppositeInterfaceId(initiate.id())
  *             .build());
  * 
  *         // A integrated router interface connection tunnel requires both InitiatingSide and AcceptingSide configuring opposite router interface.
- *         var fooRouterInterfaceConnection = new RouterInterfaceConnection("fooRouterInterfaceConnection", RouterInterfaceConnectionArgs.builder()        
+ *         var fooRouterInterfaceConnection = new RouterInterfaceConnection("fooRouterInterfaceConnection", RouterInterfaceConnectionArgs.builder()
  *             .interfaceId(initiate.id())
  *             .oppositeInterfaceId(opposite.id())
  *             .build(), CustomResourceOptions.builder()

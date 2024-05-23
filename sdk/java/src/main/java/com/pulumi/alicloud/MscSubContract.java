@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexample");
- *         var default_ = new MscSubContract("default", MscSubContractArgs.builder()        
+ *         var default_ = new MscSubContract("default", MscSubContractArgs.builder()
  *             .contactName(name)
  *             .position("CEO")
  *             .email("123{@literal @}163.com")

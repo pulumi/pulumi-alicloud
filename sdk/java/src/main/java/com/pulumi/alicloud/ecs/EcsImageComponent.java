@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .nameRegex("default")
  *             .build());
  * 
- *         var example = new EcsImageComponent("example", EcsImageComponentArgs.builder()        
+ *         var example = new EcsImageComponent("example", EcsImageComponentArgs.builder()
  *             .componentType("Build")
  *             .content("RUN yum update -y")
  *             .description("example_value")

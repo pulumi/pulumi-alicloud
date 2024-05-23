@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityGroup("default", SecurityGroupArgs.builder()        
+ *         var default_ = new SecurityGroup("default", SecurityGroupArgs.builder()
  *             .name("terraform-example")
  *             .description("New security group")
  *             .build());
@@ -93,12 +93,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var vpc = new Network("vpc", NetworkArgs.builder()        
+ *         var vpc = new Network("vpc", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("10.1.0.0/21")
  *             .build());
  * 
- *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+ *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
  *             .name("terraform-example")
  *             .vpcId(vpc.id())
  *             .build());

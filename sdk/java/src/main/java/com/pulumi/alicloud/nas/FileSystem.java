@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .fileSystemType("standard")
  *             .build());
  * 
- *         var foo = new FileSystem("foo", FileSystemArgs.builder()        
+ *         var foo = new FileSystem("foo", FileSystemArgs.builder()
  *             .protocolType("NFS")
  *             .storageType("Performance")
  *             .description("terraform-example")
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *             .fileSystemType("extreme")
  *             .build());
  * 
- *         var foo = new FileSystem("foo", FileSystemArgs.builder()        
+ *         var foo = new FileSystem("foo", FileSystemArgs.builder()
  *             .fileSystemType("extreme")
  *             .protocolType("NFS")
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()))
@@ -149,19 +149,19 @@ import javax.annotation.Nullable;
  *             .fileSystemType("cpfs")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[1].zoneId()))
  *             .build());
  * 
- *         var exampleFileSystem = new FileSystem("exampleFileSystem", FileSystemArgs.builder()        
+ *         var exampleFileSystem = new FileSystem("exampleFileSystem", FileSystemArgs.builder()
  *             .protocolType("cpfs")
  *             .storageType("advance_200")
  *             .fileSystemType("cpfs")
@@ -295,6 +295,8 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
     /**
      * The storage type of the file System.
      * * Valid values:
+     * * `Performance` (Available when the `file_system_type` is `standard`)
+     * * `Capacity` (Available when the `file_system_type` is `standard`)
      * 
      */
     @Export(name="storageType", refs={String.class}, tree="[0]")
@@ -303,6 +305,8 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
     /**
      * @return The storage type of the file System.
      * * Valid values:
+     * * `Performance` (Available when the `file_system_type` is `standard`)
+     * * `Capacity` (Available when the `file_system_type` is `standard`)
      * 
      */
     public Output<String> storageType() {

@@ -59,7 +59,7 @@ func GetHybridMonitorFcTasks(ctx *pulumi.Context, args *GetHybridMonitorFcTasksA
 type GetHybridMonitorFcTasksArgs struct {
 	// A list of Hybrid Monitor Fc Task IDs.
 	Ids []string `pulumi:"ids"`
-	// The index warehouse where the host belongs.
+	// The name of the namespace.
 	Namespace *string `pulumi:"namespace"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -96,7 +96,7 @@ func GetHybridMonitorFcTasksOutput(ctx *pulumi.Context, args GetHybridMonitorFcT
 type GetHybridMonitorFcTasksOutputArgs struct {
 	// A list of Hybrid Monitor Fc Task IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The index warehouse where the host belongs.
+	// The name of the namespace.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

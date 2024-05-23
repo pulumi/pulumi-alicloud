@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.Tsdb
         public string? QueryStr { get; set; }
 
         /// <summary>
-        /// Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+        /// Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.Tsdb
         public Input<string>? QueryStr { get; set; }
 
         /// <summary>
-        /// Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+        /// Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

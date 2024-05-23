@@ -189,7 +189,7 @@ def get_clusters(cluster_name: Optional[str] = None,
     > **NOTE:** Available in v1.199.0+.
 
 
-    :param str cluster_name: The name of the emr cluster.
+    :param str cluster_name: The cluster name.
     :param Sequence[str] cluster_states: The cluster states.
     :param Sequence[str] cluster_types: The cluster types.
     :param Sequence[str] ids: A list of Cluster IDS.
@@ -198,7 +198,7 @@ def get_clusters(cluster_name: Optional[str] = None,
     :param str next_token: The next token is used to list clusters for next page.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] payment_types: The cluster payment types.
-    :param str resource_group_id: The resource group id of the resource.
+    :param str resource_group_id: The Resource Group ID.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
@@ -253,7 +253,7 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     > **NOTE:** Available in v1.199.0+.
 
 
-    :param str cluster_name: The name of the emr cluster.
+    :param str cluster_name: The cluster name.
     :param Sequence[str] cluster_states: The cluster states.
     :param Sequence[str] cluster_types: The cluster types.
     :param Sequence[str] ids: A list of Cluster IDS.
@@ -262,7 +262,7 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     :param str next_token: The next token is used to list clusters for next page.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] payment_types: The cluster payment types.
-    :param str resource_group_id: The resource group id of the resource.
+    :param str resource_group_id: The Resource Group ID.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     ...

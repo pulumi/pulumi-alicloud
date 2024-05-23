@@ -64,7 +64,7 @@ export interface GetStacksArgs {
      */
     outputFile?: string;
     /**
-     * Parent Stack Id.
+     * ParentStackId.
      */
     parentStackId?: string;
     /**
@@ -72,7 +72,7 @@ export interface GetStacksArgs {
      */
     showNestedStack?: boolean;
     /**
-     * Stack Name.
+     * StackName.
      */
     stackName?: string;
     /**
@@ -150,7 +150,7 @@ export interface GetStacksOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Parent Stack Id.
+     * ParentStackId.
      */
     parentStackId?: pulumi.Input<string>;
     /**
@@ -158,7 +158,7 @@ export interface GetStacksOutputArgs {
      */
     showNestedStack?: pulumi.Input<boolean>;
     /**
-     * Stack Name.
+     * StackName.
      */
     stackName?: pulumi.Input<string>;
     /**

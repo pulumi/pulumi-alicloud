@@ -68,11 +68,11 @@ export interface GetSecurityPoliciesArgs {
      */
     securityPolicyIds?: string[];
     /**
-     * The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     * The name of the resource.
      */
     securityPolicyName?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values : `Available`, `Configuring`.
      */
     status?: string;
     tags?: {[key: string]: any};
@@ -147,11 +147,11 @@ export interface GetSecurityPoliciesOutputArgs {
      */
     securityPolicyIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     * The name of the resource.
      */
     securityPolicyName?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values : `Available`, `Configuring`.
      */
     status?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: any}>;

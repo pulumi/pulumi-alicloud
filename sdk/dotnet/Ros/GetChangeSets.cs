@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Ros
         public string StackId { get; set; } = null!;
 
         /// <summary>
-        /// The status of the change set.
+        /// The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Ros
         public Input<string> StackId { get; set; } = null!;
 
         /// <summary>
-        /// The status of the change set.
+        /// The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

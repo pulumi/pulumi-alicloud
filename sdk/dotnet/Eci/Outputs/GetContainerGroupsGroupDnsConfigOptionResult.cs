@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class GetContainerGroupsGroupDnsConfigOptionResult
     {
         /// <summary>
-        /// The name of the volume.
+        /// The name of the object variable.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The value of the variable.
+        /// The value of the object variable.
         /// </summary>
         public readonly string Value;
 

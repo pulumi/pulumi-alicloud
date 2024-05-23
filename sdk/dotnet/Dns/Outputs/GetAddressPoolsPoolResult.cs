@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// </summary>
         public readonly string AddressPoolName;
         /// <summary>
-        /// The address that you want to add to the address pool.
+        /// The address lists of the Address Pool.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAddressPoolsPoolAddressResult> Addresses;
         /// <summary>

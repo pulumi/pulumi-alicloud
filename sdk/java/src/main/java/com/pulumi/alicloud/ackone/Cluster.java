@@ -61,19 +61,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()        
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
  *             .cidrBlock("172.16.0.0/12")
  *             .vpcName(name)
  *             .build());
  * 
- *         var defaultyVSwitch = new Switch("defaultyVSwitch", SwitchArgs.builder()        
+ *         var defaultyVSwitch = new Switch("defaultyVSwitch", SwitchArgs.builder()
  *             .vpcId(defaultVpc.id())
  *             .cidrBlock("172.16.2.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .network(ClusterNetworkArgs.builder()
  *                 .vpcId(defaultVpc.id())
  *                 .vswitches(defaultyVSwitch.id())

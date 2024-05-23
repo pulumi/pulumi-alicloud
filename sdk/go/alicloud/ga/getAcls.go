@@ -70,7 +70,7 @@ type GetAclsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
 	Status *string `pulumi:"status"`
 }
 
@@ -113,7 +113,7 @@ type GetAclsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

@@ -36,11 +36,11 @@ type GetSecretParametersArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The name of the encryption parameter.
+	// The name of the secret parameter.
 	SecretParameterName *string `pulumi:"secretParameterName"`
 	SortField           *string `pulumi:"sortField"`
 	SortOrder           *string `pulumi:"sortOrder"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -86,11 +86,11 @@ type GetSecretParametersOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The name of the encryption parameter.
+	// The name of the secret parameter.
 	SecretParameterName pulumi.StringPtrInput `pulumi:"secretParameterName"`
 	SortField           pulumi.StringPtrInput `pulumi:"sortField"`
 	SortOrder           pulumi.StringPtrInput `pulumi:"sortOrder"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`
 }
 

@@ -128,7 +128,7 @@ type GetImagesArgs struct {
 	ImageType *string `pulumi:"imageType"`
 	// A regex string to filter results by Image name.
 	NameRegex *string `pulumi:"nameRegex"`
-	// The os type of the image.
+	// The operating system type of the image. Valid values: `Windows` and `Linux`.
 	OsType *string `pulumi:"osType"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -174,7 +174,7 @@ type GetImagesOutputArgs struct {
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// A regex string to filter results by Image name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
-	// The os type of the image.
+	// The operating system type of the image. Valid values: `Windows` and `Linux`.
 	OsType pulumi.StringPtrInput `pulumi:"osType"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

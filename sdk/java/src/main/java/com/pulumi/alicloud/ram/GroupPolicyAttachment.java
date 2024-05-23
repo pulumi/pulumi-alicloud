@@ -50,17 +50,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a RAM Group Policy attachment.
- *         var group = new Group("group", GroupArgs.builder()        
+ *         var group = new Group("group", GroupArgs.builder()
  *             .name("groupName")
  *             .comments("this is a group comments.")
  *             .build());
  * 
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var policy = new Policy("policy", PolicyArgs.builder()        
+ *         var policy = new Policy("policy", PolicyArgs.builder()
  *             .policyName(String.format("tf-example-%s", default_.result()))
  *             .policyDocument("""
  *     {
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .description("this is a policy test")
  *             .build());
  * 
- *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()        
+ *         var attach = new GroupPolicyAttachment("attach", GroupPolicyAttachmentArgs.builder()
  *             .policyName(policy.policyName())
  *             .policyType(policy.type())
  *             .groupName(group.name())

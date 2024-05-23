@@ -99,6 +99,14 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The operating system image type and the `platform` parameter can be selected from the following values:
+        /// - `AliyunLinux` : Alinux2 image.
+        /// - `AliyunLinux3` : Alinux3 image.
+        /// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+        /// - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+        /// - `CentOS` : CentOS image.
+        /// - `Windows` : Windows image.
+        /// - `WindowsCore` : WindowsCore image.
+        /// - `ContainerOS` : container-optimized image.
         /// </summary>
         [Output("imageType")]
         public Output<string> ImageType { get; private set; } = null!;
@@ -361,6 +369,9 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The preemptible instance type. Value:
+        /// - `NoSpot` : Non-preemptible instance.
+        /// - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+        /// - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         /// </summary>
         [Output("spotStrategy")]
         public Output<string> SpotStrategy { get; private set; } = null!;
@@ -403,6 +414,10 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The system disk performance of the node takes effect only for the ESSD disk.
+        /// - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+        /// - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+        /// - `PL2`: highest random read/write IOPS 100000 for a single disk.
+        /// - `PL3`: maximum random read/write IOPS 1 million for a single disk.
         /// </summary>
         [Output("systemDiskPerformanceLevel")]
         public Output<string?> SystemDiskPerformanceLevel { get; private set; } = null!;
@@ -598,6 +613,14 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The operating system image type and the `platform` parameter can be selected from the following values:
+        /// - `AliyunLinux` : Alinux2 image.
+        /// - `AliyunLinux3` : Alinux3 image.
+        /// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+        /// - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+        /// - `CentOS` : CentOS image.
+        /// - `Windows` : Windows image.
+        /// - `WindowsCore` : WindowsCore image.
+        /// - `ContainerOS` : container-optimized image.
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
@@ -910,6 +933,9 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The preemptible instance type. Value:
+        /// - `NoSpot` : Non-preemptible instance.
+        /// - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+        /// - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
@@ -958,6 +984,10 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The system disk performance of the node takes effect only for the ESSD disk.
+        /// - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+        /// - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+        /// - `PL2`: highest random read/write IOPS 100000 for a single disk.
+        /// - `PL3`: maximum random read/write IOPS 1 million for a single disk.
         /// </summary>
         [Input("systemDiskPerformanceLevel")]
         public Input<string>? SystemDiskPerformanceLevel { get; set; }
@@ -1128,6 +1158,14 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The operating system image type and the `platform` parameter can be selected from the following values:
+        /// - `AliyunLinux` : Alinux2 image.
+        /// - `AliyunLinux3` : Alinux3 image.
+        /// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+        /// - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+        /// - `CentOS` : CentOS image.
+        /// - `Windows` : Windows image.
+        /// - `WindowsCore` : WindowsCore image.
+        /// - `ContainerOS` : container-optimized image.
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
@@ -1452,6 +1490,9 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The preemptible instance type. Value:
+        /// - `NoSpot` : Non-preemptible instance.
+        /// - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+        /// - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
@@ -1500,6 +1541,10 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The system disk performance of the node takes effect only for the ESSD disk.
+        /// - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+        /// - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+        /// - `PL2`: highest random read/write IOPS 100000 for a single disk.
+        /// - `PL3`: maximum random read/write IOPS 1 million for a single disk.
         /// </summary>
         [Input("systemDiskPerformanceLevel")]
         public Input<string>? SystemDiskPerformanceLevel { get; set; }

@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexample");
- *         var example = new DeviceGroup("example", DeviceGroupArgs.builder()        
+ *         var example = new DeviceGroup("example", DeviceGroupArgs.builder()
  *             .groupName(name)
  *             .build());
  * 

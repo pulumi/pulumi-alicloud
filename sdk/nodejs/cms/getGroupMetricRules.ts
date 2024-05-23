@@ -53,7 +53,7 @@ export interface GetGroupMetricRulesArgs {
      */
     dimensions?: string;
     /**
-     * Indicates whether the alert rule is enabled.
+     * EnableState.
      */
     enableState?: boolean;
     /**
@@ -85,7 +85,7 @@ export interface GetGroupMetricRulesArgs {
      */
     outputFile?: string;
     /**
-     * The status of Group Metric Rule..
+     * The status of Group Metric Rule.
      */
     status?: string;
 }
@@ -144,7 +144,7 @@ export interface GetGroupMetricRulesOutputArgs {
      */
     dimensions?: pulumi.Input<string>;
     /**
-     * Indicates whether the alert rule is enabled.
+     * EnableState.
      */
     enableState?: pulumi.Input<boolean>;
     /**
@@ -176,7 +176,7 @@ export interface GetGroupMetricRulesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of Group Metric Rule..
+     * The status of Group Metric Rule.
      */
     status?: pulumi.Input<string>;
 }

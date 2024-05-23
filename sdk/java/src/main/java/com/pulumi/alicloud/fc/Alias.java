@@ -52,18 +52,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultService = new Service("defaultService", ServiceArgs.builder()        
+ *         var defaultService = new Service("defaultService", ServiceArgs.builder()
  *             .name(String.format("example-value-%s", default_.result()))
  *             .description("example-value")
  *             .publish("true")
  *             .build());
  * 
- *         var example = new Alias("example", AliasArgs.builder()        
+ *         var example = new Alias("example", AliasArgs.builder()
  *             .aliasName("example-value")
  *             .description("example-value")
  *             .serviceName(defaultService.name())

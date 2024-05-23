@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.BastionHost
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+        /// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
         /// </summary>
         [Input("source")]
         public string? Source { get; set; }
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.BastionHost
         public string? SourceUserId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Frozen`, `Normal`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+        /// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
         /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.BastionHost
         public Input<string>? SourceUserId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Frozen`, `Normal`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

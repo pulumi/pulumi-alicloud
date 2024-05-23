@@ -137,7 +137,7 @@ def get_receivers(ids: Optional[Sequence[str]] = None,
     :param str key_word: The key word.
     :param str name_regex: A regex string to filter results by Receivers name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param int status: The status of the resource.
+    :param int status: The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -189,6 +189,6 @@ def get_receivers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     :param str key_word: The key word.
     :param str name_regex: A regex string to filter results by Receivers name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param int status: The status of the resource.
+    :param int status: The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
     """
     ...

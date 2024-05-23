@@ -80,14 +80,14 @@ public final class GetStacksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Parent Stack Id.
+     * ParentStackId.
      * 
      */
     @Import(name="parentStackId")
     private @Nullable Output<String> parentStackId;
 
     /**
-     * @return Parent Stack Id.
+     * @return ParentStackId.
      * 
      */
     public Optional<Output<String>> parentStackId() {
@@ -110,14 +110,14 @@ public final class GetStacksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Stack Name.
+     * StackName.
      * 
      */
     @Import(name="stackName")
     private @Nullable Output<String> stackName;
 
     /**
-     * @return Stack Name.
+     * @return StackName.
      * 
      */
     public Optional<Output<String>> stackName() {
@@ -281,7 +281,7 @@ public final class GetStacksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param parentStackId Parent Stack Id.
+         * @param parentStackId ParentStackId.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class GetStacksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param parentStackId Parent Stack Id.
+         * @param parentStackId ParentStackId.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class GetStacksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param stackName Stack Name.
+         * @param stackName StackName.
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class GetStacksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param stackName Stack Name.
+         * @param stackName StackName.
          * 
          * @return builder
          * 

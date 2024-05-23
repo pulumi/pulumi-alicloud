@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
- *             new Network("vpc-" + i, NetworkArgs.builder()            
+ *             new Network("vpc-" + i, NetworkArgs.builder()
  *                 .name(vpcName)
  *                 .cidrBlock(vpcCidr)
  *                 .build());
@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
- *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()            
+ *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
  *                 .name(securityGroupName)
  *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
  *                 .build());
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  * }
  *         // VSwitch Resource for Module
  *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
- *             new Switch("vswitch-" + i, SwitchArgs.builder()            
+ *             new Switch("vswitch-" + i, SwitchArgs.builder()
  *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         // Ram role Resource for Module
- *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(ramName)
  *             .document("""
  *     {
@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .name("terraform-create-cluster-test")
  *             .emrVer(default_.mainVersions()[0].emrVersion())
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
@@ -284,7 +284,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
- *             new Network("vpc-" + i, NetworkArgs.builder()            
+ *             new Network("vpc-" + i, NetworkArgs.builder()
  *                 .name(vpcName)
  *                 .cidrBlock(vpcCidr)
  *                 .build());
@@ -292,7 +292,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
- *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()            
+ *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
  *                 .name(securityGroupName)
  *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
  *                 .build());
@@ -301,7 +301,7 @@ import javax.annotation.Nullable;
  * }
  *         // VSwitch Resource for Module
  *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
- *             new Switch("vswitch-" + i, SwitchArgs.builder()            
+ *             new Switch("vswitch-" + i, SwitchArgs.builder()
  *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
@@ -311,7 +311,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         // Ram role Resource for Module
- *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(ramName)
  *             .document("""
  *     {
@@ -334,7 +334,7 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .name("terraform-resize-cluster-test")
  *             .emrVer(default_.mainVersions()[0].emrVersion())
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
@@ -464,7 +464,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
- *             new Network("vpc-" + i, NetworkArgs.builder()            
+ *             new Network("vpc-" + i, NetworkArgs.builder()
  *                 .name(vpcName)
  *                 .cidrBlock(vpcCidr)
  *                 .build());
@@ -472,7 +472,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
- *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()            
+ *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
  *                 .name(securityGroupName)
  *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
  *                 .build());
@@ -481,7 +481,7 @@ import javax.annotation.Nullable;
  * }
  *         // VSwitch Resource for Module
  *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
- *             new Switch("vswitch-" + i, SwitchArgs.builder()            
+ *             new Switch("vswitch-" + i, SwitchArgs.builder()
  *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
@@ -491,7 +491,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         // Ram role Resource for Module
- *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(ramName)
  *             .document("""
  *     {
@@ -514,7 +514,7 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .name("terraform-resize-cluster-test")
  *             .emrVer(default_.mainVersions()[0].emrVersion())
  *             .clusterType(default_.mainVersions()[0].clusterTypes()[0])
@@ -635,7 +635,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         for (var i = 0; i < (vpcId == "" ? 1 : 0); i++) {
- *             new Network("vpc-" + i, NetworkArgs.builder()            
+ *             new Network("vpc-" + i, NetworkArgs.builder()
  *                 .name(vpcName)
  *                 .cidrBlock(vpcCidr)
  *                 .build());
@@ -643,7 +643,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         for (var i = 0; i < (securityGroupId == "" ? 1 : 0); i++) {
- *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()            
+ *             new SecurityGroup("defaultSecurityGroup-" + i, SecurityGroupArgs.builder()
  *                 .name(securityGroupName)
  *                 .vpcId(vpcId == "" ? vpc[0].id() : vpcId)
  *                 .build());
@@ -652,7 +652,7 @@ import javax.annotation.Nullable;
  * }
  *         // VSwitch Resource for Module
  *         for (var i = 0; i < (vswitchId == "" ? 1 : 0); i++) {
- *             new Switch("vswitch-" + i, SwitchArgs.builder()            
+ *             new Switch("vswitch-" + i, SwitchArgs.builder()
  *                 .availabilityZone(availabilityZone == "" ? defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()) : availabilityZone)
  *                 .vswitchName(vswitchName)
  *                 .cidrBlock(vswitchCidr)
@@ -662,7 +662,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         // Ram role Resource for Module
- *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
  *             .name(ramName)
  *             .document("""
  *     {
@@ -685,7 +685,7 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var gateway = new Cluster("gateway", ClusterArgs.builder()        
+ *         var gateway = new Cluster("gateway", ClusterArgs.builder()
  *             .name("terraform-gateway-cluster-test")
  *             .emrVer(default_.mainVersions()[0].emrVersion())
  *             .clusterType("GATEWAY")

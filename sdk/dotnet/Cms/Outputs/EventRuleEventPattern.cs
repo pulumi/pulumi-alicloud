@@ -15,10 +15,18 @@ namespace Pulumi.AliCloud.Cms.Outputs
     {
         /// <summary>
         /// The type of the event-triggered alert rule. Valid values:
+        /// - `StatusNotification`: fault notifications.
+        /// - `Exception`: exceptions.
+        /// - `Maintenance`: O&amp;M.
+        /// - `*`: all types.
         /// </summary>
         public readonly ImmutableArray<string> EventTypeLists;
         /// <summary>
         /// The level of the event-triggered alert rule. Valid values:
+        /// - `CRITICAL`: critical.
+        /// - `WARN`: warning.
+        /// - `INFO`: information.
+        /// - `*`: all types.
         /// </summary>
         public readonly ImmutableArray<string> LevelLists;
         /// <summary>

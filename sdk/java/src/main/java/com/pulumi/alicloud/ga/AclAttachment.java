@@ -62,13 +62,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Accelerator("default", AcceleratorArgs.builder()        
+ *         var default_ = new Accelerator("default", AcceleratorArgs.builder()
  *             .duration(1)
  *             .autoUseCoupon(true)
  *             .spec("1")
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
  *             .bandwidth(100)
  *             .type("Basic")
  *             .bandwidthType("Basic")
@@ -77,12 +77,12 @@ import javax.annotation.Nullable;
  *             .ratio(30)
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
  *             .acceleratorId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+ *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
  *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
  *             .portRanges(ListenerPortRangeArgs.builder()
  *                 .fromPort(80)
@@ -90,18 +90,18 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()        
+ *         var defaultAcl = new Acl("defaultAcl", AclArgs.builder()
  *             .aclName("terraform-example")
  *             .addressIpVersion("IPv4")
  *             .build());
  * 
- *         var defaultAclEntryAttachment = new AclEntryAttachment("defaultAclEntryAttachment", AclEntryAttachmentArgs.builder()        
+ *         var defaultAclEntryAttachment = new AclEntryAttachment("defaultAclEntryAttachment", AclEntryAttachmentArgs.builder()
  *             .aclId(defaultAcl.id())
  *             .entry("192.168.1.1/32")
  *             .entryDescription("terraform-example")
  *             .build());
  * 
- *         var defaultAclAttachment = new AclAttachment("defaultAclAttachment", AclAttachmentArgs.builder()        
+ *         var defaultAclAttachment = new AclAttachment("defaultAclAttachment", AclAttachmentArgs.builder()
  *             .listenerId(defaultListener.id())
  *             .aclId(defaultAcl.id())
  *             .aclType("white")

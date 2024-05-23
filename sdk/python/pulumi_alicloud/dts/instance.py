@@ -112,6 +112,9 @@ class InstanceArgs:
                - **oneway**: one-way synchronization, the default value.
                - **bidirectional**: two-way synchronization.
         :param pulumi.Input[str] synchronization_direction: The synchronization direction. Default value: `Forward`. Valid values:
+               - `Forward`: Data is synchronized from the source database to the destination database.
+               - `Reverse`: Data is synchronized from the destination database to the source database.
+               - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value corresponding to the tag key.See the following `Block Tags`.
         :param pulumi.Input[str] type: The instance type. Valid values:
                - **migration**: MIGRATION.
@@ -422,6 +425,9 @@ class InstanceArgs:
     def synchronization_direction(self) -> Optional[pulumi.Input[str]]:
         """
         The synchronization direction. Default value: `Forward`. Valid values:
+        - `Forward`: Data is synchronized from the source database to the destination database.
+        - `Reverse`: Data is synchronized from the destination database to the source database.
+        - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
         """
         return pulumi.get(self, "synchronization_direction")
 
@@ -584,6 +590,9 @@ class _InstanceState:
                - **oneway**: one-way synchronization, the default value.
                - **bidirectional**: two-way synchronization.
         :param pulumi.Input[str] synchronization_direction: The synchronization direction. Default value: `Forward`. Valid values:
+               - `Forward`: Data is synchronized from the source database to the destination database.
+               - `Reverse`: Data is synchronized from the destination database to the source database.
+               - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value corresponding to the tag key.See the following `Block Tags`.
         :param pulumi.Input[str] type: The instance type. Valid values:
                - **migration**: MIGRATION.
@@ -950,6 +959,9 @@ class _InstanceState:
     def synchronization_direction(self) -> Optional[pulumi.Input[str]]:
         """
         The synchronization direction. Default value: `Forward`. Valid values:
+        - `Forward`: Data is synchronized from the source database to the destination database.
+        - `Reverse`: Data is synchronized from the destination database to the source database.
+        - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
         """
         return pulumi.get(self, "synchronization_direction")
 
@@ -1143,6 +1155,9 @@ class Instance(pulumi.CustomResource):
                - **oneway**: one-way synchronization, the default value.
                - **bidirectional**: two-way synchronization.
         :param pulumi.Input[str] synchronization_direction: The synchronization direction. Default value: `Forward`. Valid values:
+               - `Forward`: Data is synchronized from the source database to the destination database.
+               - `Reverse`: Data is synchronized from the destination database to the source database.
+               - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value corresponding to the tag key.See the following `Block Tags`.
         :param pulumi.Input[str] type: The instance type. Valid values:
                - **migration**: MIGRATION.
@@ -1387,6 +1402,9 @@ class Instance(pulumi.CustomResource):
                - **oneway**: one-way synchronization, the default value.
                - **bidirectional**: two-way synchronization.
         :param pulumi.Input[str] synchronization_direction: The synchronization direction. Default value: `Forward`. Valid values:
+               - `Forward`: Data is synchronized from the source database to the destination database.
+               - `Reverse`: Data is synchronized from the destination database to the source database.
+               - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value corresponding to the tag key.See the following `Block Tags`.
         :param pulumi.Input[str] type: The instance type. Valid values:
                - **migration**: MIGRATION.
@@ -1654,6 +1672,9 @@ class Instance(pulumi.CustomResource):
     def synchronization_direction(self) -> pulumi.Output[Optional[str]]:
         """
         The synchronization direction. Default value: `Forward`. Valid values:
+        - `Forward`: Data is synchronized from the source database to the destination database.
+        - `Reverse`: Data is synchronized from the destination database to the source database.
+        - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
         """
         return pulumi.get(self, "synchronization_direction")
 

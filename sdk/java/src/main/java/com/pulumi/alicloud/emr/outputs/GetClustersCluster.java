@@ -57,12 +57,12 @@ public final class GetClustersCluster {
      */
     private Boolean bootstrapFailed;
     /**
-     * @return The ID of the associated cluster.
+     * @return The first ID of the resource.
      * 
      */
     private String clusterId;
     /**
-     * @return The name of the associated cluster.
+     * @return The ClusterName.
      * 
      */
     private String clusterName;
@@ -72,7 +72,7 @@ public final class GetClustersCluster {
      */
     private String createResource;
     /**
-     * @return Creation time.
+     * @return The creation time of the resource.
      * 
      */
     private String createTime;
@@ -92,7 +92,7 @@ public final class GetClustersCluster {
      */
     private Boolean easEnable;
     /**
-     * @return Timeout time.
+     * @return The expiration time of the cluster.
      * 
      */
     private String expiredTime;
@@ -203,10 +203,6 @@ public final class GetClustersCluster {
      * 
      */
     private Map<String,Object> tags;
-    /**
-     * @return Disk type.
-     * 
-     */
     private String type;
     /**
      * @return The EMR permission name used.
@@ -285,14 +281,14 @@ public final class GetClustersCluster {
         return this.bootstrapFailed;
     }
     /**
-     * @return The ID of the associated cluster.
+     * @return The first ID of the resource.
      * 
      */
     public String clusterId() {
         return this.clusterId;
     }
     /**
-     * @return The name of the associated cluster.
+     * @return The ClusterName.
      * 
      */
     public String clusterName() {
@@ -306,7 +302,7 @@ public final class GetClustersCluster {
         return this.createResource;
     }
     /**
-     * @return Creation time.
+     * @return The creation time of the resource.
      * 
      */
     public String createTime() {
@@ -334,7 +330,7 @@ public final class GetClustersCluster {
         return this.easEnable;
     }
     /**
-     * @return Timeout time.
+     * @return The expiration time of the cluster.
      * 
      */
     public String expiredTime() {
@@ -493,10 +489,6 @@ public final class GetClustersCluster {
     public Map<String,Object> tags() {
         return this.tags;
     }
-    /**
-     * @return Disk type.
-     * 
-     */
     public String type() {
         return this.type;
     }

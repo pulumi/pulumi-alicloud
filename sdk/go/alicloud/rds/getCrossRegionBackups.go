@@ -61,7 +61,9 @@ type GetCrossRegionBackupsArgs struct {
 	BackupId *string `pulumi:"backupId"`
 	// The ID of the cross-region data backup file.
 	CrossBackupId *string `pulumi:"crossBackupId"`
-	// The ID of the destination region where the cross-region data backup file of the instance is stored.
+	// The ID of the destination region where the cross-region data backup file is stored.
+	//
+	// > **NOTE:** Note You must specify the `crossBackupId` parameter. Alternatively, you must specify the `startTime` and `endTime` parameters.
 	CrossBackupRegion *string `pulumi:"crossBackupRegion"`
 	// The db instance id.
 	DbInstanceId string `pulumi:"dbInstanceId"`
@@ -112,7 +114,9 @@ type GetCrossRegionBackupsOutputArgs struct {
 	BackupId pulumi.StringPtrInput `pulumi:"backupId"`
 	// The ID of the cross-region data backup file.
 	CrossBackupId pulumi.StringPtrInput `pulumi:"crossBackupId"`
-	// The ID of the destination region where the cross-region data backup file of the instance is stored.
+	// The ID of the destination region where the cross-region data backup file is stored.
+	//
+	// > **NOTE:** Note You must specify the `crossBackupId` parameter. Alternatively, you must specify the `startTime` and `endTime` parameters.
 	CrossBackupRegion pulumi.StringPtrInput `pulumi:"crossBackupRegion"`
 	// The db instance id.
 	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`

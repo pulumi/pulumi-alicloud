@@ -54,7 +54,7 @@ export interface GetIpSetsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the acceleration region.
+     * The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
      */
     status?: string;
 }
@@ -114,7 +114,7 @@ export interface GetIpSetsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the acceleration region.
+     * The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
      */
     status?: pulumi.Input<string>;
 }

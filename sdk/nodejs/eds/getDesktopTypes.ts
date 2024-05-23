@@ -57,7 +57,7 @@ export interface GetDesktopTypesArgs {
      */
     ids?: string[];
     /**
-     * The Specification family.
+     * The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
      */
     instanceTypeFamily?: string;
     /**
@@ -69,7 +69,7 @@ export interface GetDesktopTypesArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `SUFFICIENT`.
      */
     status?: string;
 }
@@ -131,7 +131,7 @@ export interface GetDesktopTypesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Specification family.
+     * The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
      */
     instanceTypeFamily?: pulumi.Input<string>;
     /**
@@ -143,7 +143,7 @@ export interface GetDesktopTypesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `SUFFICIENT`.
      */
     status?: pulumi.Input<string>;
 }

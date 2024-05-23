@@ -25,9 +25,6 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
         /// Instance family values include: Basic: Basic edition; HighAvailability: high availability edition.
         /// </summary>
         public readonly string Category;
-        /// <summary>
-        /// The Commodity Code of the DBCluster.
-        /// </summary>
         public readonly string CommodityCode;
         /// <summary>
         /// Connection string.

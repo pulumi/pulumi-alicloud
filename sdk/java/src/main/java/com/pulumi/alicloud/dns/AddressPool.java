@@ -62,11 +62,11 @@ import javax.annotation.Nullable;
  *         final var domainName = config.get("domainName").orElse("alicloud-provider.com");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultAlarmContactGroup = new AlarmContactGroup("defaultAlarmContactGroup", AlarmContactGroupArgs.builder()        
+ *         var defaultAlarmContactGroup = new AlarmContactGroup("defaultAlarmContactGroup", AlarmContactGroupArgs.builder()
  *             .alarmContactGroupName(name)
  *             .build());
  * 
- *         var defaultGtmInstance = new GtmInstance("defaultGtmInstance", GtmInstanceArgs.builder()        
+ *         var defaultGtmInstance = new GtmInstance("defaultGtmInstance", GtmInstanceArgs.builder()
  *             .instanceName(name)
  *             .paymentType("Subscription")
  *             .period(1)
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultAddressPool = new AddressPool("defaultAddressPool", AddressPoolArgs.builder()        
+ *         var defaultAddressPool = new AddressPool("defaultAddressPool", AddressPoolArgs.builder()
  *             .addressPoolName(name)
  *             .instanceId(defaultGtmInstance.id())
  *             .lbaStrategy("RATIO")

@@ -76,7 +76,7 @@ export interface GetAclsArgs {
      */
     resourceGroupId?: string;
     /**
-     * The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      */
     status?: string;
 }
@@ -158,7 +158,7 @@ export interface GetAclsOutputArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+     * The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      */
     status?: pulumi.Input<string>;
 }

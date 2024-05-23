@@ -71,14 +71,13 @@ type GetContainerGroupsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of container.
-	Status *string `pulumi:"status"`
-	// The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-	Tags map[string]interface{} `pulumi:"tags"`
-	// The vswitch id.
+	// The status list. For more information, see the description of ContainerGroup arrays.
+	Status *string                `pulumi:"status"`
+	Tags   map[string]interface{} `pulumi:"tags"`
+	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
 	VswitchId *string `pulumi:"vswitchId"`
 	WithEvent *bool   `pulumi:"withEvent"`
-	// The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+	// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -131,14 +130,13 @@ type GetContainerGroupsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The status of container.
+	// The status list. For more information, see the description of ContainerGroup arrays.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-	Tags pulumi.MapInput `pulumi:"tags"`
-	// The vswitch id.
+	Tags   pulumi.MapInput       `pulumi:"tags"`
+	// The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 	WithEvent pulumi.BoolPtrInput   `pulumi:"withEvent"`
-	// The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+	// The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 

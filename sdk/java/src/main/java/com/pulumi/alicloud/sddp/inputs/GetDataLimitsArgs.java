@@ -47,14 +47,14 @@ public final class GetDataLimitsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of the data asset.
+     * The parent asset ID of the data asset.
      * 
      */
     @Import(name="parentId")
     private @Nullable Output<String> parentId;
 
     /**
-     * @return The ID of the data asset.
+     * @return The parent asset ID of the data asset.
      * 
      */
     public Optional<Output<String>> parentId() {
@@ -62,14 +62,14 @@ public final class GetDataLimitsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The type of the service to which the data asset belongs.
+     * The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return The type of the service to which the data asset belongs.
+     * @return The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -156,7 +156,7 @@ public final class GetDataLimitsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param parentId The ID of the data asset.
+         * @param parentId The parent asset ID of the data asset.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class GetDataLimitsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param parentId The ID of the data asset.
+         * @param parentId The parent asset ID of the data asset.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class GetDataLimitsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceType The type of the service to which the data asset belongs.
+         * @param resourceType The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GetDataLimitsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceType The type of the service to which the data asset belongs.
+         * @param resourceType The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
          * 
          * @return builder
          * 

@@ -78,6 +78,8 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
     }
     /**
      * The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+     * - `MULTI_BINDED`: Multi EIP network card visible mode.
+     * - `NAT`: EIP normal mode, compatible with IPv4 gateway.
      * 
      */
     @Export(name="eipBindMode", refs={String.class}, tree="[0]")
@@ -85,6 +87,8 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+     * - `MULTI_BINDED`: Multi EIP network card visible mode.
+     * - `NAT`: EIP normal mode, compatible with IPv4 gateway.
      * 
      */
     public Output<String> eipBindMode() {

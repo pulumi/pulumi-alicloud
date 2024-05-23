@@ -32,7 +32,7 @@ type GetProjectsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of project.
+	// The status of log project. Valid values `Normal` and `Disable`.
 	Status *string `pulumi:"status"`
 }
 
@@ -69,7 +69,7 @@ type GetProjectsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of project.
+	// The status of log project. Valid values `Normal` and `Disable`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

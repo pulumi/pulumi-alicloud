@@ -90,6 +90,8 @@ export class ServiceSubscription extends pulumi.CustomResource {
     public readonly notifyContentFormat!: pulumi.Output<string>;
     /**
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+     * - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+     * - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
      */
     public readonly notifyStrategy!: pulumi.Output<string>;
     /**
@@ -173,6 +175,8 @@ export interface ServiceSubscriptionState {
     notifyContentFormat?: pulumi.Input<string>;
     /**
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+     * - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+     * - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
      */
     notifyStrategy?: pulumi.Input<string>;
     /**
@@ -210,6 +214,8 @@ export interface ServiceSubscriptionArgs {
     notifyContentFormat?: pulumi.Input<string>;
     /**
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
+     * - `BACKOFF_RETRY`: retries with a fixed backoff interval.
+     * - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
      */
     notifyStrategy?: pulumi.Input<string>;
     /**

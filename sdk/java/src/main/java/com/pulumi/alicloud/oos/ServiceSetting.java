@@ -55,16 +55,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-testaccoossetting");
- *         var default_ = new Bucket("default", BucketArgs.builder()        
+ *         var default_ = new Bucket("default", BucketArgs.builder()
  *             .bucket(name)
  *             .acl("public-read-write")
  *             .build());
  * 
- *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
  *             .name(name)
  *             .build());
  * 
- *         var defaultServiceSetting = new ServiceSetting("defaultServiceSetting", ServiceSettingArgs.builder()        
+ *         var defaultServiceSetting = new ServiceSetting("defaultServiceSetting", ServiceSettingArgs.builder()
  *             .deliveryOssEnabled(true)
  *             .deliveryOssKeyPrefix("path1/")
  *             .deliveryOssBucketName(default_.bucket())

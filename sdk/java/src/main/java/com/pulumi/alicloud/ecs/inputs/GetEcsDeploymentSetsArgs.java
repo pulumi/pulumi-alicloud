@@ -77,14 +77,14 @@ public final class GetEcsDeploymentSetsArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The deployment strategy.
+     * The deployment strategy. Valid values: `Availability`.
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
     /**
-     * @return The deployment strategy.
+     * @return The deployment strategy. Valid values: `Availability`.
      * 
      */
     public Optional<Output<String>> strategy() {
@@ -214,7 +214,7 @@ public final class GetEcsDeploymentSetsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param strategy The deployment strategy.
+         * @param strategy The deployment strategy. Valid values: `Availability`.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class GetEcsDeploymentSetsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param strategy The deployment strategy.
+         * @param strategy The deployment strategy. Valid values: `Availability`.
          * 
          * @return builder
          * 

@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .nameRegex("preserved-NODELETING")
  *             .build());
  * 
- *         var defaultEcFailoverTestJob = new EcFailoverTestJob("defaultEcFailoverTestJob", EcFailoverTestJobArgs.builder()        
+ *         var defaultEcFailoverTestJob = new EcFailoverTestJob("defaultEcFailoverTestJob", EcFailoverTestJobArgs.builder()
  *             .description(name)
  *             .jobType("StartNow")
  *             .resourceIds(            

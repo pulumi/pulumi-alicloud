@@ -243,21 +243,21 @@ def get_ecs_snapshots(category: Optional[str] = None,
     ```
 
 
-    :param str category: The category of the snapshot.
+    :param str category: The category of the snapshot. Valid Values: `flash` and `standard`.
     :param bool dry_run: Specifies whether to check the validity of the request without actually making the request.
-    :param bool encrypted: Whether the snapshot is encrypted.
+    :param bool encrypted: Specifies whether the snapshot is encrypted.
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str kms_key_id: The kms key id.
     :param str name_regex: A regex string to filter results by Snapshot name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The resource group id.
     :param str snapshot_link_id: The snapshot link id.
-    :param str snapshot_name: Snapshot Display Name.
-    :param str snapshot_type: Snapshot creation type.
-    :param str source_disk_type: Source disk attributes.
-    :param str status: The status of the snapshot.
-    :param Mapping[str, Any] tags: The tags.
-    :param str usage: A resource type that has a reference relationship.
+    :param str snapshot_name: The name of the snapshot.
+    :param str snapshot_type: The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+    :param str source_disk_type: The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
+    :param str status: The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the snapshot.
+    :param str usage: A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
     """
     __args__ = dict()
     __args__['category'] = category
@@ -338,20 +338,20 @@ def get_ecs_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = N
     ```
 
 
-    :param str category: The category of the snapshot.
+    :param str category: The category of the snapshot. Valid Values: `flash` and `standard`.
     :param bool dry_run: Specifies whether to check the validity of the request without actually making the request.
-    :param bool encrypted: Whether the snapshot is encrypted.
+    :param bool encrypted: Specifies whether the snapshot is encrypted.
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str kms_key_id: The kms key id.
     :param str name_regex: A regex string to filter results by Snapshot name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The resource group id.
     :param str snapshot_link_id: The snapshot link id.
-    :param str snapshot_name: Snapshot Display Name.
-    :param str snapshot_type: Snapshot creation type.
-    :param str source_disk_type: Source disk attributes.
-    :param str status: The status of the snapshot.
-    :param Mapping[str, Any] tags: The tags.
-    :param str usage: A resource type that has a reference relationship.
+    :param str snapshot_name: The name of the snapshot.
+    :param str snapshot_type: The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
+    :param str source_disk_type: The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
+    :param str status: The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the snapshot.
+    :param str usage: A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
     """
     ...

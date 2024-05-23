@@ -79,15 +79,15 @@ func GetBgpPeers(ctx *pulumi.Context, args *GetBgpPeersArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getBgpPeers.
 type GetBgpPeersArgs struct {
-	// The ID of the BGP group.
+	// The ID of the BGP group to which the BGP peer that you want to query belongs.
 	BgpGroupId *string `pulumi:"bgpGroupId"`
 	// A list of Bgp Peer IDs.
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of the router.
+	// The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
 	RouterId *string `pulumi:"routerId"`
-	// The status of the BGP peer.
+	// The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
 	Status *string `pulumi:"status"`
 }
 
@@ -118,15 +118,15 @@ func GetBgpPeersOutput(ctx *pulumi.Context, args GetBgpPeersOutputArgs, opts ...
 
 // A collection of arguments for invoking getBgpPeers.
 type GetBgpPeersOutputArgs struct {
-	// The ID of the BGP group.
+	// The ID of the BGP group to which the BGP peer that you want to query belongs.
 	BgpGroupId pulumi.StringPtrInput `pulumi:"bgpGroupId"`
 	// A list of Bgp Peer IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The ID of the router.
+	// The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
 	RouterId pulumi.StringPtrInput `pulumi:"routerId"`
-	// The status of the BGP peer.
+	// The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

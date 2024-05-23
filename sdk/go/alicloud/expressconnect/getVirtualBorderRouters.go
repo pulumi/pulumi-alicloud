@@ -89,7 +89,7 @@ type GetVirtualBorderRoutersArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The VBR state.
+	// The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
 	Status *string `pulumi:"status"`
 }
 
@@ -129,7 +129,7 @@ type GetVirtualBorderRoutersOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The VBR state.
+	// The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

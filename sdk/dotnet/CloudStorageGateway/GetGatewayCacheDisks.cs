@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
         /// </summary>
         [Input("status")]
         public int? Status { get; set; }
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
         /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }

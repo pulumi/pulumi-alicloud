@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         final var sagId = config.get("sagId").orElse("sag-9bifkfaz4fg***");
- *         var default_ = new ClientUser("default", ClientUserArgs.builder()        
+ *         var default_ = new ClientUser("default", ClientUserArgs.builder()
  *             .sagId(sagId)
  *             .bandwidth("20")
  *             .userMail("tf-example{@literal @}abc.com")

@@ -66,14 +66,14 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var vpc = new Network("vpc", NetworkArgs.builder()        
+ *         var vpc = new Network("vpc", NetworkArgs.builder()
  *             .ipv6Isp("BGP")
  *             .cidrBlock("172.168.0.0/16")
  *             .enableIpv6(true)
  *             .vpcName(name)
  *             .build());
  * 
- *         var vswich = new Switch("vswich", SwitchArgs.builder()        
+ *         var vswich = new Switch("vswich", SwitchArgs.builder()
  *             .vpcId(vpc.id())
  *             .cidrBlock("172.168.0.0/24")
  *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .ipv6CidrBlockMask("1")
  *             .build());
  * 
- *         var defaultIpv6Address = new Ipv6Address("defaultIpv6Address", Ipv6AddressArgs.builder()        
+ *         var defaultIpv6Address = new Ipv6Address("defaultIpv6Address", Ipv6AddressArgs.builder()
  *             .resourceGroupId(default_.ids()[0])
  *             .vswitchId(vswich.id())
  *             .ipv6AddressDescription("create_description")

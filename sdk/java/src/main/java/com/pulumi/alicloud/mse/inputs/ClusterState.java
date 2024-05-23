@@ -81,6 +81,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+     * - `MSE_SC_1_2_60_c`: 1C2G
+     * - `MSE_SC_2_4_60_c`: 2C4G
+     * - `MSE_SC_4_8_60_c`: 4C8G
+     * - `MSE_SC_8_16_60_c`: 8C16G
      * 
      */
     @Import(name="clusterSpecification")
@@ -88,6 +92,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+     * - `MSE_SC_1_2_60_c`: 1C2G
+     * - `MSE_SC_2_4_60_c`: 2C4G
+     * - `MSE_SC_4_8_60_c`: 4C8G
+     * - `MSE_SC_8_16_60_c`: 8C16G
      * 
      */
     public Optional<Output<String>> clusterSpecification() {
@@ -490,6 +498,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param clusterSpecification The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+         * - `MSE_SC_1_2_60_c`: 1C2G
+         * - `MSE_SC_2_4_60_c`: 2C4G
+         * - `MSE_SC_4_8_60_c`: 4C8G
+         * - `MSE_SC_8_16_60_c`: 8C16G
          * 
          * @return builder
          * 
@@ -501,6 +513,10 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param clusterSpecification The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+         * - `MSE_SC_1_2_60_c`: 1C2G
+         * - `MSE_SC_2_4_60_c`: 2C4G
+         * - `MSE_SC_4_8_60_c`: 4C8G
+         * - `MSE_SC_8_16_60_c`: 8C16G
          * 
          * @return builder
          * 

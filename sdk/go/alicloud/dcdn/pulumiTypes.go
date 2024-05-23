@@ -8557,8 +8557,10 @@ func (o GetWafDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetWafDomainsDo
 }
 
 type GetWafDomainsDomainDefenseScene struct {
+	// The type of protection policy.
 	DefenseScene string `pulumi:"defenseScene"`
-	PolicyId     string `pulumi:"policyId"`
+	// The protection policy ID.
+	PolicyId string `pulumi:"policyId"`
 }
 
 // GetWafDomainsDomainDefenseSceneInput is an input type that accepts GetWafDomainsDomainDefenseSceneArgs and GetWafDomainsDomainDefenseSceneOutput values.
@@ -8573,8 +8575,10 @@ type GetWafDomainsDomainDefenseSceneInput interface {
 }
 
 type GetWafDomainsDomainDefenseSceneArgs struct {
+	// The type of protection policy.
 	DefenseScene pulumi.StringInput `pulumi:"defenseScene"`
-	PolicyId     pulumi.StringInput `pulumi:"policyId"`
+	// The protection policy ID.
+	PolicyId pulumi.StringInput `pulumi:"policyId"`
 }
 
 func (GetWafDomainsDomainDefenseSceneArgs) ElementType() reflect.Type {
@@ -8628,10 +8632,12 @@ func (o GetWafDomainsDomainDefenseSceneOutput) ToGetWafDomainsDomainDefenseScene
 	return o
 }
 
+// The type of protection policy.
 func (o GetWafDomainsDomainDefenseSceneOutput) DefenseScene() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWafDomainsDomainDefenseScene) string { return v.DefenseScene }).(pulumi.StringOutput)
 }
 
+// The protection policy ID.
 func (o GetWafDomainsDomainDefenseSceneOutput) PolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWafDomainsDomainDefenseScene) string { return v.PolicyId }).(pulumi.StringOutput)
 }

@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancersBalancerAccessLogConfig {
+    /**
+     * @return The log service that access logs are shipped to.
+     * 
+     */
     private String logProject;
+    /**
+     * @return The logstore that access logs are shipped to.
+     * 
+     */
     private String logStore;
 
     private GetLoadBalancersBalancerAccessLogConfig() {}
+    /**
+     * @return The log service that access logs are shipped to.
+     * 
+     */
     public String logProject() {
         return this.logProject;
     }
+    /**
+     * @return The logstore that access logs are shipped to.
+     * 
+     */
     public String logStore() {
         return this.logStore;
     }

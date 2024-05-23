@@ -69,7 +69,7 @@ type GetInstancesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The query str.
 	QueryStr *string `pulumi:"queryStr"`
-	// Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+	// Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
 	Status *string `pulumi:"status"`
 	// The status list.
 	StatusList *string `pulumi:"statusList"`
@@ -117,7 +117,7 @@ type GetInstancesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The query str.
 	QueryStr pulumi.StringPtrInput `pulumi:"queryStr"`
-	// Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+	// Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The status list.
 	StatusList pulumi.StringPtrInput `pulumi:"statusList"`

@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()        
+ *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .period(1)
  *             .renewalStatus("ManualRenewal")
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .moduleName("Registry")
  *             .build());
  * 
- *         var defaultEndpointAclPolicy = new EndpointAclPolicy("defaultEndpointAclPolicy", EndpointAclPolicyArgs.builder()        
+ *         var defaultEndpointAclPolicy = new EndpointAclPolicy("defaultEndpointAclPolicy", EndpointAclPolicyArgs.builder()
  *             .instanceId(default_.applyValue(default_ -> default_.instanceId()))
  *             .entry("192.168.1.0/24")
  *             .description(name)

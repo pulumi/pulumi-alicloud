@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new AutoSnapshotPolicy("default", AutoSnapshotPolicyArgs.builder()        
+ *         var default_ = new AutoSnapshotPolicy("default", AutoSnapshotPolicyArgs.builder()
  *             .timePoints(            
  *                 "0",
  *                 "1",

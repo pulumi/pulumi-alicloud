@@ -13,9 +13,21 @@ namespace Pulumi.AliCloud.CloudSso.Outputs
     [OutputType]
     public sealed class GetUsersUserMfaDeviceResult
     {
+        /// <summary>
+        /// The MFA Device ID.
+        /// </summary>
         public readonly string DeviceId;
+        /// <summary>
+        /// The MFA Device Name.
+        /// </summary>
         public readonly string DeviceName;
+        /// <summary>
+        /// The MFA Device Type.
+        /// </summary>
         public readonly string DeviceType;
+        /// <summary>
+        /// The Effective Time of MFA Device.
+        /// </summary>
         public readonly string EffectiveTime;
 
         [OutputConstructor]

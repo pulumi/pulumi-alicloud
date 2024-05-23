@@ -686,7 +686,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var default_ = new Policy("default", PolicyArgs.builder()        
+     *         var default_ = new Policy("default", PolicyArgs.builder()
      *             .policyName("tf-example")
      *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -768,7 +768,7 @@ public final class RamFunctions {
      *                     .build())
      *             .build());
      * 
-     *         var policy = new Policy("policy", PolicyArgs.builder()        
+     *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName("tf-example-condition")
      *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -820,7 +820,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-ram")
      *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -872,7 +872,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-service")
      *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -929,7 +929,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-federated")
      *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -992,7 +992,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var default_ = new Policy("default", PolicyArgs.builder()        
+     *         var default_ = new Policy("default", PolicyArgs.builder()
      *             .policyName("tf-example")
      *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1074,7 +1074,7 @@ public final class RamFunctions {
      *                     .build())
      *             .build());
      * 
-     *         var policy = new Policy("policy", PolicyArgs.builder()        
+     *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName("tf-example-condition")
      *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1126,7 +1126,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-ram")
      *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1178,7 +1178,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-service")
      *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1235,7 +1235,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-federated")
      *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1298,7 +1298,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var default_ = new Policy("default", PolicyArgs.builder()        
+     *         var default_ = new Policy("default", PolicyArgs.builder()
      *             .policyName("tf-example")
      *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1380,7 +1380,7 @@ public final class RamFunctions {
      *                     .build())
      *             .build());
      * 
-     *         var policy = new Policy("policy", PolicyArgs.builder()        
+     *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName("tf-example-condition")
      *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1432,7 +1432,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-ram")
      *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1484,7 +1484,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-service")
      *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1541,7 +1541,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-federated")
      *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1604,7 +1604,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var default_ = new Policy("default", PolicyArgs.builder()        
+     *         var default_ = new Policy("default", PolicyArgs.builder()
      *             .policyName("tf-example")
      *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1686,7 +1686,7 @@ public final class RamFunctions {
      *                     .build())
      *             .build());
      * 
-     *         var policy = new Policy("policy", PolicyArgs.builder()        
+     *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName("tf-example-condition")
      *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1738,7 +1738,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-ram")
      *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1790,7 +1790,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-service")
      *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1847,7 +1847,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-federated")
      *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1910,7 +1910,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var default_ = new Policy("default", PolicyArgs.builder()        
+     *         var default_ = new Policy("default", PolicyArgs.builder()
      *             .policyName("tf-example")
      *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -1992,7 +1992,7 @@ public final class RamFunctions {
      *                     .build())
      *             .build());
      * 
-     *         var policy = new Policy("policy", PolicyArgs.builder()        
+     *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName("tf-example-condition")
      *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -2044,7 +2044,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-ram")
      *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -2096,7 +2096,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-service")
      *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -2153,7 +2153,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-federated")
      *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -2216,7 +2216,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var default_ = new Policy("default", PolicyArgs.builder()        
+     *         var default_ = new Policy("default", PolicyArgs.builder()
      *             .policyName("tf-example")
      *             .policyDocument(basicExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -2298,7 +2298,7 @@ public final class RamFunctions {
      *                     .build())
      *             .build());
      * 
-     *         var policy = new Policy("policy", PolicyArgs.builder()        
+     *         var policy = new Policy("policy", PolicyArgs.builder()
      *             .policyName("tf-example-condition")
      *             .policyDocument(multipleCondition.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -2350,7 +2350,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-ram")
      *             .document(ramExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -2402,7 +2402,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-service")
      *             .document(serviceExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -2459,7 +2459,7 @@ public final class RamFunctions {
      *                 .build())
      *             .build());
      * 
-     *         var role = new Role("role", RoleArgs.builder()        
+     *         var role = new Role("role", RoleArgs.builder()
      *             .name("tf-example-role-federated")
      *             .document(federatedExample.applyValue(getPolicyDocumentResult -> getPolicyDocumentResult.document()))
      *             .force(true)
@@ -3093,13 +3093,13 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Group("default", GroupArgs.builder()        
+     *         var default_ = new Group("default", GroupArgs.builder()
      *             .name("group1")
      *             .comments("group comments")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
      *             .name("user-example")
      *             .displayName("displayname")
      *             .mobile("86-18888888888")
@@ -3107,12 +3107,12 @@ public final class RamFunctions {
      *             .comments("yoyoyo")
      *             .build());
      * 
-     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()        
+     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()
      *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
-     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
      * 			{
@@ -3136,7 +3136,7 @@ public final class RamFunctions {
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()        
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()
      *             .policyName(defaultPolicy.policyName())
      *             .userName(defaultUser.name())
      *             .policyType(defaultPolicy.type())
@@ -3201,13 +3201,13 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Group("default", GroupArgs.builder()        
+     *         var default_ = new Group("default", GroupArgs.builder()
      *             .name("group1")
      *             .comments("group comments")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
      *             .name("user-example")
      *             .displayName("displayname")
      *             .mobile("86-18888888888")
@@ -3215,12 +3215,12 @@ public final class RamFunctions {
      *             .comments("yoyoyo")
      *             .build());
      * 
-     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()        
+     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()
      *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
-     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
      * 			{
@@ -3244,7 +3244,7 @@ public final class RamFunctions {
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()        
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()
      *             .policyName(defaultPolicy.policyName())
      *             .userName(defaultUser.name())
      *             .policyType(defaultPolicy.type())
@@ -3309,13 +3309,13 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Group("default", GroupArgs.builder()        
+     *         var default_ = new Group("default", GroupArgs.builder()
      *             .name("group1")
      *             .comments("group comments")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
      *             .name("user-example")
      *             .displayName("displayname")
      *             .mobile("86-18888888888")
@@ -3323,12 +3323,12 @@ public final class RamFunctions {
      *             .comments("yoyoyo")
      *             .build());
      * 
-     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()        
+     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()
      *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
-     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
      * 			{
@@ -3352,7 +3352,7 @@ public final class RamFunctions {
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()        
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()
      *             .policyName(defaultPolicy.policyName())
      *             .userName(defaultUser.name())
      *             .policyType(defaultPolicy.type())
@@ -3417,13 +3417,13 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Group("default", GroupArgs.builder()        
+     *         var default_ = new Group("default", GroupArgs.builder()
      *             .name("group1")
      *             .comments("group comments")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
      *             .name("user-example")
      *             .displayName("displayname")
      *             .mobile("86-18888888888")
@@ -3431,12 +3431,12 @@ public final class RamFunctions {
      *             .comments("yoyoyo")
      *             .build());
      * 
-     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()        
+     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()
      *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
-     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
      * 			{
@@ -3460,7 +3460,7 @@ public final class RamFunctions {
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()        
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()
      *             .policyName(defaultPolicy.policyName())
      *             .userName(defaultUser.name())
      *             .policyType(defaultPolicy.type())
@@ -3525,13 +3525,13 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Group("default", GroupArgs.builder()        
+     *         var default_ = new Group("default", GroupArgs.builder()
      *             .name("group1")
      *             .comments("group comments")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
      *             .name("user-example")
      *             .displayName("displayname")
      *             .mobile("86-18888888888")
@@ -3539,12 +3539,12 @@ public final class RamFunctions {
      *             .comments("yoyoyo")
      *             .build());
      * 
-     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()        
+     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()
      *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
-     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
      * 			{
@@ -3568,7 +3568,7 @@ public final class RamFunctions {
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()        
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()
      *             .policyName(defaultPolicy.policyName())
      *             .userName(defaultUser.name())
      *             .policyType(defaultPolicy.type())
@@ -3633,13 +3633,13 @@ public final class RamFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new Group("default", GroupArgs.builder()        
+     *         var default_ = new Group("default", GroupArgs.builder()
      *             .name("group1")
      *             .comments("group comments")
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+     *         var defaultUser = new User("defaultUser", UserArgs.builder()
      *             .name("user-example")
      *             .displayName("displayname")
      *             .mobile("86-18888888888")
@@ -3647,12 +3647,12 @@ public final class RamFunctions {
      *             .comments("yoyoyo")
      *             .build());
      * 
-     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()        
+     *         var defaultGroupMembership = new GroupMembership("defaultGroupMembership", GroupMembershipArgs.builder()
      *             .groupName(default_.name())
      *             .userNames(defaultUser.name())
      *             .build());
      * 
-     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()        
+     *         var defaultPolicy = new Policy("defaultPolicy", PolicyArgs.builder()
      *             .policyName("ram-policy-example")
      *             .policyDocument("""
      * 			{
@@ -3676,7 +3676,7 @@ public final class RamFunctions {
      *             .force(true)
      *             .build());
      * 
-     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()        
+     *         var defaultUserPolicyAttachment = new UserPolicyAttachment("defaultUserPolicyAttachment", UserPolicyAttachmentArgs.builder()
      *             .policyName(defaultPolicy.policyName())
      *             .userName(defaultUser.name())
      *             .policyType(defaultPolicy.type())

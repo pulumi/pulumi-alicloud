@@ -181,7 +181,7 @@ def get_vpc_endpoints(connection_status: Optional[str] = None,
     :param str service_name: The name of the terminal node service associated with the terminal node.
     :param str status: The status of Vpc Endpoint.
     :param str vpc_endpoint_name: The name of Vpc Endpoint.
-    :param str vpc_id: The private network to which the terminal node belongs.
+    :param str vpc_id: The private network to which the terminal node belongs..
     """
     __args__ = dict()
     __args__['connectionStatus'] = connection_status
@@ -249,6 +249,6 @@ def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[s
     :param str service_name: The name of the terminal node service associated with the terminal node.
     :param str status: The status of Vpc Endpoint.
     :param str vpc_endpoint_name: The name of Vpc Endpoint.
-    :param str vpc_id: The private network to which the terminal node belongs.
+    :param str vpc_id: The private network to which the terminal node belongs..
     """
     ...

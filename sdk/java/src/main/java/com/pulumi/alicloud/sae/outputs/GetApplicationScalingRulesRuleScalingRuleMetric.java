@@ -15,29 +15,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetApplicationScalingRulesRuleScalingRuleMetric {
+    /**
+     * @return The maximum number of instances.
+     * 
+     */
     private Integer maxReplicas;
+    /**
+     * @return The auto scaling list of monitoring indicators.
+     * 
+     */
     private List<GetApplicationScalingRulesRuleScalingRuleMetricMetric> metrics;
+    /**
+     * @return Monitor indicator elasticity status.
+     * 
+     */
     private List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus> metricsStatuses;
+    /**
+     * @return The minimum number of instances.
+     * 
+     */
     private Integer minReplicas;
+    /**
+     * @return The shrink rule.
+     * 
+     */
     private List<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule> scaleDownRules;
+    /**
+     * @return The expansion rules.
+     * 
+     */
     private List<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule> scaleUpRules;
 
     private GetApplicationScalingRulesRuleScalingRuleMetric() {}
+    /**
+     * @return The maximum number of instances.
+     * 
+     */
     public Integer maxReplicas() {
         return this.maxReplicas;
     }
+    /**
+     * @return The auto scaling list of monitoring indicators.
+     * 
+     */
     public List<GetApplicationScalingRulesRuleScalingRuleMetricMetric> metrics() {
         return this.metrics;
     }
+    /**
+     * @return Monitor indicator elasticity status.
+     * 
+     */
     public List<GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus> metricsStatuses() {
         return this.metricsStatuses;
     }
+    /**
+     * @return The minimum number of instances.
+     * 
+     */
     public Integer minReplicas() {
         return this.minReplicas;
     }
+    /**
+     * @return The shrink rule.
+     * 
+     */
     public List<GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule> scaleDownRules() {
         return this.scaleDownRules;
     }
+    /**
+     * @return The expansion rules.
+     * 
+     */
     public List<GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule> scaleUpRules() {
         return this.scaleUpRules;
     }

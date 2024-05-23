@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Eip("default", EipArgs.builder()        
+ *         var default_ = new Eip("default", EipArgs.builder()
  *             .description("EipDescription_autotest")
  *             .bandwidth("5")
  *             .isp("cmcc")

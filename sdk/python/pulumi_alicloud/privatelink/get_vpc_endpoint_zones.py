@@ -114,7 +114,7 @@ def get_vpc_endpoint_zones(endpoint_id: Optional[str] = None,
 
     :param str endpoint_id: The ID of the Vpc Endpoint.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The Status of Vpc Endpoint Zone..
+    :param str status: The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
     """
     __args__ = dict()
     __args__['endpointId'] = endpoint_id
@@ -157,6 +157,6 @@ def get_vpc_endpoint_zones_output(endpoint_id: Optional[pulumi.Input[str]] = Non
 
     :param str endpoint_id: The ID of the Vpc Endpoint.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The Status of Vpc Endpoint Zone..
+    :param str status: The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
     """
     ...

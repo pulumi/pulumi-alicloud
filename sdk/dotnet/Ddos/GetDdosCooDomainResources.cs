@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Ddos
         private List<string>? _instanceIds;
 
         /// <summary>
-        /// A list ID of instance that you want to associate.
+        /// A ID list of Ddoscoo instance.
         /// </summary>
         public List<string> InstanceIds
         {
@@ -145,7 +145,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<string>? _instanceIds;
 
         /// <summary>
-        /// A list ID of instance that you want to associate.
+        /// A ID list of Ddoscoo instance.
         /// </summary>
         public InputList<string> InstanceIds
         {

@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         }
 
         /// <summary>
-        /// Alibaba Cloud simple application server instance ID.
+        /// The ID of the simple application server to which the disk is attached.
         /// </summary>
         [Input("instanceId")]
         public string? InstanceId { get; set; }
@@ -202,7 +202,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         }
 
         /// <summary>
-        /// Alibaba Cloud simple application server instance ID.
+        /// The ID of the simple application server to which the disk is attached.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }

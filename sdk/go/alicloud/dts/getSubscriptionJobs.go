@@ -60,10 +60,9 @@ type GetSubscriptionJobsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
-	Status *string `pulumi:"status"`
-	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	// The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
+	Status *string                `pulumi:"status"`
+	Tags   map[string]interface{} `pulumi:"tags"`
 }
 
 // A collection of values returned by getSubscriptionJobs.
@@ -102,10 +101,9 @@ type GetSubscriptionJobsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+	// The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags   pulumi.MapInput       `pulumi:"tags"`
 }
 
 func (GetSubscriptionJobsOutputArgs) ElementType() reflect.Type {

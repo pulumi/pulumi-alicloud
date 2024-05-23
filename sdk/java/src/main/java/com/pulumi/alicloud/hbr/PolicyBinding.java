@@ -61,17 +61,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultyk84Hc = new Vault("defaultyk84Hc", VaultArgs.builder()        
+ *         var defaultyk84Hc = new Vault("defaultyk84Hc", VaultArgs.builder()
  *             .vaultType("STANDARD")
  *             .vaultName(String.format("example-value-%s", default_.result()))
  *             .build());
  * 
- *         var defaultoqWvHQ = new Policy("defaultoqWvHQ", PolicyArgs.builder()        
+ *         var defaultoqWvHQ = new Policy("defaultoqWvHQ", PolicyArgs.builder()
  *             .policyName(String.format("example-value-%s", default_.result()))
  *             .rules(PolicyRuleArgs.builder()
  *                 .ruleType("BACKUP")
@@ -84,12 +84,12 @@ import javax.annotation.Nullable;
  *             .policyDescription("policy example")
  *             .build());
  * 
- *         var defaultKtt2XY = new Bucket("defaultKtt2XY", BucketArgs.builder()        
+ *         var defaultKtt2XY = new Bucket("defaultKtt2XY", BucketArgs.builder()
  *             .storageClass("Standard")
  *             .bucket(String.format("example-value-%s", default_.result()))
  *             .build());
  * 
- *         var defaultPolicyBinding = new PolicyBinding("defaultPolicyBinding", PolicyBindingArgs.builder()        
+ *         var defaultPolicyBinding = new PolicyBinding("defaultPolicyBinding", PolicyBindingArgs.builder()
  *             .sourceType("OSS")
  *             .disabled("false")
  *             .policyId(defaultoqWvHQ.id())

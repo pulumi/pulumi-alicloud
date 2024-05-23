@@ -5270,7 +5270,7 @@ func (o GetNatIpsIpArrayOutput) Index(i pulumi.IntInput) GetNatIpsIpOutput {
 }
 
 type GetNetworkAclsAcl struct {
-	// Description of the entry direction rule.
+	// Description of network ACL information.
 	Description string `pulumi:"description"`
 	// Output direction rule information.
 	EgressAclEntries []GetNetworkAclsAclEgressAclEntry `pulumi:"egressAclEntries"`
@@ -5302,7 +5302,7 @@ type GetNetworkAclsAclInput interface {
 }
 
 type GetNetworkAclsAclArgs struct {
-	// Description of the entry direction rule.
+	// Description of network ACL information.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Output direction rule information.
 	EgressAclEntries GetNetworkAclsAclEgressAclEntryArrayInput `pulumi:"egressAclEntries"`
@@ -5373,7 +5373,7 @@ func (o GetNetworkAclsAclOutput) ToGetNetworkAclsAclOutputWithContext(ctx contex
 	return o
 }
 
-// Description of the entry direction rule.
+// Description of network ACL information.
 func (o GetNetworkAclsAclOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAcl) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -5439,17 +5439,17 @@ func (o GetNetworkAclsAclArrayOutput) Index(i pulumi.IntInput) GetNetworkAclsAcl
 }
 
 type GetNetworkAclsAclEgressAclEntry struct {
-	// Description of the entry direction rule.
+	// Give the description information of the direction rule.
 	Description string `pulumi:"description"`
 	// The destination address segment.
 	DestinationCidrIp string `pulumi:"destinationCidrIp"`
-	// The name of the entry direction rule entry.
+	// The name of the entry for the direction rule.
 	NetworkAclEntryName string `pulumi:"networkAclEntryName"`
-	// The authorization policy.
+	// The  authorization policy.
 	Policy string `pulumi:"policy"`
-	// Source port range.
+	// Destination port range.
 	Port string `pulumi:"port"`
-	// Transport layer protocol.
+	// Transport  layer protocol.
 	Protocol string `pulumi:"protocol"`
 }
 
@@ -5465,17 +5465,17 @@ type GetNetworkAclsAclEgressAclEntryInput interface {
 }
 
 type GetNetworkAclsAclEgressAclEntryArgs struct {
-	// Description of the entry direction rule.
+	// Give the description information of the direction rule.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The destination address segment.
 	DestinationCidrIp pulumi.StringInput `pulumi:"destinationCidrIp"`
-	// The name of the entry direction rule entry.
+	// The name of the entry for the direction rule.
 	NetworkAclEntryName pulumi.StringInput `pulumi:"networkAclEntryName"`
-	// The authorization policy.
+	// The  authorization policy.
 	Policy pulumi.StringInput `pulumi:"policy"`
-	// Source port range.
+	// Destination port range.
 	Port pulumi.StringInput `pulumi:"port"`
-	// Transport layer protocol.
+	// Transport  layer protocol.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
@@ -5530,7 +5530,7 @@ func (o GetNetworkAclsAclEgressAclEntryOutput) ToGetNetworkAclsAclEgressAclEntry
 	return o
 }
 
-// Description of the entry direction rule.
+// Give the description information of the direction rule.
 func (o GetNetworkAclsAclEgressAclEntryOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -5540,22 +5540,22 @@ func (o GetNetworkAclsAclEgressAclEntryOutput) DestinationCidrIp() pulumi.String
 	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.DestinationCidrIp }).(pulumi.StringOutput)
 }
 
-// The name of the entry direction rule entry.
+// The name of the entry for the direction rule.
 func (o GetNetworkAclsAclEgressAclEntryOutput) NetworkAclEntryName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.NetworkAclEntryName }).(pulumi.StringOutput)
 }
 
-// The authorization policy.
+// The  authorization policy.
 func (o GetNetworkAclsAclEgressAclEntryOutput) Policy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.Policy }).(pulumi.StringOutput)
 }
 
-// Source port range.
+// Destination port range.
 func (o GetNetworkAclsAclEgressAclEntryOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.Port }).(pulumi.StringOutput)
 }
 
-// Transport layer protocol.
+// Transport  layer protocol.
 func (o GetNetworkAclsAclEgressAclEntryOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -5727,7 +5727,7 @@ type GetNetworkAclsAclResource struct {
 	ResourceId string `pulumi:"resourceId"`
 	// The type of the associated resource.
 	ResourceType string `pulumi:"resourceType"`
-	// The state of the network ACL.
+	// The state of the associated resource.
 	Status string `pulumi:"status"`
 }
 
@@ -5747,7 +5747,7 @@ type GetNetworkAclsAclResourceArgs struct {
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 	// The type of the associated resource.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
-	// The state of the network ACL.
+	// The state of the associated resource.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -5812,7 +5812,7 @@ func (o GetNetworkAclsAclResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAclResource) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// The state of the network ACL.
+// The state of the associated resource.
 func (o GetNetworkAclsAclResourceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAclResource) string { return v.Status }).(pulumi.StringOutput)
 }

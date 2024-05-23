@@ -224,18 +224,17 @@ def get_load_balancers(address_ip_version: Optional[str] = None,
     ```
 
 
-    :param str address_ip_version: The IP version.
-    :param str address_type: The type of IPv4 address used by the NLB instance.
+    :param str address_ip_version: The IP version. Valid values: `ipv4`, `DualStack`.
+    :param str address_type: The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
     :param str dns_name: The domain name of the NLB instance.
     :param Sequence[str] ids: A list of Load Balancer IDs.
-    :param str ipv6_address_type: The type of IPv6 address used by the NLB instance.
-    :param str load_balancer_business_status: The business status of the NLB instance.
+    :param str ipv6_address_type: The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
+    :param str load_balancer_business_status: The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
     :param Sequence[str] load_balancer_names: The name of the NLB instance. You can specify at most 10 names.
     :param str name_regex: A regex string to filter results by Load Balancer name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
-    :param str status: The status of the NLB instance.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param str status: The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
     :param Sequence[str] vpc_ids: The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
     :param str zone_id: The name of the zone.
     """
@@ -313,18 +312,17 @@ def get_load_balancers_output(address_ip_version: Optional[pulumi.Input[Optional
     ```
 
 
-    :param str address_ip_version: The IP version.
-    :param str address_type: The type of IPv4 address used by the NLB instance.
+    :param str address_ip_version: The IP version. Valid values: `ipv4`, `DualStack`.
+    :param str address_type: The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
     :param str dns_name: The domain name of the NLB instance.
     :param Sequence[str] ids: A list of Load Balancer IDs.
-    :param str ipv6_address_type: The type of IPv6 address used by the NLB instance.
-    :param str load_balancer_business_status: The business status of the NLB instance.
+    :param str ipv6_address_type: The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
+    :param str load_balancer_business_status: The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
     :param Sequence[str] load_balancer_names: The name of the NLB instance. You can specify at most 10 names.
     :param str name_regex: A regex string to filter results by Load Balancer name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
-    :param str status: The status of the NLB instance.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param str status: The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
     :param Sequence[str] vpc_ids: The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
     :param str zone_id: The name of the zone.
     """

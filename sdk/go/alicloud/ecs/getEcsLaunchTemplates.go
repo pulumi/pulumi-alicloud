@@ -69,9 +69,8 @@ type GetEcsLaunchTemplatesArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The template resource group id.
-	TemplateResourceGroupId *string `pulumi:"templateResourceGroupId"`
-	// The template tags.
-	TemplateTags map[string]interface{} `pulumi:"templateTags"`
+	TemplateResourceGroupId *string                `pulumi:"templateResourceGroupId"`
+	TemplateTags            map[string]interface{} `pulumi:"templateTags"`
 }
 
 // A collection of values returned by getEcsLaunchTemplates.
@@ -116,8 +115,7 @@ type GetEcsLaunchTemplatesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The template resource group id.
 	TemplateResourceGroupId pulumi.StringPtrInput `pulumi:"templateResourceGroupId"`
-	// The template tags.
-	TemplateTags pulumi.MapInput `pulumi:"templateTags"`
+	TemplateTags            pulumi.MapInput       `pulumi:"templateTags"`
 }
 
 func (GetEcsLaunchTemplatesOutputArgs) ElementType() reflect.Type {

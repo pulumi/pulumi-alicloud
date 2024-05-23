@@ -69,19 +69,19 @@ import javax.annotation.Nullable;
  *             .status("OK")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .dbInstanceName(name)
  *             .vswitchId(defaultSwitch.id())
  *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
+ *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()
  *             .accountName("tfexamplename")
  *             .accountPassword("YourPassword_123")
  *             .instanceId(defaultInstance.id())
@@ -159,6 +159,8 @@ public class Account extends com.pulumi.resources.CustomResource {
     }
     /**
      * The privilege of account access database. Default value: `RoleReadWrite`
+     * - `RoleReadOnly`: This value is only for Redis and Memcache
+     * - `RoleReadWrite`: This value is only for Redis and Memcache
      * 
      */
     @Export(name="accountPrivilege", refs={String.class}, tree="[0]")
@@ -166,6 +168,8 @@ public class Account extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The privilege of account access database. Default value: `RoleReadWrite`
+     * - `RoleReadOnly`: This value is only for Redis and Memcache
+     * - `RoleReadWrite`: This value is only for Redis and Memcache
      * 
      */
     public Output<Optional<String>> accountPrivilege() {

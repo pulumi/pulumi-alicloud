@@ -59,19 +59,19 @@ import javax.annotation.Nullable;
  *             .category("Normal")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.classes()[0].zoneId())
  *             .vswitchName("terraform-example")
  *             .build());
  * 
- *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .dbType("MySQL")
  *             .dbVersion("8.0")
  *             .dbNodeClass(default_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .description("terraform-example")
  *             .build());
  * 
- *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()        
+ *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()
  *             .dbClusterId(defaultCluster.id())
  *             .dbName("terraform-example")
  *             .build());

@@ -49,6 +49,10 @@ class EndpointGroupArgs:
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
         :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values:
+               - `TCP` or `tcp`: TCP protocol.
+               - `HTTP` or `http`: HTTP protocol.
+               - `HTTPS` or `https`: HTTPS protocol.
+               > **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[str] name: The name of the endpoint group.
         :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
                > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
@@ -226,6 +230,10 @@ class EndpointGroupArgs:
     def health_check_protocol(self) -> Optional[pulumi.Input[str]]:
         """
         The protocol that is used to connect to the targets for health checks. Valid values:
+        - `TCP` or `tcp`: TCP protocol.
+        - `HTTP` or `http`: HTTP protocol.
+        - `HTTPS` or `https`: HTTPS protocol.
+        > **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         """
         return pulumi.get(self, "health_check_protocol")
 
@@ -333,6 +341,10 @@ class _EndpointGroupState:
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
         :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values:
+               - `TCP` or `tcp`: TCP protocol.
+               - `HTTP` or `http`: HTTP protocol.
+               - `HTTPS` or `https`: HTTPS protocol.
+               > **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
         :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
@@ -520,6 +532,10 @@ class _EndpointGroupState:
     def health_check_protocol(self) -> Optional[pulumi.Input[str]]:
         """
         The protocol that is used to connect to the targets for health checks. Valid values:
+        - `TCP` or `tcp`: TCP protocol.
+        - `HTTP` or `http`: HTTP protocol.
+        - `HTTPS` or `https`: HTTPS protocol.
+        > **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         """
         return pulumi.get(self, "health_check_protocol")
 
@@ -719,6 +735,10 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
         :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values:
+               - `TCP` or `tcp`: TCP protocol.
+               - `HTTP` or `http`: HTTP protocol.
+               - `HTTPS` or `https`: HTTPS protocol.
+               > **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
         :param pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
@@ -919,6 +939,10 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
         :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values:
+               - `TCP` or `tcp`: TCP protocol.
+               - `HTTP` or `http`: HTTP protocol.
+               - `HTTPS` or `https`: HTTPS protocol.
+               > **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
         :param pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
@@ -1048,6 +1072,10 @@ class EndpointGroup(pulumi.CustomResource):
     def health_check_protocol(self) -> pulumi.Output[Optional[str]]:
         """
         The protocol that is used to connect to the targets for health checks. Valid values:
+        - `TCP` or `tcp`: TCP protocol.
+        - `HTTP` or `http`: HTTP protocol.
+        - `HTTPS` or `https`: HTTPS protocol.
+        > **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         """
         return pulumi.get(self, "health_check_protocol")
 

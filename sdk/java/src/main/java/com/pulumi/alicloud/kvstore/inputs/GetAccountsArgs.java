@@ -69,14 +69,14 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of account.
+     * The status of KVStore Account. Valid Values: `&#34;Available` `Unavailable`
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of account.
+     * @return The status of KVStore Account. Valid Values: `&#34;Available` `Unavailable`
      * 
      */
     public Optional<Output<String>> status() {
@@ -184,7 +184,7 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of account.
+         * @param status The status of KVStore Account. Valid Values: `&#34;Available` `Unavailable`
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class GetAccountsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of account.
+         * @param status The status of KVStore Account. Valid Values: `&#34;Available` `Unavailable`
          * 
          * @return builder
          * 

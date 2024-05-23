@@ -59,17 +59,17 @@ import javax.annotation.Nullable;
  *         final var default = AlicloudFunctions.getAccount();
  * 
  *         final var acceptingRegion = config.get("acceptingRegion").orElse("cn-beijing");
- *         var localVpc = new Network("localVpc", NetworkArgs.builder()        
+ *         var localVpc = new Network("localVpc", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var acceptingVpc = new Network("acceptingVpc", NetworkArgs.builder()        
+ *         var acceptingVpc = new Network("acceptingVpc", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultPeerConnection = new PeerConnection("defaultPeerConnection", PeerConnectionArgs.builder()        
+ *         var defaultPeerConnection = new PeerConnection("defaultPeerConnection", PeerConnectionArgs.builder()
  *             .peerConnectionName("terraform-example")
  *             .vpcId(localVpc.id())
  *             .acceptingAliUid(default_.id())

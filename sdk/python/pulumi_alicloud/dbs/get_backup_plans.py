@@ -169,7 +169,7 @@ def get_backup_plans(backup_plan_name: Optional[str] = None,
     :param Sequence[str] ids: A list of Backup Plan IDs.
     :param str name_regex: A regex string to filter results by Backup Plan name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
     """
     __args__ = dict()
     __args__['backupPlanName'] = backup_plan_name
@@ -232,6 +232,6 @@ def get_backup_plans_output(backup_plan_name: Optional[pulumi.Input[Optional[str
     :param Sequence[str] ids: A list of Backup Plan IDs.
     :param str name_regex: A regex string to filter results by Backup Plan name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
     """
     ...

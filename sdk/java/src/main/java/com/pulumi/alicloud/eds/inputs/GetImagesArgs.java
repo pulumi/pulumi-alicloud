@@ -77,14 +77,14 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The os type of the image.
+     * The operating system type of the image. Valid values: `Windows` and `Linux`.
      * 
      */
     @Import(name="osType")
     private @Nullable Output<String> osType;
 
     /**
-     * @return The os type of the image.
+     * @return The operating system type of the image. Valid values: `Windows` and `Linux`.
      * 
      */
     public Optional<Output<String>> osType() {
@@ -246,7 +246,7 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param osType The os type of the image.
+         * @param osType The operating system type of the image. Valid values: `Windows` and `Linux`.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param osType The os type of the image.
+         * @param osType The operating system type of the image. Valid values: `Windows` and `Linux`.
          * 
          * @return builder
          * 

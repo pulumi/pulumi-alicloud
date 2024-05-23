@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new User("default", UserArgs.builder()        
+ *         var default_ = new User("default", UserArgs.builder()
  *             .endUserId("terraform_example123")
  *             .email("tf.example{@literal @}abc.com")
  *             .phone("18888888888")

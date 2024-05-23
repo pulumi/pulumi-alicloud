@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .instanceType("enterprise")
  *             .maxTps(3000)
  *             .queueCapacity(200)
@@ -66,12 +66,12 @@ import javax.annotation.Nullable;
  *             .period(1)
  *             .build());
  * 
- *         var defaultVirtualHost = new VirtualHost("defaultVirtualHost", VirtualHostArgs.builder()        
+ *         var defaultVirtualHost = new VirtualHost("defaultVirtualHost", VirtualHostArgs.builder()
  *             .instanceId(default_.id())
  *             .virtualHostName("tf-example")
  *             .build());
  * 
- *         var defaultExchange = new Exchange("defaultExchange", ExchangeArgs.builder()        
+ *         var defaultExchange = new Exchange("defaultExchange", ExchangeArgs.builder()
  *             .autoDeleteState(false)
  *             .exchangeName("tf-example")
  *             .exchangeType("HEADERS")
@@ -80,13 +80,13 @@ import javax.annotation.Nullable;
  *             .virtualHostName(defaultVirtualHost.virtualHostName())
  *             .build());
  * 
- *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()        
+ *         var defaultQueue = new Queue("defaultQueue", QueueArgs.builder()
  *             .instanceId(default_.id())
  *             .queueName("tf-example")
  *             .virtualHostName(defaultVirtualHost.virtualHostName())
  *             .build());
  * 
- *         var defaultBinding = new Binding("defaultBinding", BindingArgs.builder()        
+ *         var defaultBinding = new Binding("defaultBinding", BindingArgs.builder()
  *             .argument("x-match:all")
  *             .bindingKey(defaultQueue.queueName())
  *             .bindingType("QUEUE")

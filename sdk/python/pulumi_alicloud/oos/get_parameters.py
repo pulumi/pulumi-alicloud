@@ -197,10 +197,10 @@ def get_parameters(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of Parameter IDs. Its element value is same as Parameter Name.
     :param str name_regex: A regex string to filter results by Parameter name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str parameter_name: The name of the common parameter.
+    :param str parameter_name: The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
     :param str resource_group_id: The ID of the Resource Group.
-    :param Mapping[str, Any] tags: The tag of the resource.
-    :param str type: The data type of the common parameter.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param str type: The data type of the common parameter. Valid values: `String` and `StringList`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -277,9 +277,9 @@ def get_parameters_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     :param Sequence[str] ids: A list of Parameter IDs. Its element value is same as Parameter Name.
     :param str name_regex: A regex string to filter results by Parameter name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str parameter_name: The name of the common parameter.
+    :param str parameter_name: The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
     :param str resource_group_id: The ID of the Resource Group.
-    :param Mapping[str, Any] tags: The tag of the resource.
-    :param str type: The data type of the common parameter.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param str type: The data type of the common parameter. Valid values: `String` and `StringList`.
     """
     ...

@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
+    /**
+     * @return Whether shrinkage is prohibited. The values are described as follows:
+     * 
+     */
     private Boolean disabled;
+    /**
+     * @return Expansion cooling time.
+     * 
+     */
     private Integer stabilizationWindowSeconds;
+    /**
+     * @return Flexible expansion step. The maximum number of instances per unit time.
+     * 
+     */
     private Integer step;
 
     private GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule() {}
+    /**
+     * @return Whether shrinkage is prohibited. The values are described as follows:
+     * 
+     */
     public Boolean disabled() {
         return this.disabled;
     }
+    /**
+     * @return Expansion cooling time.
+     * 
+     */
     public Integer stabilizationWindowSeconds() {
         return this.stabilizationWindowSeconds;
     }
+    /**
+     * @return Flexible expansion step. The maximum number of instances per unit time.
+     * 
+     */
     public Integer step() {
         return this.step;
     }

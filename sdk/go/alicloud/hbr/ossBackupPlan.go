@@ -104,6 +104,7 @@ type OssBackupPlan struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringOutput `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
 	// The ID of backup vault.
 	VaultId pulumi.StringOutput `pulumi:"vaultId"`
@@ -176,6 +177,7 @@ type ossBackupPlanState struct {
 	// Backup retention days, the minimum is 1.
 	Retention *string `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule *string `pulumi:"schedule"`
 	// The ID of backup vault.
 	VaultId *string `pulumi:"vaultId"`
@@ -201,6 +203,7 @@ type OssBackupPlanState struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringPtrInput
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringPtrInput
 	// The ID of backup vault.
 	VaultId pulumi.StringPtrInput
@@ -230,6 +233,7 @@ type ossBackupPlanArgs struct {
 	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule string `pulumi:"schedule"`
 	// The ID of backup vault.
 	VaultId string `pulumi:"vaultId"`
@@ -256,6 +260,7 @@ type OssBackupPlanArgs struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringInput
 	// The ID of backup vault.
 	VaultId pulumi.StringInput
@@ -394,6 +399,7 @@ func (o OssBackupPlanOutput) Retention() pulumi.StringOutput {
 }
 
 // Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+// * `startTime` Backup start time, UNIX time seconds.
 func (o OssBackupPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v *OssBackupPlan) pulumi.StringOutput { return v.Schedule }).(pulumi.StringOutput)
 }

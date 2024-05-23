@@ -56,19 +56,19 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
  *         final var displayName = config.get("displayName").orElse("EAccount");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
  *         final var example = ResourcemanagerFunctions.getFolders();
  * 
- *         var exampleAccount = new Account("exampleAccount", AccountArgs.builder()        
+ *         var exampleAccount = new Account("exampleAccount", AccountArgs.builder()
  *             .displayName(String.format("%s-%s", displayName,default_.result()))
  *             .folderId(example.applyValue(getFoldersResult -> getFoldersResult.ids()[0]))
  *             .build());
  * 
- *         var exampleDelegatedAdministrator = new DelegatedAdministrator("exampleDelegatedAdministrator", DelegatedAdministratorArgs.builder()        
+ *         var exampleDelegatedAdministrator = new DelegatedAdministrator("exampleDelegatedAdministrator", DelegatedAdministratorArgs.builder()
  *             .accountId(exampleAccount.id())
  *             .servicePrincipal("cloudfw.aliyuncs.com")
  *             .build());

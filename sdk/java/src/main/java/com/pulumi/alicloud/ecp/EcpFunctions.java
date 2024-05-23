@@ -356,17 +356,17 @@ public final class EcpFunctions {
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyPairName(name)
      *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
      *             .build());
      * 
-     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .instanceName(name)
      *             .description(name)
      *             .force("true")
@@ -450,17 +450,17 @@ public final class EcpFunctions {
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyPairName(name)
      *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
      *             .build());
      * 
-     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .instanceName(name)
      *             .description(name)
      *             .force("true")
@@ -544,17 +544,17 @@ public final class EcpFunctions {
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyPairName(name)
      *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
      *             .build());
      * 
-     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .instanceName(name)
      *             .description(name)
      *             .force("true")
@@ -638,17 +638,17 @@ public final class EcpFunctions {
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyPairName(name)
      *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
      *             .build());
      * 
-     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .instanceName(name)
      *             .description(name)
      *             .force("true")
@@ -732,17 +732,17 @@ public final class EcpFunctions {
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyPairName(name)
      *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
      *             .build());
      * 
-     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .instanceName(name)
      *             .description(name)
      *             .force("true")
@@ -826,17 +826,17 @@ public final class EcpFunctions {
      *             .zoneId(zoneId)
      *             .build());
      * 
-     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyPairName(name)
      *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
      *             .build());
      * 
-     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .instanceName(name)
      *             .description(name)
      *             .force("true")

@@ -79,9 +79,6 @@ namespace Pulumi.AliCloud.Cdn
 
     public sealed class GetRealTimeLogDeliveriesArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Real-Time Log Service Domain.
-        /// </summary>
         [Input("domain", required: true)]
         public string Domain { get; set; } = null!;
 
@@ -105,9 +102,6 @@ namespace Pulumi.AliCloud.Cdn
 
     public sealed class GetRealTimeLogDeliveriesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Real-Time Log Service Domain.
-        /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 

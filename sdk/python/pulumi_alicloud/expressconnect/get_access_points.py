@@ -127,7 +127,7 @@ def get_access_points(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Access Point IDs.
     :param str name_regex: A regex string to filter results by Access Point name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The Physical Connection to Which the Access Point State.
+    :param str status: The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -176,6 +176,6 @@ def get_access_points_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param Sequence[str] ids: A list of Access Point IDs.
     :param str name_regex: A regex string to filter results by Access Point name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The Physical Connection to Which the Access Point State.
+    :param str status: The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
     """
     ...

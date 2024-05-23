@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = DfsFunctions.getZones();
  * 
- *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()        
+ *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
  *             .storageType(default_.zones()[0].options()[0].storageType())
  *             .zoneId(default_.zones()[0].zoneId())
  *             .protocolType("HDFS")

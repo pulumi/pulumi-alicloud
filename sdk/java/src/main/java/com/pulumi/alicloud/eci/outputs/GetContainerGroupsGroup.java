@@ -38,7 +38,7 @@ public final class GetContainerGroupsGroup {
      */
     private List<GetContainerGroupsGroupContainer> containers;
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     private Double cpu;
@@ -192,7 +192,7 @@ public final class GetContainerGroupsGroup {
         return this.containers;
     }
     /**
-     * @return The amount of CPU resources allocated to the container.
+     * @return The amount of CPU resources allocated to the container group.
      * 
      */
     public Double cpu() {

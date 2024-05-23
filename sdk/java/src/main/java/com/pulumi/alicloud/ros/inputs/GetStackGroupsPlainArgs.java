@@ -77,14 +77,14 @@ public final class GetStackGroupsPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The status of Stack Group.
+     * The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of Stack Group.
+     * @return The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
      * 
      */
     public Optional<String> status() {
@@ -174,7 +174,7 @@ public final class GetStackGroupsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param status The status of Stack Group.
+         * @param status The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
          * 
          * @return builder
          * 

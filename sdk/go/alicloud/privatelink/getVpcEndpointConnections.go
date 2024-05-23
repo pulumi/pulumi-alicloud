@@ -64,7 +64,7 @@ type GetVpcEndpointConnectionsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the Vpc Endpoint Service.
 	ServiceId string `pulumi:"serviceId"`
-	// The status of Vpc Endpoint Connection.
+	// The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
 	Status *string `pulumi:"status"`
 }
 
@@ -104,7 +104,7 @@ type GetVpcEndpointConnectionsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the Vpc Endpoint Service.
 	ServiceId pulumi.StringInput `pulumi:"serviceId"`
-	// The status of Vpc Endpoint Connection.
+	// The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

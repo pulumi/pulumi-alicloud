@@ -51,11 +51,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new MonitorGroup("example", MonitorGroupArgs.builder()        
+ *         var example = new MonitorGroup("example", MonitorGroupArgs.builder()
  *             .monitorGroupName("tf-example-accmonitorgroup")
  *             .build());
  * 
- *         var default2 = new MonitorGroup("default2", MonitorGroupArgs.builder()        
+ *         var default2 = new MonitorGroup("default2", MonitorGroupArgs.builder()
  *             .contactGroups("your_contact_groups")
  *             .resourceGroupId("your_resource_group_id")
  *             .resourceGroupName("resource_group_name")

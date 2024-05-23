@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Imp
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Application template usage status.
+        /// Application template usage status. Valid values: ["attached", "unattached"].
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Imp
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Application template usage status.
+        /// Application template usage status. Valid values: ["attached", "unattached"].
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

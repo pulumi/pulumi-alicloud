@@ -69,27 +69,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-hangzhou");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()        
+ *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
  *             .name(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
- *         var defaultStore = new Store("defaultStore", StoreArgs.builder()        
+ *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
  *             .project(defaultProject.name())
  *             .name("terraform-example")
  *             .build());
  * 
- *         var defaultAccelerator = new Accelerator("defaultAccelerator", AcceleratorArgs.builder()        
+ *         var defaultAccelerator = new Accelerator("defaultAccelerator", AcceleratorArgs.builder()
  *             .duration(1)
  *             .autoUseCoupon(true)
  *             .spec("2")
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
  *             .bandwidth(100)
  *             .type("Basic")
  *             .bandwidthType("Basic")
@@ -98,12 +98,12 @@ import javax.annotation.Nullable;
  *             .ratio(30)
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
  *             .acceleratorId(defaultAccelerator.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+ *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
  *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
  *             .clientAffinity("SOURCE_IP")
  *             .protocol("HTTP")
@@ -114,13 +114,13 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+ *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()
  *             .bandwidth("10")
  *             .internetChargeType("PayByBandwidth")
  *             .addressName("terraform-example")
  *             .build());
  * 
- *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()        
+ *         var defaultEndpointGroup = new EndpointGroup("defaultEndpointGroup", EndpointGroupArgs.builder()
  *             .acceleratorId(defaultListener.acceleratorId())
  *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
  *                 .endpoint(defaultEipAddress.ipAddress())
@@ -131,7 +131,7 @@ import javax.annotation.Nullable;
  *             .listenerId(defaultListener.id())
  *             .build());
  * 
- *         var defaultAccessLog = new AccessLog("defaultAccessLog", AccessLogArgs.builder()        
+ *         var defaultAccessLog = new AccessLog("defaultAccessLog", AccessLogArgs.builder()
  *             .acceleratorId(defaultAccelerator.id())
  *             .listenerId(defaultListener.id())
  *             .endpointGroupId(defaultEndpointGroup.id())

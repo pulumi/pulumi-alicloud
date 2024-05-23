@@ -206,6 +206,9 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
      * 
      */
     @Import(name="orderType")
@@ -213,6 +216,9 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
      * 
      */
     public Optional<Output<String>> orderType() {
@@ -733,6 +739,9 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param orderType The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+         * - `UPGRADE`: The specifications are upgraded.
+         * - `DOWNGRADE`: The specifications are downgraded.
+         *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
          * 
          * @return builder
          * 
@@ -744,6 +753,9 @@ public final class ShardingInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param orderType The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+         * - `UPGRADE`: The specifications are upgraded.
+         * - `DOWNGRADE`: The specifications are downgraded.
+         *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
          * 
          * @return builder
          * 

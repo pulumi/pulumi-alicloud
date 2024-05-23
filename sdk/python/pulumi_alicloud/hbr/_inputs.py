@@ -52,6 +52,7 @@ class OtsBackupPlanRuleArgs:
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               - `startTime` Backup start time, UNIX time seconds.
         """
         if backup_type is not None:
             pulumi.set(__self__, "backup_type", backup_type)
@@ -114,6 +115,7 @@ class OtsBackupPlanRuleArgs:
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        - `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 

@@ -10,65 +10,185 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDirectoriesDirectoryTask {
+    /**
+     * @return The ID of Access Configuration.
+     * 
+     */
     private String accessConfigurationId;
+    /**
+     * @return The Name of Access Configuration.
+     * 
+     */
     private String accessConfigurationName;
+    /**
+     * @return The End Time of Task.
+     * 
+     */
     private String endTime;
+    /**
+     * @return the Reason for the Failure of  the task.
+     * 
+     */
     private String failureReason;
+    /**
+     * @return The ID of Cloud SSO Identity.
+     * 
+     */
     private String principalId;
+    /**
+     * @return The Name of Cloud SSO Identity.
+     * 
+     */
     private String principalName;
+    /**
+     * @return The Type of Cloud SSO Identity.
+     * 
+     */
     private String principalType;
+    /**
+     * @return The Start Time of Task.
+     * 
+     */
     private String startTime;
+    /**
+     * @return The Task Status.
+     * 
+     */
     private String status;
+    /**
+     * @return The Id of deploy target.
+     * 
+     */
     private String targetId;
+    /**
+     * @return The Name of Deploy Target.
+     * 
+     */
     private String targetName;
+    /**
+     * @return The Path in RD of Deploy Target.
+     * 
+     */
     private String targetPath;
+    /**
+     * @return The Type of Deploy Target.
+     * 
+     */
     private String targetType;
+    /**
+     * @return The ID of the Task.
+     * 
+     */
     private String taskId;
+    /**
+     * @return The Type of the Task.
+     * 
+     */
     private String taskType;
 
     private GetDirectoriesDirectoryTask() {}
+    /**
+     * @return The ID of Access Configuration.
+     * 
+     */
     public String accessConfigurationId() {
         return this.accessConfigurationId;
     }
+    /**
+     * @return The Name of Access Configuration.
+     * 
+     */
     public String accessConfigurationName() {
         return this.accessConfigurationName;
     }
+    /**
+     * @return The End Time of Task.
+     * 
+     */
     public String endTime() {
         return this.endTime;
     }
+    /**
+     * @return the Reason for the Failure of  the task.
+     * 
+     */
     public String failureReason() {
         return this.failureReason;
     }
+    /**
+     * @return The ID of Cloud SSO Identity.
+     * 
+     */
     public String principalId() {
         return this.principalId;
     }
+    /**
+     * @return The Name of Cloud SSO Identity.
+     * 
+     */
     public String principalName() {
         return this.principalName;
     }
+    /**
+     * @return The Type of Cloud SSO Identity.
+     * 
+     */
     public String principalType() {
         return this.principalType;
     }
+    /**
+     * @return The Start Time of Task.
+     * 
+     */
     public String startTime() {
         return this.startTime;
     }
+    /**
+     * @return The Task Status.
+     * 
+     */
     public String status() {
         return this.status;
     }
+    /**
+     * @return The Id of deploy target.
+     * 
+     */
     public String targetId() {
         return this.targetId;
     }
+    /**
+     * @return The Name of Deploy Target.
+     * 
+     */
     public String targetName() {
         return this.targetName;
     }
+    /**
+     * @return The Path in RD of Deploy Target.
+     * 
+     */
     public String targetPath() {
         return this.targetPath;
     }
+    /**
+     * @return The Type of Deploy Target.
+     * 
+     */
     public String targetType() {
         return this.targetType;
     }
+    /**
+     * @return The ID of the Task.
+     * 
+     */
     public String taskId() {
         return this.taskId;
     }
+    /**
+     * @return The Type of the Task.
+     * 
+     */
     public String taskType() {
         return this.taskType;
     }

@@ -33,6 +33,8 @@ public final class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
     private String ip;
     /**
      * @return The name of the module that you want to access. Valid Values:
+     * - `Registry`: the image repository.
+     * - `Chart`: a Helm chart.
      * 
      */
     private String moduleName;
@@ -83,6 +85,8 @@ public final class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpc {
     }
     /**
      * @return The name of the module that you want to access. Valid Values:
+     * - `Registry`: the image repository.
+     * - `Chart`: a Helm chart.
      * 
      */
     public String moduleName() {

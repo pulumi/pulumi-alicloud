@@ -148,7 +148,7 @@ def get_ipv4_gateways(ids: Optional[Sequence[str]] = None,
     :param str ipv4_gateway_name: The name of the IPv4 gateway.
     :param str name_regex: A regex string to filter results by Ipv4 Gateway name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `Creating`, `Created`, `Deleting`, `Pending`, `Deleted`.
     :param str vpc_id: The ID of the VPC associated with the IPv4 Gateway.
     """
     __args__ = dict()
@@ -205,7 +205,7 @@ def get_ipv4_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param str ipv4_gateway_name: The name of the IPv4 gateway.
     :param str name_regex: A regex string to filter results by Ipv4 Gateway name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `Creating`, `Created`, `Deleting`, `Pending`, `Deleted`.
     :param str vpc_id: The ID of the VPC associated with the IPv4 Gateway.
     """
     ...

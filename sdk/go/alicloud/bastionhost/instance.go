@@ -45,6 +45,8 @@ type Instance struct {
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod pulumi.IntPtrOutput `pulumi:"renewPeriod"`
 	// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+	// - `M`: months.
+	// - `Y`: years.
 	RenewalPeriodUnit pulumi.StringOutput `pulumi:"renewalPeriodUnit"`
 	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
@@ -137,6 +139,8 @@ type instanceState struct {
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod *int `pulumi:"renewPeriod"`
 	// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+	// - `M`: months.
+	// - `Y`: years.
 	RenewalPeriodUnit *string `pulumi:"renewalPeriodUnit"`
 	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
 	RenewalStatus *string `pulumi:"renewalStatus"`
@@ -179,6 +183,8 @@ type InstanceState struct {
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod pulumi.IntPtrInput
 	// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+	// - `M`: months.
+	// - `Y`: years.
 	RenewalPeriodUnit pulumi.StringPtrInput
 	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
 	RenewalStatus pulumi.StringPtrInput
@@ -225,6 +231,8 @@ type instanceArgs struct {
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod *int `pulumi:"renewPeriod"`
 	// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+	// - `M`: months.
+	// - `Y`: years.
 	RenewalPeriodUnit *string `pulumi:"renewalPeriodUnit"`
 	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
 	RenewalStatus *string `pulumi:"renewalStatus"`
@@ -268,6 +276,8 @@ type InstanceArgs struct {
 	// Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
 	RenewPeriod pulumi.IntPtrInput
 	// The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+	// - `M`: months.
+	// - `Y`: years.
 	RenewalPeriodUnit pulumi.StringPtrInput
 	// Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
 	RenewalStatus pulumi.StringPtrInput
@@ -426,6 +436,8 @@ func (o InstanceOutput) RenewPeriod() pulumi.IntPtrOutput {
 }
 
 // The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
+// - `M`: months.
+// - `Y`: years.
 func (o InstanceOutput) RenewalPeriodUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalPeriodUnit }).(pulumi.StringOutput)
 }

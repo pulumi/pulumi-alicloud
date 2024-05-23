@@ -123,6 +123,8 @@ type Account struct {
 	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrOutput `pulumi:"accountPassword"`
 	// The privilege of account access database. Default value: `RoleReadWrite`
+	// - `RoleReadOnly`: This value is only for Redis and Memcache
+	// - `RoleReadWrite`: This value is only for Redis and Memcache
 	AccountPrivilege pulumi.StringPtrOutput `pulumi:"accountPrivilege"`
 	// Privilege type of account.
 	// - Normal: Common privilege.
@@ -191,6 +193,8 @@ type accountState struct {
 	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword *string `pulumi:"accountPassword"`
 	// The privilege of account access database. Default value: `RoleReadWrite`
+	// - `RoleReadOnly`: This value is only for Redis and Memcache
+	// - `RoleReadWrite`: This value is only for Redis and Memcache
 	AccountPrivilege *string `pulumi:"accountPrivilege"`
 	// Privilege type of account.
 	// - Normal: Common privilege.
@@ -217,6 +221,8 @@ type AccountState struct {
 	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrInput
 	// The privilege of account access database. Default value: `RoleReadWrite`
+	// - `RoleReadOnly`: This value is only for Redis and Memcache
+	// - `RoleReadWrite`: This value is only for Redis and Memcache
 	AccountPrivilege pulumi.StringPtrInput
 	// Privilege type of account.
 	// - Normal: Common privilege.
@@ -247,6 +253,8 @@ type accountArgs struct {
 	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword *string `pulumi:"accountPassword"`
 	// The privilege of account access database. Default value: `RoleReadWrite`
+	// - `RoleReadOnly`: This value is only for Redis and Memcache
+	// - `RoleReadWrite`: This value is only for Redis and Memcache
 	AccountPrivilege *string `pulumi:"accountPrivilege"`
 	// Privilege type of account.
 	// - Normal: Common privilege.
@@ -272,6 +280,8 @@ type AccountArgs struct {
 	// The password of the account. The password must be 8 to 32 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!@ # $ % ^ & * ( ) _ + - =`. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields.
 	AccountPassword pulumi.StringPtrInput
 	// The privilege of account access database. Default value: `RoleReadWrite`
+	// - `RoleReadOnly`: This value is only for Redis and Memcache
+	// - `RoleReadWrite`: This value is only for Redis and Memcache
 	AccountPrivilege pulumi.StringPtrInput
 	// Privilege type of account.
 	// - Normal: Common privilege.
@@ -388,6 +398,8 @@ func (o AccountOutput) AccountPassword() pulumi.StringPtrOutput {
 }
 
 // The privilege of account access database. Default value: `RoleReadWrite`
+// - `RoleReadOnly`: This value is only for Redis and Memcache
+// - `RoleReadWrite`: This value is only for Redis and Memcache
 func (o AccountOutput) AccountPrivilege() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountPrivilege }).(pulumi.StringPtrOutput)
 }

@@ -58,30 +58,30 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .cenInstanceName("tf-example")
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
  *             .bandwidth(5)
  *             .geographicRegionAId("China")
  *             .geographicRegionBId("China")
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
  *             .instanceId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var hz = new TransitRouter("hz", TransitRouterArgs.builder()        
+ *         var hz = new TransitRouter("hz", TransitRouterArgs.builder()
  *             .cenId(defaultBandwidthPackageAttachment.instanceId())
  *             .build());
  * 
- *         var bj = new TransitRouter("bj", TransitRouterArgs.builder()        
+ *         var bj = new TransitRouter("bj", TransitRouterArgs.builder()
  *             .cenId(hz.cenId())
  *             .build());
  * 
- *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", TransitRouterPeerAttachmentArgs.builder()        
+ *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", TransitRouterPeerAttachmentArgs.builder()
  *             .cenId(default_.id())
  *             .transitRouterId(hz.transitRouterId())
  *             .peerTransitRouterRegionId("cn-beijing")
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *             .bandwidth(5)
  *             .build());
  * 
- *         var defaultInterRegionTrafficQosPolicy = new InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy", InterRegionTrafficQosPolicyArgs.builder()        
+ *         var defaultInterRegionTrafficQosPolicy = new InterRegionTrafficQosPolicy("defaultInterRegionTrafficQosPolicy", InterRegionTrafficQosPolicyArgs.builder()
  *             .transitRouterId(hz.transitRouterId())
  *             .transitRouterAttachmentId(defaultTransitRouterPeerAttachment.transitRouterAttachmentId())
  *             .interRegionTrafficQosPolicyName("tf-example-name")

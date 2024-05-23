@@ -54,6 +54,8 @@ func GetImages(ctx *pulumi.Context, args *GetImagesArgs, opts ...pulumi.InvokeOp
 // A collection of arguments for invoking getImages.
 type GetImagesArgs struct {
 	// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
+	// * `CreateEcs`: instance creation.
+	// * `ChangeOS`: replacement of the system disk or operating system.
 	ActionType *string `pulumi:"actionType"`
 	// The image architecture. Valid values: `i386` and `x8664`.
 	Architecture *string `pulumi:"architecture"`
@@ -90,6 +92,12 @@ type GetImagesArgs struct {
 	// The ID of the snapshot used to create the custom image.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+	// * `Creating`: The image is being created.
+	// * `Waiting`: The image is waiting to be processed.
+	// * `Available`: The image is available.
+	// * `UnAvailable`: The image is unavailable.
+	// * `CreateFailed`: The image failed to be created.
+	// * `Deprecated`: The image is discontinued.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -146,6 +154,8 @@ func GetImagesOutput(ctx *pulumi.Context, args GetImagesOutputArgs, opts ...pulu
 // A collection of arguments for invoking getImages.
 type GetImagesOutputArgs struct {
 	// The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
+	// * `CreateEcs`: instance creation.
+	// * `ChangeOS`: replacement of the system disk or operating system.
 	ActionType pulumi.StringPtrInput `pulumi:"actionType"`
 	// The image architecture. Valid values: `i386` and `x8664`.
 	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
@@ -182,6 +192,12 @@ type GetImagesOutputArgs struct {
 	// The ID of the snapshot used to create the custom image.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 	// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+	// * `Creating`: The image is being created.
+	// * `Waiting`: The image is waiting to be processed.
+	// * `Available`: The image is available.
+	// * `UnAvailable`: The image is unavailable.
+	// * `CreateFailed`: The image failed to be created.
+	// * `Deprecated`: The image is discontinued.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`

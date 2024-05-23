@@ -61,14 +61,14 @@ public final class GetAppTemplatesPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Application template usage status.
+     * Application template usage status. Valid values: [&#34;attached&#34;, &#34;unattached&#34;].
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return Application template usage status.
+     * @return Application template usage status. Valid values: [&#34;attached&#34;, &#34;unattached&#34;].
      * 
      */
     public Optional<String> status() {
@@ -146,7 +146,7 @@ public final class GetAppTemplatesPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status Application template usage status.
+         * @param status Application template usage status. Valid values: [&#34;attached&#34;, &#34;unattached&#34;].
          * 
          * @return builder
          * 

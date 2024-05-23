@@ -149,7 +149,7 @@ def get_rules(event_bus_name: Optional[str] = None,
     :param str name_regex: A regex string to filter results by Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str rule_name_prefix: The rule name prefix.
-    :param str status: Rule status, either Enable or Disable.
+    :param str status: Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
     """
     __args__ = dict()
     __args__['eventBusName'] = event_bus_name
@@ -206,6 +206,6 @@ def get_rules_output(event_bus_name: Optional[pulumi.Input[str]] = None,
     :param str name_regex: A regex string to filter results by Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str rule_name_prefix: The rule name prefix.
-    :param str status: Rule status, either Enable or Disable.
+    :param str status: Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
     """
     ...

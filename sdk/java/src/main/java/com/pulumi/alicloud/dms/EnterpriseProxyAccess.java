@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * 
  *         final var ids = DmsFunctions.getEnterpriseProxies();
  * 
- *         var default_ = new EnterpriseProxyAccess("default", EnterpriseProxyAccessArgs.builder()        
+ *         var default_ = new EnterpriseProxyAccess("default", EnterpriseProxyAccessArgs.builder()
  *             .proxyId(ids.applyValue(getEnterpriseProxiesResult -> getEnterpriseProxiesResult.proxies()[0].id()))
  *             .userId(dmsEnterpriseUsersDs.applyValue(getEnterpriseUsersResult -> getEnterpriseUsersResult.users()[0].userId()))
  *             .build());

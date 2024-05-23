@@ -255,6 +255,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+     * - `AutoRenewal`: Auto renewal.
+     * - `ManualRenewal`: Manual renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+     *   **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
      * 
      */
     @Import(name="renewalStatus")
@@ -262,6 +266,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+     * - `AutoRenewal`: Auto renewal.
+     * - `ManualRenewal`: Manual renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+     *   **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
      * 
      */
     public Optional<Output<String>> renewalStatus() {
@@ -650,6 +658,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param renewalStatus Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+         * - `AutoRenewal`: Auto renewal.
+         * - `ManualRenewal`: Manual renewal.
+         * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+         *   **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
          * 
          * @return builder
          * 
@@ -661,6 +673,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param renewalStatus Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+         * - `AutoRenewal`: Auto renewal.
+         * - `ManualRenewal`: Manual renewal.
+         * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+         *   **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
          * 
          * @return builder
          * 

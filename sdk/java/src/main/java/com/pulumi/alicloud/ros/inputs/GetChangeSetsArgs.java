@@ -109,14 +109,14 @@ public final class GetChangeSetsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the change set.
+     * The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the change set.
+     * @return The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -290,7 +290,7 @@ public final class GetChangeSetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the change set.
+         * @param status The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class GetChangeSetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the change set.
+         * @param status The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
          * 
          * @return builder
          * 

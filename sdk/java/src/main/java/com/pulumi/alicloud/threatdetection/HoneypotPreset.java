@@ -59,13 +59,13 @@ import javax.annotation.Nullable;
  *             .nameRegex("^ruoyi")
  *             .build());
  * 
- *         var defaultHoneypotNode = new HoneypotNode("defaultHoneypotNode", HoneypotNodeArgs.builder()        
+ *         var defaultHoneypotNode = new HoneypotNode("defaultHoneypotNode", HoneypotNodeArgs.builder()
  *             .nodeName(name)
  *             .availableProbeNum(20)
  *             .securityGroupProbeIpLists("0.0.0.0/0")
  *             .build());
  * 
- *         var defaultHoneypotPreset = new HoneypotPreset("defaultHoneypotPreset", HoneypotPresetArgs.builder()        
+ *         var defaultHoneypotPreset = new HoneypotPreset("defaultHoneypotPreset", HoneypotPresetArgs.builder()
  *             .presetName(name)
  *             .nodeId(defaultHoneypotNode.id())
  *             .honeypotImageName(default_.images()[0].honeypotImageName())

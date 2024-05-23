@@ -62,12 +62,12 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+ *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
+ *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.16.0.0/21")
  *             .vpcId(fooNetwork.id())
@@ -113,17 +113,17 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var vpc = new Network("vpc", NetworkArgs.builder()        
+ *         var vpc = new Network("vpc", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var cidrBlocks = new Ipv4CidrBlock("cidrBlocks", Ipv4CidrBlockArgs.builder()        
+ *         var cidrBlocks = new Ipv4CidrBlock("cidrBlocks", Ipv4CidrBlockArgs.builder()
  *             .vpcId(vpc.id())
  *             .secondaryCidrBlock("192.163.0.0/16")
  *             .build());
  * 
- *         var island_nat = new Switch("island-nat", SwitchArgs.builder()        
+ *         var island_nat = new Switch("island-nat", SwitchArgs.builder()
  *             .vpcId(cidrBlocks.vpcId())
  *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(foo.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
@@ -177,17 +177,17 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+ *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var fooIpv4CidrBlock = new Ipv4CidrBlock("fooIpv4CidrBlock", Ipv4CidrBlockArgs.builder()        
+ *         var fooIpv4CidrBlock = new Ipv4CidrBlock("fooIpv4CidrBlock", Ipv4CidrBlockArgs.builder()
  *             .vpcId(fooNetwork.id())
  *             .secondaryCidrBlock("192.163.0.0/16")
  *             .build());
  * 
- *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
+ *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()
  *             .vpcId(fooIpv4CidrBlock.vpcId())
  *             .cidrBlock("192.163.0.0/24")
  *             .zoneId(foo.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))

@@ -104,6 +104,10 @@ type StackInstance struct {
 	// The operation description.
 	OperationDescription pulumi.StringPtrOutput `pulumi:"operationDescription"`
 	// The operation preferences. The operation settings. The following fields are supported:
+	// * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
+	// * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
+	// * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
+	// * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
 	OperationPreferences pulumi.StringPtrOutput `pulumi:"operationPreferences"`
 	// ParameterOverrides. See the following `Block parameterOverrides`.
 	ParameterOverrides StackInstanceParameterOverrideArrayOutput `pulumi:"parameterOverrides"`
@@ -116,6 +120,11 @@ type StackInstance struct {
 	// The region of the stack instance.
 	StackInstanceRegionId pulumi.StringOutput `pulumi:"stackInstanceRegionId"`
 	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+	// * The create or update operation is not complete.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
 	TimeoutInMinutes pulumi.StringPtrOutput `pulumi:"timeoutInMinutes"`
@@ -170,6 +179,10 @@ type stackInstanceState struct {
 	// The operation description.
 	OperationDescription *string `pulumi:"operationDescription"`
 	// The operation preferences. The operation settings. The following fields are supported:
+	// * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
+	// * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
+	// * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
+	// * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
 	OperationPreferences *string `pulumi:"operationPreferences"`
 	// ParameterOverrides. See the following `Block parameterOverrides`.
 	ParameterOverrides []StackInstanceParameterOverride `pulumi:"parameterOverrides"`
@@ -182,6 +195,11 @@ type stackInstanceState struct {
 	// The region of the stack instance.
 	StackInstanceRegionId *string `pulumi:"stackInstanceRegionId"`
 	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+	// * The create or update operation is not complete.
 	Status *string `pulumi:"status"`
 	// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
 	TimeoutInMinutes *string `pulumi:"timeoutInMinutes"`
@@ -191,6 +209,10 @@ type StackInstanceState struct {
 	// The operation description.
 	OperationDescription pulumi.StringPtrInput
 	// The operation preferences. The operation settings. The following fields are supported:
+	// * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
+	// * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
+	// * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
+	// * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
 	OperationPreferences pulumi.StringPtrInput
 	// ParameterOverrides. See the following `Block parameterOverrides`.
 	ParameterOverrides StackInstanceParameterOverrideArrayInput
@@ -203,6 +225,11 @@ type StackInstanceState struct {
 	// The region of the stack instance.
 	StackInstanceRegionId pulumi.StringPtrInput
 	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+	// * The create or update operation is not complete.
 	Status pulumi.StringPtrInput
 	// The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
 	TimeoutInMinutes pulumi.StringPtrInput
@@ -216,6 +243,10 @@ type stackInstanceArgs struct {
 	// The operation description.
 	OperationDescription *string `pulumi:"operationDescription"`
 	// The operation preferences. The operation settings. The following fields are supported:
+	// * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
+	// * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
+	// * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
+	// * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
 	OperationPreferences *string `pulumi:"operationPreferences"`
 	// ParameterOverrides. See the following `Block parameterOverrides`.
 	ParameterOverrides []StackInstanceParameterOverride `pulumi:"parameterOverrides"`
@@ -236,6 +267,10 @@ type StackInstanceArgs struct {
 	// The operation description.
 	OperationDescription pulumi.StringPtrInput
 	// The operation preferences. The operation settings. The following fields are supported:
+	// * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
+	// * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
+	// * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
+	// * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
 	OperationPreferences pulumi.StringPtrInput
 	// ParameterOverrides. See the following `Block parameterOverrides`.
 	ParameterOverrides StackInstanceParameterOverrideArrayInput
@@ -344,6 +379,10 @@ func (o StackInstanceOutput) OperationDescription() pulumi.StringPtrOutput {
 }
 
 // The operation preferences. The operation settings. The following fields are supported:
+// * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
+// * `FailureTolerancePercentage`: The percentage of stack group operation failures that can occur. In a stack group operation, if the percentage of failures does not exceed the FailureTolerancePercentage value, the operation succeeds. Otherwise, the operation fails. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `100`.
+// * `MaxConcurrentCount`: The maximum number of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `20`.
+// * `MaxConcurrentPercentage`: The maximum percentage of accounts within which to perform this operation at one time. You cannot specify both MaxConcurrentCount and MaxConcurrentPercentage. Valid values: `1` to `100`
 func (o StackInstanceOutput) OperationPreferences() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StackInstance) pulumi.StringPtrOutput { return v.OperationPreferences }).(pulumi.StringPtrOutput)
 }
@@ -374,6 +413,11 @@ func (o StackInstanceOutput) StackInstanceRegionId() pulumi.StringOutput {
 }
 
 // The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+// * The create or update operation is not complete.
 func (o StackInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *StackInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

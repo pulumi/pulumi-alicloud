@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example1 = new ControlPolicy("example1", ControlPolicyArgs.builder()        
+ *         var example1 = new ControlPolicy("example1", ControlPolicyArgs.builder()
  *             .applicationName("ANY")
  *             .aclAction("accept")
  *             .description("example")
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .sourceType("net")
  *             .build());
  * 
- *         var example2 = new ControlPolicyOrder("example2", ControlPolicyOrderArgs.builder()        
+ *         var example2 = new ControlPolicyOrder("example2", ControlPolicyOrderArgs.builder()
  *             .aclUuid(example1.aclUuid())
  *             .direction(example1.direction())
  *             .order(1)

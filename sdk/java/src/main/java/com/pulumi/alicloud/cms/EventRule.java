@@ -62,11 +62,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new MonitorGroup("default", MonitorGroupArgs.builder()        
+ *         var default_ = new MonitorGroup("default", MonitorGroupArgs.builder()
  *             .monitorGroupName(name)
  *             .build());
  * 
- *         var example = new EventRule("example", EventRuleArgs.builder()        
+ *         var example = new EventRule("example", EventRuleArgs.builder()
  *             .ruleName(name)
  *             .groupId(default_.id())
  *             .silenceTime(100)

@@ -13,9 +13,21 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult
     {
+        /// <summary>
+        /// Time point. Format: `hours:minutes`.
+        /// </summary>
         public readonly string AtTime;
+        /// <summary>
+        /// The maximum number of instances.
+        /// </summary>
         public readonly int MaxReplicas;
+        /// <summary>
+        /// The minimum number of instances.
+        /// </summary>
         public readonly int MinReplicas;
+        /// <summary>
+        /// The number of target instances.
+        /// </summary>
         public readonly int TargetReplicas;
 
         [OutputConstructor]

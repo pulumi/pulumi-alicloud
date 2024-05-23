@@ -70,7 +70,7 @@ export interface GetInstancesArgs {
      */
     queryStr?: string;
     /**
-     * Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+     * Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
      */
     status?: string;
     /**
@@ -149,7 +149,7 @@ export interface GetInstancesOutputArgs {
      */
     queryStr?: pulumi.Input<string>;
     /**
-     * Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+     * Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
      */
     status?: pulumi.Input<string>;
     /**

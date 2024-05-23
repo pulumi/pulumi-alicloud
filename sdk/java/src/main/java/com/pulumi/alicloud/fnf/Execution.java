@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example-fnfflow");
- *         var default_ = new Role("default", RoleArgs.builder()        
+ *         var default_ = new Role("default", RoleArgs.builder()
  *             .name(name)
  *             .document("""
  *   {
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var defaultFlow = new Flow("defaultFlow", FlowArgs.builder()        
+ *         var defaultFlow = new Flow("defaultFlow", FlowArgs.builder()
  *             .definition("""
  *   version: v1beta1
  *   type: flow
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .type("FDL")
  *             .build());
  * 
- *         var defaultExecution = new Execution("defaultExecution", ExecutionArgs.builder()        
+ *         var defaultExecution = new Execution("defaultExecution", ExecutionArgs.builder()
  *             .executionName(name)
  *             .flowName(defaultFlow.name())
  *             .input("{\"wait\": 600}")

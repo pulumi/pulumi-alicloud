@@ -223,8 +223,7 @@ def get_instances(availability_zone: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the enterprise resource group to which the instance belongs.
     :param str status: The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
-    :param Mapping[str, Any] tags: The tags of the instance.
-    :param str vswitch_id: The vswitch id.
+    :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
     """
     __args__ = dict()
     __args__['availabilityZone'] = availability_zone
@@ -306,7 +305,6 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the enterprise resource group to which the instance belongs.
     :param str status: The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
-    :param Mapping[str, Any] tags: The tags of the instance.
-    :param str vswitch_id: The vswitch id.
+    :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
     """
     ...

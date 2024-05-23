@@ -118,13 +118,13 @@ namespace Pulumi.AliCloud.Ga
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the bandwidth plan.
+        /// The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// The type of the bandwidth packet. China station only supports return to basic.
+        /// The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -168,13 +168,13 @@ namespace Pulumi.AliCloud.Ga
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the bandwidth plan.
+        /// The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The type of the bandwidth packet. China station only supports return to basic.
+        /// The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

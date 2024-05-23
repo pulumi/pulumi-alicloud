@@ -64,19 +64,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()        
+ *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .natGatewayName(name)
  *             .paymentType("PayAsYouGo")
@@ -84,16 +84,16 @@ import javax.annotation.Nullable;
  *             .natType("Enhanced")
  *             .build());
  * 
- *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+ *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()
  *             .addressName(name)
  *             .build());
  * 
- *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()        
+ *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()
  *             .allocationId(defaultEipAddress.id())
  *             .instanceId(defaultNatGateway.id())
  *             .build());
  * 
- *         var defaultSnatEntry = new SnatEntry("defaultSnatEntry", SnatEntryArgs.builder()        
+ *         var defaultSnatEntry = new SnatEntry("defaultSnatEntry", SnatEntryArgs.builder()
  *             .snatTableId(defaultNatGateway.snatTableIds())
  *             .sourceVswitchId(defaultSwitch.id())
  *             .snatIp(defaultEipAddress.ipAddress())

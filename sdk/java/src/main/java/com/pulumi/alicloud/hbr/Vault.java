@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new Vault("example", VaultArgs.builder()        
+ *         var example = new Vault("example", VaultArgs.builder()
  *             .vaultName(String.format("example_value_%s", default_.result()))
  *             .build());
  * 
@@ -92,6 +92,8 @@ public class Vault extends com.pulumi.resources.CustomResource {
     }
     /**
      * Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+     * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
+     * - `KMS`: Use Alibaba Cloud Kms to encryption.
      * 
      */
     @Export(name="encryptType", refs={String.class}, tree="[0]")
@@ -99,6 +101,8 @@ public class Vault extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+     * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
+     * - `KMS`: Use Alibaba Cloud Kms to encryption.
      * 
      */
     public Output<String> encryptType() {

@@ -77,14 +77,14 @@ public final class GetReceiversPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
      * 
      */
     @Import(name="status")
     private @Nullable Integer status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
      * 
      */
     public Optional<Integer> status() {
@@ -174,7 +174,7 @@ public final class GetReceiversPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
          * 
          * @return builder
          * 

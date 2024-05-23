@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tfexample");
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var example = new Role("example", RoleArgs.builder()        
+ *         var example = new Role("example", RoleArgs.builder()
  *             .roleName(name)
  *             .assumeRolePolicyDocument("""
  *      {

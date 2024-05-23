@@ -51,7 +51,7 @@ public final class OpensearchFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_testacc");
-     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()        
+     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()
      *             .appGroupName(name)
      *             .paymentType("PayAsYouGo")
      *             .type("standard")
@@ -114,7 +114,7 @@ public final class OpensearchFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_testacc");
-     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()        
+     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()
      *             .appGroupName(name)
      *             .paymentType("PayAsYouGo")
      *             .type("standard")
@@ -177,7 +177,7 @@ public final class OpensearchFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_testacc");
-     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()        
+     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()
      *             .appGroupName(name)
      *             .paymentType("PayAsYouGo")
      *             .type("standard")
@@ -240,7 +240,7 @@ public final class OpensearchFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_testacc");
-     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()        
+     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()
      *             .appGroupName(name)
      *             .paymentType("PayAsYouGo")
      *             .type("standard")
@@ -303,7 +303,7 @@ public final class OpensearchFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_testacc");
-     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()        
+     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()
      *             .appGroupName(name)
      *             .paymentType("PayAsYouGo")
      *             .type("standard")
@@ -366,7 +366,7 @@ public final class OpensearchFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("tf_testacc");
-     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()        
+     *         var defaultAppGroup = new AppGroup("defaultAppGroup", AppGroupArgs.builder()
      *             .appGroupName(name)
      *             .paymentType("PayAsYouGo")
      *             .type("standard")

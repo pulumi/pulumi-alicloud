@@ -11,57 +11,161 @@ import java.util.Objects;
 
 @CustomType
 public final class GetListenersListenerXforwardedForConfig {
+    /**
+     * @return The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+     * 
+     */
     private String xforwardedforclientcertIssuerdnalias;
+    /**
+     * @return Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+     * 
+     */
     private Boolean xforwardedforclientcertIssuerdnenabled;
+    /**
+     * @return The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * 
+     */
     private String xforwardedforclientcertclientverifyalias;
+    /**
+     * @return Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+     * 
+     */
     private Boolean xforwardedforclientcertclientverifyenabled;
+    /**
+     * @return The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * 
+     */
     private String xforwardedforclientcertfingerprintalias;
+    /**
+     * @return Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+     * 
+     */
     private Boolean xforwardedforclientcertfingerprintenabled;
+    /**
+     * @return The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * 
+     */
     private String xforwardedforclientcertsubjectdnalias;
+    /**
+     * @return Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+     * 
+     */
     private Boolean xforwardedforclientcertsubjectdnenabled;
+    /**
+     * @return Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+     * 
+     */
     private Boolean xforwardedforclientsrcportenabled;
+    /**
+     * @return Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
+     * 
+     */
     private Boolean xforwardedforenabled;
+    /**
+     * @return Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+     * 
+     */
     private Boolean xforwardedforprotoenabled;
+    /**
+     * @return Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
+     * 
+     */
     private Boolean xforwardedforslbidenabled;
+    /**
+     * @return Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+     * 
+     */
     private Boolean xforwardedforslbportenabled;
 
     private GetListenersListenerXforwardedForConfig() {}
+    /**
+     * @return The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+     * 
+     */
     public String xforwardedforclientcertIssuerdnalias() {
         return this.xforwardedforclientcertIssuerdnalias;
     }
+    /**
+     * @return Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+     * 
+     */
     public Boolean xforwardedforclientcertIssuerdnenabled() {
         return this.xforwardedforclientcertIssuerdnenabled;
     }
+    /**
+     * @return The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * 
+     */
     public String xforwardedforclientcertclientverifyalias() {
         return this.xforwardedforclientcertclientverifyalias;
     }
+    /**
+     * @return Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+     * 
+     */
     public Boolean xforwardedforclientcertclientverifyenabled() {
         return this.xforwardedforclientcertclientverifyenabled;
     }
+    /**
+     * @return The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * 
+     */
     public String xforwardedforclientcertfingerprintalias() {
         return this.xforwardedforclientcertfingerprintalias;
     }
+    /**
+     * @return Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+     * 
+     */
     public Boolean xforwardedforclientcertfingerprintenabled() {
         return this.xforwardedforclientcertfingerprintenabled;
     }
+    /**
+     * @return The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+     * 
+     */
     public String xforwardedforclientcertsubjectdnalias() {
         return this.xforwardedforclientcertsubjectdnalias;
     }
+    /**
+     * @return Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+     * 
+     */
     public Boolean xforwardedforclientcertsubjectdnenabled() {
         return this.xforwardedforclientcertsubjectdnenabled;
     }
+    /**
+     * @return Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+     * 
+     */
     public Boolean xforwardedforclientsrcportenabled() {
         return this.xforwardedforclientsrcportenabled;
     }
+    /**
+     * @return Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
+     * 
+     */
     public Boolean xforwardedforenabled() {
         return this.xforwardedforenabled;
     }
+    /**
+     * @return Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+     * 
+     */
     public Boolean xforwardedforprotoenabled() {
         return this.xforwardedforprotoenabled;
     }
+    /**
+     * @return Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
+     * 
+     */
     public Boolean xforwardedforslbidenabled() {
         return this.xforwardedforslbidenabled;
     }
+    /**
+     * @return Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+     * 
+     */
     public Boolean xforwardedforslbportenabled() {
         return this.xforwardedforslbportenabled;
     }

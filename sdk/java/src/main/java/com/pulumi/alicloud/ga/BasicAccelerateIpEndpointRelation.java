@@ -74,29 +74,29 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .name("terraform-example")
  *             .build());
  * 
- *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
+ *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()
  *             .vswitchId(defaultSwitch.id())
  *             .securityGroupIds(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var defaultBasicAccelerator = new BasicAccelerator("defaultBasicAccelerator", BasicAcceleratorArgs.builder()        
+ *         var defaultBasicAccelerator = new BasicAccelerator("defaultBasicAccelerator", BasicAcceleratorArgs.builder()
  *             .duration(1)
  *             .basicAcceleratorName("terraform-example")
  *             .description("terraform-example")
@@ -105,26 +105,26 @@ import javax.annotation.Nullable;
  *             .autoPay(true)
  *             .build());
  * 
- *         var defaultBasicIpSet = new BasicIpSet("defaultBasicIpSet", BasicIpSetArgs.builder()        
+ *         var defaultBasicIpSet = new BasicIpSet("defaultBasicIpSet", BasicIpSetArgs.builder()
  *             .acceleratorId(defaultBasicAccelerator.id())
  *             .accelerateRegionId(endpointRegion)
  *             .ispType("BGP")
  *             .bandwidth("5")
  *             .build());
  * 
- *         var defaultBasicAccelerateIp = new BasicAccelerateIp("defaultBasicAccelerateIp", BasicAccelerateIpArgs.builder()        
+ *         var defaultBasicAccelerateIp = new BasicAccelerateIp("defaultBasicAccelerateIp", BasicAccelerateIpArgs.builder()
  *             .acceleratorId(defaultBasicAccelerator.id())
  *             .ipSetId(defaultBasicIpSet.id())
  *             .build());
  * 
- *         var defaultBasicEndpointGroup = new BasicEndpointGroup("defaultBasicEndpointGroup", BasicEndpointGroupArgs.builder()        
+ *         var defaultBasicEndpointGroup = new BasicEndpointGroup("defaultBasicEndpointGroup", BasicEndpointGroupArgs.builder()
  *             .acceleratorId(defaultBasicAccelerator.id())
  *             .endpointGroupRegion(region)
  *             .basicEndpointGroupName("terraform-example")
  *             .description("terraform-example")
  *             .build());
  * 
- *         var defaultBasicEndpoint = new BasicEndpoint("defaultBasicEndpoint", BasicEndpointArgs.builder()        
+ *         var defaultBasicEndpoint = new BasicEndpoint("defaultBasicEndpoint", BasicEndpointArgs.builder()
  *             .acceleratorId(defaultBasicAccelerator.id())
  *             .endpointGroupId(defaultBasicEndpointGroup.id())
  *             .endpointType("ENI")
@@ -134,7 +134,7 @@ import javax.annotation.Nullable;
  *             .basicEndpointName("terraform-example")
  *             .build());
  * 
- *         var defaultBasicAccelerateIpEndpointRelation = new BasicAccelerateIpEndpointRelation("defaultBasicAccelerateIpEndpointRelation", BasicAccelerateIpEndpointRelationArgs.builder()        
+ *         var defaultBasicAccelerateIpEndpointRelation = new BasicAccelerateIpEndpointRelation("defaultBasicAccelerateIpEndpointRelation", BasicAccelerateIpEndpointRelationArgs.builder()
  *             .acceleratorId(defaultBasicAccelerateIp.acceleratorId())
  *             .accelerateIpId(defaultBasicAccelerateIp.id())
  *             .endpointId(defaultBasicEndpoint.endpointId())

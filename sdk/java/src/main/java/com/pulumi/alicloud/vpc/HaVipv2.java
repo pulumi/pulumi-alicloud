@@ -63,13 +63,13 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()        
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
  *             .description("tf-test-acc-vpc")
  *             .vpcName(name)
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var defaultVswitch = new Switch("defaultVswitch", SwitchArgs.builder()        
+ *         var defaultVswitch = new Switch("defaultVswitch", SwitchArgs.builder()
  *             .vpcId(defaultVpc.id())
  *             .cidrBlock("192.168.0.0/21")
  *             .vswitchName(String.format("%s1", name))
@@ -77,17 +77,17 @@ import javax.annotation.Nullable;
  *             .description("tf-testacc-vswitch")
  *             .build());
  * 
- *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()        
+ *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()
  *             .displayName("tf-testacc-rg819")
  *             .resourceGroupName(String.format("%s2", name))
  *             .build());
  * 
- *         var changeRg = new ResourceGroup("changeRg", ResourceGroupArgs.builder()        
+ *         var changeRg = new ResourceGroup("changeRg", ResourceGroupArgs.builder()
  *             .displayName("tf-testacc-changerg670")
  *             .resourceGroupName(String.format("%s3", name))
  *             .build());
  * 
- *         var defaultHaVipv2 = new HaVipv2("defaultHaVipv2", HaVipv2Args.builder()        
+ *         var defaultHaVipv2 = new HaVipv2("defaultHaVipv2", HaVipv2Args.builder()
  *             .description("test")
  *             .vswitchId(defaultVswitch.id())
  *             .haVipName(name)

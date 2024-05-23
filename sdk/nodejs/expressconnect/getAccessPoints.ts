@@ -58,7 +58,7 @@ export interface GetAccessPointsArgs {
      */
     outputFile?: string;
     /**
-     * The Physical Connection to Which the Access Point State.
+     * The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
      */
     status?: string;
 }
@@ -122,7 +122,7 @@ export interface GetAccessPointsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The Physical Connection to Which the Access Point State.
+     * The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
      */
     status?: pulumi.Input<string>;
 }

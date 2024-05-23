@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new BandwidthPackage("example", BandwidthPackageArgs.builder()        
+ *         var example = new BandwidthPackage("example", BandwidthPackageArgs.builder()
  *             .bandwidth(20)
  *             .type("Basic")
  *             .bandwidthType("Basic")
@@ -280,6 +280,9 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether to renew a bandwidth packet. automatically or not. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * 
      */
     @Export(name="renewalStatus", refs={String.class}, tree="[0]")
@@ -287,6 +290,9 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether to renew a bandwidth packet. automatically or not. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * 
      */
     public Output<String> renewalStatus() {

@@ -564,14 +564,14 @@ class GetClustersClusterResult(dict):
         :param bool auto_scaling_spot_with_limit_allowed: Whether to allow the use of elastic scaling bidding instances.
         :param Sequence['GetClustersClusterBootstrapActionListArgs'] bootstrap_action_lists: List of boot actions.
         :param bool bootstrap_failed: The result of the boot operation.
-        :param str cluster_id: The ID of the associated cluster.
-        :param str cluster_name: The name of the associated cluster.
+        :param str cluster_id: The first ID of the resource.
+        :param str cluster_name: The ClusterName.
         :param str create_resource: Cluster tag, no need to pay attention.
-        :param str create_time: Creation time.
+        :param str create_time: The creation time of the resource.
         :param str create_type: How to create a cluster.
         :param str deposit_type: The hosting type of the cluster.
         :param bool eas_enable: High security cluster.
-        :param str expired_time: Timeout time.
+        :param str expired_time: The expiration time of the cluster.
         :param str extra_info: Additional information for Stack.
         :param bool high_availability_enable: High availability cluster.
         :param Sequence['GetClustersClusterHostGroupListArgs'] host_group_lists: List of cluster machine groups.
@@ -593,7 +593,6 @@ class GetClustersClusterResult(dict):
         :param str status: The cluster status.
         :param str stop_time: Cluster stop time.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
-        :param str type: Disk type.
         :param str user_defined_emr_ecs_role: The EMR permission name used.
         :param str user_id: The user ID.
         :param str vpc_id: The VPC ID.
@@ -705,7 +704,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
         """
-        The ID of the associated cluster.
+        The first ID of the resource.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -713,7 +712,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> str:
         """
-        The name of the associated cluster.
+        The ClusterName.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -729,7 +728,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        Creation time.
+        The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
@@ -761,7 +760,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="expiredTime")
     def expired_time(self) -> str:
         """
-        Timeout time.
+        The expiration time of the cluster.
         """
         return pulumi.get(self, "expired_time")
 
@@ -946,9 +945,6 @@ class GetClustersClusterResult(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        Disk type.
-        """
         return pulumi.get(self, "type")
 
     @property
@@ -1015,27 +1011,17 @@ class GetClustersClusterAccessInfoZkLinkResult(dict):
     def __init__(__self__, *,
                  link: str,
                  port: str):
-        """
-        :param str link: The access link address of ZooKeeper.
-        :param str port: The port of ZooKeeper.
-        """
         pulumi.set(__self__, "link", link)
         pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
     def link(self) -> str:
-        """
-        The access link address of ZooKeeper.
-        """
         return pulumi.get(self, "link")
 
     @property
     @pulumi.getter
     def port(self) -> str:
-        """
-        The port of ZooKeeper.
-        """
         return pulumi.get(self, "port")
 
 
@@ -1047,7 +1033,7 @@ class GetClustersClusterBootstrapActionListResult(dict):
                  path: str):
         """
         :param str arg: Parameters of the boot operation.
-        :param str name: The internal name of the service.
+        :param str name: The name of the boot operation.
         :param str path: Boot operation script path.
         """
         pulumi.set(__self__, "arg", arg)
@@ -1066,7 +1052,7 @@ class GetClustersClusterBootstrapActionListResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The internal name of the service.
+        The name of the boot operation.
         """
         return pulumi.get(self, "name")
 
@@ -1112,7 +1098,7 @@ class GetClustersClusterHostGroupListResult(dict):
         :param int memory_capacity: Memory size.
         :param int node_count: The number of machine group nodes.
         :param Sequence['GetClustersClusterHostGroupListNodeArgs'] nodes: Machine node.
-        :param str period: The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+        :param str period: Package year and month time (days).
         """
         pulumi.set(__self__, "band_width", band_width)
         pulumi.set(__self__, "charge_type", charge_type)
@@ -1246,7 +1232,7 @@ class GetClustersClusterHostGroupListResult(dict):
     @pulumi.getter
     def period(self) -> str:
         """
-        The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+        Package year and month time (days).
         """
         return pulumi.get(self, "period")
 
@@ -1272,7 +1258,7 @@ class GetClustersClusterHostGroupListNodeResult(dict):
         :param str inner_ip: The Intranet IP of the EMR.
         :param str instance_id: The ID of the ECS instance.
         :param str pub_ip: Public IP address.
-        :param str status: The cluster status.
+        :param str status: Status.
         :param bool support_ipv6: Whether IPV6 is supported.
         :param str zone_id: The zone ID.
         """
@@ -1347,7 +1333,7 @@ class GetClustersClusterHostGroupListNodeResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The cluster status.
+        Status.
         """
         return pulumi.get(self, "status")
 
@@ -1469,8 +1455,8 @@ class GetClustersClusterRelateClusterInfoResult(dict):
         """
         :param str cluster_id: The ID of the associated cluster.
         :param str cluster_name: The name of the associated cluster.
-        :param str cluster_type: Cluster type:
-        :param str status: The cluster status.
+        :param str cluster_type: The cluster type of the associated cluster.
+        :param str status: The status  of the associated cluster.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -1497,7 +1483,7 @@ class GetClustersClusterRelateClusterInfoResult(dict):
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> str:
         """
-        Cluster type:
+        The cluster type of the associated cluster.
         """
         return pulumi.get(self, "cluster_type")
 
@@ -1505,7 +1491,7 @@ class GetClustersClusterRelateClusterInfoResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The cluster status.
+        The status  of the associated cluster.
         """
         return pulumi.get(self, "status")
 

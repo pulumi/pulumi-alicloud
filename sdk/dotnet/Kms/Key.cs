@@ -54,7 +54,10 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> Arn { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
+        /// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: 
+        /// - `Enabled`
+        /// - `Disabled`
+        /// **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
         /// </summary>
         [Output("automaticRotation")]
         public Output<string> AutomaticRotation { get; private set; } = null!;
@@ -142,7 +145,12 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> NextRotationDate { get; private set; } = null!;
 
         /// <summary>
-        /// The source of key material. Default value: `Aliyun_KMS`. Valid values:
+        /// The source of key material. Default value: `Aliyun_KMS`. Valid values: 
+        /// - `Aliyun_KMS`
+        /// - `EXTERNAL`
+        /// **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
+        /// you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
+        /// For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
         /// </summary>
         [Output("origin")]
         public Output<string> Origin { get; private set; } = null!;
@@ -164,6 +172,11 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
+        /// - `SOFTWARE`
+        /// - `HSM`
+        /// **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
+        /// If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
+        /// If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
         /// </summary>
         [Output("protectionLevel")]
         public Output<string?> ProtectionLevel { get; private set; } = null!;
@@ -181,7 +194,10 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> RotationInterval { get; private set; } = null!;
 
         /// <summary>
-        /// The status of CMK. Default value: `Enabled`. Valid Values:
+        /// The status of CMK. Default value: `Enabled`. Valid Values: 
+        /// - `Disabled`
+        /// - `Enabled`
+        /// - `PendingDeletion`
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -239,7 +255,10 @@ namespace Pulumi.AliCloud.Kms
     public sealed class KeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
+        /// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: 
+        /// - `Enabled`
+        /// - `Disabled`
+        /// **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
         /// </summary>
         [Input("automaticRotation")]
         public Input<string>? AutomaticRotation { get; set; }
@@ -291,7 +310,12 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? KeyUsage { get; set; }
 
         /// <summary>
-        /// The source of key material. Default value: `Aliyun_KMS`. Valid values:
+        /// The source of key material. Default value: `Aliyun_KMS`. Valid values: 
+        /// - `Aliyun_KMS`
+        /// - `EXTERNAL`
+        /// **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
+        /// you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
+        /// For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
         /// </summary>
         [Input("origin")]
         public Input<string>? Origin { get; set; }
@@ -307,6 +331,11 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
+        /// - `SOFTWARE`
+        /// - `HSM`
+        /// **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
+        /// If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
+        /// If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
         /// </summary>
         [Input("protectionLevel")]
         public Input<string>? ProtectionLevel { get; set; }
@@ -324,7 +353,10 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? RotationInterval { get; set; }
 
         /// <summary>
-        /// The status of CMK. Default value: `Enabled`. Valid Values:
+        /// The status of CMK. Default value: `Enabled`. Valid Values: 
+        /// - `Disabled`
+        /// - `Enabled`
+        /// - `PendingDeletion`
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -356,7 +388,10 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? Arn { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
+        /// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values: 
+        /// - `Enabled`
+        /// - `Disabled`
+        /// **NOTE**: If you set the origin parameter to EXTERNAL or the key_spec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
         /// </summary>
         [Input("automaticRotation")]
         public Input<string>? AutomaticRotation { get; set; }
@@ -444,7 +479,12 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? NextRotationDate { get; set; }
 
         /// <summary>
-        /// The source of key material. Default value: `Aliyun_KMS`. Valid values:
+        /// The source of key material. Default value: `Aliyun_KMS`. Valid values: 
+        /// - `Aliyun_KMS`
+        /// - `EXTERNAL`
+        /// **NOTE**: The value of this parameter is case-sensitive. If you set the `key_spec` to an asymmetric CMK type,
+        /// you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
+        /// For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
         /// </summary>
         [Input("origin")]
         public Input<string>? Origin { get; set; }
@@ -466,6 +506,11 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
+        /// - `SOFTWARE`
+        /// - `HSM`
+        /// **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
+        /// If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
+        /// If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
         /// </summary>
         [Input("protectionLevel")]
         public Input<string>? ProtectionLevel { get; set; }
@@ -483,7 +528,10 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? RotationInterval { get; set; }
 
         /// <summary>
-        /// The status of CMK. Default value: `Enabled`. Valid Values:
+        /// The status of CMK. Default value: `Enabled`. Valid Values: 
+        /// - `Disabled`
+        /// - `Enabled`
+        /// - `PendingDeletion`
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

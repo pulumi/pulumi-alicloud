@@ -78,31 +78,23 @@ public final class GetEcsKeyPairsPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The Resource Group Id.
+     * The resource group Id.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable String resourceGroupId;
 
     /**
-     * @return The Resource Group Id.
+     * @return The resource group Id.
      * 
      */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
-    /**
-     * The tags.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
-    /**
-     * @return The tags.
-     * 
-     */
     public Optional<Map<String,Object>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -191,7 +183,7 @@ public final class GetEcsKeyPairsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param resourceGroupId The Resource Group Id.
+         * @param resourceGroupId The resource group Id.
          * 
          * @return builder
          * 
@@ -201,12 +193,6 @@ public final class GetEcsKeyPairsPlainArgs extends com.pulumi.resources.InvokeAr
             return this;
         }
 
-        /**
-         * @param tags The tags.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Map<String,Object> tags) {
             $.tags = tags;
             return this;

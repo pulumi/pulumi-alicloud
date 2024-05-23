@@ -16,14 +16,14 @@ public final class GetDedicatedHostGroupsPlainArgs extends com.pulumi.resources.
     public static final GetDedicatedHostGroupsPlainArgs Empty = new GetDedicatedHostGroupsPlainArgs();
 
     /**
-     * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+     * Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
      * 
      */
     @Import(name="engine")
     private @Nullable String engine;
 
     /**
-     * @return Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+     * @return Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
      * 
      */
     public Optional<String> engine() {
@@ -103,7 +103,7 @@ public final class GetDedicatedHostGroupsPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param engine Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+         * @param engine Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
          * 
          * @return builder
          * 

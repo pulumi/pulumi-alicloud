@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Config("default", ConfigArgs.builder()        
+ *         var default_ = new Config("default", ConfigArgs.builder()
  *             .code("access_failed_cnt")
  *             .value(10)
  *             .build());

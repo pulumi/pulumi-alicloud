@@ -59,7 +59,7 @@ func GetVpcFirewallControlPolicies(ctx *pulumi.Context, args *GetVpcFirewallCont
 
 // A collection of arguments for invoking getVpcFirewallControlPolicies.
 type GetVpcFirewallControlPoliciesArgs struct {
-	// Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction *string `pulumi:"aclAction"`
 	// Access control over VPC firewalls strategy unique identifier.
 	AclUuid *string `pulumi:"aclUuid"`
@@ -80,10 +80,14 @@ type GetVpcFirewallControlPoliciesArgs struct {
 	// Access control over VPC firewalls strategy access traffic of the protocol type.
 	Proto *string `pulumi:"proto"`
 	// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+	// - **true**: Enable access control policies
+	// - **false**: does not enable access control policies.
 	Release *bool `pulumi:"release"`
 	// Access control over VPC firewalls strategy in the source address.
 	Source *string `pulumi:"source"`
-	// The ID of the VPC firewall instance.
+	// The ID of the VPC firewall instance. Value:
+	// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+	// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
 	VpcFirewallId string `pulumi:"vpcFirewallId"`
 }
 
@@ -123,7 +127,7 @@ func GetVpcFirewallControlPoliciesOutput(ctx *pulumi.Context, args GetVpcFirewal
 
 // A collection of arguments for invoking getVpcFirewallControlPolicies.
 type GetVpcFirewallControlPoliciesOutputArgs struct {
-	// Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+	// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
 	AclAction pulumi.StringPtrInput `pulumi:"aclAction"`
 	// Access control over VPC firewalls strategy unique identifier.
 	AclUuid pulumi.StringPtrInput `pulumi:"aclUuid"`
@@ -144,10 +148,14 @@ type GetVpcFirewallControlPoliciesOutputArgs struct {
 	// Access control over VPC firewalls strategy access traffic of the protocol type.
 	Proto pulumi.StringPtrInput `pulumi:"proto"`
 	// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+	// - **true**: Enable access control policies
+	// - **false**: does not enable access control policies.
 	Release pulumi.BoolPtrInput `pulumi:"release"`
 	// Access control over VPC firewalls strategy in the source address.
 	Source pulumi.StringPtrInput `pulumi:"source"`
-	// The ID of the VPC firewall instance.
+	// The ID of the VPC firewall instance. Value:
+	// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+	// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
 	VpcFirewallId pulumi.StringInput `pulumi:"vpcFirewallId"`
 }
 

@@ -55,25 +55,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Network("example", NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()
  *             .cidrBlock("172.16.0.0/12")
  *             .vpcName("terraform-example")
  *             .build());
  * 
- *         var exampleRouteTable = new RouteTable("exampleRouteTable", RouteTableArgs.builder()        
+ *         var exampleRouteTable = new RouteTable("exampleRouteTable", RouteTableArgs.builder()
  *             .vpcId(example.id())
  *             .routeTableName("terraform-example")
  *             .description("terraform-example")
  *             .associateType("Gateway")
  *             .build());
  * 
- *         var exampleIpv4Gateway = new Ipv4Gateway("exampleIpv4Gateway", Ipv4GatewayArgs.builder()        
+ *         var exampleIpv4Gateway = new Ipv4Gateway("exampleIpv4Gateway", Ipv4GatewayArgs.builder()
  *             .ipv4GatewayName("terraform-example")
  *             .vpcId(example.id())
  *             .enabled("true")
  *             .build());
  * 
- *         var exampleGatewayRouteTableAttachment = new GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment", GatewayRouteTableAttachmentArgs.builder()        
+ *         var exampleGatewayRouteTableAttachment = new GatewayRouteTableAttachment("exampleGatewayRouteTableAttachment", GatewayRouteTableAttachmentArgs.builder()
  *             .ipv4GatewayId(exampleIpv4Gateway.id())
  *             .routeTableId(exampleRouteTable.id())
  *             .build());

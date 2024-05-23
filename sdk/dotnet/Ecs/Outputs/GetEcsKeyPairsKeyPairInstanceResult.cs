@@ -19,9 +19,6 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string InstanceId;
         public readonly string InstanceName;
         public readonly string InstanceType;
-        /// <summary>
-        /// The Key Pair Name.
-        /// </summary>
         public readonly string KeyName;
         public readonly string PrivateIp;
         public readonly string PublicIp;

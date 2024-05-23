@@ -164,7 +164,9 @@ def get_access_strategies(enable_details: Optional[bool] = None,
     :param str lang: The lang.
     :param str name_regex: A regex string to filter results by Access Strategy name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str strategy_mode: The type of the access policy.
+    :param str strategy_mode: The type of the access policy. Valid values:
+           - `GEO`: based on geographic location.
+           - `LATENCY`: Based on delay.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -229,6 +231,8 @@ def get_access_strategies_output(enable_details: Optional[pulumi.Input[Optional[
     :param str lang: The lang.
     :param str name_regex: A regex string to filter results by Access Strategy name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str strategy_mode: The type of the access policy.
+    :param str strategy_mode: The type of the access policy. Valid values:
+           - `GEO`: based on geographic location.
+           - `LATENCY`: Based on delay.
     """
     ...

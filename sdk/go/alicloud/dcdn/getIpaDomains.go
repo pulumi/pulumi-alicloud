@@ -66,7 +66,7 @@ func GetIpaDomains(ctx *pulumi.Context, args *GetIpaDomainsArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getIpaDomains.
 type GetIpaDomainsArgs struct {
-	// The accelerated domain names.
+	// The name of the Domain.
 	DomainName *string `pulumi:"domainName"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
@@ -74,7 +74,7 @@ type GetIpaDomainsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the accelerated domain name.
+	// The status of the accelerated domain name. Valid values: `checkFailed`, `checking`, `configureFailed`, `configuring`, `offline`, `online`.
 	Status *string `pulumi:"status"`
 }
 
@@ -106,7 +106,7 @@ func GetIpaDomainsOutput(ctx *pulumi.Context, args GetIpaDomainsOutputArgs, opts
 
 // A collection of arguments for invoking getIpaDomains.
 type GetIpaDomainsOutputArgs struct {
-	// The accelerated domain names.
+	// The name of the Domain.
 	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
@@ -114,7 +114,7 @@ type GetIpaDomainsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the accelerated domain name.
+	// The status of the accelerated domain name. Valid values: `checkFailed`, `checking`, `configureFailed`, `configuring`, `offline`, `online`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

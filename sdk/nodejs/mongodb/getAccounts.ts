@@ -41,11 +41,11 @@ export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions):
  */
 export interface GetAccountsArgs {
     /**
-     * The name of the account.
+     * The name of the account. Valid values: `root`.
      */
     accountName?: string;
     /**
-     * The id of the instance to which the account belongs.
+     * The ID of the instance.
      */
     instanceId: string;
     /**
@@ -96,11 +96,11 @@ export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.Inv
  */
 export interface GetAccountsOutputArgs {
     /**
-     * The name of the account.
+     * The name of the account. Valid values: `root`.
      */
     accountName?: pulumi.Input<string>;
     /**
-     * The id of the instance to which the account belongs.
+     * The ID of the instance.
      */
     instanceId: pulumi.Input<string>;
     /**
