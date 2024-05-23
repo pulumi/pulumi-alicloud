@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var rule1 = new Rule("rule1", RuleArgs.builder()        
+ *         var rule1 = new Rule("rule1", RuleArgs.builder()
  *             .description(name)
  *             .sourceOwner("ALIYUN")
  *             .sourceIdentifier("ram-user-ak-create-date-expired-check")
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .inputParameters(Map.of("days", "90"))
  *             .build());
  * 
- *         var rule2 = new Rule("rule2", RuleArgs.builder()        
+ *         var rule2 = new Rule("rule2", RuleArgs.builder()
  *             .description(name)
  *             .sourceOwner("ALIYUN")
  *             .sourceIdentifier("adb-cluster-maintain-time-check")
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *             .inputParameters(Map.of("maintainTimes", "02:00-04:00,06:00-08:00,12:00-13:00"))
  *             .build());
  * 
- *         var defaultCompliancePack = new CompliancePack("defaultCompliancePack", CompliancePackArgs.builder()        
+ *         var defaultCompliancePack = new CompliancePack("defaultCompliancePack", CompliancePackArgs.builder()
  *             .compliancePackName(name)
  *             .description("CloudGovernanceCenter evaluation")
  *             .riskLevel("2")

@@ -48,17 +48,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(String.format("terraform-example-%s", default_.result()))
  *             .acl("private")
  *             .build());
  * 
- *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
  *             .bucket(defaultBucket.bucket())
  *             .key("example_key")
  *             .source("./main.tf")
@@ -99,17 +99,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(String.format("terraform-example-%s", default_.result()))
  *             .acl("private")
  *             .build());
  * 
- *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
  *             .bucket(defaultBucket.bucket())
  *             .key("example_key")
  *             .content("the content that you want to upload.")

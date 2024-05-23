@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     public sealed class GetServerSnapshotsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the source disk. This parameter has a value even after the source disk is released.
+        /// The ID of the disk.
         /// </summary>
         [Input("diskId")]
         public string? DiskId { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     public sealed class GetServerSnapshotsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the source disk. This parameter has a value even after the source disk is released.
+        /// The ID of the disk.
         /// </summary>
         [Input("diskId")]
         public Input<string>? DiskId { get; set; }

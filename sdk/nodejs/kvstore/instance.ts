@@ -123,6 +123,8 @@ export class Instance extends pulumi.CustomResource {
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
      * The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * - `Immediately` (Default): The configurations are immediately changed.
+     * - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
      */
     public readonly effectiveTime!: pulumi.Output<string | undefined>;
     /**
@@ -563,6 +565,8 @@ export interface InstanceState {
     dryRun?: pulumi.Input<boolean>;
     /**
      * The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * - `Immediately` (Default): The configurations are immediately changed.
+     * - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
      */
     effectiveTime?: pulumi.Input<string>;
     /**
@@ -837,6 +841,8 @@ export interface InstanceArgs {
     dryRun?: pulumi.Input<boolean>;
     /**
      * The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+     * - `Immediately` (Default): The configurations are immediately changed.
+     * - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
      */
     effectiveTime?: pulumi.Input<string>;
     /**

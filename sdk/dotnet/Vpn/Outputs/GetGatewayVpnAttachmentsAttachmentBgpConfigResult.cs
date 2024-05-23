@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string LocalBgpIp;
         /// <summary>
-        /// The status of the resource.
+        /// The negotiation status of the BGP routing protocol.
         /// </summary>
         public readonly string Status;
         /// <summary>

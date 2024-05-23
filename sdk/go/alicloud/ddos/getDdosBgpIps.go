@@ -69,7 +69,9 @@ type GetDdosBgpIpsArgs struct {
 	PageSize   *int    `pulumi:"pageSize"`
 	// The product name. Valid Value:`ECS`, `SLB`, `EIP`, `WAF`.
 	ProductName *string `pulumi:"productName"`
-	// The current state of the IP address.
+	// The current state of the IP address. Valid Value:
+	// - normal: indicates normal (not attacked).
+	// - hole_begin: indicates that you are in a black hole state.
 	Status *string `pulumi:"status"`
 }
 
@@ -112,7 +114,9 @@ type GetDdosBgpIpsOutputArgs struct {
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The product name. Valid Value:`ECS`, `SLB`, `EIP`, `WAF`.
 	ProductName pulumi.StringPtrInput `pulumi:"productName"`
-	// The current state of the IP address.
+	// The current state of the IP address. Valid Value:
+	// - normal: indicates normal (not attacked).
+	// - hole_begin: indicates that you are in a black hole state.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

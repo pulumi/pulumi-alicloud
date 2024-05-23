@@ -63,17 +63,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()
  *             .transitRouterName(name)
  *             .cenId(exampleInstance.id())
  *             .build());
  * 
- *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable("exampleTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()        
+ *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable("exampleTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .build());
  * 
@@ -81,12 +81,12 @@ import javax.annotation.Nullable;
  *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
- *         var vlanId = new Integer("vlanId", IntegerArgs.builder()        
+ *         var vlanId = new Integer("vlanId", IntegerArgs.builder()
  *             .max(2999)
  *             .min(1)
  *             .build());
  * 
- *         var exampleVirtualBorderRouter = new VirtualBorderRouter("exampleVirtualBorderRouter", VirtualBorderRouterArgs.builder()        
+ *         var exampleVirtualBorderRouter = new VirtualBorderRouter("exampleVirtualBorderRouter", VirtualBorderRouterArgs.builder()
  *             .localGatewayIp("10.0.0.1")
  *             .peerGatewayIp("10.0.0.2")
  *             .peeringSubnetMask("255.255.255.252")
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *             .detectMultiplier(10)
  *             .build());
  * 
- *         var exampleTransitRouterVbrAttachment = new TransitRouterVbrAttachment("exampleTransitRouterVbrAttachment", TransitRouterVbrAttachmentArgs.builder()        
+ *         var exampleTransitRouterVbrAttachment = new TransitRouterVbrAttachment("exampleTransitRouterVbrAttachment", TransitRouterVbrAttachmentArgs.builder()
  *             .vbrId(exampleVirtualBorderRouter.id())
  *             .cenId(exampleInstance.id())
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *             .transitRouterAttachmentDescription(name)
  *             .build());
  * 
- *         var exampleTransitRouterRouteEntry = new TransitRouterRouteEntry("exampleTransitRouterRouteEntry", TransitRouterRouteEntryArgs.builder()        
+ *         var exampleTransitRouterRouteEntry = new TransitRouterRouteEntry("exampleTransitRouterRouteEntry", TransitRouterRouteEntryArgs.builder()
  *             .transitRouterRouteTableId(exampleTransitRouterRouteTable.transitRouterRouteTableId())
  *             .transitRouterRouteEntryDestinationCidrBlock("192.168.0.0/24")
  *             .transitRouterRouteEntryNextHopType("Attachment")

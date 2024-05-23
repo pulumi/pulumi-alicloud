@@ -153,12 +153,12 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
     ```
 
 
-    :param bool auto_accept_connection: Whether to automatically accept terminal node connections..
+    :param bool auto_accept_connection: Whether to automatically accept terminal node connections.
     :param Sequence[str] ids: A list of Vpc Endpoint Service IDs.
     :param str name_regex: A regex string to filter results by Vpc Endpoint Service name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str service_business_status: The business status of the terminal node service..
-    :param str status: The Status of Vpc Endpoint Service.
+    :param str service_business_status: The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
+    :param str status: The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
     :param str vpc_endpoint_service_name: The name of Vpc Endpoint Service.
     """
     __args__ = dict()
@@ -213,12 +213,12 @@ def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Inp
     ```
 
 
-    :param bool auto_accept_connection: Whether to automatically accept terminal node connections..
+    :param bool auto_accept_connection: Whether to automatically accept terminal node connections.
     :param Sequence[str] ids: A list of Vpc Endpoint Service IDs.
     :param str name_regex: A regex string to filter results by Vpc Endpoint Service name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str service_business_status: The business status of the terminal node service..
-    :param str status: The Status of Vpc Endpoint Service.
+    :param str service_business_status: The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
+    :param str status: The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
     :param str vpc_endpoint_service_name: The name of Vpc Endpoint Service.
     """
     ...

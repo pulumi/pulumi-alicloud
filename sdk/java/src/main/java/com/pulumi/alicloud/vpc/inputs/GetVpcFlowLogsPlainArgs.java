@@ -136,14 +136,14 @@ public final class GetVpcFlowLogsPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The resource type.
+     * The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
      * 
      */
     @Import(name="resourceType")
     private @Nullable String resourceType;
 
     /**
-     * @return The resource type.
+     * @return The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
      * 
      */
     public Optional<String> resourceType() {
@@ -151,14 +151,14 @@ public final class GetVpcFlowLogsPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The status of flow log.
+     * The status of  flow log. Valid values: `Active`, `Inactive`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of flow log.
+     * @return The status of  flow log. Valid values: `Active`, `Inactive`.
      * 
      */
     public Optional<String> status() {
@@ -166,14 +166,14 @@ public final class GetVpcFlowLogsPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The traffic type.
+     * The traffic type. Valid values: `All`, `Allow`, `Drop`.
      * 
      */
     @Import(name="trafficType")
     private @Nullable String trafficType;
 
     /**
-     * @return The traffic type.
+     * @return The traffic type. Valid values: `All`, `Allow`, `Drop`.
      * 
      */
     public Optional<String> trafficType() {
@@ -313,7 +313,7 @@ public final class GetVpcFlowLogsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param resourceType The resource type.
+         * @param resourceType The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class GetVpcFlowLogsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param status The status of flow log.
+         * @param status The status of  flow log. Valid values: `Active`, `Inactive`.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class GetVpcFlowLogsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param trafficType The traffic type.
+         * @param trafficType The traffic type. Valid values: `All`, `Allow`, `Drop`.
          * 
          * @return builder
          * 

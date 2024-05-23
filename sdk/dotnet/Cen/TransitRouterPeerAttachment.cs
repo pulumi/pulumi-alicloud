@@ -100,6 +100,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+        /// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+        /// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
         /// </summary>
         [Output("bandwidthType")]
         public Output<string> BandwidthType { get; private set; } = null!;
@@ -254,6 +256,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+        /// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+        /// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
         /// </summary>
         [Input("bandwidthType")]
         public Input<string>? BandwidthType { get; set; }
@@ -352,6 +356,8 @@ namespace Pulumi.AliCloud.Cen
 
         /// <summary>
         /// The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
+        /// * `DataTransfer` - uses pay-by-data-transfer bandwidth.
+        /// * `BandwidthPackage` - allocates bandwidth from a bandwidth plan.
         /// </summary>
         [Input("bandwidthType")]
         public Input<string>? BandwidthType { get; set; }

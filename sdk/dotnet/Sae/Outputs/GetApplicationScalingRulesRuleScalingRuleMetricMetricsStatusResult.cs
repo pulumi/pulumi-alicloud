@@ -13,13 +13,37 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusResult
     {
+        /// <summary>
+        /// The current monitoring indicator elasticity list.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricResult> CurrentMetrics;
+        /// <summary>
+        /// The number of current instances.
+        /// </summary>
         public readonly int CurrentReplicas;
+        /// <summary>
+        /// The number of target instances.
+        /// </summary>
         public readonly int DesiredReplicas;
+        /// <summary>
+        /// The time of the last elastic expansion.
+        /// </summary>
         public readonly string LastScaleTime;
+        /// <summary>
+        /// The maximum number of instances.
+        /// </summary>
         public readonly int MaxReplicas;
+        /// <summary>
+        /// The minimum number of instances.
+        /// </summary>
         public readonly int MinReplicas;
+        /// <summary>
+        /// Next monitoring indicator elasticity list
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricResult> NextScaleMetrics;
+        /// <summary>
+        /// The next cycle of monitoring indicator elasticity.
+        /// </summary>
         public readonly int NextScaleTimePeriod;
 
         [OutputConstructor]

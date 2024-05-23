@@ -67,24 +67,24 @@ import javax.annotation.Nullable;
  *             .engineVersion("5.6")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .engine("MySQL")
  *             .engineVersion("5.7")
  *             .instanceType("rds.mysql.c1.large")
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *             .dbInstanceStorageType("local_ssd")
  *             .build());
  * 
- *         var defaultReadOnlyInstance = new ReadOnlyInstance("defaultReadOnlyInstance", ReadOnlyInstanceArgs.builder()        
+ *         var defaultReadOnlyInstance = new ReadOnlyInstance("defaultReadOnlyInstance", ReadOnlyInstanceArgs.builder()
  *             .zoneId(defaultInstance.zoneId())
  *             .masterDbInstanceId(defaultInstance.id())
  *             .engineVersion(defaultInstance.engineVersion())
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
- *         var defaultRdsDbProxy = new RdsDbProxy("defaultRdsDbProxy", RdsDbProxyArgs.builder()        
+ *         var defaultRdsDbProxy = new RdsDbProxy("defaultRdsDbProxy", RdsDbProxyArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .instanceNetworkType("VPC")
  *             .vpcId(defaultInstance.vpcId())

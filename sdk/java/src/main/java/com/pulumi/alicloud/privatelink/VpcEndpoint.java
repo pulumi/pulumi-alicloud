@@ -64,23 +64,23 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultbFzA4a = new Network("defaultbFzA4a", NetworkArgs.builder()        
+ *         var defaultbFzA4a = new Network("defaultbFzA4a", NetworkArgs.builder()
  *             .description("example-terraform")
  *             .cidrBlock("172.16.0.0/12")
  *             .vpcName(name)
  *             .build());
  * 
- *         var default1FTFrP = new SecurityGroup("default1FTFrP", SecurityGroupArgs.builder()        
+ *         var default1FTFrP = new SecurityGroup("default1FTFrP", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultbFzA4a.id())
  *             .build());
  * 
- *         var defaultjljY5S = new SecurityGroup("defaultjljY5S", SecurityGroupArgs.builder()        
+ *         var defaultjljY5S = new SecurityGroup("defaultjljY5S", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultbFzA4a.id())
  *             .build());
  * 
- *         var defaultVpcEndpoint = new VpcEndpoint("defaultVpcEndpoint", VpcEndpointArgs.builder()        
+ *         var defaultVpcEndpoint = new VpcEndpoint("defaultVpcEndpoint", VpcEndpointArgs.builder()
  *             .endpointDescription(name)
  *             .vpcEndpointName(name)
  *             .resourceGroupId(default_.ids()[0])

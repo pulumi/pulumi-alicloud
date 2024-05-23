@@ -56,6 +56,8 @@ func GetAccelerators(ctx *pulumi.Context, args *GetAcceleratorsArgs, opts ...pul
 // A collection of arguments for invoking getAccelerators.
 type GetAcceleratorsArgs struct {
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	// - `BandwidthPackage`: billed based on bandwidth plans.
+	// - `CDT`: billed based on data transfer.
 	BandwidthBillingType *string `pulumi:"bandwidthBillingType"`
 	// A list of Accelerator IDs.
 	Ids []string `pulumi:"ids"`
@@ -99,6 +101,8 @@ func GetAcceleratorsOutput(ctx *pulumi.Context, args GetAcceleratorsOutputArgs, 
 // A collection of arguments for invoking getAccelerators.
 type GetAcceleratorsOutputArgs struct {
 	// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+	// - `BandwidthPackage`: billed based on bandwidth plans.
+	// - `CDT`: billed based on data transfer.
 	BandwidthBillingType pulumi.StringPtrInput `pulumi:"bandwidthBillingType"`
 	// A list of Accelerator IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

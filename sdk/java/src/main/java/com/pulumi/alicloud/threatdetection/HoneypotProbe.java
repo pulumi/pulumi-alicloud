@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new HoneypotProbe("default", HoneypotProbeArgs.builder()        
+ *         var default_ = new HoneypotProbe("default", HoneypotProbeArgs.builder()
  *             .uuid("032b618f-b220-4a0d-bd37-fbdc6ef58b6a")
  *             .probeType("host_probe")
  *             .controlNodeId("a44e1ab3-6945-444c-889d-5bacee7056e8")

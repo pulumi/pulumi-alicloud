@@ -47,14 +47,14 @@ public final class GetServerDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Alibaba Cloud simple application server instance ID.
+     * The ID of the simple application server to which the disk is attached.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return Alibaba Cloud simple application server instance ID.
+     * @return The ID of the simple application server to which the disk is attached.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -188,7 +188,7 @@ public final class GetServerDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param instanceId Alibaba Cloud simple application server instance ID.
+         * @param instanceId The ID of the simple application server to which the disk is attached.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class GetServerDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param instanceId Alibaba Cloud simple application server instance ID.
+         * @param instanceId The ID of the simple application server to which the disk is attached.
          * 
          * @return builder
          * 

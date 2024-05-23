@@ -67,7 +67,7 @@ type GetListenersArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the listener.
+	// The status of the listener. Valid values: `active`, `configuring`, `creating`.
 	Status *string `pulumi:"status"`
 }
 
@@ -107,7 +107,7 @@ type GetListenersOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the listener.
+	// The status of the listener. Valid values: `active`, `configuring`, `creating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

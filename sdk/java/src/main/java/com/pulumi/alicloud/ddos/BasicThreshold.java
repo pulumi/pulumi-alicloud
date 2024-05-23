@@ -79,24 +79,24 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("192.168.192.0/24")
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .instanceName(name)
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
- *         var example = new BasicThreshold("example", BasicThresholdArgs.builder()        
+ *         var example = new BasicThreshold("example", BasicThresholdArgs.builder()
  *             .instanceType("ecs")
  *             .instanceId(defaultInstance.id())
  *             .internetIp(defaultInstance.publicIp())

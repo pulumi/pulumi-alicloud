@@ -35,6 +35,7 @@ class NasBackupPlanArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         :param pulumi.Input[str] create_time: This field has been deprecated from provider version 1.153.0+. The creation time of NAS file system. **Note** The time format of the API adopts the ISO 8601, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
@@ -133,6 +134,7 @@ class NasBackupPlanArgs:
     def schedule(self) -> pulumi.Input[str]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -262,6 +264,7 @@ class _NasBackupPlanState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
         if backup_type is not None:
@@ -436,6 +439,7 @@ class _NasBackupPlanState:
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -534,6 +538,7 @@ class NasBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
         ...
@@ -693,6 +698,7 @@ class NasBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. Up to 65536 characters. e.g.`["/home", "/var"]`. **Note** You should at least specify a backup path, empty array not allowed here.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -812,6 +818,7 @@ class NasBackupPlan(pulumi.CustomResource):
     def schedule(self) -> pulumi.Output[str]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 

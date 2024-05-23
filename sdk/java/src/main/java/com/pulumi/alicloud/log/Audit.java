@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var example = new Audit("example", AuditArgs.builder()        
+ *         var example = new Audit("example", AuditArgs.builder()
  *             .displayName("tf-audit-example")
  *             .aliuid(default_.id())
  *             .variableMap(Map.ofEntries(
@@ -179,7 +179,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var example = new Audit("example", AuditArgs.builder()        
+ *         var example = new Audit("example", AuditArgs.builder()
  *             .displayName("tf-audit-example")
  *             .aliuid(default_.id())
  *             .variableMap(Map.ofEntries(
@@ -226,7 +226,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var example = new Audit("example", AuditArgs.builder()        
+ *         var example = new Audit("example", AuditArgs.builder()
  *             .displayName("tf-audit-example")
  *             .aliuid(default_.id())
  *             .variableMap(Map.ofEntries(
@@ -269,7 +269,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var example = new Audit("example", AuditArgs.builder()        
+ *         var example = new Audit("example", AuditArgs.builder()
  *             .displayName("tf-audit-example")
  *             .aliuid(default_.id())
  *             .variableMap(Map.ofEntries(

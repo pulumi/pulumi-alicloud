@@ -35,7 +35,7 @@ export interface GetIngressesArgs {
      */
     ids?: string[];
     /**
-     * The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+     * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      */
     namespaceId: string;
     /**
@@ -80,7 +80,7 @@ export interface GetIngressesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+     * The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      */
     namespaceId: pulumi.Input<string>;
     /**

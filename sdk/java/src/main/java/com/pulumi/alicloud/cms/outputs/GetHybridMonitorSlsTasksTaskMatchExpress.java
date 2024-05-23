@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHybridMonitorSlsTasksTaskMatchExpress {
+    /**
+     * @return The method that is used to match the instance name.
+     * 
+     */
     private String function;
+    /**
+     * @return The name of the instance.
+     * 
+     */
     private String name;
+    /**
+     * @return The keyword that corresponds to the instance name.
+     * 
+     */
     private String value;
 
     private GetHybridMonitorSlsTasksTaskMatchExpress() {}
+    /**
+     * @return The method that is used to match the instance name.
+     * 
+     */
     public String function() {
         return this.function;
     }
+    /**
+     * @return The name of the instance.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The keyword that corresponds to the instance name.
+     * 
+     */
     public String value() {
         return this.value;
     }

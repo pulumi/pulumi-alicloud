@@ -82,13 +82,13 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class GetAccountsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the account.
+        /// The name of the account. Valid values: `root`.
         /// </summary>
         [Input("accountName")]
         public string? AccountName { get; set; }
 
         /// <summary>
-        /// The id of the instance to which the account belongs.
+        /// The ID of the instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
@@ -108,13 +108,13 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class GetAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the account.
+        /// The name of the account. Valid values: `root`.
         /// </summary>
         [Input("accountName")]
         public Input<string>? AccountName { get; set; }
 
         /// <summary>
-        /// The id of the instance to which the account belongs.
+        /// The ID of the instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;

@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // create a server certificate
- *         var foo = new ServerCertificate("foo", ServerCertificateArgs.builder()        
+ *         var foo = new ServerCertificate("foo", ServerCertificateArgs.builder()
  *             .name("slbservercertificate")
  *             .serverCertificate("""
  * -----BEGIN CERTIFICATE-----

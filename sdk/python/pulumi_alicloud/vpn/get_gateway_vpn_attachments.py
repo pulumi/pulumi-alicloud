@@ -162,7 +162,7 @@ def get_gateway_vpn_attachments(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Vpn Attachment IDs.
     :param str name_regex: A regex string to filter results by Vpn Attachment name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
     :param str vpn_gateway_id: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
     """
     __args__ = dict()
@@ -223,7 +223,7 @@ def get_gateway_vpn_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
     :param Sequence[str] ids: A list of Vpn Attachment IDs.
     :param str name_regex: A regex string to filter results by Vpn Attachment name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
     :param str vpn_gateway_id: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
     """
     ...

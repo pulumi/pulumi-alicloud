@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Namespace("example", NamespaceArgs.builder()        
+ *         var example = new Namespace("example", NamespaceArgs.builder()
  *             .namespaceId(String.format("%s:example%s", default_.regions()[0].id(),defaultInteger.result()))
  *             .namespaceName(name)
  *             .namespaceDescription(name)

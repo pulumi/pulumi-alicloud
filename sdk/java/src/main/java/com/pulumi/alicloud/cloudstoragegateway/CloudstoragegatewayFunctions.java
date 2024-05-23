@@ -1071,11 +1071,11 @@ public final class CloudstoragegatewayFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()
      *             .storageBundleName("example_value")
      *             .build());
      * 
-     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
      *             .description("tf-acctestDesalone")
      *             .gatewayClass("Standard")
      *             .type("File")
@@ -1088,7 +1088,7 @@ public final class CloudstoragegatewayFunctions {
      *             .gatewayName("example_value")
      *             .build());
      * 
-     *         var defaultGatewaySmbUser = new GatewaySmbUser("defaultGatewaySmbUser", GatewaySmbUserArgs.builder()        
+     *         var defaultGatewaySmbUser = new GatewaySmbUser("defaultGatewaySmbUser", GatewaySmbUserArgs.builder()
      *             .username("your_username")
      *             .password("password")
      *             .gatewayId(defaultGateway.id())
@@ -1159,11 +1159,11 @@ public final class CloudstoragegatewayFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()
      *             .storageBundleName("example_value")
      *             .build());
      * 
-     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
      *             .description("tf-acctestDesalone")
      *             .gatewayClass("Standard")
      *             .type("File")
@@ -1176,7 +1176,7 @@ public final class CloudstoragegatewayFunctions {
      *             .gatewayName("example_value")
      *             .build());
      * 
-     *         var defaultGatewaySmbUser = new GatewaySmbUser("defaultGatewaySmbUser", GatewaySmbUserArgs.builder()        
+     *         var defaultGatewaySmbUser = new GatewaySmbUser("defaultGatewaySmbUser", GatewaySmbUserArgs.builder()
      *             .username("your_username")
      *             .password("password")
      *             .gatewayId(defaultGateway.id())
@@ -1247,11 +1247,11 @@ public final class CloudstoragegatewayFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()
      *             .storageBundleName("example_value")
      *             .build());
      * 
-     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
      *             .description("tf-acctestDesalone")
      *             .gatewayClass("Standard")
      *             .type("File")
@@ -1264,7 +1264,7 @@ public final class CloudstoragegatewayFunctions {
      *             .gatewayName("example_value")
      *             .build());
      * 
-     *         var defaultGatewaySmbUser = new GatewaySmbUser("defaultGatewaySmbUser", GatewaySmbUserArgs.builder()        
+     *         var defaultGatewaySmbUser = new GatewaySmbUser("defaultGatewaySmbUser", GatewaySmbUserArgs.builder()
      *             .username("your_username")
      *             .password("password")
      *             .gatewayId(defaultGateway.id())
@@ -1335,11 +1335,11 @@ public final class CloudstoragegatewayFunctions {
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()
      *             .storageBundleName("example_value")
      *             .build());
      * 
-     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+     *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
      *             .description("tf-acctestDesalone")
      *             .gatewayClass("Standard")
      *             .type("File")
@@ -1352,7 +1352,7 @@ public final class CloudstoragegatewayFunctions {
      *             .gatewayName("example_value")
      *             .build());
      * 
-     *         var defaultGatewaySmbUser = new GatewaySmbUser("defaultGatewaySmbUser", GatewaySmbUserArgs.builder()        
+     *         var defaultGatewaySmbUser = new GatewaySmbUser("defaultGatewaySmbUser", GatewaySmbUserArgs.builder()
      *             .username("your_username")
      *             .password("password")
      *             .gatewayId(defaultGateway.id())
@@ -1408,7 +1408,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()
      *             .storageBundleName("example_value")
      *             .build());
      * 
@@ -1462,7 +1462,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()
      *             .storageBundleName("example_value")
      *             .build());
      * 
@@ -1516,7 +1516,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()
      *             .storageBundleName("example_value")
      *             .build());
      * 
@@ -1570,7 +1570,7 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var example = new StorageBundle("example", StorageBundleArgs.builder()        
+     *         var example = new StorageBundle("example", StorageBundleArgs.builder()
      *             .storageBundleName("example_value")
      *             .build());
      * 

@@ -13,13 +13,37 @@ namespace Pulumi.AliCloud.Mse.Outputs
     [OutputType]
     public sealed class GetGatewaysGatewaySlbListResult
     {
+        /// <summary>
+        /// The associate id.
+        /// </summary>
         public readonly string AssociateId;
+        /// <summary>
+        /// The Mode of the gateway slb.
+        /// </summary>
         public readonly string GatewaySlbMode;
+        /// <summary>
+        /// The Status of the gateway slb.
+        /// </summary>
         public readonly string GatewaySlbStatus;
+        /// <summary>
+        /// The creation time of the gateway slb.
+        /// </summary>
         public readonly string GmtCreate;
+        /// <summary>
+        /// The ID of the gateway slb.
+        /// </summary>
         public readonly string SlbId;
+        /// <summary>
+        /// The ip of the gateway slb.
+        /// </summary>
         public readonly string SlbIp;
+        /// <summary>
+        /// The port of the gateway slb.
+        /// </summary>
         public readonly string SlbPort;
+        /// <summary>
+        /// The type of the gateway slb.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

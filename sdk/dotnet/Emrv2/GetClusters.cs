@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Emrv2
     public sealed class GetClustersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the emr cluster.
+        /// The cluster name.
         /// </summary>
         [Input("clusterName")]
         public string? ClusterName { get; set; }
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Emrv2
         }
 
         /// <summary>
-        /// The resource group id of the resource.
+        /// The Resource Group ID.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Emrv2
     public sealed class GetClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the emr cluster.
+        /// The cluster name.
         /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.AliCloud.Emrv2
         }
 
         /// <summary>
-        /// The resource group id of the resource.
+        /// The Resource Group ID.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }

@@ -61,14 +61,14 @@ public final class GetSimpleOfficeSitesPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+     * Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+     * @return Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
      * 
      */
     public Optional<String> status() {
@@ -146,7 +146,7 @@ public final class GetSimpleOfficeSitesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param status Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+         * @param status Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
          * 
          * @return builder
          * 

@@ -2654,17 +2654,27 @@ class GetPrometheusAlertRulesRuleAnnotationResult(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
+        """
+        :param str name: The value of the annotation.
+        :param str value: The name of the annotation name.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The value of the annotation.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The name of the annotation name.
+        """
         return pulumi.get(self, "value")
 
 
@@ -2673,17 +2683,27 @@ class GetPrometheusAlertRulesRuleLabelResult(dict):
     def __init__(__self__, *,
                  name: str,
                  value: str):
+        """
+        :param str name: The name of the label.
+        :param str value: The value of the label.
+        """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the label.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        The value of the label.
+        """
         return pulumi.get(self, "value")
 
 

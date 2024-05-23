@@ -92,7 +92,7 @@ type GetIpv6GatewaysArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+	// The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
 	Status *string `pulumi:"status"`
 	// The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
 	VpcId *string `pulumi:"vpcId"`
@@ -135,7 +135,7 @@ type GetIpv6GatewaysOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+	// The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`

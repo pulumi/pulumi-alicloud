@@ -64,7 +64,7 @@ type GetAutoSnapshotPoliciesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of Auto Snapshot Policy.
+	// The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -104,7 +104,7 @@ type GetAutoSnapshotPoliciesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of Auto Snapshot Policy.
+	// The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`

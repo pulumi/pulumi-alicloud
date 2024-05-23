@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -92,17 +92,17 @@ import javax.annotation.Nullable;
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+ *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .build());
  * 
- *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+ *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
  *             .keyPairName(String.format("%s-%s", name,defaultInteger.result()))
  *             .publicKeyBody("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .instanceName(name)
  *             .description(name)
  *             .keyPairName(defaultKeyPair.keyPairName())

@@ -154,7 +154,7 @@ def get_ipv6_gateways(ids: Optional[Sequence[str]] = None,
     :param str ipv6_gateway_name: The name of the IPv6 gateway.
     :param str name_regex: A regex string to filter results by Ipv6 Gateway name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+    :param str status: The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
     :param str vpc_id: The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
     """
     __args__ = dict()
@@ -217,7 +217,7 @@ def get_ipv6_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param str ipv6_gateway_name: The name of the IPv6 gateway.
     :param str name_regex: A regex string to filter results by Ipv6 Gateway name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+    :param str status: The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
     :param str vpc_id: The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
     """
     ...

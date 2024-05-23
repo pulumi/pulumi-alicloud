@@ -42,7 +42,7 @@ export function getDedicatedHostAccounts(args?: GetDedicatedHostAccountsArgs, op
  */
 export interface GetDedicatedHostAccountsArgs {
     /**
-     * The ID of the Dedicated host.
+     * The ID of the host.
      */
     dedicatedHostId?: string;
     /**
@@ -104,7 +104,7 @@ export function getDedicatedHostAccountsOutput(args?: GetDedicatedHostAccountsOu
  */
 export interface GetDedicatedHostAccountsOutputArgs {
     /**
-     * The ID of the Dedicated host.
+     * The ID of the host.
      */
     dedicatedHostId?: pulumi.Input<string>;
     /**

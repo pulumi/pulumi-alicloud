@@ -58,7 +58,7 @@ export function getServerSnapshots(args?: GetServerSnapshotsArgs, opts?: pulumi.
  */
 export interface GetServerSnapshotsArgs {
     /**
-     * The ID of the source disk. This parameter has a value even after the source disk is released.
+     * The ID of the disk.
      */
     diskId?: string;
     /**
@@ -142,7 +142,7 @@ export function getServerSnapshotsOutput(args?: GetServerSnapshotsOutputArgs, op
  */
 export interface GetServerSnapshotsOutputArgs {
     /**
-     * The ID of the source disk. This parameter has a value even after the source disk is released.
+     * The ID of the disk.
      */
     diskId?: pulumi.Input<string>;
     /**

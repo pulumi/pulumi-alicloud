@@ -16,31 +16,23 @@ public final class GetDesktopsPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetDesktopsPlainArgs Empty = new GetDesktopsPlainArgs();
 
     /**
-     * The desktop name of the Desktop.
+     * The desktop name.
      * 
      */
     @Import(name="desktopName")
     private @Nullable String desktopName;
 
     /**
-     * @return The desktop name of the Desktop.
+     * @return The desktop name.
      * 
      */
     public Optional<String> desktopName() {
         return Optional.ofNullable(this.desktopName);
     }
 
-    /**
-     * The desktop end user id of the Desktop.
-     * 
-     */
     @Import(name="endUserIds")
     private @Nullable List<String> endUserIds;
 
-    /**
-     * @return The desktop end user id of the Desktop.
-     * 
-     */
     public Optional<List<String>> endUserIds() {
         return Optional.ofNullable(this.endUserIds);
     }
@@ -167,7 +159,7 @@ public final class GetDesktopsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param desktopName The desktop name of the Desktop.
+         * @param desktopName The desktop name.
          * 
          * @return builder
          * 
@@ -177,23 +169,11 @@ public final class GetDesktopsPlainArgs extends com.pulumi.resources.InvokeArgs 
             return this;
         }
 
-        /**
-         * @param endUserIds The desktop end user id of the Desktop.
-         * 
-         * @return builder
-         * 
-         */
         public Builder endUserIds(@Nullable List<String> endUserIds) {
             $.endUserIds = endUserIds;
             return this;
         }
 
-        /**
-         * @param endUserIds The desktop end user id of the Desktop.
-         * 
-         * @return builder
-         * 
-         */
         public Builder endUserIds(String... endUserIds) {
             return endUserIds(List.of(endUserIds));
         }

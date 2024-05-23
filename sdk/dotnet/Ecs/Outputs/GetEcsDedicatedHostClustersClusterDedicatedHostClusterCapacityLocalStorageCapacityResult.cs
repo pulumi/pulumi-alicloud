@@ -13,8 +13,17 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult
     {
+        /// <summary>
+        /// The available capacity of the local disk. Unit: `GiB`.
+        /// </summary>
         public readonly int AvailableDisk;
+        /// <summary>
+        /// The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
+        /// </summary>
         public readonly string DataDiskCategory;
+        /// <summary>
+        /// The total capacity of the local disk. Unit: `GiB`.
+        /// </summary>
         public readonly int TotalDisk;
 
         [OutputConstructor]

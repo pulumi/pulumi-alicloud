@@ -155,6 +155,10 @@ export class EndpointGroup extends pulumi.CustomResource {
     public readonly healthCheckPort!: pulumi.Output<number | undefined>;
     /**
      * The protocol that is used to connect to the targets for health checks. Valid values:
+     * - `TCP` or `tcp`: TCP protocol.
+     * - `HTTP` or `http`: HTTP protocol.
+     * - `HTTPS` or `https`: HTTPS protocol.
+     * > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      */
     public readonly healthCheckProtocol!: pulumi.Output<string | undefined>;
     /**
@@ -310,6 +314,10 @@ export interface EndpointGroupState {
     healthCheckPort?: pulumi.Input<number>;
     /**
      * The protocol that is used to connect to the targets for health checks. Valid values:
+     * - `TCP` or `tcp`: TCP protocol.
+     * - `HTTP` or `http`: HTTP protocol.
+     * - `HTTPS` or `https`: HTTPS protocol.
+     * > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      */
     healthCheckProtocol?: pulumi.Input<string>;
     /**
@@ -391,6 +399,10 @@ export interface EndpointGroupArgs {
     healthCheckPort?: pulumi.Input<number>;
     /**
      * The protocol that is used to connect to the targets for health checks. Valid values:
+     * - `TCP` or `tcp`: TCP protocol.
+     * - `HTTP` or `http`: HTTP protocol.
+     * - `HTTPS` or `https`: HTTPS protocol.
+     * > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
      */
     healthCheckProtocol?: pulumi.Input<string>;
     /**

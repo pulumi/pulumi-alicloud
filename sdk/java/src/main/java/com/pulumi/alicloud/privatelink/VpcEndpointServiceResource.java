@@ -69,44 +69,44 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()        
+ *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
  *             .serviceDescription(name)
  *             .connectBandwidth(103)
  *             .autoAcceptConnection(false)
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.1.0.0/16")
  *             .vpcId(exampleNetwork.id())
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleApplicationLoadBalancer = new ApplicationLoadBalancer("exampleApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+ *         var exampleApplicationLoadBalancer = new ApplicationLoadBalancer("exampleApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
  *             .loadBalancerName(name)
  *             .vswitchId(exampleSwitch.id())
  *             .loadBalancerSpec("slb.s2.small")
  *             .addressType("intranet")
  *             .build());
  * 
- *         var exampleVpcEndpoint = new VpcEndpoint("exampleVpcEndpoint", VpcEndpointArgs.builder()        
+ *         var exampleVpcEndpoint = new VpcEndpoint("exampleVpcEndpoint", VpcEndpointArgs.builder()
  *             .serviceId(exampleVpcEndpointService.id())
  *             .securityGroupIds(exampleSecurityGroup.id())
  *             .vpcId(exampleNetwork.id())
  *             .vpcEndpointName(name)
  *             .build());
  * 
- *         var exampleVpcEndpointServiceResource = new VpcEndpointServiceResource("exampleVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()        
+ *         var exampleVpcEndpointServiceResource = new VpcEndpointServiceResource("exampleVpcEndpointServiceResource", VpcEndpointServiceResourceArgs.builder()
  *             .serviceId(exampleVpcEndpointService.id())
  *             .resourceId(exampleApplicationLoadBalancer.id())
  *             .resourceType("slb")

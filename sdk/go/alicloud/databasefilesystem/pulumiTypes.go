@@ -545,6 +545,7 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetInstancesInstanceEcsList struct {
+	// The ID of the ECS instance.
 	EcsId string `pulumi:"ecsId"`
 }
 
@@ -560,6 +561,7 @@ type GetInstancesInstanceEcsListInput interface {
 }
 
 type GetInstancesInstanceEcsListArgs struct {
+	// The ID of the ECS instance.
 	EcsId pulumi.StringInput `pulumi:"ecsId"`
 }
 
@@ -614,6 +616,7 @@ func (o GetInstancesInstanceEcsListOutput) ToGetInstancesInstanceEcsListOutputWi
 	return o
 }
 
+// The ID of the ECS instance.
 func (o GetInstancesInstanceEcsListOutput) EcsId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstanceEcsList) string { return v.EcsId }).(pulumi.StringOutput)
 }

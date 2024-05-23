@@ -11,17 +11,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDedicatedHostGroupsGroupZoneIdList {
-    /**
-     * @return The ZoneIDList of the Dedicated Host Group.
-     * 
-     */
     private List<String> zoneIdLists;
 
     private GetDedicatedHostGroupsGroupZoneIdList() {}
-    /**
-     * @return The ZoneIDList of the Dedicated Host Group.
-     * 
-     */
     public List<String> zoneIdLists() {
         return this.zoneIdLists;
     }

@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.ids()[0]))
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .dbInstanceCategory("HighAvailability")
  *             .dbInstanceClass("gpdb.group.segsdx1")
  *             .dbInstanceMode("StorageElastic")
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()        
+ *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .connectionPrefix("exampelcon")
  *             .build());

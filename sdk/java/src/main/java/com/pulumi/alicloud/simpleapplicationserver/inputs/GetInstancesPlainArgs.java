@@ -61,14 +61,14 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The billing method of the simple application server.
+     * The paymen type of the resource. Valid values: `Subscription`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable String paymentType;
 
     /**
-     * @return The billing method of the simple application server.
+     * @return The paymen type of the resource. Valid values: `Subscription`.
      * 
      */
     public Optional<String> paymentType() {
@@ -76,14 +76,14 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
      * 
      */
     public Optional<String> status() {
@@ -162,7 +162,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param paymentType The billing method of the simple application server.
+         * @param paymentType The paymen type of the resource. Valid values: `Subscription`.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
          * 
          * @return builder
          * 

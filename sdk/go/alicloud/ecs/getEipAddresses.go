@@ -58,7 +58,7 @@ func GetEipAddresses(ctx *pulumi.Context, args *GetEipAddressesArgs, opts ...pul
 
 // A collection of arguments for invoking getEipAddresses.
 type GetEipAddressesArgs struct {
-	// The name of the EIP.
+	// The eip name.
 	AddressName *string `pulumi:"addressName"`
 	// The associated instance id.
 	AssociatedInstanceId *string `pulumi:"associatedInstanceId"`
@@ -72,11 +72,11 @@ type GetEipAddressesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The include reservation data. Valid values: `BGP` and `BGP_PRO`.
 	IncludeReservationData *bool `pulumi:"includeReservationData"`
-	// The IP address of the EIP.
+	// The eip address.
 	IpAddress *string `pulumi:"ipAddress"`
 	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
 	IpAddresses []string `pulumi:"ipAddresses"`
-	// The Internet service provider (ISP).
+	// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
 	Isp *string `pulumi:"isp"`
 	// The lock reason.
 	LockReason *string `pulumi:"lockReason"`
@@ -84,13 +84,13 @@ type GetEipAddressesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The billing method of the EIP.
+	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The IDs of the contiguous EIPs.
+	// The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
 	SegmentInstanceId *string `pulumi:"segmentInstanceId"`
-	// The status of the EIP.
+	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -140,7 +140,7 @@ func GetEipAddressesOutput(ctx *pulumi.Context, args GetEipAddressesOutputArgs, 
 
 // A collection of arguments for invoking getEipAddresses.
 type GetEipAddressesOutputArgs struct {
-	// The name of the EIP.
+	// The eip name.
 	AddressName pulumi.StringPtrInput `pulumi:"addressName"`
 	// The associated instance id.
 	AssociatedInstanceId pulumi.StringPtrInput `pulumi:"associatedInstanceId"`
@@ -154,11 +154,11 @@ type GetEipAddressesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The include reservation data. Valid values: `BGP` and `BGP_PRO`.
 	IncludeReservationData pulumi.BoolPtrInput `pulumi:"includeReservationData"`
-	// The IP address of the EIP.
+	// The eip address.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// Deprecated: Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
 	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
-	// The Internet service provider (ISP).
+	// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
 	Isp pulumi.StringPtrInput `pulumi:"isp"`
 	// The lock reason.
 	LockReason pulumi.StringPtrInput `pulumi:"lockReason"`
@@ -166,13 +166,13 @@ type GetEipAddressesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The billing method of the EIP.
+	// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The IDs of the contiguous EIPs.
+	// The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
 	SegmentInstanceId pulumi.StringPtrInput `pulumi:"segmentInstanceId"`
-	// The status of the EIP.
+	// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`

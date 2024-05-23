@@ -48,6 +48,8 @@ public final class GetVpcEndpointLinkedVpcsPlainArgs extends com.pulumi.resource
 
     /**
      * The name of the module that you want to access. Valid Values:
+     * - `Registry`: the image repository.
+     * - `Chart`: a Helm chart.
      * 
      */
     @Import(name="moduleName", required=true)
@@ -55,6 +57,8 @@ public final class GetVpcEndpointLinkedVpcsPlainArgs extends com.pulumi.resource
 
     /**
      * @return The name of the module that you want to access. Valid Values:
+     * - `Registry`: the image repository.
+     * - `Chart`: a Helm chart.
      * 
      */
     public String moduleName() {
@@ -153,6 +157,8 @@ public final class GetVpcEndpointLinkedVpcsPlainArgs extends com.pulumi.resource
 
         /**
          * @param moduleName The name of the module that you want to access. Valid Values:
+         * - `Registry`: the image repository.
+         * - `Chart`: a Helm chart.
          * 
          * @return builder
          * 

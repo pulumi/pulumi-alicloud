@@ -45,7 +45,7 @@ public final class GetEcsLaunchTemplatesTemplate {
      */
     private String deploymentSetId;
     /**
-     * @return System disk description.
+     * @return The Description of Template.
      * 
      */
     private String description;
@@ -272,7 +272,7 @@ public final class GetEcsLaunchTemplatesTemplate {
         return this.deploymentSetId;
     }
     /**
-     * @return System disk description.
+     * @return The Description of Template.
      * 
      */
     public String description() {

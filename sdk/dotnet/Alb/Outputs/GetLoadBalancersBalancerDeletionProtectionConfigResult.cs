@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class GetLoadBalancersBalancerDeletionProtectionConfigResult
     {
+        /// <summary>
+        /// Remove the Protection Status.
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
+        /// </summary>
         public readonly string EnabledTime;
 
         [OutputConstructor]

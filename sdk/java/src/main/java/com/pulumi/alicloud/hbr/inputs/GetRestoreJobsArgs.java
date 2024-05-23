@@ -48,14 +48,14 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+     * The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
      * 
      */
     @Import(name="restoreType", required=true)
     private Output<String> restoreType;
 
     /**
-     * @return The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+     * @return The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
      * 
      */
     public Output<String> restoreType() {
@@ -78,14 +78,14 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of restore job.
+     * The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of restore job.
+     * @return The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -93,14 +93,14 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of target ofo OSS bucket.
+     * The name of target OSS bucket.
      * 
      */
     @Import(name="targetBuckets")
     private @Nullable Output<List<String>> targetBuckets;
 
     /**
-     * @return The name of target ofo OSS bucket.
+     * @return The name of target OSS bucket.
      * 
      */
     public Optional<Output<List<String>>> targetBuckets() {
@@ -108,14 +108,14 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of destination file system.
+     * Valid while source_type equals `NAS`. The list of destination File System IDs.
      * 
      */
     @Import(name="targetFileSystemIds")
     private @Nullable Output<List<String>> targetFileSystemIds;
 
     /**
-     * @return The ID of destination file system.
+     * @return Valid while source_type equals `NAS`. The list of destination File System IDs.
      * 
      */
     public Optional<Output<List<String>>> targetFileSystemIds() {
@@ -138,14 +138,14 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of backup vault.
+     * The list of backup vault IDs.
      * 
      */
     @Import(name="vaultIds")
     private @Nullable Output<List<String>> vaultIds;
 
     /**
-     * @return The ID of backup vault.
+     * @return The list of backup vault IDs.
      * 
      */
     public Optional<Output<List<String>>> vaultIds() {
@@ -237,7 +237,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param restoreType The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+         * @param restoreType The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param restoreType The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+         * @param restoreType The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of restore job.
+         * @param status The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of restore job.
+         * @param status The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param targetBuckets The name of target ofo OSS bucket.
+         * @param targetBuckets The name of target OSS bucket.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param targetBuckets The name of target ofo OSS bucket.
+         * @param targetBuckets The name of target OSS bucket.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param targetBuckets The name of target ofo OSS bucket.
+         * @param targetBuckets The name of target OSS bucket.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param targetFileSystemIds The ID of destination file system.
+         * @param targetFileSystemIds Valid while source_type equals `NAS`. The list of destination File System IDs.
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param targetFileSystemIds The ID of destination file system.
+         * @param targetFileSystemIds Valid while source_type equals `NAS`. The list of destination File System IDs.
          * 
          * @return builder
          * 
@@ -362,7 +362,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param targetFileSystemIds The ID of destination file system.
+         * @param targetFileSystemIds Valid while source_type equals `NAS`. The list of destination File System IDs.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vaultIds The ID of backup vault.
+         * @param vaultIds The list of backup vault IDs.
          * 
          * @return builder
          * 
@@ -414,7 +414,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vaultIds The ID of backup vault.
+         * @param vaultIds The list of backup vault IDs.
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class GetRestoreJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vaultIds The ID of backup vault.
+         * @param vaultIds The list of backup vault IDs.
          * 
          * @return builder
          * 

@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ChatbotFunctions.getAgents();
  * 
- *         var defaultPublishTask = new PublishTask("defaultPublishTask", PublishTaskArgs.builder()        
+ *         var defaultPublishTask = new PublishTask("defaultPublishTask", PublishTaskArgs.builder()
  *             .bizType("faq")
  *             .agentKey(default_.agents()[0].agentKey())
  *             .build());

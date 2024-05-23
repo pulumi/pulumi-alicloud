@@ -57,7 +57,7 @@ export interface GetFilesetsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the fileset.
+     * The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
      */
     status?: string;
 }
@@ -120,7 +120,7 @@ export interface GetFilesetsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the fileset.
+     * The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
      */
     status?: pulumi.Input<string>;
 }

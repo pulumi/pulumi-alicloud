@@ -149,7 +149,7 @@ def get_snapshots(file_system_id: Optional[str] = None,
     :param str name_regex: A regex string to filter results by Snapshot name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str snapshot_name: The name of the snapshot.
-    :param str status: The status of the snapshot.
+    :param str status: Status. Valid values: `accomplished`, `failed`, `progressing`.
     """
     __args__ = dict()
     __args__['fileSystemId'] = file_system_id
@@ -206,6 +206,6 @@ def get_snapshots_output(file_system_id: Optional[pulumi.Input[Optional[str]]] =
     :param str name_regex: A regex string to filter results by Snapshot name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str snapshot_name: The name of the snapshot.
-    :param str status: The status of the snapshot.
+    :param str status: Status. Valid values: `accomplished`, `failed`, `progressing`.
     """
     ...

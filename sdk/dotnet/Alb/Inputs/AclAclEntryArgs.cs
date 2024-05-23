@@ -26,6 +26,9 @@ namespace Pulumi.AliCloud.Alb.Inputs
 
         /// <summary>
         /// The status of the ACL entry. Valid values:
+        /// - `Adding`: The ACL entry is being added.
+        /// - `Available`: The ACL entry is added and available.
+        /// - `Removing`: The ACL entry is being removed.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

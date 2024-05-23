@@ -88,23 +88,23 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.1.0.0/16")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultSwitch.id())
  *             .build());
  * 
- *         var defaultNestServiceInstance = new NestServiceInstance("defaultNestServiceInstance", NestServiceInstanceArgs.builder()        
+ *         var defaultNestServiceInstance = new NestServiceInstance("defaultNestServiceInstance", NestServiceInstanceArgs.builder()
  *             .serviceId("service-dd475e6e468348799f0f")
  *             .serviceVersion("1")
  *             .serviceInstanceName(name)

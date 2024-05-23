@@ -82,15 +82,15 @@ export interface GetAnycastEipAddressesArgs {
      */
     outputFile?: string;
     /**
-     * The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+     * The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
      */
     paymentType?: string;
     /**
-     * Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+     * Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
      */
     serviceLocation?: string;
     /**
-     * IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+     * IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
      */
     status?: string;
 }
@@ -178,15 +178,15 @@ export interface GetAnycastEipAddressesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+     * The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+     * Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
      */
     serviceLocation?: pulumi.Input<string>;
     /**
-     * IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+     * IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
      */
     status?: pulumi.Input<string>;
 }

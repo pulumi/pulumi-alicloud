@@ -77,6 +77,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+        /// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+        /// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
         /// </summary>
         [Output("onUnableToRedeployFailedInstance")]
         public Output<string?> OnUnableToRedeployFailedInstance { get; private set; } = null!;
@@ -159,6 +161,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+        /// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+        /// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
         /// </summary>
         [Input("onUnableToRedeployFailedInstance")]
         public Input<string>? OnUnableToRedeployFailedInstance { get; set; }
@@ -203,6 +207,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+        /// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+        /// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
         /// </summary>
         [Input("onUnableToRedeployFailedInstance")]
         public Input<string>? OnUnableToRedeployFailedInstance { get; set; }

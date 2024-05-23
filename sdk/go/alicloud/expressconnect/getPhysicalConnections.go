@@ -72,7 +72,7 @@ type GetPhysicalConnectionsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Resources on Behalf of a State of the Resource Attribute Field.
+	// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
 	Status *string `pulumi:"status"`
 }
 
@@ -112,7 +112,7 @@ type GetPhysicalConnectionsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Resources on Behalf of a State of the Resource Attribute Field.
+	// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

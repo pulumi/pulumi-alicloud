@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .nameRegex("default")
  *             .build());
  * 
- *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()        
+ *         var defaultNetworkPackage = new NetworkPackage("defaultNetworkPackage", NetworkPackageArgs.builder()
  *             .bandwidth(10)
  *             .officeSiteId(default_.ids()[0])
  *             .build());

@@ -48,6 +48,14 @@ public final class GetGatewayZonesPlainArgs extends com.pulumi.resources.InvokeA
 
     /**
      * Bandwidth specification.-If an IPsec connection is bound to a VPN gateway instance, this parameter indicates the Bandwidth specification of the VPN gateway instance.-If an IPsec connection is bound to a forwarding router, this parameter indicates the bandwidth that you expect the IPsec connection to support.Different bandwidth specifications may affect the zone information that is found. Value:
+     * - `5M`
+     * - `10M`
+     * - `20M`
+     * - `50M`
+     * - `100M`
+     * - `200M`
+     * - `500M`
+     * - `1000M`
      * 
      */
     @Import(name="spec", required=true)
@@ -55,6 +63,14 @@ public final class GetGatewayZonesPlainArgs extends com.pulumi.resources.InvokeA
 
     /**
      * @return Bandwidth specification.-If an IPsec connection is bound to a VPN gateway instance, this parameter indicates the Bandwidth specification of the VPN gateway instance.-If an IPsec connection is bound to a forwarding router, this parameter indicates the bandwidth that you expect the IPsec connection to support.Different bandwidth specifications may affect the zone information that is found. Value:
+     * - `5M`
+     * - `10M`
+     * - `20M`
+     * - `50M`
+     * - `100M`
+     * - `200M`
+     * - `500M`
+     * - `1000M`
      * 
      */
     public String spec() {
@@ -121,6 +137,14 @@ public final class GetGatewayZonesPlainArgs extends com.pulumi.resources.InvokeA
 
         /**
          * @param spec Bandwidth specification.-If an IPsec connection is bound to a VPN gateway instance, this parameter indicates the Bandwidth specification of the VPN gateway instance.-If an IPsec connection is bound to a forwarding router, this parameter indicates the bandwidth that you expect the IPsec connection to support.Different bandwidth specifications may affect the zone information that is found. Value:
+         * - `5M`
+         * - `10M`
+         * - `20M`
+         * - `50M`
+         * - `100M`
+         * - `200M`
+         * - `500M`
+         * - `1000M`
          * 
          * @return builder
          * 

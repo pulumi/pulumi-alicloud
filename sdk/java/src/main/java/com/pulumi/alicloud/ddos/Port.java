@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new DdosCooInstance("default", DdosCooInstanceArgs.builder()        
+ *         var default_ = new DdosCooInstance("default", DdosCooInstanceArgs.builder()
  *             .name(name)
  *             .bandwidth("30")
  *             .baseBandwidth("30")
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .productType("ddoscoo")
  *             .build());
  * 
- *         var defaultPort = new Port("defaultPort", PortArgs.builder()        
+ *         var defaultPort = new Port("defaultPort", PortArgs.builder()
  *             .instanceId(default_.id())
  *             .frontendPort("7001")
  *             .backendPort("7002")

@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Vpc
         public string? PeerConnectionName { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? PeerConnectionName { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

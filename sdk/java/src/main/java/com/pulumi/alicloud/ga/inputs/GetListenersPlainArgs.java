@@ -77,14 +77,14 @@ public final class GetListenersPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The status of the listener.
+     * The status of the listener. Valid values: `active`, `configuring`, `creating`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the listener.
+     * @return The status of the listener. Valid values: `active`, `configuring`, `creating`.
      * 
      */
     public Optional<String> status() {
@@ -174,7 +174,7 @@ public final class GetListenersPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The status of the listener.
+         * @param status The status of the listener. Valid values: `active`, `configuring`, `creating`.
          * 
          * @return builder
          * 

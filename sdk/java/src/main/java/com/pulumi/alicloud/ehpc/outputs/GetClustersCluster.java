@@ -26,37 +26,142 @@ public final class GetClustersCluster {
      * 
      */
     private String clientVersion;
+    /**
+     * @return The id of E-HPC Cluster.
+     * 
+     */
     private String clusterId;
+    /**
+     * @return The name of E-HPC cluster.
+     * 
+     */
     private String clusterName;
+    /**
+     * @return The number of compute nodes in the cluster.
+     * 
+     */
     private Integer computeCount;
+    /**
+     * @return Cluster compute node specifications.
+     * 
+     */
     private String computeInstanceType;
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
     private String createTime;
+    /**
+     * @return Cluster deployment mode. Possible values:
+     * - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
+     * - Advanced:HA mode deployment.
+     * - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
+     * - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
+     * - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
+     * 
+     */
     private String deployMode;
+    /**
+     * @return The description of E-HPC cluster.
+     * 
+     */
     private String description;
+    /**
+     * @return Whether to turn on high availability. &gt; If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
+     * 
+     */
     private Boolean haEnable;
+    /**
+     * @return The ID of the Cluster.
+     * 
+     */
     private String id;
+    /**
+     * @return The ID of the Image.
+     * 
+     */
     private String imageId;
+    /**
+     * @return The type of the image.
+     * 
+     */
     private String imageOwnerAlias;
+    /**
+     * @return The number of cluster login nodes. Only configuration 1 is supported.
+     * 
+     */
     private Integer loginCount;
+    /**
+     * @return Cluster login node specifications.
+     * 
+     */
     private String loginInstanceType;
     private Integer managerCount;
+    /**
+     * @return The instance type of manager nodes.
+     * 
+     */
     private String managerInstanceType;
+    /**
+     * @return The image tag of the operating system.
+     * 
+     */
     private String osTag;
     private List<GetClustersClusterPostInstallScript> postInstallScripts;
+    /**
+     * @return Mount the remote directory of the shared storage.
+     * 
+     */
     private String remoteDirectory;
+    /**
+     * @return The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
+     * 
+     */
     private String sccClusterId;
+    /**
+     * @return Dispatch server type.
+     * 
+     */
     private String schedulerType;
+    /**
+     * @return The ID of the security group.
+     * 
+     */
     private String securityGroupId;
     /**
-     * @return The status of the resource. Valid values:
+     * @return The status of the resource.
      * 
      */
     private String status;
+    /**
+     * @return The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
+     * 
+     */
     private String volumeId;
+    /**
+     * @return The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
+     * 
+     */
     private String volumeMountpoint;
+    /**
+     * @return The type of the protocol that is used by the file system.
+     * 
+     */
     private String volumeProtocol;
+    /**
+     * @return The type of the network shared storage. Valid value: NAS.
+     * 
+     */
     private String volumeType;
+    /**
+     * @return The ID of the VPC network.
+     * 
+     */
     private String vpcId;
+    /**
+     * @return The vswitch id.
+     * 
+     */
     private String vswitchId;
     private String zoneId;
 
@@ -78,91 +183,196 @@ public final class GetClustersCluster {
     public String clientVersion() {
         return this.clientVersion;
     }
+    /**
+     * @return The id of E-HPC Cluster.
+     * 
+     */
     public String clusterId() {
         return this.clusterId;
     }
+    /**
+     * @return The name of E-HPC cluster.
+     * 
+     */
     public String clusterName() {
         return this.clusterName;
     }
+    /**
+     * @return The number of compute nodes in the cluster.
+     * 
+     */
     public Integer computeCount() {
         return this.computeCount;
     }
+    /**
+     * @return Cluster compute node specifications.
+     * 
+     */
     public String computeInstanceType() {
         return this.computeInstanceType;
     }
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }
+    /**
+     * @return Cluster deployment mode. Possible values:
+     * - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
+     * - Advanced:HA mode deployment.
+     * - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
+     * - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
+     * - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
+     * 
+     */
     public String deployMode() {
         return this.deployMode;
     }
+    /**
+     * @return The description of E-HPC cluster.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return Whether to turn on high availability. &gt; If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
+     * 
+     */
     public Boolean haEnable() {
         return this.haEnable;
     }
+    /**
+     * @return The ID of the Cluster.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The ID of the Image.
+     * 
+     */
     public String imageId() {
         return this.imageId;
     }
+    /**
+     * @return The type of the image.
+     * 
+     */
     public String imageOwnerAlias() {
         return this.imageOwnerAlias;
     }
+    /**
+     * @return The number of cluster login nodes. Only configuration 1 is supported.
+     * 
+     */
     public Integer loginCount() {
         return this.loginCount;
     }
+    /**
+     * @return Cluster login node specifications.
+     * 
+     */
     public String loginInstanceType() {
         return this.loginInstanceType;
     }
     public Integer managerCount() {
         return this.managerCount;
     }
+    /**
+     * @return The instance type of manager nodes.
+     * 
+     */
     public String managerInstanceType() {
         return this.managerInstanceType;
     }
+    /**
+     * @return The image tag of the operating system.
+     * 
+     */
     public String osTag() {
         return this.osTag;
     }
     public List<GetClustersClusterPostInstallScript> postInstallScripts() {
         return this.postInstallScripts;
     }
+    /**
+     * @return Mount the remote directory of the shared storage.
+     * 
+     */
     public String remoteDirectory() {
         return this.remoteDirectory;
     }
+    /**
+     * @return The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
+     * 
+     */
     public String sccClusterId() {
         return this.sccClusterId;
     }
+    /**
+     * @return Dispatch server type.
+     * 
+     */
     public String schedulerType() {
         return this.schedulerType;
     }
+    /**
+     * @return The ID of the security group.
+     * 
+     */
     public String securityGroupId() {
         return this.securityGroupId;
     }
     /**
-     * @return The status of the resource. Valid values:
+     * @return The status of the resource.
      * 
      */
     public String status() {
         return this.status;
     }
+    /**
+     * @return The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
+     * 
+     */
     public String volumeId() {
         return this.volumeId;
     }
+    /**
+     * @return The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
+     * 
+     */
     public String volumeMountpoint() {
         return this.volumeMountpoint;
     }
+    /**
+     * @return The type of the protocol that is used by the file system.
+     * 
+     */
     public String volumeProtocol() {
         return this.volumeProtocol;
     }
+    /**
+     * @return The type of the network shared storage. Valid value: NAS.
+     * 
+     */
     public String volumeType() {
         return this.volumeType;
     }
+    /**
+     * @return The ID of the VPC network.
+     * 
+     */
     public String vpcId() {
         return this.vpcId;
     }
+    /**
+     * @return The vswitch id.
+     * 
+     */
     public String vswitchId() {
         return this.vswitchId;
     }

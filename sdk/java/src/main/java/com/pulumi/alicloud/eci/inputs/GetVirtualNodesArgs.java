@@ -64,14 +64,14 @@ public final class GetVirtualNodesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The resource group ID.
+     * The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account&#39;s default resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The resource group ID.
+     * @return The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account&#39;s default resource group.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -79,14 +79,14 @@ public final class GetVirtualNodesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The security group ID.
+     * VNode itself and by VNode created (ECI) the security group used by.
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return The security group ID.
+     * @return VNode itself and by VNode created (ECI) the security group used by.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -94,14 +94,14 @@ public final class GetVirtualNodesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Status of the virtual node.
+     * The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The Status of the virtual node.
+     * @return The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -138,17 +138,9 @@ public final class GetVirtualNodesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.virtualNodeName);
     }
 
-    /**
-     * The vswitch id.
-     * 
-     */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
-    /**
-     * @return The vswitch id.
-     * 
-     */
     public Optional<Output<String>> vswitchId() {
         return Optional.ofNullable(this.vswitchId);
     }
@@ -259,7 +251,7 @@ public final class GetVirtualNodesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The resource group ID.
+         * @param resourceGroupId The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account&#39;s default resource group.
          * 
          * @return builder
          * 
@@ -270,7 +262,7 @@ public final class GetVirtualNodesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The resource group ID.
+         * @param resourceGroupId The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account&#39;s default resource group.
          * 
          * @return builder
          * 
@@ -280,7 +272,7 @@ public final class GetVirtualNodesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param securityGroupId The security group ID.
+         * @param securityGroupId VNode itself and by VNode created (ECI) the security group used by.
          * 
          * @return builder
          * 
@@ -291,7 +283,7 @@ public final class GetVirtualNodesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param securityGroupId The security group ID.
+         * @param securityGroupId VNode itself and by VNode created (ECI) the security group used by.
          * 
          * @return builder
          * 
@@ -301,7 +293,7 @@ public final class GetVirtualNodesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The Status of the virtual node.
+         * @param status The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
          * 
          * @return builder
          * 
@@ -312,7 +304,7 @@ public final class GetVirtualNodesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The Status of the virtual node.
+         * @param status The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
          * 
          * @return builder
          * 
@@ -363,23 +355,11 @@ public final class GetVirtualNodesArgs extends com.pulumi.resources.InvokeArgs {
             return virtualNodeName(Output.of(virtualNodeName));
         }
 
-        /**
-         * @param vswitchId The vswitch id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder vswitchId(@Nullable Output<String> vswitchId) {
             $.vswitchId = vswitchId;
             return this;
         }
 
-        /**
-         * @param vswitchId The vswitch id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder vswitchId(String vswitchId) {
             return vswitchId(Output.of(vswitchId));
         }

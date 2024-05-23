@@ -61,7 +61,7 @@ func GetChartRepositories(ctx *pulumi.Context, args *GetChartRepositoriesArgs, o
 type GetChartRepositoriesArgs struct {
 	// A list of matched Container Registry Enterprise Edition repositories.
 	Ids []string `pulumi:"ids"`
-	// The ID of the Container Registry instance.
+	// InstanceId.
 	InstanceId string `pulumi:"instanceId"`
 	// A regex string to filter results by repository name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -98,7 +98,7 @@ func GetChartRepositoriesOutput(ctx *pulumi.Context, args GetChartRepositoriesOu
 type GetChartRepositoriesOutputArgs struct {
 	// A list of matched Container Registry Enterprise Edition repositories.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The ID of the Container Registry instance.
+	// InstanceId.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// A regex string to filter results by repository name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`

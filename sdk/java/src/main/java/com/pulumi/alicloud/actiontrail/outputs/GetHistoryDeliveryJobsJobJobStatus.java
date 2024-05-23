@@ -11,6 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHistoryDeliveryJobsJobJobStatus {
+    /**
+     * @return The region of the delivery job.
+     * 
+     */
     private String region;
     /**
      * @return The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
@@ -19,6 +23,10 @@ public final class GetHistoryDeliveryJobsJobJobStatus {
     private Integer status;
 
     private GetHistoryDeliveryJobsJobJobStatus() {}
+    /**
+     * @return The region of the delivery job.
+     * 
+     */
     public String region() {
         return this.region;
     }

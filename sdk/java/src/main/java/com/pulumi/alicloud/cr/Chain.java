@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new RegistryEnterpriseInstance("default", RegistryEnterpriseInstanceArgs.builder()        
+ *         var default_ = new RegistryEnterpriseInstance("default", RegistryEnterpriseInstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
@@ -68,14 +68,14 @@ import javax.annotation.Nullable;
  *             .instanceName(name)
  *             .build());
  * 
- *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()        
+ *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
  *             .instanceId(default_.id())
  *             .name(name)
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
- *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()        
+ *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
  *             .instanceId(default_.id())
  *             .namespace(defaultRegistryEnterpriseNamespace.name())
  *             .name(name)
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *             .detail("this is a public repo")
  *             .build());
  * 
- *         var defaultChain = new Chain("defaultChain", ChainArgs.builder()        
+ *         var defaultChain = new Chain("defaultChain", ChainArgs.builder()
  *             .chainConfigs(ChainChainConfigArgs.builder()
  *                 .nodes(                
  *                     ChainChainConfigNodeArgs.builder()

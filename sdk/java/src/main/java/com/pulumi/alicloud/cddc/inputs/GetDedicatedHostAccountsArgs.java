@@ -18,14 +18,14 @@ public final class GetDedicatedHostAccountsArgs extends com.pulumi.resources.Inv
     public static final GetDedicatedHostAccountsArgs Empty = new GetDedicatedHostAccountsArgs();
 
     /**
-     * The ID of the Dedicated host.
+     * The ID of the host.
      * 
      */
     @Import(name="dedicatedHostId")
     private @Nullable Output<String> dedicatedHostId;
 
     /**
-     * @return The ID of the Dedicated host.
+     * @return The ID of the host.
      * 
      */
     public Optional<Output<String>> dedicatedHostId() {
@@ -121,7 +121,7 @@ public final class GetDedicatedHostAccountsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param dedicatedHostId The ID of the Dedicated host.
+         * @param dedicatedHostId The ID of the host.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class GetDedicatedHostAccountsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param dedicatedHostId The ID of the Dedicated host.
+         * @param dedicatedHostId The ID of the host.
          * 
          * @return builder
          * 

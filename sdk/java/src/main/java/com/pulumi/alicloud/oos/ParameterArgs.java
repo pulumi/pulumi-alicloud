@@ -20,6 +20,10 @@ public final class ParameterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
+     * * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
+     * * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
+     * * `MinLength`: The minimum length of the common parameter.
+     * * `MaxLength`: The maximum length of the common parameter.
      * 
      */
     @Import(name="constraints")
@@ -27,6 +31,10 @@ public final class ParameterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
+     * * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
+     * * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
+     * * `MinLength`: The minimum length of the common parameter.
+     * * `MaxLength`: The maximum length of the common parameter.
      * 
      */
     public Optional<Output<String>> constraints() {
@@ -155,6 +163,10 @@ public final class ParameterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param constraints The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
+         * * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
+         * * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
+         * * `MinLength`: The minimum length of the common parameter.
+         * * `MaxLength`: The maximum length of the common parameter.
          * 
          * @return builder
          * 
@@ -166,6 +178,10 @@ public final class ParameterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param constraints The constraints of the common parameter. This value follows the json format. By default, this parameter is null. Valid values:
+         * * `AllowedValues`: The value that is allowed for the common parameter. It must be an array string.
+         * * `AllowedPattern`: The pattern that is allowed for the common parameter. It must be a regular expression.
+         * * `MinLength`: The minimum length of the common parameter.
+         * * `MaxLength`: The maximum length of the common parameter.
          * 
          * @return builder
          * 

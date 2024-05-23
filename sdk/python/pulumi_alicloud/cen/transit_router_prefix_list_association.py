@@ -27,6 +27,10 @@ class TransitRouterPrefixListAssociationArgs:
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] transit_router_table_id: The ID of the route table of the transit router.
         :param pulumi.Input[str] next_hop_type: The type of the next hop. Valid values:
+               - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+               - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+               - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+               - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
         :param pulumi.Input[int] owner_uid: The ID of the Alibaba Cloud account to which the prefix list belongs.
         """
         pulumi.set(__self__, "next_hop", next_hop)
@@ -91,6 +95,10 @@ class TransitRouterPrefixListAssociationArgs:
     def next_hop_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the next hop. Valid values:
+        - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+        - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+        - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+        - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
         """
         return pulumi.get(self, "next_hop_type")
 
@@ -125,6 +133,10 @@ class _TransitRouterPrefixListAssociationState:
         Input properties used for looking up and filtering TransitRouterPrefixListAssociation resources.
         :param pulumi.Input[str] next_hop: The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
         :param pulumi.Input[str] next_hop_type: The type of the next hop. Valid values:
+               - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+               - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+               - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+               - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
         :param pulumi.Input[int] owner_uid: The ID of the Alibaba Cloud account to which the prefix list belongs.
         :param pulumi.Input[str] prefix_list_id: The ID of the prefix list.
         :param pulumi.Input[str] status: The status of the prefix list.
@@ -163,6 +175,10 @@ class _TransitRouterPrefixListAssociationState:
     def next_hop_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the next hop. Valid values:
+        - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+        - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+        - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+        - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
         """
         return pulumi.get(self, "next_hop_type")
 
@@ -290,6 +306,10 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] next_hop: The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
         :param pulumi.Input[str] next_hop_type: The type of the next hop. Valid values:
+               - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+               - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+               - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+               - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
         :param pulumi.Input[int] owner_uid: The ID of the Alibaba Cloud account to which the prefix list belongs.
         :param pulumi.Input[str] prefix_list_id: The ID of the prefix list.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
@@ -415,6 +435,10 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] next_hop: The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
         :param pulumi.Input[str] next_hop_type: The type of the next hop. Valid values:
+               - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+               - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+               - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+               - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
         :param pulumi.Input[int] owner_uid: The ID of the Alibaba Cloud account to which the prefix list belongs.
         :param pulumi.Input[str] prefix_list_id: The ID of the prefix list.
         :param pulumi.Input[str] status: The status of the prefix list.
@@ -447,6 +471,10 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
     def next_hop_type(self) -> pulumi.Output[str]:
         """
         The type of the next hop. Valid values:
+        - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+        - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+        - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+        - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
         """
         return pulumi.get(self, "next_hop_type")
 

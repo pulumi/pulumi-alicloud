@@ -107,14 +107,14 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+     * Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
      * 
      */
     @Import(name="source")
     private @Nullable String source;
 
     /**
-     * @return Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+     * @return Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
      * 
      */
     public Optional<String> source() {
@@ -137,14 +137,14 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Frozen`, `Normal`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Frozen`, `Normal`.
      * 
      */
     public Optional<String> status() {
@@ -276,7 +276,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param source Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+         * @param source Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `Frozen`, `Normal`.
          * 
          * @return builder
          * 

@@ -50,17 +50,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
- *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()        
+ *         var defaultBucketObject = new BucketObject("defaultBucketObject", BucketObjectArgs.builder()
  *             .bucket(defaultBucket.id())
  *             .key("index.py")
  *             .content("""
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * return 'hello world'            """)
  *             .build());
  * 
- *         var example = new LayerVersion("example", LayerVersionArgs.builder()        
+ *         var example = new LayerVersion("example", LayerVersionArgs.builder()
  *             .layerName(String.format("terraform-example-%s", default_.result()))
  *             .compatibleRuntimes("python2.7")
  *             .ossBucketName(defaultBucket.bucket())

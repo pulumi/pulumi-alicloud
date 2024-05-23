@@ -53,7 +53,7 @@ public final class MhubFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new App("default", AppArgs.builder()        
+     *         var default_ = new App("default", AppArgs.builder()
      *             .appName(name)
      *             .productId(defaultAlicloudMhubProduct.id())
      *             .packageName("com.test.android")
@@ -114,7 +114,7 @@ public final class MhubFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new App("default", AppArgs.builder()        
+     *         var default_ = new App("default", AppArgs.builder()
      *             .appName(name)
      *             .productId(defaultAlicloudMhubProduct.id())
      *             .packageName("com.test.android")
@@ -175,7 +175,7 @@ public final class MhubFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new App("default", AppArgs.builder()        
+     *         var default_ = new App("default", AppArgs.builder()
      *             .appName(name)
      *             .productId(defaultAlicloudMhubProduct.id())
      *             .packageName("com.test.android")
@@ -236,7 +236,7 @@ public final class MhubFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new App("default", AppArgs.builder()        
+     *         var default_ = new App("default", AppArgs.builder()
      *             .appName(name)
      *             .productId(defaultAlicloudMhubProduct.id())
      *             .packageName("com.test.android")
@@ -297,7 +297,7 @@ public final class MhubFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new Product("default", ProductArgs.builder()        
+     *         var default_ = new Product("default", ProductArgs.builder()
      *             .productName(name)
      *             .build());
      * 
@@ -355,7 +355,7 @@ public final class MhubFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new Product("default", ProductArgs.builder()        
+     *         var default_ = new Product("default", ProductArgs.builder()
      *             .productName(name)
      *             .build());
      * 
@@ -413,7 +413,7 @@ public final class MhubFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new Product("default", ProductArgs.builder()        
+     *         var default_ = new Product("default", ProductArgs.builder()
      *             .productName(name)
      *             .build());
      * 
@@ -471,7 +471,7 @@ public final class MhubFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new Product("default", ProductArgs.builder()        
+     *         var default_ = new Product("default", ProductArgs.builder()
      *             .productName(name)
      *             .build());
      * 
@@ -529,7 +529,7 @@ public final class MhubFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new Product("default", ProductArgs.builder()        
+     *         var default_ = new Product("default", ProductArgs.builder()
      *             .productName(name)
      *             .build());
      * 
@@ -587,7 +587,7 @@ public final class MhubFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new Product("default", ProductArgs.builder()        
+     *         var default_ = new Product("default", ProductArgs.builder()
      *             .productName(name)
      *             .build());
      * 

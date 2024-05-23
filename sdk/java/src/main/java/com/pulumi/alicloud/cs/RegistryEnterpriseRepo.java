@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var example = new RegistryEnterpriseInstance("example", RegistryEnterpriseInstanceArgs.builder()        
+ *         var example = new RegistryEnterpriseInstance("example", RegistryEnterpriseInstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
@@ -65,14 +65,14 @@ import javax.annotation.Nullable;
  *             .instanceName(name)
  *             .build());
  * 
- *         var exampleRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()        
+ *         var exampleRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
  *             .instanceId(example.id())
  *             .name(name)
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
- *         var exampleRegistryEnterpriseRepo = new RegistryEnterpriseRepo("exampleRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()        
+ *         var exampleRegistryEnterpriseRepo = new RegistryEnterpriseRepo("exampleRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
  *             .instanceId(example.id())
  *             .namespace(exampleRegistryEnterpriseNamespace.name())
  *             .name(name)

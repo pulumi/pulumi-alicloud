@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class GetIpaDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The accelerated domain names.
+        /// The name of the Domain.
         /// </summary>
         [Input("domainName")]
         public string? DomainName { get; set; }
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Dcdn
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the accelerated domain name.
+        /// The status of the accelerated domain name. Valid values: `check_failed`, `checking`, `configure_failed`, `configuring`, `offline`, `online`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class GetIpaDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The accelerated domain names.
+        /// The name of the Domain.
         /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the accelerated domain name.
+        /// The status of the accelerated domain name. Valid values: `check_failed`, `checking`, `configure_failed`, `configuring`, `offline`, `online`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

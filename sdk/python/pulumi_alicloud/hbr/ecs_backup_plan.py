@@ -38,6 +38,7 @@ class EcsBackupPlanArgs:
         :param pulumi.Input[str] instance_id: The ID of ECS instance. The ecs backup client must have been installed on the host.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
         :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
@@ -136,6 +137,7 @@ class EcsBackupPlanArgs:
     def schedule(self) -> pulumi.Input[str]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -327,6 +329,7 @@ class _EcsBackupPlanState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] speed_limit: Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         :param pulumi.Input[bool] update_paths: Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
@@ -530,6 +533,7 @@ class _EcsBackupPlanState:
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -703,6 +707,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] speed_limit: Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         :param pulumi.Input[bool] update_paths: Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
@@ -918,6 +923,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] speed_limit: Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         :param pulumi.Input[bool] update_paths: Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
@@ -1054,6 +1060,7 @@ class EcsBackupPlan(pulumi.CustomResource):
     def schedule(self) -> pulumi.Output[str]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 

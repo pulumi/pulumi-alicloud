@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .instanceTypeFamily("ecs.c6")
  *             .build());
  * 
- *         var defaultElasticityAssurance = new ElasticityAssurance("defaultElasticityAssurance", ElasticityAssuranceArgs.builder()        
+ *         var defaultElasticityAssurance = new ElasticityAssurance("defaultElasticityAssurance", ElasticityAssuranceArgs.builder()
  *             .instanceAmount(1)
  *             .description("before")
  *             .zoneIds(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[2].id()))

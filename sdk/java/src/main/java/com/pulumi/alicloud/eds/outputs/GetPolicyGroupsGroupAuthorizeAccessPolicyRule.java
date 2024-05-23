@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetPolicyGroupsGroupAuthorizeAccessPolicyRule {
     /**
-     * @return The cidrip of security rules.
+     * @return The cidrip of authorize access rule..
      * 
      */
     private String cidrIp;
     /**
-     * @return The description of security rules.
+     * @return The description of authorize access rule.
      * 
      */
     private String description;
 
     private GetPolicyGroupsGroupAuthorizeAccessPolicyRule() {}
     /**
-     * @return The cidrip of security rules.
+     * @return The cidrip of authorize access rule..
      * 
      */
     public String cidrIp() {
         return this.cidrIp;
     }
     /**
-     * @return The description of security rules.
+     * @return The description of authorize access rule.
      * 
      */
     public String description() {

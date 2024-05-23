@@ -17,14 +17,14 @@ public final class GetDedicatedHostAccountsPlainArgs extends com.pulumi.resource
     public static final GetDedicatedHostAccountsPlainArgs Empty = new GetDedicatedHostAccountsPlainArgs();
 
     /**
-     * The ID of the Dedicated host.
+     * The ID of the host.
      * 
      */
     @Import(name="dedicatedHostId")
     private @Nullable String dedicatedHostId;
 
     /**
-     * @return The ID of the Dedicated host.
+     * @return The ID of the host.
      * 
      */
     public Optional<String> dedicatedHostId() {
@@ -120,7 +120,7 @@ public final class GetDedicatedHostAccountsPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param dedicatedHostId The ID of the Dedicated host.
+         * @param dedicatedHostId The ID of the host.
          * 
          * @return builder
          * 

@@ -80,12 +80,9 @@ export interface GetMonitorGroupsArgs {
      * The select contact groups.
      */
     selectContactGroups?: boolean;
-    /**
-     * A map of tags assigned to the Cms Monitor Group.
-     */
     tags?: {[key: string]: any};
     /**
-     * The type of the application group.
+     * The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
      */
     type?: string;
 }
@@ -171,12 +168,9 @@ export interface GetMonitorGroupsOutputArgs {
      * The select contact groups.
      */
     selectContactGroups?: pulumi.Input<boolean>;
-    /**
-     * A map of tags assigned to the Cms Monitor Group.
-     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The type of the application group.
+     * The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
      */
     type?: pulumi.Input<string>;
 }

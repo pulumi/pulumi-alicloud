@@ -70,7 +70,7 @@ export interface GetChangeSetsArgs {
      */
     stackId: string;
     /**
-     * The status of the change set.
+     * The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
      */
     status?: string;
 }
@@ -147,7 +147,7 @@ export interface GetChangeSetsOutputArgs {
      */
     stackId: pulumi.Input<string>;
     /**
-     * The status of the change set.
+     * The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
      */
     status?: pulumi.Input<string>;
 }

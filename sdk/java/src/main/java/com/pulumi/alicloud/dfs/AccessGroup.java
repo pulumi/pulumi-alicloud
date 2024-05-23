@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultAccessGroup = new AccessGroup("defaultAccessGroup", AccessGroupArgs.builder()        
+ *         var defaultAccessGroup = new AccessGroup("defaultAccessGroup", AccessGroupArgs.builder()
  *             .accessGroupName(String.format("tf-example-%s", default_.result()))
  *             .networkType("VPC")
  *             .build());

@@ -105,6 +105,9 @@ export class AdConnectorOfficeSite extends pulumi.CustomResource {
     public readonly cidrBlock!: pulumi.Output<string>;
     /**
      * The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+     * - `INTERNET`: connects clients to cloud desktops only over the Internet.
+     * - `VPC`: connects clients to cloud desktops only over a VPC.
+     * - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
      */
     public readonly desktopAccessType!: pulumi.Output<string>;
     /**
@@ -268,6 +271,9 @@ export interface AdConnectorOfficeSiteState {
     cidrBlock?: pulumi.Input<string>;
     /**
      * The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+     * - `INTERNET`: connects clients to cloud desktops only over the Internet.
+     * - `VPC`: connects clients to cloud desktops only over a VPC.
+     * - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
      */
     desktopAccessType?: pulumi.Input<string>;
     /**
@@ -354,6 +360,9 @@ export interface AdConnectorOfficeSiteArgs {
     cidrBlock: pulumi.Input<string>;
     /**
      * The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+     * - `INTERNET`: connects clients to cloud desktops only over the Internet.
+     * - `VPC`: connects clients to cloud desktops only over a VPC.
+     * - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
      */
     desktopAccessType?: pulumi.Input<string>;
     /**

@@ -62,14 +62,14 @@ public final class GetPatchBaselinesPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Operating system type.
+     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
      * 
      */
     @Import(name="operationSystem")
     private @Nullable String operationSystem;
 
     /**
-     * @return Operating system type.
+     * @return Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
      * 
      */
     public Optional<String> operationSystem() {
@@ -92,14 +92,14 @@ public final class GetPatchBaselinesPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Patch baseline sharing type.
+     * Patch baseline sharing type. Valid values: `Private`, `Public`.
      * 
      */
     @Import(name="shareType")
     private @Nullable String shareType;
 
     /**
-     * @return Patch baseline sharing type.
+     * @return Patch baseline sharing type. Valid values: `Private`, `Public`.
      * 
      */
     public Optional<String> shareType() {
@@ -179,7 +179,7 @@ public final class GetPatchBaselinesPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param operationSystem Operating system type.
+         * @param operationSystem Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class GetPatchBaselinesPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param shareType Patch baseline sharing type.
+         * @param shareType Patch baseline sharing type. Valid values: `Private`, `Public`.
          * 
          * @return builder
          * 

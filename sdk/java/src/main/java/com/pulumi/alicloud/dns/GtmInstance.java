@@ -61,11 +61,11 @@ import javax.annotation.Nullable;
  *         final var domainName = config.get("domainName").orElse("alicloud-provider.com");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultAlarmContactGroup = new AlarmContactGroup("defaultAlarmContactGroup", AlarmContactGroupArgs.builder()        
+ *         var defaultAlarmContactGroup = new AlarmContactGroup("defaultAlarmContactGroup", AlarmContactGroupArgs.builder()
  *             .alarmContactGroupName("tf_example")
  *             .build());
  * 
- *         var defaultGtmInstance = new GtmInstance("defaultGtmInstance", GtmInstanceArgs.builder()        
+ *         var defaultGtmInstance = new GtmInstance("defaultGtmInstance", GtmInstanceArgs.builder()
  *             .instanceName("tf_example")
  *             .paymentType("Subscription")
  *             .period(1)

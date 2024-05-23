@@ -58,7 +58,7 @@ export interface GetEcsNetworkInterfacePermissionsArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * The Status of the Network Interface Permissions.
+     * The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
      */
     status?: string;
 }
@@ -123,7 +123,7 @@ export interface GetEcsNetworkInterfacePermissionsOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * The Status of the Network Interface Permissions.
+     * The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
      */
     status?: pulumi.Input<string>;
 }

@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of Auto Snapshot Policy.
+        /// The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of Auto Snapshot Policy.
+        /// The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

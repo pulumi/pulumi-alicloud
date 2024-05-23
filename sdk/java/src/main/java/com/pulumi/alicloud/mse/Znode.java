@@ -60,19 +60,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()        
+ *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
  *             .clusterSpecification("MSE_SC_1_2_60_c")
  *             .clusterType("ZooKeeper")
  *             .clusterVersion("ZooKeeper_3_8_0")
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
- *         var exampleZnode = new Znode("exampleZnode", ZnodeArgs.builder()        
+ *         var exampleZnode = new Znode("exampleZnode", ZnodeArgs.builder()
  *             .clusterId(exampleCluster.clusterId())
  *             .data("terraform-example")
  *             .path("/example")

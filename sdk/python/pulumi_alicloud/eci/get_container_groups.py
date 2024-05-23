@@ -209,10 +209,9 @@ def get_container_groups(container_group_name: Optional[str] = None,
     :param str name_regex: A regex string to filter results by Container Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
-    :param str status: The status of container.
-    :param Mapping[str, Any] tags: The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-    :param str vswitch_id: The vswitch id.
-    :param str zone_id: The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+    :param str status: The status list. For more information, see the description of ContainerGroup arrays.
+    :param str vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
+    :param str zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
     """
     __args__ = dict()
     __args__['containerGroupName'] = container_group_name
@@ -287,9 +286,8 @@ def get_container_groups_output(container_group_name: Optional[pulumi.Input[Opti
     :param str name_regex: A regex string to filter results by Container Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group to which the container group belongs. If you have not specified a resource group for the container group, it is added to the default resource group.
-    :param str status: The status of container.
-    :param Mapping[str, Any] tags: The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-    :param str vswitch_id: The vswitch id.
-    :param str zone_id: The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+    :param str status: The status list. For more information, see the description of ContainerGroup arrays.
+    :param str vswitch_id: The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
+    :param str zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
     """
     ...

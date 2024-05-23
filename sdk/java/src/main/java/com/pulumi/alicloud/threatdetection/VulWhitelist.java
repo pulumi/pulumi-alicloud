@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new VulWhitelist("default", VulWhitelistArgs.builder()        
+ *         var default_ = new VulWhitelist("default", VulWhitelistArgs.builder()
  *             .whitelist("[{\"aliasName\":\"RHSA-2021:2260: libwebp 安全更新\",\"name\":\"RHSA-2021:2260: libwebp 安全更新\",\"type\":\"cve\"}]")
  *             .targetInfo("{\"type\":\"GroupId\",\"uuids\":[],\"groupIds\":[10782678]}")
  *             .reason("tf-example-reason")

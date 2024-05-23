@@ -16,7 +16,7 @@ public final class GetClustersClusterBootstrapActionList {
      */
     private String arg;
     /**
-     * @return The internal name of the service.
+     * @return The name of the boot operation.
      * 
      */
     private String name;
@@ -35,7 +35,7 @@ public final class GetClustersClusterBootstrapActionList {
         return this.arg;
     }
     /**
-     * @return The internal name of the service.
+     * @return The name of the boot operation.
      * 
      */
     public String name() {

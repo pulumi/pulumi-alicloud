@@ -55,17 +55,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project("example", ProjectArgs.builder()        
+ *         var example = new Project("example", ProjectArgs.builder()
  *             .projectName(String.format("%s-%s", name,default_.result()))
  *             .description(name)
  *             .build());
  * 
- *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
  *             .projectName(example.projectName())
  *             .logstoreName(String.format("%s-%s", name,default_.result()))
  *             .shardCount(3)
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .appendMeta(true)
  *             .build());
  * 
- *         var exampleLogConfig = new LogConfig("exampleLogConfig", LogConfigArgs.builder()        
+ *         var exampleLogConfig = new LogConfig("exampleLogConfig", LogConfigArgs.builder()
  *             .slsProject(example.projectName())
  *             .slsLogStore(exampleStore.logstoreName())
  *             .logType("PROVIDER")

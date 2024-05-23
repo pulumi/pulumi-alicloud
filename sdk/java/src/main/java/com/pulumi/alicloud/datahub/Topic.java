@@ -53,12 +53,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         var example = new Project("example", ProjectArgs.builder()        
+ *         var example = new Project("example", ProjectArgs.builder()
  *             .name(name)
  *             .comment("created by terraform")
  *             .build());
  * 
- *         var exampleBlob = new Topic("exampleBlob", TopicArgs.builder()        
+ *         var exampleBlob = new Topic("exampleBlob", TopicArgs.builder()
  *             .name(String.format("%s_blob", name))
  *             .projectName(example.name())
  *             .recordType("BLOB")
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .comment("created by terraform")
  *             .build());
  * 
- *         var exampleTuple = new Topic("exampleTuple", TopicArgs.builder()        
+ *         var exampleTuple = new Topic("exampleTuple", TopicArgs.builder()
  *             .name(String.format("%s_tuple", name))
  *             .projectName(example.name())
  *             .recordType("TUPLE")

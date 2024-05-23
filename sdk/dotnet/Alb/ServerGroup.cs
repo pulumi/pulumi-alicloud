@@ -186,6 +186,9 @@ namespace Pulumi.AliCloud.Alb
 
         /// <summary>
         /// The type of the server group. Default value: `Instance`. Valid values:
+        /// - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+        /// - `Ip`: allows you to add servers by specifying IP addresses.
+        /// - `Fc`: allows you to add servers by specifying functions of Function Compute.
         /// </summary>
         [Output("serverGroupType")]
         public Output<string> ServerGroupType { get; private set; } = null!;
@@ -304,6 +307,9 @@ namespace Pulumi.AliCloud.Alb
 
         /// <summary>
         /// The type of the server group. Default value: `Instance`. Valid values:
+        /// - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+        /// - `Ip`: allows you to add servers by specifying IP addresses.
+        /// - `Fc`: allows you to add servers by specifying functions of Function Compute.
         /// </summary>
         [Input("serverGroupType")]
         public Input<string>? ServerGroupType { get; set; }
@@ -390,6 +396,9 @@ namespace Pulumi.AliCloud.Alb
 
         /// <summary>
         /// The type of the server group. Default value: `Instance`. Valid values:
+        /// - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+        /// - `Ip`: allows you to add servers by specifying IP addresses.
+        /// - `Fc`: allows you to add servers by specifying functions of Function Compute.
         /// </summary>
         [Input("serverGroupType")]
         public Input<string>? ServerGroupType { get; set; }

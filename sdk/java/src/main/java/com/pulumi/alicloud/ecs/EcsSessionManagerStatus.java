@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EcsSessionManagerStatus("default", EcsSessionManagerStatusArgs.builder()        
+ *         var default_ = new EcsSessionManagerStatus("default", EcsSessionManagerStatusArgs.builder()
  *             .sessionManagerStatusName("sessionManagerStatus")
  *             .status("Disabled")
  *             .build());

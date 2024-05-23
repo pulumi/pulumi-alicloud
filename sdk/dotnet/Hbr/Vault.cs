@@ -62,6 +62,8 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+        /// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+        /// - `KMS`: Use Alibaba Cloud Kms to encryption.
         /// </summary>
         [Output("encryptType")]
         public Output<string> EncryptType { get; private set; } = null!;
@@ -150,6 +152,8 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+        /// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+        /// - `KMS`: Use Alibaba Cloud Kms to encryption.
         /// </summary>
         [Input("encryptType")]
         public Input<string>? EncryptType { get; set; }
@@ -194,6 +198,8 @@ namespace Pulumi.AliCloud.Hbr
 
         /// <summary>
         /// Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+        /// - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service's own encryption method.
+        /// - `KMS`: Use Alibaba Cloud Kms to encryption.
         /// </summary>
         [Input("encryptType")]
         public Input<string>? EncryptType { get; set; }

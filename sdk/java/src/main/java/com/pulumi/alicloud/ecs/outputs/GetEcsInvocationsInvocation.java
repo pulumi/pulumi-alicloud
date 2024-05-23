@@ -54,7 +54,7 @@ public final class GetEcsInvocationsInvocation {
      */
     private String invocationId;
     /**
-     * @return The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
+     * @return The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances.
      * 
      */
     private String invocationStatus;
@@ -80,8 +80,6 @@ public final class GetEcsInvocationsInvocation {
     private String repeatMode;
     /**
      * @return Indicates whether the commands are to be automatically run.
-     * * `error_code	` - The code that indicates why the command failed to be sent or run.
-     * * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
      * 
      */
     private Boolean timed;
@@ -149,7 +147,7 @@ public final class GetEcsInvocationsInvocation {
         return this.invocationId;
     }
     /**
-     * @return The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
+     * @return The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances.
      * 
      */
     public String invocationStatus() {
@@ -185,8 +183,6 @@ public final class GetEcsInvocationsInvocation {
     }
     /**
      * @return Indicates whether the commands are to be automatically run.
-     * * `error_code	` - The code that indicates why the command failed to be sent or run.
-     * * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
      * 
      */
     public Boolean timed() {

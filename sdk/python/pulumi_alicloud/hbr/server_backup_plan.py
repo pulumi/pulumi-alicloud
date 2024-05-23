@@ -32,6 +32,7 @@ class ServerBackupPlanArgs:
         :param pulumi.Input[str] instance_id: The ID of ECS instance.
         :param pulumi.Input[int] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`
+               * `startTime` Backup start time, UNIX time, in seconds.
         :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
         :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         :param pulumi.Input[int] cross_account_user_id: The original account ID of the cross account backup managed by the current account.
@@ -104,6 +105,7 @@ class ServerBackupPlanArgs:
     def schedule(self) -> pulumi.Input[str]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`
+        * `startTime` Backup start time, UNIX time, in seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -183,6 +185,7 @@ class _ServerBackupPlanState:
         :param pulumi.Input[str] instance_id: The ID of ECS instance.
         :param pulumi.Input[int] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`
+               * `startTime` Backup start time, UNIX time, in seconds.
         """
         if cross_account_role_name is not None:
             pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
@@ -304,6 +307,7 @@ class _ServerBackupPlanState:
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`
+        * `startTime` Backup start time, UNIX time, in seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -398,6 +402,7 @@ class ServerBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: The ID of ECS instance.
         :param pulumi.Input[int] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`
+               * `startTime` Backup start time, UNIX time, in seconds.
         """
         ...
     @overload
@@ -552,6 +557,7 @@ class ServerBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: The ID of ECS instance.
         :param pulumi.Input[int] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`
+               * `startTime` Backup start time, UNIX time, in seconds.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -637,6 +643,7 @@ class ServerBackupPlan(pulumi.CustomResource):
     def schedule(self) -> pulumi.Output[str]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`
+        * `startTime` Backup start time, UNIX time, in seconds.
         """
         return pulumi.get(self, "schedule")
 

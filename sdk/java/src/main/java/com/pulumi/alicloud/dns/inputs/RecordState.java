@@ -86,6 +86,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The record status. `Enable` or `Disable`.
+     * * `Locked` - The record locked state. `true` or `false`.
      * 
      */
     @Import(name="status")
@@ -93,6 +94,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The record status. `Enable` or `Disable`.
+     * * `Locked` - The record locked state. `true` or `false`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -271,6 +273,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status The record status. `Enable` or `Disable`.
+         * * `Locked` - The record locked state. `true` or `false`.
          * 
          * @return builder
          * 
@@ -282,6 +285,7 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param status The record status. `Enable` or `Disable`.
+         * * `Locked` - The record locked state. `true` or `false`.
          * 
          * @return builder
          * 

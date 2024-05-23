@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var example = new TemplateScratch("example", TemplateScratchArgs.builder()        
+ *         var example = new TemplateScratch("example", TemplateScratchArgs.builder()
  *             .description("tf_testacc")
  *             .templateScratchType("ResourceImport")
  *             .preferenceParameters(TemplateScratchPreferenceParameterArgs.builder()

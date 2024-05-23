@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .zoneId(default_.zones()[1].id())
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .name(name)
  *             .zoneId(default_.zones()[1].id())
  *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))

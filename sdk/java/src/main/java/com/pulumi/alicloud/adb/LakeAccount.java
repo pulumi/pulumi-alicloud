@@ -67,19 +67,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var vPCID = new Network("VPCID", NetworkArgs.builder()        
+ *         var vPCID = new Network("VPCID", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var vSWITCHID = new Switch("VSWITCHID", SwitchArgs.builder()        
+ *         var vSWITCHID = new Switch("VSWITCHID", SwitchArgs.builder()
  *             .vpcId(VPCID.id())
  *             .zoneId("cn-hangzhou-k")
  *             .vswitchName(name)
  *             .cidrBlock("172.16.0.0/24")
  *             .build());
  * 
- *         var createInstance = new DBClusterLakeVersion("createInstance", DBClusterLakeVersionArgs.builder()        
+ *         var createInstance = new DBClusterLakeVersion("createInstance", DBClusterLakeVersionArgs.builder()
  *             .storageResource("0ACU")
  *             .zoneId("cn-hangzhou-k")
  *             .vpcId(VPCID.id())
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .securityIps("127.0.0.1")
  *             .build());
  * 
- *         var defaultLakeAccount = new LakeAccount("defaultLakeAccount", LakeAccountArgs.builder()        
+ *         var defaultLakeAccount = new LakeAccount("defaultLakeAccount", LakeAccountArgs.builder()
  *             .dbClusterId(createInstance.id())
  *             .accountType("Super")
  *             .accountName("tfnormal")

@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example-name");
- *         var default_ = new Rule("default", RuleArgs.builder()        
+ *         var default_ = new Rule("default", RuleArgs.builder()
  *             .ruleName(name)
  *             .category("2")
  *             .content("""

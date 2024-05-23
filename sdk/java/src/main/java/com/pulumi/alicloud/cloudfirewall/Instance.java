@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var payAsYouGo = new Instance("payAsYouGo", InstanceArgs.builder()        
+ *         var payAsYouGo = new Instance("payAsYouGo", InstanceArgs.builder()
  *             .paymentType("PayAsYouGo")
  *             .build());
  * 
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var subscription = new Instance("subscription", InstanceArgs.builder()        
+ *         var subscription = new Instance("subscription", InstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .spec("premium_version")
  *             .ipNumber(20)
@@ -372,6 +372,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+     * - `AutoRenewal`: Auto renewal.
+     * - `ManualRenewal`: Manual renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+     *   **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
      * 
      */
     @Export(name="renewalStatus", refs={String.class}, tree="[0]")
@@ -379,6 +383,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+     * - `AutoRenewal`: Auto renewal.
+     * - `ManualRenewal`: Manual renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+     *   **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
      * 
      */
     public Output<String> renewalStatus() {

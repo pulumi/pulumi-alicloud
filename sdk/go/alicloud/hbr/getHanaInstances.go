@@ -65,9 +65,13 @@ type GetHanaInstancesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// The status of the SAP HANA instance.
+	// The status of the SAP HANA instance. Valid values:
+	// - `INITIALIZING`: The instance is being initialized.
+	// - `INITIALIZED`: The instance is registered.
+	// - `INVALID_HANA_NODE`: The instance is invalid.
+	// - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
 	Status *string `pulumi:"status"`
-	// The ID of the backup vault.
+	// The id of the vault.
 	VaultId *string `pulumi:"vaultId"`
 }
 
@@ -109,9 +113,13 @@ type GetHanaInstancesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// The status of the SAP HANA instance.
+	// The status of the SAP HANA instance. Valid values:
+	// - `INITIALIZING`: The instance is being initialized.
+	// - `INITIALIZED`: The instance is registered.
+	// - `INVALID_HANA_NODE`: The instance is invalid.
+	// - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The ID of the backup vault.
+	// The id of the vault.
 	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
 }
 

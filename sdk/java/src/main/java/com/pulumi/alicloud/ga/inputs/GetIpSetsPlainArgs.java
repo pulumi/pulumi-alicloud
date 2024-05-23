@@ -62,14 +62,14 @@ public final class GetIpSetsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the acceleration region.
+     * The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the acceleration region.
+     * @return The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
      * 
      */
     public Optional<String> status() {
@@ -147,7 +147,7 @@ public final class GetIpSetsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the acceleration region.
+         * @param status The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
          * 
          * @return builder
          * 

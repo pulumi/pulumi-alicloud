@@ -147,7 +147,7 @@ def get_domains(enable_details: Optional[bool] = None,
     :param str name_regex: A regex string to filter results by Domain name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Resource Group ID.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: "check_failed", "checking", "configure_failed", "configuring", "offline", "online".
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -202,6 +202,6 @@ def get_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     :param str name_regex: A regex string to filter results by Domain name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Resource Group ID.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: "check_failed", "checking", "configure_failed", "configuring", "offline", "online".
     """
     ...

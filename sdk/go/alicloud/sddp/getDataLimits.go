@@ -57,9 +57,9 @@ type GetDataLimitsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of the data asset.
+	// The parent asset ID of the data asset.
 	ParentId *string `pulumi:"parentId"`
-	// The type of the service to which the data asset belongs.
+	// The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
 	ResourceType *string `pulumi:"resourceType"`
 }
 
@@ -93,9 +93,9 @@ type GetDataLimitsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The ID of the data asset.
+	// The parent asset ID of the data asset.
 	ParentId pulumi.StringPtrInput `pulumi:"parentId"`
-	// The type of the service to which the data asset belongs.
+	// The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 }
 

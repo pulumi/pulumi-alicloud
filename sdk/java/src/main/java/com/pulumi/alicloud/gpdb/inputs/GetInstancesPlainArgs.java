@@ -183,30 +183,22 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * The tags of the instance.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
-    /**
-     * @return The tags of the instance.
-     * 
-     */
     public Optional<Map<String,Object>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
     /**
-     * The vswitch id.
+     * Used to retrieve instances belong to specified `vswitch` resources.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable String vswitchId;
 
     /**
-     * @return The vswitch id.
+     * @return Used to retrieve instances belong to specified `vswitch` resources.
      * 
      */
     public Optional<String> vswitchId() {
@@ -380,19 +372,13 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
-        /**
-         * @param tags The tags of the instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Map<String,Object> tags) {
             $.tags = tags;
             return this;
         }
 
         /**
-         * @param vswitchId The vswitch id.
+         * @param vswitchId Used to retrieve instances belong to specified `vswitch` resources.
          * 
          * @return builder
          * 

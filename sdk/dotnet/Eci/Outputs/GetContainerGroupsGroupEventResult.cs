@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string Message;
         /// <summary>
-        /// The name of the volume.
+        /// The name of the object to which the event belongs.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string Reason;
         /// <summary>
-        /// The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+        /// The type of the event. Valid values: Normal and Warning.
         /// </summary>
         public readonly string Type;
 

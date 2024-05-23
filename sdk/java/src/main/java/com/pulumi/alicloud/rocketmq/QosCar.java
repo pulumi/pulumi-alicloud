@@ -55,11 +55,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         var default_ = new Qos("default", QosArgs.builder()        
+ *         var default_ = new Qos("default", QosArgs.builder()
  *             .name(name)
  *             .build());
  * 
- *         var defaultQosCar = new QosCar("defaultQosCar", QosCarArgs.builder()        
+ *         var defaultQosCar = new QosCar("defaultQosCar", QosCarArgs.builder()
  *             .qosId(default_.id())
  *             .name(name)
  *             .description(name)

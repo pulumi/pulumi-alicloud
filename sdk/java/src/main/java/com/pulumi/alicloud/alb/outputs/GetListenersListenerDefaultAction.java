@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetListenersListenerDefaultAction {
+    /**
+     * @return The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
+     * 
+     */
     private List<GetListenersListenerDefaultActionForwardGroupConfig> forwardGroupConfigs;
+    /**
+     * @return Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
+     * 
+     */
     private String type;
 
     private GetListenersListenerDefaultAction() {}
+    /**
+     * @return The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
+     * 
+     */
     public List<GetListenersListenerDefaultActionForwardGroupConfig> forwardGroupConfigs() {
         return this.forwardGroupConfigs;
     }
+    /**
+     * @return Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
+     * 
+     */
     public String type() {
         return this.type;
     }

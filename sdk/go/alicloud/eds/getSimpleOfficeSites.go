@@ -64,7 +64,7 @@ type GetSimpleOfficeSitesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+	// Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
 	Status *string `pulumi:"status"`
 }
 
@@ -101,7 +101,7 @@ type GetSimpleOfficeSitesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+	// Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

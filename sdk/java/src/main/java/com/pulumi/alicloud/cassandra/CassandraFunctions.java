@@ -731,7 +731,7 @@ public final class CassandraFunctions {
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
-     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()        
+     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -783,7 +783,7 @@ public final class CassandraFunctions {
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
-     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()        
+     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -835,7 +835,7 @@ public final class CassandraFunctions {
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
-     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()        
+     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -887,7 +887,7 @@ public final class CassandraFunctions {
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
-     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()        
+     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -939,7 +939,7 @@ public final class CassandraFunctions {
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
-     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()        
+     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -991,7 +991,7 @@ public final class CassandraFunctions {
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
-     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()        
+     *         var cassandra = new Cluster("cassandra", ClusterArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 

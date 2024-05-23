@@ -64,6 +64,8 @@ type GetVaultsArgs struct {
 	// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
 	Status *string `pulumi:"status"`
 	// VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
+	// - `STANDARD` - used in OSS, NAS and ECS File backup.
+	// - `OTS_BACKUP` -  used in OTS backup.
 	VaultType *string `pulumi:"vaultType"`
 }
 
@@ -104,6 +106,8 @@ type GetVaultsOutputArgs struct {
 	// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
+	// - `STANDARD` - used in OSS, NAS and ECS File backup.
+	// - `OTS_BACKUP` -  used in OTS backup.
 	VaultType pulumi.StringPtrInput `pulumi:"vaultType"`
 }
 

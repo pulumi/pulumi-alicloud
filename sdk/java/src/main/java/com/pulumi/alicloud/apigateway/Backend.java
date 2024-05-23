@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         var default_ = new Backend("default", BackendArgs.builder()        
+ *         var default_ = new Backend("default", BackendArgs.builder()
  *             .backendName(name)
  *             .description(name)
  *             .backendType("HTTP")

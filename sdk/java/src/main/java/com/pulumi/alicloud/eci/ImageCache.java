@@ -67,24 +67,24 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = EciFunctions.getZones();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.1.0.0/16")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].zoneIds()[0])
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+ *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()
  *             .isp("BGP")
  *             .addressName(name)
  *             .netmode("public")
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultImageCache = new ImageCache("defaultImageCache", ImageCacheArgs.builder()        
+ *         var defaultImageCache = new ImageCache("defaultImageCache", ImageCacheArgs.builder()
  *             .imageCacheName(name)
  *             .images(String.format("registry-vpc.%s.aliyuncs.com/eci_open/nginx:alpine", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id())))
  *             .securityGroupId(defaultSecurityGroup.id())

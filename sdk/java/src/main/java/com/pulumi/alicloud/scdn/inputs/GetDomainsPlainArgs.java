@@ -92,14 +92,14 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: &#34;check_failed&#34;, &#34;checking&#34;, &#34;configure_failed&#34;, &#34;configuring&#34;, &#34;offline&#34;, &#34;online&#34;.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: &#34;check_failed&#34;, &#34;checking&#34;, &#34;configure_failed&#34;, &#34;configuring&#34;, &#34;offline&#34;, &#34;online&#34;.
      * 
      */
     public Optional<String> status() {
@@ -201,7 +201,7 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: &#34;check_failed&#34;, &#34;checking&#34;, &#34;configure_failed&#34;, &#34;configuring&#34;, &#34;offline&#34;, &#34;online&#34;.
          * 
          * @return builder
          * 

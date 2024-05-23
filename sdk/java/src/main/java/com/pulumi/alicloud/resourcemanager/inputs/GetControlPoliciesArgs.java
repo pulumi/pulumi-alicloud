@@ -93,14 +93,14 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The type of policy.
+     * The policy type of control policy. Valid values `System` and `Custom`.
      * 
      */
     @Import(name="policyType")
     private @Nullable Output<String> policyType;
 
     /**
-     * @return The type of policy.
+     * @return The policy type of control policy. Valid values `System` and `Custom`.
      * 
      */
     public Optional<Output<String>> policyType() {
@@ -252,7 +252,7 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param policyType The type of policy.
+         * @param policyType The policy type of control policy. Valid values `System` and `Custom`.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class GetControlPoliciesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param policyType The type of policy.
+         * @param policyType The policy type of control policy. Valid values `System` and `Custom`.
          * 
          * @return builder
          * 

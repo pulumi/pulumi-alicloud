@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetServerPlans = SimpleapplicationserverFunctions.getServerPlans();
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .planId(defaultGetServerPlans.applyValue(getServerPlansResult -> getServerPlansResult.plans()[0].id()))
  *             .instanceName(name)
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .dataDiskSize(100)
  *             .build());
  * 
- *         var defaultFirewallRule = new FirewallRule("defaultFirewallRule", FirewallRuleArgs.builder()        
+ *         var defaultFirewallRule = new FirewallRule("defaultFirewallRule", FirewallRuleArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .ruleProtocol("Tcp")
  *             .port("9999")

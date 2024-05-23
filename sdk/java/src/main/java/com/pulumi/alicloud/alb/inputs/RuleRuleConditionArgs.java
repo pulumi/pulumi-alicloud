@@ -162,6 +162,15 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The type of the forwarding rule. Valid values:
+     * - `Host`: Requests are forwarded based on hosts.
+     * - `Path`: Requests are forwarded based on the path.
+     * - `Header`: Requests are forwarded based on the HTTP header field.
+     * - `QueryString`: Requests are forwarded based on the query string.
+     * - `Method`: Request are forwarded based on the request method.
+     * - `Cookie`: Requests are forwarded based on the cookie.
+     * - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+     * - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+     * - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
      * 
      */
     @Import(name="type", required=true)
@@ -169,6 +178,15 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The type of the forwarding rule. Valid values:
+     * - `Host`: Requests are forwarded based on hosts.
+     * - `Path`: Requests are forwarded based on the path.
+     * - `Header`: Requests are forwarded based on the HTTP header field.
+     * - `QueryString`: Requests are forwarded based on the query string.
+     * - `Method`: Request are forwarded based on the request method.
+     * - `Cookie`: Requests are forwarded based on the cookie.
+     * - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+     * - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+     * - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
      * 
      */
     public Output<String> type() {
@@ -399,6 +417,15 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type The type of the forwarding rule. Valid values:
+         * - `Host`: Requests are forwarded based on hosts.
+         * - `Path`: Requests are forwarded based on the path.
+         * - `Header`: Requests are forwarded based on the HTTP header field.
+         * - `QueryString`: Requests are forwarded based on the query string.
+         * - `Method`: Request are forwarded based on the request method.
+         * - `Cookie`: Requests are forwarded based on the cookie.
+         * - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+         * - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+         * - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
          * 
          * @return builder
          * 
@@ -410,6 +437,15 @@ public final class RuleRuleConditionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type The type of the forwarding rule. Valid values:
+         * - `Host`: Requests are forwarded based on hosts.
+         * - `Path`: Requests are forwarded based on the path.
+         * - `Header`: Requests are forwarded based on the HTTP header field.
+         * - `QueryString`: Requests are forwarded based on the query string.
+         * - `Method`: Request are forwarded based on the request method.
+         * - `Cookie`: Requests are forwarded based on the cookie.
+         * - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+         * - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+         * - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
          * 
          * @return builder
          * 

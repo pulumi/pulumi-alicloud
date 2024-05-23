@@ -4062,7 +4062,7 @@ type GetContainerGroupsGroup struct {
 	ContainerGroupName string `pulumi:"containerGroupName"`
 	// A list of containers. Each element contains the following attributes:
 	Containers []GetContainerGroupsGroupContainer `pulumi:"containers"`
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu      float64 `pulumi:"cpu"`
 	Discount int     `pulumi:"discount"`
 	// The DNS settings.
@@ -4135,7 +4135,7 @@ type GetContainerGroupsGroupArgs struct {
 	ContainerGroupName pulumi.StringInput `pulumi:"containerGroupName"`
 	// A list of containers. Each element contains the following attributes:
 	Containers GetContainerGroupsGroupContainerArrayInput `pulumi:"containers"`
-	// The amount of CPU resources allocated to the container.
+	// The amount of CPU resources allocated to the container group.
 	Cpu      pulumi.Float64Input `pulumi:"cpu"`
 	Discount pulumi.IntInput     `pulumi:"discount"`
 	// The DNS settings.
@@ -4256,7 +4256,7 @@ func (o GetContainerGroupsGroupOutput) Containers() GetContainerGroupsGroupConta
 	return o.ApplyT(func(v GetContainerGroupsGroup) []GetContainerGroupsGroupContainer { return v.Containers }).(GetContainerGroupsGroupContainerArrayOutput)
 }
 
-// The amount of CPU resources allocated to the container.
+// The amount of CPU resources allocated to the container group.
 func (o GetContainerGroupsGroupOutput) Cpu() pulumi.Float64Output {
 	return o.ApplyT(func(v GetContainerGroupsGroup) float64 { return v.Cpu }).(pulumi.Float64Output)
 }
@@ -4413,9 +4413,9 @@ func (o GetContainerGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetContaine
 }
 
 type GetContainerGroupsGroupContainer struct {
-	// The arguments passed to the commands.
+	// The arguments passed to the commands. Maximum: `10`.
 	Args []string `pulumi:"args"`
-	// The commands run by the container.
+	// The commands run by the container. You can define a maximum of 20 commands. Minimum length per string: 256 characters.
 	Commands []string `pulumi:"commands"`
 	// The amount of CPU resources allocated to the container.
 	Cpu float64 `pulumi:"cpu"`
@@ -4427,11 +4427,11 @@ type GetContainerGroupsGroupContainer struct {
 	Image string `pulumi:"image"`
 	// The policy for pulling an image.
 	ImagePullPolicy string `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container group.
+	// The amount of memory resources allocated to the container.
 	Memory float64 `pulumi:"memory"`
-	// The name of the volume.
+	// The name of the container.
 	Name string `pulumi:"name"`
-	// The exposed ports and protocols. Maximum: `100`.
+	// The list of exposed ports and protocols. Maximum: 100.
 	Ports []GetContainerGroupsGroupContainerPort `pulumi:"ports"`
 	// Indicates whether the container is ready.
 	Ready bool `pulumi:"ready"`
@@ -4455,9 +4455,9 @@ type GetContainerGroupsGroupContainerInput interface {
 }
 
 type GetContainerGroupsGroupContainerArgs struct {
-	// The arguments passed to the commands.
+	// The arguments passed to the commands. Maximum: `10`.
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// The commands run by the container.
+	// The commands run by the container. You can define a maximum of 20 commands. Minimum length per string: 256 characters.
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
 	// The amount of CPU resources allocated to the container.
 	Cpu pulumi.Float64Input `pulumi:"cpu"`
@@ -4469,11 +4469,11 @@ type GetContainerGroupsGroupContainerArgs struct {
 	Image pulumi.StringInput `pulumi:"image"`
 	// The policy for pulling an image.
 	ImagePullPolicy pulumi.StringInput `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container group.
+	// The amount of memory resources allocated to the container.
 	Memory pulumi.Float64Input `pulumi:"memory"`
-	// The name of the volume.
+	// The name of the container.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The exposed ports and protocols. Maximum: `100`.
+	// The list of exposed ports and protocols. Maximum: 100.
 	Ports GetContainerGroupsGroupContainerPortArrayInput `pulumi:"ports"`
 	// Indicates whether the container is ready.
 	Ready pulumi.BoolInput `pulumi:"ready"`
@@ -4536,12 +4536,12 @@ func (o GetContainerGroupsGroupContainerOutput) ToGetContainerGroupsGroupContain
 	return o
 }
 
-// The arguments passed to the commands.
+// The arguments passed to the commands. Maximum: `10`.
 func (o GetContainerGroupsGroupContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupContainer) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// The commands run by the container.
+// The commands run by the container. You can define a maximum of 20 commands. Minimum length per string: 256 characters.
 func (o GetContainerGroupsGroupContainerOutput) Commands() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupContainer) []string { return v.Commands }).(pulumi.StringArrayOutput)
 }
@@ -4573,17 +4573,17 @@ func (o GetContainerGroupsGroupContainerOutput) ImagePullPolicy() pulumi.StringO
 	return o.ApplyT(func(v GetContainerGroupsGroupContainer) string { return v.ImagePullPolicy }).(pulumi.StringOutput)
 }
 
-// The amount of memory resources allocated to the container group.
+// The amount of memory resources allocated to the container.
 func (o GetContainerGroupsGroupContainerOutput) Memory() pulumi.Float64Output {
 	return o.ApplyT(func(v GetContainerGroupsGroupContainer) float64 { return v.Memory }).(pulumi.Float64Output)
 }
 
-// The name of the volume.
+// The name of the container.
 func (o GetContainerGroupsGroupContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupContainer) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The exposed ports and protocols. Maximum: `100`.
+// The list of exposed ports and protocols. Maximum: 100.
 func (o GetContainerGroupsGroupContainerOutput) Ports() GetContainerGroupsGroupContainerPortArrayOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupContainer) []GetContainerGroupsGroupContainerPort { return v.Ports }).(GetContainerGroupsGroupContainerPortArrayOutput)
 }
@@ -5073,9 +5073,9 @@ func (o GetContainerGroupsGroupDnsConfigArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetContainerGroupsGroupDnsConfigOption struct {
-	// The name of the volume.
+	// The name of the object variable.
 	Name string `pulumi:"name"`
-	// The value of the variable.
+	// The value of the object variable.
 	Value string `pulumi:"value"`
 }
 
@@ -5091,9 +5091,9 @@ type GetContainerGroupsGroupDnsConfigOptionInput interface {
 }
 
 type GetContainerGroupsGroupDnsConfigOptionArgs struct {
-	// The name of the volume.
+	// The name of the object variable.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The value of the variable.
+	// The value of the object variable.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -5148,12 +5148,12 @@ func (o GetContainerGroupsGroupDnsConfigOptionOutput) ToGetContainerGroupsGroupD
 	return o
 }
 
-// The name of the volume.
+// The name of the object variable.
 func (o GetContainerGroupsGroupDnsConfigOptionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupDnsConfigOption) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value of the variable.
+// The value of the object variable.
 func (o GetContainerGroupsGroupDnsConfigOptionOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupDnsConfigOption) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -5278,7 +5278,7 @@ func (o GetContainerGroupsGroupEciSecurityContextArrayOutput) Index(i pulumi.Int
 }
 
 type GetContainerGroupsGroupEciSecurityContextSysctl struct {
-	// The name of the volume.
+	// The name of the variable.
 	Name string `pulumi:"name"`
 	// The value of the variable.
 	Value string `pulumi:"value"`
@@ -5296,7 +5296,7 @@ type GetContainerGroupsGroupEciSecurityContextSysctlInput interface {
 }
 
 type GetContainerGroupsGroupEciSecurityContextSysctlArgs struct {
-	// The name of the volume.
+	// The name of the variable.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The value of the variable.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -5353,7 +5353,7 @@ func (o GetContainerGroupsGroupEciSecurityContextSysctlOutput) ToGetContainerGro
 	return o
 }
 
-// The name of the volume.
+// The name of the variable.
 func (o GetContainerGroupsGroupEciSecurityContextSysctlOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEciSecurityContextSysctl) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5392,11 +5392,11 @@ type GetContainerGroupsGroupEvent struct {
 	LastTimestamp string `pulumi:"lastTimestamp"`
 	// The content of the event.
 	Message string `pulumi:"message"`
-	// The name of the volume.
+	// The name of the object to which the event belongs.
 	Name string `pulumi:"name"`
 	// The name of the event.
 	Reason string `pulumi:"reason"`
-	// The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+	// The type of the event. Valid values: Normal and Warning.
 	Type string `pulumi:"type"`
 }
 
@@ -5420,11 +5420,11 @@ type GetContainerGroupsGroupEventArgs struct {
 	LastTimestamp pulumi.StringInput `pulumi:"lastTimestamp"`
 	// The content of the event.
 	Message pulumi.StringInput `pulumi:"message"`
-	// The name of the volume.
+	// The name of the object to which the event belongs.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the event.
 	Reason pulumi.StringInput `pulumi:"reason"`
-	// The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+	// The type of the event. Valid values: Normal and Warning.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -5499,7 +5499,7 @@ func (o GetContainerGroupsGroupEventOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEvent) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// The name of the volume.
+// The name of the object to which the event belongs.
 func (o GetContainerGroupsGroupEventOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEvent) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5509,7 +5509,7 @@ func (o GetContainerGroupsGroupEventOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEvent) string { return v.Reason }).(pulumi.StringOutput)
 }
 
-// The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+// The type of the event. Valid values: Normal and Warning.
 func (o GetContainerGroupsGroupEventOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEvent) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -5655,9 +5655,9 @@ type GetContainerGroupsGroupInitContainer struct {
 	Image string `pulumi:"image"`
 	// The policy for pulling an image.
 	ImagePullPolicy string `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container group.
+	// The amount of memory resources allocated to the container.
 	Memory float64 `pulumi:"memory"`
-	// The name of the volume.
+	// The name of the init container.
 	Name string `pulumi:"name"`
 	// The exposed ports and protocols. Maximum: `100`.
 	Ports []GetContainerGroupsGroupInitContainerPort `pulumi:"ports"`
@@ -5697,9 +5697,9 @@ type GetContainerGroupsGroupInitContainerArgs struct {
 	Image pulumi.StringInput `pulumi:"image"`
 	// The policy for pulling an image.
 	ImagePullPolicy pulumi.StringInput `pulumi:"imagePullPolicy"`
-	// The amount of memory resources allocated to the container group.
+	// The amount of memory resources allocated to the container.
 	Memory pulumi.Float64Input `pulumi:"memory"`
-	// The name of the volume.
+	// The name of the init container.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The exposed ports and protocols. Maximum: `100`.
 	Ports GetContainerGroupsGroupInitContainerPortArrayInput `pulumi:"ports"`
@@ -5801,12 +5801,12 @@ func (o GetContainerGroupsGroupInitContainerOutput) ImagePullPolicy() pulumi.Str
 	return o.ApplyT(func(v GetContainerGroupsGroupInitContainer) string { return v.ImagePullPolicy }).(pulumi.StringOutput)
 }
 
-// The amount of memory resources allocated to the container group.
+// The amount of memory resources allocated to the container.
 func (o GetContainerGroupsGroupInitContainerOutput) Memory() pulumi.Float64Output {
 	return o.ApplyT(func(v GetContainerGroupsGroupInitContainer) float64 { return v.Memory }).(pulumi.Float64Output)
 }
 
-// The name of the volume.
+// The name of the init container.
 func (o GetContainerGroupsGroupInitContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupInitContainer) string { return v.Name }).(pulumi.StringOutput)
 }

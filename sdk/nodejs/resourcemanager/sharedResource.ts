@@ -88,6 +88,11 @@ export class SharedResource extends pulumi.CustomResource {
     public readonly resourceShareId!: pulumi.Output<string>;
     /**
      * The resource type of should shared. Valid values:
+     * - `VSwitch`.
+     * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+     * - The following types are added after v1.192.0: `PrefixList` and `Image`.
+     * - The following types are added after v1.194.1: `PublicIpAddressPool`.
+     * - The following types are added after v1.208.0: `KMSInstance`.
      */
     public readonly resourceType!: pulumi.Output<string>;
     /**
@@ -147,6 +152,11 @@ export interface SharedResourceState {
     resourceShareId?: pulumi.Input<string>;
     /**
      * The resource type of should shared. Valid values:
+     * - `VSwitch`.
+     * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+     * - The following types are added after v1.192.0: `PrefixList` and `Image`.
+     * - The following types are added after v1.194.1: `PublicIpAddressPool`.
+     * - The following types are added after v1.208.0: `KMSInstance`.
      */
     resourceType?: pulumi.Input<string>;
     /**
@@ -169,6 +179,11 @@ export interface SharedResourceArgs {
     resourceShareId: pulumi.Input<string>;
     /**
      * The resource type of should shared. Valid values:
+     * - `VSwitch`.
+     * - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+     * - The following types are added after v1.192.0: `PrefixList` and `Image`.
+     * - The following types are added after v1.194.1: `PublicIpAddressPool`.
+     * - The following types are added after v1.208.0: `KMSInstance`.
      */
     resourceType: pulumi.Input<string>;
 }

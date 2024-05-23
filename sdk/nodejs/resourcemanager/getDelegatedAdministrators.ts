@@ -53,7 +53,7 @@ export interface GetDelegatedAdministratorsArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * The identity of the trusted service.
+     * The identification of the trusted service.
      */
     servicePrincipal?: string;
 }
@@ -111,7 +111,7 @@ export interface GetDelegatedAdministratorsOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * The identity of the trusted service.
+     * The identification of the trusted service.
      */
     servicePrincipal?: pulumi.Input<string>;
 }

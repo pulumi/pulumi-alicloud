@@ -1883,6 +1883,7 @@ func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOu
 }
 
 type GetRegionsRegionZone struct {
+	// The ID of the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -1898,6 +1899,7 @@ type GetRegionsRegionZoneInput interface {
 }
 
 type GetRegionsRegionZoneArgs struct {
+	// The ID of the zone.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -1952,6 +1954,7 @@ func (o GetRegionsRegionZoneOutput) ToGetRegionsRegionZoneOutputWithContext(ctx 
 	return o
 }
 
+// The ID of the zone.
 func (o GetRegionsRegionZoneOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsRegionZone) string { return v.ZoneId }).(pulumi.StringOutput)
 }

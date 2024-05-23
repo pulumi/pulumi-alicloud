@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string Sip;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the health check.
         /// </summary>
         public readonly string Status;
 

@@ -88,12 +88,12 @@ import javax.annotation.Nullable;
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(default_.ids()[0])
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .availabilityZone(zoneId)
  *             .instanceName(name)
  *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  *             .systemDiskCategory("cloud_essd")
  *             .build());
  * 
- *         var defaultInstance2 = new Instance("defaultInstance2", InstanceArgs.builder()        
+ *         var defaultInstance2 = new Instance("defaultInstance2", InstanceArgs.builder()
  *             .category("enterprise")
  *             .zoneId(defaultInstance.availabilityZone())
  *             .performanceLevel("PL1")
@@ -111,12 +111,12 @@ import javax.annotation.Nullable;
  *             .size(100)
  *             .build());
  * 
- *         var defaultInstanceAttachment = new InstanceAttachment("defaultInstanceAttachment", InstanceAttachmentArgs.builder()        
+ *         var defaultInstanceAttachment = new InstanceAttachment("defaultInstanceAttachment", InstanceAttachmentArgs.builder()
  *             .ecsId(defaultInstance.id())
  *             .instanceId(defaultInstance2.id())
  *             .build());
  * 
- *         var exampleSnapshot = new Snapshot("exampleSnapshot", SnapshotArgs.builder()        
+ *         var exampleSnapshot = new Snapshot("exampleSnapshot", SnapshotArgs.builder()
  *             .instanceId(defaultInstanceAttachment.instanceId())
  *             .snapshotName(name)
  *             .description(name)

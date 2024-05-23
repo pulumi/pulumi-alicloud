@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.PrivateLink
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The Status of Vpc Endpoint Zone..
+        /// The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.PrivateLink
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The Status of Vpc Endpoint Zone..
+        /// The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

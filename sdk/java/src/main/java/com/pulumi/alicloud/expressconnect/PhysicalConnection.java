@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var domestic = new PhysicalConnection("domestic", PhysicalConnectionArgs.builder()        
+ *         var domestic = new PhysicalConnection("domestic", PhysicalConnectionArgs.builder()
  *             .accessPointId("ap-cn-hangzhou-yh-B")
  *             .lineOperator("CT")
  *             .peerLocation("example_value")
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .bandwidth(100)
  *             .build());
  * 
- *         var international = new PhysicalConnection("international", PhysicalConnectionArgs.builder()        
+ *         var international = new PhysicalConnection("international", PhysicalConnectionArgs.builder()
  *             .accessPointId("ap-sg-singpore-A")
  *             .lineOperator("Other")
  *             .peerLocation("example_value")

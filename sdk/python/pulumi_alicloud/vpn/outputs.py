@@ -2704,7 +2704,7 @@ class GetGatewayVpnAttachmentsAttachmentBgpConfigResult(dict):
         """
         :param str local_asn: The ASN on the Alibaba Cloud side.
         :param str local_bgp_ip: The BGP IP address on the Alibaba Cloud side.
-        :param str status: The status of the resource.
+        :param str status: The negotiation status of the BGP routing protocol.
         :param str tunnel_cidr: The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
         """
         pulumi.set(__self__, "local_asn", local_asn)
@@ -2732,7 +2732,7 @@ class GetGatewayVpnAttachmentsAttachmentBgpConfigResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The negotiation status of the BGP routing protocol.
         """
         return pulumi.get(self, "status")
 
@@ -2762,7 +2762,7 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult(dict):
         :param str policy: Whether to revoke the published route when the health check fails.
         :param int retry: The maximum number of health check retries.
         :param str sip: The source IP address.
-        :param str status: The status of the resource.
+        :param str status: The status of the health check.
         """
         pulumi.set(__self__, "dip", dip)
         pulumi.set(__self__, "enable", enable)
@@ -2824,7 +2824,7 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the health check.
         """
         return pulumi.get(self, "status")
 

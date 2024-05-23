@@ -50,6 +50,10 @@ class InstanceArgs:
                **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
+               - `AutoRenewal`: Auto renewal.
+               - `ManualRenewal`: Manual renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+               **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         """
         pulumi.set(__self__, "payment_type", payment_type)
@@ -278,6 +282,10 @@ class InstanceArgs:
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
         Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        - `AutoRenewal`: Auto renewal.
+        - `ManualRenewal`: Manual renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -344,6 +352,10 @@ class _InstanceState:
                **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
+               - `AutoRenewal`: Auto renewal.
+               - `ManualRenewal`: Manual renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+               **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         :param pulumi.Input[str] status: The status of Instance.
         """
@@ -618,6 +630,10 @@ class _InstanceState:
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
         Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        - `AutoRenewal`: Auto renewal.
+        - `ManualRenewal`: Manual renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -734,6 +750,10 @@ class Instance(pulumi.CustomResource):
                **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
+               - `AutoRenewal`: Auto renewal.
+               - `ManualRenewal`: Manual renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+               **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         """
         ...
@@ -906,6 +926,10 @@ class Instance(pulumi.CustomResource):
                **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
+               - `AutoRenewal`: Auto renewal.
+               - `ManualRenewal`: Manual renewal.
+               - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+               **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         :param pulumi.Input[str] status: The status of Instance.
         """
@@ -1089,6 +1113,10 @@ class Instance(pulumi.CustomResource):
     def renewal_status(self) -> pulumi.Output[str]:
         """
         Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        - `AutoRenewal`: Auto renewal.
+        - `ManualRenewal`: Manual renewal.
+        - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
+        **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         """
         return pulumi.get(self, "renewal_status")
 

@@ -95,15 +95,15 @@ type GetParametersArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The name of the common parameter.
+	// The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
 	ParameterName *string `pulumi:"parameterName"`
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	SortField       *string `pulumi:"sortField"`
 	SortOrder       *string `pulumi:"sortOrder"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The data type of the common parameter.
+	// The data type of the common parameter. Valid values: `String` and `StringList`.
 	Type *string `pulumi:"type"`
 }
 
@@ -148,15 +148,15 @@ type GetParametersOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The name of the common parameter.
+	// The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
 	ParameterName pulumi.StringPtrInput `pulumi:"parameterName"`
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	SortField       pulumi.StringPtrInput `pulumi:"sortField"`
 	SortOrder       pulumi.StringPtrInput `pulumi:"sortOrder"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`
-	// The data type of the common parameter.
+	// The data type of the common parameter. Valid values: `String` and `StringList`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 

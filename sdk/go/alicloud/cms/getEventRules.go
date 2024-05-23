@@ -74,7 +74,7 @@ type GetEventRulesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `DISABLED`, `ENABLED`.
 	Status *string `pulumi:"status"`
 }
 
@@ -118,7 +118,7 @@ type GetEventRulesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `DISABLED`, `ENABLED`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

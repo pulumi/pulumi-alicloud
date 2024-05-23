@@ -55,11 +55,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         var default_ = new Acl("default", AclArgs.builder()        
+ *         var default_ = new Acl("default", AclArgs.builder()
  *             .name(name)
  *             .build());
  * 
- *         var defaultAclRule = new AclRule("defaultAclRule", AclRuleArgs.builder()        
+ *         var defaultAclRule = new AclRule("defaultAclRule", AclRuleArgs.builder()
  *             .aclId(default_.id())
  *             .description(name)
  *             .policy("accept")

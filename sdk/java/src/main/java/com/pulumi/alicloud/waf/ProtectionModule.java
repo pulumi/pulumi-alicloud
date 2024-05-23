@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = WafFunctions.getInstances();
  * 
- *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+ *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
  *             .domainName("you domain")
  *             .instanceId(default_.ids()[0])
  *             .isAccessProduct("On")
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultProtectionModule = new ProtectionModule("defaultProtectionModule", ProtectionModuleArgs.builder()        
+ *         var defaultProtectionModule = new ProtectionModule("defaultProtectionModule", ProtectionModuleArgs.builder()
  *             .instanceId(default_.ids()[0])
  *             .domain(defaultDomain.domainName())
  *             .defenseType("ac_cc")

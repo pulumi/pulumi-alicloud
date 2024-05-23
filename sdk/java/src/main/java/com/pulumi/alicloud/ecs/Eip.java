@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new EIP.
- *         var example = new Eip("example", EipArgs.builder()        
+ *         var example = new Eip("example", EipArgs.builder()
  *             .bandwidth("10")
  *             .internetChargeType("PayByBandwidth")
  *             .build());

@@ -67,25 +67,25 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var domainExtensionNetwork = new Network("domainExtensionNetwork", NetworkArgs.builder()        
+ *         var domainExtensionNetwork = new Network("domainExtensionNetwork", NetworkArgs.builder()
  *             .vpcName(slbDomainExtensionName)
  *             .build());
  * 
- *         var domainExtensionSwitch = new Switch("domainExtensionSwitch", SwitchArgs.builder()        
+ *         var domainExtensionSwitch = new Switch("domainExtensionSwitch", SwitchArgs.builder()
  *             .vpcId(domainExtensionNetwork.id())
  *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(domainExtension.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(slbDomainExtensionName)
  *             .build());
  * 
- *         var instance = new ApplicationLoadBalancer("instance", ApplicationLoadBalancerArgs.builder()        
+ *         var instance = new ApplicationLoadBalancer("instance", ApplicationLoadBalancerArgs.builder()
  *             .loadBalancerName(slbDomainExtensionName)
  *             .addressType("intranet")
  *             .loadBalancerSpec("slb.s2.small")
  *             .vswitchId(domainExtensionSwitch.id())
  *             .build());
  * 
- *         var domainExtensionServerCertificate = new ServerCertificate("domainExtensionServerCertificate", ServerCertificateArgs.builder()        
+ *         var domainExtensionServerCertificate = new ServerCertificate("domainExtensionServerCertificate", ServerCertificateArgs.builder()
  *             .name("tf-testAccSlbServerCertificate")
  *             .serverCertificate("""
  * -----BEGIN CERTIFICATE-----
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  * -----END RSA PRIVATE KEY-----            """)
  *             .build());
  * 
- *         var https = new Listener("https", ListenerArgs.builder()        
+ *         var https = new Listener("https", ListenerArgs.builder()
  *             .loadBalancerId(instance.id())
  *             .backendPort(80)
  *             .frontendPort(443)
@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  *             .serverCertificateId(domainExtensionServerCertificate.id())
  *             .build());
  * 
- *         var example1 = new DomainExtension("example1", DomainExtensionArgs.builder()        
+ *         var example1 = new DomainExtension("example1", DomainExtensionArgs.builder()
  *             .loadBalancerId(instance.id())
  *             .frontendPort(https.frontendPort())
  *             .domain("www.test.com")

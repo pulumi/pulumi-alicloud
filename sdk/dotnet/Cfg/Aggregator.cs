@@ -79,6 +79,8 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+        /// * `CUSTOM` - The custom account group.
+        /// * `RD` - The global account group.
         /// </summary>
         [Output("aggregatorType")]
         public Output<string> AggregatorType { get; private set; } = null!;
@@ -161,6 +163,8 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+        /// * `CUSTOM` - The custom account group.
+        /// * `RD` - The global account group.
         /// </summary>
         [Input("aggregatorType")]
         public Input<string>? AggregatorType { get; set; }
@@ -199,6 +203,8 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
+        /// * `CUSTOM` - The custom account group.
+        /// * `RD` - The global account group.
         /// </summary>
         [Input("aggregatorType")]
         public Input<string>? AggregatorType { get; set; }

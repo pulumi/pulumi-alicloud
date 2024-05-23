@@ -13,10 +13,25 @@ namespace Pulumi.AliCloud.CloudSso.Outputs
     [OutputType]
     public sealed class GetDirectoriesDirectorySamlIdentityProviderConfigurationResult
     {
+        /// <summary>
+        /// Saml identifies the creation time of the provider configuration.
+        /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// Base64 encoded IdP metadata document.
+        /// </summary>
         public readonly string EncodedMetadataDocument;
+        /// <summary>
+        /// SAML IdPEntityID.
+        /// </summary>
         public readonly string EntityId;
+        /// <summary>
+        /// SAML IdP http-post Binding address.
+        /// </summary>
         public readonly string LoginUrl;
+        /// <summary>
+        /// SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        /// </summary>
         public readonly string SsoStatus;
 
         [OutputConstructor]

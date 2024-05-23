@@ -3301,17 +3301,27 @@ class GetWafDomainsDomainDefenseSceneResult(dict):
     def __init__(__self__, *,
                  defense_scene: str,
                  policy_id: str):
+        """
+        :param str defense_scene: The type of protection policy.
+        :param str policy_id: The protection policy ID.
+        """
         pulumi.set(__self__, "defense_scene", defense_scene)
         pulumi.set(__self__, "policy_id", policy_id)
 
     @property
     @pulumi.getter(name="defenseScene")
     def defense_scene(self) -> str:
+        """
+        The type of protection policy.
+        """
         return pulumi.get(self, "defense_scene")
 
     @property
     @pulumi.getter(name="policyId")
     def policy_id(self) -> str:
+        """
+        The protection policy ID.
+        """
         return pulumi.get(self, "policy_id")
 
 

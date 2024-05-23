@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetListenersListenerCertificate {
+    /**
+     * @return The ID of the Certificate.
+     * 
+     */
     private String certificateId;
 
     private GetListenersListenerCertificate() {}
+    /**
+     * @return The ID of the Certificate.
+     * 
+     */
     public String certificateId() {
         return this.certificateId;
     }

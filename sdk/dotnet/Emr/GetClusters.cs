@@ -432,7 +432,7 @@ namespace Pulumi.AliCloud.Emr
     public sealed class GetClustersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the associated cluster.
+        /// The cluster name.
         /// </summary>
         [Input("clusterName")]
         public string? ClusterName { get; set; }
@@ -450,7 +450,7 @@ namespace Pulumi.AliCloud.Emr
         }
 
         /// <summary>
-        /// How to create a cluster.
+        /// How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
         /// </summary>
         [Input("createType")]
         public string? CreateType { get; set; }
@@ -462,7 +462,7 @@ namespace Pulumi.AliCloud.Emr
         public bool? DefaultStatus { get; set; }
 
         /// <summary>
-        /// The hosting type of the cluster.
+        /// The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
         /// </summary>
         [Input("depositType")]
         public string? DepositType { get; set; }
@@ -492,7 +492,7 @@ namespace Pulumi.AliCloud.Emr
         public bool? IsDesc { get; set; }
 
         /// <summary>
-        /// The host type of the cluster. The default is ECS.
+        /// The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
         /// </summary>
         [Input("machineType")]
         public string? MachineType { get; set; }
@@ -548,7 +548,7 @@ namespace Pulumi.AliCloud.Emr
     public sealed class GetClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the associated cluster.
+        /// The cluster name.
         /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }
@@ -566,7 +566,7 @@ namespace Pulumi.AliCloud.Emr
         }
 
         /// <summary>
-        /// How to create a cluster.
+        /// How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
         /// </summary>
         [Input("createType")]
         public Input<string>? CreateType { get; set; }
@@ -578,7 +578,7 @@ namespace Pulumi.AliCloud.Emr
         public Input<bool>? DefaultStatus { get; set; }
 
         /// <summary>
-        /// The hosting type of the cluster.
+        /// The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
         /// </summary>
         [Input("depositType")]
         public Input<string>? DepositType { get; set; }
@@ -608,7 +608,7 @@ namespace Pulumi.AliCloud.Emr
         public Input<bool>? IsDesc { get; set; }
 
         /// <summary>
-        /// The host type of the cluster. The default is ECS.
+        /// The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }

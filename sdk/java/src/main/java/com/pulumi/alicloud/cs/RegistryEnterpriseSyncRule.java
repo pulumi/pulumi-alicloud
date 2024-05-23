@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var source = new RegistryEnterpriseInstance("source", RegistryEnterpriseInstanceArgs.builder()        
+ *         var source = new RegistryEnterpriseInstance("source", RegistryEnterpriseInstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .instanceName(String.format("%s-source", name))
  *             .build());
  * 
- *         var target = new RegistryEnterpriseInstance("target", RegistryEnterpriseInstanceArgs.builder()        
+ *         var target = new RegistryEnterpriseInstance("target", RegistryEnterpriseInstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
@@ -78,21 +78,21 @@ import javax.annotation.Nullable;
  *             .instanceName(String.format("%s-target", name))
  *             .build());
  * 
- *         var sourceRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()        
+ *         var sourceRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("sourceRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
  *             .instanceId(source.id())
  *             .name(name)
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
- *         var targetRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("targetRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()        
+ *         var targetRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("targetRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
  *             .instanceId(target.id())
  *             .name(name)
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
- *         var sourceRegistryEnterpriseRepo = new RegistryEnterpriseRepo("sourceRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()        
+ *         var sourceRegistryEnterpriseRepo = new RegistryEnterpriseRepo("sourceRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
  *             .instanceId(source.id())
  *             .namespace(sourceRegistryEnterpriseNamespace.name())
  *             .name(name)
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *             .detail("this is a public repo")
  *             .build());
  * 
- *         var targetRegistryEnterpriseRepo = new RegistryEnterpriseRepo("targetRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()        
+ *         var targetRegistryEnterpriseRepo = new RegistryEnterpriseRepo("targetRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
  *             .instanceId(target.id())
  *             .namespace(targetRegistryEnterpriseNamespace.name())
  *             .name(name)
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultRegistryEnterpriseSyncRule = new RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule", RegistryEnterpriseSyncRuleArgs.builder()        
+ *         var defaultRegistryEnterpriseSyncRule = new RegistryEnterpriseSyncRule("defaultRegistryEnterpriseSyncRule", RegistryEnterpriseSyncRuleArgs.builder()
  *             .instanceId(source.id())
  *             .namespaceName(sourceRegistryEnterpriseNamespace.name())
  *             .name(name)

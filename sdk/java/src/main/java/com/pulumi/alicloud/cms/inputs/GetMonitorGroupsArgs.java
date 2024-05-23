@@ -139,30 +139,22 @@ public final class GetMonitorGroupsArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.selectContactGroups);
     }
 
-    /**
-     * A map of tags assigned to the Cms Monitor Group.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
-    /**
-     * @return A map of tags assigned to the Cms Monitor Group.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
     /**
-     * The type of the application group.
+     * The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of the application group.
+     * @return The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -380,29 +372,17 @@ public final class GetMonitorGroupsArgs extends com.pulumi.resources.InvokeArgs 
             return selectContactGroups(Output.of(selectContactGroups));
         }
 
-        /**
-         * @param tags A map of tags assigned to the Cms Monitor Group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Output<Map<String,Object>> tags) {
             $.tags = tags;
             return this;
         }
 
-        /**
-         * @param tags A map of tags assigned to the Cms Monitor Group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
         }
 
         /**
-         * @param type The type of the application group.
+         * @param type The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
          * 
          * @return builder
          * 
@@ -413,7 +393,7 @@ public final class GetMonitorGroupsArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param type The type of the application group.
+         * @param type The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
          * 
          * @return builder
          * 

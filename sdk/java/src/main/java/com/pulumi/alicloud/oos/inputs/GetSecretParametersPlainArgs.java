@@ -94,14 +94,14 @@ public final class GetSecretParametersPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The name of the encryption parameter.
+     * The name of the secret parameter.
      * 
      */
     @Import(name="secretParameterName")
     private @Nullable String secretParameterName;
 
     /**
-     * @return The name of the encryption parameter.
+     * @return The name of the secret parameter.
      * 
      */
     public Optional<String> secretParameterName() {
@@ -123,14 +123,14 @@ public final class GetSecretParametersPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Optional<Map<String,Object>> tags() {
@@ -235,7 +235,7 @@ public final class GetSecretParametersPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param secretParameterName The name of the encryption parameter.
+         * @param secretParameterName The name of the secret parameter.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class GetSecretParametersPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 

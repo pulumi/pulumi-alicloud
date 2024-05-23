@@ -56,7 +56,7 @@ export interface GetEcsStorageCapacityUnitsArgs {
      */
     outputFile?: string;
     /**
-     * The status of Storage Capacity Unit.
+     * The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
      */
     status?: string;
 }
@@ -118,7 +118,7 @@ export interface GetEcsStorageCapacityUnitsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of Storage Capacity Unit.
+     * The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
      */
     status?: pulumi.Input<string>;
 }

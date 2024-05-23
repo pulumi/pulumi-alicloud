@@ -65,7 +65,7 @@ export interface GetRulesArgs {
      */
     ruleNamePrefix?: string;
     /**
-     * Rule status, either Enable or Disable.
+     * Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
      */
     status?: string;
 }
@@ -137,7 +137,7 @@ export interface GetRulesOutputArgs {
      */
     ruleNamePrefix?: pulumi.Input<string>;
     /**
-     * Rule status, either Enable or Disable.
+     * Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
      */
     status?: pulumi.Input<string>;
 }

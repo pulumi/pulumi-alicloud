@@ -143,10 +143,6 @@ namespace Pulumi.AliCloud.Cms
 
         [Input("tags")]
         private Dictionary<string, object>? _tags;
-
-        /// <summary>
-        /// A map of tags assigned to the Cms Monitor Group.
-        /// </summary>
         public Dictionary<string, object> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, object>());
@@ -154,7 +150,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The type of the application group.
+        /// The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -223,10 +219,6 @@ namespace Pulumi.AliCloud.Cms
 
         [Input("tags")]
         private InputMap<object>? _tags;
-
-        /// <summary>
-        /// A map of tags assigned to the Cms Monitor Group.
-        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -234,7 +226,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The type of the application group.
+        /// The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

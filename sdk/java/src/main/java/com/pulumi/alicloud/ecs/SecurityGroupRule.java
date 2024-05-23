@@ -52,11 +52,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityGroup("default", SecurityGroupArgs.builder()        
+ *         var default_ = new SecurityGroup("default", SecurityGroupArgs.builder()
  *             .name("default")
  *             .build());
  * 
- *         var allowAllTcp = new SecurityGroupRule("allowAllTcp", SecurityGroupRuleArgs.builder()        
+ *         var allowAllTcp = new SecurityGroupRule("allowAllTcp", SecurityGroupRuleArgs.builder()
  *             .type("ingress")
  *             .ipProtocol("tcp")
  *             .nicType("internet")

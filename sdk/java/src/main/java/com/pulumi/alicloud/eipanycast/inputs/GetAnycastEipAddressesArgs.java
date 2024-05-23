@@ -137,14 +137,14 @@ public final class GetAnycastEipAddressesArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The payment model of Anycast EIP instance. &#34;PostPaid&#34;: Refers to the post-paid mode.
+     * The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment model of Anycast EIP instance. &#34;PostPaid&#34;: Refers to the post-paid mode.
+     * @return The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -152,14 +152,14 @@ public final class GetAnycastEipAddressesArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
+     * Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
      * 
      */
     @Import(name="serviceLocation")
     private @Nullable Output<String> serviceLocation;
 
     /**
-     * @return Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
+     * @return Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
      * 
      */
     public Optional<Output<String>> serviceLocation() {
@@ -167,14 +167,14 @@ public final class GetAnycastEipAddressesArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+     * IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+     * @return IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -404,7 +404,7 @@ public final class GetAnycastEipAddressesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param paymentType The payment model of Anycast EIP instance. &#34;PostPaid&#34;: Refers to the post-paid mode.
+         * @param paymentType The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class GetAnycastEipAddressesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param paymentType The payment model of Anycast EIP instance. &#34;PostPaid&#34;: Refers to the post-paid mode.
+         * @param paymentType The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class GetAnycastEipAddressesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param serviceLocation Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
+         * @param serviceLocation Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
          * 
          * @return builder
          * 
@@ -436,7 +436,7 @@ public final class GetAnycastEipAddressesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param serviceLocation Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
+         * @param serviceLocation Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
          * 
          * @return builder
          * 
@@ -446,7 +446,7 @@ public final class GetAnycastEipAddressesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param status IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+         * @param status IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class GetAnycastEipAddressesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param status IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+         * @param status IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
          * 
          * @return builder
          * 

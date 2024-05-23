@@ -60,7 +60,7 @@ func GetEndpointAclPolicies(ctx *pulumi.Context, args *GetEndpointAclPoliciesArg
 
 // A collection of arguments for invoking getEndpointAclPolicies.
 type GetEndpointAclPoliciesArgs struct {
-	// The type of endpoint.
+	// The type of endpoint. Valid values: `internet`.
 	EndpointType string `pulumi:"endpointType"`
 	// A list of Endpoint Acl Policy IDs.
 	Ids []string `pulumi:"ids"`
@@ -96,7 +96,7 @@ func GetEndpointAclPoliciesOutput(ctx *pulumi.Context, args GetEndpointAclPolici
 
 // A collection of arguments for invoking getEndpointAclPolicies.
 type GetEndpointAclPoliciesOutputArgs struct {
-	// The type of endpoint.
+	// The type of endpoint. Valid values: `internet`.
 	EndpointType pulumi.StringInput `pulumi:"endpointType"`
 	// A list of Endpoint Acl Policy IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

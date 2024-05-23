@@ -265,6 +265,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
      * 
      */
     @Import(name="modificationProtectionStatus")
@@ -272,6 +274,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
      * 
      */
     public Optional<Output<String>> modificationProtectionStatus() {
@@ -746,6 +750,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param modificationProtectionStatus Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+         * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+         * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
          * 
          * @return builder
          * 
@@ -757,6 +763,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param modificationProtectionStatus Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+         * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+         * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
          * 
          * @return builder
          * 

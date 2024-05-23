@@ -57,34 +57,34 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
  *         final var bucketRandom = default_.result();
  * 
- *         var default8j4t1R = new Bucket("default8j4t1R", BucketArgs.builder()        
+ *         var default8j4t1R = new Bucket("default8j4t1R", BucketArgs.builder()
  *             .bucket(String.format("%s-1-%s", name,bucketRandom))
  *             .storageClass("Standard")
  *             .build());
  * 
- *         var default9HMqfT = new Bucket("default9HMqfT", BucketArgs.builder()        
+ *         var default9HMqfT = new Bucket("default9HMqfT", BucketArgs.builder()
  *             .bucket(String.format("%s-2-%s", name,bucketRandom))
  *             .storageClass("Standard")
  *             .build());
  * 
- *         var defaultxBXqFQ = new Bucket("defaultxBXqFQ", BucketArgs.builder()        
+ *         var defaultxBXqFQ = new Bucket("defaultxBXqFQ", BucketArgs.builder()
  *             .bucket(String.format("%s-3-%s", name,bucketRandom))
  *             .storageClass("Standard")
  *             .build());
  * 
- *         var defaulthZvCmR = new Bucket("defaulthZvCmR", BucketArgs.builder()        
+ *         var defaulthZvCmR = new Bucket("defaulthZvCmR", BucketArgs.builder()
  *             .bucket(String.format("%s-4-%s", name,bucketRandom))
  *             .storageClass("Standard")
  *             .build());
  * 
- *         var defaultOssScanConfig = new OssScanConfig("defaultOssScanConfig", OssScanConfigArgs.builder()        
+ *         var defaultOssScanConfig = new OssScanConfig("defaultOssScanConfig", OssScanConfigArgs.builder()
  *             .keySuffixLists(            
  *                 ".jsp",
  *                 ".php",

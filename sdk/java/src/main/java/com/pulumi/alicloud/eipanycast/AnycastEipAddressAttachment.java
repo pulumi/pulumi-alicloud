@@ -71,19 +71,19 @@ import javax.annotation.Nullable;
  *             .availableSlbAddressType("vpc")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.1.0.0/16")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+ *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
  *             .addressType("intranet")
  *             .vswitchId(defaultSwitch.id())
  *             .loadBalancerName(name)
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .masterZoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultAnycastEipAddress = new AnycastEipAddress("defaultAnycastEipAddress", AnycastEipAddressArgs.builder()        
+ *         var defaultAnycastEipAddress = new AnycastEipAddress("defaultAnycastEipAddress", AnycastEipAddressArgs.builder()
  *             .anycastEipAddressName(name)
  *             .serviceLocation("ChineseMainland")
  *             .build());
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultAnycastEipAddressAttachment = new AnycastEipAddressAttachment("defaultAnycastEipAddressAttachment", AnycastEipAddressAttachmentArgs.builder()        
+ *         var defaultAnycastEipAddressAttachment = new AnycastEipAddressAttachment("defaultAnycastEipAddressAttachment", AnycastEipAddressAttachmentArgs.builder()
  *             .bindInstanceId(defaultApplicationLoadBalancer.id())
  *             .bindInstanceType("SlbInstance")
  *             .bindInstanceRegionId(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()))
@@ -174,22 +174,22 @@ import javax.annotation.Nullable;
  *             .memorySize(2)
  *             .build());
  * 
- *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()        
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var defaultVsw = new Switch("defaultVsw", SwitchArgs.builder()        
+ *         var defaultVsw = new Switch("defaultVsw", SwitchArgs.builder()
  *             .vpcId(defaultVpc.id())
  *             .cidrBlock("192.168.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultuBsECI = new SecurityGroup("defaultuBsECI", SecurityGroupArgs.builder()        
+ *         var defaultuBsECI = new SecurityGroup("defaultuBsECI", SecurityGroupArgs.builder()
  *             .vpcId(defaultVpc.id())
  *             .build());
  * 
- *         var default9KDlN7 = new Instance("default9KDlN7", InstanceArgs.builder()        
+ *         var default9KDlN7 = new Instance("default9KDlN7", InstanceArgs.builder()
  *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .instanceName(name)
@@ -200,11 +200,11 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultVsw.id())
  *             .build());
  * 
- *         var defaultXkpFRs = new AnycastEipAddress("defaultXkpFRs", AnycastEipAddressArgs.builder()        
+ *         var defaultXkpFRs = new AnycastEipAddress("defaultXkpFRs", AnycastEipAddressArgs.builder()
  *             .serviceLocation("ChineseMainland")
  *             .build());
  * 
- *         var defaultVpc2 = new Network("defaultVpc2", NetworkArgs.builder()        
+ *         var defaultVpc2 = new Network("defaultVpc2", NetworkArgs.builder()
  *             .vpcName(String.format("%s6", name))
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
@@ -226,17 +226,17 @@ import javax.annotation.Nullable;
  *             .memorySize(2)
  *             .build());
  * 
- *         var defaultdsVsw2 = new Switch("defaultdsVsw2", SwitchArgs.builder()        
+ *         var defaultdsVsw2 = new Switch("defaultdsVsw2", SwitchArgs.builder()
  *             .vpcId(defaultVpc2.id())
  *             .cidrBlock("192.168.0.0/24")
  *             .zoneId(default2.applyValue(getZonesResult -> getZonesResult.zones()[1].id()))
  *             .build());
  * 
- *         var defaultuBsECI2 = new SecurityGroup("defaultuBsECI2", SecurityGroupArgs.builder()        
+ *         var defaultuBsECI2 = new SecurityGroup("defaultuBsECI2", SecurityGroupArgs.builder()
  *             .vpcId(defaultVpc2.id())
  *             .build());
  * 
- *         var defaultEcs2 = new Instance("defaultEcs2", InstanceArgs.builder()        
+ *         var defaultEcs2 = new Instance("defaultEcs2", InstanceArgs.builder()
  *             .imageId(default2GetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .instanceType(default2GetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .instanceName(name)
@@ -247,7 +247,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultdsVsw2.id())
  *             .build());
  * 
- *         var defaultEfYBJY = new AnycastEipAddressAttachment("defaultEfYBJY", AnycastEipAddressAttachmentArgs.builder()        
+ *         var defaultEfYBJY = new AnycastEipAddressAttachment("defaultEfYBJY", AnycastEipAddressAttachmentArgs.builder()
  *             .bindInstanceId(default9KDlN7.networkInterfaceId())
  *             .bindInstanceType("NetworkInterface")
  *             .bindInstanceRegionId("cn-beijing")
@@ -255,7 +255,7 @@ import javax.annotation.Nullable;
  *             .associationMode("Default")
  *             .build());
  * 
- *         var normal = new AnycastEipAddressAttachment("normal", AnycastEipAddressAttachmentArgs.builder()        
+ *         var normal = new AnycastEipAddressAttachment("normal", AnycastEipAddressAttachmentArgs.builder()
  *             .bindInstanceId(defaultEcs2.networkInterfaceId())
  *             .bindInstanceType("NetworkInterface")
  *             .bindInstanceRegionId("cn-hangzhou")

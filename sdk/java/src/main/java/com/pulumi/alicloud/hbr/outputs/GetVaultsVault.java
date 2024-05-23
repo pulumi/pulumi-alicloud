@@ -64,6 +64,12 @@ public final class GetVaultsVault {
     private String latestReplicationTime;
     /**
      * @return Billing model, possible values:
+     * * `FREE` is not billed
+     * * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
+     * * `V2` new version of metering mode
+     * * `AEGIS` Billing method for cloud security use
+     * * `UNI_BACKUP` the backup of deduplication database
+     * * `ARCHIVE` archive library.
      * 
      */
     private String paymentType;
@@ -207,6 +213,12 @@ public final class GetVaultsVault {
     }
     /**
      * @return Billing model, possible values:
+     * * `FREE` is not billed
+     * * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
+     * * `V2` new version of metering mode
+     * * `AEGIS` Billing method for cloud security use
+     * * `UNI_BACKUP` the backup of deduplication database
+     * * `ARCHIVE` archive library.
      * 
      */
     public String paymentType() {

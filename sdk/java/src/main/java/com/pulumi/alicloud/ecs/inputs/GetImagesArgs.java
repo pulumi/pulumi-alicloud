@@ -20,6 +20,8 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
+     * * `CreateEcs`: instance creation.
+     * * `ChangeOS`: replacement of the system disk or operating system.
      * 
      */
     @Import(name="actionType")
@@ -27,6 +29,8 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
+     * * `CreateEcs`: instance creation.
+     * * `ChangeOS`: replacement of the system disk or operating system.
      * 
      */
     public Optional<Output<String>> actionType() {
@@ -279,6 +283,12 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+     * * `Creating`: The image is being created.
+     * * `Waiting`: The image is waiting to be processed.
+     * * `Available`: The image is available.
+     * * `UnAvailable`: The image is unavailable.
+     * * `CreateFailed`: The image failed to be created.
+     * * `Deprecated`: The image is discontinued.
      * 
      */
     @Import(name="status")
@@ -286,6 +296,12 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+     * * `Creating`: The image is being created.
+     * * `Waiting`: The image is waiting to be processed.
+     * * `Available`: The image is available.
+     * * `UnAvailable`: The image is unavailable.
+     * * `CreateFailed`: The image failed to be created.
+     * * `Deprecated`: The image is discontinued.
      * 
      */
     public Optional<Output<String>> status() {
@@ -367,6 +383,8 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param actionType The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
+         * * `CreateEcs`: instance creation.
+         * * `ChangeOS`: replacement of the system disk or operating system.
          * 
          * @return builder
          * 
@@ -378,6 +396,8 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param actionType The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
+         * * `CreateEcs`: instance creation.
+         * * `ChangeOS`: replacement of the system disk or operating system.
          * 
          * @return builder
          * 
@@ -728,6 +748,12 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param status The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+         * * `Creating`: The image is being created.
+         * * `Waiting`: The image is waiting to be processed.
+         * * `Available`: The image is available.
+         * * `UnAvailable`: The image is unavailable.
+         * * `CreateFailed`: The image failed to be created.
+         * * `Deprecated`: The image is discontinued.
          * 
          * @return builder
          * 
@@ -739,6 +765,12 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param status The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+         * * `Creating`: The image is being created.
+         * * `Waiting`: The image is waiting to be processed.
+         * * `Available`: The image is available.
+         * * `UnAvailable`: The image is unavailable.
+         * * `CreateFailed`: The image failed to be created.
+         * * `Deprecated`: The image is discontinued.
          * 
          * @return builder
          * 

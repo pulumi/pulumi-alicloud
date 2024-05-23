@@ -32,14 +32,14 @@ public final class GetGroupMetricRulesPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Indicates whether the alert rule is enabled.
+     * EnableState.
      * 
      */
     @Import(name="enableState")
     private @Nullable Boolean enableState;
 
     /**
-     * @return Indicates whether the alert rule is enabled.
+     * @return EnableState.
      * 
      */
     public Optional<Boolean> enableState() {
@@ -152,14 +152,14 @@ public final class GetGroupMetricRulesPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The status of Group Metric Rule..
+     * The status of Group Metric Rule.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of Group Metric Rule..
+     * @return The status of Group Metric Rule.
      * 
      */
     public Optional<String> status() {
@@ -211,7 +211,7 @@ public final class GetGroupMetricRulesPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param enableState Indicates whether the alert rule is enabled.
+         * @param enableState EnableState.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class GetGroupMetricRulesPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param status The status of Group Metric Rule..
+         * @param status The status of Group Metric Rule.
          * 
          * @return builder
          * 

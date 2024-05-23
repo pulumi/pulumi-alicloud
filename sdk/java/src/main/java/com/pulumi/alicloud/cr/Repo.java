@@ -53,13 +53,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var example = new Namespace("example", NamespaceArgs.builder()        
+ *         var example = new Namespace("example", NamespaceArgs.builder()
  *             .name(name)
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
- *         var exampleRepo = new Repo("exampleRepo", RepoArgs.builder()        
+ *         var exampleRepo = new Repo("exampleRepo", RepoArgs.builder()
  *             .namespace(example.name())
  *             .name(name)
  *             .summary("this is summary of my new repo")

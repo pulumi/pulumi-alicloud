@@ -16,14 +16,14 @@ public final class GetServerSnapshotsPlainArgs extends com.pulumi.resources.Invo
     public static final GetServerSnapshotsPlainArgs Empty = new GetServerSnapshotsPlainArgs();
 
     /**
-     * The ID of the source disk. This parameter has a value even after the source disk is released.
+     * The ID of the disk.
      * 
      */
     @Import(name="diskId")
     private @Nullable String diskId;
 
     /**
-     * @return The ID of the source disk. This parameter has a value even after the source disk is released.
+     * @return The ID of the disk.
      * 
      */
     public Optional<String> diskId() {
@@ -135,7 +135,7 @@ public final class GetServerSnapshotsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param diskId The ID of the source disk. This parameter has a value even after the source disk is released.
+         * @param diskId The ID of the disk.
          * 
          * @return builder
          * 

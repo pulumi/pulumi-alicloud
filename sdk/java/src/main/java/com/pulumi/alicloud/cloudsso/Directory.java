@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *         final var default = CloudssoFunctions.getDirectories();
  * 
  *         for (var i = 0; i < default_.ids().length() > 0 ? 0 : 1; i++) {
- *             new Directory("defaultDirectory-" + i, DirectoryArgs.builder()            
+ *             new Directory("defaultDirectory-" + i, DirectoryArgs.builder()
  *                 .directoryName(name)
  *                 .build());
  * 

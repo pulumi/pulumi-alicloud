@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .status("CreateSuccess")
  *             .build());
  * 
- *         var defaultAggregator = new Aggregator("defaultAggregator", AggregatorArgs.builder()        
+ *         var defaultAggregator = new Aggregator("defaultAggregator", AggregatorArgs.builder()
  *             .aggregatorAccounts(AggregatorAggregatorAccountArgs.builder()
  *                 .accountId(default_.accounts()[0].accountId())
  *                 .accountName(default_.accounts()[0].displayName())
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .aggregatorType("CUSTOM")
  *             .build());
  * 
- *         var defaultAggregateConfigRule = new AggregateConfigRule("defaultAggregateConfigRule", AggregateConfigRuleArgs.builder()        
+ *         var defaultAggregateConfigRule = new AggregateConfigRule("defaultAggregateConfigRule", AggregateConfigRuleArgs.builder()
  *             .aggregateConfigRuleName("contains-tag")
  *             .aggregatorId(defaultAggregator.id())
  *             .configRuleTriggerTypes("ConfigurationItemChangeNotification")

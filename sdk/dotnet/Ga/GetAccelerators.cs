@@ -81,6 +81,8 @@ namespace Pulumi.AliCloud.Ga
     {
         /// <summary>
         /// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        /// - `BandwidthPackage`: billed based on bandwidth plans.
+        /// - `CDT`: billed based on data transfer.
         /// </summary>
         [Input("bandwidthBillingType")]
         public string? BandwidthBillingType { get; set; }
@@ -125,6 +127,8 @@ namespace Pulumi.AliCloud.Ga
     {
         /// <summary>
         /// The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+        /// - `BandwidthPackage`: billed based on bandwidth plans.
+        /// - `CDT`: billed based on data transfer.
         /// </summary>
         [Input("bandwidthBillingType")]
         public Input<string>? BandwidthBillingType { get; set; }

@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .systemDisk(InstanceSystemDiskArgs.builder()
  *                 .size("20")
  *                 .build())
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .status("Stopped")
  *             .build());
  * 
- *         var defaultImage = new Image("defaultImage", ImageArgs.builder()        
+ *         var defaultImage = new Image("defaultImage", ImageArgs.builder()
  *             .imageName(name)
  *             .instanceId(default_.id())
  *             .deleteAfterImageUpload("false")

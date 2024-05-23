@@ -155,12 +155,12 @@ def get_public_ip_address_pools(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Vpc Public Ip Address Pool IDs.
-    :param str isp: The Internet service provider.
+    :param str isp: The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
     :param str name_regex: A regex string to filter results by Vpc Public Ip Address Pool name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] public_ip_address_pool_ids: The IDs of the Vpc Public IP address pools.
-    :param str public_ip_address_pool_name: The name of the Vpc Public Ip Address Pool.
-    :param str status: The status of the Vpc Public Ip Address Pool.
+    :param str public_ip_address_pool_name: The name of the VPC Public IP address pool.
+    :param str status: The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -216,11 +216,11 @@ def get_public_ip_address_pools_output(ids: Optional[pulumi.Input[Optional[Seque
 
 
     :param Sequence[str] ids: A list of Vpc Public Ip Address Pool IDs.
-    :param str isp: The Internet service provider.
+    :param str isp: The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
     :param str name_regex: A regex string to filter results by Vpc Public Ip Address Pool name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] public_ip_address_pool_ids: The IDs of the Vpc Public IP address pools.
-    :param str public_ip_address_pool_name: The name of the Vpc Public Ip Address Pool.
-    :param str status: The status of the Vpc Public Ip Address Pool.
+    :param str public_ip_address_pool_name: The name of the VPC Public IP address pool.
+    :param str status: The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
     """
     ...

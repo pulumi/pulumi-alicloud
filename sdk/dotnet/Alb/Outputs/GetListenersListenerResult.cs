@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string SecurityPolicyId;
         /// <summary>
-        /// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+        /// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
         /// </summary>
         public readonly string Status;
         /// <summary>

@@ -52,14 +52,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Network("default", NetworkArgs.builder()        
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .networkName(name)
  *             .description(name)
  *             .cidrBlock("192.168.2.0/24")
  *             .ensRegionId("cn-chenzhou-telecom_unicom_cmcc")
  *             .build());
  * 
- *         var defaultVswitch = new Vswitch("defaultVswitch", VswitchArgs.builder()        
+ *         var defaultVswitch = new Vswitch("defaultVswitch", VswitchArgs.builder()
  *             .description(name)
  *             .cidrBlock("192.168.2.0/24")
  *             .vswitchName(name)

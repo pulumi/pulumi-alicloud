@@ -118,17 +118,13 @@ namespace Pulumi.AliCloud.Ecs
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The Resource Group Id.
+        /// The resource group Id.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
         [Input("tags")]
         private Dictionary<string, object>? _tags;
-
-        /// <summary>
-        /// The tags.
-        /// </summary>
         public Dictionary<string, object> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, object>());
@@ -174,17 +170,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The Resource Group Id.
+        /// The resource group Id.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
-
-        /// <summary>
-        /// The tags.
-        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());

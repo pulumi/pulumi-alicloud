@@ -66,7 +66,7 @@ export interface GetAclsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
      */
     status?: string;
 }
@@ -138,7 +138,7 @@ export interface GetAclsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
      */
     status?: pulumi.Input<string>;
 }

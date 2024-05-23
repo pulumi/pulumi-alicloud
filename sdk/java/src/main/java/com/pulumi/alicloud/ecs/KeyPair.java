@@ -48,17 +48,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new KeyPair("basic", KeyPairArgs.builder()        
+ *         var basic = new KeyPair("basic", KeyPairArgs.builder()
  *             .keyName("terraform-test-key-pair")
  *             .build());
  * 
  *         // Using name prefix to build key pair
- *         var prefix = new KeyPair("prefix", KeyPairArgs.builder()        
+ *         var prefix = new KeyPair("prefix", KeyPairArgs.builder()
  *             .keyNamePrefix("terraform-test-key-pair-prefix")
  *             .build());
  * 
  *         // Import an existing public key to build a alicloud key pair
- *         var publickey = new KeyPair("publickey", KeyPairArgs.builder()        
+ *         var publickey = new KeyPair("publickey", KeyPairArgs.builder()
  *             .keyName("my_public_key")
  *             .publicKey("ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
  *             .build());

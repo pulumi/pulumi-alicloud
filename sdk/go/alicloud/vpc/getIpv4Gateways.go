@@ -68,7 +68,7 @@ type GetIpv4GatewaysArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Creating`, `Created`, `Deleting`, `Pending`, `Deleted`.
 	Status *string `pulumi:"status"`
 	// The ID of the VPC associated with the IPv4 Gateway.
 	VpcId *string `pulumi:"vpcId"`
@@ -111,7 +111,7 @@ type GetIpv4GatewaysOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Creating`, `Created`, `Deleting`, `Pending`, `Deleted`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The ID of the VPC associated with the IPv4 Gateway.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`

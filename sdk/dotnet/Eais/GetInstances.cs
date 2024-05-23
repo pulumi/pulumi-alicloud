@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Eais
         }
 
         /// <summary>
-        /// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        /// EAIS instance type. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         /// </summary>
         [Input("instanceType")]
         public string? InstanceType { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Eais
         }
 
         /// <summary>
-        /// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        /// EAIS instance type. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }

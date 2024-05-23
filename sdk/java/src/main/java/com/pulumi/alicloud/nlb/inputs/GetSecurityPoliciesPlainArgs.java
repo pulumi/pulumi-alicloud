@@ -93,31 +93,23 @@ public final class GetSecurityPoliciesPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Available`, `Configuring`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Available`, `Configuring`.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * A mapping of tags to assign to the resource.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
-    /**
-     * @return A mapping of tags to assign to the resource.
-     * 
-     */
     public Optional<Map<String,Object>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -228,7 +220,7 @@ public final class GetSecurityPoliciesPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `Available`, `Configuring`.
          * 
          * @return builder
          * 
@@ -238,12 +230,6 @@ public final class GetSecurityPoliciesPlainArgs extends com.pulumi.resources.Inv
             return this;
         }
 
-        /**
-         * @param tags A mapping of tags to assign to the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Map<String,Object> tags) {
             $.tags = tags;
             return this;

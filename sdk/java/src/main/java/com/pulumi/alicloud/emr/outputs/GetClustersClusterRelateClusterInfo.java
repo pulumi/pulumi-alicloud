@@ -21,12 +21,12 @@ public final class GetClustersClusterRelateClusterInfo {
      */
     private String clusterName;
     /**
-     * @return Cluster type:
+     * @return The cluster type of the associated cluster.
      * 
      */
     private String clusterType;
     /**
-     * @return The cluster status.
+     * @return The status  of the associated cluster.
      * 
      */
     private String status;
@@ -47,14 +47,14 @@ public final class GetClustersClusterRelateClusterInfo {
         return this.clusterName;
     }
     /**
-     * @return Cluster type:
+     * @return The cluster type of the associated cluster.
      * 
      */
     public String clusterType() {
         return this.clusterType;
     }
     /**
-     * @return The cluster status.
+     * @return The status  of the associated cluster.
      * 
      */
     public String status() {

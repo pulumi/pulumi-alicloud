@@ -31,7 +31,7 @@ export interface GetChartNamespacesArgs {
      */
     ids?: string[];
     /**
-     * The ID of the namespace.
+     * The ID of the Container Registry instance.
      */
     instanceId: string;
     /**
@@ -77,7 +77,7 @@ export interface GetChartNamespacesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the namespace.
+     * The ID of the Container Registry instance.
      */
     instanceId: pulumi.Input<string>;
     /**

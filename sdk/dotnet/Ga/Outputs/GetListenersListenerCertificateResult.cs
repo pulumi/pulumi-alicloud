@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
     public sealed class GetListenersListenerCertificateResult
     {
         /// <summary>
-        /// The ID of the Listener.
+        /// The id of the certificate.
         /// </summary>
         public readonly string Id;
         /// <summary>

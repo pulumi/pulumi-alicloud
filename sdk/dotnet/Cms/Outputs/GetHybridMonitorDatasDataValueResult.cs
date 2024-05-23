@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Cms.Outputs
     [OutputType]
     public sealed class GetHybridMonitorDatasDataValueResult
     {
+        /// <summary>
+        /// The timestamp that indicates the time when the metric value is collected. Unit: seconds.
+        /// </summary>
         public readonly string Ts;
+        /// <summary>
+        /// The value of the monitoring indicator.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

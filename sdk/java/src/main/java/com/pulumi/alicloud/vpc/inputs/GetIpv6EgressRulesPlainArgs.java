@@ -32,14 +32,14 @@ public final class GetIpv6EgressRulesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The ID of the instance to which the egress-only rule is applied.
+     * The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
      * 
      */
     @Import(name="instanceId")
     private @Nullable String instanceId;
 
     /**
-     * @return The ID of the instance to which the egress-only rule is applied.
+     * @return The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
      * 
      */
     public Optional<String> instanceId() {
@@ -107,14 +107,14 @@ public final class GetIpv6EgressRulesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * @return The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
      * 
      */
     public Optional<String> status() {
@@ -173,7 +173,7 @@ public final class GetIpv6EgressRulesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param instanceId The ID of the instance to which the egress-only rule is applied.
+         * @param instanceId The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class GetIpv6EgressRulesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+         * @param status The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
          * 
          * @return builder
          * 

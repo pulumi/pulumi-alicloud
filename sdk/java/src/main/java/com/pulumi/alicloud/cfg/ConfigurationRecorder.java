@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ConfigurationRecorder("example", ConfigurationRecorderArgs.builder()        
+ *         var example = new ConfigurationRecorder("example", ConfigurationRecorderArgs.builder()
  *             .resourceTypes(            
  *                 "ACS::ECS::Instance",
  *                 "ACS::ECS::Disk")

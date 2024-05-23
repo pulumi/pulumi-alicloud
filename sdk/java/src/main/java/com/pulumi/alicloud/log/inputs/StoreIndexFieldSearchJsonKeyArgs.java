@@ -17,30 +17,66 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
 
     public static final StoreIndexFieldSearchJsonKeyArgs Empty = new StoreIndexFieldSearchJsonKeyArgs();
 
+    /**
+     * The alias of one field.
+     * 
+     */
     @Import(name="alias")
     private @Nullable Output<String> alias;
 
+    /**
+     * @return The alias of one field.
+     * 
+     */
     public Optional<Output<String>> alias() {
         return Optional.ofNullable(this.alias);
     }
 
+    /**
+     * Whether to enable statistics. default to true.
+     * 
+     * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+     * 
+     */
     @Import(name="docValue")
     private @Nullable Output<Boolean> docValue;
 
+    /**
+     * @return Whether to enable statistics. default to true.
+     * 
+     * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+     * 
+     */
     public Optional<Output<Boolean>> docValue() {
         return Optional.ofNullable(this.docValue);
     }
 
+    /**
+     * When using the json_keys field, this field is required.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return When using the json_keys field, this field is required.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -72,38 +108,90 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
             $ = new StoreIndexFieldSearchJsonKeyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param alias The alias of one field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alias(@Nullable Output<String> alias) {
             $.alias = alias;
             return this;
         }
 
+        /**
+         * @param alias The alias of one field.
+         * 
+         * @return builder
+         * 
+         */
         public Builder alias(String alias) {
             return alias(Output.of(alias));
         }
 
+        /**
+         * @param docValue Whether to enable statistics. default to true.
+         * 
+         * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder docValue(@Nullable Output<Boolean> docValue) {
             $.docValue = docValue;
             return this;
         }
 
+        /**
+         * @param docValue Whether to enable statistics. default to true.
+         * 
+         * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+         * 
+         * @return builder
+         * 
+         */
         public Builder docValue(Boolean docValue) {
             return docValue(Output.of(docValue));
         }
 
+        /**
+         * @param name When using the json_keys field, this field is required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name When using the json_keys field, this field is required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param type The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

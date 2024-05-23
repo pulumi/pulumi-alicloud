@@ -68,17 +68,17 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var alertName = config.get("alertName").orElse("openapi-terraform-alert");
  *         final var projectName = config.get("projectName").orElse("terraform-alert-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultINsMgl = new Project("defaultINsMgl", ProjectArgs.builder()        
+ *         var defaultINsMgl = new Project("defaultINsMgl", ProjectArgs.builder()
  *             .description(String.format("%s-%s", projectName,default_.result()))
  *             .name(String.format("%s-%s", projectName,default_.result()))
  *             .build());
  * 
- *         var defaultAlert = new Alert("defaultAlert", AlertArgs.builder()        
+ *         var defaultAlert = new Alert("defaultAlert", AlertArgs.builder()
  *             .schedule(AlertScheduleArgs.builder()
  *                 .type("FixedRate")
  *                 .runImmdiately("true")

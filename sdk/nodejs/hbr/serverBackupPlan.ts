@@ -139,6 +139,7 @@ export class ServerBackupPlan extends pulumi.CustomResource {
     public readonly retention!: pulumi.Output<number>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`
+     * * `startTime` Backup start time, UNIX time, in seconds.
      */
     public readonly schedule!: pulumi.Output<string>;
 
@@ -234,6 +235,7 @@ export interface ServerBackupPlanState {
     retention?: pulumi.Input<number>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`
+     * * `startTime` Backup start time, UNIX time, in seconds.
      */
     schedule?: pulumi.Input<string>;
 }
@@ -276,6 +278,7 @@ export interface ServerBackupPlanArgs {
     retention: pulumi.Input<number>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`
+     * * `startTime` Backup start time, UNIX time, in seconds.
      */
     schedule: pulumi.Input<string>;
 }

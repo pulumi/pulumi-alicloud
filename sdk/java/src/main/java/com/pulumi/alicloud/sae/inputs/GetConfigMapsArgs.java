@@ -48,14 +48,14 @@ public final class GetConfigMapsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The NamespaceId of Config Maps.
+     * The NamespaceId of Config Maps. The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
      * 
      */
     @Import(name="namespaceId", required=true)
     private Output<String> namespaceId;
 
     /**
-     * @return The NamespaceId of Config Maps.
+     * @return The NamespaceId of Config Maps. The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
      * 
      */
     public Output<String> namespaceId() {
@@ -157,7 +157,7 @@ public final class GetConfigMapsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param namespaceId The NamespaceId of Config Maps.
+         * @param namespaceId The NamespaceId of Config Maps. The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class GetConfigMapsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param namespaceId The NamespaceId of Config Maps.
+         * @param namespaceId The NamespaceId of Config Maps. The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
          * 
          * @return builder
          * 

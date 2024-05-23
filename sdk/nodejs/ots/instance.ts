@@ -72,6 +72,11 @@ export class Instance extends pulumi.CustomResource {
 
     /**
      * The network limitation of accessing instance. Valid values:
+     * * `Any` - Allow all network to access the instance.
+     * * `Vpc` - Only can the attached VPC allow to access the instance.
+     * * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+     *
+     * Default to "Any".
      */
     public readonly accessedBy!: pulumi.Output<string>;
     /**
@@ -88,10 +93,18 @@ export class Instance extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The set of request sources that are allowed access. Valid optional values:
+     * * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+     *
+     * Default to ["TRUST_PROXY"].
      */
     public readonly networkSourceAcls!: pulumi.Output<string[]>;
     /**
      * The set of network types that are allowed access. Valid optional values:
+     * * `CLASSIC` - Classic network.
+     * * `VPC` - VPC network.
+     * * `INTERNET` - Public internet.
+     *
+     * Default to ["VPC", "CLASSIC"].
      */
     public readonly networkTypeAcls!: pulumi.Output<string[]>;
     /**
@@ -147,6 +160,11 @@ export class Instance extends pulumi.CustomResource {
 export interface InstanceState {
     /**
      * The network limitation of accessing instance. Valid values:
+     * * `Any` - Allow all network to access the instance.
+     * * `Vpc` - Only can the attached VPC allow to access the instance.
+     * * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+     *
+     * Default to "Any".
      */
     accessedBy?: pulumi.Input<string>;
     /**
@@ -163,10 +181,18 @@ export interface InstanceState {
     name?: pulumi.Input<string>;
     /**
      * The set of request sources that are allowed access. Valid optional values:
+     * * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+     *
+     * Default to ["TRUST_PROXY"].
      */
     networkSourceAcls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The set of network types that are allowed access. Valid optional values:
+     * * `CLASSIC` - Classic network.
+     * * `VPC` - VPC network.
+     * * `INTERNET` - Public internet.
+     *
+     * Default to ["VPC", "CLASSIC"].
      */
     networkTypeAcls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -186,6 +212,11 @@ export interface InstanceState {
 export interface InstanceArgs {
     /**
      * The network limitation of accessing instance. Valid values:
+     * * `Any` - Allow all network to access the instance.
+     * * `Vpc` - Only can the attached VPC allow to access the instance.
+     * * `ConsoleOrVpc` - Allow web console or the attached VPC to access the instance.
+     *
+     * Default to "Any".
      */
     accessedBy?: pulumi.Input<string>;
     /**
@@ -202,10 +233,18 @@ export interface InstanceArgs {
     name?: pulumi.Input<string>;
     /**
      * The set of request sources that are allowed access. Valid optional values:
+     * * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
+     *
+     * Default to ["TRUST_PROXY"].
      */
     networkSourceAcls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The set of network types that are allowed access. Valid optional values:
+     * * `CLASSIC` - Classic network.
+     * * `VPC` - VPC network.
+     * * `INTERNET` - Public internet.
+     *
+     * Default to ["VPC", "CLASSIC"].
      */
     networkTypeAcls?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexample");
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -89,11 +89,11 @@ import javax.annotation.Nullable;
  *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultUser = new User("defaultUser", UserArgs.builder()        
+ *         var defaultUser = new User("defaultUser", UserArgs.builder()
  *             .name(name)
  *             .build());
  * 
- *         var default1 = new ServiceMesh("default1", ServiceMeshArgs.builder()        
+ *         var default1 = new ServiceMesh("default1", ServiceMeshArgs.builder()
  *             .serviceMeshName(String.format("%s-%s", name,defaultInteger.result()))
  *             .edition("Default")
  *             .clusterSpec("standard")
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultUserPermission = new UserPermission("defaultUserPermission", UserPermissionArgs.builder()        
+ *         var defaultUserPermission = new UserPermission("defaultUserPermission", UserPermissionArgs.builder()
  *             .subAccountUserId(defaultUser.id())
  *             .permissions(UserPermissionPermissionArgs.builder()
  *                 .roleName("istio-ops")

@@ -54,14 +54,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var example = new IpaDomain("example", IpaDomainArgs.builder()        
+ *         var example = new IpaDomain("example", IpaDomainArgs.builder()
  *             .domainName(String.format("example-%s.com", defaultInteger.result()))
  *             .resourceGroupId(default_.groups()[0].id())
  *             .scope("overseas")

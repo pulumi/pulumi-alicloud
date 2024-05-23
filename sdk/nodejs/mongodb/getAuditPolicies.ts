@@ -39,7 +39,7 @@ export function getAuditPolicies(args: GetAuditPoliciesArgs, opts?: pulumi.Invok
  */
 export interface GetAuditPoliciesArgs {
     /**
-     * The ID of the instance.
+     * The id of the db instance.
      */
     dbInstanceId: string;
     /**
@@ -88,7 +88,7 @@ export function getAuditPoliciesOutput(args: GetAuditPoliciesOutputArgs, opts?: 
  */
 export interface GetAuditPoliciesOutputArgs {
     /**
-     * The ID of the instance.
+     * The id of the db instance.
      */
     dbInstanceId: pulumi.Input<string>;
     /**

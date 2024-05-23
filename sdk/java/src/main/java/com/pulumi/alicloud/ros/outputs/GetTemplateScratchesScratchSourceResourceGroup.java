@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTemplateScratchesScratchSourceResourceGroup {
+    /**
+     * @return The ID of the Source Resource Group.
+     * 
+     */
     private String resourceGroupId;
+    /**
+     * @return Source resource type filter list.
+     * 
+     */
     private List<String> resourceTypeFilters;
 
     private GetTemplateScratchesScratchSourceResourceGroup() {}
+    /**
+     * @return The ID of the Source Resource Group.
+     * 
+     */
     public String resourceGroupId() {
         return this.resourceGroupId;
     }
+    /**
+     * @return Source resource type filter list.
+     * 
+     */
     public List<String> resourceTypeFilters() {
         return this.resourceTypeFilters;
     }

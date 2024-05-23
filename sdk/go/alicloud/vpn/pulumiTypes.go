@@ -4834,7 +4834,7 @@ type GetGatewayVpnAttachmentsAttachmentBgpConfig struct {
 	LocalAsn string `pulumi:"localAsn"`
 	// The BGP IP address on the Alibaba Cloud side.
 	LocalBgpIp string `pulumi:"localBgpIp"`
-	// The status of the resource.
+	// The negotiation status of the BGP routing protocol.
 	Status string `pulumi:"status"`
 	// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
 	TunnelCidr string `pulumi:"tunnelCidr"`
@@ -4856,7 +4856,7 @@ type GetGatewayVpnAttachmentsAttachmentBgpConfigArgs struct {
 	LocalAsn pulumi.StringInput `pulumi:"localAsn"`
 	// The BGP IP address on the Alibaba Cloud side.
 	LocalBgpIp pulumi.StringInput `pulumi:"localBgpIp"`
-	// The status of the resource.
+	// The negotiation status of the BGP routing protocol.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
 	TunnelCidr pulumi.StringInput `pulumi:"tunnelCidr"`
@@ -4923,7 +4923,7 @@ func (o GetGatewayVpnAttachmentsAttachmentBgpConfigOutput) LocalBgpIp() pulumi.S
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentBgpConfig) string { return v.LocalBgpIp }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The negotiation status of the BGP routing protocol.
 func (o GetGatewayVpnAttachmentsAttachmentBgpConfigOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentBgpConfig) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -4966,7 +4966,7 @@ type GetGatewayVpnAttachmentsAttachmentHealthCheckConfig struct {
 	Retry int `pulumi:"retry"`
 	// The source IP address.
 	Sip string `pulumi:"sip"`
-	// The status of the resource.
+	// The status of the health check.
 	Status string `pulumi:"status"`
 }
 
@@ -4994,7 +4994,7 @@ type GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArgs struct {
 	Retry pulumi.IntInput `pulumi:"retry"`
 	// The source IP address.
 	Sip pulumi.StringInput `pulumi:"sip"`
-	// The status of the resource.
+	// The status of the health check.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -5079,7 +5079,7 @@ func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Sip() pulumi.
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) string { return v.Sip }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the health check.
 func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) string { return v.Status }).(pulumi.StringOutput)
 }

@@ -162,7 +162,7 @@ def get_db_instance_plans(db_instance_id: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str plan_schedule_type: Plan scheduling type. Valid values: `Postpone`, `Regular`.
     :param str plan_type: The type of the Plan. Valid values: `PauseResume`, `Resize`.
-    :param str status: The Status of the Plan.
+    :param str status: Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
     """
     __args__ = dict()
     __args__['dbInstanceId'] = db_instance_id
@@ -225,6 +225,6 @@ def get_db_instance_plans_output(db_instance_id: Optional[pulumi.Input[str]] = N
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str plan_schedule_type: Plan scheduling type. Valid values: `Postpone`, `Regular`.
     :param str plan_type: The type of the Plan. Valid values: `PauseResume`, `Resize`.
-    :param str status: The Status of the Plan.
+    :param str status: Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
     """
     ...

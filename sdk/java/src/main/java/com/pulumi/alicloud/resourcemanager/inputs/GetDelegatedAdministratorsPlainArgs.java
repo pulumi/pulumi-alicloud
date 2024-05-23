@@ -61,14 +61,14 @@ public final class GetDelegatedAdministratorsPlainArgs extends com.pulumi.resour
     }
 
     /**
-     * The identity of the trusted service.
+     * The identification of the trusted service.
      * 
      */
     @Import(name="servicePrincipal")
     private @Nullable String servicePrincipal;
 
     /**
-     * @return The identity of the trusted service.
+     * @return The identification of the trusted service.
      * 
      */
     public Optional<String> servicePrincipal() {
@@ -146,7 +146,7 @@ public final class GetDelegatedAdministratorsPlainArgs extends com.pulumi.resour
         }
 
         /**
-         * @param servicePrincipal The identity of the trusted service.
+         * @param servicePrincipal The identification of the trusted service.
          * 
          * @return builder
          * 

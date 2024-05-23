@@ -117,12 +117,12 @@ type GetNatIpsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Nat Ip name.
 	NameRegex *string `pulumi:"nameRegex"`
-	// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+	// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 	NatGatewayId string `pulumi:"natGatewayId"`
-	// The CIDR block to which the NAT IP address belongs.
+	// NAT IP ADDRESS of the address segment.
 	NatIpCidr *string  `pulumi:"natIpCidr"`
 	NatIpIds  []string `pulumi:"natIpIds"`
-	// The name of the NAT IP address.
+	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
 	NatIpNames []string `pulumi:"natIpNames"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -165,12 +165,12 @@ type GetNatIpsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Nat Ip name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
-	// The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+	// The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
 	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
-	// The CIDR block to which the NAT IP address belongs.
+	// NAT IP ADDRESS of the address segment.
 	NatIpCidr pulumi.StringPtrInput   `pulumi:"natIpCidr"`
 	NatIpIds  pulumi.StringArrayInput `pulumi:"natIpIds"`
-	// The name of the NAT IP address.
+	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
 	NatIpNames pulumi.StringArrayInput `pulumi:"natIpNames"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

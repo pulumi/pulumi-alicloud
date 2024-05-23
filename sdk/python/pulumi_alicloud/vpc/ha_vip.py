@@ -158,6 +158,8 @@ class _HAVipState:
         Input properties used for looking up and filtering HAVip resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] associated_eip_addresses: The elastic IP address (EIP) associated with the HAVIP.
         :param pulumi.Input[str] associated_instance_type: The type of the instance with which the HAVIP is associated. Valid values:
+               - `EcsInstance`: an ECS instance.
+               - `NetworkInterface`: an ENI.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] associated_instances: The ID of the instance with which the HAVIP is associated.
         :param pulumi.Input[str] create_time: The time when the HAVIP was created.
         :param pulumi.Input[str] description: The description of the HaVip instance.
@@ -223,6 +225,8 @@ class _HAVipState:
     def associated_instance_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the instance with which the HAVIP is associated. Valid values:
+        - `EcsInstance`: an ECS instance.
+        - `NetworkInterface`: an ENI.
         """
         return pulumi.get(self, "associated_instance_type")
 
@@ -571,6 +575,8 @@ class HAVip(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] associated_eip_addresses: The elastic IP address (EIP) associated with the HAVIP.
         :param pulumi.Input[str] associated_instance_type: The type of the instance with which the HAVIP is associated. Valid values:
+               - `EcsInstance`: an ECS instance.
+               - `NetworkInterface`: an ENI.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] associated_instances: The ID of the instance with which the HAVIP is associated.
         :param pulumi.Input[str] create_time: The time when the HAVIP was created.
         :param pulumi.Input[str] description: The description of the HaVip instance.
@@ -619,6 +625,8 @@ class HAVip(pulumi.CustomResource):
     def associated_instance_type(self) -> pulumi.Output[str]:
         """
         The type of the instance with which the HAVIP is associated. Valid values:
+        - `EcsInstance`: an ECS instance.
+        - `NetworkInterface`: an ENI.
         """
         return pulumi.get(self, "associated_instance_type")
 

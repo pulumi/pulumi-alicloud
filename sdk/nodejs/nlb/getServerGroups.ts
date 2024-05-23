@@ -68,16 +68,13 @@ export interface GetServerGroupsArgs {
      */
     serverGroupNames?: string[];
     /**
-     * The type of the server group.
+     * The type of the server group. Valid values: `Instance`, `Ip`.
      */
     serverGroupType?: string;
     /**
-     * The status of the server group.
+     * The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
      */
     status?: string;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     tags?: {[key: string]: any};
 }
 
@@ -150,15 +147,12 @@ export interface GetServerGroupsOutputArgs {
      */
     serverGroupNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of the server group.
+     * The type of the server group. Valid values: `Instance`, `Ip`.
      */
     serverGroupType?: pulumi.Input<string>;
     /**
-     * The status of the server group.
+     * The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
      */
     status?: pulumi.Input<string>;
-    /**
-     * A mapping of tags to assign to the resource.
-     */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

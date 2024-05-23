@@ -59,12 +59,12 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tfacc");
  *         final var default = VpnFunctions.getGateways();
  * 
- *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()        
+ *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
  *             .name(name)
  *             .ipAddress("192.168.1.1")
  *             .build());
  * 
- *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()        
+ *         var defaultConnection = new Connection("defaultConnection", ConnectionArgs.builder()
  *             .name(name)
  *             .customerGatewayId(defaultCustomerGateway.id())
  *             .vpnGatewayId(default_.ids()[0])
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .remoteSubnets("192.168.3.0/24")
  *             .build());
  * 
- *         var defaultPbrRouteEntry = new PbrRouteEntry("defaultPbrRouteEntry", PbrRouteEntryArgs.builder()        
+ *         var defaultPbrRouteEntry = new PbrRouteEntry("defaultPbrRouteEntry", PbrRouteEntryArgs.builder()
  *             .vpnGatewayId(default_.ids()[0])
  *             .routeSource("192.168.1.0/24")
  *             .routeDest("10.0.0.0/24")

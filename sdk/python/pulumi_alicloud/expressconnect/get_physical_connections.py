@@ -138,7 +138,7 @@ def get_physical_connections(ids: Optional[Sequence[str]] = None,
     :param bool include_reservation_data: The include reservation data.
     :param str name_regex: A regex string to filter results by Physical Connection name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: Resources on Behalf of a State of the Resource Attribute Field.
+    :param str status: Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -191,6 +191,6 @@ def get_physical_connections_output(ids: Optional[pulumi.Input[Optional[Sequence
     :param bool include_reservation_data: The include reservation data.
     :param str name_regex: A regex string to filter results by Physical Connection name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: Resources on Behalf of a State of the Resource Attribute Field.
+    :param str status: Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
     """
     ...

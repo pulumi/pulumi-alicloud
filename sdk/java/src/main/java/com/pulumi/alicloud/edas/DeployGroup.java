@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -67,12 +67,12 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .clusterName(String.format("%s-%s", name,defaultInteger.result()))
  *             .clusterType("2")
  *             .networkMode("2")
@@ -80,13 +80,13 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+ *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
  *             .applicationName(String.format("%s-%s", name,defaultInteger.result()))
  *             .clusterId(defaultCluster.id())
  *             .packageType("JAR")
  *             .build());
  * 
- *         var defaultDeployGroup = new DeployGroup("defaultDeployGroup", DeployGroupArgs.builder()        
+ *         var defaultDeployGroup = new DeployGroup("defaultDeployGroup", DeployGroupArgs.builder()
  *             .appId(defaultApplication.id())
  *             .groupName(String.format("%s-%s", name,defaultInteger.result()))
  *             .build());

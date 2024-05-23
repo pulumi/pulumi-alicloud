@@ -22,17 +22,9 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.ids);
     }
 
-    /**
-     * The type of the image. Valid values: `app`, `custom`, `system`.
-     * 
-     */
     @Import(name="imageType")
     private @Nullable String imageType;
 
-    /**
-     * @return The type of the image. Valid values: `app`, `custom`, `system`.
-     * 
-     */
     public Optional<String> imageType() {
         return Optional.ofNullable(this.imageType);
     }
@@ -51,17 +43,9 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.outputFile);
     }
 
-    /**
-     * The platform of Plan supported.
-     * 
-     */
     @Import(name="platform")
     private @Nullable String platform;
 
-    /**
-     * @return The platform of Plan supported.
-     * 
-     */
     public Optional<String> platform() {
         return Optional.ofNullable(this.platform);
     }
@@ -103,12 +87,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
             return ids(List.of(ids));
         }
 
-        /**
-         * @param imageType The type of the image. Valid values: `app`, `custom`, `system`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder imageType(@Nullable String imageType) {
             $.imageType = imageType;
             return this;
@@ -124,12 +102,6 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
-        /**
-         * @param platform The platform of Plan supported.
-         * 
-         * @return builder
-         * 
-         */
         public Builder platform(@Nullable String platform) {
             $.platform = platform;
             return this;

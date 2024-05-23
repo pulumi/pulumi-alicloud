@@ -105,12 +105,12 @@ import javax.annotation.Nullable;
  * 
  *         final var zoneId = defaultGetZones.applyValue(getZonesResult -> getZonesResult.ids()[1]);
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .engine("MySQL")
  *             .engineVersion("8.0")
  *             .dbInstanceStorageType("cloud_essd")
@@ -120,25 +120,25 @@ import javax.annotation.Nullable;
  *             .instanceName(name)
  *             .build());
  * 
- *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()        
+ *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .name("tfdatabase")
  *             .build());
  * 
- *         var defaultRdsAccount = new RdsAccount("defaultRdsAccount", RdsAccountArgs.builder()        
+ *         var defaultRdsAccount = new RdsAccount("defaultRdsAccount", RdsAccountArgs.builder()
  *             .dbInstanceId(defaultInstance.id())
  *             .accountName("tfnormal000")
  *             .accountPassword("Test12345")
  *             .build());
  * 
- *         var defaultAccountPrivilege = new AccountPrivilege("defaultAccountPrivilege", AccountPrivilegeArgs.builder()        
+ *         var defaultAccountPrivilege = new AccountPrivilege("defaultAccountPrivilege", AccountPrivilegeArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .accountName(defaultRdsAccount.accountName())
  *             .privilege("ReadWrite")
  *             .dbNames(defaultDatabase.name())
  *             .build());
  * 
- *         var defaultBackupPlan = new BackupPlan("defaultBackupPlan", BackupPlanArgs.builder()        
+ *         var defaultBackupPlan = new BackupPlan("defaultBackupPlan", BackupPlanArgs.builder()
  *             .backupPlanName(name)
  *             .paymentType("PayAsYouGo")
  *             .instanceClass("xlarge")

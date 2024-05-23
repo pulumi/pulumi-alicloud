@@ -13,12 +13,30 @@ namespace Pulumi.AliCloud.Cms.Outputs
     [OutputType]
     public sealed class GetMetricRuleTemplatesTemplateAlertTemplateResult
     {
+        /// <summary>
+        /// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iot_edge`, `kvstore_sharding`, `kvstore_splitrw`, `kvstore_standard`, `memcache`, `mns`, `mongodb`, `mongodb_cluster`, `mongodb_sharding`, `mq_topic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+        /// </summary>
         public readonly string Category;
+        /// <summary>
+        /// The information about the trigger condition based on the alert level.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetMetricRuleTemplatesTemplateAlertTemplateEscalationResult> Escalations;
+        /// <summary>
+        /// The name of the metric.
+        /// </summary>
         public readonly string MetricName;
+        /// <summary>
+        /// The namespace of the service.
+        /// </summary>
         public readonly string Namespace;
+        /// <summary>
+        /// The name of the alert rule.
+        /// </summary>
         public readonly string RuleName;
         public readonly string Selector;
+        /// <summary>
+        /// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+        /// </summary>
         public readonly string Webhook;
 
         [OutputConstructor]

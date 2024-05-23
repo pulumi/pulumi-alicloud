@@ -48,14 +48,14 @@ public final class GetNatIpCidrsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of the VPC NAT gateway.
+     * NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
      * 
      */
     @Import(name="natGatewayId", required=true)
     private Output<String> natGatewayId;
 
     /**
-     * @return The ID of the VPC NAT gateway.
+     * @return NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
      * 
      */
     public Output<String> natGatewayId() {
@@ -63,14 +63,14 @@ public final class GetNatIpCidrsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+     * The name of the CIDR block that you want to query. Support up to `20`.
      * 
      */
     @Import(name="natIpCidrNames")
     private @Nullable Output<List<String>> natIpCidrNames;
 
     /**
-     * @return NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+     * @return The name of the CIDR block that you want to query. Support up to `20`.
      * 
      */
     public Optional<Output<List<String>>> natIpCidrNames() {
@@ -108,14 +108,14 @@ public final class GetNatIpCidrsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+     * The status of the NAT IP address. Valid values:`Available`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+     * @return The status of the NAT IP address. Valid values:`Available`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -205,7 +205,7 @@ public final class GetNatIpCidrsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param natGatewayId The ID of the VPC NAT gateway.
+         * @param natGatewayId NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class GetNatIpCidrsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param natGatewayId The ID of the VPC NAT gateway.
+         * @param natGatewayId NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class GetNatIpCidrsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param natIpCidrNames NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+         * @param natIpCidrNames The name of the CIDR block that you want to query. Support up to `20`.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class GetNatIpCidrsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param natIpCidrNames NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+         * @param natIpCidrNames The name of the CIDR block that you want to query. Support up to `20`.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class GetNatIpCidrsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param natIpCidrNames NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+         * @param natIpCidrNames The name of the CIDR block that you want to query. Support up to `20`.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class GetNatIpCidrsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+         * @param status The status of the NAT IP address. Valid values:`Available`.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class GetNatIpCidrsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+         * @param status The status of the NAT IP address. Valid values:`Available`.
          * 
          * @return builder
          * 

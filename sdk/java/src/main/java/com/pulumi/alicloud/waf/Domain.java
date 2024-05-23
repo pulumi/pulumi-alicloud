@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var domain = new Domain("domain", DomainArgs.builder()        
+ *         var domain = new Domain("domain", DomainArgs.builder()
  *             .domainName("alicloud-provider.cn")
  *             .instanceId("waf-123455")
  *             .isAccessProduct("On")

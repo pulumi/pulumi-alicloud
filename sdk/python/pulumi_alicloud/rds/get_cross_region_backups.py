@@ -167,7 +167,9 @@ def get_cross_region_backups(backup_id: Optional[str] = None,
 
     :param str backup_id: The ID of the cross-region data backup file.
     :param str cross_backup_id: The ID of the cross-region data backup file.
-    :param str cross_backup_region: The ID of the destination region where the cross-region data backup file of the instance is stored.
+    :param str cross_backup_region: The ID of the destination region where the cross-region data backup file is stored.
+           
+           > **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
     :param str db_instance_id: The db instance id.
     :param str end_time: The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
     :param Sequence[str] ids: A list of Cross Region Backup IDs.
@@ -235,7 +237,9 @@ def get_cross_region_backups_output(backup_id: Optional[pulumi.Input[Optional[st
 
     :param str backup_id: The ID of the cross-region data backup file.
     :param str cross_backup_id: The ID of the cross-region data backup file.
-    :param str cross_backup_region: The ID of the destination region where the cross-region data backup file of the instance is stored.
+    :param str cross_backup_region: The ID of the destination region where the cross-region data backup file is stored.
+           
+           > **NOTE:** Note You must specify the `cross_backup_id` parameter. Alternatively, you must specify the `start_time` and `end_time` parameters.
     :param str db_instance_id: The db instance id.
     :param str end_time: The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
     :param Sequence[str] ids: A list of Cross Region Backup IDs.

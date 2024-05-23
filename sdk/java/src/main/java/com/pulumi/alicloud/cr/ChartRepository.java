@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var example = new RegistryEnterpriseInstance("example", RegistryEnterpriseInstanceArgs.builder()        
+ *         var example = new RegistryEnterpriseInstance("example", RegistryEnterpriseInstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
@@ -63,12 +63,12 @@ import javax.annotation.Nullable;
  *             .instanceName(name)
  *             .build());
  * 
- *         var exampleChartNamespace = new ChartNamespace("exampleChartNamespace", ChartNamespaceArgs.builder()        
+ *         var exampleChartNamespace = new ChartNamespace("exampleChartNamespace", ChartNamespaceArgs.builder()
  *             .instanceId(example.id())
  *             .namespaceName(name)
  *             .build());
  * 
- *         var exampleChartRepository = new ChartRepository("exampleChartRepository", ChartRepositoryArgs.builder()        
+ *         var exampleChartRepository = new ChartRepository("exampleChartRepository", ChartRepositoryArgs.builder()
  *             .repoNamespaceName(exampleChartNamespace.namespaceName())
  *             .instanceId(exampleChartNamespace.instanceId())
  *             .repoName(name)

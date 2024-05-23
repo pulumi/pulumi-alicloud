@@ -78,19 +78,19 @@ import javax.annotation.Nullable;
  *             .eniAmount(3)
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("192.168.0.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("192.168.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .description("New security group")
  *             .vpcId(defaultNetwork.id())
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .instanceName(name)
  *             .hostName("tf-example")
@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *             .status("OK")
  *             .build());
  * 
- *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
+ *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()
  *             .networkInterfaceName(name)
  *             .vswitchId(defaultSwitch.id())
  *             .securityGroupIds(defaultSecurityGroup.id())
@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
  *             .build());
  * 
- *         var defaultEcsNetworkInterfaceAttachment = new EcsNetworkInterfaceAttachment("defaultEcsNetworkInterfaceAttachment", EcsNetworkInterfaceAttachmentArgs.builder()        
+ *         var defaultEcsNetworkInterfaceAttachment = new EcsNetworkInterfaceAttachment("defaultEcsNetworkInterfaceAttachment", EcsNetworkInterfaceAttachmentArgs.builder()
  *             .networkInterfaceId(defaultEcsNetworkInterface.id())
  *             .instanceId(defaultInstance.id())
  *             .build());

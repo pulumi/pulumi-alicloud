@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClustersClusterHostGroupListNodeResult> Nodes;
         /// <summary>
-        /// The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
+        /// Package year and month time (days).
         /// </summary>
         public readonly string Period;
 

@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-testAccServiceCatalogProvisionedProduct");
- *         var default_ = new ProvisionedProduct("default", ProvisionedProductArgs.builder()        
+ *         var default_ = new ProvisionedProduct("default", ProvisionedProductArgs.builder()
  *             .provisionedProductName(name)
  *             .stackRegionId("cn-hangzhou")
  *             .productVersionId("pv-bp1d7dxy2pcc1g")

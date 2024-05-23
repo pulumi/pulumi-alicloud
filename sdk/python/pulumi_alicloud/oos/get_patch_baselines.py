@@ -133,9 +133,9 @@ def get_patch_baselines(enable_details: Optional[bool] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Patch Baseline IDs. Its element value is same as Patch Baseline Name.
     :param str name_regex: A regex string to filter results by Patch Baseline name.
-    :param str operation_system: Operating system type.
+    :param str operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str share_type: Patch baseline sharing type.
+    :param str share_type: Patch baseline sharing type. Valid values: `Private`, `Public`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -176,8 +176,8 @@ def get_patch_baselines_output(enable_details: Optional[pulumi.Input[Optional[bo
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Patch Baseline IDs. Its element value is same as Patch Baseline Name.
     :param str name_regex: A regex string to filter results by Patch Baseline name.
-    :param str operation_system: Operating system type.
+    :param str operation_system: Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str share_type: Patch baseline sharing type.
+    :param str share_type: Patch baseline sharing type. Valid values: `Private`, `Public`.
     """
     ...

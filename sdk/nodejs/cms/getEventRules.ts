@@ -67,7 +67,7 @@ export interface GetEventRulesArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `DISABLED`, `ENABLED`.
      */
     status?: string;
 }
@@ -140,7 +140,7 @@ export interface GetEventRulesOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `DISABLED`, `ENABLED`.
      */
     status?: pulumi.Input<string>;
 }

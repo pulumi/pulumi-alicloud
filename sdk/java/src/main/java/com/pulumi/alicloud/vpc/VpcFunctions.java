@@ -1195,7 +1195,7 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()        
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()
      *             .bandwidth("2")
      *             .name("tf-testAccCommonBandwidthPackage")
      *             .description("tf-testAcc-CommonBandwidthPackage")
@@ -1256,7 +1256,7 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()        
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()
      *             .bandwidth("2")
      *             .name("tf-testAccCommonBandwidthPackage")
      *             .description("tf-testAcc-CommonBandwidthPackage")
@@ -1317,7 +1317,7 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()        
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()
      *             .bandwidth("2")
      *             .name("tf-testAccCommonBandwidthPackage")
      *             .description("tf-testAcc-CommonBandwidthPackage")
@@ -1378,7 +1378,7 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()        
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()
      *             .bandwidth("2")
      *             .name("tf-testAccCommonBandwidthPackage")
      *             .description("tf-testAcc-CommonBandwidthPackage")
@@ -1439,7 +1439,7 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()        
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()
      *             .bandwidth("2")
      *             .name("tf-testAccCommonBandwidthPackage")
      *             .description("tf-testAcc-CommonBandwidthPackage")
@@ -1500,7 +1500,7 @@ public final class VpcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()        
+     *         var fooCommonBandwithPackage = new CommonBandwithPackage("fooCommonBandwithPackage", CommonBandwithPackageArgs.builder()
      *             .bandwidth("2")
      *             .name("tf-testAccCommonBandwidthPackage")
      *             .description("tf-testAcc-CommonBandwidthPackage")
@@ -2299,19 +2299,19 @@ public final class VpcFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()        
+     *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .internetChargeType("PayByLcu")
      *             .natGatewayName(name)
@@ -2319,16 +2319,16 @@ public final class VpcFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()        
+     *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()
      *             .allocationId(defaultEipAddress.id())
      *             .instanceId(defaultNatGateway.id())
      *             .build());
      * 
-     *         var defaultForwardEntry = new ForwardEntry("defaultForwardEntry", ForwardEntryArgs.builder()        
+     *         var defaultForwardEntry = new ForwardEntry("defaultForwardEntry", ForwardEntryArgs.builder()
      *             .forwardTableId(defaultNatGateway.forwardTableIds())
      *             .externalIp(defaultEipAddress.ipAddress())
      *             .externalPort("80")
@@ -2401,19 +2401,19 @@ public final class VpcFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()        
+     *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .internetChargeType("PayByLcu")
      *             .natGatewayName(name)
@@ -2421,16 +2421,16 @@ public final class VpcFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()        
+     *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()
      *             .allocationId(defaultEipAddress.id())
      *             .instanceId(defaultNatGateway.id())
      *             .build());
      * 
-     *         var defaultForwardEntry = new ForwardEntry("defaultForwardEntry", ForwardEntryArgs.builder()        
+     *         var defaultForwardEntry = new ForwardEntry("defaultForwardEntry", ForwardEntryArgs.builder()
      *             .forwardTableId(defaultNatGateway.forwardTableIds())
      *             .externalIp(defaultEipAddress.ipAddress())
      *             .externalPort("80")
@@ -2503,19 +2503,19 @@ public final class VpcFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()        
+     *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .internetChargeType("PayByLcu")
      *             .natGatewayName(name)
@@ -2523,16 +2523,16 @@ public final class VpcFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()        
+     *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()
      *             .allocationId(defaultEipAddress.id())
      *             .instanceId(defaultNatGateway.id())
      *             .build());
      * 
-     *         var defaultForwardEntry = new ForwardEntry("defaultForwardEntry", ForwardEntryArgs.builder()        
+     *         var defaultForwardEntry = new ForwardEntry("defaultForwardEntry", ForwardEntryArgs.builder()
      *             .forwardTableId(defaultNatGateway.forwardTableIds())
      *             .externalIp(defaultEipAddress.ipAddress())
      *             .externalPort("80")
@@ -2605,19 +2605,19 @@ public final class VpcFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()        
+     *         var defaultNatGateway = new NatGateway("defaultNatGateway", NatGatewayArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .internetChargeType("PayByLcu")
      *             .natGatewayName(name)
@@ -2625,16 +2625,16 @@ public final class VpcFunctions {
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+     *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()
      *             .addressName(name)
      *             .build());
      * 
-     *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()        
+     *         var defaultEipAssociation = new EipAssociation("defaultEipAssociation", EipAssociationArgs.builder()
      *             .allocationId(defaultEipAddress.id())
      *             .instanceId(defaultNatGateway.id())
      *             .build());
      * 
-     *         var defaultForwardEntry = new ForwardEntry("defaultForwardEntry", ForwardEntryArgs.builder()        
+     *         var defaultForwardEntry = new ForwardEntry("defaultForwardEntry", ForwardEntryArgs.builder()
      *             .forwardTableId(defaultNatGateway.forwardTableIds())
      *             .externalIp(defaultEipAddress.ipAddress())
      *             .externalPort("80")
@@ -4965,61 +4965,6 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.vpc.Network;
-     * import com.pulumi.alicloud.vpc.NetworkArgs;
-     * import com.pulumi.alicloud.vpc.NatGateway;
-     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
-     * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("natGatewaysDatasource");
-     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation("VSwitch")
-     *             .build());
-     * 
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
-     *             .vpcName(name)
-     *             .cidrBlock("172.16.0.0/12")
-     *             .build());
-     * 
-     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
-     *             .vpcId(fooNetwork.id())
-     *             .specification("Small")
-     *             .natGateName(name)
-     *             .build());
-     * 
-     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
-     *             .vpcId(fooNetwork.id())
-     *             .nameRegex(fooNatGateway.name())
-     *             .ids(fooNatGateway.id())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5034,61 +4979,6 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.vpc.Network;
-     * import com.pulumi.alicloud.vpc.NetworkArgs;
-     * import com.pulumi.alicloud.vpc.NatGateway;
-     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
-     * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("natGatewaysDatasource");
-     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation("VSwitch")
-     *             .build());
-     * 
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
-     *             .vpcName(name)
-     *             .cidrBlock("172.16.0.0/12")
-     *             .build());
-     * 
-     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
-     *             .vpcId(fooNetwork.id())
-     *             .specification("Small")
-     *             .natGateName(name)
-     *             .build());
-     * 
-     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
-     *             .vpcId(fooNetwork.id())
-     *             .nameRegex(fooNatGateway.name())
-     *             .ids(fooNatGateway.id())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5103,61 +4993,6 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.vpc.Network;
-     * import com.pulumi.alicloud.vpc.NetworkArgs;
-     * import com.pulumi.alicloud.vpc.NatGateway;
-     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
-     * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("natGatewaysDatasource");
-     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation("VSwitch")
-     *             .build());
-     * 
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
-     *             .vpcName(name)
-     *             .cidrBlock("172.16.0.0/12")
-     *             .build());
-     * 
-     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
-     *             .vpcId(fooNetwork.id())
-     *             .specification("Small")
-     *             .natGateName(name)
-     *             .build());
-     * 
-     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
-     *             .vpcId(fooNetwork.id())
-     *             .nameRegex(fooNatGateway.name())
-     *             .ids(fooNatGateway.id())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5172,61 +5007,6 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.vpc.Network;
-     * import com.pulumi.alicloud.vpc.NetworkArgs;
-     * import com.pulumi.alicloud.vpc.NatGateway;
-     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
-     * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("natGatewaysDatasource");
-     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation("VSwitch")
-     *             .build());
-     * 
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
-     *             .vpcName(name)
-     *             .cidrBlock("172.16.0.0/12")
-     *             .build());
-     * 
-     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
-     *             .vpcId(fooNetwork.id())
-     *             .specification("Small")
-     *             .natGateName(name)
-     *             .build());
-     * 
-     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
-     *             .vpcId(fooNetwork.id())
-     *             .nameRegex(fooNatGateway.name())
-     *             .ids(fooNatGateway.id())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5241,61 +5021,6 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.vpc.Network;
-     * import com.pulumi.alicloud.vpc.NetworkArgs;
-     * import com.pulumi.alicloud.vpc.NatGateway;
-     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
-     * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("natGatewaysDatasource");
-     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation("VSwitch")
-     *             .build());
-     * 
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
-     *             .vpcName(name)
-     *             .cidrBlock("172.16.0.0/12")
-     *             .build());
-     * 
-     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
-     *             .vpcId(fooNetwork.id())
-     *             .specification("Small")
-     *             .natGateName(name)
-     *             .build());
-     * 
-     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
-     *             .vpcId(fooNetwork.id())
-     *             .nameRegex(fooNatGateway.name())
-     *             .ids(fooNatGateway.id())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5310,61 +5035,6 @@ public final class VpcFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.AlicloudFunctions;
-     * import com.pulumi.alicloud.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.vpc.Network;
-     * import com.pulumi.alicloud.vpc.NetworkArgs;
-     * import com.pulumi.alicloud.vpc.NatGateway;
-     * import com.pulumi.alicloud.vpc.NatGatewayArgs;
-     * import com.pulumi.alicloud.vpc.VpcFunctions;
-     * import com.pulumi.alicloud.vpc.inputs.GetNatGatewaysArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var config = ctx.config();
-     *         final var name = config.get("name").orElse("natGatewaysDatasource");
-     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableResourceCreation("VSwitch")
-     *             .build());
-     * 
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
-     *             .vpcName(name)
-     *             .cidrBlock("172.16.0.0/12")
-     *             .build());
-     * 
-     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
-     *             .vpcId(fooNetwork.id())
-     *             .specification("Small")
-     *             .natGateName(name)
-     *             .build());
-     * 
-     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
-     *             .vpcId(fooNetwork.id())
-     *             .nameRegex(fooNatGateway.name())
-     *             .ids(fooNatGateway.id())
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7950,25 +7620,25 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         final var name = config.get("name").orElse("tf-testAccRouteEntryConfig");
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
      *             .name(name)
      *             .cidrBlock("10.1.0.0/21")
      *             .build());
      * 
-     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .cidrBlock("10.1.1.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()        
+     *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()
      *             .name(name)
      *             .description("foo")
      *             .vpcId(fooNetwork.id())
      *             .build());
      * 
-     *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
+     *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
      *             .securityGroups(tfTestFoo.id())
      *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
@@ -7981,14 +7651,14 @@ public final class VpcFunctions {
      *             .instanceName(name)
      *             .build());
      * 
-     *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()        
+     *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()
      *             .routeTableId(fooNetwork.routeTableId())
      *             .destinationCidrblock("172.11.1.1/32")
      *             .nexthopType("Instance")
      *             .nexthopId(fooInstance.id())
      *             .build());
      * 
-     *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()        
+     *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()
      *             .type("ingress")
      *             .ipProtocol("tcp")
      *             .nicType("intranet")
@@ -8078,25 +7748,25 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         final var name = config.get("name").orElse("tf-testAccRouteEntryConfig");
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
      *             .name(name)
      *             .cidrBlock("10.1.0.0/21")
      *             .build());
      * 
-     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .cidrBlock("10.1.1.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()        
+     *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()
      *             .name(name)
      *             .description("foo")
      *             .vpcId(fooNetwork.id())
      *             .build());
      * 
-     *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
+     *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
      *             .securityGroups(tfTestFoo.id())
      *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
@@ -8109,14 +7779,14 @@ public final class VpcFunctions {
      *             .instanceName(name)
      *             .build());
      * 
-     *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()        
+     *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()
      *             .routeTableId(fooNetwork.routeTableId())
      *             .destinationCidrblock("172.11.1.1/32")
      *             .nexthopType("Instance")
      *             .nexthopId(fooInstance.id())
      *             .build());
      * 
-     *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()        
+     *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()
      *             .type("ingress")
      *             .ipProtocol("tcp")
      *             .nicType("intranet")
@@ -8206,25 +7876,25 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         final var name = config.get("name").orElse("tf-testAccRouteEntryConfig");
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
      *             .name(name)
      *             .cidrBlock("10.1.0.0/21")
      *             .build());
      * 
-     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .cidrBlock("10.1.1.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()        
+     *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()
      *             .name(name)
      *             .description("foo")
      *             .vpcId(fooNetwork.id())
      *             .build());
      * 
-     *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
+     *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
      *             .securityGroups(tfTestFoo.id())
      *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
@@ -8237,14 +7907,14 @@ public final class VpcFunctions {
      *             .instanceName(name)
      *             .build());
      * 
-     *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()        
+     *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()
      *             .routeTableId(fooNetwork.routeTableId())
      *             .destinationCidrblock("172.11.1.1/32")
      *             .nexthopType("Instance")
      *             .nexthopId(fooInstance.id())
      *             .build());
      * 
-     *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()        
+     *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()
      *             .type("ingress")
      *             .ipProtocol("tcp")
      *             .nicType("intranet")
@@ -8334,25 +8004,25 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         final var name = config.get("name").orElse("tf-testAccRouteEntryConfig");
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
      *             .name(name)
      *             .cidrBlock("10.1.0.0/21")
      *             .build());
      * 
-     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .cidrBlock("10.1.1.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()        
+     *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()
      *             .name(name)
      *             .description("foo")
      *             .vpcId(fooNetwork.id())
      *             .build());
      * 
-     *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()        
+     *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
      *             .securityGroups(tfTestFoo.id())
      *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
@@ -8365,14 +8035,14 @@ public final class VpcFunctions {
      *             .instanceName(name)
      *             .build());
      * 
-     *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()        
+     *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()
      *             .routeTableId(fooNetwork.routeTableId())
      *             .destinationCidrblock("172.11.1.1/32")
      *             .nexthopType("Instance")
      *             .nexthopId(fooInstance.id())
      *             .build());
      * 
-     *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()        
+     *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()
      *             .type("ingress")
      *             .ipProtocol("tcp")
      *             .nicType("intranet")
@@ -8433,12 +8103,12 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("route-tables-datasource-example-name");
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()        
+     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .routeTableName(name)
      *             .description(name)
@@ -8495,12 +8165,12 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("route-tables-datasource-example-name");
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()        
+     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .routeTableName(name)
      *             .description(name)
@@ -8557,12 +8227,12 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("route-tables-datasource-example-name");
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()        
+     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .routeTableName(name)
      *             .description(name)
@@ -8619,12 +8289,12 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("route-tables-datasource-example-name");
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()        
+     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .routeTableName(name)
      *             .description(name)
@@ -8681,12 +8351,12 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("route-tables-datasource-example-name");
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()        
+     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .routeTableName(name)
      *             .description(name)
@@ -8743,12 +8413,12 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("route-tables-datasource-example-name");
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()        
+     *         var fooRouteTable = new RouteTable("fooRouteTable", RouteTableArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .routeTableName(name)
      *             .description(name)
@@ -9101,34 +8771,34 @@ public final class VpcFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
      *             .name(name)
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .specification("Small")
      *             .name(name)
      *             .build());
      * 
-     *         var fooEipAddress = new EipAddress("fooEipAddress", EipAddressArgs.builder()        
+     *         var fooEipAddress = new EipAddress("fooEipAddress", EipAddressArgs.builder()
      *             .addressName(name)
      *             .build());
      * 
-     *         var fooEipAssociation = new EipAssociation("fooEipAssociation", EipAssociationArgs.builder()        
+     *         var fooEipAssociation = new EipAssociation("fooEipAssociation", EipAssociationArgs.builder()
      *             .allocationId(fooEipAddress.id())
      *             .instanceId(fooNatGateway.id())
      *             .build());
      * 
-     *         var fooSnatEntry = new SnatEntry("fooSnatEntry", SnatEntryArgs.builder()        
+     *         var fooSnatEntry = new SnatEntry("fooSnatEntry", SnatEntryArgs.builder()
      *             .snatTableId(fooNatGateway.snatTableIds())
      *             .sourceVswitchId(fooSwitch.id())
      *             .snatIp(fooEipAddress.ipAddress())
@@ -9198,34 +8868,34 @@ public final class VpcFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
      *             .name(name)
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .specification("Small")
      *             .name(name)
      *             .build());
      * 
-     *         var fooEipAddress = new EipAddress("fooEipAddress", EipAddressArgs.builder()        
+     *         var fooEipAddress = new EipAddress("fooEipAddress", EipAddressArgs.builder()
      *             .addressName(name)
      *             .build());
      * 
-     *         var fooEipAssociation = new EipAssociation("fooEipAssociation", EipAssociationArgs.builder()        
+     *         var fooEipAssociation = new EipAssociation("fooEipAssociation", EipAssociationArgs.builder()
      *             .allocationId(fooEipAddress.id())
      *             .instanceId(fooNatGateway.id())
      *             .build());
      * 
-     *         var fooSnatEntry = new SnatEntry("fooSnatEntry", SnatEntryArgs.builder()        
+     *         var fooSnatEntry = new SnatEntry("fooSnatEntry", SnatEntryArgs.builder()
      *             .snatTableId(fooNatGateway.snatTableIds())
      *             .sourceVswitchId(fooSwitch.id())
      *             .snatIp(fooEipAddress.ipAddress())
@@ -9295,34 +8965,34 @@ public final class VpcFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
      *             .name(name)
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .specification("Small")
      *             .name(name)
      *             .build());
      * 
-     *         var fooEipAddress = new EipAddress("fooEipAddress", EipAddressArgs.builder()        
+     *         var fooEipAddress = new EipAddress("fooEipAddress", EipAddressArgs.builder()
      *             .addressName(name)
      *             .build());
      * 
-     *         var fooEipAssociation = new EipAssociation("fooEipAssociation", EipAssociationArgs.builder()        
+     *         var fooEipAssociation = new EipAssociation("fooEipAssociation", EipAssociationArgs.builder()
      *             .allocationId(fooEipAddress.id())
      *             .instanceId(fooNatGateway.id())
      *             .build());
      * 
-     *         var fooSnatEntry = new SnatEntry("fooSnatEntry", SnatEntryArgs.builder()        
+     *         var fooSnatEntry = new SnatEntry("fooSnatEntry", SnatEntryArgs.builder()
      *             .snatTableId(fooNatGateway.snatTableIds())
      *             .sourceVswitchId(fooSwitch.id())
      *             .snatIp(fooEipAddress.ipAddress())
@@ -9392,34 +9062,34 @@ public final class VpcFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()        
+     *         var fooNetwork = new Network("fooNetwork", NetworkArgs.builder()
      *             .name(name)
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()        
+     *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .cidrBlock("172.16.0.0/21")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()        
+     *         var fooNatGateway = new NatGateway("fooNatGateway", NatGatewayArgs.builder()
      *             .vpcId(fooNetwork.id())
      *             .specification("Small")
      *             .name(name)
      *             .build());
      * 
-     *         var fooEipAddress = new EipAddress("fooEipAddress", EipAddressArgs.builder()        
+     *         var fooEipAddress = new EipAddress("fooEipAddress", EipAddressArgs.builder()
      *             .addressName(name)
      *             .build());
      * 
-     *         var fooEipAssociation = new EipAssociation("fooEipAssociation", EipAssociationArgs.builder()        
+     *         var fooEipAssociation = new EipAssociation("fooEipAssociation", EipAssociationArgs.builder()
      *             .allocationId(fooEipAddress.id())
      *             .instanceId(fooNatGateway.id())
      *             .build());
      * 
-     *         var fooSnatEntry = new SnatEntry("fooSnatEntry", SnatEntryArgs.builder()        
+     *         var fooSnatEntry = new SnatEntry("fooSnatEntry", SnatEntryArgs.builder()
      *             .snatTableId(fooNatGateway.snatTableIds())
      *             .sourceVswitchId(fooSwitch.id())
      *             .snatIp(fooEipAddress.ipAddress())
@@ -10017,12 +9687,12 @@ public final class VpcFunctions {
      *         final var name = config.get("name").orElse("vswitchDatasourceName");
      *         final var default = AlicloudFunctions.getZones();
      * 
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/16")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .cidrBlock("172.16.0.0/24")
      *             .vpcId(vpc.id())
@@ -10081,12 +9751,12 @@ public final class VpcFunctions {
      *         final var name = config.get("name").orElse("vswitchDatasourceName");
      *         final var default = AlicloudFunctions.getZones();
      * 
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/16")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .cidrBlock("172.16.0.0/24")
      *             .vpcId(vpc.id())
@@ -10145,12 +9815,12 @@ public final class VpcFunctions {
      *         final var name = config.get("name").orElse("vswitchDatasourceName");
      *         final var default = AlicloudFunctions.getZones();
      * 
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/16")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .cidrBlock("172.16.0.0/24")
      *             .vpcId(vpc.id())
@@ -10209,12 +9879,12 @@ public final class VpcFunctions {
      *         final var name = config.get("name").orElse("vswitchDatasourceName");
      *         final var default = AlicloudFunctions.getZones();
      * 
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/16")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .cidrBlock("172.16.0.0/24")
      *             .vpcId(vpc.id())
@@ -10273,12 +9943,12 @@ public final class VpcFunctions {
      *         final var name = config.get("name").orElse("vswitchDatasourceName");
      *         final var default = AlicloudFunctions.getZones();
      * 
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/16")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .cidrBlock("172.16.0.0/24")
      *             .vpcId(vpc.id())
@@ -10337,12 +10007,12 @@ public final class VpcFunctions {
      *         final var name = config.get("name").orElse("vswitchDatasourceName");
      *         final var default = AlicloudFunctions.getZones();
      * 
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/16")
      *             .vpcName(name)
      *             .build());
      * 
-     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .cidrBlock("172.16.0.0/24")
      *             .vpcId(vpc.id())

@@ -18,12 +18,12 @@ import java.util.Objects;
 @CustomType
 public final class GetContainerGroupsGroupContainer {
     /**
-     * @return The arguments passed to the commands.
+     * @return The arguments passed to the commands. Maximum: `10`.
      * 
      */
     private List<String> args;
     /**
-     * @return The commands run by the container.
+     * @return The commands run by the container. You can define a maximum of 20 commands. Minimum length per string: 256 characters.
      * 
      */
     private List<String> commands;
@@ -53,17 +53,17 @@ public final class GetContainerGroupsGroupContainer {
      */
     private String imagePullPolicy;
     /**
-     * @return The amount of memory resources allocated to the container group.
+     * @return The amount of memory resources allocated to the container.
      * 
      */
     private Double memory;
     /**
-     * @return The name of the volume.
+     * @return The name of the container.
      * 
      */
     private String name;
     /**
-     * @return The exposed ports and protocols. Maximum: `100`.
+     * @return The list of exposed ports and protocols. Maximum: 100.
      * 
      */
     private List<GetContainerGroupsGroupContainerPort> ports;
@@ -90,14 +90,14 @@ public final class GetContainerGroupsGroupContainer {
 
     private GetContainerGroupsGroupContainer() {}
     /**
-     * @return The arguments passed to the commands.
+     * @return The arguments passed to the commands. Maximum: `10`.
      * 
      */
     public List<String> args() {
         return this.args;
     }
     /**
-     * @return The commands run by the container.
+     * @return The commands run by the container. You can define a maximum of 20 commands. Minimum length per string: 256 characters.
      * 
      */
     public List<String> commands() {
@@ -139,21 +139,21 @@ public final class GetContainerGroupsGroupContainer {
         return this.imagePullPolicy;
     }
     /**
-     * @return The amount of memory resources allocated to the container group.
+     * @return The amount of memory resources allocated to the container.
      * 
      */
     public Double memory() {
         return this.memory;
     }
     /**
-     * @return The name of the volume.
+     * @return The name of the container.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The exposed ports and protocols. Maximum: `100`.
+     * @return The list of exposed ports and protocols. Maximum: 100.
      * 
      */
     public List<GetContainerGroupsGroupContainerPort> ports() {

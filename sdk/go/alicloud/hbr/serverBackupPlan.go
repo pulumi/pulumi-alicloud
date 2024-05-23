@@ -144,6 +144,7 @@ type ServerBackupPlan struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.IntOutput `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`
+	// * `startTime` Backup start time, UNIX time, in seconds.
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
 }
 
@@ -209,6 +210,7 @@ type serverBackupPlanState struct {
 	// Backup retention days, the minimum is 1.
 	Retention *int `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`
+	// * `startTime` Backup start time, UNIX time, in seconds.
 	Schedule *string `pulumi:"schedule"`
 }
 
@@ -230,6 +232,7 @@ type ServerBackupPlanState struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.IntPtrInput
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`
+	// * `startTime` Backup start time, UNIX time, in seconds.
 	Schedule pulumi.StringPtrInput
 }
 
@@ -255,6 +258,7 @@ type serverBackupPlanArgs struct {
 	// Backup retention days, the minimum is 1.
 	Retention int `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`
+	// * `startTime` Backup start time, UNIX time, in seconds.
 	Schedule string `pulumi:"schedule"`
 }
 
@@ -277,6 +281,7 @@ type ServerBackupPlanArgs struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.IntInput
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`
+	// * `startTime` Backup start time, UNIX time, in seconds.
 	Schedule pulumi.StringInput
 }
 
@@ -408,6 +413,7 @@ func (o ServerBackupPlanOutput) Retention() pulumi.IntOutput {
 }
 
 // Backup strategy. Optional format: `I|{startTime}|{interval}`
+// * `startTime` Backup start time, UNIX time, in seconds.
 func (o ServerBackupPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerBackupPlan) pulumi.StringOutput { return v.Schedule }).(pulumi.StringOutput)
 }

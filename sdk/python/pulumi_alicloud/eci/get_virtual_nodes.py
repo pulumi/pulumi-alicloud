@@ -180,12 +180,11 @@ def get_virtual_nodes(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Virtual Node IDs.
     :param str name_regex: A regex string to filter results by Virtual Node name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str resource_group_id: The resource group ID.
-    :param str security_group_id: The security group ID.
-    :param str status: The Status of the virtual node.
+    :param str resource_group_id: The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
+    :param str security_group_id: VNode itself and by VNode created (ECI) the security group used by.
+    :param str status: The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     :param str virtual_node_name: The name of the virtual node.
-    :param str vswitch_id: The vswitch id.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -252,11 +251,10 @@ def get_virtual_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param Sequence[str] ids: A list of Virtual Node IDs.
     :param str name_regex: A regex string to filter results by Virtual Node name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str resource_group_id: The resource group ID.
-    :param str security_group_id: The security group ID.
-    :param str status: The Status of the virtual node.
+    :param str resource_group_id: The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
+    :param str security_group_id: VNode itself and by VNode created (ECI) the security group used by.
+    :param str status: The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     :param str virtual_node_name: The name of the virtual node.
-    :param str vswitch_id: The vswitch id.
     """
     ...

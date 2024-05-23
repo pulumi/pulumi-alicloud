@@ -56,20 +56,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()        
+ *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()
  *             .vaultName(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
- *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()        
+ *         var defaultBucket = new Bucket("defaultBucket", BucketArgs.builder()
  *             .bucket(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
- *         var defaultOssBackupPlan = new OssBackupPlan("defaultOssBackupPlan", OssBackupPlanArgs.builder()        
+ *         var defaultOssBackupPlan = new OssBackupPlan("defaultOssBackupPlan", OssBackupPlanArgs.builder()
  *             .ossBackupPlanName("terraform-example")
  *             .prefix("/example")
  *             .bucket(defaultBucket.bucket())
@@ -224,6 +224,7 @@ public class OssBackupPlan extends com.pulumi.resources.CustomResource {
     }
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * * `startTime` Backup start time, UNIX time seconds.
      * 
      */
     @Export(name="schedule", refs={String.class}, tree="[0]")
@@ -231,6 +232,7 @@ public class OssBackupPlan extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * * `startTime` Backup start time, UNIX time seconds.
      * 
      */
     public Output<String> schedule() {

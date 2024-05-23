@@ -118,10 +118,6 @@ def get_images(ids: Optional[Sequence[str]] = None,
     This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.135.0+.
-
-
-    :param str image_type: The type of the image. Valid values: `app`, `custom`, `system`.
-    :param str platform: The platform of Plan supported.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -154,9 +150,5 @@ def get_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.135.0+.
-
-
-    :param str image_type: The type of the image. Valid values: `app`, `custom`, `system`.
-    :param str platform: The platform of Plan supported.
     """
     ...

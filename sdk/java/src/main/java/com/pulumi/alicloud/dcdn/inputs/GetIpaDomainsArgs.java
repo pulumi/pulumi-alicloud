@@ -18,14 +18,14 @@ public final class GetIpaDomainsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetIpaDomainsArgs Empty = new GetIpaDomainsArgs();
 
     /**
-     * The accelerated domain names.
+     * The name of the Domain.
      * 
      */
     @Import(name="domainName")
     private @Nullable Output<String> domainName;
 
     /**
-     * @return The accelerated domain names.
+     * @return The name of the Domain.
      * 
      */
     public Optional<Output<String>> domainName() {
@@ -78,14 +78,14 @@ public final class GetIpaDomainsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the accelerated domain name.
+     * The status of the accelerated domain name. Valid values: `check_failed`, `checking`, `configure_failed`, `configuring`, `offline`, `online`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the accelerated domain name.
+     * @return The status of the accelerated domain name. Valid values: `check_failed`, `checking`, `configure_failed`, `configuring`, `offline`, `online`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -121,7 +121,7 @@ public final class GetIpaDomainsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param domainName The accelerated domain names.
+         * @param domainName The name of the Domain.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class GetIpaDomainsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param domainName The accelerated domain names.
+         * @param domainName The name of the Domain.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class GetIpaDomainsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the accelerated domain name.
+         * @param status The status of the accelerated domain name. Valid values: `check_failed`, `checking`, `configure_failed`, `configuring`, `offline`, `online`.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class GetIpaDomainsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the accelerated domain name.
+         * @param status The status of the accelerated domain name. Valid values: `check_failed`, `checking`, `configure_failed`, `configuring`, `offline`, `online`.
          * 
          * @return builder
          * 

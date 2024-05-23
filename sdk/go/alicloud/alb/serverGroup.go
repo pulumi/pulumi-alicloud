@@ -180,6 +180,9 @@ type ServerGroup struct {
 	// The name of the server group.
 	ServerGroupName pulumi.StringOutput `pulumi:"serverGroupName"`
 	// The type of the server group. Default value: `Instance`. Valid values:
+	// - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+	// - `Ip`: allows you to add servers by specifying IP addresses.
+	// - `Fc`: allows you to add servers by specifying functions of Function Compute.
 	ServerGroupType pulumi.StringOutput `pulumi:"serverGroupType"`
 	// The backend servers. See `servers` below.
 	Servers ServerGroupServerArrayOutput `pulumi:"servers"`
@@ -242,6 +245,9 @@ type serverGroupState struct {
 	// The name of the server group.
 	ServerGroupName *string `pulumi:"serverGroupName"`
 	// The type of the server group. Default value: `Instance`. Valid values:
+	// - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+	// - `Ip`: allows you to add servers by specifying IP addresses.
+	// - `Fc`: allows you to add servers by specifying functions of Function Compute.
 	ServerGroupType *string `pulumi:"serverGroupType"`
 	// The backend servers. See `servers` below.
 	Servers []ServerGroupServer `pulumi:"servers"`
@@ -269,6 +275,9 @@ type ServerGroupState struct {
 	// The name of the server group.
 	ServerGroupName pulumi.StringPtrInput
 	// The type of the server group. Default value: `Instance`. Valid values:
+	// - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+	// - `Ip`: allows you to add servers by specifying IP addresses.
+	// - `Fc`: allows you to add servers by specifying functions of Function Compute.
 	ServerGroupType pulumi.StringPtrInput
 	// The backend servers. See `servers` below.
 	Servers ServerGroupServerArrayInput
@@ -300,6 +309,9 @@ type serverGroupArgs struct {
 	// The name of the server group.
 	ServerGroupName string `pulumi:"serverGroupName"`
 	// The type of the server group. Default value: `Instance`. Valid values:
+	// - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+	// - `Ip`: allows you to add servers by specifying IP addresses.
+	// - `Fc`: allows you to add servers by specifying functions of Function Compute.
 	ServerGroupType *string `pulumi:"serverGroupType"`
 	// The backend servers. See `servers` below.
 	Servers []ServerGroupServer `pulumi:"servers"`
@@ -326,6 +338,9 @@ type ServerGroupArgs struct {
 	// The name of the server group.
 	ServerGroupName pulumi.StringInput
 	// The type of the server group. Default value: `Instance`. Valid values:
+	// - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+	// - `Ip`: allows you to add servers by specifying IP addresses.
+	// - `Fc`: allows you to add servers by specifying functions of Function Compute.
 	ServerGroupType pulumi.StringPtrInput
 	// The backend servers. See `servers` below.
 	Servers ServerGroupServerArrayInput
@@ -455,6 +470,9 @@ func (o ServerGroupOutput) ServerGroupName() pulumi.StringOutput {
 }
 
 // The type of the server group. Default value: `Instance`. Valid values:
+// - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+// - `Ip`: allows you to add servers by specifying IP addresses.
+// - `Fc`: allows you to add servers by specifying functions of Function Compute.
 func (o ServerGroupOutput) ServerGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerGroup) pulumi.StringOutput { return v.ServerGroupType }).(pulumi.StringOutput)
 }

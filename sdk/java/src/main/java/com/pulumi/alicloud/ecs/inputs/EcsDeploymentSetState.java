@@ -77,6 +77,8 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
 
     /**
      * The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+     * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+     * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
      * 
      */
     @Import(name="onUnableToRedeployFailedInstance")
@@ -84,6 +86,8 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+     * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+     * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
      * 
      */
     public Optional<Output<String>> onUnableToRedeployFailedInstance() {
@@ -220,6 +224,8 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param onUnableToRedeployFailedInstance The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+         * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+         * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
          * 
          * @return builder
          * 
@@ -231,6 +237,8 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param onUnableToRedeployFailedInstance The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+         * * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+         * * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
          * 
          * @return builder
          * 

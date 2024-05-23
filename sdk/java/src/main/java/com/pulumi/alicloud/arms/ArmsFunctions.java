@@ -1171,11 +1171,11 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
@@ -1259,11 +1259,11 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
@@ -1347,11 +1347,11 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
@@ -1435,11 +1435,11 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
@@ -1523,11 +1523,11 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
@@ -1611,11 +1611,11 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
@@ -1697,11 +1697,11 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
@@ -1783,11 +1783,11 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
@@ -1869,11 +1869,11 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
@@ -1955,11 +1955,11 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
@@ -2041,11 +2041,11 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])
@@ -2127,11 +2127,11 @@ public final class ArmsFunctions {
      * 
      *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+     *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
      *             .clusterType("ecs")
      *             .grafanaInstanceId("free")
      *             .vpcId(default_.ids()[0])

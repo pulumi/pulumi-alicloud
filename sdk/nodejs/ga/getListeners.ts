@@ -60,7 +60,7 @@ export interface GetListenersArgs {
      */
     outputFile?: string;
     /**
-     * The status of the listener.
+     * The status of the listener. Valid values: `active`, `configuring`, `creating`.
      */
     status?: string;
 }
@@ -127,7 +127,7 @@ export interface GetListenersOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the listener.
+     * The status of the listener. Valid values: `active`, `configuring`, `creating`.
      */
     status?: pulumi.Input<string>;
 }

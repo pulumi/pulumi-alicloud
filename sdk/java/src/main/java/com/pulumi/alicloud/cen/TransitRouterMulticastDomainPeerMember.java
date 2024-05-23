@@ -63,33 +63,33 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
  *             .bandwidth(5)
  *             .cenBandwidthPackageName(name)
  *             .geographicRegionAId("China")
  *             .geographicRegionBId("China")
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
  *             .instanceId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()        
+ *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
  *             .cenId(defaultBandwidthPackageAttachment.instanceId())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var peer = new TransitRouter("peer", TransitRouterArgs.builder()        
+ *         var peer = new TransitRouter("peer", TransitRouterArgs.builder()
  *             .cenId(defaultBandwidthPackageAttachment.instanceId())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", TransitRouterPeerAttachmentArgs.builder()        
+ *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment", TransitRouterPeerAttachmentArgs.builder()
  *             .cenId(defaultBandwidthPackageAttachment.instanceId())
  *             .transitRouterId(defaultTransitRouter.transitRouterId())
  *             .peerTransitRouterId(peer.transitRouterId())
@@ -100,19 +100,19 @@ import javax.annotation.Nullable;
  *             .transitRouterAttachmentName(name)
  *             .build());
  * 
- *         var defaultTransitRouterMulticastDomain = new TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()        
+ *         var defaultTransitRouterMulticastDomain = new TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()
  *             .transitRouterId(defaultTransitRouterPeerAttachment.transitRouterId())
  *             .transitRouterMulticastDomainName(name)
  *             .transitRouterMulticastDomainDescription(name)
  *             .build());
  * 
- *         var peerTransitRouterMulticastDomain = new TransitRouterMulticastDomain("peerTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()        
+ *         var peerTransitRouterMulticastDomain = new TransitRouterMulticastDomain("peerTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()
  *             .transitRouterId(defaultTransitRouterPeerAttachment.peerTransitRouterId())
  *             .transitRouterMulticastDomainName(name)
  *             .transitRouterMulticastDomainDescription(name)
  *             .build());
  * 
- *         var defaultTransitRouterMulticastDomainPeerMember = new TransitRouterMulticastDomainPeerMember("defaultTransitRouterMulticastDomainPeerMember", TransitRouterMulticastDomainPeerMemberArgs.builder()        
+ *         var defaultTransitRouterMulticastDomainPeerMember = new TransitRouterMulticastDomainPeerMember("defaultTransitRouterMulticastDomainPeerMember", TransitRouterMulticastDomainPeerMemberArgs.builder()
  *             .transitRouterMulticastDomainId(defaultTransitRouterMulticastDomain.id())
  *             .peerTransitRouterMulticastDomainId(peerTransitRouterMulticastDomain.id())
  *             .groupIpAddress("224.0.0.1")

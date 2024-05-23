@@ -73,7 +73,7 @@ type GetInstancesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values: "DEPLOYING", "EXPIRED", "RELEASED", "SERVING".
 	Status *string `pulumi:"status"`
 }
 
@@ -113,7 +113,7 @@ type GetInstancesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values: "DEPLOYING", "EXPIRED", "RELEASED", "SERVING".
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

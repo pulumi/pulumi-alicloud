@@ -65,7 +65,7 @@ export interface GetConfigMapsArgs {
      */
     nameRegex?: string;
     /**
-     * The NamespaceId of Config Maps.
+     * The NamespaceId of Config Maps. The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
      */
     namespaceId: string;
     /**
@@ -141,7 +141,7 @@ export interface GetConfigMapsOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     /**
-     * The NamespaceId of Config Maps.
+     * The NamespaceId of Config Maps. The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
      */
     namespaceId: pulumi.Input<string>;
     /**

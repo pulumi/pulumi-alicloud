@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AutoSnapShotPolicy("default", AutoSnapShotPolicyArgs.builder()        
+ *         var default_ = new AutoSnapShotPolicy("default", AutoSnapShotPolicyArgs.builder()
  *             .timePoints("01")
  *             .policyName("tf-example")
  *             .retentionDays(1)

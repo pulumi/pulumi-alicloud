@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultGrafanaWorkspace = new GrafanaWorkspace("defaultGrafanaWorkspace", GrafanaWorkspaceArgs.builder()        
+ *         var defaultGrafanaWorkspace = new GrafanaWorkspace("defaultGrafanaWorkspace", GrafanaWorkspaceArgs.builder()
  *             .grafanaVersion("9.0.x")
  *             .description(name)
  *             .resourceGroupId(default_.ids()[0])

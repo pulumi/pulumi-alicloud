@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var domainName = config.get("domainName").orElse("tf-example.com");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new Domain("example", DomainArgs.builder()        
+ *         var example = new Domain("example", DomainArgs.builder()
  *             .domainName(String.format("%s-%s", domainName,default_.result()))
  *             .scope("overseas")
  *             .sources(DomainSourceArgs.builder()
@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleWafDomain = new WafDomain("exampleWafDomain", WafDomainArgs.builder()        
+ *         var exampleWafDomain = new WafDomain("exampleWafDomain", WafDomainArgs.builder()
  *             .domainName(example.domainName())
  *             .clientIpTag("X-Forwarded-For")
  *             .build());

@@ -57,17 +57,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var example = new Project("example", ProjectArgs.builder()        
+ *         var example = new Project("example", ProjectArgs.builder()
  *             .name(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
  *             .project(example.name())
  *             .name("example-store")
  *             .shardCount(3)
@@ -120,23 +120,23 @@ import javax.annotation.Nullable;
  *         final var region = config.get("region").orElse("cn-hangzhou");
  *         final var example = AlicloudFunctions.getAccount();
  * 
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var exampleKey = new Key("exampleKey", KeyArgs.builder()        
+ *         var exampleKey = new Key("exampleKey", KeyArgs.builder()
  *             .description("terraform-example")
  *             .pendingWindowInDays("7")
  *             .status("Enabled")
  *             .build());
  * 
- *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()        
+ *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()
  *             .name(String.format("terraform-example-%s", default_.result()))
  *             .description("terraform-example")
  *             .build());
  * 
- *         var exampleStore = new Store("exampleStore", StoreArgs.builder()        
+ *         var exampleStore = new Store("exampleStore", StoreArgs.builder()
  *             .project(exampleProject.name())
  *             .name("example-store")
  *             .shardCount(1)

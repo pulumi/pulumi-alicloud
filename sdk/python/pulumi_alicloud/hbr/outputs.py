@@ -103,6 +103,7 @@ class OtsBackupPlanRule(dict):
         :param bool disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         :param str retention: Backup retention days, the minimum is 1.
         :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               - `startTime` Backup start time, UNIX time seconds.
         """
         if backup_type is not None:
             pulumi.set(__self__, "backup_type", backup_type)
@@ -149,6 +150,7 @@ class OtsBackupPlanRule(dict):
     def schedule(self) -> Optional[str]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        - `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -1057,6 +1059,8 @@ class GetEcsBackupClientsClientResult(dict):
         :param str create_time: The creation time of client. Unix time in seconds.
         :param str data_network_type: The data plane access point type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
         :param str data_proxy_setting: The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
+               * `USE_CONTROL_PROXY` (Default, the same with control plane)
+               * `CUSTOM` (Custom configuration items for the HTTP protocol).
         :param str ecs_backup_client_id: The first ID of the resource.
         :param str hostname: The hostname of ECS instance.
         :param str id: The ID of the Ecs Backup Client.
@@ -1157,6 +1161,8 @@ class GetEcsBackupClientsClientResult(dict):
     def data_proxy_setting(self) -> str:
         """
         The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
+        * `USE_CONTROL_PROXY` (Default, the same with control plane)
+        * `CUSTOM` (Custom configuration items for the HTTP protocol).
         """
         return pulumi.get(self, "data_proxy_setting")
 
@@ -1349,6 +1355,7 @@ class GetEcsBackupPlansPlanResult(dict):
         :param Sequence[str] paths: Backup path. e.g. `["/home", "/var"]`
         :param str retention: Backup retention days, the minimum is 1.
         :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param str source_type: The type of backup source.
         :param str speed_limit: Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         :param str updated_time: The update time of the backup plan. UNIX time in seconds.
@@ -1485,6 +1492,7 @@ class GetEcsBackupPlansPlanResult(dict):
     def schedule(self) -> str:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -1997,6 +2005,7 @@ class GetNasBackupPlansPlanResult(dict):
         :param Sequence[str] paths: List of backup path. Up to 65536 Characters. e.g.`["/home", "/var"]`
         :param str retention: Backup retention days, the minimum is 1.
         :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param str updated_time: The update time of the backup plan. UNIX time in seconds.
         :param str vault_id: The ID of backup vault.
         """
@@ -2108,6 +2117,7 @@ class GetNasBackupPlansPlanResult(dict):
     def schedule(self) -> str:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -2154,6 +2164,7 @@ class GetOssBackupPlansPlanResult(dict):
         :param str prefix: Backup prefix.
         :param str retention: Backup retention days, the minimum is 1.
         :param str schedule: Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param str updated_time: The update time of the backup plan. UNIX time in seconds.
         :param str vault_id: The ID of backup vault.
         """
@@ -2247,6 +2258,7 @@ class GetOssBackupPlansPlanResult(dict):
     def schedule(self) -> str:
         """
         Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -2291,6 +2303,7 @@ class GetOtsBackupPlansPlanResult(dict):
         :param str ots_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param str retention: The Backup retention days, the minimum is 1.
         :param str schedule: The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param str source_type: The type of the data source.
         :param str updated_time: The update time of the backup plan. UNIX time in seconds.
                *ots_detail - The details about the Tablestore instance.
@@ -2375,6 +2388,7 @@ class GetOtsBackupPlansPlanResult(dict):
     def schedule(self) -> str:
         """
         The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -3155,6 +3169,18 @@ class GetServerBackupPlansPlanDetailResult(dict):
                  pre_script_path: str,
                  snapshot_group: bool,
                  timeout_in_seconds: int):
+        """
+        :param bool app_consistent: Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+        :param str destination_region_id: Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        :param int destination_retention: Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        :param Sequence[str] disk_id_lists: The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+        :param bool do_copy: Whether replicate to another region. Valid values: `true`, `false`.
+        :param bool enable_fs_freeze: Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+        :param str post_script_path: Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+        :param str pre_script_path: Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+        :param bool snapshot_group: Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+        :param int timeout_in_seconds: Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+        """
         pulumi.set(__self__, "app_consistent", app_consistent)
         pulumi.set(__self__, "destination_region_id", destination_region_id)
         pulumi.set(__self__, "destination_retention", destination_retention)
@@ -3169,51 +3195,81 @@ class GetServerBackupPlansPlanDetailResult(dict):
     @property
     @pulumi.getter(name="appConsistent")
     def app_consistent(self) -> bool:
+        """
+        Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "app_consistent")
 
     @property
     @pulumi.getter(name="destinationRegionId")
     def destination_region_id(self) -> str:
+        """
+        Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
         return pulumi.get(self, "destination_region_id")
 
     @property
     @pulumi.getter(name="destinationRetention")
     def destination_retention(self) -> int:
+        """
+        Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
         return pulumi.get(self, "destination_retention")
 
     @property
     @pulumi.getter(name="diskIdLists")
     def disk_id_lists(self) -> Sequence[str]:
+        """
+        The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+        """
         return pulumi.get(self, "disk_id_lists")
 
     @property
     @pulumi.getter(name="doCopy")
     def do_copy(self) -> bool:
+        """
+        Whether replicate to another region. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "do_copy")
 
     @property
     @pulumi.getter(name="enableFsFreeze")
     def enable_fs_freeze(self) -> bool:
+        """
+        Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "enable_fs_freeze")
 
     @property
     @pulumi.getter(name="postScriptPath")
     def post_script_path(self) -> str:
+        """
+        Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+        """
         return pulumi.get(self, "post_script_path")
 
     @property
     @pulumi.getter(name="preScriptPath")
     def pre_script_path(self) -> str:
+        """
+        Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+        """
         return pulumi.get(self, "pre_script_path")
 
     @property
     @pulumi.getter(name="snapshotGroup")
     def snapshot_group(self) -> bool:
+        """
+        Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+        """
         return pulumi.get(self, "snapshot_group")
 
     @property
     @pulumi.getter(name="timeoutInSeconds")
     def timeout_in_seconds(self) -> int:
+        """
+        Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+        """
         return pulumi.get(self, "timeout_in_seconds")
 
 
@@ -3557,6 +3613,12 @@ class GetVaultsVaultResult(dict):
         :param str index_update_time: Index update time.
         :param str latest_replication_time: The time of the last remote backup synchronization.
         :param str payment_type: Billing model, possible values:
+               * `FREE` is not billed
+               * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
+               * `V2` new version of metering mode
+               * `AEGIS` Billing method for cloud security use
+               * `UNI_BACKUP` the backup of deduplication database
+               * `ARCHIVE` archive library.
         :param bool replication: Whether it is a remote backup warehouse. It's a boolean value.
         :param str replication_source_region_id: The region ID to which the remote backup Vault belongs.
         :param str replication_source_vault_id: The source vault ID of the remote backup Vault.
@@ -3682,6 +3744,12 @@ class GetVaultsVaultResult(dict):
     def payment_type(self) -> str:
         """
         Billing model, possible values:
+        * `FREE` is not billed
+        * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
+        * `V2` new version of metering mode
+        * `AEGIS` Billing method for cloud security use
+        * `UNI_BACKUP` the backup of deduplication database
+        * `ARCHIVE` archive library.
         """
         return pulumi.get(self, "payment_type")
 

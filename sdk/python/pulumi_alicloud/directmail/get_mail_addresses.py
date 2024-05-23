@@ -126,7 +126,7 @@ def get_mail_addresses(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Mail Address IDs.
     :param str key_word: The key word about account email address.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str sendtype: Account type.
+    :param str sendtype: Account type. Valid values: `batch`, `trigger`.
     :param str status: Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
     """
     __args__ = dict()
@@ -176,7 +176,7 @@ def get_mail_addresses_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     :param Sequence[str] ids: A list of Mail Address IDs.
     :param str key_word: The key word about account email address.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str sendtype: Account type.
+    :param str sendtype: Account type. Valid values: `batch`, `trigger`.
     :param str status: Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
     """
     ...

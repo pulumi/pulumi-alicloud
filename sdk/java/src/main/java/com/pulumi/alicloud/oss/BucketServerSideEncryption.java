@@ -56,17 +56,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var createBucket = new Bucket("createBucket", BucketArgs.builder()        
+ *         var createBucket = new Bucket("createBucket", BucketArgs.builder()
  *             .storageClass("Standard")
  *             .bucket(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var getKMS = new Key("getKMS", KeyArgs.builder()        
+ *         var getKMS = new Key("getKMS", KeyArgs.builder()
  *             .origin("Aliyun_KMS")
  *             .protectionLevel("SOFTWARE")
  *             .description(name)
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .pendingWindowInDays(7)
  *             .build());
  * 
- *         var defaultBucketServerSideEncryption = new BucketServerSideEncryption("defaultBucketServerSideEncryption", BucketServerSideEncryptionArgs.builder()        
+ *         var defaultBucketServerSideEncryption = new BucketServerSideEncryption("defaultBucketServerSideEncryption", BucketServerSideEncryptionArgs.builder()
  *             .kmsDataEncryption("SM4")
  *             .kmsMasterKeyId(getKMS.id())
  *             .bucket(createBucket.bucket())

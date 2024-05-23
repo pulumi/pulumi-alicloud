@@ -79,11 +79,11 @@ type GetUsersArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+	// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
 	Source *string `pulumi:"source"`
 	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
 	SourceUserId *string `pulumi:"sourceUserId"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Frozen`, `Normal`.
 	Status *string `pulumi:"status"`
 	// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
 	UserName *string `pulumi:"userName"`
@@ -134,11 +134,11 @@ type GetUsersOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User.
+	// Specify the New of the User That Created the Source. Valid Values: Local: Local User RAM: Ram User. Valid values: `Local`, `Ram`.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
 	SourceUserId pulumi.StringPtrInput `pulumi:"sourceUserId"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Frozen`, `Normal`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
 	UserName pulumi.StringPtrInput `pulumi:"userName"`

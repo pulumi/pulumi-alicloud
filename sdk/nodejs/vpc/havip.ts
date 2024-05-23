@@ -76,6 +76,8 @@ export class HAVip extends pulumi.CustomResource {
     public /*out*/ readonly associatedEipAddresses!: pulumi.Output<string[]>;
     /**
      * The type of the instance with which the HAVIP is associated. Valid values:
+     * - `EcsInstance`: an ECS instance.
+     * - `NetworkInterface`: an ENI.
      */
     public /*out*/ readonly associatedInstanceType!: pulumi.Output<string>;
     /**
@@ -197,6 +199,8 @@ export interface HAVipState {
     associatedEipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The type of the instance with which the HAVIP is associated. Valid values:
+     * - `EcsInstance`: an ECS instance.
+     * - `NetworkInterface`: an ENI.
      */
     associatedInstanceType?: pulumi.Input<string>;
     /**

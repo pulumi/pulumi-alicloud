@@ -63,7 +63,7 @@ type GetMailAddressesArgs struct {
 	KeyWord *string `pulumi:"keyWord"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Account type.
+	// Account type. Valid values: `batch`, `trigger`.
 	Sendtype *string `pulumi:"sendtype"`
 	// Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
 	Status *string `pulumi:"status"`
@@ -102,7 +102,7 @@ type GetMailAddressesOutputArgs struct {
 	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Account type.
+	// Account type. Valid values: `batch`, `trigger`.
 	Sendtype pulumi.StringPtrInput `pulumi:"sendtype"`
 	// Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
 	Status pulumi.StringPtrInput `pulumi:"status"`

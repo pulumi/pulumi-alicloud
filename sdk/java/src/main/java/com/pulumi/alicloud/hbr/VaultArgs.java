@@ -33,6 +33,8 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+     * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
+     * - `KMS`: Use Alibaba Cloud Kms to encryption.
      * 
      */
     @Import(name="encryptType")
@@ -40,6 +42,8 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+     * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
+     * - `KMS`: Use Alibaba Cloud Kms to encryption.
      * 
      */
     public Optional<Output<String>> encryptType() {
@@ -158,6 +162,8 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param encryptType Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+         * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
+         * - `KMS`: Use Alibaba Cloud Kms to encryption.
          * 
          * @return builder
          * 
@@ -169,6 +175,8 @@ public final class VaultArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param encryptType Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
+         * - `HBR_PRIVATE`: HBR is fully hosted, uses the backup service&#39;s own encryption method.
+         * - `KMS`: Use Alibaba Cloud Kms to encryption.
          * 
          * @return builder
          * 

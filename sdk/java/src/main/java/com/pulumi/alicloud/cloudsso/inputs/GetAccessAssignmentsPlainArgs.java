@@ -77,14 +77,14 @@ public final class GetAccessAssignmentsPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Create the identity type of the access assignment, which can be a user or a user group.
+     * Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
      * 
      */
     @Import(name="principalType")
     private @Nullable String principalType;
 
     /**
-     * @return Create the identity type of the access assignment, which can be a user or a user group.
+     * @return Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
      * 
      */
     public Optional<String> principalType() {
@@ -107,14 +107,14 @@ public final class GetAccessAssignmentsPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+     * The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
      * 
      */
     @Import(name="targetType")
     private @Nullable String targetType;
 
     /**
-     * @return The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+     * @return The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
      * 
      */
     public Optional<String> targetType() {
@@ -206,7 +206,7 @@ public final class GetAccessAssignmentsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param principalType Create the identity type of the access assignment, which can be a user or a user group.
+         * @param principalType Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class GetAccessAssignmentsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param targetType The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+         * @param targetType The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
          * 
          * @return builder
          * 

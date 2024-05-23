@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new BaselineStrategy("default", BaselineStrategyArgs.builder()        
+ *         var default_ = new BaselineStrategy("default", BaselineStrategyArgs.builder()
  *             .customType("custom")
  *             .endTime("08:00:00")
  *             .baselineStrategyName("apispec")

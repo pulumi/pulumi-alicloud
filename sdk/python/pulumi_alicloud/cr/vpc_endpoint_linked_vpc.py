@@ -23,6 +23,8 @@ class VpcEndpointLinkedVpcArgs:
         The set of arguments for constructing a VpcEndpointLinkedVpc resource.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] module_name: The name of the module that you want to access. Valid Values:
+               - `Registry`: the image repository.
+               - `Chart`: a Helm chart.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         :param pulumi.Input[bool] enable_create_dns_record_in_pvzt: Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
@@ -51,6 +53,8 @@ class VpcEndpointLinkedVpcArgs:
     def module_name(self) -> pulumi.Input[str]:
         """
         The name of the module that you want to access. Valid Values:
+        - `Registry`: the image repository.
+        - `Chart`: a Helm chart.
         """
         return pulumi.get(self, "module_name")
 
@@ -109,6 +113,8 @@ class _VpcEndpointLinkedVpcState:
         :param pulumi.Input[bool] enable_create_dns_record_in_pvzt: Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] module_name: The name of the module that you want to access. Valid Values:
+               - `Registry`: the image repository.
+               - `Chart`: a Helm chart.
         :param pulumi.Input[str] status: The status of the Vpc Endpoint Linked Vpc.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
@@ -155,6 +161,8 @@ class _VpcEndpointLinkedVpcState:
     def module_name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the module that you want to access. Valid Values:
+        - `Registry`: the image repository.
+        - `Chart`: a Helm chart.
         """
         return pulumi.get(self, "module_name")
 
@@ -266,6 +274,8 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_create_dns_record_in_pvzt: Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] module_name: The name of the module that you want to access. Valid Values:
+               - `Registry`: the image repository.
+               - `Chart`: a Helm chart.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         """
@@ -395,6 +405,8 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_create_dns_record_in_pvzt: Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] module_name: The name of the module that you want to access. Valid Values:
+               - `Registry`: the image repository.
+               - `Chart`: a Helm chart.
         :param pulumi.Input[str] status: The status of the Vpc Endpoint Linked Vpc.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
@@ -432,6 +444,8 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
     def module_name(self) -> pulumi.Output[str]:
         """
         The name of the module that you want to access. Valid Values:
+        - `Registry`: the image repository.
+        - `Chart`: a Helm chart.
         """
         return pulumi.get(self, "module_name")
 

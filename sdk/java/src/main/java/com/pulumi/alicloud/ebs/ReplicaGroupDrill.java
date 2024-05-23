@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new ReplicaGroupDrill("default", ReplicaGroupDrillArgs.builder()        
+ *         var default_ = new ReplicaGroupDrill("default", ReplicaGroupDrillArgs.builder()
  *             .groupId("pg-m1H9aaOUIGsDUwgZ")
  *             .build());
  * 

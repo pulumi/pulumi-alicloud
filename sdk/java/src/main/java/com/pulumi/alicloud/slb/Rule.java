@@ -99,24 +99,24 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var ruleNetwork = new Network("ruleNetwork", NetworkArgs.builder()        
+ *         var ruleNetwork = new Network("ruleNetwork", NetworkArgs.builder()
  *             .vpcName(slbRuleName)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var ruleSwitch = new Switch("ruleSwitch", SwitchArgs.builder()        
+ *         var ruleSwitch = new Switch("ruleSwitch", SwitchArgs.builder()
  *             .vpcId(ruleNetwork.id())
  *             .cidrBlock("172.16.0.0/16")
  *             .zoneId(rule.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(slbRuleName)
  *             .build());
  * 
- *         var ruleSecurityGroup = new SecurityGroup("ruleSecurityGroup", SecurityGroupArgs.builder()        
+ *         var ruleSecurityGroup = new SecurityGroup("ruleSecurityGroup", SecurityGroupArgs.builder()
  *             .name(slbRuleName)
  *             .vpcId(ruleNetwork.id())
  *             .build());
  * 
- *         var ruleInstance = new Instance("ruleInstance", InstanceArgs.builder()        
+ *         var ruleInstance = new Instance("ruleInstance", InstanceArgs.builder()
  *             .imageId(ruleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .instanceType(ruleGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *             .securityGroups(ruleSecurityGroup.stream().map(element -> element.id()).collect(toList()))
@@ -129,13 +129,13 @@ import javax.annotation.Nullable;
  *             .instanceName(slbRuleName)
  *             .build());
  * 
- *         var ruleApplicationLoadBalancer = new ApplicationLoadBalancer("ruleApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+ *         var ruleApplicationLoadBalancer = new ApplicationLoadBalancer("ruleApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
  *             .loadBalancerName(slbRuleName)
  *             .vswitchId(ruleSwitch.id())
  *             .instanceChargeType("PayByCLCU")
  *             .build());
  * 
- *         var ruleListener = new Listener("ruleListener", ListenerArgs.builder()        
+ *         var ruleListener = new Listener("ruleListener", ListenerArgs.builder()
  *             .loadBalancerId(ruleApplicationLoadBalancer.id())
  *             .backendPort(22)
  *             .frontendPort(22)
@@ -144,12 +144,12 @@ import javax.annotation.Nullable;
  *             .healthCheckConnectPort("20")
  *             .build());
  * 
- *         var ruleServerGroup = new ServerGroup("ruleServerGroup", ServerGroupArgs.builder()        
+ *         var ruleServerGroup = new ServerGroup("ruleServerGroup", ServerGroupArgs.builder()
  *             .loadBalancerId(ruleApplicationLoadBalancer.id())
  *             .name(slbRuleName)
  *             .build());
  * 
- *         var ruleRule = new Rule("ruleRule", RuleArgs.builder()        
+ *         var ruleRule = new Rule("ruleRule", RuleArgs.builder()
  *             .loadBalancerId(ruleApplicationLoadBalancer.id())
  *             .frontendPort(ruleListener.frontendPort())
  *             .name(slbRuleName)

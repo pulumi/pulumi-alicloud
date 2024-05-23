@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .description("drds instance")
  *             .instanceChargeType("PostPaid")
  *             .zoneId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.vswitches()[0].zoneId()))

@@ -109,6 +109,8 @@ namespace Pulumi.AliCloud.CR
 
         /// <summary>
         /// The name of the module that you want to access. Valid Values:
+        /// - `Registry`: the image repository.
+        /// - `Chart`: a Helm chart.
         /// </summary>
         [Input("moduleName", required: true)]
         public string ModuleName { get; set; } = null!;
@@ -153,6 +155,8 @@ namespace Pulumi.AliCloud.CR
 
         /// <summary>
         /// The name of the module that you want to access. Valid Values:
+        /// - `Registry`: the image repository.
+        /// - `Chart`: a Helm chart.
         /// </summary>
         [Input("moduleName", required: true)]
         public Input<string> ModuleName { get; set; } = null!;

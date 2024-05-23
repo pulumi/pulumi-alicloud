@@ -69,7 +69,7 @@ export interface GetGroupsArgs {
      */
     outputFile?: string;
     /**
-     * The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+     * The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
      */
     provisionType?: string;
 }
@@ -145,7 +145,7 @@ export interface GetGroupsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+     * The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
      */
     provisionType?: pulumi.Input<string>;
 }

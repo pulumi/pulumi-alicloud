@@ -66,10 +66,9 @@ type GetEcsKeyPairsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The Resource Group Id.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The tags.
-	Tags map[string]interface{} `pulumi:"tags"`
+	// The resource group Id.
+	ResourceGroupId *string                `pulumi:"resourceGroupId"`
+	Tags            map[string]interface{} `pulumi:"tags"`
 }
 
 // A collection of values returned by getEcsKeyPairs.
@@ -111,10 +110,9 @@ type GetEcsKeyPairsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The Resource Group Id.
+	// The resource group Id.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The tags.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags            pulumi.MapInput       `pulumi:"tags"`
 }
 
 func (GetEcsKeyPairsOutputArgs) ElementType() reflect.Type {

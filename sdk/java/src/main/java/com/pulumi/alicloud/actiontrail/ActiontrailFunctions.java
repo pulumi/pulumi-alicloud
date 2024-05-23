@@ -851,17 +851,17 @@ public final class ActiontrailFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .name(instanceName)
      *             .partitionNum("50")
      *             .diskType("1")
@@ -931,17 +931,17 @@ public final class ActiontrailFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .name(instanceName)
      *             .partitionNum("50")
      *             .diskType("1")
@@ -1011,17 +1011,17 @@ public final class ActiontrailFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .name(instanceName)
      *             .partitionNum("50")
      *             .diskType("1")
@@ -1091,17 +1091,17 @@ public final class ActiontrailFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .name(instanceName)
      *             .partitionNum("50")
      *             .diskType("1")
@@ -1171,17 +1171,17 @@ public final class ActiontrailFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .name(instanceName)
      *             .partitionNum("50")
      *             .diskType("1")
@@ -1251,17 +1251,17 @@ public final class ActiontrailFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+     *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
      *             .name(instanceName)
      *             .partitionNum("50")
      *             .diskType("1")

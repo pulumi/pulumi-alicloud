@@ -94,6 +94,8 @@ type Listener struct {
 	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates ListenerCertificateArrayOutput `pulumi:"certificates"`
 	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
+	// - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+	// - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
 	ClientAffinity pulumi.StringPtrOutput `pulumi:"clientAffinity"`
 	// The description of the listener.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -103,6 +105,8 @@ type Listener struct {
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion pulumi.StringOutput `pulumi:"httpVersion"`
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
+	// - `Standard`: intelligent routing.
+	// - `CustomRouting`: custom routing.
 	ListenerType pulumi.StringPtrOutput `pulumi:"listenerType"`
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -161,6 +165,8 @@ type listenerState struct {
 	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates []ListenerCertificate `pulumi:"certificates"`
 	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
+	// - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+	// - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
 	ClientAffinity *string `pulumi:"clientAffinity"`
 	// The description of the listener.
 	Description *string `pulumi:"description"`
@@ -170,6 +176,8 @@ type listenerState struct {
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion *string `pulumi:"httpVersion"`
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
+	// - `Standard`: intelligent routing.
+	// - `CustomRouting`: custom routing.
 	ListenerType *string `pulumi:"listenerType"`
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name *string `pulumi:"name"`
@@ -193,6 +201,8 @@ type ListenerState struct {
 	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates ListenerCertificateArrayInput
 	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
+	// - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+	// - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
 	ClientAffinity pulumi.StringPtrInput
 	// The description of the listener.
 	Description pulumi.StringPtrInput
@@ -202,6 +212,8 @@ type ListenerState struct {
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion pulumi.StringPtrInput
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
+	// - `Standard`: intelligent routing.
+	// - `CustomRouting`: custom routing.
 	ListenerType pulumi.StringPtrInput
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name pulumi.StringPtrInput
@@ -229,6 +241,8 @@ type listenerArgs struct {
 	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates []ListenerCertificate `pulumi:"certificates"`
 	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
+	// - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+	// - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
 	ClientAffinity *string `pulumi:"clientAffinity"`
 	// The description of the listener.
 	Description *string `pulumi:"description"`
@@ -238,6 +252,8 @@ type listenerArgs struct {
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion *string `pulumi:"httpVersion"`
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
+	// - `Standard`: intelligent routing.
+	// - `CustomRouting`: custom routing.
 	ListenerType *string `pulumi:"listenerType"`
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name *string `pulumi:"name"`
@@ -260,6 +276,8 @@ type ListenerArgs struct {
 	// > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
 	Certificates ListenerCertificateArrayInput
 	// The clientAffinity of the listener. Default value: `NONE`. Valid values:
+	// - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+	// - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
 	ClientAffinity pulumi.StringPtrInput
 	// The description of the listener.
 	Description pulumi.StringPtrInput
@@ -269,6 +287,8 @@ type ListenerArgs struct {
 	// > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
 	HttpVersion pulumi.StringPtrInput
 	// The routing type of the listener. Default Value: `Standard`. Valid values:
+	// - `Standard`: intelligent routing.
+	// - `CustomRouting`: custom routing.
 	ListenerType pulumi.StringPtrInput
 	// The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
 	Name pulumi.StringPtrInput
@@ -382,6 +402,8 @@ func (o ListenerOutput) Certificates() ListenerCertificateArrayOutput {
 }
 
 // The clientAffinity of the listener. Default value: `NONE`. Valid values:
+// - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
+// - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
 func (o ListenerOutput) ClientAffinity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.ClientAffinity }).(pulumi.StringPtrOutput)
 }
@@ -403,6 +425,8 @@ func (o ListenerOutput) HttpVersion() pulumi.StringOutput {
 }
 
 // The routing type of the listener. Default Value: `Standard`. Valid values:
+// - `Standard`: intelligent routing.
+// - `CustomRouting`: custom routing.
 func (o ListenerOutput) ListenerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.ListenerType }).(pulumi.StringPtrOutput)
 }

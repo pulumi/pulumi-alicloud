@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Quotas.Outputs
     [OutputType]
     public sealed class GetQuotaAlarmsQuotaDimensionResult
     {
-        /// <summary>
-        /// The key of quota_dimensions.
-        /// </summary>
         public readonly string? Key;
-        /// <summary>
-        /// The value of quota_dimensions.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

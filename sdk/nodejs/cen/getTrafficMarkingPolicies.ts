@@ -51,9 +51,6 @@ export function getTrafficMarkingPolicies(args: GetTrafficMarkingPoliciesArgs, o
  * A collection of arguments for invoking getTrafficMarkingPolicies.
  */
 export interface GetTrafficMarkingPoliciesArgs {
-    /**
-     * The description of the Traffic Marking Policy.
-     */
     description?: string;
     /**
      * A list of Traffic Marking Policy IDs.
@@ -68,7 +65,7 @@ export interface GetTrafficMarkingPoliciesArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
      */
     status?: string;
     /**
@@ -130,9 +127,6 @@ export function getTrafficMarkingPoliciesOutput(args: GetTrafficMarkingPoliciesO
  * A collection of arguments for invoking getTrafficMarkingPolicies.
  */
 export interface GetTrafficMarkingPoliciesOutputArgs {
-    /**
-     * The description of the Traffic Marking Policy.
-     */
     description?: pulumi.Input<string>;
     /**
      * A list of Traffic Marking Policy IDs.
@@ -147,7 +141,7 @@ export interface GetTrafficMarkingPoliciesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
      */
     status?: pulumi.Input<string>;
     /**

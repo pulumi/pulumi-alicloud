@@ -65,19 +65,19 @@ import javax.annotation.Nullable;
  *             .memorySize(2)
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName("terraform-example")
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(exampleNetwork.id())
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
+ *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
  *             .name("terraform-example")
  *             .description("New security group")
  *             .vpcId(exampleNetwork.id())
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .availabilityZone(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .instanceName("terraform-example")
  *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(exampleSwitch.id())
  *             .build());
  * 
- *         var exampleVpcAccess = new VpcAccess("exampleVpcAccess", VpcAccessArgs.builder()        
+ *         var exampleVpcAccess = new VpcAccess("exampleVpcAccess", VpcAccessArgs.builder()
  *             .name("terraform-example")
  *             .vpcId(exampleNetwork.id())
  *             .instanceId(exampleInstance.id())

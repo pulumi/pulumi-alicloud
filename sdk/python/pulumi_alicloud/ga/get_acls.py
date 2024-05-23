@@ -149,7 +149,7 @@ def get_acls(acl_name: Optional[str] = None,
     :param Sequence[str] ids: A list of Acl IDs.
     :param str name_regex: A regex string to filter results by Acl name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
     """
     __args__ = dict()
     __args__['aclName'] = acl_name
@@ -206,6 +206,6 @@ def get_acls_output(acl_name: Optional[pulumi.Input[Optional[str]]] = None,
     :param Sequence[str] ids: A list of Acl IDs.
     :param str name_regex: A regex string to filter results by Acl name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `active`, `configuring`, `deleting`, `init`.
     """
     ...

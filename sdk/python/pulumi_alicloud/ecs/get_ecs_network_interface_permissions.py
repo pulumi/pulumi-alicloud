@@ -146,7 +146,7 @@ def get_ecs_network_interface_permissions(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Network Interface Permission IDs.
     :param str network_interface_id: The ID of the network interface.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The Status of the Network Interface Permissions.
+    :param str status: The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -200,6 +200,6 @@ def get_ecs_network_interface_permissions_output(ids: Optional[pulumi.Input[Opti
     :param Sequence[str] ids: A list of Network Interface Permission IDs.
     :param str network_interface_id: The ID of the network interface.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The Status of the Network Interface Permissions.
+    :param str status: The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
     """
     ...

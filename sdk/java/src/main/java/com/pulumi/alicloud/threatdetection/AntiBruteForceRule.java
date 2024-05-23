@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AntiBruteForceRule("default", AntiBruteForceRuleArgs.builder()        
+ *         var default_ = new AntiBruteForceRule("default", AntiBruteForceRuleArgs.builder()
  *             .antiBruteForceRuleName("apispec_example")
  *             .forbiddenTime(360)
  *             .uuidLists("032b618f-b220-4a0d-bd37-fbdc6ef58b6a")

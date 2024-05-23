@@ -62,12 +62,12 @@ import javax.annotation.Nullable;
  *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
- *         var vlanId = new Integer("vlanId", IntegerArgs.builder()        
+ *         var vlanId = new Integer("vlanId", IntegerArgs.builder()
  *             .max(2999)
  *             .min(1)
  *             .build());
  * 
- *         var exampleVirtualBorderRouter = new VirtualBorderRouter("exampleVirtualBorderRouter", VirtualBorderRouterArgs.builder()        
+ *         var exampleVirtualBorderRouter = new VirtualBorderRouter("exampleVirtualBorderRouter", VirtualBorderRouterArgs.builder()
  *             .localGatewayIp("10.0.0.1")
  *             .peerGatewayIp("10.0.0.2")
  *             .peeringSubnetMask("255.255.255.252")
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .detectMultiplier(10)
  *             .build());
  * 
- *         var exampleBgpGroup = new BgpGroup("exampleBgpGroup", BgpGroupArgs.builder()        
+ *         var exampleBgpGroup = new BgpGroup("exampleBgpGroup", BgpGroupArgs.builder()
  *             .authKey("YourPassword+12345678")
  *             .bgpGroupName(name)
  *             .description(name)

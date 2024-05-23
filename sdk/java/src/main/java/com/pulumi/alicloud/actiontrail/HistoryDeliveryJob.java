@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -75,17 +75,17 @@ import javax.annotation.Nullable;
  * 
  *         final var exampleGetAccount = AlicloudFunctions.getAccount();
  * 
- *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()        
+ *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()
  *             .projectName(String.format("%s-%s", name,default_.result()))
  *             .description("tf actiontrail example")
  *             .build());
  * 
- *         var exampleTrail = new Trail("exampleTrail", TrailArgs.builder()        
+ *         var exampleTrail = new Trail("exampleTrail", TrailArgs.builder()
  *             .trailName(String.format("%s-%s", name,default_.result()))
  *             .slsProjectArn(exampleProject.name().applyValue(name -> String.format("acs:log:%s:%s:project/%s", example.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),exampleGetAccount.applyValue(getAccountResult -> getAccountResult.id()),name)))
  *             .build());
  * 
- *         var exampleHistoryDeliveryJob = new HistoryDeliveryJob("exampleHistoryDeliveryJob", HistoryDeliveryJobArgs.builder()        
+ *         var exampleHistoryDeliveryJob = new HistoryDeliveryJob("exampleHistoryDeliveryJob", HistoryDeliveryJobArgs.builder()
  *             .trailName(exampleTrail.id())
  *             .build());
  * 

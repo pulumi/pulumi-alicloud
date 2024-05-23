@@ -190,6 +190,7 @@ type EcsBackupPlan struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringOutput `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
 	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit pulumi.StringPtrOutput `pulumi:"speedLimit"`
@@ -276,6 +277,7 @@ type ecsBackupPlanState struct {
 	// Backup retention days, the minimum is 1.
 	Retention *string `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule *string `pulumi:"schedule"`
 	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit *string `pulumi:"speedLimit"`
@@ -315,6 +317,7 @@ type EcsBackupPlanState struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringPtrInput
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringPtrInput
 	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit pulumi.StringPtrInput
@@ -358,6 +361,7 @@ type ecsBackupPlanArgs struct {
 	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule string `pulumi:"schedule"`
 	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit *string `pulumi:"speedLimit"`
@@ -398,6 +402,7 @@ type EcsBackupPlanArgs struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringInput
 	// Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
 	SpeedLimit pulumi.StringPtrInput
@@ -562,6 +567,7 @@ func (o EcsBackupPlanOutput) Retention() pulumi.StringOutput {
 }
 
 // Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+// * `startTime` Backup start time, UNIX time seconds.
 func (o EcsBackupPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsBackupPlan) pulumi.StringOutput { return v.Schedule }).(pulumi.StringOutput)
 }

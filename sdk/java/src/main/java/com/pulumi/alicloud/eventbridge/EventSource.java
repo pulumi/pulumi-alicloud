@@ -59,20 +59,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new EventBus("example", EventBusArgs.builder()        
+ *         var example = new EventBus("example", EventBusArgs.builder()
  *             .eventBusName(name)
  *             .build());
  * 
- *         var exampleQueue = new Queue("exampleQueue", QueueArgs.builder()        
+ *         var exampleQueue = new Queue("exampleQueue", QueueArgs.builder()
  *             .name(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
- *         var exampleEventSource = new EventSource("exampleEventSource", EventSourceArgs.builder()        
+ *         var exampleEventSource = new EventSource("exampleEventSource", EventSourceArgs.builder()
  *             .eventBusName(example.eventBusName())
  *             .eventSourceName(name)
  *             .description(name)

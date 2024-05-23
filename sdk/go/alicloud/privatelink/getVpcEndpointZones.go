@@ -59,7 +59,7 @@ type GetVpcEndpointZonesArgs struct {
 	EndpointId string `pulumi:"endpointId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The Status of Vpc Endpoint Zone..
+	// The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
 	Status *string `pulumi:"status"`
 }
 
@@ -93,7 +93,7 @@ type GetVpcEndpointZonesOutputArgs struct {
 	EndpointId pulumi.StringInput `pulumi:"endpointId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The Status of Vpc Endpoint Zone..
+	// The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

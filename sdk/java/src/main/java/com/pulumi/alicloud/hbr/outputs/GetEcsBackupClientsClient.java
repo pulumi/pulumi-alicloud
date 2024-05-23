@@ -43,6 +43,8 @@ public final class GetEcsBackupClientsClient {
     private String dataNetworkType;
     /**
      * @return The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
+     * * `USE_CONTROL_PROXY` (Default, the same with control plane)
+     * * `CUSTOM` (Custom configuration items for the HTTP protocol).
      * 
      */
     private String dataProxySetting;
@@ -187,6 +189,8 @@ public final class GetEcsBackupClientsClient {
     }
     /**
      * @return The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
+     * * `USE_CONTROL_PROXY` (Default, the same with control plane)
+     * * `CUSTOM` (Custom configuration items for the HTTP protocol).
      * 
      */
     public String dataProxySetting() {

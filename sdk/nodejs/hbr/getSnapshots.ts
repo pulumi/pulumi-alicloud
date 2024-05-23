@@ -76,11 +76,11 @@ export function getSnapshots(args: GetSnapshotsArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetSnapshotsArgs {
     /**
-     * The name of OSS bucket.
+     * The bucket name of OSS. While sourceType equals `OSS`, this parameter must be set.
      */
     bucket?: string;
     /**
-     * The time when the snapshot completed. UNIX time in seconds.
+     * Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `completeTimeChecker` equals `BETWEEN`, this field should be formatted such as `"2021-08-20T14:17:15CST,2021-08-26T14:17:15CST"`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
      */
     completeTime?: string;
     /**
@@ -88,11 +88,11 @@ export interface GetSnapshotsArgs {
      */
     completeTimeChecker?: string;
     /**
-     * File System Creation Time of Nas. Unix Time Seconds.
+     * File system creation timestamp of Nas. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
     createTime?: string;
     /**
-     * The ID of NAS File system.
+     * The File System ID of Nas. While sourceType equals `NAS`, this parameter must be set.
      */
     fileSystemId?: string;
     /**
@@ -100,7 +100,7 @@ export interface GetSnapshotsArgs {
      */
     ids?: string[];
     /**
-     * The ID of ECS instance.
+     * The ID of ECS instance. The ecs backup client must have been installed on the host. While sourceType equals `ECS_FILE`, this parameter must be set.
      */
     instanceId?: string;
     limit?: number;
@@ -110,11 +110,11 @@ export interface GetSnapshotsArgs {
     outputFile?: string;
     query?: string;
     /**
-     * Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+     * Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.
      */
     sourceType: string;
     /**
-     * The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+     * The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
      */
     status?: string;
     /**
@@ -200,11 +200,11 @@ export function getSnapshotsOutput(args: GetSnapshotsOutputArgs, opts?: pulumi.I
  */
 export interface GetSnapshotsOutputArgs {
     /**
-     * The name of OSS bucket.
+     * The bucket name of OSS. While sourceType equals `OSS`, this parameter must be set.
      */
     bucket?: pulumi.Input<string>;
     /**
-     * The time when the snapshot completed. UNIX time in seconds.
+     * Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `completeTimeChecker` equals `BETWEEN`, this field should be formatted such as `"2021-08-20T14:17:15CST,2021-08-26T14:17:15CST"`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
      */
     completeTime?: pulumi.Input<string>;
     /**
@@ -212,11 +212,11 @@ export interface GetSnapshotsOutputArgs {
      */
     completeTimeChecker?: pulumi.Input<string>;
     /**
-     * File System Creation Time of Nas. Unix Time Seconds.
+     * File system creation timestamp of Nas. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The ID of NAS File system.
+     * The File System ID of Nas. While sourceType equals `NAS`, this parameter must be set.
      */
     fileSystemId?: pulumi.Input<string>;
     /**
@@ -224,7 +224,7 @@ export interface GetSnapshotsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of ECS instance.
+     * The ID of ECS instance. The ecs backup client must have been installed on the host. While sourceType equals `ECS_FILE`, this parameter must be set.
      */
     instanceId?: pulumi.Input<string>;
     limit?: pulumi.Input<number>;
@@ -234,11 +234,11 @@ export interface GetSnapshotsOutputArgs {
     outputFile?: pulumi.Input<string>;
     query?: pulumi.Input<string>;
     /**
-     * Data source type, optional values: `ECS_FILE`, `OSS`, `NAS`.
+     * Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.
      */
     sourceType: pulumi.Input<string>;
     /**
-     * The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
+     * The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
      */
     status?: pulumi.Input<string>;
     /**

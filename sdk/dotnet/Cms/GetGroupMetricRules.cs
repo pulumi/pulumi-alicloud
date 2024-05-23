@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Cms
         public string? Dimensions { get; set; }
 
         /// <summary>
-        /// Indicates whether the alert rule is enabled.
+        /// EnableState.
         /// </summary>
         [Input("enableState")]
         public bool? EnableState { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Cms
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of Group Metric Rule..
+        /// The status of Group Metric Rule.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -168,7 +168,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Dimensions { get; set; }
 
         /// <summary>
-        /// Indicates whether the alert rule is enabled.
+        /// EnableState.
         /// </summary>
         [Input("enableState")]
         public Input<bool>? EnableState { get; set; }
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of Group Metric Rule..
+        /// The status of Group Metric Rule.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

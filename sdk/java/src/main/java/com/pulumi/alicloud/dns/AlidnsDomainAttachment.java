@@ -50,11 +50,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new DomainGroup("default", DomainGroupArgs.builder()        
+ *         var default_ = new DomainGroup("default", DomainGroupArgs.builder()
  *             .domainGroupName("tf-example")
  *             .build());
  * 
- *         var defaultAlidnsDomain = new AlidnsDomain("defaultAlidnsDomain", AlidnsDomainArgs.builder()        
+ *         var defaultAlidnsDomain = new AlidnsDomain("defaultAlidnsDomain", AlidnsDomainArgs.builder()
  *             .domainName("starmove.com")
  *             .groupId(default_.id())
  *             .tags(Map.ofEntries(
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var defaultAlidnsInstance = new AlidnsInstance("defaultAlidnsInstance", AlidnsInstanceArgs.builder()        
+ *         var defaultAlidnsInstance = new AlidnsInstance("defaultAlidnsInstance", AlidnsInstanceArgs.builder()
  *             .dnsSecurity("basic")
  *             .domainNumbers(3)
  *             .versionCode("version_personal")
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .renewalStatus("ManualRenewal")
  *             .build());
  * 
- *         var defaultAlidnsDomainAttachment = new AlidnsDomainAttachment("defaultAlidnsDomainAttachment", AlidnsDomainAttachmentArgs.builder()        
+ *         var defaultAlidnsDomainAttachment = new AlidnsDomainAttachment("defaultAlidnsDomainAttachment", AlidnsDomainAttachmentArgs.builder()
  *             .instanceId(defaultAlidnsInstance.id())
  *             .domainNames(defaultAlidnsDomain.domainName())
  *             .build());

@@ -205,14 +205,14 @@ def get_traffic_mirror_sessions(enabled: Optional[bool] = None,
     ```
 
 
-    :param bool enabled: Indicates whether traffic mirror sessions are enabled. default to `false`.
+    :param bool enabled: Specifies whether to enable traffic mirror sessions. default to `false`.
     :param Sequence[str] ids: A list of Traffic Mirror Session IDs.
     :param str name_regex: A regex string to filter results by Traffic Mirror Session name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param int priority: The priority of the traffic mirror session. A smaller value indicates a higher priority.
+    :param int priority: The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
     :param str status: The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
     :param str traffic_mirror_filter_id: The ID of the filter.
-    :param str traffic_mirror_session_name: The name of the traffic mirror session.
+    :param str traffic_mirror_session_name: The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
     :param str traffic_mirror_source_id: The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source.
     :param str traffic_mirror_target_id: The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
     """
@@ -299,14 +299,14 @@ def get_traffic_mirror_sessions_output(enabled: Optional[pulumi.Input[Optional[b
     ```
 
 
-    :param bool enabled: Indicates whether traffic mirror sessions are enabled. default to `false`.
+    :param bool enabled: Specifies whether to enable traffic mirror sessions. default to `false`.
     :param Sequence[str] ids: A list of Traffic Mirror Session IDs.
     :param str name_regex: A regex string to filter results by Traffic Mirror Session name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param int priority: The priority of the traffic mirror session. A smaller value indicates a higher priority.
+    :param int priority: The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
     :param str status: The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
     :param str traffic_mirror_filter_id: The ID of the filter.
-    :param str traffic_mirror_session_name: The name of the traffic mirror session.
+    :param str traffic_mirror_session_name: The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
     :param str traffic_mirror_source_id: The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source.
     :param str traffic_mirror_target_id: The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
     """

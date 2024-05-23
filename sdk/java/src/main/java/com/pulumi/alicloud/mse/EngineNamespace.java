@@ -62,19 +62,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(exampleNetwork.id())
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var default_ = new Cluster("default", ClusterArgs.builder()        
+ *         var default_ = new Cluster("default", ClusterArgs.builder()
  *             .connectionType("slb")
  *             .netType("privatenet")
  *             .vswitchId(exampleSwitch.id())
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *             .clusterType("Nacos-Ans")
  *             .build());
  * 
- *         var exampleEngineNamespace = new EngineNamespace("exampleEngineNamespace", EngineNamespaceArgs.builder()        
+ *         var exampleEngineNamespace = new EngineNamespace("exampleEngineNamespace", EngineNamespaceArgs.builder()
  *             .clusterId(default_.id())
  *             .namespaceShowName(name)
  *             .namespaceId(name)

@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .diskCategory("cloud_efficiency")
  *             .paymentType("PayAsYouGo")
  *             .zoneId(zoneId)

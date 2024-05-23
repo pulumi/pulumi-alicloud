@@ -55,13 +55,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexampleuser");
- *         var example = new VpcEndpointService("example", VpcEndpointServiceArgs.builder()        
+ *         var example = new VpcEndpointService("example", VpcEndpointServiceArgs.builder()
  *             .serviceDescription(name)
  *             .connectBandwidth(103)
  *             .autoAcceptConnection(false)
  *             .build());
  * 
- *         var exampleUser = new User("exampleUser", UserArgs.builder()        
+ *         var exampleUser = new User("exampleUser", UserArgs.builder()
  *             .name(name)
  *             .displayName("user_display_name")
  *             .mobile("86-18688888888")
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .comments("yoyoyo")
  *             .build());
  * 
- *         var exampleVpcEndpointServiceUser = new VpcEndpointServiceUser("exampleVpcEndpointServiceUser", VpcEndpointServiceUserArgs.builder()        
+ *         var exampleVpcEndpointServiceUser = new VpcEndpointServiceUser("exampleVpcEndpointServiceUser", VpcEndpointServiceUserArgs.builder()
  *             .serviceId(example.id())
  *             .userId(exampleUser.id())
  *             .build());

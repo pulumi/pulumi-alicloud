@@ -180,6 +180,10 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The protocol that is used to connect to the targets for health checks. Valid values:
+        /// - `TCP` or `tcp`: TCP protocol.
+        /// - `HTTP` or `http`: HTTP protocol.
+        /// - `HTTPS` or `https`: HTTPS protocol.
+        /// &gt; **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         /// </summary>
         [Output("healthCheckProtocol")]
         public Output<string?> HealthCheckProtocol { get; private set; } = null!;
@@ -343,6 +347,10 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The protocol that is used to connect to the targets for health checks. Valid values:
+        /// - `TCP` or `tcp`: TCP protocol.
+        /// - `HTTP` or `http`: HTTP protocol.
+        /// - `HTTPS` or `https`: HTTPS protocol.
+        /// &gt; **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         /// </summary>
         [Input("healthCheckProtocol")]
         public Input<string>? HealthCheckProtocol { get; set; }
@@ -480,6 +488,10 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The protocol that is used to connect to the targets for health checks. Valid values:
+        /// - `TCP` or `tcp`: TCP protocol.
+        /// - `HTTP` or `http`: HTTP protocol.
+        /// - `HTTPS` or `https`: HTTPS protocol.
+        /// &gt; **NOTE:** From version 1.223.0, `health_check_protocol` can be set to `TCP`, `HTTP`, `HTTPS`.
         /// </summary>
         [Input("healthCheckProtocol")]
         public Input<string>? HealthCheckProtocol { get; set; }

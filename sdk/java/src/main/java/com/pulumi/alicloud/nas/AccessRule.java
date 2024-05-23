@@ -55,19 +55,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultAccessGroup = new AccessGroup("defaultAccessGroup", AccessGroupArgs.builder()        
+ *         var defaultAccessGroup = new AccessGroup("defaultAccessGroup", AccessGroupArgs.builder()
  *             .accessGroupType("Vpc")
  *             .description("ExtremeAccessGroup")
  *             .accessGroupName(String.format("terraform-example-%s", default_.result()))
  *             .fileSystemType("extreme")
  *             .build());
  * 
- *         var defaultAccessRule = new AccessRule("defaultAccessRule", AccessRuleArgs.builder()        
+ *         var defaultAccessRule = new AccessRule("defaultAccessRule", AccessRuleArgs.builder()
  *             .accessGroupName(defaultAccessGroup.accessGroupName())
  *             .rwAccessType("RDONLY")
  *             .ipv6SourceCidrIp("::1")

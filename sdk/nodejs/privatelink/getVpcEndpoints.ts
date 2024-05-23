@@ -80,7 +80,7 @@ export interface GetVpcEndpointsArgs {
      */
     vpcEndpointName?: string;
     /**
-     * The private network to which the terminal node belongs.
+     * The private network to which the terminal node belongs..
      */
     vpcId?: string;
 }
@@ -166,7 +166,7 @@ export interface GetVpcEndpointsOutputArgs {
      */
     vpcEndpointName?: pulumi.Input<string>;
     /**
-     * The private network to which the terminal node belongs.
+     * The private network to which the terminal node belongs..
      */
     vpcId?: pulumi.Input<string>;
 }

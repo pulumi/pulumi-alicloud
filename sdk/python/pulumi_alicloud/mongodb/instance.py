@@ -85,6 +85,9 @@ class InstanceArgs:
         :param pulumi.Input[str] name: The name of DB instance. It must be 2 to 256 characters in length.
         :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+               - `UPGRADE`: The specifications are upgraded.
+               - `DOWNGRADE`: The specifications are downgraded.
+               **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
@@ -95,7 +98,12 @@ class InstanceArgs:
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
+               - `Standard`: standard backup.
+               - `Flash `: single-digit second backup.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values:
+               - `Open`: turn on SSL encryption.
+               - `Close`: turn off SSL encryption.
+               - `Update`: update SSL certificate.
         :param pulumi.Input[str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -458,6 +466,9 @@ class InstanceArgs:
     def order_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+        - `UPGRADE`: The specifications are upgraded.
+        - `DOWNGRADE`: The specifications are downgraded.
+        **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         """
         return pulumi.get(self, "order_type")
 
@@ -578,6 +589,8 @@ class InstanceArgs:
     def snapshot_backup_type(self) -> Optional[pulumi.Input[str]]:
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
+        - `Standard`: standard backup.
+        - `Flash `: single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 
@@ -590,6 +603,9 @@ class InstanceArgs:
     def ssl_action(self) -> Optional[pulumi.Input[str]]:
         """
         Actions performed on SSL functions. Valid values:
+        - `Open`: turn on SSL encryption.
+        - `Close`: turn off SSL encryption.
+        - `Update`: update SSL certificate.
         """
         return pulumi.get(self, "ssl_action")
 
@@ -760,6 +776,9 @@ class _InstanceState:
         :param pulumi.Input[str] name: The name of DB instance. It must be 2 to 256 characters in length.
         :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+               - `UPGRADE`: The specifications are upgraded.
+               - `DOWNGRADE`: The specifications are downgraded.
+               **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
@@ -773,7 +792,12 @@ class _InstanceState:
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
+               - `Standard`: standard backup.
+               - `Flash `: single-digit second backup.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values:
+               - `Open`: turn on SSL encryption.
+               - `Close`: turn off SSL encryption.
+               - `Update`: update SSL certificate.
         :param pulumi.Input[str] ssl_status: Status of the SSL feature.
         :param pulumi.Input[str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
@@ -1148,6 +1172,9 @@ class _InstanceState:
     def order_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+        - `UPGRADE`: The specifications are upgraded.
+        - `DOWNGRADE`: The specifications are downgraded.
+        **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         """
         return pulumi.get(self, "order_type")
 
@@ -1304,6 +1331,8 @@ class _InstanceState:
     def snapshot_backup_type(self) -> Optional[pulumi.Input[str]]:
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
+        - `Standard`: standard backup.
+        - `Flash `: single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 
@@ -1316,6 +1345,9 @@ class _InstanceState:
     def ssl_action(self) -> Optional[pulumi.Input[str]]:
         """
         Actions performed on SSL functions. Valid values:
+        - `Open`: turn on SSL encryption.
+        - `Close`: turn off SSL encryption.
+        - `Update`: update SSL certificate.
         """
         return pulumi.get(self, "ssl_action")
 
@@ -1561,6 +1593,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of DB instance. It must be 2 to 256 characters in length.
         :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+               - `UPGRADE`: The specifications are upgraded.
+               - `DOWNGRADE`: The specifications are downgraded.
+               **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
@@ -1571,7 +1606,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
+               - `Standard`: standard backup.
+               - `Flash `: single-digit second backup.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values:
+               - `Open`: turn on SSL encryption.
+               - `Close`: turn off SSL encryption.
+               - `Update`: update SSL certificate.
         :param pulumi.Input[str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
@@ -1858,6 +1898,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of DB instance. It must be 2 to 256 characters in length.
         :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic`, `VPC`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+               - `UPGRADE`: The specifications are upgraded.
+               - `DOWNGRADE`: The specifications are downgraded.
+               **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when `instance_charge_type` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
@@ -1871,7 +1914,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         :param pulumi.Input[str] snapshot_backup_type: The snapshot backup type. Default value: `Standard`. Valid values:
+               - `Standard`: standard backup.
+               - `Flash `: single-digit second backup.
         :param pulumi.Input[str] ssl_action: Actions performed on SSL functions. Valid values:
+               - `Open`: turn on SSL encryption.
+               - `Close`: turn off SSL encryption.
+               - `Update`: update SSL certificate.
         :param pulumi.Input[str] ssl_status: Status of the SSL feature.
         :param pulumi.Input[str] storage_engine: The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
         :param pulumi.Input[str] storage_type: The storage type of the instance. Valid values: `cloud_essd1`, `cloud_essd2`, `cloud_essd3`, `local_ssd`.
@@ -2118,6 +2166,9 @@ class Instance(pulumi.CustomResource):
     def order_type(self) -> pulumi.Output[Optional[str]]:
         """
         The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+        - `UPGRADE`: The specifications are upgraded.
+        - `DOWNGRADE`: The specifications are downgraded.
+        **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
         """
         return pulumi.get(self, "order_type")
 
@@ -2222,6 +2273,8 @@ class Instance(pulumi.CustomResource):
     def snapshot_backup_type(self) -> pulumi.Output[str]:
         """
         The snapshot backup type. Default value: `Standard`. Valid values:
+        - `Standard`: standard backup.
+        - `Flash `: single-digit second backup.
         """
         return pulumi.get(self, "snapshot_backup_type")
 
@@ -2230,6 +2283,9 @@ class Instance(pulumi.CustomResource):
     def ssl_action(self) -> pulumi.Output[Optional[str]]:
         """
         Actions performed on SSL functions. Valid values:
+        - `Open`: turn on SSL encryption.
+        - `Close`: turn off SSL encryption.
+        - `Update`: update SSL certificate.
         """
         return pulumi.get(self, "ssl_action")
 

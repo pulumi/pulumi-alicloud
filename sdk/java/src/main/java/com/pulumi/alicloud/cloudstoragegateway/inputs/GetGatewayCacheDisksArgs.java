@@ -64,14 +64,14 @@ public final class GetGatewayCacheDisksArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
      * 
      */
     @Import(name="status")
     private @Nullable Output<Integer> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
      * 
      */
     public Optional<Output<Integer>> status() {
@@ -179,7 +179,7 @@ public final class GetGatewayCacheDisksArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class GetGatewayCacheDisksArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
          * 
          * @return builder
          * 

@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tfexample");
- *         var role = new Role("role", RoleArgs.builder()        
+ *         var role = new Role("role", RoleArgs.builder()
  *             .name(name)
  *             .document("""
  *   {
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var example = new Project("example", ProjectArgs.builder()        
+ *         var example = new Project("example", ProjectArgs.builder()
  *             .project(name)
  *             .serviceRole(role.name())
  *             .build());

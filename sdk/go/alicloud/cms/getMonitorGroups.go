@@ -73,10 +73,9 @@ type GetMonitorGroupsArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The select contact groups.
-	SelectContactGroups *bool `pulumi:"selectContactGroups"`
-	// A map of tags assigned to the Cms Monitor Group.
-	Tags map[string]interface{} `pulumi:"tags"`
-	// The type of the application group.
+	SelectContactGroups *bool                  `pulumi:"selectContactGroups"`
+	Tags                map[string]interface{} `pulumi:"tags"`
+	// The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
 	Type *string `pulumi:"type"`
 }
 
@@ -129,9 +128,8 @@ type GetMonitorGroupsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The select contact groups.
 	SelectContactGroups pulumi.BoolPtrInput `pulumi:"selectContactGroups"`
-	// A map of tags assigned to the Cms Monitor Group.
-	Tags pulumi.MapInput `pulumi:"tags"`
-	// The type of the application group.
+	Tags                pulumi.MapInput     `pulumi:"tags"`
+	// The type of the application group. Valid values: `custom`, `ehpcCluster`, `kubernetes`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 

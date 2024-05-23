@@ -27,6 +27,12 @@ namespace Pulumi.AliCloud.Ga.Outputs
         public readonly string Endpoint;
         /// <summary>
         /// The type of Endpoint N in the endpoint group. Valid values:
+        /// - `Domain`: a custom domain name.
+        /// - `Ip`: a custom IP address.
+        /// - `PublicIp`: an Alibaba Cloud public IP address.
+        /// - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
+        /// - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+        /// &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
         /// </summary>
         public readonly string Type;
         /// <summary>

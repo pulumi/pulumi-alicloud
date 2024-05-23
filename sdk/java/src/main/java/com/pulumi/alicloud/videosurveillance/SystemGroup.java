@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SystemGroup("default", SystemGroupArgs.builder()        
+ *         var default_ = new SystemGroup("default", SystemGroupArgs.builder()
  *             .groupName("your_group_name")
  *             .inProtocol("rtmp")
  *             .outProtocol("flv")

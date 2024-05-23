@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ShortUrl("example", ShortUrlArgs.builder()        
+ *         var example = new ShortUrl("example", ShortUrlArgs.builder()
  *             .effectiveDays(30)
  *             .shortUrlName("example_value")
  *             .sourceUrl("example_value")

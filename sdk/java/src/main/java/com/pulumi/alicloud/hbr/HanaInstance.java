@@ -63,16 +63,16 @@ import javax.annotation.Nullable;
  *             .status("OK")
  *             .build());
  * 
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var exampleVault = new Vault("exampleVault", VaultArgs.builder()        
+ *         var exampleVault = new Vault("exampleVault", VaultArgs.builder()
  *             .vaultName(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
- *         var exampleHanaInstance = new HanaInstance("exampleHanaInstance", HanaInstanceArgs.builder()        
+ *         var exampleHanaInstance = new HanaInstance("exampleHanaInstance", HanaInstanceArgs.builder()
  *             .alertSetting("INHERITED")
  *             .hanaName(String.format("terraform-example-%s", default_.result()))
  *             .host("1.1.1.1")

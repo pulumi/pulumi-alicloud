@@ -48,7 +48,7 @@ export interface GetVpcEndpointZonesArgs {
      */
     outputFile?: string;
     /**
-     * The Status of Vpc Endpoint Zone..
+     * The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
      */
     status?: string;
 }
@@ -103,7 +103,7 @@ export interface GetVpcEndpointZonesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The Status of Vpc Endpoint Zone..
+     * The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
      */
     status?: pulumi.Input<string>;
 }

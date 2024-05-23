@@ -59,7 +59,7 @@ export interface GetVpcEndpointConnectionsArgs {
      */
     serviceId: string;
     /**
-     * The status of Vpc Endpoint Connection.
+     * The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
      */
     status?: string;
 }
@@ -125,7 +125,7 @@ export interface GetVpcEndpointConnectionsOutputArgs {
      */
     serviceId: pulumi.Input<string>;
     /**
-     * The status of Vpc Endpoint Connection.
+     * The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
      */
     status?: pulumi.Input<string>;
 }

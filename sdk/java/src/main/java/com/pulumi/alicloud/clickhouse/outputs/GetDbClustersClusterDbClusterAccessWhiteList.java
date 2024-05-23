@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDbClustersClusterDbClusterAccessWhiteList {
+    /**
+     * @return Field `db_cluster_ip_array_attribute` has been removed from provider.
+     * 
+     */
     private String dbClusterIpArrayAttribute;
+    /**
+     * @return Whitelist group name.
+     * 
+     */
     private String dbClusterIpArrayName;
+    /**
+     * @return The IP address list under the whitelist group.
+     * 
+     */
     private String securityIpList;
 
     private GetDbClustersClusterDbClusterAccessWhiteList() {}
+    /**
+     * @return Field `db_cluster_ip_array_attribute` has been removed from provider.
+     * 
+     */
     public String dbClusterIpArrayAttribute() {
         return this.dbClusterIpArrayAttribute;
     }
+    /**
+     * @return Whitelist group name.
+     * 
+     */
     public String dbClusterIpArrayName() {
         return this.dbClusterIpArrayName;
     }
+    /**
+     * @return The IP address list under the whitelist group.
+     * 
+     */
     public String securityIpList() {
         return this.securityIpList;
     }

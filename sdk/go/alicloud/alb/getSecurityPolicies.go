@@ -70,9 +70,9 @@ type GetSecurityPoliciesArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The security policy ids.
 	SecurityPolicyIds []string `pulumi:"securityPolicyIds"`
-	// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	// The name of the resource.
 	SecurityPolicyName *string `pulumi:"securityPolicyName"`
-	// The status of the resource.
+	// The status of the resource. Valid values : `Available`, `Configuring`.
 	Status *string                `pulumi:"status"`
 	Tags   map[string]interface{} `pulumi:"tags"`
 }
@@ -118,9 +118,9 @@ type GetSecurityPoliciesOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The security policy ids.
 	SecurityPolicyIds pulumi.StringArrayInput `pulumi:"securityPolicyIds"`
-	// The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+	// The name of the resource.
 	SecurityPolicyName pulumi.StringPtrInput `pulumi:"securityPolicyName"`
-	// The status of the resource.
+	// The status of the resource. Valid values : `Available`, `Configuring`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	Tags   pulumi.MapInput       `pulumi:"tags"`
 }

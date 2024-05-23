@@ -71,6 +71,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The type of the instance with which the HAVIP is associated. Valid values:
+        /// - `EcsInstance`: an ECS instance.
+        /// - `NetworkInterface`: an ENI.
         /// </summary>
         [Output("associatedInstanceType")]
         public Output<string> AssociatedInstanceType { get; private set; } = null!;
@@ -269,6 +271,8 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// The type of the instance with which the HAVIP is associated. Valid values:
+        /// - `EcsInstance`: an ECS instance.
+        /// - `NetworkInterface`: an ENI.
         /// </summary>
         [Input("associatedInstanceType")]
         public Input<string>? AssociatedInstanceType { get; set; }

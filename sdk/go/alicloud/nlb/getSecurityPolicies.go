@@ -70,10 +70,9 @@ type GetSecurityPoliciesArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The names of the TLS security policies.
 	SecurityPolicyNames []string `pulumi:"securityPolicyNames"`
-	// The status of the resource.
-	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	// The status of the resource. Valid values: `Available`, `Configuring`.
+	Status *string                `pulumi:"status"`
+	Tags   map[string]interface{} `pulumi:"tags"`
 }
 
 // A collection of values returned by getSecurityPolicies.
@@ -116,10 +115,9 @@ type GetSecurityPoliciesOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The names of the TLS security policies.
 	SecurityPolicyNames pulumi.StringArrayInput `pulumi:"securityPolicyNames"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Available`, `Configuring`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// A mapping of tags to assign to the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags   pulumi.MapInput       `pulumi:"tags"`
 }
 
 func (GetSecurityPoliciesOutputArgs) ElementType() reflect.Type {

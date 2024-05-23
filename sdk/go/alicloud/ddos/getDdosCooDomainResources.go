@@ -59,7 +59,7 @@ func GetDdosCooDomainResources(ctx *pulumi.Context, args *GetDdosCooDomainResour
 type GetDdosCooDomainResourcesArgs struct {
 	// A list of Domain Resource IDs.
 	Ids []string `pulumi:"ids"`
-	// A list ID of instance that you want to associate.
+	// A ID list of Ddoscoo instance.
 	InstanceIds []string `pulumi:"instanceIds"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -95,7 +95,7 @@ func GetDdosCooDomainResourcesOutput(ctx *pulumi.Context, args GetDdosCooDomainR
 type GetDdosCooDomainResourcesOutputArgs struct {
 	// A list of Domain Resource IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// A list ID of instance that you want to associate.
+	// A ID list of Ddoscoo instance.
 	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

@@ -66,7 +66,7 @@ export interface GetGatewayCacheDisksArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
      */
     status?: number;
 }
@@ -138,7 +138,7 @@ export interface GetGatewayCacheDisksOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
      */
     status?: pulumi.Input<number>;
 }

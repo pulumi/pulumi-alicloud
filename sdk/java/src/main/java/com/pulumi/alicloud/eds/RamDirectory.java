@@ -59,19 +59,19 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = EdsFunctions.getZones();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.ids()[0])
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultRamDirectory = new RamDirectory("defaultRamDirectory", RamDirectoryArgs.builder()        
+ *         var defaultRamDirectory = new RamDirectory("defaultRamDirectory", RamDirectoryArgs.builder()
  *             .desktopAccessType("INTERNET")
  *             .enableAdminAccess(true)
  *             .ramDirectoryName(name)

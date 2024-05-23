@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetQuotaAlarmsQuotaDimension {
-    /**
-     * @return The key of quota_dimensions.
-     * 
-     */
     private @Nullable String key;
-    /**
-     * @return The value of quota_dimensions.
-     * 
-     */
     private @Nullable String value;
 
     private GetQuotaAlarmsQuotaDimension() {}
-    /**
-     * @return The key of quota_dimensions.
-     * 
-     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
-    /**
-     * @return The value of quota_dimensions.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

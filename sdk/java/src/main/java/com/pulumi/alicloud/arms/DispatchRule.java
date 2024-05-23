@@ -60,17 +60,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AlertContact("default", AlertContactArgs.builder()        
+ *         var default_ = new AlertContact("default", AlertContactArgs.builder()
  *             .alertContactName("example_value")
  *             .email("example_value{@literal @}aaa.com")
  *             .build());
  * 
- *         var defaultAlertContactGroup = new AlertContactGroup("defaultAlertContactGroup", AlertContactGroupArgs.builder()        
+ *         var defaultAlertContactGroup = new AlertContactGroup("defaultAlertContactGroup", AlertContactGroupArgs.builder()
  *             .alertContactGroupName("example_value")
  *             .contactIds(default_.id())
  *             .build());
  * 
- *         var defaultDispatchRule = new DispatchRule("defaultDispatchRule", DispatchRuleArgs.builder()        
+ *         var defaultDispatchRule = new DispatchRule("defaultDispatchRule", DispatchRuleArgs.builder()
  *             .dispatchRuleName("example_value")
  *             .dispatchType("CREATE_ALERT")
  *             .groupRules(DispatchRuleGroupRuleArgs.builder()

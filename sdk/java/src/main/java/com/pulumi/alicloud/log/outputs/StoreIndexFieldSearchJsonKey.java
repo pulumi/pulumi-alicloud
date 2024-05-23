@@ -13,21 +13,57 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class StoreIndexFieldSearchJsonKey {
+    /**
+     * @return The alias of one field.
+     * 
+     */
     private @Nullable String alias;
+    /**
+     * @return Whether to enable statistics. default to true.
+     * 
+     * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+     * 
+     */
     private @Nullable Boolean docValue;
+    /**
+     * @return When using the json_keys field, this field is required.
+     * 
+     */
     private String name;
+    /**
+     * @return The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
+     * 
+     */
     private @Nullable String type;
 
     private StoreIndexFieldSearchJsonKey() {}
+    /**
+     * @return The alias of one field.
+     * 
+     */
     public Optional<String> alias() {
         return Optional.ofNullable(this.alias);
     }
+    /**
+     * @return Whether to enable statistics. default to true.
+     * 
+     * &gt; **Note:** At least one of the &#34;full_text&#34; and &#34;field_search&#34; should be specified.
+     * 
+     */
     public Optional<Boolean> docValue() {
         return Optional.ofNullable(this.docValue);
     }
+    /**
+     * @return When using the json_keys field, this field is required.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

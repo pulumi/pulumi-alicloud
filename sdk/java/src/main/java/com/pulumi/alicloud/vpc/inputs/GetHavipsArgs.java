@@ -62,14 +62,14 @@ public final class GetHavipsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status.
+     * The status of HaVip instance. Valid value: `Available`, `InUse` and `Pending`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status.
+     * @return The status of HaVip instance. Valid value: `Available`, `InUse` and `Pending`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -177,7 +177,7 @@ public final class GetHavipsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status.
+         * @param status The status of HaVip instance. Valid value: `Available`, `InUse` and `Pending`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GetHavipsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status.
+         * @param status The status of HaVip instance. Valid value: `Available`, `InUse` and `Pending`.
          * 
          * @return builder
          * 

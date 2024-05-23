@@ -66,7 +66,7 @@ export interface GetInstancesArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: "DEPLOYING", "EXPIRED", "RELEASED", "SERVING".
      */
     status?: string;
 }
@@ -138,7 +138,7 @@ export interface GetInstancesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: "DEPLOYING", "EXPIRED", "RELEASED", "SERVING".
      */
     status?: pulumi.Input<string>;
 }

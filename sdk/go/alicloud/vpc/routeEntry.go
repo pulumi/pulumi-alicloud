@@ -150,6 +150,16 @@ type RouteEntry struct {
 	// The route entry's next hop. ECS instance ID or VPC router interface ID.
 	NexthopId pulumi.StringPtrOutput `pulumi:"nexthopId"`
 	// The next hop type. Available values:
+	// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+	// - `RouterInterface`: a router interface.
+	// - `VpnGateway`: a VPN Gateway.
+	// - `HaVip`: a high-availability virtual IP address (HAVIP).
+	// - `NetworkInterface`: an elastic network interface (ENI).
+	// - `NatGateway`: a Nat Gateway.
+	// - `IPv6Gateway`: an IPv6 gateway.
+	// - `Attachment`: a transit router.
+	// - `VpcPeer`: a VPC Peering Connection.
+	// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
 	NexthopType pulumi.StringPtrOutput `pulumi:"nexthopType"`
 	// The ID of the route table.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
@@ -199,6 +209,16 @@ type routeEntryState struct {
 	// The route entry's next hop. ECS instance ID or VPC router interface ID.
 	NexthopId *string `pulumi:"nexthopId"`
 	// The next hop type. Available values:
+	// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+	// - `RouterInterface`: a router interface.
+	// - `VpnGateway`: a VPN Gateway.
+	// - `HaVip`: a high-availability virtual IP address (HAVIP).
+	// - `NetworkInterface`: an elastic network interface (ENI).
+	// - `NatGateway`: a Nat Gateway.
+	// - `IPv6Gateway`: an IPv6 gateway.
+	// - `Attachment`: a transit router.
+	// - `VpcPeer`: a VPC Peering Connection.
+	// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
 	NexthopType *string `pulumi:"nexthopType"`
 	// The ID of the route table.
 	RouteTableId *string `pulumi:"routeTableId"`
@@ -216,6 +236,16 @@ type RouteEntryState struct {
 	// The route entry's next hop. ECS instance ID or VPC router interface ID.
 	NexthopId pulumi.StringPtrInput
 	// The next hop type. Available values:
+	// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+	// - `RouterInterface`: a router interface.
+	// - `VpnGateway`: a VPN Gateway.
+	// - `HaVip`: a high-availability virtual IP address (HAVIP).
+	// - `NetworkInterface`: an elastic network interface (ENI).
+	// - `NatGateway`: a Nat Gateway.
+	// - `IPv6Gateway`: an IPv6 gateway.
+	// - `Attachment`: a transit router.
+	// - `VpcPeer`: a VPC Peering Connection.
+	// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
 	NexthopType pulumi.StringPtrInput
 	// The ID of the route table.
 	RouteTableId pulumi.StringPtrInput
@@ -237,6 +267,16 @@ type routeEntryArgs struct {
 	// The route entry's next hop. ECS instance ID or VPC router interface ID.
 	NexthopId *string `pulumi:"nexthopId"`
 	// The next hop type. Available values:
+	// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+	// - `RouterInterface`: a router interface.
+	// - `VpnGateway`: a VPN Gateway.
+	// - `HaVip`: a high-availability virtual IP address (HAVIP).
+	// - `NetworkInterface`: an elastic network interface (ENI).
+	// - `NatGateway`: a Nat Gateway.
+	// - `IPv6Gateway`: an IPv6 gateway.
+	// - `Attachment`: a transit router.
+	// - `VpcPeer`: a VPC Peering Connection.
+	// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
 	NexthopType *string `pulumi:"nexthopType"`
 	// The ID of the route table.
 	RouteTableId string `pulumi:"routeTableId"`
@@ -255,6 +295,16 @@ type RouteEntryArgs struct {
 	// The route entry's next hop. ECS instance ID or VPC router interface ID.
 	NexthopId pulumi.StringPtrInput
 	// The next hop type. Available values:
+	// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+	// - `RouterInterface`: a router interface.
+	// - `VpnGateway`: a VPN Gateway.
+	// - `HaVip`: a high-availability virtual IP address (HAVIP).
+	// - `NetworkInterface`: an elastic network interface (ENI).
+	// - `NatGateway`: a Nat Gateway.
+	// - `IPv6Gateway`: an IPv6 gateway.
+	// - `Attachment`: a transit router.
+	// - `VpcPeer`: a VPC Peering Connection.
+	// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
 	NexthopType pulumi.StringPtrInput
 	// The ID of the route table.
 	RouteTableId pulumi.StringInput
@@ -367,6 +417,16 @@ func (o RouteEntryOutput) NexthopId() pulumi.StringPtrOutput {
 }
 
 // The next hop type. Available values:
+// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+// - `RouterInterface`: a router interface.
+// - `VpnGateway`: a VPN Gateway.
+// - `HaVip`: a high-availability virtual IP address (HAVIP).
+// - `NetworkInterface`: an elastic network interface (ENI).
+// - `NatGateway`: a Nat Gateway.
+// - `IPv6Gateway`: an IPv6 gateway.
+// - `Attachment`: a transit router.
+// - `VpcPeer`: a VPC Peering Connection.
+// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
 func (o RouteEntryOutput) NexthopType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteEntry) pulumi.StringPtrOutput { return v.NexthopType }).(pulumi.StringPtrOutput)
 }

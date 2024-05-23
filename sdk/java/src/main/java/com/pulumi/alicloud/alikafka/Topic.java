@@ -71,26 +71,26 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .name(String.format("%s-%s", instanceName,defaultInteger.result()))
  *             .partitionNum("50")
  *             .diskType("1")
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *             .securityGroup(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()        
+ *         var defaultTopic = new Topic("defaultTopic", TopicArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .topic("example-topic")
  *             .localTopic("false")

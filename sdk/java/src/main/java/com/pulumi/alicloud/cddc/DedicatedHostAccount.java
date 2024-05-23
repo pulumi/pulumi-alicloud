@@ -66,19 +66,19 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf_example");
  *         final var default = CddcFunctions.getZones();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
- *         var defaultDedicatedHostGroup = new DedicatedHostGroup("defaultDedicatedHostGroup", DedicatedHostGroupArgs.builder()        
+ *         var defaultDedicatedHostGroup = new DedicatedHostGroup("defaultDedicatedHostGroup", DedicatedHostGroupArgs.builder()
  *             .engine("MySQL")
  *             .vpcId(defaultNetwork.id())
  *             .cpuAllocationRatio(101)
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *             .storageType("cloud_essd")
  *             .build());
  * 
- *         var defaultDedicatedHost = new DedicatedHost("defaultDedicatedHost", DedicatedHostArgs.builder()        
+ *         var defaultDedicatedHost = new DedicatedHost("defaultDedicatedHost", DedicatedHostArgs.builder()
  *             .hostName(name)
  *             .dedicatedHostGroupId(defaultDedicatedHostGroup.id())
  *             .hostClass(defaultGetHostEcsLevelInfos.applyValue(getHostEcsLevelInfosResult -> getHostEcsLevelInfosResult.infos()[0].resClassCode()))
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var defaultDedicatedHostAccount = new DedicatedHostAccount("defaultDedicatedHostAccount", DedicatedHostAccountArgs.builder()        
+ *         var defaultDedicatedHostAccount = new DedicatedHostAccount("defaultDedicatedHostAccount", DedicatedHostAccountArgs.builder()
  *             .accountName(name)
  *             .accountPassword("Password1234")
  *             .dedicatedHostId(defaultDedicatedHost.dedicatedHostId())

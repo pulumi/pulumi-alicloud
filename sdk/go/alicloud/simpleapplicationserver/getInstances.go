@@ -70,9 +70,9 @@ type GetInstancesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The billing method of the simple application server.
+	// The paymen type of the resource. Valid values: `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
 	Status *string `pulumi:"status"`
 }
 
@@ -110,9 +110,9 @@ type GetInstancesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The billing method of the simple application server.
+	// The paymen type of the resource. Valid values: `Subscription`.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

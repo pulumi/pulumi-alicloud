@@ -5845,7 +5845,9 @@ func (o GetPrometheusAlertRulesRuleArrayOutput) Index(i pulumi.IntInput) GetProm
 }
 
 type GetPrometheusAlertRulesRuleAnnotation struct {
-	Name  string `pulumi:"name"`
+	// The value of the annotation.
+	Name string `pulumi:"name"`
+	// The name of the annotation name.
 	Value string `pulumi:"value"`
 }
 
@@ -5861,7 +5863,9 @@ type GetPrometheusAlertRulesRuleAnnotationInput interface {
 }
 
 type GetPrometheusAlertRulesRuleAnnotationArgs struct {
-	Name  pulumi.StringInput `pulumi:"name"`
+	// The value of the annotation.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the annotation name.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -5916,10 +5920,12 @@ func (o GetPrometheusAlertRulesRuleAnnotationOutput) ToGetPrometheusAlertRulesRu
 	return o
 }
 
+// The value of the annotation.
 func (o GetPrometheusAlertRulesRuleAnnotationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesRuleAnnotation) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The name of the annotation name.
 func (o GetPrometheusAlertRulesRuleAnnotationOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesRuleAnnotation) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -5945,7 +5951,9 @@ func (o GetPrometheusAlertRulesRuleAnnotationArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetPrometheusAlertRulesRuleLabel struct {
-	Name  string `pulumi:"name"`
+	// The name of the label.
+	Name string `pulumi:"name"`
+	// The value of the label.
 	Value string `pulumi:"value"`
 }
 
@@ -5961,7 +5969,9 @@ type GetPrometheusAlertRulesRuleLabelInput interface {
 }
 
 type GetPrometheusAlertRulesRuleLabelArgs struct {
-	Name  pulumi.StringInput `pulumi:"name"`
+	// The name of the label.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the label.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -6016,10 +6026,12 @@ func (o GetPrometheusAlertRulesRuleLabelOutput) ToGetPrometheusAlertRulesRuleLab
 	return o
 }
 
+// The name of the label.
 func (o GetPrometheusAlertRulesRuleLabelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesRuleLabel) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The value of the label.
 func (o GetPrometheusAlertRulesRuleLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrometheusAlertRulesRuleLabel) string { return v.Value }).(pulumi.StringOutput)
 }
