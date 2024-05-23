@@ -45,6 +45,8 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     /**
      * The ID of availability zone.
      * 
+     * *Network params*
+     * 
      */
     @Import(name="availabilityZone")
     private @Nullable Output<String> availabilityZone;
@@ -52,20 +54,22 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     /**
      * @return The ID of availability zone.
      * 
+     * *Network params*
+     * 
      */
     public Optional<Output<String>> availabilityZone() {
         return Optional.ofNullable(this.availabilityZone);
     }
 
     /**
-     * Nested attribute containing certificate authority data for your cluster.
+     * (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      * 
      */
     @Import(name="certificateAuthority")
     private @Nullable Output<EdgeKubernetesCertificateAuthorityArgs> certificateAuthority;
 
     /**
-     * @return Nested attribute containing certificate authority data for your cluster.
+     * @return (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      * 
      */
     public Optional<Output<EdgeKubernetesCertificateAuthorityArgs>> certificateAuthority() {
@@ -141,14 +145,14 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Map of kubernetes cluster connection information.
+     * (Map) Map of kubernetes cluster connection information.
      * 
      */
     @Import(name="connections")
     private @Nullable Output<EdgeKubernetesConnectionsArgs> connections;
 
     /**
-     * @return Map of kubernetes cluster connection information.
+     * @return (Map) Map of kubernetes cluster connection information.
      * 
      */
     public Optional<Output<EdgeKubernetesConnectionsArgs>> connections() {
@@ -447,14 +451,14 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      * 
      */
     @Import(name="runtime")
     private @Nullable Output<EdgeKubernetesRuntimeArgs> runtime;
 
     /**
-     * @return The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * @return The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      * 
      */
     public Optional<Output<EdgeKubernetesRuntimeArgs>> runtime() {
@@ -874,6 +878,8 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         /**
          * @param availabilityZone The ID of availability zone.
          * 
+         * *Network params*
+         * 
          * @return builder
          * 
          */
@@ -885,6 +891,8 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         /**
          * @param availabilityZone The ID of availability zone.
          * 
+         * *Network params*
+         * 
          * @return builder
          * 
          */
@@ -893,7 +901,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificateAuthority Nested attribute containing certificate authority data for your cluster.
+         * @param certificateAuthority (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
          * 
          * @return builder
          * 
@@ -904,7 +912,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificateAuthority Nested attribute containing certificate authority data for your cluster.
+         * @param certificateAuthority (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
          * 
          * @return builder
          * 
@@ -1006,7 +1014,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param connections Map of kubernetes cluster connection information.
+         * @param connections (Map) Map of kubernetes cluster connection information.
          * 
          * @return builder
          * 
@@ -1017,7 +1025,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param connections Map of kubernetes cluster connection information.
+         * @param connections (Map) Map of kubernetes cluster connection information.
          * 
          * @return builder
          * 
@@ -1438,7 +1446,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runtime The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+         * @param runtime The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
          * 
          * @return builder
          * 
@@ -1449,7 +1457,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param runtime The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+         * @param runtime The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
          * 
          * @return builder
          * 

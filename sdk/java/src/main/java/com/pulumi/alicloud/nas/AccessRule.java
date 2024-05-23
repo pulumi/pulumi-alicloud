@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.nas.AccessGroup;
  * import com.pulumi.alicloud.nas.AccessGroupArgs;
  * import com.pulumi.alicloud.nas.AccessRule;
@@ -51,18 +53,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new AccessGroup("foo", AccessGroupArgs.builder()        
- *             .accessGroupName("tf-NasConfigName")
- *             .accessGroupType("Vpc")
- *             .description("tf-testAccNasConfig")
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
  *             .build());
  * 
- *         var fooAccessRule = new AccessRule("fooAccessRule", AccessRuleArgs.builder()        
- *             .accessGroupName(foo.accessGroupName())
- *             .sourceCidrIp("168.1.1.0/16")
- *             .rwAccessType("RDWR")
+ *         var defaultAccessGroup = new AccessGroup("defaultAccessGroup", AccessGroupArgs.builder()        
+ *             .accessGroupType("Vpc")
+ *             .description("ExtremeAccessGroup")
+ *             .accessGroupName(String.format("terraform-example-%s", default_.result()))
+ *             .fileSystemType("extreme")
+ *             .build());
+ * 
+ *         var defaultAccessRule = new AccessRule("defaultAccessRule", AccessRuleArgs.builder()        
+ *             .accessGroupName(defaultAccessGroup.accessGroupName())
+ *             .rwAccessType("RDONLY")
+ *             .ipv6SourceCidrIp("::1")
  *             .userAccessType("no_squash")
- *             .priority(2)
+ *             .priority("1")
+ *             .fileSystemType("extreme")
  *             .build());
  * 
  *     }

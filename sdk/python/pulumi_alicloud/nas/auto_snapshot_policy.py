@@ -17,6 +17,7 @@ class AutoSnapshotPolicyArgs:
                  repeat_weekdays: pulumi.Input[Sequence[pulumi.Input[str]]],
                  time_points: pulumi.Input[Sequence[pulumi.Input[str]]],
                  auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
+                 file_system_type: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a AutoSnapshotPolicy resource.
@@ -31,6 +32,7 @@ class AutoSnapshotPolicyArgs:
                - The name must start with a letter.
                - The name can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
                - The value of this parameter is empty by default.
+        :param pulumi.Input[str] file_system_type: The file system type.
         :param pulumi.Input[int] retention_days: The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
                - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         """
@@ -38,6 +40,8 @@ class AutoSnapshotPolicyArgs:
         pulumi.set(__self__, "time_points", time_points)
         if auto_snapshot_policy_name is not None:
             pulumi.set(__self__, "auto_snapshot_policy_name", auto_snapshot_policy_name)
+        if file_system_type is not None:
+            pulumi.set(__self__, "file_system_type", file_system_type)
         if retention_days is not None:
             pulumi.set(__self__, "retention_days", retention_days)
 
@@ -86,6 +90,18 @@ class AutoSnapshotPolicyArgs:
         pulumi.set(self, "auto_snapshot_policy_name", value)
 
     @property
+    @pulumi.getter(name="fileSystemType")
+    def file_system_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The file system type.
+        """
+        return pulumi.get(self, "file_system_type")
+
+    @file_system_type.setter
+    def file_system_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_system_type", value)
+
+    @property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
@@ -103,6 +119,8 @@ class AutoSnapshotPolicyArgs:
 class _AutoSnapshotPolicyState:
     def __init__(__self__, *,
                  auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 file_system_type: Optional[pulumi.Input[str]] = None,
                  repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -114,6 +132,8 @@ class _AutoSnapshotPolicyState:
                - The name must start with a letter.
                - The name can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
                - The value of this parameter is empty by default.
+        :param pulumi.Input[str] create_time: Creation time.
+        :param pulumi.Input[str] file_system_type: The file system type.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The day on which an auto snapshot is created.
                - A maximum of 7 time points can be selected.
                - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
@@ -126,6 +146,10 @@ class _AutoSnapshotPolicyState:
         """
         if auto_snapshot_policy_name is not None:
             pulumi.set(__self__, "auto_snapshot_policy_name", auto_snapshot_policy_name)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if file_system_type is not None:
+            pulumi.set(__self__, "file_system_type", file_system_type)
         if repeat_weekdays is not None:
             pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
         if retention_days is not None:
@@ -150,6 +174,30 @@ class _AutoSnapshotPolicyState:
     @auto_snapshot_policy_name.setter
     def auto_snapshot_policy_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auto_snapshot_policy_name", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="fileSystemType")
+    def file_system_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The file system type.
+        """
+        return pulumi.get(self, "file_system_type")
+
+    @file_system_type.setter
+    def file_system_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_system_type", value)
 
     @property
     @pulumi.getter(name="repeatWeekdays")
@@ -211,16 +259,17 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
+                 file_system_type: Optional[pulumi.Input[str]] = None,
                  repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Provides a Network Attached Storage (NAS) Auto Snapshot Policy resource.
+        Provides a NAS Auto Snapshot Policy resource. Automatic snapshot policy.
 
-        For information about Network Attached Storage (NAS) Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html).
+        For information about NAS Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html)).
 
-        > **NOTE:** Available in v1.153.0+.
+        > **NOTE:** Available since v1.153.0.
 
         ## Example Usage
 
@@ -230,24 +279,29 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.nas.AutoSnapshotPolicy("example",
-            auto_snapshot_policy_name="example_value",
-            repeat_weekdays=[
-                "3",
-                "4",
-                "5",
-            ],
-            retention_days=30,
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.nas.AutoSnapshotPolicy("default",
             time_points=[
+                "0",
+                "1",
+                "2",
+            ],
+            retention_days=1,
+            repeat_weekdays=[
+                "2",
                 "3",
                 "4",
-                "5",
-            ])
+            ],
+            auto_snapshot_policy_name=name,
+            file_system_type="extreme")
         ```
 
         ## Import
 
-        Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.
+        NAS Auto Snapshot Policy can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
@@ -260,6 +314,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                - The name must start with a letter.
                - The name can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
                - The value of this parameter is empty by default.
+        :param pulumi.Input[str] file_system_type: The file system type.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The day on which an auto snapshot is created.
                - A maximum of 7 time points can be selected.
                - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
@@ -276,11 +331,11 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                  args: AutoSnapshotPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Network Attached Storage (NAS) Auto Snapshot Policy resource.
+        Provides a NAS Auto Snapshot Policy resource. Automatic snapshot policy.
 
-        For information about Network Attached Storage (NAS) Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html).
+        For information about NAS Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html)).
 
-        > **NOTE:** Available in v1.153.0+.
+        > **NOTE:** Available since v1.153.0.
 
         ## Example Usage
 
@@ -290,24 +345,29 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.nas.AutoSnapshotPolicy("example",
-            auto_snapshot_policy_name="example_value",
-            repeat_weekdays=[
-                "3",
-                "4",
-                "5",
-            ],
-            retention_days=30,
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.nas.AutoSnapshotPolicy("default",
             time_points=[
+                "0",
+                "1",
+                "2",
+            ],
+            retention_days=1,
+            repeat_weekdays=[
+                "2",
                 "3",
                 "4",
-                "5",
-            ])
+            ],
+            auto_snapshot_policy_name=name,
+            file_system_type="extreme")
         ```
 
         ## Import
 
-        Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.
+        NAS Auto Snapshot Policy can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
@@ -329,6 +389,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
+                 file_system_type: Optional[pulumi.Input[str]] = None,
                  repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -342,6 +403,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
             __props__ = AutoSnapshotPolicyArgs.__new__(AutoSnapshotPolicyArgs)
 
             __props__.__dict__["auto_snapshot_policy_name"] = auto_snapshot_policy_name
+            __props__.__dict__["file_system_type"] = file_system_type
             if repeat_weekdays is None and not opts.urn:
                 raise TypeError("Missing required property 'repeat_weekdays'")
             __props__.__dict__["repeat_weekdays"] = repeat_weekdays
@@ -349,6 +411,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
             if time_points is None and not opts.urn:
                 raise TypeError("Missing required property 'time_points'")
             __props__.__dict__["time_points"] = time_points
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
         super(AutoSnapshotPolicy, __self__).__init__(
             'alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy',
@@ -361,6 +424,8 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
+            file_system_type: Optional[pulumi.Input[str]] = None,
             repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             retention_days: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -377,6 +442,8 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                - The name must start with a letter.
                - The name can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
                - The value of this parameter is empty by default.
+        :param pulumi.Input[str] create_time: Creation time.
+        :param pulumi.Input[str] file_system_type: The file system type.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The day on which an auto snapshot is created.
                - A maximum of 7 time points can be selected.
                - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
@@ -392,6 +459,8 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         __props__ = _AutoSnapshotPolicyState.__new__(_AutoSnapshotPolicyState)
 
         __props__.__dict__["auto_snapshot_policy_name"] = auto_snapshot_policy_name
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["file_system_type"] = file_system_type
         __props__.__dict__["repeat_weekdays"] = repeat_weekdays
         __props__.__dict__["retention_days"] = retention_days
         __props__.__dict__["status"] = status
@@ -409,6 +478,22 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         - The value of this parameter is empty by default.
         """
         return pulumi.get(self, "auto_snapshot_policy_name")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        Creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="fileSystemType")
+    def file_system_type(self) -> pulumi.Output[str]:
+        """
+        The file system type.
+        """
+        return pulumi.get(self, "file_system_type")
 
     @property
     @pulumi.getter(name="repeatWeekdays")

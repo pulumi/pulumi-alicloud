@@ -67,8 +67,9 @@ type Eip struct {
 
 	ActivityId pulumi.StringPtrOutput `pulumi:"activityId"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-	AddressName pulumi.StringOutput  `pulumi:"addressName"`
-	AutoPay     pulumi.BoolPtrOutput `pulumi:"autoPay"`
+	AddressName  pulumi.StringOutput    `pulumi:"addressName"`
+	AllocationId pulumi.StringPtrOutput `pulumi:"allocationId"`
+	AutoPay      pulumi.BoolPtrOutput   `pulumi:"autoPay"`
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth  pulumi.StringOutput `pulumi:"bandwidth"`
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -91,6 +92,7 @@ type Eip struct {
 	Isp        pulumi.StringOutput    `pulumi:"isp"`
 	LogProject pulumi.StringPtrOutput `pulumi:"logProject"`
 	LogStore   pulumi.StringPtrOutput `pulumi:"logStore"`
+	Mode       pulumi.StringOutput    `pulumi:"mode"`
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
@@ -145,8 +147,9 @@ func GetEip(ctx *pulumi.Context,
 type eipState struct {
 	ActivityId *string `pulumi:"activityId"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-	AddressName *string `pulumi:"addressName"`
-	AutoPay     *bool   `pulumi:"autoPay"`
+	AddressName  *string `pulumi:"addressName"`
+	AllocationId *string `pulumi:"allocationId"`
+	AutoPay      *bool   `pulumi:"autoPay"`
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth  *string `pulumi:"bandwidth"`
 	CreateTime *string `pulumi:"createTime"`
@@ -169,6 +172,7 @@ type eipState struct {
 	Isp        *string `pulumi:"isp"`
 	LogProject *string `pulumi:"logProject"`
 	LogStore   *string `pulumi:"logStore"`
+	Mode       *string `pulumi:"mode"`
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
@@ -194,8 +198,9 @@ type eipState struct {
 type EipState struct {
 	ActivityId pulumi.StringPtrInput
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-	AddressName pulumi.StringPtrInput
-	AutoPay     pulumi.BoolPtrInput
+	AddressName  pulumi.StringPtrInput
+	AllocationId pulumi.StringPtrInput
+	AutoPay      pulumi.BoolPtrInput
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth  pulumi.StringPtrInput
 	CreateTime pulumi.StringPtrInput
@@ -218,6 +223,7 @@ type EipState struct {
 	Isp        pulumi.StringPtrInput
 	LogProject pulumi.StringPtrInput
 	LogStore   pulumi.StringPtrInput
+	Mode       pulumi.StringPtrInput
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
@@ -247,8 +253,9 @@ func (EipState) ElementType() reflect.Type {
 type eipArgs struct {
 	ActivityId *string `pulumi:"activityId"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-	AddressName *string `pulumi:"addressName"`
-	AutoPay     *bool   `pulumi:"autoPay"`
+	AddressName  *string `pulumi:"addressName"`
+	AllocationId *string `pulumi:"allocationId"`
+	AutoPay      *bool   `pulumi:"autoPay"`
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth *string `pulumi:"bandwidth"`
 	// Whether enable the deletion protection or not. Default value: `false`.
@@ -270,6 +277,7 @@ type eipArgs struct {
 	Isp        *string `pulumi:"isp"`
 	LogProject *string `pulumi:"logProject"`
 	LogStore   *string `pulumi:"logStore"`
+	Mode       *string `pulumi:"mode"`
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
@@ -294,8 +302,9 @@ type eipArgs struct {
 type EipArgs struct {
 	ActivityId pulumi.StringPtrInput
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-	AddressName pulumi.StringPtrInput
-	AutoPay     pulumi.BoolPtrInput
+	AddressName  pulumi.StringPtrInput
+	AllocationId pulumi.StringPtrInput
+	AutoPay      pulumi.BoolPtrInput
 	// Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
 	Bandwidth pulumi.StringPtrInput
 	// Whether enable the deletion protection or not. Default value: `false`.
@@ -317,6 +326,7 @@ type EipArgs struct {
 	Isp        pulumi.StringPtrInput
 	LogProject pulumi.StringPtrInput
 	LogStore   pulumi.StringPtrInput
+	Mode       pulumi.StringPtrInput
 	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
@@ -433,6 +443,10 @@ func (o EipOutput) AddressName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.AddressName }).(pulumi.StringOutput)
 }
 
+func (o EipOutput) AllocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.AllocationId }).(pulumi.StringPtrOutput)
+}
+
 func (o EipOutput) AutoPay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Eip) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
 }
@@ -490,6 +504,10 @@ func (o EipOutput) LogProject() pulumi.StringPtrOutput {
 
 func (o EipOutput) LogStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.LogStore }).(pulumi.StringPtrOutput)
+}
+
+func (o EipOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
 // It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.

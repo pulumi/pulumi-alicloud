@@ -76,6 +76,7 @@ export class Eip extends pulumi.CustomResource {
      * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
      */
     public readonly addressName!: pulumi.Output<string>;
+    public readonly allocationId!: pulumi.Output<string | undefined>;
     public readonly autoPay!: pulumi.Output<boolean | undefined>;
     /**
      * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
@@ -113,6 +114,7 @@ export class Eip extends pulumi.CustomResource {
     public readonly isp!: pulumi.Output<string>;
     public readonly logProject!: pulumi.Output<string | undefined>;
     public readonly logStore!: pulumi.Output<string | undefined>;
+    public readonly mode!: pulumi.Output<string>;
     /**
      * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
      *
@@ -164,6 +166,7 @@ export class Eip extends pulumi.CustomResource {
             const state = argsOrState as EipState | undefined;
             resourceInputs["activityId"] = state ? state.activityId : undefined;
             resourceInputs["addressName"] = state ? state.addressName : undefined;
+            resourceInputs["allocationId"] = state ? state.allocationId : undefined;
             resourceInputs["autoPay"] = state ? state.autoPay : undefined;
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
@@ -176,6 +179,7 @@ export class Eip extends pulumi.CustomResource {
             resourceInputs["isp"] = state ? state.isp : undefined;
             resourceInputs["logProject"] = state ? state.logProject : undefined;
             resourceInputs["logStore"] = state ? state.logStore : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["netmode"] = state ? state.netmode : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
@@ -191,6 +195,7 @@ export class Eip extends pulumi.CustomResource {
             const args = argsOrState as EipArgs | undefined;
             resourceInputs["activityId"] = args ? args.activityId : undefined;
             resourceInputs["addressName"] = args ? args.addressName : undefined;
+            resourceInputs["allocationId"] = args ? args.allocationId : undefined;
             resourceInputs["autoPay"] = args ? args.autoPay : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
@@ -202,6 +207,7 @@ export class Eip extends pulumi.CustomResource {
             resourceInputs["isp"] = args ? args.isp : undefined;
             resourceInputs["logProject"] = args ? args.logProject : undefined;
             resourceInputs["logStore"] = args ? args.logStore : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["netmode"] = args ? args.netmode : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
@@ -229,6 +235,7 @@ export interface EipState {
      * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
      */
     addressName?: pulumi.Input<string>;
+    allocationId?: pulumi.Input<string>;
     autoPay?: pulumi.Input<boolean>;
     /**
      * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
@@ -266,6 +273,7 @@ export interface EipState {
     isp?: pulumi.Input<string>;
     logProject?: pulumi.Input<string>;
     logStore?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
      *
@@ -309,6 +317,7 @@ export interface EipArgs {
      * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
      */
     addressName?: pulumi.Input<string>;
+    allocationId?: pulumi.Input<string>;
     autoPay?: pulumi.Input<boolean>;
     /**
      * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
@@ -345,6 +354,7 @@ export interface EipArgs {
     isp?: pulumi.Input<string>;
     logProject?: pulumi.Input<string>;
     logStore?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
      *

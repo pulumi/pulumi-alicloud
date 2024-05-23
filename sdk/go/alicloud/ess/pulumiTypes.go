@@ -1985,7 +1985,7 @@ func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArrayOutput
 type ScalingConfigurationDataDisk struct {
 	// The id of auto snapshot policy for data disk.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
-	// Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` and `cloud`.
+	// Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` , `cloudEssd` and `cloud`.
 	Category *string `pulumi:"category"`
 	// Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
@@ -2023,7 +2023,7 @@ type ScalingConfigurationDataDiskInput interface {
 type ScalingConfigurationDataDiskArgs struct {
 	// The id of auto snapshot policy for data disk.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
-	// Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` and `cloud`.
+	// Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` , `cloudEssd` and `cloud`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
@@ -2103,7 +2103,7 @@ func (o ScalingConfigurationDataDiskOutput) AutoSnapshotPolicyId() pulumi.String
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` and `cloud`.
+// Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` , `cloudEssd` and `cloud`.
 func (o ScalingConfigurationDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ScalingConfigurationDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }

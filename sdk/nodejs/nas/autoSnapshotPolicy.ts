@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Network Attached Storage (NAS) Auto Snapshot Policy resource.
+ * Provides a NAS Auto Snapshot Policy resource. Automatic snapshot policy.
  *
- * For information about Network Attached Storage (NAS) Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html).
+ * For information about NAS Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html)).
  *
- * > **NOTE:** Available in v1.153.0+.
+ * > **NOTE:** Available since v1.153.0.
  *
  * ## Example Usage
  *
@@ -19,25 +19,28 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.nas.AutoSnapshotPolicy("example", {
- *     autoSnapshotPolicyName: "example_value",
- *     repeatWeekdays: [
- *         "3",
- *         "4",
- *         "5",
- *     ],
- *     retentionDays: 30,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.nas.AutoSnapshotPolicy("default", {
  *     timePoints: [
+ *         "0",
+ *         "1",
+ *         "2",
+ *     ],
+ *     retentionDays: 1,
+ *     repeatWeekdays: [
+ *         "2",
  *         "3",
  *         "4",
- *         "5",
  *     ],
+ *     autoSnapshotPolicyName: name,
+ *     fileSystemType: "extreme",
  * });
  * ```
  *
  * ## Import
  *
- * Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.
+ * NAS Auto Snapshot Policy can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
@@ -80,6 +83,14 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
      */
     public readonly autoSnapshotPolicyName!: pulumi.Output<string | undefined>;
     /**
+     * Creation time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The file system type.
+     */
+    public readonly fileSystemType!: pulumi.Output<string>;
+    /**
      * The day on which an auto snapshot is created.
      * - A maximum of 7 time points can be selected.
      * - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
@@ -115,6 +126,8 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AutoSnapshotPolicyState | undefined;
             resourceInputs["autoSnapshotPolicyName"] = state ? state.autoSnapshotPolicyName : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["fileSystemType"] = state ? state.fileSystemType : undefined;
             resourceInputs["repeatWeekdays"] = state ? state.repeatWeekdays : undefined;
             resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -128,9 +141,11 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'timePoints'");
             }
             resourceInputs["autoSnapshotPolicyName"] = args ? args.autoSnapshotPolicyName : undefined;
+            resourceInputs["fileSystemType"] = args ? args.fileSystemType : undefined;
             resourceInputs["repeatWeekdays"] = args ? args.repeatWeekdays : undefined;
             resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
             resourceInputs["timePoints"] = args ? args.timePoints : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -150,6 +165,14 @@ export interface AutoSnapshotPolicyState {
      * - The value of this parameter is empty by default.
      */
     autoSnapshotPolicyName?: pulumi.Input<string>;
+    /**
+     * Creation time.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The file system type.
+     */
+    fileSystemType?: pulumi.Input<string>;
     /**
      * The day on which an auto snapshot is created.
      * - A maximum of 7 time points can be selected.
@@ -185,6 +208,10 @@ export interface AutoSnapshotPolicyArgs {
      * - The value of this parameter is empty by default.
      */
     autoSnapshotPolicyName?: pulumi.Input<string>;
+    /**
+     * The file system type.
+     */
+    fileSystemType?: pulumi.Input<string>;
     /**
      * The day on which an auto snapshot is created.
      * - A maximum of 7 time points can be selected.

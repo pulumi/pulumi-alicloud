@@ -18,18 +18,27 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const foo = new alicloud.nas.AccessGroup("foo", {
- *     accessGroupName: "tf-NasConfigName",
- *     accessGroupType: "Vpc",
- *     description: "tf-testAccNasConfig",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
  * });
- * const fooAccessRule = new alicloud.nas.AccessRule("foo", {
- *     accessGroupName: foo.accessGroupName,
- *     sourceCidrIp: "168.1.1.0/16",
- *     rwAccessType: "RDWR",
+ * const defaultAccessGroup = new alicloud.nas.AccessGroup("default", {
+ *     accessGroupType: "Vpc",
+ *     description: "ExtremeAccessGroup",
+ *     accessGroupName: `terraform-example-${_default.result}`,
+ *     fileSystemType: "extreme",
+ * });
+ * const defaultAccessRule = new alicloud.nas.AccessRule("default", {
+ *     accessGroupName: defaultAccessGroup.accessGroupName,
+ *     rwAccessType: "RDONLY",
+ *     ipv6SourceCidrIp: "::1",
  *     userAccessType: "no_squash",
- *     priority: 2,
+ *     priority: 1,
+ *     fileSystemType: "extreme",
  * });
  * ```
  *

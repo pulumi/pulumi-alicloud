@@ -9,6 +9,7 @@ import com.pulumi.alicloud.cs.inputs.KubernetesState;
 import com.pulumi.alicloud.cs.outputs.KubernetesAddon;
 import com.pulumi.alicloud.cs.outputs.KubernetesCertificateAuthority;
 import com.pulumi.alicloud.cs.outputs.KubernetesConnections;
+import com.pulumi.alicloud.cs.outputs.KubernetesDeleteOption;
 import com.pulumi.alicloud.cs.outputs.KubernetesMasterNode;
 import com.pulumi.alicloud.cs.outputs.KubernetesRuntime;
 import com.pulumi.core.Output;
@@ -203,6 +204,20 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> customSan() {
         return Codegen.optional(this.customSan);
+    }
+    /**
+     * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * 
+     */
+    @Export(name="deleteOptions", refs={List.class,KubernetesDeleteOption.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<KubernetesDeleteOption>> deleteOptions;
+
+    /**
+     * @return Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+     * 
+     */
+    public Output<Optional<List<KubernetesDeleteOption>>> deleteOptions() {
+        return Codegen.optional(this.deleteOptions);
     }
     /**
      * Whether to enable cluster deletion protection.
@@ -703,14 +718,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retainResources);
     }
     /**
-     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+     * The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      * 
      */
     @Export(name="runtime", refs={KubernetesRuntime.class}, tree="[0]")
     private Output</* @Nullable */ KubernetesRuntime> runtime;
 
     /**
-     * @return The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+     * @return The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
      * 
      */
     public Output<Optional<KubernetesRuntime>> runtime() {

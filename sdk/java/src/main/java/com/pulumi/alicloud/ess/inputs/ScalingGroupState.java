@@ -101,14 +101,14 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+     * Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
      * 
      */
     @Import(name="healthCheckType")
     private @Nullable Output<String> healthCheckType;
 
     /**
-     * @return Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+     * @return Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
      * 
      */
     public Optional<Output<String>> healthCheckType() {
@@ -572,7 +572,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckType Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+         * @param healthCheckType Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
          * 
          * @return builder
          * 
@@ -583,7 +583,7 @@ public final class ScalingGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckType Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+         * @param healthCheckType Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
          * 
          * @return builder
          * 

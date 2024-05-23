@@ -227,8 +227,10 @@ type EdgeKubernetes struct {
 	// The addon you want to install in cluster. See `addons` below.
 	Addons EdgeKubernetesAddonArrayOutput `pulumi:"addons"`
 	// The ID of availability zone.
+	//
+	// *Network params*
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// Nested attribute containing certificate authority data for your cluster.
+	// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
 	CertificateAuthority EdgeKubernetesCertificateAuthorityOutput `pulumi:"certificateAuthority"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
@@ -242,7 +244,7 @@ type EdgeKubernetes struct {
 	// * ack.standard : Standard edge clusters.
 	// * ack.pro.small : Professional edge clusters.
 	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
-	// Map of kubernetes cluster connection information.
+	// (Map) Map of kubernetes cluster connection information.
 	Connections EdgeKubernetesConnectionsOutput `pulumi:"connections"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
@@ -287,7 +289,7 @@ type EdgeKubernetes struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringOutput      `pulumi:"resourceGroupId"`
 	RetainResources pulumi.StringArrayOutput `pulumi:"retainResources"`
-	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
 	Runtime EdgeKubernetesRuntimePtrOutput `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
@@ -384,8 +386,10 @@ type edgeKubernetesState struct {
 	// The addon you want to install in cluster. See `addons` below.
 	Addons []EdgeKubernetesAddon `pulumi:"addons"`
 	// The ID of availability zone.
+	//
+	// *Network params*
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Nested attribute containing certificate authority data for your cluster.
+	// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
 	CertificateAuthority *EdgeKubernetesCertificateAuthority `pulumi:"certificateAuthority"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
@@ -399,7 +403,7 @@ type edgeKubernetesState struct {
 	// * ack.standard : Standard edge clusters.
 	// * ack.pro.small : Professional edge clusters.
 	ClusterSpec *string `pulumi:"clusterSpec"`
-	// Map of kubernetes cluster connection information.
+	// (Map) Map of kubernetes cluster connection information.
 	Connections *EdgeKubernetesConnections `pulumi:"connections"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -444,7 +448,7 @@ type edgeKubernetesState struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	RetainResources []string `pulumi:"retainResources"`
-	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
 	Runtime *EdgeKubernetesRuntime `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -496,8 +500,10 @@ type EdgeKubernetesState struct {
 	// The addon you want to install in cluster. See `addons` below.
 	Addons EdgeKubernetesAddonArrayInput
 	// The ID of availability zone.
+	//
+	// *Network params*
 	AvailabilityZone pulumi.StringPtrInput
-	// Nested attribute containing certificate authority data for your cluster.
+	// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
 	CertificateAuthority EdgeKubernetesCertificateAuthorityPtrInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
@@ -511,7 +517,7 @@ type EdgeKubernetesState struct {
 	// * ack.standard : Standard edge clusters.
 	// * ack.pro.small : Professional edge clusters.
 	ClusterSpec pulumi.StringPtrInput
-	// Map of kubernetes cluster connection information.
+	// (Map) Map of kubernetes cluster connection information.
 	Connections EdgeKubernetesConnectionsPtrInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
@@ -556,7 +562,7 @@ type EdgeKubernetesState struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	RetainResources pulumi.StringArrayInput
-	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
 	Runtime EdgeKubernetesRuntimePtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
@@ -612,6 +618,8 @@ type edgeKubernetesArgs struct {
 	// The addon you want to install in cluster. See `addons` below.
 	Addons []EdgeKubernetesAddon `pulumi:"addons"`
 	// The ID of availability zone.
+	//
+	// *Network params*
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
@@ -666,7 +674,7 @@ type edgeKubernetesArgs struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	RetainResources []string `pulumi:"retainResources"`
-	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
 	Runtime *EdgeKubernetesRuntime `pulumi:"runtime"`
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -709,6 +717,8 @@ type EdgeKubernetesArgs struct {
 	// The addon you want to install in cluster. See `addons` below.
 	Addons EdgeKubernetesAddonArrayInput
 	// The ID of availability zone.
+	//
+	// *Network params*
 	AvailabilityZone pulumi.StringPtrInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
@@ -763,7 +773,7 @@ type EdgeKubernetesArgs struct {
 	// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
 	ResourceGroupId pulumi.StringPtrInput
 	RetainResources pulumi.StringArrayInput
-	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+	// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
 	Runtime EdgeKubernetesRuntimePtrInput
 	// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
 	SecurityGroupId pulumi.StringPtrInput
@@ -894,11 +904,13 @@ func (o EdgeKubernetesOutput) Addons() EdgeKubernetesAddonArrayOutput {
 }
 
 // The ID of availability zone.
+//
+// *Network params*
 func (o EdgeKubernetesOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Nested attribute containing certificate authority data for your cluster.
+// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
 func (o EdgeKubernetesOutput) CertificateAuthority() EdgeKubernetesCertificateAuthorityOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesCertificateAuthorityOutput { return v.CertificateAuthority }).(EdgeKubernetesCertificateAuthorityOutput)
 }
@@ -927,7 +939,7 @@ func (o EdgeKubernetesOutput) ClusterSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.ClusterSpec }).(pulumi.StringOutput)
 }
 
-// Map of kubernetes cluster connection information.
+// (Map) Map of kubernetes cluster connection information.
 func (o EdgeKubernetesOutput) Connections() EdgeKubernetesConnectionsOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesConnectionsOutput { return v.Connections }).(EdgeKubernetesConnectionsOutput)
 }
@@ -1032,7 +1044,7 @@ func (o EdgeKubernetesOutput) RetainResources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringArrayOutput { return v.RetainResources }).(pulumi.StringArrayOutput)
 }
 
-// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
 func (o EdgeKubernetesOutput) Runtime() EdgeKubernetesRuntimePtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesRuntimePtrOutput { return v.Runtime }).(EdgeKubernetesRuntimePtrOutput)
 }

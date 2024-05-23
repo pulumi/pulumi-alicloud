@@ -51,6 +51,21 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+     * 
+     */
+    @Import(name="allocationId")
+    private @Nullable Output<String> allocationId;
+
+    /**
+     * @return The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+     * 
+     */
+    public Optional<Output<String>> allocationId() {
+        return Optional.ofNullable(this.allocationId);
+    }
+
+    /**
      * Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
      * 
      */
@@ -236,6 +251,27 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Binding mode, value:
+     * - **NAT** (default):NAT mode (normal mode).
+     * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+     * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+     * 
+     */
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    /**
+     * @return Binding mode, value:
+     * - **NAT** (default):NAT mode (normal mode).
+     * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+     * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+     * 
+     */
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+
+    /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      * @deprecated
@@ -406,6 +442,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
     private EipAddressArgs(EipAddressArgs $) {
         this.activityId = $.activityId;
         this.addressName = $.addressName;
+        this.allocationId = $.allocationId;
         this.autoPay = $.autoPay;
         this.bandwidth = $.bandwidth;
         this.deletionProtection = $.deletionProtection;
@@ -417,6 +454,7 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
         this.isp = $.isp;
         this.logProject = $.logProject;
         this.logStore = $.logStore;
+        this.mode = $.mode;
         this.name = $.name;
         this.netmode = $.netmode;
         this.paymentType = $.paymentType;
@@ -487,6 +525,27 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder addressName(String addressName) {
             return addressName(Output.of(addressName));
+        }
+
+        /**
+         * @param allocationId The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allocationId(@Nullable Output<String> allocationId) {
+            $.allocationId = allocationId;
+            return this;
+        }
+
+        /**
+         * @param allocationId The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allocationId(String allocationId) {
+            return allocationId(Output.of(allocationId));
         }
 
         /**
@@ -738,6 +797,33 @@ public final class EipAddressArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder logStore(String logStore) {
             return logStore(Output.of(logStore));
+        }
+
+        /**
+         * @param mode Binding mode, value:
+         * - **NAT** (default):NAT mode (normal mode).
+         * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+         * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        /**
+         * @param mode Binding mode, value:
+         * - **NAT** (default):NAT mode (normal mode).
+         * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+         * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
         }
 
         /**

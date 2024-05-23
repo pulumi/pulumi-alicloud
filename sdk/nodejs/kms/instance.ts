@@ -95,23 +95,31 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Whether to force deletion even without backup.
+     */
+    public readonly forceDeleteWithoutBackup!: pulumi.Output<string | undefined>;
+    /**
      * The name of the resource.
      */
     public /*out*/ readonly instanceName!: pulumi.Output<string>;
     /**
-     * Maximum number of stored keys.
+     * Maximum number of stored keys. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    public readonly keyNum!: pulumi.Output<number>;
+    public readonly keyNum!: pulumi.Output<number | undefined>;
     /**
-     * Instance Audit Log Switch.
+     * Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     public readonly log!: pulumi.Output<string>;
     /**
-     * Instance log capacity.
+     * Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     public readonly logStorage!: pulumi.Output<number>;
     /**
-     * Purchase cycle, in months.
+     * Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     */
+    public readonly paymentType!: pulumi.Output<string>;
+    /**
+     * Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
@@ -119,21 +127,21 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly productVersion!: pulumi.Output<string | undefined>;
     /**
-     * Automatic renewal period, in months.
+     * Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     public readonly renewPeriod!: pulumi.Output<number | undefined>;
     /**
-     * Renewal options (manual renewal, automatic renewal, no renewal).
+     * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     public readonly renewStatus!: pulumi.Output<string | undefined>;
     /**
-     * Maximum number of Secrets.
+     * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    public readonly secretNum!: pulumi.Output<number>;
+    public readonly secretNum!: pulumi.Output<number | undefined>;
     /**
-     * The computation performance level of the KMS instance.
+     * The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    public readonly spec!: pulumi.Output<number>;
+    public readonly spec!: pulumi.Output<number | undefined>;
     /**
      * Instance status.
      */
@@ -143,9 +151,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
-     * The number of managed accesses. The maximum number of VPCs that can access this KMS instance.
+     * The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    public readonly vpcNum!: pulumi.Output<number>;
+    public readonly vpcNum!: pulumi.Output<number | undefined>;
     /**
      * Instance bind vswitches.
      */
@@ -171,10 +179,12 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["bindVpcs"] = state ? state.bindVpcs : undefined;
             resourceInputs["caCertificateChainPem"] = state ? state.caCertificateChainPem : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["forceDeleteWithoutBackup"] = state ? state.forceDeleteWithoutBackup : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["keyNum"] = state ? state.keyNum : undefined;
             resourceInputs["log"] = state ? state.log : undefined;
             resourceInputs["logStorage"] = state ? state.logStorage : undefined;
+            resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["productVersion"] = state ? state.productVersion : undefined;
             resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
@@ -188,20 +198,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["zoneIds"] = state ? state.zoneIds : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.keyNum === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'keyNum'");
-            }
-            if ((!args || args.secretNum === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'secretNum'");
-            }
-            if ((!args || args.spec === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'spec'");
-            }
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
-            }
-            if ((!args || args.vpcNum === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'vpcNum'");
             }
             if ((!args || args.vswitchIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vswitchIds'");
@@ -210,9 +208,11 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneIds'");
             }
             resourceInputs["bindVpcs"] = args ? args.bindVpcs : undefined;
+            resourceInputs["forceDeleteWithoutBackup"] = args ? args.forceDeleteWithoutBackup : undefined;
             resourceInputs["keyNum"] = args ? args.keyNum : undefined;
             resourceInputs["log"] = args ? args.log : undefined;
             resourceInputs["logStorage"] = args ? args.logStorage : undefined;
+            resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["productVersion"] = args ? args.productVersion : undefined;
             resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
@@ -250,23 +250,31 @@ export interface InstanceState {
      */
     createTime?: pulumi.Input<string>;
     /**
+     * Whether to force deletion even without backup.
+     */
+    forceDeleteWithoutBackup?: pulumi.Input<string>;
+    /**
      * The name of the resource.
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * Maximum number of stored keys.
+     * Maximum number of stored keys. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     keyNum?: pulumi.Input<number>;
     /**
-     * Instance Audit Log Switch.
+     * Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     log?: pulumi.Input<string>;
     /**
-     * Instance log capacity.
+     * Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     logStorage?: pulumi.Input<number>;
     /**
-     * Purchase cycle, in months.
+     * Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
+     * Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     period?: pulumi.Input<number>;
     /**
@@ -274,19 +282,19 @@ export interface InstanceState {
      */
     productVersion?: pulumi.Input<string>;
     /**
-     * Automatic renewal period, in months.
+     * Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     renewPeriod?: pulumi.Input<number>;
     /**
-     * Renewal options (manual renewal, automatic renewal, no renewal).
+     * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     renewStatus?: pulumi.Input<string>;
     /**
-     * Maximum number of Secrets.
+     * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     secretNum?: pulumi.Input<number>;
     /**
-     * The computation performance level of the KMS instance.
+     * The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     spec?: pulumi.Input<number>;
     /**
@@ -298,7 +306,7 @@ export interface InstanceState {
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The number of managed accesses. The maximum number of VPCs that can access this KMS instance.
+     * The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     vpcNum?: pulumi.Input<number>;
     /**
@@ -320,19 +328,27 @@ export interface InstanceArgs {
      */
     bindVpcs?: pulumi.Input<pulumi.Input<inputs.kms.InstanceBindVpc>[]>;
     /**
-     * Maximum number of stored keys.
+     * Whether to force deletion even without backup.
      */
-    keyNum: pulumi.Input<number>;
+    forceDeleteWithoutBackup?: pulumi.Input<string>;
     /**
-     * Instance Audit Log Switch.
+     * Maximum number of stored keys. The attribute is valid when the attribute `paymentType` is `Subscription`.
+     */
+    keyNum?: pulumi.Input<number>;
+    /**
+     * Instance Audit Log Switch. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     log?: pulumi.Input<string>;
     /**
-     * Instance log capacity.
+     * Instance log capacity. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     logStorage?: pulumi.Input<number>;
     /**
-     * Purchase cycle, in months.
+     * Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     */
+    paymentType?: pulumi.Input<string>;
+    /**
+     * Purchase cycle, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     period?: pulumi.Input<number>;
     /**
@@ -340,29 +356,29 @@ export interface InstanceArgs {
      */
     productVersion?: pulumi.Input<string>;
     /**
-     * Automatic renewal period, in months.
+     * Automatic renewal period, in months. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     renewPeriod?: pulumi.Input<number>;
     /**
-     * Renewal options (manual renewal, automatic renewal, no renewal).
+     * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
     renewStatus?: pulumi.Input<string>;
     /**
-     * Maximum number of Secrets.
+     * Maximum number of Secrets. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    secretNum: pulumi.Input<number>;
+    secretNum?: pulumi.Input<number>;
     /**
-     * The computation performance level of the KMS instance.
+     * The computation performance level of the KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    spec: pulumi.Input<number>;
+    spec?: pulumi.Input<number>;
     /**
      * Instance VPC id.
      */
     vpcId: pulumi.Input<string>;
     /**
-     * The number of managed accesses. The maximum number of VPCs that can access this KMS instance.
+     * The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `paymentType` is `Subscription`.
      */
-    vpcNum: pulumi.Input<number>;
+    vpcNum?: pulumi.Input<number>;
     /**
      * Instance bind vswitches.
      */

@@ -9,6 +9,7 @@ import com.pulumi.alicloud.cs.inputs.ManagedKubernetesState;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesAddon;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesCertificateAuthority;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesConnections;
+import com.pulumi.alicloud.cs.outputs.ManagedKubernetesDeleteOption;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesMaintenanceWindow;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesRrsaMetadata;
 import com.pulumi.core.Output;
@@ -185,6 +186,12 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<String>> customSan() {
         return Codegen.optional(this.customSan);
+    }
+    @Export(name="deleteOptions", refs={List.class,ManagedKubernetesDeleteOption.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ManagedKubernetesDeleteOption>> deleteOptions;
+
+    public Output<Optional<List<ManagedKubernetesDeleteOption>>> deleteOptions() {
+        return Codegen.optional(this.deleteOptions);
     }
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;

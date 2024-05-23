@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> GroupType { get; private set; } = null!;
 
         /// <summary>
-        /// Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+        /// Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
         /// </summary>
         [Output("healthCheckType")]
         public Output<string> HealthCheckType { get; private set; } = null!;
@@ -376,7 +376,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? GroupType { get; set; }
 
         /// <summary>
-        /// Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+        /// Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
@@ -579,7 +579,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? GroupType { get; set; }
 
         /// <summary>
-        /// Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+        /// Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
         /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }

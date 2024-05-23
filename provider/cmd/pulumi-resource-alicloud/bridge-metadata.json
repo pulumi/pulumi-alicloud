@@ -1831,6 +1831,9 @@
                     "api_audiences": {
                         "maxItemsOne": false
                     },
+                    "delete_options": {
+                        "maxItemsOne": false
+                    },
                     "log_config": {
                         "maxItemsOne": true
                     },
@@ -1983,6 +1986,9 @@
                         "maxItemsOne": false
                     },
                     "control_plane_log_components": {
+                        "maxItemsOne": false
+                    },
+                    "delete_options": {
                         "maxItemsOne": false
                     },
                     "log_config": {
@@ -4674,7 +4680,14 @@
                         "maxItemsOne": true
                     },
                     "network_interfaces": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "security_group_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "secondary_private_ips": {
                         "maxItemsOne": false

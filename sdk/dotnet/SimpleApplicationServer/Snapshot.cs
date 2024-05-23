@@ -30,9 +30,15 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @default = AliCloud.SimpleApplicationServer.GetImages.Invoke();
+    ///     var @default = AliCloud.SimpleApplicationServer.GetImages.Invoke(new()
+    ///     {
+    ///         Platform = "Linux",
+    ///     });
     /// 
-    ///     var defaultGetServerPlans = AliCloud.SimpleApplicationServer.GetServerPlans.Invoke();
+    ///     var defaultGetServerPlans = AliCloud.SimpleApplicationServer.GetServerPlans.Invoke(new()
+    ///     {
+    ///         Platform = "Linux",
+    ///     });
     /// 
     ///     var defaultInstance = new AliCloud.SimpleApplicationServer.Instance("default", new()
     ///     {

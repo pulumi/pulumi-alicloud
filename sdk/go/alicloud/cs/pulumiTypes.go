@@ -374,11 +374,9 @@ func (o EdgeKubernetesAddonArrayOutput) Index(i pulumi.IntInput) EdgeKubernetesA
 }
 
 type EdgeKubernetesCertificateAuthority struct {
-	// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
-	// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
-	//
-	// *Network params*
+	// The path of client key, like `~/.kube/client-key.pem`.
 	ClientKey *string `pulumi:"clientKey"`
 	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
 	ClusterCert *string `pulumi:"clusterCert"`
@@ -396,11 +394,9 @@ type EdgeKubernetesCertificateAuthorityInput interface {
 }
 
 type EdgeKubernetesCertificateAuthorityArgs struct {
-	// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
-	// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
-	//
-	// *Network params*
+	// The path of client key, like `~/.kube/client-key.pem`.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
 	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
 	ClusterCert pulumi.StringPtrInput `pulumi:"clusterCert"`
@@ -483,14 +479,12 @@ func (o EdgeKubernetesCertificateAuthorityOutput) ToEdgeKubernetesCertificateAut
 	}).(EdgeKubernetesCertificateAuthorityPtrOutput)
 }
 
-// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+// The path of client certificate, like `~/.kube/client-cert.pem`.
 func (o EdgeKubernetesCertificateAuthorityOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesCertificateAuthority) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
 }
 
-// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
-//
-// *Network params*
+// The path of client key, like `~/.kube/client-key.pem`.
 func (o EdgeKubernetesCertificateAuthorityOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesCertificateAuthority) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
@@ -524,7 +518,7 @@ func (o EdgeKubernetesCertificateAuthorityPtrOutput) Elem() EdgeKubernetesCertif
 	}).(EdgeKubernetesCertificateAuthorityOutput)
 }
 
-// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+// The path of client certificate, like `~/.kube/client-cert.pem`.
 func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) *string {
 		if v == nil {
@@ -534,9 +528,7 @@ func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
-//
-// *Network params*
+// The path of client key, like `~/.kube/client-key.pem`.
 func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) *string {
 		if v == nil {
@@ -907,9 +899,11 @@ func (o EdgeKubernetesLogConfigPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type EdgeKubernetesRuntime struct {
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
 	Name *string `pulumi:"name"`
-	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+	// The version of the runtime.
+	//
+	// The following example is the definition of runtime block:
 	Version *string `pulumi:"version"`
 }
 
@@ -925,9 +919,11 @@ type EdgeKubernetesRuntimeInput interface {
 }
 
 type EdgeKubernetesRuntimeArgs struct {
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+	// The version of the runtime.
+	//
+	// The following example is the definition of runtime block:
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -1008,12 +1004,14 @@ func (o EdgeKubernetesRuntimeOutput) ToEdgeKubernetesRuntimePtrOutputWithContext
 	}).(EdgeKubernetesRuntimePtrOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
 func (o EdgeKubernetesRuntimeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesRuntime) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+// The version of the runtime.
+//
+// The following example is the definition of runtime block:
 func (o EdgeKubernetesRuntimeOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesRuntime) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -1042,7 +1040,7 @@ func (o EdgeKubernetesRuntimePtrOutput) Elem() EdgeKubernetesRuntimeOutput {
 	}).(EdgeKubernetesRuntimeOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
 func (o EdgeKubernetesRuntimePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetesRuntime) *string {
 		if v == nil {
@@ -1052,7 +1050,9 @@ func (o EdgeKubernetesRuntimePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+// The version of the runtime.
+//
+// The following example is the definition of runtime block:
 func (o EdgeKubernetesRuntimePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetesRuntime) *string {
 		if v == nil {
@@ -1960,6 +1960,112 @@ func (o KubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type KubernetesDeleteOption struct {
+	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
+	DeleteMode *string `pulumi:"deleteMode"`
+	// The type of resources that are created by cluster. Valid values:
+	ResourceType *string `pulumi:"resourceType"`
+}
+
+// KubernetesDeleteOptionInput is an input type that accepts KubernetesDeleteOptionArgs and KubernetesDeleteOptionOutput values.
+// You can construct a concrete instance of `KubernetesDeleteOptionInput` via:
+//
+//	KubernetesDeleteOptionArgs{...}
+type KubernetesDeleteOptionInput interface {
+	pulumi.Input
+
+	ToKubernetesDeleteOptionOutput() KubernetesDeleteOptionOutput
+	ToKubernetesDeleteOptionOutputWithContext(context.Context) KubernetesDeleteOptionOutput
+}
+
+type KubernetesDeleteOptionArgs struct {
+	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
+	DeleteMode pulumi.StringPtrInput `pulumi:"deleteMode"`
+	// The type of resources that are created by cluster. Valid values:
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+}
+
+func (KubernetesDeleteOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesDeleteOption)(nil)).Elem()
+}
+
+func (i KubernetesDeleteOptionArgs) ToKubernetesDeleteOptionOutput() KubernetesDeleteOptionOutput {
+	return i.ToKubernetesDeleteOptionOutputWithContext(context.Background())
+}
+
+func (i KubernetesDeleteOptionArgs) ToKubernetesDeleteOptionOutputWithContext(ctx context.Context) KubernetesDeleteOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesDeleteOptionOutput)
+}
+
+// KubernetesDeleteOptionArrayInput is an input type that accepts KubernetesDeleteOptionArray and KubernetesDeleteOptionArrayOutput values.
+// You can construct a concrete instance of `KubernetesDeleteOptionArrayInput` via:
+//
+//	KubernetesDeleteOptionArray{ KubernetesDeleteOptionArgs{...} }
+type KubernetesDeleteOptionArrayInput interface {
+	pulumi.Input
+
+	ToKubernetesDeleteOptionArrayOutput() KubernetesDeleteOptionArrayOutput
+	ToKubernetesDeleteOptionArrayOutputWithContext(context.Context) KubernetesDeleteOptionArrayOutput
+}
+
+type KubernetesDeleteOptionArray []KubernetesDeleteOptionInput
+
+func (KubernetesDeleteOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesDeleteOption)(nil)).Elem()
+}
+
+func (i KubernetesDeleteOptionArray) ToKubernetesDeleteOptionArrayOutput() KubernetesDeleteOptionArrayOutput {
+	return i.ToKubernetesDeleteOptionArrayOutputWithContext(context.Background())
+}
+
+func (i KubernetesDeleteOptionArray) ToKubernetesDeleteOptionArrayOutputWithContext(ctx context.Context) KubernetesDeleteOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesDeleteOptionArrayOutput)
+}
+
+type KubernetesDeleteOptionOutput struct{ *pulumi.OutputState }
+
+func (KubernetesDeleteOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesDeleteOption)(nil)).Elem()
+}
+
+func (o KubernetesDeleteOptionOutput) ToKubernetesDeleteOptionOutput() KubernetesDeleteOptionOutput {
+	return o
+}
+
+func (o KubernetesDeleteOptionOutput) ToKubernetesDeleteOptionOutputWithContext(ctx context.Context) KubernetesDeleteOptionOutput {
+	return o
+}
+
+// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
+func (o KubernetesDeleteOptionOutput) DeleteMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesDeleteOption) *string { return v.DeleteMode }).(pulumi.StringPtrOutput)
+}
+
+// The type of resources that are created by cluster. Valid values:
+func (o KubernetesDeleteOptionOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesDeleteOption) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+type KubernetesDeleteOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesDeleteOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesDeleteOption)(nil)).Elem()
+}
+
+func (o KubernetesDeleteOptionArrayOutput) ToKubernetesDeleteOptionArrayOutput() KubernetesDeleteOptionArrayOutput {
+	return o
+}
+
+func (o KubernetesDeleteOptionArrayOutput) ToKubernetesDeleteOptionArrayOutputWithContext(ctx context.Context) KubernetesDeleteOptionArrayOutput {
+	return o
+}
+
+func (o KubernetesDeleteOptionArrayOutput) Index(i pulumi.IntInput) KubernetesDeleteOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesDeleteOption {
+		return vs[0].([]KubernetesDeleteOption)[vs[1].(int)]
+	}).(KubernetesDeleteOptionOutput)
+}
+
 type KubernetesMasterNode struct {
 	// ID of the node.
 	Id *string `pulumi:"id"`
@@ -2218,9 +2324,11 @@ func (o KubernetesPermissionPermissionArrayOutput) Index(i pulumi.IntInput) Kube
 }
 
 type KubernetesRuntime struct {
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
 	Name *string `pulumi:"name"`
-	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+	// The version of the runtime.
+	//
+	// The following example is the definition of runtime block:
 	Version *string `pulumi:"version"`
 }
 
@@ -2236,9 +2344,11 @@ type KubernetesRuntimeInput interface {
 }
 
 type KubernetesRuntimeArgs struct {
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+	// The version of the runtime.
+	//
+	// The following example is the definition of runtime block:
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -2319,12 +2429,14 @@ func (o KubernetesRuntimeOutput) ToKubernetesRuntimePtrOutputWithContext(ctx con
 	}).(KubernetesRuntimePtrOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
 func (o KubernetesRuntimeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesRuntime) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+// The version of the runtime.
+//
+// The following example is the definition of runtime block:
 func (o KubernetesRuntimeOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesRuntime) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -2353,7 +2465,7 @@ func (o KubernetesRuntimePtrOutput) Elem() KubernetesRuntimeOutput {
 	}).(KubernetesRuntimeOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
 func (o KubernetesRuntimePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesRuntime) *string {
 		if v == nil {
@@ -2363,7 +2475,9 @@ func (o KubernetesRuntimePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+// The version of the runtime.
+//
+// The following example is the definition of runtime block:
 func (o KubernetesRuntimePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesRuntime) *string {
 		if v == nil {
@@ -2894,6 +3008,112 @@ func (o ManagedKubernetesConnectionsPtrOutput) ServiceDomain() pulumi.StringPtrO
 		}
 		return v.ServiceDomain
 	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesDeleteOption struct {
+	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
+	DeleteMode *string `pulumi:"deleteMode"`
+	// The type of resources that are created by cluster. Valid values:
+	ResourceType *string `pulumi:"resourceType"`
+}
+
+// ManagedKubernetesDeleteOptionInput is an input type that accepts ManagedKubernetesDeleteOptionArgs and ManagedKubernetesDeleteOptionOutput values.
+// You can construct a concrete instance of `ManagedKubernetesDeleteOptionInput` via:
+//
+//	ManagedKubernetesDeleteOptionArgs{...}
+type ManagedKubernetesDeleteOptionInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesDeleteOptionOutput() ManagedKubernetesDeleteOptionOutput
+	ToManagedKubernetesDeleteOptionOutputWithContext(context.Context) ManagedKubernetesDeleteOptionOutput
+}
+
+type ManagedKubernetesDeleteOptionArgs struct {
+	// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
+	DeleteMode pulumi.StringPtrInput `pulumi:"deleteMode"`
+	// The type of resources that are created by cluster. Valid values:
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+}
+
+func (ManagedKubernetesDeleteOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesDeleteOption)(nil)).Elem()
+}
+
+func (i ManagedKubernetesDeleteOptionArgs) ToManagedKubernetesDeleteOptionOutput() ManagedKubernetesDeleteOptionOutput {
+	return i.ToManagedKubernetesDeleteOptionOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesDeleteOptionArgs) ToManagedKubernetesDeleteOptionOutputWithContext(ctx context.Context) ManagedKubernetesDeleteOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesDeleteOptionOutput)
+}
+
+// ManagedKubernetesDeleteOptionArrayInput is an input type that accepts ManagedKubernetesDeleteOptionArray and ManagedKubernetesDeleteOptionArrayOutput values.
+// You can construct a concrete instance of `ManagedKubernetesDeleteOptionArrayInput` via:
+//
+//	ManagedKubernetesDeleteOptionArray{ ManagedKubernetesDeleteOptionArgs{...} }
+type ManagedKubernetesDeleteOptionArrayInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesDeleteOptionArrayOutput() ManagedKubernetesDeleteOptionArrayOutput
+	ToManagedKubernetesDeleteOptionArrayOutputWithContext(context.Context) ManagedKubernetesDeleteOptionArrayOutput
+}
+
+type ManagedKubernetesDeleteOptionArray []ManagedKubernetesDeleteOptionInput
+
+func (ManagedKubernetesDeleteOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesDeleteOption)(nil)).Elem()
+}
+
+func (i ManagedKubernetesDeleteOptionArray) ToManagedKubernetesDeleteOptionArrayOutput() ManagedKubernetesDeleteOptionArrayOutput {
+	return i.ToManagedKubernetesDeleteOptionArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesDeleteOptionArray) ToManagedKubernetesDeleteOptionArrayOutputWithContext(ctx context.Context) ManagedKubernetesDeleteOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesDeleteOptionArrayOutput)
+}
+
+type ManagedKubernetesDeleteOptionOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesDeleteOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesDeleteOption)(nil)).Elem()
+}
+
+func (o ManagedKubernetesDeleteOptionOutput) ToManagedKubernetesDeleteOptionOutput() ManagedKubernetesDeleteOptionOutput {
+	return o
+}
+
+func (o ManagedKubernetesDeleteOptionOutput) ToManagedKubernetesDeleteOptionOutputWithContext(ctx context.Context) ManagedKubernetesDeleteOptionOutput {
+	return o
+}
+
+// The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
+func (o ManagedKubernetesDeleteOptionOutput) DeleteMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesDeleteOption) *string { return v.DeleteMode }).(pulumi.StringPtrOutput)
+}
+
+// The type of resources that are created by cluster. Valid values:
+func (o ManagedKubernetesDeleteOptionOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesDeleteOption) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesDeleteOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesDeleteOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedKubernetesDeleteOption)(nil)).Elem()
+}
+
+func (o ManagedKubernetesDeleteOptionArrayOutput) ToManagedKubernetesDeleteOptionArrayOutput() ManagedKubernetesDeleteOptionArrayOutput {
+	return o
+}
+
+func (o ManagedKubernetesDeleteOptionArrayOutput) ToManagedKubernetesDeleteOptionArrayOutputWithContext(ctx context.Context) ManagedKubernetesDeleteOptionArrayOutput {
+	return o
+}
+
+func (o ManagedKubernetesDeleteOptionArrayOutput) Index(i pulumi.IntInput) ManagedKubernetesDeleteOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedKubernetesDeleteOption {
+		return vs[0].([]ManagedKubernetesDeleteOption)[vs[1].(int)]
+	}).(ManagedKubernetesDeleteOptionOutput)
 }
 
 type ManagedKubernetesMaintenanceWindow struct {
@@ -9557,6 +9777,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesCertificateAuthorityPtrInput)(nil)).Elem(), KubernetesCertificateAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectionsInput)(nil)).Elem(), KubernetesConnectionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConnectionsPtrInput)(nil)).Elem(), KubernetesConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesDeleteOptionInput)(nil)).Elem(), KubernetesDeleteOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesDeleteOptionArrayInput)(nil)).Elem(), KubernetesDeleteOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesMasterNodeInput)(nil)).Elem(), KubernetesMasterNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesMasterNodeArrayInput)(nil)).Elem(), KubernetesMasterNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesPermissionPermissionInput)(nil)).Elem(), KubernetesPermissionPermissionArgs{})
@@ -9569,6 +9791,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesCertificateAuthorityPtrInput)(nil)).Elem(), ManagedKubernetesCertificateAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionsInput)(nil)).Elem(), ManagedKubernetesConnectionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesConnectionsPtrInput)(nil)).Elem(), ManagedKubernetesConnectionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesDeleteOptionInput)(nil)).Elem(), ManagedKubernetesDeleteOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesDeleteOptionArrayInput)(nil)).Elem(), ManagedKubernetesDeleteOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesMaintenanceWindowInput)(nil)).Elem(), ManagedKubernetesMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesMaintenanceWindowPtrInput)(nil)).Elem(), ManagedKubernetesMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRrsaMetadataInput)(nil)).Elem(), ManagedKubernetesRrsaMetadataArgs{})
@@ -9674,6 +9898,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesCertificateAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesConnectionsOutput{})
 	pulumi.RegisterOutputType(KubernetesConnectionsPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesDeleteOptionOutput{})
+	pulumi.RegisterOutputType(KubernetesDeleteOptionArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesMasterNodeOutput{})
 	pulumi.RegisterOutputType(KubernetesMasterNodeArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesPermissionPermissionOutput{})
@@ -9686,6 +9912,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesCertificateAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesConnectionsPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesDeleteOptionOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesDeleteOptionArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesRrsaMetadataOutput{})

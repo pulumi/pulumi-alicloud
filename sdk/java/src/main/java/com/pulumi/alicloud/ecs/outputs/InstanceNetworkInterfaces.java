@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ecs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,21 @@ public final class InstanceNetworkInterfaces {
      * 
      */
     private @Nullable String networkInterfaceId;
+    /**
+     * @return The communication mode of the ENI. Default value: `Standard`. Valid values:
+     * 
+     */
+    private @Nullable String networkInterfaceTrafficMode;
+    /**
+     * @return The ID of security group N to which to assign ENI N.
+     * 
+     */
+    private @Nullable List<String> securityGroupIds;
+    /**
+     * @return The ID of the vSwitch to which to connect ENI N.
+     * 
+     */
+    private @Nullable String vswitchId;
 
     private InstanceNetworkInterfaces() {}
     /**
@@ -24,6 +40,27 @@ public final class InstanceNetworkInterfaces {
      */
     public Optional<String> networkInterfaceId() {
         return Optional.ofNullable(this.networkInterfaceId);
+    }
+    /**
+     * @return The communication mode of the ENI. Default value: `Standard`. Valid values:
+     * 
+     */
+    public Optional<String> networkInterfaceTrafficMode() {
+        return Optional.ofNullable(this.networkInterfaceTrafficMode);
+    }
+    /**
+     * @return The ID of security group N to which to assign ENI N.
+     * 
+     */
+    public List<String> securityGroupIds() {
+        return this.securityGroupIds == null ? List.of() : this.securityGroupIds;
+    }
+    /**
+     * @return The ID of the vSwitch to which to connect ENI N.
+     * 
+     */
+    public Optional<String> vswitchId() {
+        return Optional.ofNullable(this.vswitchId);
     }
 
     public static Builder builder() {
@@ -36,10 +73,16 @@ public final class InstanceNetworkInterfaces {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String networkInterfaceId;
+        private @Nullable String networkInterfaceTrafficMode;
+        private @Nullable List<String> securityGroupIds;
+        private @Nullable String vswitchId;
         public Builder() {}
         public Builder(InstanceNetworkInterfaces defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.networkInterfaceId = defaults.networkInterfaceId;
+    	      this.networkInterfaceTrafficMode = defaults.networkInterfaceTrafficMode;
+    	      this.securityGroupIds = defaults.securityGroupIds;
+    	      this.vswitchId = defaults.vswitchId;
         }
 
         @CustomType.Setter
@@ -48,9 +91,33 @@ public final class InstanceNetworkInterfaces {
             this.networkInterfaceId = networkInterfaceId;
             return this;
         }
+        @CustomType.Setter
+        public Builder networkInterfaceTrafficMode(@Nullable String networkInterfaceTrafficMode) {
+
+            this.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder securityGroupIds(@Nullable List<String> securityGroupIds) {
+
+            this.securityGroupIds = securityGroupIds;
+            return this;
+        }
+        public Builder securityGroupIds(String... securityGroupIds) {
+            return securityGroupIds(List.of(securityGroupIds));
+        }
+        @CustomType.Setter
+        public Builder vswitchId(@Nullable String vswitchId) {
+
+            this.vswitchId = vswitchId;
+            return this;
+        }
         public InstanceNetworkInterfaces build() {
             final var _resultValue = new InstanceNetworkInterfaces();
             _resultValue.networkInterfaceId = networkInterfaceId;
+            _resultValue.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
+            _resultValue.securityGroupIds = securityGroupIds;
+            _resultValue.vswitchId = vswitchId;
             return _resultValue;
         }
     }

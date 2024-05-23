@@ -42,6 +42,13 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.addressName);
     }
 
+    @Import(name="allocationId")
+    private @Nullable Output<String> allocationId;
+
+    public Optional<Output<String>> allocationId() {
+        return Optional.ofNullable(this.allocationId);
+    }
+
     @Import(name="autoPay")
     private @Nullable Output<Boolean> autoPay;
 
@@ -194,6 +201,13 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.logStore);
     }
 
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+
     /**
      * It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
      * 
@@ -334,6 +348,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
     private EipState(EipState $) {
         this.activityId = $.activityId;
         this.addressName = $.addressName;
+        this.allocationId = $.allocationId;
         this.autoPay = $.autoPay;
         this.bandwidth = $.bandwidth;
         this.createTime = $.createTime;
@@ -346,6 +361,7 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
         this.isp = $.isp;
         this.logProject = $.logProject;
         this.logStore = $.logStore;
+        this.mode = $.mode;
         this.name = $.name;
         this.netmode = $.netmode;
         this.paymentType = $.paymentType;
@@ -405,6 +421,15 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder addressName(String addressName) {
             return addressName(Output.of(addressName));
+        }
+
+        public Builder allocationId(@Nullable Output<String> allocationId) {
+            $.allocationId = allocationId;
+            return this;
+        }
+
+        public Builder allocationId(String allocationId) {
+            return allocationId(Output.of(allocationId));
         }
 
         public Builder autoPay(@Nullable Output<Boolean> autoPay) {
@@ -609,6 +634,15 @@ public final class EipState extends com.pulumi.resources.ResourceArgs {
 
         public Builder logStore(String logStore) {
             return logStore(Output.of(logStore));
+        }
+
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
         }
 
         /**

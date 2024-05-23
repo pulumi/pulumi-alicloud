@@ -28,6 +28,7 @@ class ManagedKubernetesArgs:
                  control_plane_log_project: Optional[pulumi.Input[str]] = None,
                  control_plane_log_ttl: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
+                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[str]] = None,
@@ -82,6 +83,8 @@ class ManagedKubernetesArgs:
             pulumi.set(__self__, "control_plane_log_ttl", control_plane_log_ttl)
         if custom_san is not None:
             pulumi.set(__self__, "custom_san", custom_san)
+        if delete_options is not None:
+            pulumi.set(__self__, "delete_options", delete_options)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if enable_rrsa is not None:
@@ -245,6 +248,15 @@ class ManagedKubernetesArgs:
     @custom_san.setter
     def custom_san(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_san", value)
+
+    @property
+    @pulumi.getter(name="deleteOptions")
+    def delete_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]]:
+        return pulumi.get(self, "delete_options")
+
+    @delete_options.setter
+    def delete_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]]):
+        pulumi.set(self, "delete_options", value)
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -476,6 +488,7 @@ class _ManagedKubernetesState:
                  control_plane_log_project: Optional[pulumi.Input[str]] = None,
                  control_plane_log_ttl: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
+                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[str]] = None,
@@ -550,6 +563,8 @@ class _ManagedKubernetesState:
             pulumi.set(__self__, "control_plane_log_ttl", control_plane_log_ttl)
         if custom_san is not None:
             pulumi.set(__self__, "custom_san", custom_san)
+        if delete_options is not None:
+            pulumi.set(__self__, "delete_options", delete_options)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if enable_rrsa is not None:
@@ -744,6 +759,15 @@ class _ManagedKubernetesState:
     @custom_san.setter
     def custom_san(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_san", value)
+
+    @property
+    @pulumi.getter(name="deleteOptions")
+    def delete_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]]:
+        return pulumi.get(self, "delete_options")
+
+    @delete_options.setter
+    def delete_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedKubernetesDeleteOptionArgs']]]]):
+        pulumi.set(self, "delete_options", value)
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -1068,6 +1092,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  control_plane_log_project: Optional[pulumi.Input[str]] = None,
                  control_plane_log_ttl: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
+                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesDeleteOptionArgs']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[str]] = None,
@@ -1215,6 +1240,7 @@ class ManagedKubernetes(pulumi.CustomResource):
                  control_plane_log_project: Optional[pulumi.Input[str]] = None,
                  control_plane_log_ttl: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
+                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesDeleteOptionArgs']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_rrsa: Optional[pulumi.Input[bool]] = None,
                  encryption_provider_key: Optional[pulumi.Input[str]] = None,
@@ -1259,6 +1285,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             __props__.__dict__["control_plane_log_project"] = control_plane_log_project
             __props__.__dict__["control_plane_log_ttl"] = control_plane_log_ttl
             __props__.__dict__["custom_san"] = custom_san
+            __props__.__dict__["delete_options"] = delete_options
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["enable_rrsa"] = enable_rrsa
             __props__.__dict__["encryption_provider_key"] = encryption_provider_key
@@ -1317,6 +1344,7 @@ class ManagedKubernetes(pulumi.CustomResource):
             control_plane_log_project: Optional[pulumi.Input[str]] = None,
             control_plane_log_ttl: Optional[pulumi.Input[str]] = None,
             custom_san: Optional[pulumi.Input[str]] = None,
+            delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedKubernetesDeleteOptionArgs']]]]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             enable_rrsa: Optional[pulumi.Input[bool]] = None,
             encryption_provider_key: Optional[pulumi.Input[str]] = None,
@@ -1387,6 +1415,7 @@ class ManagedKubernetes(pulumi.CustomResource):
         __props__.__dict__["control_plane_log_project"] = control_plane_log_project
         __props__.__dict__["control_plane_log_ttl"] = control_plane_log_ttl
         __props__.__dict__["custom_san"] = custom_san
+        __props__.__dict__["delete_options"] = delete_options
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["enable_rrsa"] = enable_rrsa
         __props__.__dict__["encryption_provider_key"] = encryption_provider_key
@@ -1499,6 +1528,11 @@ class ManagedKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="customSan")
     def custom_san(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "custom_san")
+
+    @property
+    @pulumi.getter(name="deleteOptions")
+    def delete_options(self) -> pulumi.Output[Optional[Sequence['outputs.ManagedKubernetesDeleteOption']]]:
+        return pulumi.get(self, "delete_options")
 
     @property
     @pulumi.getter(name="deletionProtection")

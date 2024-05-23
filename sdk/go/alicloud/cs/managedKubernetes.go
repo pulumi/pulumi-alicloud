@@ -67,13 +67,14 @@ type ManagedKubernetes struct {
 	ClusterDomain pulumi.StringPtrOutput `pulumi:"clusterDomain"`
 	ClusterSpec   pulumi.StringOutput    `pulumi:"clusterSpec"`
 	// Map of kubernetes cluster connection information.
-	Connections               ManagedKubernetesConnectionsOutput `pulumi:"connections"`
-	ControlPlaneLogComponents pulumi.StringArrayOutput           `pulumi:"controlPlaneLogComponents"`
-	ControlPlaneLogProject    pulumi.StringOutput                `pulumi:"controlPlaneLogProject"`
-	ControlPlaneLogTtl        pulumi.StringOutput                `pulumi:"controlPlaneLogTtl"`
-	CustomSan                 pulumi.StringPtrOutput             `pulumi:"customSan"`
-	DeletionProtection        pulumi.BoolPtrOutput               `pulumi:"deletionProtection"`
-	EnableRrsa                pulumi.BoolPtrOutput               `pulumi:"enableRrsa"`
+	Connections               ManagedKubernetesConnectionsOutput       `pulumi:"connections"`
+	ControlPlaneLogComponents pulumi.StringArrayOutput                 `pulumi:"controlPlaneLogComponents"`
+	ControlPlaneLogProject    pulumi.StringOutput                      `pulumi:"controlPlaneLogProject"`
+	ControlPlaneLogTtl        pulumi.StringOutput                      `pulumi:"controlPlaneLogTtl"`
+	CustomSan                 pulumi.StringPtrOutput                   `pulumi:"customSan"`
+	DeleteOptions             ManagedKubernetesDeleteOptionArrayOutput `pulumi:"deleteOptions"`
+	DeletionProtection        pulumi.BoolPtrOutput                     `pulumi:"deletionProtection"`
+	EnableRrsa                pulumi.BoolPtrOutput                     `pulumi:"enableRrsa"`
 	// disk encryption key, only in ack-pro
 	EncryptionProviderKey     pulumi.StringPtrOutput                   `pulumi:"encryptionProviderKey"`
 	IsEnterpriseSecurityGroup pulumi.BoolOutput                        `pulumi:"isEnterpriseSecurityGroup"`
@@ -160,13 +161,14 @@ type managedKubernetesState struct {
 	ClusterDomain *string `pulumi:"clusterDomain"`
 	ClusterSpec   *string `pulumi:"clusterSpec"`
 	// Map of kubernetes cluster connection information.
-	Connections               *ManagedKubernetesConnections `pulumi:"connections"`
-	ControlPlaneLogComponents []string                      `pulumi:"controlPlaneLogComponents"`
-	ControlPlaneLogProject    *string                       `pulumi:"controlPlaneLogProject"`
-	ControlPlaneLogTtl        *string                       `pulumi:"controlPlaneLogTtl"`
-	CustomSan                 *string                       `pulumi:"customSan"`
-	DeletionProtection        *bool                         `pulumi:"deletionProtection"`
-	EnableRrsa                *bool                         `pulumi:"enableRrsa"`
+	Connections               *ManagedKubernetesConnections   `pulumi:"connections"`
+	ControlPlaneLogComponents []string                        `pulumi:"controlPlaneLogComponents"`
+	ControlPlaneLogProject    *string                         `pulumi:"controlPlaneLogProject"`
+	ControlPlaneLogTtl        *string                         `pulumi:"controlPlaneLogTtl"`
+	CustomSan                 *string                         `pulumi:"customSan"`
+	DeleteOptions             []ManagedKubernetesDeleteOption `pulumi:"deleteOptions"`
+	DeletionProtection        *bool                           `pulumi:"deletionProtection"`
+	EnableRrsa                *bool                           `pulumi:"enableRrsa"`
 	// disk encryption key, only in ack-pro
 	EncryptionProviderKey     *string                             `pulumi:"encryptionProviderKey"`
 	IsEnterpriseSecurityGroup *bool                               `pulumi:"isEnterpriseSecurityGroup"`
@@ -226,6 +228,7 @@ type ManagedKubernetesState struct {
 	ControlPlaneLogProject    pulumi.StringPtrInput
 	ControlPlaneLogTtl        pulumi.StringPtrInput
 	CustomSan                 pulumi.StringPtrInput
+	DeleteOptions             ManagedKubernetesDeleteOptionArrayInput
 	DeletionProtection        pulumi.BoolPtrInput
 	EnableRrsa                pulumi.BoolPtrInput
 	// disk encryption key, only in ack-pro
@@ -281,14 +284,15 @@ type managedKubernetesArgs struct {
 	ClientKey     *string `pulumi:"clientKey"`
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
 	// cluster local domain
-	ClusterDomain             *string  `pulumi:"clusterDomain"`
-	ClusterSpec               *string  `pulumi:"clusterSpec"`
-	ControlPlaneLogComponents []string `pulumi:"controlPlaneLogComponents"`
-	ControlPlaneLogProject    *string  `pulumi:"controlPlaneLogProject"`
-	ControlPlaneLogTtl        *string  `pulumi:"controlPlaneLogTtl"`
-	CustomSan                 *string  `pulumi:"customSan"`
-	DeletionProtection        *bool    `pulumi:"deletionProtection"`
-	EnableRrsa                *bool    `pulumi:"enableRrsa"`
+	ClusterDomain             *string                         `pulumi:"clusterDomain"`
+	ClusterSpec               *string                         `pulumi:"clusterSpec"`
+	ControlPlaneLogComponents []string                        `pulumi:"controlPlaneLogComponents"`
+	ControlPlaneLogProject    *string                         `pulumi:"controlPlaneLogProject"`
+	ControlPlaneLogTtl        *string                         `pulumi:"controlPlaneLogTtl"`
+	CustomSan                 *string                         `pulumi:"customSan"`
+	DeleteOptions             []ManagedKubernetesDeleteOption `pulumi:"deleteOptions"`
+	DeletionProtection        *bool                           `pulumi:"deletionProtection"`
+	EnableRrsa                *bool                           `pulumi:"enableRrsa"`
 	// disk encryption key, only in ack-pro
 	EncryptionProviderKey     *string                             `pulumi:"encryptionProviderKey"`
 	IsEnterpriseSecurityGroup *bool                               `pulumi:"isEnterpriseSecurityGroup"`
@@ -331,6 +335,7 @@ type ManagedKubernetesArgs struct {
 	ControlPlaneLogProject    pulumi.StringPtrInput
 	ControlPlaneLogTtl        pulumi.StringPtrInput
 	CustomSan                 pulumi.StringPtrInput
+	DeleteOptions             ManagedKubernetesDeleteOptionArrayInput
 	DeletionProtection        pulumi.BoolPtrInput
 	EnableRrsa                pulumi.BoolPtrInput
 	// disk encryption key, only in ack-pro
@@ -501,6 +506,10 @@ func (o ManagedKubernetesOutput) ControlPlaneLogTtl() pulumi.StringOutput {
 
 func (o ManagedKubernetesOutput) CustomSan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringPtrOutput { return v.CustomSan }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedKubernetesOutput) DeleteOptions() ManagedKubernetesDeleteOptionArrayOutput {
+	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesDeleteOptionArrayOutput { return v.DeleteOptions }).(ManagedKubernetesDeleteOptionArrayOutput)
 }
 
 func (o ManagedKubernetesOutput) DeletionProtection() pulumi.BoolPtrOutput {

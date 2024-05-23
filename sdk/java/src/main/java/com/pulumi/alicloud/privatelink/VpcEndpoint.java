@@ -38,14 +38,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.privatelink.VpcEndpointService;
- * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.privatelink.VpcEndpoint;
  * import com.pulumi.alicloud.privatelink.VpcEndpointArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,28 +61,47 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
- *         var example = new VpcEndpointService("example", VpcEndpointServiceArgs.builder()        
- *             .serviceDescription(name)
- *             .connectBandwidth(103)
- *             .autoAcceptConnection(false)
- *             .build());
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var defaultbFzA4a = new Network("defaultbFzA4a", NetworkArgs.builder()        
+ *             .description("example-terraform")
+ *             .cidrBlock("172.16.0.0/12")
  *             .vpcName(name)
- *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()        
+ *         var default1FTFrP = new SecurityGroup("default1FTFrP", SecurityGroupArgs.builder()        
  *             .name(name)
- *             .vpcId(exampleNetwork.id())
+ *             .vpcId(defaultbFzA4a.id())
  *             .build());
  * 
- *         var exampleVpcEndpoint = new VpcEndpoint("exampleVpcEndpoint", VpcEndpointArgs.builder()        
- *             .serviceId(example.id())
- *             .securityGroupIds(exampleSecurityGroup.id())
- *             .vpcId(exampleNetwork.id())
+ *         var defaultjljY5S = new SecurityGroup("defaultjljY5S", SecurityGroupArgs.builder()        
+ *             .name(name)
+ *             .vpcId(defaultbFzA4a.id())
+ *             .build());
+ * 
+ *         var defaultVpcEndpoint = new VpcEndpoint("defaultVpcEndpoint", VpcEndpointArgs.builder()        
+ *             .endpointDescription(name)
  *             .vpcEndpointName(name)
+ *             .resourceGroupId(default_.ids()[0])
+ *             .endpointType("Interface")
+ *             .vpcId(defaultbFzA4a.id())
+ *             .serviceName("com.aliyuncs.privatelink.ap-southeast-5.oss")
+ *             .dryRun("false")
+ *             .zonePrivateIpAddressCount("1")
+ *             .policyDocument(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("Version", "1"),
+ *                     jsonProperty("Statement", jsonArray(jsonObject(
+ *                         jsonProperty("Effect", "Allow"),
+ *                         jsonProperty("Action", jsonArray("*")),
+ *                         jsonProperty("Resource", jsonArray("*")),
+ *                         jsonProperty("Principal", "*")
+ *                     )))
+ *                 )))
+ *             .securityGroupIds(default1FTFrP.id())
+ *             .serviceId("epsrv-k1apjysze8u1l9t6uyg9")
+ *             .protectedEnabled("false")
  *             .build());
  * 
  *     }
@@ -102,14 +122,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:privatelink/vpcEndpoint:VpcEndpoint")
 public class VpcEndpoint extends com.pulumi.resources.CustomResource {
     /**
-     * The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+     * The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
      * 
      */
     @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
-     * @return The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+     * @return The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
      * 
      */
     public Output<Integer> bandwidth() {
@@ -204,18 +224,32 @@ public class VpcEndpoint extends com.pulumi.resources.CustomResource {
         return this.endpointDomain;
     }
     /**
-     * The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      * 
      */
     @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
-     * @return The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * @return The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
      * 
      */
     public Output<String> endpointType() {
         return this.endpointType;
+    }
+    /**
+     * RAM access policies.
+     * 
+     */
+    @Export(name="policyDocument", refs={String.class}, tree="[0]")
+    private Output<String> policyDocument;
+
+    /**
+     * @return RAM access policies.
+     * 
+     */
+    public Output<String> policyDocument() {
+        return this.policyDocument;
     }
     /**
      * Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:

@@ -25,6 +25,7 @@ class KubernetesArgs:
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
                  cluster_domain: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
+                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesDeleteOptionArgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_ssh: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -81,6 +82,7 @@ class KubernetesArgs:
                *Removed params*
         :param pulumi.Input[str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesDeleteOptionArgs']]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] enable_ssh: Enable login to the node through SSH. Default to `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -113,7 +115,7 @@ class KubernetesArgs:
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input['KubernetesRuntimeArgs'] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        :param pulumi.Input['KubernetesRuntimeArgs'] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -144,6 +146,8 @@ class KubernetesArgs:
             pulumi.set(__self__, "cluster_domain", cluster_domain)
         if custom_san is not None:
             pulumi.set(__self__, "custom_san", custom_san)
+        if delete_options is not None:
+            pulumi.set(__self__, "delete_options", delete_options)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if enable_ssh is not None:
@@ -341,6 +345,18 @@ class KubernetesArgs:
     @custom_san.setter
     def custom_san(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_san", value)
+
+    @property
+    @pulumi.getter(name="deleteOptions")
+    def delete_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesDeleteOptionArgs']]]]:
+        """
+        Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        """
+        return pulumi.get(self, "delete_options")
+
+    @delete_options.setter
+    def delete_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesDeleteOptionArgs']]]]):
+        pulumi.set(self, "delete_options", value)
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -729,7 +745,7 @@ class KubernetesArgs:
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input['KubernetesRuntimeArgs']]:
         """
-        The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         """
         return pulumi.get(self, "runtime")
 
@@ -851,6 +867,7 @@ class _KubernetesState:
                  cluster_domain: Optional[pulumi.Input[str]] = None,
                  connections: Optional[pulumi.Input['KubernetesConnectionsArgs']] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
+                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesDeleteOptionArgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_ssh: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -916,6 +933,7 @@ class _KubernetesState:
         :param pulumi.Input[str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input['KubernetesConnectionsArgs'] connections: (Map) Map of kubernetes cluster connection information.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesDeleteOptionArgs']]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] enable_ssh: Enable login to the node through SSH. Default to `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -952,7 +970,7 @@ class _KubernetesState:
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input['KubernetesRuntimeArgs'] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        :param pulumi.Input['KubernetesRuntimeArgs'] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -990,6 +1008,8 @@ class _KubernetesState:
             pulumi.set(__self__, "connections", connections)
         if custom_san is not None:
             pulumi.set(__self__, "custom_san", custom_san)
+        if delete_options is not None:
+            pulumi.set(__self__, "delete_options", delete_options)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if enable_ssh is not None:
@@ -1205,6 +1225,18 @@ class _KubernetesState:
     @custom_san.setter
     def custom_san(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_san", value)
+
+    @property
+    @pulumi.getter(name="deleteOptions")
+    def delete_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesDeleteOptionArgs']]]]:
+        """
+        Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        """
+        return pulumi.get(self, "delete_options")
+
+    @delete_options.setter
+    def delete_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesDeleteOptionArgs']]]]):
+        pulumi.set(self, "delete_options", value)
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -1641,7 +1673,7 @@ class _KubernetesState:
     @pulumi.getter
     def runtime(self) -> Optional[pulumi.Input['KubernetesRuntimeArgs']]:
         """
-        The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         """
         return pulumi.get(self, "runtime")
 
@@ -1823,6 +1855,7 @@ class Kubernetes(pulumi.CustomResource):
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
                  cluster_domain: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
+                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesDeleteOptionArgs']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_ssh: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -1923,6 +1956,7 @@ class Kubernetes(pulumi.CustomResource):
                *Removed params*
         :param pulumi.Input[str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesDeleteOptionArgs']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] enable_ssh: Enable login to the node through SSH. Default to `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -1957,7 +1991,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['KubernetesRuntimeArgs']] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        :param pulumi.Input[pulumi.InputType['KubernetesRuntimeArgs']] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -2043,6 +2077,7 @@ class Kubernetes(pulumi.CustomResource):
                  cluster_ca_cert: Optional[pulumi.Input[str]] = None,
                  cluster_domain: Optional[pulumi.Input[str]] = None,
                  custom_san: Optional[pulumi.Input[str]] = None,
+                 delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesDeleteOptionArgs']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable_ssh: Optional[pulumi.Input[bool]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
@@ -2102,6 +2137,7 @@ class Kubernetes(pulumi.CustomResource):
             __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
             __props__.__dict__["cluster_domain"] = cluster_domain
             __props__.__dict__["custom_san"] = custom_san
+            __props__.__dict__["delete_options"] = delete_options
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["enable_ssh"] = enable_ssh
             __props__.__dict__["image_id"] = image_id
@@ -2179,6 +2215,7 @@ class Kubernetes(pulumi.CustomResource):
             cluster_domain: Optional[pulumi.Input[str]] = None,
             connections: Optional[pulumi.Input[pulumi.InputType['KubernetesConnectionsArgs']]] = None,
             custom_san: Optional[pulumi.Input[str]] = None,
+            delete_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesDeleteOptionArgs']]]]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             enable_ssh: Optional[pulumi.Input[bool]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
@@ -2249,6 +2286,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
         :param pulumi.Input[pulumi.InputType['KubernetesConnectionsArgs']] connections: (Map) Map of kubernetes cluster connection information.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesDeleteOptionArgs']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] enable_ssh: Enable login to the node through SSH. Default to `false`.
         :param pulumi.Input[str] image_id: Custom Image support. Must based on CentOS7 or AliyunLinux2.
@@ -2285,7 +2323,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] proxy_mode: Proxy mode is option of kube-proxy. options: iptables | ipvs. default: ipvs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: RDS instance list, You can choose which RDS instances whitelist to add instances to.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        :param pulumi.Input[pulumi.InputType['KubernetesRuntimeArgs']] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        :param pulumi.Input[pulumi.InputType['KubernetesRuntimeArgs']] runtime: The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
@@ -2318,6 +2356,7 @@ class Kubernetes(pulumi.CustomResource):
         __props__.__dict__["cluster_domain"] = cluster_domain
         __props__.__dict__["connections"] = connections
         __props__.__dict__["custom_san"] = custom_san
+        __props__.__dict__["delete_options"] = delete_options
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["enable_ssh"] = enable_ssh
         __props__.__dict__["image_id"] = image_id
@@ -2445,6 +2484,14 @@ class Kubernetes(pulumi.CustomResource):
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         """
         return pulumi.get(self, "custom_san")
+
+    @property
+    @pulumi.getter(name="deleteOptions")
+    def delete_options(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesDeleteOption']]]:
+        """
+        Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
+        """
+        return pulumi.get(self, "delete_options")
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -2737,7 +2784,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter
     def runtime(self) -> pulumi.Output[Optional['outputs.KubernetesRuntime']]:
         """
-        The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). Detailed below.
+        The runtime of containers. If you select another container runtime, see [How do I select between Docker and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm?spm=a2c63.p38356.b99.440.22563866AJkBgI). See `runtime` below.
         """
         return pulumi.get(self, "runtime")
 

@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public Input<string>? AutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` and `cloud`.
+        /// Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }

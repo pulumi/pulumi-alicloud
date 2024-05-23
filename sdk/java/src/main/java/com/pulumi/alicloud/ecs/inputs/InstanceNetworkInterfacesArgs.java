@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ecs.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,58 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.networkInterfaceId);
     }
 
+    /**
+     * The communication mode of the ENI. Default value: `Standard`. Valid values:
+     * 
+     */
+    @Import(name="networkInterfaceTrafficMode")
+    private @Nullable Output<String> networkInterfaceTrafficMode;
+
+    /**
+     * @return The communication mode of the ENI. Default value: `Standard`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> networkInterfaceTrafficMode() {
+        return Optional.ofNullable(this.networkInterfaceTrafficMode);
+    }
+
+    /**
+     * The ID of security group N to which to assign ENI N.
+     * 
+     */
+    @Import(name="securityGroupIds")
+    private @Nullable Output<List<String>> securityGroupIds;
+
+    /**
+     * @return The ID of security group N to which to assign ENI N.
+     * 
+     */
+    public Optional<Output<List<String>>> securityGroupIds() {
+        return Optional.ofNullable(this.securityGroupIds);
+    }
+
+    /**
+     * The ID of the vSwitch to which to connect ENI N.
+     * 
+     */
+    @Import(name="vswitchId")
+    private @Nullable Output<String> vswitchId;
+
+    /**
+     * @return The ID of the vSwitch to which to connect ENI N.
+     * 
+     */
+    public Optional<Output<String>> vswitchId() {
+        return Optional.ofNullable(this.vswitchId);
+    }
+
     private InstanceNetworkInterfacesArgs() {}
 
     private InstanceNetworkInterfacesArgs(InstanceNetworkInterfacesArgs $) {
         this.networkInterfaceId = $.networkInterfaceId;
+        this.networkInterfaceTrafficMode = $.networkInterfaceTrafficMode;
+        this.securityGroupIds = $.securityGroupIds;
+        this.vswitchId = $.vswitchId;
     }
 
     public static Builder builder() {
@@ -73,6 +122,79 @@ public final class InstanceNetworkInterfacesArgs extends com.pulumi.resources.Re
          */
         public Builder networkInterfaceId(String networkInterfaceId) {
             return networkInterfaceId(Output.of(networkInterfaceId));
+        }
+
+        /**
+         * @param networkInterfaceTrafficMode The communication mode of the ENI. Default value: `Standard`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaceTrafficMode(@Nullable Output<String> networkInterfaceTrafficMode) {
+            $.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
+            return this;
+        }
+
+        /**
+         * @param networkInterfaceTrafficMode The communication mode of the ENI. Default value: `Standard`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaceTrafficMode(String networkInterfaceTrafficMode) {
+            return networkInterfaceTrafficMode(Output.of(networkInterfaceTrafficMode));
+        }
+
+        /**
+         * @param securityGroupIds The ID of security group N to which to assign ENI N.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupIds(@Nullable Output<List<String>> securityGroupIds) {
+            $.securityGroupIds = securityGroupIds;
+            return this;
+        }
+
+        /**
+         * @param securityGroupIds The ID of security group N to which to assign ENI N.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupIds(List<String> securityGroupIds) {
+            return securityGroupIds(Output.of(securityGroupIds));
+        }
+
+        /**
+         * @param securityGroupIds The ID of security group N to which to assign ENI N.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupIds(String... securityGroupIds) {
+            return securityGroupIds(List.of(securityGroupIds));
+        }
+
+        /**
+         * @param vswitchId The ID of the vSwitch to which to connect ENI N.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchId(@Nullable Output<String> vswitchId) {
+            $.vswitchId = vswitchId;
+            return this;
+        }
+
+        /**
+         * @param vswitchId The ID of the vSwitch to which to connect ENI N.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitchId(String vswitchId) {
+            return vswitchId(Output.of(vswitchId));
         }
 
         public InstanceNetworkInterfacesArgs build() {

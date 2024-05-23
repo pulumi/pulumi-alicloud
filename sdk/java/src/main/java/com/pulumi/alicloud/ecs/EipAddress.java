@@ -60,6 +60,20 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
         return this.addressName;
     }
     /**
+     * The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+     * 
+     */
+    @Export(name="allocationId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> allocationId;
+
+    /**
+     * @return The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+     * 
+     */
+    public Output<Optional<String>> allocationId() {
+        return Codegen.optional(this.allocationId);
+    }
+    /**
      * Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
      * 
      */
@@ -242,6 +256,26 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> logStore() {
         return Codegen.optional(this.logStore);
+    }
+    /**
+     * Binding mode, value:
+     * - **NAT** (default):NAT mode (normal mode).
+     * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+     * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+     * 
+     */
+    @Export(name="mode", refs={String.class}, tree="[0]")
+    private Output<String> mode;
+
+    /**
+     * @return Binding mode, value:
+     * - **NAT** (default):NAT mode (normal mode).
+     * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+     * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+     * 
+     */
+    public Output<String> mode() {
+        return this.mode;
     }
     /**
      * . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.

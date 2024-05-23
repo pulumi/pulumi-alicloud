@@ -12,26 +12,30 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KubernetesRuntime {
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
      * 
      */
     private @Nullable String name;
     /**
-     * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     * @return The version of the runtime.
+     * 
+     * The following example is the definition of runtime block:
      * 
      */
     private @Nullable String version;
 
     private KubernetesRuntime() {}
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     * @return The version of the runtime.
+     * 
+     * The following example is the definition of runtime block:
      * 
      */
     public Optional<String> version() {

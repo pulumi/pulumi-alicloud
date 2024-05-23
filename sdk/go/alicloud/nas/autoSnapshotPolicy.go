@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Network Attached Storage (NAS) Auto Snapshot Policy resource.
+// Provides a NAS Auto Snapshot Policy resource. Automatic snapshot policy.
 //
-// For information about Network Attached Storage (NAS) Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html).
+// For information about NAS Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/135662.html)).
 //
-// > **NOTE:** Available in v1.153.0+.
+// > **NOTE:** Available since v1.153.0.
 //
 // ## Example Usage
 //
@@ -29,24 +29,31 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nas"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := nas.NewAutoSnapshotPolicy(ctx, "example", &nas.AutoSnapshotPolicyArgs{
-//				AutoSnapshotPolicyName: pulumi.String("example_value"),
-//				RepeatWeekdays: pulumi.StringArray{
-//					pulumi.String("3"),
-//					pulumi.String("4"),
-//					pulumi.String("5"),
-//				},
-//				RetentionDays: pulumi.Int(30),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := nas.NewAutoSnapshotPolicy(ctx, "default", &nas.AutoSnapshotPolicyArgs{
 //				TimePoints: pulumi.StringArray{
+//					pulumi.String("0"),
+//					pulumi.String("1"),
+//					pulumi.String("2"),
+//				},
+//				RetentionDays: pulumi.Int(1),
+//				RepeatWeekdays: pulumi.StringArray{
+//					pulumi.String("2"),
 //					pulumi.String("3"),
 //					pulumi.String("4"),
-//					pulumi.String("5"),
 //				},
+//				AutoSnapshotPolicyName: pulumi.String(name),
+//				FileSystemType:         pulumi.String("extreme"),
 //			})
 //			if err != nil {
 //				return err
@@ -59,7 +66,7 @@ import (
 //
 // ## Import
 //
-// Network Attached Storage (NAS) Auto Snapshot Policy can be imported using the id, e.g.
+// NAS Auto Snapshot Policy can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:nas/autoSnapshotPolicy:AutoSnapshotPolicy example <id>
@@ -73,6 +80,10 @@ type AutoSnapshotPolicy struct {
 	// - The name can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
 	// - The value of this parameter is empty by default.
 	AutoSnapshotPolicyName pulumi.StringPtrOutput `pulumi:"autoSnapshotPolicyName"`
+	// Creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The file system type.
+	FileSystemType pulumi.StringOutput `pulumi:"fileSystemType"`
 	// The day on which an auto snapshot is created.
 	// - A maximum of 7 time points can be selected.
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
@@ -130,6 +141,10 @@ type autoSnapshotPolicyState struct {
 	// - The name can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
 	// - The value of this parameter is empty by default.
 	AutoSnapshotPolicyName *string `pulumi:"autoSnapshotPolicyName"`
+	// Creation time.
+	CreateTime *string `pulumi:"createTime"`
+	// The file system type.
+	FileSystemType *string `pulumi:"fileSystemType"`
 	// The day on which an auto snapshot is created.
 	// - A maximum of 7 time points can be selected.
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
@@ -152,6 +167,10 @@ type AutoSnapshotPolicyState struct {
 	// - The name can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
 	// - The value of this parameter is empty by default.
 	AutoSnapshotPolicyName pulumi.StringPtrInput
+	// Creation time.
+	CreateTime pulumi.StringPtrInput
+	// The file system type.
+	FileSystemType pulumi.StringPtrInput
 	// The day on which an auto snapshot is created.
 	// - A maximum of 7 time points can be selected.
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
@@ -178,6 +197,8 @@ type autoSnapshotPolicyArgs struct {
 	// - The name can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
 	// - The value of this parameter is empty by default.
 	AutoSnapshotPolicyName *string `pulumi:"autoSnapshotPolicyName"`
+	// The file system type.
+	FileSystemType *string `pulumi:"fileSystemType"`
 	// The day on which an auto snapshot is created.
 	// - A maximum of 7 time points can be selected.
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
@@ -199,6 +220,8 @@ type AutoSnapshotPolicyArgs struct {
 	// - The name can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
 	// - The value of this parameter is empty by default.
 	AutoSnapshotPolicyName pulumi.StringPtrInput
+	// The file system type.
+	FileSystemType pulumi.StringPtrInput
 	// The day on which an auto snapshot is created.
 	// - A maximum of 7 time points can be selected.
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
@@ -306,6 +329,16 @@ func (o AutoSnapshotPolicyOutput) ToAutoSnapshotPolicyOutputWithContext(ctx cont
 // - The value of this parameter is empty by default.
 func (o AutoSnapshotPolicyOutput) AutoSnapshotPolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringPtrOutput { return v.AutoSnapshotPolicyName }).(pulumi.StringPtrOutput)
+}
+
+// Creation time.
+func (o AutoSnapshotPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The file system type.
+func (o AutoSnapshotPolicyOutput) FileSystemType() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringOutput { return v.FileSystemType }).(pulumi.StringOutput)
 }
 
 // The day on which an auto snapshot is created.

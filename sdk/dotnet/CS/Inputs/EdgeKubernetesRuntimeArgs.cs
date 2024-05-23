@@ -13,13 +13,22 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class EdgeKubernetesRuntimeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+        /// The version of the runtime.
+        /// 
+        /// The following example is the definition of runtime block:
+        /// 
+        /// ```
+        /// runtime = {
+        /// name = "containerd"
+        /// version = "1.6.28"
+        /// }
+        /// ```
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

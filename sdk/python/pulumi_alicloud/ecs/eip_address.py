@@ -16,6 +16,7 @@ class EipAddressArgs:
     def __init__(__self__, *,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 allocation_id: Optional[pulumi.Input[str]] = None,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -27,6 +28,7 @@ class EipAddressArgs:
                  isp: Optional[pulumi.Input[str]] = None,
                  log_project: Optional[pulumi.Input[str]] = None,
                  log_store: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -41,6 +43,7 @@ class EipAddressArgs:
         The set of arguments for constructing a EipAddress resource.
         :param pulumi.Input[str] activity_id: Special activity ID. This parameter is not required.
         :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[str] allocation_id: The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         :param pulumi.Input[bool] deletion_protection: Whether the delete protection function is turned on.
@@ -58,6 +61,10 @@ class EipAddressArgs:
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        :param pulumi.Input[str] mode: Binding mode, value:
+               - **NAT** (default):NAT mode (normal mode).
+               - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+               - **BINDED**: indicates the mode in which the EIP NIC is visible.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
@@ -77,6 +84,8 @@ class EipAddressArgs:
             pulumi.set(__self__, "activity_id", activity_id)
         if address_name is not None:
             pulumi.set(__self__, "address_name", address_name)
+        if allocation_id is not None:
+            pulumi.set(__self__, "allocation_id", allocation_id)
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
         if bandwidth is not None:
@@ -102,6 +111,8 @@ class EipAddressArgs:
             pulumi.set(__self__, "log_project", log_project)
         if log_store is not None:
             pulumi.set(__self__, "log_store", log_store)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
@@ -149,6 +160,18 @@ class EipAddressArgs:
     @address_name.setter
     def address_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "address_name", value)
+
+    @property
+    @pulumi.getter(name="allocationId")
+    def allocation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+        """
+        return pulumi.get(self, "allocation_id")
+
+    @allocation_id.setter
+    def allocation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allocation_id", value)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -293,6 +316,21 @@ class EipAddressArgs:
 
     @property
     @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Binding mode, value:
+        - **NAT** (default):NAT mode (normal mode).
+        - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+        - **BINDED**: indicates the mode in which the EIP NIC is visible.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
@@ -424,6 +462,7 @@ class _EipAddressState:
     def __init__(__self__, *,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 allocation_id: Optional[pulumi.Input[str]] = None,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -436,6 +475,7 @@ class _EipAddressState:
                  isp: Optional[pulumi.Input[str]] = None,
                  log_project: Optional[pulumi.Input[str]] = None,
                  log_store: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -451,6 +491,7 @@ class _EipAddressState:
         Input properties used for looking up and filtering EipAddress resources.
         :param pulumi.Input[str] activity_id: Special activity ID. This parameter is not required.
         :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[str] allocation_id: The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         :param pulumi.Input[str] create_time: The time when the EIP was created.
@@ -469,6 +510,10 @@ class _EipAddressState:
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        :param pulumi.Input[str] mode: Binding mode, value:
+               - **NAT** (default):NAT mode (normal mode).
+               - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+               - **BINDED**: indicates the mode in which the EIP NIC is visible.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
@@ -489,6 +534,8 @@ class _EipAddressState:
             pulumi.set(__self__, "activity_id", activity_id)
         if address_name is not None:
             pulumi.set(__self__, "address_name", address_name)
+        if allocation_id is not None:
+            pulumi.set(__self__, "allocation_id", allocation_id)
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
         if bandwidth is not None:
@@ -516,6 +563,8 @@ class _EipAddressState:
             pulumi.set(__self__, "log_project", log_project)
         if log_store is not None:
             pulumi.set(__self__, "log_store", log_store)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
@@ -565,6 +614,18 @@ class _EipAddressState:
     @address_name.setter
     def address_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "address_name", value)
+
+    @property
+    @pulumi.getter(name="allocationId")
+    def allocation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+        """
+        return pulumi.get(self, "allocation_id")
+
+    @allocation_id.setter
+    def allocation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allocation_id", value)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -721,6 +782,21 @@ class _EipAddressState:
 
     @property
     @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Binding mode, value:
+        - **NAT** (default):NAT mode (normal mode).
+        - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+        - **BINDED**: indicates the mode in which the EIP NIC is visible.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
@@ -866,6 +942,7 @@ class EipAddress(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 allocation_id: Optional[pulumi.Input[str]] = None,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -877,6 +954,7 @@ class EipAddress(pulumi.CustomResource):
                  isp: Optional[pulumi.Input[str]] = None,
                  log_project: Optional[pulumi.Input[str]] = None,
                  log_store: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -901,6 +979,7 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] activity_id: Special activity ID. This parameter is not required.
         :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[str] allocation_id: The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         :param pulumi.Input[bool] deletion_protection: Whether the delete protection function is turned on.
@@ -918,6 +997,10 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        :param pulumi.Input[str] mode: Binding mode, value:
+               - **NAT** (default):NAT mode (normal mode).
+               - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+               - **BINDED**: indicates the mode in which the EIP NIC is visible.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
@@ -965,6 +1048,7 @@ class EipAddress(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  activity_id: Optional[pulumi.Input[str]] = None,
                  address_name: Optional[pulumi.Input[str]] = None,
+                 allocation_id: Optional[pulumi.Input[str]] = None,
                  auto_pay: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -976,6 +1060,7 @@ class EipAddress(pulumi.CustomResource):
                  isp: Optional[pulumi.Input[str]] = None,
                  log_project: Optional[pulumi.Input[str]] = None,
                  log_store: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  netmode: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -997,6 +1082,7 @@ class EipAddress(pulumi.CustomResource):
 
             __props__.__dict__["activity_id"] = activity_id
             __props__.__dict__["address_name"] = address_name
+            __props__.__dict__["allocation_id"] = allocation_id
             __props__.__dict__["auto_pay"] = auto_pay
             __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["deletion_protection"] = deletion_protection
@@ -1008,6 +1094,7 @@ class EipAddress(pulumi.CustomResource):
             __props__.__dict__["isp"] = isp
             __props__.__dict__["log_project"] = log_project
             __props__.__dict__["log_store"] = log_store
+            __props__.__dict__["mode"] = mode
             __props__.__dict__["name"] = name
             __props__.__dict__["netmode"] = netmode
             __props__.__dict__["payment_type"] = payment_type
@@ -1032,6 +1119,7 @@ class EipAddress(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             activity_id: Optional[pulumi.Input[str]] = None,
             address_name: Optional[pulumi.Input[str]] = None,
+            allocation_id: Optional[pulumi.Input[str]] = None,
             auto_pay: Optional[pulumi.Input[bool]] = None,
             bandwidth: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
@@ -1044,6 +1132,7 @@ class EipAddress(pulumi.CustomResource):
             isp: Optional[pulumi.Input[str]] = None,
             log_project: Optional[pulumi.Input[str]] = None,
             log_store: Optional[pulumi.Input[str]] = None,
+            mode: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             netmode: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
@@ -1064,6 +1153,7 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] activity_id: Special activity ID. This parameter is not required.
         :param pulumi.Input[str] address_name: The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        :param pulumi.Input[str] allocation_id: The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
         :param pulumi.Input[bool] auto_pay: Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
         :param pulumi.Input[str] bandwidth: The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
         :param pulumi.Input[str] create_time: The time when the EIP was created.
@@ -1082,6 +1172,10 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
+        :param pulumi.Input[str] mode: Binding mode, value:
+               - **NAT** (default):NAT mode (normal mode).
+               - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+               - **BINDED**: indicates the mode in which the EIP NIC is visible.
         :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
@@ -1104,6 +1198,7 @@ class EipAddress(pulumi.CustomResource):
 
         __props__.__dict__["activity_id"] = activity_id
         __props__.__dict__["address_name"] = address_name
+        __props__.__dict__["allocation_id"] = allocation_id
         __props__.__dict__["auto_pay"] = auto_pay
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["create_time"] = create_time
@@ -1116,6 +1211,7 @@ class EipAddress(pulumi.CustomResource):
         __props__.__dict__["isp"] = isp
         __props__.__dict__["log_project"] = log_project
         __props__.__dict__["log_store"] = log_store
+        __props__.__dict__["mode"] = mode
         __props__.__dict__["name"] = name
         __props__.__dict__["netmode"] = netmode
         __props__.__dict__["payment_type"] = payment_type
@@ -1144,6 +1240,14 @@ class EipAddress(pulumi.CustomResource):
         The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         """
         return pulumi.get(self, "address_name")
+
+    @property
+    @pulumi.getter(name="allocationId")
+    def allocation_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+        """
+        return pulumi.get(self, "allocation_id")
 
     @property
     @pulumi.getter(name="autoPay")
@@ -1249,6 +1353,17 @@ class EipAddress(pulumi.CustomResource):
         The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         """
         return pulumi.get(self, "log_store")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Output[str]:
+        """
+        Binding mode, value:
+        - **NAT** (default):NAT mode (normal mode).
+        - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+        - **BINDED**: indicates the mode in which the EIP NIC is visible.
+        """
+        return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter

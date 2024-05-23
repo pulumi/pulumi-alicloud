@@ -27,7 +27,7 @@ class EcsDeploymentSetArgs:
         :param pulumi.Input[str] domain: The deployment domain. Valid values: `Default`.
         :param pulumi.Input[str] granularity: The deployment granularity. Valid values: `Host`.
         :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-        :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`.
+        :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
         """
         if deployment_set_name is not None:
             pulumi.set(__self__, "deployment_set_name", deployment_set_name)
@@ -106,7 +106,7 @@ class EcsDeploymentSetArgs:
     @pulumi.getter
     def strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        The deployment strategy. Valid values: `Availability`.
+        The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
         """
         return pulumi.get(self, "strategy")
 
@@ -131,7 +131,7 @@ class _EcsDeploymentSetState:
         :param pulumi.Input[str] domain: The deployment domain. Valid values: `Default`.
         :param pulumi.Input[str] granularity: The deployment granularity. Valid values: `Host`.
         :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-        :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`.
+        :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
         """
         if deployment_set_name is not None:
             pulumi.set(__self__, "deployment_set_name", deployment_set_name)
@@ -210,7 +210,7 @@ class _EcsDeploymentSetState:
     @pulumi.getter
     def strategy(self) -> Optional[pulumi.Input[str]]:
         """
-        The deployment strategy. Valid values: `Availability`.
+        The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
         """
         return pulumi.get(self, "strategy")
 
@@ -236,7 +236,7 @@ class EcsDeploymentSet(pulumi.CustomResource):
 
         For information about ECS Deployment Set and how to use it, see [What is Deployment Set](https://www.alibabacloud.com/help/en/doc-detail/91269.htm).
 
-        > **NOTE:** Available in v1.140.0+.
+        > **NOTE:** Available since v1.140.0.
 
         ## Example Usage
 
@@ -269,7 +269,7 @@ class EcsDeploymentSet(pulumi.CustomResource):
         :param pulumi.Input[str] domain: The deployment domain. Valid values: `Default`.
         :param pulumi.Input[str] granularity: The deployment granularity. Valid values: `Host`.
         :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-        :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`.
+        :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
         """
         ...
     @overload
@@ -282,7 +282,7 @@ class EcsDeploymentSet(pulumi.CustomResource):
 
         For information about ECS Deployment Set and how to use it, see [What is Deployment Set](https://www.alibabacloud.com/help/en/doc-detail/91269.htm).
 
-        > **NOTE:** Available in v1.140.0+.
+        > **NOTE:** Available since v1.140.0.
 
         ## Example Usage
 
@@ -372,7 +372,7 @@ class EcsDeploymentSet(pulumi.CustomResource):
         :param pulumi.Input[str] domain: The deployment domain. Valid values: `Default`.
         :param pulumi.Input[str] granularity: The deployment granularity. Valid values: `Host`.
         :param pulumi.Input[str] on_unable_to_redeploy_failed_instance: The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
-        :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`.
+        :param pulumi.Input[str] strategy: The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -430,7 +430,7 @@ class EcsDeploymentSet(pulumi.CustomResource):
     @pulumi.getter
     def strategy(self) -> pulumi.Output[Optional[str]]:
         """
-        The deployment strategy. Valid values: `Availability`.
+        The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
         """
         return pulumi.get(self, "strategy")
 

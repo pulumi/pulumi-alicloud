@@ -21,8 +21,12 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const default = alicloud.simpleapplicationserver.getImages({});
- * const defaultGetServerPlans = alicloud.simpleapplicationserver.getServerPlans({});
+ * const default = alicloud.simpleapplicationserver.getImages({
+ *     platform: "Linux",
+ * });
+ * const defaultGetServerPlans = alicloud.simpleapplicationserver.getServerPlans({
+ *     platform: "Linux",
+ * });
  * const defaultInstance = new alicloud.simpleapplicationserver.Instance("default", {
  *     paymentType: "Subscription",
  *     planId: defaultGetServerPlans.then(defaultGetServerPlans => defaultGetServerPlans.plans?.[0]?.id),

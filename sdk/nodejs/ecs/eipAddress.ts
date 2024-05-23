@@ -50,6 +50,10 @@ export class EipAddress extends pulumi.CustomResource {
      */
     public readonly addressName!: pulumi.Output<string>;
     /**
+     * The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+     */
+    public readonly allocationId!: pulumi.Output<string | undefined>;
+    /**
      * Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
      */
     public readonly autoPay!: pulumi.Output<boolean | undefined>;
@@ -105,6 +109,13 @@ export class EipAddress extends pulumi.CustomResource {
      * The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
      */
     public readonly logStore!: pulumi.Output<string | undefined>;
+    /**
+     * Binding mode, value:
+     * - **NAT** (default):NAT mode (normal mode).
+     * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+     * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+     */
+    public readonly mode!: pulumi.Output<string>;
     /**
      * . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
      *
@@ -171,6 +182,7 @@ export class EipAddress extends pulumi.CustomResource {
             const state = argsOrState as EipAddressState | undefined;
             resourceInputs["activityId"] = state ? state.activityId : undefined;
             resourceInputs["addressName"] = state ? state.addressName : undefined;
+            resourceInputs["allocationId"] = state ? state.allocationId : undefined;
             resourceInputs["autoPay"] = state ? state.autoPay : undefined;
             resourceInputs["bandwidth"] = state ? state.bandwidth : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
@@ -183,6 +195,7 @@ export class EipAddress extends pulumi.CustomResource {
             resourceInputs["isp"] = state ? state.isp : undefined;
             resourceInputs["logProject"] = state ? state.logProject : undefined;
             resourceInputs["logStore"] = state ? state.logStore : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["netmode"] = state ? state.netmode : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
@@ -198,6 +211,7 @@ export class EipAddress extends pulumi.CustomResource {
             const args = argsOrState as EipAddressArgs | undefined;
             resourceInputs["activityId"] = args ? args.activityId : undefined;
             resourceInputs["addressName"] = args ? args.addressName : undefined;
+            resourceInputs["allocationId"] = args ? args.allocationId : undefined;
             resourceInputs["autoPay"] = args ? args.autoPay : undefined;
             resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
@@ -209,6 +223,7 @@ export class EipAddress extends pulumi.CustomResource {
             resourceInputs["isp"] = args ? args.isp : undefined;
             resourceInputs["logProject"] = args ? args.logProject : undefined;
             resourceInputs["logStore"] = args ? args.logStore : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["netmode"] = args ? args.netmode : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
@@ -239,6 +254,10 @@ export interface EipAddressState {
      * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
      */
     addressName?: pulumi.Input<string>;
+    /**
+     * The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+     */
+    allocationId?: pulumi.Input<string>;
     /**
      * Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
      */
@@ -295,6 +314,13 @@ export interface EipAddressState {
      * The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
      */
     logStore?: pulumi.Input<string>;
+    /**
+     * Binding mode, value:
+     * - **NAT** (default):NAT mode (normal mode).
+     * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+     * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+     */
+    mode?: pulumi.Input<string>;
     /**
      * . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
      *
@@ -360,6 +386,10 @@ export interface EipAddressArgs {
      */
     addressName?: pulumi.Input<string>;
     /**
+     * The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+     */
+    allocationId?: pulumi.Input<string>;
+    /**
      * Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
      */
     autoPay?: pulumi.Input<boolean>;
@@ -411,6 +441,13 @@ export interface EipAddressArgs {
      * The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
      */
     logStore?: pulumi.Input<string>;
+    /**
+     * Binding mode, value:
+     * - **NAT** (default):NAT mode (normal mode).
+     * - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+     * - **BINDED**: indicates the mode in which the EIP NIC is visible.
+     */
+    mode?: pulumi.Input<string>;
     /**
      * . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
      *

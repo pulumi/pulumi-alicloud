@@ -91,14 +91,14 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The deployment strategy. Valid values: `Availability`.
+     * The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
      * 
      */
     @Import(name="strategy")
     private @Nullable Output<String> strategy;
 
     /**
-     * @return The deployment strategy. Valid values: `Availability`.
+     * @return The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
      * 
      */
     public Optional<Output<String>> strategy() {
@@ -240,7 +240,7 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param strategy The deployment strategy. Valid values: `Availability`.
+         * @param strategy The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class EcsDeploymentSetState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param strategy The deployment strategy. Valid values: `Availability`.
+         * @param strategy The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
          * 
          * @return builder
          * 

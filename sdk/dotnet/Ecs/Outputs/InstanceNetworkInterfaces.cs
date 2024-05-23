@@ -17,11 +17,33 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// The ID of the secondary ENI.
         /// </summary>
         public readonly string? NetworkInterfaceId;
+        /// <summary>
+        /// The communication mode of the ENI. Default value: `Standard`. Valid values:
+        /// </summary>
+        public readonly string? NetworkInterfaceTrafficMode;
+        /// <summary>
+        /// The ID of security group N to which to assign ENI N.
+        /// </summary>
+        public readonly ImmutableArray<string> SecurityGroupIds;
+        /// <summary>
+        /// The ID of the vSwitch to which to connect ENI N.
+        /// </summary>
+        public readonly string? VswitchId;
 
         [OutputConstructor]
-        private InstanceNetworkInterfaces(string? networkInterfaceId)
+        private InstanceNetworkInterfaces(
+            string? networkInterfaceId,
+
+            string? networkInterfaceTrafficMode,
+
+            ImmutableArray<string> securityGroupIds,
+
+            string? vswitchId)
         {
             NetworkInterfaceId = networkInterfaceId;
+            NetworkInterfaceTrafficMode = networkInterfaceTrafficMode;
+            SecurityGroupIds = securityGroupIds;
+            VswitchId = vswitchId;
         }
     }
 }

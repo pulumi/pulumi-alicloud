@@ -55,9 +55,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf_example");
- *         final var default = SimpleapplicationserverFunctions.getImages();
+ *         final var default = SimpleapplicationserverFunctions.getImages(GetImagesArgs.builder()
+ *             .platform("Linux")
+ *             .build());
  * 
- *         final var defaultGetServerPlans = SimpleapplicationserverFunctions.getServerPlans();
+ *         final var defaultGetServerPlans = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
+ *             .platform("Linux")
+ *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
  *             .paymentType("Subscription")

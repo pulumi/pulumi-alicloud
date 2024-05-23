@@ -201,12 +201,14 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of availability zone.
+        /// 
+        /// *Network params*
         /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// Nested attribute containing certificate authority data for your cluster.
+        /// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         /// </summary>
         [Output("certificateAuthority")]
         public Output<Outputs.EdgeKubernetesCertificateAuthority> CertificateAuthority { get; private set; } = null!;
@@ -240,7 +242,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ClusterSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Map of kubernetes cluster connection information.
+        /// (Map) Map of kubernetes cluster connection information.
         /// </summary>
         [Output("connections")]
         public Output<Outputs.EdgeKubernetesConnections> Connections { get; private set; } = null!;
@@ -357,7 +359,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> RetainResources { get; private set; } = null!;
 
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         /// </summary>
         [Output("runtime")]
         public Output<Outputs.EdgeKubernetesRuntime?> Runtime { get; private set; } = null!;
@@ -550,6 +552,8 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of availability zone.
+        /// 
+        /// *Network params*
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -709,7 +713,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         /// </summary>
         [Input("runtime")]
         public Input<Inputs.EdgeKubernetesRuntimeArgs>? Runtime { get; set; }
@@ -854,12 +858,14 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// The ID of availability zone.
+        /// 
+        /// *Network params*
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Nested attribute containing certificate authority data for your cluster.
+        /// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         /// </summary>
         [Input("certificateAuthority")]
         public Input<Inputs.EdgeKubernetesCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
@@ -893,7 +899,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterSpec { get; set; }
 
         /// <summary>
-        /// Map of kubernetes cluster connection information.
+        /// (Map) Map of kubernetes cluster connection information.
         /// </summary>
         [Input("connections")]
         public Input<Inputs.EdgeKubernetesConnectionsGetArgs>? Connections { get; set; }
@@ -1031,7 +1037,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+        /// The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
         /// </summary>
         [Input("runtime")]
         public Input<Inputs.EdgeKubernetesRuntimeGetArgs>? Runtime { get; set; }

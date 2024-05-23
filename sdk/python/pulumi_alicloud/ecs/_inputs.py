@@ -1219,12 +1219,24 @@ class InstanceMaintenanceTimeArgs:
 @pulumi.input_type
 class InstanceNetworkInterfacesArgs:
     def __init__(__self__, *,
-                 network_interface_id: Optional[pulumi.Input[str]] = None):
+                 network_interface_id: Optional[pulumi.Input[str]] = None,
+                 network_interface_traffic_mode: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] network_interface_id: The ID of the secondary ENI.
+        :param pulumi.Input[str] network_interface_traffic_mode: The communication mode of the ENI. Default value: `Standard`. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of security group N to which to assign ENI N.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which to connect ENI N.
         """
         if network_interface_id is not None:
             pulumi.set(__self__, "network_interface_id", network_interface_id)
+        if network_interface_traffic_mode is not None:
+            pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="networkInterfaceId")
@@ -1237,6 +1249,42 @@ class InstanceNetworkInterfacesArgs:
     @network_interface_id.setter
     def network_interface_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_interface_id", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaceTrafficMode")
+    def network_interface_traffic_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The communication mode of the ENI. Default value: `Standard`. Valid values:
+        """
+        return pulumi.get(self, "network_interface_traffic_mode")
+
+    @network_interface_traffic_mode.setter
+    def network_interface_traffic_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_interface_traffic_mode", value)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of security group N to which to assign ENI N.
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the vSwitch to which to connect ENI N.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
 
 
 @pulumi.input_type

@@ -139,6 +139,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * Whether to force deletion even without backup.
+     * 
+     */
+    @Export(name="forceDeleteWithoutBackup", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> forceDeleteWithoutBackup;
+
+    /**
+     * @return Whether to force deletion even without backup.
+     * 
+     */
+    public Output<Optional<String>> forceDeleteWithoutBackup() {
+        return Codegen.optional(this.forceDeleteWithoutBackup);
+    }
+    /**
      * The name of the resource.
      * 
      */
@@ -153,56 +167,70 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceName;
     }
     /**
-     * Maximum number of stored keys.
+     * Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     @Export(name="keyNum", refs={Integer.class}, tree="[0]")
-    private Output<Integer> keyNum;
+    private Output</* @Nullable */ Integer> keyNum;
 
     /**
-     * @return Maximum number of stored keys.
+     * @return Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
-    public Output<Integer> keyNum() {
-        return this.keyNum;
+    public Output<Optional<Integer>> keyNum() {
+        return Codegen.optional(this.keyNum);
     }
     /**
-     * Instance Audit Log Switch.
+     * Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     @Export(name="log", refs={String.class}, tree="[0]")
     private Output<String> log;
 
     /**
-     * @return Instance Audit Log Switch.
+     * @return Instance Audit Log Switch. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     public Output<String> log() {
         return this.log;
     }
     /**
-     * Instance log capacity.
+     * Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     @Export(name="logStorage", refs={Integer.class}, tree="[0]")
     private Output<Integer> logStorage;
 
     /**
-     * @return Instance log capacity.
+     * @return Instance log capacity. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     public Output<Integer> logStorage() {
         return this.logStorage;
     }
     /**
-     * Purchase cycle, in months.
+     * Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     * 
+     */
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
+    private Output<String> paymentType;
+
+    /**
+     * @return Payment type, valid values:  `Subscription`: Prepaid. `PayAsYouGo`: Postpaid, available since v1.223.2.
+     * 
+     */
+    public Output<String> paymentType() {
+        return this.paymentType;
+    }
+    /**
+     * Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return Purchase cycle, in months.
+     * @return Purchase cycle, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     public Output<Optional<Integer>> period() {
@@ -223,60 +251,60 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.productVersion);
     }
     /**
-     * Automatic renewal period, in months.
+     * Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period, in months.
+     * @return Automatic renewal period, in months. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     public Output<Optional<Integer>> renewPeriod() {
         return Codegen.optional(this.renewPeriod);
     }
     /**
-     * Renewal options (manual renewal, automatic renewal, no renewal).
+     * Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     @Export(name="renewStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewStatus;
 
     /**
-     * @return Renewal options (manual renewal, automatic renewal, no renewal).
+     * @return Renewal options. Valid values: `AutoRenewal`, `ManualRenewal`. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     public Output<Optional<String>> renewStatus() {
         return Codegen.optional(this.renewStatus);
     }
     /**
-     * Maximum number of Secrets.
+     * Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     @Export(name="secretNum", refs={Integer.class}, tree="[0]")
-    private Output<Integer> secretNum;
+    private Output</* @Nullable */ Integer> secretNum;
 
     /**
-     * @return Maximum number of Secrets.
+     * @return Maximum number of Secrets. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
-    public Output<Integer> secretNum() {
-        return this.secretNum;
+    public Output<Optional<Integer>> secretNum() {
+        return Codegen.optional(this.secretNum);
     }
     /**
-     * The computation performance level of the KMS instance.
+     * The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     @Export(name="spec", refs={Integer.class}, tree="[0]")
-    private Output<Integer> spec;
+    private Output</* @Nullable */ Integer> spec;
 
     /**
-     * @return The computation performance level of the KMS instance.
+     * @return The computation performance level of the KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
-    public Output<Integer> spec() {
-        return this.spec;
+    public Output<Optional<Integer>> spec() {
+        return Codegen.optional(this.spec);
     }
     /**
      * Instance status.
@@ -307,18 +335,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
-     * The number of managed accesses. The maximum number of VPCs that can access this KMS instance.
+     * The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
     @Export(name="vpcNum", refs={Integer.class}, tree="[0]")
-    private Output<Integer> vpcNum;
+    private Output</* @Nullable */ Integer> vpcNum;
 
     /**
-     * @return The number of managed accesses. The maximum number of VPCs that can access this KMS instance.
+     * @return The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
      * 
      */
-    public Output<Integer> vpcNum() {
-        return this.vpcNum;
+    public Output<Optional<Integer>> vpcNum() {
+        return Codegen.optional(this.vpcNum);
     }
     /**
      * Instance bind vswitches.

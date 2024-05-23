@@ -27,8 +27,11 @@ import (
 //
 // import (
 //
+//	"encoding/json"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/privatelink"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -38,39 +41,70 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			example, err := privatelink.NewVpcEndpointService(ctx, "example", &privatelink.VpcEndpointServiceArgs{
-//				ServiceDescription:   pulumi.String(name),
-//				ConnectBandwidth:     pulumi.Int(103),
-//				AutoAcceptConnection: pulumi.Bool(false),
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultbFzA4a, err := vpc.NewNetwork(ctx, "defaultbFzA4a", &vpc.NetworkArgs{
+//				Description: pulumi.String("example-terraform"),
+//				CidrBlock:   pulumi.String("172.16.0.0/12"),
+//				VpcName:     pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("10.0.0.0/8"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
+//			default1FTFrP, err := ecs.NewSecurityGroup(ctx, "default1FTFrP", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: exampleNetwork.ID(),
+//				VpcId: defaultbFzA4a.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = privatelink.NewVpcEndpoint(ctx, "example", &privatelink.VpcEndpointArgs{
-//				ServiceId: example.ID(),
-//				SecurityGroupIds: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
+//			_, err = ecs.NewSecurityGroup(ctx, "defaultjljY5S", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
+//				VpcId: defaultbFzA4a.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"Version": "1",
+//				"Statement": []map[string]interface{}{
+//					map[string]interface{}{
+//						"Effect": "Allow",
+//						"Action": []string{
+//							"*",
+//						},
+//						"Resource": []string{
+//							"*",
+//						},
+//						"Principal": "*",
+//					},
 //				},
-//				VpcId:           exampleNetwork.ID(),
-//				VpcEndpointName: pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = privatelink.NewVpcEndpoint(ctx, "default", &privatelink.VpcEndpointArgs{
+//				EndpointDescription:       pulumi.String(name),
+//				VpcEndpointName:           pulumi.String(name),
+//				ResourceGroupId:           pulumi.String(_default.Ids[0]),
+//				EndpointType:              pulumi.String("Interface"),
+//				VpcId:                     defaultbFzA4a.ID(),
+//				ServiceName:               pulumi.String("com.aliyuncs.privatelink.ap-southeast-5.oss"),
+//				DryRun:                    pulumi.Bool(false),
+//				ZonePrivateIpAddressCount: pulumi.Int(1),
+//				PolicyDocument:            pulumi.String(json0),
+//				SecurityGroupIds: pulumi.StringArray{
+//					default1FTFrP.ID(),
+//				},
+//				ServiceId:        pulumi.String("epsrv-k1apjysze8u1l9t6uyg9"),
+//				ProtectedEnabled: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -91,7 +125,7 @@ import (
 type VpcEndpoint struct {
 	pulumi.CustomResourceState
 
-	// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+	// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The state of the endpoint connection.
 	ConnectionStatus pulumi.StringOutput `pulumi:"connectionStatus"`
@@ -107,8 +141,10 @@ type VpcEndpoint struct {
 	EndpointDescription pulumi.StringPtrOutput `pulumi:"endpointDescription"`
 	// The domain name of the endpoint.
 	EndpointDomain pulumi.StringOutput `pulumi:"endpointDomain"`
-	// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
+	// RAM access policies.
+	PolicyDocument pulumi.StringOutput `pulumi:"policyDocument"`
 	// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
 	// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
 	// - **false (default)**: disables user authentication.
@@ -169,7 +205,7 @@ func GetVpcEndpoint(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpcEndpoint resources.
 type vpcEndpointState struct {
-	// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+	// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The state of the endpoint connection.
 	ConnectionStatus *string `pulumi:"connectionStatus"`
@@ -185,8 +221,10 @@ type vpcEndpointState struct {
 	EndpointDescription *string `pulumi:"endpointDescription"`
 	// The domain name of the endpoint.
 	EndpointDomain *string `pulumi:"endpointDomain"`
-	// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
 	EndpointType *string `pulumi:"endpointType"`
+	// RAM access policies.
+	PolicyDocument *string `pulumi:"policyDocument"`
 	// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
 	// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
 	// - **false (default)**: disables user authentication.
@@ -212,7 +250,7 @@ type vpcEndpointState struct {
 }
 
 type VpcEndpointState struct {
-	// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+	// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
 	Bandwidth pulumi.IntPtrInput
 	// The state of the endpoint connection.
 	ConnectionStatus pulumi.StringPtrInput
@@ -228,8 +266,10 @@ type VpcEndpointState struct {
 	EndpointDescription pulumi.StringPtrInput
 	// The domain name of the endpoint.
 	EndpointDomain pulumi.StringPtrInput
-	// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
 	EndpointType pulumi.StringPtrInput
+	// RAM access policies.
+	PolicyDocument pulumi.StringPtrInput
 	// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
 	// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
 	// - **false (default)**: disables user authentication.
@@ -265,8 +305,10 @@ type vpcEndpointArgs struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// The description of the endpoint.
 	EndpointDescription *string `pulumi:"endpointDescription"`
-	// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
 	EndpointType *string `pulumi:"endpointType"`
+	// RAM access policies.
+	PolicyDocument *string `pulumi:"policyDocument"`
 	// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
 	// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
 	// - **false (default)**: disables user authentication.
@@ -297,8 +339,10 @@ type VpcEndpointArgs struct {
 	DryRun pulumi.BoolPtrInput
 	// The description of the endpoint.
 	EndpointDescription pulumi.StringPtrInput
-	// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+	// The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
 	EndpointType pulumi.StringPtrInput
+	// RAM access policies.
+	PolicyDocument pulumi.StringPtrInput
 	// Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
 	// - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
 	// - **false (default)**: disables user authentication.
@@ -408,7 +452,7 @@ func (o VpcEndpointOutput) ToVpcEndpointOutputWithContext(ctx context.Context) V
 	return o
 }
 
-// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+// The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s. Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
 func (o VpcEndpointOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
 }
@@ -445,9 +489,14 @@ func (o VpcEndpointOutput) EndpointDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.EndpointDomain }).(pulumi.StringOutput)
 }
 
-// The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+// The endpoint type. Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
 func (o VpcEndpointOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.EndpointType }).(pulumi.StringOutput)
+}
+
+// RAM access policies.
+func (o VpcEndpointOutput) PolicyDocument() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpoint) pulumi.StringOutput { return v.PolicyDocument }).(pulumi.StringOutput)
 }
 
 // Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:

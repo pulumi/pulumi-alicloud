@@ -25,6 +25,8 @@ type EipAddress struct {
 	ActivityId pulumi.StringPtrOutput `pulumi:"activityId"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName pulumi.StringOutput `pulumi:"addressName"`
+	// The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+	AllocationId pulumi.StringPtrOutput `pulumi:"allocationId"`
 	// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
 	AutoPay pulumi.BoolPtrOutput `pulumi:"autoPay"`
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
@@ -57,6 +59,11 @@ type EipAddress struct {
 	LogProject pulumi.StringPtrOutput `pulumi:"logProject"`
 	// The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
 	LogStore pulumi.StringPtrOutput `pulumi:"logStore"`
+	// Binding mode, value:
+	// - **NAT** (default):NAT mode (normal mode).
+	// - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+	// - **BINDED**: indicates the mode in which the EIP NIC is visible.
+	Mode pulumi.StringOutput `pulumi:"mode"`
 	// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
@@ -121,6 +128,8 @@ type eipAddressState struct {
 	ActivityId *string `pulumi:"activityId"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName *string `pulumi:"addressName"`
+	// The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+	AllocationId *string `pulumi:"allocationId"`
 	// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
 	AutoPay *bool `pulumi:"autoPay"`
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
@@ -153,6 +162,11 @@ type eipAddressState struct {
 	LogProject *string `pulumi:"logProject"`
 	// The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
 	LogStore *string `pulumi:"logStore"`
+	// Binding mode, value:
+	// - **NAT** (default):NAT mode (normal mode).
+	// - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+	// - **BINDED**: indicates the mode in which the EIP NIC is visible.
+	Mode *string `pulumi:"mode"`
 	// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
@@ -188,6 +202,8 @@ type EipAddressState struct {
 	ActivityId pulumi.StringPtrInput
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName pulumi.StringPtrInput
+	// The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+	AllocationId pulumi.StringPtrInput
 	// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
 	AutoPay pulumi.BoolPtrInput
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
@@ -220,6 +236,11 @@ type EipAddressState struct {
 	LogProject pulumi.StringPtrInput
 	// The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
 	LogStore pulumi.StringPtrInput
+	// Binding mode, value:
+	// - **NAT** (default):NAT mode (normal mode).
+	// - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+	// - **BINDED**: indicates the mode in which the EIP NIC is visible.
+	Mode pulumi.StringPtrInput
 	// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
@@ -259,6 +280,8 @@ type eipAddressArgs struct {
 	ActivityId *string `pulumi:"activityId"`
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName *string `pulumi:"addressName"`
+	// The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+	AllocationId *string `pulumi:"allocationId"`
 	// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
 	AutoPay *bool `pulumi:"autoPay"`
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
@@ -289,6 +312,11 @@ type eipAddressArgs struct {
 	LogProject *string `pulumi:"logProject"`
 	// The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
 	LogStore *string `pulumi:"logStore"`
+	// Binding mode, value:
+	// - **NAT** (default):NAT mode (normal mode).
+	// - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+	// - **BINDED**: indicates the mode in which the EIP NIC is visible.
+	Mode *string `pulumi:"mode"`
 	// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
@@ -323,6 +351,8 @@ type EipAddressArgs struct {
 	ActivityId pulumi.StringPtrInput
 	// The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
 	AddressName pulumi.StringPtrInput
+	// The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+	AllocationId pulumi.StringPtrInput
 	// Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
 	AutoPay pulumi.BoolPtrInput
 	// The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
@@ -353,6 +383,11 @@ type EipAddressArgs struct {
 	LogProject pulumi.StringPtrInput
 	// The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
 	LogStore pulumi.StringPtrInput
+	// Binding mode, value:
+	// - **NAT** (default):NAT mode (normal mode).
+	// - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+	// - **BINDED**: indicates the mode in which the EIP NIC is visible.
+	Mode pulumi.StringPtrInput
 	// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
@@ -478,6 +513,11 @@ func (o EipAddressOutput) AddressName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.AddressName }).(pulumi.StringOutput)
 }
 
+// The ID of the EIP instance. If you specify the instance ID of An EIP that has already been applied for, the IpAddress of that instance will be reused. Only one of the IpAddress and InstanceId parameters needs to be specified. If neither parameter is specified, the system will randomly apply for an EIP.
+func (o EipAddressOutput) AllocationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringPtrOutput { return v.AllocationId }).(pulumi.StringPtrOutput)
+}
+
 // Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `autoPay` is `true`, The order will be automatically paid. When `autoPay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `paymentType` is `Subscription`, this parameter is valid.
 func (o EipAddressOutput) AutoPay() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EipAddress) pulumi.BoolPtrOutput { return v.AutoPay }).(pulumi.BoolPtrOutput)
@@ -544,6 +584,14 @@ func (o EipAddressOutput) LogProject() pulumi.StringPtrOutput {
 // The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
 func (o EipAddressOutput) LogStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EipAddress) pulumi.StringPtrOutput { return v.LogStore }).(pulumi.StringPtrOutput)
+}
+
+// Binding mode, value:
+// - **NAT** (default):NAT mode (normal mode).
+// - **MULTI_BINDED**: indicates the multi-EIP NIC visible mode.
+// - **BINDED**: indicates the mode in which the EIP NIC is visible.
+func (o EipAddressOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
 // . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.

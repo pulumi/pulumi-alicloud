@@ -155,7 +155,7 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly groupType!: pulumi.Output<string>;
     /**
-     * Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+     * Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
      */
     public readonly healthCheckType!: pulumi.Output<string>;
     /**
@@ -342,7 +342,7 @@ export interface ScalingGroupState {
      */
     groupType?: pulumi.Input<string>;
     /**
-     * Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+     * Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
      */
     healthCheckType?: pulumi.Input<string>;
     /**
@@ -457,7 +457,7 @@ export interface ScalingGroupArgs {
      */
     groupType?: pulumi.Input<string>;
     /**
-     * Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
+     * Resource type within scaling group. Optional values: ECS, NONE, LOAD_BALANCER. Default to ECS.
      */
     healthCheckType?: pulumi.Input<string>;
     /**

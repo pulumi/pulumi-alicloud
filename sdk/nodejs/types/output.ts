@@ -11931,13 +11931,11 @@ export namespace cs {
 
     export interface EdgeKubernetesCertificateAuthority {
         /**
-         * The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+         * The path of client certificate, like `~/.kube/client-cert.pem`.
          */
         clientCert: string;
         /**
-         * The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
-         *
-         * *Network params*
+         * The path of client key, like `~/.kube/client-key.pem`.
          */
         clientKey: string;
         /**
@@ -11978,11 +11976,20 @@ export namespace cs {
 
     export interface EdgeKubernetesRuntime {
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
          */
         name?: string;
         /**
-         * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+         * The version of the runtime.
+         *
+         * The following example is the definition of runtime block:
+         *
+         * ```
+         * runtime = {
+         * name = "containerd"
+         * version = "1.6.28"
+         * }
+         * ```
          */
         version?: string;
     }
@@ -12808,6 +12815,17 @@ export namespace cs {
         serviceDomain: string;
     }
 
+    export interface KubernetesDeleteOption {
+        /**
+         * The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
+         */
+        deleteMode?: string;
+        /**
+         * The type of resources that are created by cluster. Valid values:
+         */
+        resourceType?: string;
+    }
+
     export interface KubernetesMasterNode {
         /**
          * ID of the node.
@@ -12852,11 +12870,20 @@ export namespace cs {
 
     export interface KubernetesRuntime {
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
          */
         name?: string;
         /**
-         * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+         * The version of the runtime.
+         *
+         * The following example is the definition of runtime block:
+         *
+         * ```
+         * runtime = {
+         * name = "containerd"
+         * version = "1.6.28"
+         * }
+         * ```
          */
         version?: string;
     }
@@ -12922,6 +12949,17 @@ export namespace cs {
          * Service Access Domain.
          */
         serviceDomain: string;
+    }
+
+    export interface ManagedKubernetesDeleteOption {
+        /**
+         * The deletion mode of the cluster. Different resources may have different default behavior, see `resourceType` for details. Valid values:
+         */
+        deleteMode?: string;
+        /**
+         * The type of resources that are created by cluster. Valid values:
+         */
+        resourceType?: string;
     }
 
     export interface ManagedKubernetesMaintenanceWindow {
@@ -21600,6 +21638,18 @@ export namespace ecs {
          * The ID of the secondary ENI.
          */
         networkInterfaceId: string;
+        /**
+         * The communication mode of the ENI. Default value: `Standard`. Valid values:
+         */
+        networkInterfaceTrafficMode: string;
+        /**
+         * The ID of security group N to which to assign ENI N.
+         */
+        securityGroupIds: string[];
+        /**
+         * The ID of the vSwitch to which to connect ENI N.
+         */
+        vswitchId: string;
     }
 
     export interface LaunchTemplateDataDisk {
@@ -25240,7 +25290,7 @@ export namespace ess {
          */
         autoSnapshotPolicyId?: string;
         /**
-         * Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` and `cloud`.
+         * Category of data disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd` , `cloudEssd` and `cloud`.
          */
         category?: string;
         /**
