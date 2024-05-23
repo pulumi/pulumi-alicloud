@@ -31,6 +31,8 @@ namespace Pulumi.AliCloud.Alb
     {
         /// <summary>
         /// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+        /// - `Request`: The forwarding rule is applied to the client requests received by ALB.
+        /// - `Response`: The forwarding rule is applied to the responses returned by backend servers.
         /// </summary>
         [Output("direction")]
         public Output<string> Direction { get; private set; } = null!;
@@ -125,6 +127,8 @@ namespace Pulumi.AliCloud.Alb
     {
         /// <summary>
         /// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+        /// - `Request`: The forwarding rule is applied to the client requests received by ALB.
+        /// - `Response`: The forwarding rule is applied to the responses returned by backend servers.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -187,6 +191,8 @@ namespace Pulumi.AliCloud.Alb
     {
         /// <summary>
         /// The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+        /// - `Request`: The forwarding rule is applied to the client requests received by ALB.
+        /// - `Response`: The forwarding rule is applied to the responses returned by backend servers.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }

@@ -45,11 +45,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var zone = new Zone("zone", ZoneArgs.builder()        
+ *         var zone = new Zone("zone", ZoneArgs.builder()
  *             .name("foo.test.com")
  *             .build());
  * 
- *         var foo = new ZoneRecord("foo", ZoneRecordArgs.builder()        
+ *         var foo = new ZoneRecord("foo", ZoneRecordArgs.builder()
  *             .zoneId(zone.id())
  *             .rr("www")
  *             .type("CNAME")

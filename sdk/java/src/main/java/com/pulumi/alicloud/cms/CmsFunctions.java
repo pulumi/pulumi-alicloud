@@ -653,13 +653,13 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
+     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()
      *             .alarmContactGroupName(name)
      *             .describe("example_value")
      *             .enableSubscribed(true)
      *             .build());
      * 
-     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()        
+     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()
      *             .contactGroupLists(default_.id())
      *             .tagKey("your_tag_key")
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
@@ -722,13 +722,13 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
+     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()
      *             .alarmContactGroupName(name)
      *             .describe("example_value")
      *             .enableSubscribed(true)
      *             .build());
      * 
-     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()        
+     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()
      *             .contactGroupLists(default_.id())
      *             .tagKey("your_tag_key")
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
@@ -791,13 +791,13 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
+     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()
      *             .alarmContactGroupName(name)
      *             .describe("example_value")
      *             .enableSubscribed(true)
      *             .build());
      * 
-     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()        
+     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()
      *             .contactGroupLists(default_.id())
      *             .tagKey("your_tag_key")
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
@@ -860,13 +860,13 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
+     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()
      *             .alarmContactGroupName(name)
      *             .describe("example_value")
      *             .enableSubscribed(true)
      *             .build());
      * 
-     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()        
+     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()
      *             .contactGroupLists(default_.id())
      *             .tagKey("your_tag_key")
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
@@ -929,13 +929,13 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
+     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()
      *             .alarmContactGroupName(name)
      *             .describe("example_value")
      *             .enableSubscribed(true)
      *             .build());
      * 
-     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()        
+     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()
      *             .contactGroupLists(default_.id())
      *             .tagKey("your_tag_key")
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
@@ -998,13 +998,13 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("example_value");
-     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
+     *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()
      *             .alarmContactGroupName(name)
      *             .describe("example_value")
      *             .enableSubscribed(true)
      *             .build());
      * 
-     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()        
+     *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()
      *             .contactGroupLists(default_.id())
      *             .tagKey("your_tag_key")
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()

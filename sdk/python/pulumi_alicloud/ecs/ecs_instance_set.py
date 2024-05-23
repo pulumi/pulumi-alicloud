@@ -98,8 +98,13 @@ class EcsInstanceSetArgs:
         :param pulumi.Input[str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the instance belongs.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
+               - `Active`: Enable security enhancement strategy, it only works on system images.
+               - `Deactive`: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+               - `NoSpot`: A regular Pay-As-You-Go instance.
+               - `SpotWithPriceLimit`: A price threshold for a spot instance.
+               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -578,6 +583,8 @@ class EcsInstanceSetArgs:
     def security_enhancement_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The security enhancement strategy.
+        - `Active`: Enable security enhancement strategy, it only works on system images.
+        - `Deactive`: Disable security enhancement strategy, it works on all images.
         """
         return pulumi.get(self, "security_enhancement_strategy")
 
@@ -602,6 +609,9 @@ class EcsInstanceSetArgs:
     def spot_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        - `NoSpot`: A regular Pay-As-You-Go instance.
+        - `SpotWithPriceLimit`: A price threshold for a spot instance.
+        - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -816,9 +826,14 @@ class _EcsInstanceSetState:
         :param pulumi.Input[str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the instance belongs.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
+               - `Active`: Enable security enhancement strategy, it only works on system images.
+               - `Deactive`: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group ids to associate with.
         :param pulumi.Input[float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+               - `NoSpot`: A regular Pay-As-You-Go instance.
+               - `SpotWithPriceLimit`: A price threshold for a spot instance.
+               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -1302,6 +1317,8 @@ class _EcsInstanceSetState:
     def security_enhancement_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The security enhancement strategy.
+        - `Active`: Enable security enhancement strategy, it only works on system images.
+        - `Deactive`: Disable security enhancement strategy, it works on all images.
         """
         return pulumi.get(self, "security_enhancement_strategy")
 
@@ -1338,6 +1355,9 @@ class _EcsInstanceSetState:
     def spot_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        - `NoSpot`: A regular Pay-As-You-Go instance.
+        - `SpotWithPriceLimit`: A price threshold for a spot instance.
+        - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -1609,9 +1629,14 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the instance belongs.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
+               - `Active`: Enable security enhancement strategy, it only works on system images.
+               - `Deactive`: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group ids to associate with.
         :param pulumi.Input[float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+               - `NoSpot`: A regular Pay-As-You-Go instance.
+               - `SpotWithPriceLimit`: A price threshold for a spot instance.
+               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -1904,9 +1929,14 @@ class EcsInstanceSet(pulumi.CustomResource):
         :param pulumi.Input[str] ram_role_name: The Instance RAM role name.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the instance belongs.
         :param pulumi.Input[str] security_enhancement_strategy: The security enhancement strategy.
+               - `Active`: Enable security enhancement strategy, it only works on system images.
+               - `Deactive`: Disable security enhancement strategy, it works on all images.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: A list of security group ids to associate with.
         :param pulumi.Input[float] spot_price_limit: The hourly price threshold of a instance, and it takes effect only when parameter 'spot_strategy' is 'SpotWithPriceLimit'. Three decimals is allowed at most.
         :param pulumi.Input[str] spot_strategy: The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+               - `NoSpot`: A regular Pay-As-You-Go instance.
+               - `SpotWithPriceLimit`: A price threshold for a spot instance.
+               - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The ID of the automatic snapshot policy applied to the system disk.
         :param pulumi.Input[str] system_disk_category: The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
@@ -2226,6 +2256,8 @@ class EcsInstanceSet(pulumi.CustomResource):
     def security_enhancement_strategy(self) -> pulumi.Output[Optional[str]]:
         """
         The security enhancement strategy.
+        - `Active`: Enable security enhancement strategy, it only works on system images.
+        - `Deactive`: Disable security enhancement strategy, it works on all images.
         """
         return pulumi.get(self, "security_enhancement_strategy")
 
@@ -2250,6 +2282,9 @@ class EcsInstanceSet(pulumi.CustomResource):
     def spot_strategy(self) -> pulumi.Output[str]:
         """
         The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is 'PostPaid'.
+        - `NoSpot`: A regular Pay-As-You-Go instance.
+        - `SpotWithPriceLimit`: A price threshold for a spot instance.
+        - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
         """
         return pulumi.get(self, "spot_strategy")
 

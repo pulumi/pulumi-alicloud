@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *         final var regionId = config.get("regionId").orElse("cn-shanghai");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultSolutionInstance = new SolutionInstance("defaultSolutionInstance", SolutionInstanceArgs.builder()        
+ *         var defaultSolutionInstance = new SolutionInstance("defaultSolutionInstance", SolutionInstanceArgs.builder()
  *             .solutionInstanceName(name)
  *             .resourceGroupId(default_.ids()[0])
  *             .description("description")

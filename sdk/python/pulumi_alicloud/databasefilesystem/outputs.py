@@ -384,11 +384,17 @@ class GetInstancesInstanceResult(dict):
 class GetInstancesInstanceEcsListResult(dict):
     def __init__(__self__, *,
                  ecs_id: str):
+        """
+        :param str ecs_id: The ID of the ECS instance.
+        """
         pulumi.set(__self__, "ecs_id", ecs_id)
 
     @property
     @pulumi.getter(name="ecsId")
     def ecs_id(self) -> str:
+        """
+        The ID of the ECS instance.
+        """
         return pulumi.get(self, "ecs_id")
 
 

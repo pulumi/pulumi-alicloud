@@ -65,24 +65,24 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var defaultNetworkAcl = new NetworkAcl("defaultNetworkAcl", NetworkAclArgs.builder()        
+ *         var defaultNetworkAcl = new NetworkAcl("defaultNetworkAcl", NetworkAclArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .networkAclName(name)
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/21")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultNetworkAclAttachment = new NetworkAclAttachment("defaultNetworkAclAttachment", NetworkAclAttachmentArgs.builder()        
+ *         var defaultNetworkAclAttachment = new NetworkAclAttachment("defaultNetworkAclAttachment", NetworkAclAttachmentArgs.builder()
  *             .networkAclId(defaultNetworkAcl.id())
  *             .resources(NetworkAclAttachmentResourceArgs.builder()
  *                 .resourceId(defaultSwitch.id())

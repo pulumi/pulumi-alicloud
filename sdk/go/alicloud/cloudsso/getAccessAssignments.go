@@ -69,11 +69,11 @@ type GetAccessAssignmentsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Create the identity type of the access assignment, which can be a user or a user group.
+	// Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
 	PrincipalType *string `pulumi:"principalType"`
 	// The ID of the target to create the resource range.
 	TargetId *string `pulumi:"targetId"`
-	// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+	// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
 	TargetType *string `pulumi:"targetType"`
 }
 
@@ -114,11 +114,11 @@ type GetAccessAssignmentsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Create the identity type of the access assignment, which can be a user or a user group.
+	// Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
 	PrincipalType pulumi.StringPtrInput `pulumi:"principalType"`
 	// The ID of the target to create the resource range.
 	TargetId pulumi.StringPtrInput `pulumi:"targetId"`
-	// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+	// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
 	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
 }
 

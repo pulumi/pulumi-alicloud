@@ -70,7 +70,7 @@ type GetAccessPointsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The Physical Connection to Which the Access Point State.
+	// The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
 	Status *string `pulumi:"status"`
 }
 
@@ -107,7 +107,7 @@ type GetAccessPointsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The Physical Connection to Which the Access Point State.
+	// The Physical Connection to Which the Access Point State. Valid values: `disabled`, `full`, `hot`, `recommended`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

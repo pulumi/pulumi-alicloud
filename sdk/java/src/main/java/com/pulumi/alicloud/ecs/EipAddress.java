@@ -217,6 +217,17 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
     }
     /**
      * The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
+     * - `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China.
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
+     * - `ChinaTelecom`: China Telecom.
+     * - `ChinaUnicom`: China Unicom.
+     * - `ChinaMobile`: China Mobile.
+     * - `ChinaTelecom_L2`: China Telecom L2.
+     * - `ChinaUnicom_L2`: China Unicom L2.
+     * - `ChinaMobile_L2`: China Mobile L2.
+     * - `BGP_FinanceCloud`: If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
+     * - `BGP_International`: BGP_International.
+     * &gt; **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
      * 
      */
     @Export(name="isp", refs={String.class}, tree="[0]")
@@ -224,6 +235,17 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
+     * - `BGP`: BGP (Multi-ISP) lines.Up to 89 high-quality BGP lines are available worldwide. Direct connections with multiple Internet Service Providers (ISPs), including Telecom, Unicom, Mobile, Railcom, Netcom, CERNET, China Broadcast Network, Dr. Peng, and Founder, can be established in all regions in mainland China.
+     * - `BGP_PRO`: BGP (Multi-ISP) Pro lines optimize data transmission to mainland China and improve connection quality for international services. Compared with BGP (Multi-ISP), when BGP (Multi-ISP) Pro provides services to clients in mainland China (excluding data centers), cross-border connections are established without using international ISP services. This reduces network latency.
+     * - `ChinaTelecom`: China Telecom.
+     * - `ChinaUnicom`: China Unicom.
+     * - `ChinaMobile`: China Mobile.
+     * - `ChinaTelecom_L2`: China Telecom L2.
+     * - `ChinaUnicom_L2`: China Unicom L2.
+     * - `ChinaMobile_L2`: China Mobile L2.
+     * - `BGP_FinanceCloud`: If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to `BGP_FinanceCloud`.
+     * - `BGP_International`: BGP_International.
+     * &gt; **NOTE:** From version 1.203.0, `isp` can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
      * 
      */
     public Output<String> isp() {

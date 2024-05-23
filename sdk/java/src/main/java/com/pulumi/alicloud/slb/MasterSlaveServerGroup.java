@@ -100,25 +100,25 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var slbMasterSlaveServerGroup = config.get("slbMasterSlaveServerGroup").orElse("forSlbMasterSlaveServerGroup");
- *         var main = new Network("main", NetworkArgs.builder()        
+ *         var main = new Network("main", NetworkArgs.builder()
  *             .vpcName(slbMasterSlaveServerGroup)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var mainSwitch = new Switch("mainSwitch", SwitchArgs.builder()        
+ *         var mainSwitch = new Switch("mainSwitch", SwitchArgs.builder()
  *             .vpcId(main.id())
  *             .cidrBlock("172.16.0.0/16")
  *             .zoneId(msServerGroup.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(slbMasterSlaveServerGroup)
  *             .build());
  * 
- *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+ *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
  *             .name(slbMasterSlaveServerGroup)
  *             .vpcId(main.id())
  *             .build());
  * 
  *         for (var i = 0; i < 2; i++) {
- *             new Instance("msServerGroupInstance-" + i, InstanceArgs.builder()            
+ *             new Instance("msServerGroupInstance-" + i, InstanceArgs.builder()
  *                 .imageId(image.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *                 .instanceType(msServerGroupGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
  *                 .instanceName(slbMasterSlaveServerGroup)
@@ -133,24 +133,24 @@ import javax.annotation.Nullable;
  * 
  *         
  * }
- *         var msServerGroupApplicationLoadBalancer = new ApplicationLoadBalancer("msServerGroupApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+ *         var msServerGroupApplicationLoadBalancer = new ApplicationLoadBalancer("msServerGroupApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
  *             .loadBalancerName(slbMasterSlaveServerGroup)
  *             .vswitchId(mainSwitch.id())
  *             .loadBalancerSpec("slb.s2.small")
  *             .build());
  * 
- *         var msServerGroupEcsNetworkInterface = new EcsNetworkInterface("msServerGroupEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
+ *         var msServerGroupEcsNetworkInterface = new EcsNetworkInterface("msServerGroupEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()
  *             .networkInterfaceName(slbMasterSlaveServerGroup)
  *             .vswitchId(mainSwitch.id())
  *             .securityGroupIds(group.id())
  *             .build());
  * 
- *         var msServerGroupEcsNetworkInterfaceAttachment = new EcsNetworkInterfaceAttachment("msServerGroupEcsNetworkInterfaceAttachment", EcsNetworkInterfaceAttachmentArgs.builder()        
+ *         var msServerGroupEcsNetworkInterfaceAttachment = new EcsNetworkInterfaceAttachment("msServerGroupEcsNetworkInterfaceAttachment", EcsNetworkInterfaceAttachmentArgs.builder()
  *             .instanceId(msServerGroupInstance[0].id())
  *             .networkInterfaceId(msServerGroupEcsNetworkInterface.id())
  *             .build());
  * 
- *         var groupMasterSlaveServerGroup = new MasterSlaveServerGroup("groupMasterSlaveServerGroup", MasterSlaveServerGroupArgs.builder()        
+ *         var groupMasterSlaveServerGroup = new MasterSlaveServerGroup("groupMasterSlaveServerGroup", MasterSlaveServerGroupArgs.builder()
  *             .loadBalancerId(msServerGroupApplicationLoadBalancer.id())
  *             .name(slbMasterSlaveServerGroup)
  *             .servers(            
@@ -168,7 +168,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var tcp = new Listener("tcp", ListenerArgs.builder()        
+ *         var tcp = new Listener("tcp", ListenerArgs.builder()
  *             .loadBalancerId(msServerGroupApplicationLoadBalancer.id())
  *             .masterSlaveServerGroupId(groupMasterSlaveServerGroup.id())
  *             .frontendPort("22")

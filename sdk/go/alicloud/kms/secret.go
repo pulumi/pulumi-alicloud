@@ -85,6 +85,10 @@ type Secret struct {
 	// The name of the secret.
 	SecretName pulumi.StringOutput `pulumi:"secretName"`
 	// The type of the secret. Valid values:
+	// - `Generic`: specifies a generic secret.
+	// - `Rds`: specifies a managed ApsaraDB RDS secret.
+	// - `RAMCredentials`: indicates a managed RAM secret.
+	// - `ECS`: specifies a managed ECS secret.
 	SecretType pulumi.StringOutput `pulumi:"secretType"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -167,6 +171,10 @@ type secretState struct {
 	// The name of the secret.
 	SecretName *string `pulumi:"secretName"`
 	// The type of the secret. Valid values:
+	// - `Generic`: specifies a generic secret.
+	// - `Rds`: specifies a managed ApsaraDB RDS secret.
+	// - `RAMCredentials`: indicates a managed RAM secret.
+	// - `ECS`: specifies a managed ECS secret.
 	SecretType *string `pulumi:"secretType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -204,6 +212,10 @@ type SecretState struct {
 	// The name of the secret.
 	SecretName pulumi.StringPtrInput
 	// The type of the secret. Valid values:
+	// - `Generic`: specifies a generic secret.
+	// - `Rds`: specifies a managed ApsaraDB RDS secret.
+	// - `RAMCredentials`: indicates a managed RAM secret.
+	// - `ECS`: specifies a managed ECS secret.
 	SecretType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -241,6 +253,10 @@ type secretArgs struct {
 	// The name of the secret.
 	SecretName string `pulumi:"secretName"`
 	// The type of the secret. Valid values:
+	// - `Generic`: specifies a generic secret.
+	// - `Rds`: specifies a managed ApsaraDB RDS secret.
+	// - `RAMCredentials`: indicates a managed RAM secret.
+	// - `ECS`: specifies a managed ECS secret.
 	SecretType *string `pulumi:"secretType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -275,6 +291,10 @@ type SecretArgs struct {
 	// The name of the secret.
 	SecretName pulumi.StringInput
 	// The type of the secret. Valid values:
+	// - `Generic`: specifies a generic secret.
+	// - `Rds`: specifies a managed ApsaraDB RDS secret.
+	// - `RAMCredentials`: indicates a managed RAM secret.
+	// - `ECS`: specifies a managed ECS secret.
 	SecretType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -437,6 +457,10 @@ func (o SecretOutput) SecretName() pulumi.StringOutput {
 }
 
 // The type of the secret. Valid values:
+// - `Generic`: specifies a generic secret.
+// - `Rds`: specifies a managed ApsaraDB RDS secret.
+// - `RAMCredentials`: indicates a managed RAM secret.
+// - `ECS`: specifies a managed ECS secret.
 func (o SecretOutput) SecretType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.SecretType }).(pulumi.StringOutput)
 }

@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new CaCertificate("foo", CaCertificateArgs.builder()        
+ *         var foo = new CaCertificate("foo", CaCertificateArgs.builder()
  *             .caCertificateName("tf-testAccSlbCACertificate")
  *             .caCertificate("""
  * -----BEGIN CERTIFICATE-----

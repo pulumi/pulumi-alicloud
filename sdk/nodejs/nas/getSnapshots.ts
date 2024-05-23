@@ -66,7 +66,7 @@ export interface GetSnapshotsArgs {
      */
     snapshotName?: string;
     /**
-     * The status of the snapshot.
+     * Status. Valid values: `accomplished`, `failed`, `progressing`.
      */
     status?: string;
 }
@@ -138,7 +138,7 @@ export interface GetSnapshotsOutputArgs {
      */
     snapshotName?: pulumi.Input<string>;
     /**
-     * The status of the snapshot.
+     * Status. Valid values: `accomplished`, `failed`, `progressing`.
      */
     status?: pulumi.Input<string>;
 }

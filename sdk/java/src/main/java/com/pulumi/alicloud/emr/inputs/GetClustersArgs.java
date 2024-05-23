@@ -19,14 +19,14 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetClustersArgs Empty = new GetClustersArgs();
 
     /**
-     * The name of the associated cluster.
+     * The cluster name.
      * 
      */
     @Import(name="clusterName")
     private @Nullable Output<String> clusterName;
 
     /**
-     * @return The name of the associated cluster.
+     * @return The cluster name.
      * 
      */
     public Optional<Output<String>> clusterName() {
@@ -49,14 +49,14 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * How to create a cluster.
+     * How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
      * 
      */
     @Import(name="createType")
     private @Nullable Output<String> createType;
 
     /**
-     * @return How to create a cluster.
+     * @return How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
      * 
      */
     public Optional<Output<String>> createType() {
@@ -79,14 +79,14 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The hosting type of the cluster.
+     * The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
      * 
      */
     @Import(name="depositType")
     private @Nullable Output<String> depositType;
 
     /**
-     * @return The hosting type of the cluster.
+     * @return The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
      * 
      */
     public Optional<Output<String>> depositType() {
@@ -139,14 +139,14 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The host type of the cluster. The default is ECS.
+     * The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
      * 
      */
     @Import(name="machineType")
     private @Nullable Output<String> machineType;
 
     /**
-     * @return The host type of the cluster. The default is ECS.
+     * @return The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
      * 
      */
     public Optional<Output<String>> machineType() {
@@ -282,7 +282,7 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param clusterName The name of the associated cluster.
+         * @param clusterName The cluster name.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param clusterName The name of the associated cluster.
+         * @param clusterName The cluster name.
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param createType How to create a cluster.
+         * @param createType How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
          * 
          * @return builder
          * 
@@ -345,7 +345,7 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param createType How to create a cluster.
+         * @param createType How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param depositType The hosting type of the cluster.
+         * @param depositType The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param depositType The hosting type of the cluster.
+         * @param depositType The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
          * 
          * @return builder
          * 
@@ -470,7 +470,7 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param machineType The host type of the cluster. The default is ECS.
+         * @param machineType The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
          * 
          * @return builder
          * 
@@ -481,7 +481,7 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param machineType The host type of the cluster. The default is ECS.
+         * @param machineType The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
          * 
          * @return builder
          * 

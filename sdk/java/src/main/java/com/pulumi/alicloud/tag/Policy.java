@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var example = new Policy("example", PolicyArgs.builder()        
+ *         var example = new Policy("example", PolicyArgs.builder()
  *             .policyName(name)
  *             .policyDesc(name)
  *             .userType("USER")

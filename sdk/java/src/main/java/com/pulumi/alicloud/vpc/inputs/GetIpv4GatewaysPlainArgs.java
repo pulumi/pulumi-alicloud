@@ -76,14 +76,14 @@ public final class GetIpv4GatewaysPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Creating`, `Created`, `Deleting`, `Pending`, `Deleted`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Creating`, `Created`, `Deleting`, `Pending`, `Deleted`.
      * 
      */
     public Optional<String> status() {
@@ -189,7 +189,7 @@ public final class GetIpv4GatewaysPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `Creating`, `Created`, `Deleting`, `Pending`, `Deleted`.
          * 
          * @return builder
          * 

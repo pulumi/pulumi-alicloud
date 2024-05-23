@@ -51,14 +51,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AlertContact("example", AlertContactArgs.builder()        
+ *         var example = new AlertContact("example", AlertContactArgs.builder()
  *             .alertContactName("example_value")
  *             .dingRobotWebhookUrl("https://oapi.dingtalk.com/robot/send?access_token=91f2f6****")
  *             .email("someone{@literal @}example.com")
  *             .phoneNum("1381111****")
  *             .build());
  * 
- *         var exampleAlertContactGroup = new AlertContactGroup("exampleAlertContactGroup", AlertContactGroupArgs.builder()        
+ *         var exampleAlertContactGroup = new AlertContactGroup("exampleAlertContactGroup", AlertContactGroupArgs.builder()
  *             .alertContactGroupName("example_value")
  *             .contactIds(example.id())
  *             .build());

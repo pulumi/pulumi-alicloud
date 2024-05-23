@@ -85,7 +85,7 @@ func GetIpv6EgressRules(ctx *pulumi.Context, args *GetIpv6EgressRulesArgs, opts 
 type GetIpv6EgressRulesArgs struct {
 	// A list of Ipv6 Egress Rule IDs.
 	Ids []string `pulumi:"ids"`
-	// The ID of the instance to which the egress-only rule is applied.
+	// The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
 	InstanceId *string `pulumi:"instanceId"`
 	// The name of the resource.
 	Ipv6EgressRuleName *string `pulumi:"ipv6EgressRuleName"`
@@ -95,7 +95,7 @@ type GetIpv6EgressRulesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+	// The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
 	Status *string `pulumi:"status"`
 }
 
@@ -131,7 +131,7 @@ func GetIpv6EgressRulesOutput(ctx *pulumi.Context, args GetIpv6EgressRulesOutput
 type GetIpv6EgressRulesOutputArgs struct {
 	// A list of Ipv6 Egress Rule IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The ID of the instance to which the egress-only rule is applied.
+	// The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// The name of the resource.
 	Ipv6EgressRuleName pulumi.StringPtrInput `pulumi:"ipv6EgressRuleName"`
@@ -141,7 +141,7 @@ type GetIpv6EgressRulesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+	// The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

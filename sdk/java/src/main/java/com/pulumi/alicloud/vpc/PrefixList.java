@@ -59,17 +59,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-testacc-example");
- *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()        
+ *         var defaultRg = new ResourceGroup("defaultRg", ResourceGroupArgs.builder()
  *             .displayName("tf-testacc-chenyi")
  *             .resourceGroupName(name)
  *             .build());
  * 
- *         var changeRg = new ResourceGroup("changeRg", ResourceGroupArgs.builder()        
+ *         var changeRg = new ResourceGroup("changeRg", ResourceGroupArgs.builder()
  *             .displayName("tf-testacc-chenyi-change")
  *             .resourceGroupName(String.format("%s1", name))
  *             .build());
  * 
- *         var default_ = new PrefixList("default", PrefixListArgs.builder()        
+ *         var default_ = new PrefixList("default", PrefixListArgs.builder()
  *             .maxEntries(50)
  *             .resourceGroupId(defaultRg.id())
  *             .prefixListDescription("test")

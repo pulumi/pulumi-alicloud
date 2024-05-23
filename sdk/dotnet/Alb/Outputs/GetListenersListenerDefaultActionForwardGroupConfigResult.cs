@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class GetListenersListenerDefaultActionForwardGroupConfigResult
     {
+        /// <summary>
+        /// The destination server group to which requests are forwarded.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleResult> ServerGroupTuples;
 
         [OutputConstructor]

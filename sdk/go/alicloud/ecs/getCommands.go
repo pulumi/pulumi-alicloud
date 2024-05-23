@@ -66,13 +66,13 @@ type GetCommandsArgs struct {
 	Description *string `pulumi:"description"`
 	// A list of Command IDs.
 	Ids []string `pulumi:"ids"`
-	// The name of the command
+	// The name of the command.
 	Name *string `pulumi:"name"`
 	// A regex string to filter results by Command name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The command type.
+	// The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
 	Type *string `pulumi:"type"`
 }
 
@@ -115,13 +115,13 @@ type GetCommandsOutputArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// A list of Command IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The name of the command
+	// The name of the command.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A regex string to filter results by Command name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The command type.
+	// The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 

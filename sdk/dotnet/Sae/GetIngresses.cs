@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Sae
         }
 
         /// <summary>
-        /// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+        /// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
         /// </summary>
         [Input("namespaceId", required: true)]
         public string NamespaceId { get; set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Sae
         }
 
         /// <summary>
-        /// The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
+        /// The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
         /// </summary>
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;

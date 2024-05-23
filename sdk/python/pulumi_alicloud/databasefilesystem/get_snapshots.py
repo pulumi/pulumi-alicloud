@@ -129,7 +129,7 @@ def get_snapshots(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str name_regex: A regex string to filter results by Snapshot name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+    :param str status: The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -180,6 +180,6 @@ def get_snapshots_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str name_regex: A regex string to filter results by Snapshot name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+    :param str status: The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
     """
     ...

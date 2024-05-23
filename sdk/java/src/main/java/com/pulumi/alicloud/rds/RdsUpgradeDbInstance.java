@@ -82,19 +82,19 @@ import javax.annotation.Nullable;
  * 
  *         final var exampleGetCrossRegions = RdsFunctions.getCrossRegions();
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()        
+ *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName("terraform-example")
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .engine("PostgreSQL")
  *             .engineVersion("13.0")
  *             .dbInstanceStorageType("cloud_essd")
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *             .monitoringPeriod("60")
  *             .build());
  * 
- *         var exampleRdsUpgradeDbInstance = new RdsUpgradeDbInstance("exampleRdsUpgradeDbInstance", RdsUpgradeDbInstanceArgs.builder()        
+ *         var exampleRdsUpgradeDbInstance = new RdsUpgradeDbInstance("exampleRdsUpgradeDbInstance", RdsUpgradeDbInstanceArgs.builder()
  *             .sourceDbInstanceId(exampleInstance.id())
  *             .targetMajorVersion("14.0")
  *             .dbInstanceClass(exampleInstance.instanceType())

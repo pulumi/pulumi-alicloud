@@ -339,7 +339,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()        
+     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()
      *             .groupName("groupname")
      *             .inProtocol("rtmp")
      *             .outProtocol("flv")
@@ -396,7 +396,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()        
+     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()
      *             .groupName("groupname")
      *             .inProtocol("rtmp")
      *             .outProtocol("flv")
@@ -453,7 +453,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()        
+     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()
      *             .groupName("groupname")
      *             .inProtocol("rtmp")
      *             .outProtocol("flv")
@@ -510,7 +510,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()        
+     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()
      *             .groupName("groupname")
      *             .inProtocol("rtmp")
      *             .outProtocol("flv")
@@ -567,7 +567,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()        
+     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()
      *             .groupName("groupname")
      *             .inProtocol("rtmp")
      *             .outProtocol("flv")
@@ -624,7 +624,7 @@ public final class VideosurveillanceFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()        
+     *         var defaultSystemGroup = new SystemGroup("defaultSystemGroup", SystemGroupArgs.builder()
      *             .groupName("groupname")
      *             .inProtocol("rtmp")
      *             .outProtocol("flv")

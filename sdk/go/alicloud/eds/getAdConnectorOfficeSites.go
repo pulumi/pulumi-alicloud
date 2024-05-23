@@ -66,7 +66,16 @@ type GetAdConnectorOfficeSitesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The workspace status.
+	// The workspace status. Valid values:
+	// - `REGISTERING`: The workspace is being registered.
+	// - `REGISTERED`: The workspace is registered.
+	// - `DEREGISTERING`: The workspace is being deregistered.
+	// - `DEREGISTERED`: The workspace is deregistered.
+	// - `ERROR`: The configurations of the workspace are invalid.
+	// - `NEEDCONFIGTRUST`: The trust relationship needs to be configured.
+	// - `NEEDCONFIGUSER`: Users need to be configured.
+	// - `CONFIGTRUSTING`: The trust relationship is being configured.
+	// - `CONFIGTRUSTFAILED`: The trust relationship fails to be configured.
 	Status *string `pulumi:"status"`
 }
 
@@ -103,7 +112,16 @@ type GetAdConnectorOfficeSitesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The workspace status.
+	// The workspace status. Valid values:
+	// - `REGISTERING`: The workspace is being registered.
+	// - `REGISTERED`: The workspace is registered.
+	// - `DEREGISTERING`: The workspace is being deregistered.
+	// - `DEREGISTERED`: The workspace is deregistered.
+	// - `ERROR`: The configurations of the workspace are invalid.
+	// - `NEEDCONFIGTRUST`: The trust relationship needs to be configured.
+	// - `NEEDCONFIGUSER`: Users need to be configured.
+	// - `CONFIGTRUSTING`: The trust relationship is being configured.
+	// - `CONFIGTRUSTFAILED`: The trust relationship fails to be configured.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

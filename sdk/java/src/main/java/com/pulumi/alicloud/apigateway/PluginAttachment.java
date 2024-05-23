@@ -53,12 +53,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform_example");
- *         var example = new Group("example", GroupArgs.builder()        
+ *         var example = new Group("example", GroupArgs.builder()
  *             .name(name)
  *             .description(name)
  *             .build());
  * 
- *         var exampleApi = new Api("exampleApi", ApiArgs.builder()        
+ *         var exampleApi = new Api("exampleApi", ApiArgs.builder()
  *             .groupId(example.id())
  *             .name(name)
  *             .description(name)
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *                 "TEST")
  *             .build());
  * 
- *         var examplePlugin = new Plugin("examplePlugin", PluginArgs.builder()        
+ *         var examplePlugin = new Plugin("examplePlugin", PluginArgs.builder()
  *             .description("tf_example")
  *             .pluginName("tf_example")
  *             .pluginData(serializeJson(
@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  *             .pluginType("cors")
  *             .build());
  * 
- *         var examplePluginAttachment = new PluginAttachment("examplePluginAttachment", PluginAttachmentArgs.builder()        
+ *         var examplePluginAttachment = new PluginAttachment("examplePluginAttachment", PluginAttachmentArgs.builder()
  *             .apiId(exampleApi.apiId())
  *             .groupId(example.id())
  *             .pluginId(examplePlugin.id())

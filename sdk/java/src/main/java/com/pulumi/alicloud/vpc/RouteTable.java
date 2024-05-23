@@ -52,11 +52,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()        
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
  *             .vpcName(name)
  *             .build());
  * 
- *         var default_ = new RouteTable("default", RouteTableArgs.builder()        
+ *         var default_ = new RouteTable("default", RouteTableArgs.builder()
  *             .description("test-description")
  *             .vpcId(defaultVpc.id())
  *             .routeTableName(name)

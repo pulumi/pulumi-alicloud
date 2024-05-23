@@ -151,6 +151,9 @@ type CustomRoutingEndpoint struct {
 	// The status of the Custom Routing Endpoint.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+	// - `DenyAll`: denies all traffic to the endpoint.
+	// - `AllowAll`: allows all traffic to the endpoint.
+	// - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
 	TrafficToEndpointPolicy pulumi.StringOutput `pulumi:"trafficToEndpointPolicy"`
 	// The backend service type of the endpoint. Valid values: `PrivateSubNet`.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -208,6 +211,9 @@ type customRoutingEndpointState struct {
 	// The status of the Custom Routing Endpoint.
 	Status *string `pulumi:"status"`
 	// The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+	// - `DenyAll`: denies all traffic to the endpoint.
+	// - `AllowAll`: allows all traffic to the endpoint.
+	// - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
 	TrafficToEndpointPolicy *string `pulumi:"trafficToEndpointPolicy"`
 	// The backend service type of the endpoint. Valid values: `PrivateSubNet`.
 	Type *string `pulumi:"type"`
@@ -227,6 +233,9 @@ type CustomRoutingEndpointState struct {
 	// The status of the Custom Routing Endpoint.
 	Status pulumi.StringPtrInput
 	// The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+	// - `DenyAll`: denies all traffic to the endpoint.
+	// - `AllowAll`: allows all traffic to the endpoint.
+	// - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
 	TrafficToEndpointPolicy pulumi.StringPtrInput
 	// The backend service type of the endpoint. Valid values: `PrivateSubNet`.
 	Type pulumi.StringPtrInput
@@ -242,6 +251,9 @@ type customRoutingEndpointArgs struct {
 	// The ID of the endpoint group in which to create endpoints.
 	EndpointGroupId string `pulumi:"endpointGroupId"`
 	// The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+	// - `DenyAll`: denies all traffic to the endpoint.
+	// - `AllowAll`: allows all traffic to the endpoint.
+	// - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
 	TrafficToEndpointPolicy *string `pulumi:"trafficToEndpointPolicy"`
 	// The backend service type of the endpoint. Valid values: `PrivateSubNet`.
 	Type string `pulumi:"type"`
@@ -254,6 +266,9 @@ type CustomRoutingEndpointArgs struct {
 	// The ID of the endpoint group in which to create endpoints.
 	EndpointGroupId pulumi.StringInput
 	// The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+	// - `DenyAll`: denies all traffic to the endpoint.
+	// - `AllowAll`: allows all traffic to the endpoint.
+	// - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
 	TrafficToEndpointPolicy pulumi.StringPtrInput
 	// The backend service type of the endpoint. Valid values: `PrivateSubNet`.
 	Type pulumi.StringInput
@@ -377,6 +392,9 @@ func (o CustomRoutingEndpointOutput) Status() pulumi.StringOutput {
 }
 
 // The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
+// - `DenyAll`: denies all traffic to the endpoint.
+// - `AllowAll`: allows all traffic to the endpoint.
+// - `AllowCustom`: allows traffic only to specified destinations in the endpoint.
 func (o CustomRoutingEndpointOutput) TrafficToEndpointPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomRoutingEndpoint) pulumi.StringOutput { return v.TrafficToEndpointPolicy }).(pulumi.StringOutput)
 }

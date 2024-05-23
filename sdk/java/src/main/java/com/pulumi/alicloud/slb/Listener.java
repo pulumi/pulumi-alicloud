@@ -69,24 +69,24 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var listener = new ApplicationLoadBalancer("listener", ApplicationLoadBalancerArgs.builder()        
+ *         var listener = new ApplicationLoadBalancer("listener", ApplicationLoadBalancerArgs.builder()
  *             .loadBalancerName(String.format("%s-%s", name,default_.result()))
  *             .internetChargeType("PayByTraffic")
  *             .addressType("internet")
  *             .instanceChargeType("PayByCLCU")
  *             .build());
  * 
- *         var listenerAcl = new Acl("listenerAcl", AclArgs.builder()        
+ *         var listenerAcl = new Acl("listenerAcl", AclArgs.builder()
  *             .name(String.format("%s-%s", name,default_.result()))
  *             .ipVersion("ipv4")
  *             .build());
  * 
- *         var listenerListener = new Listener("listenerListener", ListenerArgs.builder()        
+ *         var listenerListener = new Listener("listenerListener", ListenerArgs.builder()
  *             .loadBalancerId(listener.id())
  *             .backendPort(80)
  *             .frontendPort(80)
@@ -116,13 +116,13 @@ import javax.annotation.Nullable;
  *             .idleTimeout(30)
  *             .build());
  * 
- *         var first = new AclEntryAttachment("first", AclEntryAttachmentArgs.builder()        
+ *         var first = new AclEntryAttachment("first", AclEntryAttachmentArgs.builder()
  *             .aclId(listenerAcl.id())
  *             .entry("10.10.10.0/24")
  *             .comment("first")
  *             .build());
  * 
- *         var second = new AclEntryAttachment("second", AclEntryAttachmentArgs.builder()        
+ *         var second = new AclEntryAttachment("second", AclEntryAttachmentArgs.builder()
  *             .aclId(listenerAcl.id())
  *             .entry("168.10.10.0/24")
  *             .comment("second")

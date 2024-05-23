@@ -196,12 +196,12 @@ def get_base_instances(enable_details: Optional[bool] = None,
 
     :param Sequence[str] ids: A list of Instance IDs.
     :param str instance_id: OceanBase cluster ID.
-    :param str instance_name: OceanBase cluster name.
+    :param str instance_name: OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
     :param str name_regex: A regex string to filter results by Instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the enterprise resource group to which the instance resides.
     :param str search_key: The filter keyword for the query list.
-    :param str status: The status of the resource.
+    :param str status: The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -270,11 +270,11 @@ def get_base_instances_output(enable_details: Optional[pulumi.Input[Optional[boo
 
     :param Sequence[str] ids: A list of Instance IDs.
     :param str instance_id: OceanBase cluster ID.
-    :param str instance_name: OceanBase cluster name.
+    :param str instance_name: OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
     :param str name_regex: A regex string to filter results by Instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the enterprise resource group to which the instance resides.
     :param str search_key: The filter keyword for the query list.
-    :param str status: The status of the resource.
+    :param str status: The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
     """
     ...

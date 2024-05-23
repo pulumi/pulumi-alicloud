@@ -57,6 +57,8 @@ export class NatGateway extends pulumi.CustomResource {
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
      * The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+     * - `MULTI_BINDED`: Multi EIP network card visible mode.
+     * - `NAT`: EIP normal mode, compatible with IPv4 gateway.
      */
     public readonly eipBindMode!: pulumi.Output<string>;
     /**
@@ -209,6 +211,8 @@ export interface NatGatewayState {
     dryRun?: pulumi.Input<boolean>;
     /**
      * The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+     * - `MULTI_BINDED`: Multi EIP network card visible mode.
+     * - `NAT`: EIP normal mode, compatible with IPv4 gateway.
      */
     eipBindMode?: pulumi.Input<string>;
     /**
@@ -298,6 +302,8 @@ export interface NatGatewayArgs {
     dryRun?: pulumi.Input<boolean>;
     /**
      * The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+     * - `MULTI_BINDED`: Multi EIP network card visible mode.
+     * - `NAT`: EIP normal mode, compatible with IPv4 gateway.
      */
     eipBindMode?: pulumi.Input<string>;
     /**

@@ -84,19 +84,19 @@ import javax.annotation.Nullable;
  *             .availableInstanceType(default_.instanceTypes()[0].id())
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .description(name)
  *             .vpcId(defaultNetwork.id())
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         for (var i = 0; i < 2; i++) {
- *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+ *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
  *                 .availabilityZone(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *                 .instanceName(name)
  *                 .hostName(name)
@@ -123,7 +123,7 @@ import javax.annotation.Nullable;
  *         
  * }
  *         for (var i = 0; i < 2; i++) {
- *             new EcsNetworkInterface("defaultEcsNetworkInterface-" + i, EcsNetworkInterfaceArgs.builder()            
+ *             new EcsNetworkInterface("defaultEcsNetworkInterface-" + i, EcsNetworkInterfaceArgs.builder()
  *                 .networkInterfaceName(name)
  *                 .vswitchId(defaultSwitch.id())
  *                 .securityGroupIds(defaultSecurityGroup.id())
@@ -132,19 +132,19 @@ import javax.annotation.Nullable;
  *         
  * }
  *         for (var i = 0; i < 2; i++) {
- *             new EcsNetworkInterfaceAttachment("defaultEcsNetworkInterfaceAttachment-" + i, EcsNetworkInterfaceAttachmentArgs.builder()            
+ *             new EcsNetworkInterfaceAttachment("defaultEcsNetworkInterfaceAttachment-" + i, EcsNetworkInterfaceAttachmentArgs.builder()
  *                 .instanceId(defaultInstance[range.value()].id())
  *                 .networkInterfaceId(defaultEcsNetworkInterface[range.value()].id())
  *                 .build());
  * 
  *         
  * }
- *         var defaultTrafficMirrorFilter = new TrafficMirrorFilter("defaultTrafficMirrorFilter", TrafficMirrorFilterArgs.builder()        
+ *         var defaultTrafficMirrorFilter = new TrafficMirrorFilter("defaultTrafficMirrorFilter", TrafficMirrorFilterArgs.builder()
  *             .trafficMirrorFilterName(name)
  *             .trafficMirrorFilterDescription(name)
  *             .build());
  * 
- *         var defaultTrafficMirrorSession = new TrafficMirrorSession("defaultTrafficMirrorSession", TrafficMirrorSessionArgs.builder()        
+ *         var defaultTrafficMirrorSession = new TrafficMirrorSession("defaultTrafficMirrorSession", TrafficMirrorSessionArgs.builder()
  *             .priority(1)
  *             .virtualNetworkId(10)
  *             .trafficMirrorSessionDescription(name)

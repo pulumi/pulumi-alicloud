@@ -32,14 +32,14 @@ public final class GetChartRepositoriesPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The ID of the Container Registry instance.
+     * InstanceId.
      * 
      */
     @Import(name="instanceId", required=true)
     private String instanceId;
 
     /**
-     * @return The ID of the Container Registry instance.
+     * @return InstanceId.
      * 
      */
     public String instanceId() {
@@ -125,7 +125,7 @@ public final class GetChartRepositoriesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param instanceId The ID of the Container Registry instance.
+         * @param instanceId InstanceId.
          * 
          * @return builder
          * 

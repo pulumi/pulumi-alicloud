@@ -70,7 +70,7 @@ type GetGatewayVpnAttachmentsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status *string `pulumi:"status"`
 	// The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
 	//
@@ -117,7 +117,7 @@ type GetGatewayVpnAttachmentsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
 	//

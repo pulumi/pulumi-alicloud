@@ -76,14 +76,14 @@ public final class GetCommandsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The name of the command
+     * The name of the command.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the command
+     * @return The name of the command.
      * 
      */
     public Optional<String> name() {
@@ -121,14 +121,14 @@ public final class GetCommandsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The command type.
+     * The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
      * 
      */
     @Import(name="type")
     private @Nullable String type;
 
     /**
-     * @return The command type.
+     * @return The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
      * 
      */
     public Optional<String> type() {
@@ -221,7 +221,7 @@ public final class GetCommandsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param name The name of the command
+         * @param name The name of the command.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class GetCommandsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param type The command type.
+         * @param type The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
          * 
          * @return builder
          * 

@@ -70,20 +70,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var bucketSrc = new Bucket("bucketSrc", BucketArgs.builder()        
+ *         var bucketSrc = new Bucket("bucketSrc", BucketArgs.builder()
  *             .bucket(String.format("example-src-%s", default_.result()))
  *             .build());
  * 
- *         var bucketDest = new Bucket("bucketDest", BucketArgs.builder()        
+ *         var bucketDest = new Bucket("bucketDest", BucketArgs.builder()
  *             .bucket(String.format("example-dest-%s", default_.result()))
  *             .build());
  * 
- *         var role = new Role("role", RoleArgs.builder()        
+ *         var role = new Role("role", RoleArgs.builder()
  *             .name(String.format("example-role-%s", default_.result()))
  *             .document("""
  * 		{
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var policy = new Policy("policy", PolicyArgs.builder()        
+ *         var policy = new Policy("policy", PolicyArgs.builder()
  *             .policyName(String.format("example-policy-%s", default_.result()))
  *             .policyDocument("""
  * 		{
@@ -127,19 +127,19 @@ import javax.annotation.Nullable;
  *             .force(true)
  *             .build());
  * 
- *         var attach = new RolePolicyAttachment("attach", RolePolicyAttachmentArgs.builder()        
+ *         var attach = new RolePolicyAttachment("attach", RolePolicyAttachmentArgs.builder()
  *             .policyName(policy.name())
  *             .policyType(policy.type())
  *             .roleName(role.name())
  *             .build());
  * 
- *         var key = new Key("key", KeyArgs.builder()        
+ *         var key = new Key("key", KeyArgs.builder()
  *             .description("Hello KMS")
  *             .pendingWindowInDays("7")
  *             .status("Enabled")
  *             .build());
  * 
- *         var cross_region_replication = new BucketReplication("cross-region-replication", BucketReplicationArgs.builder()        
+ *         var cross_region_replication = new BucketReplication("cross-region-replication", BucketReplicationArgs.builder()
  *             .bucket(bucketSrc.id())
  *             .action("PUT,DELETE")
  *             .historicalObjectReplication("enabled")

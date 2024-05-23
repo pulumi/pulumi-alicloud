@@ -116,6 +116,7 @@ type OtsBackupPlanRule struct {
 	Retention *string `pulumi:"retention"`
 	RuleName  *string `pulumi:"ruleName"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// - `startTime` Backup start time, UNIX time seconds.
 	Schedule *string `pulumi:"schedule"`
 }
 
@@ -139,6 +140,7 @@ type OtsBackupPlanRuleArgs struct {
 	Retention pulumi.StringPtrInput `pulumi:"retention"`
 	RuleName  pulumi.StringPtrInput `pulumi:"ruleName"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// - `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
 }
 
@@ -213,6 +215,7 @@ func (o OtsBackupPlanRuleOutput) RuleName() pulumi.StringPtrOutput {
 }
 
 // Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+// - `startTime` Backup start time, UNIX time seconds.
 func (o OtsBackupPlanRuleOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OtsBackupPlanRule) *string { return v.Schedule }).(pulumi.StringPtrOutput)
 }
@@ -1713,6 +1716,8 @@ type GetEcsBackupClientsClient struct {
 	// The data plane access point type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
 	DataNetworkType string `pulumi:"dataNetworkType"`
 	// The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
+	// * `USE_CONTROL_PROXY` (Default, the same with control plane)
+	// * `CUSTOM` (Custom configuration items for the HTTP protocol).
 	DataProxySetting string `pulumi:"dataProxySetting"`
 	// The first ID of the resource.
 	EcsBackupClientId string `pulumi:"ecsBackupClientId"`
@@ -1779,6 +1784,8 @@ type GetEcsBackupClientsClientArgs struct {
 	// The data plane access point type. Valid Values: `PUBLIC`, `VPC`, `CLASSIC`.
 	DataNetworkType pulumi.StringInput `pulumi:"dataNetworkType"`
 	// The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
+	// * `USE_CONTROL_PROXY` (Default, the same with control plane)
+	// * `CUSTOM` (Custom configuration items for the HTTP protocol).
 	DataProxySetting pulumi.StringInput `pulumi:"dataProxySetting"`
 	// The first ID of the resource.
 	EcsBackupClientId pulumi.StringInput `pulumi:"ecsBackupClientId"`
@@ -1902,6 +1909,8 @@ func (o GetEcsBackupClientsClientOutput) DataNetworkType() pulumi.StringOutput {
 }
 
 // The data plane proxy settings. Valid Values: `DISABLE`, `USE_CONTROL_PROXY`, `CUSTOM`.
+// * `USE_CONTROL_PROXY` (Default, the same with control plane)
+// * `CUSTOM` (Custom configuration items for the HTTP protocol).
 func (o GetEcsBackupClientsClientOutput) DataProxySetting() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupClientsClient) string { return v.DataProxySetting }).(pulumi.StringOutput)
 }
@@ -2049,6 +2058,7 @@ type GetEcsBackupPlansPlan struct {
 	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule string `pulumi:"schedule"`
 	// The type of backup source.
 	SourceType string `pulumi:"sourceType"`
@@ -2099,6 +2109,7 @@ type GetEcsBackupPlansPlanArgs struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringInput `pulumi:"schedule"`
 	// The type of backup source.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
@@ -2230,6 +2241,7 @@ func (o GetEcsBackupPlansPlanOutput) Retention() pulumi.StringOutput {
 }
 
 // Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+// * `startTime` Backup start time, UNIX time seconds.
 func (o GetEcsBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
 }
@@ -2910,6 +2922,7 @@ type GetNasBackupPlansPlan struct {
 	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule string `pulumi:"schedule"`
 	// The update time of the backup plan. UNIX time in seconds.
 	UpdatedTime string `pulumi:"updatedTime"`
@@ -2952,6 +2965,7 @@ type GetNasBackupPlansPlanArgs struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput `pulumi:"retention"`
 	// Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringInput `pulumi:"schedule"`
 	// The update time of the backup plan. UNIX time in seconds.
 	UpdatedTime pulumi.StringInput `pulumi:"updatedTime"`
@@ -3066,6 +3080,7 @@ func (o GetNasBackupPlansPlanOutput) Retention() pulumi.StringOutput {
 }
 
 // Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+// * `startTime` Backup start time, UNIX time seconds.
 func (o GetNasBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNasBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
 }
@@ -3120,6 +3135,7 @@ type GetOssBackupPlansPlan struct {
 	// Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
 	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule string `pulumi:"schedule"`
 	// The update time of the backup plan. UNIX time in seconds.
 	UpdatedTime string `pulumi:"updatedTime"`
@@ -3158,6 +3174,7 @@ type GetOssBackupPlansPlanArgs struct {
 	// Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput `pulumi:"retention"`
 	// Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringInput `pulumi:"schedule"`
 	// The update time of the backup plan. UNIX time in seconds.
 	UpdatedTime pulumi.StringInput `pulumi:"updatedTime"`
@@ -3262,6 +3279,7 @@ func (o GetOssBackupPlansPlanOutput) Retention() pulumi.StringOutput {
 }
 
 // Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+// * `startTime` Backup start time, UNIX time seconds.
 func (o GetOssBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOssBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
 }
@@ -3313,6 +3331,7 @@ type GetOtsBackupPlansPlan struct {
 	// The Backup retention days, the minimum is 1.
 	Retention string `pulumi:"retention"`
 	// The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule string `pulumi:"schedule"`
 	// The type of the data source.
 	SourceType string `pulumi:"sourceType"`
@@ -3351,6 +3370,7 @@ type GetOtsBackupPlansPlanArgs struct {
 	// The Backup retention days, the minimum is 1.
 	Retention pulumi.StringInput `pulumi:"retention"`
 	// The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+	// * `startTime` Backup start time, UNIX time seconds.
 	Schedule pulumi.StringInput `pulumi:"schedule"`
 	// The type of the data source.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
@@ -3452,6 +3472,7 @@ func (o GetOtsBackupPlansPlanOutput) Retention() pulumi.StringOutput {
 }
 
 // The Backup strategy. Optional format: I|{startTime}|{interval}. It means to execute a backup task every {interval} starting from {startTime}. The backup task for the elapsed time will not be compensated. If the last backup task is not completed yet, the next backup task will not be triggered.
+// * `startTime` Backup start time, UNIX time seconds.
 func (o GetOtsBackupPlansPlanOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOtsBackupPlansPlan) string { return v.Schedule }).(pulumi.StringOutput)
 }
@@ -4594,16 +4615,26 @@ func (o GetServerBackupPlansPlanArrayOutput) Index(i pulumi.IntInput) GetServerB
 }
 
 type GetServerBackupPlansPlanDetail struct {
-	AppConsistent        bool     `pulumi:"appConsistent"`
-	DestinationRegionId  string   `pulumi:"destinationRegionId"`
-	DestinationRetention int      `pulumi:"destinationRetention"`
-	DiskIdLists          []string `pulumi:"diskIdLists"`
-	DoCopy               bool     `pulumi:"doCopy"`
-	EnableFsFreeze       bool     `pulumi:"enableFsFreeze"`
-	PostScriptPath       string   `pulumi:"postScriptPath"`
-	PreScriptPath        string   `pulumi:"preScriptPath"`
-	SnapshotGroup        bool     `pulumi:"snapshotGroup"`
-	TimeoutInSeconds     int      `pulumi:"timeoutInSeconds"`
+	// Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+	AppConsistent bool `pulumi:"appConsistent"`
+	// Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	DestinationRegionId string `pulumi:"destinationRegionId"`
+	// Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	DestinationRetention int `pulumi:"destinationRetention"`
+	// The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+	DiskIdLists []string `pulumi:"diskIdLists"`
+	// Whether replicate to another region. Valid values: `true`, `false`.
+	DoCopy bool `pulumi:"doCopy"`
+	// Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+	EnableFsFreeze bool `pulumi:"enableFsFreeze"`
+	// Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+	PostScriptPath string `pulumi:"postScriptPath"`
+	// Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+	PreScriptPath string `pulumi:"preScriptPath"`
+	// Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+	SnapshotGroup bool `pulumi:"snapshotGroup"`
+	// Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+	TimeoutInSeconds int `pulumi:"timeoutInSeconds"`
 }
 
 // GetServerBackupPlansPlanDetailInput is an input type that accepts GetServerBackupPlansPlanDetailArgs and GetServerBackupPlansPlanDetailOutput values.
@@ -4618,16 +4649,26 @@ type GetServerBackupPlansPlanDetailInput interface {
 }
 
 type GetServerBackupPlansPlanDetailArgs struct {
-	AppConsistent        pulumi.BoolInput        `pulumi:"appConsistent"`
-	DestinationRegionId  pulumi.StringInput      `pulumi:"destinationRegionId"`
-	DestinationRetention pulumi.IntInput         `pulumi:"destinationRetention"`
-	DiskIdLists          pulumi.StringArrayInput `pulumi:"diskIdLists"`
-	DoCopy               pulumi.BoolInput        `pulumi:"doCopy"`
-	EnableFsFreeze       pulumi.BoolInput        `pulumi:"enableFsFreeze"`
-	PostScriptPath       pulumi.StringInput      `pulumi:"postScriptPath"`
-	PreScriptPath        pulumi.StringInput      `pulumi:"preScriptPath"`
-	SnapshotGroup        pulumi.BoolInput        `pulumi:"snapshotGroup"`
-	TimeoutInSeconds     pulumi.IntInput         `pulumi:"timeoutInSeconds"`
+	// Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
+	AppConsistent pulumi.BoolInput `pulumi:"appConsistent"`
+	// Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	DestinationRegionId pulumi.StringInput `pulumi:"destinationRegionId"`
+	// Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	DestinationRetention pulumi.IntInput `pulumi:"destinationRetention"`
+	// The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
+	DiskIdLists pulumi.StringArrayInput `pulumi:"diskIdLists"`
+	// Whether replicate to another region. Valid values: `true`, `false`.
+	DoCopy pulumi.BoolInput `pulumi:"doCopy"`
+	// Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
+	EnableFsFreeze pulumi.BoolInput `pulumi:"enableFsFreeze"`
+	// Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+	PostScriptPath pulumi.StringInput `pulumi:"postScriptPath"`
+	// Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
+	PreScriptPath pulumi.StringInput `pulumi:"preScriptPath"`
+	// Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
+	SnapshotGroup pulumi.BoolInput `pulumi:"snapshotGroup"`
+	// Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
+	TimeoutInSeconds pulumi.IntInput `pulumi:"timeoutInSeconds"`
 }
 
 func (GetServerBackupPlansPlanDetailArgs) ElementType() reflect.Type {
@@ -4681,42 +4722,52 @@ func (o GetServerBackupPlansPlanDetailOutput) ToGetServerBackupPlansPlanDetailOu
 	return o
 }
 
+// Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
 func (o GetServerBackupPlansPlanDetailOutput) AppConsistent() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) bool { return v.AppConsistent }).(pulumi.BoolOutput)
 }
 
+// Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 func (o GetServerBackupPlansPlanDetailOutput) DestinationRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) string { return v.DestinationRegionId }).(pulumi.StringOutput)
 }
 
+// Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 func (o GetServerBackupPlansPlanDetailOutput) DestinationRetention() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) int { return v.DestinationRetention }).(pulumi.IntOutput)
 }
 
+// The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
 func (o GetServerBackupPlansPlanDetailOutput) DiskIdLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) []string { return v.DiskIdLists }).(pulumi.StringArrayOutput)
 }
 
+// Whether replicate to another region. Valid values: `true`, `false`.
 func (o GetServerBackupPlansPlanDetailOutput) DoCopy() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) bool { return v.DoCopy }).(pulumi.BoolOutput)
 }
 
+// Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
 func (o GetServerBackupPlansPlanDetailOutput) EnableFsFreeze() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) bool { return v.EnableFsFreeze }).(pulumi.BoolOutput)
 }
 
+// Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
 func (o GetServerBackupPlansPlanDetailOutput) PostScriptPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) string { return v.PostScriptPath }).(pulumi.StringOutput)
 }
 
+// Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
 func (o GetServerBackupPlansPlanDetailOutput) PreScriptPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) string { return v.PreScriptPath }).(pulumi.StringOutput)
 }
 
+// Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
 func (o GetServerBackupPlansPlanDetailOutput) SnapshotGroup() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) bool { return v.SnapshotGroup }).(pulumi.BoolOutput)
 }
 
+// Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
 func (o GetServerBackupPlansPlanDetailOutput) TimeoutInSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerBackupPlansPlanDetail) int { return v.TimeoutInSeconds }).(pulumi.IntOutput)
 }
@@ -5091,6 +5142,12 @@ type GetVaultsVault struct {
 	// The time of the last remote backup synchronization.
 	LatestReplicationTime string `pulumi:"latestReplicationTime"`
 	// Billing model, possible values:
+	// * `FREE` is not billed
+	// * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
+	// * `V2` new version of metering mode
+	// * `AEGIS` Billing method for cloud security use
+	// * `UNI_BACKUP` the backup of deduplication database
+	// * `ARCHIVE` archive library.
 	PaymentType string `pulumi:"paymentType"`
 	// Whether it is a remote backup warehouse. It's a boolean value.
 	Replication bool `pulumi:"replication"`
@@ -5154,6 +5211,12 @@ type GetVaultsVaultArgs struct {
 	// The time of the last remote backup synchronization.
 	LatestReplicationTime pulumi.StringInput `pulumi:"latestReplicationTime"`
 	// Billing model, possible values:
+	// * `FREE` is not billed
+	// * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
+	// * `V2` new version of metering mode
+	// * `AEGIS` Billing method for cloud security use
+	// * `UNI_BACKUP` the backup of deduplication database
+	// * `ARCHIVE` archive library.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
 	// Whether it is a remote backup warehouse. It's a boolean value.
 	Replication pulumi.BoolInput `pulumi:"replication"`
@@ -5286,6 +5349,12 @@ func (o GetVaultsVaultOutput) LatestReplicationTime() pulumi.StringOutput {
 }
 
 // Billing model, possible values:
+// * `FREE` is not billed
+// * `V1` common vault billing model, including back-end storage capacity, client licenses and other billing items
+// * `V2` new version of metering mode
+// * `AEGIS` Billing method for cloud security use
+// * `UNI_BACKUP` the backup of deduplication database
+// * `ARCHIVE` archive library.
 func (o GetVaultsVaultOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.PaymentType }).(pulumi.StringOutput)
 }

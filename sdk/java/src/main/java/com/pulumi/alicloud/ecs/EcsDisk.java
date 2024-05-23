@@ -238,6 +238,9 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      * 
      */
     @Export(name="performanceLevel", refs={String.class}, tree="[0]")
@@ -245,6 +248,9 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies the performance level of an ESSD when you create the ESSD. Valid values:
+     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      * 
      */
     public Output<String> performanceLevel() {

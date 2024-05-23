@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class GetVpcFirewallControlPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         /// </summary>
         [Input("aclAction")]
         public string? AclAction { get; set; }
@@ -157,6 +157,8 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+        /// - **true**: Enable access control policies
+        /// - **false**: does not enable access control policies.
         /// </summary>
         [Input("release")]
         public bool? Release { get; set; }
@@ -168,7 +170,9 @@ namespace Pulumi.AliCloud.CloudFirewall
         public string? Source { get; set; }
 
         /// <summary>
-        /// The ID of the VPC firewall instance.
+        /// The ID of the VPC firewall instance. Value:
+        /// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+        /// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         /// </summary>
         [Input("vpcFirewallId", required: true)]
         public string VpcFirewallId { get; set; } = null!;
@@ -182,7 +186,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class GetVpcFirewallControlPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+        /// The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
         /// </summary>
         [Input("aclAction")]
         public Input<string>? AclAction { get; set; }
@@ -249,6 +253,8 @@ namespace Pulumi.AliCloud.CloudFirewall
 
         /// <summary>
         /// The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+        /// - **true**: Enable access control policies
+        /// - **false**: does not enable access control policies.
         /// </summary>
         [Input("release")]
         public Input<bool>? Release { get; set; }
@@ -260,7 +266,9 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Source { get; set; }
 
         /// <summary>
-        /// The ID of the VPC firewall instance.
+        /// The ID of the VPC firewall instance. Value:
+        /// - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+        /// - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
         /// </summary>
         [Input("vpcFirewallId", required: true)]
         public Input<string> VpcFirewallId { get; set; } = null!;

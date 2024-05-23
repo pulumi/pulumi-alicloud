@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Stack("example", StackArgs.builder()        
+ *         var example = new Stack("example", StackArgs.builder()
  *             .stackName("tf-testaccstack")
  *             .templateBody("""
  *     {

@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.Ocean
         public string? InstanceId { get; set; }
 
         /// <summary>
-        /// OceanBase cluster name.
+        /// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
         /// </summary>
         [Input("instanceName")]
         public string? InstanceName { get; set; }
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.Ocean
         public string? SearchKey { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.Ocean
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// OceanBase cluster name.
+        /// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.AliCloud.Ocean
         public Input<string>? SearchKey { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

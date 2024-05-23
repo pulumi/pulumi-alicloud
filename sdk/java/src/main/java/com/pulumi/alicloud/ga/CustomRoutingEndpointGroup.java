@@ -59,13 +59,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-hangzhou");
- *         var default_ = new Accelerator("default", AcceleratorArgs.builder()        
+ *         var default_ = new Accelerator("default", AcceleratorArgs.builder()
  *             .duration(1)
  *             .autoUseCoupon(true)
  *             .spec("1")
  *             .build());
  * 
- *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()        
+ *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
  *             .bandwidth(100)
  *             .type("Basic")
  *             .bandwidthType("Basic")
@@ -74,12 +74,12 @@ import javax.annotation.Nullable;
  *             .ratio(30)
  *             .build());
  * 
- *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+ *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
  *             .acceleratorId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
- *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+ *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
  *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
  *             .listenerType("CustomRouting")
  *             .portRanges(ListenerPortRangeArgs.builder()
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultCustomRoutingEndpointGroup = new CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup", CustomRoutingEndpointGroupArgs.builder()        
+ *         var defaultCustomRoutingEndpointGroup = new CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup", CustomRoutingEndpointGroupArgs.builder()
  *             .acceleratorId(defaultListener.acceleratorId())
  *             .listenerId(defaultListener.id())
  *             .endpointGroupRegion(region)

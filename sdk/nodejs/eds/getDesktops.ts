@@ -89,12 +89,9 @@ export function getDesktops(args?: GetDesktopsArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetDesktopsArgs {
     /**
-     * The desktop name of the Desktop.
+     * The desktop name.
      */
     desktopName?: string;
-    /**
-     * The desktop end user id of the Desktop.
-     */
     endUserIds?: string[];
     /**
      * A list of Desktop IDs.
@@ -212,12 +209,9 @@ export function getDesktopsOutput(args?: GetDesktopsOutputArgs, opts?: pulumi.In
  */
 export interface GetDesktopsOutputArgs {
     /**
-     * The desktop name of the Desktop.
+     * The desktop name.
      */
     desktopName?: pulumi.Input<string>;
-    /**
-     * The desktop end user id of the Desktop.
-     */
     endUserIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of Desktop IDs.

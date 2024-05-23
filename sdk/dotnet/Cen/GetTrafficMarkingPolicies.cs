@@ -103,9 +103,6 @@ namespace Pulumi.AliCloud.Cen
 
     public sealed class GetTrafficMarkingPoliciesArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The description of the Traffic Marking Policy.
-        /// </summary>
         [Input("description")]
         public string? Description { get; set; }
 
@@ -134,7 +131,7 @@ namespace Pulumi.AliCloud.Cen
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -153,9 +150,6 @@ namespace Pulumi.AliCloud.Cen
 
     public sealed class GetTrafficMarkingPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The description of the Traffic Marking Policy.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
@@ -184,7 +178,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -169,9 +169,8 @@ def get_server_groups(ids: Optional[Sequence[str]] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group to which the security group belongs.
     :param Sequence[str] server_group_names: The names of the server groups to be queried.
-    :param str server_group_type: The type of the server group.
-    :param str status: The status of the server group.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param str server_group_type: The type of the server group. Valid values: `Instance`, `Ip`.
+    :param str status: The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -234,8 +233,7 @@ def get_server_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group to which the security group belongs.
     :param Sequence[str] server_group_names: The names of the server groups to be queried.
-    :param str server_group_type: The type of the server group.
-    :param str status: The status of the server group.
-    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+    :param str server_group_type: The type of the server group. Valid values: `Instance`, `Ip`.
+    :param str status: The status of the resource. Valid values: `Available`, `Configuring`, `Creating`.
     """
     ...

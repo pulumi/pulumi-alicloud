@@ -1069,8 +1069,16 @@ func (o EventRuleContactParameterArrayOutput) Index(i pulumi.IntInput) EventRule
 
 type EventRuleEventPattern struct {
 	// The type of the event-triggered alert rule. Valid values:
+	// - `StatusNotification`: fault notifications.
+	// - `Exception`: exceptions.
+	// - `Maintenance`: O&M.
+	// - `*`: all types.
 	EventTypeLists []string `pulumi:"eventTypeLists"`
 	// The level of the event-triggered alert rule. Valid values:
+	// - `CRITICAL`: critical.
+	// - `WARN`: warning.
+	// - `INFO`: information.
+	// - `*`: all types.
 	LevelLists []string `pulumi:"levelLists"`
 	// The name of the event-triggered alert rule.
 	NameLists []string `pulumi:"nameLists"`
@@ -1093,8 +1101,16 @@ type EventRuleEventPatternInput interface {
 
 type EventRuleEventPatternArgs struct {
 	// The type of the event-triggered alert rule. Valid values:
+	// - `StatusNotification`: fault notifications.
+	// - `Exception`: exceptions.
+	// - `Maintenance`: O&M.
+	// - `*`: all types.
 	EventTypeLists pulumi.StringArrayInput `pulumi:"eventTypeLists"`
 	// The level of the event-triggered alert rule. Valid values:
+	// - `CRITICAL`: critical.
+	// - `WARN`: warning.
+	// - `INFO`: information.
+	// - `*`: all types.
 	LevelLists pulumi.StringArrayInput `pulumi:"levelLists"`
 	// The name of the event-triggered alert rule.
 	NameLists pulumi.StringArrayInput `pulumi:"nameLists"`
@@ -1182,11 +1198,19 @@ func (o EventRuleEventPatternOutput) ToEventRuleEventPatternPtrOutputWithContext
 }
 
 // The type of the event-triggered alert rule. Valid values:
+// - `StatusNotification`: fault notifications.
+// - `Exception`: exceptions.
+// - `Maintenance`: O&M.
+// - `*`: all types.
 func (o EventRuleEventPatternOutput) EventTypeLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EventRuleEventPattern) []string { return v.EventTypeLists }).(pulumi.StringArrayOutput)
 }
 
 // The level of the event-triggered alert rule. Valid values:
+// - `CRITICAL`: critical.
+// - `WARN`: warning.
+// - `INFO`: information.
+// - `*`: all types.
 func (o EventRuleEventPatternOutput) LevelLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EventRuleEventPattern) []string { return v.LevelLists }).(pulumi.StringArrayOutput)
 }
@@ -1231,6 +1255,10 @@ func (o EventRuleEventPatternPtrOutput) Elem() EventRuleEventPatternOutput {
 }
 
 // The type of the event-triggered alert rule. Valid values:
+// - `StatusNotification`: fault notifications.
+// - `Exception`: exceptions.
+// - `Maintenance`: O&M.
+// - `*`: all types.
 func (o EventRuleEventPatternPtrOutput) EventTypeLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EventRuleEventPattern) []string {
 		if v == nil {
@@ -1241,6 +1269,10 @@ func (o EventRuleEventPatternPtrOutput) EventTypeLists() pulumi.StringArrayOutpu
 }
 
 // The level of the event-triggered alert rule. Valid values:
+// - `CRITICAL`: critical.
+// - `WARN`: warning.
+// - `INFO`: information.
+// - `*`: all types.
 func (o EventRuleEventPatternPtrOutput) LevelLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EventRuleEventPattern) []string {
 		if v == nil {
@@ -5142,6 +5174,7 @@ type GetAlarmContactsContact struct {
 	// The status of the email address.
 	ChannelsStateMail string `pulumi:"channelsStateMail"`
 	// The status of the phone number.
+	// * `Lang` - The language type of the alarm.
 	ChannelsStatusSms string `pulumi:"channelsStatusSms"`
 	// The alert groups to which the alarm contact is added.
 	ContactGroups []string `pulumi:"contactGroups"`
@@ -5181,6 +5214,7 @@ type GetAlarmContactsContactArgs struct {
 	// The status of the email address.
 	ChannelsStateMail pulumi.StringInput `pulumi:"channelsStateMail"`
 	// The status of the phone number.
+	// * `Lang` - The language type of the alarm.
 	ChannelsStatusSms pulumi.StringInput `pulumi:"channelsStatusSms"`
 	// The alert groups to which the alarm contact is added.
 	ContactGroups pulumi.StringArrayInput `pulumi:"contactGroups"`
@@ -5283,6 +5317,7 @@ func (o GetAlarmContactsContactOutput) ChannelsStateMail() pulumi.StringOutput {
 }
 
 // The status of the phone number.
+// * `Lang` - The language type of the alarm.
 func (o GetAlarmContactsContactOutput) ChannelsStatusSms() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlarmContactsContact) string { return v.ChannelsStatusSms }).(pulumi.StringOutput)
 }
@@ -6361,10 +6396,14 @@ func (o GetGroupMetricRulesRuleEscalationArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetGroupMetricRulesRuleEscalationCritical struct {
+	// The comparison operator of the threshold for critical-level alerts.
 	ComparisonOperator string `pulumi:"comparisonOperator"`
-	Statistics         string `pulumi:"statistics"`
-	Threshold          string `pulumi:"threshold"`
-	Times              int    `pulumi:"times"`
+	// The statistical aggregation method for critical-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for critical-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	Times int `pulumi:"times"`
 }
 
 // GetGroupMetricRulesRuleEscalationCriticalInput is an input type that accepts GetGroupMetricRulesRuleEscalationCriticalArgs and GetGroupMetricRulesRuleEscalationCriticalOutput values.
@@ -6379,10 +6418,14 @@ type GetGroupMetricRulesRuleEscalationCriticalInput interface {
 }
 
 type GetGroupMetricRulesRuleEscalationCriticalArgs struct {
+	// The comparison operator of the threshold for critical-level alerts.
 	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
-	Statistics         pulumi.StringInput `pulumi:"statistics"`
-	Threshold          pulumi.StringInput `pulumi:"threshold"`
-	Times              pulumi.IntInput    `pulumi:"times"`
+	// The statistical aggregation method for critical-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for critical-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+	Times pulumi.IntInput `pulumi:"times"`
 }
 
 func (GetGroupMetricRulesRuleEscalationCriticalArgs) ElementType() reflect.Type {
@@ -6436,18 +6479,22 @@ func (o GetGroupMetricRulesRuleEscalationCriticalOutput) ToGetGroupMetricRulesRu
 	return o
 }
 
+// The comparison operator of the threshold for critical-level alerts.
 func (o GetGroupMetricRulesRuleEscalationCriticalOutput) ComparisonOperator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationCritical) string { return v.ComparisonOperator }).(pulumi.StringOutput)
 }
 
+// The statistical aggregation method for critical-level alerts.
 func (o GetGroupMetricRulesRuleEscalationCriticalOutput) Statistics() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationCritical) string { return v.Statistics }).(pulumi.StringOutput)
 }
 
+// The threshold for critical-level alerts.
 func (o GetGroupMetricRulesRuleEscalationCriticalOutput) Threshold() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationCritical) string { return v.Threshold }).(pulumi.StringOutput)
 }
 
+// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
 func (o GetGroupMetricRulesRuleEscalationCriticalOutput) Times() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationCritical) int { return v.Times }).(pulumi.IntOutput)
 }
@@ -6473,10 +6520,14 @@ func (o GetGroupMetricRulesRuleEscalationCriticalArrayOutput) Index(i pulumi.Int
 }
 
 type GetGroupMetricRulesRuleEscalationInfo struct {
+	// The comparison operator of the threshold for info-level alerts.
 	ComparisonOperator string `pulumi:"comparisonOperator"`
-	Statistics         string `pulumi:"statistics"`
-	Threshold          string `pulumi:"threshold"`
-	Times              int    `pulumi:"times"`
+	// The statistical aggregation method for info-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for info-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a info-level alert is triggered.
+	Times int `pulumi:"times"`
 }
 
 // GetGroupMetricRulesRuleEscalationInfoInput is an input type that accepts GetGroupMetricRulesRuleEscalationInfoArgs and GetGroupMetricRulesRuleEscalationInfoOutput values.
@@ -6491,10 +6542,14 @@ type GetGroupMetricRulesRuleEscalationInfoInput interface {
 }
 
 type GetGroupMetricRulesRuleEscalationInfoArgs struct {
+	// The comparison operator of the threshold for info-level alerts.
 	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
-	Statistics         pulumi.StringInput `pulumi:"statistics"`
-	Threshold          pulumi.StringInput `pulumi:"threshold"`
-	Times              pulumi.IntInput    `pulumi:"times"`
+	// The statistical aggregation method for info-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for info-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a info-level alert is triggered.
+	Times pulumi.IntInput `pulumi:"times"`
 }
 
 func (GetGroupMetricRulesRuleEscalationInfoArgs) ElementType() reflect.Type {
@@ -6548,18 +6603,22 @@ func (o GetGroupMetricRulesRuleEscalationInfoOutput) ToGetGroupMetricRulesRuleEs
 	return o
 }
 
+// The comparison operator of the threshold for info-level alerts.
 func (o GetGroupMetricRulesRuleEscalationInfoOutput) ComparisonOperator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationInfo) string { return v.ComparisonOperator }).(pulumi.StringOutput)
 }
 
+// The statistical aggregation method for info-level alerts.
 func (o GetGroupMetricRulesRuleEscalationInfoOutput) Statistics() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationInfo) string { return v.Statistics }).(pulumi.StringOutput)
 }
 
+// The threshold for info-level alerts.
 func (o GetGroupMetricRulesRuleEscalationInfoOutput) Threshold() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationInfo) string { return v.Threshold }).(pulumi.StringOutput)
 }
 
+// The consecutive number of times for which the metric value is measured before a info-level alert is triggered.
 func (o GetGroupMetricRulesRuleEscalationInfoOutput) Times() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationInfo) int { return v.Times }).(pulumi.IntOutput)
 }
@@ -6585,10 +6644,14 @@ func (o GetGroupMetricRulesRuleEscalationInfoArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetGroupMetricRulesRuleEscalationWarn struct {
+	// The comparison operator of the threshold for warn-level alerts.
 	ComparisonOperator string `pulumi:"comparisonOperator"`
-	Statistics         string `pulumi:"statistics"`
-	Threshold          string `pulumi:"threshold"`
-	Times              int    `pulumi:"times"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+	Times int `pulumi:"times"`
 }
 
 // GetGroupMetricRulesRuleEscalationWarnInput is an input type that accepts GetGroupMetricRulesRuleEscalationWarnArgs and GetGroupMetricRulesRuleEscalationWarnOutput values.
@@ -6603,10 +6666,14 @@ type GetGroupMetricRulesRuleEscalationWarnInput interface {
 }
 
 type GetGroupMetricRulesRuleEscalationWarnArgs struct {
+	// The comparison operator of the threshold for warn-level alerts.
 	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
-	Statistics         pulumi.StringInput `pulumi:"statistics"`
-	Threshold          pulumi.StringInput `pulumi:"threshold"`
-	Times              pulumi.IntInput    `pulumi:"times"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+	Times pulumi.IntInput `pulumi:"times"`
 }
 
 func (GetGroupMetricRulesRuleEscalationWarnArgs) ElementType() reflect.Type {
@@ -6660,18 +6727,22 @@ func (o GetGroupMetricRulesRuleEscalationWarnOutput) ToGetGroupMetricRulesRuleEs
 	return o
 }
 
+// The comparison operator of the threshold for warn-level alerts.
 func (o GetGroupMetricRulesRuleEscalationWarnOutput) ComparisonOperator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationWarn) string { return v.ComparisonOperator }).(pulumi.StringOutput)
 }
 
+// The statistical aggregation method for warn-level alerts.
 func (o GetGroupMetricRulesRuleEscalationWarnOutput) Statistics() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationWarn) string { return v.Statistics }).(pulumi.StringOutput)
 }
 
+// The threshold for warn-level alerts.
 func (o GetGroupMetricRulesRuleEscalationWarnOutput) Threshold() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationWarn) string { return v.Threshold }).(pulumi.StringOutput)
 }
 
+// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
 func (o GetGroupMetricRulesRuleEscalationWarnOutput) Times() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGroupMetricRulesRuleEscalationWarn) int { return v.Times }).(pulumi.IntOutput)
 }
@@ -6812,7 +6883,9 @@ func (o GetHybridMonitorDatasDataArrayOutput) Index(i pulumi.IntInput) GetHybrid
 }
 
 type GetHybridMonitorDatasDataLabel struct {
-	Key   string `pulumi:"key"`
+	// Label key.
+	Key string `pulumi:"key"`
+	// Label value.
 	Value string `pulumi:"value"`
 }
 
@@ -6828,7 +6901,9 @@ type GetHybridMonitorDatasDataLabelInput interface {
 }
 
 type GetHybridMonitorDatasDataLabelArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// Label key.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Label value.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -6883,10 +6958,12 @@ func (o GetHybridMonitorDatasDataLabelOutput) ToGetHybridMonitorDatasDataLabelOu
 	return o
 }
 
+// Label key.
 func (o GetHybridMonitorDatasDataLabelOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorDatasDataLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// Label value.
 func (o GetHybridMonitorDatasDataLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorDatasDataLabel) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -6912,7 +6989,9 @@ func (o GetHybridMonitorDatasDataLabelArrayOutput) Index(i pulumi.IntInput) GetH
 }
 
 type GetHybridMonitorDatasDataValue struct {
-	Ts    string `pulumi:"ts"`
+	// The timestamp that indicates the time when the metric value is collected. Unit: seconds.
+	Ts string `pulumi:"ts"`
+	// The value of the monitoring indicator.
 	Value string `pulumi:"value"`
 }
 
@@ -6928,7 +7007,9 @@ type GetHybridMonitorDatasDataValueInput interface {
 }
 
 type GetHybridMonitorDatasDataValueArgs struct {
-	Ts    pulumi.StringInput `pulumi:"ts"`
+	// The timestamp that indicates the time when the metric value is collected. Unit: seconds.
+	Ts pulumi.StringInput `pulumi:"ts"`
+	// The value of the monitoring indicator.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -6983,10 +7064,12 @@ func (o GetHybridMonitorDatasDataValueOutput) ToGetHybridMonitorDatasDataValueOu
 	return o
 }
 
+// The timestamp that indicates the time when the metric value is collected. Unit: seconds.
 func (o GetHybridMonitorDatasDataValueOutput) Ts() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorDatasDataValue) string { return v.Ts }).(pulumi.StringOutput)
 }
 
+// The value of the monitoring indicator.
 func (o GetHybridMonitorDatasDataValueOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorDatasDataValue) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -7486,7 +7569,9 @@ func (o GetHybridMonitorSlsTasksTaskArrayOutput) Index(i pulumi.IntInput) GetHyb
 }
 
 type GetHybridMonitorSlsTasksTaskAttachLabel struct {
-	Name  string `pulumi:"name"`
+	// The key of the tag.
+	Name string `pulumi:"name"`
+	// The value of the tag.
 	Value string `pulumi:"value"`
 }
 
@@ -7502,7 +7587,9 @@ type GetHybridMonitorSlsTasksTaskAttachLabelInput interface {
 }
 
 type GetHybridMonitorSlsTasksTaskAttachLabelArgs struct {
-	Name  pulumi.StringInput `pulumi:"name"`
+	// The key of the tag.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the tag.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -7557,10 +7644,12 @@ func (o GetHybridMonitorSlsTasksTaskAttachLabelOutput) ToGetHybridMonitorSlsTask
 	return o
 }
 
+// The key of the tag.
 func (o GetHybridMonitorSlsTasksTaskAttachLabelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskAttachLabel) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The value of the tag.
 func (o GetHybridMonitorSlsTasksTaskAttachLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskAttachLabel) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -7586,9 +7675,12 @@ func (o GetHybridMonitorSlsTasksTaskAttachLabelArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetHybridMonitorSlsTasksTaskMatchExpress struct {
+	// The method that is used to match the instance name.
 	Function string `pulumi:"function"`
-	Name     string `pulumi:"name"`
-	Value    string `pulumi:"value"`
+	// The name of the instance.
+	Name string `pulumi:"name"`
+	// The keyword that corresponds to the instance name.
+	Value string `pulumi:"value"`
 }
 
 // GetHybridMonitorSlsTasksTaskMatchExpressInput is an input type that accepts GetHybridMonitorSlsTasksTaskMatchExpressArgs and GetHybridMonitorSlsTasksTaskMatchExpressOutput values.
@@ -7603,9 +7695,12 @@ type GetHybridMonitorSlsTasksTaskMatchExpressInput interface {
 }
 
 type GetHybridMonitorSlsTasksTaskMatchExpressArgs struct {
+	// The method that is used to match the instance name.
 	Function pulumi.StringInput `pulumi:"function"`
-	Name     pulumi.StringInput `pulumi:"name"`
-	Value    pulumi.StringInput `pulumi:"value"`
+	// The name of the instance.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The keyword that corresponds to the instance name.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetHybridMonitorSlsTasksTaskMatchExpressArgs) ElementType() reflect.Type {
@@ -7659,14 +7754,17 @@ func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) ToGetHybridMonitorSlsTas
 	return o
 }
 
+// The method that is used to match the instance name.
 func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) Function() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskMatchExpress) string { return v.Function }).(pulumi.StringOutput)
 }
 
+// The name of the instance.
 func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskMatchExpress) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The keyword that corresponds to the instance name.
 func (o GetHybridMonitorSlsTasksTaskMatchExpressOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHybridMonitorSlsTasksTaskMatchExpress) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -8814,13 +8912,19 @@ func (o GetMetricRuleTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetM
 }
 
 type GetMetricRuleTemplatesTemplateAlertTemplate struct {
-	Category    string                                                  `pulumi:"category"`
+	// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+	Category string `pulumi:"category"`
+	// The information about the trigger condition based on the alert level.
 	Escalations []GetMetricRuleTemplatesTemplateAlertTemplateEscalation `pulumi:"escalations"`
-	MetricName  string                                                  `pulumi:"metricName"`
-	Namespace   string                                                  `pulumi:"namespace"`
-	RuleName    string                                                  `pulumi:"ruleName"`
-	Selector    string                                                  `pulumi:"selector"`
-	Webhook     string                                                  `pulumi:"webhook"`
+	// The name of the metric.
+	MetricName string `pulumi:"metricName"`
+	// The namespace of the service.
+	Namespace string `pulumi:"namespace"`
+	// The name of the alert rule.
+	RuleName string `pulumi:"ruleName"`
+	Selector string `pulumi:"selector"`
+	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+	Webhook string `pulumi:"webhook"`
 }
 
 // GetMetricRuleTemplatesTemplateAlertTemplateInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateArgs and GetMetricRuleTemplatesTemplateAlertTemplateOutput values.
@@ -8835,13 +8939,19 @@ type GetMetricRuleTemplatesTemplateAlertTemplateInput interface {
 }
 
 type GetMetricRuleTemplatesTemplateAlertTemplateArgs struct {
-	Category    pulumi.StringInput                                              `pulumi:"category"`
+	// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+	Category pulumi.StringInput `pulumi:"category"`
+	// The information about the trigger condition based on the alert level.
 	Escalations GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayInput `pulumi:"escalations"`
-	MetricName  pulumi.StringInput                                              `pulumi:"metricName"`
-	Namespace   pulumi.StringInput                                              `pulumi:"namespace"`
-	RuleName    pulumi.StringInput                                              `pulumi:"ruleName"`
-	Selector    pulumi.StringInput                                              `pulumi:"selector"`
-	Webhook     pulumi.StringInput                                              `pulumi:"webhook"`
+	// The name of the metric.
+	MetricName pulumi.StringInput `pulumi:"metricName"`
+	// The namespace of the service.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The name of the alert rule.
+	RuleName pulumi.StringInput `pulumi:"ruleName"`
+	Selector pulumi.StringInput `pulumi:"selector"`
+	// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+	Webhook pulumi.StringInput `pulumi:"webhook"`
 }
 
 func (GetMetricRuleTemplatesTemplateAlertTemplateArgs) ElementType() reflect.Type {
@@ -8895,24 +9005,29 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) ToGetMetricRuleTempla
 	return o
 }
 
+// The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) string { return v.Category }).(pulumi.StringOutput)
 }
 
+// The information about the trigger condition based on the alert level.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) Escalations() GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) []GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
 		return v.Escalations
 	}).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput)
 }
 
+// The name of the metric.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) string { return v.MetricName }).(pulumi.StringOutput)
 }
 
+// The namespace of the service.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
+// The name of the alert rule.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) RuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) string { return v.RuleName }).(pulumi.StringOutput)
 }
@@ -8921,6 +9036,7 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) Selector() pulumi.Str
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) string { return v.Selector }).(pulumi.StringOutput)
 }
 
+// The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateOutput) Webhook() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplate) string { return v.Webhook }).(pulumi.StringOutput)
 }
@@ -8946,9 +9062,12 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateArrayOutput) Index(i pulumi.I
 }
 
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalation struct {
+	// The condition for triggering critical-level alerts.
 	Criticals []GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical `pulumi:"criticals"`
-	Infos     []GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo     `pulumi:"infos"`
-	Warns     []GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn     `pulumi:"warns"`
+	// The condition for triggering info-level alerts.
+	Infos []GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo `pulumi:"infos"`
+	// The condition for triggering warn-level alerts.
+	Warns []GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn `pulumi:"warns"`
 }
 
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs and GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput values.
@@ -8963,9 +9082,12 @@ type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInput interface {
 }
 
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs struct {
+	// The condition for triggering critical-level alerts.
 	Criticals GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayInput `pulumi:"criticals"`
-	Infos     GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayInput     `pulumi:"infos"`
-	Warns     GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayInput     `pulumi:"warns"`
+	// The condition for triggering info-level alerts.
+	Infos GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayInput `pulumi:"infos"`
+	// The condition for triggering warn-level alerts.
+	Warns GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayInput `pulumi:"warns"`
 }
 
 func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationArgs) ElementType() reflect.Type {
@@ -9019,18 +9141,21 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput) ToGetMetric
 	return o
 }
 
+// The condition for triggering critical-level alerts.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput) Criticals() GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalation) []GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical {
 		return v.Criticals
 	}).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput)
 }
 
+// The condition for triggering info-level alerts.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput) Infos() GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalation) []GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo {
 		return v.Infos
 	}).(GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput)
 }
 
+// The condition for triggering warn-level alerts.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationOutput) Warns() GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArrayOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalation) []GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn {
 		return v.Warns
@@ -9058,10 +9183,15 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationArrayOutput) Index(
 }
 
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical struct {
+	// The comparison operator of the threshold for critical-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator string `pulumi:"comparisonOperator"`
-	Statistics         string `pulumi:"statistics"`
-	Threshold          string `pulumi:"threshold"`
-	Times              string `pulumi:"times"`
+	// The statistical aggregation method for critical-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for critical-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a
+	// critical-level alert is triggered.
+	Times string `pulumi:"times"`
 }
 
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs and GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput values.
@@ -9076,10 +9206,15 @@ type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalInput interfac
 }
 
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs struct {
+	// The comparison operator of the threshold for critical-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
-	Statistics         pulumi.StringInput `pulumi:"statistics"`
-	Threshold          pulumi.StringInput `pulumi:"threshold"`
-	Times              pulumi.StringInput `pulumi:"times"`
+	// The statistical aggregation method for critical-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for critical-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a
+	// critical-level alert is triggered.
+	Times pulumi.StringInput `pulumi:"times"`
 }
 
 func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArgs) ElementType() reflect.Type {
@@ -9133,20 +9268,25 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) ToG
 	return o
 }
 
+// The comparison operator of the threshold for critical-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) ComparisonOperator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical) string {
 		return v.ComparisonOperator
 	}).(pulumi.StringOutput)
 }
 
+// The statistical aggregation method for critical-level alerts.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) Statistics() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical) string { return v.Statistics }).(pulumi.StringOutput)
 }
 
+// The threshold for critical-level alerts.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) Threshold() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical) string { return v.Threshold }).(pulumi.StringOutput)
 }
 
+// The consecutive number of times for which the metric value is measured before a
+// critical-level alert is triggered.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalOutput) Times() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical) string { return v.Times }).(pulumi.StringOutput)
 }
@@ -9172,10 +9312,15 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalArrayOutput
 }
 
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo struct {
+	// The comparison operator of the threshold for info-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator string `pulumi:"comparisonOperator"`
-	Statistics         string `pulumi:"statistics"`
-	Threshold          string `pulumi:"threshold"`
-	Times              string `pulumi:"times"`
+	// The statistical aggregation method for info-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for info-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before an info-level
+	// alert is triggered.
+	Times string `pulumi:"times"`
 }
 
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs and GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput values.
@@ -9190,10 +9335,15 @@ type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoInput interface {
 }
 
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs struct {
+	// The comparison operator of the threshold for info-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
-	Statistics         pulumi.StringInput `pulumi:"statistics"`
-	Threshold          pulumi.StringInput `pulumi:"threshold"`
-	Times              pulumi.StringInput `pulumi:"times"`
+	// The statistical aggregation method for info-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for info-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before an info-level
+	// alert is triggered.
+	Times pulumi.StringInput `pulumi:"times"`
 }
 
 func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs) ElementType() reflect.Type {
@@ -9247,18 +9397,23 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) ToGetMe
 	return o
 }
 
+// The comparison operator of the threshold for info-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) ComparisonOperator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo) string { return v.ComparisonOperator }).(pulumi.StringOutput)
 }
 
+// The statistical aggregation method for info-level alerts.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) Statistics() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo) string { return v.Statistics }).(pulumi.StringOutput)
 }
 
+// The threshold for info-level alerts.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) Threshold() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo) string { return v.Threshold }).(pulumi.StringOutput)
 }
 
+// The consecutive number of times for which the metric value is measured before an info-level
+// alert is triggered.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoOutput) Times() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo) string { return v.Times }).(pulumi.StringOutput)
 }
@@ -9284,10 +9439,15 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArrayOutput) In
 }
 
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn struct {
+	// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator string `pulumi:"comparisonOperator"`
-	Statistics         string `pulumi:"statistics"`
-	Threshold          string `pulumi:"threshold"`
-	Times              string `pulumi:"times"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics string `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold string `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level
+	// alert is triggered.
+	Times string `pulumi:"times"`
 }
 
 // GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnInput is an input type that accepts GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs and GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput values.
@@ -9302,10 +9462,15 @@ type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnInput interface {
 }
 
 type GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs struct {
+	// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 	ComparisonOperator pulumi.StringInput `pulumi:"comparisonOperator"`
-	Statistics         pulumi.StringInput `pulumi:"statistics"`
-	Threshold          pulumi.StringInput `pulumi:"threshold"`
-	Times              pulumi.StringInput `pulumi:"times"`
+	// The statistical aggregation method for warn-level alerts.
+	Statistics pulumi.StringInput `pulumi:"statistics"`
+	// The threshold for warn-level alerts.
+	Threshold pulumi.StringInput `pulumi:"threshold"`
+	// The consecutive number of times for which the metric value is measured before a warn-level
+	// alert is triggered.
+	Times pulumi.StringInput `pulumi:"times"`
 }
 
 func (GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs) ElementType() reflect.Type {
@@ -9359,18 +9524,23 @@ func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) ToGetMe
 	return o
 }
 
+// The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) ComparisonOperator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn) string { return v.ComparisonOperator }).(pulumi.StringOutput)
 }
 
+// The statistical aggregation method for warn-level alerts.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) Statistics() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn) string { return v.Statistics }).(pulumi.StringOutput)
 }
 
+// The threshold for warn-level alerts.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) Threshold() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn) string { return v.Threshold }).(pulumi.StringOutput)
 }
 
+// The consecutive number of times for which the metric value is measured before a warn-level
+// alert is triggered.
 func (o GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnOutput) Times() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn) string { return v.Times }).(pulumi.StringOutput)
 }

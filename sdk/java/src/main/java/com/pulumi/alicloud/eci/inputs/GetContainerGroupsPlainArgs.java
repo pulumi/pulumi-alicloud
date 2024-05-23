@@ -125,44 +125,36 @@ public final class GetContainerGroupsPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The status of container.
+     * The status list. For more information, see the description of ContainerGroup arrays.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of container.
+     * @return The status list. For more information, see the description of ContainerGroup arrays.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
-    /**
-     * @return The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-     * 
-     */
     public Optional<Map<String,Object>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
     /**
-     * The vswitch id.
+     * The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable String vswitchId;
 
     /**
-     * @return The vswitch id.
+     * @return The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
      * 
      */
     public Optional<String> vswitchId() {
@@ -177,14 +169,14 @@ public final class GetContainerGroupsPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+     * The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
      * 
      */
     @Import(name="zoneId")
     private @Nullable String zoneId;
 
     /**
-     * @return The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+     * @return The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
      * 
      */
     public Optional<String> zoneId() {
@@ -314,7 +306,7 @@ public final class GetContainerGroupsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param status The status of container.
+         * @param status The status list. For more information, see the description of ContainerGroup arrays.
          * 
          * @return builder
          * 
@@ -324,19 +316,13 @@ public final class GetContainerGroupsPlainArgs extends com.pulumi.resources.Invo
             return this;
         }
 
-        /**
-         * @param tags The tags attached to the container group. Each tag is a key-value pair. You can attach up to 20 tags to a container group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Map<String,Object> tags) {
             $.tags = tags;
             return this;
         }
 
         /**
-         * @param vswitchId The vswitch id.
+         * @param vswitchId The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks.
          * 
          * @return builder
          * 
@@ -352,7 +338,7 @@ public final class GetContainerGroupsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param zoneId The IDs of the zones where the container groups are deployed. If this parameter is not set, the system automatically selects the zones. By default, no value is specified.
+         * @param zoneId The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
          * 
          * @return builder
          * 

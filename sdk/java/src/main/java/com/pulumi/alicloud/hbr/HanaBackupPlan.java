@@ -60,16 +60,16 @@ import javax.annotation.Nullable;
  *             .status("OK")
  *             .build());
  * 
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var exampleVault = new Vault("exampleVault", VaultArgs.builder()        
+ *         var exampleVault = new Vault("exampleVault", VaultArgs.builder()
  *             .vaultName(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
- *         var exampleHanaInstance = new HanaInstance("exampleHanaInstance", HanaInstanceArgs.builder()        
+ *         var exampleHanaInstance = new HanaInstance("exampleHanaInstance", HanaInstanceArgs.builder()
  *             .alertSetting("INHERITED")
  *             .hanaName(String.format("terraform-example-%s", default_.result()))
  *             .host("1.1.1.1")
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *             .vaultId(exampleVault.id())
  *             .build());
  * 
- *         var exampleHanaBackupPlan = new HanaBackupPlan("exampleHanaBackupPlan", HanaBackupPlanArgs.builder()        
+ *         var exampleHanaBackupPlan = new HanaBackupPlan("exampleHanaBackupPlan", HanaBackupPlanArgs.builder()
  *             .backupPrefix("DIFF_DATA_BACKUP")
  *             .backupType("COMPLETE")
  *             .clusterId(exampleHanaInstance.hanaInstanceId())
@@ -127,6 +127,9 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
     }
     /**
      * The backup type. Valid values:
+     * - `COMPLETE`: full backup.
+     * - `INCREMENTAL`: incremental backup.
+     * - `DIFFERENTIAL`: differential backup.
      * 
      */
     @Export(name="backupType", refs={String.class}, tree="[0]")
@@ -134,6 +137,9 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The backup type. Valid values:
+     * - `COMPLETE`: full backup.
+     * - `INCREMENTAL`: incremental backup.
+     * - `DIFFERENTIAL`: differential backup.
      * 
      */
     public Output<String> backupType() {

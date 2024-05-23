@@ -49,7 +49,7 @@ public final class VodFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
      *             .domainName("your_domain_name")
      *             .scope("domestic")
      *             .sources(DomainSourceArgs.builder()
@@ -117,7 +117,7 @@ public final class VodFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
      *             .domainName("your_domain_name")
      *             .scope("domestic")
      *             .sources(DomainSourceArgs.builder()
@@ -185,7 +185,7 @@ public final class VodFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
      *             .domainName("your_domain_name")
      *             .scope("domestic")
      *             .sources(DomainSourceArgs.builder()
@@ -253,7 +253,7 @@ public final class VodFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
      *             .domainName("your_domain_name")
      *             .scope("domestic")
      *             .sources(DomainSourceArgs.builder()
@@ -321,7 +321,7 @@ public final class VodFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
      *             .domainName("your_domain_name")
      *             .scope("domestic")
      *             .sources(DomainSourceArgs.builder()
@@ -389,7 +389,7 @@ public final class VodFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+     *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
      *             .domainName("your_domain_name")
      *             .scope("domestic")
      *             .sources(DomainSourceArgs.builder()

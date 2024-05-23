@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new HealthCheckTemplate("example", HealthCheckTemplateArgs.builder()        
+ *         var example = new HealthCheckTemplate("example", HealthCheckTemplateArgs.builder()
  *             .healthCheckTemplateName("example_name")
  *             .build());
  * 

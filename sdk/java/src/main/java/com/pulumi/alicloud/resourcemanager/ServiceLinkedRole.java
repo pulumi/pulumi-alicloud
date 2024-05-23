@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new ServiceLinkedRole("default", ServiceLinkedRoleArgs.builder()        
+ *         var default_ = new ServiceLinkedRole("default", ServiceLinkedRoleArgs.builder()
  *             .serviceName("ops.elasticsearch.aliyuncs.com")
  *             .build());
  * 

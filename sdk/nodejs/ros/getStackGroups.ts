@@ -60,7 +60,7 @@ export interface GetStackGroupsArgs {
      */
     outputFile?: string;
     /**
-     * The status of Stack Group.
+     * The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
      */
     status?: string;
 }
@@ -126,7 +126,7 @@ export interface GetStackGroupsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of Stack Group.
+     * The status of Stack Group. Valid Values: `ACTIVE`, `DELETED`.
      */
     status?: pulumi.Input<string>;
 }

@@ -48,7 +48,7 @@ public final class CloudauthFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()        
+     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()
      *             .bizName("example-value")
      *             .bizType("example-value")
      *             .build());
@@ -103,7 +103,7 @@ public final class CloudauthFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()        
+     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()
      *             .bizName("example-value")
      *             .bizType("example-value")
      *             .build());
@@ -158,7 +158,7 @@ public final class CloudauthFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()        
+     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()
      *             .bizName("example-value")
      *             .bizType("example-value")
      *             .build());
@@ -213,7 +213,7 @@ public final class CloudauthFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()        
+     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()
      *             .bizName("example-value")
      *             .bizType("example-value")
      *             .build());
@@ -268,7 +268,7 @@ public final class CloudauthFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()        
+     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()
      *             .bizName("example-value")
      *             .bizType("example-value")
      *             .build());
@@ -323,7 +323,7 @@ public final class CloudauthFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()        
+     *         var defaultFaceConfig = new FaceConfig("defaultFaceConfig", FaceConfigArgs.builder()
      *             .bizName("example-value")
      *             .bizType("example-value")
      *             .build());

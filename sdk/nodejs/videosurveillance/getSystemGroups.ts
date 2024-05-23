@@ -55,7 +55,7 @@ export interface GetSystemGroupsArgs {
      */
     ids?: string[];
     /**
-     * The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+     * The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
      */
     inProtocol?: string;
     /**
@@ -132,7 +132,7 @@ export interface GetSystemGroupsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+     * The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
      */
     inProtocol?: pulumi.Input<string>;
     /**

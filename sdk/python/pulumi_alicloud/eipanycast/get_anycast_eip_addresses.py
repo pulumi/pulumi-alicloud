@@ -201,9 +201,9 @@ def get_anycast_eip_addresses(anycast_eip_address_name: Optional[str] = None,
     :param str ip_address: Anycast EIP instance IP address.
     :param str name_regex: A regex string to filter results by Anycast Eip Address name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str payment_type: The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
-    :param str service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
-    :param str status: IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+    :param str payment_type: The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
+    :param str service_location: Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+    :param str status: IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
     """
     __args__ = dict()
     __args__['anycastEipAddressName'] = anycast_eip_address_name
@@ -277,8 +277,8 @@ def get_anycast_eip_addresses_output(anycast_eip_address_name: Optional[pulumi.I
     :param str ip_address: Anycast EIP instance IP address.
     :param str name_regex: A regex string to filter results by Anycast Eip Address name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str payment_type: The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
-    :param str service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
-    :param str status: IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+    :param str payment_type: The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
+    :param str service_location: Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
+    :param str status: IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
     """
     ...

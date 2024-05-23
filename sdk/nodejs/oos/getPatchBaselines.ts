@@ -42,7 +42,7 @@ export interface GetPatchBaselinesArgs {
      */
     nameRegex?: string;
     /**
-     * Operating system type.
+     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
      */
     operationSystem?: string;
     /**
@@ -50,7 +50,7 @@ export interface GetPatchBaselinesArgs {
      */
     outputFile?: string;
     /**
-     * Patch baseline sharing type.
+     * Patch baseline sharing type. Valid values: `Private`, `Public`.
      */
     shareType?: string;
 }
@@ -98,7 +98,7 @@ export interface GetPatchBaselinesOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     /**
-     * Operating system type.
+     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
      */
     operationSystem?: pulumi.Input<string>;
     /**
@@ -106,7 +106,7 @@ export interface GetPatchBaselinesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Patch baseline sharing type.
+     * Patch baseline sharing type. Valid values: `Private`, `Public`.
      */
     shareType?: pulumi.Input<string>;
 }

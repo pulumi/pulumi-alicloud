@@ -138,7 +138,7 @@ def get_ecs_deployment_sets(deployment_set_name: Optional[str] = None,
     :param Sequence[str] ids: A list of Deployment Set IDs.
     :param str name_regex: A regex string to filter results by Deployment Set name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str strategy: The deployment strategy.
+    :param str strategy: The deployment strategy. Valid values: `Availability`.
     """
     __args__ = dict()
     __args__['deploymentSetName'] = deployment_set_name
@@ -191,6 +191,6 @@ def get_ecs_deployment_sets_output(deployment_set_name: Optional[pulumi.Input[Op
     :param Sequence[str] ids: A list of Deployment Set IDs.
     :param str name_regex: A regex string to filter results by Deployment Set name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str strategy: The deployment strategy.
+    :param str strategy: The deployment strategy. Valid values: `Availability`.
     """
     ...

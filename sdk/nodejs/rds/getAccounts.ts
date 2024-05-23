@@ -59,7 +59,7 @@ export interface GetAccountsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Available`, `Unavailable`.
      */
     status?: string;
 }
@@ -125,7 +125,7 @@ export interface GetAccountsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Available`, `Unavailable`.
      */
     status?: pulumi.Input<string>;
 }

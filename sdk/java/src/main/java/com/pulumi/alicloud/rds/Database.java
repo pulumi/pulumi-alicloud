@@ -59,19 +59,19 @@ import javax.annotation.Nullable;
  *             .engineVersion("5.6")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .engine("MySQL")
  *             .engineVersion("5.6")
  *             .instanceType("rds.mysql.s1.small")
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .instanceName(name)
  *             .build());
  * 
- *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()        
+ *         var defaultDatabase = new Database("defaultDatabase", DatabaseArgs.builder()
  *             .instanceId(defaultInstance.id())
  *             .name(name)
  *             .build());

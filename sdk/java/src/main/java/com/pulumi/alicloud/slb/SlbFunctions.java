@@ -1503,11 +1503,11 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()        
+     *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()
      *             .loadBalancerName("tf-testAccSlbListenertcp")
      *             .build());
      * 
-     *         var tcp = new Listener("tcp", ListenerArgs.builder()        
+     *         var tcp = new Listener("tcp", ListenerArgs.builder()
      *             .loadBalancerId(default_.id())
      *             .backendPort("22")
      *             .frontendPort("22")
@@ -1572,11 +1572,11 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()        
+     *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()
      *             .loadBalancerName("tf-testAccSlbListenertcp")
      *             .build());
      * 
-     *         var tcp = new Listener("tcp", ListenerArgs.builder()        
+     *         var tcp = new Listener("tcp", ListenerArgs.builder()
      *             .loadBalancerId(default_.id())
      *             .backendPort("22")
      *             .frontendPort("22")
@@ -1641,11 +1641,11 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()        
+     *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()
      *             .loadBalancerName("tf-testAccSlbListenertcp")
      *             .build());
      * 
-     *         var tcp = new Listener("tcp", ListenerArgs.builder()        
+     *         var tcp = new Listener("tcp", ListenerArgs.builder()
      *             .loadBalancerId(default_.id())
      *             .backendPort("22")
      *             .frontendPort("22")
@@ -1710,11 +1710,11 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()        
+     *         var default_ = new ApplicationLoadBalancer("default", ApplicationLoadBalancerArgs.builder()
      *             .loadBalancerName("tf-testAccSlbListenertcp")
      *             .build());
      * 
-     *         var tcp = new Listener("tcp", ListenerArgs.builder()        
+     *         var tcp = new Listener("tcp", ListenerArgs.builder()
      *             .loadBalancerId(default_.id())
      *             .backendPort("22")
      *             .frontendPort("22")
@@ -1779,7 +1779,7 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()        
+     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
      *             .name("sample_slb")
      *             .build());
      * 
@@ -1830,7 +1830,7 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()        
+     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
      *             .name("sample_slb")
      *             .build());
      * 
@@ -1881,7 +1881,7 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()        
+     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
      *             .name("sample_slb")
      *             .build());
      * 
@@ -1932,7 +1932,7 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()        
+     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
      *             .name("sample_slb")
      *             .build());
      * 
@@ -1983,7 +1983,7 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()        
+     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
      *             .name("sample_slb")
      *             .build());
      * 
@@ -2034,7 +2034,7 @@ public final class SlbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()        
+     *         var default_ = new LoadBalancer("default", LoadBalancerArgs.builder()
      *             .name("sample_slb")
      *             .build());
      * 
@@ -2138,24 +2138,24 @@ public final class SlbFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .name(name)
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .backendPort(22)
      *             .frontendPort(22)
@@ -2164,11 +2164,11 @@ public final class SlbFunctions {
      *             .healthCheckConnectPort("20")
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(defaultListener.frontendPort())
      *             .name(name)
@@ -2242,24 +2242,24 @@ public final class SlbFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .name(name)
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .backendPort(22)
      *             .frontendPort(22)
@@ -2268,11 +2268,11 @@ public final class SlbFunctions {
      *             .healthCheckConnectPort("20")
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(defaultListener.frontendPort())
      *             .name(name)
@@ -2346,24 +2346,24 @@ public final class SlbFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .name(name)
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .backendPort(22)
      *             .frontendPort(22)
@@ -2372,11 +2372,11 @@ public final class SlbFunctions {
      *             .healthCheckConnectPort("20")
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(defaultListener.frontendPort())
      *             .name(name)
@@ -2450,24 +2450,24 @@ public final class SlbFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .name(name)
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+     *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .backendPort(22)
      *             .frontendPort(22)
@@ -2476,11 +2476,11 @@ public final class SlbFunctions {
      *             .healthCheckConnectPort("20")
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
-     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()        
+     *         var defaultRule = new Rule("defaultRule", RuleArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .frontendPort(defaultListener.frontendPort())
      *             .name(name)
@@ -2796,24 +2796,24 @@ public final class SlbFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
@@ -2877,24 +2877,24 @@ public final class SlbFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
@@ -2958,24 +2958,24 @@ public final class SlbFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 
@@ -3039,24 +3039,24 @@ public final class SlbFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("172.16.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("172.16.0.0/16")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+     *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer("defaultApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
      *             .loadBalancerName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .build());
      * 
-     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
+     *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
      *             .loadBalancerId(defaultApplicationLoadBalancer.id())
      *             .build());
      * 

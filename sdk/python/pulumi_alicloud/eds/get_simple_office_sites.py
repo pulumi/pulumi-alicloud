@@ -126,7 +126,7 @@ def get_simple_office_sites(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Simple Office Site IDs.
     :param str name_regex: A regex string to filter results by Simple Office Site name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+    :param str status: Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -174,6 +174,6 @@ def get_simple_office_sites_output(ids: Optional[pulumi.Input[Optional[Sequence[
     :param Sequence[str] ids: A list of Simple Office Site IDs.
     :param str name_regex: A regex string to filter results by Simple Office Site name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+    :param str status: Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
     """
     ...

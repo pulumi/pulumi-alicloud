@@ -49,17 +49,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new CommonBandwithPackage("default", CommonBandwithPackageArgs.builder()        
+ *         var default_ = new CommonBandwithPackage("default", CommonBandwithPackageArgs.builder()
  *             .bandwidth(3)
  *             .internetChargeType("PayByBandwidth")
  *             .build());
  * 
- *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()        
+ *         var defaultEipAddress = new EipAddress("defaultEipAddress", EipAddressArgs.builder()
  *             .bandwidth("3")
  *             .internetChargeType("PayByTraffic")
  *             .build());
  * 
- *         var defaultCommonBandwithPackageAttachment = new CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment", CommonBandwithPackageAttachmentArgs.builder()        
+ *         var defaultCommonBandwithPackageAttachment = new CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment", CommonBandwithPackageAttachmentArgs.builder()
  *             .bandwidthPackageId(default_.id())
  *             .instanceId(defaultEipAddress.id())
  *             .bandwidthPackageBandwidth("2")

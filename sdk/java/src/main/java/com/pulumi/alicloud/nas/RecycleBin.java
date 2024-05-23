@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .fileSystemType("standard")
  *             .build());
  * 
- *         var exampleFileSystem = new FileSystem("exampleFileSystem", FileSystemArgs.builder()        
+ *         var exampleFileSystem = new FileSystem("exampleFileSystem", FileSystemArgs.builder()
  *             .protocolType("NFS")
  *             .storageType("Performance")
  *             .description("terraform-example")
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()))
  *             .build());
  * 
- *         var exampleRecycleBin = new RecycleBin("exampleRecycleBin", RecycleBinArgs.builder()        
+ *         var exampleRecycleBin = new RecycleBin("exampleRecycleBin", RecycleBinArgs.builder()
  *             .fileSystemId(exampleFileSystem.id())
  *             .reservedDays(3)
  *             .build());

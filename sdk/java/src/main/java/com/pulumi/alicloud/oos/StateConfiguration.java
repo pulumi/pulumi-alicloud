@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultStateConfiguration = new StateConfiguration("defaultStateConfiguration", StateConfigurationArgs.builder()        
+ *         var defaultStateConfiguration = new StateConfiguration("defaultStateConfiguration", StateConfigurationArgs.builder()
  *             .templateName("ACS-ECS-InventoryDataCollection")
  *             .configureMode("ApplyOnly")
  *             .description("terraform-example")

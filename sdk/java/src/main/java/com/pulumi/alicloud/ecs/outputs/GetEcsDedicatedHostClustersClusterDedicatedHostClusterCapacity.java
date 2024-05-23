@@ -12,25 +12,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity {
+    /**
+     * @return The available memory size. Unit: `GiB`.
+     * 
+     */
     private Integer availableMemory;
+    /**
+     * @return The number of available vCPUs.
+     * 
+     */
     private Integer availableVcpus;
+    /**
+     * @return The local storage.
+     * 
+     */
     private List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity> localStorageCapacities;
+    /**
+     * @return The total memory size. Unit: `GiB`.
+     * 
+     */
     private Integer totalMemory;
+    /**
+     * @return The total number of vCPUs.
+     * 
+     */
     private Integer totalVcpus;
 
     private GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity() {}
+    /**
+     * @return The available memory size. Unit: `GiB`.
+     * 
+     */
     public Integer availableMemory() {
         return this.availableMemory;
     }
+    /**
+     * @return The number of available vCPUs.
+     * 
+     */
     public Integer availableVcpus() {
         return this.availableVcpus;
     }
+    /**
+     * @return The local storage.
+     * 
+     */
     public List<GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity> localStorageCapacities() {
         return this.localStorageCapacities;
     }
+    /**
+     * @return The total memory size. Unit: `GiB`.
+     * 
+     */
     public Integer totalMemory() {
         return this.totalMemory;
     }
+    /**
+     * @return The total number of vCPUs.
+     * 
+     */
     public Integer totalVcpus() {
         return this.totalVcpus;
     }

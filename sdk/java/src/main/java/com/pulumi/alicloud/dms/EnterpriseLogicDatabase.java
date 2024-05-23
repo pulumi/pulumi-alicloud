@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new EnterpriseLogicDatabase("default", EnterpriseLogicDatabaseArgs.builder()        
+ *         var default_ = new EnterpriseLogicDatabase("default", EnterpriseLogicDatabaseArgs.builder()
  *             .alias("TF_logic_db_test")
  *             .databaseIds(            
  *                 "35617919",

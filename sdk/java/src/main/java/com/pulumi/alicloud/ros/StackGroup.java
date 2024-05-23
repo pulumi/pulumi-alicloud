@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new StackGroup("example", StackGroupArgs.builder()        
+ *         var example = new StackGroup("example", StackGroupArgs.builder()
  *             .stackGroupName("example_value")
  *             .templateBody("""
  *     {

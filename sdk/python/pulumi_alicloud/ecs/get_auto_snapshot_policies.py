@@ -136,7 +136,7 @@ def get_auto_snapshot_policies(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Auto Snapshot Policy IDs.
     :param str name_regex: A regex string to filter results by Auto Snapshot Policy name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of Auto Snapshot Policy.
+    :param str status: The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
@@ -188,7 +188,7 @@ def get_auto_snapshot_policies_output(ids: Optional[pulumi.Input[Optional[Sequen
     :param Sequence[str] ids: A list of Auto Snapshot Policy IDs.
     :param str name_regex: A regex string to filter results by Auto Snapshot Policy name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of Auto Snapshot Policy.
+    :param str status: The status of Auto Snapshot Policy. Valid Values: `Expire`, `Normal`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     ...

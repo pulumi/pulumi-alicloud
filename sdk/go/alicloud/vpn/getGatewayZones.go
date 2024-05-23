@@ -57,6 +57,14 @@ type GetGatewayZonesArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// Bandwidth specification.-If an IPsec connection is bound to a VPN gateway instance, this parameter indicates the Bandwidth specification of the VPN gateway instance.-If an IPsec connection is bound to a forwarding router, this parameter indicates the bandwidth that you expect the IPsec connection to support.Different bandwidth specifications may affect the zone information that is found. Value:
+	// - `5M`
+	// - `10M`
+	// - `20M`
+	// - `50M`
+	// - `100M`
+	// - `200M`
+	// - `500M`
+	// - `1000M`
 	Spec string `pulumi:"spec"`
 }
 
@@ -92,6 +100,14 @@ type GetGatewayZonesOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Bandwidth specification.-If an IPsec connection is bound to a VPN gateway instance, this parameter indicates the Bandwidth specification of the VPN gateway instance.-If an IPsec connection is bound to a forwarding router, this parameter indicates the bandwidth that you expect the IPsec connection to support.Different bandwidth specifications may affect the zone information that is found. Value:
+	// - `5M`
+	// - `10M`
+	// - `20M`
+	// - `50M`
+	// - `100M`
+	// - `200M`
+	// - `500M`
+	// - `1000M`
 	Spec pulumi.StringInput `pulumi:"spec"`
 }
 

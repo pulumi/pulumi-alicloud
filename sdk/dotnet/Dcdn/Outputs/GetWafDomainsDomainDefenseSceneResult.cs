@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Dcdn.Outputs
     [OutputType]
     public sealed class GetWafDomainsDomainDefenseSceneResult
     {
+        /// <summary>
+        /// The type of protection policy.
+        /// </summary>
         public readonly string DefenseScene;
+        /// <summary>
+        /// The protection policy ID.
+        /// </summary>
         public readonly string PolicyId;
 
         [OutputConstructor]

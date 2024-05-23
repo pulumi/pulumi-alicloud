@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var this_ = new Key("this");
  * 
- *         var keyversion = new KeyVersion("keyversion", KeyVersionArgs.builder()        
+ *         var keyversion = new KeyVersion("keyversion", KeyVersionArgs.builder()
  *             .keyId(this_.id())
  *             .build());
  * 

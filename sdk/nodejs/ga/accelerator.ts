@@ -76,6 +76,8 @@ export class Accelerator extends pulumi.CustomResource {
     public readonly autoUseCoupon!: pulumi.Output<boolean | undefined>;
     /**
      * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed based on data transfer.
      */
     public readonly bandwidthBillingType!: pulumi.Output<string>;
     /**
@@ -102,6 +104,8 @@ export class Accelerator extends pulumi.CustomResource {
     public readonly paymentType!: pulumi.Output<string>;
     /**
      * The billing cycle of the GA instance. Default value: `Month`. Valid values:
+     * - `Month`: billed on a monthly basis.
+     * - `Year`: billed on an annual basis.
      */
     public readonly pricingCycle!: pulumi.Output<string | undefined>;
     /**
@@ -110,6 +114,9 @@ export class Accelerator extends pulumi.CustomResource {
     public readonly promotionOptionNo!: pulumi.Output<string | undefined>;
     /**
      * Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     public readonly renewalStatus!: pulumi.Output<string>;
     /**
@@ -194,6 +201,8 @@ export interface AcceleratorState {
     autoUseCoupon?: pulumi.Input<boolean>;
     /**
      * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed based on data transfer.
      */
     bandwidthBillingType?: pulumi.Input<string>;
     /**
@@ -220,6 +229,8 @@ export interface AcceleratorState {
     paymentType?: pulumi.Input<string>;
     /**
      * The billing cycle of the GA instance. Default value: `Month`. Valid values:
+     * - `Month`: billed on a monthly basis.
+     * - `Year`: billed on an annual basis.
      */
     pricingCycle?: pulumi.Input<string>;
     /**
@@ -228,6 +239,9 @@ export interface AcceleratorState {
     promotionOptionNo?: pulumi.Input<string>;
     /**
      * Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     renewalStatus?: pulumi.Input<string>;
     /**
@@ -262,6 +276,8 @@ export interface AcceleratorArgs {
     autoUseCoupon?: pulumi.Input<boolean>;
     /**
      * The bandwidth billing method. Default value: `BandwidthPackage`. Valid values:
+     * - `BandwidthPackage`: billed based on bandwidth plans.
+     * - `CDT`: billed based on data transfer.
      */
     bandwidthBillingType?: pulumi.Input<string>;
     /**
@@ -288,6 +304,8 @@ export interface AcceleratorArgs {
     paymentType?: pulumi.Input<string>;
     /**
      * The billing cycle of the GA instance. Default value: `Month`. Valid values:
+     * - `Month`: billed on a monthly basis.
+     * - `Year`: billed on an annual basis.
      */
     pricingCycle?: pulumi.Input<string>;
     /**
@@ -296,6 +314,9 @@ export interface AcceleratorArgs {
     promotionOptionNo?: pulumi.Input<string>;
     /**
      * Whether to renew an accelerator automatically or not. Default value: `Normal`. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     renewalStatus?: pulumi.Input<string>;
     /**

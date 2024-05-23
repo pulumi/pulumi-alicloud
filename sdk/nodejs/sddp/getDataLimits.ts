@@ -48,11 +48,11 @@ export interface GetDataLimitsArgs {
      */
     outputFile?: string;
     /**
-     * The ID of the data asset.
+     * The parent asset ID of the data asset.
      */
     parentId?: string;
     /**
-     * The type of the service to which the data asset belongs.
+     * The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
      */
     resourceType?: string;
 }
@@ -105,11 +105,11 @@ export interface GetDataLimitsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of the data asset.
+     * The parent asset ID of the data asset.
      */
     parentId?: pulumi.Input<string>;
     /**
-     * The type of the service to which the data asset belongs.
+     * The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
      */
     resourceType?: pulumi.Input<string>;
 }

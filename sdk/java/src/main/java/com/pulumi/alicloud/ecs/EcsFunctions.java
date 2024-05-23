@@ -7941,31 +7941,31 @@ public final class EcsFunctions {
      *             .owners("system")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("192.168.192.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()
      *             .networkInterfaceName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .build());
      * 
      *         for (var i = 0; i < 14; i++) {
-     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
      *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
      *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
      *                 .instanceName(name)
@@ -8056,31 +8056,31 @@ public final class EcsFunctions {
      *             .owners("system")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("192.168.192.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()
      *             .networkInterfaceName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .build());
      * 
      *         for (var i = 0; i < 14; i++) {
-     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
      *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
      *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
      *                 .instanceName(name)
@@ -8171,31 +8171,31 @@ public final class EcsFunctions {
      *             .owners("system")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("192.168.192.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()
      *             .networkInterfaceName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .build());
      * 
      *         for (var i = 0; i < 14; i++) {
-     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
      *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
      *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
      *                 .instanceName(name)
@@ -8286,31 +8286,31 @@ public final class EcsFunctions {
      *             .owners("system")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("192.168.192.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()
      *             .networkInterfaceName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .build());
      * 
      *         for (var i = 0; i < 14; i++) {
-     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
      *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
      *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
      *                 .instanceName(name)
@@ -8401,31 +8401,31 @@ public final class EcsFunctions {
      *             .owners("system")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("192.168.192.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()
      *             .networkInterfaceName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .build());
      * 
      *         for (var i = 0; i < 14; i++) {
-     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
      *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
      *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
      *                 .instanceName(name)
@@ -8516,31 +8516,31 @@ public final class EcsFunctions {
      *             .owners("system")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("192.168.0.0/16")
      *             .build());
      * 
-     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock("192.168.192.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultNetwork.id())
      *             .build());
      * 
-     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()        
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface("defaultEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()
      *             .networkInterfaceName(name)
      *             .vswitchId(defaultSwitch.id())
      *             .securityGroupIds(defaultSecurityGroup.id())
      *             .build());
      * 
      *         for (var i = 0; i < 14; i++) {
-     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()            
+     *             new Instance("defaultInstance-" + i, InstanceArgs.builder()
      *                 .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
      *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
      *                 .instanceName(name)
@@ -8868,7 +8868,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyName("keyPairDatasource")
      *             .build());
      * 
@@ -8919,7 +8919,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyName("keyPairDatasource")
      *             .build());
      * 
@@ -8970,7 +8970,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyName("keyPairDatasource")
      *             .build());
      * 
@@ -9021,7 +9021,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyName("keyPairDatasource")
      *             .build());
      * 
@@ -9072,7 +9072,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyName("keyPairDatasource")
      *             .build());
      * 
@@ -9123,7 +9123,7 @@ public final class EcsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         // Declare the data source
-     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()        
+     *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
      *             .keyName("keyPairDatasource")
      *             .build());
      * 
@@ -9189,7 +9189,7 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("networkInterfacesName");
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("192.168.0.0/24")
      *             .build());
@@ -9198,19 +9198,19 @@ public final class EcsFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .cidrBlock("192.168.0.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()        
+     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()
      *             .name(String.format("%s%d", name))
      *             .vswitchId(vswitch.id())
      *             .securityGroups(group.id())
@@ -9219,7 +9219,7 @@ public final class EcsFunctions {
      *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .build());
      * 
-     *         var instance = new Instance("instance", InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .securityGroups(group.id())
      *             .instanceType("ecs.e3.xlarge")
@@ -9230,7 +9230,7 @@ public final class EcsFunctions {
      *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
-     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()        
+     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()
      *             .instanceId(instance.id())
      *             .networkInterfaceId(interface_.id())
      *             .build());
@@ -9323,7 +9323,7 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("networkInterfacesName");
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("192.168.0.0/24")
      *             .build());
@@ -9332,19 +9332,19 @@ public final class EcsFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .cidrBlock("192.168.0.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()        
+     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()
      *             .name(String.format("%s%d", name))
      *             .vswitchId(vswitch.id())
      *             .securityGroups(group.id())
@@ -9353,7 +9353,7 @@ public final class EcsFunctions {
      *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .build());
      * 
-     *         var instance = new Instance("instance", InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .securityGroups(group.id())
      *             .instanceType("ecs.e3.xlarge")
@@ -9364,7 +9364,7 @@ public final class EcsFunctions {
      *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
-     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()        
+     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()
      *             .instanceId(instance.id())
      *             .networkInterfaceId(interface_.id())
      *             .build());
@@ -9457,7 +9457,7 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("networkInterfacesName");
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("192.168.0.0/24")
      *             .build());
@@ -9466,19 +9466,19 @@ public final class EcsFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .cidrBlock("192.168.0.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()        
+     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()
      *             .name(String.format("%s%d", name))
      *             .vswitchId(vswitch.id())
      *             .securityGroups(group.id())
@@ -9487,7 +9487,7 @@ public final class EcsFunctions {
      *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .build());
      * 
-     *         var instance = new Instance("instance", InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .securityGroups(group.id())
      *             .instanceType("ecs.e3.xlarge")
@@ -9498,7 +9498,7 @@ public final class EcsFunctions {
      *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
-     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()        
+     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()
      *             .instanceId(instance.id())
      *             .networkInterfaceId(interface_.id())
      *             .build());
@@ -9591,7 +9591,7 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("networkInterfacesName");
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("192.168.0.0/24")
      *             .build());
@@ -9600,19 +9600,19 @@ public final class EcsFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .cidrBlock("192.168.0.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()        
+     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()
      *             .name(String.format("%s%d", name))
      *             .vswitchId(vswitch.id())
      *             .securityGroups(group.id())
@@ -9621,7 +9621,7 @@ public final class EcsFunctions {
      *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .build());
      * 
-     *         var instance = new Instance("instance", InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .securityGroups(group.id())
      *             .instanceType("ecs.e3.xlarge")
@@ -9632,7 +9632,7 @@ public final class EcsFunctions {
      *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
-     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()        
+     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()
      *             .instanceId(instance.id())
      *             .networkInterfaceId(interface_.id())
      *             .build());
@@ -9725,7 +9725,7 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("networkInterfacesName");
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("192.168.0.0/24")
      *             .build());
@@ -9734,19 +9734,19 @@ public final class EcsFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .cidrBlock("192.168.0.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()        
+     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()
      *             .name(String.format("%s%d", name))
      *             .vswitchId(vswitch.id())
      *             .securityGroups(group.id())
@@ -9755,7 +9755,7 @@ public final class EcsFunctions {
      *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .build());
      * 
-     *         var instance = new Instance("instance", InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .securityGroups(group.id())
      *             .instanceType("ecs.e3.xlarge")
@@ -9766,7 +9766,7 @@ public final class EcsFunctions {
      *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
-     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()        
+     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()
      *             .instanceId(instance.id())
      *             .networkInterfaceId(interface_.id())
      *             .build());
@@ -9859,7 +9859,7 @@ public final class EcsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get("name").orElse("networkInterfacesName");
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .vpcName(name)
      *             .cidrBlock("192.168.0.0/24")
      *             .build());
@@ -9868,19 +9868,19 @@ public final class EcsFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+     *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
      *             .vswitchName(name)
      *             .cidrBlock("192.168.0.0/24")
      *             .availabilityZone(default_.zones()[0].id())
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+     *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(vpc.id())
      *             .build());
      * 
-     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()        
+     *         var interface_ = new NetworkInterface("interface", NetworkInterfaceArgs.builder()
      *             .name(String.format("%s%d", name))
      *             .vswitchId(vswitch.id())
      *             .securityGroups(group.id())
@@ -9889,7 +9889,7 @@ public final class EcsFunctions {
      *             .tags(Map.of("TF-VER", "0.11.3"))
      *             .build());
      * 
-     *         var instance = new Instance("instance", InstanceArgs.builder()        
+     *         var instance = new Instance("instance", InstanceArgs.builder()
      *             .availabilityZone(default_.zones()[0].id())
      *             .securityGroups(group.id())
      *             .instanceType("ecs.e3.xlarge")
@@ -9900,7 +9900,7 @@ public final class EcsFunctions {
      *             .internetMaxBandwidthOut(10)
      *             .build());
      * 
-     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()        
+     *         var attachment = new NetworkInterfaceAttachment("attachment", NetworkInterfaceAttachmentArgs.builder()
      *             .instanceId(instance.id())
      *             .networkInterfaceId(interface_.id())
      *             .build());
@@ -9997,7 +9997,7 @@ public final class EcsFunctions {
      *             .build());
      * 
      *         // Pass port_range to the backend service
-     *         var backend = new Instance("backend", InstanceArgs.builder()        
+     *         var backend = new Instance("backend", InstanceArgs.builder()
      *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.applyValue(getSecurityGroupRulesResult -> getSecurityGroupRulesResult.rules()[0].portRange())))
      *             .build());
      * 
@@ -10063,7 +10063,7 @@ public final class EcsFunctions {
      *             .build());
      * 
      *         // Pass port_range to the backend service
-     *         var backend = new Instance("backend", InstanceArgs.builder()        
+     *         var backend = new Instance("backend", InstanceArgs.builder()
      *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.applyValue(getSecurityGroupRulesResult -> getSecurityGroupRulesResult.rules()[0].portRange())))
      *             .build());
      * 
@@ -10129,7 +10129,7 @@ public final class EcsFunctions {
      *             .build());
      * 
      *         // Pass port_range to the backend service
-     *         var backend = new Instance("backend", InstanceArgs.builder()        
+     *         var backend = new Instance("backend", InstanceArgs.builder()
      *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.applyValue(getSecurityGroupRulesResult -> getSecurityGroupRulesResult.rules()[0].portRange())))
      *             .build());
      * 
@@ -10195,7 +10195,7 @@ public final class EcsFunctions {
      *             .build());
      * 
      *         // Pass port_range to the backend service
-     *         var backend = new Instance("backend", InstanceArgs.builder()        
+     *         var backend = new Instance("backend", InstanceArgs.builder()
      *             .userData(String.format("config_service.sh --portrange=%s", ingressRulesDs.applyValue(getSecurityGroupRulesResult -> getSecurityGroupRulesResult.rules()[0].portRange())))
      *             .build());
      * 

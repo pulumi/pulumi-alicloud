@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new IndustrialPidProject("example", IndustrialPidProjectArgs.builder()        
+ *         var example = new IndustrialPidProject("example", IndustrialPidProjectArgs.builder()
  *             .pidOrganizationId("3e74e684-cbb5-xxxx")
  *             .pidProjectName("tf-testAcc")
  *             .build());

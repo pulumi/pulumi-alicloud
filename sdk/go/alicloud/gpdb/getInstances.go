@@ -74,10 +74,9 @@ type GetInstancesArgs struct {
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
-	Status *string `pulumi:"status"`
-	// The tags of the instance.
-	Tags map[string]interface{} `pulumi:"tags"`
-	// The vswitch id.
+	Status *string                `pulumi:"status"`
+	Tags   map[string]interface{} `pulumi:"tags"`
+	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -139,9 +138,8 @@ type GetInstancesOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The tags of the instance.
-	Tags pulumi.MapInput `pulumi:"tags"`
-	// The vswitch id.
+	Tags   pulumi.MapInput       `pulumi:"tags"`
+	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 

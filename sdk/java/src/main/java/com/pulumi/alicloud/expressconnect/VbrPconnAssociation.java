@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
- *         var default_ = new VirtualBorderRouter("default", VirtualBorderRouterArgs.builder()        
+ *         var default_ = new VirtualBorderRouter("default", VirtualBorderRouterArgs.builder()
  *             .localGatewayIp("10.0.0.1")
  *             .peerGatewayIp("10.0.0.2")
  *             .peeringSubnetMask("255.255.255.252")
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *             .peeringIpv6SubnetMask("2408:4004:cc:400::/56")
  *             .build());
  * 
- *         var exampleVbrPconnAssociation = new VbrPconnAssociation("exampleVbrPconnAssociation", VbrPconnAssociationArgs.builder()        
+ *         var exampleVbrPconnAssociation = new VbrPconnAssociation("exampleVbrPconnAssociation", VbrPconnAssociationArgs.builder()
  *             .peerGatewayIp("10.0.0.6")
  *             .localGatewayIp("10.0.0.5")
  *             .physicalConnectionId(example.applyValue(getPhysicalConnectionsResult -> getPhysicalConnectionsResult.connections()[2].id()))

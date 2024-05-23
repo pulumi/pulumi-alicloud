@@ -498,6 +498,8 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The security enhancement strategy.
+     * - `Active`: Enable security enhancement strategy, it only works on system images.
+     * - `Deactive`: Disable security enhancement strategy, it works on all images.
      * 
      */
     @Import(name="securityEnhancementStrategy")
@@ -505,6 +507,8 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The security enhancement strategy.
+     * - `Active`: Enable security enhancement strategy, it only works on system images.
+     * - `Deactive`: Disable security enhancement strategy, it works on all images.
      * 
      */
     public Optional<Output<String>> securityEnhancementStrategy() {
@@ -543,6 +547,9 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
+     * - `NoSpot`: A regular Pay-As-You-Go instance.
+     * - `SpotWithPriceLimit`: A price threshold for a spot instance.
+     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
      * 
      */
     @Import(name="spotStrategy")
@@ -550,6 +557,9 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
+     * - `NoSpot`: A regular Pay-As-You-Go instance.
+     * - `SpotWithPriceLimit`: A price threshold for a spot instance.
+     * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
      * 
      */
     public Optional<Output<String>> spotStrategy() {
@@ -1465,6 +1475,8 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param securityEnhancementStrategy The security enhancement strategy.
+         * - `Active`: Enable security enhancement strategy, it only works on system images.
+         * - `Deactive`: Disable security enhancement strategy, it works on all images.
          * 
          * @return builder
          * 
@@ -1476,6 +1488,8 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param securityEnhancementStrategy The security enhancement strategy.
+         * - `Active`: Enable security enhancement strategy, it only works on system images.
+         * - `Deactive`: Disable security enhancement strategy, it works on all images.
          * 
          * @return builder
          * 
@@ -1538,6 +1552,9 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param spotStrategy The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
+         * - `NoSpot`: A regular Pay-As-You-Go instance.
+         * - `SpotWithPriceLimit`: A price threshold for a spot instance.
+         * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
          * 
          * @return builder
          * 
@@ -1549,6 +1566,9 @@ public final class EcsInstanceSetState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param spotStrategy The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
+         * - `NoSpot`: A regular Pay-As-You-Go instance.
+         * - `SpotWithPriceLimit`: A price threshold for a spot instance.
+         * - `SpotAsPriceGo`: A price that is based on the highest Pay-As-You-Go instance
          * 
          * @return builder
          * 

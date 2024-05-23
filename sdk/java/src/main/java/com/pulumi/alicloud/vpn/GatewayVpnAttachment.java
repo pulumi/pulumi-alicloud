@@ -61,14 +61,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new CustomerGateway("default", CustomerGatewayArgs.builder()        
+ *         var default_ = new CustomerGateway("default", CustomerGatewayArgs.builder()
  *             .name(name)
  *             .ipAddress("42.104.22.210")
  *             .asn("45014")
  *             .description(name)
  *             .build());
  * 
- *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment("defaultGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()        
+ *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment("defaultGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()
  *             .customerGatewayId(default_.id())
  *             .networkType("public")
  *             .localSubnet("0.0.0.0/0")

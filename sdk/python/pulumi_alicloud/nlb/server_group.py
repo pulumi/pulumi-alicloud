@@ -46,7 +46,14 @@ class ServerGroupArgs:
         :param pulumi.Input[str] protocol: The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs.
         :param pulumi.Input[str] scheduler: The routing algorithm. Valid values:
-        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
+               - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+               - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+               - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+               - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+               - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
+        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values: 
+               - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+               - `Ip`: allows you to specify IP addresses.
         :param pulumi.Input[Mapping[str, Any]] tags: Label.
         """
         pulumi.set(__self__, "server_group_name", server_group_name)
@@ -221,6 +228,11 @@ class ServerGroupArgs:
     def scheduler(self) -> Optional[pulumi.Input[str]]:
         """
         The routing algorithm. Valid values:
+        - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+        - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+        - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+        - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+        - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
         """
         return pulumi.get(self, "scheduler")
 
@@ -232,7 +244,9 @@ class ServerGroupArgs:
     @pulumi.getter(name="serverGroupType")
     def server_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the server group. Valid values:
+        The type of the server group. Valid values: 
+        - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+        - `Ip`: allows you to specify IP addresses.
         """
         return pulumi.get(self, "server_group_type")
 
@@ -283,8 +297,15 @@ class _ServerGroupState:
         :param pulumi.Input[str] protocol: The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs.
         :param pulumi.Input[str] scheduler: The routing algorithm. Valid values:
+               - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+               - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+               - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+               - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+               - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
         :param pulumi.Input[str] server_group_name: The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
+        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values: 
+               - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+               - `Ip`: allows you to specify IP addresses.
         :param pulumi.Input[str] status: Server group status. Value:
         :param pulumi.Input[Mapping[str, Any]] tags: Label.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the server group belongs.
@@ -441,6 +462,11 @@ class _ServerGroupState:
     def scheduler(self) -> Optional[pulumi.Input[str]]:
         """
         The routing algorithm. Valid values:
+        - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+        - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+        - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+        - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+        - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
         """
         return pulumi.get(self, "scheduler")
 
@@ -464,7 +490,9 @@ class _ServerGroupState:
     @pulumi.getter(name="serverGroupType")
     def server_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the server group. Valid values:
+        The type of the server group. Valid values: 
+        - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+        - `Ip`: allows you to specify IP addresses.
         """
         return pulumi.get(self, "server_group_type")
 
@@ -605,8 +633,15 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs.
         :param pulumi.Input[str] scheduler: The routing algorithm. Valid values:
+               - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+               - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+               - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+               - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+               - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
         :param pulumi.Input[str] server_group_name: The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
+        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values: 
+               - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+               - `Ip`: allows you to specify IP addresses.
         :param pulumi.Input[Mapping[str, Any]] tags: Label.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the server group belongs.
                
@@ -779,8 +814,15 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the security group belongs.
         :param pulumi.Input[str] scheduler: The routing algorithm. Valid values:
+               - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+               - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+               - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+               - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+               - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
         :param pulumi.Input[str] server_group_name: The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
+        :param pulumi.Input[str] server_group_type: The type of the server group. Valid values: 
+               - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+               - `Ip`: allows you to specify IP addresses.
         :param pulumi.Input[str] status: Server group status. Value:
         :param pulumi.Input[Mapping[str, Any]] tags: Label.
         :param pulumi.Input[str] vpc_id: The ID of the VPC to which the server group belongs.
@@ -888,6 +930,11 @@ class ServerGroup(pulumi.CustomResource):
     def scheduler(self) -> pulumi.Output[str]:
         """
         The routing algorithm. Valid values:
+        - `Wrr` (default): The Weighted Round Robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights.
+        - `Rr`: The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+        - `Sch`: Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+        - `Tch`: Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+        - `Qch`: QUIC ID hashing is used. Requests that contain the same QUIC ID are forwarded to the same backend server.
         """
         return pulumi.get(self, "scheduler")
 
@@ -903,7 +950,9 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="serverGroupType")
     def server_group_type(self) -> pulumi.Output[str]:
         """
-        The type of the server group. Valid values:
+        The type of the server group. Valid values: 
+        - `Instance` (default): allows you to specify `Ecs`, `Ens`, or `Eci`.
+        - `Ip`: allows you to specify IP addresses.
         """
         return pulumi.get(self, "server_group_type")
 

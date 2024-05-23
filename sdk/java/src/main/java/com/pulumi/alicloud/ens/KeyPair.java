@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var example = new KeyPair("example", KeyPairArgs.builder()        
+ *         var example = new KeyPair("example", KeyPairArgs.builder()
  *             .keyPairName(name)
  *             .version("2017-11-10")
  *             .build());

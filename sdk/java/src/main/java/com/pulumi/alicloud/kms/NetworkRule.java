@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new NetworkRule("default", NetworkRuleArgs.builder()        
+ *         var default_ = new NetworkRule("default", NetworkRuleArgs.builder()
  *             .description("example-description")
  *             .sourcePrivateIps(            
  *                 "10.10.10.10/24",

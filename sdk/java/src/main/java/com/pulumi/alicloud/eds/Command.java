@@ -62,19 +62,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()        
+ *         var defaultSimpleOfficeSite = new SimpleOfficeSite("defaultSimpleOfficeSite", SimpleOfficeSiteArgs.builder()
  *             .cidrBlock("172.16.0.0/12")
  *             .enableAdminAccess(true)
  *             .desktopAccessType("Internet")
  *             .officeSiteName(String.format("%s-%s", name,defaultInteger.result()))
  *             .build());
  * 
- *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()        
+ *         var defaultEcdPolicyGroup = new EcdPolicyGroup("defaultEcdPolicyGroup", EcdPolicyGroupArgs.builder()
  *             .policyGroupName(name)
  *             .clipboard("read")
  *             .localDrive("read")
@@ -99,14 +99,14 @@ import javax.annotation.Nullable;
  *             .bundleType("SYSTEM")
  *             .build());
  * 
- *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()        
+ *         var defaultDesktop = new Desktop("defaultDesktop", DesktopArgs.builder()
  *             .officeSiteId(defaultSimpleOfficeSite.id())
  *             .policyGroupId(defaultEcdPolicyGroup.id())
  *             .bundleId(default_.bundles()[0].id())
  *             .desktopName(name)
  *             .build());
  * 
- *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()        
+ *         var defaultCommand = new Command("defaultCommand", CommandArgs.builder()
  *             .commandContent("ipconfig")
  *             .commandType("RunPowerShellScript")
  *             .desktopId(defaultDesktop.id())

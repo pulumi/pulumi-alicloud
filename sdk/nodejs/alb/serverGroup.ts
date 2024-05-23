@@ -163,6 +163,9 @@ export class ServerGroup extends pulumi.CustomResource {
     public readonly serverGroupName!: pulumi.Output<string>;
     /**
      * The type of the server group. Default value: `Instance`. Valid values:
+     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * - `Ip`: allows you to add servers by specifying IP addresses.
+     * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      */
     public readonly serverGroupType!: pulumi.Output<string>;
     /**
@@ -267,6 +270,9 @@ export interface ServerGroupState {
     serverGroupName?: pulumi.Input<string>;
     /**
      * The type of the server group. Default value: `Instance`. Valid values:
+     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * - `Ip`: allows you to add servers by specifying IP addresses.
+     * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      */
     serverGroupType?: pulumi.Input<string>;
     /**
@@ -321,6 +327,9 @@ export interface ServerGroupArgs {
     serverGroupName: pulumi.Input<string>;
     /**
      * The type of the server group. Default value: `Instance`. Valid values:
+     * - `Instance`: allows you add servers by specifying Ecs, Ens, or Eci.
+     * - `Ip`: allows you to add servers by specifying IP addresses.
+     * - `Fc`: allows you to add servers by specifying functions of Function Compute.
      */
     serverGroupType?: pulumi.Input<string>;
     /**

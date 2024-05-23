@@ -358,15 +358,15 @@ def get_clusters(cluster_name: Optional[str] = None,
     ```
 
 
-    :param str cluster_name: The name of the associated cluster.
+    :param str cluster_name: The cluster name.
     :param Sequence[str] cluster_type_lists: The cluster type list.
-    :param str create_type: How to create a cluster.
+    :param str create_type: How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
     :param bool default_status: The default status.
-    :param str deposit_type: The hosting type of the cluster.
+    :param str deposit_type: The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Cluster IDs.
     :param bool is_desc: The is desc.
-    :param str machine_type: The host type of the cluster. The default is ECS.
+    :param str machine_type: The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
     :param str name_regex: A regex string to filter results by Cluster name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Resource Group ID.
@@ -559,15 +559,15 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     ```
 
 
-    :param str cluster_name: The name of the associated cluster.
+    :param str cluster_name: The cluster name.
     :param Sequence[str] cluster_type_lists: The cluster type list.
-    :param str create_type: How to create a cluster.
+    :param str create_type: How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
     :param bool default_status: The default status.
-    :param str deposit_type: The hosting type of the cluster.
+    :param str deposit_type: The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Cluster IDs.
     :param bool is_desc: The is desc.
-    :param str machine_type: The host type of the cluster. The default is ECS.
+    :param str machine_type: The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
     :param str name_regex: A regex string to filter results by Cluster name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Resource Group ID.

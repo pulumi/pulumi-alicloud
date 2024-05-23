@@ -197,8 +197,7 @@ def get_desktops(desktop_name: Optional[str] = None,
     ```
 
 
-    :param str desktop_name: The desktop name of the Desktop.
-    :param Sequence[str] end_user_ids: The desktop end user id of the Desktop.
+    :param str desktop_name: The desktop name.
     :param Sequence[str] ids: A list of Desktop IDs.
     :param str name_regex: A regex string to filter results by Desktop name.
     :param str office_site_id: The ID of the Simple Office Site.
@@ -295,8 +294,7 @@ def get_desktops_output(desktop_name: Optional[pulumi.Input[Optional[str]]] = No
     ```
 
 
-    :param str desktop_name: The desktop name of the Desktop.
-    :param Sequence[str] end_user_ids: The desktop end user id of the Desktop.
+    :param str desktop_name: The desktop name.
     :param Sequence[str] ids: A list of Desktop IDs.
     :param str name_regex: A regex string to filter results by Desktop name.
     :param str office_site_id: The ID of the Simple Office Site.

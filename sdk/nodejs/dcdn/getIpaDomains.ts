@@ -51,7 +51,7 @@ export function getIpaDomains(args?: GetIpaDomainsArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetIpaDomainsArgs {
     /**
-     * The accelerated domain names.
+     * The name of the Domain.
      */
     domainName?: string;
     /**
@@ -67,7 +67,7 @@ export interface GetIpaDomainsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the accelerated domain name.
+     * The status of the accelerated domain name. Valid values: `checkFailed`, `checking`, `configureFailed`, `configuring`, `offline`, `online`.
      */
     status?: string;
 }
@@ -124,7 +124,7 @@ export function getIpaDomainsOutput(args?: GetIpaDomainsOutputArgs, opts?: pulum
  */
 export interface GetIpaDomainsOutputArgs {
     /**
-     * The accelerated domain names.
+     * The name of the Domain.
      */
     domainName?: pulumi.Input<string>;
     /**
@@ -140,7 +140,7 @@ export interface GetIpaDomainsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the accelerated domain name.
+     * The status of the accelerated domain name. Valid values: `checkFailed`, `checking`, `configureFailed`, `configuring`, `offline`, `online`.
      */
     status?: pulumi.Input<string>;
 }

@@ -53,6 +53,8 @@ export class Rule extends pulumi.CustomResource {
 
     /**
      * The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+     * - `Request`: The forwarding rule is applied to the client requests received by ALB.
+     * - `Response`: The forwarding rule is applied to the responses returned by backend servers.
      */
     public readonly direction!: pulumi.Output<string>;
     /**
@@ -142,6 +144,8 @@ export class Rule extends pulumi.CustomResource {
 export interface RuleState {
     /**
      * The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+     * - `Request`: The forwarding rule is applied to the client requests received by ALB.
+     * - `Response`: The forwarding rule is applied to the responses returned by backend servers.
      */
     direction?: pulumi.Input<string>;
     /**
@@ -180,6 +184,8 @@ export interface RuleState {
 export interface RuleArgs {
     /**
      * The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
+     * - `Request`: The forwarding rule is applied to the client requests received by ALB.
+     * - `Response`: The forwarding rule is applied to the responses returned by backend servers.
      */
     direction?: pulumi.Input<string>;
     /**

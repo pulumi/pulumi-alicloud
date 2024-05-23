@@ -63,19 +63,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("Gpdb")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .name("vpc-123456")
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .zoneId(default_.zones()[0].id())
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .vswitchName("vpc-123456")
  *             .build());
  * 
- *         var adbPgInstance = new ElasticInstance("adbPgInstance", ElasticInstanceArgs.builder()        
+ *         var adbPgInstance = new ElasticInstance("adbPgInstance", ElasticInstanceArgs.builder()
  *             .engine("gpdb")
  *             .engineVersion("6.0")
  *             .segStorageType("cloud_essd")

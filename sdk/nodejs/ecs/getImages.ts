@@ -56,7 +56,9 @@ export function getImages(args?: GetImagesArgs, opts?: pulumi.InvokeOptions): Pr
  */
 export interface GetImagesArgs {
     /**
-     * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
+     * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+     * * `CreateEcs`: instance creation.
+     * * `ChangeOS`: replacement of the system disk or operating system.
      */
     actionType?: string;
     /**
@@ -126,7 +128,13 @@ export interface GetImagesArgs {
      */
     snapshotId?: string;
     /**
-     * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+     * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+     * * `Creating`: The image is being created.
+     * * `Waiting`: The image is waiting to be processed.
+     * * `Available`: The image is available.
+     * * `UnAvailable`: The image is unavailable.
+     * * `CreateFailed`: The image failed to be created.
+     * * `Deprecated`: The image is discontinued.
      */
     status?: string;
     /**
@@ -211,7 +219,9 @@ export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.Invoke
  */
 export interface GetImagesOutputArgs {
     /**
-     * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:
+     * The scenario in which the image will be used. Default value: `CreateEcs`. Valid values:                                                
+     * * `CreateEcs`: instance creation.
+     * * `ChangeOS`: replacement of the system disk or operating system.
      */
     actionType?: pulumi.Input<string>;
     /**
@@ -281,7 +291,13 @@ export interface GetImagesOutputArgs {
      */
     snapshotId?: pulumi.Input<string>;
     /**
-     * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+     * The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+     * * `Creating`: The image is being created.
+     * * `Waiting`: The image is waiting to be processed.
+     * * `Available`: The image is available.
+     * * `UnAvailable`: The image is unavailable.
+     * * `CreateFailed`: The image failed to be created.
+     * * `Deprecated`: The image is discontinued.
      */
     status?: pulumi.Input<string>;
     /**

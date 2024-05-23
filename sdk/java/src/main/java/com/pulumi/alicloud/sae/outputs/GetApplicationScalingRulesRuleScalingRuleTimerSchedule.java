@@ -11,21 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
+    /**
+     * @return Time point. Format: `hours:minutes`.
+     * 
+     */
     private String atTime;
+    /**
+     * @return The maximum number of instances.
+     * 
+     */
     private Integer maxReplicas;
+    /**
+     * @return The minimum number of instances.
+     * 
+     */
     private Integer minReplicas;
+    /**
+     * @return The number of target instances.
+     * 
+     */
     private Integer targetReplicas;
 
     private GetApplicationScalingRulesRuleScalingRuleTimerSchedule() {}
+    /**
+     * @return Time point. Format: `hours:minutes`.
+     * 
+     */
     public String atTime() {
         return this.atTime;
     }
+    /**
+     * @return The maximum number of instances.
+     * 
+     */
     public Integer maxReplicas() {
         return this.maxReplicas;
     }
+    /**
+     * @return The minimum number of instances.
+     * 
+     */
     public Integer minReplicas() {
         return this.minReplicas;
     }
+    /**
+     * @return The number of target instances.
+     * 
+     */
     public Integer targetReplicas() {
         return this.targetReplicas;
     }

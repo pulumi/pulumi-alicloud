@@ -77,7 +77,7 @@ export interface GetVirtualBorderRoutersArgs {
      */
     outputFile?: string;
     /**
-     * The VBR state.
+     * The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
      */
     status?: string;
 }
@@ -160,7 +160,7 @@ export interface GetVirtualBorderRoutersOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The VBR state.
+     * The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
      */
     status?: pulumi.Input<string>;
 }

@@ -66,7 +66,7 @@ type LookupReceiversArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
 	Status *int `pulumi:"status"`
 }
 
@@ -106,7 +106,7 @@ type LookupReceiversOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
 	Status pulumi.IntPtrInput `pulumi:"status"`
 }
 

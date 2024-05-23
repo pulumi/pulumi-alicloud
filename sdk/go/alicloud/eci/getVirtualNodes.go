@@ -71,18 +71,17 @@ type GetVirtualNodesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The resource group ID.
+	// The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The security group ID.
+	// VNode itself and by VNode created (ECI) the security group used by.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// The Status of the virtual node.
+	// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The name of the virtual node.
 	VirtualNodeName *string `pulumi:"virtualNodeName"`
-	// The vswitch id.
-	VswitchId *string `pulumi:"vswitchId"`
+	VswitchId       *string `pulumi:"vswitchId"`
 }
 
 // A collection of values returned by getVirtualNodes.
@@ -123,18 +122,17 @@ type GetVirtualNodesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The resource group ID.
+	// The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The security group ID.
+	// VNode itself and by VNode created (ECI) the security group used by.
 	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
-	// The Status of the virtual node.
+	// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// The name of the virtual node.
 	VirtualNodeName pulumi.StringPtrInput `pulumi:"virtualNodeName"`
-	// The vswitch id.
-	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+	VswitchId       pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 
 func (GetVirtualNodesOutputArgs) ElementType() reflect.Type {

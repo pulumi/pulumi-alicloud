@@ -74,7 +74,7 @@ type GetVpcEndpointsArgs struct {
 	Status *string `pulumi:"status"`
 	// The name of Vpc Endpoint.
 	VpcEndpointName *string `pulumi:"vpcEndpointName"`
-	// The private network to which the terminal node belongs.
+	// The private network to which the terminal node belongs..
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -126,7 +126,7 @@ type GetVpcEndpointsOutputArgs struct {
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The name of Vpc Endpoint.
 	VpcEndpointName pulumi.StringPtrInput `pulumi:"vpcEndpointName"`
-	// The private network to which the terminal node belongs.
+	// The private network to which the terminal node belongs..
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 

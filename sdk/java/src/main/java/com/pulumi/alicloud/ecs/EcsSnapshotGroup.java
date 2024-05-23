@@ -86,24 +86,24 @@ import javax.annotation.Nullable;
  *             .mostRecent(true)
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name("terraform-example")
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .availabilityZone(default_.zones()[0].id())
  *             .instanceName("terraform-example")
  *             .securityGroups(defaultSecurityGroup.id())
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *             .internetMaxBandwidthOut(10)
  *             .build());
  * 
- *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()        
+ *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
  *             .zoneId(default_.zones()[0].id())
  *             .diskName("terraform-example")
  *             .description("terraform-example")
@@ -121,12 +121,12 @@ import javax.annotation.Nullable;
  *             .size("30")
  *             .build());
  * 
- *         var defaultDiskAttachment = new DiskAttachment("defaultDiskAttachment", DiskAttachmentArgs.builder()        
+ *         var defaultDiskAttachment = new DiskAttachment("defaultDiskAttachment", DiskAttachmentArgs.builder()
  *             .diskId(defaultEcsDisk.id())
  *             .instanceId(defaultInstance.id())
  *             .build());
  * 
- *         var defaultEcsSnapshotGroup = new EcsSnapshotGroup("defaultEcsSnapshotGroup", EcsSnapshotGroupArgs.builder()        
+ *         var defaultEcsSnapshotGroup = new EcsSnapshotGroup("defaultEcsSnapshotGroup", EcsSnapshotGroupArgs.builder()
  *             .description("terraform-example")
  *             .diskIds(defaultDiskAttachment.diskId())
  *             .snapshotGroupName("terraform-example")

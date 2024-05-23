@@ -74,25 +74,25 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var serverGroupNetwork = new Network("serverGroupNetwork", NetworkArgs.builder()        
+ *         var serverGroupNetwork = new Network("serverGroupNetwork", NetworkArgs.builder()
  *             .vpcName(slbServerGroupName)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var serverGroupSwitch = new Switch("serverGroupSwitch", SwitchArgs.builder()        
+ *         var serverGroupSwitch = new Switch("serverGroupSwitch", SwitchArgs.builder()
  *             .vpcId(serverGroupNetwork.id())
  *             .cidrBlock("172.16.0.0/16")
  *             .zoneId(serverGroup.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .vswitchName(slbServerGroupName)
  *             .build());
  * 
- *         var serverGroupApplicationLoadBalancer = new ApplicationLoadBalancer("serverGroupApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()        
+ *         var serverGroupApplicationLoadBalancer = new ApplicationLoadBalancer("serverGroupApplicationLoadBalancer", ApplicationLoadBalancerArgs.builder()
  *             .loadBalancerName(slbServerGroupName)
  *             .vswitchId(serverGroupSwitch.id())
  *             .instanceChargeType("PayByCLCU")
  *             .build());
  * 
- *         var serverGroupServerGroup = new ServerGroup("serverGroupServerGroup", ServerGroupArgs.builder()        
+ *         var serverGroupServerGroup = new ServerGroup("serverGroupServerGroup", ServerGroupArgs.builder()
  *             .loadBalancerId(serverGroupApplicationLoadBalancer.id())
  *             .name(slbServerGroupName)
  *             .build());

@@ -111,7 +111,7 @@ public final class EmrFunctions {
      *             .nameRegex("default-NODELETING")
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
@@ -121,7 +121,7 @@ public final class EmrFunctions {
      *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
-     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
      *             .name(name)
      *             .document("""
      *     {
@@ -144,7 +144,7 @@ public final class EmrFunctions {
      *             .force(true)
      *             .build());
      * 
-     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
      *             .name(name)
      *             .emrVer(defaultGetMainVersions.applyValue(getMainVersionsResult -> getMainVersionsResult.mainVersions()[0].emrVersion()))
      *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -> getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
@@ -303,7 +303,7 @@ public final class EmrFunctions {
      *             .nameRegex("default-NODELETING")
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
@@ -313,7 +313,7 @@ public final class EmrFunctions {
      *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
-     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
      *             .name(name)
      *             .document("""
      *     {
@@ -336,7 +336,7 @@ public final class EmrFunctions {
      *             .force(true)
      *             .build());
      * 
-     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
      *             .name(name)
      *             .emrVer(defaultGetMainVersions.applyValue(getMainVersionsResult -> getMainVersionsResult.mainVersions()[0].emrVersion()))
      *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -> getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
@@ -495,7 +495,7 @@ public final class EmrFunctions {
      *             .nameRegex("default-NODELETING")
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
@@ -505,7 +505,7 @@ public final class EmrFunctions {
      *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
-     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
      *             .name(name)
      *             .document("""
      *     {
@@ -528,7 +528,7 @@ public final class EmrFunctions {
      *             .force(true)
      *             .build());
      * 
-     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
      *             .name(name)
      *             .emrVer(defaultGetMainVersions.applyValue(getMainVersionsResult -> getMainVersionsResult.mainVersions()[0].emrVersion()))
      *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -> getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
@@ -687,7 +687,7 @@ public final class EmrFunctions {
      *             .nameRegex("default-NODELETING")
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
@@ -697,7 +697,7 @@ public final class EmrFunctions {
      *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
-     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
      *             .name(name)
      *             .document("""
      *     {
@@ -720,7 +720,7 @@ public final class EmrFunctions {
      *             .force(true)
      *             .build());
      * 
-     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
      *             .name(name)
      *             .emrVer(defaultGetMainVersions.applyValue(getMainVersionsResult -> getMainVersionsResult.mainVersions()[0].emrVersion()))
      *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -> getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
@@ -879,7 +879,7 @@ public final class EmrFunctions {
      *             .nameRegex("default-NODELETING")
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
@@ -889,7 +889,7 @@ public final class EmrFunctions {
      *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
-     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
      *             .name(name)
      *             .document("""
      *     {
@@ -912,7 +912,7 @@ public final class EmrFunctions {
      *             .force(true)
      *             .build());
      * 
-     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
      *             .name(name)
      *             .emrVer(defaultGetMainVersions.applyValue(getMainVersionsResult -> getMainVersionsResult.mainVersions()[0].emrVersion()))
      *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -> getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
@@ -1071,7 +1071,7 @@ public final class EmrFunctions {
      *             .nameRegex("default-NODELETING")
      *             .build());
      * 
-     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
      *             .name(name)
      *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
      *             .build());
@@ -1081,7 +1081,7 @@ public final class EmrFunctions {
      *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
-     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()        
+     *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
      *             .name(name)
      *             .document("""
      *     {
@@ -1104,7 +1104,7 @@ public final class EmrFunctions {
      *             .force(true)
      *             .build());
      * 
-     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+     *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
      *             .name(name)
      *             .emrVer(defaultGetMainVersions.applyValue(getMainVersionsResult -> getMainVersionsResult.mainVersions()[0].emrVersion()))
      *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -> getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))

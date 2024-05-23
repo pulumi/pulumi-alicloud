@@ -58,6 +58,9 @@ type Key struct {
 	// The Alicloud Resource Name (ARN) of the key.
 	Arn pulumi.StringOutput `pulumi:"arn"`
 	// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
+	// - `Enabled`
+	// - `Disabled`
+	//   **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 	AutomaticRotation pulumi.StringOutput `pulumi:"automaticRotation"`
 	// The date and time when the CMK was created. The time is displayed in UTC.
 	CreationDate pulumi.StringOutput `pulumi:"creationDate"`
@@ -96,6 +99,11 @@ type Key struct {
 	// The time the next rotation is scheduled for execution.
 	NextRotationDate pulumi.StringOutput `pulumi:"nextRotationDate"`
 	// The source of key material. Default value: `Aliyun_KMS`. Valid values:
+	// - `Aliyun_KMS`
+	// - `EXTERNAL`
+	//   **NOTE**: The value of this parameter is case-sensitive. If you set the `keySpec` to an asymmetric CMK type,
+	//   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
+	//   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
 	Origin pulumi.StringOutput `pulumi:"origin"`
 	// The number of days before the CMK is deleted.
 	// During this period, the CMK is in the PendingDeletion state.
@@ -105,6 +113,11 @@ type Key struct {
 	// The ID of the current primary key version of the symmetric CMK.
 	PrimaryKeyVersion pulumi.StringOutput `pulumi:"primaryKeyVersion"`
 	// The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
+	// - `SOFTWARE`
+	// - `HSM`
+	//   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
+	//   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
+	//   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
 	ProtectionLevel pulumi.StringPtrOutput `pulumi:"protectionLevel"`
 	// The interval for automatic key rotation. Specify the value in the integer[unit] format.
 	// The following units are supported: d (day), h (hour), m (minute), and s (second).
@@ -115,6 +128,9 @@ type Key struct {
 	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	RotationInterval pulumi.StringPtrOutput `pulumi:"rotationInterval"`
 	// The status of CMK. Default value: `Enabled`. Valid Values:
+	// - `Disabled`
+	// - `Enabled`
+	// - `PendingDeletion`
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -153,6 +169,9 @@ type keyState struct {
 	// The Alicloud Resource Name (ARN) of the key.
 	Arn *string `pulumi:"arn"`
 	// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
+	// - `Enabled`
+	// - `Disabled`
+	//   **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 	AutomaticRotation *string `pulumi:"automaticRotation"`
 	// The date and time when the CMK was created. The time is displayed in UTC.
 	CreationDate *string `pulumi:"creationDate"`
@@ -191,6 +210,11 @@ type keyState struct {
 	// The time the next rotation is scheduled for execution.
 	NextRotationDate *string `pulumi:"nextRotationDate"`
 	// The source of key material. Default value: `Aliyun_KMS`. Valid values:
+	// - `Aliyun_KMS`
+	// - `EXTERNAL`
+	//   **NOTE**: The value of this parameter is case-sensitive. If you set the `keySpec` to an asymmetric CMK type,
+	//   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
+	//   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
 	Origin *string `pulumi:"origin"`
 	// The number of days before the CMK is deleted.
 	// During this period, the CMK is in the PendingDeletion state.
@@ -200,6 +224,11 @@ type keyState struct {
 	// The ID of the current primary key version of the symmetric CMK.
 	PrimaryKeyVersion *string `pulumi:"primaryKeyVersion"`
 	// The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
+	// - `SOFTWARE`
+	// - `HSM`
+	//   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
+	//   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
+	//   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
 	// The interval for automatic key rotation. Specify the value in the integer[unit] format.
 	// The following units are supported: d (day), h (hour), m (minute), and s (second).
@@ -210,6 +239,9 @@ type keyState struct {
 	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	RotationInterval *string `pulumi:"rotationInterval"`
 	// The status of CMK. Default value: `Enabled`. Valid Values:
+	// - `Disabled`
+	// - `Enabled`
+	// - `PendingDeletion`
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -219,6 +251,9 @@ type KeyState struct {
 	// The Alicloud Resource Name (ARN) of the key.
 	Arn pulumi.StringPtrInput
 	// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
+	// - `Enabled`
+	// - `Disabled`
+	//   **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 	AutomaticRotation pulumi.StringPtrInput
 	// The date and time when the CMK was created. The time is displayed in UTC.
 	CreationDate pulumi.StringPtrInput
@@ -257,6 +292,11 @@ type KeyState struct {
 	// The time the next rotation is scheduled for execution.
 	NextRotationDate pulumi.StringPtrInput
 	// The source of key material. Default value: `Aliyun_KMS`. Valid values:
+	// - `Aliyun_KMS`
+	// - `EXTERNAL`
+	//   **NOTE**: The value of this parameter is case-sensitive. If you set the `keySpec` to an asymmetric CMK type,
+	//   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
+	//   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
 	Origin pulumi.StringPtrInput
 	// The number of days before the CMK is deleted.
 	// During this period, the CMK is in the PendingDeletion state.
@@ -266,6 +306,11 @@ type KeyState struct {
 	// The ID of the current primary key version of the symmetric CMK.
 	PrimaryKeyVersion pulumi.StringPtrInput
 	// The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
+	// - `SOFTWARE`
+	// - `HSM`
+	//   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
+	//   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
+	//   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
 	ProtectionLevel pulumi.StringPtrInput
 	// The interval for automatic key rotation. Specify the value in the integer[unit] format.
 	// The following units are supported: d (day), h (hour), m (minute), and s (second).
@@ -276,6 +321,9 @@ type KeyState struct {
 	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	RotationInterval pulumi.StringPtrInput
 	// The status of CMK. Default value: `Enabled`. Valid Values:
+	// - `Disabled`
+	// - `Enabled`
+	// - `PendingDeletion`
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -287,6 +335,9 @@ func (KeyState) ElementType() reflect.Type {
 
 type keyArgs struct {
 	// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
+	// - `Enabled`
+	// - `Disabled`
+	//   **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 	AutomaticRotation *string `pulumi:"automaticRotation"`
 	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
@@ -313,6 +364,11 @@ type keyArgs struct {
 	// - `SIGN/VERIFY`: generates or verifies a digital signature.
 	KeyUsage *string `pulumi:"keyUsage"`
 	// The source of key material. Default value: `Aliyun_KMS`. Valid values:
+	// - `Aliyun_KMS`
+	// - `EXTERNAL`
+	//   **NOTE**: The value of this parameter is case-sensitive. If you set the `keySpec` to an asymmetric CMK type,
+	//   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
+	//   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
 	Origin *string `pulumi:"origin"`
 	// The number of days before the CMK is deleted.
 	// During this period, the CMK is in the PendingDeletion state.
@@ -320,6 +376,11 @@ type keyArgs struct {
 	// **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays *int `pulumi:"pendingWindowInDays"`
 	// The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
+	// - `SOFTWARE`
+	// - `HSM`
+	//   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
+	//   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
+	//   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
 	// The interval for automatic key rotation. Specify the value in the integer[unit] format.
 	// The following units are supported: d (day), h (hour), m (minute), and s (second).
@@ -330,6 +391,9 @@ type keyArgs struct {
 	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	RotationInterval *string `pulumi:"rotationInterval"`
 	// The status of CMK. Default value: `Enabled`. Valid Values:
+	// - `Disabled`
+	// - `Enabled`
+	// - `PendingDeletion`
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -338,6 +402,9 @@ type keyArgs struct {
 // The set of arguments for constructing a Key resource.
 type KeyArgs struct {
 	// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
+	// - `Enabled`
+	// - `Disabled`
+	//   **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 	AutomaticRotation pulumi.StringPtrInput
 	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
@@ -364,6 +431,11 @@ type KeyArgs struct {
 	// - `SIGN/VERIFY`: generates or verifies a digital signature.
 	KeyUsage pulumi.StringPtrInput
 	// The source of key material. Default value: `Aliyun_KMS`. Valid values:
+	// - `Aliyun_KMS`
+	// - `EXTERNAL`
+	//   **NOTE**: The value of this parameter is case-sensitive. If you set the `keySpec` to an asymmetric CMK type,
+	//   you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
+	//   For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
 	Origin pulumi.StringPtrInput
 	// The number of days before the CMK is deleted.
 	// During this period, the CMK is in the PendingDeletion state.
@@ -371,6 +443,11 @@ type KeyArgs struct {
 	// **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
 	PendingWindowInDays pulumi.IntPtrInput
 	// The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
+	// - `SOFTWARE`
+	// - `HSM`
+	//   **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
+	//   If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
+	//   If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
 	ProtectionLevel pulumi.StringPtrInput
 	// The interval for automatic key rotation. Specify the value in the integer[unit] format.
 	// The following units are supported: d (day), h (hour), m (minute), and s (second).
@@ -381,6 +458,9 @@ type KeyArgs struct {
 	// > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
 	RotationInterval pulumi.StringPtrInput
 	// The status of CMK. Default value: `Enabled`. Valid Values:
+	// - `Disabled`
+	// - `Enabled`
+	// - `PendingDeletion`
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -479,6 +559,9 @@ func (o KeyOutput) Arn() pulumi.StringOutput {
 }
 
 // Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
+//   - `Enabled`
+//   - `Disabled`
+//     **NOTE**: If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
 func (o KeyOutput) AutomaticRotation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.AutomaticRotation }).(pulumi.StringOutput)
 }
@@ -559,6 +642,11 @@ func (o KeyOutput) NextRotationDate() pulumi.StringOutput {
 }
 
 // The source of key material. Default value: `Aliyun_KMS`. Valid values:
+//   - `Aliyun_KMS`
+//   - `EXTERNAL`
+//     **NOTE**: The value of this parameter is case-sensitive. If you set the `keySpec` to an asymmetric CMK type,
+//     you are not allowed to set the `origin` to EXTERNAL. If you set the `origin` to EXTERNAL, you must import key material.
+//     For more information, see [import key material](https://www.alibabacloud.com/help/en/doc-detail/68523.htm).
 func (o KeyOutput) Origin() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Origin }).(pulumi.StringOutput)
 }
@@ -577,6 +665,11 @@ func (o KeyOutput) PrimaryKeyVersion() pulumi.StringOutput {
 }
 
 // The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
+//   - `SOFTWARE`
+//   - `HSM`
+//     **NOTE**: The value of this parameter is case-sensitive. Assume that you set this parameter to HSM.
+//     If you set the origin parameter to Aliyun_KMS, the CMK is created in a managed hardware security module (HSM).
+//     If you set the origin parameter to EXTERNA, you can import an external key to the managed HSM.
 func (o KeyOutput) ProtectionLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.ProtectionLevel }).(pulumi.StringPtrOutput)
 }
@@ -593,6 +686,9 @@ func (o KeyOutput) RotationInterval() pulumi.StringPtrOutput {
 }
 
 // The status of CMK. Default value: `Enabled`. Valid Values:
+// - `Disabled`
+// - `Enabled`
+// - `PendingDeletion`
 func (o KeyOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

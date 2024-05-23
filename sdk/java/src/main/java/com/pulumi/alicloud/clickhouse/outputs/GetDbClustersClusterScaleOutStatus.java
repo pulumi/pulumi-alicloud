@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDbClustersClusterScaleOutStatus {
+    /**
+     * @return Process.
+     * 
+     */
     private String progress;
+    /**
+     * @return Efficiency.
+     * 
+     */
     private String ratio;
 
     private GetDbClustersClusterScaleOutStatus() {}
+    /**
+     * @return Process.
+     * 
+     */
     public String progress() {
         return this.progress;
     }
+    /**
+     * @return Efficiency.
+     * 
+     */
     public String ratio() {
         return this.ratio;
     }

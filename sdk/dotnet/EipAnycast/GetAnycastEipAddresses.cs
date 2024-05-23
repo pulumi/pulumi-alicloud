@@ -148,19 +148,19 @@ namespace Pulumi.AliCloud.EipAnycast
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+        /// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
         /// </summary>
         [Input("paymentType")]
         public string? PaymentType { get; set; }
 
         /// <summary>
-        /// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+        /// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
         /// </summary>
         [Input("serviceLocation")]
         public string? ServiceLocation { get; set; }
 
         /// <summary>
-        /// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+        /// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -234,19 +234,19 @@ namespace Pulumi.AliCloud.EipAnycast
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The payment model of Anycast EIP instance. "PostPaid": Refers to the post-paid mode.
+        /// The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
+        /// Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
         /// </summary>
         [Input("serviceLocation")]
         public Input<string>? ServiceLocation { get; set; }
 
         /// <summary>
-        /// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
+        /// IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

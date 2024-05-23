@@ -362,6 +362,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        /// * `Stop` : stops the instance.
+        /// * `AutoRecover` : automatically recovers the instance.
+        /// * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         /// </summary>
         [Output("maintenanceAction")]
         public Output<string> MaintenanceAction { get; private set; } = null!;
@@ -456,6 +459,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+        /// - `AutoRenewal`: Enable auto renewal.
+        /// - `Normal`: Disable auto renewal.
+        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Output("renewalStatus")]
         public Output<string?> RenewalStatus { get; private set; } = null!;
@@ -529,6 +535,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        /// * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
+        /// * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         /// </summary>
         [Output("stoppedMode")]
         public Output<string> StoppedMode { get; private set; } = null!;
@@ -936,6 +944,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        /// * `Stop` : stops the instance.
+        /// * `AutoRecover` : automatically recovers the instance.
+        /// * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         /// </summary>
         [Input("maintenanceAction")]
         public Input<string>? MaintenanceAction { get; set; }
@@ -1004,6 +1015,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+        /// - `AutoRenewal`: Enable auto renewal.
+        /// - `Normal`: Disable auto renewal.
+        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -1089,6 +1103,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        /// * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
+        /// * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         /// </summary>
         [Input("stoppedMode")]
         public Input<string>? StoppedMode { get; set; }
@@ -1472,6 +1488,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The maintenance action. Valid values: `Stop`, `AutoRecover` and `AutoRedeploy`.
+        /// * `Stop` : stops the instance.
+        /// * `AutoRecover` : automatically recovers the instance.
+        /// * `AutoRedeploy` : fails the instance over, which may cause damage to the data disks attached to the instance.
         /// </summary>
         [Input("maintenanceAction")]
         public Input<string>? MaintenanceAction { get; set; }
@@ -1576,6 +1595,9 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
+        /// - `AutoRenewal`: Enable auto renewal.
+        /// - `Normal`: Disable auto renewal.
+        /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
@@ -1661,6 +1683,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
+        /// * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
+        /// * `StopCharging`: economical mode. Billing of some resources of the instance stops after the instance is stopped. When the instance is stopped, its resources such as vCPUs, memory, and public IP address are released. You may be unable to restart the instance if some types of resources are out of stock in the current region.
         /// </summary>
         [Input("stoppedMode")]
         public Input<string>? StoppedMode { get; set; }

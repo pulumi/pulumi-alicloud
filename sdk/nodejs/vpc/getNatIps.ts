@@ -86,16 +86,16 @@ export interface GetNatIpsArgs {
      */
     nameRegex?: string;
     /**
-     * The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+     * The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
      */
     natGatewayId: string;
     /**
-     * The CIDR block to which the NAT IP address belongs.
+     * NAT IP ADDRESS of the address segment.
      */
     natIpCidr?: string;
     natIpIds?: string[];
     /**
-     * The name of the NAT IP address.
+     * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
      */
     natIpNames?: string[];
     /**
@@ -196,16 +196,16 @@ export interface GetNatIpsOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     /**
-     * The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+     * The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
      */
     natGatewayId: pulumi.Input<string>;
     /**
-     * The CIDR block to which the NAT IP address belongs.
+     * NAT IP ADDRESS of the address segment.
      */
     natIpCidr?: pulumi.Input<string>;
     natIpIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the NAT IP address.
+     * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
      */
     natIpNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**

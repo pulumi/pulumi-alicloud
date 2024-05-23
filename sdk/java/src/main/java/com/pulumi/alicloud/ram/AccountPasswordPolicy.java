@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var corporate = new AccountPasswordPolicy("corporate", AccountPasswordPolicyArgs.builder()        
+ *         var corporate = new AccountPasswordPolicy("corporate", AccountPasswordPolicyArgs.builder()
  *             .minimumPasswordLength(9)
  *             .requireLowercaseCharacters(false)
  *             .requireUppercaseCharacters(false)

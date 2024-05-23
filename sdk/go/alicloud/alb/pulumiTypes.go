@@ -125,6 +125,9 @@ type AclAclEntry struct {
 	// The IP address for the ACL entry.
 	Entry *string `pulumi:"entry"`
 	// The status of the ACL entry. Valid values:
+	// - `Adding`: The ACL entry is being added.
+	// - `Available`: The ACL entry is added and available.
+	// - `Removing`: The ACL entry is being removed.
 	Status *string `pulumi:"status"`
 }
 
@@ -145,6 +148,9 @@ type AclAclEntryArgs struct {
 	// The IP address for the ACL entry.
 	Entry pulumi.StringPtrInput `pulumi:"entry"`
 	// The status of the ACL entry. Valid values:
+	// - `Adding`: The ACL entry is being added.
+	// - `Available`: The ACL entry is added and available.
+	// - `Removing`: The ACL entry is being removed.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -210,6 +216,9 @@ func (o AclAclEntryOutput) Entry() pulumi.StringPtrOutput {
 }
 
 // The status of the ACL entry. Valid values:
+// - `Adding`: The ACL entry is being added.
+// - `Available`: The ACL entry is added and available.
+// - `Removing`: The ACL entry is being removed.
 func (o AclAclEntryOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AclAclEntry) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -4520,6 +4529,15 @@ type RuleRuleCondition struct {
 	// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
 	SourceIpConfig *RuleRuleConditionSourceIpConfig `pulumi:"sourceIpConfig"`
 	// The type of the forwarding rule. Valid values:
+	// - `Host`: Requests are forwarded based on hosts.
+	// - `Path`: Requests are forwarded based on the path.
+	// - `Header`: Requests are forwarded based on the HTTP header field.
+	// - `QueryString`: Requests are forwarded based on the query string.
+	// - `Method`: Request are forwarded based on the request method.
+	// - `Cookie`: Requests are forwarded based on the cookie.
+	// - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+	// - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+	// - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
 	Type string `pulumi:"type"`
 }
 
@@ -4554,6 +4572,15 @@ type RuleRuleConditionArgs struct {
 	// The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `sourceIpConfig` below.
 	SourceIpConfig RuleRuleConditionSourceIpConfigPtrInput `pulumi:"sourceIpConfig"`
 	// The type of the forwarding rule. Valid values:
+	// - `Host`: Requests are forwarded based on hosts.
+	// - `Path`: Requests are forwarded based on the path.
+	// - `Header`: Requests are forwarded based on the HTTP header field.
+	// - `QueryString`: Requests are forwarded based on the query string.
+	// - `Method`: Request are forwarded based on the request method.
+	// - `Cookie`: Requests are forwarded based on the cookie.
+	// - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+	// - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+	// - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -4656,6 +4683,15 @@ func (o RuleRuleConditionOutput) SourceIpConfig() RuleRuleConditionSourceIpConfi
 }
 
 // The type of the forwarding rule. Valid values:
+// - `Host`: Requests are forwarded based on hosts.
+// - `Path`: Requests are forwarded based on the path.
+// - `Header`: Requests are forwarded based on the HTTP header field.
+// - `QueryString`: Requests are forwarded based on the query string.
+// - `Method`: Request are forwarded based on the request method.
+// - `Cookie`: Requests are forwarded based on the cookie.
+// - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+// - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+// - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
 func (o RuleRuleConditionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleRuleCondition) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -6476,6 +6512,11 @@ type ServerGroupServer struct {
 	// The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `serverGroupType` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `serverGroupType` is set to `Ip`, the value of this property is the same as the `serverId` value.
 	ServerIp *string `pulumi:"serverIp"`
 	// The type of the server. The type of the server. Valid values:
+	// - `Ecs`: an ECS instance.
+	// - `Eni`: an ENI.
+	// - `Eci`: an elastic container instance.
+	// - `Ip`(Available since v1.194.0): an IP address.
+	// - `Fc`(Available since v1.194.0): a function.
 	ServerType string `pulumi:"serverType"`
 	// The status of the backend server.
 	Status *string `pulumi:"status"`
@@ -6509,6 +6550,11 @@ type ServerGroupServerArgs struct {
 	// The IP address of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. **Note:** If `serverGroupType` is set to `Fc`, you do not need to configure parameters, otherwise this attribute is required. If `serverGroupType` is set to `Ip`, the value of this property is the same as the `serverId` value.
 	ServerIp pulumi.StringPtrInput `pulumi:"serverIp"`
 	// The type of the server. The type of the server. Valid values:
+	// - `Ecs`: an ECS instance.
+	// - `Eni`: an ENI.
+	// - `Eci`: an elastic container instance.
+	// - `Ip`(Available since v1.194.0): an IP address.
+	// - `Fc`(Available since v1.194.0): a function.
 	ServerType pulumi.StringInput `pulumi:"serverType"`
 	// The status of the backend server.
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -6596,6 +6642,11 @@ func (o ServerGroupServerOutput) ServerIp() pulumi.StringPtrOutput {
 }
 
 // The type of the server. The type of the server. Valid values:
+// - `Ecs`: an ECS instance.
+// - `Eni`: an ENI.
+// - `Eci`: an elastic container instance.
+// - `Ip`(Available since v1.194.0): an IP address.
+// - `Fc`(Available since v1.194.0): a function.
 func (o ServerGroupServerOutput) ServerType() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerGroupServer) string { return v.ServerType }).(pulumi.StringOutput)
 }
@@ -6979,7 +7030,7 @@ type GetAclsAclAclEntry struct {
 	// Access Control Entries Note Description Length Is Limited to 1 to 256 Characters, Letters, digital, the Dash (-), a Forward Slash (/), Half a Period (.) and Underscores (_), Support Chinese Characters.
 	Description string `pulumi:"description"`
 	Entry       string `pulumi:"entry"`
-	// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	// The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
 	Status string `pulumi:"status"`
 }
 
@@ -6998,7 +7049,7 @@ type GetAclsAclAclEntryArgs struct {
 	// Access Control Entries Note Description Length Is Limited to 1 to 256 Characters, Letters, digital, the Dash (-), a Forward Slash (/), Half a Period (.) and Underscores (_), Support Chinese Characters.
 	Description pulumi.StringInput `pulumi:"description"`
 	Entry       pulumi.StringInput `pulumi:"entry"`
-	// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	// The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -7062,7 +7113,7 @@ func (o GetAclsAclAclEntryOutput) Entry() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAclAclEntry) string { return v.Entry }).(pulumi.StringOutput)
 }
 
-// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+// The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
 func (o GetAclsAclAclEntryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAclsAclAclEntry) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -7633,7 +7684,7 @@ type GetListenersListener struct {
 	//
 	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 	SecurityPolicyId string `pulumi:"securityPolicyId"`
-	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status string `pulumi:"status"`
 	// xforwardfor Related Attribute Configuration.
 	XforwardedForConfigs []GetListenersListenerXforwardedForConfig `pulumi:"xforwardedForConfigs"`
@@ -7695,7 +7746,7 @@ type GetListenersListenerArgs struct {
 	//
 	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 	SecurityPolicyId pulumi.StringInput `pulumi:"securityPolicyId"`
-	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringInput `pulumi:"status"`
 	// xforwardfor Related Attribute Configuration.
 	XforwardedForConfigs GetListenersListenerXforwardedForConfigArrayInput `pulumi:"xforwardedForConfigs"`
@@ -7855,7 +7906,7 @@ func (o GetListenersListenerOutput) SecurityPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
 
-// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 func (o GetListenersListenerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -7992,8 +8043,10 @@ func (o GetListenersListenerAccessLogTracingConfigArrayOutput) Index(i pulumi.In
 }
 
 type GetListenersListenerAclConfig struct {
+	// The ACLs that are associated with the listener.
 	AclRelations []GetListenersListenerAclConfigAclRelation `pulumi:"aclRelations"`
-	AclType      string                                     `pulumi:"aclType"`
+	// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+	AclType string `pulumi:"aclType"`
 }
 
 // GetListenersListenerAclConfigInput is an input type that accepts GetListenersListenerAclConfigArgs and GetListenersListenerAclConfigOutput values.
@@ -8008,8 +8061,10 @@ type GetListenersListenerAclConfigInput interface {
 }
 
 type GetListenersListenerAclConfigArgs struct {
+	// The ACLs that are associated with the listener.
 	AclRelations GetListenersListenerAclConfigAclRelationArrayInput `pulumi:"aclRelations"`
-	AclType      pulumi.StringInput                                 `pulumi:"aclType"`
+	// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+	AclType pulumi.StringInput `pulumi:"aclType"`
 }
 
 func (GetListenersListenerAclConfigArgs) ElementType() reflect.Type {
@@ -8063,12 +8118,14 @@ func (o GetListenersListenerAclConfigOutput) ToGetListenersListenerAclConfigOutp
 	return o
 }
 
+// The ACLs that are associated with the listener.
 func (o GetListenersListenerAclConfigOutput) AclRelations() GetListenersListenerAclConfigAclRelationArrayOutput {
 	return o.ApplyT(func(v GetListenersListenerAclConfig) []GetListenersListenerAclConfigAclRelation {
 		return v.AclRelations
 	}).(GetListenersListenerAclConfigAclRelationArrayOutput)
 }
 
+// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
 func (o GetListenersListenerAclConfigOutput) AclType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerAclConfig) string { return v.AclType }).(pulumi.StringOutput)
 }
@@ -8094,8 +8151,9 @@ func (o GetListenersListenerAclConfigArrayOutput) Index(i pulumi.IntInput) GetLi
 }
 
 type GetListenersListenerAclConfigAclRelation struct {
+	// Snooping Binding of the Access Policy Group ID List.
 	AclId string `pulumi:"aclId"`
-	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
 	Status string `pulumi:"status"`
 }
 
@@ -8111,8 +8169,9 @@ type GetListenersListenerAclConfigAclRelationInput interface {
 }
 
 type GetListenersListenerAclConfigAclRelationArgs struct {
+	// Snooping Binding of the Access Policy Group ID List.
 	AclId pulumi.StringInput `pulumi:"aclId"`
-	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -8167,11 +8226,12 @@ func (o GetListenersListenerAclConfigAclRelationOutput) ToGetListenersListenerAc
 	return o
 }
 
+// Snooping Binding of the Access Policy Group ID List.
 func (o GetListenersListenerAclConfigAclRelationOutput) AclId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerAclConfigAclRelation) string { return v.AclId }).(pulumi.StringOutput)
 }
 
-// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
 func (o GetListenersListenerAclConfigAclRelationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerAclConfigAclRelation) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -8197,6 +8257,7 @@ func (o GetListenersListenerAclConfigAclRelationArrayOutput) Index(i pulumi.IntI
 }
 
 type GetListenersListenerCertificate struct {
+	// The ID of the Certificate.
 	CertificateId string `pulumi:"certificateId"`
 }
 
@@ -8212,6 +8273,7 @@ type GetListenersListenerCertificateInput interface {
 }
 
 type GetListenersListenerCertificateArgs struct {
+	// The ID of the Certificate.
 	CertificateId pulumi.StringInput `pulumi:"certificateId"`
 }
 
@@ -8266,6 +8328,7 @@ func (o GetListenersListenerCertificateOutput) ToGetListenersListenerCertificate
 	return o
 }
 
+// The ID of the Certificate.
 func (o GetListenersListenerCertificateOutput) CertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerCertificate) string { return v.CertificateId }).(pulumi.StringOutput)
 }
@@ -8291,8 +8354,10 @@ func (o GetListenersListenerCertificateArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetListenersListenerDefaultAction struct {
+	// The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
 	ForwardGroupConfigs []GetListenersListenerDefaultActionForwardGroupConfig `pulumi:"forwardGroupConfigs"`
-	Type                string                                                `pulumi:"type"`
+	// Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
+	Type string `pulumi:"type"`
 }
 
 // GetListenersListenerDefaultActionInput is an input type that accepts GetListenersListenerDefaultActionArgs and GetListenersListenerDefaultActionOutput values.
@@ -8307,8 +8372,10 @@ type GetListenersListenerDefaultActionInput interface {
 }
 
 type GetListenersListenerDefaultActionArgs struct {
+	// The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
 	ForwardGroupConfigs GetListenersListenerDefaultActionForwardGroupConfigArrayInput `pulumi:"forwardGroupConfigs"`
-	Type                pulumi.StringInput                                            `pulumi:"type"`
+	// Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetListenersListenerDefaultActionArgs) ElementType() reflect.Type {
@@ -8362,12 +8429,14 @@ func (o GetListenersListenerDefaultActionOutput) ToGetListenersListenerDefaultAc
 	return o
 }
 
+// The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
 func (o GetListenersListenerDefaultActionOutput) ForwardGroupConfigs() GetListenersListenerDefaultActionForwardGroupConfigArrayOutput {
 	return o.ApplyT(func(v GetListenersListenerDefaultAction) []GetListenersListenerDefaultActionForwardGroupConfig {
 		return v.ForwardGroupConfigs
 	}).(GetListenersListenerDefaultActionForwardGroupConfigArrayOutput)
 }
 
+// Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
 func (o GetListenersListenerDefaultActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerDefaultAction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -8393,6 +8462,7 @@ func (o GetListenersListenerDefaultActionArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetListenersListenerDefaultActionForwardGroupConfig struct {
+	// The destination server group to which requests are forwarded.
 	ServerGroupTuples []GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
 
@@ -8408,6 +8478,7 @@ type GetListenersListenerDefaultActionForwardGroupConfigInput interface {
 }
 
 type GetListenersListenerDefaultActionForwardGroupConfigArgs struct {
+	// The destination server group to which requests are forwarded.
 	ServerGroupTuples GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
 
@@ -8462,6 +8533,7 @@ func (o GetListenersListenerDefaultActionForwardGroupConfigOutput) ToGetListener
 	return o
 }
 
+// The destination server group to which requests are forwarded.
 func (o GetListenersListenerDefaultActionForwardGroupConfigOutput) ServerGroupTuples() GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v GetListenersListenerDefaultActionForwardGroupConfig) []GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
@@ -8489,6 +8561,7 @@ func (o GetListenersListenerDefaultActionForwardGroupConfigArrayOutput) Index(i 
 }
 
 type GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple struct {
+	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId string `pulumi:"serverGroupId"`
 }
 
@@ -8504,6 +8577,7 @@ type GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleInput in
 }
 
 type GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArgs struct {
+	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId pulumi.StringInput `pulumi:"serverGroupId"`
 }
 
@@ -8558,6 +8632,7 @@ func (o GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutpu
 	return o
 }
 
+// The ID of the destination server group to which requests are forwarded.
 func (o GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple) string {
 		return v.ServerGroupId
@@ -8685,19 +8760,32 @@ func (o GetListenersListenerQuicConfigArrayOutput) Index(i pulumi.IntInput) GetL
 }
 
 type GetListenersListenerXforwardedForConfig struct {
-	XforwardedforclientcertIssuerdnalias       string `pulumi:"xforwardedforclientcertIssuerdnalias"`
-	XforwardedforclientcertIssuerdnenabled     bool   `pulumi:"xforwardedforclientcertIssuerdnenabled"`
-	Xforwardedforclientcertclientverifyalias   string `pulumi:"xforwardedforclientcertclientverifyalias"`
-	Xforwardedforclientcertclientverifyenabled bool   `pulumi:"xforwardedforclientcertclientverifyenabled"`
-	Xforwardedforclientcertfingerprintalias    string `pulumi:"xforwardedforclientcertfingerprintalias"`
-	Xforwardedforclientcertfingerprintenabled  bool   `pulumi:"xforwardedforclientcertfingerprintenabled"`
-	Xforwardedforclientcertsubjectdnalias      string `pulumi:"xforwardedforclientcertsubjectdnalias"`
-	Xforwardedforclientcertsubjectdnenabled    bool   `pulumi:"xforwardedforclientcertsubjectdnenabled"`
-	Xforwardedforclientsrcportenabled          bool   `pulumi:"xforwardedforclientsrcportenabled"`
-	Xforwardedforenabled                       bool   `pulumi:"xforwardedforenabled"`
-	Xforwardedforprotoenabled                  bool   `pulumi:"xforwardedforprotoenabled"`
-	Xforwardedforslbidenabled                  bool   `pulumi:"xforwardedforslbidenabled"`
-	Xforwardedforslbportenabled                bool   `pulumi:"xforwardedforslbportenabled"`
+	// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+	XforwardedforclientcertIssuerdnalias string `pulumi:"xforwardedforclientcertIssuerdnalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+	XforwardedforclientcertIssuerdnenabled bool `pulumi:"xforwardedforclientcertIssuerdnenabled"`
+	// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertclientverifyalias string `pulumi:"xforwardedforclientcertclientverifyalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+	Xforwardedforclientcertclientverifyenabled bool `pulumi:"xforwardedforclientcertclientverifyenabled"`
+	// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertfingerprintalias string `pulumi:"xforwardedforclientcertfingerprintalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+	Xforwardedforclientcertfingerprintenabled bool `pulumi:"xforwardedforclientcertfingerprintenabled"`
+	// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertsubjectdnalias string `pulumi:"xforwardedforclientcertsubjectdnalias"`
+	// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+	Xforwardedforclientcertsubjectdnenabled bool `pulumi:"xforwardedforclientcertsubjectdnenabled"`
+	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+	Xforwardedforclientsrcportenabled bool `pulumi:"xforwardedforclientsrcportenabled"`
+	// Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
+	Xforwardedforenabled bool `pulumi:"xforwardedforenabled"`
+	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+	Xforwardedforprotoenabled bool `pulumi:"xforwardedforprotoenabled"`
+	// Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
+	Xforwardedforslbidenabled bool `pulumi:"xforwardedforslbidenabled"`
+	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+	Xforwardedforslbportenabled bool `pulumi:"xforwardedforslbportenabled"`
 }
 
 // GetListenersListenerXforwardedForConfigInput is an input type that accepts GetListenersListenerXforwardedForConfigArgs and GetListenersListenerXforwardedForConfigOutput values.
@@ -8712,19 +8800,32 @@ type GetListenersListenerXforwardedForConfigInput interface {
 }
 
 type GetListenersListenerXforwardedForConfigArgs struct {
-	XforwardedforclientcertIssuerdnalias       pulumi.StringInput `pulumi:"xforwardedforclientcertIssuerdnalias"`
-	XforwardedforclientcertIssuerdnenabled     pulumi.BoolInput   `pulumi:"xforwardedforclientcertIssuerdnenabled"`
-	Xforwardedforclientcertclientverifyalias   pulumi.StringInput `pulumi:"xforwardedforclientcertclientverifyalias"`
-	Xforwardedforclientcertclientverifyenabled pulumi.BoolInput   `pulumi:"xforwardedforclientcertclientverifyenabled"`
-	Xforwardedforclientcertfingerprintalias    pulumi.StringInput `pulumi:"xforwardedforclientcertfingerprintalias"`
-	Xforwardedforclientcertfingerprintenabled  pulumi.BoolInput   `pulumi:"xforwardedforclientcertfingerprintenabled"`
-	Xforwardedforclientcertsubjectdnalias      pulumi.StringInput `pulumi:"xforwardedforclientcertsubjectdnalias"`
-	Xforwardedforclientcertsubjectdnenabled    pulumi.BoolInput   `pulumi:"xforwardedforclientcertsubjectdnenabled"`
-	Xforwardedforclientsrcportenabled          pulumi.BoolInput   `pulumi:"xforwardedforclientsrcportenabled"`
-	Xforwardedforenabled                       pulumi.BoolInput   `pulumi:"xforwardedforenabled"`
-	Xforwardedforprotoenabled                  pulumi.BoolInput   `pulumi:"xforwardedforprotoenabled"`
-	Xforwardedforslbidenabled                  pulumi.BoolInput   `pulumi:"xforwardedforslbidenabled"`
-	Xforwardedforslbportenabled                pulumi.BoolInput   `pulumi:"xforwardedforslbportenabled"`
+	// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+	XforwardedforclientcertIssuerdnalias pulumi.StringInput `pulumi:"xforwardedforclientcertIssuerdnalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+	XforwardedforclientcertIssuerdnenabled pulumi.BoolInput `pulumi:"xforwardedforclientcertIssuerdnenabled"`
+	// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertclientverifyalias pulumi.StringInput `pulumi:"xforwardedforclientcertclientverifyalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+	Xforwardedforclientcertclientverifyenabled pulumi.BoolInput `pulumi:"xforwardedforclientcertclientverifyenabled"`
+	// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertfingerprintalias pulumi.StringInput `pulumi:"xforwardedforclientcertfingerprintalias"`
+	// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+	Xforwardedforclientcertfingerprintenabled pulumi.BoolInput `pulumi:"xforwardedforclientcertfingerprintenabled"`
+	// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+	Xforwardedforclientcertsubjectdnalias pulumi.StringInput `pulumi:"xforwardedforclientcertsubjectdnalias"`
+	// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+	Xforwardedforclientcertsubjectdnenabled pulumi.BoolInput `pulumi:"xforwardedforclientcertsubjectdnenabled"`
+	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+	Xforwardedforclientsrcportenabled pulumi.BoolInput `pulumi:"xforwardedforclientsrcportenabled"`
+	// Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
+	Xforwardedforenabled pulumi.BoolInput `pulumi:"xforwardedforenabled"`
+	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+	Xforwardedforprotoenabled pulumi.BoolInput `pulumi:"xforwardedforprotoenabled"`
+	// Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
+	Xforwardedforslbidenabled pulumi.BoolInput `pulumi:"xforwardedforslbidenabled"`
+	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+	Xforwardedforslbportenabled pulumi.BoolInput `pulumi:"xforwardedforslbportenabled"`
 }
 
 func (GetListenersListenerXforwardedForConfigArgs) ElementType() reflect.Type {
@@ -8778,62 +8879,75 @@ func (o GetListenersListenerXforwardedForConfigOutput) ToGetListenersListenerXfo
 	return o
 }
 
+// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
 func (o GetListenersListenerXforwardedForConfigOutput) XforwardedforclientcertIssuerdnalias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) string { return v.XforwardedforclientcertIssuerdnalias }).(pulumi.StringOutput)
 }
 
+// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
 func (o GetListenersListenerXforwardedForConfigOutput) XforwardedforclientcertIssuerdnenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.XforwardedforclientcertIssuerdnenabled }).(pulumi.BoolOutput)
 }
 
+// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertclientverifyalias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) string {
 		return v.Xforwardedforclientcertclientverifyalias
 	}).(pulumi.StringOutput)
 }
 
+// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertclientverifyenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool {
 		return v.Xforwardedforclientcertclientverifyenabled
 	}).(pulumi.BoolOutput)
 }
 
+// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertfingerprintalias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) string {
 		return v.Xforwardedforclientcertfingerprintalias
 	}).(pulumi.StringOutput)
 }
 
+// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertfingerprintenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool {
 		return v.Xforwardedforclientcertfingerprintenabled
 	}).(pulumi.BoolOutput)
 }
 
+// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertsubjectdnalias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) string { return v.Xforwardedforclientcertsubjectdnalias }).(pulumi.StringOutput)
 }
 
+// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertsubjectdnenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforclientcertsubjectdnenabled }).(pulumi.BoolOutput)
 }
 
+// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientsrcportenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforclientsrcportenabled }).(pulumi.BoolOutput)
 }
 
+// Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforenabled }).(pulumi.BoolOutput)
 }
 
+// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforprotoenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforprotoenabled }).(pulumi.BoolOutput)
 }
 
+// Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforslbidenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforslbidenabled }).(pulumi.BoolOutput)
 }
 
+// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforslbportenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforslbportenabled }).(pulumi.BoolOutput)
 }
@@ -9159,8 +9273,10 @@ func (o GetLoadBalancersBalancerArrayOutput) Index(i pulumi.IntInput) GetLoadBal
 }
 
 type GetLoadBalancersBalancerAccessLogConfig struct {
+	// The log service that access logs are shipped to.
 	LogProject string `pulumi:"logProject"`
-	LogStore   string `pulumi:"logStore"`
+	// The logstore that access logs are shipped to.
+	LogStore string `pulumi:"logStore"`
 }
 
 // GetLoadBalancersBalancerAccessLogConfigInput is an input type that accepts GetLoadBalancersBalancerAccessLogConfigArgs and GetLoadBalancersBalancerAccessLogConfigOutput values.
@@ -9175,8 +9291,10 @@ type GetLoadBalancersBalancerAccessLogConfigInput interface {
 }
 
 type GetLoadBalancersBalancerAccessLogConfigArgs struct {
+	// The log service that access logs are shipped to.
 	LogProject pulumi.StringInput `pulumi:"logProject"`
-	LogStore   pulumi.StringInput `pulumi:"logStore"`
+	// The logstore that access logs are shipped to.
+	LogStore pulumi.StringInput `pulumi:"logStore"`
 }
 
 func (GetLoadBalancersBalancerAccessLogConfigArgs) ElementType() reflect.Type {
@@ -9230,10 +9348,12 @@ func (o GetLoadBalancersBalancerAccessLogConfigOutput) ToGetLoadBalancersBalance
 	return o
 }
 
+// The log service that access logs are shipped to.
 func (o GetLoadBalancersBalancerAccessLogConfigOutput) LogProject() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerAccessLogConfig) string { return v.LogProject }).(pulumi.StringOutput)
 }
 
+// The logstore that access logs are shipped to.
 func (o GetLoadBalancersBalancerAccessLogConfigOutput) LogStore() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerAccessLogConfig) string { return v.LogStore }).(pulumi.StringOutput)
 }
@@ -9259,7 +9379,9 @@ func (o GetLoadBalancersBalancerAccessLogConfigArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetLoadBalancersBalancerDeletionProtectionConfig struct {
-	Enabled     bool   `pulumi:"enabled"`
+	// Remove the Protection Status.
+	Enabled bool `pulumi:"enabled"`
+	// Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
 	EnabledTime string `pulumi:"enabledTime"`
 }
 
@@ -9275,7 +9397,9 @@ type GetLoadBalancersBalancerDeletionProtectionConfigInput interface {
 }
 
 type GetLoadBalancersBalancerDeletionProtectionConfigArgs struct {
-	Enabled     pulumi.BoolInput   `pulumi:"enabled"`
+	// Remove the Protection Status.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
 	EnabledTime pulumi.StringInput `pulumi:"enabledTime"`
 }
 
@@ -9330,10 +9454,12 @@ func (o GetLoadBalancersBalancerDeletionProtectionConfigOutput) ToGetLoadBalance
 	return o
 }
 
+// Remove the Protection Status.
 func (o GetLoadBalancersBalancerDeletionProtectionConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerDeletionProtectionConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
 func (o GetLoadBalancersBalancerDeletionProtectionConfigOutput) EnabledTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerDeletionProtectionConfig) string { return v.EnabledTime }).(pulumi.StringOutput)
 }
@@ -9359,6 +9485,7 @@ func (o GetLoadBalancersBalancerDeletionProtectionConfigArrayOutput) Index(i pul
 }
 
 type GetLoadBalancersBalancerLoadBalancerBillingConfig struct {
+	// The billing method of the ALB instance. Valid value: `PayAsYouGo`.
 	PayType string `pulumi:"payType"`
 }
 
@@ -9374,6 +9501,7 @@ type GetLoadBalancersBalancerLoadBalancerBillingConfigInput interface {
 }
 
 type GetLoadBalancersBalancerLoadBalancerBillingConfigArgs struct {
+	// The billing method of the ALB instance. Valid value: `PayAsYouGo`.
 	PayType pulumi.StringInput `pulumi:"payType"`
 }
 
@@ -9428,6 +9556,7 @@ func (o GetLoadBalancersBalancerLoadBalancerBillingConfigOutput) ToGetLoadBalanc
 	return o
 }
 
+// The billing method of the ALB instance. Valid value: `PayAsYouGo`.
 func (o GetLoadBalancersBalancerLoadBalancerBillingConfigOutput) PayType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerLoadBalancerBillingConfig) string { return v.PayType }).(pulumi.StringOutput)
 }
@@ -9453,8 +9582,10 @@ func (o GetLoadBalancersBalancerLoadBalancerBillingConfigArrayOutput) Index(i pu
 }
 
 type GetLoadBalancersBalancerLoadBalancerOperationLock struct {
+	// The Locking of the Reasons.
 	LockReason string `pulumi:"lockReason"`
-	LockType   string `pulumi:"lockType"`
+	// The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+	LockType string `pulumi:"lockType"`
 }
 
 // GetLoadBalancersBalancerLoadBalancerOperationLockInput is an input type that accepts GetLoadBalancersBalancerLoadBalancerOperationLockArgs and GetLoadBalancersBalancerLoadBalancerOperationLockOutput values.
@@ -9469,8 +9600,10 @@ type GetLoadBalancersBalancerLoadBalancerOperationLockInput interface {
 }
 
 type GetLoadBalancersBalancerLoadBalancerOperationLockArgs struct {
+	// The Locking of the Reasons.
 	LockReason pulumi.StringInput `pulumi:"lockReason"`
-	LockType   pulumi.StringInput `pulumi:"lockType"`
+	// The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+	LockType pulumi.StringInput `pulumi:"lockType"`
 }
 
 func (GetLoadBalancersBalancerLoadBalancerOperationLockArgs) ElementType() reflect.Type {
@@ -9524,10 +9657,12 @@ func (o GetLoadBalancersBalancerLoadBalancerOperationLockOutput) ToGetLoadBalanc
 	return o
 }
 
+// The Locking of the Reasons.
 func (o GetLoadBalancersBalancerLoadBalancerOperationLockOutput) LockReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerLoadBalancerOperationLock) string { return v.LockReason }).(pulumi.StringOutput)
 }
 
+// The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
 func (o GetLoadBalancersBalancerLoadBalancerOperationLockOutput) LockType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerLoadBalancerOperationLock) string { return v.LockType }).(pulumi.StringOutput)
 }
@@ -9553,8 +9688,11 @@ func (o GetLoadBalancersBalancerLoadBalancerOperationLockArrayOutput) Index(i pu
 }
 
 type GetLoadBalancersBalancerModificationProtectionConfig struct {
+	// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
 	Reason string `pulumi:"reason"`
-	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+	// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+	// * `NonProtection` - disables the configuration read-only mode. After you disable the configuration read-only mode, you cannot set the ModificationProtectionReason parameter. If the parameter is set, the value is cleared.
+	// * `ConsoleProtection` - enables the configuration read-only mode. After you enable the configuration read-only mode, you can set the ModificationProtectionReason parameter.
 	Status string `pulumi:"status"`
 }
 
@@ -9570,8 +9708,11 @@ type GetLoadBalancersBalancerModificationProtectionConfigInput interface {
 }
 
 type GetLoadBalancersBalancerModificationProtectionConfigArgs struct {
+	// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
 	Reason pulumi.StringInput `pulumi:"reason"`
-	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+	// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+	// * `NonProtection` - disables the configuration read-only mode. After you disable the configuration read-only mode, you cannot set the ModificationProtectionReason parameter. If the parameter is set, the value is cleared.
+	// * `ConsoleProtection` - enables the configuration read-only mode. After you enable the configuration read-only mode, you can set the ModificationProtectionReason parameter.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -9626,11 +9767,14 @@ func (o GetLoadBalancersBalancerModificationProtectionConfigOutput) ToGetLoadBal
 	return o
 }
 
+// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
 func (o GetLoadBalancersBalancerModificationProtectionConfigOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerModificationProtectionConfig) string { return v.Reason }).(pulumi.StringOutput)
 }
 
-// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+// * `NonProtection` - disables the configuration read-only mode. After you disable the configuration read-only mode, you cannot set the ModificationProtectionReason parameter. If the parameter is set, the value is cleared.
+// * `ConsoleProtection` - enables the configuration read-only mode. After you enable the configuration read-only mode, you can set the ModificationProtectionReason parameter.
 func (o GetLoadBalancersBalancerModificationProtectionConfigOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerModificationProtectionConfig) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -9657,8 +9801,9 @@ func (o GetLoadBalancersBalancerModificationProtectionConfigArrayOutput) Index(i
 
 type GetLoadBalancersBalancerZoneMapping struct {
 	LoadBalancerAddresses []GetLoadBalancersBalancerZoneMappingLoadBalancerAddress `pulumi:"loadBalancerAddresses"`
-	VswitchId             string                                                   `pulumi:"vswitchId"`
-	// The zone ID of the resource.
+	// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+	VswitchId string `pulumi:"vswitchId"`
+	// The ID of the zone to which the ALB instance belongs.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -9675,8 +9820,9 @@ type GetLoadBalancersBalancerZoneMappingInput interface {
 
 type GetLoadBalancersBalancerZoneMappingArgs struct {
 	LoadBalancerAddresses GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArrayInput `pulumi:"loadBalancerAddresses"`
-	VswitchId             pulumi.StringInput                                               `pulumi:"vswitchId"`
-	// The zone ID of the resource.
+	// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// The ID of the zone to which the ALB instance belongs.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -9737,11 +9883,12 @@ func (o GetLoadBalancersBalancerZoneMappingOutput) LoadBalancerAddresses() GetLo
 	}).(GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArrayOutput)
 }
 
+// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
 func (o GetLoadBalancersBalancerZoneMappingOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMapping) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The zone ID of the resource.
+// The ID of the zone to which the ALB instance belongs.
 func (o GetLoadBalancersBalancerZoneMappingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMapping) string { return v.ZoneId }).(pulumi.StringOutput)
 }

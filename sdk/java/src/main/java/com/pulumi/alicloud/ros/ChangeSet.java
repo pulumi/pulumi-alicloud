@@ -54,12 +54,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var example = new ChangeSet("example", ChangeSetArgs.builder()        
+ *         var example = new ChangeSet("example", ChangeSetArgs.builder()
  *             .changeSetName("example_value")
  *             .stackName(String.format("tf-example-%s", default_.result()))
  *             .changeSetType("CREATE")

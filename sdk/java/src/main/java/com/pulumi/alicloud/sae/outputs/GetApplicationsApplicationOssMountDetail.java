@@ -11,21 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetApplicationsApplicationOssMountDetail {
+    /**
+     * @return The name of the bucket.
+     * 
+     */
     private String bucketName;
+    /**
+     * @return The path of the bucket.
+     * 
+     */
     private String bucketPath;
+    /**
+     * @return The Container mount path.
+     * 
+     */
     private String mountPath;
+    /**
+     * @return Whether the container path has readable permission to mount directory resources.
+     * 
+     */
     private Boolean readOnly;
 
     private GetApplicationsApplicationOssMountDetail() {}
+    /**
+     * @return The name of the bucket.
+     * 
+     */
     public String bucketName() {
         return this.bucketName;
     }
+    /**
+     * @return The path of the bucket.
+     * 
+     */
     public String bucketPath() {
         return this.bucketPath;
     }
+    /**
+     * @return The Container mount path.
+     * 
+     */
     public String mountPath() {
         return this.mountPath;
     }
+    /**
+     * @return Whether the container path has readable permission to mount directory resources.
+     * 
+     */
     public Boolean readOnly() {
         return this.readOnly;
     }

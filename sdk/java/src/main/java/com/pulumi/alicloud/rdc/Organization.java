@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Organization("example", OrganizationArgs.builder()        
+ *         var example = new Organization("example", OrganizationArgs.builder()
  *             .organizationName("example_value")
  *             .source("example_value")
  *             .build());

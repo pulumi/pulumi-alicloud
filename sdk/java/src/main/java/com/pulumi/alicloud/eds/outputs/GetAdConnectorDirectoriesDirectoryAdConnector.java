@@ -10,29 +10,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAdConnectorDirectoriesDirectoryAdConnector {
+    /**
+     * @return The address of AD connector.
+     * 
+     */
     private String adConnectorAddress;
+    /**
+     * @return The status of connector.
+     * 
+     */
     private String connectorStatus;
+    /**
+     * @return The ID of the network interface.
+     * 
+     */
     private String networkInterfaceId;
+    /**
+     * @return The AD Connector specifications.
+     * 
+     */
     private String specification;
+    /**
+     * @return The AD Connector control trust password.
+     * 
+     */
     private String trustKey;
+    /**
+     * @return The ID of VSwitch.
+     * 
+     */
     private String vswitchId;
 
     private GetAdConnectorDirectoriesDirectoryAdConnector() {}
+    /**
+     * @return The address of AD connector.
+     * 
+     */
     public String adConnectorAddress() {
         return this.adConnectorAddress;
     }
+    /**
+     * @return The status of connector.
+     * 
+     */
     public String connectorStatus() {
         return this.connectorStatus;
     }
+    /**
+     * @return The ID of the network interface.
+     * 
+     */
     public String networkInterfaceId() {
         return this.networkInterfaceId;
     }
+    /**
+     * @return The AD Connector specifications.
+     * 
+     */
     public String specification() {
         return this.specification;
     }
+    /**
+     * @return The AD Connector control trust password.
+     * 
+     */
     public String trustKey() {
         return this.trustKey;
     }
+    /**
+     * @return The ID of VSwitch.
+     * 
+     */
     public String vswitchId() {
         return this.vswitchId;
     }

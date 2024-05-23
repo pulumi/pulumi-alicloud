@@ -201,9 +201,9 @@ def get_vpc_flow_logs(description: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str project_name: The project name.
     :param str resource_id: The resource id.
-    :param str resource_type: The resource type.
-    :param str status: The status of flow log.
-    :param str traffic_type: The traffic type.
+    :param str resource_type: The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
+    :param str status: The status of  flow log. Valid values: `Active`, `Inactive`.
+    :param str traffic_type: The traffic type. Valid values: `All`, `Allow`, `Drop`.
     """
     __args__ = dict()
     __args__['description'] = description
@@ -277,8 +277,8 @@ def get_vpc_flow_logs_output(description: Optional[pulumi.Input[Optional[str]]] 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str project_name: The project name.
     :param str resource_id: The resource id.
-    :param str resource_type: The resource type.
-    :param str status: The status of flow log.
-    :param str traffic_type: The traffic type.
+    :param str resource_type: The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
+    :param str status: The status of  flow log. Valid values: `Active`, `Inactive`.
+    :param str traffic_type: The traffic type. Valid values: `All`, `Allow`, `Drop`.
     """
     ...

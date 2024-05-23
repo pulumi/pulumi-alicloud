@@ -60,27 +60,27 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var example = new PrefixList("example", PrefixListArgs.builder()        
+ *         var example = new PrefixList("example", PrefixListArgs.builder()
  *             .entrys(PrefixListEntryArgs.builder()
  *                 .cidr("192.168.0.0/16")
  *                 .build())
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .cenInstanceName("tf_example")
  *             .description("an example for cen")
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()
  *             .transitRouterName("tf_example")
  *             .cenId(exampleInstance.id())
  *             .build());
  * 
- *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable("exampleTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()        
+ *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable("exampleTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .build());
  * 
- *         var exampleTransitRouterPrefixListAssociation = new TransitRouterPrefixListAssociation("exampleTransitRouterPrefixListAssociation", TransitRouterPrefixListAssociationArgs.builder()        
+ *         var exampleTransitRouterPrefixListAssociation = new TransitRouterPrefixListAssociation("exampleTransitRouterPrefixListAssociation", TransitRouterPrefixListAssociationArgs.builder()
  *             .prefixListId(example.id())
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .transitRouterTableId(exampleTransitRouterRouteTable.transitRouterRouteTableId())
@@ -122,6 +122,10 @@ public class TransitRouterPrefixListAssociation extends com.pulumi.resources.Cus
     }
     /**
      * The type of the next hop. Valid values:
+     * - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+     * - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+     * - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+     * - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
      * 
      */
     @Export(name="nextHopType", refs={String.class}, tree="[0]")
@@ -129,6 +133,10 @@ public class TransitRouterPrefixListAssociation extends com.pulumi.resources.Cus
 
     /**
      * @return The type of the next hop. Valid values:
+     * - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
+     * - `VPC`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual private cloud (VPC) connection.
+     * - `VBR`: Specifies that the next hop of the CIDR blocks in the prefix list is a virtual border router (VBR) connection.
+     * - `TR`: Specifies that the next hop of the CIDR blocks in the prefix list is an inter-region connection.
      * 
      */
     public Output<String> nextHopType() {

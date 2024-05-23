@@ -60,7 +60,7 @@ func GetGroupMetricRules(ctx *pulumi.Context, args *GetGroupMetricRulesArgs, opt
 type GetGroupMetricRulesArgs struct {
 	// The dimensions that specify the resources to be associated with the alert rule.
 	Dimensions *string `pulumi:"dimensions"`
-	// Indicates whether the alert rule is enabled.
+	// EnableState.
 	EnableState *bool `pulumi:"enableState"`
 	// The ID of the application group.
 	GroupId *string `pulumi:"groupId"`
@@ -76,7 +76,7 @@ type GetGroupMetricRulesArgs struct {
 	Namespace *string `pulumi:"namespace"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of Group Metric Rule..
+	// The status of Group Metric Rule.
 	Status *string `pulumi:"status"`
 }
 
@@ -115,7 +115,7 @@ func GetGroupMetricRulesOutput(ctx *pulumi.Context, args GetGroupMetricRulesOutp
 type GetGroupMetricRulesOutputArgs struct {
 	// The dimensions that specify the resources to be associated with the alert rule.
 	Dimensions pulumi.StringPtrInput `pulumi:"dimensions"`
-	// Indicates whether the alert rule is enabled.
+	// EnableState.
 	EnableState pulumi.BoolPtrInput `pulumi:"enableState"`
 	// The ID of the application group.
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
@@ -131,7 +131,7 @@ type GetGroupMetricRulesOutputArgs struct {
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of Group Metric Rule..
+	// The status of Group Metric Rule.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

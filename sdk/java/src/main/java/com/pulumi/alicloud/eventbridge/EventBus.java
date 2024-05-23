@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var example = new EventBus("example", EventBusArgs.builder()        
+ *         var example = new EventBus("example", EventBusArgs.builder()
  *             .eventBusName(name)
  *             .build());
  * 

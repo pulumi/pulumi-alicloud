@@ -93,14 +93,14 @@ public final class GetExecutionsPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
      * 
      */
     public Optional<String> status() {
@@ -202,7 +202,7 @@ public final class GetExecutionsPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
          * 
          * @return builder
          * 

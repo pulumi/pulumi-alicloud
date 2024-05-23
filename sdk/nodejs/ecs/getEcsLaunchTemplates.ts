@@ -69,9 +69,6 @@ export interface GetEcsLaunchTemplatesArgs {
      * The template resource group id.
      */
     templateResourceGroupId?: string;
-    /**
-     * The template tags.
-     */
     templateTags?: {[key: string]: any};
 }
 
@@ -145,8 +142,5 @@ export interface GetEcsLaunchTemplatesOutputArgs {
      * The template resource group id.
      */
     templateResourceGroupId?: pulumi.Input<string>;
-    /**
-     * The template tags.
-     */
     templateTags?: pulumi.Input<{[key: string]: any}>;
 }

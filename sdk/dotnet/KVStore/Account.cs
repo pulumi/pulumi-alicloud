@@ -113,7 +113,9 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> AccountPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The privilege of account access database. Default value: `RoleReadWrite`
+        /// The privilege of account access database. Default value: `RoleReadWrite` 
+        /// - `RoleReadOnly`: This value is only for Redis and Memcache
+        /// - `RoleReadWrite`: This value is only for Redis and Memcache
         /// </summary>
         [Output("accountPrivilege")]
         public Output<string?> AccountPrivilege { get; private set; } = null!;
@@ -232,7 +234,9 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// The privilege of account access database. Default value: `RoleReadWrite`
+        /// The privilege of account access database. Default value: `RoleReadWrite` 
+        /// - `RoleReadOnly`: This value is only for Redis and Memcache
+        /// - `RoleReadWrite`: This value is only for Redis and Memcache
         /// </summary>
         [Input("accountPrivilege")]
         public Input<string>? AccountPrivilege { get; set; }
@@ -309,7 +313,9 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// The privilege of account access database. Default value: `RoleReadWrite`
+        /// The privilege of account access database. Default value: `RoleReadWrite` 
+        /// - `RoleReadOnly`: This value is only for Redis and Memcache
+        /// - `RoleReadWrite`: This value is only for Redis and Memcache
         /// </summary>
         [Input("accountPrivilege")]
         public Input<string>? AccountPrivilege { get; set; }

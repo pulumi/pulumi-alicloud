@@ -66,7 +66,7 @@ func GetLogConfigs(ctx *pulumi.Context, args *GetLogConfigsArgs, opts ...pulumi.
 type GetLogConfigsArgs struct {
 	// A list of Log Config IDs.
 	Ids []string `pulumi:"ids"`
-	// The type the of log.
+	// The type the of log. Valid values: `PROVIDER`.
 	LogType *string `pulumi:"logType"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -99,7 +99,7 @@ func GetLogConfigsOutput(ctx *pulumi.Context, args GetLogConfigsOutputArgs, opts
 type GetLogConfigsOutputArgs struct {
 	// A list of Log Config IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The type the of log.
+	// The type the of log. Valid values: `PROVIDER`.
 	LogType pulumi.StringPtrInput `pulumi:"logType"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

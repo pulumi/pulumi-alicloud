@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .status("ACTIVE")
  *             .build());
  * 
- *         var defaultEnterpriseAuthorityTemplate = new EnterpriseAuthorityTemplate("defaultEnterpriseAuthorityTemplate", EnterpriseAuthorityTemplateArgs.builder()        
+ *         var defaultEnterpriseAuthorityTemplate = new EnterpriseAuthorityTemplate("defaultEnterpriseAuthorityTemplate", EnterpriseAuthorityTemplateArgs.builder()
  *             .tid(default_.ids()[0])
  *             .authorityTemplateName(name)
  *             .description(name)

@@ -55,7 +55,7 @@ export interface GetSimpleOfficeSitesArgs {
      */
     outputFile?: string;
     /**
-     * Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+     * Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
      */
     status?: string;
 }
@@ -116,7 +116,7 @@ export interface GetSimpleOfficeSitesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+     * Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
      */
     status?: pulumi.Input<string>;
 }

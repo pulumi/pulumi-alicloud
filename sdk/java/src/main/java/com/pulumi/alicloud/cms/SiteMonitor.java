@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basic = new SiteMonitor("basic", SiteMonitorArgs.builder()        
+ *         var basic = new SiteMonitor("basic", SiteMonitorArgs.builder()
  *             .address("http://www.alibabacloud.com")
  *             .taskName("tf-example")
  *             .taskType("HTTP")

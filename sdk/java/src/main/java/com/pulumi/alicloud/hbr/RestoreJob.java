@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *             .createTime(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].createTime()))
  *             .build());
  * 
- *         var nasJob = new RestoreJob("nasJob", RestoreJobArgs.builder()        
+ *         var nasJob = new RestoreJob("nasJob", RestoreJobArgs.builder()
  *             .snapshotHash(nasSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].snapshotHash()))
  *             .vaultId(defaultGetNasBackupPlans.applyValue(getNasBackupPlansResult -> getNasBackupPlansResult.plans()[0].vaultId()))
  *             .sourceType("NAS")
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var ossJob = new RestoreJob("ossJob", RestoreJobArgs.builder()        
+ *         var ossJob = new RestoreJob("ossJob", RestoreJobArgs.builder()
  *             .snapshotHash(ossSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].snapshotHash()))
  *             .vaultId(defaultGetOssBackupPlans.applyValue(getOssBackupPlansResult -> getOssBackupPlansResult.plans()[0].vaultId()))
  *             .sourceType("OSS")
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *             """)
  *             .build());
  * 
- *         var ecsJob = new RestoreJob("ecsJob", RestoreJobArgs.builder()        
+ *         var ecsJob = new RestoreJob("ecsJob", RestoreJobArgs.builder()
  *             .snapshotHash(ecsSnapshots.applyValue(getSnapshotsResult -> getSnapshotsResult.snapshots()[0].snapshotHash()))
  *             .vaultId(default_.plans()[0].vaultId())
  *             .sourceType("ECS_FILE")

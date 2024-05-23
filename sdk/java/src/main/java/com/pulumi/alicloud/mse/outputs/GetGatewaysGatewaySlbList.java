@@ -10,37 +10,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGatewaysGatewaySlbList {
+    /**
+     * @return The associate id.
+     * 
+     */
     private String associateId;
+    /**
+     * @return The Mode of the gateway slb.
+     * 
+     */
     private String gatewaySlbMode;
+    /**
+     * @return The Status of the gateway slb.
+     * 
+     */
     private String gatewaySlbStatus;
+    /**
+     * @return The creation time of the gateway slb.
+     * 
+     */
     private String gmtCreate;
+    /**
+     * @return The ID of the gateway slb.
+     * 
+     */
     private String slbId;
+    /**
+     * @return The ip of the gateway slb.
+     * 
+     */
     private String slbIp;
+    /**
+     * @return The port of the gateway slb.
+     * 
+     */
     private String slbPort;
+    /**
+     * @return The type of the gateway slb.
+     * 
+     */
     private String type;
 
     private GetGatewaysGatewaySlbList() {}
+    /**
+     * @return The associate id.
+     * 
+     */
     public String associateId() {
         return this.associateId;
     }
+    /**
+     * @return The Mode of the gateway slb.
+     * 
+     */
     public String gatewaySlbMode() {
         return this.gatewaySlbMode;
     }
+    /**
+     * @return The Status of the gateway slb.
+     * 
+     */
     public String gatewaySlbStatus() {
         return this.gatewaySlbStatus;
     }
+    /**
+     * @return The creation time of the gateway slb.
+     * 
+     */
     public String gmtCreate() {
         return this.gmtCreate;
     }
+    /**
+     * @return The ID of the gateway slb.
+     * 
+     */
     public String slbId() {
         return this.slbId;
     }
+    /**
+     * @return The ip of the gateway slb.
+     * 
+     */
     public String slbIp() {
         return this.slbIp;
     }
+    /**
+     * @return The port of the gateway slb.
+     * 
+     */
     public String slbPort() {
         return this.slbPort;
     }
+    /**
+     * @return The type of the gateway slb.
+     * 
+     */
     public String type() {
         return this.type;
     }

@@ -56,7 +56,9 @@ export interface GetCrossRegionBackupsArgs {
      */
     crossBackupId?: string;
     /**
-     * The ID of the destination region where the cross-region data backup file of the instance is stored.
+     * The ID of the destination region where the cross-region data backup file is stored.
+     *
+     * > **NOTE:** Note You must specify the `crossBackupId` parameter. Alternatively, you must specify the `startTime` and `endTime` parameters.
      */
     crossBackupRegion?: string;
     /**
@@ -142,7 +144,9 @@ export interface GetCrossRegionBackupsOutputArgs {
      */
     crossBackupId?: pulumi.Input<string>;
     /**
-     * The ID of the destination region where the cross-region data backup file of the instance is stored.
+     * The ID of the destination region where the cross-region data backup file is stored.
+     *
+     * > **NOTE:** Note You must specify the `crossBackupId` parameter. Alternatively, you must specify the `startTime` and `endTime` parameters.
      */
     crossBackupRegion?: pulumi.Input<string>;
     /**

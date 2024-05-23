@@ -140,6 +140,8 @@ def get_vpc_endpoint_linked_vpcs(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of CR Vpc Endpoint Linked Vpc IDs.
     :param str instance_id: The ID of the instance.
     :param str module_name: The name of the module that you want to access. Valid Values:
+           - `Registry`: the image repository.
+           - `Chart`: a Helm chart.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
     """
@@ -192,6 +194,8 @@ def get_vpc_endpoint_linked_vpcs_output(ids: Optional[pulumi.Input[Optional[Sequ
     :param Sequence[str] ids: A list of CR Vpc Endpoint Linked Vpc IDs.
     :param str instance_id: The ID of the instance.
     :param str module_name: The name of the module that you want to access. Valid Values:
+           - `Registry`: the image repository.
+           - `Chart`: a Helm chart.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
     """

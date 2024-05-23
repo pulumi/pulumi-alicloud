@@ -155,6 +155,8 @@ type LoadBalancer struct {
 	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
 	ModificationProtectionReason pulumi.StringOutput `pulumi:"modificationProtectionReason"`
 	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+	// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+	// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
 	ModificationProtectionStatus pulumi.StringOutput `pulumi:"modificationProtectionStatus"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -248,6 +250,8 @@ type loadBalancerState struct {
 	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
 	ModificationProtectionReason *string `pulumi:"modificationProtectionReason"`
 	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+	// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+	// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
 	ModificationProtectionStatus *string `pulumi:"modificationProtectionStatus"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -303,6 +307,8 @@ type LoadBalancerState struct {
 	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
 	ModificationProtectionReason pulumi.StringPtrInput
 	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+	// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+	// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
 	ModificationProtectionStatus pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -356,6 +362,8 @@ type loadBalancerArgs struct {
 	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
 	ModificationProtectionReason *string `pulumi:"modificationProtectionReason"`
 	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+	// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+	// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
 	ModificationProtectionStatus *string `pulumi:"modificationProtectionStatus"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -404,6 +412,8 @@ type LoadBalancerArgs struct {
 	// The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
 	ModificationProtectionReason pulumi.StringPtrInput
 	// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+	// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+	// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
 	ModificationProtectionStatus pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -590,6 +600,8 @@ func (o LoadBalancerOutput) ModificationProtectionReason() pulumi.StringOutput {
 }
 
 // Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+// - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modificationProtectionReason`. If the `modificationProtectionReason` is set, the value is cleared.
+// - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modificationProtectionReason`.
 func (o LoadBalancerOutput) ModificationProtectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ModificationProtectionStatus }).(pulumi.StringOutput)
 }

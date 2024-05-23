@@ -79,14 +79,14 @@ public final class GetGatewayBlockVolumesArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The status of volume.
+     * The status of volume. Valid values:
      * 
      */
     @Import(name="status")
     private @Nullable Output<Integer> status;
 
     /**
-     * @return The status of volume.
+     * @return The status of volume. Valid values:
      * 
      */
     public Optional<Output<Integer>> status() {
@@ -216,7 +216,7 @@ public final class GetGatewayBlockVolumesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param status The status of volume.
+         * @param status The status of volume. Valid values:
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class GetGatewayBlockVolumesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param status The status of volume.
+         * @param status The status of volume. Valid values:
          * 
          * @return builder
          * 

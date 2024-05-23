@@ -28,7 +28,7 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 type GetInstancesArgs struct {
 	// A list of Instance IDs.
 	Ids []string `pulumi:"ids"`
-	// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+	// EAIS instance type. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
 	InstanceType *string `pulumi:"instanceType"`
 	// A regex string to filter results by Instance name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -68,7 +68,7 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 type GetInstancesOutputArgs struct {
 	// A list of Instance IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+	// EAIS instance type. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// A regex string to filter results by Instance name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`

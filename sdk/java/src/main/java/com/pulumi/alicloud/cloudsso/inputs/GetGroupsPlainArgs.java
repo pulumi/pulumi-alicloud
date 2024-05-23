@@ -77,14 +77,14 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+     * The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
      * 
      */
     @Import(name="provisionType")
     private @Nullable String provisionType;
 
     /**
-     * @return The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+     * @return The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
      * 
      */
     public Optional<String> provisionType() {
@@ -174,7 +174,7 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param provisionType The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+         * @param provisionType The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
          * 
          * @return builder
          * 

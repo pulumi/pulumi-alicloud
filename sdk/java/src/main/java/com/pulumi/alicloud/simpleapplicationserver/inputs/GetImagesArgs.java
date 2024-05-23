@@ -23,17 +23,9 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.ids);
     }
 
-    /**
-     * The type of the image. Valid values: `app`, `custom`, `system`.
-     * 
-     */
     @Import(name="imageType")
     private @Nullable Output<String> imageType;
 
-    /**
-     * @return The type of the image. Valid values: `app`, `custom`, `system`.
-     * 
-     */
     public Optional<Output<String>> imageType() {
         return Optional.ofNullable(this.imageType);
     }
@@ -52,17 +44,9 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.outputFile);
     }
 
-    /**
-     * The platform of Plan supported.
-     * 
-     */
     @Import(name="platform")
     private @Nullable Output<String> platform;
 
-    /**
-     * @return The platform of Plan supported.
-     * 
-     */
     public Optional<Output<String>> platform() {
         return Optional.ofNullable(this.platform);
     }
@@ -108,23 +92,11 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
             return ids(List.of(ids));
         }
 
-        /**
-         * @param imageType The type of the image. Valid values: `app`, `custom`, `system`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder imageType(@Nullable Output<String> imageType) {
             $.imageType = imageType;
             return this;
         }
 
-        /**
-         * @param imageType The type of the image. Valid values: `app`, `custom`, `system`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder imageType(String imageType) {
             return imageType(Output.of(imageType));
         }
@@ -147,23 +119,11 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
             return outputFile(Output.of(outputFile));
         }
 
-        /**
-         * @param platform The platform of Plan supported.
-         * 
-         * @return builder
-         * 
-         */
         public Builder platform(@Nullable Output<String> platform) {
             $.platform = platform;
             return this;
         }
 
-        /**
-         * @param platform The platform of Plan supported.
-         * 
-         * @return builder
-         * 
-         */
         public Builder platform(String platform) {
             return platform(Output.of(platform));
         }

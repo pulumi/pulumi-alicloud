@@ -26,6 +26,12 @@ namespace Pulumi.AliCloud.Dns.Inputs
 
         /// <summary>
         /// The Alarm Event Type.
+        /// - `ADDR_ALERT`: Address not available.
+        /// - `ADDR_RESUME`: Address Recovery available.
+        /// - `ADDR_POOL_GROUP_UNAVAILABLE`: Address pool collection not available.
+        /// - `ADDR_POOL_GROUP_AVAILABLE`: Address pool collection recovery available.
+        /// - `ACCESS_STRATEGY_POOL_GROUP_SWITCH`: Primary/standby address pool switch.
+        /// - `MONITOR_NODE_IP_CHANGE`: Monitoring node IP address changes.
         /// </summary>
         [Input("noticeType")]
         public Input<string>? NoticeType { get; set; }

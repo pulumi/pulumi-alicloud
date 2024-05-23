@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric {
+    /**
+     * @return The current value.
+     * 
+     */
     private Integer currentValue;
+    /**
+     * @return The name of the trigger condition.
+     * 
+     */
     private String name;
+    /**
+     * @return The metric type. Associated with monitoring indicators.
+     * 
+     */
     private String type;
 
     private GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric() {}
+    /**
+     * @return The current value.
+     * 
+     */
     public Integer currentValue() {
         return this.currentValue;
     }
+    /**
+     * @return The name of the trigger condition.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The metric type. Associated with monitoring indicators.
+     * 
+     */
     public String type() {
         return this.type;
     }

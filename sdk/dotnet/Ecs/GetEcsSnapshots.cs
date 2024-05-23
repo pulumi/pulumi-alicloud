@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsSnapshotsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The category of the snapshot.
+        /// The category of the snapshot. Valid Values: `flash` and `standard`.
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Ecs
         public bool? DryRun { get; set; }
 
         /// <summary>
-        /// Whether the snapshot is encrypted.
+        /// Specifies whether the snapshot is encrypted.
         /// </summary>
         [Input("encrypted")]
         public bool? Encrypted { get; set; }
@@ -148,25 +148,25 @@ namespace Pulumi.AliCloud.Ecs
         public string? SnapshotLinkId { get; set; }
 
         /// <summary>
-        /// Snapshot Display Name.
+        /// The name of the snapshot.
         /// </summary>
         [Input("snapshotName")]
         public string? SnapshotName { get; set; }
 
         /// <summary>
-        /// Snapshot creation type.
+        /// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
         /// </summary>
         [Input("snapshotType")]
         public string? SnapshotType { get; set; }
 
         /// <summary>
-        /// Source disk attributes.
+        /// The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
         /// </summary>
         [Input("sourceDiskType")]
         public string? SourceDiskType { get; set; }
 
         /// <summary>
-        /// The status of the snapshot.
+        /// The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Ecs
         private Dictionary<string, object>? _tags;
 
         /// <summary>
-        /// The tags.
+        /// A mapping of tags to assign to the snapshot.
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -187,7 +187,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? Type { get; set; }
 
         /// <summary>
-        /// A resource type that has a reference relationship.
+        /// A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
         /// </summary>
         [Input("usage")]
         public string? Usage { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsSnapshotsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The category of the snapshot.
+        /// The category of the snapshot. Valid Values: `flash` and `standard`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Whether the snapshot is encrypted.
+        /// Specifies whether the snapshot is encrypted.
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
@@ -261,25 +261,25 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SnapshotLinkId { get; set; }
 
         /// <summary>
-        /// Snapshot Display Name.
+        /// The name of the snapshot.
         /// </summary>
         [Input("snapshotName")]
         public Input<string>? SnapshotName { get; set; }
 
         /// <summary>
-        /// Snapshot creation type.
+        /// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
         /// </summary>
         [Input("snapshotType")]
         public Input<string>? SnapshotType { get; set; }
 
         /// <summary>
-        /// Source disk attributes.
+        /// The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
         /// </summary>
         [Input("sourceDiskType")]
         public Input<string>? SourceDiskType { get; set; }
 
         /// <summary>
-        /// The status of the snapshot.
+        /// The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -288,7 +288,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tags.
+        /// A mapping of tags to assign to the snapshot.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -300,7 +300,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// A resource type that has a reference relationship.
+        /// A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }

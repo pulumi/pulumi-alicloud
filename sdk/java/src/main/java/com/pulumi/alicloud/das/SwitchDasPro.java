@@ -69,19 +69,19 @@ import javax.annotation.Nullable;
  *             .payType("PostPaid")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(defaultGetNodeClasses.applyValue(getNodeClassesResult -> getNodeClassesResult.classes()[0].zoneId()))
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()        
+ *         var defaultCluster = new Cluster("defaultCluster", ClusterArgs.builder()
  *             .dbType("MySQL")
  *             .dbVersion("8.0")
  *             .dbNodeClass("polar.mysql.x4.large")
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultSwitchDasPro = new SwitchDasPro("defaultSwitchDasPro", SwitchDasProArgs.builder()        
+ *         var defaultSwitchDasPro = new SwitchDasPro("defaultSwitchDasPro", SwitchDasProArgs.builder()
  *             .instanceId(defaultCluster.id())
  *             .sqlRetention(30)
  *             .userId(default_.id())

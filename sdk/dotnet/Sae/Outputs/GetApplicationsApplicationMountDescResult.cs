@@ -13,7 +13,13 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class GetApplicationsApplicationMountDescResult
     {
+        /// <summary>
+        /// Container mount path.
+        /// </summary>
         public readonly string MountPath;
+        /// <summary>
+        /// NAS relative file directory.
+        /// </summary>
         public readonly string NasPath;
 
         [OutputConstructor]

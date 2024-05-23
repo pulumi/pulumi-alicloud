@@ -741,42 +741,6 @@ public final class GpdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
-     * import com.pulumi.alicloud.gpdb.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.hbase.Instance;
-     * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var zonesIds = GpdbFunctions.getZones();
-     * 
-     *         // Create an Gpdb instance with the first matched zone
-     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -791,42 +755,6 @@ public final class GpdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
-     * import com.pulumi.alicloud.gpdb.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.hbase.Instance;
-     * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var zonesIds = GpdbFunctions.getZones();
-     * 
-     *         // Create an Gpdb instance with the first matched zone
-     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -841,42 +769,6 @@ public final class GpdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
-     * import com.pulumi.alicloud.gpdb.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.hbase.Instance;
-     * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var zonesIds = GpdbFunctions.getZones();
-     * 
-     *         // Create an Gpdb instance with the first matched zone
-     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -891,42 +783,6 @@ public final class GpdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
-     * import com.pulumi.alicloud.gpdb.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.hbase.Instance;
-     * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var zonesIds = GpdbFunctions.getZones();
-     * 
-     *         // Create an Gpdb instance with the first matched zone
-     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -941,42 +797,6 @@ public final class GpdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
-     * import com.pulumi.alicloud.gpdb.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.hbase.Instance;
-     * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var zonesIds = GpdbFunctions.getZones();
-     * 
-     *         // Create an Gpdb instance with the first matched zone
-     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -991,42 +811,6 @@ public final class GpdbFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.gpdb.GpdbFunctions;
-     * import com.pulumi.alicloud.gpdb.inputs.GetZonesArgs;
-     * import com.pulumi.alicloud.hbase.Instance;
-     * import com.pulumi.alicloud.hbase.InstanceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var zonesIds = GpdbFunctions.getZones();
-     * 
-     *         // Create an Gpdb instance with the first matched zone
-     *         var hbase = new Instance("hbase", InstanceArgs.builder()        
-     *             .availabilityZone(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

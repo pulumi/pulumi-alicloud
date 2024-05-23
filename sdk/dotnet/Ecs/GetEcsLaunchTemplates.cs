@@ -131,10 +131,6 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("templateTags")]
         private Dictionary<string, object>? _templateTags;
-
-        /// <summary>
-        /// The template tags.
-        /// </summary>
         public Dictionary<string, object> TemplateTags
         {
             get => _templateTags ?? (_templateTags = new Dictionary<string, object>());
@@ -193,10 +189,6 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("templateTags")]
         private InputMap<object>? _templateTags;
-
-        /// <summary>
-        /// The template tags.
-        /// </summary>
         public InputMap<object> TemplateTags
         {
             get => _templateTags ?? (_templateTags = new InputMap<object>());

@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-hangzhou");
- *         var default_ = new BasicAccelerator("default", BasicAcceleratorArgs.builder()        
+ *         var default_ = new BasicAccelerator("default", BasicAcceleratorArgs.builder()
  *             .duration(1)
  *             .basicAcceleratorName("terraform-example")
  *             .description("terraform-example")
@@ -62,14 +62,14 @@ import javax.annotation.Nullable;
  *             .autoPay(true)
  *             .build());
  * 
- *         var defaultBasicIpSet = new BasicIpSet("defaultBasicIpSet", BasicIpSetArgs.builder()        
+ *         var defaultBasicIpSet = new BasicIpSet("defaultBasicIpSet", BasicIpSetArgs.builder()
  *             .acceleratorId(default_.id())
  *             .accelerateRegionId(region)
  *             .ispType("BGP")
  *             .bandwidth("5")
  *             .build());
  * 
- *         var defaultBasicAccelerateIp = new BasicAccelerateIp("defaultBasicAccelerateIp", BasicAccelerateIpArgs.builder()        
+ *         var defaultBasicAccelerateIp = new BasicAccelerateIp("defaultBasicAccelerateIp", BasicAccelerateIpArgs.builder()
  *             .acceleratorId(default_.id())
  *             .ipSetId(defaultBasicIpSet.id())
  *             .build());

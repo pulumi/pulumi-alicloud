@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Vpc
         public string? NameRegex { get; set; }
 
         /// <summary>
-        /// The ID of the VPC NAT gateway.
+        /// NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
         /// </summary>
         [Input("natGatewayId", required: true)]
         public string NatGatewayId { get; set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.Vpc
         private List<string>? _natIpCidrNames;
 
         /// <summary>
-        /// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        /// The name of the CIDR block that you want to query. Support up to `20`.
         /// </summary>
         public List<string> NatIpCidrNames
         {
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.Vpc
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+        /// The status of the NAT IP address. Valid values:`Available`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? NameRegex { get; set; }
 
         /// <summary>
-        /// The ID of the VPC NAT gateway.
+        /// NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
         /// </summary>
         [Input("natGatewayId", required: true)]
         public Input<string> NatGatewayId { get; set; } = null!;
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _natIpCidrNames;
 
         /// <summary>
-        /// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+        /// The name of the CIDR block that you want to query. Support up to `20`.
         /// </summary>
         public InputList<string> NatIpCidrNames
         {
@@ -288,7 +288,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+        /// The status of the NAT IP address. Valid values:`Available`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var domainName = config.get("domainName").orElse("alibaba-example.com");
- *         var example = new Domain("example", DomainArgs.builder()        
+ *         var example = new Domain("example", DomainArgs.builder()
  *             .domainName(domainName)
  *             .scope("overseas")
  *             .status("online")
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var ipAllowListSet = new DomainConfig("ipAllowListSet", DomainConfigArgs.builder()        
+ *         var ipAllowListSet = new DomainConfig("ipAllowListSet", DomainConfigArgs.builder()
  *             .domainName(example.domainName())
  *             .functionName("ip_allow_list_set")
  *             .functionArgs(DomainConfigFunctionArgArgs.builder()
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var refererWhiteListSet = new DomainConfig("refererWhiteListSet", DomainConfigArgs.builder()        
+ *         var refererWhiteListSet = new DomainConfig("refererWhiteListSet", DomainConfigArgs.builder()
  *             .domainName(example.domainName())
  *             .functionName("referer_white_list_set")
  *             .functionArgs(DomainConfigFunctionArgArgs.builder()
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var filetypeBasedTtlSet = new DomainConfig("filetypeBasedTtlSet", DomainConfigArgs.builder()        
+ *         var filetypeBasedTtlSet = new DomainConfig("filetypeBasedTtlSet", DomainConfigArgs.builder()
  *             .domainName(example.domainName())
  *             .functionName("filetype_based_ttl_set")
  *             .functionArgs(            

@@ -148,7 +148,7 @@ def get_peer_connections(ids: Optional[Sequence[str]] = None,
     :param str name_regex: A regex string to filter results by PeerConnection name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str peer_connection_name: The name of the resource.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
     :param str vpc_id: The ID of the requester VPC.
     """
     __args__ = dict()
@@ -205,7 +205,7 @@ def get_peer_connections_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     :param str name_regex: A regex string to filter results by PeerConnection name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str peer_connection_name: The name of the resource.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
     :param str vpc_id: The ID of the requester VPC.
     """
     ...

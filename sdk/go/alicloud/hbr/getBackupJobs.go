@@ -121,9 +121,9 @@ type GetBackupJobsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
 	SortDirection *string `pulumi:"sortDirection"`
-	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
 	SourceType string `pulumi:"sourceType"`
-	// The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+	// The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
 	Status *string `pulumi:"status"`
 }
 
@@ -162,9 +162,9 @@ type GetBackupJobsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
 	SortDirection pulumi.StringPtrInput `pulumi:"sortDirection"`
-	// The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+	// The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
-	// The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+	// The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

@@ -85,26 +85,26 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         final var name = config.get("name").orElse("keyPairAttachmentName");
- *         var vpc = new Network("vpc", NetworkArgs.builder()        
+ *         var vpc = new Network("vpc", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.1.0.0/21")
  *             .build());
  * 
- *         var vswitch = new Switch("vswitch", SwitchArgs.builder()        
+ *         var vswitch = new Switch("vswitch", SwitchArgs.builder()
  *             .vpcId(vpc.id())
  *             .cidrBlock("10.1.1.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()        
+ *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
  *             .name(name)
  *             .description("New security group")
  *             .vpcId(vpc.id())
  *             .build());
  * 
  *         for (var i = 0; i < 2; i++) {
- *             new Instance("instance-" + i, InstanceArgs.builder()            
+ *             new Instance("instance-" + i, InstanceArgs.builder()
  *                 .instanceName(String.format("%s-%s", name,range.value() + 1))
  *                 .imageId(images.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *                 .instanceType(type.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
@@ -119,11 +119,11 @@ import javax.annotation.Nullable;
  * 
  *         
  * }
- *         var pair = new KeyPair("pair", KeyPairArgs.builder()        
+ *         var pair = new KeyPair("pair", KeyPairArgs.builder()
  *             .keyName(name)
  *             .build());
  * 
- *         var attachment = new KeyPairAttachment("attachment", KeyPairAttachmentArgs.builder()        
+ *         var attachment = new KeyPairAttachment("attachment", KeyPairAttachmentArgs.builder()
  *             .keyName(pair.id())
  *             .instanceIds(instance.stream().map(element -> element.id()).collect(toList()))
  *             .build());

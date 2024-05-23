@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a RAM User Policy attachment.
- *         var user = new User("user", UserArgs.builder()        
+ *         var user = new User("user", UserArgs.builder()
  *             .name("userName")
  *             .displayName("user_display_name")
  *             .mobile("86-18688888888")
@@ -58,12 +58,12 @@ import javax.annotation.Nullable;
  *             .comments("yoyoyo")
  *             .build());
  * 
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var policy = new Policy("policy", PolicyArgs.builder()        
+ *         var policy = new Policy("policy", PolicyArgs.builder()
  *             .policyName(String.format("tf-example-%s", default_.result()))
  *             .policyDocument("""
  *   {
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *             .description("this is a policy test")
  *             .build());
  * 
- *         var attach = new UserPolicyAttachment("attach", UserPolicyAttachmentArgs.builder()        
+ *         var attach = new UserPolicyAttachment("attach", UserPolicyAttachmentArgs.builder()
  *             .policyName(policy.policyName())
  *             .policyType(policy.type())
  *             .userName(user.name())

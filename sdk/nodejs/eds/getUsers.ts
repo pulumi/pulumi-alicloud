@@ -53,7 +53,7 @@ export interface GetUsersArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Unlocked`, `Locked`.
      */
     status?: string;
 }
@@ -111,7 +111,7 @@ export interface GetUsersOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Unlocked`, `Locked`.
      */
     status?: pulumi.Input<string>;
 }

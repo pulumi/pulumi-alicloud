@@ -77,14 +77,14 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -236,7 +236,7 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
          * 
          * @return builder
          * 

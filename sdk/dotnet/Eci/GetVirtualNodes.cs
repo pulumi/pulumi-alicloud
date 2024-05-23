@@ -124,19 +124,19 @@ namespace Pulumi.AliCloud.Eci
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The resource group ID.
+        /// The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The security group ID.
+        /// VNode itself and by VNode created (ECI) the security group used by.
         /// </summary>
         [Input("securityGroupId")]
         public string? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// The Status of the virtual node.
+        /// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -159,9 +159,6 @@ namespace Pulumi.AliCloud.Eci
         [Input("virtualNodeName")]
         public string? VirtualNodeName { get; set; }
 
-        /// <summary>
-        /// The vswitch id.
-        /// </summary>
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
 
@@ -198,19 +195,19 @@ namespace Pulumi.AliCloud.Eci
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The resource group ID.
+        /// The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The security group ID.
+        /// VNode itself and by VNode created (ECI) the security group used by.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// The Status of the virtual node.
+        /// The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -233,9 +230,6 @@ namespace Pulumi.AliCloud.Eci
         [Input("virtualNodeName")]
         public Input<string>? VirtualNodeName { get; set; }
 
-        /// <summary>
-        /// The vswitch id.
-        /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 

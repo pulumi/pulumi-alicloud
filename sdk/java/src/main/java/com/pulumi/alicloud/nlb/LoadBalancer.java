@@ -70,26 +70,26 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetZones = NlbFunctions.getZones();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var default1 = new Switch("default1", SwitchArgs.builder()        
+ *         var default1 = new Switch("default1", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.1.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[1].id()))
  *             .build());
  * 
- *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()        
+ *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
  *             .loadBalancerName(name)
  *             .resourceGroupId(default_.ids()[0])
  *             .loadBalancerType("Network")
@@ -356,6 +356,8 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
      * 
      */
     @Export(name="modificationProtectionStatus", refs={String.class}, tree="[0]")
@@ -363,6 +365,8 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
+     * - `NonProtection`: Does not enable the configuration read-only mode. You cannot set the `modification_protection_reason`. If the `modification_protection_reason` is set, the value is cleared.
+     * - `ConsoleProtection`: Enables the configuration read-only mode. You can set the `modification_protection_reason`.
      * 
      */
     public Output<String> modificationProtectionStatus() {

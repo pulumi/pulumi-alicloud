@@ -54,15 +54,15 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var source = new Namespace("source", NamespaceArgs.builder()        
+ *         var source = new Namespace("source", NamespaceArgs.builder()
  *             .namespace(name)
  *             .build());
  * 
- *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+ *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
  *             .namespace(String.format("%s-source", name))
  *             .build());
  * 
- *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()        
+ *         var defaultServiceHybridDoubleWrite = new ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", ServiceHybridDoubleWriteArgs.builder()
  *             .sourceNamespace(source.id())
  *             .sourceUserId(default_.id())
  *             .namespace(defaultNamespace.id())

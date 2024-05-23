@@ -68,7 +68,7 @@ type GetPeerConnectionsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The name of the resource.
 	PeerConnectionName *string `pulumi:"peerConnectionName"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
 	Status *string `pulumi:"status"`
 	// The ID of the requester VPC.
 	VpcId *string `pulumi:"vpcId"`
@@ -111,7 +111,7 @@ type GetPeerConnectionsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of the resource.
 	PeerConnectionName pulumi.StringPtrInput `pulumi:"peerConnectionName"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The ID of the requester VPC.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`

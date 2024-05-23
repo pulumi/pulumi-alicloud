@@ -1574,6 +1574,11 @@ class GetServerlessInstancesInstanceSecurityIpGroupResult(dict):
                  security_ip_group_attribute: str,
                  security_ip_group_name: str,
                  security_ip_list: str):
+        """
+        :param str security_ip_group_attribute: The attribute of the IP whitelist. This parameter is empty by default.
+        :param str security_ip_group_name: The name of the IP whitelist.
+        :param str security_ip_list: The IP addresses in the whitelist.
+        """
         pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
         pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
         pulumi.set(__self__, "security_ip_list", security_ip_list)
@@ -1581,16 +1586,25 @@ class GetServerlessInstancesInstanceSecurityIpGroupResult(dict):
     @property
     @pulumi.getter(name="securityIpGroupAttribute")
     def security_ip_group_attribute(self) -> str:
+        """
+        The attribute of the IP whitelist. This parameter is empty by default.
+        """
         return pulumi.get(self, "security_ip_group_attribute")
 
     @property
     @pulumi.getter(name="securityIpGroupName")
     def security_ip_group_name(self) -> str:
+        """
+        The name of the IP whitelist.
+        """
         return pulumi.get(self, "security_ip_group_name")
 
     @property
     @pulumi.getter(name="securityIpList")
     def security_ip_list(self) -> str:
+        """
+        The IP addresses in the whitelist.
+        """
         return pulumi.get(self, "security_ip_list")
 
 

@@ -44,13 +44,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var key = new Key("key", KeyArgs.builder()        
+ *         var key = new Key("key", KeyArgs.builder()
  *             .description("example key")
  *             .status("Enabled")
  *             .pendingWindowInDays(7)
  *             .build());
  * 
- *         var encrypted = new Ciphertext("encrypted", CiphertextArgs.builder()        
+ *         var encrypted = new Ciphertext("encrypted", CiphertextArgs.builder()
  *             .keyId(key.id())
  *             .plaintext("example")
  *             .build());

@@ -129,6 +129,10 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The type of the secret. Valid values:
+        /// - `Generic`: specifies a generic secret.
+        /// - `Rds`: specifies a managed ApsaraDB RDS secret.
+        /// - `RAMCredentials`: indicates a managed RAM secret.
+        /// - `ECS`: specifies a managed ECS secret.
         /// </summary>
         [Output("secretType")]
         public Output<string> SecretType { get; private set; } = null!;
@@ -279,6 +283,10 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The type of the secret. Valid values:
+        /// - `Generic`: specifies a generic secret.
+        /// - `Rds`: specifies a managed ApsaraDB RDS secret.
+        /// - `RAMCredentials`: indicates a managed RAM secret.
+        /// - `ECS`: specifies a managed ECS secret.
         /// </summary>
         [Input("secretType")]
         public Input<string>? SecretType { get; set; }
@@ -411,6 +419,10 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The type of the secret. Valid values:
+        /// - `Generic`: specifies a generic secret.
+        /// - `Rds`: specifies a managed ApsaraDB RDS secret.
+        /// - `RAMCredentials`: indicates a managed RAM secret.
+        /// - `ECS`: specifies a managed ECS secret.
         /// </summary>
         [Input("secretType")]
         public Input<string>? SecretType { get; set; }

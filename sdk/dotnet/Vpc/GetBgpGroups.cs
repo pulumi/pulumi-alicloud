@@ -122,13 +122,13 @@ namespace Pulumi.AliCloud.Vpc
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the VBR.
+        /// The ID of the virtual border router (VBR) that is associated with the BGP group.
         /// </summary>
         [Input("routerId")]
         public string? RouterId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -166,13 +166,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the VBR.
+        /// The ID of the virtual border router (VBR) that is associated with the BGP group.
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

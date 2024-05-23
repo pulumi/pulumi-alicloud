@@ -57,23 +57,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()        
+ *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()
  *             .vaultName(String.format("terraform-example-%s", default_.result()))
  *             .build());
  * 
- *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()        
+ *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
  *             .protocolType("NFS")
  *             .storageType("Performance")
  *             .description("terraform-example")
  *             .encryptType("1")
  *             .build());
  * 
- *         var defaultNasBackupPlan = new NasBackupPlan("defaultNasBackupPlan", NasBackupPlanArgs.builder()        
+ *         var defaultNasBackupPlan = new NasBackupPlan("defaultNasBackupPlan", NasBackupPlanArgs.builder()
  *             .nasBackupPlanName("terraform-example")
  *             .fileSystemId(defaultFileSystem.id())
  *             .schedule("I|1602673264|PT2H")
@@ -264,6 +264,7 @@ public class NasBackupPlan extends com.pulumi.resources.CustomResource {
     }
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * * `startTime` Backup start time, UNIX time seconds.
      * 
      */
     @Export(name="schedule", refs={String.class}, tree="[0]")
@@ -271,6 +272,7 @@ public class NasBackupPlan extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+     * * `startTime` Backup start time, UNIX time seconds.
      * 
      */
     public Output<String> schedule() {

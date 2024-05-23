@@ -63,7 +63,7 @@ export interface GetDBClusterLakeVersionsArgs {
      */
     resourceGroupId?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
      */
     status?: string;
 }
@@ -131,7 +131,7 @@ export interface GetDBClusterLakeVersionsOutputArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
      */
     status?: pulumi.Input<string>;
 }

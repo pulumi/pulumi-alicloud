@@ -106,6 +106,9 @@ class AclAclEntryArgs:
         :param pulumi.Input[str] description: The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
         :param pulumi.Input[str] entry: The IP address for the ACL entry.
         :param pulumi.Input[str] status: The status of the ACL entry. Valid values:
+               - `Adding`: The ACL entry is being added.
+               - `Available`: The ACL entry is added and available.
+               - `Removing`: The ACL entry is being removed.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -143,6 +146,9 @@ class AclAclEntryArgs:
     def status(self) -> Optional[pulumi.Input[str]]:
         """
         The status of the ACL entry. Valid values:
+        - `Adding`: The ACL entry is being added.
+        - `Available`: The ACL entry is added and available.
+        - `Removing`: The ACL entry is being removed.
         """
         return pulumi.get(self, "status")
 
@@ -1570,6 +1576,15 @@ class RuleRuleConditionArgs:
                  source_ip_config: Optional[pulumi.Input['RuleRuleConditionSourceIpConfigArgs']] = None):
         """
         :param pulumi.Input[str] type: The type of the forwarding rule. Valid values:
+               - `Host`: Requests are forwarded based on hosts.
+               - `Path`: Requests are forwarded based on the path.
+               - `Header`: Requests are forwarded based on the HTTP header field.
+               - `QueryString`: Requests are forwarded based on the query string.
+               - `Method`: Request are forwarded based on the request method.
+               - `Cookie`: Requests are forwarded based on the cookie.
+               - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+               - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+               - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
         :param pulumi.Input['RuleRuleConditionCookieConfigArgs'] cookie_config: The configuration of the cookie. See See `cookie_config` below.
         :param pulumi.Input['RuleRuleConditionHeaderConfigArgs'] header_config: The configuration of the header field. See `header_config` below.
         :param pulumi.Input['RuleRuleConditionHostConfigArgs'] host_config: The configuration of the host field. See `host_config` below.
@@ -1605,6 +1620,15 @@ class RuleRuleConditionArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of the forwarding rule. Valid values:
+        - `Host`: Requests are forwarded based on hosts.
+        - `Path`: Requests are forwarded based on the path.
+        - `Header`: Requests are forwarded based on the HTTP header field.
+        - `QueryString`: Requests are forwarded based on the query string.
+        - `Method`: Request are forwarded based on the request method.
+        - `Cookie`: Requests are forwarded based on the cookie.
+        - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+        - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+        - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
         """
         return pulumi.get(self, "type")
 
@@ -2175,6 +2199,11 @@ class ServerGroupServerArgs:
                - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
                - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
         :param pulumi.Input[str] server_type: The type of the server. The type of the server. Valid values:
+               - `Ecs`: an ECS instance.
+               - `Eni`: an ENI.
+               - `Eci`: an elastic container instance.
+               - `Ip`(Available since v1.194.0): an IP address.
+               - `Fc`(Available since v1.194.0): a function.
         :param pulumi.Input[str] description: The description of the backend server.
         :param pulumi.Input[int] port: The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
         :param pulumi.Input[bool] remote_ip_enabled: Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
@@ -2217,6 +2246,11 @@ class ServerGroupServerArgs:
     def server_type(self) -> pulumi.Input[str]:
         """
         The type of the server. The type of the server. Valid values:
+        - `Ecs`: an ECS instance.
+        - `Eni`: an ENI.
+        - `Eci`: an elastic container instance.
+        - `Ip`(Available since v1.194.0): an IP address.
+        - `Fc`(Available since v1.194.0): a function.
         """
         return pulumi.get(self, "server_type")
 

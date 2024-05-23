@@ -461,6 +461,8 @@ class GetFileSystemsSystemResult(dict):
         :param str region_id: ID of the region where the FileSystem is located.
         :param str storage_type: The storage type of the file system.
                * Valid values:
+               * `Performance` (Available when the `file_system_type` is `standard`)
+               * `Capacity` (Available when the `file_system_type` is `standard`)
         :param str zone_id: (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
         """
         pulumi.set(__self__, "capacity", capacity)
@@ -569,6 +571,8 @@ class GetFileSystemsSystemResult(dict):
         """
         The storage type of the file system.
         * Valid values:
+        * `Performance` (Available when the `file_system_type` is `standard`)
+        * `Capacity` (Available when the `file_system_type` is `standard`)
         """
         return pulumi.get(self, "storage_type")
 

@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServerlessInstancesInstanceSecurityIpGroup {
+    /**
+     * @return The attribute of the IP whitelist. This parameter is empty by default.
+     * 
+     */
     private String securityIpGroupAttribute;
+    /**
+     * @return The name of the IP whitelist.
+     * 
+     */
     private String securityIpGroupName;
+    /**
+     * @return The IP addresses in the whitelist.
+     * 
+     */
     private String securityIpList;
 
     private GetServerlessInstancesInstanceSecurityIpGroup() {}
+    /**
+     * @return The attribute of the IP whitelist. This parameter is empty by default.
+     * 
+     */
     public String securityIpGroupAttribute() {
         return this.securityIpGroupAttribute;
     }
+    /**
+     * @return The name of the IP whitelist.
+     * 
+     */
     public String securityIpGroupName() {
         return this.securityIpGroupName;
     }
+    /**
+     * @return The IP addresses in the whitelist.
+     * 
+     */
     public String securityIpList() {
         return this.securityIpList;
     }

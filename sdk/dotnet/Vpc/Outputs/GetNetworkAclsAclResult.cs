@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class GetNetworkAclsAclResult
     {
         /// <summary>
-        /// Description of the entry direction rule.
+        /// Description of network ACL information.
         /// </summary>
         public readonly string Description;
         /// <summary>

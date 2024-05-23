@@ -42,7 +42,7 @@ export function getDedicatedHostGroups(args?: GetDedicatedHostGroupsArgs, opts?:
  */
 export interface GetDedicatedHostGroupsArgs {
     /**
-     * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+     * Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
      */
     engine?: string;
     /**
@@ -102,7 +102,7 @@ export function getDedicatedHostGroupsOutput(args?: GetDedicatedHostGroupsOutput
  */
 export interface GetDedicatedHostGroupsOutputArgs {
     /**
-     * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+     * Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
      */
     engine?: pulumi.Input<string>;
     /**

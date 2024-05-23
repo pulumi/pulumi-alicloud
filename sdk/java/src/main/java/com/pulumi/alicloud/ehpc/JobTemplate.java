@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()        
+ *         var default_ = new JobTemplate("default", JobTemplateArgs.builder()
  *             .jobTemplateName("example_value")
  *             .commandLine("./LammpsTest/lammps.pbs")
  *             .build());

@@ -52,13 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Accelerator("example", AcceleratorArgs.builder()        
+ *         var example = new Accelerator("example", AcceleratorArgs.builder()
  *             .duration(1)
  *             .autoUseCoupon(true)
  *             .spec("1")
  *             .build());
  * 
- *         var exampleBandwidthPackage = new BandwidthPackage("exampleBandwidthPackage", BandwidthPackageArgs.builder()        
+ *         var exampleBandwidthPackage = new BandwidthPackage("exampleBandwidthPackage", BandwidthPackageArgs.builder()
  *             .bandwidth(20)
  *             .type("Basic")
  *             .bandwidthType("Basic")
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .ratio(30)
  *             .build());
  * 
- *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment("exampleBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()        
+ *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment("exampleBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
  *             .acceleratorId(example.id())
  *             .bandwidthPackageId(exampleBandwidthPackage.id())
  *             .build());

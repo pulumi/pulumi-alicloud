@@ -13,9 +13,21 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class GetApplicationScalingRulesRuleScalingRuleTimerResult
     {
+        /// <summary>
+        /// The short-term start date of the timed elastic scaling strategy.
+        /// </summary>
         public readonly string BeginDate;
+        /// <summary>
+        /// The short-term end date of the timed elastic scaling strategy.
+        /// </summary>
         public readonly string EndDate;
+        /// <summary>
+        /// The period in which a timed elastic scaling strategy is executed.
+        /// </summary>
         public readonly string Period;
+        /// <summary>
+        /// Trigger point in time within a single day.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult> Schedules;
 
         [OutputConstructor]

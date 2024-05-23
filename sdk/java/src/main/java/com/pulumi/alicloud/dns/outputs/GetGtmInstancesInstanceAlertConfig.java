@@ -11,21 +11,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGtmInstancesInstanceAlertConfig {
+    /**
+     * @return Whether to configure DingTalk notifications.
+     * 
+     */
     private Boolean dingtalkNotice;
+    /**
+     * @return Whether to configure mail notification.
+     * 
+     */
     private Boolean emailNotice;
+    /**
+     * @return The Alarm Event Type.
+     * 
+     */
     private String noticeType;
+    /**
+     * @return Whether to configure SMS notification.
+     * 
+     */
     private Boolean smsNotice;
 
     private GetGtmInstancesInstanceAlertConfig() {}
+    /**
+     * @return Whether to configure DingTalk notifications.
+     * 
+     */
     public Boolean dingtalkNotice() {
         return this.dingtalkNotice;
     }
+    /**
+     * @return Whether to configure mail notification.
+     * 
+     */
     public Boolean emailNotice() {
         return this.emailNotice;
     }
+    /**
+     * @return The Alarm Event Type.
+     * 
+     */
     public String noticeType() {
         return this.noticeType;
     }
+    /**
+     * @return Whether to configure SMS notification.
+     * 
+     */
     public Boolean smsNotice() {
         return this.smsNotice;
     }

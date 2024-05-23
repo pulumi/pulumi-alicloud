@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultBaseInstance = new BaseInstance("defaultBaseInstance", BaseInstanceArgs.builder()        
+ *         var defaultBaseInstance = new BaseInstance("defaultBaseInstance", BaseInstanceArgs.builder()
  *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -> getResourceGroupsResult.ids()[0]))
  *             .zones(            
  *                 default_.ids()[default_.ids().length() - 2],

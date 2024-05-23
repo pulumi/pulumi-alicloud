@@ -1626,6 +1626,11 @@ type GetStackInstancesInstance struct {
 	// The region of the stack instance.
 	StackInstanceRegionId string `pulumi:"stackInstanceRegionId"`
 	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+	// * The create or update operation is not complete.
 	Status string `pulumi:"status"`
 	// The reason why the stack is in its current state.
 	StatusReason string `pulumi:"statusReason"`
@@ -1658,6 +1663,11 @@ type GetStackInstancesInstanceArgs struct {
 	// The region of the stack instance.
 	StackInstanceRegionId pulumi.StringInput `pulumi:"stackInstanceRegionId"`
 	// The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+	// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+	// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+	// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+	// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+	// * The create or update operation is not complete.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The reason why the stack is in its current state.
 	StatusReason pulumi.StringInput `pulumi:"statusReason"`
@@ -1752,6 +1762,11 @@ func (o GetStackInstancesInstanceOutput) StackInstanceRegionId() pulumi.StringOu
 }
 
 // The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+// * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+// * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+// * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+// * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+// * The create or update operation is not complete.
 func (o GetStackInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -1782,7 +1797,9 @@ func (o GetStackInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetStackI
 }
 
 type GetStackInstancesInstanceParameterOverride struct {
-	ParameterKey   string `pulumi:"parameterKey"`
+	// The key of override parameter.
+	ParameterKey string `pulumi:"parameterKey"`
+	// The value of override parameter.
 	ParameterValue string `pulumi:"parameterValue"`
 }
 
@@ -1798,7 +1815,9 @@ type GetStackInstancesInstanceParameterOverrideInput interface {
 }
 
 type GetStackInstancesInstanceParameterOverrideArgs struct {
-	ParameterKey   pulumi.StringInput `pulumi:"parameterKey"`
+	// The key of override parameter.
+	ParameterKey pulumi.StringInput `pulumi:"parameterKey"`
+	// The value of override parameter.
 	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
 }
 
@@ -1853,10 +1872,12 @@ func (o GetStackInstancesInstanceParameterOverrideOutput) ToGetStackInstancesIns
 	return o
 }
 
+// The key of override parameter.
 func (o GetStackInstancesInstanceParameterOverrideOutput) ParameterKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackInstancesInstanceParameterOverride) string { return v.ParameterKey }).(pulumi.StringOutput)
 }
 
+// The value of override parameter.
 func (o GetStackInstancesInstanceParameterOverrideOutput) ParameterValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStackInstancesInstanceParameterOverride) string { return v.ParameterValue }).(pulumi.StringOutput)
 }
@@ -2440,7 +2461,9 @@ func (o GetTemplateScratchesScratchArrayOutput) Index(i pulumi.IntInput) GetTemp
 }
 
 type GetTemplateScratchesScratchPreferenceParameter struct {
-	ParameterKey   string `pulumi:"parameterKey"`
+	// Priority parameter key.
+	ParameterKey string `pulumi:"parameterKey"`
+	// Priority parameter value.
 	ParameterValue string `pulumi:"parameterValue"`
 }
 
@@ -2456,7 +2479,9 @@ type GetTemplateScratchesScratchPreferenceParameterInput interface {
 }
 
 type GetTemplateScratchesScratchPreferenceParameterArgs struct {
-	ParameterKey   pulumi.StringInput `pulumi:"parameterKey"`
+	// Priority parameter key.
+	ParameterKey pulumi.StringInput `pulumi:"parameterKey"`
+	// Priority parameter value.
 	ParameterValue pulumi.StringInput `pulumi:"parameterValue"`
 }
 
@@ -2511,10 +2536,12 @@ func (o GetTemplateScratchesScratchPreferenceParameterOutput) ToGetTemplateScrat
 	return o
 }
 
+// Priority parameter key.
 func (o GetTemplateScratchesScratchPreferenceParameterOutput) ParameterKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratchPreferenceParameter) string { return v.ParameterKey }).(pulumi.StringOutput)
 }
 
+// Priority parameter value.
 func (o GetTemplateScratchesScratchPreferenceParameterOutput) ParameterValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratchPreferenceParameter) string { return v.ParameterValue }).(pulumi.StringOutput)
 }
@@ -2540,7 +2567,9 @@ func (o GetTemplateScratchesScratchPreferenceParameterArrayOutput) Index(i pulum
 }
 
 type GetTemplateScratchesScratchSourceResource struct {
-	ResourceId   string `pulumi:"resourceId"`
+	// The ID of the Source Resource.
+	ResourceId string `pulumi:"resourceId"`
+	// The type of the Source resource.
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -2556,7 +2585,9 @@ type GetTemplateScratchesScratchSourceResourceInput interface {
 }
 
 type GetTemplateScratchesScratchSourceResourceArgs struct {
-	ResourceId   pulumi.StringInput `pulumi:"resourceId"`
+	// The ID of the Source Resource.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// The type of the Source resource.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
@@ -2611,10 +2642,12 @@ func (o GetTemplateScratchesScratchSourceResourceOutput) ToGetTemplateScratchesS
 	return o
 }
 
+// The ID of the Source Resource.
 func (o GetTemplateScratchesScratchSourceResourceOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratchSourceResource) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
+// The type of the Source resource.
 func (o GetTemplateScratchesScratchSourceResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratchSourceResource) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -2640,7 +2673,9 @@ func (o GetTemplateScratchesScratchSourceResourceArrayOutput) Index(i pulumi.Int
 }
 
 type GetTemplateScratchesScratchSourceResourceGroup struct {
-	ResourceGroupId     string   `pulumi:"resourceGroupId"`
+	// The ID of the Source Resource Group.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
+	// Source resource type filter list.
 	ResourceTypeFilters []string `pulumi:"resourceTypeFilters"`
 }
 
@@ -2656,7 +2691,9 @@ type GetTemplateScratchesScratchSourceResourceGroupInput interface {
 }
 
 type GetTemplateScratchesScratchSourceResourceGroupArgs struct {
-	ResourceGroupId     pulumi.StringInput      `pulumi:"resourceGroupId"`
+	// The ID of the Source Resource Group.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
+	// Source resource type filter list.
 	ResourceTypeFilters pulumi.StringArrayInput `pulumi:"resourceTypeFilters"`
 }
 
@@ -2711,10 +2748,12 @@ func (o GetTemplateScratchesScratchSourceResourceGroupOutput) ToGetTemplateScrat
 	return o
 }
 
+// The ID of the Source Resource Group.
 func (o GetTemplateScratchesScratchSourceResourceGroupOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratchSourceResourceGroup) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// Source resource type filter list.
 func (o GetTemplateScratchesScratchSourceResourceGroupOutput) ResourceTypeFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratchSourceResourceGroup) []string { return v.ResourceTypeFilters }).(pulumi.StringArrayOutput)
 }
@@ -2740,8 +2779,10 @@ func (o GetTemplateScratchesScratchSourceResourceGroupArrayOutput) Index(i pulum
 }
 
 type GetTemplateScratchesScratchSourceTag struct {
-	ResourceTags        map[string]interface{} `pulumi:"resourceTags"`
-	ResourceTypeFilters []string               `pulumi:"resourceTypeFilters"`
+	// Source label.
+	ResourceTags map[string]interface{} `pulumi:"resourceTags"`
+	// Source resource type filter list.
+	ResourceTypeFilters []string `pulumi:"resourceTypeFilters"`
 }
 
 // GetTemplateScratchesScratchSourceTagInput is an input type that accepts GetTemplateScratchesScratchSourceTagArgs and GetTemplateScratchesScratchSourceTagOutput values.
@@ -2756,7 +2797,9 @@ type GetTemplateScratchesScratchSourceTagInput interface {
 }
 
 type GetTemplateScratchesScratchSourceTagArgs struct {
-	ResourceTags        pulumi.MapInput         `pulumi:"resourceTags"`
+	// Source label.
+	ResourceTags pulumi.MapInput `pulumi:"resourceTags"`
+	// Source resource type filter list.
 	ResourceTypeFilters pulumi.StringArrayInput `pulumi:"resourceTypeFilters"`
 }
 
@@ -2811,10 +2854,12 @@ func (o GetTemplateScratchesScratchSourceTagOutput) ToGetTemplateScratchesScratc
 	return o
 }
 
+// Source label.
 func (o GetTemplateScratchesScratchSourceTagOutput) ResourceTags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratchSourceTag) map[string]interface{} { return v.ResourceTags }).(pulumi.MapOutput)
 }
 
+// Source resource type filter list.
 func (o GetTemplateScratchesScratchSourceTagOutput) ResourceTypeFilters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratchSourceTag) []string { return v.ResourceTypeFilters }).(pulumi.StringArrayOutput)
 }
@@ -2840,6 +2885,7 @@ func (o GetTemplateScratchesScratchSourceTagArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetTemplateScratchesScratchStack struct {
+	// The ID of the Resource stack.
 	StackId string `pulumi:"stackId"`
 }
 
@@ -2855,6 +2901,7 @@ type GetTemplateScratchesScratchStackInput interface {
 }
 
 type GetTemplateScratchesScratchStackArgs struct {
+	// The ID of the Resource stack.
 	StackId pulumi.StringInput `pulumi:"stackId"`
 }
 
@@ -2909,6 +2956,7 @@ func (o GetTemplateScratchesScratchStackOutput) ToGetTemplateScratchesScratchSta
 	return o
 }
 
+// The ID of the Resource stack.
 func (o GetTemplateScratchesScratchStackOutput) StackId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTemplateScratchesScratchStack) string { return v.StackId }).(pulumi.StringOutput)
 }

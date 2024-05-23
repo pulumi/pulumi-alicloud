@@ -74,7 +74,7 @@ type GetAclsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// Resource Group to Which the Number.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	// The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 	Status *string `pulumi:"status"`
 }
 
@@ -123,7 +123,7 @@ type GetAclsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// Resource Group to Which the Number.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+	// The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

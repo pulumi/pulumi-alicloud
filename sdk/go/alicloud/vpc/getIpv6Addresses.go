@@ -82,6 +82,8 @@ type GetIpv6AddressesArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the IPv6 address. Valid values:`Pending` or `Available`.
+	// - `Pending`: The IPv6 address is being configured.
+	// - `Available`: The IPv6 address is available.
 	Status *string `pulumi:"status"`
 	// The ID of the VPC to which the IPv6 address belongs.
 	VpcId *string `pulumi:"vpcId"`
@@ -124,6 +126,8 @@ type GetIpv6AddressesOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the IPv6 address. Valid values:`Pending` or `Available`.
+	// - `Pending`: The IPv6 address is being configured.
+	// - `Available`: The IPv6 address is available.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The ID of the VPC to which the IPv6 address belongs.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`

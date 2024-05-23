@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Add a Resource Manager handshake.
- *         var example = new Handshake("example", HandshakeArgs.builder()        
+ *         var example = new Handshake("example", HandshakeArgs.builder()
  *             .targetEntity("1182775234******")
  *             .targetType("Account")
  *             .note("test resource manager handshake")

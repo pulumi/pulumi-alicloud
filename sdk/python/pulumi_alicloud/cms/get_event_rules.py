@@ -158,7 +158,7 @@ def get_event_rules(ids: Optional[Sequence[str]] = None,
     :param str name_prefix: The name prefix.
     :param str name_regex: A regex string to filter results by Event Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `DISABLED`, `ENABLED`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -217,6 +217,6 @@ def get_event_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     :param str name_prefix: The name prefix.
     :param str name_regex: A regex string to filter results by Event Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `DISABLED`, `ENABLED`.
     """
     ...

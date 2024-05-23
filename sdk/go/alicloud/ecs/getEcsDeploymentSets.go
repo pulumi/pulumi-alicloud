@@ -72,7 +72,7 @@ type GetEcsDeploymentSetsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The deployment strategy.
+	// The deployment strategy. Valid values: `Availability`.
 	Strategy *string `pulumi:"strategy"`
 }
 
@@ -112,7 +112,7 @@ type GetEcsDeploymentSetsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The deployment strategy.
+	// The deployment strategy. Valid values: `Availability`.
 	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
 }
 

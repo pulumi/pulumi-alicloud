@@ -68,6 +68,8 @@ type EcsDeploymentSet struct {
 	// The deployment granularity. Valid values: `Host`.
 	Granularity pulumi.StringPtrOutput `pulumi:"granularity"`
 	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+	// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+	// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
 	OnUnableToRedeployFailedInstance pulumi.StringPtrOutput `pulumi:"onUnableToRedeployFailedInstance"`
 	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
 	Strategy pulumi.StringPtrOutput `pulumi:"strategy"`
@@ -112,6 +114,8 @@ type ecsDeploymentSetState struct {
 	// The deployment granularity. Valid values: `Host`.
 	Granularity *string `pulumi:"granularity"`
 	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+	// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+	// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
 	OnUnableToRedeployFailedInstance *string `pulumi:"onUnableToRedeployFailedInstance"`
 	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
 	Strategy *string `pulumi:"strategy"`
@@ -127,6 +131,8 @@ type EcsDeploymentSetState struct {
 	// The deployment granularity. Valid values: `Host`.
 	Granularity pulumi.StringPtrInput
 	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+	// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+	// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
 	OnUnableToRedeployFailedInstance pulumi.StringPtrInput
 	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
 	Strategy pulumi.StringPtrInput
@@ -146,6 +152,8 @@ type ecsDeploymentSetArgs struct {
 	// The deployment granularity. Valid values: `Host`.
 	Granularity *string `pulumi:"granularity"`
 	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+	// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+	// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
 	OnUnableToRedeployFailedInstance *string `pulumi:"onUnableToRedeployFailedInstance"`
 	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
 	Strategy *string `pulumi:"strategy"`
@@ -162,6 +170,8 @@ type EcsDeploymentSetArgs struct {
 	// The deployment granularity. Valid values: `Host`.
 	Granularity pulumi.StringPtrInput
 	// The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+	// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+	// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
 	OnUnableToRedeployFailedInstance pulumi.StringPtrInput
 	// The deployment strategy. Valid values: `Availability`(Default), `AvailabilityGroup`, `LowLatency`.
 	Strategy pulumi.StringPtrInput
@@ -275,6 +285,8 @@ func (o EcsDeploymentSetOutput) Granularity() pulumi.StringPtrOutput {
 }
 
 // The on unable to redeploy failed instance. Valid values: `CancelMembershipAndStart`, `KeepStopped`.
+// * `CancelMembershipAndStart` - Removes the instances from the deployment set and restarts the instances immediately after the failover is complete.
+// * `KeepStopped`- Keeps the instances in the abnormal state and restarts them after ECS resources are replenished.
 func (o EcsDeploymentSetOutput) OnUnableToRedeployFailedInstance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDeploymentSet) pulumi.StringPtrOutput { return v.OnUnableToRedeployFailedInstance }).(pulumi.StringPtrOutput)
 }

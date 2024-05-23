@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.CR
     public sealed class GetEndpointAclPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of endpoint.
+        /// The type of endpoint. Valid values: `internet`.
         /// </summary>
         [Input("endpointType", required: true)]
         public string EndpointType { get; set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.CR
     public sealed class GetEndpointAclPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of endpoint.
+        /// The type of endpoint. Valid values: `internet`.
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;

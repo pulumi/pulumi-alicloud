@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Network("foo", NetworkArgs.builder()        
+ *         var foo = new Network("foo", NetworkArgs.builder()
  *             .vpcName("tf_test_foo12345")
  *             .cidrBlock("172.16.0.0/12")
  *             .build());
  * 
- *         var interface_ = new RouterInterface("interface", RouterInterfaceArgs.builder()        
+ *         var interface_ = new RouterInterface("interface", RouterInterfaceArgs.builder()
  *             .oppositeRegion("cn-beijing")
  *             .routerType("VRouter")
  *             .routerId(foo.routerId())

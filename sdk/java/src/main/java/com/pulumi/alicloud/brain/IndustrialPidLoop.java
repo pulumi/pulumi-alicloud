@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new IndustrialPidLoop("example", IndustrialPidLoopArgs.builder()        
+ *         var example = new IndustrialPidLoop("example", IndustrialPidLoopArgs.builder()
  *             .pidLoopConfiguration("YourLoopConfiguration")
  *             .pidLoopDcsType("standard")
  *             .pidLoopIsCrucial(true)

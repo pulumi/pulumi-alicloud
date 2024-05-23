@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
- *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()        
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
  *             .name(name)
  *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .bandwidth("10")
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
  *             .build());
  * 
- *         var foo = new IpsecServer("foo", IpsecServerArgs.builder()        
+ *         var foo = new IpsecServer("foo", IpsecServerArgs.builder()
  *             .clientIpPool("10.0.0.0/24")
  *             .ipsecServerName(name)
  *             .localSubnet("192.168.0.0/24")

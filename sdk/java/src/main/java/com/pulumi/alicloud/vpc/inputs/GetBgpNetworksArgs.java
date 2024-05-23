@@ -47,14 +47,14 @@ public final class GetBgpNetworksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of the vRouter.
+     * The ID of the router to which the route table belongs.
      * 
      */
     @Import(name="routerId")
     private @Nullable Output<String> routerId;
 
     /**
-     * @return The ID of the vRouter.
+     * @return The ID of the router to which the route table belongs.
      * 
      */
     public Optional<Output<String>> routerId() {
@@ -62,14 +62,14 @@ public final class GetBgpNetworksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The state of the advertised BGP network.
+     * The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The state of the advertised BGP network.
+     * @return The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -156,7 +156,7 @@ public final class GetBgpNetworksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param routerId The ID of the vRouter.
+         * @param routerId The ID of the router to which the route table belongs.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class GetBgpNetworksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param routerId The ID of the vRouter.
+         * @param routerId The ID of the router to which the route table belongs.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class GetBgpNetworksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The state of the advertised BGP network.
+         * @param status The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GetBgpNetworksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The state of the advertised BGP network.
+         * @param status The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
          * 
          * @return builder
          * 

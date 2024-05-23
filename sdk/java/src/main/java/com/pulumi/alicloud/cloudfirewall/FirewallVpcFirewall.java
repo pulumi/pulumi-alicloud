@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var current = AlicloudFunctions.getAccount();
  * 
- *         var default_ = new FirewallVpcFirewall("default", FirewallVpcFirewallArgs.builder()        
+ *         var default_ = new FirewallVpcFirewall("default", FirewallVpcFirewallArgs.builder()
  *             .vpcFirewallName("tf-example")
  *             .memberUid(current.applyValue(getAccountResult -> getAccountResult.id()))
  *             .localVpc(FirewallVpcFirewallLocalVpcArgs.builder()

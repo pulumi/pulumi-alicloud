@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
+ *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()
  *             .alarmContactGroupName(name)
  *             .contacts(            
  *                 "user",
@@ -66,12 +66,12 @@ import javax.annotation.Nullable;
  *                 "user2")
  *             .build());
  * 
- *         var defaultMonitorGroup = new MonitorGroup("defaultMonitorGroup", MonitorGroupArgs.builder()        
+ *         var defaultMonitorGroup = new MonitorGroup("defaultMonitorGroup", MonitorGroupArgs.builder()
  *             .monitorGroupName(name)
  *             .contactGroups(default_.id())
  *             .build());
  * 
- *         var defaultServiceGroupMonitoringAgentProcess = new ServiceGroupMonitoringAgentProcess("defaultServiceGroupMonitoringAgentProcess", ServiceGroupMonitoringAgentProcessArgs.builder()        
+ *         var defaultServiceGroupMonitoringAgentProcess = new ServiceGroupMonitoringAgentProcess("defaultServiceGroupMonitoringAgentProcess", ServiceGroupMonitoringAgentProcessArgs.builder()
  *             .groupId(defaultMonitorGroup.id())
  *             .processName(name)
  *             .matchExpressFilterRelation("or")

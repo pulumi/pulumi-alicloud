@@ -63,7 +63,7 @@ export interface GetCommandsArgs {
      */
     ids?: string[];
     /**
-     * The name of the command
+     * The name of the command.
      */
     name?: string;
     /**
@@ -75,7 +75,7 @@ export interface GetCommandsArgs {
      */
     outputFile?: string;
     /**
-     * The command type.
+     * The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
      */
     type?: string;
 }
@@ -144,7 +144,7 @@ export interface GetCommandsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the command
+     * The name of the command.
      */
     name?: pulumi.Input<string>;
     /**
@@ -156,7 +156,7 @@ export interface GetCommandsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The command type.
+     * The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
      */
     type?: pulumi.Input<string>;
 }

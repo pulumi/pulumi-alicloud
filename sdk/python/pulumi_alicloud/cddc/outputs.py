@@ -539,17 +539,11 @@ class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult(dict):
 class GetDedicatedHostGroupsGroupZoneIdListResult(dict):
     def __init__(__self__, *,
                  zone_id_lists: Sequence[str]):
-        """
-        :param Sequence[str] zone_id_lists: The ZoneIDList of the Dedicated Host Group.
-        """
         pulumi.set(__self__, "zone_id_lists", zone_id_lists)
 
     @property
     @pulumi.getter(name="zoneIdLists")
     def zone_id_lists(self) -> Sequence[str]:
-        """
-        The ZoneIDList of the Dedicated Host Group.
-        """
         return pulumi.get(self, "zone_id_lists")
 
 

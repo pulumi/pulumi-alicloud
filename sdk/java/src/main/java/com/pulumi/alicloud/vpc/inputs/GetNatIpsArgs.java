@@ -48,14 +48,14 @@ public final class GetNatIpsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+     * The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
      * 
      */
     @Import(name="natGatewayId", required=true)
     private Output<String> natGatewayId;
 
     /**
-     * @return The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+     * @return The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
      * 
      */
     public Output<String> natGatewayId() {
@@ -63,14 +63,14 @@ public final class GetNatIpsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The CIDR block to which the NAT IP address belongs.
+     * NAT IP ADDRESS of the address segment.
      * 
      */
     @Import(name="natIpCidr")
     private @Nullable Output<String> natIpCidr;
 
     /**
-     * @return The CIDR block to which the NAT IP address belongs.
+     * @return NAT IP ADDRESS of the address segment.
      * 
      */
     public Optional<Output<String>> natIpCidr() {
@@ -85,14 +85,14 @@ public final class GetNatIpsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the NAT IP address.
+     * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
      * 
      */
     @Import(name="natIpNames")
     private @Nullable Output<List<String>> natIpNames;
 
     /**
-     * @return The name of the NAT IP address.
+     * @return NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
      * 
      */
     public Optional<Output<List<String>>> natIpNames() {
@@ -213,7 +213,7 @@ public final class GetNatIpsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param natGatewayId The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+         * @param natGatewayId The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class GetNatIpsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param natGatewayId The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
+         * @param natGatewayId The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class GetNatIpsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param natIpCidr The CIDR block to which the NAT IP address belongs.
+         * @param natIpCidr NAT IP ADDRESS of the address segment.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class GetNatIpsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param natIpCidr The CIDR block to which the NAT IP address belongs.
+         * @param natIpCidr NAT IP ADDRESS of the address segment.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class GetNatIpsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param natIpNames The name of the NAT IP address.
+         * @param natIpNames NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class GetNatIpsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param natIpNames The name of the NAT IP address.
+         * @param natIpNames NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class GetNatIpsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param natIpNames The name of the NAT IP address.
+         * @param natIpNames NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
          * 
          * @return builder
          * 

@@ -55,6 +55,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The privilege of account access database. Default value: `RoleReadWrite`
+     * - `RoleReadOnly`: This value is only for Redis and Memcache
+     * - `RoleReadWrite`: This value is only for Redis and Memcache
      * 
      */
     @Import(name="accountPrivilege")
@@ -62,6 +64,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The privilege of account access database. Default value: `RoleReadWrite`
+     * - `RoleReadOnly`: This value is only for Redis and Memcache
+     * - `RoleReadWrite`: This value is only for Redis and Memcache
      * 
      */
     public Optional<Output<String>> accountPrivilege() {
@@ -244,6 +248,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param accountPrivilege The privilege of account access database. Default value: `RoleReadWrite`
+         * - `RoleReadOnly`: This value is only for Redis and Memcache
+         * - `RoleReadWrite`: This value is only for Redis and Memcache
          * 
          * @return builder
          * 
@@ -255,6 +261,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param accountPrivilege The privilege of account access database. Default value: `RoleReadWrite`
+         * - `RoleReadOnly`: This value is only for Redis and Memcache
+         * - `RoleReadWrite`: This value is only for Redis and Memcache
          * 
          * @return builder
          * 

@@ -67,7 +67,7 @@ type GetDBClusterLakeVersionsArgs struct {
 	PageSize   *int    `pulumi:"pageSize"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
 	Status *string `pulumi:"status"`
 }
 
@@ -110,7 +110,7 @@ type GetDBClusterLakeVersionsOutputArgs struct {
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

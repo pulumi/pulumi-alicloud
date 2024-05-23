@@ -170,6 +170,9 @@ class AclAclEntry(dict):
         :param str description: The description of the ACL entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_). It can also contain Chinese characters.
         :param str entry: The IP address for the ACL entry.
         :param str status: The status of the ACL entry. Valid values:
+               - `Adding`: The ACL entry is being added.
+               - `Available`: The ACL entry is added and available.
+               - `Removing`: The ACL entry is being removed.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -199,6 +202,9 @@ class AclAclEntry(dict):
     def status(self) -> Optional[str]:
         """
         The status of the ACL entry. Valid values:
+        - `Adding`: The ACL entry is being added.
+        - `Available`: The ACL entry is added and available.
+        - `Removing`: The ACL entry is being removed.
         """
         return pulumi.get(self, "status")
 
@@ -1797,6 +1803,15 @@ class RuleRuleCondition(dict):
                  source_ip_config: Optional['outputs.RuleRuleConditionSourceIpConfig'] = None):
         """
         :param str type: The type of the forwarding rule. Valid values:
+               - `Host`: Requests are forwarded based on hosts.
+               - `Path`: Requests are forwarded based on the path.
+               - `Header`: Requests are forwarded based on the HTTP header field.
+               - `QueryString`: Requests are forwarded based on the query string.
+               - `Method`: Request are forwarded based on the request method.
+               - `Cookie`: Requests are forwarded based on the cookie.
+               - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+               - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+               - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
         :param 'RuleRuleConditionCookieConfigArgs' cookie_config: The configuration of the cookie. See See `cookie_config` below.
         :param 'RuleRuleConditionHeaderConfigArgs' header_config: The configuration of the header field. See `header_config` below.
         :param 'RuleRuleConditionHostConfigArgs' host_config: The configuration of the host field. See `host_config` below.
@@ -1832,6 +1847,15 @@ class RuleRuleCondition(dict):
     def type(self) -> str:
         """
         The type of the forwarding rule. Valid values:
+        - `Host`: Requests are forwarded based on hosts.
+        - `Path`: Requests are forwarded based on the path.
+        - `Header`: Requests are forwarded based on the HTTP header field.
+        - `QueryString`: Requests are forwarded based on the query string.
+        - `Method`: Request are forwarded based on the request method.
+        - `Cookie`: Requests are forwarded based on the cookie.
+        - `SourceIp`: Requests are forwarded based on the source ip. **NOTE:** The `SourceIp` option is available since 1.162.0.
+        - `ResponseHeader`: Response header. **NOTE:** The `SourceIp` option is available since 1.213.1.
+        - `ResponseStatusCode`: Response status code. **NOTE:** The `SourceIp` option is available since 1.213.1.
         """
         return pulumi.get(self, "type")
 
@@ -2316,6 +2340,11 @@ class ServerGroupServer(dict):
                - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
                - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
         :param str server_type: The type of the server. The type of the server. Valid values:
+               - `Ecs`: an ECS instance.
+               - `Eni`: an ENI.
+               - `Eci`: an elastic container instance.
+               - `Ip`(Available since v1.194.0): an IP address.
+               - `Fc`(Available since v1.194.0): a function.
         :param str description: The description of the backend server.
         :param int port: The port used by the backend server. Valid values: `1` to `65535`. **Note:** This parameter is required if the `server_type` parameter is set to `Ecs`, `Eni`, `Eci`, or `Ip`. You do not need to configure this parameter if you set `server_type` to `Fc`.
         :param bool remote_ip_enabled: Specifies whether to enable the remote IP address feature. You can specify up to 40 servers in each call. **Note:** If `server_type` is set to `Ip`, this parameter is available.
@@ -2354,6 +2383,11 @@ class ServerGroupServer(dict):
     def server_type(self) -> str:
         """
         The type of the server. The type of the server. Valid values:
+        - `Ecs`: an ECS instance.
+        - `Eni`: an ENI.
+        - `Eci`: an elastic container instance.
+        - `Ip`(Available since v1.194.0): an IP address.
+        - `Fc`(Available since v1.194.0): a function.
         """
         return pulumi.get(self, "server_type")
 
@@ -2574,7 +2608,7 @@ class GetAclsAclAclEntryResult(dict):
                  status: str):
         """
         :param str description: Access Control Entries Note Description Length Is Limited to 1 to 256 Characters, Letters, digital, the Dash (-), a Forward Slash (/), Half a Period (.) and Underscores (_), Support Chinese Characters.
-        :param str status: The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        :param str status: The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "entry", entry)
@@ -2597,7 +2631,7 @@ class GetAclsAclAclEntryResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The state of the ACL. Valid values:`Provisioning` , `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
+        The status of the ACL entry. Valid values: `Adding` , `Available` and `Removing`. `Adding`: The entry is being added. `Available`: The entry is added and available. `Removing`: The entry is being removed.
         """
         return pulumi.get(self, "status")
 
@@ -2962,7 +2996,7 @@ class GetListenersListenerResult(dict):
         :param str security_policy_id: Security Policy.
                
                > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
-        :param str status: The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+        :param str status: The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
         :param Sequence['GetListenersListenerXforwardedForConfigArgs'] xforwarded_for_configs: xforwardfor Related Attribute Configuration.
         """
         pulumi.set(__self__, "access_log_record_customized_headers_enabled", access_log_record_customized_headers_enabled)
@@ -3149,7 +3183,7 @@ class GetListenersListenerResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+        The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
         """
         return pulumi.get(self, "status")
 
@@ -3193,17 +3227,27 @@ class GetListenersListenerAclConfigResult(dict):
     def __init__(__self__, *,
                  acl_relations: Sequence['outputs.GetListenersListenerAclConfigAclRelationResult'],
                  acl_type: str):
+        """
+        :param Sequence['GetListenersListenerAclConfigAclRelationArgs'] acl_relations: The ACLs that are associated with the listener.
+        :param str acl_type: The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+        """
         pulumi.set(__self__, "acl_relations", acl_relations)
         pulumi.set(__self__, "acl_type", acl_type)
 
     @property
     @pulumi.getter(name="aclRelations")
     def acl_relations(self) -> Sequence['outputs.GetListenersListenerAclConfigAclRelationResult']:
+        """
+        The ACLs that are associated with the listener.
+        """
         return pulumi.get(self, "acl_relations")
 
     @property
     @pulumi.getter(name="aclType")
     def acl_type(self) -> str:
+        """
+        The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
+        """
         return pulumi.get(self, "acl_type")
 
 
@@ -3213,7 +3257,8 @@ class GetListenersListenerAclConfigAclRelationResult(dict):
                  acl_id: str,
                  status: str):
         """
-        :param str status: The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+        :param str acl_id: Snooping Binding of the Access Policy Group ID List.
+        :param str status: The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
         """
         pulumi.set(__self__, "acl_id", acl_id)
         pulumi.set(__self__, "status", status)
@@ -3221,13 +3266,16 @@ class GetListenersListenerAclConfigAclRelationResult(dict):
     @property
     @pulumi.getter(name="aclId")
     def acl_id(self) -> str:
+        """
+        Snooping Binding of the Access Policy Group ID List.
+        """
         return pulumi.get(self, "acl_id")
 
     @property
     @pulumi.getter
     def status(self) -> str:
         """
-        The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
+        The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
         """
         return pulumi.get(self, "status")
 
@@ -3236,11 +3284,17 @@ class GetListenersListenerAclConfigAclRelationResult(dict):
 class GetListenersListenerCertificateResult(dict):
     def __init__(__self__, *,
                  certificate_id: str):
+        """
+        :param str certificate_id: The ID of the Certificate.
+        """
         pulumi.set(__self__, "certificate_id", certificate_id)
 
     @property
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> str:
+        """
+        The ID of the Certificate.
+        """
         return pulumi.get(self, "certificate_id")
 
 
@@ -3249,17 +3303,27 @@ class GetListenersListenerDefaultActionResult(dict):
     def __init__(__self__, *,
                  forward_group_configs: Sequence['outputs.GetListenersListenerDefaultActionForwardGroupConfigResult'],
                  type: str):
+        """
+        :param Sequence['GetListenersListenerDefaultActionForwardGroupConfigArgs'] forward_group_configs: The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
+        :param str type: Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
+        """
         pulumi.set(__self__, "forward_group_configs", forward_group_configs)
         pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="forwardGroupConfigs")
     def forward_group_configs(self) -> Sequence['outputs.GetListenersListenerDefaultActionForwardGroupConfigResult']:
+        """
+        The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
+        """
         return pulumi.get(self, "forward_group_configs")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
+        """
         return pulumi.get(self, "type")
 
 
@@ -3267,11 +3331,17 @@ class GetListenersListenerDefaultActionResult(dict):
 class GetListenersListenerDefaultActionForwardGroupConfigResult(dict):
     def __init__(__self__, *,
                  server_group_tuples: Sequence['outputs.GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleResult']):
+        """
+        :param Sequence['GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArgs'] server_group_tuples: The destination server group to which requests are forwarded.
+        """
         pulumi.set(__self__, "server_group_tuples", server_group_tuples)
 
     @property
     @pulumi.getter(name="serverGroupTuples")
     def server_group_tuples(self) -> Sequence['outputs.GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleResult']:
+        """
+        The destination server group to which requests are forwarded.
+        """
         return pulumi.get(self, "server_group_tuples")
 
 
@@ -3279,11 +3349,17 @@ class GetListenersListenerDefaultActionForwardGroupConfigResult(dict):
 class GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleResult(dict):
     def __init__(__self__, *,
                  server_group_id: str):
+        """
+        :param str server_group_id: The ID of the destination server group to which requests are forwarded.
+        """
         pulumi.set(__self__, "server_group_id", server_group_id)
 
     @property
     @pulumi.getter(name="serverGroupId")
     def server_group_id(self) -> str:
+        """
+        The ID of the destination server group to which requests are forwarded.
+        """
         return pulumi.get(self, "server_group_id")
 
 
@@ -3322,6 +3398,21 @@ class GetListenersListenerXforwardedForConfigResult(dict):
                  xforwardedforprotoenabled: bool,
                  xforwardedforslbidenabled: bool,
                  xforwardedforslbportenabled: bool):
+        """
+        :param str xforwardedforclientcert_issuerdnalias: The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+        :param bool xforwardedforclientcert_issuerdnenabled: Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+        :param str xforwardedforclientcertclientverifyalias: The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        :param bool xforwardedforclientcertclientverifyenabled: Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+        :param str xforwardedforclientcertfingerprintalias: The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        :param bool xforwardedforclientcertfingerprintenabled: Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+        :param str xforwardedforclientcertsubjectdnalias: The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        :param bool xforwardedforclientcertsubjectdnenabled: Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+        :param bool xforwardedforclientsrcportenabled: Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+        :param bool xforwardedforenabled: Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
+        :param bool xforwardedforprotoenabled: Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+        :param bool xforwardedforslbidenabled: Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
+        :param bool xforwardedforslbportenabled: Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+        """
         pulumi.set(__self__, "xforwardedforclientcert_issuerdnalias", xforwardedforclientcert_issuerdnalias)
         pulumi.set(__self__, "xforwardedforclientcert_issuerdnenabled", xforwardedforclientcert_issuerdnenabled)
         pulumi.set(__self__, "xforwardedforclientcertclientverifyalias", xforwardedforclientcertclientverifyalias)
@@ -3339,66 +3430,105 @@ class GetListenersListenerXforwardedForConfigResult(dict):
     @property
     @pulumi.getter(name="xforwardedforclientcertIssuerdnalias")
     def xforwardedforclientcert_issuerdnalias(self) -> str:
+        """
+        The Custom Header Field Names Only When `xforwardedforclientcert_issuerdnenabled`, Which Evaluates to True When the Entry into Force of.
+        """
         return pulumi.get(self, "xforwardedforclientcert_issuerdnalias")
 
     @property
     @pulumi.getter(name="xforwardedforclientcertIssuerdnenabled")
     def xforwardedforclientcert_issuerdnenabled(self) -> bool:
+        """
+        Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
+        """
         return pulumi.get(self, "xforwardedforclientcert_issuerdnenabled")
 
     @property
     @pulumi.getter
     def xforwardedforclientcertclientverifyalias(self) -> str:
+        """
+        The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        """
         return pulumi.get(self, "xforwardedforclientcertclientverifyalias")
 
     @property
     @pulumi.getter
     def xforwardedforclientcertclientverifyenabled(self) -> bool:
+        """
+        Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
+        """
         return pulumi.get(self, "xforwardedforclientcertclientverifyenabled")
 
     @property
     @pulumi.getter
     def xforwardedforclientcertfingerprintalias(self) -> str:
+        """
+        The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        """
         return pulumi.get(self, "xforwardedforclientcertfingerprintalias")
 
     @property
     @pulumi.getter
     def xforwardedforclientcertfingerprintenabled(self) -> bool:
+        """
+        Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
+        """
         return pulumi.get(self, "xforwardedforclientcertfingerprintenabled")
 
     @property
     @pulumi.getter
     def xforwardedforclientcertsubjectdnalias(self) -> str:
+        """
+        The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
+        """
         return pulumi.get(self, "xforwardedforclientcertsubjectdnalias")
 
     @property
     @pulumi.getter
     def xforwardedforclientcertsubjectdnenabled(self) -> bool:
+        """
+        Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
+        """
         return pulumi.get(self, "xforwardedforclientcertsubjectdnenabled")
 
     @property
     @pulumi.getter
     def xforwardedforclientsrcportenabled(self) -> bool:
+        """
+        Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
+        """
         return pulumi.get(self, "xforwardedforclientsrcportenabled")
 
     @property
     @pulumi.getter
     def xforwardedforenabled(self) -> bool:
+        """
+        Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
+        """
         return pulumi.get(self, "xforwardedforenabled")
 
     @property
     @pulumi.getter
     def xforwardedforprotoenabled(self) -> bool:
+        """
+        Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
+        """
         return pulumi.get(self, "xforwardedforprotoenabled")
 
     @property
     @pulumi.getter
     def xforwardedforslbidenabled(self) -> bool:
+        """
+        Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
+        """
         return pulumi.get(self, "xforwardedforslbidenabled")
 
     @property
     @pulumi.getter
     def xforwardedforslbportenabled(self) -> bool:
+        """
+        Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
+        """
         return pulumi.get(self, "xforwardedforslbportenabled")
 
 
@@ -3654,17 +3784,27 @@ class GetLoadBalancersBalancerAccessLogConfigResult(dict):
     def __init__(__self__, *,
                  log_project: str,
                  log_store: str):
+        """
+        :param str log_project: The log service that access logs are shipped to.
+        :param str log_store: The logstore that access logs are shipped to.
+        """
         pulumi.set(__self__, "log_project", log_project)
         pulumi.set(__self__, "log_store", log_store)
 
     @property
     @pulumi.getter(name="logProject")
     def log_project(self) -> str:
+        """
+        The log service that access logs are shipped to.
+        """
         return pulumi.get(self, "log_project")
 
     @property
     @pulumi.getter(name="logStore")
     def log_store(self) -> str:
+        """
+        The logstore that access logs are shipped to.
+        """
         return pulumi.get(self, "log_store")
 
 
@@ -3673,17 +3813,27 @@ class GetLoadBalancersBalancerDeletionProtectionConfigResult(dict):
     def __init__(__self__, *,
                  enabled: bool,
                  enabled_time: str):
+        """
+        :param bool enabled: Remove the Protection Status.
+        :param str enabled_time: Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
+        """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "enabled_time", enabled_time)
 
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        Remove the Protection Status.
+        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="enabledTime")
     def enabled_time(self) -> str:
+        """
+        Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
+        """
         return pulumi.get(self, "enabled_time")
 
 
@@ -3691,11 +3841,17 @@ class GetLoadBalancersBalancerDeletionProtectionConfigResult(dict):
 class GetLoadBalancersBalancerLoadBalancerBillingConfigResult(dict):
     def __init__(__self__, *,
                  pay_type: str):
+        """
+        :param str pay_type: The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+        """
         pulumi.set(__self__, "pay_type", pay_type)
 
     @property
     @pulumi.getter(name="payType")
     def pay_type(self) -> str:
+        """
+        The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+        """
         return pulumi.get(self, "pay_type")
 
 
@@ -3704,17 +3860,27 @@ class GetLoadBalancersBalancerLoadBalancerOperationLockResult(dict):
     def __init__(__self__, *,
                  lock_reason: str,
                  lock_type: str):
+        """
+        :param str lock_reason: The Locking of the Reasons.
+        :param str lock_type: The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+        """
         pulumi.set(__self__, "lock_reason", lock_reason)
         pulumi.set(__self__, "lock_type", lock_type)
 
     @property
     @pulumi.getter(name="lockReason")
     def lock_reason(self) -> str:
+        """
+        The Locking of the Reasons.
+        """
         return pulumi.get(self, "lock_reason")
 
     @property
     @pulumi.getter(name="lockType")
     def lock_type(self) -> str:
+        """
+        The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
+        """
         return pulumi.get(self, "lock_type")
 
 
@@ -3724,7 +3890,10 @@ class GetLoadBalancersBalancerModificationProtectionConfigResult(dict):
                  reason: str,
                  status: str):
         """
-        :param str status: The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        :param str reason: The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+        :param str status: Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+               * `NonProtection` - disables the configuration read-only mode. After you disable the configuration read-only mode, you cannot set the ModificationProtectionReason parameter. If the parameter is set, the value is cleared.
+               * `ConsoleProtection` - enables the configuration read-only mode. After you enable the configuration read-only mode, you can set the ModificationProtectionReason parameter.
         """
         pulumi.set(__self__, "reason", reason)
         pulumi.set(__self__, "status", status)
@@ -3732,13 +3901,18 @@ class GetLoadBalancersBalancerModificationProtectionConfigResult(dict):
     @property
     @pulumi.getter
     def reason(self) -> str:
+        """
+        The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
+        """
         return pulumi.get(self, "reason")
 
     @property
     @pulumi.getter
     def status(self) -> str:
         """
-        The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+        * `NonProtection` - disables the configuration read-only mode. After you disable the configuration read-only mode, you cannot set the ModificationProtectionReason parameter. If the parameter is set, the value is cleared.
+        * `ConsoleProtection` - enables the configuration read-only mode. After you enable the configuration read-only mode, you can set the ModificationProtectionReason parameter.
         """
         return pulumi.get(self, "status")
 
@@ -3750,7 +3924,8 @@ class GetLoadBalancersBalancerZoneMappingResult(dict):
                  vswitch_id: str,
                  zone_id: str):
         """
-        :param str zone_id: The zone ID of the resource.
+        :param str vswitch_id: The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        :param str zone_id: The ID of the zone to which the ALB instance belongs.
         """
         pulumi.set(__self__, "load_balancer_addresses", load_balancer_addresses)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
@@ -3764,13 +3939,16 @@ class GetLoadBalancersBalancerZoneMappingResult(dict):
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
+        """
+        The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        """
         return pulumi.get(self, "vswitch_id")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-        The zone ID of the resource.
+        The ID of the zone to which the ALB instance belongs.
         """
         return pulumi.get(self, "zone_id")
 

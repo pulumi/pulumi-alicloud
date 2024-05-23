@@ -20,6 +20,8 @@ namespace Pulumi.AliCloud.Dns.Inputs
 
         /// <summary>
         /// The source region of the address. expressed as a JSON string. The structure is as follows:
+        /// * `LineCodes`: List of home lineCodes.
+        /// * `lineCodeRectifyType`: The rectification type of the line code. Default value: `AUTO`. Valid values: `NO_NEED`: no need for rectification. `RECTIFIED`: rectified. `AUTO`: automatic rectification.
         /// </summary>
         [Input("attributeInfo", required: true)]
         public Input<string> AttributeInfo { get; set; } = null!;

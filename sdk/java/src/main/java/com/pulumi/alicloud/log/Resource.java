@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Resource("example", ResourceArgs.builder()        
+ *         var example = new Resource("example", ResourceArgs.builder()
  *             .type("userdefine")
  *             .name("user.tf.resource")
  *             .description("user tf resource desc")

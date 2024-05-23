@@ -67,11 +67,11 @@ export interface GetNetworkAclsArgs {
      */
     resourceId?: string;
     /**
-     * The type of the associated resource.
+     * The type of the associated resource. Valid values `VSwitch`. `resourceType` and `resourceId` need to be specified at the same time to take effect.
      */
     resourceType?: string;
     /**
-     * The state of the network ACL.
+     * The state of the network ACL. Valid values: `Available` and `Modifying`.
      */
     status?: string;
     /**
@@ -148,11 +148,11 @@ export interface GetNetworkAclsOutputArgs {
      */
     resourceId?: pulumi.Input<string>;
     /**
-     * The type of the associated resource.
+     * The type of the associated resource. Valid values `VSwitch`. `resourceType` and `resourceId` need to be specified at the same time to take effect.
      */
     resourceType?: pulumi.Input<string>;
     /**
-     * The state of the network ACL.
+     * The state of the network ACL. Valid values: `Available` and `Modifying`.
      */
     status?: pulumi.Input<string>;
     /**

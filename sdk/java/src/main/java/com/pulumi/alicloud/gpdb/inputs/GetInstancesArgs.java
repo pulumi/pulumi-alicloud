@@ -184,30 +184,22 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * The tags of the instance.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
-    /**
-     * @return The tags of the instance.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
     /**
-     * The vswitch id.
+     * Used to retrieve instances belong to specified `vswitch` resources.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The vswitch id.
+     * @return Used to retrieve instances belong to specified `vswitch` resources.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -491,29 +483,17 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
             return status(Output.of(status));
         }
 
-        /**
-         * @param tags The tags of the instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Output<Map<String,Object>> tags) {
             $.tags = tags;
             return this;
         }
 
-        /**
-         * @param tags The tags of the instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
         }
 
         /**
-         * @param vswitchId The vswitch id.
+         * @param vswitchId Used to retrieve instances belong to specified `vswitch` resources.
          * 
          * @return builder
          * 
@@ -524,7 +504,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vswitchId The vswitch id.
+         * @param vswitchId Used to retrieve instances belong to specified `vswitch` resources.
          * 
          * @return builder
          * 

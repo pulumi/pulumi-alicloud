@@ -55,12 +55,9 @@ export interface GetSubscriptionJobsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+     * The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
      */
     status?: string;
-    /**
-     * The tag of the resource.
-     */
     tags?: {[key: string]: any};
 }
 
@@ -120,11 +117,8 @@ export interface GetSubscriptionJobsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
+     * The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
      */
     status?: pulumi.Input<string>;
-    /**
-     * The tag of the resource.
-     */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

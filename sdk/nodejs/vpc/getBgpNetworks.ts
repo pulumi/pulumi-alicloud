@@ -58,11 +58,11 @@ export interface GetBgpNetworksArgs {
      */
     outputFile?: string;
     /**
-     * The ID of the vRouter.
+     * The ID of the router to which the route table belongs.
      */
     routerId?: string;
     /**
-     * The state of the advertised BGP network.
+     * The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
      */
     status?: string;
 }
@@ -125,11 +125,11 @@ export interface GetBgpNetworksOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of the vRouter.
+     * The ID of the router to which the route table belongs.
      */
     routerId?: pulumi.Input<string>;
     /**
-     * The state of the advertised BGP network.
+     * The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
      */
     status?: pulumi.Input<string>;
 }

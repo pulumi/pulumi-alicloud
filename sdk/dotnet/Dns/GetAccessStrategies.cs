@@ -136,7 +136,9 @@ namespace Pulumi.AliCloud.Dns
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The type of the access policy.
+        /// The type of the access policy. Valid values:
+        /// - `GEO`: based on geographic location.
+        /// - `LATENCY`: Based on delay.
         /// </summary>
         [Input("strategyMode", required: true)]
         public string StrategyMode { get; set; } = null!;
@@ -192,7 +194,9 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The type of the access policy.
+        /// The type of the access policy. Valid values:
+        /// - `GEO`: based on geographic location.
+        /// - `LATENCY`: Based on delay.
         /// </summary>
         [Input("strategyMode", required: true)]
         public Input<string> StrategyMode { get; set; } = null!;

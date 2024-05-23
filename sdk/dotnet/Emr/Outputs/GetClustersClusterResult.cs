@@ -42,11 +42,11 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly bool BootstrapFailed;
         /// <summary>
-        /// The ID of the associated cluster.
+        /// The first ID of the resource.
         /// </summary>
         public readonly string ClusterId;
         /// <summary>
-        /// The name of the associated cluster.
+        /// The ClusterName.
         /// </summary>
         public readonly string ClusterName;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly string CreateResource;
         /// <summary>
-        /// Creation time.
+        /// The creation time of the resource.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly bool EasEnable;
         /// <summary>
-        /// Timeout time.
+        /// The expiration time of the cluster.
         /// </summary>
         public readonly string ExpiredTime;
         /// <summary>
@@ -159,9 +159,6 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, object> Tags;
-        /// <summary>
-        /// Disk type.
-        /// </summary>
         public readonly string Type;
         /// <summary>
         /// The EMR permission name used.

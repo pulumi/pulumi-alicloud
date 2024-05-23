@@ -69,19 +69,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
@@ -92,14 +92,14 @@ import javax.annotation.Nullable;
  *             .owners("system")
  *             .build());
  * 
- *         var template = new EcsLaunchTemplate("template", EcsLaunchTemplateArgs.builder()        
+ *         var template = new EcsLaunchTemplate("template", EcsLaunchTemplateArgs.builder()
  *             .name(name)
  *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
  *             .instanceType("ecs.n1.tiny")
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .build());
  * 
- *         var defaultAutoProvisioningGroup = new AutoProvisioningGroup("defaultAutoProvisioningGroup", AutoProvisioningGroupArgs.builder()        
+ *         var defaultAutoProvisioningGroup = new AutoProvisioningGroup("defaultAutoProvisioningGroup", AutoProvisioningGroupArgs.builder()
  *             .launchTemplateId(template.id())
  *             .totalTargetCapacity("4")
  *             .payAsYouGoTargetCapacity("1")

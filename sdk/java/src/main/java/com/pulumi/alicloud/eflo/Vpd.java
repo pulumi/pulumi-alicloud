@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-example");
  *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultVpd = new Vpd("defaultVpd", VpdArgs.builder()        
+ *         var defaultVpd = new Vpd("defaultVpd", VpdArgs.builder()
  *             .cidr("10.0.0.0/8")
  *             .vpdName(name)
  *             .resourceGroupId(default_.groups()[0].id())

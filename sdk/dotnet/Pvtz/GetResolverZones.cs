@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Pvtz
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the Zone.
+        /// The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Pvtz
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the Zone.
+        /// The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

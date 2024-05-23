@@ -251,15 +251,15 @@ func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getClusters.
 type GetClustersArgs struct {
-	// The name of the associated cluster.
+	// The cluster name.
 	ClusterName *string `pulumi:"clusterName"`
 	// The cluster type list.
 	ClusterTypeLists []string `pulumi:"clusterTypeLists"`
-	// How to create a cluster.
+	// How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
 	CreateType *string `pulumi:"createType"`
 	// The default status.
 	DefaultStatus *bool `pulumi:"defaultStatus"`
-	// The hosting type of the cluster.
+	// The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
 	DepositType *string `pulumi:"depositType"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
@@ -267,7 +267,7 @@ type GetClustersArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The is desc.
 	IsDesc *bool `pulumi:"isDesc"`
-	// The host type of the cluster. The default is ECS.
+	// The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
 	MachineType *string `pulumi:"machineType"`
 	// A regex string to filter results by Cluster name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -323,15 +323,15 @@ func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...
 
 // A collection of arguments for invoking getClusters.
 type GetClustersOutputArgs struct {
-	// The name of the associated cluster.
+	// The cluster name.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
 	// The cluster type list.
 	ClusterTypeLists pulumi.StringArrayInput `pulumi:"clusterTypeLists"`
-	// How to create a cluster.
+	// How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
 	CreateType pulumi.StringPtrInput `pulumi:"createType"`
 	// The default status.
 	DefaultStatus pulumi.BoolPtrInput `pulumi:"defaultStatus"`
-	// The hosting type of the cluster.
+	// The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
 	DepositType pulumi.StringPtrInput `pulumi:"depositType"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
@@ -339,7 +339,7 @@ type GetClustersOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The is desc.
 	IsDesc pulumi.BoolPtrInput `pulumi:"isDesc"`
-	// The host type of the cluster. The default is ECS.
+	// The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// A regex string to filter results by Cluster name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`

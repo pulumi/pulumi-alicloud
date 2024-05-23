@@ -478,6 +478,14 @@ class GetAdConnectorDirectoriesDirectoryAdConnectorResult(dict):
                  specification: str,
                  trust_key: str,
                  vswitch_id: str):
+        """
+        :param str ad_connector_address: The address of AD connector.
+        :param str connector_status: The status of connector.
+        :param str network_interface_id: The ID of the network interface.
+        :param str specification: The AD Connector specifications.
+        :param str trust_key: The AD Connector control trust password.
+        :param str vswitch_id: The ID of VSwitch.
+        """
         pulumi.set(__self__, "ad_connector_address", ad_connector_address)
         pulumi.set(__self__, "connector_status", connector_status)
         pulumi.set(__self__, "network_interface_id", network_interface_id)
@@ -488,31 +496,49 @@ class GetAdConnectorDirectoriesDirectoryAdConnectorResult(dict):
     @property
     @pulumi.getter(name="adConnectorAddress")
     def ad_connector_address(self) -> str:
+        """
+        The address of AD connector.
+        """
         return pulumi.get(self, "ad_connector_address")
 
     @property
     @pulumi.getter(name="connectorStatus")
     def connector_status(self) -> str:
+        """
+        The status of connector.
+        """
         return pulumi.get(self, "connector_status")
 
     @property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> str:
+        """
+        The ID of the network interface.
+        """
         return pulumi.get(self, "network_interface_id")
 
     @property
     @pulumi.getter
     def specification(self) -> str:
+        """
+        The AD Connector specifications.
+        """
         return pulumi.get(self, "specification")
 
     @property
     @pulumi.getter(name="trustKey")
     def trust_key(self) -> str:
+        """
+        The AD Connector control trust password.
+        """
         return pulumi.get(self, "trust_key")
 
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
+        """
+        The ID of VSwitch.
+        """
         return pulumi.get(self, "vswitch_id")
 
 
@@ -1079,6 +1105,12 @@ class GetBundlesBundleDesktopTypeAttributeResult(dict):
                  gpu_count: str,
                  gpu_spec: str,
                  memory_size: str):
+        """
+        :param int cpu_count: The cpu count attribute of the bundle.
+        :param str gpu_count: The gpu count attribute of the bundle.
+        :param str gpu_spec: The gpu spec attribute of the bundle.
+        :param str memory_size: The memory size attribute of the bundle.
+        """
         pulumi.set(__self__, "cpu_count", cpu_count)
         pulumi.set(__self__, "gpu_count", gpu_count)
         pulumi.set(__self__, "gpu_spec", gpu_spec)
@@ -1087,21 +1119,33 @@ class GetBundlesBundleDesktopTypeAttributeResult(dict):
     @property
     @pulumi.getter(name="cpuCount")
     def cpu_count(self) -> int:
+        """
+        The cpu count attribute of the bundle.
+        """
         return pulumi.get(self, "cpu_count")
 
     @property
     @pulumi.getter(name="gpuCount")
     def gpu_count(self) -> str:
+        """
+        The gpu count attribute of the bundle.
+        """
         return pulumi.get(self, "gpu_count")
 
     @property
     @pulumi.getter(name="gpuSpec")
     def gpu_spec(self) -> str:
+        """
+        The gpu spec attribute of the bundle.
+        """
         return pulumi.get(self, "gpu_spec")
 
     @property
     @pulumi.getter(name="memorySize")
     def memory_size(self) -> str:
+        """
+        The memory size attribute of the bundle.
+        """
         return pulumi.get(self, "memory_size")
 
 
@@ -1110,17 +1154,27 @@ class GetBundlesBundleDiskResult(dict):
     def __init__(__self__, *,
                  disk_size: str,
                  disk_type: str):
+        """
+        :param str disk_size: The disk size attribute of the bundle.
+        :param str disk_type: The disk type attribute of the bundle.
+        """
         pulumi.set(__self__, "disk_size", disk_size)
         pulumi.set(__self__, "disk_type", disk_type)
 
     @property
     @pulumi.getter(name="diskSize")
     def disk_size(self) -> str:
+        """
+        The disk size attribute of the bundle.
+        """
         return pulumi.get(self, "disk_size")
 
     @property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
+        """
+        The disk type attribute of the bundle.
+        """
         return pulumi.get(self, "disk_type")
 
 
@@ -2421,8 +2475,8 @@ class GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult(dict):
                  cidr_ip: str,
                  description: str):
         """
-        :param str cidr_ip: The cidrip of security rules.
-        :param str description: The description of security rules.
+        :param str cidr_ip: The cidrip of authorize access rule..
+        :param str description: The description of authorize access rule.
         """
         pulumi.set(__self__, "cidr_ip", cidr_ip)
         pulumi.set(__self__, "description", description)
@@ -2431,7 +2485,7 @@ class GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult(dict):
     @pulumi.getter(name="cidrIp")
     def cidr_ip(self) -> str:
         """
-        The cidrip of security rules.
+        The cidrip of authorize access rule..
         """
         return pulumi.get(self, "cidr_ip")
 
@@ -2439,7 +2493,7 @@ class GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        The description of security rules.
+        The description of authorize access rule.
         """
         return pulumi.get(self, "description")
 

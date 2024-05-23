@@ -13,10 +13,25 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class GetGreyTagRoutesRouteScRuleItemResult
     {
+        /// <summary>
+        /// The comparison operator.
+        /// </summary>
         public readonly string Cond;
+        /// <summary>
+        /// The name of the parameter.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The operator.
+        /// </summary>
         public readonly string Operator;
+        /// <summary>
+        /// The Compare types.
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// The value of the parameter.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

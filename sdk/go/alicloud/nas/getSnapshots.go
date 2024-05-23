@@ -70,7 +70,7 @@ type GetSnapshotsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The name of the snapshot.
 	SnapshotName *string `pulumi:"snapshotName"`
-	// The status of the snapshot.
+	// Status. Valid values: `accomplished`, `failed`, `progressing`.
 	Status *string `pulumi:"status"`
 }
 
@@ -113,7 +113,7 @@ type GetSnapshotsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of the snapshot.
 	SnapshotName pulumi.StringPtrInput `pulumi:"snapshotName"`
-	// The status of the snapshot.
+	// Status. Valid values: `accomplished`, `failed`, `progressing`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

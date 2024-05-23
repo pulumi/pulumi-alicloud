@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetContainerGroupsGroupContainerResult> Containers;
         /// <summary>
-        /// The amount of CPU resources allocated to the container.
+        /// The amount of CPU resources allocated to the container group.
         /// </summary>
         public readonly double Cpu;
         public readonly int Discount;

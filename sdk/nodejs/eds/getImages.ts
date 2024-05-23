@@ -102,7 +102,7 @@ export interface GetImagesArgs {
      */
     nameRegex?: string;
     /**
-     * The os type of the image.
+     * The operating system type of the image. Valid values: `Windows` and `Linux`.
      */
     osType?: string;
     /**
@@ -218,7 +218,7 @@ export interface GetImagesOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     /**
-     * The os type of the image.
+     * The operating system type of the image. Valid values: `Windows` and `Linux`.
      */
     osType?: pulumi.Input<string>;
     /**

@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new ImageImport("this", ImageImportArgs.builder()        
+ *         var this_ = new ImageImport("this", ImageImportArgs.builder()
  *             .description("test import image")
  *             .architecture("x86_64")
  *             .imageName("test-import-image")

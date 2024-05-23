@@ -17,31 +17,23 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetDesktopsArgs Empty = new GetDesktopsArgs();
 
     /**
-     * The desktop name of the Desktop.
+     * The desktop name.
      * 
      */
     @Import(name="desktopName")
     private @Nullable Output<String> desktopName;
 
     /**
-     * @return The desktop name of the Desktop.
+     * @return The desktop name.
      * 
      */
     public Optional<Output<String>> desktopName() {
         return Optional.ofNullable(this.desktopName);
     }
 
-    /**
-     * The desktop end user id of the Desktop.
-     * 
-     */
     @Import(name="endUserIds")
     private @Nullable Output<List<String>> endUserIds;
 
-    /**
-     * @return The desktop end user id of the Desktop.
-     * 
-     */
     public Optional<Output<List<String>>> endUserIds() {
         return Optional.ofNullable(this.endUserIds);
     }
@@ -168,7 +160,7 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param desktopName The desktop name of the Desktop.
+         * @param desktopName The desktop name.
          * 
          * @return builder
          * 
@@ -179,7 +171,7 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param desktopName The desktop name of the Desktop.
+         * @param desktopName The desktop name.
          * 
          * @return builder
          * 
@@ -188,33 +180,15 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
             return desktopName(Output.of(desktopName));
         }
 
-        /**
-         * @param endUserIds The desktop end user id of the Desktop.
-         * 
-         * @return builder
-         * 
-         */
         public Builder endUserIds(@Nullable Output<List<String>> endUserIds) {
             $.endUserIds = endUserIds;
             return this;
         }
 
-        /**
-         * @param endUserIds The desktop end user id of the Desktop.
-         * 
-         * @return builder
-         * 
-         */
         public Builder endUserIds(List<String> endUserIds) {
             return endUserIds(Output.of(endUserIds));
         }
 
-        /**
-         * @param endUserIds The desktop end user id of the Desktop.
-         * 
-         * @return builder
-         * 
-         */
         public Builder endUserIds(String... endUserIds) {
             return endUserIds(List.of(endUserIds));
         }

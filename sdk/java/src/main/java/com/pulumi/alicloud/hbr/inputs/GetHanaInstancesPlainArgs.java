@@ -76,14 +76,22 @@ public final class GetHanaInstancesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The status of the SAP HANA instance.
+     * The status of the SAP HANA instance. Valid values:
+     * - `INITIALIZING`: The instance is being initialized.
+     * - `INITIALIZED`: The instance is registered.
+     * - `INVALID_HANA_NODE`: The instance is invalid.
+     * - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the SAP HANA instance.
+     * @return The status of the SAP HANA instance. Valid values:
+     * - `INITIALIZING`: The instance is being initialized.
+     * - `INITIALIZED`: The instance is registered.
+     * - `INVALID_HANA_NODE`: The instance is invalid.
+     * - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
      * 
      */
     public Optional<String> status() {
@@ -91,14 +99,14 @@ public final class GetHanaInstancesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The ID of the backup vault.
+     * The id of the vault.
      * 
      */
     @Import(name="vaultId")
     private @Nullable String vaultId;
 
     /**
-     * @return The ID of the backup vault.
+     * @return The id of the vault.
      * 
      */
     public Optional<String> vaultId() {
@@ -189,7 +197,11 @@ public final class GetHanaInstancesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param status The status of the SAP HANA instance.
+         * @param status The status of the SAP HANA instance. Valid values:
+         * - `INITIALIZING`: The instance is being initialized.
+         * - `INITIALIZED`: The instance is registered.
+         * - `INVALID_HANA_NODE`: The instance is invalid.
+         * - `INITIALIZE_FAILED`: The client fails to be installed on the instance.
          * 
          * @return builder
          * 
@@ -200,7 +212,7 @@ public final class GetHanaInstancesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param vaultId The ID of the backup vault.
+         * @param vaultId The id of the vault.
          * 
          * @return builder
          * 

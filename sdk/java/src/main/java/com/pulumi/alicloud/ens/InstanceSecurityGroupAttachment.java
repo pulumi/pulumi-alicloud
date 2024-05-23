@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var default_ = new Instance("default", InstanceArgs.builder()        
+ *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .systemDisk(InstanceSystemDiskArgs.builder()
  *                 .size("20")
  *                 .build())
@@ -71,12 +71,12 @@ import javax.annotation.Nullable;
  *             .periodUnit("Month")
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .description("InstanceSecurityGroupAttachment_Description")
  *             .securityGroupName(name)
  *             .build());
  * 
- *         var defaultInstanceSecurityGroupAttachment = new InstanceSecurityGroupAttachment("defaultInstanceSecurityGroupAttachment", InstanceSecurityGroupAttachmentArgs.builder()        
+ *         var defaultInstanceSecurityGroupAttachment = new InstanceSecurityGroupAttachment("defaultInstanceSecurityGroupAttachment", InstanceSecurityGroupAttachmentArgs.builder()
  *             .instanceId(default_.id())
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .build());

@@ -104,6 +104,14 @@ class NodePoolArgs:
         :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: The custom image ID. The system-provided image is used by default.
         :param pulumi.Input[str] image_type: The operating system image type and the `platform` parameter can be selected from the following values:
+               - `AliyunLinux` : Alinux2 image.
+               - `AliyunLinux3` : Alinux3 image.
+               - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+               - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+               - `CentOS` : CentOS image.
+               - `Windows` : Windows image.
+               - `WindowsCore` : WindowsCore image.
+               - `ContainerOS` : container-optimized image.
         :param pulumi.Input[bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instances: The instance list. Add existing nodes under the same cluster VPC to the node pool.
@@ -148,6 +156,9 @@ class NodePoolArgs:
         :param pulumi.Input[bool] spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
         :param pulumi.Input[str] spot_strategy: The preemptible instance type. Value:
+               - `NoSpot` : Non-preemptible instance.
+               - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+               - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         :param pulumi.Input[bool] system_disk_bursting_enabled: Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
@@ -155,6 +166,10 @@ class NodePoolArgs:
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
         :param pulumi.Input[str] system_disk_kms_key: The ID of the KMS key used by the system disk.
         :param pulumi.Input[str] system_disk_performance_level: The system disk performance of the node takes effect only for the ESSD disk.
+               - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+               - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+               - `PL2`: highest random read/write IOPS 100000 for a single disk.
+               - `PL3`: maximum random read/write IOPS 1 million for a single disk.
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
@@ -496,6 +511,14 @@ class NodePoolArgs:
     def image_type(self) -> Optional[pulumi.Input[str]]:
         """
         The operating system image type and the `platform` parameter can be selected from the following values:
+        - `AliyunLinux` : Alinux2 image.
+        - `AliyunLinux3` : Alinux3 image.
+        - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+        - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+        - `CentOS` : CentOS image.
+        - `Windows` : Windows image.
+        - `WindowsCore` : WindowsCore image.
+        - `ContainerOS` : container-optimized image.
         """
         return pulumi.get(self, "image_type")
 
@@ -992,6 +1015,9 @@ class NodePoolArgs:
     def spot_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The preemptible instance type. Value:
+        - `NoSpot` : Non-preemptible instance.
+        - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+        - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -1076,6 +1102,10 @@ class NodePoolArgs:
     def system_disk_performance_level(self) -> Optional[pulumi.Input[str]]:
         """
         The system disk performance of the node takes effect only for the ESSD disk.
+        - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+        - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+        - `PL2`: highest random read/write IOPS 100000 for a single disk.
+        - `PL3`: maximum random read/write IOPS 1 million for a single disk.
         """
         return pulumi.get(self, "system_disk_performance_level")
 
@@ -1283,6 +1313,14 @@ class _NodePoolState:
         :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: The custom image ID. The system-provided image is used by default.
         :param pulumi.Input[str] image_type: The operating system image type and the `platform` parameter can be selected from the following values:
+               - `AliyunLinux` : Alinux2 image.
+               - `AliyunLinux3` : Alinux3 image.
+               - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+               - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+               - `CentOS` : CentOS image.
+               - `Windows` : Windows image.
+               - `WindowsCore` : WindowsCore image.
+               - `ContainerOS` : container-optimized image.
         :param pulumi.Input[bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -1330,6 +1368,9 @@ class _NodePoolState:
         :param pulumi.Input[bool] spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]] spot_price_limits: The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
         :param pulumi.Input[str] spot_strategy: The preemptible instance type. Value:
+               - `NoSpot` : Non-preemptible instance.
+               - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+               - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         :param pulumi.Input[bool] system_disk_bursting_enabled: Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
@@ -1337,6 +1378,10 @@ class _NodePoolState:
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
         :param pulumi.Input[str] system_disk_kms_key: The ID of the KMS key used by the system disk.
         :param pulumi.Input[str] system_disk_performance_level: The system disk performance of the node takes effect only for the ESSD disk.
+               - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+               - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+               - `PL2`: highest random read/write IOPS 100000 for a single disk.
+               - `PL3`: maximum random read/write IOPS 1 million for a single disk.
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
@@ -1662,6 +1707,14 @@ class _NodePoolState:
     def image_type(self) -> Optional[pulumi.Input[str]]:
         """
         The operating system image type and the `platform` parameter can be selected from the following values:
+        - `AliyunLinux` : Alinux2 image.
+        - `AliyunLinux3` : Alinux3 image.
+        - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+        - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+        - `CentOS` : CentOS image.
+        - `Windows` : Windows image.
+        - `WindowsCore` : WindowsCore image.
+        - `ContainerOS` : container-optimized image.
         """
         return pulumi.get(self, "image_type")
 
@@ -2194,6 +2247,9 @@ class _NodePoolState:
     def spot_strategy(self) -> Optional[pulumi.Input[str]]:
         """
         The preemptible instance type. Value:
+        - `NoSpot` : Non-preemptible instance.
+        - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+        - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -2278,6 +2334,10 @@ class _NodePoolState:
     def system_disk_performance_level(self) -> Optional[pulumi.Input[str]]:
         """
         The system disk performance of the node takes effect only for the ESSD disk.
+        - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+        - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+        - `PL2`: highest random read/write IOPS 100000 for a single disk.
+        - `PL3`: maximum random read/write IOPS 1 million for a single disk.
         """
         return pulumi.get(self, "system_disk_performance_level")
 
@@ -2511,6 +2571,14 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: The custom image ID. The system-provided image is used by default.
         :param pulumi.Input[str] image_type: The operating system image type and the `platform` parameter can be selected from the following values:
+               - `AliyunLinux` : Alinux2 image.
+               - `AliyunLinux3` : Alinux3 image.
+               - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+               - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+               - `CentOS` : CentOS image.
+               - `Windows` : Windows image.
+               - `WindowsCore` : WindowsCore image.
+               - `ContainerOS` : container-optimized image.
         :param pulumi.Input[bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -2556,6 +2624,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
         :param pulumi.Input[str] spot_strategy: The preemptible instance type. Value:
+               - `NoSpot` : Non-preemptible instance.
+               - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+               - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         :param pulumi.Input[bool] system_disk_bursting_enabled: Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
@@ -2563,6 +2634,10 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
         :param pulumi.Input[str] system_disk_kms_key: The ID of the KMS key used by the system disk.
         :param pulumi.Input[str] system_disk_performance_level: The system disk performance of the node takes effect only for the ESSD disk.
+               - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+               - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+               - `PL2`: highest random read/write IOPS 100000 for a single disk.
+               - `PL3`: maximum random read/write IOPS 1 million for a single disk.
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
@@ -2872,6 +2947,14 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] format_disk: After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
         :param pulumi.Input[str] image_id: The custom image ID. The system-provided image is used by default.
         :param pulumi.Input[str] image_type: The operating system image type and the `platform` parameter can be selected from the following values:
+               - `AliyunLinux` : Alinux2 image.
+               - `AliyunLinux3` : Alinux3 image.
+               - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+               - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+               - `CentOS` : CentOS image.
+               - `Windows` : Windows image.
+               - `WindowsCore` : WindowsCore image.
+               - `ContainerOS` : container-optimized image.
         :param pulumi.Input[bool] install_cloud_monitor: Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: In the node instance specification list, you can select multiple instance specifications as alternatives. When each node is created, it will try to purchase from the first specification until it is created successfully. The final purchased instance specifications may vary with inventory changes.
@@ -2919,6 +3002,9 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolSpotPriceLimitArgs']]]] spot_price_limits: The current single preemptible instance type market price range configuration. See `spot_price_limit` below.
         :param pulumi.Input[str] spot_strategy: The preemptible instance type. Value:
+               - `NoSpot` : Non-preemptible instance.
+               - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+               - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         :param pulumi.Input[bool] system_disk_bursting_enabled: Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] system_disk_categories: The multi-disk categories of the system disk. When a high-priority disk type cannot be used, Auto Scaling automatically tries to create a system disk with the next priority disk category. Valid values: `cloud`: cloud disk. `cloud_efficiency`: a high-efficiency cloud disk. `cloud_ssd`:SSD cloud disk. `cloud_essd`: ESSD cloud disk.
         :param pulumi.Input[str] system_disk_category: The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency`, `cloud_essd` and `cloud_auto`. .
@@ -2926,6 +3012,10 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk. Value range: `true`: encryption. `false`: Do not encrypt.
         :param pulumi.Input[str] system_disk_kms_key: The ID of the KMS key used by the system disk.
         :param pulumi.Input[str] system_disk_performance_level: The system disk performance of the node takes effect only for the ESSD disk.
+               - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+               - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+               - `PL2`: highest random read/write IOPS 100000 for a single disk.
+               - `PL3`: maximum random read/write IOPS 1 million for a single disk.
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
@@ -3120,6 +3210,14 @@ class NodePool(pulumi.CustomResource):
     def image_type(self) -> pulumi.Output[str]:
         """
         The operating system image type and the `platform` parameter can be selected from the following values:
+        - `AliyunLinux` : Alinux2 image.
+        - `AliyunLinux3` : Alinux3 image.
+        - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+        - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+        - `CentOS` : CentOS image.
+        - `Windows` : Windows image.
+        - `WindowsCore` : WindowsCore image.
+        - `ContainerOS` : container-optimized image.
         """
         return pulumi.get(self, "image_type")
 
@@ -3480,6 +3578,9 @@ class NodePool(pulumi.CustomResource):
     def spot_strategy(self) -> pulumi.Output[str]:
         """
         The preemptible instance type. Value:
+        - `NoSpot` : Non-preemptible instance.
+        - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+        - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
         """
         return pulumi.get(self, "spot_strategy")
 
@@ -3536,6 +3637,10 @@ class NodePool(pulumi.CustomResource):
     def system_disk_performance_level(self) -> pulumi.Output[Optional[str]]:
         """
         The system disk performance of the node takes effect only for the ESSD disk.
+        - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+        - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+        - `PL2`: highest random read/write IOPS 100000 for a single disk.
+        - `PL3`: maximum random read/write IOPS 1 million for a single disk.
         """
         return pulumi.get(self, "system_disk_performance_level")
 

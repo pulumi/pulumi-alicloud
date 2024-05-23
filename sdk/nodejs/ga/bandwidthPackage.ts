@@ -126,6 +126,9 @@ export class BandwidthPackage extends pulumi.CustomResource {
     public readonly ratio!: pulumi.Output<number | undefined>;
     /**
      * Whether to renew a bandwidth packet. automatically or not. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     public readonly renewalStatus!: pulumi.Output<string>;
     /**
@@ -267,6 +270,9 @@ export interface BandwidthPackageState {
     ratio?: pulumi.Input<number>;
     /**
      * Whether to renew a bandwidth packet. automatically or not. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     renewalStatus?: pulumi.Input<string>;
     /**
@@ -346,6 +352,9 @@ export interface BandwidthPackageArgs {
     ratio?: pulumi.Input<number>;
     /**
      * Whether to renew a bandwidth packet. automatically or not. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      */
     renewalStatus?: pulumi.Input<string>;
     /**

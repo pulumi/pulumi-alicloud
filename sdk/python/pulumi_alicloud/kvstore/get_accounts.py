@@ -144,7 +144,7 @@ def get_accounts(account_name: Optional[str] = None,
     :param str account_name: The name of the account.
     :param str instance_id: The Id of instance in which account belongs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of account.
+    :param str status: The status of KVStore Account. Valid Values: `"Available` `Unavailable`
     """
     __args__ = dict()
     __args__['accountName'] = account_name
@@ -195,6 +195,6 @@ def get_accounts_output(account_name: Optional[pulumi.Input[Optional[str]]] = No
     :param str account_name: The name of the account.
     :param str instance_id: The Id of instance in which account belongs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of account.
+    :param str status: The status of KVStore Account. Valid Values: `"Available` `Unavailable`
     """
     ...

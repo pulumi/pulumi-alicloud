@@ -13,17 +13,17 @@ import java.util.Objects;
 @CustomType
 public final class GetEcsLaunchTemplatesTemplateDataDisk {
     /**
-     * @return The category of the system disk.
+     * @return The category of the disk.
      * 
      */
     private String category;
     /**
-     * @return Specifies whether to release the system disk when the instance is released.
+     * @return Indicates whether the data disk is released with the instance.
      * 
      */
     private Boolean deleteWithInstance;
     /**
-     * @return System disk description.
+     * @return The description of the data disk.
      * 
      */
     private String description;
@@ -33,17 +33,17 @@ public final class GetEcsLaunchTemplatesTemplateDataDisk {
      */
     private Boolean encrypted;
     /**
-     * @return System disk name.
+     * @return The name of the data disk.
      * 
      */
     private String name;
     /**
-     * @return The performance level of the ESSD used as the system disk.
+     * @return PerformanceLevel.
      * 
      */
     private String performanceLevel;
     /**
-     * @return Size of the system disk, measured in GB.
+     * @return The performance level of the ESSD used as the data disk.
      * 
      */
     private Integer size;
@@ -55,21 +55,21 @@ public final class GetEcsLaunchTemplatesTemplateDataDisk {
 
     private GetEcsLaunchTemplatesTemplateDataDisk() {}
     /**
-     * @return The category of the system disk.
+     * @return The category of the disk.
      * 
      */
     public String category() {
         return this.category;
     }
     /**
-     * @return Specifies whether to release the system disk when the instance is released.
+     * @return Indicates whether the data disk is released with the instance.
      * 
      */
     public Boolean deleteWithInstance() {
         return this.deleteWithInstance;
     }
     /**
-     * @return System disk description.
+     * @return The description of the data disk.
      * 
      */
     public String description() {
@@ -83,21 +83,21 @@ public final class GetEcsLaunchTemplatesTemplateDataDisk {
         return this.encrypted;
     }
     /**
-     * @return System disk name.
+     * @return The name of the data disk.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The performance level of the ESSD used as the system disk.
+     * @return PerformanceLevel.
      * 
      */
     public String performanceLevel() {
         return this.performanceLevel;
     }
     /**
-     * @return Size of the system disk, measured in GB.
+     * @return The performance level of the ESSD used as the data disk.
      * 
      */
     public Integer size() {

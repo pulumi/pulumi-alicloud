@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetContainerGroupsGroupEciSecurityContextSysctl {
     /**
-     * @return The name of the volume.
+     * @return The name of the variable.
      * 
      */
     private String name;
@@ -23,7 +23,7 @@ public final class GetContainerGroupsGroupEciSecurityContextSysctl {
 
     private GetContainerGroupsGroupEciSecurityContextSysctl() {}
     /**
-     * @return The name of the volume.
+     * @return The name of the variable.
      * 
      */
     public String name() {

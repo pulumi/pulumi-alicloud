@@ -151,6 +151,10 @@ type EndpointGroup struct {
 	// The port that is used for health checks.
 	HealthCheckPort pulumi.IntPtrOutput `pulumi:"healthCheckPort"`
 	// The protocol that is used to connect to the targets for health checks. Valid values:
+	// - `TCP` or `tcp`: TCP protocol.
+	// - `HTTP` or `http`: HTTP protocol.
+	// - `HTTPS` or `https`: HTTPS protocol.
+	// > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
 	HealthCheckProtocol pulumi.StringPtrOutput `pulumi:"healthCheckProtocol"`
 	// The ID of the listener that is associated with the endpoint group.
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
@@ -236,6 +240,10 @@ type endpointGroupState struct {
 	// The port that is used for health checks.
 	HealthCheckPort *int `pulumi:"healthCheckPort"`
 	// The protocol that is used to connect to the targets for health checks. Valid values:
+	// - `TCP` or `tcp`: TCP protocol.
+	// - `HTTP` or `http`: HTTP protocol.
+	// - `HTTPS` or `https`: HTTPS protocol.
+	// > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
 	HealthCheckProtocol *string `pulumi:"healthCheckProtocol"`
 	// The ID of the listener that is associated with the endpoint group.
 	ListenerId *string `pulumi:"listenerId"`
@@ -280,6 +288,10 @@ type EndpointGroupState struct {
 	// The port that is used for health checks.
 	HealthCheckPort pulumi.IntPtrInput
 	// The protocol that is used to connect to the targets for health checks. Valid values:
+	// - `TCP` or `tcp`: TCP protocol.
+	// - `HTTP` or `http`: HTTP protocol.
+	// - `HTTPS` or `https`: HTTPS protocol.
+	// > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
 	HealthCheckProtocol pulumi.StringPtrInput
 	// The ID of the listener that is associated with the endpoint group.
 	ListenerId pulumi.StringPtrInput
@@ -326,6 +338,10 @@ type endpointGroupArgs struct {
 	// The port that is used for health checks.
 	HealthCheckPort *int `pulumi:"healthCheckPort"`
 	// The protocol that is used to connect to the targets for health checks. Valid values:
+	// - `TCP` or `tcp`: TCP protocol.
+	// - `HTTP` or `http`: HTTP protocol.
+	// - `HTTPS` or `https`: HTTPS protocol.
+	// > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
 	HealthCheckProtocol *string `pulumi:"healthCheckProtocol"`
 	// The ID of the listener that is associated with the endpoint group.
 	ListenerId string `pulumi:"listenerId"`
@@ -367,6 +383,10 @@ type EndpointGroupArgs struct {
 	// The port that is used for health checks.
 	HealthCheckPort pulumi.IntPtrInput
 	// The protocol that is used to connect to the targets for health checks. Valid values:
+	// - `TCP` or `tcp`: TCP protocol.
+	// - `HTTP` or `http`: HTTP protocol.
+	// - `HTTPS` or `https`: HTTPS protocol.
+	// > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
 	HealthCheckProtocol pulumi.StringPtrInput
 	// The ID of the listener that is associated with the endpoint group.
 	ListenerId pulumi.StringInput
@@ -528,6 +548,10 @@ func (o EndpointGroupOutput) HealthCheckPort() pulumi.IntPtrOutput {
 }
 
 // The protocol that is used to connect to the targets for health checks. Valid values:
+// - `TCP` or `tcp`: TCP protocol.
+// - `HTTP` or `http`: HTTP protocol.
+// - `HTTPS` or `https`: HTTPS protocol.
+// > **NOTE:** From version 1.223.0, `healthCheckProtocol` can be set to `TCP`, `HTTP`, `HTTPS`.
 func (o EndpointGroupOutput) HealthCheckProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointGroup) pulumi.StringPtrOutput { return v.HealthCheckProtocol }).(pulumi.StringPtrOutput)
 }

@@ -118,7 +118,7 @@ def get_endpoint_acl_policies(endpoint_type: Optional[str] = None,
     ```
 
 
-    :param str endpoint_type: The type of endpoint.
+    :param str endpoint_type: The type of endpoint. Valid values: `internet`.
     :param Sequence[str] ids: A list of Endpoint Acl Policy IDs.
     :param str instance_id: The ID of the CR Instance.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -169,7 +169,7 @@ def get_endpoint_acl_policies_output(endpoint_type: Optional[pulumi.Input[str]] 
     ```
 
 
-    :param str endpoint_type: The type of endpoint.
+    :param str endpoint_type: The type of endpoint. Valid values: `internet`.
     :param Sequence[str] ids: A list of Endpoint Acl Policy IDs.
     :param str instance_id: The ID of the CR Instance.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

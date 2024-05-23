@@ -75,31 +75,31 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetZones = NlbFunctions.getZones();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var default1 = new Switch("default1", SwitchArgs.builder()        
+ *         var default1 = new Switch("default1", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.1.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[1].id()))
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()        
+ *         var defaultLoadBalancer = new LoadBalancer("defaultLoadBalancer", LoadBalancerArgs.builder()
  *             .loadBalancerName(name)
  *             .resourceGroupId(default_.ids()[0])
  *             .loadBalancerType("Network")
@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()        
+ *         var defaultServerGroup = new ServerGroup("defaultServerGroup", ServerGroupArgs.builder()
  *             .resourceGroupId(default_.ids()[0])
  *             .serverGroupName(name)
  *             .serverGroupType("Instance")
@@ -151,7 +151,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()        
+ *         var defaultListener = new Listener("defaultListener", ListenerArgs.builder()
  *             .listenerProtocol("TCP")
  *             .listenerPort("80")
  *             .listenerDescription(name)

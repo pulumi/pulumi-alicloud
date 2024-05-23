@@ -159,7 +159,6 @@ def get_ecs_launch_templates(enable_details: Optional[bool] = None,
     :param str name_regex: A regex string to filter results by Launch Template name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str template_resource_group_id: The template resource group id.
-    :param Mapping[str, Any] template_tags: The template tags.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -219,6 +218,5 @@ def get_ecs_launch_templates_output(enable_details: Optional[pulumi.Input[Option
     :param str name_regex: A regex string to filter results by Launch Template name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str template_resource_group_id: The template resource group id.
-    :param Mapping[str, Any] template_tags: The template tags.
     """
     ...

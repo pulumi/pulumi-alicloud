@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .fileSystemType("extreme")
  *             .build());
  * 
- *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()        
+ *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
  *             .fileSystemType("extreme")
  *             .protocolType("NFS")
  *             .zoneId(default_.zones()[0].zoneId())
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .capacity(100)
  *             .build());
  * 
- *         var defaultSnapshot = new Snapshot("defaultSnapshot", SnapshotArgs.builder()        
+ *         var defaultSnapshot = new Snapshot("defaultSnapshot", SnapshotArgs.builder()
  *             .fileSystemId(defaultFileSystem.id())
  *             .description(name)
  *             .retentionDays(20)

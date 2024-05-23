@@ -99,6 +99,11 @@ type SharedResource struct {
 	// The resource share ID of resource manager.
 	ResourceShareId pulumi.StringOutput `pulumi:"resourceShareId"`
 	// The resource type of should shared. Valid values:
+	// - `VSwitch`.
+	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
+	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
+	// - The following types are added after v1.208.0: `KMSInstance`.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 	// The status of the Shared Resource.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -148,6 +153,11 @@ type sharedResourceState struct {
 	// The resource share ID of resource manager.
 	ResourceShareId *string `pulumi:"resourceShareId"`
 	// The resource type of should shared. Valid values:
+	// - `VSwitch`.
+	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
+	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
+	// - The following types are added after v1.208.0: `KMSInstance`.
 	ResourceType *string `pulumi:"resourceType"`
 	// The status of the Shared Resource.
 	Status *string `pulumi:"status"`
@@ -159,6 +169,11 @@ type SharedResourceState struct {
 	// The resource share ID of resource manager.
 	ResourceShareId pulumi.StringPtrInput
 	// The resource type of should shared. Valid values:
+	// - `VSwitch`.
+	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
+	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
+	// - The following types are added after v1.208.0: `KMSInstance`.
 	ResourceType pulumi.StringPtrInput
 	// The status of the Shared Resource.
 	Status pulumi.StringPtrInput
@@ -174,6 +189,11 @@ type sharedResourceArgs struct {
 	// The resource share ID of resource manager.
 	ResourceShareId string `pulumi:"resourceShareId"`
 	// The resource type of should shared. Valid values:
+	// - `VSwitch`.
+	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
+	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
+	// - The following types are added after v1.208.0: `KMSInstance`.
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -184,6 +204,11 @@ type SharedResourceArgs struct {
 	// The resource share ID of resource manager.
 	ResourceShareId pulumi.StringInput
 	// The resource type of should shared. Valid values:
+	// - `VSwitch`.
+	// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+	// - The following types are added after v1.192.0: `PrefixList` and `Image`.
+	// - The following types are added after v1.194.1: `PublicIpAddressPool`.
+	// - The following types are added after v1.208.0: `KMSInstance`.
 	ResourceType pulumi.StringInput
 }
 
@@ -285,6 +310,11 @@ func (o SharedResourceOutput) ResourceShareId() pulumi.StringOutput {
 }
 
 // The resource type of should shared. Valid values:
+// - `VSwitch`.
+// - The following types are added after v1.173.0: `ROSTemplate` and `ServiceCatalogPortfolio`.
+// - The following types are added after v1.192.0: `PrefixList` and `Image`.
+// - The following types are added after v1.194.1: `PublicIpAddressPool`.
+// - The following types are added after v1.208.0: `KMSInstance`.
 func (o SharedResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedResource) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class GetContainerGroupsGroupEciSecurityContextSysctlResult
     {
         /// <summary>
-        /// The name of the volume.
+        /// The name of the variable.
         /// </summary>
         public readonly string Name;
         /// <summary>

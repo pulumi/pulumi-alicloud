@@ -131,6 +131,8 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+        /// - `Immediately` (Default): The configurations are immediately changed.
+        /// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
         /// </summary>
         [Output("effectiveTime")]
         public Output<string?> EffectiveTime { get; private set; } = null!;
@@ -571,6 +573,8 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+        /// - `Immediately` (Default): The configurations are immediately changed.
+        /// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
         /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }
@@ -1004,6 +1008,8 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
+        /// - `Immediately` (Default): The configurations are immediately changed.
+        /// - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintain_start_time` and `maintain_end_time` to change the maintenance window.
         /// </summary>
         [Input("effectiveTime")]
         public Input<string>? EffectiveTime { get; set; }

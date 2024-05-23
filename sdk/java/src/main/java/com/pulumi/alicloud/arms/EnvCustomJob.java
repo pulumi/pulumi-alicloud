@@ -55,26 +55,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         final var name = config.get("name").orElse("terraform-example");
- *         var vpc = new Network("vpc", NetworkArgs.builder()        
+ *         var vpc = new Network("vpc", NetworkArgs.builder()
  *             .description(name)
  *             .cidrBlock("172.16.0.0/12")
  *             .vpcName(name)
  *             .build());
  * 
- *         var env_ecs = new Environment("env-ecs", EnvironmentArgs.builder()        
+ *         var env_ecs = new Environment("env-ecs", EnvironmentArgs.builder()
  *             .environmentType("ECS")
  *             .environmentName(String.format("terraform-example-%s", default_.result()))
  *             .bindResourceId(vpc.id())
  *             .environmentSubType("ECS")
  *             .build());
  * 
- *         var defaultEnvCustomJob = new EnvCustomJob("defaultEnvCustomJob", EnvCustomJobArgs.builder()        
+ *         var defaultEnvCustomJob = new EnvCustomJob("defaultEnvCustomJob", EnvCustomJobArgs.builder()
  *             .status("run")
  *             .environmentId(env_ecs.id())
  *             .envCustomJobName(name)

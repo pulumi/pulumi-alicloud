@@ -42,11 +42,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string ImagePullPolicy;
         /// <summary>
-        /// The amount of memory resources allocated to the container group.
+        /// The amount of memory resources allocated to the container.
         /// </summary>
         public readonly double Memory;
         /// <summary>
-        /// The name of the volume.
+        /// The name of the init container.
         /// </summary>
         public readonly string Name;
         /// <summary>

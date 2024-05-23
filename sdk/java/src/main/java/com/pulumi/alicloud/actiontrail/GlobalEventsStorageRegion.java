@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new GlobalEventsStorageRegion("foo", GlobalEventsStorageRegionArgs.builder()        
+ *         var foo = new GlobalEventsStorageRegion("foo", GlobalEventsStorageRegionArgs.builder()
  *             .storageRegion("cn-hangzhou")
  *             .build());
  * 

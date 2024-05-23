@@ -92,6 +92,9 @@ type Disk struct {
 	Name        pulumi.StringOutput `pulumi:"name"`
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel pulumi.StringOutput `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs.
 	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
@@ -169,6 +172,9 @@ type diskState struct {
 	Name        *string `pulumi:"name"`
 	PaymentType *string `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs.
 	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
@@ -217,6 +223,9 @@ type DiskState struct {
 	Name        pulumi.StringPtrInput
 	PaymentType pulumi.StringPtrInput
 	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel pulumi.StringPtrInput
 	// The Id of resource group which the disk belongs.
 	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
@@ -269,6 +278,9 @@ type diskArgs struct {
 	Name        *string `pulumi:"name"`
 	PaymentType *string `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs.
 	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
@@ -316,6 +328,9 @@ type DiskArgs struct {
 	Name        pulumi.StringPtrInput
 	PaymentType pulumi.StringPtrInput
 	// Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel pulumi.StringPtrInput
 	// The Id of resource group which the disk belongs.
 	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
@@ -493,6 +508,9 @@ func (o DiskOutput) PaymentType() pulumi.StringOutput {
 }
 
 // Specifies the performance level of an ESSD when you create the ESSD. Default value: `PL1`. Valid values:
+// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 func (o DiskOutput) PerformanceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.PerformanceLevel }).(pulumi.StringOutput)
 }

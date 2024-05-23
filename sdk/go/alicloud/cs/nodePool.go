@@ -53,6 +53,14 @@ type NodePool struct {
 	// The custom image ID. The system-provided image is used by default.
 	ImageId pulumi.StringOutput `pulumi:"imageId"`
 	// The operating system image type and the `platform` parameter can be selected from the following values:
+	// - `AliyunLinux` : Alinux2 image.
+	// - `AliyunLinux3` : Alinux3 image.
+	// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+	// - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+	// - `CentOS` : CentOS image.
+	// - `Windows` : Windows image.
+	// - `WindowsCore` : WindowsCore image.
+	// - `ContainerOS` : container-optimized image.
 	ImageType pulumi.StringOutput `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrOutput `pulumi:"installCloudMonitor"`
@@ -151,6 +159,9 @@ type NodePool struct {
 	// The current single preemptible instance type market price range configuration. See `spotPriceLimit` below.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayOutput `pulumi:"spotPriceLimits"`
 	// The preemptible instance type. Value:
+	// - `NoSpot` : Non-preemptible instance.
+	// - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+	// - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
 	SpotStrategy pulumi.StringOutput `pulumi:"spotStrategy"`
 	// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskBurstingEnabled pulumi.BoolPtrOutput `pulumi:"systemDiskBurstingEnabled"`
@@ -165,6 +176,10 @@ type NodePool struct {
 	// The ID of the KMS key used by the system disk.
 	SystemDiskKmsKey pulumi.StringPtrOutput `pulumi:"systemDiskKmsKey"`
 	// The system disk performance of the node takes effect only for the ESSD disk.
+	// - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+	// - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+	// - `PL2`: highest random read/write IOPS 100000 for a single disk.
+	// - `PL3`: maximum random read/write IOPS 1 million for a single disk.
 	SystemDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"systemDiskPerformanceLevel"`
 	// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskProvisionedIops pulumi.IntPtrOutput `pulumi:"systemDiskProvisionedIops"`
@@ -265,6 +280,14 @@ type nodePoolState struct {
 	// The custom image ID. The system-provided image is used by default.
 	ImageId *string `pulumi:"imageId"`
 	// The operating system image type and the `platform` parameter can be selected from the following values:
+	// - `AliyunLinux` : Alinux2 image.
+	// - `AliyunLinux3` : Alinux3 image.
+	// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+	// - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+	// - `CentOS` : CentOS image.
+	// - `Windows` : Windows image.
+	// - `WindowsCore` : WindowsCore image.
+	// - `ContainerOS` : container-optimized image.
 	ImageType *string `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
@@ -363,6 +386,9 @@ type nodePoolState struct {
 	// The current single preemptible instance type market price range configuration. See `spotPriceLimit` below.
 	SpotPriceLimits []NodePoolSpotPriceLimit `pulumi:"spotPriceLimits"`
 	// The preemptible instance type. Value:
+	// - `NoSpot` : Non-preemptible instance.
+	// - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+	// - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskBurstingEnabled *bool `pulumi:"systemDiskBurstingEnabled"`
@@ -377,6 +403,10 @@ type nodePoolState struct {
 	// The ID of the KMS key used by the system disk.
 	SystemDiskKmsKey *string `pulumi:"systemDiskKmsKey"`
 	// The system disk performance of the node takes effect only for the ESSD disk.
+	// - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+	// - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+	// - `PL2`: highest random read/write IOPS 100000 for a single disk.
+	// - `PL3`: maximum random read/write IOPS 1 million for a single disk.
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskProvisionedIops *int `pulumi:"systemDiskProvisionedIops"`
@@ -428,6 +458,14 @@ type NodePoolState struct {
 	// The custom image ID. The system-provided image is used by default.
 	ImageId pulumi.StringPtrInput
 	// The operating system image type and the `platform` parameter can be selected from the following values:
+	// - `AliyunLinux` : Alinux2 image.
+	// - `AliyunLinux3` : Alinux3 image.
+	// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+	// - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+	// - `CentOS` : CentOS image.
+	// - `Windows` : Windows image.
+	// - `WindowsCore` : WindowsCore image.
+	// - `ContainerOS` : container-optimized image.
 	ImageType pulumi.StringPtrInput
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrInput
@@ -526,6 +564,9 @@ type NodePoolState struct {
 	// The current single preemptible instance type market price range configuration. See `spotPriceLimit` below.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayInput
 	// The preemptible instance type. Value:
+	// - `NoSpot` : Non-preemptible instance.
+	// - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+	// - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
 	SpotStrategy pulumi.StringPtrInput
 	// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskBurstingEnabled pulumi.BoolPtrInput
@@ -540,6 +581,10 @@ type NodePoolState struct {
 	// The ID of the KMS key used by the system disk.
 	SystemDiskKmsKey pulumi.StringPtrInput
 	// The system disk performance of the node takes effect only for the ESSD disk.
+	// - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+	// - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+	// - `PL2`: highest random read/write IOPS 100000 for a single disk.
+	// - `PL3`: maximum random read/write IOPS 1 million for a single disk.
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskProvisionedIops pulumi.IntPtrInput
@@ -595,6 +640,14 @@ type nodePoolArgs struct {
 	// The custom image ID. The system-provided image is used by default.
 	ImageId *string `pulumi:"imageId"`
 	// The operating system image type and the `platform` parameter can be selected from the following values:
+	// - `AliyunLinux` : Alinux2 image.
+	// - `AliyunLinux3` : Alinux3 image.
+	// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+	// - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+	// - `CentOS` : CentOS image.
+	// - `Windows` : Windows image.
+	// - `WindowsCore` : WindowsCore image.
+	// - `ContainerOS` : container-optimized image.
 	ImageType *string `pulumi:"imageType"`
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor *bool `pulumi:"installCloudMonitor"`
@@ -689,6 +742,9 @@ type nodePoolArgs struct {
 	// The current single preemptible instance type market price range configuration. See `spotPriceLimit` below.
 	SpotPriceLimits []NodePoolSpotPriceLimit `pulumi:"spotPriceLimits"`
 	// The preemptible instance type. Value:
+	// - `NoSpot` : Non-preemptible instance.
+	// - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+	// - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskBurstingEnabled *bool `pulumi:"systemDiskBurstingEnabled"`
@@ -703,6 +759,10 @@ type nodePoolArgs struct {
 	// The ID of the KMS key used by the system disk.
 	SystemDiskKmsKey *string `pulumi:"systemDiskKmsKey"`
 	// The system disk performance of the node takes effect only for the ESSD disk.
+	// - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+	// - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+	// - `PL2`: highest random read/write IOPS 100000 for a single disk.
+	// - `PL3`: maximum random read/write IOPS 1 million for a single disk.
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskProvisionedIops *int `pulumi:"systemDiskProvisionedIops"`
@@ -755,6 +815,14 @@ type NodePoolArgs struct {
 	// The custom image ID. The system-provided image is used by default.
 	ImageId pulumi.StringPtrInput
 	// The operating system image type and the `platform` parameter can be selected from the following values:
+	// - `AliyunLinux` : Alinux2 image.
+	// - `AliyunLinux3` : Alinux3 image.
+	// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+	// - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+	// - `CentOS` : CentOS image.
+	// - `Windows` : Windows image.
+	// - `WindowsCore` : WindowsCore image.
+	// - `ContainerOS` : container-optimized image.
 	ImageType pulumi.StringPtrInput
 	// Whether to install cloud monitoring on the ECS node. After installation, you can view the monitoring information of the created ECS instance in the cloud monitoring console and recommend enable it. Default value: `false`. Valid values:
 	InstallCloudMonitor pulumi.BoolPtrInput
@@ -849,6 +917,9 @@ type NodePoolArgs struct {
 	// The current single preemptible instance type market price range configuration. See `spotPriceLimit` below.
 	SpotPriceLimits NodePoolSpotPriceLimitArrayInput
 	// The preemptible instance type. Value:
+	// - `NoSpot` : Non-preemptible instance.
+	// - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+	// - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
 	SpotStrategy pulumi.StringPtrInput
 	// Specifies whether to enable the burst feature for system disks. Valid values:`true`: enables the burst feature. `false`: disables the burst feature. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskBurstingEnabled pulumi.BoolPtrInput
@@ -863,6 +934,10 @@ type NodePoolArgs struct {
 	// The ID of the KMS key used by the system disk.
 	SystemDiskKmsKey pulumi.StringPtrInput
 	// The system disk performance of the node takes effect only for the ESSD disk.
+	// - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+	// - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+	// - `PL2`: highest random read/write IOPS 100000 for a single disk.
+	// - `PL3`: maximum random read/write IOPS 1 million for a single disk.
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `systemDiskCategory` is set to `cloudAuto`.
 	SystemDiskProvisionedIops pulumi.IntPtrInput
@@ -1036,6 +1111,14 @@ func (o NodePoolOutput) ImageId() pulumi.StringOutput {
 }
 
 // The operating system image type and the `platform` parameter can be selected from the following values:
+// - `AliyunLinux` : Alinux2 image.
+// - `AliyunLinux3` : Alinux3 image.
+// - `AliyunLinux3Arm64` : Alinux3 mirror ARM version.
+// - `AliyunLinuxUEFI` : Alinux2 Image UEFI version.
+// - `CentOS` : CentOS image.
+// - `Windows` : Windows image.
+// - `WindowsCore` : WindowsCore image.
+// - `ContainerOS` : container-optimized image.
 func (o NodePoolOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.ImageType }).(pulumi.StringOutput)
 }
@@ -1263,6 +1346,9 @@ func (o NodePoolOutput) SpotPriceLimits() NodePoolSpotPriceLimitArrayOutput {
 }
 
 // The preemptible instance type. Value:
+// - `NoSpot` : Non-preemptible instance.
+// - `SpotWithPriceLimit` : Set the upper limit of the preemptible instance price.
+// - `SpotAsPriceGo` : The system automatically bids, following the actual price of the current market.
 func (o NodePoolOutput) SpotStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.SpotStrategy }).(pulumi.StringOutput)
 }
@@ -1298,6 +1384,10 @@ func (o NodePoolOutput) SystemDiskKmsKey() pulumi.StringPtrOutput {
 }
 
 // The system disk performance of the node takes effect only for the ESSD disk.
+// - `PL0`: maximum random read/write IOPS 10000 for a single disk.
+// - `PL1`: maximum random read/write IOPS 50000 for a single disk.
+// - `PL2`: highest random read/write IOPS 100000 for a single disk.
+// - `PL3`: maximum random read/write IOPS 1 million for a single disk.
 func (o NodePoolOutput) SystemDiskPerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.SystemDiskPerformanceLevel }).(pulumi.StringPtrOutput)
 }

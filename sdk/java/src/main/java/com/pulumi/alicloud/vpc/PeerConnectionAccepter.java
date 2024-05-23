@@ -59,19 +59,19 @@ import javax.annotation.Nullable;
  *         final var name = config.get("name").orElse("tf-example");
  *         final var acceptingRegion = config.get("acceptingRegion").orElse("cn-beijing");
  *         final var anotherUid = config.get("anotherUid").orElse("xxxx");
- *         var local = new Network("local", NetworkArgs.builder()        
+ *         var local = new Network("local", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var acceptingNetwork = new Network("acceptingNetwork", NetworkArgs.builder()        
+ *         var acceptingNetwork = new Network("acceptingNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
  *         final var accepting = AlicloudFunctions.getAccount();
  * 
- *         var default_ = new PeerConnection("default", PeerConnectionArgs.builder()        
+ *         var default_ = new PeerConnection("default", PeerConnectionArgs.builder()
  *             .peerConnectionName(name)
  *             .vpcId(local.id())
  *             .acceptingAliUid(accepting.applyValue(getAccountResult -> getAccountResult.id()))
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .description(name)
  *             .build());
  * 
- *         var defaultPeerConnectionAccepter = new PeerConnectionAccepter("defaultPeerConnectionAccepter", PeerConnectionAccepterArgs.builder()        
+ *         var defaultPeerConnectionAccepter = new PeerConnectionAccepter("defaultPeerConnectionAccepter", PeerConnectionAccepterArgs.builder()
  *             .instanceId(default_.id())
  *             .build());
  * 

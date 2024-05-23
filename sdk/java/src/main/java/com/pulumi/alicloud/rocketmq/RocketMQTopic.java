@@ -66,13 +66,13 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var createVpc = new Network("createVpc", NetworkArgs.builder()        
+ *         var createVpc = new Network("createVpc", NetworkArgs.builder()
  *             .description("example")
  *             .cidrBlock("172.16.0.0/12")
  *             .vpcName(name)
  *             .build());
  * 
- *         var createVswitch = new Switch("createVswitch", SwitchArgs.builder()        
+ *         var createVswitch = new Switch("createVswitch", SwitchArgs.builder()
  *             .description("example")
  *             .vpcId(createVpc.id())
  *             .zoneId(default_.zones()[0].id())
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .build());
  * 
- *         var createInstance = new RocketMQInstance("createInstance", RocketMQInstanceArgs.builder()        
+ *         var createInstance = new RocketMQInstance("createInstance", RocketMQInstanceArgs.builder()
  *             .autoRenewPeriod("1")
  *             .productInfo(RocketMQInstanceProductInfoArgs.builder()
  *                 .msgProcessSpec("rmq.p2.4xlarge")
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  *             .periodUnit("Month")
  *             .build());
  * 
- *         var defaultRocketMQTopic = new RocketMQTopic("defaultRocketMQTopic", RocketMQTopicArgs.builder()        
+ *         var defaultRocketMQTopic = new RocketMQTopic("defaultRocketMQTopic", RocketMQTopicArgs.builder()
  *             .remark("example")
  *             .instanceId(createInstance.id())
  *             .messageType("NORMAL")

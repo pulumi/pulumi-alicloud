@@ -142,7 +142,7 @@ def get_traffic_mirror_filters(ids: Optional[Sequence[str]] = None,
     :param str name_regex: A regex string to filter results by Traffic Mirror Filter name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
-    :param str traffic_mirror_filter_name: The name of the filter.
+    :param str traffic_mirror_filter_name: The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -199,6 +199,6 @@ def get_traffic_mirror_filters_output(ids: Optional[pulumi.Input[Optional[Sequen
     :param str name_regex: A regex string to filter results by Traffic Mirror Filter name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The state of the filter. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`. `Creating`: The filter is being created. `Created`: The filter is created. `Modifying`: The filter is being modified. `Deleting`: The filter is being deleted.
-    :param str traffic_mirror_filter_name: The name of the filter.
+    :param str traffic_mirror_filter_name: The name of the filter. The name must be `2` to `128` characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
     """
     ...

@@ -84,19 +84,19 @@ import javax.annotation.Nullable;
  * 
  *         final var defaultGetAccount = AlicloudFunctions.getAccount();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName("terraform-example")
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(defaultGetZones.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var defaultEcsImagePipeline = new EcsImagePipeline("defaultEcsImagePipeline", EcsImagePipelineArgs.builder()        
+ *         var defaultEcsImagePipeline = new EcsImagePipeline("defaultEcsImagePipeline", EcsImagePipelineArgs.builder()
  *             .addAccounts(defaultGetAccount.applyValue(getAccountResult -> getAccountResult.id()))
  *             .baseImage(defaultGetImages.applyValue(getImagesResult -> getImagesResult.ids()[0]))
  *             .baseImageType("IMAGE")

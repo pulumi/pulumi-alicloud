@@ -83,7 +83,13 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly int Size;
         public readonly string State;
         /// <summary>
-        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
+        /// The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values: 
+        /// * `Creating`: The image is being created.
+        /// * `Waiting`: The image is waiting to be processed.
+        /// * `Available`: The image is available.
+        /// * `UnAvailable`: The image is unavailable.
+        /// * `CreateFailed`: The image failed to be created.
+        /// * `Deprecated`: The image is discontinued.
         /// </summary>
         public readonly string Status;
         /// <summary>

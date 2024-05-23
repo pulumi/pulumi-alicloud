@@ -78,24 +78,24 @@ import javax.annotation.Nullable;
  *             .instanceChargeType("PostPaid")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.16.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock("172.16.0.0/24")
  *             .zoneId(default_.ids()[0])
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .engine("MySQL")
  *             .engineVersion("8.0")
  *             .instanceType(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -> getInstanceClassesResult.instanceClasses()[0].instanceClass()))
@@ -110,13 +110,13 @@ import javax.annotation.Nullable;
  *             .zoneIdSlaveA(default_.ids()[0])
  *             .build());
  * 
- *         var defaultDbNode = new DbNode("defaultDbNode", DbNodeArgs.builder()        
+ *         var defaultDbNode = new DbNode("defaultDbNode", DbNodeArgs.builder()
  *             .dbInstanceId(defaultInstance.id())
  *             .classCode(defaultInstance.instanceType())
  *             .zoneId(defaultSwitch.zoneId())
  *             .build());
  * 
- *         var defaultDbInstanceEndpoint = new DbInstanceEndpoint("defaultDbInstanceEndpoint", DbInstanceEndpointArgs.builder()        
+ *         var defaultDbInstanceEndpoint = new DbInstanceEndpoint("defaultDbInstanceEndpoint", DbInstanceEndpointArgs.builder()
  *             .dbInstanceId(defaultDbNode.dbInstanceId())
  *             .vpcId(defaultNetwork.id())
  *             .vswitchId(defaultInstance.vswitchId())

@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .memorySize(8192)
  *             .build());
  * 
- *         var defaultBundle = new Bundle("defaultBundle", BundleArgs.builder()        
+ *         var defaultBundle = new Bundle("defaultBundle", BundleArgs.builder()
  *             .description(name)
  *             .desktopType(defaultGetDesktopTypes.applyValue(getDesktopTypesResult -> getDesktopTypesResult.ids()[0]))
  *             .bundleName(name)

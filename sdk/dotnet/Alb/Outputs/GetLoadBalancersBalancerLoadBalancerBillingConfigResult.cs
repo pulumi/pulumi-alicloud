@@ -13,6 +13,9 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class GetLoadBalancersBalancerLoadBalancerBillingConfigResult
     {
+        /// <summary>
+        /// The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+        /// </summary>
         public readonly string PayType;
 
         [OutputConstructor]

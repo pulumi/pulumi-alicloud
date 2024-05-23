@@ -1310,7 +1310,7 @@ public final class MongodbFunctions {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
-     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()        
+     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -1360,7 +1360,7 @@ public final class MongodbFunctions {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
-     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()        
+     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -1410,7 +1410,7 @@ public final class MongodbFunctions {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
-     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()        
+     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -1460,7 +1460,7 @@ public final class MongodbFunctions {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
-     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()        
+     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -1510,7 +1510,7 @@ public final class MongodbFunctions {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
-     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()        
+     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 
@@ -1560,7 +1560,7 @@ public final class MongodbFunctions {
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
-     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()        
+     *         var mongodb = new Instance("mongodb", InstanceArgs.builder()
      *             .zoneId(zonesIds.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
      *             .build());
      * 

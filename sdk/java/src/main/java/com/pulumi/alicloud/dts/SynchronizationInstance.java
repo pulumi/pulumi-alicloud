@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var defaultSynchronizationInstance = new SynchronizationInstance("defaultSynchronizationInstance", SynchronizationInstanceArgs.builder()        
+ *         var defaultSynchronizationInstance = new SynchronizationInstance("defaultSynchronizationInstance", SynchronizationInstanceArgs.builder()
  *             .paymentType("PayAsYouGo")
  *             .sourceEndpointEngineName("MySQL")
  *             .sourceEndpointRegion(default_.regions()[0].id())

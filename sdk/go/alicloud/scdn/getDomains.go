@@ -65,7 +65,7 @@ type GetDomainsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The Resource Group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// The status of the resource. Valid values: "checkFailed", "checking", "configureFailed", "configuring", "offline", "online".
 	Status *string `pulumi:"status"`
 }
 
@@ -108,7 +108,7 @@ type GetDomainsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The Resource Group ID.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// The status of the resource. Valid values: "checkFailed", "checking", "configureFailed", "configuring", "offline", "online".
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

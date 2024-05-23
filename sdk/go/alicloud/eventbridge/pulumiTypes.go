@@ -1698,6 +1698,8 @@ type RuleTarget struct {
 	// The parameters that are configured for the event target. See `paramList` below.
 	ParamLists []RuleTargetParamList `pulumi:"paramLists"`
 	// The retry policy that is used to push the event. Valid values:
+	// - `BACKOFF_RETRY`: Backoff retry. The request can be retried up to three times. The interval between two consecutive retries is a random value between 10 and 20 seconds.
+	// - `EXPONENTIAL_DECAY_RETRY`: Exponential decay retry. The request can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds, including a maximum of one hundred and sixty-seven 512 seconds in total.
 	PushRetryStrategy *string `pulumi:"pushRetryStrategy"`
 	// The ID of the custom event target.
 	TargetId string `pulumi:"targetId"`
@@ -1725,6 +1727,8 @@ type RuleTargetArgs struct {
 	// The parameters that are configured for the event target. See `paramList` below.
 	ParamLists RuleTargetParamListArrayInput `pulumi:"paramLists"`
 	// The retry policy that is used to push the event. Valid values:
+	// - `BACKOFF_RETRY`: Backoff retry. The request can be retried up to three times. The interval between two consecutive retries is a random value between 10 and 20 seconds.
+	// - `EXPONENTIAL_DECAY_RETRY`: Exponential decay retry. The request can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds, including a maximum of one hundred and sixty-seven 512 seconds in total.
 	PushRetryStrategy pulumi.StringPtrInput `pulumi:"pushRetryStrategy"`
 	// The ID of the custom event target.
 	TargetId pulumi.StringInput `pulumi:"targetId"`
@@ -1800,6 +1804,8 @@ func (o RuleTargetOutput) ParamLists() RuleTargetParamListArrayOutput {
 }
 
 // The retry policy that is used to push the event. Valid values:
+// - `BACKOFF_RETRY`: Backoff retry. The request can be retried up to three times. The interval between two consecutive retries is a random value between 10 and 20 seconds.
+// - `EXPONENTIAL_DECAY_RETRY`: Exponential decay retry. The request can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds, including a maximum of one hundred and sixty-seven 512 seconds in total.
 func (o RuleTargetOutput) PushRetryStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleTarget) *string { return v.PushRetryStrategy }).(pulumi.StringPtrOutput)
 }

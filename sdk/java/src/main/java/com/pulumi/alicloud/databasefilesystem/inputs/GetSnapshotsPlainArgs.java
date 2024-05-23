@@ -61,14 +61,14 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+     * The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+     * @return The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
      * 
      */
     public Optional<String> status() {
@@ -146,7 +146,7 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+         * @param status The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
          * 
          * @return builder
          * 

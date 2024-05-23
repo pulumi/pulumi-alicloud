@@ -77,19 +77,19 @@ import javax.annotation.Nullable;
  * 
  *         final var zoneId = default_.zones()[index].id();
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("172.17.3.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var defaultShardingInstance = new ShardingInstance("defaultShardingInstance", ShardingInstanceArgs.builder()        
+ *         var defaultShardingInstance = new ShardingInstance("defaultShardingInstance", ShardingInstanceArgs.builder()
  *             .engineVersion("4.2")
  *             .vswitchId(defaultSwitch.id())
  *             .zoneId(zoneId)
@@ -305,6 +305,9 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
      * 
      */
     @Export(name="orderType", refs={String.class}, tree="[0]")
@@ -312,6 +315,9 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
+     * - `UPGRADE`: The specifications are upgraded.
+     * - `DOWNGRADE`: The specifications are downgraded.
+     *   **NOTE:** `order_type` is only applicable to instances when `instance_charge_type` is `PrePaid`.
      * 
      */
     public Output<Optional<String>> orderType() {

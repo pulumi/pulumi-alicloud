@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPrometheusAlertRulesRuleAnnotation {
+    /**
+     * @return The value of the annotation.
+     * 
+     */
     private String name;
+    /**
+     * @return The name of the annotation name.
+     * 
+     */
     private String value;
 
     private GetPrometheusAlertRulesRuleAnnotation() {}
+    /**
+     * @return The value of the annotation.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The name of the annotation name.
+     * 
+     */
     public String value() {
         return this.value;
     }

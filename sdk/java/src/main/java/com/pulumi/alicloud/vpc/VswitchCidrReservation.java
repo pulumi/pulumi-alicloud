@@ -60,19 +60,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()        
+ *         var defaultVpc = new Network("defaultVpc", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.0.0.0/8")
  *             .build());
  * 
- *         var defaultVSwitch = new Switch("defaultVSwitch", SwitchArgs.builder()        
+ *         var defaultVSwitch = new Switch("defaultVSwitch", SwitchArgs.builder()
  *             .vpcId(defaultVpc.id())
  *             .cidrBlock("10.0.0.0/20")
  *             .vswitchName(String.format("%s1", name))
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var defaultVswitchCidrReservation = new VswitchCidrReservation("defaultVswitchCidrReservation", VswitchCidrReservationArgs.builder()        
+ *         var defaultVswitchCidrReservation = new VswitchCidrReservation("defaultVswitchCidrReservation", VswitchCidrReservationArgs.builder()
  *             .ipVersion("IPv4")
  *             .vswitchId(defaultVSwitch.id())
  *             .cidrReservationDescription(name)

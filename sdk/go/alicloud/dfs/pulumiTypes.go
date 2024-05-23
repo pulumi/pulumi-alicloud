@@ -1089,8 +1089,10 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 type GetZonesZoneOption struct {
+	// The protocol type. Valid values: `HDFS`.
 	ProtocolType string `pulumi:"protocolType"`
-	StorageType  string `pulumi:"storageType"`
+	// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+	StorageType string `pulumi:"storageType"`
 }
 
 // GetZonesZoneOptionInput is an input type that accepts GetZonesZoneOptionArgs and GetZonesZoneOptionOutput values.
@@ -1105,8 +1107,10 @@ type GetZonesZoneOptionInput interface {
 }
 
 type GetZonesZoneOptionArgs struct {
+	// The protocol type. Valid values: `HDFS`.
 	ProtocolType pulumi.StringInput `pulumi:"protocolType"`
-	StorageType  pulumi.StringInput `pulumi:"storageType"`
+	// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
+	StorageType pulumi.StringInput `pulumi:"storageType"`
 }
 
 func (GetZonesZoneOptionArgs) ElementType() reflect.Type {
@@ -1160,10 +1164,12 @@ func (o GetZonesZoneOptionOutput) ToGetZonesZoneOptionOutputWithContext(ctx cont
 	return o
 }
 
+// The protocol type. Valid values: `HDFS`.
 func (o GetZonesZoneOptionOutput) ProtocolType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZoneOption) string { return v.ProtocolType }).(pulumi.StringOutput)
 }
 
+// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
 func (o GetZonesZoneOptionOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetZonesZoneOption) string { return v.StorageType }).(pulumi.StringOutput)
 }

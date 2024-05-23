@@ -166,7 +166,12 @@ def get_stack_instances(enable_details: Optional[bool] = None,
     :param str stack_group_name: The name of the stack group.
     :param str stack_instance_account_id: The account to which the stack instance belongs.
     :param str stack_instance_region_id: The region of the stack instance.
-    :param str status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+    :param str status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+           * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+           * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+           * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+           * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+           * The create or update operation is not complete.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -241,6 +246,11 @@ def get_stack_instances_output(enable_details: Optional[pulumi.Input[Optional[bo
     :param str stack_group_name: The name of the stack group.
     :param str stack_instance_account_id: The account to which the stack instance belongs.
     :param str stack_instance_region_id: The region of the stack instance.
-    :param str status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
+    :param str status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
+           * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
+           * `OUTDATED`: The stack corresponding to the stack instance is not up to date with the stack group. The `OUTDATED` state has the following possible causes:
+           * When the CreateStackInstances operation is called to create stack instances, the corresponding stacks fail to be created.
+           * When the UpdateStackInstances or UpdateStackGroup operation is called to update stack instances, the corresponding stacks fail to be updated, or only some of the stack instances are updated.
+           * The create or update operation is not complete.
     """
     ...

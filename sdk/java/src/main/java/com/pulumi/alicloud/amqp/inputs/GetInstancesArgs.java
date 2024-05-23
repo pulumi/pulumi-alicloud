@@ -78,14 +78,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: &#34;DEPLOYING&#34;, &#34;EXPIRED&#34;, &#34;RELEASED&#34;, &#34;SERVING&#34;.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: &#34;DEPLOYING&#34;, &#34;EXPIRED&#34;, &#34;RELEASED&#34;, &#34;SERVING&#34;.
      * 
      */
     public Optional<Output<String>> status() {
@@ -215,7 +215,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: &#34;DEPLOYING&#34;, &#34;EXPIRED&#34;, &#34;RELEASED&#34;, &#34;SERVING&#34;.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: &#34;DEPLOYING&#34;, &#34;EXPIRED&#34;, &#34;RELEASED&#34;, &#34;SERVING&#34;.
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class GetVpcEndpointServicesPlainArgs extends com.pulumi.resources.
     public static final GetVpcEndpointServicesPlainArgs Empty = new GetVpcEndpointServicesPlainArgs();
 
     /**
-     * Whether to automatically accept terminal node connections..
+     * Whether to automatically accept terminal node connections.
      * 
      */
     @Import(name="autoAcceptConnection")
     private @Nullable Boolean autoAcceptConnection;
 
     /**
-     * @return Whether to automatically accept terminal node connections..
+     * @return Whether to automatically accept terminal node connections.
      * 
      */
     public Optional<Boolean> autoAcceptConnection() {
@@ -77,14 +77,14 @@ public final class GetVpcEndpointServicesPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * The business status of the terminal node service..
+     * The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
      * 
      */
     @Import(name="serviceBusinessStatus")
     private @Nullable String serviceBusinessStatus;
 
     /**
-     * @return The business status of the terminal node service..
+     * @return The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
      * 
      */
     public Optional<String> serviceBusinessStatus() {
@@ -92,14 +92,14 @@ public final class GetVpcEndpointServicesPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * The Status of Vpc Endpoint Service.
+     * The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The Status of Vpc Endpoint Service.
+     * @return The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
      * 
      */
     public Optional<String> status() {
@@ -152,7 +152,7 @@ public final class GetVpcEndpointServicesPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param autoAcceptConnection Whether to automatically accept terminal node connections..
+         * @param autoAcceptConnection Whether to automatically accept terminal node connections.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class GetVpcEndpointServicesPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param serviceBusinessStatus The business status of the terminal node service..
+         * @param serviceBusinessStatus The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class GetVpcEndpointServicesPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param status The Status of Vpc Endpoint Service.
+         * @param status The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
          * 
          * @return builder
          * 

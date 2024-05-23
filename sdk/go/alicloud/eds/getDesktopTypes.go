@@ -61,13 +61,13 @@ type GetDesktopTypesArgs struct {
 	GpuCount *float64 `pulumi:"gpuCount"`
 	// A list of Desktop Type IDs.
 	Ids []string `pulumi:"ids"`
-	// The Specification family.
+	// The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
 	InstanceTypeFamily *string `pulumi:"instanceTypeFamily"`
 	// The Memory size. Unit: MiB.
 	MemorySize *int `pulumi:"memorySize"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `SUFFICIENT`.
 	Status *string `pulumi:"status"`
 }
 
@@ -106,13 +106,13 @@ type GetDesktopTypesOutputArgs struct {
 	GpuCount pulumi.Float64PtrInput `pulumi:"gpuCount"`
 	// A list of Desktop Type IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The Specification family.
+	// The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
 	InstanceTypeFamily pulumi.StringPtrInput `pulumi:"instanceTypeFamily"`
 	// The Memory size. Unit: MiB.
 	MemorySize pulumi.IntPtrInput `pulumi:"memorySize"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `SUFFICIENT`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

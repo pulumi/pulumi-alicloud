@@ -66,9 +66,9 @@ type GetBandwidthPackagesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the bandwidth plan.
+	// The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
 	Status *string `pulumi:"status"`
-	// The type of the bandwidth packet. China station only supports return to basic.
+	// The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
 	Type *string `pulumi:"type"`
 }
 
@@ -109,9 +109,9 @@ type GetBandwidthPackagesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the bandwidth plan.
+	// The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The type of the bandwidth packet. China station only supports return to basic.
+	// The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 

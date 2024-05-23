@@ -79,31 +79,23 @@ public final class GetEcsKeyPairsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Resource Group Id.
+     * The resource group Id.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Resource Group Id.
+     * @return The resource group Id.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
 
-    /**
-     * The tags.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
-    /**
-     * @return The tags.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -232,7 +224,7 @@ public final class GetEcsKeyPairsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The Resource Group Id.
+         * @param resourceGroupId The resource group Id.
          * 
          * @return builder
          * 
@@ -243,7 +235,7 @@ public final class GetEcsKeyPairsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The Resource Group Id.
+         * @param resourceGroupId The resource group Id.
          * 
          * @return builder
          * 
@@ -252,23 +244,11 @@ public final class GetEcsKeyPairsArgs extends com.pulumi.resources.InvokeArgs {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
-        /**
-         * @param tags The tags.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Output<Map<String,Object>> tags) {
             $.tags = tags;
             return this;
         }
 
-        /**
-         * @param tags The tags.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
         }

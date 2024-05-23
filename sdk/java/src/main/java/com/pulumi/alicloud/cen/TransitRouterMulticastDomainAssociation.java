@@ -68,34 +68,34 @@ import javax.annotation.Nullable;
  * 
  *         final var zone = default_.resources()[0].masterZones()[1];
  * 
- *         var example = new Network("example", NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("192.168.1.0/24")
  *             .vpcId(example.id())
  *             .zoneId(zone)
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()        
+ *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()        
+ *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()
  *             .transitRouterName(name)
  *             .cenId(exampleInstance.id())
  *             .supportMulticast(true)
  *             .build());
  * 
- *         var exampleTransitRouterMulticastDomain = new TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()        
+ *         var exampleTransitRouterMulticastDomain = new TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain", TransitRouterMulticastDomainArgs.builder()
  *             .transitRouterId(exampleTransitRouter.transitRouterId())
  *             .transitRouterMulticastDomainName(name)
  *             .build());
  * 
- *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()        
+ *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
  *             .cenId(exampleTransitRouter.cenId())
  *             .transitRouterId(exampleTransitRouterMulticastDomain.transitRouterId())
  *             .vpcId(example.id())
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var exampleTransitRouterMulticastDomainAssociation = new TransitRouterMulticastDomainAssociation("exampleTransitRouterMulticastDomainAssociation", TransitRouterMulticastDomainAssociationArgs.builder()        
+ *         var exampleTransitRouterMulticastDomainAssociation = new TransitRouterMulticastDomainAssociation("exampleTransitRouterMulticastDomainAssociation", TransitRouterMulticastDomainAssociationArgs.builder()
  *             .transitRouterMulticastDomainId(exampleTransitRouterMulticastDomain.id())
  *             .transitRouterAttachmentId(exampleTransitRouterVpcAttachment.transitRouterAttachmentId())
  *             .vswitchId(exampleSwitch.id())

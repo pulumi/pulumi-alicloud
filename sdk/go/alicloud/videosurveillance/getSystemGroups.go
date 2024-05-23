@@ -66,7 +66,7 @@ func GetSystemGroups(ctx *pulumi.Context, args *GetSystemGroupsArgs, opts ...pul
 type GetSystemGroupsArgs struct {
 	// A list of Group IDs.
 	Ids []string `pulumi:"ids"`
-	// The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+	// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
 	InProtocol *string `pulumi:"inProtocol"`
 	// The name.
 	Name *string `pulumi:"name"`
@@ -109,7 +109,7 @@ func GetSystemGroupsOutput(ctx *pulumi.Context, args GetSystemGroupsOutputArgs, 
 type GetSystemGroupsOutputArgs struct {
 	// A list of Group IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+	// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
 	InProtocol pulumi.StringPtrInput `pulumi:"inProtocol"`
 	// The name.
 	Name pulumi.StringPtrInput `pulumi:"name"`

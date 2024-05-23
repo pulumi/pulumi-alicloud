@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Activation("example", ActivationArgs.builder()        
+ *         var example = new Activation("example", ActivationArgs.builder()
  *             .description("terraform-example")
  *             .instanceCount(10)
  *             .instanceName("terraform-example")

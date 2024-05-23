@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity {
+    /**
+     * @return The available capacity of the local disk. Unit: `GiB`.
+     * 
+     */
     private Integer availableDisk;
+    /**
+     * @return The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
+     * 
+     */
     private String dataDiskCategory;
+    /**
+     * @return The total capacity of the local disk. Unit: `GiB`.
+     * 
+     */
     private Integer totalDisk;
 
     private GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity() {}
+    /**
+     * @return The available capacity of the local disk. Unit: `GiB`.
+     * 
+     */
     public Integer availableDisk() {
         return this.availableDisk;
     }
+    /**
+     * @return The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
+     * 
+     */
     public String dataDiskCategory() {
         return this.dataDiskCategory;
     }
+    /**
+     * @return The total capacity of the local disk. Unit: `GiB`.
+     * 
+     */
     public Integer totalDisk() {
         return this.totalDisk;
     }

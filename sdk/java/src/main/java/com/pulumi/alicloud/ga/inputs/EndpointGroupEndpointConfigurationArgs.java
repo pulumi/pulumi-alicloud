@@ -65,6 +65,12 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
     /**
      * The type of Endpoint N in the endpoint group. Valid values:
+     * - `Domain`: a custom domain name.
+     * - `Ip`: a custom IP address.
+     * - `PublicIp`: an Alibaba Cloud public IP address.
+     * - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
+     * - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+     * &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
      * 
      */
     @Import(name="type", required=true)
@@ -72,6 +78,12 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
     /**
      * @return The type of Endpoint N in the endpoint group. Valid values:
+     * - `Domain`: a custom domain name.
+     * - `Ip`: a custom IP address.
+     * - `PublicIp`: an Alibaba Cloud public IP address.
+     * - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
+     * - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+     * &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
      * 
      */
     public Output<String> type() {
@@ -188,6 +200,12 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
         /**
          * @param type The type of Endpoint N in the endpoint group. Valid values:
+         * - `Domain`: a custom domain name.
+         * - `Ip`: a custom IP address.
+         * - `PublicIp`: an Alibaba Cloud public IP address.
+         * - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
+         * - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+         * &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
          * 
          * @return builder
          * 
@@ -199,6 +217,12 @@ public final class EndpointGroupEndpointConfigurationArgs extends com.pulumi.res
 
         /**
          * @param type The type of Endpoint N in the endpoint group. Valid values:
+         * - `Domain`: a custom domain name.
+         * - `Ip`: a custom IP address.
+         * - `PublicIp`: an Alibaba Cloud public IP address.
+         * - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
+         * - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
+         * &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
          * 
          * @return builder
          * 

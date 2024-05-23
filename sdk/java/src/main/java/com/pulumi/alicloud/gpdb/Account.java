@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .zoneId(default_.ids()[0])
  *             .build());
  * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()        
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .dbInstanceCategory("HighAvailability")
  *             .dbInstanceClass("gpdb.group.segsdx1")
  *             .dbInstanceMode("StorageElastic")
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()        
+ *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()
  *             .accountName("tf_example")
  *             .dbInstanceId(defaultInstance.id())
  *             .accountPassword("Example1234")

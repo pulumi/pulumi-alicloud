@@ -160,7 +160,7 @@ def get_change_sets(change_set_name: Optional[str] = None,
     :param str name_regex: A regex string to filter results by Change Set name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str stack_id: The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
-    :param str status: The status of the change set.
+    :param str status: The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
     """
     __args__ = dict()
     __args__['changeSetName'] = change_set_name
@@ -221,6 +221,6 @@ def get_change_sets_output(change_set_name: Optional[pulumi.Input[Optional[str]]
     :param str name_regex: A regex string to filter results by Change Set name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str stack_id: The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
-    :param str status: The status of the change set.
+    :param str status: The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
     """
     ...

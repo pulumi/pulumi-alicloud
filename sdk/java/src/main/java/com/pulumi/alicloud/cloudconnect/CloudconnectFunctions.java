@@ -53,7 +53,7 @@ public final class CloudconnectFunctions {
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .name("tf-testAccCloudConnectNetworkName")
      *             .description("tf-testAccCloudConnectNetworkDescription")
      *             .cidrBlock("192.168.0.0/24")
@@ -109,7 +109,7 @@ public final class CloudconnectFunctions {
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .name("tf-testAccCloudConnectNetworkName")
      *             .description("tf-testAccCloudConnectNetworkDescription")
      *             .cidrBlock("192.168.0.0/24")
@@ -165,7 +165,7 @@ public final class CloudconnectFunctions {
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .name("tf-testAccCloudConnectNetworkName")
      *             .description("tf-testAccCloudConnectNetworkDescription")
      *             .cidrBlock("192.168.0.0/24")
@@ -221,7 +221,7 @@ public final class CloudconnectFunctions {
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .name("tf-testAccCloudConnectNetworkName")
      *             .description("tf-testAccCloudConnectNetworkDescription")
      *             .cidrBlock("192.168.0.0/24")
@@ -277,7 +277,7 @@ public final class CloudconnectFunctions {
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .name("tf-testAccCloudConnectNetworkName")
      *             .description("tf-testAccCloudConnectNetworkDescription")
      *             .cidrBlock("192.168.0.0/24")
@@ -333,7 +333,7 @@ public final class CloudconnectFunctions {
      *             .nameRegex("^tf-testAcc.*")
      *             .build());
      * 
-     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
      *             .name("tf-testAccCloudConnectNetworkName")
      *             .description("tf-testAccCloudConnectNetworkDescription")
      *             .cidrBlock("192.168.0.0/24")

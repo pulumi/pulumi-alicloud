@@ -12,33 +12,81 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMetricRuleTemplatesTemplateAlertTemplate {
+    /**
+     * @return The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iot_edge`, `kvstore_sharding`, `kvstore_splitrw`, `kvstore_standard`, `memcache`, `mns`, `mongodb`, `mongodb_cluster`, `mongodb_sharding`, `mq_topic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+     * 
+     */
     private String category;
+    /**
+     * @return The information about the trigger condition based on the alert level.
+     * 
+     */
     private List<GetMetricRuleTemplatesTemplateAlertTemplateEscalation> escalations;
+    /**
+     * @return The name of the metric.
+     * 
+     */
     private String metricName;
+    /**
+     * @return The namespace of the service.
+     * 
+     */
     private String namespace;
+    /**
+     * @return The name of the alert rule.
+     * 
+     */
     private String ruleName;
     private String selector;
+    /**
+     * @return The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+     * 
+     */
     private String webhook;
 
     private GetMetricRuleTemplatesTemplateAlertTemplate() {}
+    /**
+     * @return The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iot_edge`, `kvstore_sharding`, `kvstore_splitrw`, `kvstore_standard`, `memcache`, `mns`, `mongodb`, `mongodb_cluster`, `mongodb_sharding`, `mq_topic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
+     * 
+     */
     public String category() {
         return this.category;
     }
+    /**
+     * @return The information about the trigger condition based on the alert level.
+     * 
+     */
     public List<GetMetricRuleTemplatesTemplateAlertTemplateEscalation> escalations() {
         return this.escalations;
     }
+    /**
+     * @return The name of the metric.
+     * 
+     */
     public String metricName() {
         return this.metricName;
     }
+    /**
+     * @return The namespace of the service.
+     * 
+     */
     public String namespace() {
         return this.namespace;
     }
+    /**
+     * @return The name of the alert rule.
+     * 
+     */
     public String ruleName() {
         return this.ruleName;
     }
     public String selector() {
         return this.selector;
     }
+    /**
+     * @return The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
+     * 
+     */
     public String webhook() {
         return this.webhook;
     }

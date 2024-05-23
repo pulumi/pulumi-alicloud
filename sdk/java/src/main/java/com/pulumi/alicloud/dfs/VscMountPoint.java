@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()        
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  *         final var storageType = default_.zones()[0].options()[0].storageType();
  * 
- *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()        
+ *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
  *             .protocolType("HDFS")
  *             .description(name)
  *             .fileSystemName(String.format("%s-%s", name,defaultInteger.result()))

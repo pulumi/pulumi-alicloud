@@ -66,7 +66,7 @@ export interface GetAccessAssignmentsArgs {
      */
     outputFile?: string;
     /**
-     * Create the identity type of the access assignment, which can be a user or a user group.
+     * Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
      */
     principalType?: string;
     /**
@@ -74,7 +74,7 @@ export interface GetAccessAssignmentsArgs {
      */
     targetId?: string;
     /**
-     * The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+     * The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
      */
     targetType?: string;
 }
@@ -146,7 +146,7 @@ export interface GetAccessAssignmentsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Create the identity type of the access assignment, which can be a user or a user group.
+     * Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
      */
     principalType?: pulumi.Input<string>;
     /**
@@ -154,7 +154,7 @@ export interface GetAccessAssignmentsOutputArgs {
      */
     targetId?: pulumi.Input<string>;
     /**
-     * The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+     * The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
      */
     targetType?: pulumi.Input<string>;
 }

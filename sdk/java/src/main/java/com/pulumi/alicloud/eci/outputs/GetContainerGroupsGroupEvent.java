@@ -32,7 +32,7 @@ public final class GetContainerGroupsGroupEvent {
      */
     private String message;
     /**
-     * @return The name of the volume.
+     * @return The name of the object to which the event belongs.
      * 
      */
     private String name;
@@ -42,7 +42,7 @@ public final class GetContainerGroupsGroupEvent {
      */
     private String reason;
     /**
-     * @return The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+     * @return The type of the event. Valid values: Normal and Warning.
      * 
      */
     private String type;
@@ -77,7 +77,7 @@ public final class GetContainerGroupsGroupEvent {
         return this.message;
     }
     /**
-     * @return The name of the volume.
+     * @return The name of the object to which the event belongs.
      * 
      */
     public String name() {
@@ -91,7 +91,7 @@ public final class GetContainerGroupsGroupEvent {
         return this.reason;
     }
     /**
-     * @return The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+     * @return The type of the event. Valid values: Normal and Warning.
      * 
      */
     public String type() {

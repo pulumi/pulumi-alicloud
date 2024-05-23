@@ -69,19 +69,19 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var example = new Network("example", NetworkArgs.builder()        
+ *         var example = new Network("example", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()        
+ *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(example.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
- *         var exampleNetworkAcl = new NetworkAcl("exampleNetworkAcl", NetworkAclArgs.builder()        
+ *         var exampleNetworkAcl = new NetworkAcl("exampleNetworkAcl", NetworkAclArgs.builder()
  *             .vpcId(example.id())
  *             .networkAclName(name)
  *             .description(name)

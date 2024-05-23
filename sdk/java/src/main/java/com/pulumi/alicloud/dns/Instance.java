@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var this_ = new Instance("this", InstanceArgs.builder()        
+ *         var this_ = new Instance("this", InstanceArgs.builder()
  *             .dnsSecurity("no")
  *             .domainNumbers("2")
  *             .period(1)

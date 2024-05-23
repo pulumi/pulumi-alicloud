@@ -65,26 +65,26 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()        
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("10.4.0.0/16")
  *             .build());
  * 
- *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()        
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("10.4.0.0/24")
  *             .vpcId(defaultNetwork.id())
  *             .zoneId(default_.zones()[default_.zones().length() - 1].id())
  *             .build());
  * 
- *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()        
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()        
+ *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
  *             .clusterType("ecs")
  *             .grafanaInstanceId("free")
  *             .vpcId(defaultNetwork.id())
@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  *             ))
  *             .build());
  * 
- *         var defaultRemoteWrite = new RemoteWrite("defaultRemoteWrite", RemoteWriteArgs.builder()        
+ *         var defaultRemoteWrite = new RemoteWrite("defaultRemoteWrite", RemoteWriteArgs.builder()
  *             .clusterId(defaultPrometheus.id())
  *             .remoteWriteYaml("""
  * remote_write:

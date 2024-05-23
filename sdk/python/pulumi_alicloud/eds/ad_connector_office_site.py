@@ -44,6 +44,9 @@ class AdConnectorOfficeSiteArgs:
         :param pulumi.Input[int] bandwidth: The maximum public bandwidth value. Valid values: 0 to 200. If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
         :param pulumi.Input[str] cen_owner_id: The cen owner id.
         :param pulumi.Input[str] desktop_access_type: The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+               - `INTERNET`: connects clients to cloud desktops only over the Internet.
+               - `VPC`: connects clients to cloud desktops only over a VPC.
+               - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
         :param pulumi.Input[str] domain_password: The password of the domain administrator. The password can be up to 64 characters in length.
         :param pulumi.Input[str] domain_user_name: The username of the domain administrator. The username can be up to 64 characters in length.
         :param pulumi.Input[bool] enable_admin_access: Specifies whether to grant the permissions of the local administrator to the desktop users. Default value: true.
@@ -190,6 +193,9 @@ class AdConnectorOfficeSiteArgs:
     def desktop_access_type(self) -> Optional[pulumi.Input[str]]:
         """
         The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+        - `INTERNET`: connects clients to cloud desktops only over the Internet.
+        - `VPC`: connects clients to cloud desktops only over a VPC.
+        - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
         """
         return pulumi.get(self, "desktop_access_type")
 
@@ -350,6 +356,9 @@ class _AdConnectorOfficeSiteState:
         :param pulumi.Input[str] cen_owner_id: The cen owner id.
         :param pulumi.Input[str] cidr_block: Workspace Corresponds to the Security Office Network of IPv4 Segment.
         :param pulumi.Input[str] desktop_access_type: The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+               - `INTERNET`: connects clients to cloud desktops only over the Internet.
+               - `VPC`: connects clients to cloud desktops only over a VPC.
+               - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_addresses: The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
         :param pulumi.Input[str] domain_name: The domain name of the enterprise AD system. You can register each domain name only once.
         :param pulumi.Input[str] domain_password: The password of the domain administrator. The password can be up to 64 characters in length.
@@ -482,6 +491,9 @@ class _AdConnectorOfficeSiteState:
     def desktop_access_type(self) -> Optional[pulumi.Input[str]]:
         """
         The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+        - `INTERNET`: connects clients to cloud desktops only over the Internet.
+        - `VPC`: connects clients to cloud desktops only over a VPC.
+        - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
         """
         return pulumi.get(self, "desktop_access_type")
 
@@ -727,6 +739,9 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
         :param pulumi.Input[str] cen_owner_id: The cen owner id.
         :param pulumi.Input[str] cidr_block: Workspace Corresponds to the Security Office Network of IPv4 Segment.
         :param pulumi.Input[str] desktop_access_type: The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+               - `INTERNET`: connects clients to cloud desktops only over the Internet.
+               - `VPC`: connects clients to cloud desktops only over a VPC.
+               - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_addresses: The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
         :param pulumi.Input[str] domain_name: The domain name of the enterprise AD system. You can register each domain name only once.
         :param pulumi.Input[str] domain_password: The password of the domain administrator. The password can be up to 64 characters in length.
@@ -912,6 +927,9 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
         :param pulumi.Input[str] cen_owner_id: The cen owner id.
         :param pulumi.Input[str] cidr_block: Workspace Corresponds to the Security Office Network of IPv4 Segment.
         :param pulumi.Input[str] desktop_access_type: The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+               - `INTERNET`: connects clients to cloud desktops only over the Internet.
+               - `VPC`: connects clients to cloud desktops only over a VPC.
+               - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_addresses: The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
         :param pulumi.Input[str] domain_name: The domain name of the enterprise AD system. You can register each domain name only once.
         :param pulumi.Input[str] domain_password: The password of the domain administrator. The password can be up to 64 characters in length.
@@ -1005,6 +1023,9 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
     def desktop_access_type(self) -> pulumi.Output[str]:
         """
         The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+        - `INTERNET`: connects clients to cloud desktops only over the Internet.
+        - `VPC`: connects clients to cloud desktops only over a VPC.
+        - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
         """
         return pulumi.get(self, "desktop_access_type")
 

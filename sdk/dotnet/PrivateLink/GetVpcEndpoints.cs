@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.PrivateLink
         public string? VpcEndpointName { get; set; }
 
         /// <summary>
-        /// The private network to which the terminal node belongs.
+        /// The private network to which the terminal node belongs..
         /// </summary>
         [Input("vpcId")]
         public string? VpcId { get; set; }
@@ -210,7 +210,7 @@ namespace Pulumi.AliCloud.PrivateLink
         public Input<string>? VpcEndpointName { get; set; }
 
         /// <summary>
-        /// The private network to which the terminal node belongs.
+        /// The private network to which the terminal node belongs..
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

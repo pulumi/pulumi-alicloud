@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var queue = new Queue("queue", QueueArgs.builder()        
+ *         var queue = new Queue("queue", QueueArgs.builder()
  *             .name("tf-example-mnsqueue")
  *             .delaySeconds(0)
  *             .maximumMessageSize(65536)

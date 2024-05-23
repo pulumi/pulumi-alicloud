@@ -32,6 +32,7 @@ class OssBackupPlanArgs:
         :param pulumi.Input[str] oss_backup_plan_name: The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         :param pulumi.Input[str] cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account.
         :param pulumi.Input[str] cross_account_type: The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
@@ -109,6 +110,7 @@ class OssBackupPlanArgs:
     def schedule(self) -> pulumi.Input[str]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -215,6 +217,7 @@ class _OssBackupPlanState:
         :param pulumi.Input[str] prefix: Backup prefix. Once specified, only objects with matching prefixes will be backed up.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         if backup_type is not None:
@@ -353,6 +356,7 @@ class _OssBackupPlanState:
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 
@@ -441,6 +445,7 @@ class OssBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] prefix: Backup prefix. Once specified, only objects with matching prefixes will be backed up.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         ...
@@ -584,6 +589,7 @@ class OssBackupPlan(pulumi.CustomResource):
         :param pulumi.Input[str] prefix: Backup prefix. Once specified, only objects with matching prefixes will be backed up.
         :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+               * `startTime` Backup start time, UNIX time seconds.
         :param pulumi.Input[str] vault_id: The ID of backup vault.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -680,6 +686,7 @@ class OssBackupPlan(pulumi.CustomResource):
     def schedule(self) -> pulumi.Output[str]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
+        * `startTime` Backup start time, UNIX time seconds.
         """
         return pulumi.get(self, "schedule")
 

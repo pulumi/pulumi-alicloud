@@ -93,14 +93,14 @@ public final class GetSecurityPoliciesPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     * The name of the resource.
      * 
      */
     @Import(name="securityPolicyName")
     private @Nullable String securityPolicyName;
 
     /**
-     * @return The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     * @return The name of the resource.
      * 
      */
     public Optional<String> securityPolicyName() {
@@ -108,14 +108,14 @@ public final class GetSecurityPoliciesPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values : `Available`, `Configuring`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values : `Available`, `Configuring`.
      * 
      */
     public Optional<String> status() {
@@ -236,7 +236,7 @@ public final class GetSecurityPoliciesPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param securityPolicyName The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+         * @param securityPolicyName The name of the resource.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class GetSecurityPoliciesPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values : `Available`, `Configuring`.
          * 
          * @return builder
          * 

@@ -84,6 +84,8 @@ public final class GetFileSystemsPlainArgs extends com.pulumi.resources.InvokeAr
     /**
      * The storage type of the file system.
      * * Valid values:
+     * * `Performance` (Available when the `file_system_type` is `standard`)
+     * * `Capacity` (Available when the `file_system_type` is `standard`)
      * 
      */
     @Import(name="storageType")
@@ -92,6 +94,8 @@ public final class GetFileSystemsPlainArgs extends com.pulumi.resources.InvokeAr
     /**
      * @return The storage type of the file system.
      * * Valid values:
+     * * `Performance` (Available when the `file_system_type` is `standard`)
+     * * `Capacity` (Available when the `file_system_type` is `standard`)
      * 
      */
     public Optional<String> storageType() {
@@ -186,6 +190,8 @@ public final class GetFileSystemsPlainArgs extends com.pulumi.resources.InvokeAr
         /**
          * @param storageType The storage type of the file system.
          * * Valid values:
+         * * `Performance` (Available when the `file_system_type` is `standard`)
+         * * `Capacity` (Available when the `file_system_type` is `standard`)
          * 
          * @return builder
          * 

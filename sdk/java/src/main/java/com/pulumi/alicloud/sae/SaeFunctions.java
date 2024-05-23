@@ -283,25 +283,25 @@ public final class SaeFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .vpcName("tf_testacc")
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var vsw = new Switch("vsw", SwitchArgs.builder()        
+     *         var vsw = new Switch("vsw", SwitchArgs.builder()
      *             .vpcId(vpc.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
      *             .namespaceDescription(name)
      *             .namespaceId("cn-hangzhou:tfacctest")
      *             .namespaceName(name)
      *             .build());
      * 
-     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
      *             .appDescription("tf-testaccDescription")
      *             .appName("tf-testaccAppName131")
      *             .namespaceId(defaultNamespace.id())
@@ -377,25 +377,25 @@ public final class SaeFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .vpcName("tf_testacc")
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var vsw = new Switch("vsw", SwitchArgs.builder()        
+     *         var vsw = new Switch("vsw", SwitchArgs.builder()
      *             .vpcId(vpc.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
      *             .namespaceDescription(name)
      *             .namespaceId("cn-hangzhou:tfacctest")
      *             .namespaceName(name)
      *             .build());
      * 
-     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
      *             .appDescription("tf-testaccDescription")
      *             .appName("tf-testaccAppName131")
      *             .namespaceId(defaultNamespace.id())
@@ -471,25 +471,25 @@ public final class SaeFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .vpcName("tf_testacc")
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var vsw = new Switch("vsw", SwitchArgs.builder()        
+     *         var vsw = new Switch("vsw", SwitchArgs.builder()
      *             .vpcId(vpc.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
      *             .namespaceDescription(name)
      *             .namespaceId("cn-hangzhou:tfacctest")
      *             .namespaceName(name)
      *             .build());
      * 
-     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
      *             .appDescription("tf-testaccDescription")
      *             .appName("tf-testaccAppName131")
      *             .namespaceId(defaultNamespace.id())
@@ -565,25 +565,25 @@ public final class SaeFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .vpcName("tf_testacc")
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var vsw = new Switch("vsw", SwitchArgs.builder()        
+     *         var vsw = new Switch("vsw", SwitchArgs.builder()
      *             .vpcId(vpc.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
      *             .namespaceDescription(name)
      *             .namespaceId("cn-hangzhou:tfacctest")
      *             .namespaceName(name)
      *             .build());
      * 
-     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
      *             .appDescription("tf-testaccDescription")
      *             .appName("tf-testaccAppName131")
      *             .namespaceId(defaultNamespace.id())
@@ -659,25 +659,25 @@ public final class SaeFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .vpcName("tf_testacc")
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var vsw = new Switch("vsw", SwitchArgs.builder()        
+     *         var vsw = new Switch("vsw", SwitchArgs.builder()
      *             .vpcId(vpc.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
      *             .namespaceDescription(name)
      *             .namespaceId("cn-hangzhou:tfacctest")
      *             .namespaceName(name)
      *             .build());
      * 
-     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
      *             .appDescription("tf-testaccDescription")
      *             .appName("tf-testaccAppName131")
      *             .namespaceId(defaultNamespace.id())
@@ -753,25 +753,25 @@ public final class SaeFunctions {
      *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         var vpc = new Network("vpc", NetworkArgs.builder()        
+     *         var vpc = new Network("vpc", NetworkArgs.builder()
      *             .vpcName("tf_testacc")
      *             .cidrBlock("172.16.0.0/12")
      *             .build());
      * 
-     *         var vsw = new Switch("vsw", SwitchArgs.builder()        
+     *         var vsw = new Switch("vsw", SwitchArgs.builder()
      *             .vpcId(vpc.id())
      *             .cidrBlock("172.16.0.0/24")
      *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
-     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()        
+     *         var defaultNamespace = new Namespace("defaultNamespace", NamespaceArgs.builder()
      *             .namespaceDescription(name)
      *             .namespaceId("cn-hangzhou:tfacctest")
      *             .namespaceName(name)
      *             .build());
      * 
-     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()        
+     *         var defaultApplication = new Application("defaultApplication", ApplicationArgs.builder()
      *             .appDescription("tf-testaccDescription")
      *             .appName("tf-testaccAppName131")
      *             .namespaceId(defaultNamespace.id())
@@ -838,13 +838,13 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var configMapName = config.get("configMapName").orElse("examplename");
-     *         var example = new Namespace("example", NamespaceArgs.builder()        
+     *         var example = new Namespace("example", NamespaceArgs.builder()
      *             .namespaceId("cn-hangzhou:yourname")
      *             .namespaceName("example_value")
      *             .namespaceDescription("your_description")
      *             .build());
      * 
-     *         var exampleConfigMap = new ConfigMap("exampleConfigMap", ConfigMapArgs.builder()        
+     *         var exampleConfigMap = new ConfigMap("exampleConfigMap", ConfigMapArgs.builder()
      *             .data(serializeJson(
      *                 jsonObject(
      *                     jsonProperty("env.home", "/root"),
@@ -909,13 +909,13 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var configMapName = config.get("configMapName").orElse("examplename");
-     *         var example = new Namespace("example", NamespaceArgs.builder()        
+     *         var example = new Namespace("example", NamespaceArgs.builder()
      *             .namespaceId("cn-hangzhou:yourname")
      *             .namespaceName("example_value")
      *             .namespaceDescription("your_description")
      *             .build());
      * 
-     *         var exampleConfigMap = new ConfigMap("exampleConfigMap", ConfigMapArgs.builder()        
+     *         var exampleConfigMap = new ConfigMap("exampleConfigMap", ConfigMapArgs.builder()
      *             .data(serializeJson(
      *                 jsonObject(
      *                     jsonProperty("env.home", "/root"),
@@ -980,13 +980,13 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var configMapName = config.get("configMapName").orElse("examplename");
-     *         var example = new Namespace("example", NamespaceArgs.builder()        
+     *         var example = new Namespace("example", NamespaceArgs.builder()
      *             .namespaceId("cn-hangzhou:yourname")
      *             .namespaceName("example_value")
      *             .namespaceDescription("your_description")
      *             .build());
      * 
-     *         var exampleConfigMap = new ConfigMap("exampleConfigMap", ConfigMapArgs.builder()        
+     *         var exampleConfigMap = new ConfigMap("exampleConfigMap", ConfigMapArgs.builder()
      *             .data(serializeJson(
      *                 jsonObject(
      *                     jsonProperty("env.home", "/root"),
@@ -1051,13 +1051,13 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var configMapName = config.get("configMapName").orElse("examplename");
-     *         var example = new Namespace("example", NamespaceArgs.builder()        
+     *         var example = new Namespace("example", NamespaceArgs.builder()
      *             .namespaceId("cn-hangzhou:yourname")
      *             .namespaceName("example_value")
      *             .namespaceDescription("your_description")
      *             .build());
      * 
-     *         var exampleConfigMap = new ConfigMap("exampleConfigMap", ConfigMapArgs.builder()        
+     *         var exampleConfigMap = new ConfigMap("exampleConfigMap", ConfigMapArgs.builder()
      *             .data(serializeJson(
      *                 jsonObject(
      *                     jsonProperty("env.home", "/root"),

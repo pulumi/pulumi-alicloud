@@ -112,6 +112,9 @@ namespace Pulumi.AliCloud.Eds
 
         /// <summary>
         /// The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+        /// - `INTERNET`: connects clients to cloud desktops only over the Internet.
+        /// - `VPC`: connects clients to cloud desktops only over a VPC.
+        /// - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
         /// </summary>
         [Output("desktopAccessType")]
         public Output<string> DesktopAccessType { get; private set; } = null!;
@@ -282,6 +285,9 @@ namespace Pulumi.AliCloud.Eds
 
         /// <summary>
         /// The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+        /// - `INTERNET`: connects clients to cloud desktops only over the Internet.
+        /// - `VPC`: connects clients to cloud desktops only over a VPC.
+        /// - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
         /// </summary>
         [Input("desktopAccessType")]
         public Input<string>? DesktopAccessType { get; set; }
@@ -426,6 +432,9 @@ namespace Pulumi.AliCloud.Eds
 
         /// <summary>
         /// The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
+        /// - `INTERNET`: connects clients to cloud desktops only over the Internet.
+        /// - `VPC`: connects clients to cloud desktops only over a VPC.
+        /// - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
         /// </summary>
         [Input("desktopAccessType")]
         public Input<string>? DesktopAccessType { get; set; }

@@ -145,8 +145,7 @@ def get_subscription_jobs(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of Subscription Job IDs.
     :param str name_regex: A regex string to filter results by subscription job name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param str status: The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -199,7 +198,6 @@ def get_subscription_jobs_output(enable_details: Optional[pulumi.Input[Optional[
     :param Sequence[str] ids: A list of Subscription Job IDs.
     :param str name_regex: A regex string to filter results by subscription job name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the task. Valid values: `NotStarted`, `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state of `Normal` to start the job, and specify this state of `Abnormal` to stop the job.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param str status: The status of the task. Valid values: `Abnormal`, `Downgrade`, `Locked`, `Normal`, `NotStarted`, `NotStarted`, `PreCheckPass`, `PrecheckFailed`, `Prechecking`, `Retrying`, `Starting`, `Upgrade`.
     """
     ...

@@ -31,6 +31,8 @@ type NatGateway struct {
 	// Specifies whether to only precheck this request. Default value: `false`.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+	// - `MULTI_BINDED`: Multi EIP network card visible mode.
+	// - `NAT`: EIP normal mode, compatible with IPv4 gateway.
 	EipBindMode pulumi.StringOutput `pulumi:"eipBindMode"`
 	// Specifies whether to forcefully delete the NAT gateway.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
@@ -109,6 +111,8 @@ type natGatewayState struct {
 	// Specifies whether to only precheck this request. Default value: `false`.
 	DryRun *bool `pulumi:"dryRun"`
 	// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+	// - `MULTI_BINDED`: Multi EIP network card visible mode.
+	// - `NAT`: EIP normal mode, compatible with IPv4 gateway.
 	EipBindMode *string `pulumi:"eipBindMode"`
 	// Specifies whether to forcefully delete the NAT gateway.
 	Force *bool `pulumi:"force"`
@@ -155,6 +159,8 @@ type NatGatewayState struct {
 	// Specifies whether to only precheck this request. Default value: `false`.
 	DryRun pulumi.BoolPtrInput
 	// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+	// - `MULTI_BINDED`: Multi EIP network card visible mode.
+	// - `NAT`: EIP normal mode, compatible with IPv4 gateway.
 	EipBindMode pulumi.StringPtrInput
 	// Specifies whether to forcefully delete the NAT gateway.
 	Force pulumi.BoolPtrInput
@@ -205,6 +211,8 @@ type natGatewayArgs struct {
 	// Specifies whether to only precheck this request. Default value: `false`.
 	DryRun *bool `pulumi:"dryRun"`
 	// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+	// - `MULTI_BINDED`: Multi EIP network card visible mode.
+	// - `NAT`: EIP normal mode, compatible with IPv4 gateway.
 	EipBindMode *string `pulumi:"eipBindMode"`
 	// Specifies whether to forcefully delete the NAT gateway.
 	Force *bool `pulumi:"force"`
@@ -246,6 +254,8 @@ type NatGatewayArgs struct {
 	// Specifies whether to only precheck this request. Default value: `false`.
 	DryRun pulumi.BoolPtrInput
 	// The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+	// - `MULTI_BINDED`: Multi EIP network card visible mode.
+	// - `NAT`: EIP normal mode, compatible with IPv4 gateway.
 	EipBindMode pulumi.StringPtrInput
 	// Specifies whether to forcefully delete the NAT gateway.
 	Force pulumi.BoolPtrInput
@@ -381,6 +391,8 @@ func (o NatGatewayOutput) DryRun() pulumi.BoolPtrOutput {
 }
 
 // The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
+// - `MULTI_BINDED`: Multi EIP network card visible mode.
+// - `NAT`: EIP normal mode, compatible with IPv4 gateway.
 func (o NatGatewayOutput) EipBindMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *NatGateway) pulumi.StringOutput { return v.EipBindMode }).(pulumi.StringOutput)
 }

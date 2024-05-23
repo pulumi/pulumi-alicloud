@@ -63,14 +63,14 @@ public final class GetPatchBaselinesArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Operating system type.
+     * Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
      * 
      */
     @Import(name="operationSystem")
     private @Nullable Output<String> operationSystem;
 
     /**
-     * @return Operating system type.
+     * @return Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
      * 
      */
     public Optional<Output<String>> operationSystem() {
@@ -93,14 +93,14 @@ public final class GetPatchBaselinesArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Patch baseline sharing type.
+     * Patch baseline sharing type. Valid values: `Private`, `Public`.
      * 
      */
     @Import(name="shareType")
     private @Nullable Output<String> shareType;
 
     /**
-     * @return Patch baseline sharing type.
+     * @return Patch baseline sharing type. Valid values: `Private`, `Public`.
      * 
      */
     public Optional<Output<String>> shareType() {
@@ -210,7 +210,7 @@ public final class GetPatchBaselinesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param operationSystem Operating system type.
+         * @param operationSystem Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class GetPatchBaselinesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param operationSystem Operating system type.
+         * @param operationSystem Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class GetPatchBaselinesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param shareType Patch baseline sharing type.
+         * @param shareType Patch baseline sharing type. Valid values: `Private`, `Public`.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class GetPatchBaselinesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param shareType Patch baseline sharing type.
+         * @param shareType Patch baseline sharing type. Valid values: `Private`, `Public`.
          * 
          * @return builder
          * 

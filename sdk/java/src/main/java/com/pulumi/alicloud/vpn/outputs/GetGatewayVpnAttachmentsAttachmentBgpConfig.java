@@ -21,7 +21,7 @@ public final class GetGatewayVpnAttachmentsAttachmentBgpConfig {
      */
     private String localBgpIp;
     /**
-     * @return The status of the resource.
+     * @return The negotiation status of the BGP routing protocol.
      * 
      */
     private String status;
@@ -47,7 +47,7 @@ public final class GetGatewayVpnAttachmentsAttachmentBgpConfig {
         return this.localBgpIp;
     }
     /**
-     * @return The status of the resource.
+     * @return The negotiation status of the BGP routing protocol.
      * 
      */
     public String status() {

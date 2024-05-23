@@ -53,13 +53,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()        
+ *         var default_ = new AlarmContactGroup("default", AlarmContactGroupArgs.builder()
  *             .alarmContactGroupName("example_value")
  *             .describe("example_value")
  *             .enableSubscribed(true)
  *             .build());
  * 
- *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()        
+ *         var defaultDynamicTagGroup = new DynamicTagGroup("defaultDynamicTagGroup", DynamicTagGroupArgs.builder()
  *             .contactGroupLists(default_.id())
  *             .tagKey("your_tag_key")
  *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()

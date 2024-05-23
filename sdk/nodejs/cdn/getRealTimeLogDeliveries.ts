@@ -39,9 +39,6 @@ export function getRealTimeLogDeliveries(args: GetRealTimeLogDeliveriesArgs, opt
  * A collection of arguments for invoking getRealTimeLogDeliveries.
  */
 export interface GetRealTimeLogDeliveriesArgs {
-    /**
-     * Real-Time Log Service Domain.
-     */
     domain: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -93,9 +90,6 @@ export function getRealTimeLogDeliveriesOutput(args: GetRealTimeLogDeliveriesOut
  * A collection of arguments for invoking getRealTimeLogDeliveries.
  */
 export interface GetRealTimeLogDeliveriesOutputArgs {
-    /**
-     * Real-Time Log Service Domain.
-     */
     domain: pulumi.Input<string>;
     /**
      * File name where to save data source results (after running `pulumi preview`).

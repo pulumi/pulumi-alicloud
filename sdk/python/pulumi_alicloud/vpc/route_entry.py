@@ -27,6 +27,16 @@ class RouteEntryArgs:
         :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
         :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
+               - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+               - `RouterInterface`: a router interface.
+               - `VpnGateway`: a VPN Gateway.
+               - `HaVip`: a high-availability virtual IP address (HAVIP).
+               - `NetworkInterface`: an elastic network interface (ENI).
+               - `NatGateway`: a Nat Gateway.
+               - `IPv6Gateway`: an IPv6 gateway.
+               - `Attachment`: a transit router.
+               - `VpcPeer`: a VPC Peering Connection.
+               - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
         :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         pulumi.set(__self__, "route_table_id", route_table_id)
@@ -97,6 +107,16 @@ class RouteEntryArgs:
     def nexthop_type(self) -> Optional[pulumi.Input[str]]:
         """
         The next hop type. Available values:
+        - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+        - `RouterInterface`: a router interface.
+        - `VpnGateway`: a VPN Gateway.
+        - `HaVip`: a high-availability virtual IP address (HAVIP).
+        - `NetworkInterface`: an elastic network interface (ENI).
+        - `NatGateway`: a Nat Gateway.
+        - `IPv6Gateway`: an IPv6 gateway.
+        - `Attachment`: a transit router.
+        - `VpcPeer`: a VPC Peering Connection.
+        - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
         """
         return pulumi.get(self, "nexthop_type")
 
@@ -135,6 +155,16 @@ class _RouteEntryState:
         :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
         :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
+               - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+               - `RouterInterface`: a router interface.
+               - `VpnGateway`: a VPN Gateway.
+               - `HaVip`: a high-availability virtual IP address (HAVIP).
+               - `NetworkInterface`: an elastic network interface (ENI).
+               - `NatGateway`: a Nat Gateway.
+               - `IPv6Gateway`: an IPv6 gateway.
+               - `Attachment`: a transit router.
+               - `VpcPeer`: a VPC Peering Connection.
+               - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
         :param pulumi.Input[str] route_table_id: The ID of the route table.
         :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
@@ -195,6 +225,16 @@ class _RouteEntryState:
     def nexthop_type(self) -> Optional[pulumi.Input[str]]:
         """
         The next hop type. Available values:
+        - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+        - `RouterInterface`: a router interface.
+        - `VpnGateway`: a VPN Gateway.
+        - `HaVip`: a high-availability virtual IP address (HAVIP).
+        - `NetworkInterface`: an elastic network interface (ENI).
+        - `NatGateway`: a Nat Gateway.
+        - `IPv6Gateway`: an IPv6 gateway.
+        - `Attachment`: a transit router.
+        - `VpcPeer`: a VPC Peering Connection.
+        - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
         """
         return pulumi.get(self, "nexthop_type")
 
@@ -321,6 +361,16 @@ class RouteEntry(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
         :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
+               - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+               - `RouterInterface`: a router interface.
+               - `VpnGateway`: a VPN Gateway.
+               - `HaVip`: a high-availability virtual IP address (HAVIP).
+               - `NetworkInterface`: an elastic network interface (ENI).
+               - `NatGateway`: a Nat Gateway.
+               - `IPv6Gateway`: an IPv6 gateway.
+               - `Attachment`: a transit router.
+               - `VpcPeer`: a VPC Peering Connection.
+               - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
         :param pulumi.Input[str] route_table_id: The ID of the route table.
         :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
@@ -468,6 +518,16 @@ class RouteEntry(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
         :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
         :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
+               - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+               - `RouterInterface`: a router interface.
+               - `VpnGateway`: a VPN Gateway.
+               - `HaVip`: a high-availability virtual IP address (HAVIP).
+               - `NetworkInterface`: an elastic network interface (ENI).
+               - `NatGateway`: a Nat Gateway.
+               - `IPv6Gateway`: an IPv6 gateway.
+               - `Attachment`: a transit router.
+               - `VpcPeer`: a VPC Peering Connection.
+               - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
         :param pulumi.Input[str] route_table_id: The ID of the route table.
         :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
@@ -512,6 +572,16 @@ class RouteEntry(pulumi.CustomResource):
     def nexthop_type(self) -> pulumi.Output[Optional[str]]:
         """
         The next hop type. Available values:
+        - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
+        - `RouterInterface`: a router interface.
+        - `VpnGateway`: a VPN Gateway.
+        - `HaVip`: a high-availability virtual IP address (HAVIP).
+        - `NetworkInterface`: an elastic network interface (ENI).
+        - `NatGateway`: a Nat Gateway.
+        - `IPv6Gateway`: an IPv6 gateway.
+        - `Attachment`: a transit router.
+        - `VpcPeer`: a VPC Peering Connection.
+        - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
         """
         return pulumi.get(self, "nexthop_type")
 

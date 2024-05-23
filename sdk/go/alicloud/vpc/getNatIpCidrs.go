@@ -102,15 +102,15 @@ type GetNatIpCidrsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Nat Ip Cidr name.
 	NameRegex *string `pulumi:"nameRegex"`
-	// The ID of the VPC NAT gateway.
+	// NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
 	NatGatewayId string `pulumi:"natGatewayId"`
-	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+	// The name of the CIDR block that you want to query. Support up to `20`.
 	NatIpCidrNames []string `pulumi:"natIpCidrNames"`
 	// The NAT CIDR block to be created. Support up to `20`. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
 	NatIpCidrs []string `pulumi:"natIpCidrs"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+	// The status of the NAT IP address. Valid values:`Available`.
 	Status *string `pulumi:"status"`
 }
 
@@ -148,15 +148,15 @@ type GetNatIpCidrsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Nat Ip Cidr name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
-	// The ID of the VPC NAT gateway.
+	// NAT IP ADDRESS range to the security group of the Kafka VPC NAT gateway instance ID.
 	NatGatewayId pulumi.StringInput `pulumi:"natGatewayId"`
-	// NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
+	// The name of the CIDR block that you want to query. Support up to `20`.
 	NatIpCidrNames pulumi.StringArrayInput `pulumi:"natIpCidrNames"`
 	// The NAT CIDR block to be created. Support up to `20`. The CIDR block must meet the following conditions: It must be `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, or one of their subnets. The subnet mask must be `16` to `32` bits in lengths. To use a public CIDR block as the NAT CIDR block, the VPC to which the VPC NAT gateway belongs must be authorized to use public CIDR blocks. For more information, see [Create a VPC NAT gateway](https://www.alibabacloud.com/help/doc-detail/268230.htm).
 	NatIpCidrs pulumi.StringArrayInput `pulumi:"natIpCidrs"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
+	// The status of the NAT IP address. Valid values:`Available`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

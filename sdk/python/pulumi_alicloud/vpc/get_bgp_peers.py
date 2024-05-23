@@ -132,11 +132,11 @@ def get_bgp_peers(bgp_group_id: Optional[str] = None,
     ```
 
 
-    :param str bgp_group_id: The ID of the BGP group.
+    :param str bgp_group_id: The ID of the BGP group to which the BGP peer that you want to query belongs.
     :param Sequence[str] ids: A list of Bgp Peer IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str router_id: The ID of the router.
-    :param str status: The status of the BGP peer.
+    :param str router_id: The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
+    :param str status: The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
     """
     __args__ = dict()
     __args__['bgpGroupId'] = bgp_group_id
@@ -191,10 +191,10 @@ def get_bgp_peers_output(bgp_group_id: Optional[pulumi.Input[Optional[str]]] = N
     ```
 
 
-    :param str bgp_group_id: The ID of the BGP group.
+    :param str bgp_group_id: The ID of the BGP group to which the BGP peer that you want to query belongs.
     :param Sequence[str] ids: A list of Bgp Peer IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str router_id: The ID of the router.
-    :param str status: The status of the BGP peer.
+    :param str router_id: The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
+    :param str status: The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
     """
     ...

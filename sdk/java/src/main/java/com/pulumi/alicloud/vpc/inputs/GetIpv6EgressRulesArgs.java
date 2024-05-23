@@ -33,14 +33,14 @@ public final class GetIpv6EgressRulesArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The ID of the instance to which the egress-only rule is applied.
+     * The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The ID of the instance to which the egress-only rule is applied.
+     * @return The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -108,14 +108,14 @@ public final class GetIpv6EgressRulesArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * @return The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -184,7 +184,7 @@ public final class GetIpv6EgressRulesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param instanceId The ID of the instance to which the egress-only rule is applied.
+         * @param instanceId The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class GetIpv6EgressRulesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param instanceId The ID of the instance to which the egress-only rule is applied.
+         * @param instanceId The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class GetIpv6EgressRulesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+         * @param status The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class GetIpv6EgressRulesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+         * @param status The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
          * 
          * @return builder
          * 

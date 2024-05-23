@@ -55,12 +55,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Integer("default", IntegerArgs.builder()        
+ *         var default_ = new Integer("default", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()        
+ *         var defaultDomain = new Domain("defaultDomain", DomainArgs.builder()
  *             .domainName(String.format("example-%s.com", default_.result()))
  *             .scope("domestic")
  *             .sources(DomainSourceArgs.builder()
@@ -261,6 +261,8 @@ public class Domain extends com.pulumi.resources.CustomResource {
     }
     /**
      * A mapping of tags to assign to the resource.
+     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
@@ -268,6 +270,8 @@ public class Domain extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A mapping of tags to assign to the resource.
+     * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+     * * `Value`: It can be up to 128 characters in length. It can be a null string.
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {

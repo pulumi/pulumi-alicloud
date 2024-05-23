@@ -78,14 +78,14 @@ public final class GetTlsCipherPoliciesArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * TLS policy instance state.
+     * TLS policy instance state. Valid values: `configuring`, `normal`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return TLS policy instance state.
+     * @return TLS policy instance state. Valid values: `configuring`, `normal`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -231,7 +231,7 @@ public final class GetTlsCipherPoliciesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status TLS policy instance state.
+         * @param status TLS policy instance state. Valid values: `configuring`, `normal`.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class GetTlsCipherPoliciesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status TLS policy instance state.
+         * @param status TLS policy instance state. Valid values: `configuring`, `normal`.
          * 
          * @return builder
          * 

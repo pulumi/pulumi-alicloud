@@ -3504,7 +3504,7 @@ class GetNetworkAclsAclResult(dict):
                  status: str,
                  vpc_id: str):
         """
-        :param str description: Description of the entry direction rule.
+        :param str description: Description of network ACL information.
         :param Sequence['GetNetworkAclsAclEgressAclEntryArgs'] egress_acl_entries: Output direction rule information.
         :param str id: The ID of the Network Acl.
         :param Sequence['GetNetworkAclsAclIngressAclEntryArgs'] ingress_acl_entries: Entry direction rule information.
@@ -3528,7 +3528,7 @@ class GetNetworkAclsAclResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        Description of the entry direction rule.
+        Description of network ACL information.
         """
         return pulumi.get(self, "description")
 
@@ -3607,12 +3607,12 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
                  port: str,
                  protocol: str):
         """
-        :param str description: Description of the entry direction rule.
+        :param str description: Give the description information of the direction rule.
         :param str destination_cidr_ip: The destination address segment.
-        :param str network_acl_entry_name: The name of the entry direction rule entry.
-        :param str policy: The authorization policy.
-        :param str port: Source port range.
-        :param str protocol: Transport layer protocol.
+        :param str network_acl_entry_name: The name of the entry for the direction rule.
+        :param str policy: The  authorization policy.
+        :param str port: Destination port range.
+        :param str protocol: Transport  layer protocol.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "destination_cidr_ip", destination_cidr_ip)
@@ -3625,7 +3625,7 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        Description of the entry direction rule.
+        Give the description information of the direction rule.
         """
         return pulumi.get(self, "description")
 
@@ -3641,7 +3641,7 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
     @pulumi.getter(name="networkAclEntryName")
     def network_acl_entry_name(self) -> str:
         """
-        The name of the entry direction rule entry.
+        The name of the entry for the direction rule.
         """
         return pulumi.get(self, "network_acl_entry_name")
 
@@ -3649,7 +3649,7 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
     @pulumi.getter
     def policy(self) -> str:
         """
-        The authorization policy.
+        The  authorization policy.
         """
         return pulumi.get(self, "policy")
 
@@ -3657,7 +3657,7 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
     @pulumi.getter
     def port(self) -> str:
         """
-        Source port range.
+        Destination port range.
         """
         return pulumi.get(self, "port")
 
@@ -3665,7 +3665,7 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
     @pulumi.getter
     def protocol(self) -> str:
         """
-        Transport layer protocol.
+        Transport  layer protocol.
         """
         return pulumi.get(self, "protocol")
 
@@ -3752,7 +3752,7 @@ class GetNetworkAclsAclResourceResult(dict):
         """
         :param str resource_id: The ID of the associated resource.
         :param str resource_type: The type of the associated resource.
-        :param str status: The state of the network ACL.
+        :param str status: The state of the associated resource.
         """
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_type", resource_type)
@@ -3778,7 +3778,7 @@ class GetNetworkAclsAclResourceResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The state of the network ACL.
+        The state of the associated resource.
         """
         return pulumi.get(self, "status")
 

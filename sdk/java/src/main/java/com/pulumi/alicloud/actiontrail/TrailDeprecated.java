@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new action trail.
- *         var foo = new TrailDeprecated("foo", TrailDeprecatedArgs.builder()        
+ *         var foo = new TrailDeprecated("foo", TrailDeprecatedArgs.builder()
  *             .name("action-trail")
  *             .eventRw("Write-test")
  *             .ossBucketName(bucket.id())

@@ -234,6 +234,9 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Whether to renew a bandwidth packet. automatically or not. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * 
      */
     @Import(name="renewalStatus")
@@ -241,6 +244,9 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Whether to renew a bandwidth packet. automatically or not. Valid values:
+     * - `AutoRenewal`: Enable auto renewal.
+     * - `Normal`: Disable auto renewal.
+     * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
      * 
      */
     public Optional<Output<String>> renewalStatus() {
@@ -615,6 +621,9 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param renewalStatus Whether to renew a bandwidth packet. automatically or not. Valid values:
+         * - `AutoRenewal`: Enable auto renewal.
+         * - `Normal`: Disable auto renewal.
+         * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
          * 
          * @return builder
          * 
@@ -626,6 +635,9 @@ public final class BandwidthPackageArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param renewalStatus Whether to renew a bandwidth packet. automatically or not. Valid values:
+         * - `AutoRenewal`: Enable auto renewal.
+         * - `Normal`: Disable auto renewal.
+         * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
          * 
          * @return builder
          * 

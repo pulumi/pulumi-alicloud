@@ -55,6 +55,8 @@ public final class GetIpv6AddressesArgs extends com.pulumi.resources.InvokeArgs 
 
     /**
      * The status of the IPv6 address. Valid values:`Pending` or `Available`.
+     * - `Pending`: The IPv6 address is being configured.
+     * - `Available`: The IPv6 address is available.
      * 
      */
     @Import(name="status")
@@ -62,6 +64,8 @@ public final class GetIpv6AddressesArgs extends com.pulumi.resources.InvokeArgs 
 
     /**
      * @return The status of the IPv6 address. Valid values:`Pending` or `Available`.
+     * - `Pending`: The IPv6 address is being configured.
+     * - `Available`: The IPv6 address is available.
      * 
      */
     public Optional<Output<String>> status() {
@@ -184,6 +188,8 @@ public final class GetIpv6AddressesArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param status The status of the IPv6 address. Valid values:`Pending` or `Available`.
+         * - `Pending`: The IPv6 address is being configured.
+         * - `Available`: The IPv6 address is available.
          * 
          * @return builder
          * 
@@ -195,6 +201,8 @@ public final class GetIpv6AddressesArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param status The status of the IPv6 address. Valid values:`Pending` or `Available`.
+         * - `Pending`: The IPv6 address is being configured.
+         * - `Available`: The IPv6 address is available.
          * 
          * @return builder
          * 

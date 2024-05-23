@@ -12,29 +12,77 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGreyTagRoutesRouteDubboRule {
+    /**
+     * @return The conditional Patterns for Grayscale Rules.
+     * 
+     */
     private String condition;
+    /**
+     * @return The service group.
+     * 
+     */
     private String group;
+    /**
+     * @return A list of conditions items.
+     * 
+     */
     private List<GetGreyTagRoutesRouteDubboRuleItem> items;
+    /**
+     * @return The method name
+     * 
+     */
     private String methodName;
+    /**
+     * @return The service name.
+     * 
+     */
     private String serviceName;
+    /**
+     * @return The service version.
+     * 
+     */
     private String version;
 
     private GetGreyTagRoutesRouteDubboRule() {}
+    /**
+     * @return The conditional Patterns for Grayscale Rules.
+     * 
+     */
     public String condition() {
         return this.condition;
     }
+    /**
+     * @return The service group.
+     * 
+     */
     public String group() {
         return this.group;
     }
+    /**
+     * @return A list of conditions items.
+     * 
+     */
     public List<GetGreyTagRoutesRouteDubboRuleItem> items() {
         return this.items;
     }
+    /**
+     * @return The method name
+     * 
+     */
     public String methodName() {
         return this.methodName;
     }
+    /**
+     * @return The service name.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return The service version.
+     * 
+     */
     public String version() {
         return this.version;
     }

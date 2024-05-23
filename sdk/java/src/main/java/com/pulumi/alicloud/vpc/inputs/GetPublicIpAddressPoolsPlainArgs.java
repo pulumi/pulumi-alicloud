@@ -31,14 +31,14 @@ public final class GetPublicIpAddressPoolsPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The Internet service provider.
+     * The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
      * 
      */
     @Import(name="isp")
     private @Nullable String isp;
 
     /**
-     * @return The Internet service provider.
+     * @return The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
      * 
      */
     public Optional<String> isp() {
@@ -91,14 +91,14 @@ public final class GetPublicIpAddressPoolsPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The name of the Vpc Public Ip Address Pool.
+     * The name of the VPC Public IP address pool.
      * 
      */
     @Import(name="publicIpAddressPoolName")
     private @Nullable String publicIpAddressPoolName;
 
     /**
-     * @return The name of the Vpc Public Ip Address Pool.
+     * @return The name of the VPC Public IP address pool.
      * 
      */
     public Optional<String> publicIpAddressPoolName() {
@@ -106,14 +106,14 @@ public final class GetPublicIpAddressPoolsPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The status of the Vpc Public Ip Address Pool.
+     * The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the Vpc Public Ip Address Pool.
+     * @return The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
      * 
      */
     public Optional<String> status() {
@@ -172,7 +172,7 @@ public final class GetPublicIpAddressPoolsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param isp The Internet service provider.
+         * @param isp The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class GetPublicIpAddressPoolsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param publicIpAddressPoolName The name of the Vpc Public Ip Address Pool.
+         * @param publicIpAddressPoolName The name of the VPC Public IP address pool.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class GetPublicIpAddressPoolsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param status The status of the Vpc Public Ip Address Pool.
+         * @param status The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
          * 
          * @return builder
          * 

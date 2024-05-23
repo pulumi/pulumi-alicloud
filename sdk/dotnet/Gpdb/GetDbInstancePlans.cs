@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Gpdb
         public string? PlanType { get; set; }
 
         /// <summary>
-        /// The Status of the Plan.
+        /// Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? PlanType { get; set; }
 
         /// <summary>
-        /// The Status of the Plan.
+        /// Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

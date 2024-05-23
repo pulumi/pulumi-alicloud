@@ -164,6 +164,8 @@ def get_domains(domain_search_type: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the domain name. The value of this parameter is used as a condition to filter domain names.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+           * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+           * `Value`: It can be up to 128 characters in length. It can be a null string.
     """
     __args__ = dict()
     __args__['domainSearchType'] = domain_search_type
@@ -235,5 +237,7 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the domain name. The value of this parameter is used as a condition to filter domain names.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
+           * `Key`: It can be up to 64 characters in length. It cannot be a null string.
+           * `Value`: It can be up to 128 characters in length. It can be a null string.
     """
     ...

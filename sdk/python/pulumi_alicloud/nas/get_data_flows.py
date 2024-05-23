@@ -123,7 +123,7 @@ def get_data_flows(file_system_id: Optional[str] = None,
     :param str file_system_id: The ID of the file system.
     :param Sequence[str] ids: A list of Data Flow IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the Data flow.
+    :param str status: The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
     """
     __args__ = dict()
     __args__['fileSystemId'] = file_system_id
@@ -176,6 +176,6 @@ def get_data_flows_output(file_system_id: Optional[pulumi.Input[str]] = None,
     :param str file_system_id: The ID of the file system.
     :param Sequence[str] ids: A list of Data Flow IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the Data flow.
+    :param str status: The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
     """
     ...

@@ -138,30 +138,22 @@ public final class GetMonitorGroupsPlainArgs extends com.pulumi.resources.Invoke
         return Optional.ofNullable(this.selectContactGroups);
     }
 
-    /**
-     * A map of tags assigned to the Cms Monitor Group.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
-    /**
-     * @return A map of tags assigned to the Cms Monitor Group.
-     * 
-     */
     public Optional<Map<String,Object>> tags() {
         return Optional.ofNullable(this.tags);
     }
 
     /**
-     * The type of the application group.
+     * The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
      * 
      */
     @Import(name="type")
     private @Nullable String type;
 
     /**
-     * @return The type of the application group.
+     * @return The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
      * 
      */
     public Optional<String> type() {
@@ -299,19 +291,13 @@ public final class GetMonitorGroupsPlainArgs extends com.pulumi.resources.Invoke
             return this;
         }
 
-        /**
-         * @param tags A map of tags assigned to the Cms Monitor Group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Map<String,Object> tags) {
             $.tags = tags;
             return this;
         }
 
         /**
-         * @param type The type of the application group.
+         * @param type The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
          * 
          * @return builder
          * 

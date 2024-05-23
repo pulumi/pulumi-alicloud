@@ -59,11 +59,11 @@ export interface GetInstancesArgs {
      */
     outputFile?: string;
     /**
-     * The billing method of the simple application server.
+     * The paymen type of the resource. Valid values: `Subscription`.
      */
     paymentType?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
      */
     status?: string;
 }
@@ -128,11 +128,11 @@ export interface GetInstancesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The billing method of the simple application server.
+     * The paymen type of the resource. Valid values: `Subscription`.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
      */
     status?: pulumi.Input<string>;
 }

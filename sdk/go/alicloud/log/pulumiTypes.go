@@ -2312,7 +2312,7 @@ func (o StoreEncryptConfUserCmkInfoPtrOutput) RegionId() pulumi.StringPtrOutput 
 }
 
 type StoreIndexFieldSearch struct {
-	// The alias of one field.
+	// The alias of one field
 	Alias *string `pulumi:"alias"`
 	// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
 	CaseSensitive *bool `pulumi:"caseSensitive"`
@@ -2322,11 +2322,11 @@ type StoreIndexFieldSearch struct {
 	IncludeChinese *bool `pulumi:"includeChinese"`
 	// Use nested index when type is json
 	JsonKeys []StoreIndexFieldSearchJsonKey `pulumi:"jsonKeys"`
-	// When using the jsonKeys field, this field is required.
+	// The field name, which is unique in the same log store.
 	Name string `pulumi:"name"`
 	// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
 	Token *string `pulumi:"token"`
-	// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+	// The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
 	Type *string `pulumi:"type"`
 }
 
@@ -2342,7 +2342,7 @@ type StoreIndexFieldSearchInput interface {
 }
 
 type StoreIndexFieldSearchArgs struct {
-	// The alias of one field.
+	// The alias of one field
 	Alias pulumi.StringPtrInput `pulumi:"alias"`
 	// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
 	CaseSensitive pulumi.BoolPtrInput `pulumi:"caseSensitive"`
@@ -2352,11 +2352,11 @@ type StoreIndexFieldSearchArgs struct {
 	IncludeChinese pulumi.BoolPtrInput `pulumi:"includeChinese"`
 	// Use nested index when type is json
 	JsonKeys StoreIndexFieldSearchJsonKeyArrayInput `pulumi:"jsonKeys"`
-	// When using the jsonKeys field, this field is required.
+	// The field name, which is unique in the same log store.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
 	Token pulumi.StringPtrInput `pulumi:"token"`
-	// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+	// The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -2411,7 +2411,7 @@ func (o StoreIndexFieldSearchOutput) ToStoreIndexFieldSearchOutputWithContext(ct
 	return o
 }
 
-// The alias of one field.
+// The alias of one field
 func (o StoreIndexFieldSearchOutput) Alias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreIndexFieldSearch) *string { return v.Alias }).(pulumi.StringPtrOutput)
 }
@@ -2436,7 +2436,7 @@ func (o StoreIndexFieldSearchOutput) JsonKeys() StoreIndexFieldSearchJsonKeyArra
 	return o.ApplyT(func(v StoreIndexFieldSearch) []StoreIndexFieldSearchJsonKey { return v.JsonKeys }).(StoreIndexFieldSearchJsonKeyArrayOutput)
 }
 
-// When using the jsonKeys field, this field is required.
+// The field name, which is unique in the same log store.
 func (o StoreIndexFieldSearchOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v StoreIndexFieldSearch) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2446,7 +2446,7 @@ func (o StoreIndexFieldSearchOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreIndexFieldSearch) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
-// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+// The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
 func (o StoreIndexFieldSearchOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreIndexFieldSearch) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2472,10 +2472,16 @@ func (o StoreIndexFieldSearchArrayOutput) Index(i pulumi.IntInput) StoreIndexFie
 }
 
 type StoreIndexFieldSearchJsonKey struct {
-	Alias    *string `pulumi:"alias"`
-	DocValue *bool   `pulumi:"docValue"`
-	Name     string  `pulumi:"name"`
-	Type     *string `pulumi:"type"`
+	// The alias of one field.
+	Alias *string `pulumi:"alias"`
+	// Whether to enable statistics. default to true.
+	//
+	// > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
+	DocValue *bool `pulumi:"docValue"`
+	// When using the jsonKeys field, this field is required.
+	Name string `pulumi:"name"`
+	// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+	Type *string `pulumi:"type"`
 }
 
 // StoreIndexFieldSearchJsonKeyInput is an input type that accepts StoreIndexFieldSearchJsonKeyArgs and StoreIndexFieldSearchJsonKeyOutput values.
@@ -2490,10 +2496,16 @@ type StoreIndexFieldSearchJsonKeyInput interface {
 }
 
 type StoreIndexFieldSearchJsonKeyArgs struct {
-	Alias    pulumi.StringPtrInput `pulumi:"alias"`
-	DocValue pulumi.BoolPtrInput   `pulumi:"docValue"`
-	Name     pulumi.StringInput    `pulumi:"name"`
-	Type     pulumi.StringPtrInput `pulumi:"type"`
+	// The alias of one field.
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// Whether to enable statistics. default to true.
+	//
+	// > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
+	DocValue pulumi.BoolPtrInput `pulumi:"docValue"`
+	// When using the jsonKeys field, this field is required.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (StoreIndexFieldSearchJsonKeyArgs) ElementType() reflect.Type {
@@ -2547,18 +2559,24 @@ func (o StoreIndexFieldSearchJsonKeyOutput) ToStoreIndexFieldSearchJsonKeyOutput
 	return o
 }
 
+// The alias of one field.
 func (o StoreIndexFieldSearchJsonKeyOutput) Alias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreIndexFieldSearchJsonKey) *string { return v.Alias }).(pulumi.StringPtrOutput)
 }
 
+// Whether to enable statistics. default to true.
+//
+// > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
 func (o StoreIndexFieldSearchJsonKeyOutput) DocValue() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StoreIndexFieldSearchJsonKey) *bool { return v.DocValue }).(pulumi.BoolPtrOutput)
 }
 
+// When using the jsonKeys field, this field is required.
 func (o StoreIndexFieldSearchJsonKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v StoreIndexFieldSearchJsonKey) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
 func (o StoreIndexFieldSearchJsonKeyOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreIndexFieldSearchJsonKey) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
